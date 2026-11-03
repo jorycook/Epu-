@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Prototipo</title>
+<script src="./support.js"></script>
+<script src="./gn-sound.js"></script>
+<script src="./gn-course-a1.js"></script>
+<script src="./gn-course-a2.js"></script>
+<script src="./gn-course-b1.js"></script>
+<script src="./gn-course-b2.js"></script>
+<script src="./gn-course-c1.js"></script>
+<script src="./gn-course-c2.js"></script>
+<script src="./gn-course.js"></script>
+<script src="./gn-spell.js"></script>
+<script src="./gn-extra.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&amp;family=Andika:wght@400;700&amp;text=%20%21%22%23%24%25%26%27%28%29%2A%2B%2C-.%2F0123456789%3A%3B%3C%3D%3E%3F%40ABCDEFGHIJKLMNOPQRSTUVWXYZ%5B%5C%5D%5E_%60abcdefghijklmnopqrstuvwxyz%7B%7C%7D~%C2%A1%C2%BF%C2%AB%C2%BB%C2%B0%C2%B7%C3%97%C3%B7%C2%AA%C2%BA%C2%B2%C3%A1%C3%A9%C3%AD%C3%B3%C3%BA%C3%BC%C3%B1%C3%81%C3%89%C3%8D%C3%93%C3%9A%C3%9C%C3%91%C3%BD%C3%9D%C3%A3%E1%BA%BD%C4%A9%C3%B5%C5%A9%E1%BB%B9%C3%83%E1%BA%BC%C4%A8%C3%95%C5%A8%E1%BB%B8%C3%A7%C3%87%C3%A0%C3%A8%C3%AC%C3%B2%C3%B9%C3%A2%C3%AA%C3%AE%C3%B4%C3%BB%CC%83%CC%81%E2%80%98%E2%80%99%E2%80%9C%E2%80%9D%E2%80%A6%E2%80%93%E2%80%94%E2%80%A2%E2%82%AC%E2%86%92%E2%86%90%E2%86%91%E2%86%93&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:#2F4FD0;text-decoration:none}a:hover{color:#1B2440}
+rt{font-size:9px;font-weight:500;color:#5A6382}
+@keyframes gn-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F4F5F9; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif">
+<sc-if value="{{ at.Goal }}" hint-placeholder-val="{{ true }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Goal" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Placement }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Placement" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Main }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Main" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Today }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Today" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Levels }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Levels" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Progress }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Progress" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Teach }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Teach" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Compare }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Compare" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Drill }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Drill" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Exam }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Exam" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Words }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Words" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Reading }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Reading" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Listening }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Listening" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.WeekTest }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="WeekTest" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Notebook }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Notebook" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Review }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Review" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.ExamTab }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="ExamTab" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.LevelExam }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="LevelExam" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Leer }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Leer" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Escribir }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Escribir" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Hablar }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Hablar" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+/* the whole flow on one board: one shared memory (gnCourse.fresh()), one screen at a time; every screen gets the same
+   props (go, app, save, miss, reviewed, level), as Yaoki's prototype does. The screens that are only moments on the
+   canvas (the moment boards, the build showcase, the spelling pad on its own, the brand boards) are not played here. */
+const SCREENS = ['Goal', 'Placement', 'Main', 'Today', 'Levels', 'Progress', 'Teach', 'Compare', 'Drill', 'Exam', 'Words', 'Reading', 'Listening', 'WeekTest', 'Notebook', 'Review', 'ExamTab', 'LevelExam', 'Leer', 'Escribir', 'Hablar'];
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = window.gnCourse.fresh();
+this.h = window.gnCourse.handlers(() => this.state, (fn) => this.setState(fn));
+}
+renderVals() {
+const s = this.state;
+const at = {};
+SCREENS.forEach((n) => { at[n] = s.screen === n; });
+return {
+at,
+app: window.gnCourse.view(s),
+go: this.h.go,
+save: this.h.save,
+miss: this.h.miss,
+reviewed: this.h.reviewed,
+level: this.h.level,
+};
+}
+}
+</script>
+</body>
+</html>

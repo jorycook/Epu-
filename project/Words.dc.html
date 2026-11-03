@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Palabras en una escena</title>
+<script src="./support.js"></script>
+<script src="./gn-sound.js"></script>
+<script src="./gn-course-a1.js"></script>
+<script src="./gn-course-a2.js"></script>
+<script src="./gn-course-b1.js"></script>
+<script src="./gn-course-b2.js"></script>
+<script src="./gn-course-c1.js"></script>
+<script src="./gn-course-c2.js"></script>
+<script src="./gn-course.js"></script>
+<script src="./gn-spell.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&amp;family=Andika:wght@400;700&amp;text=%20%21%22%23%24%25%26%27%28%29%2A%2B%2C-.%2F0123456789%3A%3B%3C%3D%3E%3F%40ABCDEFGHIJKLMNOPQRSTUVWXYZ%5B%5C%5D%5E_%60abcdefghijklmnopqrstuvwxyz%7B%7C%7D~%C2%A1%C2%BF%C2%AB%C2%BB%C2%B0%C2%B7%C3%97%C3%B7%C2%AA%C2%BA%C2%B2%C3%A1%C3%A9%C3%AD%C3%B3%C3%BA%C3%BC%C3%B1%C3%81%C3%89%C3%8D%C3%93%C3%9A%C3%9C%C3%91%C3%BD%C3%9D%C3%A3%E1%BA%BD%C4%A9%C3%B5%C5%A9%E1%BB%B9%C3%83%E1%BA%BC%C4%A8%C3%95%C5%A8%E1%BB%B8%C3%A7%C3%87%C3%A0%C3%A8%C3%AC%C3%B2%C3%B9%C3%A2%C3%AA%C3%AE%C3%B4%C3%BB%CC%83%CC%81%E2%80%98%E2%80%99%E2%80%9C%E2%80%9D%E2%80%A6%E2%80%93%E2%80%94%E2%80%A2%E2%82%AC%E2%86%92%E2%86%90%E2%86%91%E2%86%93&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:#2F4FD0;text-decoration:none}a:hover{color:#1B2440}
+rt{font-size:9px;font-weight:500;color:#5A6382}
+@keyframes gn-pop{0%{transform:scale(1)}45%{transform:scale(1.04)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; padding: 50px 16px 34px; background: #F4F5F9; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+<div style="display: flex; align-items: center; gap: 10px; height: 44px; flex-shrink: 0">
+<a href="Today.dc.html" onClick="{{ toToday }}" aria-label="Cerrar la lección" style="width: 44px; height: 44px; margin-left: -10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+<div role="group" aria-label="{{ barLabel }}" style="flex-grow: 1; min-width: 0; display: grid; gap: 6px; grid-template-columns: {{ barCols }}">
+<sc-for list="{{ bar }}" as="b" hint-placeholder-count="4"><button onClick="{{ b.go }}" aria-disabled="{{ b.off }}" aria-label="{{ b.aria }}" aria-current="{{ b.cur }}" style="height: 44px; min-width: 0; padding: 0; border: 0; background: transparent; display: flex; align-items: center; cursor: {{ b.cursor }}"><span style="display: block; width: 100%; height: 10px; border-radius: 5px; background: {{ b.bg }}"></span></button></sc-for>
+</div>
+<div style="font-size: 12px; font-weight: 800; color: #B02A63; white-space: nowrap; flex-shrink: 0">{{ stepLabel }}</div>
+</div>
+
+<sc-if value="{{ atEmpty }}" hint-placeholder-val="{{ false }}">
+<div style="flex-grow: 1; min-height: 0; overflow-y: auto; margin: 0 -16px; padding: 0 16px 8px; display: flex; flex-direction: column">
+<div style="margin-top: 16px; padding: 18px 16px; border-radius: 18px; background: #F4F5F9; border: 2px dashed #C9D0E3; display: flex; flex-direction: column; gap: 6px; flex-shrink: 0">
+<div style="font-size: 11px; font-weight: 800; letter-spacing: 0.04em; color: #5A6382">{{ emptyKicker }}</div>
+<div style="font-size: 18px; font-weight: 800">En preparación</div>
+<div style="font-size: 13px; font-weight: 500; line-height: 1.45; color: #5A6382">{{ emptyLine }}</div>
+</div>
+</div>
+<a href="Today.dc.html" onClick="{{ toToday }}" style="flex-shrink: 0; margin-top: 10px; height: 54px; box-sizing: border-box; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-size: 17px; font-weight: 800; display: flex; align-items: center; justify-content: center"><span><span lang="gn">Tapykue</span> · Volver</span></a>
+</sc-if>
+
+<sc-if value="{{ atSound }}" hint-placeholder-val="{{ false }}">
+<div style="flex-grow: 1; min-height: 0; overflow-y: auto; margin: 0 -16px; padding: 0 16px 8px; display: flex; flex-direction: column">
+<div style="margin-top: 6px; display: flex; flex-direction: column; gap: 2px; flex-shrink: 0">
+<h1 style="margin: 0; font-size: 26px; font-weight: 800; line-height: 1.3">{{ sFocus }} <span style="font-size: 15px; font-weight: 700; color: #5A6382"><span lang="gn">Mba'epu</span> · Sonido y letra</span></h1>
+<div style="font-size: 13px; font-weight: 500; color: #5A6382">Mirá cómo se escribe y escuchá la diferencia en cada par.</div>
+</div>
+
+<sc-if value="{{ sNone }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top: 14px; padding: 16px; border-radius: 18px; background: #F4F5F9; border: 2px dashed #C9D0E3; display: flex; flex-direction: column; gap: 6px; flex-shrink: 0">
+<div style="font-size: 18px; font-weight: 800">En preparación</div>
+<div style="font-size: 13px; font-weight: 500; line-height: 1.45; color: #5A6382">El sonido de este día todavía se está escribiendo. Seguí con las palabras.</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ sSome }}" hint-placeholder-val="{{ true }}">
+<div role="list" aria-label="Las letras de hoy" style="margin-top: 14px; display: flex; flex-wrap: wrap; gap: 12px; flex-shrink: 0; max-width: {{ sLettersMax }}">
+<sc-for list="{{ sLetters }}" as="l" hint-placeholder-count="2">
+<div role="listitem" style="width: 64px; display: flex; flex-direction: column; align-items: center; gap: 5px">
+<div role="img" aria-label="{{ l.name }}" style="width: 64px; height: 64px; box-sizing: border-box; border-radius: 16px; background: #FCE4EE; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; display: flex; align-items: center; justify-content: center"><span lang="gn" aria-hidden="true" style="font-family: 'Andika', 'Nunito', sans-serif; font-size: 40px; font-weight: 700; line-height: 1; white-space: nowrap">{{ l.c }}</span></div>
+<div aria-hidden="true" style="font-size: 11px; font-weight: 800; line-height: 1.2; text-align: center; color: #5A6382">{{ l.name }}</div>
+</div>
+</sc-for>
+</div>
+
+<sc-if value="{{ sHasNote }}" hint-placeholder-val="{{ true }}">
+<div style="margin-top: 14px; padding: 12px 14px; border-radius: 16px; background: #E8ECFB; font-size: 13px; font-weight: 500; line-height: 1.45; flex-shrink: 0">{{ sNote }}</div>
+</sc-if>
+
+<sc-if value="{{ sHasPairs }}" hint-placeholder-val="{{ true }}">
+<div style="margin-top: 16px; font-size: 11px; font-weight: 800; letter-spacing: 0.04em; color: #5A6382; flex-shrink: 0">ESCUCHÁ Y ELEGÍ · {{ sPairCount }}</div>
+<sc-for list="{{ sPairs }}" as="p" hint-placeholder-count="2">
+<div style="margin-top: 8px; padding: 10px 12px 12px; border-radius: 18px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0">
+<div style="font-size: 11px; font-weight: 800; letter-spacing: 0.04em; color: #5A6382">{{ p.kicker }}</div>
+<div style="display: flex; align-items: center; gap: 10px">
+<button onClick="{{ p.play }}" aria-pressed="{{ p.playing }}" aria-label="{{ p.playAria }}" style="width: 56px; height: 56px; border-radius: 50%; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 150ms; background: {{ p.playBg }}"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 9a4 4 0 0 1 0 6"/></svg></button>
+<div style="flex-grow: 1; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{ p.opts }}" as="o" hint-placeholder-count="2">
+<button onClick="{{ o.pick }}" aria-disabled="{{ o.off }}" aria-pressed="{{ o.on }}" aria-label="{{ o.aria }}" style="position: relative; min-height: 64px; padding: 8px 10px; box-sizing: border-box; border-radius: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; transition: transform 120ms; border: {{ o.border }}; background: {{ o.bg }}; box-shadow: {{ o.shadow }}; transform: {{ o.lift }}; cursor: {{ o.cursor }}"><span lang="gn" style="font-family: 'Andika', 'Nunito', sans-serif; font-size: 22px; font-weight: 700; line-height: 1.15; overflow-wrap: anywhere">{{ o.gn }}</span><span style="font-size: 12px; font-weight: 700; color: #5A6382">{{ o.es }}</span><sc-if value="{{ o.tick }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="position: absolute; top: -8px; right: -8px; width: 22px; height: 22px; box-sizing: border-box; border-radius: 50%; background: #FFFFFF; border: 2px solid #0B7A6B; display: flex; align-items: center; justify-content: center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></sc-if><sc-if value="{{ o.cross }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="position: absolute; top: -8px; right: -8px; width: 22px; height: 22px; box-sizing: border-box; border-radius: 50%; background: #FFFFFF; border: 2px solid #C7361E; display: flex; align-items: center; justify-content: center"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#C7361E" stroke-width="3.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></sc-if></button>
+</sc-for>
+</div>
+</div>
+<div aria-live="polite" style="font-size: 13px; font-weight: 700; line-height: 1.4; color: {{ p.vColor }}"><span lang="gn">{{ p.vGn }}</span>{{ p.vEs }}<span lang="gn">{{ p.vWord }}</span>{{ p.vTail }}</div>
+</div>
+</sc-for>
+</sc-if>
+</sc-if>
+</div>
+<button onClick="{{ fromSound }}" style="flex-shrink: 0; margin-top: 10px; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-size: 17px; font-weight: 800; display: flex; align-items: center; justify-content: center"><span><span lang="gn">Upeigua</span> · Siguiente: las palabras</span></button>
+</sc-if>
+
+<sc-if value="{{ atLearn }}" hint-placeholder-val="{{ true }}">
+<div style="flex-grow: 1; min-height: 0; overflow-y: auto; margin: 0 -16px; padding: 0 16px 8px; display: flex; flex-direction: column">
+
+<div style="margin-top: 6px; display: flex; flex-direction: column; gap: 2px; flex-shrink: 0">
+<h1 style="margin: 0; font-size: 26px; font-weight: 800; line-height: 1.3"><span lang="{{ titleLang }}">{{ titleMain }}</span> <span style="font-size: 15px; font-weight: 700; color: #5A6382">{{ titleSub }}</span></h1>
+<div style="font-size: 13px; font-weight: 500; line-height: 1.45; color: #5A6382">{{ intro }} Encontraste {{ count }} de {{ total }}.</div>
+</div>
+
+<div lang="gn" style="margin-top: 12px; padding: 12px; border-radius: 20px; background: #1B2440; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 10px; flex-shrink: 0">
+<sc-for list="{{ words }}" as="w" hint-placeholder-count="8">
+<button onClick="{{ w.tap }}" aria-pressed="{{ w.on }}" style="position: relative; min-height: 46px; padding: 6px 10px; box-sizing: border-box; border-radius: 10px; font-size: 17px; font-weight: 800; line-height: 1.2; overflow-wrap: anywhere; background: {{ w.bg }}; color: {{ w.ink }}; border: {{ w.edge }}; outline: {{ w.ring }}; box-shadow: {{ w.glow }}">{{ w.word }}<sc-if value="{{ w.badge }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="position: absolute; right: -7px; top: -7px; width: 18px; height: 18px; box-sizing: border-box; border-radius: 50%; border: 2px solid #C2336F; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#B02A63" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></sc-if></button>
+</sc-for>
+</div>
+
+<div style="margin-top: 12px; padding: 12px 14px; border-radius: 18px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0">
+<div style="display: flex; align-items: flex-start; gap: 12px">
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<div lang="gn" style="font-family: 'Andika', 'Nunito', sans-serif; font-weight: 700; line-height: 1.15; overflow-wrap: anywhere; font-size: {{ d.size }}">{{ d.word }}</div>
+<sc-if value="{{ d.hasSyll }}" hint-placeholder-val="{{ false }}"><div role="img" aria-label="{{ d.syllAria }}" style="font-size: 16px; font-weight: 800"><sc-for list="{{ d.syll }}" as="y" hint-placeholder-count="2"><span lang="gn" aria-hidden="true" style="color: {{ y.color }}">{{ y.t }}</span><span aria-hidden="true" style="color: #9AA1B5">{{ y.dot }}</span></sc-for></div></sc-if>
+<div style="font-size: 13px; font-weight: 500; color: #5A6382">{{ d.gloss }}</div>
+</div>
+<button aria-label="Escuchar la palabra" aria-pressed="{{ playing }}" onClick="{{ play }}" style="width: 44px; height: 44px; border-radius: 50%; border: 2px solid #1B2440; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 150ms; background: {{ playBg }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 9a4 4 0 0 1 0 6"/></svg></button>
+</div>
+<sc-if value="{{ d.hasNote }}" hint-placeholder-val="{{ false }}"><div style="font-size: 12px; font-weight: 500; line-height: 1.45; color: #5A6382">{{ d.note }}</div></sc-if>
+<sc-if value="{{ d.hasParts }}" hint-placeholder-val="{{ true }}">
+<div style="font-size: 11px; font-weight: 800; color: #5A6382">Partes</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{ d.parts }}" as="k" hint-placeholder-count="2">
+<div style="min-width: 0; padding: 8px 10px; border-radius: 12px; background: #F4F5F9; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 10px; row-gap: 2px">
+<div lang="gn" style="min-width: 0; font-family: 'Andika', 'Nunito', sans-serif; font-size: 22px; font-weight: 700; line-height: 1.2; overflow-wrap: anywhere">{{ k.gn }}</div>
+<div style="min-width: 0; font-size: 12px; font-weight: 500; line-height: 1.35; color: #5A6382">{{ k.es }}</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+</div>
+
+<div style="margin-top: 12px; padding: 10px 14px; border-radius: 16px; background: #FFF4D6; display: flex; align-items: center; gap: 10px; flex-shrink: 0">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></svg>
+<div style="font-size: 12.5px; font-weight: 700; line-height: 1.45">{{ writeLine }}<span lang="gn">{{ writeLetters }}</span>{{ writeEnd }}</div>
+</div>
+
+</div>
+<button onClick="{{ fromScene }}" style="flex-shrink: 0; margin-top: 10px; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-size: 17px; font-weight: 800; display: flex; align-items: center; justify-content: center"><span><span lang="gn">Upeigua</span> · {{ fromSceneLabel }}</span></button>
+</sc-if>
+
+<sc-if value="{{ atSpell }}" hint-placeholder-val="{{ false }}">
+<div style="flex-grow: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; margin: 0 -16px; padding: 0 16px 8px; display: flex; flex-direction: column">
+<div style="margin-top: 6px; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-shrink: 0">
+<h1 style="margin: 0; font-size: 26px; font-weight: 800; line-height: 1.3"><span lang="gn">Ehai</span> <span style="font-size: 15px; font-weight: 700; color: #5A6382">{{ wHead }}</span></h1>
+<div role="img" aria-label="{{ wCountAria }}" style="padding: 2px 8px; border-radius: 8px; background: #E8ECFB; color: #2F4FD0; font-size: 12px; font-weight: 800; white-space: nowrap; flex-shrink: 0; display: flex; align-items: center; min-height: 20px">{{ wCount }}<sc-if value="{{ wAllDone }}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></sc-if></div>
+</div>
+
+<sc-if value="{{ wNone }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top: 12px; padding: 16px; border-radius: 18px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 6px; flex-shrink: 0">
+<div style="font-size: 18px; font-weight: 800"><span lang="gn">Oĩma</span> · {{ wNoneHead }}</div>
+<div style="font-size: 13px; font-weight: 500; line-height: 1.45; color: #5A6382">{{ wNoneLine }}</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ wSome }}" hint-placeholder-val="{{ true }}">
+<div style="margin-top: 8px; padding: 10px 12px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; align-items: center; gap: 12px; flex-shrink: 0">
+<sc-if value="{{ wi.show }}" hint-placeholder-val="{{ true }}"><div lang="gn" style="flex: 0 1 auto; min-width: 0; font-family: 'Andika', 'Nunito', sans-serif; font-weight: 700; line-height: 1.1; overflow-wrap: anywhere; font-size: {{ wi.size }}">{{ wi.big }}</div></sc-if>
+<sc-if value="{{ wi.hidden }}" hint-placeholder-val="{{ false }}"><div role="img" aria-label="Palabra oculta" style="width: 64px; height: 44px; box-sizing: border-box; border-radius: 12px; border: 2px dashed #C9D0E3; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9AA1B5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><path d="M1 1l22 22"/></svg></div></sc-if>
+<div style="flex: 1 1 120px; min-width: 0; display: flex; flex-direction: column; gap: 1px">
+<div style="font-size: 11px; font-weight: 800; color: #B02A63"><span lang="gn">Ñe'ẽ</span> · Palabra, tres veces</div>
+<div style="font-size: 14px; font-weight: 800; line-height: 1.3">{{ wi.mean }}</div>
+<div style="font-size: 12px; font-weight: 500; line-height: 1.35; color: #5A6382">{{ wi.ctx }}<span lang="gn">{{ wi.ctxLetters }}</span></div>
+</div>
+</div>
+<div style="margin-top: 10px; flex-shrink: 0">
+<dc-import name="Spell" task="{{ wTask }}" tkey="{{ wKey }}" finished="{{ wFinished }}" size="{{ wSize }}" pass="{{ wPass }}" hint-size="358px,470px"></dc-import>
+</div>
+</sc-if>
+</div>
+<button onClick="{{ wNext }}" aria-disabled="{{ wLocked }}" style="flex-shrink: 0; margin-top: 10px; height: 54px; border-radius: 16px; font-size: 17px; font-weight: 800; display: flex; align-items: center; justify-content: center; border: {{ wBtn.border }}; background: {{ wBtn.bg }}; color: {{ wBtn.color }}; box-shadow: {{ wBtn.shadow }}; cursor: {{ wBtn.cursor }}"><span><span lang="gn">{{ wNextGn }}</span>{{ wNextEs }}<span lang="gn">{{ wNextWord }}</span></span></button>
+</sc-if>
+
+<sc-if value="{{ atCheck }}" hint-placeholder-val="{{ false }}">
+<div style="flex-grow: 1; min-height: 0; overflow-y: auto; margin: 0 -16px; padding: 0 16px 8px; display: flex; flex-direction: column">
+<div style="margin-top: 6px; display: flex; flex-direction: column; gap: 2px; flex-shrink: 0">
+<h1 style="margin: 0; font-size: 26px; font-weight: 800; line-height: 1.3"><span lang="gn">Aranduchauka</span> <span style="font-size: 15px; font-weight: 700; color: #5A6382">Examen</span></h1>
+<div style="font-size: 13px; font-weight: 500; line-height: 1.45; color: #5A6382">{{ checkLine }}</div>
+</div>
+
+<sc-if value="{{ cNone }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top: 14px; padding: 16px; border-radius: 18px; background: #F4F5F9; border: 2px dashed #C9D0E3; display: flex; flex-direction: column; gap: 6px; flex-shrink: 0">
+<div style="font-size: 18px; font-weight: 800">En preparación</div>
+<div style="font-size: 13px; font-weight: 500; line-height: 1.45; color: #5A6382">La pregunta de este día todavía se está escribiendo.</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ cSome }}" hint-placeholder-val="{{ true }}">
+<div style="margin-top: 14px; padding: 12px 14px 14px; border-radius: 18px; background: #FFF4D6; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0">
+<sc-if value="{{ asking }}" hint-placeholder-val="{{ true }}">
+<div style="font-size: 12px; font-weight: 800">Así se pregunta en el examen · {{ checkType }}</div>
+</sc-if>
+<sc-if value="{{ answered }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; align-items: flex-start; gap: 6px; font-size: 12px; font-weight: 800; line-height: 1.45">
+<sc-if value="{{ right }}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Correcta" style="flex-shrink: 0; margin-top: 2px"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></sc-if>
+<sc-if value="{{ wrong }}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C7361E" stroke-width="3.5" stroke-linecap="round" role="img" aria-label="Incorrecta" style="flex-shrink: 0; margin-top: 2px"><path d="M6 6l12 12M18 6L6 18"/></svg></sc-if>
+<div><span lang="gn">{{ vGn }}</span>{{ vPre }}<span lang="gn">{{ vAns }}</span>{{ vPost }}</div>
+</div>
+<div style="font-size: 12px; font-weight: 500; line-height: 1.45">{{ explain }}</div>
+</sc-if>
+<div style="font-family: 'Andika', 'Nunito', sans-serif; font-size: 17px; font-weight: 700; line-height: 1.55; overflow-wrap: anywhere"><sc-for list="{{ qSegs }}" as="g" hint-placeholder-count="3"><sc-if value="{{ g.blank }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="espacio en blanco" style="display: inline-block; width: 46px; height: 22px; box-sizing: border-box; margin: 0 3px; vertical-align: -5px; border-radius: 6px; border: 2px solid #1B2440; background: #FFFFFF"></span></sc-if><sc-if value="{{ g.text }}" hint-placeholder-val="{{ true }}"><span style="padding-bottom: 1px; border-bottom: {{ g.line }}">{{ g.t }}</span></sc-if></sc-for></div>
+<sc-if value="{{ asking }}" hint-placeholder-val="{{ true }}">
+<div lang="gn" style="display: grid; gap: 6px; grid-template-columns: {{ choiceCols }}">
+<sc-for list="{{ choices }}" as="c" hint-placeholder-count="4">
+<button onClick="{{ c.pick }}" style="min-height: 44px; min-width: 0; padding: 6px 8px; border-radius: 12px; border: 2px solid #1B2440; background: #FFFFFF; font-family: 'Andika', 'Nunito', sans-serif; font-size: 15px; font-weight: 700; line-height: 1.25; overflow-wrap: anywhere">{{ c.label }}</button>
+</sc-for>
+</div>
+</sc-if>
+</div>
+</sc-if>
+</div>
+<sc-if value="{{ answered }}" hint-placeholder-val="{{ false }}">
+<a href="Today.dc.html" onClick="{{ toDone }}" style="flex-shrink: 0; margin-top: 10px; height: 54px; box-sizing: border-box; border-radius: 16px; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-size: 17px; font-weight: 800; display: flex; align-items: center; justify-content: center; background: {{ tone }}"><span><span lang="gn">Upeigua</span> · Siguiente</span></a>
+</sc-if>
+<sc-if value="{{ cNone }}" hint-placeholder-val="{{ false }}">
+<a href="Today.dc.html" onClick="{{ toToday }}" style="flex-shrink: 0; margin-top: 10px; height: 54px; box-sizing: border-box; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-size: 17px; font-weight: 800; display: flex; align-items: center; justify-content: center"><span><span lang="gn">Tapykue</span> · Volver</span></a>
+</sc-if>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"go":{"editor":null},"app":{"editor":null},"save":{"editor":null},"miss":{"editor":null},"reviewed":{"editor":null},"level":{"editor":null},"view":{"editor":null},"$preview":{"width":390,"height":844}}'>
+/* The words lesson (Yaoki's kanji in a scene), in up to four steps:
+     Sonido  (A1-A2 days with words.sound) the day's sound and letter: the letters big, a short note, and the
+             minimal pairs as listen-and-choose cards (no notebook);
+     Aprender the scene: tap each word on the navy sign board to see it, its Spanish, its parts, and hear it;
+     Escribir each word of words.spell typed three times with the Guarani keyboard (Spell.dc.html), one word after
+             the other; Next stays shut until the word is typed. What was typed is kept (save: typed), so a word
+             is never asked twice, here or in the typing game;
+     Examen  the words check, one question as the exam asks it.
+   Progress: ks 1 once the scene is read, kw 1 once everything is typed, k 1 when the lesson is done (Today).
+   The Sonido step keeps no progress of its own: a lesson left there opens there again, as Today shows it.
+   props.view ('learn' | 'sound' | 'spell' | 'check') opens that step, for the moment boards: Sound.dc.html shows
+   Sonido, WordsSpell.dc.html the writing step with its first word on its second time, part-way.
+   On its own the artboard shows the designed moment: a1u01d4, Aprender, three words found, the third one open: the
+   first word with parts after the first two (on a1u01d4 a question with -pa), so the card shows its Partes tiles.
+   Lesson text comes only from the course (window.gnCourse); a day still unwritten shows "En preparación". */
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+const L = this.lesson(props);
+const app = this.app(props);
+const p = app.prog || {};
+const view = props && props.view;
+const alone = !(props && props.go);
+const steps = L.sound || view === 'sound' ? ['sound', 'learn', 'spell', 'check'] : ['learn', 'spell', 'check'];
+/* the words to type, worked out once: those typed before this lesson opened are left out */
+const queue = this.queue(L, app.typed || []);
+/* a moment board opens its step; on its own the artboard opens the scene; in the app a lesson part-way through
+   opens where it was left, a finished one from the start */
+let at = 0;
+if (view && steps.indexOf(view) >= 0) at = steps.indexOf(view);
+else if (alone) at = steps.indexOf('learn');
+else at = p.k ? 0 : p.kw ? steps.indexOf('check') : p.ks ? steps.indexOf('spell') : 0;
+const first = L.list[0] ? L.list[0].id : null;
+/* inside the prototype the first word is open; on its own the artboard shows three words found, the third open:
+   the first word that has parts, so the card shows its Partes tiles (else simply the third word) */
+let base = { found: first ? [first] : [], sel: first };
+if (alone) {
+const parted = L.list.filter((w, k) => k >= 2 && Array.isArray(w.parts) && w.parts.some((x) => Array.isArray(x) && x[0]))[0];
+const open = parted || L.list[2] || L.list[0] || null;
+const found = L.list.slice(0, 2).map((w) => w.id).filter((id) => !open || id !== open.id);
+if (open) found.push(open.id);
+base = { found, sel: open ? open.id : null };
+}
+/* the sound step on its own: the first pair heard and answered, so both looks of a pair are on the board */
+const heard = {};
+const picks = {};
+if (alone && view === 'sound' && L.pairs.length) { heard[0] = true; picks[0] = this.target(L.pairs[0]); }
+this.state = { ...base, quiz: null, playing: false, steps, step: steps[at], reached: at, queue, qi: 0, qDone: false, wPass: 0, heard, picks, pairOn: -1 };
+}
+/* what the screen shows: the app's view, or on its own the shared sample (unit 1, day 4 is today) */
+app(props) {
+if (props && props.app) return props.app;
+if (!this.sampleApp) {
+const C = window.gnCourse;
+if (!C) this.sampleApp = {};
+else {
+const T = C.today(C.now());
+const full = { g: 3, k: 1, r: 1 };
+this.sampleApp = C.view({
+level: 'A1', started: true, plan: { start: C.addDays(T, -3), target: C.addDays(T, 60), pace: 'fit', minutes: 30 },
+done: { a1u01d1: full, a1u01d2: full, a1u01d3: full, a1u01d4: { g: 1 } }, tests: {}, exams: {}, mistakes: [],
+cur: 'a1u01d4', placement: { comp: 'A2', prod: 'A1', start: 'A1' }, typed: [],
+});
+}
+}
+return this.sampleApp;
+}
+/* the day's words lesson, every part guarded: the content may still be partial */
+lesson(props) {
+const C = window.gnCourse;
+const app = this.app(props);
+const own = !!(props && props.app);
+const sid = app.sid || (own ? '' : 'a1u01d4');
+const day = app.day || (!own && C ? C.day('a1u01d4') : null) || null;
+const w = day && day.words && typeof day.words === 'object' ? day.words : null;
+const list = w && Array.isArray(w.words) ? w.words.filter((x) => x && x.id && x.gn) : [];
+/* a day has the sound step when its sound has a focus (the rule Today follows for its pills) */
+const sound = w && w.sound && w.sound.focus ? w.sound : null;
+const pairs = sound && Array.isArray(sound.pairs) ? sound.pairs.filter((x) => Array.isArray(x) && x.length >= 4 && x[0] && x[2]) : [];
+const spell = w && Array.isArray(w.spell) ? w.spell : [];
+/* the check is asked only when it can be marked: options, and an answer that names one of them */
+const opts = w && w.check && Array.isArray(w.check.options) ? w.check.options : [];
+const check = opts.length && +w.check.answer >= 1 && +w.check.answer <= opts.length ? w.check : null;
+return { sid, day, w, list, sound, pairs, spell, check };
+}
+queue(L, typed) {
+const C = window.gnCourse;
+/* matched as the typing game keeps them: one puso, lower case, no end marks (a word typed there without its
+   question mark still counts here) */
+const norm = (x) => (C ? C.fold(x) : String(x || '').toLowerCase());
+const have = (Array.isArray(typed) ? typed : []).map(norm);
+const out = [];
+L.spell.forEach((id) => {
+const w = L.list.filter((x) => x.id === id)[0];
+if (!w || have.indexOf(norm(w.gn)) >= 0 || out.some((q) => q.w.id === w.id)) return;
+out.push({ w });
+});
+return out;
+}
+/* which of the two words of a pair plays: fixed for the pair, the same every time */
+target(pair) {
+const S = window.gnSpell;
+return S ? S.shuffle([0, 1], pair[0] + '|' + pair[2])[0] : 0;
+}
+/* the syllables with the stressed one, when gn-spell.js can split them; otherwise none are shown */
+syllables(w) {
+const S = window.gnSpell;
+if (!S || typeof S.syllables !== 'function') return null;
+let list = null;
+try { list = S.syllables(w); } catch (e) { return null; }
+if (!Array.isArray(list) || !list.length) return null;
+let at = -1;
+if (typeof S.stressOf === 'function') { try { const r = S.stressOf(w); if (typeof r === 'number') at = r; } catch (e) { at = -1; } }
+const out = list.map((x, i) => ({ t: typeof x === 'string' ? x : x ? String(x.t || x.s || x.text || '') : '', stress: x && typeof x === 'object' ? !!(x.stress || x.stressed) : i === at })).filter((x) => x.t);
+return out.length ? out : null;
+}
+componentWillUnmount() {
+this.hush();
+}
+hush() {
+clearTimeout(this.timer);
+clearTimeout(this.pairTimer);
+if (window.gnSound) window.gnSound.stop();
+}
+/* a sound control: the clip when there is one, else the silent stand-in, lit for as long as the words take to say */
+say(key, text, done) {
+const C = window.gnCourse;
+const snd = window.gnSound;
+const sound = !!(key && snd && snd.has(key) && snd.unlock() && snd.play(key));
+const len = (C ? C.plain(text) : String(text || '')).length;
+return setTimeout(done, sound ? snd.ms(key) + 150 : 600 + len * 120);
+}
+renderVals() {
+const C = window.gnCourse;
+const S = window.gnSpell;
+const s = this.state;
+const L = this.lesson(this.props);
+const nav = (to) => (e) => { const go = this.props.go; if (go) { e.preventDefault(); go(to); } };
+const save = (patch) => { if (this.props.save) this.props.save(patch); };
+const chars = (t) => (C ? C.chars(t) : Array.from(String(t || '')));
+const plain = (t) => (C ? C.plain(t) : String(t || ''));
+const steps = s.steps;
+const at = Math.max(0, steps.indexOf(s.step));
+const NAMES = { sound: ['SONIDO', 'Sonido y letra'], learn: ['APRENDER', 'Las palabras'], spell: ['ESCRIBIR', 'Escribir las palabras'], check: ['EXAMEN', 'La pregunta de examen'] };
+const goStep = (n) => {
+this.hush();
+this.setState({ step: steps[n], reached: Math.max(this.state.reached, n), playing: false, pairOn: -1 });
+};
+const bar = steps.map((k, n) => ({
+bg: n <= at ? '#B02A63' : '#DDE1EC',
+off: n > s.reached,
+cursor: n > s.reached || n === at ? 'default' : 'pointer',
+cur: n === at ? 'step' : 'false',
+aria: NAMES[k][1] + (n > s.reached ? ', todavía no disponible' : ''),
+/* a step already opened can be opened again from the bar */
+go: () => { if (n <= this.state.reached && n !== at) goStep(n); },
+}));
+const ready = L.list.length > 0;
+const where = C && L.sid ? C.parse(L.sid) : null;
+const titleEs = (L.w && L.w.es) || '';
+const base = {
+bar,
+barCols: 'repeat(' + steps.length + ', minmax(0, 1fr))',
+barLabel: 'Paso ' + (at + 1) + ' de ' + steps.length,
+stepLabel: NAMES[s.step][0],
+atEmpty: !ready,
+atSound: ready && s.step === 'sound',
+atLearn: ready && s.step === 'learn',
+atSpell: ready && s.step === 'spell',
+atCheck: ready && s.step === 'check',
+toToday: nav('Today'),
+emptyKicker: where && where.day !== 't' ? 'SEMANA ' + where.unit + ' · DÍA ' + where.day : 'PALABRAS',
+emptyLine: 'Las palabras ' + (L.day && L.day.title ? 'de «' + L.day.title + '»' : 'de este día') + ' todavía se están escribiendo. Volvé pronto.',
+};
+
+/* ---------- the sound and its letters ---------- */
+const snd = L.sound;
+const letters = snd && Array.isArray(snd.letters) ? snd.letters.filter((x) => typeof x === 'string' && x) : [];
+const sPairs = L.pairs.map((pair, i) => {
+const tgt = this.target(pair);
+const heard = !!s.heard[i];
+const pick = s.picks[i];
+const done = pick === 0 || pick === 1;
+const playing = s.pairOn === i;
+const said = pair[tgt * 2];
+const saidEs = pair[tgt * 2 + 1] || '';
+const opts = [0, 1].map((k) => {
+const right = k === tgt;
+const mine = pick === k;
+const look = !heard ? 'locked' : !done ? 'idle' : right ? 'right' : mine ? 'wrong' : 'other';
+const LOOK = {
+locked: ['2px solid #DDE1EC', '#FFFFFF', 'none'],
+idle: ['2px solid #1B2440', '#FFFFFF', '0 3px 0 #1B2440'],
+right: ['2.5px solid #0B7A6B', '#E0F3EF', 'none'],
+wrong: ['2.5px solid #C7361E', '#FDEBE6', 'none'],
+other: ['2px solid #DDE1EC', '#FFFFFF', 'none'],
+}[look];
+return {
+gn: pair[k * 2],
+es: pair[k * 2 + 1] || '',
+aria: pair[k * 2] + (pair[k * 2 + 1] ? ', ' + pair[k * 2 + 1] : '') + (look === 'right' ? ': la que sonó' : look === 'wrong' ? ': no era esta' : ''),
+off: !heard || done,
+on: mine,
+tick: done && right,
+cross: done && mine && !right,
+border: LOOK[0],
+bg: LOOK[1],
+shadow: LOOK[2],
+lift: done && mine ? 'translateY(3px)' : 'none',
+cursor: heard && !done ? 'pointer' : 'default',
+pick: () => {
+const st = this.state;
+if (!st.heard[i] || st.picks[i] === 0 || st.picks[i] === 1) return;
+this.setState({ picks: { ...st.picks, [i]: k } });
+},
+};
+});
+/* one line under the pair: what to do, then the verdict */
+const ask = !heard ? 'Tocá el parlante: suena una de las dos.' : '¿Cuál escuchaste?';
+return {
+kicker: 'PAR ' + (i + 1) + ' DE ' + L.pairs.length,
+playing,
+playBg: playing ? '#F2B43A' : '#E8ECFB',
+playAria: 'Escuchar la palabra del par ' + (i + 1),
+play: () => {
+clearTimeout(this.pairTimer);
+clearTimeout(this.timer);
+this.setState({ pairOn: i, playing: false, heard: { ...this.state.heard, [i]: true } });
+this.pairTimer = this.say(L.sid ? L.sid + '.s' + i + (tgt ? 'b' : 'a') : '', said, () => this.setState({ pairOn: -1 }));
+},
+opts,
+vGn: done && pick === tgt ? '¡Iporã!' : '',
+vEs: !done ? ask : pick === tgt ? ' Sonó ' : 'Era la otra: ',
+vWord: done ? said : '',
+/* the meaning in quotes, as the notes cite it, so a gloss with a comma or its own question mark reads whole */
+vTail: done ? (saidEs ? ', «' + saidEs + '»' : '') + '.' : '',
+vColor: !done ? '#1B2440' : pick === tgt ? '#0B7A6B' : '#C7361E',
+};
+});
+Object.assign(base, {
+sFocus: snd && snd.focus ? plain(snd.focus) : 'Sonido y letra',
+sNone: !snd,
+sSome: !!snd,
+sLetters: letters.map((c) => ({ c, name: S ? S.name(c) : c })),
+/* up to four tiles a row; six or eight letters sit in two even rows */
+sLettersMax: (letters.length <= 4 ? 4 : Math.ceil(letters.length / 2)) * 76 - 12 + 'px',
+sHasNote: !!(snd && snd.note),
+sNote: snd && snd.note ? plain(snd.note) : '',
+sHasPairs: sPairs.length > 0,
+sPairCount: sPairs.length === 1 ? '1 PAR' : sPairs.length + ' PARES',
+sPairs,
+fromSound: () => goStep(at + 1),
+});
+
+/* ---------- the scene ---------- */
+const words = L.list.map((w) => {
+const on = s.sel === w.id;
+const found = s.found.indexOf(w.id) >= 0;
+return {
+word: w.gn,
+on,
+badge: found && !on,
+bg: on ? '#2A3560' : 'transparent',
+ink: on ? '#F2B43A' : '#FFFFFF',
+edge: found ? '2px solid #6E7BA8' : '2px dashed #6E7BA8',
+ring: on ? '3px solid #F2B43A' : 'none',
+glow: on ? '0 0 0 5px #1B2440' : 'none',
+tap: () => {
+this.hush();
+this.setState({ sel: w.id, found: found ? this.state.found : this.state.found.concat(w.id), playing: false });
+},
+};
+});
+const cur = L.list.filter((w) => w.id === s.sel)[0] || L.list[0] || { id: '', gn: '', es: '', parts: [] };
+const len = chars(cur.gn).length;
+const syl = this.syllables(cur.gn);
+const stressed = (syl || []).filter((y) => y.stress)[0];
+const parts = Array.isArray(cur.parts) ? cur.parts.filter((x) => Array.isArray(x) && x[0]) : [];
+/* the letters the writing step will ask for: the hard ones of the words still to type */
+const Q = s.queue.length;
+const newLetters = [];
+s.queue.forEach((q) => { (S ? S.cells(q.w.gn).filter(S.hard) : []).forEach((g) => { const k = S.norm(g).toLowerCase(); if (newLetters.indexOf(k) < 0) newLetters.push(k); }); });
+/* the line in three parts, so the Guarani letters carry lang="gn" */
+const writeLine = Q
+? 'Después vas a escribir ' + (Q === 1 ? '1 palabra' : Q + ' palabras') + (newLetters.length ? (newLetters.length === 1 ? ' con una letra nueva: ' : ' con letras nuevas: ') : '')
+: L.spell.length ? 'Ya escribiste todas las palabras de esta escena. Ahora, la pregunta de examen.' : 'Hoy no hay palabras para escribir. Después, la pregunta de examen.';
+const writeLetters = Q ? newLetters.join(', ') : '';
+const writeEnd = Q ? '.' : '';
+Object.assign(base, {
+titleLang: L.w && L.w.gn ? 'gn' : 'es',
+titleMain: (L.w && (L.w.gn || L.w.es)) || 'Palabras',
+titleSub: L.w && L.w.gn ? titleEs : '',
+intro: (L.w && L.w.intro) || 'Tocá cada palabra para verla y escucharla.',
+words,
+count: s.found.length,
+total: L.list.length,
+d: {
+word: cur.gn,
+gloss: cur.es || '',
+size: len <= 6 ? '40px' : len <= 10 ? '34px' : '28px',
+hasNote: !!cur.note,
+note: cur.note ? plain(cur.note) : '',
+hasSyll: !!syl,
+syll: (syl || []).map((y, i) => ({ t: y.t, color: y.stress ? '#C7361E' : '#1B2440', dot: i < syl.length - 1 ? '·' : '' })),
+syllAria: syl ? 'Sílabas: ' + syl.map((y) => y.t).join(', ') + (stressed ? '; el acento va en ' + stressed.t : '') : '',
+hasParts: parts.length > 0,
+parts: parts.map((x) => ({ gn: x[0], es: x[1] || '' })),
+},
+playing: !!s.playing,
+playBg: s.playing ? '#F2B43A' : '#E8ECFB',
+/* each word is a short clip: the button stays lit while it is said; without a clip it lights up for as long */
+play: () => {
+clearTimeout(this.timer);
+clearTimeout(this.pairTimer);
+this.setState({ playing: true, pairOn: -1 });
+this.timer = this.say(L.sid && cur.id ? L.sid + '.w.' + cur.id : '', cur.gn, () => this.setState({ playing: false }));
+},
+writeLine,
+writeLetters,
+writeEnd,
+/* with nothing to type (all of it typed before), straight on to the question */
+fromScene: () => { save({ prog: Q ? { ks: 1 } : { ks: 1, kw: 1 } }); goStep(Q ? at + 1 : at + 2); },
+fromSceneLabel: Q ? 'Siguiente: escribir' : 'Siguiente: la pregunta',
+});
+
+/* ---------- typing the words ---------- */
+const qi = Math.min(s.qi, Math.max(0, Q - 1));
+const item = s.queue[qi];
+const last = qi >= Q - 1;
+const next = s.queue[qi + 1];
+let wTask = null;
+let wi = { show: true, hidden: false, big: '', size: '34px', mean: '', ctx: '', ctxLetters: '' };
+if (item) {
+const w = item.w;
+const wl = chars(w.gn).length;
+const hard = [];
+(S ? S.cells(w.gn).filter(S.hard) : []).forEach((g) => { const k = S.norm(g).toLowerCase(); if (hard.indexOf(k) < 0) hard.push(k); });
+const memory = s.wPass === 2;
+wTask = { kind: 'word', w: w.gn, es: w.es || '', clip: L.sid ? L.sid + '.w.' + w.id : '', moment: this.props.view === 'spell' && qi === 0 };
+wi = {
+show: !memory,
+hidden: memory,
+big: w.gn,
+size: (wl <= 6 ? 34 : wl <= 10 ? 28 : 24) + 'px',
+mean: w.es || '',
+ctx: memory ? 'De memoria: la palabra queda oculta hasta que la escribas.' : hard.length ? (hard.length === 1 ? 'Letra para teclear: ' : 'Letras para teclear: ') : 'Sus letras se escriben como en castellano.',
+/* from memory the letters to type would give the word away: they go with it */
+ctxLetters: memory ? '' : hard.join(', '),
+};
+}
+const locked = !!item && !s.qDone;
+Object.assign(base, {
+wHead: Q ? 'Escribila tres veces' : 'Todo escrito',
+wCount: Q ? (qi + 1) + ' / ' + Q : '',
+wAllDone: !Q,
+wCountAria: Q ? 'Palabra ' + (qi + 1) + ' de ' + Q : 'Todo escrito',
+wNone: !Q,
+wSome: Q > 0,
+wNoneHead: L.spell.length ? 'Todo escrito' : 'Nada para escribir',
+wNoneLine: L.spell.length ? 'Ya escribiste todas las palabras de esta escena con el teclado guaraní. Ahora, la pregunta de examen.' : 'Hoy no hay palabras para escribir. Seguí con la pregunta de examen.',
+wi,
+wTask,
+wKey: item ? 'w:' + item.w.id + ':' + qi : 'none',
+wSize: 358,
+/* typed: kept at once, so leaving the lesson now loses nothing */
+wFinished: () => {
+if (!item) return;
+save({ typed: [item.w.gn] });
+this.setState({ qDone: true });
+},
+/* the pad says which time is on: from memory, the word above it is hidden */
+wPass: (n) => { if (this.state.wPass !== n) this.setState({ wPass: n }); },
+wLocked: locked,
+wNextGn: locked ? '' : 'Upeigua',
+wNextEs: locked ? 'Escribí la palabra primero' : !item || last ? ' · Siguiente: la pregunta' : ' · Siguiente: ',
+wNextWord: locked || !item || last || !next ? '' : String(next.w.gn).replace(/[¿?¡!.,;:«»"]+/g, '').trim(),
+wBtn: locked
+? { border: '2px solid #C9D0E3', bg: '#DDE1EC', color: '#5A6382', shadow: 'none', cursor: 'default' }
+: { border: '2px solid #1B2440', bg: '#2F4FD0', color: '#FFFFFF', shadow: '0 4px 0 #1B2440', cursor: 'pointer' },
+wNext: () => {
+if (locked) return;
+if (item && !last) { this.setState({ qi: qi + 1, qDone: false, wPass: 0 }); return; }
+save({ prog: { kw: 1 } });
+goStep(at + 1);
+},
+});
+
+/* ---------- the exam question ---------- */
+const it = L.check || { options: [] };
+const ans = +it.answer || 0;
+const answered = s.quiz !== null;
+const right = answered && s.quiz === ans;
+const answer = it.options[ans - 1] || '';
+const segs = C && it.q ? C.rich(it.q, { ruby: false, hl: false }) : [];
+/* short options sit in one row, middle ones in two columns, sentences in one */
+const widest = Math.max(0, ...it.options.map((o) => chars(plain(o)).length));
+const cols = widest <= 6 ? it.options.length : widest <= 14 ? 2 : 1;
+Object.assign(base, {
+checkLine: 'Una pregunta sobre las palabras de ' + (titleEs ? '«' + titleEs + '»' : 'hoy') + ', como en el examen.',
+cNone: !L.check,
+cSome: !!L.check,
+checkType: it.label || 'Palabras',
+asking: !answered,
+answered,
+right,
+wrong: answered && !right,
+vGn: right ? '¡Iporã!' : '',
+vPre: right ? ' ¡Correcto! · ' + ans + ' ' : 'Casi. La respuesta es ' + ans + ' ',
+vAns: plain(answer),
+vPost: right ? '' : '. Guardado en tu cuaderno de errores.',
+explain: it.explain || (Array.isArray(it.why) ? it.why[(s.quiz || ans || 1) - 1] || '' : ''),
+tone: right ? '#0B7A6B' : '#C7361E',
+qSegs: segs.map((g) => ({ t: g.t, blank: !!g.blank, text: !g.blank, line: g.line || 'none' })),
+choiceCols: 'repeat(' + Math.max(1, cols) + ', minmax(0, 1fr))',
+choices: it.options.map((o, k) => ({
+label: (k + 1) + ' ' + plain(o),
+pick: () => {
+if (this.state.quiz !== null) return;
+if (k + 1 !== ans && this.props.miss) this.props.miss({ src: it.id, wrong: plain(o) });
+this.setState({ quiz: k + 1 });
+},
+})),
+toDone: (e) => {
+save({ prog: { k: 1 } });
+nav('Today')(e);
+},
+});
+return base;
+}
+}
+</script>
+</body>
+</html>

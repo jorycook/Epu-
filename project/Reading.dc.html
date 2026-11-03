@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Lectura</title>
+<script src="./support.js"></script>
+<script src="./gn-course-a1.js"></script>
+<script src="./gn-course-a2.js"></script>
+<script src="./gn-course-b1.js"></script>
+<script src="./gn-course-b2.js"></script>
+<script src="./gn-course-c1.js"></script>
+<script src="./gn-course-c2.js"></script>
+<script src="./gn-course.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&amp;family=Andika:wght@400;700&amp;text=%20%21%22%23%24%25%26%27%28%29%2A%2B%2C-.%2F0123456789%3A%3B%3C%3D%3E%3F%40ABCDEFGHIJKLMNOPQRSTUVWXYZ%5B%5C%5D%5E_%60abcdefghijklmnopqrstuvwxyz%7B%7C%7D~%C2%A1%C2%BF%C2%AB%C2%BB%C2%B0%C2%B7%C3%97%C3%B7%C2%AA%C2%BA%C2%B2%C3%A1%C3%A9%C3%AD%C3%B3%C3%BA%C3%BC%C3%B1%C3%81%C3%89%C3%8D%C3%93%C3%9A%C3%9C%C3%91%C3%BD%C3%9D%C3%A3%E1%BA%BD%C4%A9%C3%B5%C5%A9%E1%BB%B9%C3%83%E1%BA%BC%C4%A8%C3%95%C5%A8%E1%BB%B8%C3%A7%C3%87%C3%A0%C3%A8%C3%AC%C3%B2%C3%B9%C3%A2%C3%AA%C3%AE%C3%B4%C3%BB%CC%83%CC%81%E2%80%98%E2%80%99%E2%80%9C%E2%80%9D%E2%80%A6%E2%80%93%E2%80%94%E2%80%A2%E2%82%AC%E2%86%92%E2%86%90%E2%86%91%E2%86%93&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:#2F4FD0;text-decoration:none}a:hover{color:#1B2440}
+rt{font-size:9px;font-weight:500;color:#5A6382}
+@keyframes gn-up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes gn-fade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; padding: 50px 16px 34px; background: #F4F5F9; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+<div aria-live="polite" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap">{{ liveMsg }}</div>
+
+<div style="display: flex; align-items: center; gap: 10px; height: 44px; flex-shrink: 0">
+<a href="Today.dc.html" onClick="{{ toBack }}" aria-label="{{ closeLabel }}" style="width: 44px; height: 44px; margin-left: -10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+<div role="img" aria-label="{{ barLabel }}" style="flex-grow: 1; height: 12px; border-radius: 6px; background: #DDE1EC; overflow: hidden"><div style="height: 12px; border-radius: 0 6px 6px 0; background: #2F4FD0; transition: width 300ms ease-out; width: {{ barFill }}"></div></div>
+<sc-if value="{{ ready }}" hint-placeholder-val="{{ true }}"><div role="timer" aria-label="{{ clockLabel }}" style="display: flex; align-items: center; gap: 5px; height: 32px; padding: 0 10px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; font-size: 13px; font-weight: 800; flex-shrink: 0"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>{{ clock }} <span style="font-size: 11px; font-weight: 700; color: #5A6382">/ {{ limit }}</span></div></sc-if>
+</div>
+
+<sc-if value="{{ ready }}" hint-placeholder-val="{{ true }}">
+<div style="margin-top: 6px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; flex-shrink: 0">
+<div style="padding: 4px 10px; border-radius: 10px; background: #E8ECFB; color: #2F4FD0; font-size: 12px; font-weight: 800">Lectura<sc-if value="{{ hasSkillEs }}" hint-placeholder-val="{{ true }}"> · {{ skillEs }}</sc-if></div>
+<sc-if value="{{ hasAsk }}" hint-placeholder-val="{{ true }}"><div style="font-size: 12px; font-weight: 700; color: #5A6382">{{ ask }}</div></sc-if>
+</div>
+</sc-if>
+
+<div style="flex: 1 1 auto; min-height: 120px; overflow-y: auto; margin: 0 -16px; padding: 0 16px 14px; display: flex; flex-direction: column">
+
+<sc-if value="{{ ready }}" hint-placeholder-val="{{ true }}">
+<div lang="gn" style="margin-top: 10px; padding: 12px 16px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; font-family: 'Andika', 'Nunito', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.7; white-space: pre-line; overflow-wrap: anywhere; flex-shrink: 0"><sc-for list="{{ tokens }}" as="w" hint-placeholder-count="24"><sc-if value="{{ w.tap }}" hint-placeholder-val="{{ false }}"><button onClick="{{ w.pick }}" aria-pressed="{{ w.on }}" style="display: inline; margin: 0; padding: 0; border: none; border-radius: 0; text-align: inherit; border-bottom: {{ w.under }}; background: {{ w.bg }}"><sc-for list="{{ w.pieces }}" as="p" hint-placeholder-count="1"><span style="transition: background 300ms; border-radius: {{ p.radius }}; background: {{ p.bg }}; padding: {{ p.pad }}; border-bottom: {{ p.line }}">{{ p.t }}</span></sc-for></button></sc-if><sc-if value="{{ w.still }}" hint-placeholder-val="{{ true }}"><sc-for list="{{ w.pieces }}" as="p" hint-placeholder-count="1"><span style="transition: background 300ms; border-radius: {{ p.radius }}; background: {{ p.bg }}; padding: {{ p.pad }}; border-bottom: {{ p.line }}">{{ p.t }}</span></sc-for></sc-if></sc-for></div>
+
+<sc-if value="{{ tapHint }}" hint-placeholder-val="{{ true }}">
+<div style="margin-top: 6px; font-size: 12px; font-weight: 700; color: #5A6382">Tocá una palabra subrayada para ver qué significa.</div>
+</sc-if>
+<div aria-live="polite" style="display: flex; flex-direction: column; flex-shrink: 0">
+<sc-if value="{{ glossOpen }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top: 8px; padding: 6px 4px 10px 14px; border-radius: 16px; background: #E8ECFB; display: flex; align-items: flex-start; gap: 4px; animation: gn-fade 160ms ease-out">
+<div style="flex: 1 1 auto; min-width: 0; padding-top: 6px; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px"><span lang="gn" style="font-family: 'Andika', 'Nunito', sans-serif; font-size: 18px; font-weight: 700; overflow-wrap: anywhere">{{ gloss.gn }}</span><span style="font-size: 14px; font-weight: 700">{{ gloss.es }}</span></div>
+<sc-if value="{{ gloss.hasParts }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 4px 14px"><div style="font-size: 11px; font-weight: 800; color: #5A6382; padding-bottom: 1px">Partes</div><sc-for list="{{ gloss.parts }}" as="m" hint-placeholder-count="2"><div style="display: flex; flex-direction: column"><span lang="gn" style="font-family: 'Andika', 'Nunito', sans-serif; font-size: 15px; font-weight: 700">{{ m.gn }}</span><span style="font-size: 11px; font-weight: 700; color: #5A6382">{{ m.es }}</span></div></sc-for></div>
+</sc-if>
+</div>
+<button onClick="{{ closeGloss }}" aria-label="Cerrar el significado" style="width: 44px; height: 44px; flex-shrink: 0; padding: 0; border: none; background: transparent; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+</sc-if>
+</div>
+
+<h1 lang="{{ qLang }}" style="margin: 14px 0 0; font-size: 17px; font-weight: 800; line-height: 1.4; overflow-wrap: anywhere; font-family: {{ qFont }}"><sc-for list="{{ qSegs }}" as="g" hint-placeholder-count="1"><sc-if value="{{ g.blank }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="espacio en blanco" style="display: inline-block; width: 40px; height: 18px; margin: 0 3px; vertical-align: -3px; border-bottom: 2px solid #1B2440"></span></sc-if><sc-if value="{{ g.plain }}" hint-placeholder-val="{{ true }}"><span style="border-bottom: {{ g.line }}">{{ g.t }}</span></sc-if></sc-for></h1>
+
+<div style="margin-top: 10px; display: flex; flex-direction: column; gap: 9px; flex-shrink: 0">
+<sc-for list="{{ opts }}" as="o" hint-placeholder-count="3">
+<button onClick="{{ o.pick }}" aria-pressed="{{ o.on }}" aria-disabled="{{ o.locked }}" style="min-height: 46px; padding: 8px 14px; border-radius: 14px; display: flex; align-items: center; gap: 10px; font-size: 15px; line-height: 1.3; text-align: left; border: {{ o.border }}; background: {{ o.bg }}; box-shadow: {{ o.shadow }}; color: {{ o.color }}; font-weight: {{ o.weight }}; transform: {{ o.press }}; cursor: {{ o.cursor }}"><span style="font-family: 'Nunito', 'Avenir Next', sans-serif; font-size: 12px; font-weight: 800; color: {{ o.numColor }}">{{ o.n }}</span><span lang="{{ o.lang }}" style="flex-grow: 1; min-width: 0; overflow-wrap: anywhere; font-family: {{ o.font }}">{{ o.label }}</span><sc-if value="{{ o.right }}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Respuesta correcta" style="flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></sc-if><sc-if value="{{ o.bad }}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C7361E" stroke-width="3.5" stroke-linecap="round" role="img" aria-label="Tu respuesta, incorrecta" style="flex-shrink: 0"><path d="M6 6l12 12M18 6L6 18"/></svg></sc-if></button>
+</sc-for>
+</div>
+
+<sc-if value="{{ showStrategy }}" hint-placeholder-val="{{ true }}">
+<div style="margin-top: 16px; padding: 10px 14px; border-radius: 16px; background: #FFF4D6; display: flex; flex-direction: column; gap: 2px; flex-shrink: 0">
+<div style="font-size: 11px; font-weight: 800">PISTA · solo en la práctica</div>
+<div style="font-size: 13px; font-weight: 500; line-height: 1.45">{{ strategy }}</div>
+</div>
+</sc-if>
+</sc-if>
+
+<sc-if value="{{ missing }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top: 16px; padding: 18px 16px; border-radius: 18px; border: 2px dashed #C9D0E3; display: flex; flex-direction: column; align-items: flex-start; gap: 6px">
+<div aria-hidden="true" style="width: 46px; height: 46px; border-radius: 14px; background: #FFF4D6; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M19 19v2H6"/></svg></div>
+<div style="margin-top: 4px; font-size: 11px; font-weight: 800; color: #5A6382">LECTURA</div>
+<div style="font-size: 20px; font-weight: 800">En preparación</div>
+<div style="font-size: 13px; font-weight: 500; line-height: 1.45; color: #5A6382">La lectura de este día todavía no está escrita. Cuando esté lista, la vas a encontrar acá.</div>
+</div>
+</sc-if>
+
+</div>
+
+<sc-if value="{{ asking }}" hint-placeholder-val="{{ true }}">
+<button disabled="{{ noPick }}" onClick="{{ check }}" style="flex-shrink: 0; height: 54px; border-radius: 16px; font-weight: 800; font-size: 17px; border: {{ ck.border }}; background: {{ ck.bg }}; color: {{ ck.color }}; box-shadow: {{ ck.shadow }}; cursor: {{ ck.cursor }}"><span lang="gn">Embohovái</span> · Respondé</button>
+</sc-if>
+
+<sc-if value="{{ missing }}" hint-placeholder-val="{{ false }}">
+<a href="Today.dc.html" onClick="{{ toBack }}" style="flex-shrink: 0; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-size: 17px; font-weight: 800; display: flex; align-items: center; justify-content: center"><span lang="gn">Tapykue</span> · Volver</a>
+</sc-if>
+
+<sc-if value="{{ checked }}" hint-placeholder-val="{{ false }}">
+<div style="flex-shrink: 0; box-sizing: border-box; max-height: 520px; margin: 0 -16px -34px; padding: 16px 16px 34px; border-radius: 26px 26px 0 0; border-top: 2px solid #1B2440; display: flex; flex-direction: column; gap: 10px; animation: gn-up 240ms ease-out; background: {{ sheetBg }}">
+<div style="display: flex; align-items: center; gap: 10px">
+<sc-if value="{{ wrong }}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#C7361E" stroke-width="3.5" stroke-linecap="round" aria-hidden="true" style="flex-shrink: 0"><path d="M5 5l14 14M19 5L5 19"/></svg></sc-if>
+<sc-if value="{{ correct }}" hint-placeholder-val="{{ true }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></sc-if>
+<sc-if value="{{ correct }}" hint-placeholder-val="{{ true }}"><div style="flex-grow: 1; font-size: 20px; font-weight: 800"><span lang="gn">¡Iporã!</span> <span style="font-size: 14px; font-weight: 700">¡Correcto!</span></div></sc-if>
+<sc-if value="{{ wrong }}" hint-placeholder-val="{{ false }}"><div style="flex-grow: 1; font-size: 20px; font-weight: 800">Casi</div><div style="font-size: 13px; font-weight: 800; white-space: nowrap">Correcta: {{ answerN }}</div></sc-if>
+</div>
+<div style="flex: 0 1 auto; min-height: 60px; overflow-y: auto; padding: 12px 14px; border-radius: 16px; background: #FFFFFF; display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 12px; font-weight: 800; color: #5A6382">Por qué</div>
+<sc-if value="{{ hasExplain }}" hint-placeholder-val="{{ true }}"><div style="font-size: 13px; font-weight: 500; line-height: 1.45">{{ explain }}</div></sc-if>
+<sc-if value="{{ hasWhyNot }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; align-items: flex-start; gap: 8px">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C7361E" stroke-width="3.5" stroke-linecap="round" role="img" aria-label="Tu elección" style="flex-shrink: 0; margin-top: 2px"><path d="M6 6l12 12M18 6L6 18"/></svg>
+<div style="font-size: 13px; font-weight: 500; line-height: 1.45">{{ whyNot }}</div>
+</div>
+</sc-if>
+</div>
+<sc-if value="{{ wrong }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M6 3h12a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H6z"/><path d="M6 3v18M3 7h3M3 12h3M3 17h3M10 8h5"/></svg>
+Guardado en tu cuaderno de errores. Vuelve mañana.
+</div>
+</sc-if>
+<a href="Today.dc.html" onClick="{{ toDone }}" style="flex-shrink: 0; height: 54px; border-radius: 16px; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center; background: {{ tone }}"><span lang="gn">Upeigua</span> · Siguiente</a>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"go":{"editor":null},"app":{"editor":null},"save":{"editor":null},"miss":{"editor":null},"reviewed":{"editor":null},"level":{"editor":null},"$preview":{"width":390,"height":844}}'>
+/* the designed moment: the reading of unit 1's review day (día 6) */
+const SID = 'a1u01d6';
+/* how a word is looked up: one puso, lower case, letters only (a word keeps its tildes, accents and inner puso) */
+const keyOf = (t) => window.gnCourse.fold(t).replace(/[^\p{L}\p{M}\p{N}']+/gu, '').replace(/^'+|'+$/g, '');
+/* Guarani or Spanish, for lang and the typeface: Guarani shows a nasal vowel, g̃ or a puso inside a word; Spanish opens
+   a question with ¿ or ¡ and has small words Guarani never uses, so a Spanish line that quotes a Guarani word stays Spanish */
+const GN_MARK = /[ãẽĩõũỹÃẼĨÕŨỸ]|[gG]\u0303|\p{L}'\p{L}/u;
+const ES_MARK = /[¿¡]|(^|[^\p{L}'])(el|los|las|una?|del?|en|es|son|se|que|qué|cómo|cuál|quién|dónde)(?![\p{L}'])/iu;
+const looksEs = (t) => ES_MARK.test(window.gnCourse.norm(t));
+const looksGn = (t) => GN_MARK.test(window.gnCourse.norm(t)) && !looksEs(t);
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+/* inside the prototype the reading starts fresh with the stopwatch at 0:00; on its own the artboard shows the designed
+   moment: the review day's reading, nothing picked yet, the stopwatch running from about half the suggested time
+   (0:48 of 1:30, as Yaoki's) */
+const C = window.gnCourse;
+const d = C ? C.day(SID) : null;
+const limit = (d && d.skill && d.skill.seconds) || 90;
+this.state = props && props.go
+? { pick: null, checked: false, t: 0, word: -1 }
+: { pick: null, checked: false, t: Math.round(limit * 0.53), word: -1 };
+}
+componentDidMount() {
+/* the stopwatch follows real time. It is advisory: nothing changes when the suggested time has passed */
+this.began = Date.now() - this.state.t * 1000;
+this.last = Date.now();
+this.timer = setInterval(() => {
+const now = Date.now();
+/* it stands still while the answer is up, and when the phone's clock is set back: it goes on from what it shows */
+if (this.state.checked || now < this.last - 1000) this.began = now - this.state.t * 1000;
+this.last = now;
+if (this.state.checked) return;
+const t = Math.min(599, Math.floor((now - this.began) / 1000));
+if (t !== this.state.t) this.setState({ t });
+}, 200);
+}
+componentWillUnmount() {
+clearInterval(this.timer);
+}
+/* a reading lesson as the content writes it: kind 'reading' with one choice item of two or more options */
+skillOf(day) {
+const sk = day && day.skill;
+return sk && sk.kind === 'reading' && sk.item && Array.isArray(sk.item.options) && sk.item.options.length > 1 ? sk : null;
+}
+/* another reading of the current level, for a screen that sends here without a reading day (Progress' next step):
+   the latest written one up to the session in use, else the first written one */
+nearest(sid) {
+const C = window.gnCourse;
+let best = null;
+let first = null;
+let passed = false;
+C.sessions().forEach((x) => {
+if (!x.ready) return;
+const ok = !!this.skillOf(C.day(x.id));
+if (ok && !first) first = x.id;
+if (ok && !passed) best = x.id;
+if (x.id === sid) passed = true;
+});
+return sid && passed ? best || first : first;
+}
+lesson() {
+const C = window.gnCourse;
+const own = !this.props.app;
+const app = this.props.app || {};
+const sid = own ? SID : app.sid || null;
+let at = sid;
+let sk = this.skillOf(own ? C.day(SID) : app.day);
+const fromDay = !!sk;
+/* Today sends here only on a reading day: the current day written with the other skill means the learner came from
+   elsewhere (Progress), and goes back there */
+const elsewhere = !own && !fromDay && !!(app.day && app.day.skill);
+if (!sk) {
+at = this.nearest(sid);
+sk = at ? this.skillOf(C.day(at)) : null;
+}
+return { own, sid: at, sk, fromDay, elsewhere };
+}
+/* the words this level has taught up to the reading's unit, for tap-to-see: the unit's own words first, then the units
+   before it; whole words only (a point's form such as ñande, a morpheme that is a word on its own such as che) */
+glossary(sid) {
+const C = window.gnCourse;
+if (this.dictFor === sid && this.dict) return this.dict;
+const out = {};
+const p = C.parse(sid);
+const add = (gn, es, parts) => {
+const g = C.plain(gn || '').trim();
+if (!g || !es || /\s/.test(g) || /^-|-$|…|\+|\//.test(g)) return;
+const k = keyOf(g);
+if (!k || out[k]) return;
+const ps = (Array.isArray(parts) ? parts : []).filter((x) => Array.isArray(x) && x[0]).map((x) => ({ gn: C.plain(x[0]), es: C.plain(x[1] || '') }));
+out[k] = { es: C.plain(es), parts: ps };
+};
+if (p) {
+const units = C.withLevel(p.level, () => C.units()).filter((u) => u && u.n <= p.unit).sort((a, b) => b.n - a.n);
+const days = [];
+units.forEach((u) => (u.days || []).forEach((d) => { if (d) days.push(d); }));
+days.forEach((d) => { const w = d.words; (w && Array.isArray(w.words) ? w.words : []).forEach((x) => { if (x) add(x.gn, x.es, x.parts); }); });
+days.forEach((d) => {
+const g = d.grammar;
+(g && Array.isArray(g.points) ? g.points : []).forEach((pt) => {
+if (!pt) return;
+add(pt.form, pt.gloss);
+(Array.isArray(pt.examples) ? pt.examples : []).forEach((ex) => (ex && Array.isArray(ex.parts) ? ex.parts : []).forEach((x) => { if (Array.isArray(x)) add(x[0], x[1]); }));
+});
+});
+}
+this.dictFor = sid;
+this.dict = out;
+return out;
+}
+renderVals() {
+const s = this.state;
+const C = window.gnCourse;
+const nav = (to) => (e) => { const go = this.props.go; if (go) { e.preventDefault(); go(to); } };
+const L = this.lesson();
+const sk = L.sk;
+const ready = !!sk;
+const it = ready ? sk.item : { options: [] };
+const options = ready ? it.options : [];
+const ANSWER = it.answer;
+const back = L.elsewhere ? 'Progress' : 'Today';
+const isGn = (t) => looksGn(C.plain(t));
+const ANDIKA = "'Andika', 'Nunito', sans-serif";
+const NUNITO = "'Nunito', 'Avenir Next', sans-serif";
+
+/* the passage: cut into words so that each word the course has taught can be tapped for its Spanish (practice only).
+   A word may run over two pieces of markup (a clue that starts inside it), so pieces keep their own look */
+const dict = ready ? this.glossary(L.sid) : {};
+const segs = ready ? C.rich(sk.passage || '', { clue: s.checked ? 'mark' : null, hl: false }) : [];
+const WORD = /[\p{L}\p{M}\p{N}']/u;
+const raw = [];
+let cur = null;
+segs.forEach((g) => {
+if (g.blank) { raw.push({ word: false, gloss: '', pieces: [{ t: '(   )', bg: 'transparent', pad: '0', line: 'none' }] }); cur = null; return; }
+Array.from(g.t || '').forEach((ch) => {
+const w = WORD.test(ch);
+if (!cur || cur.word !== w) { cur = { word: w, gloss: '', pieces: [] }; raw.push(cur); }
+const last = cur.pieces[cur.pieces.length - 1];
+if (last && last.bg === g.bg && last.line === g.line && last.pad === g.pad) last.t += ch;
+else cur.pieces.push({ t: ch, bg: g.bg, pad: g.pad, line: g.line });
+if (w && g.r && !cur.gloss) cur.gloss = C.plain(g.r);
+});
+});
+/* a marked clue runs over several words and spaces: only its two ends get the padding and the round corners, so it
+   reads as one mark (as Yaoki's single span) and the line does not reflow when the answer comes up */
+const flat = [];
+raw.forEach((w) => w.pieces.forEach((x) => flat.push(x)));
+flat.forEach((x, k) => {
+const on = x.bg !== 'transparent';
+const l = on && !(flat[k - 1] && flat[k - 1].bg !== 'transparent');
+const r = on && !(flat[k + 1] && flat[k + 1].bg !== 'transparent');
+x.pad = on ? '0 ' + (r ? '2px' : '0') + ' 0 ' + (l ? '2px' : '0') : '0';
+x.radius = on ? [l, r, r, l].map((e) => (e ? '4px' : '0')).join(' ') : '0';
+});
+let open = null;
+const tokens = raw.map((w, i) => {
+const text = w.pieces.map((x) => x.t).join('');
+const entry = w.word ? dict[keyOf(text)] || (w.gloss ? { es: w.gloss, parts: [] } : null) : null;
+const on = !!entry && s.word === i;
+if (on) open = { gn: text, es: entry.es, parts: entry.parts, hasParts: entry.parts.length > 1 };
+return {
+tap: !!entry,
+still: !entry,
+pieces: w.pieces,
+on,
+under: on ? '2px solid #2F4FD0' : '2px dotted #5A6382',
+bg: on ? '#E8ECFB' : 'transparent',
+pick: () => this.setState({ word: this.state.word === i ? -1 : i }),
+};
+});
+const canTap = tokens.some((w) => w.tap);
+
+/* the question keeps its underline and blank; its clue is underlined in gold once the answer is up */
+const q = it.q || '';
+const qSegs = C.rich(q, { ruby: false, hl: false, clue: s.checked ? 'line' : null }).map((g) => ({ t: g.t, blank: g.blank, plain: !g.blank, line: g.line }));
+const qGn = !!q && isGn(q);
+const askText = ready && sk.ask && C.fold(C.plain(sk.ask)) !== C.fold(C.plain(q)) ? C.plain(sk.ask) : '';
+
+const SHORT = {};
+const short = Array.isArray(it.short) ? it.short : [];
+options.forEach((o, k) => { SHORT[k + 1] = (short[k] && C.plain(short[k])) || C.plain(o); });
+/* the options are set in one typeface: Guarani when one of them is, unless one of them is plainly Spanish */
+const gnOpts = options.some((o) => isGn(o)) && !options.some((o) => looksEs(C.plain(o)));
+/* once checked, only the right answer and a wrong pick stay on screen, to make room for the explanation; the pick is locked */
+const opts = options.map((_, k) => k + 1).filter((n) => !s.checked || n === ANSWER || n === s.pick).map((n) => {
+const on = s.pick === n;
+let look = { border: '2px solid #1B2440', bg: '#FFFFFF', shadow: '0 3px 0 #1B2440', color: '#1B2440', weight: 700, numColor: '#5A6382', press: 'none' };
+if (!s.checked && on) look = { border: '2.5px solid #2F4FD0', bg: '#E8ECFB', shadow: 'none', color: '#1B2440', weight: 800, numColor: '#2F4FD0', press: 'translateY(3px)' };
+if (s.checked) {
+look = n === ANSWER
+? { border: '2.5px solid #0B7A6B', bg: '#E0F3EF', shadow: 'none', color: '#1B2440', weight: 800, numColor: '#5A6382', press: 'none' }
+: { border: '2.5px solid #C7361E', bg: '#FDEBE6', shadow: 'none', color: '#1B2440', weight: 800, numColor: '#5A6382', press: 'none' };
+}
+return Object.assign({
+n,
+label: C.plain(options[n - 1]),
+lang: gnOpts ? 'gn' : 'es',
+font: gnOpts ? ANDIKA : NUNITO,
+on,
+locked: s.checked,
+cursor: s.checked ? 'default' : 'pointer',
+right: s.checked && n === ANSWER,
+bad: s.checked && on && n !== ANSWER,
+pick: () => { if (!this.state.checked) this.setState({ pick: n }); },
+}, look);
+});
+
+const limit = (ready && sk.seconds) || 90;
+const mm = Math.floor(s.t / 60);
+const ss = s.t % 60;
+const clock = mm + ':' + (ss < 10 ? '0' : '') + ss;
+const limitText = Math.floor(limit / 60) + ':' + (limit % 60 < 10 ? '0' : '') + (limit % 60);
+const correct = ready && s.checked && s.pick === ANSWER;
+const wrong = ready && s.checked && s.pick !== ANSWER;
+const why = Array.isArray(it.why) ? it.why : [];
+const explain = C.plain(it.explain || why[ANSWER - 1] || '');
+const whyNot = wrong ? C.plain(why[s.pick - 1] || '') : '';
+return {
+ready,
+missing: !ready,
+liveMsg: s.checked ? (correct ? '¡Correcto!' : 'Casi. La respuesta correcta es la ' + ANSWER + '.') : '',
+closeLabel: L.elsewhere ? 'Cerrar la práctica' : 'Cerrar la lección',
+barFill: !ready ? '0%' : s.checked ? '100%' : '50%',
+barLabel: !ready ? 'Lectura en preparación' : s.checked ? 'Lectura, paso 2 de 2: por qué' : 'Lectura, paso 1 de 2: leer y responder',
+clock,
+limit: limitText,
+clockLabel: 'Llevás ' + clock + '. Tiempo sugerido: ' + limitText + '.',
+skillEs: ready ? C.plain(sk.es || it.label || '') : '',
+hasSkillEs: ready && !!(sk.es || it.label),
+/* the skill's focus, unless it only repeats the question below */
+ask: askText,
+hasAsk: !!askText,
+tokens,
+tapHint: canTap && !open && !s.checked,
+glossOpen: !!open,
+gloss: open || { gn: '', es: '', parts: [], hasParts: false },
+closeGloss: () => this.setState({ word: -1 }),
+qSegs,
+qLang: qGn ? 'gn' : 'es',
+qFont: qGn ? ANDIKA : NUNITO,
+opts,
+asking: ready && !s.checked,
+showStrategy: ready && !s.checked && !!sk.strategy,
+strategy: ready ? sk.strategy || '' : '',
+noPick: s.pick === null,
+ck: s.pick === null
+? { border: '2px solid #C9D0E3', bg: '#DDE1EC', color: '#5A6382', shadow: 'none', cursor: 'default' }
+: { border: '2px solid #1B2440', bg: '#2F4FD0', color: '#FFFFFF', shadow: '0 4px 0 #1B2440', cursor: 'pointer' },
+check: () => {
+const st = this.state;
+if (!ready || st.pick === null || st.checked) return;
+if (st.pick !== ANSWER && this.props.miss && it.id) this.props.miss({ src: it.id, wrong: SHORT[st.pick] });
+this.setState({ checked: true, word: -1 });
+},
+checked: ready && s.checked,
+correct,
+wrong,
+answerN: ANSWER,
+explain,
+hasExplain: !!explain,
+whyNot,
+hasWhyNot: !!whyNot,
+sheetBg: wrong ? '#FDEBE6' : '#E0F3EF',
+tone: wrong ? '#C7361E' : '#0B7A6B',
+toBack: nav(back),
+toDone: (e) => {
+if (L.fromDay && this.props.save) this.props.save({ prog: { r: 1 } });
+nav(back)(e);
+},
+};
+}
+}
+</script>
+</body>
+</html>

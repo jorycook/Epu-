@@ -1,0 +1,20 @@
+{
+  "pairs": [
+    ["pyta", "talón; quedarse", "pytã", "rojo", "nasal"],
+    ["pytu", "aliento", "pytũ", "oscuro", "nasal"],
+    ["téra", "nombre", "térã", "o (una cosa o la otra)", "nasal"],
+    ["po'i", "delgado, fino", "poi", "soltar", "puso"],
+    ["mbo'y", "collar", "mboy", "¿cuántos?", "puso"],
+    ["ka'i", "mono", "kái", "quemarse", "puso"],
+    ["ita", "piedra", "yta", "nadar", "y"],
+    ["yvytu", "viento", "yvyty", "cerro", "y"]
+  ],
+  "phrases": [
+    { "gn": "Mba'éichapa?", "es": "Hola, ¿cómo estás?" },
+    { "gn": "Iporã, ha nde?", "es": "Bien, ¿y vos?" },
+    { "gn": "Che réra Ana.", "es": "Me llamo Ana." },
+    { "gn": "Mba'éichapa nde réra?", "es": "¿Cómo te llamás?" },
+    { "gn": "Aguyjevete.", "es": "Muchas gracias." },
+    { "gn": "Jajotopáta.", "es": "Nos vemos." }
+  ]
+}

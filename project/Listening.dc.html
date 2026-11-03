@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Escucha</title>
+<script src="./support.js"></script>
+<script src="./gn-sound.js"></script>
+<script src="./gn-course-a1.js"></script>
+<script src="./gn-course-a2.js"></script>
+<script src="./gn-course-b1.js"></script>
+<script src="./gn-course-b2.js"></script>
+<script src="./gn-course-c1.js"></script>
+<script src="./gn-course-c2.js"></script>
+<script src="./gn-course.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&amp;family=Andika:wght@400;700&amp;text=%20%21%22%23%24%25%26%27%28%29%2A%2B%2C-.%2F0123456789%3A%3B%3C%3D%3E%3F%40ABCDEFGHIJKLMNOPQRSTUVWXYZ%5B%5C%5D%5E_%60abcdefghijklmnopqrstuvwxyz%7B%7C%7D~%C2%A1%C2%BF%C2%AB%C2%BB%C2%B0%C2%B7%C3%97%C3%B7%C2%AA%C2%BA%C2%B2%C3%A1%C3%A9%C3%AD%C3%B3%C3%BA%C3%BC%C3%B1%C3%81%C3%89%C3%8D%C3%93%C3%9A%C3%9C%C3%91%C3%BD%C3%9D%C3%A3%E1%BA%BD%C4%A9%C3%B5%C5%A9%E1%BB%B9%C3%83%E1%BA%BC%C4%A8%C3%95%C5%A8%E1%BB%B8%C3%A7%C3%87%C3%A0%C3%A8%C3%AC%C3%B2%C3%B9%C3%A2%C3%AA%C3%AE%C3%B4%C3%BB%CC%83%CC%81%E2%80%98%E2%80%99%E2%80%9C%E2%80%9D%E2%80%A6%E2%80%93%E2%80%94%E2%80%A2%E2%82%AC%E2%86%92%E2%86%90%E2%86%91%E2%86%93&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:#2F4FD0;text-decoration:none}a:hover{color:#1B2440}
+rt{font-size:9px;font-weight:500;color:#5A6382}
+@keyframes gn-up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; padding-top: 50px; background: #F4F5F9; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+<div aria-live="polite" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap">{{ liveMsg }}</div>
+
+<div style="display: flex; align-items: center; gap: 10px; height: 44px; padding: 0 16px; flex-shrink: 0">
+<a href="Today.dc.html" onClick="{{ toBack }}" aria-label="{{ closeLabel }}" style="width: 44px; height: 44px; margin-left: -10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+<div style="flex-grow: 1"></div>
+<div style="font-size: 12px; font-weight: 800; color: #2F4FD0">PRÁCTICA</div>
+</div>
+
+<div style="flex: 1 1 auto; min-height: 120px; overflow-y: auto; padding-bottom: {{ scrollPad }}">
+<sc-if value="{{ ready }}" hint-placeholder-val="{{ true }}">
+<div style="padding: 6px 16px 0; display: flex; flex-direction: column; gap: 2px">
+<div style="font-size: 12px; font-weight: 800; color: #5A6382">{{ kicker }}</div>
+<h1 style="margin: 0; font-size: 20px; font-weight: 800; line-height: 1.35">{{ ask }}</h1>
+<sc-if value="{{ hasSituation }}" hint-placeholder-val="{{ true }}"><div style="margin-top: 2px; font-size: 13px; font-weight: 500; line-height: 1.45">{{ situation }}</div></sc-if>
+<div style="font-size: 13px; font-weight: 500; line-height: 1.45; color: #5A6382">{{ note }}</div>
+</div>
+
+<div style="margin: 12px 16px 0; padding: 14px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: center; gap: 14px">
+<button aria-label="Reproducir el audio" onClick="{{ playNormal }}" style="width: 60px; height: 60px; border-radius: 50%; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 150ms; background: {{ playBg }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="{{ playInk }}" aria-hidden="true"><path d="M8 5l11 7-11 7z"/></svg></button>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+<div aria-hidden="true" style="height: 40px; display: flex; align-items: center; justify-content: space-between"><sc-for list="{{ bars }}" as="b" hint-placeholder-count="22"><div style="width: 4px; border-radius: 2px; height: {{ b.h }}; background: {{ b.bg }}"></div></sc-for></div>
+<div style="min-height: 15px; font-size: 11px; font-weight: 700; line-height: 1.35; color: #5A6382">{{ status }}</div>
+</div>
+</div>
+<div style="display: flex; align-items: center; gap: 8px">
+<button onClick="{{ playNormal }}" style="height: 44px; padding: 0 14px; border-radius: 12px; border: 2px solid #1B2440; background: #FFFFFF; font-size: 13px; font-weight: 800; white-space: nowrap">Repetir</button>
+<button disabled="{{ noSlow }}" onClick="{{ playSlow }}" style="min-height: 44px; padding: 4px 12px 4px 10px; border-radius: 12px; display: flex; align-items: center; gap: 6px; text-align: left; border: {{ slow.border }}; background: {{ slow.bg }}; color: {{ slow.color }}; cursor: {{ slow.cursor }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M3 15.5C3 10.6 7 7 12 7s9 3.6 9 8.5z"/><path d="M6.5 15.5v3M10 15.5v3M14 15.5v3M17.5 15.5v3"/></svg><span style="display: flex; flex-direction: column"><span style="font-size: 13px; font-weight: 800; white-space: nowrap">Más despacio 0.8×</span><sc-if value="{{ noSlow }}" hint-placeholder-val="{{ true }}"><span style="font-size: 10px; font-weight: 700; white-space: nowrap">Todavía no está grabado</span></sc-if></span></button>
+</div>
+</div>
+
+<sc-if value="{{ showQ }}" hint-placeholder-val="{{ false }}">
+<div lang="{{ qLang }}" style="margin: 14px 16px 0; font-size: 15px; font-weight: 800; line-height: 1.45; overflow-wrap: anywhere; font-family: {{ qFont }}"><sc-for list="{{ qSegs }}" as="g" hint-placeholder-count="1"><sc-if value="{{ g.blank }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="espacio en blanco" style="display: inline-block; width: 40px; height: 18px; margin: 0 3px; vertical-align: -3px; border-bottom: 2px solid #1B2440"></span></sc-if><sc-if value="{{ g.plain }}" hint-placeholder-val="{{ true }}"><span style="border-bottom: {{ g.line }}">{{ g.t }}</span></sc-if></sc-for></div>
+</sc-if>
+
+<div style="margin: 12px 16px 0; display: grid; gap: 10px; grid-template-columns: {{ cols }}">
+<sc-for list="{{ answers }}" as="a" hint-placeholder-count="3">
+<button aria-disabled="{{ a.off }}" aria-pressed="{{ a.on }}" aria-label="{{ a.aria }}" onClick="{{ a.pick }}" style="min-height: 58px; padding: 6px 12px; border-radius: 16px; display: flex; align-items: center; gap: 8px; text-align: left; border: {{ a.border }}; background: {{ a.bg }}; box-shadow: {{ a.shadow }}; color: {{ a.color }}; font-weight: {{ a.weight }}; font-size: {{ a.size }}; justify-content: {{ a.justify }}; cursor: {{ a.cursor }}">{{ a.n }}<sc-if value="{{ a.printed }}" hint-placeholder-val="{{ false }}"><span lang="{{ a.lang }}" style="flex-grow: 1; min-width: 0; font-size: 15px; line-height: 1.35; overflow-wrap: anywhere; font-family: {{ a.font }}">{{ a.label }}</span></sc-if><sc-if value="{{ a.right }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></sc-if><sc-if value="{{ a.bad }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C7361E" stroke-width="3.5" stroke-linecap="round" aria-hidden="true" style="flex-shrink: 0"><path d="M6 6l12 12M18 6L6 18"/></svg></sc-if></button>
+</sc-for>
+</div>
+<sc-if value="{{ waiting }}" hint-placeholder-val="{{ false }}">
+<div style="margin: 10px 16px 0; font-size: 12px; font-weight: 700; color: #5A6382; text-align: center"><span lang="gn">Ehendu</span> · {{ waitNote }}</div>
+</sc-if>
+</sc-if>
+
+<sc-if value="{{ missing }}" hint-placeholder-val="{{ false }}">
+<div style="margin: 16px 16px 0; padding: 18px 16px; border-radius: 18px; border: 2px dashed #C9D0E3; display: flex; flex-direction: column; align-items: flex-start; gap: 6px">
+<div aria-hidden="true" style="width: 46px; height: 46px; border-radius: 14px; background: #FFF4D6; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 9a4 4 0 0 1 0 6"/></svg></div>
+<div style="margin-top: 4px; font-size: 11px; font-weight: 800; color: #5A6382">ESCUCHA</div>
+<div style="font-size: 20px; font-weight: 800">En preparación</div>
+<div style="font-size: 13px; font-weight: 500; line-height: 1.45; color: #5A6382">La escucha de este día todavía no está escrita. Cuando esté lista, la vas a encontrar acá.</div>
+</div>
+</sc-if>
+</div>
+
+<sc-if value="{{ missing }}" hint-placeholder-val="{{ false }}">
+<div style="flex-shrink: 0; padding: 0 16px 34px; display: flex; flex-direction: column">
+<a href="Today.dc.html" onClick="{{ toBack }}" style="height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-size: 17px; font-weight: 800; display: flex; align-items: center; justify-content: center"><span lang="gn">Tapykue</span> · Volver</a>
+</div>
+</sc-if>
+
+<sc-if value="{{ answered }}" hint-placeholder-val="{{ true }}">
+<div style="flex-shrink: 0; box-sizing: border-box; max-height: 540px; padding: 16px 16px 34px; border-radius: 26px 26px 0 0; border-top: 2px solid #1B2440; display: flex; flex-direction: column; gap: 10px; animation: gn-up 240ms ease-out; background: {{ sheetBg }}">
+<div style="display: flex; align-items: center; gap: 10px">
+<sc-if value="{{ correct }}" hint-placeholder-val="{{ true }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></sc-if>
+<sc-if value="{{ wrong }}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#C7361E" stroke-width="3.5" stroke-linecap="round" aria-hidden="true" style="flex-shrink: 0"><path d="M5 5l14 14M19 5L5 19"/></svg></sc-if>
+<div style="flex-grow: 1; font-size: 20px; font-weight: 800"><sc-if value="{{ correct }}" hint-placeholder-val="{{ true }}"><span lang="gn">¡Iporã!</span> <span style="font-size: 14px; font-weight: 700">¡Correcto!</span></sc-if><sc-if value="{{ wrong }}" hint-placeholder-val="{{ false }}">Casi</sc-if></div>
+<sc-if value="{{ wrong }}" hint-placeholder-val="{{ false }}"><div style="display: flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: 10px; background: #FFFFFF; border: 2px solid #1B2440; font-size: 12px; font-weight: 800; white-space: nowrap"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H6z"/><path d="M6 3v18M3 7h3M3 12h3M3 17h3"/></svg>Guardado en el cuaderno</div></sc-if>
+</div>
+
+<div style="flex: 0 1 auto; min-height: 60px; overflow-y: auto; padding: 12px 14px; border-radius: 16px; background: #FFFFFF; display: flex; flex-direction: column; gap: 8px">
+<div style="order: {{ scriptOrder }}; display: flex; align-items: center; gap: 8px">
+<div style="flex-grow: 1; font-size: 12px; font-weight: 800; color: #5A6382">Transcripción</div>
+<button aria-pressed="{{ showEs }}" disabled="{{ noEs }}" onClick="{{ toggleEs }}" style="min-height: 44px; padding: 4px 12px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: {{ esBtn.border }}; background: {{ esBtn.bg }}; color: {{ esBtn.color }}; box-shadow: {{ esBtn.shadow }}; cursor: {{ esBtn.cursor }}"><span style="font-size: 12px; font-weight: 800; white-space: nowrap">Ver traducción</span><sc-if value="{{ noEs }}" hint-placeholder-val="{{ true }}"><span style="font-size: 10px; font-weight: 700; white-space: nowrap">En preparación</span></sc-if></button>
+<button aria-label="Escuchar otra vez" onClick="{{ playNormal }}" style="width: 44px; height: 44px; border-radius: 12px; border: 2px solid #1B2440; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 150ms; background: {{ replayBg }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="#1B2440" aria-hidden="true"><path d="M8 5l11 7-11 7z"/></svg></button>
+</div>
+<sc-for list="{{ script }}" as="l" hint-placeholder-count="3"><div style="order: {{ l.order }}; margin: 0 -6px; padding: 3px 6px; border-radius: 10px; display: flex; align-items: flex-start; gap: 8px; transition: background 200ms; background: {{ l.bg }}"><sc-if value="{{ l.hasWho }}" hint-placeholder-val="{{ true }}"><span style="flex-shrink: 0; box-sizing: border-box; min-width: 72px; margin-top: 3px; padding: 2px 8px; border-radius: 8px; background: #EEF0F6; font-size: 11px; font-weight: 800; line-height: 1.4; text-align: center">{{ l.who }}</span></sc-if><div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 1px"><div style="display: flex; align-items: flex-start; gap: 6px"><sc-if value="{{ l.hasNum }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0; width: 20px; height: 20px; margin-top: 3px; border-radius: 10px; background: #E8ECFB; color: #2F4FD0; font-family: 'Nunito', 'Avenir Next', sans-serif; font-size: 11px; font-weight: 800; line-height: 20px; text-align: center">{{ l.num }}</span></sc-if><div lang="{{ l.lang }}" style="flex: 1 1 auto; min-width: 0; line-height: 1.6; overflow-wrap: anywhere; font-family: {{ l.font }}; font-size: {{ l.size }}; font-weight: {{ l.weight }}; color: {{ l.color }}">{{ l.t }}</div></div><sc-if value="{{ l.showEs }}" hint-placeholder-val="{{ false }}"><div style="font-size: 13px; font-weight: 500; line-height: 1.4; color: #5A6382">{{ l.es }}</div></sc-if></div></div></sc-for>
+<div style="order: 1; margin-top: 4px; font-size: 12px; font-weight: 800; color: #5A6382">{{ whyTitle }}</div>
+<sc-for list="{{ replies }}" as="r" hint-placeholder-count="3">
+<div style="order: 1; display: flex; align-items: flex-start; gap: 8px">
+<sc-if value="{{ r.ok }}" hint-placeholder-val="{{ true }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Correcta" style="flex-shrink: 0; margin-top: 3px"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></sc-if>
+<sc-if value="{{ r.no }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C7361E" stroke-width="3.5" stroke-linecap="round" role="img" aria-label="Incorrecta" style="flex-shrink: 0; margin-top: 3px"><path d="M6 6l12 12M18 6L6 18"/></svg></sc-if>
+<div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 1px">
+<div style="font-size: 13px; line-height: 1.5; overflow-wrap: anywhere"><strong style="font-weight: 800">{{ r.n }} <span lang="{{ r.lang }}" style="font-family: {{ r.font }}; font-size: 14px">{{ r.label }}</span></strong><sc-if value="{{ r.mine }}" hint-placeholder-val="{{ false }}"> <span style="padding: 1px 6px; border-radius: 6px; background: #FDEBE6; font-size: 11px; font-weight: 800; white-space: nowrap">tu elección</span></sc-if></div>
+<sc-if value="{{ r.hasWhy }}" hint-placeholder-val="{{ true }}"><div style="font-size: 13px; font-weight: 500; line-height: 1.45">{{ r.why }}</div></sc-if>
+</div>
+</div>
+</sc-for>
+<sc-if value="{{ hasExplain }}" hint-placeholder-val="{{ false }}"><div style="order: 1; font-size: 13px; font-weight: 500; line-height: 1.45">{{ explain }}</div></sc-if>
+</div>
+
+<a href="Today.dc.html" onClick="{{ toDone }}" style="flex-shrink: 0; height: 54px; border-radius: 16px; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center; background: {{ tone }}"><span lang="gn">Upeigua</span> · Siguiente</a>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"go":{"editor":null},"app":{"editor":null},"save":{"editor":null},"miss":{"editor":null},"reviewed":{"editor":null},"level":{"editor":null},"$preview":{"width":390,"height":844}}'>
+/* the designed moment: the listening of unit 1, day 1 */
+const SID = 'a1u01d1';
+const HEIGHTS = [10, 20, 30, 16, 34, 24, 12, 28, 38, 22, 14, 26, 32, 18, 10, 24, 30, 20, 12, 26, 16, 8];
+/* who speaks, as the content codes it: N narrator (in Spanish at A1), F a woman, M a man */
+const WHO = { N: 'Narrador', F: 'Mujer', M: 'Hombre' };
+const ANDIKA = "'Andika', 'Nunito', sans-serif";
+const NUNITO = "'Nunito', 'Avenir Next', sans-serif";
+/* Guarani or Spanish, for lang and the typeface: Guarani shows a nasal vowel, g̃ or a puso inside a word; Spanish opens
+   a question with ¿ or ¡ and has small words Guarani never uses, so a Spanish line that quotes a Guarani word stays Spanish */
+const GN_MARK = /[ãẽĩõũỹÃẼĨÕŨỸ]|[gG]\u0303|\p{L}'\p{L}/u;
+const ES_MARK = /[¿¡]|(^|[^\p{L}'])(el|los|las|una?|del?|en|es|son|se|que|qué|cómo|cuál|quién|dónde)(?![\p{L}'])/iu;
+const looksEs = (t) => ES_MARK.test(window.gnCourse.norm(t));
+const looksGn = (t) => GN_MARK.test(window.gnCourse.norm(t)) && !looksEs(t);
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+/* inside the prototype nothing has been played yet; on its own the artboard shows the designed moment: day 1's
+   listening played once and answered (the right reply), the transcript open. 'right' stands for the item's answer */
+this.state = props && props.go
+? { played: false, playing: false, progress: 0, line: -1, plays: 0, pick: null, es: false }
+: { played: true, playing: false, progress: 1, line: -1, plays: 1, pick: 'right', es: false };
+}
+componentWillUnmount() {
+clearInterval(this.timer);
+if (window.gnSound) window.gnSound.stop();
+}
+/* a listening lesson as the content writes it: kind 'listening' with one choice item of two or more options */
+skillOf(day) {
+const sk = day && day.skill;
+return sk && sk.kind === 'listening' && sk.item && Array.isArray(sk.item.options) && sk.item.options.length > 1 ? sk : null;
+}
+/* another listening of the current level, for a screen that sends here without a listening day (Progress' next step):
+   the latest written one up to the session in use, else the first written one */
+nearest(sid) {
+const C = window.gnCourse;
+let best = null;
+let first = null;
+let passed = false;
+C.sessions().forEach((x) => {
+if (!x.ready) return;
+const ok = !!this.skillOf(C.day(x.id));
+if (ok && !first) first = x.id;
+if (ok && !passed) best = x.id;
+if (x.id === sid) passed = true;
+});
+return sid && passed ? best || first : first;
+}
+lesson() {
+const C = window.gnCourse;
+const own = !this.props.app;
+const app = this.props.app || {};
+const sid = own ? SID : app.sid || null;
+let at = sid;
+let sk = this.skillOf(own ? C.day(SID) : app.day);
+const fromDay = !!sk;
+/* Today sends here only on a listening day: the current day written with the other skill means the learner came from
+   elsewhere (Progress), and goes back there */
+const elsewhere = !own && !fromDay && !!(app.day && app.day.skill);
+if (!sk) {
+at = this.nearest(sid);
+sk = at ? this.skillOf(C.day(at)) : null;
+}
+return { own, sid: at, sk, fromDay, elsewhere };
+}
+/* the lines of the clip in order, who says them and what: the lesson's audio lines ([speaker, Guarani, Spanish?]),
+   else the item's script ("Mujer: …" or [speaker, text]). Each line plays for 600 ms + 120 ms per character when there is no clip */
+lines(sk, it) {
+const C = window.gnCourse;
+const raw = Array.isArray(sk.audio) && sk.audio.length ? sk.audio : Array.isArray(it.script) ? it.script : [];
+return raw.map((l) => {
+let code = '';
+let who = '';
+let said = '';
+let es = '';
+if (Array.isArray(l)) {
+code = String(l[0] == null ? '' : l[0]).trim().toUpperCase();
+who = WHO[code] || String(l[0] == null ? '' : l[0]).trim();
+said = String(l[1] == null ? '' : l[1]);
+es = String(l[2] == null ? '' : l[2]);
+} else {
+const t = String(l == null ? '' : l);
+const m = /^([^:]{1,24}):\s+([\s\S]*)$/.exec(t);
+if (m) { who = m[1].trim(); said = m[2]; } else said = t;
+}
+const gn = C.plain(said).trim();
+return { who, gn, es: C.plain(es).trim(), narr: code === 'N' || /^narrador/i.test(who), ms: 600 + gn.length * 120 };
+}).filter((l) => l.gn);
+}
+renderVals() {
+const s = this.state;
+const C = window.gnCourse;
+const nav = (to) => (e) => { const go = this.props.go; if (go) { e.preventDefault(); go(to); } };
+const L = this.lesson();
+const sk = L.sk;
+const ready = !!sk;
+const it = ready ? sk.item : { options: [] };
+const options = ready ? it.options : [];
+const ANSWER = it.answer;
+const back = L.elsewhere ? 'Progress' : 'Today';
+const lv = C.levelOf(it.id || L.sid || '');
+const lines = ready ? this.lines(sk, it) : [];
+const isGn = (t) => looksGn(C.plain(t));
+const squash = (t) => ' ' + C.fold(C.plain(t)).replace(/[.,;:!?¿¡"«»()\u2014\u2013-]+/g, ' ').replace(/\s+/g, ' ').trim() + ' ';
+
+/* the replies of a "respuesta rápida" are said in the clip, so nothing is printed until the learner answers;
+   choices that are not in the clip are printed, as on the paper (the content may also say so with printed) */
+const heard = squash(lines.map((l) => l.gn).join(' '));
+const spoken = lines.length > 0 && options.every((o) => { const t = squash(o); return t.trim().length > 0 && heard.indexOf(t) >= 0; });
+const printed = typeof it.printed === 'boolean' ? it.printed : !spoken;
+const gnOpts = spoken || (options.some((o) => isGn(o)) && !options.some((o) => looksEs(C.plain(o))));
+const SHORT = {};
+const short = Array.isArray(it.short) ? it.short : [];
+options.forEach((o, k) => { SHORT[k + 1] = (short[k] && C.plain(short[k])) || C.plain(o); });
+
+/* sound: the item's clip (its id), and a slower recording of it (id.slow) when one exists. Without a clip the silent
+   stand-in runs: each line "plays" in turn for 600 ms + 120 ms per character, and the waveform fills over the whole */
+const total = lines.reduce((a, l) => a + l.ms, 0) || 2600;
+const ends = [];
+lines.reduce((a, l) => { const b = a + l.ms; ends.push(b / total); return b; }, 0);
+const lineAt = (f) => { for (let k = 0; k < ends.length; k++) if (f < ends[k]) return k; return ends.length - 1; };
+const snd = window.gnSound;
+const KEY = it.clip || it.id || '';
+const SLOW = it.slowClip || (KEY ? KEY + '.slow' : '');
+const hasClip = !!(snd && KEY && snd.has(KEY));
+const hasSlow = !!(snd && SLOW && snd.has(SLOW));
+const play = (rate) => () => {
+const snd = window.gnSound;
+const key = rate === 1 ? KEY : SLOW;
+if (!ready || (rate !== 1 && !(snd && SLOW && snd.has(SLOW)))) return;
+clearInterval(this.timer);
+let sound = !!(snd && key && snd.has(key) && snd.unlock() && snd.play(key));
+let got = false;
+const started = Date.now();
+const standIn = total / rate;
+this.setState({ playing: true, progress: 0, line: lines.length ? 0 : -1 });
+this.timer = setInterval(() => {
+const gone = Date.now() - started;
+let done = gone / standIn;
+if (sound) {
+/* with sound it keeps time with the clip itself, which may start a moment after the tap */
+const on = snd.on();
+const at = snd.at ? snd.at() : gone;
+if (on && at > 0) got = true;
+/* the sound stopped after it had started (a call, the app put aside): stop waiting, it can be played again */
+if (got && (!on || at < 0)) { done = 1; snd.stop(); }
+/* it never started: stop waiting after a second, or after a few seconds where sound has come out before */
+else if (!got && (!snd.has(key) || gone > (snd.worked && snd.worked() ? 4000 : 1200))) { sound = false; snd.stop(); }
+else done = Math.max(0, at) / (snd.ms(key) || standIn);
+/* the clip has come to its end by itself */
+if (snd.over && snd.over() >= 0) done = 1;
+}
+if (done >= 1) {
+clearInterval(this.timer);
+this.setState((st) => ({ playing: false, played: true, progress: 1, line: -1, plays: (st.plays || 0) + 1 }));
+} else {
+this.setState({ progress: done, line: lines.length ? lineAt(done) : -1 });
+}
+}, 80);
+};
+
+const pickN = s.pick === 'right' ? (ready ? ANSWER : null) : s.pick;
+const answered = ready && pickN != null;
+const correct = answered && pickN === ANSWER;
+const wrong = answered && pickN !== ANSWER;
+const answers = options.map((_, k) => k + 1).map((n) => {
+const on = pickN === n;
+const off = !s.played || answered;
+let look = { border: '2px solid #DDE1EC', bg: '#FFFFFF', shadow: 'none', color: '#5A6382', weight: 700 };
+if (s.played && !answered) look = { border: '2px solid #1B2440', bg: '#FFFFFF', shadow: '0 3px 0 #1B2440', color: '#1B2440', weight: 800 };
+if (answered && n === ANSWER) look = { border: '2.5px solid #0B7A6B', bg: '#E0F3EF', shadow: 'none', color: '#1B2440', weight: 800 };
+else if (answered && on) look = { border: '2.5px solid #C7361E', bg: '#FDEBE6', shadow: 'none', color: '#1B2440', weight: 800 };
+const label = C.plain(options[n - 1]);
+return Object.assign({
+n,
+label,
+printed,
+lang: gnOpts ? 'gn' : 'es',
+font: gnOpts ? ANDIKA : NUNITO,
+size: printed ? '16px' : '22px',
+justify: printed ? 'flex-start' : 'center',
+on,
+off,
+cursor: off ? 'default' : 'pointer',
+right: answered && n === ANSWER,
+bad: answered && on && n !== ANSWER,
+aria: 'Respuesta ' + n + (printed ? ': ' + label : '') + (!s.played ? ', escuchá primero' : '') + (answered && n === ANSWER ? ', correcta' : '') + (answered && on && n !== ANSWER ? ', tu respuesta, incorrecta' : ''),
+/* one try: the answers open once the clip has played, and an answer cannot be changed */
+pick: () => {
+const st = this.state;
+const had = st.pick === 'right' ? ANSWER : st.pick;
+if (!st.played || had != null) return;
+if (n !== ANSWER && this.props.miss && it.id) this.props.miss({ src: it.id, wrong: SHORT[n] });
+this.setState({ pick: n });
+},
+}, look);
+});
+
+/* the transcript's rows: a narrator line that only says a reply's number ("1") is shown as that number on the reply
+   it introduces, and lights up with it */
+const rows = [];
+const rowOf = [];
+let num = '';
+let wait = [];
+lines.forEach((l, k) => {
+if (l.narr && /^\d{1,2}\.?$/.test(l.gn) && k < lines.length - 1) { num = l.gn.replace('.', ''); wait.push(k); return; }
+wait.concat([k]).forEach((i) => { rowOf[i] = rows.length; });
+rows.push({ l, num });
+num = '';
+wait = [];
+});
+const at = s.playing && s.line >= 0 && rowOf[s.line] != null ? rowOf[s.line] : -1;
+const row = at >= 0 ? rows[at] : null;
+const times = s.plays === 1 ? '1 vez' : s.plays + ' veces';
+const status = s.playing
+? (!row ? 'Escuchando…' : row.num && +row.num <= options.length ? 'Respuesta ' + row.num + ' de ' + options.length + (row.l.who ? ' · ' + row.l.who : '') : 'Línea ' + (at + 1) + ' de ' + rows.length + (row.l.who ? ' · ' + row.l.who : ''))
+: s.plays
+? 'Escuchaste ' + times + (hasClip ? '' : ' · todavía no está grabado')
+: hasClip ? 'Tocá el botón para escuchar.' : 'Todavía no está grabado: se reproduce en silencio.';
+const narrEs = lv === 'A1';
+const script = rows.map((r, k) => {
+const l = r.l;
+const es = l.narr && narrEs;
+return {
+who: l.who,
+hasWho: !!l.who,
+num: r.num,
+hasNum: !!r.num,
+t: l.gn,
+es: l.es,
+showEs: s.es && !!l.es && !es,
+lang: es ? 'es' : 'gn',
+font: es ? NUNITO : ANDIKA,
+size: es ? '14px' : '16px',
+weight: es ? 700 : 400,
+color: es ? '#5A6382' : '#1B2440',
+/* the stand-in lights each line in turn while it "plays" */
+bg: at === k ? '#FFE9B0' : 'transparent',
+/* with printed choices the reasons come first and the conversation after them */
+order: printed ? 2 : 0,
+};
+});
+const hasEs = lines.some((l) => l.es && !(l.narr && narrEs));
+const why = Array.isArray(it.why) ? it.why : [];
+const nums = options.map((_, k) => String(k + 1));
+const q = it.q || '';
+const qGn = !!q && isGn(q);
+const askText = ready ? C.plain(sk.ask || q || '') : '';
+return {
+ready,
+missing: !ready,
+liveMsg: answered ? (correct ? '¡Correcto!' : 'Casi. La respuesta correcta es la ' + ANSWER + '.') : s.played && ready ? 'Ya podés elegir tu respuesta.' : '',
+closeLabel: L.elsewhere ? 'Cerrar la práctica' : 'Cerrar la lección',
+scrollPad: answered ? '12px' : '46px',
+kicker: 'ESCUCHA' + (ready && (sk.es || it.label) ? ' · ' + String(sk.es || it.label).toUpperCase() : ''),
+ask: askText,
+hasSituation: ready && !!sk.situation,
+situation: ready ? sk.situation || '' : '',
+note: printed ? 'Las opciones están escritas, como en el examen.' : 'No hay nada escrito hasta que respondas, como en el examen.',
+bars: HEIGHTS.map((h, i) => ({ h: h + 'px', bg: i < Math.round(s.progress * HEIGHTS.length) ? '#2F4FD0' : '#C9D0E3' })),
+playBg: s.playing ? '#F2B43A' : '#2F4FD0',
+playInk: s.playing ? '#1B2440' : '#FFFFFF',
+replayBg: s.playing ? '#F2B43A' : '#E8ECFB',
+playNormal: play(1),
+playSlow: play(0.8),
+status,
+noSlow: !hasSlow,
+slow: hasSlow
+? { border: '2px solid #1B2440', bg: '#FFFFFF', color: '#1B2440', cursor: 'pointer' }
+: { border: '2px dashed #DDE1EC', bg: '#F4F5F9', color: '#5A6382', cursor: 'default' },
+showQ: ready && printed && !!q && C.fold(C.plain(q)) !== C.fold(askText),
+qSegs: C.rich(q, { ruby: false, hl: false }).map((g) => ({ t: g.t, blank: g.blank, plain: !g.blank, line: g.line })),
+qLang: qGn ? 'gn' : 'es',
+qFont: qGn ? ANDIKA : NUNITO,
+answers,
+cols: 'repeat(' + (printed ? 1 : Math.max(1, options.length)) + ', minmax(0, 1fr))',
+waiting: ready && !s.played,
+waitNote: 'Escuchá primero y después elegí ' + nums.join(', ').replace(/, (\d+)$/, ' o $1') + '.',
+answered,
+correct,
+wrong,
+sheetBg: wrong ? '#FDEBE6' : '#E0F3EF',
+tone: wrong ? '#C7361E' : '#0B7A6B',
+/* with printed choices the reasons come first and the conversation after them */
+scriptOrder: printed ? 2 : 0,
+script,
+showEs: s.es && hasEs,
+noEs: !hasEs,
+esBtn: !hasEs
+? { border: '2px dashed #DDE1EC', bg: '#F4F5F9', color: '#5A6382', shadow: 'none', cursor: 'default' }
+: s.es
+? { border: '2px solid #1B2440', bg: '#2F4FD0', color: '#FFFFFF', shadow: '0 3px 0 #1B2440', cursor: 'pointer' }
+: { border: '2px solid #DDE1EC', bg: '#FFFFFF', color: '#1B2440', shadow: 'none', cursor: 'pointer' },
+toggleEs: () => { if (hasEs) this.setState({ es: !this.state.es }); },
+whyTitle: why.some((w) => !!w) ? 'Por qué cada respuesta' : 'Las respuestas',
+replies: options.map((o, k) => ({
+n: k + 1,
+label: C.plain(o),
+lang: gnOpts ? 'gn' : 'es',
+font: gnOpts ? ANDIKA : NUNITO,
+why: C.plain(why[k] || ''),
+hasWhy: !!why[k],
+ok: k + 1 === ANSWER,
+no: k + 1 !== ANSWER,
+mine: pickN === k + 1 && k + 1 !== ANSWER,
+})),
+hasExplain: ready && !!it.explain,
+explain: ready ? C.plain(it.explain || '') : '',
+toBack: nav(back),
+toDone: (e) => {
+if (L.fromDay && this.props.save) this.props.save({ prog: { r: 1 } });
+nav(back)(e);
+},
+};
+}
+}
+</script>
+</body>
+</html>

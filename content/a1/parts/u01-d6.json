@@ -1,0 +1,180 @@
+{
+ "title": "Repaso de la semana",
+ "grammar": {
+  "points": [],
+  "compare": {
+   "intro": "Cuatro pares de la semana que se parecen: fijate a cuántos les hablás, si incluís al que escucha, de quién es el nombre y si la frase lleva -pa.",
+   "forms": [
+    { "form": "ndéve · peẽme", "tag": "a vos · a ustedes", "mark": "dot",
+      "gn": "Aguyje {ndéve}, Ana. Aguyjevete {peẽme}, Ana ha Luis.",
+      "es": "Gracias a vos, Ana. Muchas gracias a ustedes, Ana y Luis." },
+    { "form": "ñande · ore", "tag": "con vos · sin vos", "mark": "dot",
+      "gn": "{Ñande}: che ha nde. {Ore}: che ha Luis.",
+      "es": "Ñande: yo y vos. Ore: yo y Luis, sin vos." },
+    { "form": "che réra · nde réra", "tag": "mi nombre · tu nombre", "mark": "dot",
+      "gn": "Rosa: Mba'éichapa {nde réra}?\nLuis: {Che réra} Luis.",
+      "es": "Rosa: ¿Cómo te llamás?\nLuis: Me llamo Luis." },
+    { "form": "-pa", "tag": "pregunta · respuesta", "mark": "dot",
+      "gn": "Ana: Ndé{pa} Luis?\nLuis: Héẽ, che Luis.",
+      "es": "Ana: ¿Vos sos Luis?\nLuis: Sí, soy Luis." }
+   ],
+   "check": {
+    "id": "a1u01d6.c1", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
+    "q": "Ana: ^Reñe'ẽpa^ guaraníme?\nLuis: ^Héẽ^, (   ) guaraníme.",
+    "options": ["reñe'ẽpa", "añe'ẽ", "oñe'ẽ"],
+    "answer": 2,
+    "why": [
+     "Reñe'ẽpa es la pregunta de Ana, con -pa. Luis ya responde y afirma: sin -pa.",
+     "Luis responde que sí y habla de él: añe'ẽ, «hablo». No lleva -pa porque afirma.",
+     "Oñe'ẽ es la forma de ha'e, otra persona. Ana le pregunta a Luis con re- («vos»): él responde por él mismo, añe'ẽ."
+    ]
+   }
+  },
+  "drill": [
+   {
+    "id": "a1u01d6.d1", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
+    "q": "Luis cuenta de dónde son ^sus abuelos^: «(   ) Paraguaigua.»",
+    "options": ["Ha'e", "Ore", "Peẽ", "Ha'ekuéra"],
+    "answer": 4,
+    "why": [
+     "Ha'e es una sola persona, «él» o «ella». Los abuelos son más de uno.",
+     "Ore es «nosotros» y sumaría a Luis, pero él cuenta de dónde son sus abuelos.",
+     "Peẽ es «ustedes», para hablarles a ellos. Luis cuenta de dónde son sus abuelos, no les habla a ellos.",
+     "Luis habla de varias personas, sus abuelos: ha'ekuéra, «ellos». Ha'ekuéra Paraguaigua: son de Paraguay."
+    ]
+   },
+   {
+    "id": "a1u01d6.d2", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
+    "q": "Ana le habla a la profesora. Para decir «nosotros: ^Luis y yo^», Ana dice (   ).",
+    "options": ["ore", "ñande", "peẽ", "ha'ekuéra"],
+    "answer": 1,
+    "why": [
+     "La profesora escucha y no está en el grupo: son Luis y Ana. Ese «nosotros» es ore.",
+     "Ñande incluye al que escucha: sumaría a la profesora.",
+     "Peẽ es «ustedes». Ana habla de ella misma y de Luis.",
+     "Ha'ekuéra es «ellos» o «ellas». Ana se incluye: dice «nosotros»."
+    ]
+   },
+   {
+    "id": "a1u01d6.d3", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
+    "q": "Rosa: Mba'éichapa? Che réra Rosa. ^[Ha nde|¿y vos?]^?\nLuis: Iporã. (   ) Luis.",
+    "options": ["Nde réra", "Héra", "Che réra", "Ha nde"],
+    "answer": 3,
+    "why": [
+     "Nde réra es «tu nombre», el de Rosa. Luis dice el suyo.",
+     "Héra es el nombre de otra persona, de él o de ella. Luis habla de él mismo.",
+     "Rosa pregunta ha nde?, «¿y vos?». Luis dice su nombre: che réra, «mi nombre».",
+     "Ha nde es «¿y vos?»: devuelve una pregunta, no dice un nombre."
+    ]
+   },
+   {
+    "id": "a1u01d6.d4", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
+    "q": "Rosa: Ikatúpa aike, ña Ramona?\nRamona: (   ), Rosa. ^[Eike|pasá]^.",
+    "options": ["Nahániri", "Héẽ", "Jajotopáta", "Ha nde"],
+    "answer": 2,
+    "why": [
+     "Nahániri es «no», pero Ramona le dice Eike, «pasá»: la deja pasar.",
+     "Rosa pide permiso para entrar, y Ramona le dice Eike, «pasá»: la respuesta es sí, Héẽ.",
+     "Jajotopáta es para despedirse, y Rosa recién llega.",
+     "Ha nde es «¿y vos?». Ikatúpa aike? pide un sí o un no."
+    ]
+   },
+   {
+    "id": "a1u01d6.d5", "kind": "build", "area": "grammar", "label": "Armá la palabra", "join": "word",
+    "before": "Nde sy ", "after": " guaraníme?",
+    "tiles": ["o", "ñe'ẽ", "pa"], "bank": [2, 0, 1],
+    "hint": "Nde sy, «tu mamá», es otra persona, como ha'e: el verbo empieza con o-. -pa va al final.",
+    "full": "Nde sy {o}ñe'ẽ{pa} guaraníme?",
+    "es": "¿Tu mamá habla guaraní?",
+    "explain": "Nde sy, «tu mamá», es otra persona: o- + ñe'ẽ = oñe'ẽ, «habla». -pa va al final y hace la pregunta: oñe'ẽpa. El acento sigue en la ẽ, y la tilde nasal ya lo marca."
+   },
+   {
+    "id": "a1u01d6.d6", "kind": "build", "area": "grammar", "label": "Armá la oración", "join": "sentence",
+    "before": "(Son las nueve de la mañana.)\nRosa:", "after": ", Juan?",
+    "tiles": ["mba'éichapa", "nde", "pyhareve"], "bank": [1, 2, 0],
+    "hint": "Empezá por la palabra que pregunta. Nde va antes de pyhareve, como en nde réra.",
+    "full": "(Son las nueve de la mañana.)\nRosa: {Mba'éichapa} nde pyhareve, Juan?",
+    "es": "(Son las nueve de la mañana.)\nRosa: Buen día, Juan.",
+    "explain": "Mba'éichapa va primero: es la palabra que pregunta. Después viene nde pyhareve, «tu mañana», con nde antes de pyhareve, como en nde réra. Es el saludo de la mañana: «buen día»."
+   }
+  ],
+  "exam": [
+   {
+    "id": "a1u01d6.e1", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
+    "q": "Ana le habla a Luis. Para decir «nosotros: vos y yo», Ana dice (   ).",
+    "options": ["ore", "peẽ", "ñande", "ha'ekuéra"],
+    "answer": 3,
+    "explain": "Luis es el que escucha, y Ana lo incluye: «vos y yo» es ñande. Ore dejaría afuera a Luis, peẽ es «ustedes» y ha'ekuéra, «ellos»."
+   },
+   {
+    "id": "a1u01d6.e2", "kind": "choice", "area": "grammar", "label": "Elegí la frase",
+    "q": "(Lucía se va de la casa de doña Ramona.)\nLucía: Aguyjevete, ña Ramona. (   )",
+    "options": ["Tereg̃uahẽ porãite.", "Ikatúpa aike?", "Mba'éichapa?", "Jajotopáta."],
+    "answer": 4,
+    "explain": "Lucía se va: después de dar las gracias, se despide con Jajotopáta, «nos vemos». Tereg̃uahẽ porãite es para recibir a quien llega, Ikatúpa aike? pide permiso para entrar y Mba'éichapa? saluda al llegar."
+   },
+   {
+    "id": "a1u01d6.e3", "kind": "build", "area": "grammar", "label": "Armá la palabra", "join": "word",
+    "before": "", "after": " nde réra?",
+    "tiles": ["mba'e", "icha", "pa"], "bank": [2, 0, 1],
+    "full": "Mba'éicha{pa} nde réra?",
+    "es": "¿Cómo te llamás?",
+    "explain": "mba'e («qué») + -icha («como») + -pa (pregunta). Ni -icha ni -pa se llevan el acento: queda en la e de mba'e, que ya no es la última vocal, y se escribe: Mba'éichapa."
+   }
+  ]
+ },
+ "words": {
+  "es": "Rosa visita a Ana",
+  "intro": "Rosa llega tarde a la casa de Ana. Tocá cada palabra, de la puerta a la despedida.",
+  "sound": {
+   "focus": "Repaso: nasales, la y y el puso",
+   "letters": ["ã", "y", "'"],
+   "note": "Tres cosas de la semana cambian la palabra: la tilde nasal, la sexta vocal (y) y el puso. Escuchá cada par y fijate qué cambia.",
+   "pairs": [
+    ["pyta", "talón", "pytã", "rojo"],
+    ["ita", "piedra", "yta", "nadar"],
+    ["ka'i", "mono", "kái", "quemarse"]
+   ]
+  },
+  "words": [
+   { "id": "ikatupa", "gn": "Ikatúpa aike?", "es": "¿Puedo pasar?", "parts": [["ikatu", "se puede"], ["-pa", "pregunta"], ["aike", "entro, paso"]], "note": "En la puerta, antes de entrar." },
+   { "id": "hee", "gn": "Héẽ", "es": "Sí", "note": "Va sin puso. Con puso, he'ẽ es «dulce». «No» es Nahániri." },
+   { "id": "teregua", "gn": "Tereg̃uahẽ porãite", "es": "Bienvenida, bienvenido", "parts": [["tere-", "que (vos)"], ["g̃uahẽ", "llegar"], ["porã", "bien"], ["-ite", "muy"]], "note": "A varias personas: Tapeg̃uahẽ porãite." },
+   { "id": "mbaeichapa", "gn": "Mba'éichapa?", "es": "Hola, ¿cómo estás?", "parts": [["mba'e", "qué"], ["-icha", "como"], ["-pa", "pregunta"]] },
+   { "id": "ipora", "gn": "Iporã, ha nde?", "es": "Bien, ¿y vos?", "parts": [["iporã", "bien"], ["ha", "y"], ["nde", "vos"]] },
+   { "id": "chenyromi", "gn": "Cheñyrõmi", "es": "Perdón, disculpá", "parts": [["che-", "me"], ["ñyrõ", "perdonar"], ["-mi", "más suave"]], "note": "Rosa llega tarde y se disculpa." },
+   { "id": "aguyje", "gn": "Aguyje", "es": "Gracias", "note": "Muchas gracias: Aguyjevete." },
+   { "id": "jajotopata", "gn": "Jajotopáta", "es": "Nos vemos", "parts": [["ja-", "nosotros (con vos)"], ["jo-", "uno al otro"], ["topa", "encontrar"], ["-ta", "futuro"]], "note": "Para despedirse." }
+  ],
+  "spell": ["mbaeichapa", "teregua", "chenyromi", "aguyje"],
+  "check": {
+   "id": "a1u01d6.k1", "kind": "choice", "area": "vocab", "label": "Cómo se escribe",
+   "q": "Rosa pregunta: Ikatúpa aike? Ana le contesta que _sí_. ¿Cómo se escribe en guaraní?",
+   "options": ["He'ẽ", "Hee", "Héẽ", "Jeẽ"],
+   "answer": 3,
+   "explain": "Sí es Héẽ: con h, con la ẽ nasal y sin puso. He'ẽ, con puso, es «dulce». Hee no tiene ninguna marca: le falta la tilde nasal (~) de la ẽ. Jeẽ cambia la h por j."
+  }
+ },
+ "skill": {
+  "kind": "reading",
+  "es": "Un chat en la puerta",
+  "ask": "¿Qué le pide Ana a Luis?",
+  "seconds": 60,
+  "passage": "Ana: Mba'éichapa, Luis?\nLuis: Iporã, ha nde?\nAna: Iporã. ^Ikatúpa aike?^\nLuis: ^Héẽ^, Ana. ^Tereg̃uahẽ porãite.^\nAna: Aguyjevete.",
+  "strategy": "Ana hace dos preguntas: una saluda y la otra pide algo. La respuesta de Luis viene justo después de cada una.",
+  "item": {
+   "id": "a1u01d6.r1", "kind": "choice", "area": "reading", "label": "Texto corto",
+   "q": "¿Qué le pide Ana a Luis?",
+   "options": ["Que le diga su nombre.", "Que la deje pasar.", "Que se vean otro día.", "Que la perdone."],
+   "short": ["Su nombre", "Pasar", "Verse otro día", "Perdón"],
+   "answer": 2,
+   "why": [
+    "Ana no pregunta el nombre: ya lo sabe y le escribe «Luis». Para eso diría Mba'éichapa nde réra?",
+    "Ana pregunta Ikatúpa aike?, «¿puedo pasar?», y Luis le contesta Héẽ, «sí».",
+    "Ana no habla de otro día: recién llega y pide pasar. Jajotopáta, «nos vemos», es para irse.",
+    "Para pedir perdón, Ana escribiría Cheñyrõmi, y no lo escribe."
+   ],
+   "explain": "Ana pregunta Ikatúpa aike?, «¿puedo pasar?». Luis responde Héẽ, «sí», y le da la bienvenida con Tereg̃uahẽ porãite. Ana le pide que la deje pasar."
+  }
+ }
+}

@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Práctica con explicación</title>
+<script src="./support.js"></script>
+<script src="./gn-course-a1.js"></script>
+<script src="./gn-course-a2.js"></script>
+<script src="./gn-course-b1.js"></script>
+<script src="./gn-course-b2.js"></script>
+<script src="./gn-course-c1.js"></script>
+<script src="./gn-course-c2.js"></script>
+<script src="./gn-course.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&amp;family=Andika:wght@400;700&amp;text=%20%21%22%23%24%25%26%27%28%29%2A%2B%2C-.%2F0123456789%3A%3B%3C%3D%3E%3F%40ABCDEFGHIJKLMNOPQRSTUVWXYZ%5B%5C%5D%5E_%60abcdefghijklmnopqrstuvwxyz%7B%7C%7D~%C2%A1%C2%BF%C2%AB%C2%BB%C2%B0%C2%B7%C3%97%C3%B7%C2%AA%C2%BA%C2%B2%C3%A1%C3%A9%C3%AD%C3%B3%C3%BA%C3%BC%C3%B1%C3%81%C3%89%C3%8D%C3%93%C3%9A%C3%9C%C3%91%C3%BD%C3%9D%C3%A3%E1%BA%BD%C4%A9%C3%B5%C5%A9%E1%BB%B9%C3%83%E1%BA%BC%C4%A8%C3%95%C5%A8%E1%BB%B8%C3%A7%C3%87%C3%A0%C3%A8%C3%AC%C3%B2%C3%B9%C3%A2%C3%AA%C3%AE%C3%B4%C3%BB%CC%83%CC%81%E2%80%98%E2%80%99%E2%80%9C%E2%80%9D%E2%80%A6%E2%80%93%E2%80%94%E2%80%A2%E2%82%AC%E2%86%92%E2%86%90%E2%86%91%E2%86%93&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:#2F4FD0;text-decoration:none}a:hover{color:#1B2440}
+rt{font-size:9px;font-weight:500;color:#5A6382}
+@keyframes gn-up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; padding-top: 50px; background: #F4F5F9; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; display: flex; flex-direction: column; overflow: hidden; position: relative">
+
+<div aria-live="polite" style="position: absolute; top: 0; left: 0; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap">{{ live }}</div>
+
+<div style="display: flex; align-items: center; gap: 10px; height: 44px; padding: 0 16px; flex-shrink: 0">
+<a href="Today.dc.html" onClick="{{ toToday }}" aria-label="Cerrar la lección" style="width: 44px; height: 44px; margin-left: -10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+<div role="img" aria-label="{{ barLabel }}" style="flex-grow: 1; height: 12px; border-radius: 6px; background: #DDE1EC; overflow: hidden"><div style="height: 12px; border-radius: 0 6px 6px 0; background: #2F4FD0; transition: width 300ms; width: {{ barW }}"></div></div>
+<div style="font-size: 12px; font-weight: 800; color: #2F4FD0; white-space: nowrap; flex-shrink: 0">PRÁCTICA</div>
+</div>
+
+<div style="flex-grow: 1; min-height: 0; overflow-y: auto; padding: 6px 16px 12px; display: flex; flex-direction: column; gap: 8px">
+
+<sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top: 18px; padding: 22px 18px; border-radius: 18px; border: 2px dashed #C9D0E3; background: #FFFFFF; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center">
+<svg viewBox="0 0 100 100" width="72" height="72" role="img" aria-label="Kaguare, el oso melero"><path d="M26.17 58.19C24.25 59.48 22.2 60.42 20.4 62.04C18.61 63.66 16.69 66.08 15.39 67.9C14.09 69.73 13.32 71.72 12.61 72.99C11.89 74.26 11.6 74.92 11.08 75.54C10.56 76.16 9.83 76.41 9.5 76.69C9.16 76.96 9.19 77.35 9.05 77.17C8.92 77 8.8 76.55 8.71 75.64C8.62 74.74 8.48 73.06 8.53 71.75C8.59 70.44 8.79 68.87 9.05 67.77C9.32 66.67 9.83 65.74 10.11 65.16C10.4 64.58 10.35 64.3 10.75 64.3C11.15 64.31 11.94 65.19 12.52 65.2C13.11 65.2 14.02 64.77 14.25 64.31C14.47 63.84 14.36 62.98 13.88 62.4C13.39 61.83 12.43 60.85 11.33 60.88C10.24 60.92 8.35 61.65 7.3 62.61C6.25 63.58 5.59 65.22 5.05 66.68C4.5 68.13 4.23 69.81 4.02 71.35C3.81 72.88 3.62 74.32 3.77 75.9C3.92 77.49 3.9 79.66 4.95 80.83C5.99 81.99 8.35 82.81 10.04 82.9C11.73 83 13.51 82.37 15.1 81.42C16.68 80.46 18.26 78.52 19.54 77.17C20.83 75.83 21.75 74.38 22.82 73.34C23.89 72.31 24.48 71.7 25.98 70.97C27.49 70.25 29.88 69.66 31.83 69.01Z" fill="#EDC27C"/><path d="M20.15 70.47C20.74 70.71 20.68 72.05 20.37 72.87C20.06 73.69 18.95 75.26 18.3 75.41C17.66 75.56 16.75 74.41 16.5 73.75C16.25 73.09 16.21 71.97 16.82 71.42C17.43 70.87 19.56 70.23 20.15 70.47Z" fill="#2A2120"/><path d="M10.57 78.66C10.78 79.01 10.58 80.06 10.18 80.29C9.78 80.52 8.67 80.26 8.16 80.04C7.65 79.82 6.99 79.26 7.12 78.95C7.25 78.64 8.37 78.23 8.94 78.18C9.51 78.13 10.36 78.31 10.57 78.66Z" fill="#2A2120"/><path d="M7.66 68.46C7.88 68.64 7.74 69.25 7.49 69.58C7.24 69.91 6.49 70.46 6.18 70.45C5.87 70.44 5.64 69.82 5.64 69.5C5.64 69.18 5.84 68.68 6.18 68.51C6.52 68.34 7.44 68.28 7.66 68.46Z" fill="#2A2120"/><path d="M26.17 58.19C24.25 59.48 22.2 60.42 20.4 62.04C18.61 63.66 16.69 66.08 15.39 67.9C14.09 69.73 13.32 71.72 12.61 72.99C11.89 74.26 11.6 74.92 11.08 75.54C10.56 76.16 9.83 76.41 9.5 76.69C9.16 76.96 9.19 77.35 9.05 77.17C8.92 77 8.8 76.55 8.71 75.64C8.62 74.74 8.48 73.06 8.53 71.75C8.59 70.44 8.79 68.87 9.05 67.77C9.32 66.67 9.83 65.74 10.11 65.16C10.4 64.58 10.35 64.3 10.75 64.3C11.15 64.31 11.94 65.19 12.52 65.2C13.11 65.2 14.02 64.77 14.25 64.31C14.47 63.84 14.36 62.98 13.88 62.4C13.39 61.83 12.43 60.85 11.33 60.88C10.24 60.92 8.35 61.65 7.3 62.61C6.25 63.58 5.59 65.22 5.05 66.68C4.5 68.13 4.23 69.81 4.02 71.35C3.81 72.88 3.62 74.32 3.77 75.9C3.92 77.49 3.9 79.66 4.95 80.83C5.99 81.99 8.35 82.81 10.04 82.9C11.73 83 13.51 82.37 15.1 81.42C16.68 80.46 18.26 78.52 19.54 77.17C20.83 75.83 21.75 74.38 22.82 73.34C23.89 72.31 24.48 71.7 25.98 70.97C27.49 70.25 29.88 69.66 31.83 69.01Z" fill="none" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M28.6 70 C27.4 75.6 27.4 80 29.2 82 Q30.4 83 32.4 83 L40.6 83 Q42.6 83 42.6 81.2 Q42.4 79.6 40.4 79.3 L38.2 78.8 L39.4 70 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M25 70.6C23.07 68 22.07 64.43 22.4 61C22.73 57.57 24.57 52.83 27 50C29.43 47.17 33.43 45.28 37 44C40.57 42.72 45.17 42.53 48.4 42.3C51.63 42.07 54.51 43.19 56.4 42.6C58.29 42.01 59.76 38.77 59.76 38.77C59.76 38.77 62.59 45.03 64.6 47C66.61 48.97 70.78 48.79 71.8 50.6C72.82 52.41 70.44 56.92 70.69 57.83C70.94 58.75 74.42 59.44 74.8 61.6C75.18 63.76 74.87 68.3 73 70.8C71.13 73.3 67.77 75.38 63.6 76.6C59.43 77.82 52.93 78.1 48 78.1C43.07 78.1 37.83 77.85 34 76.6C30.17 75.35 26.93 73.2 25 70.6Z" fill="#EDC27C"/><path d="M60.65 40.62C61.37 42.68 61.81 44.64 62.8 46.8C63.79 48.96 65.4 51.5 66.6 53.6C67.8 55.7 69 57.93 70 59.4C71 60.87 71.79 61.5 72.6 62.4C73.41 63.3 74.13 64.02 74.89 64.83C74.81 65.79 74.65 66.81 74.38 67.78C74.07 68.91 73.62 69.97 73 70.8C72.38 71.63 71.59 72.42 70.66 73.14C69.73 73.87 68.66 74.53 67.47 75.11C66.29 75.69 64.99 76.19 63.6 76.6C62.21 77.01 60.56 77.31 58.8 77.53C57.04 77.75 55.16 77.89 53.31 77.98C51.46 78.07 49.64 78.1 48 78.1C46.42 78.1 44.8 78.07 43.22 78C40.48 76.13 37.24 74.73 35 72.4C32.76 70.07 31.03 66.73 29.8 64C28.57 61.27 28.07 58.33 27.6 56C27.13 53.67 27.2 52 27 50C27.81 49.06 28.8 48.22 29.88 47.47C30.97 46.72 32.15 46.07 33.36 45.5C34.57 44.92 35.81 44.43 37 44C38.19 43.57 39.49 43.27 40.82 43.04C42.15 42.81 43.51 42.67 44.8 42.56C46.09 42.45 47.32 42.38 48.4 42.3C49.48 42.22 50.52 42.3 51.49 42.4C52.46 42.51 53.38 42.66 54.2 42.73C55.03 42.8 55.77 42.8 56.4 42.6C57.03 42.4 57.62 41.91 58.11 41.34C58.61 40.78 59.02 40.13 59.31 39.63C59.6 39.13 59.76 38.77 59.76 38.77C59.76 38.77 60.08 39.46 60.57 40.46C60.6 40.52 60.62 40.57 60.65 40.62Z" fill="#2A2120"/><path d="M70.69 57.83C70.94 58.75 74.42 59.44 74.8 61.6C75.18 63.76 74.87 68.3 73 70.8C71.13 73.3 67.77 75.38 63.6 76.6C59.43 77.82 52.93 78.1 48 78.1C43.07 78.1 37.83 77.85 34 76.6C30.17 75.35 26.93 73.2 25 70.6C23.07 68 22.07 64.43 22.4 61C22.73 57.57 24.57 52.83 27 50C29.43 47.17 33.43 45.28 37 44C40.57 42.72 45.17 42.53 48.4 42.3C51.63 42.07 54.51 43.19 56.4 42.6C58.29 42.01 59.76 38.77 59.76 38.77" fill="none" stroke="#1B2440" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M64.4 60.2C65.4 60.1 66.93 60.83 67.6 62.2C68.27 63.57 68.18 66.33 68.4 68.4C68.62 70.47 68.52 72.93 68.9 74.6C69.28 76.27 69.92 77.57 70.7 78.4C71.48 79.23 73.11 79.11 73.6 79.6C74.09 80.09 74.58 81.82 74.4 82.1C74.22 82.38 72.08 82.94 71.4 83C70.72 83.06 64.84 83.08 64.2 83C63.56 82.92 62.06 82.54 61.8 81.8C61.54 81.06 61.68 77.9 61.6 75.6C61.52 73.3 61.3 70.13 61.3 68C61.3 65.87 61.08 64.1 61.6 62.8C62.12 61.5 63.4 60.3 64.4 60.2Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M70.86 80.04C70.89 80.41 71.14 80.88 71.42 81.11C71.7 81.34 72.09 81.42 72.54 81.44C72.99 81.46 73.61 81.3 74.14 81.22C74.67 81.15 75.31 81.11 75.73 80.99C76.15 80.87 76.46 80.76 76.67 80.51C76.88 80.26 77.02 79.81 76.99 79.47C76.96 79.13 76.73 78.71 76.48 78.5C76.23 78.29 75.91 78.25 75.47 78.21C75.03 78.17 74.4 78.26 73.86 78.28C73.33 78.31 72.7 78.26 72.26 78.36C71.82 78.46 71.45 78.61 71.22 78.89C70.99 79.17 70.83 79.67 70.86 80.04Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><path d="M71.05 81.65C71.04 82.02 71.23 82.51 71.48 82.78C71.73 83.05 72.1 83.18 72.55 83.25C73 83.32 73.62 83.23 74.15 83.22C74.69 83.21 75.33 83.26 75.76 83.2C76.19 83.14 76.51 83.07 76.75 82.84C76.99 82.61 77.19 82.18 77.2 81.84C77.21 81.5 77.04 81.06 76.81 80.82C76.58 80.58 76.27 80.49 75.84 80.4C75.41 80.31 74.78 80.32 74.25 80.28C73.72 80.24 73.1 80.11 72.65 80.15C72.2 80.2 71.82 80.3 71.55 80.55C71.28 80.8 71.06 81.28 71.05 81.65Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(69.6 44.2) rotate(11) scale(1.08)"><path d="M-8.6 -5.8 C-13.6 -8.4 -14.2 -13.6 -10 -14.6 C-5.8 -15.4 -3.6 -11.6 -4.4 -7.2 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.59" stroke-linejoin="round" stroke-linecap="round"/><path d="M-10.4 -5.8 C-11.8 -8.6 -11.4 -11.6 -9.4 -12 C-7.4 -12.4 -6.2 -10.2 -6.6 -7.4 Z" fill="#D49A55"/></g><path d="M59.76 38.77C60.67 37.11 60.91 34.86 62.49 33.8C64.07 32.73 67.14 32.22 69.26 32.36C71.38 32.5 73.7 33.57 75.2 34.62C76.71 35.66 77.46 36.64 78.28 38.62C79.09 40.61 78.76 44.74 80.08 46.52C81.41 48.31 84.33 48.27 86.24 49.33C88.15 50.39 90.34 51.86 91.55 52.88C92.76 53.9 93.24 54.49 93.5 55.45C93.76 56.41 93.58 57.78 93.08 58.64C92.58 59.5 91.47 60.34 90.51 60.6C89.55 60.85 88.67 60.65 87.31 60.17C85.95 59.7 84.12 58.42 82.33 57.77C80.54 57.11 78.12 56.33 76.56 56.27C75 56.21 73.95 57.14 72.98 57.4C72 57.66 71.45 57.69 70.69 57.83C68.51 56.97 66 56.52 64.15 55.24C62.31 53.97 60.68 51.97 59.64 50.18C58.59 48.4 57.85 46.46 57.87 44.56C57.89 42.66 59.13 40.7 59.76 38.77Z" fill="#EDC27C"/><path d="M59.76 38.77C60.67 37.11 60.91 34.86 62.49 33.8C64.07 32.73 67.14 32.22 69.26 32.36C71.38 32.5 73.7 33.57 75.2 34.62C76.71 35.66 77.46 36.64 78.28 38.62C79.09 40.61 78.76 44.74 80.08 46.52C81.41 48.31 84.33 48.27 86.24 49.33C88.15 50.39 90.34 51.86 91.55 52.88C92.76 53.9 93.24 54.49 93.5 55.45C93.76 56.41 93.58 57.78 93.08 58.64C92.58 59.5 91.47 60.34 90.51 60.6C89.55 60.85 88.67 60.65 87.31 60.17C85.95 59.7 84.12 58.42 82.33 57.77C80.54 57.11 78.12 56.33 76.56 56.27C75 56.21 73.95 57.14 72.98 57.4C72 57.66 71.45 57.69 70.69 57.83" fill="none" stroke="#1B2440" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(69.6 44.2) rotate(11) scale(1.08)"><ellipse cx="21.15" cy="8.03" rx="1.25" ry="1.5" transform="rotate(19.09 21.15 8.03)" fill="#1B2440"/><ellipse cx="2.4" cy="-2.4" rx="3.1" ry="3" fill="#C98E4E"/><ellipse cx="3" cy="2.8" rx="2.2" ry="1.35" fill="#F08CA5"/><g data-part="eye-open"><ellipse cx="2.4" cy="-2.4" rx="1.95" ry="2.3" fill="#1B2440"/><circle cx="3.08" cy="-3.32" r="0.78" fill="#FFFFFF"/></g><g data-part="eye-closed" opacity="0"><path d="M0.2 -2.3 Q2.4 -0.4 4.6 -2.3" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="eye-happy" opacity="0"><path d="M0.2 -1.5 Q2.4 -5.2 4.6 -1.5" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="mouth-normal"><path d="M9.8 6.2 Q7.4 7.5 5.2 5.5" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="mouth-o" opacity="0"><ellipse cx="7.6" cy="5.9" rx="1.3" ry="1.5" fill="#1B2440"/></g><g data-part="mouth-happy" opacity="0"><path d="M4.8 4.5 L10.8 4.7 C10.6 6.2 9.4 7.15 7.8 7.15 C6.2 7.15 5.0 6.2 4.8 4.5 Z" fill="#F08CA5"/><path d="M10.8 4.7 C10.6 6.2 9.4 7.15 7.8 7.15 C6.2 7.15 5.0 6.2 4.8 4.5" fill="none" stroke="#1B2440" stroke-width="1.67" stroke-linejoin="round" stroke-linecap="round"/></g></g><circle cx="45" cy="60.2" r="10.5" fill="#FFFFFF" stroke="#1B2440" stroke-width="2.2"/><g class="rosette"><path d="M45 51V69.4M35.8 60.2H54.2M38.5 53.7L51.5 66.7M51.5 53.7L38.5 66.7" fill="none" stroke="#C2336F" stroke-width="1.5" stroke-linecap="round"/><circle cx="45" cy="60.2" r="6.5" fill="none" stroke="#C2336F" stroke-width="1.3"/><circle cx="45" cy="60.2" r="2.8" fill="#C2336F"/></g><g data-part="sweat" opacity="0"><path d="M79.8 18.2c2.2 3.6 3.6 5.8 3.6 8a3.6 3.6 0 0 1 -7.2 0c0 -2.2 1.4 -4.4 3.6 -8z" fill="#9FD3F5" stroke="#1B2440" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="sparks" opacity="0"><path d="M88.6 35 l4.2 -4.8 M91.4 43.6 l6.4 -1.4 M88.6 26.8 l2.4 -5.6" fill="none" stroke="#F2B43A" stroke-width="3" stroke-linecap="round"/></g></svg>
+<div style="font-size: 16px; font-weight: 800">En preparación</div>
+<div style="font-size: 13px; font-weight: 500; line-height: 1.45; color: #5A6382">La práctica de este día todavía no está escrita. Mientras tanto, repasá los días anteriores.</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ has }}" hint-placeholder-val="{{ true }}">
+<div style="font-size: 12px; font-weight: 800; color: #5A6382">{{ head }}</div>
+
+<sc-if value="{{ isChoice }}" hint-placeholder-val="{{ true }}">
+<div lang="gn" style="padding: 10px 14px; border-radius: 18px; background: #FFFFFF; border: 2px solid #1B2440; font-family: 'Andika', 'Nunito', sans-serif; font-size: 18px; font-weight: 400; line-height: 2.1; overflow-wrap: anywhere"><sc-for list="{{ q }}" as="g" hint-placeholder-count="3"><sc-if value="{{ g.ruby }}" hint-placeholder-val="{{ false }}"><ruby style="background: {{ g.bg }}; border-radius: 4px"><span style="border-bottom: {{ g.line }}">{{ g.t }}</span><rt lang="es" style="font-size: 10px">{{ g.r }}</rt></ruby></sc-if><sc-if value="{{ g.plain }}" hint-placeholder-val="{{ true }}"><span style="background: {{ g.bg }}; border-radius: 4px; padding: {{ g.pad }}; white-space: {{ g.ws }}; border-bottom: {{ g.line }}">{{ g.t }}</span></sc-if><sc-if value="{{ g.blank }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="espacio en blanco" style="display: inline-block; width: 40px; height: 22px; margin: 0 3px; border-bottom: 2px solid #1B2440; vertical-align: text-bottom"></span></sc-if></sc-for></div>
+<div lang="gn" style="display: grid; gap: 10px 8px; grid-template-columns: {{ cols }}">
+<sc-for list="{{ opts }}" as="o" hint-placeholder-count="4">
+<button onClick="{{ o.pick }}" aria-pressed="{{ o.on }}" style="min-height: 50px; padding: 6px 12px; border-radius: 14px; display: flex; align-items: center; gap: 8px; font-family: 'Andika', 'Nunito', sans-serif; font-size: 16px; text-align: left; overflow-wrap: anywhere; border: {{ o.border }}; background: {{ o.bg }}; box-shadow: {{ o.shadow }}; color: {{ o.color }}; font-weight: {{ o.weight }}; transform: {{ o.press }}"><span style="flex-shrink: 0; font-family: 'Nunito', 'Avenir Next', sans-serif; font-size: 12px; font-weight: 800; color: {{ o.numColor }}">{{ o.n }}</span><span style="flex-grow: 1; min-width: 0">{{ o.label }}</span><sc-if value="{{ o.right }}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Respuesta correcta" style="flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></sc-if><sc-if value="{{ o.bad }}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C7361E" stroke-width="3.5" stroke-linecap="round" role="img" aria-label="Tu respuesta, incorrecta" style="flex-shrink: 0"><path d="M6 6l12 12M18 6L6 18"/></svg></sc-if></button>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ isBuild }}" hint-placeholder-val="{{ false }}">
+<h1 style="margin: 0; font-size: 22px; font-weight: 800; line-height: 1.35; white-space: pre-line">{{ buildTitle }}</h1>
+<div style="font-size: 13px; font-weight: 500; line-height: 1.45; color: #5A6382">{{ buildHow }}</div>
+<div lang="gn" style="margin-top: 6px; padding: 16px 12px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; display: flex; flex-direction: column; gap: 10px; font-family: 'Andika', 'Nunito', sans-serif; font-size: 17px; font-weight: 400">
+<sc-for list="{{ preLines }}" as="p" hint-placeholder-count="1"><div style="overflow-wrap: anywhere"><sc-for list="{{ p.segs }}" as="g" hint-placeholder-count="1"><sc-if value="{{ g.ruby }}" hint-placeholder-val="{{ false }}"><ruby>{{ g.t }}<rt lang="es" style="font-size: 10px">{{ g.r }}</rt></ruby></sc-if><sc-if value="{{ g.plain }}" hint-placeholder-val="{{ true }}">{{ g.t }}</sc-if></sc-for></div></sc-for>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 8px">
+<sc-if value="{{ hasBefore }}" hint-placeholder-val="{{ false }}"><div style="overflow-wrap: anywhere"><sc-for list="{{ before }}" as="g" hint-placeholder-count="1"><sc-if value="{{ g.ruby }}" hint-placeholder-val="{{ false }}"><ruby>{{ g.t }}<rt lang="es" style="font-size: 10px">{{ g.r }}</rt></ruby></sc-if><sc-if value="{{ g.plain }}" hint-placeholder-val="{{ true }}">{{ g.t }}</sc-if></sc-for></div></sc-if>
+<sc-if value="{{ joinWord }}" hint-placeholder-val="{{ true }}">
+<div role="group" aria-label="{{ wordAria }}" style="display: flex; align-items: stretch; max-width: 100%; height: 50px; box-sizing: border-box; border-radius: 12px; background: #FFFFFF; overflow: hidden; border: {{ frame.border }}; box-shadow: {{ frame.shadow }}">
+<sc-for list="{{ slots }}" as="s" hint-placeholder-count="4">
+<sc-if value="{{ s.filled }}" hint-placeholder-val="{{ false }}"><button onClick="{{ s.remove }}" aria-label="{{ s.aria }}" aria-disabled="{{ s.off }}" style="min-width: 44px; padding: 0 6px; border: none; border-radius: 0; border-left: {{ s.edge }}; font-size: 18px; font-weight: 700; white-space: nowrap; background: {{ s.bg }}; cursor: {{ s.cursor }}"><sc-for list="{{ s.segs }}" as="g" hint-placeholder-count="1"><sc-if value="{{ g.ruby }}" hint-placeholder-val="{{ false }}"><ruby>{{ g.t }}<rt lang="es" style="font-size: 10px">{{ g.r }}</rt></ruby></sc-if><sc-if value="{{ g.plain }}" hint-placeholder-val="{{ true }}">{{ g.t }}</sc-if></sc-for></button></sc-if>
+<sc-if value="{{ s.empty }}" hint-placeholder-val="{{ true }}"><div role="img" aria-label="{{ s.aria }}" style="width: 44px; flex-shrink: 0; border-left: {{ s.edge }}; background: #F4F5F9; display: flex; align-items: center; justify-content: center"><div style="width: 20px; border-bottom: 2.5px dashed #9AA1B5"></div></div></sc-if>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ joinSentence }}" hint-placeholder-val="{{ false }}">
+<sc-for list="{{ slots }}" as="s" hint-placeholder-count="4">
+<sc-if value="{{ s.filled }}" hint-placeholder-val="{{ false }}"><button onClick="{{ s.remove }}" aria-label="{{ s.aria }}" aria-disabled="{{ s.off }}" style="min-height: 50px; min-width: 48px; max-width: 100%; padding: 0 10px; border-radius: 12px; font-size: 16px; font-weight: 700; overflow-wrap: anywhere; border: {{ s.border }}; box-shadow: {{ s.shadow }}; background: {{ s.bg }}; cursor: {{ s.cursor }}"><sc-for list="{{ s.segs }}" as="g" hint-placeholder-count="1"><sc-if value="{{ g.ruby }}" hint-placeholder-val="{{ false }}"><ruby>{{ g.t }}<rt lang="es" style="font-size: 10px">{{ g.r }}</rt></ruby></sc-if><sc-if value="{{ g.plain }}" hint-placeholder-val="{{ true }}">{{ g.t }}</sc-if></sc-for></button></sc-if>
+<sc-if value="{{ s.empty }}" hint-placeholder-val="{{ true }}"><div role="img" aria-label="{{ s.aria }}" style="width: 76px; height: 50px; box-sizing: border-box; border-radius: 12px; border: 2.5px dashed #C9D0E3; background: #F4F5F9"></div></sc-if>
+</sc-for>
+</sc-if>
+<sc-if value="{{ hasAfter }}" hint-placeholder-val="{{ false }}"><div style="overflow-wrap: anywhere; margin-left: {{ afterPull }}"><sc-for list="{{ after }}" as="g" hint-placeholder-count="1"><sc-if value="{{ g.ruby }}" hint-placeholder-val="{{ false }}"><ruby>{{ g.t }}<rt lang="es" style="font-size: 10px">{{ g.r }}</rt></ruby></sc-if><sc-if value="{{ g.plain }}" hint-placeholder-val="{{ true }}">{{ g.t }}</sc-if></sc-for></div></sc-if>
+</div>
+<sc-for list="{{ postLines }}" as="p" hint-placeholder-count="1"><div style="overflow-wrap: anywhere"><sc-for list="{{ p.segs }}" as="g" hint-placeholder-count="1"><sc-if value="{{ g.ruby }}" hint-placeholder-val="{{ false }}"><ruby>{{ g.t }}<rt lang="es" style="font-size: 10px">{{ g.r }}</rt></ruby></sc-if><sc-if value="{{ g.plain }}" hint-placeholder-val="{{ true }}">{{ g.t }}</sc-if></sc-for></div></sc-for>
+</div>
+<sc-if value="{{ hintAsk }}" hint-placeholder-val="{{ true }}">
+<div style="margin-top: 6px; display: flex; align-items: flex-end; gap: 10px">
+<svg viewBox="0 0 100 100" width="48" height="48" role="img" aria-label="Kaguare, el oso melero" style="flex-shrink: 0"><path d="M26.17 58.19C24.25 59.48 22.2 60.42 20.4 62.04C18.61 63.66 16.69 66.08 15.39 67.9C14.09 69.73 13.32 71.72 12.61 72.99C11.89 74.26 11.6 74.92 11.08 75.54C10.56 76.16 9.83 76.41 9.5 76.69C9.16 76.96 9.19 77.35 9.05 77.17C8.92 77 8.8 76.55 8.71 75.64C8.62 74.74 8.48 73.06 8.53 71.75C8.59 70.44 8.79 68.87 9.05 67.77C9.32 66.67 9.83 65.74 10.11 65.16C10.4 64.58 10.35 64.3 10.75 64.3C11.15 64.31 11.94 65.19 12.52 65.2C13.11 65.2 14.02 64.77 14.25 64.31C14.47 63.84 14.36 62.98 13.88 62.4C13.39 61.83 12.43 60.85 11.33 60.88C10.24 60.92 8.35 61.65 7.3 62.61C6.25 63.58 5.59 65.22 5.05 66.68C4.5 68.13 4.23 69.81 4.02 71.35C3.81 72.88 3.62 74.32 3.77 75.9C3.92 77.49 3.9 79.66 4.95 80.83C5.99 81.99 8.35 82.81 10.04 82.9C11.73 83 13.51 82.37 15.1 81.42C16.68 80.46 18.26 78.52 19.54 77.17C20.83 75.83 21.75 74.38 22.82 73.34C23.89 72.31 24.48 71.7 25.98 70.97C27.49 70.25 29.88 69.66 31.83 69.01Z" fill="#EDC27C"/><path d="M20.15 70.47C20.74 70.71 20.68 72.05 20.37 72.87C20.06 73.69 18.95 75.26 18.3 75.41C17.66 75.56 16.75 74.41 16.5 73.75C16.25 73.09 16.21 71.97 16.82 71.42C17.43 70.87 19.56 70.23 20.15 70.47Z" fill="#2A2120"/><path d="M10.57 78.66C10.78 79.01 10.58 80.06 10.18 80.29C9.78 80.52 8.67 80.26 8.16 80.04C7.65 79.82 6.99 79.26 7.12 78.95C7.25 78.64 8.37 78.23 8.94 78.18C9.51 78.13 10.36 78.31 10.57 78.66Z" fill="#2A2120"/><path d="M7.66 68.46C7.88 68.64 7.74 69.25 7.49 69.58C7.24 69.91 6.49 70.46 6.18 70.45C5.87 70.44 5.64 69.82 5.64 69.5C5.64 69.18 5.84 68.68 6.18 68.51C6.52 68.34 7.44 68.28 7.66 68.46Z" fill="#2A2120"/><path d="M26.17 58.19C24.25 59.48 22.2 60.42 20.4 62.04C18.61 63.66 16.69 66.08 15.39 67.9C14.09 69.73 13.32 71.72 12.61 72.99C11.89 74.26 11.6 74.92 11.08 75.54C10.56 76.16 9.83 76.41 9.5 76.69C9.16 76.96 9.19 77.35 9.05 77.17C8.92 77 8.8 76.55 8.71 75.64C8.62 74.74 8.48 73.06 8.53 71.75C8.59 70.44 8.79 68.87 9.05 67.77C9.32 66.67 9.83 65.74 10.11 65.16C10.4 64.58 10.35 64.3 10.75 64.3C11.15 64.31 11.94 65.19 12.52 65.2C13.11 65.2 14.02 64.77 14.25 64.31C14.47 63.84 14.36 62.98 13.88 62.4C13.39 61.83 12.43 60.85 11.33 60.88C10.24 60.92 8.35 61.65 7.3 62.61C6.25 63.58 5.59 65.22 5.05 66.68C4.5 68.13 4.23 69.81 4.02 71.35C3.81 72.88 3.62 74.32 3.77 75.9C3.92 77.49 3.9 79.66 4.95 80.83C5.99 81.99 8.35 82.81 10.04 82.9C11.73 83 13.51 82.37 15.1 81.42C16.68 80.46 18.26 78.52 19.54 77.17C20.83 75.83 21.75 74.38 22.82 73.34C23.89 72.31 24.48 71.7 25.98 70.97C27.49 70.25 29.88 69.66 31.83 69.01Z" fill="none" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M28.6 70 C27.4 75.6 27.4 80 29.2 82 Q30.4 83 32.4 83 L40.6 83 Q42.6 83 42.6 81.2 Q42.4 79.6 40.4 79.3 L38.2 78.8 L39.4 70 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M25 70.6C23.07 68 22.07 64.43 22.4 61C22.73 57.57 24.57 52.83 27 50C29.43 47.17 33.43 45.28 37 44C40.57 42.72 45.17 42.53 48.4 42.3C51.63 42.07 54.51 43.19 56.4 42.6C58.29 42.01 59.76 38.77 59.76 38.77C59.76 38.77 62.59 45.03 64.6 47C66.61 48.97 70.78 48.79 71.8 50.6C72.82 52.41 70.44 56.92 70.69 57.83C70.94 58.75 74.42 59.44 74.8 61.6C75.18 63.76 74.87 68.3 73 70.8C71.13 73.3 67.77 75.38 63.6 76.6C59.43 77.82 52.93 78.1 48 78.1C43.07 78.1 37.83 77.85 34 76.6C30.17 75.35 26.93 73.2 25 70.6Z" fill="#EDC27C"/><path d="M60.65 40.62C61.37 42.68 61.81 44.64 62.8 46.8C63.79 48.96 65.4 51.5 66.6 53.6C67.8 55.7 69 57.93 70 59.4C71 60.87 71.79 61.5 72.6 62.4C73.41 63.3 74.13 64.02 74.89 64.83C74.81 65.79 74.65 66.81 74.38 67.78C74.07 68.91 73.62 69.97 73 70.8C72.38 71.63 71.59 72.42 70.66 73.14C69.73 73.87 68.66 74.53 67.47 75.11C66.29 75.69 64.99 76.19 63.6 76.6C62.21 77.01 60.56 77.31 58.8 77.53C57.04 77.75 55.16 77.89 53.31 77.98C51.46 78.07 49.64 78.1 48 78.1C46.42 78.1 44.8 78.07 43.22 78C40.48 76.13 37.24 74.73 35 72.4C32.76 70.07 31.03 66.73 29.8 64C28.57 61.27 28.07 58.33 27.6 56C27.13 53.67 27.2 52 27 50C27.81 49.06 28.8 48.22 29.88 47.47C30.97 46.72 32.15 46.07 33.36 45.5C34.57 44.92 35.81 44.43 37 44C38.19 43.57 39.49 43.27 40.82 43.04C42.15 42.81 43.51 42.67 44.8 42.56C46.09 42.45 47.32 42.38 48.4 42.3C49.48 42.22 50.52 42.3 51.49 42.4C52.46 42.51 53.38 42.66 54.2 42.73C55.03 42.8 55.77 42.8 56.4 42.6C57.03 42.4 57.62 41.91 58.11 41.34C58.61 40.78 59.02 40.13 59.31 39.63C59.6 39.13 59.76 38.77 59.76 38.77C59.76 38.77 60.08 39.46 60.57 40.46C60.6 40.52 60.62 40.57 60.65 40.62Z" fill="#2A2120"/><path d="M70.69 57.83C70.94 58.75 74.42 59.44 74.8 61.6C75.18 63.76 74.87 68.3 73 70.8C71.13 73.3 67.77 75.38 63.6 76.6C59.43 77.82 52.93 78.1 48 78.1C43.07 78.1 37.83 77.85 34 76.6C30.17 75.35 26.93 73.2 25 70.6C23.07 68 22.07 64.43 22.4 61C22.73 57.57 24.57 52.83 27 50C29.43 47.17 33.43 45.28 37 44C40.57 42.72 45.17 42.53 48.4 42.3C51.63 42.07 54.51 43.19 56.4 42.6C58.29 42.01 59.76 38.77 59.76 38.77" fill="none" stroke="#1B2440" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M64.4 60.2C65.4 60.1 66.93 60.83 67.6 62.2C68.27 63.57 68.18 66.33 68.4 68.4C68.62 70.47 68.52 72.93 68.9 74.6C69.28 76.27 69.92 77.57 70.7 78.4C71.48 79.23 73.11 79.11 73.6 79.6C74.09 80.09 74.58 81.82 74.4 82.1C74.22 82.38 72.08 82.94 71.4 83C70.72 83.06 64.84 83.08 64.2 83C63.56 82.92 62.06 82.54 61.8 81.8C61.54 81.06 61.68 77.9 61.6 75.6C61.52 73.3 61.3 70.13 61.3 68C61.3 65.87 61.08 64.1 61.6 62.8C62.12 61.5 63.4 60.3 64.4 60.2Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M70.86 80.04C70.89 80.41 71.14 80.88 71.42 81.11C71.7 81.34 72.09 81.42 72.54 81.44C72.99 81.46 73.61 81.3 74.14 81.22C74.67 81.15 75.31 81.11 75.73 80.99C76.15 80.87 76.46 80.76 76.67 80.51C76.88 80.26 77.02 79.81 76.99 79.47C76.96 79.13 76.73 78.71 76.48 78.5C76.23 78.29 75.91 78.25 75.47 78.21C75.03 78.17 74.4 78.26 73.86 78.28C73.33 78.31 72.7 78.26 72.26 78.36C71.82 78.46 71.45 78.61 71.22 78.89C70.99 79.17 70.83 79.67 70.86 80.04Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><path d="M71.05 81.65C71.04 82.02 71.23 82.51 71.48 82.78C71.73 83.05 72.1 83.18 72.55 83.25C73 83.32 73.62 83.23 74.15 83.22C74.69 83.21 75.33 83.26 75.76 83.2C76.19 83.14 76.51 83.07 76.75 82.84C76.99 82.61 77.19 82.18 77.2 81.84C77.21 81.5 77.04 81.06 76.81 80.82C76.58 80.58 76.27 80.49 75.84 80.4C75.41 80.31 74.78 80.32 74.25 80.28C73.72 80.24 73.1 80.11 72.65 80.15C72.2 80.2 71.82 80.3 71.55 80.55C71.28 80.8 71.06 81.28 71.05 81.65Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(69.6 44.2) rotate(11) scale(1.08)"><path d="M-8.6 -5.8 C-13.6 -8.4 -14.2 -13.6 -10 -14.6 C-5.8 -15.4 -3.6 -11.6 -4.4 -7.2 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.59" stroke-linejoin="round" stroke-linecap="round"/><path d="M-10.4 -5.8 C-11.8 -8.6 -11.4 -11.6 -9.4 -12 C-7.4 -12.4 -6.2 -10.2 -6.6 -7.4 Z" fill="#D49A55"/></g><path d="M59.76 38.77C60.67 37.11 60.91 34.86 62.49 33.8C64.07 32.73 67.14 32.22 69.26 32.36C71.38 32.5 73.7 33.57 75.2 34.62C76.71 35.66 77.46 36.64 78.28 38.62C79.09 40.61 78.76 44.74 80.08 46.52C81.41 48.31 84.33 48.27 86.24 49.33C88.15 50.39 90.34 51.86 91.55 52.88C92.76 53.9 93.24 54.49 93.5 55.45C93.76 56.41 93.58 57.78 93.08 58.64C92.58 59.5 91.47 60.34 90.51 60.6C89.55 60.85 88.67 60.65 87.31 60.17C85.95 59.7 84.12 58.42 82.33 57.77C80.54 57.11 78.12 56.33 76.56 56.27C75 56.21 73.95 57.14 72.98 57.4C72 57.66 71.45 57.69 70.69 57.83C68.51 56.97 66 56.52 64.15 55.24C62.31 53.97 60.68 51.97 59.64 50.18C58.59 48.4 57.85 46.46 57.87 44.56C57.89 42.66 59.13 40.7 59.76 38.77Z" fill="#EDC27C"/><path d="M59.76 38.77C60.67 37.11 60.91 34.86 62.49 33.8C64.07 32.73 67.14 32.22 69.26 32.36C71.38 32.5 73.7 33.57 75.2 34.62C76.71 35.66 77.46 36.64 78.28 38.62C79.09 40.61 78.76 44.74 80.08 46.52C81.41 48.31 84.33 48.27 86.24 49.33C88.15 50.39 90.34 51.86 91.55 52.88C92.76 53.9 93.24 54.49 93.5 55.45C93.76 56.41 93.58 57.78 93.08 58.64C92.58 59.5 91.47 60.34 90.51 60.6C89.55 60.85 88.67 60.65 87.31 60.17C85.95 59.7 84.12 58.42 82.33 57.77C80.54 57.11 78.12 56.33 76.56 56.27C75 56.21 73.95 57.14 72.98 57.4C72 57.66 71.45 57.69 70.69 57.83" fill="none" stroke="#1B2440" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(69.6 44.2) rotate(11) scale(1.08)"><ellipse cx="21.15" cy="8.03" rx="1.25" ry="1.5" transform="rotate(19.09 21.15 8.03)" fill="#1B2440"/><ellipse cx="2.4" cy="-2.4" rx="3.1" ry="3" fill="#C98E4E"/><ellipse cx="3" cy="2.8" rx="2.2" ry="1.35" fill="#F08CA5"/><g data-part="eye-open"><ellipse cx="2.4" cy="-2.4" rx="1.95" ry="2.3" fill="#1B2440"/><circle cx="3.08" cy="-3.32" r="0.78" fill="#FFFFFF"/></g><g data-part="eye-closed" opacity="0"><path d="M0.2 -2.3 Q2.4 -0.4 4.6 -2.3" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="eye-happy" opacity="0"><path d="M0.2 -1.5 Q2.4 -5.2 4.6 -1.5" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="mouth-normal"><path d="M9.8 6.2 Q7.4 7.5 5.2 5.5" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="mouth-o" opacity="0"><ellipse cx="7.6" cy="5.9" rx="1.3" ry="1.5" fill="#1B2440"/></g><g data-part="mouth-happy" opacity="0"><path d="M4.8 4.5 L10.8 4.7 C10.6 6.2 9.4 7.15 7.8 7.15 C6.2 7.15 5.0 6.2 4.8 4.5 Z" fill="#F08CA5"/><path d="M10.8 4.7 C10.6 6.2 9.4 7.15 7.8 7.15 C6.2 7.15 5.0 6.2 4.8 4.5" fill="none" stroke="#1B2440" stroke-width="1.67" stroke-linejoin="round" stroke-linecap="round"/></g></g><circle cx="45" cy="60.2" r="10.5" fill="#FFFFFF" stroke="#1B2440" stroke-width="2.2"/><g class="rosette"><path d="M45 51V69.4M35.8 60.2H54.2M38.5 53.7L51.5 66.7M51.5 53.7L38.5 66.7" fill="none" stroke="#C2336F" stroke-width="1.5" stroke-linecap="round"/><circle cx="45" cy="60.2" r="6.5" fill="none" stroke="#C2336F" stroke-width="1.3"/><circle cx="45" cy="60.2" r="2.8" fill="#C2336F"/></g><g data-part="sweat" opacity="0"><path d="M79.8 18.2c2.2 3.6 3.6 5.8 3.6 8a3.6 3.6 0 0 1 -7.2 0c0 -2.2 1.4 -4.4 3.6 -8z" fill="#9FD3F5" stroke="#1B2440" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="sparks" opacity="0"><path d="M88.6 35 l4.2 -4.8 M91.4 43.6 l6.4 -1.4 M88.6 26.8 l2.4 -5.6" fill="none" stroke="#F2B43A" stroke-width="3" stroke-linecap="round"/></g></svg>
+<div aria-live="polite" style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column">
+<sc-if value="{{ hintClosed }}" hint-placeholder-val="{{ false }}"><button onClick="{{ showHint }}" aria-expanded="false" style="min-height: 50px; padding: 8px 14px; border-radius: 16px 16px 16px 4px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; display: flex; align-items: center; gap: 8px; text-align: left"><span style="flex-grow: 1; font-size: 13px; font-weight: 800"><span lang="gn" style="color: #B02A63">Pytyvõ</span> · Ver una pista</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M6 9l6 6 6-6"/></svg></button></sc-if>
+<sc-if value="{{ hintOpen }}" hint-placeholder-val="{{ true }}"><div style="padding: 10px 14px; border-radius: 16px 16px 16px 4px; background: #FFFFFF; border: 2px solid #1B2440; display: flex; flex-direction: column; gap: 2px">
+<div style="font-size: 11px; font-weight: 800; color: #B02A63">PISTA · solo en la práctica</div>
+<div style="font-size: 13px; font-weight: 700; line-height: 1.45">{{ hint }}</div>
+</div></sc-if>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ buildAsking }}" hint-placeholder-val="{{ true }}">
+<div style="margin-top: 8px; font-size: 12px; font-weight: 800; color: #5A6382">Fichas</div>
+<div lang="gn" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; font-family: 'Andika', 'Nunito', sans-serif">
+<sc-for list="{{ bank }}" as="b" hint-placeholder-count="4">
+<sc-if value="{{ b.here }}" hint-placeholder-val="{{ true }}"><button onClick="{{ b.place }}" aria-label="{{ b.label }}" style="min-height: 54px; padding: 4px 10px; border-radius: 14px; border: 2px solid #1B2440; background: #FFFFFF; box-shadow: 0 4px 0 #1B2440; font-size: 18px; font-weight: 700; overflow-wrap: anywhere"><sc-for list="{{ b.segs }}" as="g" hint-placeholder-count="1"><sc-if value="{{ g.ruby }}" hint-placeholder-val="{{ false }}"><ruby>{{ g.t }}<rt lang="es" style="font-size: 10px">{{ g.r }}</rt></ruby></sc-if><sc-if value="{{ g.plain }}" hint-placeholder-val="{{ true }}">{{ g.t }}</sc-if></sc-for></button></sc-if>
+<sc-if value="{{ b.gone }}" hint-placeholder-val="{{ false }}"><div aria-hidden="true" style="height: 54px; box-sizing: border-box; border-radius: 14px; border: 2px dashed #C9D0E3"></div></sc-if>
+</sc-for>
+</div>
+</sc-if>
+</sc-if>
+</sc-if>
+</div>
+
+<sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+<div style="padding: 0 16px 34px; display: flex; flex-direction: column; flex-shrink: 0">
+<a href="Today.dc.html" onClick="{{ toToday }}" style="height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-size: 17px; font-weight: 800; display: flex; align-items: center; justify-content: center"><span lang="gn">Tapykue</span> · Volver</a>
+</div>
+</sc-if>
+
+<sc-if value="{{ asking }}" hint-placeholder-val="{{ true }}">
+<div style="padding: 0 16px 34px; display: flex; flex-direction: column; flex-shrink: 0">
+<button disabled="{{ notReady }}" onClick="{{ check }}" style="height: 54px; border-radius: 16px; font-weight: 800; font-size: 17px; border: {{ ck.border }}; background: {{ ck.bg }}; color: {{ ck.color }}; box-shadow: {{ ck.shadow }}"><span lang="gn">Embohovái</span> · Respondé</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ checked }}" hint-placeholder-val="{{ false }}">
+<div style="flex-shrink: 0; max-height: 470px; overflow-y: auto; padding: 16px 16px 34px; border-radius: 26px 26px 0 0; border-top: 2px solid #1B2440; display: flex; flex-direction: column; gap: 10px; animation: gn-up 240ms ease-out; background: {{ sheetBg }}">
+<div style="display: flex; align-items: center; gap: 10px">
+<sc-if value="{{ wrong }}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#C7361E" stroke-width="3.5" stroke-linecap="round" aria-hidden="true" style="flex-shrink: 0"><path d="M5 5l14 14M19 5L5 19"/></svg></sc-if>
+<sc-if value="{{ correct }}" hint-placeholder-val="{{ true }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></sc-if>
+<div style="flex-grow: 1; font-size: 20px; font-weight: 800"><sc-if value="{{ correct }}" hint-placeholder-val="{{ true }}"><span lang="gn">¡Iporã!</span> <span style="font-size: 14px; font-weight: 700">¡Correcto!</span></sc-if><sc-if value="{{ wrong }}" hint-placeholder-val="{{ false }}">Casi</sc-if></div>
+<sc-if value="{{ showAnswer }}" hint-placeholder-val="{{ false }}"><div style="display: flex; align-items: baseline; gap: 5px; font-size: 13px; font-weight: 800; min-width: 0; flex-shrink: 1; max-width: 62%; line-height: 1.35"><span style="white-space: nowrap; flex-shrink: 0">La correcta:</span><span lang="gn" style="min-width: 0; font-family: 'Andika', 'Nunito', sans-serif; font-weight: 700; overflow-wrap: anywhere">{{ answerLabel }}</span></div></sc-if>
+</div>
+<div style="padding: 12px 14px; border-radius: 16px; background: #FFFFFF; display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 12px; font-weight: 800; color: #5A6382">{{ whyHead }}</div>
+<sc-if value="{{ fullWord }}" hint-placeholder-val="{{ false }}"><div lang="gn" style="display: flex; flex-wrap: wrap; align-items: center; gap: 2px 10px; font-family: 'Andika', 'Nunito', sans-serif">
+<span style="font-size: 15px; line-height: 1.5; color: #5A6382; overflow-wrap: anywhere">{{ pieces }}</span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5A6382" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+<span style="min-width: 0; font-weight: 700; line-height: 1.5; overflow-wrap: anywhere; font-size: {{ wordSize }}"><sc-for list="{{ wordSegs }}" as="g" hint-placeholder-count="3"><sc-if value="{{ g.ruby }}" hint-placeholder-val="{{ false }}"><ruby style="background: {{ g.bg }}; border-radius: 4px"><span style="border-bottom: {{ g.line }}">{{ g.t }}</span><rt lang="es" style="font-size: 10px">{{ g.r }}</rt></ruby></sc-if><sc-if value="{{ g.plain }}" hint-placeholder-val="{{ true }}"><span style="background: {{ g.bg }}; border-radius: 4px; padding: {{ g.pad }}; white-space: {{ g.ws }}; border-bottom: {{ g.line }}">{{ g.t }}</span></sc-if></sc-for></span>
+</div></sc-if>
+<sc-if value="{{ showSentence }}" hint-placeholder-val="{{ false }}"><div lang="gn" style="font-family: 'Andika', 'Nunito', sans-serif; font-size: 16px; font-weight: 400; line-height: 2; overflow-wrap: anywhere"><sc-for list="{{ full }}" as="g" hint-placeholder-count="3"><sc-if value="{{ g.ruby }}" hint-placeholder-val="{{ false }}"><ruby style="background: {{ g.bg }}; border-radius: 4px"><span style="border-bottom: {{ g.line }}">{{ g.t }}</span><rt lang="es" style="font-size: 10px">{{ g.r }}</rt></ruby></sc-if><sc-if value="{{ g.plain }}" hint-placeholder-val="{{ true }}"><span style="background: {{ g.bg }}; border-radius: 4px; padding: {{ g.pad }}; white-space: {{ g.ws }}; border-bottom: {{ g.line }}">{{ g.t }}</span></sc-if></sc-for></div></sc-if>
+<sc-if value="{{ hasMeaning }}" hint-placeholder-val="{{ false }}"><div style="margin-top: -4px; font-size: 12px; font-weight: 500; line-height: 1.4; color: #5A6382; white-space: pre-line">{{ meaning }}</div></sc-if>
+<sc-if value="{{ hasExplain }}" hint-placeholder-val="{{ false }}"><div style="font-size: 13px; font-weight: 500; line-height: 1.45">{{ explain }}</div></sc-if>
+<sc-for list="{{ whys }}" as="w" hint-placeholder-count="4">
+<div style="display: flex; align-items: flex-start; gap: 8px">
+<sc-if value="{{ w.ok }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Correcta" style="flex-shrink: 0; margin-top: 2px"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></sc-if>
+<sc-if value="{{ w.no }}" hint-placeholder-val="{{ true }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C7361E" stroke-width="3.5" stroke-linecap="round" role="img" aria-label="Incorrecta" style="flex-shrink: 0; margin-top: 2px"><path d="M6 6l12 12M18 6L6 18"/></svg></sc-if>
+<div style="min-width: 0; font-size: 13px; font-weight: 500; line-height: 1.4"><strong lang="gn" style="font-family: 'Andika', 'Nunito', sans-serif; font-weight: 700">{{ w.label }}</strong><sc-if value="{{ w.mine }}" hint-placeholder-val="{{ false }}"> <span style="padding: 1px 6px; border-radius: 6px; background: #FDEBE6; font-size: 11px; font-weight: 800; white-space: nowrap">tu respuesta</span></sc-if><span style="margin-left: 6px">{{ w.text }}</span></div>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ wrong }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M6 3h12a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H6z"/><path d="M6 3v18M3 7h3M3 12h3M3 17h3M10 8h5"/></svg>
+Guardado en tu cuaderno de errores. Vuelve mañana.
+</div>
+</sc-if>
+<a href="Today.dc.html" onClick="{{ next }}" style="flex-shrink: 0; height: 54px; border-radius: 16px; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center; background: {{ tone }}"><sc-if value="{{ last }}" hint-placeholder-val="{{ false }}">Terminar la práctica</sc-if><sc-if value="{{ notLast }}" hint-placeholder-val="{{ true }}"><span lang="gn">Upeigua</span> · Siguiente</sc-if></a>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"go":{"editor":null},"app":{"editor":null},"save":{"editor":null},"miss":{"editor":null},"reviewed":{"editor":null},"level":{"editor":null},"$preview":{"width":390,"height":844}}'>
+/* The drill: the day's grammar practised with support. Glosses and highlights stay on, a build item can show a hint
+   on request, there is one try per item, every option has its reason, and every wrong answer goes to the notebook.
+   Two kinds of item: choice (pick, then answer) and build (tap the tiles in order: the pieces of ONE word, which sit
+   tight in one frame and are glued without spaces, or the words of a sentence). The joined spelling shown afterwards
+   is the item's own `full`, never the raw concatenation, because accents move when pieces join. */
+
+/* the designed moment's learner, relative to today so it never drifts: unit 1, days 1-3 stamped, day 4's teach pages read */
+function sample() {
+  const C = window.gnCourse;
+  const T = C.today(C.now());
+  const full = { g: 3, k: 1, r: 1 };
+  return { level: 'A1', started: true, plan: { start: C.addDays(T, -3), target: C.addDays(T, 60), pace: 'fit', minutes: 30 },
+    done: { a1u01d1: full, a1u01d2: full, a1u01d3: full, a1u01d4: { g: 1 } }, tests: {}, exams: {}, mistakes: [],
+    cur: 'a1u01d4', placement: { comp: 'A2', prod: 'A1', start: 'A1' }, typed: [] };
+}
+/* what the drill can ask; anything half-written is left out, so a day still being written never breaks the screen */
+function usable(it) {
+  if (!it || typeof it !== 'object') return false;
+  if (it.kind === 'choice') return Array.isArray(it.options) && it.options.length > 1 && Number.isInteger(it.answer) && it.answer >= 1 && it.answer <= it.options.length;
+  if (it.kind === 'build') return Array.isArray(it.tiles) && it.tiles.length > 1;
+  return false;
+}
+/* a tile in the right place: its own slot, or a slot whose tile reads the same (two equal tiles can swap) */
+function inPlace(it, t, k) {
+  const C = window.gnCourse;
+  return t === k || (t !== null && C.norm(it.tiles[t]) === C.norm(it.tiles[k]));
+}
+/* a lowercase copy with the written accents set aside, letter for letter (a suffix can move the accent) */
+const ACUTE = { 'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u', 'ý': 'y' };
+const bare = (s) => s.toLowerCase().replace(/[áéíóúý]/g, (c) => ACUTE[c]);
+/* how far `part` reaches into `whole` from its start (or from its end), spacing ignored; -1 when it does not fit */
+function reach(whole, part, fromEnd) {
+  const w = fromEnd ? whole.split('').reverse() : whole.split('');
+  const p = (fromEnd ? part.split('').reverse() : part.split('')).filter((c) => !/\s/.test(c));
+  let i = 0;
+  for (let k = 0; k < p.length; k++) {
+    while (i < w.length && /\s/.test(w[i])) i++;
+    if (i >= w.length || w[i] !== p[k]) return -1;
+    i++;
+  }
+  return i;
+}
+/* the stretch of the item's own `full` that the tiles make, between before and after (the Build board's recipe):
+   the word as it is really spelled (reikuaá{pa}, not re + ikuaa + pa run together). null when they do not frame it */
+function core(it, whole) {
+  const C = window.gnCourse;
+  const f = bare(whole);
+  const b = reach(f, bare(C.plain(it.before || '')), false);
+  const a = reach(f, bare(C.plain(it.after || '')), true);
+  if (b < 0 || a < 0) return null;
+  let s = b;
+  let e = whole.length - a;
+  while (s < e && /\s/.test(whole[s])) s++;
+  while (e > s && /\s/.test(whole[e - 1])) e--;
+  return e > s ? { s, e, text: whole.slice(s, e), all: s === 0 && e === whole.length } : null;
+}
+/* the segments that cover [s, e) of a text; a gloss stays only over a word kept whole */
+function cut(list, s, e) {
+  const out = [];
+  let pos = 0;
+  list.forEach((g) => {
+    const t = g.t || '';
+    const a = pos;
+    const b = pos + t.length;
+    pos = b;
+    const x = Math.max(a, s);
+    const y = Math.min(b, e);
+    if (y <= x) return;
+    const whole = x === a && y === b;
+    out.push(Object.assign({}, g, { t: t.slice(x - a, y - a), ruby: g.ruby && whole, plain: !(g.ruby && whole), r: whole ? g.r : '' }));
+  });
+  return out;
+}
+function drillOf(app) {
+  const g = app && app.day && app.day.grammar;
+  return g && Array.isArray(g.drill) ? g.drill.filter(usable) : [];
+}
+/* the order the tiles are shown in: the item's bank, or the tiles backwards if the bank is missing or broken */
+function bankOf(it) {
+  const n = it.tiles.length;
+  const b = Array.isArray(it.bank) ? it.bank : [];
+  const sorted = b.slice().sort((x, y) => x - y);
+  return b.length === n && sorted.every((x, k) => x === k) ? b : it.tiles.map((_, k) => n - 1 - k);
+}
+/* a highlight inside a word (óga{pe}, {nd}aguatá{i}) sits flush with its letters: no side padding */
+function flush(segs) {
+  return segs.map((g, k) => {
+    if (!g.bg || g.bg === 'transparent') return g;
+    const a = segs[k - 1];
+    const b = segs[k + 1];
+    const touch = (a && /[\p{L}\p{M}']$/u.test(a.t || '')) || (b && /^[\p{L}\p{M}']/u.test(b.t || ''));
+    return touch ? Object.assign({}, g, { pad: '0' }) : g;
+  });
+}
+/* rich text for the template: glosses, highlights, underline and clue, the blank as its own segment, newlines kept */
+function segsOf(src, opt) {
+  const C = window.gnCourse;
+  return flush(C.rich(src || '', opt || {})).map((g) => ({
+    t: g.t, r: g.r, ruby: g.ruby, plain: g.plain, blank: g.blank, bg: g.bg, pad: g.pad,
+    ws: g.ws === 'nowrap' ? 'nowrap' : 'pre-line', line: g.line,
+  }));
+}
+function tileSegs(src) {
+  return segsOf(src, { hl: false }).filter((g) => !g.blank).map((g) => ({ t: g.t, r: g.r, ruby: g.ruby, plain: g.plain }));
+}
+/* the text around the slots can be a dialogue: its earlier lines stand above the slots' row, its later lines below */
+function around(it) {
+  const pre = String(it.before || '').split('\n');
+  const post = String(it.after || '').split('\n');
+  const line = (t) => ({ segs: tileSegs(t) });
+  return {
+    preLines: pre.slice(0, -1).filter((t) => t.trim()).map(line),
+    before: tileSegs(pre[pre.length - 1]),
+    after: tileSegs(post[0]),
+    afterText: window.gnCourse.plain(post[0]),
+    postLines: post.slice(1).filter((t) => t.trim()).map(line),
+  };
+}
+/* the Spanish meaning a build item asks for: quoted when it is one line, as a little script when it is a dialogue */
+function meaningTitle(es) {
+  if (!es) return '';
+  return es.indexOf('\n') >= 0 ? es : '«' + es.replace(/\.$/, '') + '»';
+}
+const FRESH = { i: 0, pick: null, checked: false, slots: [], hint: false };
+
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+/* inside the prototype the drill starts at its first item; on its own the artboard shows the designed moment:
+   the first item answered wrong and explained */
+this.state = props && props.go ? Object.assign({}, FRESH) : this.demo();
+}
+app() {
+if (this.props.app) return this.props.app;
+if (!this.sampleApp && window.gnCourse) this.sampleApp = window.gnCourse.view(sample());
+return this.sampleApp || {};
+}
+demo() {
+const it = drillOf(this.app())[0];
+const st = Object.assign({}, FRESH, { checked: !!it });
+if (!it) return st;
+if (it.kind === 'build') {
+const order = it.tiles.map((_, k) => k);
+order[0] = 1;
+order[1] = 0;
+return Object.assign(st, { slots: order });
+}
+return Object.assign(st, { pick: it.answer === 1 ? 2 : 1 });
+}
+/* the tiles placed so far, one per slot (null = empty), read at tap time */
+placedNow(it) {
+const had = Array.isArray(this.state.slots) ? this.state.slots : [];
+return it.tiles.map((_, k) => (Number.isInteger(had[k]) ? had[k] : null));
+}
+renderVals() {
+const C = window.gnCourse;
+const s = this.state;
+const app = this.app();
+const list = C ? drillOf(app) : [];
+const n = list.length;
+const i = Math.min(s.i, Math.max(0, n - 1));
+const it = list[i] || null;
+const nav = (to) => (e) => { const go = this.props.go; if (go) { e.preventDefault(); go(to); } };
+const build = !!it && it.kind === 'build';
+const choice = !!it && it.kind === 'choice';
+const word = build && it.join === 'word';
+let ready = false;
+let right = false;
+let mine = '';
+let answerLabel = '';
+let opts = [];
+let whys = [];
+let slots = [];
+let bank = [];
+let cols = 'repeat(2, minmax(0, 1fr))';
+let fullSegs = [];
+let made = null;
+let frame = { border: '2px solid #1B2440', shadow: '0 3px 0 #1B2440' };
+let wordAria = '';
+if (build) {
+const tiles = it.tiles;
+const placed = this.placedNow(it);
+const used = placed.filter((t) => t !== null);
+const done = !!s.checked;
+ready = used.length === tiles.length;
+right = ready && placed.every((t, k) => inPlace(it, t, k));
+/* the notebook keeps the order the learner built: pieces joined with a middle dot, words with spaces */
+mine = placed.map((t) => (t === null ? '…' : C.plain(tiles[t]))).join(word ? '·' : ' ');
+/* the answer as the item spells it: its `full`, and inside it the stretch the tiles make (the word, not the sentence) */
+fullSegs = segsOf(it.full || tiles.map((t) => C.plain(t)).join(word ? '' : ' '));
+const whole = fullSegs.map((g) => g.t).join('');
+made = it.full ? core(it, whole) : null;
+answerLabel = made ? made.text : whole;
+/* once answered, the frame takes the verdict's colour and each tile says whether it is in its place */
+frame = !done ? frame : { border: right ? '2.5px solid #0B7A6B' : '2.5px solid #C7361E', shadow: 'none' };
+wordAria = 'La palabra que armás, ' + used.length + ' de ' + tiles.length + ' fichas';
+slots = placed.map((t, k) => {
+const has = t !== null;
+const ok = has && inPlace(it, t, k);
+return {
+filled: has,
+empty: !has,
+segs: has ? tileSegs(tiles[t]) : [],
+aria: has ? 'Ficha ' + (k + 1) + ': ' + C.plain(tiles[t]) + (done ? (ok ? ', en su lugar' : ', fuera de lugar') : '. Tocá para sacarla') : 'Lugar ' + (k + 1) + ', vacío',
+off: done,
+cursor: done ? 'default' : 'pointer',
+/* the pieces of a word sit tight, a hairline between them */
+edge: k > 0 ? '1px solid #C9D0E3' : 'none',
+bg: !done ? '#E8ECFB' : ok ? '#E0F3EF' : '#FDEBE6',
+border: !done ? '2px solid #1B2440' : ok ? '2.5px solid #0B7A6B' : '2.5px solid #C7361E',
+shadow: done ? 'none' : '0 3px 0 #1B2440',
+remove: () => {
+if (this.state.checked) return;
+const cur = this.placedNow(it);
+cur[k] = null;
+this.setState({ slots: cur });
+},
+};
+});
+bank = bankOf(it).map((t) => {
+const here = used.indexOf(t) < 0;
+return {
+here,
+gone: !here,
+label: C.plain(tiles[t]),
+segs: tileSegs(tiles[t]),
+place: () => {
+if (this.state.checked) return;
+const cur = this.placedNow(it);
+const at = cur.indexOf(null);
+if (at < 0 || cur.indexOf(t) >= 0) return;
+cur[at] = t;
+this.setState({ slots: cur });
+},
+};
+});
+} else if (choice) {
+const ans = it.answer;
+right = s.pick === ans;
+ready = Number.isInteger(s.pick);
+/* Latin words are wide: two columns only when every option fits in about fourteen letters */
+const long = it.options.some((o) => C.chars(C.plain(o)).length > 14);
+cols = long ? 'repeat(1, minmax(0, 1fr))' : 'repeat(2, minmax(0, 1fr))';
+opts = it.options.map((label, k) => {
+const num = k + 1;
+const on = s.pick === num;
+let look = { border: '2px solid #1B2440', bg: '#FFFFFF', shadow: '0 3px 0 #1B2440', color: '#1B2440', weight: 700, numColor: '#5A6382', press: 'none' };
+if (!s.checked && on) look = { border: '2.5px solid #2F4FD0', bg: '#E8ECFB', shadow: 'none', color: '#1B2440', weight: 700, numColor: '#2F4FD0', press: 'translateY(3px)' };
+if (s.checked) {
+if (num === ans) look = { border: '2.5px solid #0B7A6B', bg: '#E0F3EF', shadow: 'none', color: '#1B2440', weight: 700, numColor: '#5A6382', press: 'none' };
+else if (on) look = { border: '2.5px solid #C7361E', bg: '#FDEBE6', shadow: 'none', color: '#1B2440', weight: 700, numColor: '#5A6382', press: 'none' };
+else look = { border: '2px solid #DDE1EC', bg: '#FFFFFF', shadow: 'none', color: '#5A6382', weight: 400, numColor: '#5A6382', press: 'none' };
+}
+return Object.assign({
+n: num,
+label: C.plain(label),
+on,
+right: !!s.checked && num === ans,
+bad: !!s.checked && on && num !== ans,
+pick: () => { if (!this.state.checked) this.setState({ pick: num }); },
+}, look);
+});
+whys = (Array.isArray(it.why) ? it.why : []).map((text, k) => ({
+ok: k + 1 === ans,
+no: k + 1 !== ans,
+label: (k + 1) + ' ' + C.plain(it.options[k] || ''),
+mine: !!s.checked && !right && s.pick === k + 1,
+text: C.plain(text || ''),
+})).filter((w) => w.text);
+mine = ready ? C.plain(it.options[s.pick - 1] || '') : '';
+answerLabel = ans + ' ' + C.plain(it.options[ans - 1] || '');
+}
+const checked = !!it && !!s.checked;
+const correct = checked && right;
+const wrong = checked && !right;
+const last = i >= n - 1;
+const ctx = build ? around(it) : { preLines: [], before: [], after: [], afterText: '', postLines: [] };
+const head = it ? [C.area(it.area).es, C.plain(it.label || '')].filter(Boolean).join(' · ') : '';
+const es = build ? C.plain(it.es || '').trim() : '';
+return {
+has: !!it,
+empty: !it,
+head,
+isChoice: choice,
+isBuild: build,
+q: choice ? segsOf(it.q, { clue: checked ? 'line' : null }) : [],
+cols,
+opts,
+buildTitle: build ? meaningTitle(es) || (word ? 'Armá la palabra' : 'Armá la oración') : '',
+buildHow: word ? 'Tocá las fichas en orden: juntas forman una sola palabra.' : 'Tocá las fichas en orden para decirlo en guaraní.',
+joinWord: word,
+joinSentence: build && !word,
+frame,
+wordAria,
+preLines: ctx.preLines,
+hasBefore: ctx.before.length > 0,
+before: ctx.before,
+hasAfter: ctx.after.length > 0,
+after: ctx.after,
+/* punctuation right after the slots sits close to the last tile */
+afterPull: /^[.,;:!?…»)]/.test(ctx.afterText) ? '-6px' : '0',
+postLines: ctx.postLines,
+slots,
+bank,
+buildAsking: build && !checked,
+hintAsk: build && !checked && !!it.hint,
+hintClosed: !s.hint,
+hintOpen: !!s.hint,
+hint: build ? C.plain(it.hint || '') : '',
+showHint: () => this.setState({ hint: true }),
+asking: !!it && !checked,
+checked,
+correct,
+wrong,
+notReady: !ready,
+ck: ready
+? { border: '2px solid #1B2440', bg: '#2F4FD0', color: '#FFFFFF', shadow: '0 4px 0 #1B2440' }
+: { border: '2px solid #C9D0E3', bg: '#DDE1EC', color: '#5A6382', shadow: 'none' },
+/* as in Yaoki, a wrong answer names the right one beside the verdict: the option, or the word or words the tiles make */
+showAnswer: wrong,
+answerLabel,
+whyHead: build ? (word ? 'La palabra' : 'La oración') : 'Por qué cada opción',
+/* a word: its pieces, then the word as it is spelled; then its sentence, when the sentence holds more than the word */
+fullWord: word,
+pieces: word ? it.tiles.map((t) => C.plain(t)).join(' + ') : '',
+wordSegs: made ? cut(fullSegs, made.s, made.e) : fullSegs,
+wordSize: word && C.chars(answerLabel).length > 20 ? '20px' : '26px',
+showSentence: build && (!word || (!!made && !made.all)),
+full: fullSegs,
+hasMeaning: !!es,
+meaning: es,
+hasExplain: !!it && !!it.explain && (build || !whys.length),
+explain: it ? C.plain(it.explain || '') : '',
+whys,
+live: !checked ? '' : correct ? '¡Iporã! ¡Correcto!' : 'Casi. La correcta: ' + answerLabel,
+sheetBg: wrong ? '#FDEBE6' : '#E0F3EF',
+tone: wrong ? '#C7361E' : '#0B7A6B',
+barW: n ? Math.round(((i + (checked ? 1 : 0)) / n) * 100) + '%' : '0%',
+barLabel: n ? 'Pregunta ' + (i + 1) + ' de ' + n : 'Práctica en preparación',
+last,
+notLast: !last,
+check: () => {
+if (!ready || this.state.checked || !it) return;
+if (!right && this.props.miss) this.props.miss({ src: it.id, wrong: mine });
+this.setState({ checked: true });
+},
+next: (e) => {
+if (last) {
+if (this.props.save) this.props.save({ prog: { g: 2 } });
+return nav('Today')(e);
+}
+e.preventDefault();
+this.setState(Object.assign({}, FRESH, { i: i + 1 }));
+},
+toToday: nav('Today'),
+};
+}
+}
+</script>
+</body>
+</html>

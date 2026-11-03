@@ -1,0 +1,150 @@
+[
+ {
+  "id": "a1u01t.1", "kind": "choice", "area": "vocab", "label": "Qué significa",
+  "q": "Rosa le escribe a Juan: «_Maitei_, Juan.» ¿Qué le dice?",
+  "options": ["Perdón, Juan.", "Hola, Juan.", "Nos vemos, Juan.", "Gracias, Juan."],
+  "answer": 2,
+  "explain": "Maitei es un saludo cordial: «hola», «saludos». Perdón es Cheñyrõmi, nos vemos es Jajotopáta y gracias es Aguyje."
+ },
+ {
+  "id": "a1u01t.2", "kind": "choice", "area": "vocab", "label": "Qué significa",
+  "q": "Rosa: _Mba'éichapa nde ka'aru_, karai Juan?",
+  "options": ["Buen día, don Juan.", "Nos vemos esta tarde, don Juan.", "Buenas tardes, don Juan.", "Bienvenido, don Juan."],
+  "answer": 3,
+  "explain": "Mba'éichapa nde ka'aru? es el saludo de la tarde: «buenas tardes». Ka'aru es «la tarde», y karai, «señor»: karai Juan es «don Juan». Buen día sería Mba'éichapa nde pyhareve?, nos vemos esta tarde es Jajotopáta ko ka'aru y bienvenido es Tereg̃uahẽ porãite."
+ },
+ {
+  "id": "a1u01t.3", "kind": "choice", "area": "vocab", "label": "Cómo se escribe",
+  "q": "Una amiga te presta un libro. Le decís: «_Gracias_.» ¿Cómo se escribe en guaraní?",
+  "options": ["Aguije", "Ahuyje", "Aguyjẽ", "Aguyje"],
+  "answer": 4,
+  "explain": "Gracias es Aguyje, con y, la sexta vocal. Aguije la cambia por i, Ahuyje cambia la g por h y Aguyjẽ agrega una tilde nasal que la palabra no lleva."
+ },
+ {
+  "id": "a1u01t.4", "kind": "choice", "area": "vocab", "label": "Cómo se escribe",
+  "q": "Llegás tarde a la clase. Le decís a la profesora: «_Perdón_.» ¿Cómo se escribe en guaraní?",
+  "options": ["Cheñyrõmi", "Cheñyromi", "Chenyrõmi", "Cheñirõmi"],
+  "answer": 1,
+  "explain": "Perdón es Cheñyrõmi: lleva ñ, la vocal y y la o nasal õ. Cheñyromi no tiene la tilde nasal, Chenyrõmi cambia la ñ por n y Cheñirõmi cambia la y por i."
+ },
+ {
+  "id": "a1u01t.5", "kind": "choice", "area": "vocab", "label": "Elegí la palabra",
+  "q": "(Ana te muestra una foto de su mamá.)\nAna: Che (   ).",
+  "options": ["ru", "angirũ", "jarýi", "sy"],
+  "answer": 4,
+  "explain": "En la foto está la mamá de Ana: che sy, «mi mamá». Che ru es «mi papá», che angirũ, «mi amigo» o «mi amiga», y che jarýi, «mi abuela»."
+ },
+ {
+  "id": "a1u01t.6", "kind": "choice", "area": "vocab", "label": "Qué significa",
+  "q": "Rosa le pregunta a Juan: «_Moõpa reiko?_»",
+  "options": ["¿Cómo andás?", "¿Qué querés?", "¿Dónde vivís?", "¿Cuánto cuesta?"],
+  "answer": 3,
+  "explain": "Moõpa es «¿dónde?», y reiko, «vivís»: «¿dónde vivís?». ¿Cómo andás? es Mba'éichapa reiko?, ¿qué querés? es Mba'épa reipota? y ¿cuánto cuesta? es Mboýpa ovale?"
+ },
+ {
+  "id": "a1u01t.7", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
+  "q": "(Ana y Luis son de Paraguay. Se lo cuentan a Lucas, un chico de Argentina.)\nAna: (   ) Paraguaigua.",
+  "options": ["Ñande", "Ore", "Peẽ", "Ha'ekuéra"],
+  "answer": 2,
+  "explain": "Ana habla de ella y de Luis, y Lucas, el que escucha, no está en el grupo: Ore Paraguaigua, «somos de Paraguay». Ñande incluiría a Lucas, que es de Argentina; peẽ es «ustedes» y ha'ekuéra, «ellos»."
+ },
+ {
+  "id": "a1u01t.8", "kind": "choice", "area": "grammar", "label": "Qué significa",
+  "q": "Rosa le dice a Juan: «Jajotopáta.» ¿Quiénes se van a ver?",
+  "options": ["Rosa y otra persona, sin Juan", "Juan y otra persona", "Rosa y Juan", "Otras personas"],
+  "answer": 3,
+  "explain": "Jajotopáta empieza con ja-, el «nosotros» de ñande, que incluye al que escucha. Rosa se lo dice a Juan, así que los que se van a ver son Rosa y Juan. Sin Juan sería un «nosotros» como ore."
+ },
+ {
+  "id": "a1u01t.9", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
+  "q": "A: Mávapa ha'e?\nB: Che angirũ. (   ) Rosa.",
+  "options": ["Che réra", "Nde réra", "Héẽ", "Héra"],
+  "answer": 4,
+  "explain": "A pregunta quién es (Mávapa ha'e?), y B habla de otra persona, su amiga: el nombre de ella es héra. Héra Rosa: se llama Rosa. Che réra sería el nombre de B, nde réra el de A, y héẽ es «sí»."
+ },
+ {
+  "id": "a1u01t.10", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
+  "q": "(Luis y Marta le sirven tereré a Ana.)\nAna: Aguyjevete (   ).",
+  "options": ["peẽme", "ndéve", "chéve", "nde"],
+  "answer": 1,
+  "explain": "Ana les da las gracias a dos personas, Luis y Marta: «a ustedes» es peẽme. Ndéve es «a vos», para una sola persona; chéve es «a mí», y nde solo, sin -ve, no quiere decir «a vos»."
+ },
+ {
+  "id": "a1u01t.11", "kind": "choice", "area": "grammar", "label": "Elegí la respuesta",
+  "q": "A: Nde ru oñe'ẽpa guaraníme?\nB: (   ), oñe'ẽ guaraníme.",
+  "options": ["Nahániri", "Mávapa", "Héẽ", "Jajotopáta"],
+  "answer": 3,
+  "explain": "B dice que su papá habla guaraní (oñe'ẽ guaraníme), así que responde que sí: Héẽ. Nahániri es «no», Mávapa pregunta «¿quién?» y Jajotopáta es para despedirse."
+ },
+ {
+  "id": "a1u01t.12", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
+  "q": "A: (   ) ovale ko so'o?\nB: Treinta mil.",
+  "options": ["Mboýpa", "Mba'épa", "Moõpa", "Mávapa"],
+  "answer": 1,
+  "explain": "B responde con un precio, treinta mil: la pregunta es Mboýpa ovale?, «¿cuánto cuesta?». Mba'épa pregunta qué, moõpa dónde y mávapa quién."
+ },
+ {
+  "id": "a1u01t.13", "kind": "build", "area": "grammar", "label": "Armá la palabra", "join": "word",
+  "before": "(Rosa les habla a Juan y a Lucas.)\nRosa: ", "after": " guaraníme?",
+  "tiles": ["pe", "ñe'ẽ", "pa"], "bank": [2, 0, 1],
+  "full": "(Rosa les habla a Juan y a Lucas.)\nRosa: {Pe}ñe'ẽ{pa} guaraníme?",
+  "es": "(Rosa les habla a Juan y a Lucas.)\nRosa: ¿Ustedes hablan guaraní?",
+  "explain": "pe, ñe'ẽ, pa. Rosa les habla a dos personas, Juan y Lucas, así que el verbo lleva pe-, el de peẽ («ustedes»): pe- + ñe'ẽ = peñe'ẽ, «hablan». -pa va al final y hace la pregunta: peñe'ẽpa. El acento sigue en la ẽ, y la tilde nasal ya lo marca."
+ },
+ {
+  "id": "a1u01t.14", "kind": "build", "area": "grammar", "label": "Armá la oración", "join": "sentence",
+  "before": "Luis: Mba'éichapa, Ana?\nAna:", "after": "?",
+  "tiles": ["iporã", "ha", "nde"], "bank": [2, 0, 1],
+  "full": "Luis: Mba'éichapa, Ana?\nAna: {Iporã}, ha nde?",
+  "es": "Luis: Hola, Ana, ¿cómo estás?\nAna: Bien, ¿y vos?",
+  "explain": "Iporã, ha, nde. Ana primero responde cómo está: iporã, «bien». Después le devuelve la pregunta a Luis con ha nde, «¿y vos?»: ha, «y», va antes de nde."
+ },
+ {
+  "id": "a1u01t.15", "kind": "choice", "area": "reading", "label": "Buscar el dato",
+  "q": "¿En qué momento del día llega Lucas?",
+  "passage": "Mbo'ehára: Mba'éichapa nde pyhareve?\nLucas: Iporã. Ikatúpa aike?\nMbo'ehára: Tereg̃uahẽ porãite. Mba'éichapa nde réra?\nLucas: Che réra Lucas.\nMbo'ehára: Che réra Nilda.",
+  "options": ["A la mañana.", "A la tarde.", "A la noche.", "No se sabe."],
+  "short": ["Mañana", "Tarde", "Noche", "No se sabe"],
+  "answer": 1,
+  "explain": "La profesora saluda con Mba'éichapa nde pyhareve?, el saludo de la mañana: pyhareve es «la mañana». La tarde sería ka'aru y la noche, pyhare."
+ },
+ {
+  "id": "a1u01t.16", "kind": "choice", "area": "reading", "label": "Texto corto",
+  "q": "¿Qué le pregunta Lucas a la profesora?",
+  "passage": "Mbo'ehára: Mba'éichapa nde pyhareve?\nLucas: Iporã. Ikatúpa aike?\nMbo'ehára: Tereg̃uahẽ porãite. Mba'éichapa nde réra?\nLucas: Che réra Lucas.\nMbo'ehára: Che réra Nilda.",
+  "options": ["Cómo se llama.", "Si puede pasar.", "Dónde vive.", "Si habla guaraní."],
+  "short": ["Su nombre", "Pasar", "Dónde vive", "Si habla guaraní"],
+  "answer": 2,
+  "explain": "Lucas pregunta Ikatúpa aike?, «¿puedo pasar?», y la profesora le da la bienvenida. El nombre no lo pregunta Lucas: la profesora se lo pregunta a él y después dice el suyo. Lucas no pregunta dónde vive ella ni si habla guaraní."
+ },
+ {
+  "id": "a1u01t.17", "kind": "choice", "area": "reading", "label": "Buscar el dato",
+  "q": "¿Cómo se llama la profesora?",
+  "passage": "Mbo'ehára: Mba'éichapa nde pyhareve?\nLucas: Iporã. Ikatúpa aike?\nMbo'ehára: Tereg̃uahẽ porãite. Mba'éichapa nde réra?\nLucas: Che réra Lucas.\nMbo'ehára: Che réra Nilda.",
+  "options": ["Lucas.", "Rosa.", "No lo dice.", "Nilda."],
+  "short": ["Lucas", "Rosa", "No lo dice", "Nilda"],
+  "answer": 4,
+  "explain": "Al final la profesora dice Che réra Nilda, «me llamo Nilda». Lucas es el alumno que llega, y en el diálogo no hay ninguna Rosa."
+ },
+ {
+  "id": "a1u01t.18", "kind": "choice", "area": "listening", "label": "Respuesta rápida",
+  "q": "Rosa: Jajotopáta, Juan.\n¿Qué le responde Juan?",
+  "options": ["Mba'éichapa, Rosa?", "Tereg̃uahẽ porãite, Rosa.", "Jajotopáta, Rosa."],
+  "answer": 3,
+  "explain": "Rosa se despide, y Juan le responde con otra despedida: Jajotopáta, «nos vemos». Mba'éichapa? es para saludar al llegar y Tereg̃uahẽ porãite, para recibir a quien llega."
+ },
+ {
+  "id": "a1u01t.19", "kind": "choice", "area": "listening", "label": "Respuesta rápida",
+  "q": "(En el mercado, una mujer llega a un puesto.)\nVendedor: Mba'épa reipota?\n¿Qué le responde la mujer?",
+  "options": ["Chipa.", "Héẽ.", "Che réra Ana."],
+  "answer": 1,
+  "explain": "Mba'épa reipota? pregunta «¿qué querés?», y se responde con una cosa: chipa. Héẽ responde preguntas de sí o no, y Che réra Ana dice un nombre."
+ },
+ {
+  "id": "a1u01t.20", "kind": "choice", "area": "listening", "label": "Respuesta rápida",
+  "q": "(En el mercado.)\nMujer: Oĩpa mandi'o?\n¿Qué le responde el vendedor?",
+  "options": ["Che réra Rosa.", "Nahániri. Oĩ kesu.", "Tereg̃uahẽ porãite."],
+  "answer": 2,
+  "explain": "La mujer pregunta si hay mandioca: es una pregunta de sí o no. El vendedor responde Nahániri, «no», y dice lo que sí hay: Oĩ kesu, «hay queso». Che réra Rosa dice un nombre y Tereg̃uahẽ porãite da la bienvenida."
+ }
+]

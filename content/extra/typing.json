@@ -1,0 +1,17 @@
+{
+  "letters": ["ã", "ẽ", "ĩ", "õ", "ũ", "ỹ", "g̃", "'"],
+  "words": [
+    { "gn": "mba'éichapa", "es": "hola, ¿cómo estás?" },
+    { "gn": "iporã", "es": "bien" },
+    { "gn": "jajotopáta", "es": "nos vemos" },
+    { "gn": "cheñyrõmi", "es": "perdón, disculpá" },
+    { "gn": "tereg̃uahẽ porãite", "es": "bienvenida, bienvenido", "accept": ["tereguahẽ porãite", "tereg̃uahẽporãite"] },
+    { "gn": "ikatúpa aike", "es": "¿puedo pasar?" },
+    { "gn": "ñande", "es": "nosotros (con vos)" },
+    { "gn": "peẽ", "es": "ustedes" },
+    { "gn": "ha'e", "es": "él, ella" },
+    { "gn": "peteĩ", "es": "uno" },
+    { "gn": "pytũ", "es": "oscuro" },
+    { "gn": "tapỹi", "es": "choza" }
+  ]
+}

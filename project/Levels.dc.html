@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Seis niveles</title>
+<script src="./support.js"></script>
+<script src="./gn-course-a1.js"></script>
+<script src="./gn-course-a2.js"></script>
+<script src="./gn-course-b1.js"></script>
+<script src="./gn-course-b2.js"></script>
+<script src="./gn-course-c1.js"></script>
+<script src="./gn-course-c2.js"></script>
+<script src="./gn-course.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&amp;family=Andika:wght@400;700&amp;text=%20%21%22%23%24%25%26%27%28%29%2A%2B%2C-.%2F0123456789%3A%3B%3C%3D%3E%3F%40ABCDEFGHIJKLMNOPQRSTUVWXYZ%5B%5C%5D%5E_%60abcdefghijklmnopqrstuvwxyz%7B%7C%7D~%C2%A1%C2%BF%C2%AB%C2%BB%C2%B0%C2%B7%C3%97%C3%B7%C2%AA%C2%BA%C2%B2%C3%A1%C3%A9%C3%AD%C3%B3%C3%BA%C3%BC%C3%B1%C3%81%C3%89%C3%8D%C3%93%C3%9A%C3%9C%C3%91%C3%BD%C3%9D%C3%A3%E1%BA%BD%C4%A9%C3%B5%C5%A9%E1%BB%B9%C3%83%E1%BA%BC%C4%A8%C3%95%C5%A8%E1%BB%B8%C3%A7%C3%87%C3%A0%C3%A8%C3%AC%C3%B2%C3%B9%C3%A2%C3%AA%C3%AE%C3%B4%C3%BB%CC%83%CC%81%E2%80%98%E2%80%99%E2%80%9C%E2%80%9D%E2%80%A6%E2%80%93%E2%80%94%E2%80%A2%E2%82%AC%E2%86%92%E2%86%90%E2%86%91%E2%86%93&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:#2F4FD0;text-decoration:none}a:hover{color:#1B2440}
+rt{font-size:9px;font-weight:500;color:#5A6382}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; padding: 50px 16px 34px; background: #F4F5F9; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+<div style="display: flex; align-items: center; gap: 4px; height: 44px; flex-shrink: 0">
+<a href="Main.dc.html" onClick="{{ toMain }}" aria-label="Volver al camino de la semana" style="width: 44px; height: 44px; margin-left: -8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+<h1 style="margin: 0; font-size: 22px; font-weight: 800; white-space: nowrap">Seis niveles, una app</h1>
+</div>
+<div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.45; flex-shrink: 0">Niveles de referencia para el guaraní</div>
+
+<div role="list" aria-label="Niveles" style="flex-grow: 1; min-height: 0; overflow-y: auto; margin: 8px -16px 0; padding: 2px 16px 6px; display: flex; flex-direction: column; gap: 6px">
+<sc-for list="{{ levels }}" as="l" hint-placeholder-count="6">
+<div role="listitem" style="flex-shrink: 0; display: flex; flex-direction: column">
+<a href="{{ l.href }}" onClick="{{ l.pick }}" aria-disabled="{{ l.off }}" aria-current="{{ l.current }}" style="box-sizing: border-box; padding: 8px 12px 9px; border-radius: 18px; display: flex; align-items: center; gap: 8px; color: #1B2440; border: {{ l.border }}; background: {{ l.bg }}; box-shadow: {{ l.shadow }}">
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<div style="display: flex; align-items: baseline; gap: 8px">
+<div style="font-size: 22px; font-weight: 800; line-height: 1.15; flex-shrink: 0; color: {{ l.codeInk }}">{{ l.level }}</div>
+<div style="font-size: 15px; font-weight: 800; line-height: 1.2; min-width: 0; color: {{ l.nameInk }}">{{ l.name }}</div>
+</div>
+<div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.3">{{ l.can }}</div>
+<div style="font-size: 11px; font-weight: 700; color: #5A6382">{{ l.meta }}</div>
+<sc-if value="{{ l.hasLine }}" hint-placeholder-val="{{ false }}"><div style="font-size: 12px; font-weight: 800; color: {{ l.lineInk }}">{{ l.line }}</div></sc-if>
+</div>
+<div style="position: relative; width: 44px; height: 44px; box-sizing: border-box; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: {{ l.ring }}">
+<svg viewBox="-24 -24 48 48" width="40" height="40" role="img" aria-label="{{ l.ro.label }}"><circle r="19.5" fill="none" stroke="#C9D0E3" stroke-width="1" stroke-dasharray="1.6 2.2" opacity="{{ l.ro.frameOpacity }}"/><path d="{{ l.ro.rimD }}" fill="#FCE4EE" stroke="#C2336F" stroke-width="1.4" stroke-linejoin="round" opacity="{{ l.ro.rimOpacity }}"/><path d="{{ l.ro.off }}" fill="#FFFFFF" stroke="#DDE1EC" stroke-width="0.9"/><path d="{{ l.ro.on }}" fill="#F8D3E2" stroke="#C2336F" stroke-width="1.1"/><path d="{{ l.ro.spokes }}" stroke="#C2336F" stroke-width="0.8" stroke-linecap="round"/><circle r="4" fill="{{ l.ro.hubFill }}" stroke="#C2336F" stroke-width="1.2"/></svg>
+<sc-if value="{{ l.passed }}" hint-placeholder-val="{{ false }}"><div aria-hidden="true" style="position: absolute; right: -5px; bottom: -5px; width: 18px; height: 18px; box-sizing: border-box; border-radius: 50%; background: #0B7A6B; border: 2px solid #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div></sc-if>
+</div>
+</a>
+</div>
+</sc-for>
+</div>
+
+<div style="margin-top: 8px; font-size: 11px; font-weight: 500; color: #5A6382; line-height: 1.5; flex-shrink: 0">Cada nivel termina con un examen de cinco partes. El resultado es una constancia de la app, no un certificado oficial.</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"go":{"editor":null},"app":{"editor":null},"save":{"editor":null},"miss":{"editor":null},"reviewed":{"editor":null},"level":{"editor":null},"$preview":{"width":390,"height":844}}'>
+/* how a level card looks: the level you are in (hero), another written level (quiet), a level not written yet (dashed) */
+const LOOK = {
+on: { border: '2px solid #1B2440', bg: '#FFFFFF', shadow: '0 4px 0 #1B2440', codeInk: '#1B2440', nameInk: '#1B2440' },
+open: { border: '2px solid #DDE1EC', bg: '#FFFFFF', shadow: 'none', codeInk: '#1B2440', nameInk: '#1B2440' },
+off: { border: '2px dashed #C9D0E3', bg: '#F4F5F9', shadow: 'none', codeInk: '#5A6382', nameInk: '#5A6382' },
+};
+const MODE = { self: 'autoevaluado', teacher: 'con docente' };
+class Component extends DCLogic {
+renderVals() {
+const C = window.gnCourse;
+const nav = (to) => (e) => { const go = this.props.go; if (go) { e.preventDefault(); go(to); } };
+/* on its own this artboard shows the designed moment, dated from today: A1 is your level, three days stamped;
+   the other five levels show their syllabus (units and days) while their lessons are being written */
+const T = C.today(C.now());
+const full = { g: 3, k: 1, r: 1 };
+const SAMPLE = { level: 'A1', started: true, plan: { start: C.addDays(T, -3), target: C.addDays(T, 60), pace: 'fit', minutes: 30 }, done: { a1u01d1: full, a1u01d2: full, a1u01d3: full, a1u01d4: { g: 1 } }, tests: {}, exams: {}, mistakes: [], cur: 'a1u01d4', placement: { comp: 'A2', prod: 'A1', start: 'A1' }, typed: [] };
+const app = this.props.app || C.view(SAMPLE);
+const cur = app.level || C.level();
+const state = { done: app.done || {}, tests: app.tests || {}, exams: app.exams || {} };
+const week = app.unit ? app.unit.n : 1;
+const list = app.levels || C.levels();
+const levels = list.map((x) => {
+const lv = x.level;
+const on = lv === cur;
+const off = !x.ready && !on;
+const pg = C.progress(state, lv);
+const units = x.units || (pg.units ? pg.units.length : 0);
+const sessions = units * 7;
+const passed = !!pg.passed;
+const ex = pg.exam || null;
+/* the ñandutí: the hub once a goal is set for the level (or work is done in it), a petal per unit finished, the rim when passed */
+const hub = (on && !!app.plan) || pg.stamps > 0 || passed;
+const ro = Object.assign(C.rosette(units || 8, pg.unitsDone || 0, { hub, rim: passed }), {
+frameOpacity: passed ? 0 : 1, rimOpacity: passed ? 1 : 0, hubFill: hub ? '#C2336F' : '#FFFFFF',
+label: 'Ñandutí del nivel ' + lv + (units ? ': ' + (pg.unitsDone || 0) + ' de ' + units + ' unidades' : '') + (passed ? ', nivel aprobado' : ''),
+});
+let line = '';
+let lineInk = '#2F4FD0';
+if (passed) { line = 'Examen de nivel: Apto · ' + (MODE[ex && ex.mode] || MODE.self); lineInk = '#0B7A6B'; }
+else if (on) line = sessions ? 'Tu nivel · ' + pg.stamps + ' de ' + sessions + ' sesiones · Semana ' + week : 'Tu nivel';
+else if (pg.stamps > 0 && sessions) line = pg.stamps + ' de ' + sessions + ' sesiones';
+/* in the app the level changes (its own plan comes back, or its goal screen the first time); on the canvas the link shows where that leads */
+const pick = off ? (e) => e.preventDefault() : (e) => {
+if (this.props.level) { e.preventDefault(); this.props.level(lv); return; }
+nav(on ? 'Main' : 'Goal')(e);
+};
+return Object.assign({}, LOOK[on ? 'on' : off ? 'off' : 'open'], {
+level: lv,
+name: x.name,
+can: x.can,
+meta: units ? units + ' unidades · ' + (x.written > 0 ? x.written + ' de ' + x.days + ' días escritos' : 'en preparación') : 'En preparación',
+hasLine: !!line,
+line,
+lineInk,
+ro,
+passed,
+ring: passed ? '2px solid #0B7A6B' : '2px solid transparent',
+off,
+current: on ? 'true' : 'false',
+href: on ? 'Main.dc.html' : 'Goal.dc.html',
+pick,
+});
+});
+return {
+levels,
+toMain: nav('Main'),
+};
+}
+}
+</script>
+</body>
+</html>

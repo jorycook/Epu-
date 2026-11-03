@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Leer, una frase apretada</title>
+<script src="./support.js"></script>
+<script src="./gn-course.js"></script>
+<script src="./gn-extra.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&amp;family=Andika:wght@400;700&amp;text=%20%21%22%23%24%25%26%27%28%29%2A%2B%2C-.%2F0123456789%3A%3B%3C%3D%3E%3F%40ABCDEFGHIJKLMNOPQRSTUVWXYZ%5B%5C%5D%5E_%60abcdefghijklmnopqrstuvwxyz%7B%7C%7D~%C2%A1%C2%BF%C2%AB%C2%BB%C2%B0%C2%B7%C3%97%C3%B7%C2%AA%C2%BA%C2%B2%C3%A1%C3%A9%C3%AD%C3%B3%C3%BA%C3%BC%C3%B1%C3%81%C3%89%C3%8D%C3%93%C3%9A%C3%9C%C3%91%C3%BD%C3%9D%C3%A3%E1%BA%BD%C4%A9%C3%B5%C5%A9%E1%BB%B9%C3%83%E1%BA%BC%C4%A8%C3%95%C5%A8%E1%BB%B8%C3%A7%C3%87%C3%A0%C3%A8%C3%AC%C3%B2%C3%B9%C3%A2%C3%AA%C3%AE%C3%B4%C3%BB%CC%83%CC%81%E2%80%98%E2%80%99%E2%80%9C%E2%80%9D%E2%80%A6%E2%80%93%E2%80%94%E2%80%A2%E2%82%AC%E2%86%92%E2%86%90%E2%86%91%E2%86%93&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:#2F4FD0;text-decoration:none}a:hover{color:#1B2440}
+rt{font-size:9px;font-weight:500;color:#5A6382}
+@keyframes gn-up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes gn-fade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; overflow: hidden; background: #F4F5F9; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif">
+<dc-import name="Leer" demo="{{ demo }}" hint-size="390px,844px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+/* the reader at the moment a finger holds a phrase that has a grammar pattern; the grey disc marks the finger.
+   The phrase is picked from the text itself (window.__gnExtra.reader.works[0]): one whose lens fits between the header
+   and the finger first, then a grammar pattern, the most parts, a note, and a place past the first line, so the lens
+   floats above the finger, clear of the header, and the looked-up chips stay in view.
+   Until the text is written, the reader shows "En preparación". */
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.demo = this.pick();
+}
+pick() {
+const X = window.__gnExtra;
+const w = X && X.reader && Array.isArray(X.reader.works) ? X.reader.works[0] : null;
+const raw = w && Array.isArray(w.phrases) ? w.phrases : [];
+/* the same phrases the reader draws (it skips empty ones), so the index points at the same phrase */
+const list = raw.filter((p) => p && typeof p === 'object' && String(p.t == null ? '' : p.t).replace(/\s+/g, ' ').trim());
+/* Where each phrase lands in Leer's text box, roughly: about 36 letters to a 42-px line (Andika 18 px in 326 px), a
+   phrase never breaks (it moves to the next line whole, with its punctuation and opening mark), and the first line
+   starts 198 px down the screen. The lens is about 86 px, plus 40 for the parts, 40 for a grammar pattern and, for a
+   note, 18 + 16 a line of about 42 letters; its top should stay below the header row (94 px). */
+const LINE = 36;
+const len = (s) => Array.from(String(s == null ? '' : s)).length;
+let line = 0;
+let used = 0;
+let glue = false;
+let lead = 0;
+let best = null;
+let top = -1;
+list.forEach((p, i) => {
+const tail = p.tail === undefined || p.tail === null ? ' ' : String(p.tail);
+const cut = /^(\S*)(\s*)([\s\S]*)$/.exec(tail) || ['', tail, '', ''];
+const unit = lead + len(String(p.t).replace(/\s+/g, ' ').trim()) + len(cut[1]);
+if (used && !glue && used + 1 + unit > LINE) { line += 1; used = 0; }
+used += (used && !glue ? 1 : 0) + unit;
+const at = line;
+if (/\n/.test(cut[2])) { line += 1; used = 0; }
+glue = !cut[2];
+lead = len(cut[3].replace(/\s+/g, ''));
+const words = (Array.isArray(p.words) ? p.words : []).filter((x) => x && typeof x === 'object');
+const parts = words.reduce((a, x) => a + (Array.isArray(x.m) ? x.m.length : 0), 0);
+const split = words.some((x) => Array.isArray(x.m) && x.m.length > 1);
+const gram = Array.isArray(p.g) && !!p.g[0];
+const note = typeof p.n === 'string' ? len(p.n.trim()) : 0;
+const lens = 86 + (split ? 40 : 0) + (gram ? 40 : 0) + (note ? 18 + Math.max(22, 16 * Math.ceil(note / 42)) : 0);
+const fits = 198 + 42 * at - 6 - lens >= 98;
+const s = (fits ? 1000 : 0) + (gram ? 100 : 0) + Math.min(parts, 4) * 10 + (note ? 5 : 0) + (at >= 1 ? 30 : 0);
+if (s > top) { top = s; best = i; }
+});
+return best;
+}
+renderVals() {
+return { demo: this.demo };
+}
+}
+</script>
+</body>
+</html>

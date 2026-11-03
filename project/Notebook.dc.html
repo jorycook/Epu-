@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Cuaderno de errores</title>
+<script src="./support.js"></script>
+<script src="./gn-course-a1.js"></script>
+<script src="./gn-course-a2.js"></script>
+<script src="./gn-course-b1.js"></script>
+<script src="./gn-course-b2.js"></script>
+<script src="./gn-course-c1.js"></script>
+<script src="./gn-course-c2.js"></script>
+<script src="./gn-course.js"></script>
+<script src="./gn-extra.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&amp;family=Andika:wght@400;700&amp;text=%20%21%22%23%24%25%26%27%28%29%2A%2B%2C-.%2F0123456789%3A%3B%3C%3D%3E%3F%40ABCDEFGHIJKLMNOPQRSTUVWXYZ%5B%5C%5D%5E_%60abcdefghijklmnopqrstuvwxyz%7B%7C%7D~%C2%A1%C2%BF%C2%AB%C2%BB%C2%B0%C2%B7%C3%97%C3%B7%C2%AA%C2%BA%C2%B2%C3%A1%C3%A9%C3%AD%C3%B3%C3%BA%C3%BC%C3%B1%C3%81%C3%89%C3%8D%C3%93%C3%9A%C3%9C%C3%91%C3%BD%C3%9D%C3%A3%E1%BA%BD%C4%A9%C3%B5%C5%A9%E1%BB%B9%C3%83%E1%BA%BC%C4%A8%C3%95%C5%A8%E1%BB%B8%C3%A7%C3%87%C3%A0%C3%A8%C3%AC%C3%B2%C3%B9%C3%A2%C3%AA%C3%AE%C3%B4%C3%BB%CC%83%CC%81%E2%80%98%E2%80%99%E2%80%9C%E2%80%9D%E2%80%A6%E2%80%93%E2%80%94%E2%80%A2%E2%82%AC%E2%86%92%E2%86%90%E2%86%91%E2%86%93&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:#2F4FD0;text-decoration:none}a:hover{color:#1B2440}
+rt{font-size:9px;font-weight:500;color:#5A6382}
+@keyframes gn-stamp{0%{opacity:0;transform:scale(1.8) rotate(-20deg)}55%{opacity:1;transform:scale(.92) rotate(-9deg)}100%{opacity:1;transform:scale(1) rotate(-9deg)}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; padding-top: 50px; background: #F4F5F9; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+<div style="display: flex; align-items: center; padding: 0 16px; height: 44px; flex-shrink: 0">
+<h1 style="margin: 0; font-size: 22px; font-weight: 800">Cuaderno de errores <span style="font-size: 14px; font-weight: 700; color: #5A6382">{{ levelLabel }}</span></h1>
+</div>
+
+<sc-if value="{{ due }}" hint-placeholder-val="{{ true }}">
+<div style="margin: 8px 16px 0; flex-shrink: 0; padding: 14px 16px 16px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; align-items: center; gap: 12px">
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column">
+<div style="font-size: 12px; font-weight: 700; color: #5A6382">Para repasar hoy</div>
+<div style="display: flex; align-items: baseline; gap: 6px"><div style="font-size: 44px; font-weight: 800; line-height: 1.1">{{ dueCount }}</div><div style="font-size: 14px; font-weight: 700; color: #5A6382">{{ dueNote }}</div></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; font-weight: 700; text-align: right">
+<sc-for list="{{ dueAreas }}" as="a" hint-placeholder-count="2"><div>{{ a.t }}</div></sc-for>
+</div>
+</div>
+<a href="Review.dc.html" onClick="{{ toReview }}" style="height: 50px; border-radius: 14px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center"><span><span lang="gn">Jehechajey</span> · Repasar ahora</span></a>
+</div>
+</sc-if>
+<sc-if value="{{ caughtUp }}" hint-placeholder-val="{{ false }}">
+<div style="margin: 8px 16px 0; flex-shrink: 0; padding: 14px 16px 16px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; display: flex; align-items: center; gap: 12px">
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column">
+<div style="font-size: 12px; font-weight: 700; color: #5A6382">Para repasar hoy</div>
+<div style="display: flex; align-items: baseline; gap: 6px"><div style="font-size: 44px; font-weight: 800; line-height: 1.1">0</div><div style="font-size: 14px; font-weight: 700; color: #5A6382">{{ caughtNote }}</div></div>
+<div style="margin-top: 4px; font-size: 13px; font-weight: 800; line-height: 1.45"><sc-if value="{{ caughtPraise }}" hint-placeholder-val="{{ true }}"><span lang="gn">¡Iporã!</span> ¡Bien! </sc-if><sc-if value="{{ caughtEmpty }}" hint-placeholder-val="{{ false }}">Todavía no hay nada. </sc-if><span style="font-weight: 500; color: #5A6382">{{ nextReview }}</span></div>
+</div>
+<div aria-hidden="true" style="width: 56px; height: 56px; box-sizing: border-box; border-radius: 50%; border: 3px solid #C2336F; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transform: rotate(-9deg); animation: gn-stamp 500ms ease-out both"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#B02A63" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+</div>
+</sc-if>
+
+<div style="margin: 14px 16px 0; flex-shrink: 0; display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.45">Un error sale del cuaderno después de tres respuestas correctas seguidas, cada vez más espaciadas.</div>
+<div role="img" aria-label="Cuándo vuelve un error: mañana, en 3 días, en 1 semana y, con tres respuestas correctas seguidas, aprendido." style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; font-size: 11px; font-weight: 800; text-align: center">
+<div style="padding: 7px 0; border-radius: 10px; background: #E8ECFB">mañana</div>
+<div style="padding: 7px 0; border-radius: 10px; background: #E8ECFB">en 3 días</div>
+<div style="padding: 7px 0; border-radius: 10px; background: #E8ECFB">en 1 semana</div>
+<div style="padding: 7px 0; border-radius: 10px; background: #E0F3EF">¡aprendido!</div>
+</div>
+</div>
+
+<div style="margin: 14px 16px 0; flex-shrink: 0; font-size: 14px; font-weight: 800">{{ listHead }}</div>
+
+<div style="margin: 8px 0 0; padding: 0 16px 12px; flex-grow: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{ rows }}" as="r" hint-placeholder-count="3">
+<div style="flex-shrink: 0; padding: 10px 14px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 5px">
+<div style="display: flex; align-items: center; gap: 8px">
+<div style="padding: 2px 8px; border-radius: 8px; font-size: 11px; font-weight: 800; background: {{ r.tagBg }}; color: {{ r.tagColor }}">{{ r.tag }}</div>
+<div style="flex-grow: 1; font-size: 11px; font-weight: 700; color: #5A6382">{{ r.due }}</div>
+<div role="img" aria-label="{{ r.pipLabel }}" style="display: flex; gap: 4px"><sc-for list="{{ r.pipList }}" as="p" hint-placeholder-count="3"><div style="width: 10px; height: 10px; box-sizing: border-box; border-radius: 50%; border: {{ p.border }}; background: {{ p.bg }}"></div></sc-for></div>
+</div>
+<div lang="{{ r.qLang }}" style="font-family: 'Andika', 'Nunito', sans-serif; font-size: 15px; font-weight: 400; line-height: 1.5; overflow-wrap: anywhere"><sc-for list="{{ r.segs }}" as="g" hint-placeholder-count="1"><sc-if value="{{ g.text }}" hint-placeholder-val="{{ true }}"><span style="border-bottom: {{ g.line }}">{{ g.t }}</span></sc-if><sc-if value="{{ g.blank }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="espacio en blanco" style="display: inline-block; width: 28px; height: 16px; margin: 0 3px; border-bottom: 2px solid #1B2440; vertical-align: text-bottom"></span></sc-if></sc-for></div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 3px 6px; font-size: 13px; font-weight: 800">
+<span style="display: inline-flex; align-items: center; gap: 6px; max-width: 100%"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C7361E" stroke-width="3.5" stroke-linecap="round" aria-hidden="true" style="flex-shrink: 0"><path d="M6 6l12 12M18 6L6 18"/></svg><span style="min-width: 0; color: #5A6382; overflow-wrap: anywhere">{{ r.youLabel }} <span lang="{{ r.wrongLang }}" style="font-family: 'Andika', 'Nunito', sans-serif; font-weight: 700">{{ r.wrong }}</span></span></span>
+<span style="display: inline-flex; align-items: center; gap: 6px; max-width: 100%"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5A6382" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Respuesta correcta" style="flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span lang="{{ r.rightLang }}" style="min-width: 0; font-family: 'Andika', 'Nunito', sans-serif; font-weight: 700; overflow-wrap: anywhere">{{ r.right }}</span></span>
+</div>
+</div>
+</sc-for>
+<sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+<div style="flex-shrink: 0; padding: 12px 14px; border-radius: 16px; background: #FFFFFF; border: 2px dashed #C9D0E3; font-size: 13px; font-weight: 500; line-height: 1.45; color: #5A6382">Cuando te equivoques en una lección o en una prueba, la pregunta aparece acá con lo que elegiste y la respuesta correcta.</div>
+</sc-if>
+<sc-if value="{{ cleared }}" hint-placeholder-val="{{ false }}">
+<div style="flex-shrink: 0; padding: 10px 14px; border-radius: 16px; background: #E0F3EF; display: flex; align-items: center; gap: 10px">
+<div aria-hidden="true" style="width: 30px; height: 30px; box-sizing: border-box; border-radius: 50%; border: 2.5px solid #0B7A6B; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg></div>
+<div style="font-size: 12px; font-weight: 700; line-height: 1.4"><span lang="gn" style="font-weight: 800">Opu'ã</span> <span style="font-weight: 800">· {{ clearedHead }}</span> {{ clearedLine }}</div>
+</div>
+</sc-if>
+</div>
+
+<nav aria-label="Principal" style="flex-shrink: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 6px 8px 30px; background: #FFFFFF; border-top: 2px solid #DDE1EC">
+<a href="Main.dc.html" onClick="{{ toMain }}" style="height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #5A6382; font-size: 11px; font-weight: 700"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="19" r="2.5"/><path d="M8.5 19h9a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15.5"/><circle cx="18" cy="5" r="2.5"/></svg>Camino</a>
+<a href="Notebook.dc.html" onClick="{{ toNotebook }}" aria-current="page" style="height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #2F4FD0; font-size: 11px; font-weight: 800"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H6z"/><path d="M6 3v18M3 7h3M3 12h3M3 17h3M10 8h5"/></svg>Cuaderno</a>
+<a href="ExamTab.dc.html" onClick="{{ toExamTab }}" style="height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #5A6382; font-size: 11px; font-weight: 700"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>Examen</a>
+<a href="Progress.dc.html" onClick="{{ toProgress }}" style="height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #5A6382; font-size: 11px; font-weight: 700"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>Progreso</a>
+</nav>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"go":{"editor":null},"app":{"editor":null},"save":{"editor":null},"miss":{"editor":null},"reviewed":{"editor":null},"level":{"editor":null},"$preview":{"width":390,"height":844}}'>
+/* The mistake notebook, the second tab: what is due today, the spacing rule (C.STEPS: 1, 3, 7 days, three right in a
+   row clears an entry) and every open mistake with what was chosen and the right answer. Pure render: the entries come
+   from app.mistakes (this level's only), and C.due says which are due. */
+const DAY = 864e5;
+const YOU = { choice: 'Elegiste:', build: 'Armaste:', spell: 'Escribiste:' };
+/* a mistake's question, from the lesson data or, for a level-exam or placement item, from the extras when loaded;
+   an exam item keeps the text of its task (a reading task holds one passage for its questions) */
+function extraItem(src) {
+  const bag = window.__gnExtra;
+  if (!bag || !src) return null;
+  let hit = null;
+  (function visit(v, depth, passage) {
+    if (hit || !v || typeof v !== 'object' || depth > 8) return;
+    if (Array.isArray(v)) { v.forEach((x) => visit(x, depth + 1, passage)); return; }
+    if (v.id === src && ['choice', 'build', 'spell'].indexOf(v.kind) >= 0) { hit = !v.passage && passage ? Object.assign({}, v, { passage }) : v; return; }
+    const here = typeof v.passage === 'string' && v.passage ? v.passage : passage;
+    Object.keys(v).forEach((k) => visit(v[k], depth + 1, here));
+  })(bag, 0, '');
+  return hit;
+}
+function itemOf(C, src) { return (src && C.item(src)) || extraItem(src); }
+/* what a board saves when nothing was answered (Exam: 'Sin respuesta', the level exam: 'Sin responder') */
+const BLANK = ['', 'Sin respuesta', 'Sin responder'];
+/* Spanish or Guarani, for lang (the rule Reading and Listening use, with a few more small words): mediation is relayed in
+   Spanish; a line that opens with ¿ or ¡ or has small words Guarani never uses is Spanish, even when it quotes Guarani */
+const ES_MARK = /[¿¡]|(^|[^\p{L}\p{M}'])(el|la|las|los|lo|le|les|una?|del?|al|en|es|son|soy|sos|se|que|qué|cómo|cuál|quién|quiénes|dónde|cuándo|cuánto|y|con|por|para|su|sus|no|sí|si|me|te|tu|vos|yo|nos|esta|este|ellos|ellas|hola|bien|buen|buenas|gracias|perdón|mañana|tarde|noche|hasta|señor|doña|otro|otra|otras)(?![\p{L}\p{M}'])/iu;
+function langOf(it, s) { return (it && it.area === 'mediation') || ES_MARK.test(window.gnCourse.norm(s)) ? 'es' : 'gn'; }
+/* the question as the notebook quotes it: one line of about 36 letters at Andika 15 px, cut word by word and never
+   inside a letter (C.chars and C.cut count graphemes: g̃ and ẽ are one each). A choice item quotes its sentence with
+   the blank and the underlined word kept (no glosses); when the blank comes late, the quote starts a little before
+   it, so the row always shows what was asked. A build item quotes what it means; a spell item what to write. */
+const ROOM = 36;
+const LEAD = 14;
+function quoteOf(C, it) {
+  let segs;
+  let lang = 'gn';
+  if (it.kind === 'build') {
+    const es = C.plain(it.es || '').trim();
+    segs = [{ t: es ? '«' + es + '»' : C.plain(it.label || 'Armá la palabra'), line: 'none' }];
+    lang = 'es';
+  } else if (it.kind === 'spell') {
+    segs = [{ t: '«' + C.plain(it.prompt || '').trim() + '»', line: 'none' }];
+    lang = 'es';
+  } else {
+    segs = C.rich(it.q || '', { ruby: false, hl: false });
+    lang = '';
+  }
+  /* the words as a reader sees them (a word may hold pieces with and without the underline), the spaces between
+     them, and the blank, three letters wide */
+  const words = [];
+  let cur = null;
+  const flush = () => { if (cur) words.push(cur); cur = null; };
+  segs.forEach((g) => {
+    if (g.blank) { flush(); words.push({ blank: true, n: 3, pieces: [] }); return; }
+    String(g.t || '').replace(/\s+/g, ' ').split(/( )/).forEach((w) => {
+      if (!w) return;
+      if (w === ' ') { flush(); if (words.length && !words[words.length - 1].space) words.push({ space: true, n: 1, pieces: [{ t: ' ', line: g.line }] }); return; }
+      if (!cur) cur = { n: 0, pieces: [], focus: false };
+      cur.pieces.push({ t: w, line: g.line });
+      cur.n += C.chars(w).length;
+      if (g.line !== 'none') cur.focus = true;
+    });
+  });
+  flush();
+  while (words.length && words[words.length - 1].space) words.pop();
+  const sum = (list) => list.reduce((a, x) => a + x.n, 0);
+  /* a late blank: start a few words before it, as many as the rest of the line leaves room for */
+  let start = 0;
+  const f = words.findIndex((x) => x.blank || x.focus);
+  if (f > 0 && sum(words) > ROOM && sum(words.slice(0, f)) > ROOM - 12) {
+    const lead = Math.max(LEAD, ROOM - 2 - sum(words.slice(f)));
+    let keep = 0;
+    start = f;
+    while (start > 0 && keep + words[start - 1].n <= lead) { start--; keep += words[start].n; }
+    while (start < f && (words[start].space || /^[,.;:!?»)\]]/.test((words[start].pieces[0] || {}).t || ''))) start++;
+  }
+  const out = [];
+  let room = ROOM;
+  if (start > 0) { out.push({ t: '…', line: 'none' }); room -= 1; }
+  let i = start;
+  for (; i < words.length && room > 0; i++) {
+    const w = words[i];
+    if (w.n > room) {
+      /* the last word that does not fit is cut inside, letter-safe, only when there is room for a few letters */
+      if (!w.space && !w.blank && room >= 4) {
+        let left = room;
+        for (const p of w.pieces) {
+          const n = C.chars(p.t).length;
+          if (n < left) { out.push({ t: p.t, line: p.line }); left -= n; }
+          else { out.push({ t: C.cut(p.t, left), line: p.line, cut: true }); break; }
+        }
+      }
+      break;
+    }
+    if (w.blank) out.push({ blank: true });
+    else w.pieces.forEach((p) => out.push({ t: p.t, line: p.line }));
+    room -= w.n;
+  }
+  if (i < words.length) {
+    while (out.length && out[out.length - 1].t === ' ') out.pop();
+    const tail = out[out.length - 1];
+    if (!tail || !tail.cut || !/…$/.test(tail.t)) out.push({ t: '…', line: 'none' });
+  }
+  /* neighbours with the same underline are one span */
+  const merged = [];
+  out.forEach((x) => {
+    const prev = merged[merged.length - 1];
+    if (x.blank) merged.push({ t: '', text: false, blank: true, line: 'none' });
+    else if (prev && !prev.blank && prev.line === x.line) prev.t += x.t;
+    else merged.push({ t: x.t, text: true, blank: false, line: x.line });
+  });
+  /* a question's language is that of the part the row shows (a Spanish scene note may be cut away) */
+  return { segs: merged, lang: lang || langOf(it, merged.map((x) => x.t).join(' ')) };
+}
+/* an answer in a row: two lines at most */
+function short(C, s) { return C.cut(String(s || '').replace(/\s+/g, ' ').trim(), 64); }
+function answerOf(C, it) {
+  if (it.kind === 'build') return C.plain(it.full || (it.tiles || []).join(it.join === 'word' ? '' : ' '));
+  if (it.kind === 'spell') return C.norm(it.answer || '');
+  const k = (it.answer || 1) - 1;
+  return C.plain((Array.isArray(it.short) && it.short[k]) || (it.options || [])[k] || '');
+}
+/* what a learner who got it wrong put down, for the designed moment: another option, the tiles in the bank's order, a mark left out */
+function wrongOf(C, it) {
+  if (it.kind === 'build') return (it.bank || []).map((k) => C.plain((it.tiles || [])[k] || '')).join(it.join === 'word' ? '·' : ' ');
+  if (it.kind === 'spell') {
+    const w = C.norm(it.answer || '');
+    if (w.indexOf("'") >= 0) return w.replace(/'/g, '');
+    const flat = w.normalize('NFD').replace(/[\u0301\u0303]/g, '').normalize('NFC');
+    return flat !== w ? flat : C.chars(w).slice(0, -1).join('');
+  }
+  const k = it.answer === 1 ? 1 : 0;
+  return C.plain((it.options || [])[k] || '');
+}
+/* the first written item of a kind in a day's drill, exam-style step or words check, never the same one twice */
+function pickItem(C, prefs, used) {
+  for (const [sid, where, kind] of prefs) {
+    const d = C.day(sid);
+    if (!d || !d.grammar) continue;
+    const g = d.grammar;
+    const pool = where === 'drill' ? g.drill : where === 'exam' ? g.exam : where === 'words' ? [d.words && d.words.check] : [g.compare && g.compare.check];
+    for (const x of pool || []) {
+      if (!x || !x.id || used.indexOf(x.id) >= 0 || (kind && x.kind !== kind)) continue;
+      const it = C.item(x.id);
+      if (it) { used.push(x.id); return it; }
+    }
+  }
+  return null;
+}
+/* On its own the artboard shows its designed moment, dated from today: the plan sample (A1, unit 1, day 4 today) with
+   three mistakes from days 2 and 3, read from the lesson data: one from yesterday's drill, due today; two from day 2,
+   answered right once yesterday, back in 2 days. Until those days are written the notebook shows its empty state. */
+function sample(C) {
+  const now = C.now();
+  const T = C.today(now);
+  const full = { g: 3, k: 1, r: 1 };
+  const used = [];
+  const any = ['a1u01d3', 'a1u01d2', 'a1u01d1', 'a1u01d4', 'a1u01d5', 'a1u01d6'];
+  const a = pickItem(C, [['a1u01d3', 'drill', 'choice'], ['a1u01d3', 'exam', 'choice']].concat(any.map((s) => [s, 'drill', 'choice'])), used);
+  const b = pickItem(C, [['a1u01d2', 'words', 'choice'], ['a1u01d2', 'exam', 'choice']].concat(any.map((s) => [s, 'words', null])), used);
+  const c = pickItem(C, [['a1u01d2', 'drill', 'build'], ['a1u01d2', 'exam', 'build']].concat(any.map((s) => [s, 'drill', null])), used);
+  const mistakes = [
+    a && { src: a.id, wrong: C.norm(wrongOf(C, a)), at: now - DAY + 2 * 36e5, step: 0, due: T },
+    b && { src: b.id, wrong: C.norm(wrongOf(C, b)), at: now - DAY + 36e5, step: 1, due: C.addDays(T, 2), last: 'right' },
+    c && { src: c.id, wrong: C.norm(wrongOf(C, c)), at: now - DAY, step: 1, due: C.addDays(T, 2), last: 'right' },
+  ].filter(Boolean);
+  return { screen: 'Notebook', started: true, level: 'A1', plans: {}, plan: { start: C.addDays(T, -3), target: C.addDays(T, 60), pace: 'fit', minutes: 30 }, cur: 'a1u01d4', done: { a1u01d1: full, a1u01d2: full, a1u01d3: full, a1u01d4: { g: 1 } }, tests: {}, exams: {}, mistakes, tp: 0, set: 'day', placement: { comp: 'A2', prod: 'A1', start: 'A1' }, typed: [] };
+}
+class Component extends DCLogic {
+  renderVals() {
+    const C = window.gnCourse;
+    const nav = (to) => (e) => { const go = this.props.go; if (go) { e.preventDefault(); go(to); } };
+    const now = C.now();
+    const today = C.today(now);
+    const app = this.props.app || C.view(sample(C));
+    const level = app.level || C.level();
+    const list = (Array.isArray(app.mistakes) ? app.mistakes : []).filter((m) => m && itemOf(C, m.src));
+    const due = C.due(list, now);
+    const open = list.filter((m) => !m.cleared);
+    const cleared = list.filter((m) => m.cleared && (m.at || 0) > now - DAY);
+    const dueLabel = (m) => {
+      const d = C.daysBetween(today, m.due);
+      return d <= 0 ? 'para hoy' : d === 1 ? 'vuelve mañana' : d === 7 ? 'en 1 semana' : 'en ' + d + ' días';
+    };
+    const rows = open.slice().sort((x, y) => (y.at || 0) - (x.at || 0)).map((m) => {
+      const it = itemOf(C, m.src);
+      const area = C.area(it.area);
+      const pips = Math.min(3, m.step || 0);
+      const q = quoteOf(C, it);
+      const right = answerOf(C, it);
+      const wrong = C.norm(m.wrong || '').trim();
+      const blank = BLANK.indexOf(wrong) >= 0;
+      return {
+        tag: area.es,
+        tagBg: area.tagBg,
+        tagColor: area.tagColor,
+        due: dueLabel(m),
+        segs: q.segs,
+        qLang: q.lang,
+        youLabel: blank ? 'Sin respuesta' : YOU[it.kind] || YOU.choice,
+        wrong: blank ? '' : short(C, wrong),
+        wrongLang: langOf(it, wrong),
+        right: short(C, right),
+        rightLang: langOf(it, right),
+        pipLabel: pips + ' de 3 respuestas correctas seguidas',
+        pipList: [0, 1, 2].map((i) => (i < pips ? { border: '2px solid #0B7A6B', bg: '#0B7A6B' } : { border: '2px solid #C9D0E3', bg: 'transparent' })),
+      };
+    });
+    const byArea = {};
+    const order = [];
+    due.forEach((m) => { const a = C.area(itemOf(C, m.src).area).es; if (!byArea[a]) order.push(a); byArea[a] = (byArea[a] || 0) + 1; });
+    const upcoming = open.map((m) => m.due).filter((d) => d && d > today).sort()[0];
+    const nextIn = upcoming ? C.daysBetween(today, upcoming) : null;
+    const mins = Math.max(1, Math.round(due.length * 0.6));
+    return {
+      levelLabel: 'Nivel ' + level,
+      rows,
+      due: due.length > 0,
+      caughtUp: due.length === 0,
+      dueCount: due.length,
+      dueNote: (due.length === 1 ? 'pregunta' : 'preguntas') + ' · ' + (mins === 1 ? 'un minuto' : 'unos ' + mins + ' min'),
+      dueAreas: order.map((a) => ({ t: a + ' ' + byArea[a] })),
+      caughtNote: open.length ? 'preguntas · estás al día' : 'preguntas · todavía no hay errores',
+      caughtPraise: open.length > 0,
+      caughtEmpty: open.length === 0,
+      nextReview: nextIn == null ? 'Los errores aparecen acá, con su explicación.' : 'Próximo repaso: ' + (nextIn === 1 ? 'mañana' : 'en ' + nextIn + ' días') + '.',
+      listHead: 'En el cuaderno · ' + open.length,
+      empty: open.length === 0,
+      cleared: cleared.length > 0,
+      clearedHead: cleared.length === 1 ? 'Se levantó.' : 'Se levantaron.',
+      clearedLine: cleared.length === 1 ? 'Un error salió hoy del cuaderno: tres respuestas correctas seguidas.' : cleared.length + ' errores salieron hoy del cuaderno: tres respuestas correctas seguidas.',
+      toMain: nav('Main'),
+      toNotebook: nav('Notebook'),
+      toExamTab: nav('ExamTab'),
+      toProgress: nav('Progress'),
+      toReview: nav('Review'),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+{
+  "title": "Preguntar con -pa",
+  "grammar": {
+    "points": [
+      {
+        "id": "a1u01d4.p1",
+        "form": "-pa",
+        "gloss": "pregunta de sí o no",
+        "connect": [
+          { "pos": "Pegado al verbo: preguntás por la acción", "rule": "[reikuaa|sabés] + {pa} → reikuaá{pa}?" },
+          { "pos": "Pegado a otra palabra: preguntás por ella", "rule": "nde + {pa} → ndé{pa}?" },
+          { "pos": "Para contestar: sí / no", "rule": "{Héẽ} / {Nahániri}" }
+        ],
+        "examples": [
+          {
+            "gn": "Reñe'ẽ{pa} guaraníme? {Héẽ}, michĩmi.",
+            "es": "¿Hablás guaraní? Sí, un poquito.",
+            "parts": [["re-", "vos"], ["ñe'ẽ", "hablar"], ["-pa", "pregunta"]]
+          },
+          {
+            "gn": "Ikatú{pa} aike? {Héẽ}, ikatu.",
+            "es": "¿Puedo pasar? Sí, se puede.",
+            "parts": [["ikatu", "se puede"], ["-pa", "pregunta"], ["aike", "entro"]]
+          },
+          {
+            "gn": "Ndé{pa} Juan? {Nahániri}, che Pedro.",
+            "es": "¿Vos sos Juan? No, soy Pedro.",
+            "parts": [["nde", "vos"], ["-pa", "pregunta"]]
+          }
+        ],
+        "watch": {
+          "note": "La -pa de pregunta no se lleva el acento: este queda en la última a de reikuaa. Como esa a ya no es la última vocal de la palabra, se escribe: reikuaápa. Sin la marca, el acento caería en pa.",
+          "bad": "Reikuaapa?",
+          "good": "Reikuaápa?"
+        }
+      },
+      {
+        "id": "a1u01d4.p2",
+        "form": "Mba'épa",
+        "gloss": "¿qué? y otras palabras de pregunta",
+        "connect": [
+          { "pos": "¿Qué?", "rule": "mba'e + {pa} → mba'é{pa}" },
+          { "pos": "¿Quién?", "rule": "máva + {pa} → máva{pa}" },
+          { "pos": "¿Dónde?", "rule": "moõ + {pa} → moõ{pa}" },
+          { "pos": "¿Cuánto?", "rule": "mboy + {pa} → mboý{pa}" }
+        ],
+        "examples": [
+          {
+            "gn": "{Mba'épa} reipota?",
+            "es": "¿Qué querés?",
+            "parts": [["mba'e", "qué"], ["-pa", "pregunta"], ["reipota", "querés"]]
+          },
+          {
+            "gn": "{Mávapa} ha'e?",
+            "es": "¿Quién es?",
+            "parts": [["máva", "quién"], ["-pa", "pregunta"], ["ha'e", "él, ella"]]
+          },
+          {
+            "gn": "{Moõpa} reiko?",
+            "es": "¿Dónde vivís?",
+            "parts": [["moõ", "dónde"], ["-pa", "pregunta"], ["reiko", "vivís"]]
+          },
+          {
+            "gn": "{Mboýpa} ovale ko kesu?",
+            "es": "¿Cuánto cuesta este queso?",
+            "parts": [["mboy", "cuánto"], ["-pa", "pregunta"], ["ovale", "cuesta"], ["ko", "este"], ["kesu", "queso"]]
+          }
+        ],
+        "watch": {
+          "note": "Mba'épa, mávapa, moõpa y mboýpa piden un dato. No se contestan con héẽ ni con nahániri: a moõpa reiko se responde con un lugar, como aiko távape (vivo en la ciudad).",
+          "bad": "Moõpa reiko? Héẽ.",
+          "good": "Moõpa reiko? Aiko távape."
+        }
+      }
+    ],
+    "compare": {
+      "intro": "Mirá dónde va -pa: en estas tres, sin -pa afirmás, con -pa en el verbo preguntás sí o no, y con -pa en una palabra de pregunta pedís un dato.",
+      "forms": [
+        { "form": "Reñe'ẽ", "tag": "Afirma · sin -pa", "mark": "dot", "gn": "Reñe'ẽ guaraníme.", "es": "Hablás guaraní." },
+        { "form": "Reñe'ẽpa", "tag": "Sí o no · -pa en el verbo", "mark": "dot", "gn": "Reñe'ẽ{pa} guaraníme?", "es": "¿Hablás guaraní?" },
+        { "form": "Moõpa", "tag": "Pide un dato · -pa en moõ", "mark": "dot", "gn": "Moõ{pa} reñe'ẽ guaraníme?", "es": "¿Dónde hablás guaraní?" }
+      ],
+      "check": {
+        "id": "a1u01d4.c1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la respuesta",
+        "q": "A: ^Moõpa^ reñe'ẽ guaraníme?\nB: (   )",
+        "options": ["Héẽ, añe'ẽ.", "Nahániri.", "Che rógape."],
+        "answer": 3,
+        "why": [
+          "Héẽ contesta preguntas de sí o no. Moõpa pide un lugar.",
+          "Nahániri también es para sí o no, y acá te preguntan dónde.",
+          "Moõpa pregunta «¿dónde?», y che rógape (en mi casa) es un lugar."
+        ]
+      }
+    },
+    "drill": [
+      {
+        "id": "a1u01d4.d1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la pregunta",
+        "q": "A: (   ) guaraníme?\nB: ^Héẽ^, [michĩmi|un poquito].",
+        "options": ["Mba'épa reñe'ẽ", "Reñe'ẽpa", "Moõpa reñe'ẽ", "Mávapa oñe'ẽ"],
+        "answer": 2,
+        "why": [
+          "Mba'épa pregunta qué hablás. A un «¿qué?» no se contesta héẽ.",
+          "B contesta héẽ, sí: es una pregunta de sí o no, con -pa en el verbo. Reñe'ẽpa guaraníme? ¿Hablás guaraní?",
+          "Moõpa pregunta dónde. La respuesta sería un lugar, no héẽ.",
+          "Mávapa pregunta quién habla guaraní. Héẽ no dice quién."
+        ]
+      },
+      {
+        "id": "a1u01d4.d2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la respuesta",
+        "q": "A: Reikuaápa che réra?\nB: (   ). ^Nde réra Juan^.",
+        "options": ["Héẽ", "Nahániri", "Iporã", "Jajotopáta"],
+        "answer": 1,
+        "why": [
+          "Héẽ es «sí». B sabe el nombre y lo dice: nde réra Juan.",
+          "Nahániri es «no», pero B dice el nombre: sí lo sabe.",
+          "Iporã, «bien», contesta mba'éichapa. Acá te preguntan sí o no.",
+          "Jajotopáta, «nos vemos», es para despedirse. No contesta la pregunta."
+        ]
+      },
+      {
+        "id": "a1u01d4.d3",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "A: (   ) [ovale|cuesta] [ko|este] [kesu|queso]?\nB: ^Diez mil^.",
+        "options": ["Mba'éichapa", "Mávapa", "Moõpa", "Mboýpa"],
+        "answer": 4,
+        "why": [
+          "Mba'éichapa pregunta cómo. B no dice cómo: dice un precio.",
+          "Mávapa pregunta quién. Diez mil no es una persona.",
+          "Moõpa pregunta dónde. Diez mil no es un lugar.",
+          "B dice un precio, diez mil: la pregunta es Mboýpa, ¿cuánto? Los precios se suelen decir en castellano, también cuando se habla guaraní."
+        ]
+      },
+      {
+        "id": "a1u01d4.d4",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la respuesta",
+        "q": "A: ^Mávapa^ ha'e?\nB: (   )",
+        "options": ["Héẽ.", "Iporã.", "Che sy.", "Nahániri."],
+        "answer": 3,
+        "why": [
+          "Héẽ contesta preguntas de sí o no. Mávapa pregunta quién.",
+          "Iporã, «bien», contesta mba'éichapa. No dice quién es.",
+          "Mávapa pregunta «¿quién?»: che sy, mi mamá, es una persona.",
+          "Nahániri contesta sí o no. Mávapa pide una persona."
+        ]
+      },
+      {
+        "id": "a1u01d4.d5",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "Ana, ",
+        "after": " che réra?",
+        "tiles": ["rei", "kuaa", "pa"],
+        "bank": [2, 0, 1],
+        "hint": "-pa, la marca de pregunta, va al final, y rei- es «vos». Después fijate dónde queda el acento.",
+        "full": "Ana, reikuaá{pa} che réra?",
+        "es": "Ana, ¿sabés mi nombre?",
+        "explain": "rei- (vos) va adelante, kuaa (saber) en el medio y -pa al final: reikuaápa. Con verbos como kuaa, «vos» es rei- y no re-. Como la -pa de pregunta no se lleva el acento, este queda en la última a de kuaa, y se escribe porque ya no es la última vocal."
+      },
+      {
+        "id": "a1u01d4.d6",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "",
+        "after": " ovale ko kesu?",
+        "tiles": ["mboy", "pa"],
+        "bank": [1, 0],
+        "hint": "¿Dónde va -pa en mba'épa? Acá va igual. Después fijate dónde queda el acento.",
+        "full": "{Mboýpa} ovale ko kesu?",
+        "es": "¿Cuánto cuesta este queso?",
+        "explain": "mboy (cuánto) va primero y -pa al final: mboýpa. La -pa de pregunta no se lleva el acento: este queda en la y de mboy. Como esa y ya no es la última vocal, se escribe con tilde: ý."
+      }
+    ],
+    "exam": [
+      {
+        "id": "a1u01d4.e1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la respuesta",
+        "q": "A: Ndépa Rosa?\nB: (   ), che Rosa.",
+        "options": ["Nahániri", "Héẽ", "Iporã", "Mávapa"],
+        "answer": 2,
+        "explain": "B dice che Rosa, «soy Rosa»: es quien A pensaba, así que contesta héẽ, «sí». Nahániri diría que no es Rosa. Iporã, «bien», contesta mba'éichapa, y mávapa es una pregunta, no una respuesta."
+      },
+      {
+        "id": "a1u01d4.e2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "A: (   ) reipota?\nB: Chipa.",
+        "options": ["Mboýpa", "Moõpa", "Mávapa", "Mba'épa"],
+        "answer": 4,
+        "explain": "B contesta con una cosa, chipa: la pregunta es Mba'épa reipota?, ¿qué querés? Mboýpa pregunta cuánto, moõpa dónde y mávapa quién."
+      },
+      {
+        "id": "a1u01d4.e3",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "Rosa, ",
+        "after": " guaraníme?",
+        "tiles": ["re", "ñe'ẽ", "pa"],
+        "bank": [1, 2, 0],
+        "full": "Rosa, reñe'ẽ{pa} guaraníme?",
+        "es": "Rosa, ¿hablás guaraní?",
+        "explain": "re (vos) + ñe'ẽ (hablar) + pa (pregunta) = reñe'ẽpa. El acento sigue en la ẽ, y la tilde nasal (~) ya lo marca: no se escribe otro acento."
+      }
+    ]
+  },
+  "words": {
+    "es": "Un puesto en el mercado",
+    "intro": "Estás en un puesto del mercado. Tocá cada palabra para escucharla.",
+    "sound": {
+      "focus": "El puso (')",
+      "letters": ["'"],
+      "note": "El puso (') es una letra del alfabeto: un corte breve de la voz entre dos vocales, como en «oh-oh» (ka'a, mba'e, ñe'ẽ). Si falta, cambia la palabra: mbo'y es «collar» y mboy, «¿cuántos?». En ka'i / kái y en sevo'i / sevói cambia también el acento: ka'i y sevo'i lo llevan al final; kái y sevói, en la vocal con tilde.",
+      "pairs": [
+        ["mbo'y", "collar", "mboy", "¿cuántos?"],
+        ["ka'i", "mono", "kái", "quemarse"],
+        ["sevo'i", "lombriz", "sevói", "cebolla"]
+      ]
+    },
+    "words": [
+      { "id": "chipa", "gn": "chipa", "es": "chipá", "note": "Sin acento escrito: en guaraní, sin marca, el acento cae al final." },
+      { "id": "kesu", "gn": "kesu", "es": "queso", "note": "Viene del castellano «queso», escrito a la guaraní." },
+      { "id": "soo", "gn": "so'o", "es": "carne", "note": "So-'o: el puso corta la voz entre las dos o." },
+      { "id": "mandio", "gn": "mandi'o", "es": "mandioca", "note": "Ma-ndi-'o: el puso va entre la i y la o." },
+      { "id": "kaa", "gn": "ka'a", "es": "yerba mate", "note": "La yerba del mate y del tereré. Ka-'a, con un corte entre las dos a." },
+      { "id": "hee", "gn": "he'ẽ", "es": "dulce", "note": "No es héẽ («sí»): he'ẽ lleva puso. Ka'ay he'ẽ es «mate dulce»." },
+      { "id": "oipa", "gn": "Oĩpa chipa?", "es": "¿Hay chipá?", "parts": [["oĩ", "hay"], ["-pa", "pregunta"], ["chipa", "chipá"]] },
+      { "id": "mboypa", "gn": "Mboýpa ovale?", "es": "¿Cuánto cuesta?", "parts": [["mboy", "cuánto"], ["-pa", "pregunta"], ["ovale", "cuesta"]], "note": "Ovale viene del castellano «valer»." }
+    ],
+    "spell": ["kaa", "soo", "mandio", "hee"],
+    "check": {
+      "id": "a1u01d4.k1",
+      "kind": "choice",
+      "area": "vocab",
+      "label": "Cómo se escribe",
+      "q": "¿Cómo se escribe _mandioca_ en guaraní?",
+      "options": ["mandio", "mandi'o", "mand'io", "mandi'õ"],
+      "answer": 2,
+      "explain": "Mandi'o lleva puso entre la i y la o: ma-ndi-'o. En mandio falta el corte de la voz. En mand'io el puso queda después de una consonante, y el puso va siempre entre dos vocales. Mandi'õ agrega una tilde nasal (~) que la palabra no lleva."
+    }
+  },
+  "skill": {
+    "kind": "listening",
+    "es": "Comprensión de puntos clave",
+    "situation": "Una mujer llega a un puesto del mercado y habla con el vendedor. Él dice el precio en castellano, como se suele hacer.",
+    "ask": "¿Qué hay en el puesto?",
+    "item": {
+      "id": "a1u01d4.r1",
+      "kind": "choice",
+      "area": "listening",
+      "label": "Qué escuchaste",
+      "q": "¿Qué hay en el puesto?",
+      "options": ["Chipá y queso", "Queso y mandioca", "Chipá y mandioca"],
+      "answer": 2,
+      "why": [
+        "Chipá no hay: ella pregunta oĩpa chipa? y él contesta nahániri.",
+        "Él dice oĩ kesu ha mandi'o: hay queso y mandioca.",
+        "Mandioca hay, pero chipá no: el vendedor contesta nahániri."
+      ],
+      "script": [
+        "Narrador: En un puesto del mercado. ¿Qué hay en el puesto?",
+        "Hombre: Mba'éichapa. Mba'épa reipota?",
+        "Mujer: Iporã. Oĩpa chipa?",
+        "Hombre: Nahániri. Oĩ kesu ha mandi'o.",
+        "Mujer: Mboýpa ovale ko kesu?",
+        "Hombre: Diez mil.",
+        "Narrador: ¿Qué hay en el puesto?"
+      ]
+    },
+    "audio": [
+      ["N", "En un puesto del mercado. ¿Qué hay en el puesto?", "En un puesto del mercado. ¿Qué hay en el puesto?"],
+      ["M", "Mba'éichapa. Mba'épa reipota?", "Hola, ¿qué tal? ¿Qué querés?"],
+      ["F", "Iporã. Oĩpa chipa?", "Bien. ¿Hay chipá?"],
+      ["M", "Nahániri. Oĩ kesu ha mandi'o.", "No. Hay queso y mandioca."],
+      ["F", "Mboýpa ovale ko kesu?", "¿Cuánto cuesta este queso?"],
+      ["M", "Diez mil.", "Diez mil."],
+      ["N", "¿Qué hay en el puesto?", "¿Qué hay en el puesto?"]
+    ]
+  }
+}

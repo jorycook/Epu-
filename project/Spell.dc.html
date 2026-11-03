@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Práctica de escritura</title>
+<script src="./support.js"></script>
+<script src="./gn-sound.js"></script>
+<script src="./gn-spell.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&amp;family=Andika:wght@400;700&amp;text=%20%21%22%23%24%25%26%27%28%29%2A%2B%2C-.%2F0123456789%3A%3B%3C%3D%3E%3F%40ABCDEFGHIJKLMNOPQRSTUVWXYZ%5B%5C%5D%5E_%60abcdefghijklmnopqrstuvwxyz%7B%7C%7D~%C2%A1%C2%BF%C2%AB%C2%BB%C2%B0%C2%B7%C3%97%C3%B7%C2%AA%C2%BA%C2%B2%C3%A1%C3%A9%C3%AD%C3%B3%C3%BA%C3%BC%C3%B1%C3%81%C3%89%C3%8D%C3%93%C3%9A%C3%9C%C3%91%C3%BD%C3%9D%C3%A3%E1%BA%BD%C4%A9%C3%B5%C5%A9%E1%BB%B9%C3%83%E1%BA%BC%C4%A8%C3%95%C5%A8%E1%BB%B8%C3%A7%C3%87%C3%A0%C3%A8%C3%AC%C3%B2%C3%B9%C3%A2%C3%AA%C3%AE%C3%B4%C3%BB%CC%83%CC%81%E2%80%98%E2%80%99%E2%80%9C%E2%80%9D%E2%80%A6%E2%80%93%E2%80%94%E2%80%A2%E2%82%AC%E2%86%92%E2%86%90%E2%86%91%E2%86%93&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:#2F4FD0;text-decoration:none}a:hover{color:#1B2440}
+rt{font-size:9px;font-weight:500;color:#5A6382}
+@keyframes gn-pop{0%{transform:scale(1)}45%{transform:scale(1.04)}100%{transform:scale(1)}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="box-sizing: border-box; width: 100%; max-width: 358px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; padding: {{ rootPad }}; min-height: {{ rootMin }}; background: {{ rootBg }}">
+
+<div role="list" aria-label="Tres veces: copiar, con pistas, de memoria" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; flex-shrink: 0">
+<sc-for list="{{ reps }}" as="r" hint-placeholder-count="3">
+<div role="listitem" aria-label="{{ r.aria }}" aria-current="{{ r.cur }}" style="height: 34px; min-width: 0; box-sizing: border-box; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 12px; white-space: nowrap; border: {{ r.border }}; background: {{ r.bg }}; color: {{ r.color }}; font-weight: {{ r.weight }}"><span aria-hidden="true" style="width: 17px; height: 17px; box-sizing: border-box; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0; border: {{ r.dotBorder }}; background: {{ r.dotBg }}; color: {{ r.dotColor }}"><sc-if value="{{ r.done }}" hint-placeholder-val="{{ false }}"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></sc-if><sc-if value="{{ r.todo }}" hint-placeholder-val="{{ true }}">{{ r.num }}</sc-if></span><span>{{ r.label }}</span></div>
+</sc-for>
+</div>
+
+<div style="box-sizing: border-box; width: 100%; padding: 16px 10px; border-radius: 22px; background: #FFFFFF; border: 2px solid #1B2440; display: flex; justify-content: center; flex-shrink: 0; box-shadow: {{ padShadow }}; animation: {{ padAnim }}">
+<div role="list" aria-label="{{ cellsAria }}" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; row-gap: 10px; column-gap: {{ wordGap }}">
+<sc-for list="{{ groups }}" as="gr" hint-placeholder-count="1">
+<div role="none" style="display: flex; flex-wrap: wrap; justify-content: center; gap: {{ cellGap }}">
+<sc-for list="{{ gr.cells }}" as="x" hint-placeholder-count="4">
+<div role="listitem" aria-label="{{ x.aria }}" aria-current="{{ x.cur }}" style="position: relative; box-sizing: border-box; border-radius: 12px; display: flex; align-items: center; justify-content: center; width: {{ x.w }}; height: {{ cellPx }}; border: {{ x.border }}; background: {{ x.bg }}; box-shadow: {{ x.shadow }}; animation: {{ x.anim }}; transition: {{ x.fade }}"><span lang="gn" aria-hidden="true" style="font-family: 'Andika', 'Nunito', sans-serif; font-weight: 700; line-height: 1; white-space: nowrap; font-size: {{ letterPx }}; color: {{ x.color }}; transition: {{ x.fade }}">{{ x.c }}</span><sc-if value="{{ x.dot }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="position: absolute; top: -5px; left: 50%; width: 8px; height: 8px; margin-left: -4px; border-radius: 50%; background: #C7361E"></span></sc-if></div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div aria-live="polite" style="min-height: 36px; padding: 0 4px; font-size: 13px; font-weight: 700; line-height: 1.4; text-align: center; flex-shrink: 0; color: {{ msgColor }}"><span lang="gn">{{ msgGn }}</span>{{ msgEs }}<span lang="gn">{{ msgWord }}</span>{{ msgTail }}</div>
+
+<div role="group" aria-label="Teclado guaraní" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; flex-shrink: 0">
+<sc-for list="{{ keys }}" as="k" hint-placeholder-count="4">
+<button onClick="{{ k.press }}" aria-label="{{ k.aria }}" aria-disabled="{{ k.off }}" style="position: relative; width: 46px; height: 44px; padding: 0; box-sizing: border-box; border-radius: 12px; font-family: 'Andika', 'Nunito', sans-serif; font-size: 22px; font-weight: 700; line-height: 1; display: flex; align-items: center; justify-content: center; transition: background 150ms; border: {{ k.border }}; background: {{ k.bg }}; color: {{ k.color }}; box-shadow: {{ k.shadow }}; cursor: {{ k.cursor }}"><span lang="gn" aria-hidden="true">{{ k.k }}</span><sc-if value="{{ k.dot }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="position: absolute; top: 4px; left: 50%; width: 6px; height: 6px; margin-left: -3px; border-radius: 50%; background: #C7361E"></span></sc-if></button>
+</sc-for>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; flex-shrink: 0">
+<button onClick="{{ play }}" aria-pressed="{{ playing }}" aria-label="Escuchar la palabra" style="height: 44px; min-width: 0; padding: 0 6px; border-radius: 12px; border: 2px solid #1B2440; font-size: 13px; font-weight: 800; white-space: nowrap; display: flex; align-items: center; justify-content: center; gap: 5px; transition: background 150ms; background: {{ playBg }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 9a4 4 0 0 1 0 6"/></svg><span>Escuchar</span></button>
+<button onClick="{{ hint }}" aria-disabled="{{ noHint }}" aria-label="Mostrar la letra que sigue" style="height: 44px; min-width: 0; padding: 0 6px; border-radius: 12px; font-size: 13px; font-weight: 800; white-space: nowrap; display: flex; align-items: center; justify-content: center; gap: 5px; background: #FFFFFF; border: {{ hintBorder }}; color: {{ hintColor }}; cursor: {{ hintCursor }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.3 1.1 2.2h5c0-.9.4-1.6 1.1-2.2A6 6 0 0 0 12 3z"/></svg><span>Pista</span></button>
+<button onClick="{{ again }}" aria-disabled="{{ noAgain }}" aria-label="Empezar otra vez desde la primera letra" style="height: 44px; min-width: 0; padding: 0 6px; border-radius: 12px; background: #FFFFFF; font-size: 13px; font-weight: 800; white-space: nowrap; display: flex; align-items: center; justify-content: center; gap: 5px; border: {{ againBorder }}; color: {{ againColor }}; cursor: {{ againCursor }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/></svg><span>Otra vez</span></button>
+</div>
+
+<sc-if value="{{ showStrip }}" hint-placeholder-val="{{ false }}">
+<div style="flex-shrink: 0; display: flex; flex-direction: column; gap: 4px">
+<div style="font-size: 11px; font-weight: 800; color: #5A6382">Sílabas{{ stripNote }}</div>
+<div role="img" aria-label="{{ stripAria }}" style="display: flex; flex-wrap: wrap; gap: 4px; min-height: 36px; visibility: {{ stripVis }}">
+<sc-for list="{{ syl }}" as="y" hint-placeholder-count="2"><span lang="gn" aria-hidden="true" style="height: 36px; min-width: 36px; padding: 0 8px; box-sizing: border-box; border-radius: 8px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: 'Andika', 'Nunito', sans-serif; font-size: 18px; font-weight: 700; border: {{ y.border }}; color: {{ y.color }}">{{ y.t }}</span></sc-for>
+</div>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"task":{"editor":null},"tkey":{"editor":null},"finished":{"editor":null},"size":{"editor":null},"strip":{"editor":null},"pass":{"editor":null},"$preview":{"width":358,"height":470}}'>
+/* The spelling pad (Yaoki's writing pad, for Guarani): the learner types one word, but only the letters a Spanish
+   speaker lacks or spells differently (gn-spell.js says which: the nasal vowels, g̃, the puso, the written accent,
+   the digraphs, y, k, h and j). Plain letters are given, as the writing pad gives the kana. The hard letters are
+   typed on a keyboard of real buttons that holds each one with the letters Spanish speakers mix it up with.
+   The word is typed three times, as a new kanji is written in Yaoki: Copiar (the letters in grey, the key to press
+   marked with the red dot), Con pistas (the letters very faint), De memoria (nothing shown, the cells after the
+   current one not drawn, so neither the length nor the place of a puso is given away, and the word plays first).
+   Props, the writing pad's contract: task { kind: 'word', w, es, clip, moment } (clip: the word's sound key;
+   moment: open part-way, for a designed moment); tkey names the task, and a new name starts it afresh;
+   finished({ misses, helped }) once the third time is typed; size: the panel's width in px (358 by default);
+   strip false leaves out the syllable strip; pass(n), optional, tells the screen which time is on (0 Copiar,
+   1 Con pistas, 2 De memoria, 3 done), so it can hide the word it shows while the learner types from memory.
+   Help, as in Yaoki: after 2 misses on a letter it lights up yellow with its key; after 4 it is typed in for the
+   learner (helped). A right key fills its cell with a pop; a wrong one flashes the cell red and fades.
+   On its own the artboard shows the designed moment: ñe'ẽ (Ñe'ẽ · Palabra, from the app's glossary), the second
+   time, the puso typed and the ẽ to type. */
+const PASSES = ['Copiar', 'Con pistas', 'De memoria'];
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.token = 0;
+this.timers = [];
+this.state = this.fresh(this.key(), !!this.task().moment);
+}
+/* the task, or on its own the designed moment */
+task() {
+const t = this.props.task;
+if (t && t.w) return t;
+return { kind: 'word', w: "ñe'ẽ", es: 'palabra', moment: true };
+}
+key() {
+const t = this.task();
+return this.props.tkey || 'w:' + t.w;
+}
+/* the letters of the word as a Guarani reader sees them (mb, g̃ and ẽ are one letter each), and which are typed */
+cells(t) {
+const S = window.gnSpell;
+const w = String((t && t.w) || '');
+const list = S ? S.cells(w) : Array.from(w);
+return list.map((c, j) => ({ c, j, kind: S ? S.kind(c) : 'plain', hard: !!(S && S.hard(c)) }));
+}
+targets(t) {
+return this.cells(t).filter((x) => x.hard).map((x) => x.j);
+}
+/* a designed moment: the second time, a little over half the letters in */
+pre(t) {
+const n = this.targets(t).length;
+return t.moment && n > 1 ? Math.max(1, Math.floor(n * 0.6)) : 0;
+}
+fresh(key, moment) {
+const t = this.task();
+return { key, pass: moment ? 1 : 0, at: moment ? this.pre(t) : 0, misses: 0, slips: 0, helped: 0, hinted: false, bad: -1, badKey: '', fadeAt: -1, flash: false, finished: false, playing: false, noteGn: '', note: '', tone: '' };
+}
+/* the state for this task: when the task has just changed, a fresh one until componentDidUpdate has caught up */
+st() {
+if (this.state.key === this.key()) return this.state;
+return this.fresh(this.key(), !!this.task().moment);
+}
+/* a timer that a new start (another word, Otra vez) cancels */
+later(ms, fn) {
+const tok = this.token;
+this.timers.push(setTimeout(() => { if (this.token === tok) fn(); }, ms));
+}
+stopAll() {
+this.token++;
+this.timers.forEach((id) => clearTimeout(id));
+this.timers = [];
+clearTimeout(this.badTimer);
+clearTimeout(this.playTimer);
+}
+componentDidMount() {
+this.after();
+}
+componentDidUpdate() {
+const key = this.key();
+if (this.state.key !== key) {
+this.stopAll();
+if (window.gnSound) window.gnSound.stop();
+this.setState(this.fresh(key, !!this.task().moment));
+return;
+}
+this.after();
+}
+componentWillUnmount() {
+this.stopAll();
+if (window.gnSound) window.gnSound.stop();
+}
+/* after each change: a word with no letter to type counts as typed at once, and the screen hears which time is on */
+after() {
+const s = this.state;
+const key = this.key();
+if (!this.targets(this.task()).length && !s.finished) {
+if (this.empty !== key) {
+this.empty = key;
+this.setState({ finished: true });
+if (this.props.finished) this.props.finished({ misses: 0, helped: 0 });
+}
+return;
+}
+const now = s.finished ? 3 : s.pass;
+const mark = key + ':' + now;
+if (this.told !== mark) {
+this.told = mark;
+if (typeof this.props.pass === 'function') this.props.pass(now);
+}
+}
+/* a key: the right letter goes in; a wrong one is named (gnSpell.note says why it is off) */
+press(k) {
+const t = this.task();
+const s = this.st();
+const T = this.targets(t);
+if (s.flash || s.finished || s.at >= T.length) return;
+const S = window.gnSpell;
+const snd = window.gnSound;
+/* browsers only let sound start after a tap: keep the output awake for the dictation of the third time */
+if (t.clip && snd && snd.has(t.clip)) snd.unlock();
+const want = this.cells(t)[T[s.at]].c;
+const r = S ? S.judge(k, want) : { ok: k === want, why: 'other' };
+if (r.ok) { this.accept(false); return; }
+const slips = s.slips + 1;
+/* the note names the letter as its key shows it ("tocá mb", not "tocá Mb" at the start of a word) */
+const why = S ? S.note(r.why, S.norm(want).toLowerCase()) : 'Esa no. Probá otra vez.';
+this.setState({ misses: s.misses + 1, slips, hinted: s.hinted || slips >= 2, bad: T[s.at], badKey: k, fadeAt: T[s.at], noteGn: '', note: slips >= 2 && slips < 4 ? why + ' Seguí la letra amarilla.' : why, tone: 'miss' });
+clearTimeout(this.badTimer);
+this.badTimer = setTimeout(() => this.setState({ bad: -1, badKey: '' }), 160);
+if (slips >= 4) {
+const at = s.at;
+this.later(420, () => { const now = this.st(); if (now.at === at && !now.flash && !now.finished) this.accept(true); });
+}
+}
+/* the letter goes in (typed by the learner, or for the learner after 4 misses) */
+accept(helped) {
+const t = this.task();
+const s = this.st();
+const T = this.targets(t);
+const i = s.at;
+if (i >= T.length) return;
+const at = i + 1;
+const help = s.helped + (helped ? 1 : 0);
+this.setState({ at, slips: 0, hinted: false, helped: help, bad: -1, badKey: '', fadeAt: -1, noteGn: '', note: helped ? 'La letra ' + (i + 1) + ' se escribió por vos. Seguimos.' : '', tone: '' });
+if (at >= T.length) {
+const res = { misses: s.misses, helped: help };
+this.later(helped ? 460 : 240, () => this.wrote(res));
+}
+}
+/* a time is typed: a moment to see it, then the next; after the third, the task is done */
+wrote(r) {
+const s = this.st();
+const clean = !r.misses && !r.helped;
+if (s.pass >= PASSES.length - 1) {
+this.setState({ flash: true, finished: true, noteGn: '', note: '', tone: '' });
+this.later(750, () => this.setState({ flash: false }));
+if (this.props.finished) this.props.finished({ misses: r.misses || 0, helped: r.helped || 0 });
+return;
+}
+this.setState({ flash: true, noteGn: clean ? '¡Iporã!' : '¡Oĩma!', note: clean ? ' Sin errores.' : ' Listo.', tone: 'good' });
+this.later(750, () => {
+const pass = this.st().pass + 1;
+this.setState({ pass, at: 0, misses: 0, slips: 0, helped: 0, hinted: false, bad: -1, badKey: '', fadeAt: -1, flash: false, noteGn: '', note: '', tone: '' });
+/* from memory: the word is said first, as a dictation */
+if (pass === PASSES.length - 1) this.play();
+});
+}
+/* the word's clip; without one the button lights up for as long as the word would take to say */
+play() {
+const t = this.task();
+const S = window.gnSpell;
+const snd = window.gnSound;
+const key = t.clip || '';
+clearTimeout(this.playTimer);
+const sound = !!(key && snd && snd.has(key) && snd.unlock() && snd.play(key));
+const len = (S ? S.norm(t.w) : String(t.w || '')).length;
+this.setState({ playing: true });
+this.playTimer = setTimeout(() => this.setState({ playing: false }), sound ? snd.ms(key) + 150 : 600 + len * 120);
+}
+hint() {
+const s = this.st();
+if (s.flash || s.finished || s.at >= this.targets(this.task()).length) return;
+this.setState({ hinted: true, noteGn: '', note: 'Seguí la letra amarilla.', tone: '' });
+}
+/* the same time again from its first letter (once all is typed, the last time again, for more practice) */
+again() {
+const s = this.st();
+/* a word with no letter to type was done the moment it opened: there is nothing to start again */
+if (s.flash || !this.targets(this.task()).length) return;
+this.stopAll();
+if (window.gnSound) window.gnSound.stop();
+this.setState({ at: 0, misses: 0, slips: 0, helped: 0, hinted: false, bad: -1, badKey: '', fadeAt: -1, finished: false, playing: false, noteGn: '', note: '', tone: '' });
+}
+/* the syllables with the stressed one, when gn-spell.js can split them; otherwise there is no strip */
+syllables(w) {
+const S = window.gnSpell;
+if (!S || typeof S.syllables !== 'function') return null;
+let list = null;
+try { list = S.syllables(w); } catch (e) { return null; }
+if (!Array.isArray(list) || !list.length) return null;
+let at = -1;
+if (typeof S.stressOf === 'function') { try { const r = S.stressOf(w); if (typeof r === 'number') at = r; } catch (e) { at = -1; } }
+const out = list.map((x, i) => ({ t: typeof x === 'string' ? x : x ? String(x.t || x.s || x.text || '') : '', stress: x && typeof x === 'object' ? !!(x.stress || x.stressed) : i === at })).filter((x) => x.t);
+return out.length ? out : null;
+}
+renderVals() {
+const S = window.gnSpell;
+const t = this.task();
+const s = this.st();
+const cells = this.cells(t);
+const T = this.targets(t);
+const n = T.length;
+const writing = !s.flash && !s.finished && s.at < n;
+const curJ = writing ? T[s.at] : -1;
+const mode = ['copy', 'faint', 'memory'][Math.min(2, s.pass)];
+const low = (g) => (S ? S.norm(g) : String(g)).toLowerCase();
+const name = (g) => (S ? S.name(g) : String(g));
+const wantKey = curJ >= 0 ? low(cells[curJ].c) : '';
+/* cells: up to 46 px, smaller for a long word, never under 30 px on one row; a phrase too long for one row
+   breaks between its words (never inside one), each word then as big as its longest one allows. A punctuation
+   mark (a question's ¿ and ?, a comma between two words) is not a letter: it sits beside the word without a
+   cell, in half a cell's width */
+const P = Math.max(280, Math.min(358, +this.props.size || 358));
+const inner = P - 24;
+const runs = [];
+let run = [];
+cells.forEach((x) => { if (x.kind === 'space') { if (run.length) runs.push(run); run = []; } else run.push(x); });
+if (run.length) runs.push(run);
+const span = (r) => r.reduce((m, x) => m + (x.kind === 'mark' ? 0.5 : 1), 0);
+const count = Math.max(1, cells.length - cells.filter((x) => x.kind === 'space').length);
+const total = Math.max(1, runs.reduce((m, r) => m + span(r), 0));
+const long = runs.reduce((a, r) => (span(r) > span(a) ? r : a), runs[0] || []);
+const gap = count > 7 ? 4 : 6;
+const WORD_GAP = 14;
+let px = Math.floor((inner - gap * (count - runs.length) - WORD_GAP * Math.max(0, runs.length - 1)) / total);
+if (px < 30) px = Math.floor((inner - gap * Math.max(0, long.length - 1)) / Math.max(1, span(long)));
+px = Math.max(28, Math.min(46, px));
+/* a miss fades back from red; a right key fills its cell at once, with the pop */
+const FADE = 'background-color 480ms ease-out, border-color 480ms ease-out, color 480ms ease-out';
+const look = (x) => {
+const j = x.j;
+const k = T.indexOf(j);
+const hard = k >= 0;
+const mark = x.kind === 'mark';
+/* from memory, the cells after the current one are not drawn */
+const hide = mode === 'memory' && writing && j > curJ;
+const typed = hard && k < s.at;
+const now = hard && j === curJ;
+let c = x.c;
+let color = '#5A6382';
+let border = mark ? '2px solid transparent' : '2px solid #DDE1EC';
+let bg = mark ? 'transparent' : '#F4F5F9';
+let shadow = 'none';
+let anim = 'none';
+let dot = false;
+let aria = mark ? x.c : name(x.c) + ', dada';
+if (typed) {
+color = '#1B2440'; border = '2px solid #1B2440'; bg = '#FFFFFF'; shadow = '0 3px 0 #1B2440'; anim = 'gn-pop 180ms ease-out';
+aria = name(x.c) + ', escrita';
+} else if (now) {
+border = '2.5px solid #2F4FD0'; bg = '#E8ECFB';
+if (s.hinted) { color = '#1B2440'; bg = '#FFF4D6'; border = '2.5px solid #F2B43A'; }
+else if (mode === 'copy') color = '#9EA9C8';
+else if (mode === 'faint') color = '#C9D0E3';
+else c = '';
+dot = mode === 'copy' && !s.hinted;
+aria = 'letra ' + (k + 1) + ' de ' + n + ', por escribir' + (mode !== 'memory' || s.hinted ? ': ' + name(x.c) : '');
+} else if (hard) {
+border = '2px dashed #C9D0E3'; bg = '#FFFFFF';
+color = mode === 'copy' ? '#D3D8E5' : '#EBEDF3';
+if (mode === 'memory') c = '';
+aria = 'letra ' + (k + 1) + ' de ' + n + ', por escribir';
+}
+const bad = j === s.bad && !!s.badKey;
+if (bad) { c = s.badKey; color = '#C7361E'; border = '2.5px solid #C7361E'; bg = '#FDEBE6'; }
+return {
+hide, c, color, border, bg, shadow, anim, dot, aria,
+w: (mark ? Math.round(px * 0.5) : px) + 'px',
+cur: now ? 'true' : 'false',
+/* a miss shows at once and fades back in 480 ms; every other change is immediate */
+fade: !bad && j === s.fadeAt ? FADE : 'none',
+};
+};
+/* the cells word by word; from memory, what comes after the current cell is left out altogether */
+const groups = runs.map((r) => ({ cells: r.map(look).filter((x) => !x.hide) })).filter((g) => g.cells.length);
+/* the keys this word needs, each with the letters it is mixed up with, in an order fixed for this task */
+const keyList = S ? S.keys(t.w, this.key()) : [];
+const keys = keyList.map((k) => {
+const right = writing && k === wantKey;
+const lit = right && s.hinted;
+return {
+k,
+aria: name(k),
+off: !writing,
+dot: right && mode === 'copy' && !lit,
+bg: lit ? '#F2B43A' : '#FFFFFF',
+border: writing ? '2px solid #1B2440' : '2px solid #DDE1EC',
+shadow: writing ? '0 3px 0 #1B2440' : 'none',
+color: writing ? '#1B2440' : '#9AA1B5',
+cursor: writing ? 'pointer' : 'default',
+press: () => this.press(k),
+};
+});
+const reps = PASSES.map((label, k) => {
+/* a word with no letter to type counts as typed three times the moment it opens */
+const done = !n || k < s.pass || (k === s.pass && (s.finished || s.flash));
+const now = k === s.pass && !done;
+return {
+label,
+num: String(k + 1),
+done,
+todo: !done,
+aria: (k + 1) + ': ' + label + (done ? ', hecho' : now ? ', ahora' : ''),
+cur: now ? 'step' : 'false',
+border: now ? '2px solid #2F4FD0' : done ? '2px solid #E0F3EF' : '2px solid #DDE1EC',
+bg: now ? '#E8ECFB' : done ? '#E0F3EF' : 'transparent',
+color: now ? '#1B2440' : done ? '#0B7A6B' : '#5A6382',
+weight: now || done ? 800 : 700,
+dotBorder: now ? '2px solid #2F4FD0' : done ? '2px solid #0B7A6B' : '2px solid #C9D0E3',
+dotBg: done ? '#0B7A6B' : '#FFFFFF',
+dotColor: now ? '#2F4FD0' : '#5A6382',
+};
+});
+/* the line under the cells: what to do now, or what just happened (the word named without its end marks) */
+const bare = String(t.w || '').replace(/[¿?¡!.,;:«»"]+/g, '').trim();
+const at1 = Math.min(n, s.at + 1);
+let msgGn = s.noteGn || '';
+let msgEs = s.note || '';
+let msgWord = '';
+let msgTail = '';
+if (!msgGn && !msgEs) {
+if (!n) msgEs = 'Esta palabra no tiene letras nuevas para teclear.';
+else if (s.finished) { msgGn = '¡Oĩma!'; msgEs = ' Escribiste '; msgWord = bare; msgTail = ' tres veces.'; }
+else if (s.playing) msgEs = s.pass >= 2 ? 'Escuchá y escribí de memoria.' : 'Escuchá la palabra.';
+else if (s.pass === 0) msgEs = 'Copiá la palabra, letra por letra · letra ' + at1 + ' de ' + n;
+else if (s.pass === 1) msgEs = 'Otra vez, con pistas suaves · letra ' + at1 + ' de ' + n;
+else msgEs = 'Ahora de memoria: escuchá y escribí';
+}
+const tone = s.tone === 'miss' ? '#C7361E' : s.tone === 'good' || s.finished ? '#0B7A6B' : '#1B2440';
+const syl = this.props.strip === false ? null : this.syllables(t.w);
+const hidden = mode === 'memory' && !s.finished;
+const stressed = (syl || []).filter((y) => y.stress)[0];
+/* on its own (the 358 x 470 frame): the screen's ground, and clear of the frame's rounded corners */
+const alone = !(this.props.task && this.props.task.w);
+return {
+rootPad: alone ? '14px 0 0' : '0',
+rootMin: alone ? '470px' : '0',
+rootBg: alone ? '#F4F5F9' : 'transparent',
+reps,
+groups,
+cellsAria: hidden ? 'La palabra, de memoria' + (t.es ? ': ' + t.es : '') : bare + (t.es ? ', ' + t.es : '') + ': ' + n + (n === 1 ? ' letra para teclear' : ' letras para teclear'),
+cellPx: px + 'px',
+letterPx: Math.max(16, Math.round(px * 0.56)) + 'px',
+cellGap: gap + 'px',
+wordGap: WORD_GAP + 'px',
+padShadow: s.flash ? '0 0 0 4px #E0F3EF, 0 4px 0 #1B2440' : '0 4px 0 #1B2440',
+padAnim: s.flash ? 'gn-pop 360ms ease-out' : 'none',
+msgGn,
+msgEs,
+msgWord,
+msgTail,
+msgColor: tone,
+keys,
+playing: !!s.playing,
+playBg: s.playing ? '#F2B43A' : '#FFFFFF',
+noHint: !writing,
+hintBorder: writing ? '2px solid #1B2440' : '2px solid #DDE1EC',
+hintColor: writing ? '#1B2440' : '#9AA1B5',
+hintCursor: writing ? 'pointer' : 'default',
+noAgain: !n,
+againBorder: n ? '2px solid #1B2440' : '2px solid #DDE1EC',
+againColor: n ? '#1B2440' : '#9AA1B5',
+againCursor: n ? 'pointer' : 'default',
+showStrip: !!syl,
+syl: (syl || []).map((y) => ({ t: y.t, color: y.stress ? '#C7361E' : '#1B2440', border: y.stress ? '1.5px solid #C7361E' : '1.5px solid #DDE1EC' })),
+stripAria: syl ? 'Sílabas: ' + syl.map((y) => y.t).join(', ') + (stressed ? '; el acento va en ' + stressed.t : '') : '',
+/* from memory, the strip would give the word away: it keeps its place, hidden */
+stripVis: hidden ? 'hidden' : 'visible',
+stripNote: hidden ? ' · ocultas por ahora' : '',
+play: () => this.play(),
+hint: () => this.hint(),
+again: () => this.again(),
+};
+}
+}
+</script>
+</body>
+</html>

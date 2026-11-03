@@ -1,0 +1,299 @@
+{
+  "title": "Saludar y despedirse",
+  "grammar": {
+    "points": [
+      {
+        "id": "a1u01d1.p1",
+        "form": "Mba'éichapa? · Iporã",
+        "gloss": "¿Cómo estás? · Bien",
+        "connect": [
+          { "pos": "Al llegar: es saludo y pregunta a la vez", "rule": "{Mba'éichapa}?" },
+          { "pos": "Con reiko, «¿cómo andás?»", "rule": "{Mba'éichapa} reiko?" },
+          { "pos": "Para responder y devolver la pregunta", "rule": "{Iporã}, ha nde?" }
+        ],
+        "examples": [
+          {
+            "gn": "Rosa: {Mba'éichapa}, Juan?\nJuan: {Iporã}, ha nde?",
+            "es": "Rosa: Hola, Juan, ¿cómo estás?\nJuan: Bien, ¿y vos?",
+            "parts": [["mba'e", "qué"], ["-icha", "como"], ["-pa", "pregunta"], ["iporã", "bien"], ["ha", "y"], ["nde", "vos"]]
+          },
+          {
+            "gn": "{Mba'éichapa} reiko, Ana?",
+            "es": "¿Cómo andás, Ana?",
+            "parts": [["mba'éichapa", "¿cómo?"], ["reiko", "(vos) estás, andás"]]
+          }
+        ],
+        "watch": {
+          "note": "Mba'éichapa lleva tilde en la é, porque el acento va ahí. Sin la tilde, el acento iría en la última vocal.",
+          "bad": "Mba'eichapa?",
+          "good": "Mba'éichapa?"
+        }
+      },
+      {
+        "id": "a1u01d1.p2",
+        "form": "Jajotopáta",
+        "gloss": "Nos vemos",
+        "connect": [
+          { "pos": "Al irte, a cualquier hora", "rule": "{Jajotopáta}" },
+          { "pos": "Para decir cuándo: ko pyhare, «esta noche»", "rule": "{Jajotopáta} ko pyhare" },
+          { "pos": "Para responder a una despedida", "rule": "{Jajotopáta}, Rosa." }
+        ],
+        "examples": [
+          {
+            "gn": "{Jajotopáta}, Rosa.",
+            "es": "Nos vemos, Rosa.",
+            "parts": [["ja-", "nosotros (con vos)"], ["jo-", "uno al otro"], ["topa", "encontrar"], ["-ta", "futuro"]]
+          },
+          {
+            "gn": "{Jajotopáta} ko ka'aru.",
+            "es": "Nos vemos esta tarde.",
+            "parts": [["jajotopáta", "nos vemos"], ["ko", "esta"], ["ka'aru", "tarde"]]
+          }
+        ],
+        "watch": {
+          "note": "La -ta del final no se lleva el acento: queda en la a de topa. Como ya no es la última vocal, se escribe: topáta.",
+          "bad": "Jajotopata",
+          "good": "Jajotopáta"
+        }
+      }
+    ],
+    "compare": {
+      "intro": "Tres frases del primer día: una para llegar, otra para responder y otra para irte.",
+      "forms": [
+        { "form": "Mba'éichapa?", "tag": "Saludo · al llegar", "mark": "dot", "gn": "{Mba'éichapa}, Rosa?", "es": "Hola, Rosa, ¿cómo estás?" },
+        { "form": "Iporã, ha nde?", "tag": "Respuesta · bien, ¿y vos?", "mark": "dot", "gn": "{Iporã}, ha nde?", "es": "Bien, ¿y vos?" },
+        { "form": "Jajotopáta", "tag": "Despedida · al irte", "mark": "dot", "gn": "{Jajotopáta}, Rosa.", "es": "Nos vemos, Rosa." }
+      ],
+      "check": {
+        "id": "a1u01d1.c1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la frase",
+        "q": "(^Llegás^ a la ronda de tereré.)\nVos: (   )",
+        "options": ["Jajotopáta, Rosa.", "Mba'éichapa, Rosa?", "Iporã, ha nde?"],
+        "answer": 2,
+        "why": [
+          "Jajotopáta es para irte, y recién llegás.",
+          "Llegás, así que saludás: Mba'éichapa, Rosa?",
+          "Iporã, ha nde? responde a un saludo, y nadie te preguntó nada todavía."
+        ]
+      }
+    },
+    "drill": [
+      {
+        "id": "a1u01d1.d1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Rosa: ^Mba'éichapa^, Juan?\nJuan: (   ), ha nde?",
+        "options": ["Iporã", "Jajotopáta", "Reiko", "Mba'éichapa"],
+        "answer": 1,
+        "why": [
+          "Rosa pregunta cómo está Juan, y él responde Iporã, «bien». Después le devuelve la pregunta: ha nde?",
+          "Jajotopáta es para despedirse, y Rosa recién saluda.",
+          "reiko es «andás», hablando de vos, como en Mba'éichapa reiko? Juan tiene que decir cómo está él: Iporã.",
+          "Mba'éichapa es la pregunta de Rosa. Juan tiene que responderla: Iporã."
+        ]
+      },
+      {
+        "id": "a1u01d1.d2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Rosa: Mba'éichapa reiko?\nJuan: Iporã, ha (   )?\nRosa: ^Iporã^.",
+        "options": ["che", "pa", "nde", "maitei"],
+        "answer": 3,
+        "why": [
+          "che es «yo». Juan ya dijo cómo está; ahora pregunta por Rosa, y ella responde.",
+          "-pa marca la pregunta, pero va pegada a una palabra, como en Mba'éichapa. Sola no pregunta nada.",
+          "ha nde? es «¿y vos?»: Juan le devuelve la pregunta a Rosa, y ella responde Iporã.",
+          "maitei es un saludo, «hola». Con maitei, Juan no pregunta por Rosa."
+        ]
+      },
+      {
+        "id": "a1u01d1.d3",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la frase",
+        "q": "(Juan ^se va^ de la ronda.)\nJuan: (   )",
+        "options": ["Mba'éichapa reiko?", "Jajotopáta, Rosa.", "Iporã, ha nde?", "Mba'éichapa, Rosa?"],
+        "answer": 2,
+        "why": [
+          "Mba'éichapa reiko? pregunta cómo está alguien. Se dice al llegar, no al irse.",
+          "Juan se va, así que se despide: Jajotopáta, «nos vemos».",
+          "Iporã, ha nde? responde a un saludo, y nadie le preguntó nada a Juan.",
+          "Mba'éichapa es para saludar al llegar, y Juan se va."
+        ]
+      },
+      {
+        "id": "a1u01d1.d4",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la palabra",
+        "q": "(Rosa se va. Ella y Juan se vuelven a ver ^esta tarde^.)\nRosa: Jajotopáta ko (   ), Juan.",
+        "options": ["pyhare", "nde", "pyhareve", "ka'aru"],
+        "answer": 4,
+        "why": [
+          "ko pyhare es «esta noche», y se vuelven a ver a la tarde.",
+          "nde es «vos», como en ha nde? No dice cuándo se van a ver.",
+          "pyhareve es «la mañana»: ko pyhareve sería «esta mañana». Y se vuelven a ver a la tarde.",
+          "Se vuelven a ver a la tarde: ko ka'aru. Jajotopáta ko ka'aru es «nos vemos esta tarde»."
+        ]
+      },
+      {
+        "id": "a1u01d1.d5",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "",
+        "after": " reiko?",
+        "tiles": ["mba'e", "icha", "pa"],
+        "bank": [2, 0, 1],
+        "hint": "-icha y -pa son sufijos: van después de mba'e. ¿Cuál cierra la pregunta?",
+        "full": "Mba'éicha{pa} reiko?",
+        "es": "¿Cómo andás?",
+        "explain": "mba'e («qué») + -icha («como») + -pa (pregunta) = Mba'éichapa. Ni -icha ni -pa se llevan el acento: queda en la e de mba'e. Como ya no es la última vocal, se escribe é."
+      },
+      {
+        "id": "a1u01d1.d6",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "",
+        "after": " ko ka'aru, Rosa.",
+        "tiles": ["ja", "jo", "topáta"],
+        "bank": [1, 2, 0],
+        "hint": "ja- y jo- son prefijos: van antes de topáta. ¿Cuál va primero?",
+        "full": "{Jajo}topáta ko ka'aru, Rosa.",
+        "es": "Nos vemos esta tarde, Rosa.",
+        "explain": "ja- («nosotros», con vos) + jo- («uno al otro») + topáta (topa, «encontrar», con -ta, el futuro) = Jajotopáta. Con ko ka'aru, «esta tarde», queda «nos vemos esta tarde»."
+      }
+    ],
+    "exam": [
+      {
+        "id": "a1u01d1.e1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Qué significa",
+        "q": "Rosa: Mba'éichapa reiko?\nJuan: _Iporã, ha nde?_",
+        "options": ["Hola, ¿cómo estás?", "Nos vemos, ¿y vos?", "Bien, ¿y vos?", "Bien, ¿y yo?"],
+        "answer": 3,
+        "explain": "Lo subrayado es la respuesta de Juan. Iporã es «bien», y ha nde? le devuelve la pregunta a Rosa: «¿y vos?». «Hola, ¿cómo estás?» es lo que dijo Rosa, «nos vemos» sería Jajotopáta, y «¿y yo?» no va, porque nde es «vos»."
+      },
+      {
+        "id": "a1u01d1.e2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Qué significa",
+        "q": "(Rosa se va de la casa de Juan.)\nRosa: _Jajotopáta ko pyhare_, Juan.",
+        "options": ["Nos vemos esta noche, Juan.", "Nos vimos anoche, Juan.", "Buenas noches, Juan, ¿cómo estás?", "Nos vemos esta tarde, Juan."],
+        "answer": 1,
+        "explain": "Jajotopáta es «nos vemos»: la -ta habla de lo que va a pasar, no de anoche. Ko pyhare es «esta noche»; «esta tarde» sería ko ka'aru. Y Rosa se va, así que no saluda: se despide."
+      },
+      {
+        "id": "a1u01d1.e3",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Ana se va de la ronda.)\nAna: ",
+        "after": ", Juan.",
+        "tiles": ["ja", "jo", "topáta"],
+        "bank": [2, 1, 0],
+        "full": "(Ana se va de la ronda.)\nAna: Jajotopáta, Juan.",
+        "es": "Ana: Nos vemos, Juan.",
+        "explain": "ja- («nosotros», con vos) va primero y después jo- («uno al otro»). Al final va topáta: topa («encontrar») con -ta, el futuro. Todo junto: Jajotopáta, «nos vemos»."
+      }
+    ]
+  },
+  "words": {
+    "es": "La ronda de tereré",
+    "intro": "En el patio, la familia toma tereré. Tocá cada palabra: saludos, despedidas, momentos del día y personas.",
+    "sound": {
+      "focus": "Las vocales orales",
+      "letters": ["a", "e", "i", "o", "u", "y"],
+      "note": "a, e, i, o, u suenan como en castellano, y la y es la sexta vocal: decí i con la lengua hacia atrás, como para u. Sin tilde (é) ni tilde nasal (~), el acento va en la última vocal: terere suena como el tereré del castellano, que sí necesita tilde. Si va antes, en una vocal oral, se escribe la tilde: Mba'éichapa, jarýi.",
+      "pairs": [
+        ["ka'a", "yerba", "ka'i", "mono"],
+        ["pira", "pez", "pire", "piel"],
+        ["pire", "piel", "piru", "flaco"],
+        ["po", "mano", "py", "pie"]
+      ]
+    },
+    "words": [
+      { "id": "maitei", "gn": "Maitei", "es": "Hola, saludos", "note": "Un saludo cordial." },
+      {
+        "id": "mbaeichapa",
+        "gn": "Mba'éichapa?",
+        "es": "Hola, ¿cómo estás?",
+        "parts": [["mba'e", "qué"], ["-icha", "como"], ["-pa", "pregunta"]],
+        "note": "Mucha gente también saluda en castellano, con «¿Qué tal?»."
+      },
+      { "id": "ipora", "gn": "Iporã", "es": "Bien", "note": "Muy bien: Iporãiterei." },
+      {
+        "id": "jajotopata",
+        "gn": "Jajotopáta",
+        "es": "Nos vemos",
+        "parts": [["ja-", "nosotros (con vos)"], ["jo-", "uno al otro"], ["topa", "encontrar"], ["-ta", "futuro"]],
+        "note": "Palabra por palabra: «nos vamos a encontrar»."
+      },
+      { "id": "pyhareve", "gn": "pyhareve", "es": "la mañana", "note": "Mba'éichapa nde pyhareve? es «buen día». Ojo: pyhare es «la noche»." },
+      { "id": "kaaru", "gn": "ka'aru", "es": "la tarde", "note": "Mba'éichapa nde ka'aru? es «buenas tardes»." },
+      { "id": "jaryi", "gn": "jarýi", "es": "abuela", "note": "Lleva tilde: el acento va en la ý, no en la última vocal." },
+      { "id": "karai", "gn": "karai", "es": "señor", "note": "Para una señora: kuñakarai." }
+    ],
+    "spell": ["mbaeichapa", "jajotopata", "pyhareve", "jaryi"],
+    "check": {
+      "id": "a1u01d1.k1",
+      "kind": "choice",
+      "area": "vocab",
+      "label": "Cómo se escribe",
+      "q": "A la mañana, saludás: Mba'éichapa nde (   )?",
+      "options": ["pihareve", "pyharebe", "piharebe", "pyhareve"],
+      "answer": 4,
+      "explain": "Se escribe pyhareve. La primera vocal es la y, la sexta vocal: pihareve y piharebe la cambian por i. Y la b sola no es una letra del guaraní: acá va v."
+    }
+  },
+  "skill": {
+    "kind": "listening",
+    "es": "Respuesta rápida",
+    "situation": "En la parada del colectivo, una vecina saluda a un hombre.",
+    "ask": "¿Cuál es la mejor respuesta?",
+    "item": {
+      "id": "a1u01d1.r1",
+      "kind": "choice",
+      "area": "listening",
+      "label": "Respuesta rápida",
+      "q": "¿Cuál es la mejor respuesta?",
+      "options": ["Iporã, ha nde?", "Jajotopáta ko ka'aru.", "Iporã, ha che?"],
+      "answer": 1,
+      "why": [
+        "Ella pregunta cómo está. Él responde Iporã, «bien», y le devuelve la pregunta: ha nde?, «¿y vos?».",
+        "Jajotopáta ko ka'aru es «nos vemos esta tarde»: sirve para irse, no para responder a un saludo.",
+        "ha che? es «¿y yo?»: así no le devuelve la pregunta a la vecina. Para eso va ha nde?, «¿y vos?»."
+      ],
+      "script": [
+        "Narrador: En la parada del colectivo. ¿Qué responde el hombre?",
+        "Mujer: Mba'éichapa reiko?",
+        "Narrador: 1",
+        "Hombre: Iporã, ha nde?",
+        "Narrador: 2",
+        "Hombre: Jajotopáta ko ka'aru.",
+        "Narrador: 3",
+        "Hombre: Iporã, ha che?"
+      ]
+    },
+    "audio": [
+      ["N", "En la parada del colectivo. ¿Qué responde el hombre?", "En la parada del colectivo. ¿Qué responde el hombre?"],
+      ["F", "Mba'éichapa reiko?", "¿Cómo andás?"],
+      ["N", "1", "1"],
+      ["M", "Iporã, ha nde?", "Bien, ¿y vos?"],
+      ["N", "2", "2"],
+      ["M", "Jajotopáta ko ka'aru.", "Nos vemos esta tarde."],
+      ["N", "3", "3"],
+      ["M", "Iporã, ha che?", "Bien, ¿y yo?"]
+    ]
+  }
+}

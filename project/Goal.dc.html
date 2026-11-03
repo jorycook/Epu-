@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Para qué y desde dónde</title>
+<script src="./support.js"></script>
+<script src="./gn-course-a1.js"></script>
+<script src="./gn-course-a2.js"></script>
+<script src="./gn-course-b1.js"></script>
+<script src="./gn-course-b2.js"></script>
+<script src="./gn-course-c1.js"></script>
+<script src="./gn-course-c2.js"></script>
+<script src="./gn-course.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&amp;family=Andika:wght@400;700&amp;text=%20%21%22%23%24%25%26%27%28%29%2A%2B%2C-.%2F0123456789%3A%3B%3C%3D%3E%3F%40ABCDEFGHIJKLMNOPQRSTUVWXYZ%5B%5C%5D%5E_%60abcdefghijklmnopqrstuvwxyz%7B%7C%7D~%C2%A1%C2%BF%C2%AB%C2%BB%C2%B0%C2%B7%C3%97%C3%B7%C2%AA%C2%BA%C2%B2%C3%A1%C3%A9%C3%AD%C3%B3%C3%BA%C3%BC%C3%B1%C3%81%C3%89%C3%8D%C3%93%C3%9A%C3%9C%C3%91%C3%BD%C3%9D%C3%A3%E1%BA%BD%C4%A9%C3%B5%C5%A9%E1%BB%B9%C3%83%E1%BA%BC%C4%A8%C3%95%C5%A8%E1%BB%B8%C3%A7%C3%87%C3%A0%C3%A8%C3%AC%C3%B2%C3%B9%C3%A2%C3%AA%C3%AE%C3%B4%C3%BB%CC%83%CC%81%E2%80%98%E2%80%99%E2%80%9C%E2%80%9D%E2%80%A6%E2%80%93%E2%80%94%E2%80%A2%E2%82%AC%E2%86%92%E2%86%90%E2%86%91%E2%86%93&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:#2F4FD0;text-decoration:none}a:hover{color:#1B2440}
+rt{font-size:9px;font-weight:500;color:#5A6382}
+@keyframes gn-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes gn-up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes gn-fade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; padding: 50px 20px 34px; background: #F4F5F9; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; display: flex; flex-direction: column; overflow: hidden; position: relative">
+
+<div style="display: flex; align-items: center; gap: 12px; height: 44px; flex-shrink: 0">
+<sc-if value="{{ backStep }}" hint-placeholder-val="{{ false }}"><button aria-label="Volver al paso anterior" onClick="{{ back }}" style="width: 44px; height: 44px; margin-left: -10px; border: 0; background: none; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button></sc-if>
+<sc-if value="{{ backMain }}" hint-placeholder-val="{{ false }}"><a href="Main.dc.html" onClick="{{ toPath }}" aria-label="Volver al camino" style="width: 44px; height: 44px; margin-left: -10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a></sc-if>
+<sc-if value="{{ noBack }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="width: 44px; height: 44px; margin-left: -10px; flex-shrink: 0"></div></sc-if>
+<div role="img" aria-label="{{ stepLabel }}" style="flex-grow: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px">
+<div style="height: 8px; border-radius: 4px; background: {{ pill1 }}"></div>
+<div style="height: 8px; border-radius: 4px; background: {{ pill2 }}"></div>
+<div style="height: 8px; border-radius: 4px; background: {{ pill3 }}"></div>
+</div>
+</div>
+
+<sc-if value="{{ atWhy }}" hint-placeholder-val="{{ true }}">
+<div style="flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; animation: gn-in 220ms ease-out">
+<div style="flex: 1 1 auto; min-height: 0; overflow-y: auto; margin: 0 -20px; padding: 8px 20px 12px">
+<div style="display: flex; align-items: center; gap: 14px">
+<svg viewBox="0 0 100 100" width="60" height="60" role="img" aria-label="Kaguare, el oso melero" style="flex-shrink: 0"><path d="M26.17 58.19C24.25 59.48 22.2 60.42 20.4 62.04C18.61 63.66 16.69 66.08 15.39 67.9C14.09 69.73 13.32 71.72 12.61 72.99C11.89 74.26 11.6 74.92 11.08 75.54C10.56 76.16 9.83 76.41 9.5 76.69C9.16 76.96 9.19 77.35 9.05 77.17C8.92 77 8.8 76.55 8.71 75.64C8.62 74.74 8.48 73.06 8.53 71.75C8.59 70.44 8.79 68.87 9.05 67.77C9.32 66.67 9.83 65.74 10.11 65.16C10.4 64.58 10.35 64.3 10.75 64.3C11.15 64.31 11.94 65.19 12.52 65.2C13.11 65.2 14.02 64.77 14.25 64.31C14.47 63.84 14.36 62.98 13.88 62.4C13.39 61.83 12.43 60.85 11.33 60.88C10.24 60.92 8.35 61.65 7.3 62.61C6.25 63.58 5.59 65.22 5.05 66.68C4.5 68.13 4.23 69.81 4.02 71.35C3.81 72.88 3.62 74.32 3.77 75.9C3.92 77.49 3.9 79.66 4.95 80.83C5.99 81.99 8.35 82.81 10.04 82.9C11.73 83 13.51 82.37 15.1 81.42C16.68 80.46 18.26 78.52 19.54 77.17C20.83 75.83 21.75 74.38 22.82 73.34C23.89 72.31 24.48 71.7 25.98 70.97C27.49 70.25 29.88 69.66 31.83 69.01Z" fill="#EDC27C"/><path d="M20.15 70.47C20.74 70.71 20.68 72.05 20.37 72.87C20.06 73.69 18.95 75.26 18.3 75.41C17.66 75.56 16.75 74.41 16.5 73.75C16.25 73.09 16.21 71.97 16.82 71.42C17.43 70.87 19.56 70.23 20.15 70.47Z" fill="#2A2120"/><path d="M10.57 78.66C10.78 79.01 10.58 80.06 10.18 80.29C9.78 80.52 8.67 80.26 8.16 80.04C7.65 79.82 6.99 79.26 7.12 78.95C7.25 78.64 8.37 78.23 8.94 78.18C9.51 78.13 10.36 78.31 10.57 78.66Z" fill="#2A2120"/><path d="M7.66 68.46C7.88 68.64 7.74 69.25 7.49 69.58C7.24 69.91 6.49 70.46 6.18 70.45C5.87 70.44 5.64 69.82 5.64 69.5C5.64 69.18 5.84 68.68 6.18 68.51C6.52 68.34 7.44 68.28 7.66 68.46Z" fill="#2A2120"/><path d="M26.17 58.19C24.25 59.48 22.2 60.42 20.4 62.04C18.61 63.66 16.69 66.08 15.39 67.9C14.09 69.73 13.32 71.72 12.61 72.99C11.89 74.26 11.6 74.92 11.08 75.54C10.56 76.16 9.83 76.41 9.5 76.69C9.16 76.96 9.19 77.35 9.05 77.17C8.92 77 8.8 76.55 8.71 75.64C8.62 74.74 8.48 73.06 8.53 71.75C8.59 70.44 8.79 68.87 9.05 67.77C9.32 66.67 9.83 65.74 10.11 65.16C10.4 64.58 10.35 64.3 10.75 64.3C11.15 64.31 11.94 65.19 12.52 65.2C13.11 65.2 14.02 64.77 14.25 64.31C14.47 63.84 14.36 62.98 13.88 62.4C13.39 61.83 12.43 60.85 11.33 60.88C10.24 60.92 8.35 61.65 7.3 62.61C6.25 63.58 5.59 65.22 5.05 66.68C4.5 68.13 4.23 69.81 4.02 71.35C3.81 72.88 3.62 74.32 3.77 75.9C3.92 77.49 3.9 79.66 4.95 80.83C5.99 81.99 8.35 82.81 10.04 82.9C11.73 83 13.51 82.37 15.1 81.42C16.68 80.46 18.26 78.52 19.54 77.17C20.83 75.83 21.75 74.38 22.82 73.34C23.89 72.31 24.48 71.7 25.98 70.97C27.49 70.25 29.88 69.66 31.83 69.01Z" fill="none" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M28.6 70 C27.4 75.6 27.4 80 29.2 82 Q30.4 83 32.4 83 L40.6 83 Q42.6 83 42.6 81.2 Q42.4 79.6 40.4 79.3 L38.2 78.8 L39.4 70 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M25 70.6C23.07 68 22.07 64.43 22.4 61C22.73 57.57 24.57 52.83 27 50C29.43 47.17 33.43 45.28 37 44C40.57 42.72 45.17 42.53 48.4 42.3C51.63 42.07 54.51 43.19 56.4 42.6C58.29 42.01 59.76 38.77 59.76 38.77C59.76 38.77 62.59 45.03 64.6 47C66.61 48.97 70.78 48.79 71.8 50.6C72.82 52.41 70.44 56.92 70.69 57.83C70.94 58.75 74.42 59.44 74.8 61.6C75.18 63.76 74.87 68.3 73 70.8C71.13 73.3 67.77 75.38 63.6 76.6C59.43 77.82 52.93 78.1 48 78.1C43.07 78.1 37.83 77.85 34 76.6C30.17 75.35 26.93 73.2 25 70.6Z" fill="#EDC27C"/><path d="M60.65 40.62C61.37 42.68 61.81 44.64 62.8 46.8C63.79 48.96 65.4 51.5 66.6 53.6C67.8 55.7 69 57.93 70 59.4C71 60.87 71.79 61.5 72.6 62.4C73.41 63.3 74.13 64.02 74.89 64.83C74.81 65.79 74.65 66.81 74.38 67.78C74.07 68.91 73.62 69.97 73 70.8C72.38 71.63 71.59 72.42 70.66 73.14C69.73 73.87 68.66 74.53 67.47 75.11C66.29 75.69 64.99 76.19 63.6 76.6C62.21 77.01 60.56 77.31 58.8 77.53C57.04 77.75 55.16 77.89 53.31 77.98C51.46 78.07 49.64 78.1 48 78.1C46.42 78.1 44.8 78.07 43.22 78C40.48 76.13 37.24 74.73 35 72.4C32.76 70.07 31.03 66.73 29.8 64C28.57 61.27 28.07 58.33 27.6 56C27.13 53.67 27.2 52 27 50C27.81 49.06 28.8 48.22 29.88 47.47C30.97 46.72 32.15 46.07 33.36 45.5C34.57 44.92 35.81 44.43 37 44C38.19 43.57 39.49 43.27 40.82 43.04C42.15 42.81 43.51 42.67 44.8 42.56C46.09 42.45 47.32 42.38 48.4 42.3C49.48 42.22 50.52 42.3 51.49 42.4C52.46 42.51 53.38 42.66 54.2 42.73C55.03 42.8 55.77 42.8 56.4 42.6C57.03 42.4 57.62 41.91 58.11 41.34C58.61 40.78 59.02 40.13 59.31 39.63C59.6 39.13 59.76 38.77 59.76 38.77C59.76 38.77 60.08 39.46 60.57 40.46C60.6 40.52 60.62 40.57 60.65 40.62Z" fill="#2A2120"/><path d="M70.69 57.83C70.94 58.75 74.42 59.44 74.8 61.6C75.18 63.76 74.87 68.3 73 70.8C71.13 73.3 67.77 75.38 63.6 76.6C59.43 77.82 52.93 78.1 48 78.1C43.07 78.1 37.83 77.85 34 76.6C30.17 75.35 26.93 73.2 25 70.6C23.07 68 22.07 64.43 22.4 61C22.73 57.57 24.57 52.83 27 50C29.43 47.17 33.43 45.28 37 44C40.57 42.72 45.17 42.53 48.4 42.3C51.63 42.07 54.51 43.19 56.4 42.6C58.29 42.01 59.76 38.77 59.76 38.77" fill="none" stroke="#1B2440" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M64.4 60.2C65.4 60.1 66.93 60.83 67.6 62.2C68.27 63.57 68.18 66.33 68.4 68.4C68.62 70.47 68.52 72.93 68.9 74.6C69.28 76.27 69.92 77.57 70.7 78.4C71.48 79.23 73.11 79.11 73.6 79.6C74.09 80.09 74.58 81.82 74.4 82.1C74.22 82.38 72.08 82.94 71.4 83C70.72 83.06 64.84 83.08 64.2 83C63.56 82.92 62.06 82.54 61.8 81.8C61.54 81.06 61.68 77.9 61.6 75.6C61.52 73.3 61.3 70.13 61.3 68C61.3 65.87 61.08 64.1 61.6 62.8C62.12 61.5 63.4 60.3 64.4 60.2Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M70.86 80.04C70.89 80.41 71.14 80.88 71.42 81.11C71.7 81.34 72.09 81.42 72.54 81.44C72.99 81.46 73.61 81.3 74.14 81.22C74.67 81.15 75.31 81.11 75.73 80.99C76.15 80.87 76.46 80.76 76.67 80.51C76.88 80.26 77.02 79.81 76.99 79.47C76.96 79.13 76.73 78.71 76.48 78.5C76.23 78.29 75.91 78.25 75.47 78.21C75.03 78.17 74.4 78.26 73.86 78.28C73.33 78.31 72.7 78.26 72.26 78.36C71.82 78.46 71.45 78.61 71.22 78.89C70.99 79.17 70.83 79.67 70.86 80.04Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><path d="M71.05 81.65C71.04 82.02 71.23 82.51 71.48 82.78C71.73 83.05 72.1 83.18 72.55 83.25C73 83.32 73.62 83.23 74.15 83.22C74.69 83.21 75.33 83.26 75.76 83.2C76.19 83.14 76.51 83.07 76.75 82.84C76.99 82.61 77.19 82.18 77.2 81.84C77.21 81.5 77.04 81.06 76.81 80.82C76.58 80.58 76.27 80.49 75.84 80.4C75.41 80.31 74.78 80.32 74.25 80.28C73.72 80.24 73.1 80.11 72.65 80.15C72.2 80.2 71.82 80.3 71.55 80.55C71.28 80.8 71.06 81.28 71.05 81.65Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(69.6 44.2) rotate(11) scale(1.08)"><path d="M-8.6 -5.8 C-13.6 -8.4 -14.2 -13.6 -10 -14.6 C-5.8 -15.4 -3.6 -11.6 -4.4 -7.2 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.59" stroke-linejoin="round" stroke-linecap="round"/><path d="M-10.4 -5.8 C-11.8 -8.6 -11.4 -11.6 -9.4 -12 C-7.4 -12.4 -6.2 -10.2 -6.6 -7.4 Z" fill="#D49A55"/></g><path d="M59.76 38.77C60.67 37.11 60.91 34.86 62.49 33.8C64.07 32.73 67.14 32.22 69.26 32.36C71.38 32.5 73.7 33.57 75.2 34.62C76.71 35.66 77.46 36.64 78.28 38.62C79.09 40.61 78.76 44.74 80.08 46.52C81.41 48.31 84.33 48.27 86.24 49.33C88.15 50.39 90.34 51.86 91.55 52.88C92.76 53.9 93.24 54.49 93.5 55.45C93.76 56.41 93.58 57.78 93.08 58.64C92.58 59.5 91.47 60.34 90.51 60.6C89.55 60.85 88.67 60.65 87.31 60.17C85.95 59.7 84.12 58.42 82.33 57.77C80.54 57.11 78.12 56.33 76.56 56.27C75 56.21 73.95 57.14 72.98 57.4C72 57.66 71.45 57.69 70.69 57.83C68.51 56.97 66 56.52 64.15 55.24C62.31 53.97 60.68 51.97 59.64 50.18C58.59 48.4 57.85 46.46 57.87 44.56C57.89 42.66 59.13 40.7 59.76 38.77Z" fill="#EDC27C"/><path d="M59.76 38.77C60.67 37.11 60.91 34.86 62.49 33.8C64.07 32.73 67.14 32.22 69.26 32.36C71.38 32.5 73.7 33.57 75.2 34.62C76.71 35.66 77.46 36.64 78.28 38.62C79.09 40.61 78.76 44.74 80.08 46.52C81.41 48.31 84.33 48.27 86.24 49.33C88.15 50.39 90.34 51.86 91.55 52.88C92.76 53.9 93.24 54.49 93.5 55.45C93.76 56.41 93.58 57.78 93.08 58.64C92.58 59.5 91.47 60.34 90.51 60.6C89.55 60.85 88.67 60.65 87.31 60.17C85.95 59.7 84.12 58.42 82.33 57.77C80.54 57.11 78.12 56.33 76.56 56.27C75 56.21 73.95 57.14 72.98 57.4C72 57.66 71.45 57.69 70.69 57.83" fill="none" stroke="#1B2440" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(69.6 44.2) rotate(11) scale(1.08)"><ellipse cx="21.15" cy="8.03" rx="1.25" ry="1.5" transform="rotate(19.09 21.15 8.03)" fill="#1B2440"/><ellipse cx="2.4" cy="-2.4" rx="3.1" ry="3" fill="#C98E4E"/><ellipse cx="3" cy="2.8" rx="2.2" ry="1.35" fill="#F08CA5"/><g data-part="eye-open"><ellipse cx="2.4" cy="-2.4" rx="1.95" ry="2.3" fill="#1B2440"/><circle cx="3.08" cy="-3.32" r="0.78" fill="#FFFFFF"/></g><g data-part="eye-closed" opacity="0"><path d="M0.2 -2.3 Q2.4 -0.4 4.6 -2.3" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="eye-happy" opacity="0"><path d="M0.2 -1.5 Q2.4 -5.2 4.6 -1.5" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="mouth-normal"><path d="M9.8 6.2 Q7.4 7.5 5.2 5.5" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="mouth-o" opacity="0"><ellipse cx="7.6" cy="5.9" rx="1.3" ry="1.5" fill="#1B2440"/></g><g data-part="mouth-happy" opacity="0"><path d="M4.8 4.5 L10.8 4.7 C10.6 6.2 9.4 7.15 7.8 7.15 C6.2 7.15 5.0 6.2 4.8 4.5 Z" fill="#F08CA5"/><path d="M10.8 4.7 C10.6 6.2 9.4 7.15 7.8 7.15 C6.2 7.15 5.0 6.2 4.8 4.5" fill="none" stroke="#1B2440" stroke-width="1.67" stroke-linejoin="round" stroke-linecap="round"/></g></g><circle cx="45" cy="60.2" r="10.5" fill="#FFFFFF" stroke="#1B2440" stroke-width="2.2"/><g transform="translate(45 60.2) scale(0.42)"><circle r="19.5" fill="none" stroke="#C9D0E3" stroke-width="1" stroke-dasharray="1.6 2.2" opacity="{{ ro.frameOpacity }}"/><path d="{{ ro.rimD }}" fill="#FCE4EE" stroke="#C2336F" stroke-width="1.4" stroke-linejoin="round" opacity="{{ ro.rimOpacity }}"/><path d="{{ ro.off }}" fill="#FFFFFF" stroke="#DDE1EC" stroke-width="0.9"/><path d="{{ ro.on }}" fill="#F8D3E2" stroke="#C2336F" stroke-width="1.1"/><path d="{{ ro.spokes }}" stroke="#C2336F" stroke-width="0.8" stroke-linecap="round"/><circle r="4" stroke="#C2336F" stroke-width="1.2" style="fill: {{ ro.hubFill }}"/></g><g data-part="sweat" opacity="0"><path d="M79.8 18.2c2.2 3.6 3.6 5.8 3.6 8a3.6 3.6 0 0 1 -7.2 0c0 -2.2 1.4 -4.4 3.6 -8z" fill="#9FD3F5" stroke="#1B2440" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="sparks" opacity="0"><path d="M88.6 35 l4.2 -4.8 M91.4 43.6 l6.4 -1.4 M88.6 26.8 l2.4 -5.6" fill="none" stroke="#F2B43A" stroke-width="3" stroke-linecap="round"/></g></svg>
+<h1 style="margin: 0; font-size: 26px; font-weight: 800; line-height: 1.25">¿Para qué querés aprender guaraní?</h1>
+</div>
+<div style="margin-top: 8px; font-size: 14px; font-weight: 500; color: #5A6382; line-height: 1.45">Elegí hasta dos. Con esto elegimos tus ejemplos; ninguna lección queda cerrada.</div>
+<div role="group" aria-label="Para qué querés aprender guaraní" style="margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{ why }}" as="c" hint-placeholder-count="7">
+<button aria-pressed="{{ c.on }}" disabled="{{ c.off }}" onClick="{{ c.pick }}" style="min-height: 44px; padding: 0 14px; border-radius: 14px; font-size: 15px; font-weight: 800; border: {{ c.border }}; background: {{ c.bg }}; box-shadow: {{ c.shadow }}; color: {{ c.color }}">{{ c.es }}</button>
+</sc-for>
+</div>
+<sc-if value="{{ showWork }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top: 14px; font-size: 13px; font-weight: 800">¿En qué trabajás? <span style="font-size: 12px; font-weight: 700; color: #5A6382">Si querés, elegí uno.</span></div>
+<div role="group" aria-label="En qué trabajás" style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{ work }}" as="w" hint-placeholder-count="5">
+<button aria-pressed="{{ w.on }}" onClick="{{ w.pick }}" style="min-height: 44px; padding: 0 12px; border-radius: 14px; font-size: 14px; font-weight: 800; border: {{ w.border }}; background: {{ w.bg }}; box-shadow: {{ w.shadow }}; color: {{ w.color }}">{{ w.es }}</button>
+</sc-for>
+</div>
+</sc-if>
+<h2 style="margin: 22px 0 0; font-size: 18px; font-weight: 800">¿Dónde lo vas a usar?</h2>
+<div role="group" aria-label="Dónde lo vas a usar" style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{ where }}" as="p" hint-placeholder-count="6">
+<button aria-pressed="{{ p.on }}" onClick="{{ p.pick }}" style="min-height: 44px; padding: 0 14px; border-radius: 14px; font-size: 15px; font-weight: 800; border: {{ p.border }}; background: {{ p.bg }}; box-shadow: {{ p.shadow }}; color: {{ p.color }}">{{ p.es }}</button>
+</sc-for>
+</div>
+<div style="margin-top: 18px; padding: 12px 14px; border-radius: 16px; background: #E8ECFB; font-size: 13px; font-weight: 500; color: #5A6382; line-height: 1.45">Te enseñamos el guaraní paraguayo que se habla hoy, con las palabras del castellano que todos usan, y te mostramos la forma académica al lado.</div>
+</div>
+<button onClick="{{ toStart }}" style="flex-shrink: 0; margin-top: 10px; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px"><span lang="gn">Upeigua</span> · Siguiente</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ atStart }}" hint-placeholder-val="{{ false }}">
+<div style="flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; animation: gn-in 220ms ease-out">
+<div style="flex: 1 1 auto; min-height: 0; overflow-y: auto; margin: 0 -20px; padding: 8px 20px 12px">
+<h1 style="margin: 0; font-size: 26px; font-weight: 800; line-height: 1.25">¿Desde dónde empezás?</h1>
+<div style="margin-top: 6px; font-size: 14px; font-weight: 500; color: #5A6382; line-height: 1.45">Elegí cuánto entendés y cuánto hablás hoy.</div>
+<div style="margin-top: 16px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<div role="group" aria-label="Cuánto entendés" style="display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; font-weight: 800; margin-bottom: 2px">Entender</div>
+<sc-for list="{{ understand }}" as="u" hint-placeholder-count="5">
+<button aria-pressed="{{ u.on }}" onClick="{{ u.pick }}" style="min-height: 44px; padding: 5px 10px; border-radius: 12px; display: flex; align-items: center; text-align: left; font-size: 13px; font-weight: 700; line-height: 1.25; border: {{ u.border }}; background: {{ u.bg }}; box-shadow: {{ u.shadow }}; color: {{ u.color }}">{{ u.es }}</button>
+</sc-for>
+</div>
+<div role="group" aria-label="Cuánto hablás" style="display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; font-weight: 800; margin-bottom: 2px">Hablar</div>
+<sc-for list="{{ speak }}" as="u" hint-placeholder-count="5">
+<button aria-pressed="{{ u.on }}" onClick="{{ u.pick }}" style="min-height: 44px; padding: 5px 10px; border-radius: 12px; display: flex; align-items: center; text-align: left; font-size: 13px; font-weight: 700; line-height: 1.25; border: {{ u.border }}; background: {{ u.bg }}; box-shadow: {{ u.shadow }}; color: {{ u.color }}">{{ u.es }}</button>
+</sc-for>
+</div>
+</div>
+<sc-if value="{{ gap }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top: 16px; padding: 14px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; display: flex; flex-direction: column; gap: 12px; animation: gn-in 220ms ease-out">
+<div style="display: flex; align-items: flex-start; gap: 12px">
+<svg viewBox="0 0 100 100" width="48" height="48" role="img" aria-label="Kaguare, el oso melero" style="flex-shrink: 0"><path d="M26.17 58.19C24.25 59.48 22.2 60.42 20.4 62.04C18.61 63.66 16.69 66.08 15.39 67.9C14.09 69.73 13.32 71.72 12.61 72.99C11.89 74.26 11.6 74.92 11.08 75.54C10.56 76.16 9.83 76.41 9.5 76.69C9.16 76.96 9.19 77.35 9.05 77.17C8.92 77 8.8 76.55 8.71 75.64C8.62 74.74 8.48 73.06 8.53 71.75C8.59 70.44 8.79 68.87 9.05 67.77C9.32 66.67 9.83 65.74 10.11 65.16C10.4 64.58 10.35 64.3 10.75 64.3C11.15 64.31 11.94 65.19 12.52 65.2C13.11 65.2 14.02 64.77 14.25 64.31C14.47 63.84 14.36 62.98 13.88 62.4C13.39 61.83 12.43 60.85 11.33 60.88C10.24 60.92 8.35 61.65 7.3 62.61C6.25 63.58 5.59 65.22 5.05 66.68C4.5 68.13 4.23 69.81 4.02 71.35C3.81 72.88 3.62 74.32 3.77 75.9C3.92 77.49 3.9 79.66 4.95 80.83C5.99 81.99 8.35 82.81 10.04 82.9C11.73 83 13.51 82.37 15.1 81.42C16.68 80.46 18.26 78.52 19.54 77.17C20.83 75.83 21.75 74.38 22.82 73.34C23.89 72.31 24.48 71.7 25.98 70.97C27.49 70.25 29.88 69.66 31.83 69.01Z" fill="#EDC27C"/><path d="M20.15 70.47C20.74 70.71 20.68 72.05 20.37 72.87C20.06 73.69 18.95 75.26 18.3 75.41C17.66 75.56 16.75 74.41 16.5 73.75C16.25 73.09 16.21 71.97 16.82 71.42C17.43 70.87 19.56 70.23 20.15 70.47Z" fill="#2A2120"/><path d="M10.57 78.66C10.78 79.01 10.58 80.06 10.18 80.29C9.78 80.52 8.67 80.26 8.16 80.04C7.65 79.82 6.99 79.26 7.12 78.95C7.25 78.64 8.37 78.23 8.94 78.18C9.51 78.13 10.36 78.31 10.57 78.66Z" fill="#2A2120"/><path d="M7.66 68.46C7.88 68.64 7.74 69.25 7.49 69.58C7.24 69.91 6.49 70.46 6.18 70.45C5.87 70.44 5.64 69.82 5.64 69.5C5.64 69.18 5.84 68.68 6.18 68.51C6.52 68.34 7.44 68.28 7.66 68.46Z" fill="#2A2120"/><path d="M26.17 58.19C24.25 59.48 22.2 60.42 20.4 62.04C18.61 63.66 16.69 66.08 15.39 67.9C14.09 69.73 13.32 71.72 12.61 72.99C11.89 74.26 11.6 74.92 11.08 75.54C10.56 76.16 9.83 76.41 9.5 76.69C9.16 76.96 9.19 77.35 9.05 77.17C8.92 77 8.8 76.55 8.71 75.64C8.62 74.74 8.48 73.06 8.53 71.75C8.59 70.44 8.79 68.87 9.05 67.77C9.32 66.67 9.83 65.74 10.11 65.16C10.4 64.58 10.35 64.3 10.75 64.3C11.15 64.31 11.94 65.19 12.52 65.2C13.11 65.2 14.02 64.77 14.25 64.31C14.47 63.84 14.36 62.98 13.88 62.4C13.39 61.83 12.43 60.85 11.33 60.88C10.24 60.92 8.35 61.65 7.3 62.61C6.25 63.58 5.59 65.22 5.05 66.68C4.5 68.13 4.23 69.81 4.02 71.35C3.81 72.88 3.62 74.32 3.77 75.9C3.92 77.49 3.9 79.66 4.95 80.83C5.99 81.99 8.35 82.81 10.04 82.9C11.73 83 13.51 82.37 15.1 81.42C16.68 80.46 18.26 78.52 19.54 77.17C20.83 75.83 21.75 74.38 22.82 73.34C23.89 72.31 24.48 71.7 25.98 70.97C27.49 70.25 29.88 69.66 31.83 69.01Z" fill="none" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M28.6 70 C27.4 75.6 27.4 80 29.2 82 Q30.4 83 32.4 83 L40.6 83 Q42.6 83 42.6 81.2 Q42.4 79.6 40.4 79.3 L38.2 78.8 L39.4 70 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M25 70.6C23.07 68 22.07 64.43 22.4 61C22.73 57.57 24.57 52.83 27 50C29.43 47.17 33.43 45.28 37 44C40.57 42.72 45.17 42.53 48.4 42.3C51.63 42.07 54.51 43.19 56.4 42.6C58.29 42.01 59.76 38.77 59.76 38.77C59.76 38.77 62.59 45.03 64.6 47C66.61 48.97 70.78 48.79 71.8 50.6C72.82 52.41 70.44 56.92 70.69 57.83C70.94 58.75 74.42 59.44 74.8 61.6C75.18 63.76 74.87 68.3 73 70.8C71.13 73.3 67.77 75.38 63.6 76.6C59.43 77.82 52.93 78.1 48 78.1C43.07 78.1 37.83 77.85 34 76.6C30.17 75.35 26.93 73.2 25 70.6Z" fill="#EDC27C"/><path d="M60.65 40.62C61.37 42.68 61.81 44.64 62.8 46.8C63.79 48.96 65.4 51.5 66.6 53.6C67.8 55.7 69 57.93 70 59.4C71 60.87 71.79 61.5 72.6 62.4C73.41 63.3 74.13 64.02 74.89 64.83C74.81 65.79 74.65 66.81 74.38 67.78C74.07 68.91 73.62 69.97 73 70.8C72.38 71.63 71.59 72.42 70.66 73.14C69.73 73.87 68.66 74.53 67.47 75.11C66.29 75.69 64.99 76.19 63.6 76.6C62.21 77.01 60.56 77.31 58.8 77.53C57.04 77.75 55.16 77.89 53.31 77.98C51.46 78.07 49.64 78.1 48 78.1C46.42 78.1 44.8 78.07 43.22 78C40.48 76.13 37.24 74.73 35 72.4C32.76 70.07 31.03 66.73 29.8 64C28.57 61.27 28.07 58.33 27.6 56C27.13 53.67 27.2 52 27 50C27.81 49.06 28.8 48.22 29.88 47.47C30.97 46.72 32.15 46.07 33.36 45.5C34.57 44.92 35.81 44.43 37 44C38.19 43.57 39.49 43.27 40.82 43.04C42.15 42.81 43.51 42.67 44.8 42.56C46.09 42.45 47.32 42.38 48.4 42.3C49.48 42.22 50.52 42.3 51.49 42.4C52.46 42.51 53.38 42.66 54.2 42.73C55.03 42.8 55.77 42.8 56.4 42.6C57.03 42.4 57.62 41.91 58.11 41.34C58.61 40.78 59.02 40.13 59.31 39.63C59.6 39.13 59.76 38.77 59.76 38.77C59.76 38.77 60.08 39.46 60.57 40.46C60.6 40.52 60.62 40.57 60.65 40.62Z" fill="#2A2120"/><path d="M70.69 57.83C70.94 58.75 74.42 59.44 74.8 61.6C75.18 63.76 74.87 68.3 73 70.8C71.13 73.3 67.77 75.38 63.6 76.6C59.43 77.82 52.93 78.1 48 78.1C43.07 78.1 37.83 77.85 34 76.6C30.17 75.35 26.93 73.2 25 70.6C23.07 68 22.07 64.43 22.4 61C22.73 57.57 24.57 52.83 27 50C29.43 47.17 33.43 45.28 37 44C40.57 42.72 45.17 42.53 48.4 42.3C51.63 42.07 54.51 43.19 56.4 42.6C58.29 42.01 59.76 38.77 59.76 38.77" fill="none" stroke="#1B2440" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M64.4 60.2C65.4 60.1 66.93 60.83 67.6 62.2C68.27 63.57 68.18 66.33 68.4 68.4C68.62 70.47 68.52 72.93 68.9 74.6C69.28 76.27 69.92 77.57 70.7 78.4C71.48 79.23 73.11 79.11 73.6 79.6C74.09 80.09 74.58 81.82 74.4 82.1C74.22 82.38 72.08 82.94 71.4 83C70.72 83.06 64.84 83.08 64.2 83C63.56 82.92 62.06 82.54 61.8 81.8C61.54 81.06 61.68 77.9 61.6 75.6C61.52 73.3 61.3 70.13 61.3 68C61.3 65.87 61.08 64.1 61.6 62.8C62.12 61.5 63.4 60.3 64.4 60.2Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M70.86 80.04C70.89 80.41 71.14 80.88 71.42 81.11C71.7 81.34 72.09 81.42 72.54 81.44C72.99 81.46 73.61 81.3 74.14 81.22C74.67 81.15 75.31 81.11 75.73 80.99C76.15 80.87 76.46 80.76 76.67 80.51C76.88 80.26 77.02 79.81 76.99 79.47C76.96 79.13 76.73 78.71 76.48 78.5C76.23 78.29 75.91 78.25 75.47 78.21C75.03 78.17 74.4 78.26 73.86 78.28C73.33 78.31 72.7 78.26 72.26 78.36C71.82 78.46 71.45 78.61 71.22 78.89C70.99 79.17 70.83 79.67 70.86 80.04Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><path d="M71.05 81.65C71.04 82.02 71.23 82.51 71.48 82.78C71.73 83.05 72.1 83.18 72.55 83.25C73 83.32 73.62 83.23 74.15 83.22C74.69 83.21 75.33 83.26 75.76 83.2C76.19 83.14 76.51 83.07 76.75 82.84C76.99 82.61 77.19 82.18 77.2 81.84C77.21 81.5 77.04 81.06 76.81 80.82C76.58 80.58 76.27 80.49 75.84 80.4C75.41 80.31 74.78 80.32 74.25 80.28C73.72 80.24 73.1 80.11 72.65 80.15C72.2 80.2 71.82 80.3 71.55 80.55C71.28 80.8 71.06 81.28 71.05 81.65Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(69.6 44.2) rotate(11) scale(1.08)"><path d="M-8.6 -5.8 C-13.6 -8.4 -14.2 -13.6 -10 -14.6 C-5.8 -15.4 -3.6 -11.6 -4.4 -7.2 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.59" stroke-linejoin="round" stroke-linecap="round"/><path d="M-10.4 -5.8 C-11.8 -8.6 -11.4 -11.6 -9.4 -12 C-7.4 -12.4 -6.2 -10.2 -6.6 -7.4 Z" fill="#D49A55"/></g><path d="M59.76 38.77C60.67 37.11 60.91 34.86 62.49 33.8C64.07 32.73 67.14 32.22 69.26 32.36C71.38 32.5 73.7 33.57 75.2 34.62C76.71 35.66 77.46 36.64 78.28 38.62C79.09 40.61 78.76 44.74 80.08 46.52C81.41 48.31 84.33 48.27 86.24 49.33C88.15 50.39 90.34 51.86 91.55 52.88C92.76 53.9 93.24 54.49 93.5 55.45C93.76 56.41 93.58 57.78 93.08 58.64C92.58 59.5 91.47 60.34 90.51 60.6C89.55 60.85 88.67 60.65 87.31 60.17C85.95 59.7 84.12 58.42 82.33 57.77C80.54 57.11 78.12 56.33 76.56 56.27C75 56.21 73.95 57.14 72.98 57.4C72 57.66 71.45 57.69 70.69 57.83C68.51 56.97 66 56.52 64.15 55.24C62.31 53.97 60.68 51.97 59.64 50.18C58.59 48.4 57.85 46.46 57.87 44.56C57.89 42.66 59.13 40.7 59.76 38.77Z" fill="#EDC27C"/><path d="M59.76 38.77C60.67 37.11 60.91 34.86 62.49 33.8C64.07 32.73 67.14 32.22 69.26 32.36C71.38 32.5 73.7 33.57 75.2 34.62C76.71 35.66 77.46 36.64 78.28 38.62C79.09 40.61 78.76 44.74 80.08 46.52C81.41 48.31 84.33 48.27 86.24 49.33C88.15 50.39 90.34 51.86 91.55 52.88C92.76 53.9 93.24 54.49 93.5 55.45C93.76 56.41 93.58 57.78 93.08 58.64C92.58 59.5 91.47 60.34 90.51 60.6C89.55 60.85 88.67 60.65 87.31 60.17C85.95 59.7 84.12 58.42 82.33 57.77C80.54 57.11 78.12 56.33 76.56 56.27C75 56.21 73.95 57.14 72.98 57.4C72 57.66 71.45 57.69 70.69 57.83" fill="none" stroke="#1B2440" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(69.6 44.2) rotate(11) scale(1.08)"><ellipse cx="21.15" cy="8.03" rx="1.25" ry="1.5" transform="rotate(19.09 21.15 8.03)" fill="#1B2440"/><ellipse cx="2.4" cy="-2.4" rx="3.1" ry="3" fill="#C98E4E"/><ellipse cx="3" cy="2.8" rx="2.2" ry="1.35" fill="#F08CA5"/><g data-part="eye-open"><ellipse cx="2.4" cy="-2.4" rx="1.95" ry="2.3" fill="#1B2440"/><circle cx="3.08" cy="-3.32" r="0.78" fill="#FFFFFF"/></g><g data-part="eye-closed" opacity="0"><path d="M0.2 -2.3 Q2.4 -0.4 4.6 -2.3" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="eye-happy" opacity="0"><path d="M0.2 -1.5 Q2.4 -5.2 4.6 -1.5" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="mouth-normal"><path d="M9.8 6.2 Q7.4 7.5 5.2 5.5" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="mouth-o" opacity="0"><ellipse cx="7.6" cy="5.9" rx="1.3" ry="1.5" fill="#1B2440"/></g><g data-part="mouth-happy" opacity="0"><path d="M4.8 4.5 L10.8 4.7 C10.6 6.2 9.4 7.15 7.8 7.15 C6.2 7.15 5.0 6.2 4.8 4.5 Z" fill="#F08CA5"/><path d="M10.8 4.7 C10.6 6.2 9.4 7.15 7.8 7.15 C6.2 7.15 5.0 6.2 4.8 4.5" fill="none" stroke="#1B2440" stroke-width="1.67" stroke-linejoin="round" stroke-linecap="round"/></g></g><circle cx="45" cy="60.2" r="10.5" fill="#FFFFFF" stroke="#1B2440" stroke-width="2.2"/><g transform="translate(45 60.2) scale(0.42)"><circle r="19.5" fill="none" stroke="#C9D0E3" stroke-width="1" stroke-dasharray="1.6 2.2" opacity="{{ ro.frameOpacity }}"/><path d="{{ ro.rimD }}" fill="#FCE4EE" stroke="#C2336F" stroke-width="1.4" stroke-linejoin="round" opacity="{{ ro.rimOpacity }}"/><path d="{{ ro.off }}" fill="#FFFFFF" stroke="#DDE1EC" stroke-width="0.9"/><path d="{{ ro.on }}" fill="#F8D3E2" stroke="#C2336F" stroke-width="1.1"/><path d="{{ ro.spokes }}" stroke="#C2336F" stroke-width="0.8" stroke-linecap="round"/><circle r="4" stroke="#C2336F" stroke-width="1.2" style="fill: {{ ro.hubFill }}"/></g><g data-part="sweat" opacity="0"><path d="M79.8 18.2c2.2 3.6 3.6 5.8 3.6 8a3.6 3.6 0 0 1 -7.2 0c0 -2.2 1.4 -4.4 3.6 -8z" fill="#9FD3F5" stroke="#1B2440" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="sparks" opacity="0"><path d="M88.6 35 l4.2 -4.8 M91.4 43.6 l6.4 -1.4 M88.6 26.8 l2.4 -5.6" fill="none" stroke="#F2B43A" stroke-width="3" stroke-linecap="round"/></g></svg>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<div style="font-size: 16px; font-weight: 800; line-height: 1.3">Entendés más de lo que hablás.</div>
+<div style="font-size: 13px; font-weight: 500; line-height: 1.45">La prueba de ubicación (12-15 min) te dice desde dónde empezar.</div>
+</div>
+</div>
+<a href="Placement.dc.html" onClick="{{ toPlacement }}" style="height: 48px; border-radius: 14px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center">Hacer la prueba</a>
+</div>
+</sc-if>
+</div>
+<div style="flex-shrink: 0; margin-top: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<button onClick="{{ startA1 }}" style="height: 54px; border-radius: 16px; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; font-weight: 800; font-size: 17px; background: {{ a1Bg }}; color: {{ a1Ink }}">Empezar en A1</button>
+<button onClick="{{ chooseLevel }}" style="height: 54px; border-radius: 16px; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; background: #FFFFFF; color: #1B2440; font-weight: 800; font-size: 17px">Elegir mi nivel</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ atPlan }}" hint-placeholder-val="{{ false }}">
+<div style="flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; animation: gn-in 220ms ease-out">
+<div style="flex: 1 1 auto; min-height: 0; overflow-y: auto; margin: 0 -20px; padding: 8px 20px 12px">
+<div style="display: flex; align-items: center; gap: 16px">
+<svg viewBox="0 0 100 100" width="104" height="104" role="img" aria-label="{{ mascotLabel }}" style="flex-shrink: 0"><path d="M26.17 58.19C24.25 59.48 22.2 60.42 20.4 62.04C18.61 63.66 16.69 66.08 15.39 67.9C14.09 69.73 13.32 71.72 12.61 72.99C11.89 74.26 11.6 74.92 11.08 75.54C10.56 76.16 9.83 76.41 9.5 76.69C9.16 76.96 9.19 77.35 9.05 77.17C8.92 77 8.8 76.55 8.71 75.64C8.62 74.74 8.48 73.06 8.53 71.75C8.59 70.44 8.79 68.87 9.05 67.77C9.32 66.67 9.83 65.74 10.11 65.16C10.4 64.58 10.35 64.3 10.75 64.3C11.15 64.31 11.94 65.19 12.52 65.2C13.11 65.2 14.02 64.77 14.25 64.31C14.47 63.84 14.36 62.98 13.88 62.4C13.39 61.83 12.43 60.85 11.33 60.88C10.24 60.92 8.35 61.65 7.3 62.61C6.25 63.58 5.59 65.22 5.05 66.68C4.5 68.13 4.23 69.81 4.02 71.35C3.81 72.88 3.62 74.32 3.77 75.9C3.92 77.49 3.9 79.66 4.95 80.83C5.99 81.99 8.35 82.81 10.04 82.9C11.73 83 13.51 82.37 15.1 81.42C16.68 80.46 18.26 78.52 19.54 77.17C20.83 75.83 21.75 74.38 22.82 73.34C23.89 72.31 24.48 71.7 25.98 70.97C27.49 70.25 29.88 69.66 31.83 69.01Z" fill="#EDC27C"/><path d="M20.15 70.47C20.74 70.71 20.68 72.05 20.37 72.87C20.06 73.69 18.95 75.26 18.3 75.41C17.66 75.56 16.75 74.41 16.5 73.75C16.25 73.09 16.21 71.97 16.82 71.42C17.43 70.87 19.56 70.23 20.15 70.47Z" fill="#2A2120"/><path d="M10.57 78.66C10.78 79.01 10.58 80.06 10.18 80.29C9.78 80.52 8.67 80.26 8.16 80.04C7.65 79.82 6.99 79.26 7.12 78.95C7.25 78.64 8.37 78.23 8.94 78.18C9.51 78.13 10.36 78.31 10.57 78.66Z" fill="#2A2120"/><path d="M7.66 68.46C7.88 68.64 7.74 69.25 7.49 69.58C7.24 69.91 6.49 70.46 6.18 70.45C5.87 70.44 5.64 69.82 5.64 69.5C5.64 69.18 5.84 68.68 6.18 68.51C6.52 68.34 7.44 68.28 7.66 68.46Z" fill="#2A2120"/><path d="M26.17 58.19C24.25 59.48 22.2 60.42 20.4 62.04C18.61 63.66 16.69 66.08 15.39 67.9C14.09 69.73 13.32 71.72 12.61 72.99C11.89 74.26 11.6 74.92 11.08 75.54C10.56 76.16 9.83 76.41 9.5 76.69C9.16 76.96 9.19 77.35 9.05 77.17C8.92 77 8.8 76.55 8.71 75.64C8.62 74.74 8.48 73.06 8.53 71.75C8.59 70.44 8.79 68.87 9.05 67.77C9.32 66.67 9.83 65.74 10.11 65.16C10.4 64.58 10.35 64.3 10.75 64.3C11.15 64.31 11.94 65.19 12.52 65.2C13.11 65.2 14.02 64.77 14.25 64.31C14.47 63.84 14.36 62.98 13.88 62.4C13.39 61.83 12.43 60.85 11.33 60.88C10.24 60.92 8.35 61.65 7.3 62.61C6.25 63.58 5.59 65.22 5.05 66.68C4.5 68.13 4.23 69.81 4.02 71.35C3.81 72.88 3.62 74.32 3.77 75.9C3.92 77.49 3.9 79.66 4.95 80.83C5.99 81.99 8.35 82.81 10.04 82.9C11.73 83 13.51 82.37 15.1 81.42C16.68 80.46 18.26 78.52 19.54 77.17C20.83 75.83 21.75 74.38 22.82 73.34C23.89 72.31 24.48 71.7 25.98 70.97C27.49 70.25 29.88 69.66 31.83 69.01Z" fill="none" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M28.6 70 C27.4 75.6 27.4 80 29.2 82 Q30.4 83 32.4 83 L40.6 83 Q42.6 83 42.6 81.2 Q42.4 79.6 40.4 79.3 L38.2 78.8 L39.4 70 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M25 70.6C23.07 68 22.07 64.43 22.4 61C22.73 57.57 24.57 52.83 27 50C29.43 47.17 33.43 45.28 37 44C40.57 42.72 45.17 42.53 48.4 42.3C51.63 42.07 54.51 43.19 56.4 42.6C58.29 42.01 59.76 38.77 59.76 38.77C59.76 38.77 62.59 45.03 64.6 47C66.61 48.97 70.78 48.79 71.8 50.6C72.82 52.41 70.44 56.92 70.69 57.83C70.94 58.75 74.42 59.44 74.8 61.6C75.18 63.76 74.87 68.3 73 70.8C71.13 73.3 67.77 75.38 63.6 76.6C59.43 77.82 52.93 78.1 48 78.1C43.07 78.1 37.83 77.85 34 76.6C30.17 75.35 26.93 73.2 25 70.6Z" fill="#EDC27C"/><path d="M60.65 40.62C61.37 42.68 61.81 44.64 62.8 46.8C63.79 48.96 65.4 51.5 66.6 53.6C67.8 55.7 69 57.93 70 59.4C71 60.87 71.79 61.5 72.6 62.4C73.41 63.3 74.13 64.02 74.89 64.83C74.81 65.79 74.65 66.81 74.38 67.78C74.07 68.91 73.62 69.97 73 70.8C72.38 71.63 71.59 72.42 70.66 73.14C69.73 73.87 68.66 74.53 67.47 75.11C66.29 75.69 64.99 76.19 63.6 76.6C62.21 77.01 60.56 77.31 58.8 77.53C57.04 77.75 55.16 77.89 53.31 77.98C51.46 78.07 49.64 78.1 48 78.1C46.42 78.1 44.8 78.07 43.22 78C40.48 76.13 37.24 74.73 35 72.4C32.76 70.07 31.03 66.73 29.8 64C28.57 61.27 28.07 58.33 27.6 56C27.13 53.67 27.2 52 27 50C27.81 49.06 28.8 48.22 29.88 47.47C30.97 46.72 32.15 46.07 33.36 45.5C34.57 44.92 35.81 44.43 37 44C38.19 43.57 39.49 43.27 40.82 43.04C42.15 42.81 43.51 42.67 44.8 42.56C46.09 42.45 47.32 42.38 48.4 42.3C49.48 42.22 50.52 42.3 51.49 42.4C52.46 42.51 53.38 42.66 54.2 42.73C55.03 42.8 55.77 42.8 56.4 42.6C57.03 42.4 57.62 41.91 58.11 41.34C58.61 40.78 59.02 40.13 59.31 39.63C59.6 39.13 59.76 38.77 59.76 38.77C59.76 38.77 60.08 39.46 60.57 40.46C60.6 40.52 60.62 40.57 60.65 40.62Z" fill="#2A2120"/><path d="M70.69 57.83C70.94 58.75 74.42 59.44 74.8 61.6C75.18 63.76 74.87 68.3 73 70.8C71.13 73.3 67.77 75.38 63.6 76.6C59.43 77.82 52.93 78.1 48 78.1C43.07 78.1 37.83 77.85 34 76.6C30.17 75.35 26.93 73.2 25 70.6C23.07 68 22.07 64.43 22.4 61C22.73 57.57 24.57 52.83 27 50C29.43 47.17 33.43 45.28 37 44C40.57 42.72 45.17 42.53 48.4 42.3C51.63 42.07 54.51 43.19 56.4 42.6C58.29 42.01 59.76 38.77 59.76 38.77" fill="none" stroke="#1B2440" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M64.4 60.2C65.4 60.1 66.93 60.83 67.6 62.2C68.27 63.57 68.18 66.33 68.4 68.4C68.62 70.47 68.52 72.93 68.9 74.6C69.28 76.27 69.92 77.57 70.7 78.4C71.48 79.23 73.11 79.11 73.6 79.6C74.09 80.09 74.58 81.82 74.4 82.1C74.22 82.38 72.08 82.94 71.4 83C70.72 83.06 64.84 83.08 64.2 83C63.56 82.92 62.06 82.54 61.8 81.8C61.54 81.06 61.68 77.9 61.6 75.6C61.52 73.3 61.3 70.13 61.3 68C61.3 65.87 61.08 64.1 61.6 62.8C62.12 61.5 63.4 60.3 64.4 60.2Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M70.86 80.04C70.89 80.41 71.14 80.88 71.42 81.11C71.7 81.34 72.09 81.42 72.54 81.44C72.99 81.46 73.61 81.3 74.14 81.22C74.67 81.15 75.31 81.11 75.73 80.99C76.15 80.87 76.46 80.76 76.67 80.51C76.88 80.26 77.02 79.81 76.99 79.47C76.96 79.13 76.73 78.71 76.48 78.5C76.23 78.29 75.91 78.25 75.47 78.21C75.03 78.17 74.4 78.26 73.86 78.28C73.33 78.31 72.7 78.26 72.26 78.36C71.82 78.46 71.45 78.61 71.22 78.89C70.99 79.17 70.83 79.67 70.86 80.04Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><path d="M71.05 81.65C71.04 82.02 71.23 82.51 71.48 82.78C71.73 83.05 72.1 83.18 72.55 83.25C73 83.32 73.62 83.23 74.15 83.22C74.69 83.21 75.33 83.26 75.76 83.2C76.19 83.14 76.51 83.07 76.75 82.84C76.99 82.61 77.19 82.18 77.2 81.84C77.21 81.5 77.04 81.06 76.81 80.82C76.58 80.58 76.27 80.49 75.84 80.4C75.41 80.31 74.78 80.32 74.25 80.28C73.72 80.24 73.1 80.11 72.65 80.15C72.2 80.2 71.82 80.3 71.55 80.55C71.28 80.8 71.06 81.28 71.05 81.65Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(69.6 44.2) rotate(11) scale(1.08)"><path d="M-8.6 -5.8 C-13.6 -8.4 -14.2 -13.6 -10 -14.6 C-5.8 -15.4 -3.6 -11.6 -4.4 -7.2 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.59" stroke-linejoin="round" stroke-linecap="round"/><path d="M-10.4 -5.8 C-11.8 -8.6 -11.4 -11.6 -9.4 -12 C-7.4 -12.4 -6.2 -10.2 -6.6 -7.4 Z" fill="#D49A55"/></g><path d="M59.76 38.77C60.67 37.11 60.91 34.86 62.49 33.8C64.07 32.73 67.14 32.22 69.26 32.36C71.38 32.5 73.7 33.57 75.2 34.62C76.71 35.66 77.46 36.64 78.28 38.62C79.09 40.61 78.76 44.74 80.08 46.52C81.41 48.31 84.33 48.27 86.24 49.33C88.15 50.39 90.34 51.86 91.55 52.88C92.76 53.9 93.24 54.49 93.5 55.45C93.76 56.41 93.58 57.78 93.08 58.64C92.58 59.5 91.47 60.34 90.51 60.6C89.55 60.85 88.67 60.65 87.31 60.17C85.95 59.7 84.12 58.42 82.33 57.77C80.54 57.11 78.12 56.33 76.56 56.27C75 56.21 73.95 57.14 72.98 57.4C72 57.66 71.45 57.69 70.69 57.83C68.51 56.97 66 56.52 64.15 55.24C62.31 53.97 60.68 51.97 59.64 50.18C58.59 48.4 57.85 46.46 57.87 44.56C57.89 42.66 59.13 40.7 59.76 38.77Z" fill="#EDC27C"/><path d="M59.76 38.77C60.67 37.11 60.91 34.86 62.49 33.8C64.07 32.73 67.14 32.22 69.26 32.36C71.38 32.5 73.7 33.57 75.2 34.62C76.71 35.66 77.46 36.64 78.28 38.62C79.09 40.61 78.76 44.74 80.08 46.52C81.41 48.31 84.33 48.27 86.24 49.33C88.15 50.39 90.34 51.86 91.55 52.88C92.76 53.9 93.24 54.49 93.5 55.45C93.76 56.41 93.58 57.78 93.08 58.64C92.58 59.5 91.47 60.34 90.51 60.6C89.55 60.85 88.67 60.65 87.31 60.17C85.95 59.7 84.12 58.42 82.33 57.77C80.54 57.11 78.12 56.33 76.56 56.27C75 56.21 73.95 57.14 72.98 57.4C72 57.66 71.45 57.69 70.69 57.83" fill="none" stroke="#1B2440" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(69.6 44.2) rotate(11) scale(1.08)"><ellipse cx="21.15" cy="8.03" rx="1.25" ry="1.5" transform="rotate(19.09 21.15 8.03)" fill="#1B2440"/><ellipse cx="2.4" cy="-2.4" rx="3.1" ry="3" fill="#C98E4E"/><ellipse cx="3" cy="2.8" rx="2.2" ry="1.35" fill="#F08CA5"/><g data-part="eye-open"><ellipse cx="2.4" cy="-2.4" rx="1.95" ry="2.3" fill="#1B2440"/><circle cx="3.08" cy="-3.32" r="0.78" fill="#FFFFFF"/></g><g data-part="eye-closed" opacity="0"><path d="M0.2 -2.3 Q2.4 -0.4 4.6 -2.3" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="eye-happy" opacity="0"><path d="M0.2 -1.5 Q2.4 -5.2 4.6 -1.5" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="mouth-normal"><path d="M9.8 6.2 Q7.4 7.5 5.2 5.5" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="mouth-o" opacity="0"><ellipse cx="7.6" cy="5.9" rx="1.3" ry="1.5" fill="#1B2440"/></g><g data-part="mouth-happy" opacity="0"><path d="M4.8 4.5 L10.8 4.7 C10.6 6.2 9.4 7.15 7.8 7.15 C6.2 7.15 5.0 6.2 4.8 4.5 Z" fill="#F08CA5"/><path d="M10.8 4.7 C10.6 6.2 9.4 7.15 7.8 7.15 C6.2 7.15 5.0 6.2 4.8 4.5" fill="none" stroke="#1B2440" stroke-width="1.67" stroke-linejoin="round" stroke-linecap="round"/></g></g><circle cx="45" cy="60.2" r="10.5" fill="#FFFFFF" stroke="#1B2440" stroke-width="2.2"/><g transform="translate(45 60.2) scale(0.42)"><circle r="19.5" fill="none" stroke="#C9D0E3" stroke-width="1" stroke-dasharray="1.6 2.2" opacity="{{ ro.frameOpacity }}"/><path d="{{ ro.rimD }}" fill="#FCE4EE" stroke="#C2336F" stroke-width="1.4" stroke-linejoin="round" opacity="{{ ro.rimOpacity }}"/><path d="{{ ro.off }}" fill="#FFFFFF" stroke="#DDE1EC" stroke-width="0.9"/><path d="{{ ro.on }}" fill="#F8D3E2" stroke="#C2336F" stroke-width="1.1"/><path d="{{ ro.spokes }}" stroke="#C2336F" stroke-width="0.8" stroke-linecap="round"/><circle r="4" stroke="#C2336F" stroke-width="1.2" style="fill: {{ ro.hubFill }}; transition: fill 300ms ease-out"/></g><g data-part="sweat" opacity="0"><path d="M79.8 18.2c2.2 3.6 3.6 5.8 3.6 8a3.6 3.6 0 0 1 -7.2 0c0 -2.2 1.4 -4.4 3.6 -8z" fill="#9FD3F5" stroke="#1B2440" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="sparks" opacity="0"><path d="M88.6 35 l4.2 -4.8 M91.4 43.6 l6.4 -1.4 M88.6 26.8 l2.4 -5.6" fill="none" stroke="#F2B43A" stroke-width="3" stroke-linecap="round"/></g></svg>
+<div aria-live="polite" style="display: flex; flex-direction: column; gap: 4px">
+<h1 style="margin: 0; font-size: 26px; font-weight: 800; line-height: 1.25"><span lang="gn">Jehupytyrã</span> · Meta</h1>
+<sc-if value="{{ blank }}" hint-placeholder-val="{{ true }}">
+<div style="font-size: 14px; font-weight: 500; color: #5A6382; line-height: 1.45">Poné tu meta y tejé el primer hilo del ñandutí de <span lang="gn">Kaguare</span>.</div>
+</sc-if>
+<sc-if value="{{ woven }}" hint-placeholder-val="{{ false }}">
+<div style="font-size: 14px; font-weight: 700; color: #B02A63; line-height: 1.45">Primer hilo tejido. Cada unidad suma uno; el examen de nivel lo completa.</div>
+</sc-if>
+</div>
+</div>
+
+<div style="margin-top: 20px; display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 13px; font-weight: 800">Nivel</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{ levels }}" as="l" hint-placeholder-count="6">
+<button aria-pressed="{{ l.on }}" disabled="{{ l.off }}" aria-label="{{ l.aria }}" onClick="{{ l.pick }}" style="height: 56px; padding: 0 6px; border-radius: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; line-height: 1.1; border: {{ l.border }}; background: {{ l.bg }}; box-shadow: {{ l.shadow }}; color: {{ l.color }}"><span style="font-size: 18px; font-weight: 800">{{ l.code }}</span><span style="font-size: 10px; font-weight: 700; color: {{ l.subColor }}">{{ l.sub }}</span></button>
+</sc-for>
+</div>
+<div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.45">{{ canDo }}</div>
+<sc-if value="{{ hasPlaced }}" hint-placeholder-val="{{ false }}">
+<div style="font-size: 12px; font-weight: 700; line-height: 1.45">{{ placedLine }}</div>
+</sc-if>
+</div>
+
+<div style="margin-top: 16px; display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 13px; font-weight: 800">Fecha meta</div>
+<button aria-haspopup="dialog" onClick="{{ openSheet }}" style="height: 68px; padding: 0 16px; border-radius: 16px; border: 2px solid #1B2440; background: #FFFFFF; display: flex; align-items: center; gap: 12px; text-align: left">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column">
+<div style="font-size: 17px; font-weight: 800">{{ field.big }}</div>
+<div style="font-size: 12px; font-weight: 500; color: #5A6382">{{ field.small }}</div>
+</div>
+<sc-if value="{{ field.chip }}" hint-placeholder-val="{{ false }}"><div style="padding: 6px 10px; border-radius: 10px; background: #FCE4EE; color: #B02A63; font-size: 14px; font-weight: 800; white-space: nowrap">{{ field.chipText }}</div></sc-if>
+</button>
+</div>
+
+<div style="margin-top: 18px; display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 13px; font-weight: 800">Minutos por día</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{ paces }}" as="p" hint-placeholder-count="3">
+<button aria-pressed="{{ p.on }}" onClick="{{ p.pick }}" style="height: 76px; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border: {{ p.border }}; background: {{ p.bg }}; box-shadow: {{ p.shadow }}; color: {{ p.color }}"><div style="font-size: 20px; font-weight: 800">{{ p.big }}</div><div style="font-size: 12px; font-weight: {{ p.subWeight }}; color: {{ p.subColor }}">{{ p.small }}</div></button>
+</sc-for>
+</div>
+</div>
+
+<div style="margin-top: 14px; padding: 12px 14px; border-radius: 16px; background: #E8ECFB; display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 15px; font-weight: 800">{{ planTitle }}</div>
+<sc-if value="{{ short }}" hint-placeholder-val="{{ false }}">
+<div role="group" aria-label="Cómo repartir las sesiones" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{ fits }}" as="f" hint-placeholder-count="2">
+<button aria-pressed="{{ f.on }}" onClick="{{ f.pick }}" style="height: 48px; padding: 0 6px; border-radius: 14px; font-size: 15px; font-weight: 800; border: {{ f.border }}; background: {{ f.bg }}; box-shadow: {{ f.shadow }}; color: {{ f.color }}">{{ f.label }}</button>
+</sc-for>
+</div>
+</sc-if>
+<div style="font-size: 12px; font-weight: 500; line-height: 1.45">{{ planNote }}</div>
+<sc-if value="{{ notReady }}" hint-placeholder-val="{{ false }}">
+<div style="font-size: 12px; font-weight: 700; color: #5A6382; line-height: 1.45">{{ notReadyLine }}</div>
+</sc-if>
+</div>
+</div>
+
+<sc-if value="{{ blank }}" hint-placeholder-val="{{ true }}">
+<button onClick="{{ weave }}" style="flex-shrink: 0; margin-top: 10px; height: 54px; border-radius: 16px; background: #B02A63; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px">Tejé el primer hilo</button>
+</sc-if>
+<sc-if value="{{ woven }}" hint-placeholder-val="{{ false }}">
+<a href="Main.dc.html" onClick="{{ toMain }}" style="flex-shrink: 0; margin-top: 10px; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center"><span lang="gn">Ñepyrũ</span> · Empezar</a>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ sheet }}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; left: 0; top: 0; width: 390px; height: 844px; display: flex; flex-direction: column; background: rgba(27, 36, 64, 0.5); animation: gn-fade 160ms ease-out">
+<button aria-label="Cerrar" onClick="{{ closeSheet }}" style="flex-grow: 1; border: 0; padding: 0; background: transparent"></button>
+<div role="dialog" aria-modal="true" aria-label="Elegí tu fecha meta" style="padding: 10px 20px 34px; border-radius: 26px 26px 0 0; border-top: 2px solid #1B2440; background: #FFFFFF; display: flex; flex-direction: column; gap: 12px; animation: gn-up 240ms ease-out">
+<div aria-hidden="true" style="align-self: center; width: 40px; height: 5px; border-radius: 3px; background: #C9D0E3"></div>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<h2 style="margin: 0; font-size: 18px; font-weight: 800">Fecha meta <span style="font-size: 13px; font-weight: 700; color: #5A6382">¿Para cuándo?</span></h2>
+<div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.45">Con fecha, la última semana queda para repasar y rendir el examen de nivel. Sin fecha, vas a tu ritmo: una sesión por día.</div>
+</div>
+<div role="group" aria-label="Fecha meta" style="display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{ targets }}" as="t" hint-placeholder-count="4">
+<button aria-pressed="{{ t.on }}" onClick="{{ t.pick }}" style="min-height: 68px; padding: 8px 14px; border-radius: 16px; display: flex; align-items: center; gap: 12px; text-align: left; border: {{ t.border }}; background: {{ t.bg }}">
+<div aria-hidden="true" style="width: 22px; height: 22px; box-sizing: border-box; border-radius: 50%; border: 2px solid #1B2440; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><div style="width: 10px; height: 10px; border-radius: 50%; background: {{ t.dot }}"></div></div>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column">
+<div style="font-size: 17px; font-weight: 800">{{ t.big }}</div>
+<div style="font-size: 12px; font-weight: 500; color: #5A6382">{{ t.small }}</div>
+</div>
+<sc-if value="{{ t.hasChip }}" hint-placeholder-val="{{ false }}"><div style="padding: 6px 10px; border-radius: 10px; background: #FCE4EE; color: #B02A63; font-size: 14px; font-weight: 800; white-space: nowrap">{{ t.chip }}</div></sc-if>
+</button>
+</sc-for>
+</div>
+<sc-if value="{{ custom }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; align-items: center; gap: 12px">
+<label for="gn-goal-date" style="font-size: 13px; font-weight: 800; flex-shrink: 0">Tu fecha</label>
+<input id="gn-goal-date" type="date" min="{{ minDate }}" value="{{ customValue }}" onChange="{{ setDate }}" style="flex-grow: 1; min-width: 0; height: 48px; box-sizing: border-box; padding: 0 12px; border-radius: 12px; border: 2px solid #1B2440; background: #FFFFFF; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; font-size: 16px; font-weight: 700">
+</div>
+</sc-if>
+<button onClick="{{ closeSheet }}" style="margin-top: 4px; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px"><span lang="gn">Oĩma</span> · Listo</button>
+</div>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"view":{"editor":"enum","options":["why","start","plan"],"default":"why"},"go":{"editor":null},"app":{"editor":null},"save":{"editor":null},"miss":{"editor":null},"reviewed":{"editor":null},"level":{"editor":null},"$preview":{"width":390,"height":844}}'>
+/* The goal, in three real steps (notes G3 "Recommendations" 3; Y1 §5.2 and §6.4). Yaoki's decorative "Step 2 of 3" bar is
+   real here: 1 · why and where (up to two reasons and the places; they order examples and work scenes, they never lock
+   content), 2 · where you start (two can-do scales; understanding two steps or more above speaking offers the placement
+   check), 3 · Yaoki's goal screen: the level (A1 to C2), an optional target date, minutes a day, what the plan means,
+   and the ritual: Kaguare carries the level's ñandutí pinned on his vest, and the learner weaves its first thread before starting. */
+const STEPS = ['why', 'start', 'plan'];
+const WHY = [
+{ id: 'familia', es: 'hablar con mi familia' },
+{ id: 'trabajo', es: 'mi trabajo' },
+{ id: 'paraguay', es: 'vivo en Paraguay' },
+{ id: 'raices', es: 'mis raíces' },
+{ id: 'cultura', es: 'música y cultura' },
+{ id: 'viajar', es: 'viajar' },
+{ id: 'requisito', es: 'un requisito' },
+];
+const WORK = [
+{ id: 'salud', es: 'salud' },
+{ id: 'justicia', es: 'justicia' },
+{ id: 'publico', es: 'atención al público' },
+{ id: 'docencia', es: 'docencia' },
+{ id: 'campo', es: 'campo' },
+];
+const WHERE = [
+{ id: 'casa', es: 'casa' },
+{ id: 'trabajo', es: 'trabajo' },
+{ id: 'calle', es: 'calle y mercado' },
+{ id: 'whatsapp', es: 'WhatsApp' },
+{ id: 'musica', es: 'música' },
+{ id: 'campo', es: 'campo' },
+];
+/* two separate scales, in can-do words, lowest first */
+const UNDERSTAND = ['nada', 'saludos y palabras sueltas', 'sé de qué se habla en casa', 'casi todo, pero me cuesta hablar', 'todo'];
+const SPEAK = ['nada', 'frases hechas', 'me defiendo', 'converso', 'con fluidez'];
+const MINUTES = [{ min: 15, small: 'Suave' }, { min: 30, small: 'Normal' }, { min: 45, small: 'Intenso' }];
+const KIND = { none: 'A mi ritmo', m3: 'En 3 meses', m6: 'En 6 meses', custom: 'Tu fecha' };
+/* on its own the artboard answers steps 1 and 2 like the canvas story: family and home; understands far more than
+   speaks (so step 2 shows the placement card). GoalStart and GoalPlan show it at steps 2 and 3. */
+const SAMPLE = { why: ['familia'], where: ['casa'], understand: 3, speak: 1 };
+function pad2(n) { return (n < 10 ? '0' : '') + n; }
+/* a calendar month later, kept inside the month (31 January + 1 month = 28 or 29 February) */
+function addMonths(iso, n) {
+const m = /^(\d{4})-(\d\d)-(\d\d)$/.exec(iso || '');
+if (!m) return iso;
+const mo = +m[2] - 1 + n;
+const y = +m[1] + Math.floor(mo / 12);
+const mm = ((mo % 12) + 12) % 12;
+const last = new Date(Date.UTC(y, mm + 1, 0)).getUTCDate();
+return y + '-' + pad2(mm + 1) + '-' + pad2(Math.min(+m[3], last));
+}
+function leftText(n) { return n === 1 ? 'falta 1 día' : 'faltan ' + n + ' días'; }
+function dayWord(n) { return n + (n === 1 ? ' día' : ' días'); }
+/* In the app, while the learner is in the placement check, the answers of steps 1 and 2 wait here with the step to come
+   back to (closing the check: step 2; choosing a level from it: step 3, which Placement writes). The app's state keeps
+   them too, as profile, but a screen only reads gnCourse.view. Leaving for the path forgets them; a note left by another
+   run of the prototype (another go) is ignored. Never used on the canvas, where every board shows its own moment. */
+function draft(v) {
+try {
+if (v !== undefined) window.__gnGoalDraft = v;
+return window.__gnGoalDraft || null;
+} catch (e) {
+return null;
+}
+}
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+const C = window.gnCourse;
+const app = (props && props.app) || null;
+const inApp = !!(props && props.go);
+const had = (app && app.plan) || null;
+/* in the app, a learner who has done the placement, has a plan or has progress at any level starts at step 3 */
+const known = !!(app && (app.placement || app.plan || Object.keys(app.done || {}).length));
+const view = props && STEPS.indexOf(props.view) >= 0 ? props.view : null;
+const note = inApp ? draft() : null;
+const kept = note && note.owner === props.go ? note : null;
+const picks = inApp ? Object.assign({ why: [], work: null, where: [], understand: null, speak: null }, kept || {}) : SAMPLE;
+/* a target date already behind us is no target */
+const ahead = had && had.target && had.target > C.today(C.now()) ? had.target : null;
+this.state = {
+step: view || (kept && STEPS.indexOf(kept.step) >= 0 ? kept.step : inApp && known ? 'plan' : 'why'),
+why: (picks.why || []).slice(0, 2),
+work: picks.work || null,
+where: (picks.where || []).slice(),
+understand: picks.understand != null ? picks.understand : null,
+speak: picks.speak != null ? picks.speak : null,
+level: (app && app.level) || 'A1',
+kind: ahead ? 'custom' : 'none',
+custom: ahead,
+minutes: (had && had.minutes) || 30,
+pace: (had && had.pace) || 'fit',
+/* a plan already made means the first thread was woven */
+woven: !!had,
+sheet: false,
+};
+}
+componentDidUpdate(prev) {
+/* the view lever on the canvas moves to that step */
+const v = this.props.view;
+if (prev && v !== prev.view && STEPS.indexOf(v) >= 0) this.setState({ step: v, sheet: false });
+}
+/* the target date the sheet stands on, or null for "a mi ritmo" */
+target() {
+const C = window.gnCourse;
+const s = this.state;
+const T = C.today(C.now());
+if (s.kind === 'm3') return addMonths(T, 3);
+if (s.kind === 'm6') return addMonths(T, 6);
+if (s.kind === 'custom') return s.custom && s.custom > T ? s.custom : null;
+return null;
+}
+/* steps 1 and 2 answered in this visit (a screen opened again starts empty and must not wipe what was saved) */
+answered() {
+const s = this.state;
+return s.why.length > 0 || s.where.length > 0 || s.understand != null || s.speak != null;
+}
+profile() {
+const s = this.state;
+return { why: s.why.slice(), work: s.work, where: s.where.slice(), understand: s.understand, speak: s.speak };
+}
+renderVals() {
+const C = window.gnCourse;
+const s = this.state;
+const app = this.props.app || {};
+const T = C.today(C.now());
+const nav = (to) => (e) => { const go = this.props.go; if (go) { e.preventDefault(); go(to); } };
+const look = (on) => on
+? { border: '2px solid #1B2440', bg: '#2F4FD0', shadow: '0 3px 0 #1B2440', color: '#FFFFFF' }
+: { border: '2px solid #DDE1EC', bg: '#FFFFFF', shadow: 'none', color: '#1B2440' };
+const si = Math.max(0, STEPS.indexOf(s.step));
+const pill = (k) => (k <= si ? '#2F4FD0' : '#DDE1EC');
+const hasPlan = !!(this.props.go && app.plan);
+
+/* step 1: up to two reasons; "mi trabajo" asks which field */
+const full = s.why.length >= 2;
+const why = WHY.map((c) => {
+const on = s.why.indexOf(c.id) >= 0;
+const off = full && !on;
+const lk = off ? { border: '2px solid #EEF0F6', bg: '#FFFFFF', shadow: 'none', color: '#9AA1B5' } : look(on);
+return Object.assign({}, c, lk, {
+on,
+off,
+pick: () => {
+const st = this.state;
+if (st.why.indexOf(c.id) >= 0) this.setState({ why: st.why.filter((k) => k !== c.id), work: c.id === 'trabajo' ? null : st.work });
+else if (st.why.length < 2) this.setState({ why: st.why.concat([c.id]) });
+},
+});
+});
+const work = WORK.map((w) => Object.assign({}, w, look(s.work === w.id), { on: s.work === w.id, pick: () => this.setState({ work: this.state.work === w.id ? null : w.id }) }));
+const where = WHERE.map((p) => {
+const on = s.where.indexOf(p.id) >= 0;
+return Object.assign({}, p, look(on), { on, pick: () => { const st = this.state; this.setState({ where: on ? st.where.filter((k) => k !== p.id) : st.where.concat([p.id]) }); } });
+});
+
+/* step 2: two scales; understanding two steps or more above speaking offers the placement check */
+const scale = (list, key) => list.map((es, k) => Object.assign({ es, on: s[key] === k, pick: () => this.setState({ [key]: k }) }, look(s[key] === k)));
+const gap = s.understand != null && s.speak != null && s.understand - s.speak >= 2;
+
+/* step 3: the level, the target date, minutes a day, the plan and the ritual. A placement where every part was skipped
+   measured nothing: it says nothing here */
+const placed = app.placement && app.placement.comp && app.placement.measured !== false ? app.placement : null;
+const LV = C.levels();
+const ready = {};
+LV.forEach((x) => { ready[x.level] = x.ready; });
+const firstReady = (LV.filter((x) => x.ready)[0] || {}).level || null;
+const levels = LV.map((x) => {
+const on = s.level === x.level;
+/* a level with no written day is shut, as in Yaoki; the one already chosen (or set by the placement) stays shown */
+const off = !x.ready && !on && !(placed && placed.start === x.level);
+const lk = on ? look(true) : off ? { border: '2px dashed #DDE1EC', bg: '#F4F5F9', shadow: 'none', color: '#9AA1B5' } : look(false);
+return Object.assign({}, lk, {
+code: x.level,
+sub: x.ready ? x.name : 'En preparación',
+on,
+off,
+aria: x.level + ', ' + x.name + (x.ready ? '' : ', en preparación'),
+subColor: on ? '#FFFFFF' : off ? '#9AA1B5' : '#5A6382',
+pick: () => { if (!off) this.setState({ level: x.level }); },
+});
+});
+const lv = s.level;
+const target = this.target();
+const left = target ? C.daysBetween(T, target) : 0;
+const longDate = (iso) => String(C.dateEs(iso) || iso).replace(/^[^,]*,\s*/, '');
+const field = target
+? { big: KIND[s.kind], small: longDate(target), chip: left > 0, chipText: leftText(left) }
+: { big: 'A mi ritmo', small: 'Sin fecha meta', chip: false, chipText: '' };
+const d3 = addMonths(T, 3);
+const d6 = addMonths(T, 6);
+const mine = s.custom && s.custom > T ? s.custom : addMonths(T, 4);
+const targets = [
+{ id: 'none', big: 'A mi ritmo, sin fecha', small: 'Una sesión por día, sin apuro', date: null },
+{ id: 'm3', big: 'En 3 meses', small: longDate(d3), date: d3 },
+{ id: 'm6', big: 'En 6 meses', small: longDate(d6), date: d6 },
+{ id: 'custom', big: 'Elegir una fecha', small: s.kind === 'custom' ? longDate(mine) : 'Vos elegís el día', date: s.kind === 'custom' ? mine : null },
+].map((t) => {
+const on = s.kind === t.id;
+const n = t.date ? C.daysBetween(T, t.date) : 0;
+return Object.assign({}, t, {
+on,
+pick: () => this.setState(t.id === 'custom' ? { kind: 'custom', custom: mine } : { kind: t.id }),
+border: on ? '2.5px solid #2F4FD0' : '2px solid #DDE1EC',
+bg: on ? '#E8ECFB' : '#FFFFFF',
+dot: on ? '#2F4FD0' : '#FFFFFF',
+hasChip: n > 0,
+chip: leftText(n),
+});
+});
+const paces = MINUTES.map((p) => {
+const on = s.minutes === p.min;
+return Object.assign({ big: p.min + ' min', small: p.small, on, pick: () => this.setState({ minutes: p.min }), subColor: on ? '#FFFFFF' : '#5A6382', subWeight: on ? 700 : 500 }, look(on));
+});
+/* the plan is worked out for the level picked here, which may not be the one the learner is on yet */
+const units = C.withLevel(lv, () => C.units().length);
+const sessions = C.withLevel(lv, () => C.sessions().length);
+const settings = { start: T, target, pace: s.pace };
+const fitsOneADay = C.withLevel(lv, () => C.fits(settings));
+const days = target ? C.daysBetween(T, target) : 0;
+/* as the engine does: the last week before the date is kept for review and the level exam */
+let room = days - C.EXAM_WEEK;
+if (room < 1) room = Math.max(1, days);
+const reach = Math.min(units, Math.floor(room / C.DAYS_PER_UNIT));
+const most = Math.ceil(sessions / room);
+const fits = [
+{ id: 'fit', label: 'Meter todo' },
+{ id: 'steady', label: 'Una por día' },
+].map((f) => Object.assign({}, f, look(s.pace === f.id), { on: s.pace === f.id, pick: () => this.setState({ pace: f.id }) }));
+let planNote;
+const weeks = Math.max(1, Math.ceil(sessions / 7));
+if (!units) planNote = 'Las unidades de ' + lv + ' todavía no están cargadas.';
+else if (!target) planNote = 'Una sesión por día, a tu ritmo: ' + (weeks === 1 ? 'una semana.' : 'unas ' + weeks + ' semanas.');
+else if (fitsOneADay) planNote = 'Entra todo, una sesión por día, y queda la última semana para repasar y rendir el examen de nivel.';
+else if (s.pace === 'fit') planNote = most > 2
+? sessions + ' sesiones en ' + dayWord(room) + ': hasta ' + most + ' por día. Es mucho: probá una fecha más lejana.'
+: sessions + ' sesiones en ' + dayWord(room) + ': algunos días tienen dos. La última semana queda para repasar y rendir el examen de nivel.';
+else planNote = reach > 0
+? 'Una sesión por día: para la fecha terminás ' + reach + ' de ' + units + ' unidades, y lo demás sigue después.'
+: 'Una sesión por día: para la fecha no llegás a terminar una unidad, y el plan sigue después.';
+
+/* the level's ñandutí, pinned on Kaguare's vest: only its frame before the goal; the ritual weaves the hub (the first thread) */
+const prog = app.progress && app.level === lv ? app.progress : null;
+const passed = !!(prog && prog.passed);
+const r = C.rosette(units || 8, prog ? prog.unitsDone || 0 : 0, { hub: s.woven, rim: passed });
+const ro = Object.assign(r, { frameOpacity: passed ? 0 : 1, rimOpacity: passed ? 1 : 0, hubFill: s.woven ? '#C2336F' : '#FFFFFF' });
+
+return {
+pill1: pill(0),
+pill2: pill(1),
+pill3: pill(2),
+stepLabel: 'Paso ' + (si + 1) + ' de 3',
+backStep: si > 0,
+backMain: si === 0 && hasPlan,
+noBack: si === 0 && !hasPlan,
+back: () => this.setState({ step: STEPS[Math.max(0, si - 1)], sheet: false }),
+toPath: (e) => {
+if (this.props.go) draft(null);
+nav('Main')(e);
+},
+atWhy: s.step === 'why',
+atStart: s.step === 'start',
+atPlan: s.step === 'plan',
+
+why,
+showWork: s.why.indexOf('trabajo') >= 0,
+work,
+where,
+toStart: () => this.setState({ step: 'start' }),
+
+understand: scale(UNDERSTAND, 'understand'),
+speak: scale(SPEAK, 'speak'),
+gap,
+toPlacement: (e) => {
+/* the answers wait for the way back: closing the check comes back to this step with them */
+if (this.props.go) draft(Object.assign(this.profile(), { step: 'start', owner: this.props.go }));
+if (this.props.save && this.answered()) this.props.save({ profile: this.profile() });
+nav('Placement')(e);
+},
+/* with the card showing, the check is the suggested way on and both buttons step back to white */
+a1Bg: gap ? '#FFFFFF' : '#2F4FD0',
+a1Ink: gap ? '#1B2440' : '#FFFFFF',
+startA1: () => this.setState({ step: 'plan', level: 'A1' }),
+chooseLevel: () => this.setState({ step: 'plan' }),
+
+ro,
+mascotLabel: 'Kaguare, el oso melero, con el ñandutí del nivel ' + lv + (s.woven ? ': el primer hilo, tejido' : ': solo el marco, sin tejer'),
+levels,
+canDo: C.meta(lv).can,
+hasPlaced: !!placed,
+placedLine: placed ? 'Tu prueba de ubicación: comprensión ' + placed.comp + ' · producción ' + placed.prod + '.' : '',
+field,
+openSheet: () => this.setState({ sheet: true }),
+closeSheet: () => this.setState({ sheet: false }),
+sheet: s.sheet,
+targets,
+custom: s.kind === 'custom',
+minDate: C.addDays(T, 1),
+customValue: mine,
+setDate: (e) => {
+const v = e && e.target ? e.target.value : '';
+if (/^\d{4}-\d\d-\d\d$/.test(v) && v > T) this.setState({ kind: 'custom', custom: v });
+},
+paces,
+planTitle: units ? units + ' unidades · ' + sessions + ' sesiones' : 'Plan en preparación',
+short: !!target && !fitsOneADay,
+fits,
+planNote,
+notReady: !ready[lv],
+notReadyLine: 'Las lecciones de ' + lv + ' están en preparación.' + (firstReady && firstReady !== lv ? ' Mientras tanto, podés empezar en ' + firstReady + ' y cambiar de nivel cuando quieras.' : ''),
+blank: !s.woven,
+woven: s.woven,
+weave: () => this.setState({ woven: true }),
+toMain: (e) => {
+if (this.props.go) draft(null);
+if (this.props.save) {
+const patch = { level: lv, plan: { start: T, target, pace: s.pace, minutes: s.minutes }, cur: null };
+if (this.answered()) patch.profile = this.profile();
+this.props.save(patch);
+}
+nav('Main')(e);
+},
+};
+}
+}
+</script>
+</body>
+</html>

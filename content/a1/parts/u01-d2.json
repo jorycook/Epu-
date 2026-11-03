@@ -1,0 +1,231 @@
+{
+  "title": "Pronombres: ñande y ore",
+  "grammar": {
+    "points": [
+      {
+        "id": "a1u01d2.p1",
+        "form": "che · nde · ha'e",
+        "gloss": "yo · vos · él, ella",
+        "connect": [
+          { "pos": "Yo, el que habla", "rule": "{che} añe'ẽ" },
+          { "pos": "Vos, el que escucha", "rule": "{nde} reñe'ẽ" },
+          { "pos": "Él o ella, otra persona", "rule": "{ha'e} oñe'ẽ" },
+          { "pos": "Sin pronombre, como en castellano: el verbo ya dice quién", "rule": "{a}ñe'ẽ guaraníme" }
+        ],
+        "examples": [
+          { "gn": "{Che} añe'ẽ guaraníme.", "es": "Yo hablo guaraní.",
+            "parts": [["che", "yo"], ["a-", "yo"], ["ñe'ẽ", "hablar"], ["guarani", "guaraní"], ["-me", "en"]] },
+          { "gn": "Iporã, ha {nde}?", "es": "Bien, ¿y vos?",
+            "parts": [["iporã", "bien"], ["ha", "y"], ["nde", "vos"]] },
+          { "gn": "{Ha'e} oñe'ẽ guaraníme.", "es": "Él (o ella) habla guaraní.",
+            "parts": [["ha'e", "él, ella"], ["o-", "él, ella"], ["ñe'ẽ", "hablar"], ["guarani", "guaraní"], ["-me", "en"]] }
+        ],
+        "watch": {
+          "note": "El verbo también cambia con la persona. Con che, este verbo empieza con a-: añe'ẽ. Oñe'ẽ es la forma de ha'e.",
+          "bad": "Che oñe'ẽ guaraníme.",
+          "good": "Che añe'ẽ guaraníme."
+        }
+      },
+      {
+        "id": "a1u01d2.p2",
+        "form": "ñande · ore · peẽ · ha'ekuéra",
+        "gloss": "nosotros con vos · nosotros sin vos · ustedes · ellos, ellas",
+        "connect": [
+          { "pos": "Nosotros, con el que escucha", "rule": "che + nde = {ñande}" },
+          { "pos": "Nosotros, sin el que escucha", "rule": "che + ha'e = {ore}" },
+          { "pos": "Ustedes: vos y otros", "rule": "nde + ha'e = {peẽ}" },
+          { "pos": "Ellos, ellas", "rule": "ha'e + -kuéra = {ha'ekuéra}" },
+          { "pos": "El ja- de Jajotopáta se vuelve ña- delante de un verbo nasal, como ñe'ẽ", "rule": "{ja}jotopáta · {ña}ñe'ẽ" }
+        ],
+        "examples": [
+          { "gn": "{Ñande} ñañe'ẽ guaraníme.", "es": "Nosotros (con vos) hablamos guaraní.",
+            "parts": [["ñande", "nosotros, con vos"], ["ña-", "nosotros (con vos)"], ["ñe'ẽ", "hablar"], ["guarani", "guaraní"], ["-me", "en"]] },
+          { "gn": "{Ore} roñe'ẽ guaraníme.", "es": "Nosotros (sin vos) hablamos guaraní.",
+            "parts": [["ore", "nosotros, sin vos"], ["ro-", "nosotros (sin vos)"], ["ñe'ẽ", "hablar"], ["guarani", "guaraní"], ["-me", "en"]] },
+          { "gn": "{Peẽ} peñe'ẽ guaraníme.", "es": "Ustedes hablan guaraní.",
+            "parts": [["peẽ", "ustedes"], ["pe-", "ustedes"], ["ñe'ẽ", "hablar"], ["guarani", "guaraní"], ["-me", "en"]] },
+          { "gn": "{Ha'ekuéra} oñe'ẽ guaraníme.", "es": "Ellos (o ellas) hablan guaraní.",
+            "parts": [["ha'e", "él, ella"], ["-kuéra", "plural"], ["o-", "ellos"], ["ñe'ẽ", "hablar"], ["guarani", "guaraní"], ["-me", "en"]] }
+        ],
+        "watch": {
+          "note": "No uses ñande para todo «nosotros». Ana le cuenta a una turista que ella y su familia hablan guaraní: la turista no está en el grupo, así que va ore.",
+          "bad": "(A una turista:) Ñande ñañe'ẽ guaraníme.",
+          "good": "(A una turista:) Ore roñe'ẽ guaraníme."
+        }
+      }
+    ],
+    "compare": {
+      "intro": "El castellano dice «nosotros» para todo; el guaraní mira si el que escucha está en el grupo.",
+      "forms": [
+        { "form": "ñande", "tag": "nosotros, con vos", "mark": "dot", "gn": "{Ñande} ñañe'ẽ guaraníme.", "es": "Nosotros (con vos) hablamos guaraní." },
+        { "form": "ore", "tag": "nosotros, sin vos", "mark": "dot", "gn": "{Ore} roñe'ẽ guaraníme.", "es": "Nosotros (sin vos) hablamos guaraní." },
+        { "form": "«nosotros»", "tag": "castellano: sirve para los dos", "mark": "dot", "gn": "che + nde = {ñande} · che + ha'e = {ore}", "es": "yo + vos = nosotros · yo + él (o ella) = nosotros" }
+      ],
+      "check": {
+        "id": "a1u01d2.c1", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
+        "q": "Ana y su hermano hablan guaraní. Ana se lo cuenta ^a una vecina nueva^: «(   ) guaraníme.»",
+        "options": ["Ñande ñañe'ẽ", "Ore roñe'ẽ", "Ha'ekuéra oñe'ẽ"],
+        "answer": 2,
+        "why": [
+          "Ñande sumaría a la vecina, que es la que escucha. Pero ella no está en el grupo.",
+          "Ana habla de ella y de su hermano, y la vecina queda afuera: ore.",
+          "Ha'ekuéra es «ellos»: dejaría afuera a Ana, que también habla guaraní."
+        ]
+      }
+    },
+    "drill": [
+      {
+        "id": "a1u01d2.d1", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
+        "q": "Ana habla de ^ella misma^: «(   ) añe'ẽ guaraníme.»",
+        "options": ["Nde", "Che", "Ha'e", "Ore"],
+        "answer": 2,
+        "why": [
+          "Nde es «vos», el que escucha. Ana habla de ella misma.",
+          "Ana habla de ella misma: che, «yo». Y añe'ẽ es la forma de che.",
+          "Ha'e es otra persona, «él» o «ella». Con ha'e, el verbo sería oñe'ẽ.",
+          "Ore es «nosotros, sin vos». Ana habla solo de ella."
+        ]
+      },
+      {
+        "id": "a1u01d2.d2", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
+        "q": "Luis habla de ^su mamá^: «(   ) oñe'ẽ guaraníme.»",
+        "options": ["Che", "Nde", "Ha'ekuéra", "Ha'e"],
+        "answer": 4,
+        "why": [
+          "Che es «yo», Luis mismo, pero él habla de su mamá. Con che, además, el verbo sería añe'ẽ.",
+          "Nde es «vos», la persona a la que Luis le habla. Él habla de su mamá.",
+          "Ha'ekuéra es «ellos», varias personas. La mamá es una sola.",
+          "Luis habla de otra persona, su mamá: ha'e, «ella». Oñe'ẽ es la forma de ha'e."
+        ]
+      },
+      {
+        "id": "a1u01d2.d3", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
+        "q": "Ana y Luis hablan guaraní. Ana se lo dice ^a Luis^: «(   ) guaraníme.»",
+        "options": ["Ñande ñañe'ẽ", "Ore roñe'ẽ", "Che añe'ẽ", "Ha'ekuéra oñe'ẽ"],
+        "answer": 1,
+        "why": [
+          "Ana habla de ella y de Luis, que es el que escucha: ñande lo incluye.",
+          "Ore deja afuera al que escucha, y Luis está en el grupo.",
+          "Che añe'ẽ habla solo de Ana. Ella habla de los dos.",
+          "Ha'ekuéra es «ellos», otras personas: dejaría afuera a Ana y a Luis."
+        ]
+      },
+      {
+        "id": "a1u01d2.d4", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
+        "q": "Un señor les pregunta a Ana y a Luis qué idioma hablan. Ana le contesta ^al señor^: «(   ) guaraníme.»",
+        "options": ["Ñande ñañe'ẽ", "Ore roñe'ẽ", "Peẽ peñe'ẽ", "Ha'ekuéra oñe'ẽ"],
+        "answer": 2,
+        "why": [
+          "Ñande sumaría al señor, que es el que escucha, y él no está en el grupo.",
+          "Ana habla de ella y de Luis, y el señor que escucha queda afuera: ore.",
+          "Peẽ es «ustedes»: nunca incluye al que habla, y Ana habla de ella y de Luis.",
+          "Ha'ekuéra es «ellos»: dejaría afuera a Ana, que también habla guaraní."
+        ]
+      },
+      {
+        "id": "a1u01d2.d5", "kind": "build", "area": "grammar", "label": "Armá la palabra",
+        "join": "word",
+        "before": "Nde ",
+        "after": " guaraníme.",
+        "tiles": ["re", "ñe'ẽ"],
+        "bank": [1, 0],
+        "hint": "Fijate en añe'ẽ y oñe'ẽ: ¿dónde va la parte que dice quién?",
+        "full": "Nde {reñe'ẽ} guaraníme.",
+        "es": "Vos hablás guaraní.",
+        "explain": "Con nde, «vos», este verbo lleva re- al principio: re + ñe'ẽ = reñe'ẽ, «hablás». El castellano marca la persona al final (hablás); el guaraní, al principio."
+      },
+      {
+        "id": "a1u01d2.d6", "kind": "build", "area": "grammar", "label": "Armá la oración",
+        "join": "sentence",
+        "before": "Luis ha Marta: Mba'éichapa reiko?\nAna:",
+        "after": "?",
+        "tiles": ["iporã", "ha", "peẽ"],
+        "bank": [2, 0, 1],
+        "hint": "Ana contesta primero. Después les devuelve la pregunta a los dos.",
+        "full": "Luis ha Marta: Mba'éichapa reiko?\nAna: Iporã, ha {peẽ}?",
+        "es": "Luis y Marta: ¿Cómo andás? Ana: Bien, ¿y ustedes?",
+        "explain": "Ana dice primero cómo está: iporã, «bien». Después les devuelve la pregunta a Luis y a Marta, que la escuchan: ha peẽ, «¿y ustedes?». Ha, «y», va antes de peẽ."
+      }
+    ],
+    "exam": [
+      {
+        "id": "a1u01d2.e1", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
+        "q": "Luis le pregunta a Ana si ella también habla guaraní: «Che añe'ẽ guaraníme, ha (   )?»",
+        "options": ["nde", "ha'e", "che", "ore"],
+        "answer": 1,
+        "explain": "Luis le habla a Ana, así que para él ella es nde, «vos»: ha nde, «¿y vos?». Ha'e sirve para hablar de otra persona, no para hablarle a Ana; che sería Luis otra vez, y ore, «nosotros sin vos», dejaría afuera a Ana."
+      },
+      {
+        "id": "a1u01d2.e2", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
+        "q": "Dos alumnas hablan guaraní y se lo cuentan a su docente: «(   ) guaraníme.»",
+        "options": ["Ñande ñañe'ẽ", "Ha'ekuéra oñe'ẽ", "Ore roñe'ẽ", "Che añe'ẽ"],
+        "answer": 3,
+        "explain": "Las alumnas hablan de ellas dos, y la docente que las escucha no está en ese grupo: ore roñe'ẽ. Ñande ñañe'ẽ sumaría a la docente, ha'ekuéra oñe'ẽ hablaría de otras personas y che añe'ẽ, de una sola alumna."
+      },
+      {
+        "id": "a1u01d2.e3", "kind": "build", "area": "grammar", "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Ana habla de su mamá y su papá.) ",
+        "after": " oñe'ẽ guaraníme.",
+        "tiles": ["ha'e", "kuéra"],
+        "bank": [1, 0],
+        "full": "(Ana habla de su mamá y su papá.) {Ha'ekuéra} oñe'ẽ guaraníme.",
+        "es": "(Ana habla de su mamá y su papá.) Ellos hablan guaraní.",
+        "explain": "Ana habla de dos personas, su mamá y su papá, así que va el plural: ha'e, «él, ella», más -kuéra da ha'ekuéra, «ellos». El acento pasa a -kuéra."
+      }
+    ]
+  },
+  "words": {
+    "es": "Una foto de familia",
+    "intro": "Tocá a cada persona en la foto que te muestra Ana: su familia y sus amigos.",
+    "sound": {
+      "focus": "Las vocales nasales",
+      "letters": ["ã", "ẽ", "ĩ", "õ", "ũ", "ỹ"],
+      "note": "En ã ẽ ĩ õ ũ ỹ el aire sale también por la nariz, sin agregar una n. La tilde nasal (~) cambia la palabra: pytu es «aliento» y pytũ, «oscuro». Los pares de hoy usan ã, ẽ y ũ; ĩ, õ y ỹ aparecen en peteĩ «uno», mokõi «dos» y tapỹi «choza».",
+      "pairs": [
+        ["pytu", "aliento", "pytũ", "oscuro"],
+        ["oke", "duerme", "okẽ", "puerta"],
+        ["tupa", "cama", "Tupã", "Dios"],
+        ["pyta", "talón; quedarse", "pytã", "rojo"]
+      ]
+    },
+    "words": [
+      { "id": "chesy", "gn": "che sy", "es": "mi mamá", "parts": [["che", "mi"], ["sy", "madre"]], "note": "Che es «yo» y también «mi»." },
+      { "id": "cheru", "gn": "che ru", "es": "mi papá", "parts": [["che", "mi"], ["ru", "padre"]] },
+      { "id": "mita", "gn": "mitã", "es": "niño, niña", "note": "Mitã sirve para niño y para niña." },
+      { "id": "kunatai", "gn": "kuñataĩ", "es": "chica, muchacha", "note": "La tilde nasal (~) va solo en la ĩ del final." },
+      { "id": "kuna", "gn": "kuña", "es": "mujer", "note": "La a suena nasal por la ñ, pero no lleva tilde nasal (~)." },
+      { "id": "kuimbae", "gn": "kuimba'e", "es": "hombre" },
+      { "id": "angiru", "gn": "angirũ", "es": "amigo, amiga", "note": "La tilde nasal (~) va solo en la ũ del final." }
+    ],
+    "spell": ["mita", "angiru", "kunatai"],
+    "check": {
+      "id": "a1u01d2.k1", "kind": "choice", "area": "vocab", "label": "Cómo se escribe",
+      "q": "Ana habla de su amigo: «Che (   ) oñe'ẽ guaraníme.»",
+      "options": ["angiru", "angirũ", "ãngirũ", "angirun"],
+      "answer": 2,
+      "explain": "Angirũ, «amigo», termina en ũ nasal y lleva tilde nasal (~). Angiru no tiene la nasal, y angirun agrega una n que la palabra no tiene. En ãngirũ sobra la ~ de la a: junto a ng ya suena nasal. Acá che es «mi»: che angirũ, «mi amigo», es otra persona, por eso va oñe'ẽ."
+    }
+  },
+  "skill": {
+    "kind": "reading",
+    "es": "Un mensaje de Ana",
+    "ask": "¿Quiénes hablan guaraní, según el mensaje?",
+    "seconds": 60,
+    "passage": "Mba'éichapa, Marta?\n^Ore roñe'ẽ guaraníme: che, che sy ha che ru.^\nHa nde?\nAna",
+    "strategy": "Leé primero la pregunta. Después de los dos puntos, Ana dice quiénes son ore.",
+    "item": {
+      "id": "a1u01d2.r1", "kind": "choice", "area": "reading", "label": "Buscar el dato",
+      "q": "¿Quiénes hablan guaraní, según el mensaje?",
+      "options": ["Ana y Marta", "Solo la mamá y el papá de Ana", "Ana, su mamá y su papá"],
+      "short": ["Ana y Marta", "Los papás", "Ana y sus papás"],
+      "answer": 3,
+      "why": [
+        "Marta es la que lee el mensaje, y ore deja afuera al que escucha o lee.",
+        "Después de los dos puntos, Ana se nombra primero: che, «yo». Ella también habla.",
+        "Ore roñe'ẽ guaraníme: che, che sy ha che ru. Son Ana, su mamá y su papá."
+      ],
+      "explain": "Ana escribe ore roñe'ẽ guaraníme y después nombra a los de ore: che, che sy ha che ru. Ore deja afuera a Marta, la que lee."
+    }
+  }
+}

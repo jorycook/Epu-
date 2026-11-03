@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Leer, mantené apretado</title>
+<script src="./support.js"></script>
+<script src="./gn-course.js"></script>
+<script src="./gn-extra.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&amp;family=Andika:wght@400;700&amp;text=%20%21%22%23%24%25%26%27%28%29%2A%2B%2C-.%2F0123456789%3A%3B%3C%3D%3E%3F%40ABCDEFGHIJKLMNOPQRSTUVWXYZ%5B%5C%5D%5E_%60abcdefghijklmnopqrstuvwxyz%7B%7C%7D~%C2%A1%C2%BF%C2%AB%C2%BB%C2%B0%C2%B7%C3%97%C3%B7%C2%AA%C2%BA%C2%B2%C3%A1%C3%A9%C3%AD%C3%B3%C3%BA%C3%BC%C3%B1%C3%81%C3%89%C3%8D%C3%93%C3%9A%C3%9C%C3%91%C3%BD%C3%9D%C3%A3%E1%BA%BD%C4%A9%C3%B5%C5%A9%E1%BB%B9%C3%83%E1%BA%BC%C4%A8%C3%95%C5%A8%E1%BB%B8%C3%A7%C3%87%C3%A0%C3%A8%C3%AC%C3%B2%C3%B9%C3%A2%C3%AA%C3%AE%C3%B4%C3%BB%CC%83%CC%81%E2%80%98%E2%80%99%E2%80%9C%E2%80%9D%E2%80%A6%E2%80%93%E2%80%94%E2%80%A2%E2%82%AC%E2%86%92%E2%86%90%E2%86%91%E2%86%93&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:#2F4FD0;text-decoration:none}a:hover{color:#1B2440}
+rt{font-size:9px;font-weight:500;color:#5A6382}
+@keyframes gn-up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes gn-fade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; padding: 50px 16px 34px; background: #F4F5F9; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+<div style="display: flex; align-items: center; gap: 10px; height: 44px; flex-shrink: 0">
+<a href="Main.dc.html" onClick="{{ toMain }}" aria-label="Cerrar la lectura" style="width: 44px; height: 44px; margin-left: -10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+<div style="flex-grow: 1; min-width: 0; font-size: 15px; font-weight: 800"><span lang="gn">Emoñe'ẽ</span> <span style="font-size: 12px; font-weight: 700; color: #5A6382">· Leer</span></div>
+<button type="button" ref="{{ pillRef }}" onClick="{{ openSheet }}" aria-haspopup="dialog" aria-label="Ayuda: qué muestra al mantener apretado" style="height: 44px; padding: 0; border: 0; background: none; flex-shrink: 0; display: flex; align-items: center"><span style="display: flex; align-items: center; gap: 6px; height: 32px; box-sizing: border-box; padding: 0 12px; border-radius: 16px; background: #FFFFFF; border: 2px solid #1B2440; font-size: 13px; font-weight: 800"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7h9M19 7h1M4 17h1M11 17h9"/><circle cx="16" cy="7" r="2.6"/><circle cx="8" cy="17" r="2.6"/></svg><span><span lang="gn">Pytyvõ</span> · Ayuda</span></span></button>
+</div>
+
+<div style="margin-top: 4px; display: flex; align-items: center; gap: 8px; height: 24px; flex-shrink: 0">
+<div style="flex-shrink: 0; padding: 3px 10px; border-radius: 10px; background: #E8ECFB; color: #2F4FD0; font-size: 12px; font-weight: 800; white-space: nowrap">{{ tag }}</div>
+<div style="min-width: 0; font-size: 12px; font-weight: 700; color: #5A6382; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Con las ayudas ocultas</div>
+</div>
+
+<sc-if value="{{ hasWork }}" hint-placeholder-val="{{ true }}">
+<h1 style="margin: 6px 0 0; font-size: 19px; font-weight: 800; line-height: 26px; flex-shrink: 0"><span lang="gn">{{ title }}</span> <span style="font-size: 12px; font-weight: 700; color: #5A6382">{{ titleEs }}</span></h1>
+</sc-if>
+<sc-if value="{{ noWork }}" hint-placeholder-val="{{ false }}">
+<h1 style="margin: 6px 0 0; font-size: 19px; font-weight: 800; line-height: 26px; flex-shrink: 0">Tu primer texto</h1>
+</sc-if>
+
+<div style="margin-top: 4px; min-height: 18px; display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; flex-shrink: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B02A63" stroke-width="2.4" aria-hidden="true" style="flex-shrink: 0"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5" fill="#B02A63"/></svg><span>Mantené apretada una frase</span><span style="color: #5A6382">y mirá sus partes</span></div>
+
+<sc-if value="{{ hasWork }}" hint-placeholder-val="{{ true }}">
+<div ref="{{ boxRef }}" data-gn-box="1" lang="gn" onPointerMove="{{ move }}" onPointerUp="{{ up }}" onPointerCancel="{{ up }}" onPointerLeave="{{ up }}" onContextMenu="{{ noMenu }}" style="position: relative; flex-shrink: 0; margin-top: 10px; padding: 10px 14px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; font-family: 'Andika', 'Nunito', sans-serif; font-size: 18px; font-weight: 400; line-height: 42px; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; touch-action: none">
+<sc-for list="{{ items }}" as="c" hint-placeholder-count="12"><span style="white-space: nowrap">{{ c.lead }}<button type="button" data-gn-i="{{ c.i }}" onPointerDown="{{ c.down }}" onFocus="{{ c.focus }}" onBlur="{{ c.blur }}" style="appearance: none; display: inline-block; margin: 0; padding: 0 1px; border: 0; border-bottom: {{ c.line }}; border-radius: 6px 6px 0 0; background: {{ c.bg }}; max-width: 100%; white-space: normal; overflow-wrap: anywhere; outline-offset: 1px"><sc-for list="{{ c.segs }}" as="g" hint-placeholder-count="1"><span style="border-radius: 4px; background: {{ g.bg }}">{{ g.t }}</span></sc-for></button>{{ c.punct }}</span>{{ c.space }}<sc-if value="{{ c.br }}" hint-placeholder-val="{{ false }}"><br></sc-if></sc-for>
+<div aria-live="polite" aria-atomic="true" lang="es">
+<sc-if value="{{ lensOn }}" hint-placeholder-val="{{ false }}">
+<div ref="{{ lensRef }}" lang="es" style="position: absolute; left: -2px; right: -2px; top: {{ lensTop }}; bottom: {{ lensBottom }}; z-index: 5; pointer-events: none; box-sizing: border-box; padding: 8px 14px 12px; border-radius: 18px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; display: flex; flex-direction: column; gap: 8px; font-family: 'Nunito', 'Avenir Next', sans-serif; font-size: 12px; font-weight: 700; line-height: 16px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 2px 14px">
+<sc-for list="{{ lensWords }}" as="w" hint-placeholder-count="2">
+<div style="min-width: 0; max-width: 100%; display: flex; flex-direction: column; align-items: center; gap: 1px">
+<div lang="gn" style="max-width: 100%; font-family: 'Andika', 'Nunito', sans-serif; font-size: 26px; font-weight: 700; line-height: 46px; overflow-wrap: anywhere"><sc-for list="{{ w.segs }}" as="g" hint-placeholder-count="1"><span style="text-decoration-line: {{ g.line }}; text-decoration-color: #2F4FD0; text-decoration-thickness: 2px; text-underline-offset: 5px">{{ g.t }}</span></sc-for></div>
+<sc-if value="{{ w.showParts }}" hint-placeholder-val="{{ true }}">
+<div style="max-width: 100%; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 2px 10px; padding: 2px 8px 3px; border-radius: 10px; background: #F4F5F9">
+<sc-for list="{{ w.parts }}" as="p" hint-placeholder-count="2">
+<div style="display: flex; flex-direction: column; align-items: center">
+<span lang="gn" style="font-family: 'Andika', 'Nunito', sans-serif; font-size: 15px; font-weight: 700; line-height: 20px; white-space: nowrap; color: {{ p.color }}">{{ p.t }}</span>
+<span style="font-size: 11px; font-weight: 700; line-height: 14px; white-space: nowrap; color: {{ p.color }}">{{ p.es }}</span>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ w.showEs }}" hint-placeholder-val="{{ true }}"><div style="min-height: 15px; max-width: 170px; font-size: 12px; font-weight: 700; line-height: 15px; text-align: center">{{ w.es }}</div></sc-if>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ gramOn }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; align-items: baseline; gap: 8px; padding: 5px 10px; border-radius: 10px; background: #E8ECFB; line-height: 22px">
+<span style="flex-shrink: 0; font-size: 11px; font-weight: 800; color: #2F4FD0">Gramática</span>
+<span lang="gn" style="flex-shrink: 0; font-family: 'Andika', 'Nunito', sans-serif; font-size: 15px; font-weight: 700">{{ gramPat }}</span>
+<span style="font-size: 12px; font-weight: 700; line-height: 16px">{{ gramEs }}</span>
+</div>
+</sc-if>
+<sc-if value="{{ noteOn }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; align-items: baseline; gap: 8px; padding: 5px 10px; border-radius: 10px; background: #FFF4D6; line-height: 22px">
+<span style="flex-shrink: 0; font-size: 11px; font-weight: 800; color: #5A6382">Nota</span>
+<span style="font-size: 12px; font-weight: 700; line-height: 16px">{{ note }}</span>
+</div>
+</sc-if>
+</div>
+</sc-if>
+</div>
+<sc-if value="{{ fingerOn }}" hint-placeholder-val="{{ false }}">
+<div aria-hidden="true" style="position: absolute; left: {{ fingerLeft }}; top: {{ fingerTop }}; z-index: 6; width: 58px; height: 58px; box-sizing: border-box; border-radius: 50%; background: rgba(27, 36, 64, 0.16); border: 2px solid rgba(27, 36, 64, 0.5); pointer-events: none"></div>
+</sc-if>
+</div>
+
+<div style="margin-top: 12px; display: flex; align-items: baseline; gap: 8px; flex-shrink: 0">
+<div style="font-size: 13px; font-weight: 800">Lo que miraste</div>
+<div style="flex-grow: 1"></div>
+<div style="font-size: 13px; font-weight: 800">{{ seenCount }} <span style="font-size: 11px; font-weight: 700; color: #5A6382">{{ totalLabel }}</span></div>
+</div>
+<sc-if value="{{ noneSeen }}" hint-placeholder-val="{{ true }}">
+<div style="margin-top: 8px; flex-shrink: 0; padding: 10px 14px; border-radius: 14px; border: 2px dashed #C9D0E3; font-size: 12px; font-weight: 700; line-height: 1.45; color: #5A6382">Todavía nada. Cada frase que mirás suma su raíz a esta lista y queda subrayada con puntos en el texto.</div>
+</sc-if>
+<sc-if value="{{ someSeen }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top: 8px; flex-shrink: 0; max-height: 74px; overflow: hidden; display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{ chips }}" as="k" hint-placeholder-count="3">
+<div style="max-width: 100%; height: 34px; box-sizing: border-box; padding: 0 10px; border-radius: 12px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; align-items: center; gap: 6px; white-space: nowrap"><span lang="gn" style="flex-shrink: 0; font-family: 'Andika', 'Nunito', sans-serif; font-size: 15px; font-weight: 700">{{ k.gn }}</span><span style="min-width: 0; overflow: hidden; text-overflow: ellipsis; font-size: 11px; font-weight: 700; color: #5A6382">{{ k.es }}</span></div>
+</sc-for>
+</div>
+</sc-if>
+</sc-if>
+
+<sc-if value="{{ noWork }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top: 10px; flex-shrink: 0; padding: 16px 16px 18px; border-radius: 20px; border: 2px dashed #C9D0E3; background: #FFFFFF; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; align-items: center; gap: 12px">
+<div style="width: 46px; height: 46px; flex-shrink: 0; border-radius: 14px; background: #FFF4D6; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M19 19v2H6"/></svg></div>
+<div style="font-size: 16px; font-weight: 800">En preparación</div>
+</div>
+<div style="font-size: 13px; font-weight: 500; line-height: 1.45; color: #5A6382">El texto de esta lectura se está escribiendo. Cuando esté, lo leés acá con las ayudas ocultas: mantenés apretada una frase y ves sus partes, su significado y su gramática.</div>
+<button type="button" onClick="{{ openSheet }}" style="height: 48px; border-radius: 14px; border: 2px solid #1B2440; background: #FFFFFF; box-shadow: 0 3px 0 #1B2440; font-size: 16px; font-weight: 800">Elegir las ayudas</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ sheet }}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{ closeSheet }}" aria-label="Cerrar las ayudas" style="position: absolute; left: 0; top: 0; z-index: 20; width: 390px; height: 844px; padding: 0; border: 0; background: rgba(27, 36, 64, 0.5); animation: gn-fade 160ms ease-out"></button>
+<div ref="{{ sheetRef }}" role="dialog" aria-modal="true" aria-labelledby="gn-leer-ayudas" onKeyDown="{{ sheetKey }}" style="position: absolute; left: 0; right: 0; bottom: 0; z-index: 21; box-sizing: border-box; padding: 18px 20px 34px; border-radius: 26px 26px 0 0; border-top: 2px solid #1B2440; background: #F4F5F9; display: flex; flex-direction: column; gap: 10px; animation: gn-up 240ms ease-out">
+<h2 id="gn-leer-ayudas" style="margin: 0; font-size: 18px; font-weight: 800">Qué muestra al mantener apretado</h2>
+<sc-for list="{{ rows }}" as="r" hint-placeholder-count="4">
+<button type="button" role="switch" aria-checked="{{ r.on }}" onClick="{{ r.flip }}" style="min-height: 68px; padding: 10px 14px; border-radius: 16px; background: #FFFFFF; border: 2px solid #1B2440; display: flex; align-items: center; gap: 12px; text-align: left">
+<span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 15px; font-weight: 800">{{ r.name }}</span>
+<span style="font-size: 12px; font-weight: 500; line-height: 1.4">{{ r.desc }}<span lang="gn" style="font-family: 'Andika', 'Nunito', sans-serif; font-weight: 700">{{ r.ex }}</span>{{ r.end }}</span>
+</span>
+<span aria-hidden="true" style="flex-shrink: 0; width: 52px; height: 30px; box-sizing: border-box; padding: 0 2px; border-radius: 15px; border: 2px solid #1B2440; display: flex; align-items: center; background: {{ r.track }}; justify-content: {{ r.side }}"><span style="width: 20px; height: 20px; box-sizing: border-box; border-radius: 50%; background: #FFFFFF; border: 2px solid #1B2440"></span></span>
+</button>
+</sc-for>
+<div style="padding: 10px 14px; border-radius: 16px; background: #FFF4D6; font-size: 12px; font-weight: 500; line-height: 1.45"><span style="font-weight: 800">No se muestra la traducción de la oración entera.</span> Ves las piezas y armás la oración vos.</div>
+<button type="button" onClick="{{ closeSheet }}" style="height: 54px; margin-top: 4px; border-radius: 16px; border: 2px solid #1B2440; background: #2F4FD0; color: #FFFFFF; box-shadow: 0 4px 0 #1B2440; font-size: 17px; font-weight: 800"><span lang="gn">Mboty</span> · Cerrar</button>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"demo":{"editor":null},"view":{"editor":null},"go":{"editor":null},"app":{"editor":null},"save":{"editor":null},"miss":{"editor":null},"reviewed":{"editor":null},"level":{"editor":null},"$preview":{"width":390,"height":844}}'>
+/* Emoñe'ẽ · Leer: the reader. A Guarani text with its help hidden; hold a phrase (one word with its suffixes, or a short
+   noun phrase) and a lens above the finger shows the words, their parts (prefix, root, suffix, each with its Spanish),
+   their meaning, the grammar pattern and the text's note; let go and it hides. A hold never shows the whole sentence in
+   Spanish. The text is the reader library's first work (window.__gnExtra.reader.works[0], from gn-extra.js); until it is
+   written the screen says "En preparación" and the help settings still open.
+   Props: demo = index of a phrase shown as held when the artboard opens (a designed moment; it clears on the first real
+   touch); view = 'text' (default) or 'settings' (the help sheet open). Inside the prototype: go('Main') closes it. */
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.work = this.gnWork();
+const n = this.work ? this.work.phrases.length : 0;
+const raw = props ? props.demo : undefined;
+const k = raw === undefined || raw === null || raw === '' ? NaN : Number(raw);
+const demo = !isNaN(k) && k >= 0 && k < n ? Math.floor(k) : null;
+this.state = {
+held: demo,
+pos: null,
+flip: false,
+touched: false,
+seen: demo === null ? [] : this.gnTrail(n, demo),
+sheet: !!(props && props.view === 'settings'),
+parts: true,
+mean: true,
+gram: true,
+pron: true,
+};
+this.gnDown = false;
+this.gnSheetWas = this.state.sheet;
+this.boxRef = (el) => { this.boxEl = el; };
+this.lensRef = (el) => { this.lensEl = el; };
+this.pillRef = (el) => { this.pillEl = el; };
+this.sheetRef = (el) => { this.sheetEl = el; };
+}
+componentDidMount() {
+if (this.state.held === null) return;
+/* the demo phrase is measured after layout, and again once the fonts are in */
+const fix = () => {
+if (this.gnGone || this.state.touched || this.state.held === null) return;
+const pos = this.gnPlace(this.state.held, null);
+if (pos) this.setState({ pos });
+};
+fix();
+this.gnT1 = setTimeout(fix, 300);
+this.gnT2 = setTimeout(fix, 1200);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fix);
+}
+componentDidUpdate() {
+this.gnFit();
+/* the help sheet takes the focus when it opens and gives it back to what opened it (the Ayuda pill, or the
+   "Elegir las ayudas" button of the empty state) when it closes */
+const open = !!this.state.sheet;
+if (open === this.gnSheetWas) return;
+this.gnSheetWas = open;
+try {
+const back = this.gnOpener && this.gnOpener.isConnected !== false ? this.gnOpener : this.pillEl;
+const to = open ? (this.sheetEl && this.sheetEl.querySelector ? this.sheetEl.querySelector('[role="switch"]') : null) : back;
+if (to && to.focus) to.focus({ preventScroll: true });
+} catch (e) { /* nothing to focus */ }
+}
+componentWillUnmount() {
+this.gnGone = true;
+clearTimeout(this.gnT1);
+clearTimeout(this.gnT2);
+}
+/* ---------- the text ---------- */
+gnNorm(s) {
+const C = window.gnCourse;
+if (C && C.norm) return C.norm(s == null ? '' : s);
+let t = String(s == null ? '' : s);
+if (t.normalize) t = t.normalize('NFC');
+return t.replace(/[’‘ʼ´`]/g, "'");
+}
+/* the letters as a reader sees them (g̃ and ẽ are one each) */
+gnChars(s) {
+const C = window.gnCourse;
+if (C && C.chars) return C.chars(s);
+return this.gnNorm(s).match(/[\s\S][\u0300-\u036f]*/g) || [];
+}
+/* for comparing a part with the written word: case and the acute (which moves when suffixes join) aside */
+gnLoose(s) {
+const A = 'áéíóúý';
+return this.gnNorm(s).toLowerCase().replace(/[áéíóúý]/g, (c) => 'aeiouy'.charAt(A.indexOf(c)));
+}
+/* a part's spelling without the marks that show where it attaches (a-, -pe, nd-…-i) */
+gnBare(s) {
+return String(s || '').replace(/[-‐–·…]/g, '').trim();
+}
+/* the reader library's first work, made safe to draw: { title, es, level, phrases }, or null while it is not written */
+gnWork() {
+const X = window.__gnExtra;
+const R = X && typeof X === 'object' ? X.reader : null;
+const w = R && Array.isArray(R.works) ? R.works[0] : null;
+if (!w || !Array.isArray(w.phrases)) return null;
+const N = (s) => this.gnNorm(s).trim();
+const phrases = [];
+/* a tail is what follows a phrase: its own punctuation, the space, and the next phrase's opening mark (". «"); the
+   punctuation stays glued to its phrase, the opening mark to the next one, and the line may break at the space */
+let lead = '';
+let start = true;
+w.phrases.forEach((p) => {
+if (!p || typeof p !== 'object') return;
+const t = this.gnNorm(p.t).replace(/\s+/g, ' ').trim();
+if (!t) return;
+const words = (Array.isArray(p.words) ? p.words : []).filter((x) => x && typeof x === 'object' && N(x.t)).map((x) => ({
+t: N(x.t),
+m: (Array.isArray(x.m) ? x.m : []).filter((m) => Array.isArray(m) && N(m[0])).map((m) => [N(m[0]), N(m[1]), String(m[2] || '').trim()]),
+e: N(x.e),
+}));
+const tail = p.tail === undefined || p.tail === null ? ' ' : this.gnNorm(p.tail);
+const cut = /^(\S*)(\s*)([\s\S]*)$/.exec(tail) || ['', tail, '', ''];
+const br = /\n/.test(cut[2]);
+phrases.push({
+t,
+words: words.length ? words : [{ t, m: [], e: '' }],
+lead,
+punct: cut[1],
+space: !br && cut[2] ? ' ' : '',
+br,
+open: cut[3].replace(/\s+/g, ''),
+start: start || /[«"“¡¿]/.test(lead),
+g: Array.isArray(p.g) && N(p.g[0]) ? [N(p.g[0]), N(p.g[1])] : null,
+n: typeof p.n === 'string' ? N(p.n) : '',
+});
+lead = cut[3].replace(/\s+/g, '');
+start = /[.!?:]/.test(cut[1]);
+});
+if (!phrases.length) return null;
+/* an opening mark after the last phrase has nothing to open: it stays with the last phrase */
+const end = phrases[phrases.length - 1];
+if (end.open) end.punct += end.open;
+return { title: N(w.title), es: N(w.es), level: N(w.level).toUpperCase(), phrases };
+}
+/* the phrases already looked up in the designed moment: two others and the held one (Yaoki shows three) */
+gnTrail(n, demo) {
+const out = [];
+[Math.max(1, Math.round(n * 0.15)), Math.round(n * 0.6), 1, 0, n - 1, 2, 3].forEach((i) => {
+if (out.length < 2 && i >= 0 && i < n && i !== demo && out.indexOf(i) < 0) out.push(i);
+});
+out.push(demo);
+return out;
+}
+/* ---------- the parts of a word ---------- */
+/* the written word cut into its parts, when the parts spell it exactly; else null (it is marked as one piece) */
+gnPieces(w) {
+if (!w.m || w.m.length < 2) return null;
+const cs = this.gnChars(w.t);
+const out = [];
+let at = 0;
+for (let k = 0; k < w.m.length; k++) {
+const bare = this.gnBare(w.m[k][0]);
+const n = this.gnChars(bare).length;
+if (!n) return null;
+const piece = cs.slice(at, at + n).join('');
+if (this.gnLoose(piece) !== this.gnLoose(bare)) return null;
+out.push({ t: piece, root: w.m[k][2] === 'r' });
+at += n;
+}
+return at === cs.length ? out : null;
+}
+/* the held phrase in the text: the root keeps the highlight, each affix a lighter tint, so the line does not move */
+gnSegs(p, tint) {
+const plain = [{ t: p.t, bg: 'transparent' }];
+if (!tint || p.words.map((w) => w.t).join(' ') !== p.t) return plain;
+const out = [];
+p.words.forEach((w, k) => {
+if (k) out.push({ t: ' ', bg: 'transparent' });
+const pcs = this.gnPieces(w);
+if (!pcs) out.push({ t: w.t, bg: 'transparent' });
+else pcs.forEach((x) => out.push({ t: x.t, bg: x.root ? 'transparent' : '#FFF4D6' }));
+});
+return out;
+}
+/* the parts row of the lens: roots in ink, affixes muted; a hyphen shows where an affix attaches */
+gnParts(w) {
+const ms = w.m || [];
+const roots = [];
+ms.forEach((m, i) => { if (m[2] === 'r') roots.push(i); });
+const first = roots.length ? roots[0] : -1;
+const last = roots.length ? roots[roots.length - 1] : -1;
+return ms.map((m, i) => {
+const root = m[2] === 'r';
+let t = m[0];
+if (ms.length > 1 && !root && first >= 0 && !/[-‐…]/.test(t)) {
+if (i < first) t = t + '-';
+else if (i > last) t = '-' + t;
+}
+return { t, bare: this.gnBare(m[0]), es: m[1] || ' ', color: root ? '#1B2440' : '#5A6382' };
+});
+}
+/* the roots a phrase adds to the looked-up list (one chip per root, as Yaoki lists one per dictionary form) */
+gnRoots(p) {
+const out = [];
+p.words.forEach((w) => {
+const rs = w.m.filter((m) => m[2] === 'r');
+if (rs.length) rs.forEach((m) => out.push({ gn: this.gnBare(m[0]), es: m[1] }));
+else if (!w.m.length) out.push({ gn: w.t, es: w.e });
+});
+if (!out.length && p.words.length) out.push({ gn: p.words[0].t, es: p.words[0].e });
+return out;
+}
+/* ---------- the stressed vowel (Pronunciación) ----------
+   Only what the spelling states (notes G1 §4, rules of high confidence): the vowel with the acute (R2, R4); else a
+   vowel with the nasal tilde when it is the last vowel (R1 and R3 agree); else the last vowel (R1). A word that does
+   not end in a vowel (a name, a Spanish word), two acutes, a tilde before the last vowel, or an unmarked word ending in
+   a vowel and i or u (maitei: the rule names the syllable, not which of the two vowels to mark): no mark. */
+gnStressAt(cs) {
+const V = 'aeiouyáéíóúýãẽĩõũỹ';
+const A = 'áéíóúý';
+const T = 'ãẽĩõũỹ';
+let last = -1;
+const acute = [];
+const tilde = [];
+cs.forEach((g, i) => {
+const c = g.toLowerCase();
+if (c.length !== 1) return;
+if (V.indexOf(c) >= 0) last = i;
+if (A.indexOf(c) >= 0) acute.push(i);
+if (T.indexOf(c) >= 0) tilde.push(i);
+});
+if (last < 0 || last !== cs.length - 1) return -1;
+if (acute.length) return acute.length === 1 ? acute[0] : -1;
+if (tilde.length) return tilde.length === 1 && tilde[0] === last ? last : -1;
+if (last > 0 && /^[aeo]$/.test(cs[last - 1].toLowerCase()) && /^[iu]$/.test(cs[last].toLowerCase())) return -1;
+return last;
+}
+gnStress(t, on) {
+if (!on) return [{ t, line: 'none' }];
+const cs = this.gnChars(t);
+const at = this.gnStressAt(cs);
+if (at < 0) return [{ t, line: 'none' }];
+return [{ t: cs.slice(0, at).join(''), line: 'none' }, { t: cs[at], line: 'underline' }, { t: cs.slice(at + 1).join(''), line: 'none' }].filter((x) => x.t);
+}
+/* ---------- holding ---------- */
+gnPlace(i, el) {
+const node = el || (this.boxEl && this.boxEl.querySelector ? this.boxEl.querySelector('[data-gn-i="' + i + '"]') : null);
+if (!node) return null;
+return { x: node.offsetLeft, y: node.offsetTop, w: node.offsetWidth, h: node.offsetHeight };
+}
+gnHold(i, el) {
+const pos = this.gnPlace(i, el);
+const seen = this.state.seen.indexOf(i) < 0 ? this.state.seen.concat([i]) : this.state.seen;
+this.setState({ held: i, pos, seen, touched: true });
+}
+gnRelease() {
+if (this.state.held !== null) this.setState({ held: null, touched: true });
+}
+/* the lens floats above the finger; when the room above would run into the phone's top bar, it goes below the phrase */
+gnFit() {
+const st = this.state;
+if (st.held === null || !st.pos || !this.lensEl || !this.boxEl) return;
+const h = this.lensEl.offsetHeight || 0;
+const flip = this.boxEl.offsetTop + st.pos.y - 6 - h < 54;
+if (flip !== st.flip) this.setState({ flip });
+}
+renderVals() {
+const st = this.state;
+const work = this.work;
+const list = work ? work.phrases : [];
+const nav = (to) => (e) => { const go = this.props.go; if (go) { e.preventDefault(); go(to); } };
+const items = list.map((p, i) => {
+const on = st.held === i;
+const was = st.seen.indexOf(i) >= 0;
+return {
+i,
+segs: this.gnSegs(p, on && st.parts),
+lead: p.lead,
+punct: p.punct,
+space: p.space,
+br: p.br,
+bg: on ? '#FFE9B0' : 'transparent',
+line: on ? '2px solid #1B2440' : was ? '2px dotted #2F4FD0' : '2px solid transparent',
+down: (e) => { this.gnDown = true; this.gnHold(i, e.currentTarget); },
+focus: (e) => { if (!this.gnDown) this.gnHold(i, e.currentTarget); },
+blur: () => { if (!this.gnDown) this.gnRelease(); },
+};
+});
+const cur = st.held !== null && list[st.held] ? list[st.held] : null;
+const lensOn = !!(cur && st.pos);
+/* a capital inside a sentence, or a word glossed as itself or as a name, is a name: no stress mark */
+const lensWords = cur ? cur.words.map((w, k) => {
+const cap = w.t.charAt(0) !== w.t.charAt(0).toLowerCase();
+const name = cap && (k > 0 || !cur.start || /nombre|apellido/i.test(w.e) || this.gnLoose(w.e) === this.gnLoose(w.t));
+const parts = this.gnParts(w);
+const lone = parts.length === 1 && this.gnLoose(parts[0].bare) === this.gnLoose(w.t);
+return {
+segs: this.gnStress(w.t, st.pron && !name),
+parts,
+showParts: st.parts && parts.length > 0 && !lone,
+es: w.e || ' ',
+showEs: st.mean,
+};
+}) : [];
+const chips = [];
+const have = {};
+st.seen.slice().reverse().forEach((i) => {
+const p = list[i];
+if (!p) return;
+this.gnRoots(p).forEach((r) => {
+const key = this.gnLoose(r.gn);
+if (key && !have[key]) { have[key] = 1; chips.push(r); }
+});
+});
+/* the grammar switch names a pattern from the text itself: an affix (a-, -pe) first, with the short form of its Spanish */
+const gx = list.filter((p) => p.g && /^-|-$/.test(p.g[0]))[0] || list.filter((p) => p.g)[0] || null;
+const gxEs = gx && gx.g[1] ? gx.g[1].split(/[:(]/)[0].trim() : '';
+const row = (key, name, desc, ex, end) => ({
+name,
+desc,
+ex: ex || '',
+end: end || '',
+on: !!st[key],
+track: st[key] ? '#2F4FD0' : '#DDE1EC',
+side: st[key] ? 'flex-end' : 'flex-start',
+flip: () => this.setState((s) => ({ [key]: !s[key] })),
+});
+const rows = [
+row('parts', 'Partes de la palabra', 'Prefijos, raíz y sufijos, cada uno con lo que significa.'),
+row('mean', 'Significado', 'El castellano debajo de cada palabra, y las notas del texto.'),
+gx ? row('gram', 'Gramática', 'El patrón que hay en la frase, como ', gx.g[0], gxEs && gxEs.length <= 24 ? ' (' + gxEs + ').' : '.') : row('gram', 'Gramática', 'El patrón que hay en la frase y lo que significa.'),
+row('pron', 'Pronunciación', 'La vocal fuerte de cada palabra, subrayada. Sin acento ni tilde nasal, va en la última sílaba.'),
+];
+return {
+hasWork: !!work,
+noWork: !work,
+tag: work && work.level ? 'Lectura libre · ' + work.level : 'Lectura libre',
+title: work ? work.title : '',
+titleEs: work ? work.es : '',
+items,
+lensOn,
+lensWords,
+lensTop: st.pos && st.flip ? (st.pos.y + st.pos.h + 16) + 'px' : 'auto',
+lensBottom: st.pos && !st.flip ? 'calc(100% - ' + (st.pos.y - 6) + 'px)' : 'auto',
+gramOn: !!(lensOn && cur.g && st.gram),
+gramPat: cur && cur.g ? cur.g[0] : '',
+gramEs: cur && cur.g ? cur.g[1] : '',
+noteOn: !!(lensOn && cur.n && st.mean),
+note: cur ? cur.n : '',
+fingerOn: lensOn && !st.touched,
+fingerLeft: st.pos ? (st.pos.x + st.pos.w / 2 - 29) + 'px' : '0px',
+fingerTop: st.pos ? (st.pos.y + 8) + 'px' : '0px',
+seenCount: st.seen.length,
+totalLabel: '/ ' + list.length + (list.length === 1 ? ' frase' : ' frases'),
+noneSeen: !!work && st.seen.length === 0,
+someSeen: !!work && st.seen.length > 0,
+chips,
+sheet: st.sheet,
+rows,
+boxRef: this.boxRef,
+lensRef: this.lensRef,
+pillRef: this.pillRef,
+sheetRef: this.sheetRef,
+toMain: nav('Main'),
+openSheet: (e) => { this.gnOpener = e && e.currentTarget ? e.currentTarget : null; this.setState({ sheet: true, held: null }); },
+closeSheet: () => this.setState({ sheet: false }),
+/* Escape closes the help sheet, as the reader's sheets do (a handler on the sheet itself, not a global one) */
+sheetKey: (e) => { if (e.key === 'Escape' || e.key === 'Esc') { e.preventDefault(); e.stopPropagation(); this.setState({ sheet: false }); } },
+noMenu: (e) => e.preventDefault(),
+up: () => { if (!this.gnDown) return; this.gnDown = false; this.gnRelease(); },
+move: (e) => {
+/* sliding the finger moves the reveal to the phrase under it */
+if (!this.gnDown) return;
+const t = document.elementFromPoint(e.clientX, e.clientY);
+const b = t && t.closest ? t.closest('[data-gn-i]') : null;
+if (!b || (this.boxEl && this.boxEl.contains && !this.boxEl.contains(b))) return;
+const i = Number(b.getAttribute('data-gn-i'));
+if (!isNaN(i) && i !== this.state.held) this.gnHold(i, b);
+},
+};
+}
+}
+</script>
+</body>
+</html>

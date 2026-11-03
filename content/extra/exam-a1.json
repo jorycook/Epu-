@@ -1,0 +1,142 @@
+{
+  "level": "A1",
+  "minutes": 81,
+  "parts": {
+    "P1": {
+      "minutes": 25,
+      "tasks": [
+        {
+          "es": "Leé el mensaje que Rosa le escribió a Ana. Después respondé las tres preguntas.",
+          "passage": "Maitei, Ana. Mba'éichapa reiko?\nKo'ẽrõ pyhareve aháta nde rógape che sy ndive.\nJajotopáta.\nRosa",
+          "items": [
+            {
+              "id": "a1x.1", "kind": "choice", "area": "reading", "label": "Leer un mensaje",
+              "q": "¿Adónde va a ir Rosa?",
+              "options": ["A la casa de su mamá", "A la casa de Ana", "A la escuela"],
+              "answer": 2,
+              "explain": "Rosa le escribe a Ana, y nde rógape es «a tu casa»: va a la casa de Ana. Che sy ndive dice con quién va, no adónde. La escuela no aparece."
+            },
+            {
+              "id": "a1x.2", "kind": "choice", "area": "reading", "label": "Leer un mensaje",
+              "q": "¿Cuándo va a ir?",
+              "options": ["Hoy a la tarde", "Mañana a la noche", "Mañana a la mañana"],
+              "answer": 3,
+              "explain": "Ko'ẽrõ es «mañana» y pyhareve, «a la mañana». Aháta, con -ta, dice que todavía no fue: lo va a hacer."
+            },
+            {
+              "id": "a1x.3", "kind": "choice", "area": "reading", "label": "Leer un mensaje",
+              "q": "¿Con quién va a ir?",
+              "options": ["Con su mamá", "Con Ana", "Con su papá"],
+              "answer": 1,
+              "explain": "Che sy ndive es «con mi mamá»: ndive, «con», va después de la persona. «Mi papá» sería che ru, y Ana es la amiga que la espera."
+            }
+          ]
+        }
+      ]
+    },
+    "P2": {
+      "minutes": 20,
+      "tasks": [
+        {
+          "es": "Escuchá dos diálogos cortos. Cada uno suena dos veces. Elegí la respuesta correcta.",
+          "items": [
+            {
+              "id": "a1x.4", "kind": "choice", "area": "listening", "label": "Qué escuchaste",
+              "q": "En la feria. ¿Qué pide el hombre?",
+              "audio": [["N", "En la feria. ¿Qué pide el hombre?", "En la feria. ¿Qué pide el hombre?"], ["F", "Mba'épa reipota?", "¿Qué querés?"], ["M", "Mbohapy chipa ha peteĩ kesu, aguyje.", "Tres chipás y un queso, gracias."]],
+              "script": ["Narrador: En la feria. ¿Qué pide el hombre?", "Mujer: Mba'épa reipota?", "Hombre: Mbohapy chipa ha peteĩ kesu, aguyje."],
+              "options": ["Dos chipás y un queso", "Tres chipás y un queso", "Tres quesos y un chipá"],
+              "answer": 2,
+              "explain": "Mbohapy es «tres» y peteĩ, «uno»: pide tres chipás y un queso. «Dos» sería mokõi."
+            },
+            {
+              "id": "a1x.5", "kind": "choice", "area": "listening", "label": "Qué escuchaste",
+              "q": "Dos personas se conocen. ¿Con quién vive el hombre?",
+              "audio": [["N", "Dos personas se conocen. ¿Con quién vive el hombre?", "Dos personas se conocen. ¿Con quién vive el hombre?"], ["F", "Moõpa reiko?", "¿Dónde vivís?"], ["M", "Aiko távape, che sy ha che ru ndive.", "Vivo en la ciudad, con mi mamá y mi papá."]],
+              "script": ["Narrador: Dos personas se conocen. ¿Con quién vive el hombre?", "Mujer: Moõpa reiko?", "Hombre: Aiko távape, che sy ha che ru ndive."],
+              "options": ["Con su abuela", "Solo", "Con su mamá y su papá"],
+              "answer": 3,
+              "explain": "Che sy ha che ru ndive es «con mi mamá y mi papá»: ndive, «con», va después de las personas. Aiko távape dice dónde vive: en la ciudad."
+            }
+          ]
+        }
+      ]
+    },
+    "P3": {
+      "minutes": 10,
+      "tasks": [
+        {
+          "es": "Tu vecina no habla guaraní. ¿Qué 3 datos le pasarías?",
+          "passage": "Ko'ẽrõ pyhareve ndaipóri y.\nKo'ẽrõ ka'aru oĩta y.\nPeñongatu y ko árape.",
+          "points": [
+            { "es": "Mañana a la mañana no va a haber agua.", "key": true },
+            { "es": "Hoy no hay agua en todo el día.", "key": false },
+            { "es": "Mañana a la tarde vuelve el agua.", "key": true },
+            { "es": "Mañana no va a haber agua en todo el día.", "key": false },
+            { "es": "Hay que guardar agua hoy.", "key": true },
+            { "es": "Hay que ir a buscar agua a la escuela.", "key": false }
+          ]
+        }
+      ]
+    },
+    "P4": {
+      "minutes": 15,
+      "tasks": [
+        {
+          "es": "Rosa te escribe: «Maitei. Mba'éichapa reiko? Mba'épa rejapóta ko'ẽrõ?» Respondele con un mensaje de 20 a 30 palabras: contale cómo estás y qué vas a hacer mañana, preguntale algo y despedite.",
+          "samples": [
+            {
+              "level": "below",
+              "gn": "Maitei, Rosa. Iporã. Ko'ẽrõ amba'apo. Chau.",
+              "es": "Por debajo de A1: 6 palabras. Se entiende, pero cuenta un solo plan y no le pregunta nada a Rosa."
+            },
+            {
+              "level": "at",
+              "gn": "Maitei, Rosa. Aiko porã, aguyje. Ha nde? Ko'ẽrõ pyhareve amba'apóta mbo'ehaópe. Ka'aru aháta che sy rógape. Ajapóta chipa hendive. Rehosépa chendive? Jajotopáta.",
+              "es": "A1: 22 palabras. Cumple todo con frases cortas y bien escritas: cómo está, sus planes con -ta (amba'apóta, aháta, ajapóta), una pregunta con -pa y la despedida."
+            },
+            {
+              "level": "above",
+              "gn": "Maitei, Rosa. Aiko porã, aguyje. Ko'ẽrõ pyhareve amba'apóta mbo'ehaópe. Upéi aháta che sy rógape ajapo hag̃ua chipa hendive. Rehosépa chendive? Ndéve g̃uarã avei ajapóta. Jajotopáta.",
+              "es": "Por encima de A1: 25 palabras bien encadenadas. Ordena con upéi, dice para qué va con hag̃ua y suma ndéve g̃uarã («para vos»), formas de los niveles siguientes, sin errores."
+            }
+          ]
+        }
+      ]
+    },
+    "P5": {
+      "minutes": 11,
+      "tasks": [
+        {
+          "es": "Presentate en un minuto: saludá, decí tu nombre, de dónde sos, con quién vivís y qué hacés. Grabate y después escuchate.",
+          "seconds": 60,
+          "samples": [
+            {
+              "level": "below",
+              "gn": "Hola. Che téra Carlos. Che… de Luque. Gracias.",
+              "es": "Por debajo de A1: solo dice su nombre, y con un error; lo demás, en castellano. Con che adelante, téra pasa a réra: Che réra Carlos."
+            },
+            {
+              "level": "at",
+              "gn": "Mba'éichapa. Che réra Carlos. Che Paraguaigua. Aiko távape, che sy ha che ru ndive. Amba'apo mbo'ehaópe. Aguyje.",
+              "es": "A1: cumple la tarea con frases aprendidas. Saluda y dice su nombre, de dónde es, dónde y con quién vive y dónde trabaja."
+            },
+            {
+              "level": "above",
+              "gn": "Maitei, mba'éichapa. Che réra Carlos ha che Paraguaigua. Ko'ág̃a aiko távape, che sy ha che ru ndive. Che mbo'ehára: amba'apo mbo'ehaópe pyhareve, ha ka'aru apurahéi. Ko'ẽrõ aháta che jarýi rógape ajapo hag̃ua chipa hendive. Aguyje.",
+              "es": "Por encima de A1: hace más de lo que pide la tarea. Describe su día (pyhareve, ka'aru), cuenta un plan (ko'ẽrõ) y dice para qué va con hag̃ua, una forma de los niveles siguientes. Todo seguido y sin errores."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "rubric": [
+    { "key": "cumplimiento", "es": "Cumplimiento de la tarea" },
+    { "key": "coherencia", "es": "Coherencia" },
+    { "key": "alcance", "es": "Alcance" },
+    { "key": "correccion", "es": "Corrección" },
+    { "key": "fluidez", "es": "Fluidez (oral)" },
+    { "key": "inteligibilidad", "es": "Se entiende (oral)" }
+  ]
+}

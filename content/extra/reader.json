@@ -1,0 +1,184 @@
+{
+  "works": [
+    {
+      "id": "rd.ana",
+      "title": "Che jarýi róga",
+      "es": "La casa de mi abuela",
+      "level": "A1",
+      "about": "Ana va a la casa de su abuela, saluda a su familia y la abuela invita a tomar tereré.",
+      "phrases": [
+        {
+          "t": "Che réra",
+          "tail": " ",
+          "words": [
+            { "t": "Che", "m": [["che", "mi", "r"]], "e": "mi" },
+            { "t": "réra", "m": [["réra", "nombre", "r"]], "e": "nombre" }
+          ],
+          "g": ["che + réra", "me llamo (mi nombre)"],
+          "n": "téra (nombre) se vuelve réra después de che. No hace falta un verbo: che réra Ana."
+        },
+        {
+          "t": "Ana",
+          "tail": ". ",
+          "words": [
+            { "t": "Ana", "m": [["Ana", "nombre de mujer", "r"]], "e": "Ana (nombre)" }
+          ],
+          "g": null
+        },
+        {
+          "t": "Aha",
+          "tail": " ",
+          "words": [
+            { "t": "Aha", "m": [["a-", "yo", "p"], ["ha", "ir", "r"]], "e": "voy" }
+          ],
+          "g": ["a-", "yo: quien habla"],
+          "n": "Ir es irregular: aha (voy), reho (vas), oho (va)."
+        },
+        {
+          "t": "che jarýi rógape",
+          "tail": ". «",
+          "words": [
+            { "t": "che", "m": [["che", "mi", "r"]], "e": "mi" },
+            { "t": "jarýi", "m": [["jarýi", "abuela", "r"]], "e": "abuela" },
+            { "t": "rógape", "m": [["róga", "casa (de alguien)", "r"], ["-pe", "a, en", "c"]], "e": "a la casa" }
+          ],
+          "g": ["-pe", "a, en: el lugar"],
+          "n": "óga (casa) se vuelve róga después de quien la tiene: che róga, che jarýi róga."
+        },
+        {
+          "t": "Mba'éichapa",
+          "tail": ", ",
+          "words": [
+            { "t": "Mba'éichapa", "m": [["mba'éicha", "cómo", "r"], ["-pa", "pregunta", "s"]], "e": "¿cómo estás?" }
+          ],
+          "g": ["-pa", "pregunta"],
+          "n": "Literalmente «¿cómo?». Es el saludo de todos los días."
+        },
+        {
+          "t": "che jarýi",
+          "tail": "?» «",
+          "words": [
+            { "t": "che", "m": [["che", "mi", "r"]], "e": "mi" },
+            { "t": "jarýi", "m": [["jarýi", "abuela", "r"]], "e": "abuela" }
+          ],
+          "g": null,
+          "n": "Lleva tilde porque la fuerza va en la ý, no en la i del final."
+        },
+        {
+          "t": "Iporã",
+          "tail": ", ",
+          "words": [
+            { "t": "Iporã", "m": [["i-", "él, ella, eso", "p"], ["porã", "bien, lindo", "r"]], "e": "bien" }
+          ],
+          "g": null,
+          "n": "Así se contesta a Mba'éichapa. Literalmente «está bien»."
+        },
+        {
+          "t": "ha",
+          "tail": " ",
+          "words": [
+            { "t": "ha", "m": [["ha", "y", "x"]], "e": "y" }
+          ],
+          "g": null
+        },
+        {
+          "t": "nde",
+          "tail": "?» «",
+          "words": [
+            { "t": "nde", "m": [["nde", "vos", "r"]], "e": "vos" }
+          ],
+          "g": null,
+          "n": "Ha nde? devuelve la pregunta: ¿y vos?"
+        },
+        {
+          "t": "Iporã",
+          "tail": ".» ",
+          "words": [
+            { "t": "Iporã", "m": [["i-", "él, ella, eso", "p"], ["porã", "bien, lindo", "r"]], "e": "bien" }
+          ],
+          "g": null
+        },
+        {
+          "t": "Upéi",
+          "tail": " ",
+          "words": [
+            { "t": "Upéi", "m": [["upéi", "después", "r"]], "e": "después" }
+          ],
+          "g": null
+        },
+        {
+          "t": "amomaitei",
+          "tail": " ",
+          "words": [
+            { "t": "amomaitei", "m": [["a-", "yo", "p"], ["momaitei", "saludar", "r"]], "e": "saludo" }
+          ],
+          "g": ["a-", "yo: quien habla"],
+          "n": "maitei es «saludo»; momaitei, «saludar»."
+        },
+        {
+          "t": "che sy",
+          "tail": " ",
+          "words": [
+            { "t": "che", "m": [["che", "mi", "r"]], "e": "mi" },
+            { "t": "sy", "m": [["sy", "madre", "r"]], "e": "mamá" }
+          ],
+          "g": null
+        },
+        {
+          "t": "ha",
+          "tail": " ",
+          "words": [
+            { "t": "ha", "m": [["ha", "y", "x"]], "e": "y" }
+          ],
+          "g": null
+        },
+        {
+          "t": "che rúpe",
+          "tail": ". ",
+          "words": [
+            { "t": "che", "m": [["che", "mi", "r"]], "e": "mi" },
+            { "t": "rúpe", "m": [["ru", "padre", "r"], ["-pe", "a", "c"]], "e": "a papá" }
+          ],
+          "g": ["-pe", "a: la persona que saludo"],
+          "n": "ru + -pe se escribe rúpe: la fuerza sigue en ru y la tilde lo marca. Acá -pe va una sola vez, al final: che sy ha che rúpe."
+        },
+        {
+          "t": "Che jarýi",
+          "tail": " ",
+          "words": [
+            { "t": "Che", "m": [["che", "mi", "r"]], "e": "mi" },
+            { "t": "jarýi", "m": [["jarýi", "abuela", "r"]], "e": "abuela" }
+          ],
+          "g": null
+        },
+        {
+          "t": "he'i",
+          "tail": ": «",
+          "words": [
+            { "t": "he'i", "m": [["he'i", "dice", "r"]], "e": "dice" }
+          ],
+          "g": null,
+          "n": "Decir es irregular: he'i es «dice»."
+        },
+        {
+          "t": "Ja'u",
+          "tail": " ",
+          "words": [
+            { "t": "Ja'u", "m": [["ja-", "nosotros (con vos)", "p"], ["'u", "comer, tomar", "r"]], "e": "tomemos" }
+          ],
+          "g": ["ja-", "nosotros, con vos (ñande)"],
+          "n": "'u es comer y también tomar. Con ja- la abuela invita a todos: tomemos."
+        },
+        {
+          "t": "terere",
+          "tail": "».",
+          "words": [
+            { "t": "terere", "m": [["terere", "tereré", "r"]], "e": "tereré" }
+          ],
+          "g": null,
+          "n": "En guaraní se escribe sin tilde: sin marca, la fuerza va al final."
+        }
+      ]
+    }
+  ]
+}

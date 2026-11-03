@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Camino de la semana</title>
+<script src="./support.js"></script>
+<script src="./gn-course-a1.js"></script>
+<script src="./gn-course-a2.js"></script>
+<script src="./gn-course-b1.js"></script>
+<script src="./gn-course-b2.js"></script>
+<script src="./gn-course-c1.js"></script>
+<script src="./gn-course-c2.js"></script>
+<script src="./gn-course.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&amp;family=Andika:wght@400;700&amp;text=%20%21%22%23%24%25%26%27%28%29%2A%2B%2C-.%2F0123456789%3A%3B%3C%3D%3E%3F%40ABCDEFGHIJKLMNOPQRSTUVWXYZ%5B%5C%5D%5E_%60abcdefghijklmnopqrstuvwxyz%7B%7C%7D~%C2%A1%C2%BF%C2%AB%C2%BB%C2%B0%C2%B7%C3%97%C3%B7%C2%AA%C2%BA%C2%B2%C3%A1%C3%A9%C3%AD%C3%B3%C3%BA%C3%BC%C3%B1%C3%81%C3%89%C3%8D%C3%93%C3%9A%C3%9C%C3%91%C3%BD%C3%9D%C3%A3%E1%BA%BD%C4%A9%C3%B5%C5%A9%E1%BB%B9%C3%83%E1%BA%BC%C4%A8%C3%95%C5%A8%E1%BB%B8%C3%A7%C3%87%C3%A0%C3%A8%C3%AC%C3%B2%C3%B9%C3%A2%C3%AA%C3%AE%C3%B4%C3%BB%CC%83%CC%81%E2%80%98%E2%80%99%E2%80%9C%E2%80%9D%E2%80%A6%E2%80%93%E2%80%94%E2%80%A2%E2%82%AC%E2%86%92%E2%86%90%E2%86%91%E2%86%93&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:#2F4FD0;text-decoration:none}a:hover{color:#1B2440}
+rt{font-size:9px;font-weight:500;color:#5A6382}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; padding-top: 50px; background: #F4F5F9; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+<div style="display: flex; align-items: center; gap: 8px; padding: 0 16px; height: 44px; flex-shrink: 0">
+<a href="Levels.dc.html" onClick="{{ toLevels }}" aria-label="{{ levelAria }}" style="height: 44px; box-sizing: border-box; padding: 0 16px; border-radius: 22px; border: 2px solid #1B2440; background: #FFFFFF; color: #1B2440; font-weight: 800; font-size: 16px; display: flex; align-items: center">{{ levelLabel }}</a>
+<div style="flex-grow: 1"></div>
+<div role="img" aria-label="{{ stampsAria }}" style="display: flex; align-items: center; gap: 6px; height: 44px; box-sizing: border-box; padding: 0 12px; border-radius: 22px; background: #FFFFFF; border: 2px solid #DDE1EC">
+<div style="width: 20px; height: 20px; box-sizing: border-box; border-radius: 50%; border: 2px solid #C2336F; display: flex; align-items: center; justify-content: center; transform: rotate(-10deg)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#B02A63" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+<div style="font-weight: 800; font-size: 15px">{{ stamps }}</div>
+</div>
+<sc-if value="{{ hasLeft }}" hint-placeholder-val="{{ true }}">
+<div role="img" aria-label="{{ leftAria }}" style="display: flex; align-items: center; gap: 6px; height: 44px; box-sizing: border-box; padding: 0 12px; border-radius: 22px; background: #FFFFFF; border: 2px solid #DDE1EC">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+<div style="font-weight: 800; font-size: 15px; white-space: nowrap">{{ left }}</div>
+</div>
+</sc-if>
+</div>
+
+<div style="margin: 12px 16px 8px; padding: 14px 16px 16px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; display: flex; flex-direction: column; gap: 12px; flex-shrink: 0">
+<div style="display: flex; align-items: center; gap: 12px">
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<div style="font-size: 12px; font-weight: 700; color: #5A6382">{{ weekLabel }}</div>
+<sc-if value="{{ hasGn }}" hint-placeholder-val="{{ true }}">
+<div lang="gn" style="font-family: 'Andika', 'Nunito', sans-serif; font-weight: 700; line-height: 1.2; overflow-wrap: anywhere; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; font-size: {{ titleSize }}">{{ unitGn }}</div>
+<div style="font-size: 13px; font-weight: 500; color: #5A6382">{{ unitEs }}</div>
+</sc-if>
+<sc-if value="{{ noGn }}" hint-placeholder-val="{{ false }}">
+<div style="font-weight: 800; line-height: 1.2; overflow-wrap: anywhere; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; font-size: {{ titleSize }}">{{ unitEs }}</div>
+</sc-if>
+</div>
+<svg viewBox="0 0 100 100" width="60" height="60" role="img" aria-label="{{ ro.mascot }}" style="flex-shrink: 0"><path d="M26.17 58.19C24.25 59.48 22.2 60.42 20.4 62.04C18.61 63.66 16.69 66.08 15.39 67.9C14.09 69.73 13.32 71.72 12.61 72.99C11.89 74.26 11.6 74.92 11.08 75.54C10.56 76.16 9.83 76.41 9.5 76.69C9.16 76.96 9.19 77.35 9.05 77.17C8.92 77 8.8 76.55 8.71 75.64C8.62 74.74 8.48 73.06 8.53 71.75C8.59 70.44 8.79 68.87 9.05 67.77C9.32 66.67 9.83 65.74 10.11 65.16C10.4 64.58 10.35 64.3 10.75 64.3C11.15 64.31 11.94 65.19 12.52 65.2C13.11 65.2 14.02 64.77 14.25 64.31C14.47 63.84 14.36 62.98 13.88 62.4C13.39 61.83 12.43 60.85 11.33 60.88C10.24 60.92 8.35 61.65 7.3 62.61C6.25 63.58 5.59 65.22 5.05 66.68C4.5 68.13 4.23 69.81 4.02 71.35C3.81 72.88 3.62 74.32 3.77 75.9C3.92 77.49 3.9 79.66 4.95 80.83C5.99 81.99 8.35 82.81 10.04 82.9C11.73 83 13.51 82.37 15.1 81.42C16.68 80.46 18.26 78.52 19.54 77.17C20.83 75.83 21.75 74.38 22.82 73.34C23.89 72.31 24.48 71.7 25.98 70.97C27.49 70.25 29.88 69.66 31.83 69.01Z" fill="#EDC27C"/><path d="M20.15 70.47C20.74 70.71 20.68 72.05 20.37 72.87C20.06 73.69 18.95 75.26 18.3 75.41C17.66 75.56 16.75 74.41 16.5 73.75C16.25 73.09 16.21 71.97 16.82 71.42C17.43 70.87 19.56 70.23 20.15 70.47Z" fill="#2A2120"/><path d="M10.57 78.66C10.78 79.01 10.58 80.06 10.18 80.29C9.78 80.52 8.67 80.26 8.16 80.04C7.65 79.82 6.99 79.26 7.12 78.95C7.25 78.64 8.37 78.23 8.94 78.18C9.51 78.13 10.36 78.31 10.57 78.66Z" fill="#2A2120"/><path d="M7.66 68.46C7.88 68.64 7.74 69.25 7.49 69.58C7.24 69.91 6.49 70.46 6.18 70.45C5.87 70.44 5.64 69.82 5.64 69.5C5.64 69.18 5.84 68.68 6.18 68.51C6.52 68.34 7.44 68.28 7.66 68.46Z" fill="#2A2120"/><path d="M26.17 58.19C24.25 59.48 22.2 60.42 20.4 62.04C18.61 63.66 16.69 66.08 15.39 67.9C14.09 69.73 13.32 71.72 12.61 72.99C11.89 74.26 11.6 74.92 11.08 75.54C10.56 76.16 9.83 76.41 9.5 76.69C9.16 76.96 9.19 77.35 9.05 77.17C8.92 77 8.8 76.55 8.71 75.64C8.62 74.74 8.48 73.06 8.53 71.75C8.59 70.44 8.79 68.87 9.05 67.77C9.32 66.67 9.83 65.74 10.11 65.16C10.4 64.58 10.35 64.3 10.75 64.3C11.15 64.31 11.94 65.19 12.52 65.2C13.11 65.2 14.02 64.77 14.25 64.31C14.47 63.84 14.36 62.98 13.88 62.4C13.39 61.83 12.43 60.85 11.33 60.88C10.24 60.92 8.35 61.65 7.3 62.61C6.25 63.58 5.59 65.22 5.05 66.68C4.5 68.13 4.23 69.81 4.02 71.35C3.81 72.88 3.62 74.32 3.77 75.9C3.92 77.49 3.9 79.66 4.95 80.83C5.99 81.99 8.35 82.81 10.04 82.9C11.73 83 13.51 82.37 15.1 81.42C16.68 80.46 18.26 78.52 19.54 77.17C20.83 75.83 21.75 74.38 22.82 73.34C23.89 72.31 24.48 71.7 25.98 70.97C27.49 70.25 29.88 69.66 31.83 69.01Z" fill="none" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M28.6 70 C27.4 75.6 27.4 80 29.2 82 Q30.4 83 32.4 83 L40.6 83 Q42.6 83 42.6 81.2 Q42.4 79.6 40.4 79.3 L38.2 78.8 L39.4 70 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M25 70.6C23.07 68 22.07 64.43 22.4 61C22.73 57.57 24.57 52.83 27 50C29.43 47.17 33.43 45.28 37 44C40.57 42.72 45.17 42.53 48.4 42.3C51.63 42.07 54.51 43.19 56.4 42.6C58.29 42.01 59.76 38.77 59.76 38.77C59.76 38.77 62.59 45.03 64.6 47C66.61 48.97 70.78 48.79 71.8 50.6C72.82 52.41 70.44 56.92 70.69 57.83C70.94 58.75 74.42 59.44 74.8 61.6C75.18 63.76 74.87 68.3 73 70.8C71.13 73.3 67.77 75.38 63.6 76.6C59.43 77.82 52.93 78.1 48 78.1C43.07 78.1 37.83 77.85 34 76.6C30.17 75.35 26.93 73.2 25 70.6Z" fill="#EDC27C"/><path d="M60.65 40.62C61.37 42.68 61.81 44.64 62.8 46.8C63.79 48.96 65.4 51.5 66.6 53.6C67.8 55.7 69 57.93 70 59.4C71 60.87 71.79 61.5 72.6 62.4C73.41 63.3 74.13 64.02 74.89 64.83C74.81 65.79 74.65 66.81 74.38 67.78C74.07 68.91 73.62 69.97 73 70.8C72.38 71.63 71.59 72.42 70.66 73.14C69.73 73.87 68.66 74.53 67.47 75.11C66.29 75.69 64.99 76.19 63.6 76.6C62.21 77.01 60.56 77.31 58.8 77.53C57.04 77.75 55.16 77.89 53.31 77.98C51.46 78.07 49.64 78.1 48 78.1C46.42 78.1 44.8 78.07 43.22 78C40.48 76.13 37.24 74.73 35 72.4C32.76 70.07 31.03 66.73 29.8 64C28.57 61.27 28.07 58.33 27.6 56C27.13 53.67 27.2 52 27 50C27.81 49.06 28.8 48.22 29.88 47.47C30.97 46.72 32.15 46.07 33.36 45.5C34.57 44.92 35.81 44.43 37 44C38.19 43.57 39.49 43.27 40.82 43.04C42.15 42.81 43.51 42.67 44.8 42.56C46.09 42.45 47.32 42.38 48.4 42.3C49.48 42.22 50.52 42.3 51.49 42.4C52.46 42.51 53.38 42.66 54.2 42.73C55.03 42.8 55.77 42.8 56.4 42.6C57.03 42.4 57.62 41.91 58.11 41.34C58.61 40.78 59.02 40.13 59.31 39.63C59.6 39.13 59.76 38.77 59.76 38.77C59.76 38.77 60.08 39.46 60.57 40.46C60.6 40.52 60.62 40.57 60.65 40.62Z" fill="#2A2120"/><path d="M70.69 57.83C70.94 58.75 74.42 59.44 74.8 61.6C75.18 63.76 74.87 68.3 73 70.8C71.13 73.3 67.77 75.38 63.6 76.6C59.43 77.82 52.93 78.1 48 78.1C43.07 78.1 37.83 77.85 34 76.6C30.17 75.35 26.93 73.2 25 70.6C23.07 68 22.07 64.43 22.4 61C22.73 57.57 24.57 52.83 27 50C29.43 47.17 33.43 45.28 37 44C40.57 42.72 45.17 42.53 48.4 42.3C51.63 42.07 54.51 43.19 56.4 42.6C58.29 42.01 59.76 38.77 59.76 38.77" fill="none" stroke="#1B2440" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M64.4 60.2C65.4 60.1 66.93 60.83 67.6 62.2C68.27 63.57 68.18 66.33 68.4 68.4C68.62 70.47 68.52 72.93 68.9 74.6C69.28 76.27 69.92 77.57 70.7 78.4C71.48 79.23 73.11 79.11 73.6 79.6C74.09 80.09 74.58 81.82 74.4 82.1C74.22 82.38 72.08 82.94 71.4 83C70.72 83.06 64.84 83.08 64.2 83C63.56 82.92 62.06 82.54 61.8 81.8C61.54 81.06 61.68 77.9 61.6 75.6C61.52 73.3 61.3 70.13 61.3 68C61.3 65.87 61.08 64.1 61.6 62.8C62.12 61.5 63.4 60.3 64.4 60.2Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M70.86 80.04C70.89 80.41 71.14 80.88 71.42 81.11C71.7 81.34 72.09 81.42 72.54 81.44C72.99 81.46 73.61 81.3 74.14 81.22C74.67 81.15 75.31 81.11 75.73 80.99C76.15 80.87 76.46 80.76 76.67 80.51C76.88 80.26 77.02 79.81 76.99 79.47C76.96 79.13 76.73 78.71 76.48 78.5C76.23 78.29 75.91 78.25 75.47 78.21C75.03 78.17 74.4 78.26 73.86 78.28C73.33 78.31 72.7 78.26 72.26 78.36C71.82 78.46 71.45 78.61 71.22 78.89C70.99 79.17 70.83 79.67 70.86 80.04Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><path d="M71.05 81.65C71.04 82.02 71.23 82.51 71.48 82.78C71.73 83.05 72.1 83.18 72.55 83.25C73 83.32 73.62 83.23 74.15 83.22C74.69 83.21 75.33 83.26 75.76 83.2C76.19 83.14 76.51 83.07 76.75 82.84C76.99 82.61 77.19 82.18 77.2 81.84C77.21 81.5 77.04 81.06 76.81 80.82C76.58 80.58 76.27 80.49 75.84 80.4C75.41 80.31 74.78 80.32 74.25 80.28C73.72 80.24 73.1 80.11 72.65 80.15C72.2 80.2 71.82 80.3 71.55 80.55C71.28 80.8 71.06 81.28 71.05 81.65Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(69.6 44.2) rotate(11) scale(1.08)"><path d="M-8.6 -5.8 C-13.6 -8.4 -14.2 -13.6 -10 -14.6 C-5.8 -15.4 -3.6 -11.6 -4.4 -7.2 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.59" stroke-linejoin="round" stroke-linecap="round"/><path d="M-10.4 -5.8 C-11.8 -8.6 -11.4 -11.6 -9.4 -12 C-7.4 -12.4 -6.2 -10.2 -6.6 -7.4 Z" fill="#D49A55"/></g><path d="M59.76 38.77C60.67 37.11 60.91 34.86 62.49 33.8C64.07 32.73 67.14 32.22 69.26 32.36C71.38 32.5 73.7 33.57 75.2 34.62C76.71 35.66 77.46 36.64 78.28 38.62C79.09 40.61 78.76 44.74 80.08 46.52C81.41 48.31 84.33 48.27 86.24 49.33C88.15 50.39 90.34 51.86 91.55 52.88C92.76 53.9 93.24 54.49 93.5 55.45C93.76 56.41 93.58 57.78 93.08 58.64C92.58 59.5 91.47 60.34 90.51 60.6C89.55 60.85 88.67 60.65 87.31 60.17C85.95 59.7 84.12 58.42 82.33 57.77C80.54 57.11 78.12 56.33 76.56 56.27C75 56.21 73.95 57.14 72.98 57.4C72 57.66 71.45 57.69 70.69 57.83C68.51 56.97 66 56.52 64.15 55.24C62.31 53.97 60.68 51.97 59.64 50.18C58.59 48.4 57.85 46.46 57.87 44.56C57.89 42.66 59.13 40.7 59.76 38.77Z" fill="#EDC27C"/><path d="M59.76 38.77C60.67 37.11 60.91 34.86 62.49 33.8C64.07 32.73 67.14 32.22 69.26 32.36C71.38 32.5 73.7 33.57 75.2 34.62C76.71 35.66 77.46 36.64 78.28 38.62C79.09 40.61 78.76 44.74 80.08 46.52C81.41 48.31 84.33 48.27 86.24 49.33C88.15 50.39 90.34 51.86 91.55 52.88C92.76 53.9 93.24 54.49 93.5 55.45C93.76 56.41 93.58 57.78 93.08 58.64C92.58 59.5 91.47 60.34 90.51 60.6C89.55 60.85 88.67 60.65 87.31 60.17C85.95 59.7 84.12 58.42 82.33 57.77C80.54 57.11 78.12 56.33 76.56 56.27C75 56.21 73.95 57.14 72.98 57.4C72 57.66 71.45 57.69 70.69 57.83" fill="none" stroke="#1B2440" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(69.6 44.2) rotate(11) scale(1.08)"><ellipse cx="21.15" cy="8.03" rx="1.25" ry="1.5" transform="rotate(19.09 21.15 8.03)" fill="#1B2440"/><ellipse cx="2.4" cy="-2.4" rx="3.1" ry="3" fill="#C98E4E"/><ellipse cx="3" cy="2.8" rx="2.2" ry="1.35" fill="#F08CA5"/><g data-part="eye-open"><ellipse cx="2.4" cy="-2.4" rx="1.95" ry="2.3" fill="#1B2440"/><circle cx="3.08" cy="-3.32" r="0.78" fill="#FFFFFF"/></g><g data-part="eye-closed" opacity="0"><path d="M0.2 -2.3 Q2.4 -0.4 4.6 -2.3" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="eye-happy" opacity="0"><path d="M0.2 -1.5 Q2.4 -5.2 4.6 -1.5" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="mouth-normal"><path d="M9.8 6.2 Q7.4 7.5 5.2 5.5" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="mouth-o" opacity="0"><ellipse cx="7.6" cy="5.9" rx="1.3" ry="1.5" fill="#1B2440"/></g><g data-part="mouth-happy" opacity="0"><path d="M4.8 4.5 L10.8 4.7 C10.6 6.2 9.4 7.15 7.8 7.15 C6.2 7.15 5.0 6.2 4.8 4.5 Z" fill="#F08CA5"/><path d="M10.8 4.7 C10.6 6.2 9.4 7.15 7.8 7.15 C6.2 7.15 5.0 6.2 4.8 4.5" fill="none" stroke="#1B2440" stroke-width="1.67" stroke-linejoin="round" stroke-linecap="round"/></g></g><circle cx="45" cy="60.2" r="10.5" fill="#FFFFFF" stroke="#1B2440" stroke-width="2.2"/><g transform="translate(45 60.2) scale(0.42)"><circle r="19.5" fill="none" stroke="#C9D0E3" stroke-width="1" stroke-dasharray="1.6 2.2" opacity="{{ ro.frameOpacity }}"/><path d="{{ ro.rimD }}" fill="#FCE4EE" stroke="#C2336F" stroke-width="1.4" stroke-linejoin="round" opacity="{{ ro.rimOpacity }}"/><path d="{{ ro.off }}" fill="#FFFFFF" stroke="#DDE1EC" stroke-width="0.9"/><path d="{{ ro.on }}" fill="#F8D3E2" stroke="#C2336F" stroke-width="1.1"/><path d="{{ ro.spokes }}" stroke="#C2336F" stroke-width="0.8" stroke-linecap="round"/><circle r="4" fill="{{ ro.hubFill }}" stroke="#C2336F" stroke-width="1.2"/></g><g data-part="sweat" opacity="0"><path d="M79.8 18.2c2.2 3.6 3.6 5.8 3.6 8a3.6 3.6 0 0 1 -7.2 0c0 -2.2 1.4 -4.4 3.6 -8z" fill="#9FD3F5" stroke="#1B2440" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="sparks" opacity="0"><path d="M88.6 35 l4.2 -4.8 M91.4 43.6 l6.4 -1.4 M88.6 26.8 l2.4 -5.6" fill="none" stroke="#F2B43A" stroke-width="3" stroke-linecap="round"/></g></svg>
+</div>
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px" role="img" aria-label="{{ cardLabel }}">
+<sc-for list="{{ slots }}" as="c" hint-placeholder-count="7">
+<sc-if value="{{ c.stamped }}" hint-placeholder-val="{{ false }}"><div style="height: 40px; box-sizing: border-box; border-radius: 50%; border: 2.5px solid #C2336F; display: flex; align-items: center; justify-content: center; transform: rotate({{ c.tilt }})"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B02A63" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div></sc-if>
+<sc-if value="{{ c.now }}" hint-placeholder-val="{{ false }}"><div style="height: 40px; box-sizing: border-box; border-radius: 50%; border: 2.5px dashed #2F4FD0; background: #E8ECFB; color: #2F4FD0; font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center">{{ c.label }}</div></sc-if>
+<sc-if value="{{ c.later }}" hint-placeholder-val="{{ true }}"><div style="height: 40px; box-sizing: border-box; border-radius: 50%; border: 2.5px solid #DDE1EC; color: #5A6382; font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center">{{ c.label }}</div></sc-if>
+<sc-if value="{{ c.test }}" hint-placeholder-val="{{ false }}"><div style="height: 40px; box-sizing: border-box; border-radius: 12px; border: 2.5px solid #1B2440; display: flex; align-items: center; justify-content: center; background: {{ c.bg }}"><sc-if value="{{ c.testDone }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B02A63" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></sc-if><sc-if value="{{ c.testOpen }}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" stroke="{{ c.ink }}"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg></sc-if></div></sc-if>
+</sc-for>
+</div>
+</div>
+
+<div style="position: relative; flex-grow: 1; background-image: linear-gradient(#E6E9F3 1px, transparent 1px), linear-gradient(90deg, #E6E9F3 1px, transparent 1px); background-size: 26px 26px">
+<svg width="390" height="478" viewBox="0 0 390 478" fill="none" aria-hidden="true" style="position: absolute; left: 0; top: 0"><polyline points="64,34 104,98 132,162 104,250 64,326 110,386 180,438" stroke="#C9D0E3" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 13"/><polyline points="{{ redPath }}" stroke="#C2336F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+<sc-for list="{{ nodes }}" as="n" hint-placeholder-count="7">
+<sc-if value="{{ n.isDone }}" hint-placeholder-val="{{ false }}"><a href="Today.dc.html" onClick="{{ n.open }}" aria-label="{{ n.aria }}" style="position: absolute; width: 52px; height: 52px; box-sizing: border-box; border-radius: 50%; border: 3px solid #C2336F; background: #FFFFFF; display: flex; align-items: center; justify-content: center; left: {{ n.x }}; top: {{ n.y }}; transform: rotate({{ n.tilt }})"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#B02A63" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></a></sc-if>
+<sc-if value="{{ n.isToday }}" hint-placeholder-val="{{ false }}"><a href="Today.dc.html" onClick="{{ n.open }}" aria-label="{{ n.aria }}" style="position: absolute; width: 68px; height: 68px; box-sizing: border-box; border-radius: 50%; border: 3px solid #1B2440; background: #2F4FD0; box-shadow: 0 5px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 26px; display: flex; align-items: center; justify-content: center; left: {{ n.x }}; top: {{ n.y }}">{{ n.label }}</a></sc-if>
+<sc-if value="{{ n.isLocked }}" hint-placeholder-val="{{ false }}"><div role="img" aria-label="{{ n.aria }}" style="position: absolute; width: 52px; height: 52px; box-sizing: border-box; border-radius: 50%; border: 3px solid #C9D0E3; background: #E6E9F3; display: flex; align-items: center; justify-content: center; left: {{ n.x }}; top: {{ n.y }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5A6382" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div></sc-if>
+<sc-if value="{{ n.isTest }}" hint-placeholder-val="{{ false }}"><a href="WeekTest.dc.html" onClick="{{ n.open }}" aria-label="{{ n.aria }}" aria-disabled="{{ n.off }}" style="position: absolute; width: 60px; height: 60px; box-sizing: border-box; border-radius: 18px; border: 3px solid #1B2440; box-shadow: 0 4px 0 #1B2440; display: flex; align-items: center; justify-content: center; left: {{ n.x }}; top: {{ n.y }}; background: {{ n.bg }}"><sc-if value="{{ n.testDone }}" hint-placeholder-val="{{ false }}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#B02A63" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></sc-if><sc-if value="{{ n.testOpen }}" hint-placeholder-val="{{ true }}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" stroke="{{ n.iconInk }}"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg></sc-if></a></sc-if>
+<sc-if value="{{ n.showLabel }}" hint-placeholder-val="{{ true }}"><div style="position: absolute; display: flex; flex-direction: column; left: {{ n.lx }}; top: {{ n.ly }}; max-width: {{ n.lw }}">
+<div style="font-size: 11px; font-weight: 700; color: #5A6382">{{ n.dayLabel }}</div>
+<div style="font-size: 14px; line-height: 1.3; overflow-wrap: anywhere; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; -webkit-line-clamp: {{ n.lines }}; font-weight: {{ n.weight }}; color: {{ n.ink }}">{{ n.title }}</div>
+<sc-if value="{{ n.hasNote }}" hint-placeholder-val="{{ false }}"><div style="font-size: 11px; font-weight: 500; color: #5A6382">{{ n.note }}</div></sc-if>
+</div></sc-if>
+</sc-for>
+
+<sc-if value="{{ card.open }}" hint-placeholder-val="{{ true }}">
+<div style="position: absolute; left: 150px; width: 224px; box-sizing: border-box; padding: 12px 14px 14px; border-radius: 18px; background: #FFFFFF; border: 2px solid #1B2440; display: flex; flex-direction: column; gap: 4px; top: {{ card.top }}">
+<div style="font-size: 11px; font-weight: 800; white-space: nowrap; color: {{ card.kickerInk }}">{{ card.kicker }}</div>
+<div style="font-size: 16px; font-weight: 800; line-height: 1.25; overflow-wrap: anywhere; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden">{{ card.title }}</div>
+<sc-if value="{{ card.hasSub }}" hint-placeholder-val="{{ false }}"><div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.45">{{ card.sub }}</div></sc-if>
+<a href="{{ card.href }}" onClick="{{ card.go }}" style="margin-top: 6px; height: 44px; box-sizing: border-box; border-radius: 14px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center"><span lang="gn">Ñepyrũ</span> · Empezar</a>
+</div>
+</sc-if>
+<sc-if value="{{ card.shut }}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; left: 150px; width: 224px; box-sizing: border-box; padding: 12px 14px 14px; border-radius: 18px; background: #FFFFFF; border: 2px solid #1B2440; display: flex; flex-direction: column; gap: 4px; top: {{ card.top }}">
+<div style="font-size: 11px; font-weight: 800; white-space: nowrap; color: {{ card.kickerInk }}">{{ card.kicker }}</div>
+<div lang="{{ card.lang }}" style="font-size: 16px; font-weight: 800; line-height: 1.25; overflow-wrap: anywhere; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden">{{ card.title }}</div>
+<div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.45">{{ card.note }}</div>
+</div>
+</sc-if>
+</div>
+
+<nav aria-label="Principal" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 6px 8px 30px; background: #FFFFFF; border-top: 2px solid #DDE1EC; flex-shrink: 0">
+<a href="Main.dc.html" onClick="{{ toMain }}" aria-current="page" style="height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #2F4FD0; font-size: 11px; font-weight: 800"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="19" r="2.5"/><path d="M8.5 19h9a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15.5"/><circle cx="18" cy="5" r="2.5"/></svg>Camino</a>
+<a href="Notebook.dc.html" onClick="{{ toNotebook }}" style="height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #5A6382; font-size: 11px; font-weight: 700"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H6z"/><path d="M6 3v18M3 7h3M3 12h3M3 17h3M10 8h5"/></svg>Cuaderno</a>
+<a href="ExamTab.dc.html" onClick="{{ toExamTab }}" style="height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #5A6382; font-size: 11px; font-weight: 700"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>Examen</a>
+<a href="Progress.dc.html" onClick="{{ toProgress }}" style="height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #5A6382; font-size: 11px; font-weight: 700"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>Progreso</a>
+</nav>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"go":{"editor":null},"app":{"editor":null},"save":{"editor":null},"miss":{"editor":null},"reviewed":{"editor":null},"level":{"editor":null},"$preview":{"width":390,"height":844}}'>
+/* where each of the week's seven nodes sits on the path, and where its label goes (Yaoki's table, unchanged) */
+const SPOTS = [
+{ x: 38, y: 8, lx: 102, ly: 16, tilt: '-8deg' },
+{ x: 78, y: 72, lx: 142, ly: 80, tilt: '7deg' },
+{ x: 106, y: 136, lx: 170, ly: 144, tilt: '-5deg' },
+{ x: 78, y: 224, lx: 142, ly: 232, tilt: '6deg' },
+{ x: 38, y: 300, lx: 102, ly: 324, tilt: '-6deg' },
+{ x: 84, y: 360, lx: 148, ly: 366, tilt: '5deg' },
+{ x: 150, y: 408, lx: 224, ly: 412, tilt: '0deg' },
+];
+const POINTS = ['64,34', '104,98', '132,162', '104,250', '64,326', '110,386', '180,438'];
+/* a day's title may take two lines where the path leaves room under it; nodes 5 and 6 have the next node right below */
+const LINES = [2, 2, 2, 2, 1, 1, 2];
+/* the callout sits at x 150 and must end above the week-test node (x 150 to 210, from y 408) */
+const CARD_FLOOR = 404;
+/* rough text widths (Nunito 800): enough to size the callout and the labels it would cover */
+const fits = (text, px, width, max) => Math.max(1, Math.min(max, Math.ceil((String(text || '').length * px) / width)));
+class Component extends DCLogic {
+renderVals() {
+const C = window.gnCourse;
+const nav = (to) => (e) => { const go = this.props.go; if (go) { e.preventDefault(); go(to); } };
+/* on its own this artboard shows the designed moment, dated from today so it never drifts:
+   unit 1, days 1 to 3 stamped, day 4 today with its grammar teach page read, a target date in 60 days */
+const T = C.today(C.now());
+const full = { g: 3, k: 1, r: 1 };
+const SAMPLE = { level: 'A1', started: true, plan: { start: C.addDays(T, -3), target: C.addDays(T, 60), pace: 'fit', minutes: 30 }, done: { a1u01d1: full, a1u01d2: full, a1u01d3: full, a1u01d4: { g: 1 } }, tests: {}, exams: {}, mistakes: [], cur: 'a1u01d4', placement: { comp: 'A2', prod: 'A1', start: 'A1' }, typed: [] };
+const app = this.props.app || C.view(SAMPLE);
+const lv = app.level || C.level();
+const st = app.status || { plan: [], stamps: 0, daysLeft: null, perDay: 1, today: T };
+const state = { done: app.done || {}, tests: app.tests || {} };
+const unit = app.unit || C.unit(1) || { n: 1, gn: '', es: '', days: [], test: [] };
+/* 0 while the level's syllabus has not loaded: the card then says "En preparación" instead of "Semana 1 de 0" */
+const unitCount = (app.progress && app.progress.units && app.progress.units.length) || C.units().length || 0;
+const sessions = (st.plan || []).filter((p) => p.unit === unit.n).slice(0, SPOTS.length);
+const nextId = st.next ? st.next.id : null;
+const today = st.today || T;
+const open = (s) => (e) => {
+if (this.props.save) this.props.save({ cur: s.id, tp: 0, set: s.kind === 'test' ? 'test' : 'day' });
+nav(s.kind === 'test' ? 'WeekTest' : 'Today')(e);
+};
+/* a link that leads nowhere yet: nothing happens in the app; on the canvas it still shows the board it names */
+const later = (e) => { if (this.props.go) e.preventDefault(); };
+let todayIx = -1;
+let lastDone = -1;
+const nodes = sessions.map((s, k) => {
+const done = C.complete(state, s);
+const isNow = !done && s.ready && (s.id === app.sid || s.id === nextId) && todayIx < 0;
+if (isNow) todayIx = k;
+if (done) lastDone = k;
+const spot = SPOTS[k];
+const big = isNow && s.kind !== 'test';
+const test = s.kind === 'test';
+const title = test ? 'Prueba de la semana' : C.plain(s.title || '');
+const lw = 366 - spot.lx;
+const lines = fits(title, 8, lw, LINES[k]);
+const due = s.date && s.date <= today;
+return {
+isDone: done && !test,
+isToday: big,
+isLocked: !done && !big && !test,
+isTest: test,
+testDone: test && done,
+testOpen: test && !done,
+off: test && !done && !s.ready,
+label: String(s.day),
+bg: done ? '#FFFFFF' : s.ready ? '#F2B43A' : '#E6E9F3',
+iconInk: s.ready ? '#1B2440' : '#5A6382',
+x: (big ? spot.x - 8 : spot.x) + 'px',
+y: (big ? spot.y - 8 : spot.y) + 'px',
+tilt: spot.tilt,
+lx: spot.lx + 'px',
+ly: spot.ly + 'px',
+lw: lw + 'px',
+lines,
+labelH: 15 + 18 * lines + (test && s.ready ? 15 : 0),
+dayLabel: 'Día ' + s.day + (s.ready || done ? '' : ' · En preparación'),
+title,
+note: 'formato de examen',
+hasNote: test && s.ready,
+weight: done || isNow || test ? 800 : 700,
+ink: done || isNow || test ? '#1B2440' : '#5A6382',
+aria: test ? 'Día 7, prueba de la semana' + (done ? ', hecha' : s.ready ? (isNow ? ', es lo que sigue' : '') : ', en preparación') : 'Día ' + s.day + (done ? ', sellado. Abrilo de nuevo' : isNow ? (due ? ', hoy. Abrí el día' : ', el próximo. Abrí el día') : s.ready ? ', bloqueado' : ', en preparación'),
+open: done || isNow || (test && s.ready) ? open(s) : later,
+showLabel: true,
+};
+});
+/* the callout for today sits beside its node; for the week test (and the day before it) it sits above, clear of the test node */
+const cur = todayIx >= 0 ? sessions[todayIx] : null;
+const allDone = sessions.length > 0 && sessions.every((s) => C.complete(state, s));
+const cardAt = todayIx >= 0 ? todayIx : lastDone;
+const testCount = (unit.test || []).length;
+/* the path shows the week of the session in use (app.sid); when nothing is left to do in it but the next session is
+   written in another week (this week done, or its test not written yet), the callout leads there instead of a dead end */
+const away = !cur && st.next && st.next.unit !== unit.n ? st.next : null;
+let card;
+if (cur) {
+const isTest = cur.kind === 'test';
+const title = isTest ? 'Prueba de la semana' : C.plain(cur.title || '');
+const sub = isTest ? (testCount ? testCount + ' preguntas · 20 minutos' : 'formato de examen') : st.perDay > 1 ? 'Tu plan pide ' + st.perDay + ' sesiones por día.' : '';
+const h = 103 + 20 * fits(title, 9, 192, 3) + (sub ? 4 + 17 * fits(sub, 6.4, 192, 2) : 0);
+card = { open: true, shut: false, h, title, lang: 'es', sub, hasSub: !!sub, kicker: (cur.date && cur.date <= today ? 'HOY' : 'SIGUIENTE') + (isTest ? ' · PRUEBA' : ' · 3 LECCIONES'), href: isTest ? 'WeekTest.dc.html' : 'Today.dc.html', go: open(cur), kickerInk: '#2F4FD0', note: '' };
+} else if (away) {
+const there = C.unit(away.unit) || { gn: '', es: '' };
+const title = away.kind === 'test' ? 'Prueba de la semana' : 'Día ' + away.day + ' · ' + C.plain(away.title || '');
+const sub = C.plain(there.es || '');
+const h = 103 + 20 * fits(title, 9, 192, 3) + (sub ? 4 + 17 * fits(sub, 6.4, 192, 2) : 0);
+card = { open: true, shut: false, h, title, lang: 'es', sub, hasSub: !!sub, kicker: (away.date && away.date <= today ? 'HOY' : 'SIGUIENTE') + ' · SEMANA ' + away.unit, href: away.kind === 'test' ? 'WeekTest.dc.html' : 'Today.dc.html', go: open(away), kickerInk: '#2F4FD0', note: '' };
+} else if (cardAt >= 0) {
+const s = sessions[cardAt];
+const after = sessions[cardAt + 1] || null;
+const title = allDone ? C.plain(unit.gn || unit.es || '') : s.kind === 'test' ? 'Prueba de la semana' : C.plain(s.title || '');
+/* what opens next: the next week, the level exam after the last week, this week's test, or the next day */
+const note = allDone
+? (unitCount && unit.n >= unitCount ? (unitCount === 1 ? 'Terminaste la semana.' : 'Terminaste las ' + unitCount + ' semanas.') + ' Sigue el examen de nivel, en la pestaña Examen.' : 'La semana ' + (unit.n + 1) + ' se abre cuando esté escrita.')
+: after && after.kind === 'test' ? 'La prueba de la semana se abre cuando esté escrita.' : 'El próximo día se abre cuando esté escrito.';
+card = { open: false, shut: true, h: 53 + 20 * fits(title, 9, 192, 3) + 17 * fits(note, 6.4, 192, 3), title, lang: allDone && unit.gn ? 'gn' : 'es', note, kicker: allDone ? 'SEMANA ' + unit.n + ' · COMPLETA' : s.kind === 'test' ? 'PRUEBA · HECHA' : 'DÍA ' + s.day + ' · LISTO', kickerInk: '#B02A63', href: 'Today.dc.html', go: later, sub: '', hasSub: false };
+} else {
+const title = 'Esta semana se está escribiendo';
+const note = 'Cada día se abre cuando está escrito. Mientras tanto, repasá tu cuaderno.';
+card = { open: false, shut: true, h: 53 + 20 * fits(title, 9, 192, 3) + 17 * fits(note, 6.4, 192, 3), title, lang: 'es', note, kicker: 'EN PREPARACIÓN', kickerInk: '#5A6382', href: 'Today.dc.html', go: later, sub: '', hasSub: false };
+}
+const at = cardAt >= 0 ? cardAt : 2;
+const top = Math.max(0, Math.min(CARD_FLOOR - card.h, SPOTS[at].y - 26));
+card.top = top + 'px';
+/* labels the callout would cover are left out, and so is the label of the node it speaks for */
+nodes.forEach((n, k) => {
+const ly = SPOTS[k].ly;
+if (k === cardAt || (ly + n.labelH > top && ly < top + card.h)) n.showLabel = false;
+});
+const slots = sessions.map((s, k) => {
+const done = C.complete(state, s);
+const test = s.kind === 'test';
+return { stamped: done && !test, now: !done && k === todayIx && !test, later: !done && k !== todayIx && !test, test, testDone: test && done, testOpen: test && !done, label: String(s.day), bg: done ? '#FFFFFF' : s.ready ? '#F2B43A' : '#E6E9F3', ink: s.ready ? '#1B2440' : '#5A6382', tilt: SPOTS[k].tilt };
+});
+/* no week loaded yet: the card still shows its seven empty slots, the test slot not written */
+if (!slots.length) SPOTS.forEach((sp, k) => slots.push({ stamped: false, now: false, later: k < 6, test: k === 6, testDone: false, testOpen: k === 6, label: String(k + 1), bg: '#E6E9F3', ink: '#5A6382', tilt: sp.tilt }));
+const stampedDays = slots.filter((x) => x.stamped).length;
+const testDone = slots.some((x) => x.testDone);
+/* the accent line runs along the days done in a row from the start (a week test taken early does not draw it past undone days) */
+let run = 0;
+while (run < sessions.length && C.complete(state, sessions[run])) run++;
+/* the level's ñandutí, pinned on Kaguare's vest: the hub once the goal is set, a petal per unit finished, the rim when the level exam is passed */
+const pg = app.progress || C.progress(state, lv);
+const passed = !!pg.passed;
+const goalSet = !!app.plan;
+const ro = Object.assign(C.rosette(unitCount || 8, pg.unitsDone || 0, { hub: goalSet, rim: passed }), {
+frameOpacity: passed ? 0 : 1, rimOpacity: passed ? 1 : 0, hubFill: goalSet ? '#C2336F' : '#FFFFFF',
+mascot: 'Kaguare con el ñandutí del nivel ' + lv + (unitCount ? ': ' + (pg.unitsDone || 0) + ' de ' + unitCount + ' unidades' : '') + (passed ? ', nivel aprobado' : ''),
+});
+const gn = C.plain(unit.gn || '');
+const es = C.plain(unit.es || '') || (gn ? '' : 'En preparación');
+const len = C.chars(gn || es).length;
+const left = st.daysLeft;
+return {
+levelLabel: lv,
+levelAria: 'Nivel ' + lv + ', cambiar de nivel',
+toLevels: nav('Levels'),
+stamps: st.stamps || 0,
+stampsAria: (st.stamps || 0) + ((st.stamps || 0) === 1 ? ' sesión sellada' : ' sesiones selladas'),
+hasLeft: left != null,
+left: left == null ? '' : left > 1 ? 'faltan ' + left + ' días' : left === 1 ? 'falta 1 día' : left === 0 ? 'hoy es la fecha' : 'fecha pasada',
+leftAria: left == null ? '' : left > 1 ? 'Faltan ' + left + ' días para tu fecha meta' : left === 1 ? 'Falta 1 día para tu fecha meta' : left === 0 ? 'Hoy es tu fecha meta' : 'Tu fecha meta ya pasó',
+weekLabel: 'Semana ' + unit.n + (unitCount ? ' de ' + unitCount : ''),
+hasGn: !!gn,
+noGn: !gn,
+unitGn: gn,
+unitEs: es,
+titleSize: (gn ? (len <= 13 ? 26 : len <= 17 ? 22 : 18) : (len <= 14 ? 26 : len <= 18 ? 22 : len <= 22 ? 20 : 18)) + 'px',
+ro,
+slots,
+cardLabel: 'Tarjeta de sellos: ' + stampedDays + ' de 6 días sellados' + (todayIx >= 0 && todayIx < 6 ? ', el día ' + (todayIx + 1) + ' es el próximo' : '') + (testDone ? ', la prueba de la semana está hecha' : ', el día 7 es la prueba de la semana'),
+nodes,
+redPath: POINTS.slice(0, run).join(' ') || '64,34',
+card,
+toMain: nav('Main'),
+toNotebook: nav('Notebook'),
+toExamTab: nav('ExamTab'),
+toProgress: nav('Progress'),
+};
+}
+}
+</script>
+</body>
+</html>

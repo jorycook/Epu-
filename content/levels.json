@@ -1,0 +1,663 @@
+{
+ "A1": {
+  "name": "Acceso",
+  "units": [
+   {
+    "n": 1,
+    "gn": "Mba'éichapa",
+    "es": "Saludos y sonidos",
+    "days": [
+     "Saludar y despedirse",
+     "Pronombres: ñande y ore",
+     "Presentarse: che réra",
+     "Preguntar con -pa",
+     "Aguyje: la cortesía"
+    ],
+    "sound": [
+     "Las vocales orales",
+     "Las vocales nasales",
+     "La y, sexta vocal",
+     "El puso (')",
+     "Teclear ã ẽ ĩ õ ũ ỹ, g̃ y el puso (')"
+    ]
+   },
+   {
+    "n": 2,
+    "gn": "",
+    "es": "¿Quién sos? Verbos de acción",
+    "days": [
+     "Prefijos areales a-/re-/o-: quién hace la acción",
+     "ja-/ña-, ro-, pe-: plural de persona",
+     "-pe/-me «en, a»",
+     "-gui «de, desde»",
+     "Negación nd-…-i: el «no» rodea al verbo"
+    ]
+   },
+   {
+    "n": 3,
+    "gn": "",
+    "es": "¿Cómo estás? Predicados chendales",
+    "days": [
+     "che-/nde- para estados y cualidades (sin «estar»)",
+     "Areal «yo hago» vs. chendal «a mí me pasa»",
+     "Oración nominal sin «ser»",
+     "Sí/no con -pa y piko; respuestas",
+     "Acento: palabra aguda por defecto y tilde"
+    ]
+   },
+   {
+    "n": 4,
+    "gn": "",
+    "es": "Mi familia",
+    "days": [
+     "Posesión con che/nde + sustantivo",
+     "Plural -kuéra, -nguéra tras nasal (mitãnguéra)",
+     "Demostrativos ko, pe, amo",
+     "máva «quién», mba'e «qué»",
+     "Números 1–5 en guaraní y números castellanos en el habla"
+    ]
+   },
+   {
+    "n": 5,
+    "gn": "",
+    "es": "Mi día",
+    "days": [
+     "Prefijos aireales ai-/rei-/oi-",
+     "Verbos de rutina",
+     "La hora y los días, en castellano dentro del guaraní",
+     "Moõpa oĩ…? «¿dónde está…?»; araka'e «cuándo»",
+     "Armonía nasal I: -pe → -me"
+    ]
+   },
+   {
+    "n": 6,
+    "gn": "",
+    "es": "Ayer y mañana",
+    "days": [
+     "-ta: futuro e intención (a-karu-ta)",
+     "kuri: pasado",
+     "Palabras de tiempo",
+     "Negar el futuro: nd-…-mo'ãi",
+     "Mensaje: planes del fin de semana"
+    ]
+   },
+   {
+    "n": 7,
+    "gn": "",
+    "es": "En el mercado y en la mesa",
+    "days": [
+     "oĩ «hay, está»; ndaipóri «no hay»",
+     "Precios: cifras castellanas en el guaraní hablado",
+     "-se «quiero + verbo» (a-ha-se; -se lleva el acento)",
+     "-na: pedido amable",
+     "Tereré y comida paraguaya (escena)"
+    ]
+   },
+   {
+    "n": 8,
+    "gn": "",
+    "es": "Pedir, mandar, prohibir",
+    "days": [
+     "Imperativo de 2.ª persona (prefijo e-?)",
+     "-ke: orden enérgica; -py: urgencia",
+     "Prohibir: ani re-ho-tei «no vayas»",
+     "-ndive «con»",
+     "Escribir una nota con las 33 letras"
+    ]
+   }
+  ]
+ },
+ "A2": {
+  "name": "Plataforma",
+  "units": [
+   {
+    "n": 1,
+    "gn": "Che róga",
+    "es": "Casa y parientes",
+    "days": [
+     "Sustantivos de tres formas t-/r-/h- (óga, che róga, hóga)",
+     "túva / ru: «padre» y sus formas",
+     "Poseedor de 3.ª persona con h-",
+     "hikuái: «ellos, ellas» con el verbo",
+     "Describir la casa y el barrio"
+    ]
+   },
+   {
+    "n": 2,
+    "gn": "",
+    "es": "Lo que fue y lo que será",
+    "days": [
+     "-kue «ex-, lo que fue» (peteĩ abogado-kue)",
+     "-rã «lo que será»",
+     "-va'ekue: pasado (-va + -kue)",
+     "Biografía breve",
+     "Fechas y años"
+    ]
+   },
+   {
+    "n": 3,
+    "gn": "",
+    "es": "Ahora y ya",
+    "days": [
+     "-hína: acción en curso o estado continuo",
+     "-ma «ya» (perfecto)",
+     "-jey «otra vez»",
+     "-pa «todo, por completo»",
+     "Rutina vs. lo que pasa ahora"
+    ]
+   },
+   {
+    "n": 4,
+    "gn": "",
+    "es": "Querer, poder, saber",
+    "days": [
+     "aipota «quiero (algo)»",
+     "ikatu / ndaikatúi «poder»",
+     "aikuaa / ndaikuaái «saber»",
+     "-pota: intención, «a punto de»",
+     "Invitar y aceptar: jaha «vamos»"
+    ]
+   },
+   {
+    "n": 5,
+    "gn": "",
+    "es": "Por la ciudad",
+    "days": [
+     "-rupi «por», -peve «hasta»",
+     "-guive «desde»; rehe ≈ «por, sobre»",
+     "ári «sobre», guýpe «debajo»",
+     "-gua/-pegua «de (procedencia)»",
+     "Dar indicaciones (mediación)"
+    ]
+   },
+   {
+    "n": 6,
+    "gn": "",
+    "es": "Comer y comprar",
+    "days": [
+     "Diminutivo -'i/-mi, aumentativo -guasu",
+     "heta «mucho», sa'i «poco»",
+     "ha «y», térã «o»",
+     "Recetas (escena)",
+     "Pedir en un comedor; explicar el menú"
+    ]
+   },
+   {
+    "n": 7,
+    "gn": "",
+    "es": "Salud y cuerpo",
+    "days": [
+     "Chendales de dolor y malestar",
+     "Consejos con -na y -mi",
+     "-mboyve «antes», -rire «después»",
+     "En el puesto de salud: castellano, guaraní y jopara",
+     "Transmitir lo que dice un familiar"
+    ]
+   },
+   {
+    "n": 8,
+    "gn": "",
+    "es": "Señalar y nombrar",
+    "days": [
+     "upe «ese» (distancia media), ku «aquel (ausente o ya mencionado)»",
+     "Pronombres kóva, péva, upéva",
+     "Armonía nasal II: mbo-/mo-, je-/ñe-",
+     "mb, nd, ng frente a m, n, ñ",
+     "Dictado de nasales"
+    ]
+   },
+   {
+    "n": 9,
+    "gn": "",
+    "es": "Fiestas y calendario",
+    "days": [
+     "Clima y estaciones",
+     "25 de agosto: Día del Idioma Guaraní",
+     "Polca y guarania",
+     "Invitación escrita",
+     "Leyenda: Jasy Jatere"
+    ]
+   },
+   {
+    "n": 10,
+    "gn": "",
+    "es": "Contar lo que pasó",
+    "days": [
+     "Secuencias con kuri y -va'ekue",
+     "Discurso directo con he'i «dice, dijo»",
+     "-hára «el que hace» (mbo'ehára)",
+     "Relato oral breve",
+     "Repaso para el examen A2"
+    ]
+   }
+  ]
+ },
+ "B1": {
+  "name": "Umbral",
+  "units": [
+   {
+    "n": 1,
+    "gn": "",
+    "es": "Comparar",
+    "days": [
+     "-ve … -gui «más … que»",
+     "Superlativo (-vete, -ite)",
+     "Igualdad con -icha «como»",
+     "-eterei «muchísimo», -rasa «demasiado»",
+     "Campo y ciudad (texto)"
+    ]
+   },
+   {
+    "n": 2,
+    "gn": "",
+    "es": "Si y cuando",
+    "days": [
+     "-rõ / ramo «si, cuando»",
+     "-vo «al + infinitivo, -ndo»",
+     "-jave «mientras»",
+     "-mboyve / -rire con verbos",
+     "Planes con condiciones"
+    ]
+   },
+   {
+    "n": 3,
+    "gn": "",
+    "es": "Para qué y por qué",
+    "days": [
+     "hag̃ua «para» (finalidad)",
+     "-haguére / -gui «porque»",
+     "Conectores castellanos en el jopara",
+     "Opinar con razones",
+     "Carta de solicitud"
+    ]
+   },
+   {
+    "n": 4,
+    "gn": "",
+    "es": "La persona que…",
+    "days": [
+     "-va: relativo «que»",
+     "Relativas de pasado (-va'ekue) y futuro (-tava?)",
+     "Relativa con posposición",
+     "Describir personas",
+     "Avisos clasificados"
+    ]
+   },
+   {
+    "n": 5,
+    "gn": "",
+    "es": "Dijo que…",
+    "days": [
+     "-ha: completiva «que»",
+     "-hague: «que» en pasado",
+     "Pregunta indirecta",
+     "ndaje «dicen que» (primer contacto)",
+     "Mediación: contar lo que dijo otro"
+    ]
+   },
+   {
+    "n": 6,
+    "gn": "",
+    "es": "Hacer palabras",
+    "days": [
+     "-ha: lugar o instrumento",
+     "-hára: agente",
+     "-pyre: el resultado, lo hecho",
+     "tembi-: lo que se hace o come",
+     "-'ỹ «sin»"
+    ]
+   },
+   {
+    "n": 7,
+    "gn": "",
+    "es": "Uno mismo y los otros",
+    "days": [
+     "je-/ñe-: reflexivo",
+     "je-: pasiva e impersonal",
+     "jo-/ño-: recíproco (jajohayhu)",
+     "Nasalidad en je-/ñe-, jo-/ño-",
+     "Relaciones y conflictos"
+    ]
+   },
+   {
+    "n": 8,
+    "gn": "",
+    "es": "Hacer hacer",
+    "days": [
+     "mbo-/mo- con verbos intransitivos",
+     "-uka con transitivos",
+     "Causativo sociativo (la forma, ?)",
+     "Instrucciones (ñã-mbo-jeroký)",
+     "Recetas y tareas"
+    ]
+   },
+   {
+    "n": 9,
+    "gn": "",
+    "es": "Énfasis y foco",
+    "days": [
+     "niko / ningo: afirmar y enfocar",
+     "-ete «verdadero, auténtico»; -ite",
+     "-nte «solo», avei «también»",
+     "-voi, katu",
+     "Narrar con énfasis"
+    ]
+   },
+   {
+    "n": 10,
+    "gn": "",
+    "es": "Costumbres",
+    "days": [
+     "-va: hábito vigente",
+     "-mi: hábito que ya no se tiene",
+     "-jepi «siempre»",
+     "Fiestas y tradiciones",
+     "Crónica de la fiesta patronal"
+    ]
+   }
+  ]
+ },
+ "B2": {
+  "name": "Avanzado",
+  "units": [
+   {
+    "n": 1,
+    "gn": "Ra'e",
+    "es": "Descubrir",
+    "days": [
+     "ra'e: lo descubierto, la sorpresa",
+     "El «había sido» del castellano paraguayo",
+     "Narrar sorpresas",
+     "ra'e frente a ndaje",
+     "Noticias inesperadas"
+    ]
+   },
+   {
+    "n": 2,
+    "gn": "",
+    "es": "Según dicen",
+    "days": [
+     "ndaje / -je: lo sabido por otros",
+     "nipo: duda",
+     "Rumores y chismes: registro",
+     "Atribuir fuentes en la prensa",
+     "Mediación: transmitir con la fuente correcta"
+    ]
+   },
+   {
+    "n": 3,
+    "gn": "",
+    "es": "Deber, probabilidad, frustración",
+    "days": [
+     "-va'erã: obligación, futuro no inminente",
+     "-ne: probabilidad",
+     "-mo'ã: «casi», «nunca» (frustrativo, ?)",
+     "Normas y consejos",
+     "Reglamento de una asociación"
+    ]
+   },
+   {
+    "n": 4,
+    "gn": "",
+    "es": "Aunque y si fuera",
+    "days": [
+     "jepe «aunque, incluso»",
+     "-rõ jepe «aunque + verbo»",
+     "Condicional irreal",
+     "Debate",
+     "Ensayo de opinión"
+    ]
+   },
+   {
+    "n": 5,
+    "gn": "",
+    "es": "Palabras dentro del verbo",
+    "days": [
+     "Incorporación nominal",
+     "Compuestos: ta'ãnga + mbyry → ta'ãngambyry",
+     "Posesión e incorporación",
+     "Léxico de la chacra",
+     "Texto técnico breve"
+    ]
+   },
+   {
+    "n": 6,
+    "gn": "",
+    "es": "Repetir para matizar",
+    "days": [
+     "Reduplicación",
+     "Aspecto: -pa, -jey, -hína en contraste",
+     "Ritmo y acento en sufijos",
+     "Descripción viva",
+     "Cuento breve"
+    ]
+   },
+   {
+    "n": 7,
+    "gn": "",
+    "es": "Foco y orden",
+    "days": [
+     "Orden flexible y estructura informativa",
+     "Prosodia del foco",
+     "Tópico con niko/ningo",
+     "Cohesión del párrafo",
+     "Exposición oral"
+    ]
+   },
+   {
+    "n": 8,
+    "gn": "",
+    "es": "El jopara en la gramática",
+    "days": [
+     "Raíces castellanas con morfología guaraní",
+     "Préstamos funcionales (la, pero)",
+     "Cambio de lengua: para qué sirve",
+     "Préstamo o palabra guaraní",
+     "Reescribir jopara en registro formal"
+    ]
+   },
+   {
+    "n": 9,
+    "gn": "",
+    "es": "Lengua y sociedad",
+    "days": [
+     "Bilingüismo y diglosia",
+     "Educación bilingüe",
+     "Cabichuí y la prensa de guerra",
+     "Del 1967 al 1992",
+     "Debate"
+    ]
+   },
+   {
+    "n": 10,
+    "gn": "",
+    "es": "Argumentar y resumir",
+    "days": [
+     "Estructura argumentativa",
+     "Conectores del discurso",
+     "Resumen",
+     "Reseña de una canción o una película",
+     "Repaso para el examen B2"
+    ]
+   }
+  ]
+ },
+ "C1": {
+  "name": "Dominio operativo eficaz",
+  "units": [
+   {
+    "n": 1,
+    "gn": "Jopara",
+    "es": "Registros del guaraní",
+    "days": [
+     "El continuo jopara–guaraní estándar–guaraniete",
+     "Hispanismos adaptados y voces patrimoniales",
+     "Calcos sintácticos del castellano",
+     "Cambiar de registro: de la charla al texto formal",
+     "Actitudes: diglosia y prestigio"
+    ]
+   },
+   {
+    "n": 2,
+    "gn": "",
+    "es": "La lengua del Estado",
+    "days": [
+     "Constitución 1992, art. 140, y su edición en guaraní",
+     "Ley 4251: derechos y deberes (arts. 3, 14, 17)",
+     "SPL y Academia (arts. 31–34, 43–46)",
+     "Leer la Léi 4251/10 bilingüe",
+     "Atención al público y señalética"
+    ]
+   },
+   {
+    "n": 3,
+    "gn": "",
+    "es": "Guaraní jurídico y administrativo",
+    "days": [
+     "Terminología del Diccionario General Bilingüe",
+     "Notificaciones y citaciones",
+     "El ciudadano ante la justicia (Acordada 838/13)",
+     "Redactar una nota formal",
+     "Explicar un trámite a un vecino"
+    ]
+   },
+   {
+    "n": 4,
+    "gn": "",
+    "es": "Prensa, radio y televisión",
+    "days": [
+     "La noticia en guaraní (IP)",
+     "Titulares, pasiva e impersonal con je-",
+     "Boletín radial a velocidad real",
+     "Programa de debate (Ñemongeta)",
+     "Resumir una noticia en castellano"
+    ]
+   },
+   {
+    "n": 5,
+    "gn": "",
+    "es": "Guaraní académico y neologismos",
+    "days": [
+     "La norma: alfabeto 2015, reglas 2016, gramática 2018, diccionario 2020",
+     "Crear términos: composición (ta'ãngambyry)",
+     "Neologismo o uso real: pumbyry frente a celu",
+     "Resumen académico",
+     "Divulgación científica en guaraní"
+    ]
+   },
+   {
+    "n": 6,
+    "gn": "",
+    "es": "Discursos y ocasiones formales",
+    "days": [
+     "Saludo protocolar y tratamiento",
+     "Estructura del discurso",
+     "Ñe'ẽ porã: «palabra buena», el consejo",
+     "Recursos de la oratoria",
+     "Brindis o discurso breve (oral)"
+    ]
+   },
+   {
+    "n": 7,
+    "gn": "",
+    "es": "La canción como texto",
+    "days": [
+     "Emiliano R. Fernández y la épica del Chaco",
+     "Ortiz Guerrero y Flores: la guarania",
+     "Imagen y léxico afectivo en las letras",
+     "Jopara en la canción popular",
+     "Reseña de una canción"
+    ]
+   },
+   {
+    "n": 8,
+    "gn": "",
+    "es": "Mediación profesional",
+    "days": [
+     "Traducir un aviso oficial",
+     "Interpretar en un puesto de salud",
+     "Resumir un informe para una asamblea",
+     "Simplificar un texto para hablantes de jopara",
+     "Revisar una traducción"
+    ]
+   }
+  ]
+ },
+ "C2": {
+  "name": "Maestría",
+  "units": [
+   {
+    "n": 1,
+    "gn": "",
+    "es": "Poesía en guaraní",
+    "days": [
+     "Colmán «Rosicrán», Ñande Ypykuéra: mito en poesía culta",
+     "Susy Delgado, Tataypýpe, Yvytu yma: autotraducción",
+     "Feliciano Acosta, Tuguai jetapa, Suruku'a",
+     "Miguelángel Meza: versificación popular",
+     "Traducir un poema: sentido, ritmo, nasalidad"
+    ]
+   },
+   {
+    "n": 2,
+    "gn": "",
+    "es": "Teatro y narrativa",
+    "days": [
+     "Julio Correa, Sandía yvyguy (1933)",
+     "Guerra aja y la posguerra del Chaco",
+     "Zarratea, Kalaíto Pombéro (1981)",
+     "¿Primera novela en guaraní? Zarratea o Maidana",
+     "Escribir una escena o un cuento"
+    ]
+   },
+   {
+    "n": 3,
+    "gn": "",
+    "es": "Oralidad y textos sagrados",
+    "days": [
+     "El relato oral y el káso",
+     "Los siete hijos de Tau y Kerana",
+     "Perurimá: picardía y crítica social",
+     "Ayvu Rapyta (Cadogan, 1959): conocer sin apropiarse",
+     "Recontar un relato oral"
+    ]
+   },
+   {
+    "n": 4,
+    "gn": "",
+    "es": "Variedades guaraníes (conocer, no dominar)",
+    "days": [
+     "La familia guaraní en el Paraguay: aché, avá guaraní, mbya, paĩ tavyterã, guaraní ñandeva, guaraní occidental",
+     "Mbya: ayvu «palabra», ayvu porã «bellas palabras»",
+     "Avá guaraní y paĩ tavyterã; sus parientes en Brasil",
+     "Guaraní de Bolivia: oficial desde 2009, neologismos propios",
+     "Corrientes: guaraní oficial alternativo (Ley 5598/2004)"
+    ]
+   },
+   {
+    "n": 5,
+    "gn": "Ñe'ẽnga",
+    "es": "Refranes, humor y juegos de palabras",
+    "days": [
+     "La forma «X, he'i Y»",
+     "Ñe'ẽnga y jopara (Ivai la cuadro…)",
+     "Doble sentido y registro (con aviso de contenido)",
+     "Chistes y casos de Perurimá",
+     "Explicar un ñe'ẽnga a un hispanohablante"
+    ]
+   },
+   {
+    "n": 6,
+    "gn": "",
+    "es": "Historia de la lengua y traducción",
+    "days": [
+     "Montoya: Tesoro (1639) y Arte y Bocabulario (1640)",
+     "La prensa de guerra (1867–1868)",
+     "De lengua nacional (1967) a lengua oficial (1992) y la Ley 4251",
+     "Traducir humor e ironía",
+     "Proyecto final: traducción comentada"
+    ]
+   }
+  ]
+ }
+}

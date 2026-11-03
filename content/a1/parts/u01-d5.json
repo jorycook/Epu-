@@ -1,0 +1,248 @@
+{
+  "title": "Aguyje: la cortesía",
+  "grammar": {
+    "points": [
+      {
+        "id": "a1u01d5.p1",
+        "form": "Aguyje",
+        "gloss": "gracias",
+        "connect": [
+          { "pos": "Para dar las gracias", "rule": "{Aguyje}." },
+          { "pos": "Para dar muchas gracias", "rule": "{Aguyjevete}." },
+          { "pos": "A vos (una persona) o a ustedes (varias)", "rule": "Aguyje {ndéve}. · Aguyjevete {peẽme}." }
+        ],
+        "examples": [
+          { "gn": "{Aguyje} ndéve, Lucía.", "es": "Gracias a vos, Lucía.", "parts": [["aguyje", "gracias"], ["nde", "vos"], ["-ve", "a"]] },
+          { "gn": "Nahániri, {aguyje}.", "es": "No, gracias.", "parts": [["nahániri", "no"], ["aguyje", "gracias"]] },
+          { "gn": "{Aguyjevete} peẽme.", "es": "Muchas gracias a ustedes.", "parts": [["aguyjevete", "muchas gracias"], ["peẽ", "ustedes"], ["-me", "a"]] }
+        ],
+        "watch": { "note": "La y de aguyje es la sexta vocal del guaraní, no una i. No escribas aguije.", "bad": "Aguije.", "good": "Aguyje." }
+      },
+      {
+        "id": "a1u01d5.p2",
+        "form": "Ikatúpa…? · Cheñyrõmi · Tereg̃uahẽ porãite",
+        "gloss": "¿puedo…? · perdón · bienvenido/a",
+        "connect": [
+          { "pos": "Pedir permiso: Ikatúpa y lo que querés hacer", "rule": "{Ikatúpa} aike?" },
+          { "pos": "Pedir perdón", "rule": "{Cheñyrõmi}." },
+          { "pos": "Recibir en tu casa: a una persona · a varias", "rule": "{Tere}g̃uahẽ porãite. · {Tape}g̃uahẽ porãite." }
+        ],
+        "examples": [
+          { "gn": "{Ikatúpa} aporandumi ndéve peteĩ mba'e?", "es": "¿Te puedo preguntar una cosa?", "parts": [["ikatu", "se puede"], ["-pa", "(pregunta)"], ["a-", "yo"], ["porandu", "preguntar"], ["-mi", "más suave"], ["ndéve", "a vos"], ["peteĩ", "una"], ["mba'e", "cosa"]] },
+          { "gn": "{Cheñyrõmi}, ña Ramona.", "es": "Perdón, doña Ramona.", "parts": [["che-", "me"], ["ñyrõ", "perdonar"], ["-mi", "más suave"], ["ña", "doña"]] },
+          { "gn": "Eike, Lucía. {Tereg̃uahẽ porãite}.", "es": "Pasá, Lucía. Bienvenida.", "parts": [["eike", "pasá, entrá"], ["tere-", "que (vos)"], ["g̃uahẽ", "llegar"], ["porã", "bien"], ["-ite", "muy"]] }
+        ],
+        "watch": { "note": "Sin tilde, ikatupa sonaría ikatupá. -pa no se lleva el acento: queda en la u de ikatu. Como esa u ya no es la última vocal, se escribe: Ikatúpa.", "bad": "Ikatupa aike?", "good": "Ikatúpa aike?" }
+      }
+    ],
+    "compare": {
+      "intro": "Tres fórmulas para tres momentos de una visita: antes de entrar, cuando te dan algo y cuando algo sale mal.",
+      "forms": [
+        { "form": "Ikatúpa…?", "tag": "pedir permiso", "mark": "dot", "gn": "{Ikatúpa} aike?", "es": "¿Puedo pasar?" },
+        { "form": "Aguyje", "tag": "dar las gracias", "mark": "dot", "gn": "{Aguyje}, ña Ramona.", "es": "Gracias, doña Ramona." },
+        { "form": "Cheñyrõmi", "tag": "pedir perdón", "mark": "dot", "gn": "{Cheñyrõmi}, ña Ramona.", "es": "Perdón, doña Ramona." }
+      ],
+      "check": {
+        "id": "a1u01d5.c1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la fórmula",
+        "q": "(Doña Ramona ^le regala un chipá^ a Lucía.)\nLucía: (   )",
+        "options": ["Aguyje.", "Cheñyrõmi.", "Ikatúpa aike?"],
+        "answer": 1,
+        "why": [
+          "Doña Ramona le hace un regalo a Lucía: Lucía da las gracias con Aguyje.",
+          "Cheñyrõmi pide perdón, y no pasó nada malo: doña Ramona le hace un regalo.",
+          "Ikatúpa aike? pide permiso para entrar. Acá doña Ramona le da algo, y Lucía le contesta."
+        ]
+      }
+    },
+    "drill": [
+      {
+        "id": "a1u01d5.d1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Lucía: Aguyjevete (   ), ^Ana ha Luis^.",
+        "options": ["ndéve", "peẽme", "chéve", "nde"],
+        "answer": 2,
+        "why": [
+          "Ndéve es «a vos», para una sola persona. Lucía les habla a dos: Ana y Luis.",
+          "Lucía les da las gracias a dos personas, Ana y Luis. «A ustedes» es peẽme.",
+          "Chéve es «a mí». Lucía no se da las gracias a sí misma.",
+          "Nde es «vos». Para decir «a vos» hace falta ndéve, y además acá son dos personas."
+        ]
+      },
+      {
+        "id": "a1u01d5.d2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la respuesta",
+        "q": "Ramona: [Reipotápa|¿querés?] terere?\nLucía: ^[Nahániri|no]^, (   ).",
+        "options": ["tereg̃uahẽ porãite", "mba'éichapa", "aguyje", "ikatúpa aike"],
+        "answer": 3,
+        "why": [
+          "Tereg̃uahẽ porãite da la bienvenida a quien llega. No contesta a «¿querés tereré?».",
+          "Mba'éichapa? pregunta cómo está alguien. Acá Lucía contesta, no pregunta.",
+          "Lucía no quiere tereré y lo dice con cortesía: Nahániri, aguyje («No, gracias»).",
+          "Ikatúpa aike? pide permiso para entrar. Ramona le ofrece tereré, y Lucía tiene que contestar."
+        ]
+      },
+      {
+        "id": "a1u01d5.d3",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la frase",
+        "q": "Lucía: (   )\nRamona: ^[Eike|pasá]^, Lucía. Tereg̃uahẽ porãite.",
+        "options": ["Ikatúpa aike?", "Jajotopáta.", "Tereg̃uahẽ porãite.", "Iporã, ha nde?"],
+        "answer": 1,
+        "why": [
+          "Ramona le contesta Eike, «pasá». Entonces Lucía pidió permiso para entrar: Ikatúpa aike?",
+          "Jajotopáta es para despedirse, y Lucía recién llega: Ramona le dice «pasá».",
+          "Tereg̃uahẽ porãite lo dice quien recibe, y la que recibe es Ramona. Lucía es la que llega.",
+          "Iporã, ha nde? contesta a Mba'éichapa?, y nadie le preguntó a Lucía cómo está."
+        ]
+      },
+      {
+        "id": "a1u01d5.d4",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la fórmula",
+        "q": "(Ana y Luis llegan a la casa de doña Ramona.)\nRamona: (   ), ^Ana ha Luis^.",
+        "options": ["Ikatúpa aike", "Jajotopáta", "Tereg̃uahẽ porãite", "Tapeg̃uahẽ porãite"],
+        "answer": 4,
+        "why": [
+          "Ikatúpa aike pide permiso para entrar. Ramona está en su casa: ella es la que recibe.",
+          "Jajotopáta es para despedirse, y Ana y Luis recién llegan.",
+          "Tereg̃uahẽ porãite es para una sola persona, y Ramona recibe a dos: Ana y Luis.",
+          "Ramona recibe a dos personas, Ana y Luis. A varias se les dice Tapeg̃uahẽ porãite."
+        ]
+      },
+      {
+        "id": "a1u01d5.d5",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Luis le abre la puerta a Ana.)\nAna: Aguyje ",
+        "after": ", Luis.",
+        "tiles": ["nde", "ve"],
+        "bank": [1, 0],
+        "hint": "Ana le da las gracias a una sola persona, Luis: «a vos». Fijate después dónde queda el acento.",
+        "full": "(Luis le abre la puerta a Ana.)\nAna: Aguyje {ndéve}, Luis.",
+        "es": "Ana: Gracias a vos, Luis.",
+        "explain": "nde, ve. Nde es «vos» y -ve, «a»: ndéve es «a vos». -ve no se lleva el acento: queda en la e de nde. Como esa e ya no es la última vocal, se escribe: ndéve."
+      },
+      {
+        "id": "a1u01d5.d6",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "Lucía: ",
+        "after": ", ña Ramona.",
+        "tiles": ["che", "ñyrõ", "mi"],
+        "bank": [1, 2, 0],
+        "hint": "Como en Jajotopáta, la persona va adelante. Lo que suaviza el pedido va al final.",
+        "full": "Lucía: {Cheñyrõmi}, ña Ramona.",
+        "es": "Lucía: Perdón, doña Ramona.",
+        "explain": "che, ñyrõ, mi. Acá che- es «me», ñyrõ es «perdonar» y -mi lo hace más suave. Van juntos, en una sola palabra: Cheñyrõmi, «perdoname»."
+      }
+    ],
+    "exam": [
+      {
+        "id": "a1u01d5.e1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Ana le da un chipá a Luis.)\nLuis: Aguyje (   ), Ana.",
+        "options": ["peẽme", "chéve", "ndéve", "nde"],
+        "answer": 3,
+        "explain": "Luis le da las gracias a una sola persona, Ana: «a vos» es ndéve. Peẽme es «a ustedes», para varias personas; chéve es «a mí»; y nde solo, sin -ve, no quiere decir «a vos»."
+      },
+      {
+        "id": "a1u01d5.e2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la fórmula",
+        "q": "(Lucía vuelca sin querer el tereré de doña Ramona.)\nLucía: (   ), ña Ramona.",
+        "options": ["Aguyje", "Tereg̃uahẽ porãite", "Jajotopáta", "Cheñyrõmi"],
+        "answer": 4,
+        "explain": "Lucía volcó el tereré sin querer: pide perdón con Cheñyrõmi. Aguyje da las gracias, Tereg̃uahẽ porãite da la bienvenida y Jajotopáta es para despedirse. Ninguna de esas tres pide perdón."
+      },
+      {
+        "id": "a1u01d5.e3",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Lucía llega a la casa de doña Ramona.)\nLucía: ",
+        "after": " aike, ña Ramona?",
+        "tiles": ["ikatu", "pa"],
+        "bank": [1, 0],
+        "full": "(Lucía llega a la casa de doña Ramona.)\nLucía: {Ikatúpa} aike, ña Ramona?",
+        "es": "Lucía: ¿Puedo pasar, doña Ramona?",
+        "explain": "ikatu, pa. -pa va al final y no se lleva el acento: queda en la u de ikatu. Como esa u ya no es la última vocal, se escribe: Ikatúpa."
+      }
+    ]
+  },
+  "words": {
+    "es": "De visita en una casa paraguaya",
+    "intro": "Estás de visita en la casa de doña Ramona, la abuela de Ana. Tocá cada palabra de la escena.",
+    "sound": {
+      "focus": "Teclear ã ẽ ĩ õ ũ ỹ, g̃ y el puso (')",
+      "letters": ["ã", "ẽ", "ĩ", "õ", "ũ", "ỹ", "g̃", "'"],
+      "note": "Para estas letras, la app tiene su propia fila de teclas: ã ẽ ĩ õ ũ ỹ, la g̃ (una g con ~) y el puso ('). Cada marca cuenta: okẽ es «puerta» y oke, «duerme»; porã es «bien» y póra, «fantasma». La ĩ y la ỹ están en peteĩ «uno» y tapỹi «choza».",
+      "pairs": [
+        ["okẽ", "puerta", "oke", "duerme"],
+        ["porã", "lindo, bien", "póra", "fantasma"],
+        ["téra", "nombre", "térã", "o"]
+      ]
+    },
+    "words": [
+      { "id": "oga", "gn": "óga", "es": "casa", "note": "Lleva tilde porque el acento no cae al final: ó-ga." },
+      { "id": "oke", "gn": "okẽ", "es": "puerta", "note": "Sin la ~ es otra palabra: oke es «duerme»." },
+      { "id": "tereguahe", "gn": "Tereg̃uahẽ porãite", "es": "bienvenido, bienvenida", "parts": [["tere-", "que (vos)"], ["g̃uahẽ", "llegar"], ["porã", "bien"], ["-ite", "muy"]], "note": "A varias personas: Tapeg̃uahẽ porãite. En diarios también se ve Tereguahẽ, sin la ~ de la g. En la app escribimos g̃." },
+      { "id": "terere", "gn": "terere", "es": "tereré", "note": "Va sin tilde: en guaraní el acento al final no se marca. En la ronda, decir aguyje («gracias») al devolver la guampa quiere decir «no quiero más»." },
+      { "id": "kaay", "gn": "ka'ay", "es": "mate", "parts": [["ka'a", "yerba"], ["y", "agua"]], "note": "Es el mate, que se toma caliente. El frío es el terere." },
+      { "id": "angiru", "gn": "angirũ", "es": "amigo, amiga", "note": "Sirve para amigo y para amiga. La ~ va solo en la ũ del final." },
+      { "id": "avanee", "gn": "avañe'ẽ", "es": "guaraní (la lengua)", "parts": [["ava", "gente"], ["ñe'ẽ", "lengua"]], "note": "Es el nombre del guaraní en guaraní." },
+      { "id": "cheniromi", "gn": "Cheñyrõmi", "es": "perdón, disculpá", "parts": [["che-", "me"], ["ñyrõ", "perdonar"], ["-mi", "más suave"]] }
+    ],
+    "spell": ["tereguahe", "avanee", "cheniromi", "angiru"],
+    "check": {
+      "id": "a1u01d5.k1",
+      "kind": "choice",
+      "area": "vocab",
+      "label": "Cómo se escribe",
+      "q": "Doña Ramona recibe a Lucía en la puerta: «_Bienvenida_».",
+      "options": ["Tereg̃uahe poraite", "Tereg̃uahẽ porãite", "Tereg̃uahẽ poraite", "Tereg̃uahe porãite"],
+      "answer": 2,
+      "explain": "Se escribe con tres tildes nasales (~): la de g̃, la de ẽ y la de ã. Las otras opciones pierden la ~ de ẽ, la de ã o las dos. La ~ de la g a veces no se escribe (Tereguahẽ), pero la de ẽ y la de ã no pueden faltar."
+    }
+  },
+  "skill": {
+    "kind": "reading",
+    "es": "Un mensaje de gracias",
+    "ask": "Un WhatsApp después de la visita: ¿para qué escribe Lucía?",
+    "seconds": 60,
+    "passage": "Maitei, ña Ramona ha Ana!\n^Aguyjevete peẽme^.\n^Jajotopáta^!\nLucía",
+    "strategy": "Buscá las fórmulas que ya conocés: cada una dice qué hace quien escribe.",
+    "item": {
+      "id": "a1u01d5.r1",
+      "kind": "choice",
+      "area": "reading",
+      "label": "Texto corto",
+      "q": "¿Qué hace Lucía en su mensaje?",
+      "options": ["Pide perdón y se despide.", "Da la bienvenida y pregunta cómo están.", "Da las gracias y se despide."],
+      "short": ["Pide perdón", "Da la bienvenida", "Da las gracias"],
+      "answer": 3,
+      "why": [
+        "Se despide, sí (Jajotopáta), pero no pide perdón: no escribe Cheñyrõmi.",
+        "No escribe Tereg̃uahẽ porãite (bienvenida) ni Mba'éichapa? (¿cómo están?).",
+        "Aguyjevete peẽme es «muchas gracias a ustedes», y Jajotopáta, «nos vemos»."
+      ],
+      "explain": "Lucía les escribe Aguyjevete peẽme («muchas gracias a ustedes») a doña Ramona y a Ana, y se despide con Jajotopáta («nos vemos»). No pide perdón (Cheñyrõmi), no da la bienvenida (Tereg̃uahẽ porãite) ni pregunta cómo están (Mba'éichapa?)."
+    }
+  }
+}

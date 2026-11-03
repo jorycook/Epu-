@@ -1,0 +1,1681 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Hablar</title>
+<script src="./support.js"></script>
+<script src="./gn-sound.js"></script>
+<script src="./gn-course-a1.js"></script>
+<script src="./gn-course-a2.js"></script>
+<script src="./gn-course-b1.js"></script>
+<script src="./gn-course-b2.js"></script>
+<script src="./gn-course-c1.js"></script>
+<script src="./gn-course-c2.js"></script>
+<script src="./gn-course.js"></script>
+<script src="./gn-extra.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&amp;family=Andika:wght@400;700&amp;text=%20%21%22%23%24%25%26%27%28%29%2A%2B%2C-.%2F0123456789%3A%3B%3C%3D%3E%3F%40ABCDEFGHIJKLMNOPQRSTUVWXYZ%5B%5C%5D%5E_%60abcdefghijklmnopqrstuvwxyz%7B%7C%7D~%C2%A1%C2%BF%C2%AB%C2%BB%C2%B0%C2%B7%C3%97%C3%B7%C2%AA%C2%BA%C2%B2%C3%A1%C3%A9%C3%AD%C3%B3%C3%BA%C3%BC%C3%B1%C3%81%C3%89%C3%8D%C3%93%C3%9A%C3%9C%C3%91%C3%BD%C3%9D%C3%A3%E1%BA%BD%C4%A9%C3%B5%C5%A9%E1%BB%B9%C3%83%E1%BA%BC%C4%A8%C3%95%C5%A8%E1%BB%B8%C3%A7%C3%87%C3%A0%C3%A8%C3%AC%C3%B2%C3%B9%C3%A2%C3%AA%C3%AE%C3%B4%C3%BB%CC%83%CC%81%E2%80%98%E2%80%99%E2%80%9C%E2%80%9D%E2%80%A6%E2%80%93%E2%80%94%E2%80%A2%E2%82%AC%E2%86%92%E2%86%90%E2%86%91%E2%86%93&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:#2F4FD0;text-decoration:none}a:hover{color:#1B2440}
+rt{font-size:9px;font-weight:500;color:#5A6382}
+@keyframes gn-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes gn-up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes gn-fade{from{opacity:0}to{opacity:1}}
+@keyframes gn-stamp{0%{opacity:0;transform:scale(1.8) rotate(-20deg)}55%{opacity:1;transform:scale(.92) rotate(-9deg)}100%{opacity:1;transform:scale(1) rotate(-9deg)}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; overflow: hidden; background: #F4F5F9; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif">
+
+<sc-if value="{{ isMenu }}" hint-placeholder-val="{{ false }}">
+<section aria-labelledby="hab-menu-title" style="position: absolute; left: 0; top: 50px; width: 390px; height: 760px; box-sizing: border-box; padding: 0 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; animation: gn-in 220ms ease-out">
+<div style="flex-shrink: 0; min-height: 44px; display: flex; align-items: center; gap: 8px">
+<a href="Main.dc.html" onClick="{{ toMain }}" aria-label="Cerrar" style="flex-shrink: 0; width: 44px; height: 44px; margin-left: -10px; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+<div style="font-size: 15px; font-weight: 800"><span lang="gn">Eñe'ẽ</span><span style="margin-left: 6px; font-size: 12px; font-weight: 700; color: #5A6382">Hablá</span></div>
+</div>
+<div style="flex-shrink: 0; display: flex; gap: 14px; align-items: center">
+<svg viewBox="0 0 100 100" width="72" height="72" role="img" aria-label="Kaguare, el oso melero" style="flex-shrink: 0"><path d="M26.17 58.19C24.25 59.48 22.2 60.42 20.4 62.04C18.61 63.66 16.69 66.08 15.39 67.9C14.09 69.73 13.32 71.72 12.61 72.99C11.89 74.26 11.6 74.92 11.08 75.54C10.56 76.16 9.83 76.41 9.5 76.69C9.16 76.96 9.19 77.35 9.05 77.17C8.92 77 8.8 76.55 8.71 75.64C8.62 74.74 8.48 73.06 8.53 71.75C8.59 70.44 8.79 68.87 9.05 67.77C9.32 66.67 9.83 65.74 10.11 65.16C10.4 64.58 10.35 64.3 10.75 64.3C11.15 64.31 11.94 65.19 12.52 65.2C13.11 65.2 14.02 64.77 14.25 64.31C14.47 63.84 14.36 62.98 13.88 62.4C13.39 61.83 12.43 60.85 11.33 60.88C10.24 60.92 8.35 61.65 7.3 62.61C6.25 63.58 5.59 65.22 5.05 66.68C4.5 68.13 4.23 69.81 4.02 71.35C3.81 72.88 3.62 74.32 3.77 75.9C3.92 77.49 3.9 79.66 4.95 80.83C5.99 81.99 8.35 82.81 10.04 82.9C11.73 83 13.51 82.37 15.1 81.42C16.68 80.46 18.26 78.52 19.54 77.17C20.83 75.83 21.75 74.38 22.82 73.34C23.89 72.31 24.48 71.7 25.98 70.97C27.49 70.25 29.88 69.66 31.83 69.01Z" fill="#EDC27C"/><path d="M20.15 70.47C20.74 70.71 20.68 72.05 20.37 72.87C20.06 73.69 18.95 75.26 18.3 75.41C17.66 75.56 16.75 74.41 16.5 73.75C16.25 73.09 16.21 71.97 16.82 71.42C17.43 70.87 19.56 70.23 20.15 70.47Z" fill="#2A2120"/><path d="M10.57 78.66C10.78 79.01 10.58 80.06 10.18 80.29C9.78 80.52 8.67 80.26 8.16 80.04C7.65 79.82 6.99 79.26 7.12 78.95C7.25 78.64 8.37 78.23 8.94 78.18C9.51 78.13 10.36 78.31 10.57 78.66Z" fill="#2A2120"/><path d="M7.66 68.46C7.88 68.64 7.74 69.25 7.49 69.58C7.24 69.91 6.49 70.46 6.18 70.45C5.87 70.44 5.64 69.82 5.64 69.5C5.64 69.18 5.84 68.68 6.18 68.51C6.52 68.34 7.44 68.28 7.66 68.46Z" fill="#2A2120"/><path d="M26.17 58.19C24.25 59.48 22.2 60.42 20.4 62.04C18.61 63.66 16.69 66.08 15.39 67.9C14.09 69.73 13.32 71.72 12.61 72.99C11.89 74.26 11.6 74.92 11.08 75.54C10.56 76.16 9.83 76.41 9.5 76.69C9.16 76.96 9.19 77.35 9.05 77.17C8.92 77 8.8 76.55 8.71 75.64C8.62 74.74 8.48 73.06 8.53 71.75C8.59 70.44 8.79 68.87 9.05 67.77C9.32 66.67 9.83 65.74 10.11 65.16C10.4 64.58 10.35 64.3 10.75 64.3C11.15 64.31 11.94 65.19 12.52 65.2C13.11 65.2 14.02 64.77 14.25 64.31C14.47 63.84 14.36 62.98 13.88 62.4C13.39 61.83 12.43 60.85 11.33 60.88C10.24 60.92 8.35 61.65 7.3 62.61C6.25 63.58 5.59 65.22 5.05 66.68C4.5 68.13 4.23 69.81 4.02 71.35C3.81 72.88 3.62 74.32 3.77 75.9C3.92 77.49 3.9 79.66 4.95 80.83C5.99 81.99 8.35 82.81 10.04 82.9C11.73 83 13.51 82.37 15.1 81.42C16.68 80.46 18.26 78.52 19.54 77.17C20.83 75.83 21.75 74.38 22.82 73.34C23.89 72.31 24.48 71.7 25.98 70.97C27.49 70.25 29.88 69.66 31.83 69.01Z" fill="none" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M28.6 70 C27.4 75.6 27.4 80 29.2 82 Q30.4 83 32.4 83 L40.6 83 Q42.6 83 42.6 81.2 Q42.4 79.6 40.4 79.3 L38.2 78.8 L39.4 70 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M25 70.6C23.07 68 22.07 64.43 22.4 61C22.73 57.57 24.57 52.83 27 50C29.43 47.17 33.43 45.28 37 44C40.57 42.72 45.17 42.53 48.4 42.3C51.63 42.07 54.51 43.19 56.4 42.6C58.29 42.01 59.76 38.77 59.76 38.77C59.76 38.77 62.59 45.03 64.6 47C66.61 48.97 70.78 48.79 71.8 50.6C72.82 52.41 70.44 56.92 70.69 57.83C70.94 58.75 74.42 59.44 74.8 61.6C75.18 63.76 74.87 68.3 73 70.8C71.13 73.3 67.77 75.38 63.6 76.6C59.43 77.82 52.93 78.1 48 78.1C43.07 78.1 37.83 77.85 34 76.6C30.17 75.35 26.93 73.2 25 70.6Z" fill="#EDC27C"/><path d="M60.65 40.62C61.37 42.68 61.81 44.64 62.8 46.8C63.79 48.96 65.4 51.5 66.6 53.6C67.8 55.7 69 57.93 70 59.4C71 60.87 71.79 61.5 72.6 62.4C73.41 63.3 74.13 64.02 74.89 64.83C74.81 65.79 74.65 66.81 74.38 67.78C74.07 68.91 73.62 69.97 73 70.8C72.38 71.63 71.59 72.42 70.66 73.14C69.73 73.87 68.66 74.53 67.47 75.11C66.29 75.69 64.99 76.19 63.6 76.6C62.21 77.01 60.56 77.31 58.8 77.53C57.04 77.75 55.16 77.89 53.31 77.98C51.46 78.07 49.64 78.1 48 78.1C46.42 78.1 44.8 78.07 43.22 78C40.48 76.13 37.24 74.73 35 72.4C32.76 70.07 31.03 66.73 29.8 64C28.57 61.27 28.07 58.33 27.6 56C27.13 53.67 27.2 52 27 50C27.81 49.06 28.8 48.22 29.88 47.47C30.97 46.72 32.15 46.07 33.36 45.5C34.57 44.92 35.81 44.43 37 44C38.19 43.57 39.49 43.27 40.82 43.04C42.15 42.81 43.51 42.67 44.8 42.56C46.09 42.45 47.32 42.38 48.4 42.3C49.48 42.22 50.52 42.3 51.49 42.4C52.46 42.51 53.38 42.66 54.2 42.73C55.03 42.8 55.77 42.8 56.4 42.6C57.03 42.4 57.62 41.91 58.11 41.34C58.61 40.78 59.02 40.13 59.31 39.63C59.6 39.13 59.76 38.77 59.76 38.77C59.76 38.77 60.08 39.46 60.57 40.46C60.6 40.52 60.62 40.57 60.65 40.62Z" fill="#2A2120"/><path d="M70.69 57.83C70.94 58.75 74.42 59.44 74.8 61.6C75.18 63.76 74.87 68.3 73 70.8C71.13 73.3 67.77 75.38 63.6 76.6C59.43 77.82 52.93 78.1 48 78.1C43.07 78.1 37.83 77.85 34 76.6C30.17 75.35 26.93 73.2 25 70.6C23.07 68 22.07 64.43 22.4 61C22.73 57.57 24.57 52.83 27 50C29.43 47.17 33.43 45.28 37 44C40.57 42.72 45.17 42.53 48.4 42.3C51.63 42.07 54.51 43.19 56.4 42.6C58.29 42.01 59.76 38.77 59.76 38.77" fill="none" stroke="#1B2440" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M64.4 60.2C65.4 60.1 66.93 60.83 67.6 62.2C68.27 63.57 68.18 66.33 68.4 68.4C68.62 70.47 68.52 72.93 68.9 74.6C69.28 76.27 69.92 77.57 70.7 78.4C71.48 79.23 73.11 79.11 73.6 79.6C74.09 80.09 74.58 81.82 74.4 82.1C74.22 82.38 72.08 82.94 71.4 83C70.72 83.06 64.84 83.08 64.2 83C63.56 82.92 62.06 82.54 61.8 81.8C61.54 81.06 61.68 77.9 61.6 75.6C61.52 73.3 61.3 70.13 61.3 68C61.3 65.87 61.08 64.1 61.6 62.8C62.12 61.5 63.4 60.3 64.4 60.2Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M70.86 80.04C70.89 80.41 71.14 80.88 71.42 81.11C71.7 81.34 72.09 81.42 72.54 81.44C72.99 81.46 73.61 81.3 74.14 81.22C74.67 81.15 75.31 81.11 75.73 80.99C76.15 80.87 76.46 80.76 76.67 80.51C76.88 80.26 77.02 79.81 76.99 79.47C76.96 79.13 76.73 78.71 76.48 78.5C76.23 78.29 75.91 78.25 75.47 78.21C75.03 78.17 74.4 78.26 73.86 78.28C73.33 78.31 72.7 78.26 72.26 78.36C71.82 78.46 71.45 78.61 71.22 78.89C70.99 79.17 70.83 79.67 70.86 80.04Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><path d="M71.05 81.65C71.04 82.02 71.23 82.51 71.48 82.78C71.73 83.05 72.1 83.18 72.55 83.25C73 83.32 73.62 83.23 74.15 83.22C74.69 83.21 75.33 83.26 75.76 83.2C76.19 83.14 76.51 83.07 76.75 82.84C76.99 82.61 77.19 82.18 77.2 81.84C77.21 81.5 77.04 81.06 76.81 80.82C76.58 80.58 76.27 80.49 75.84 80.4C75.41 80.31 74.78 80.32 74.25 80.28C73.72 80.24 73.1 80.11 72.65 80.15C72.2 80.2 71.82 80.3 71.55 80.55C71.28 80.8 71.06 81.28 71.05 81.65Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(69.6 44.2) rotate(11) scale(1.08)"><path d="M-8.6 -5.8 C-13.6 -8.4 -14.2 -13.6 -10 -14.6 C-5.8 -15.4 -3.6 -11.6 -4.4 -7.2 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.59" stroke-linejoin="round" stroke-linecap="round"/><path d="M-10.4 -5.8 C-11.8 -8.6 -11.4 -11.6 -9.4 -12 C-7.4 -12.4 -6.2 -10.2 -6.6 -7.4 Z" fill="#D49A55"/></g><path d="M59.76 38.77C60.67 37.11 60.91 34.86 62.49 33.8C64.07 32.73 67.14 32.22 69.26 32.36C71.38 32.5 73.7 33.57 75.2 34.62C76.71 35.66 77.46 36.64 78.28 38.62C79.09 40.61 78.76 44.74 80.08 46.52C81.41 48.31 84.33 48.27 86.24 49.33C88.15 50.39 90.34 51.86 91.55 52.88C92.76 53.9 93.24 54.49 93.5 55.45C93.76 56.41 93.58 57.78 93.08 58.64C92.58 59.5 91.47 60.34 90.51 60.6C89.55 60.85 88.67 60.65 87.31 60.17C85.95 59.7 84.12 58.42 82.33 57.77C80.54 57.11 78.12 56.33 76.56 56.27C75 56.21 73.95 57.14 72.98 57.4C72 57.66 71.45 57.69 70.69 57.83C68.51 56.97 66 56.52 64.15 55.24C62.31 53.97 60.68 51.97 59.64 50.18C58.59 48.4 57.85 46.46 57.87 44.56C57.89 42.66 59.13 40.7 59.76 38.77Z" fill="#EDC27C"/><path d="M59.76 38.77C60.67 37.11 60.91 34.86 62.49 33.8C64.07 32.73 67.14 32.22 69.26 32.36C71.38 32.5 73.7 33.57 75.2 34.62C76.71 35.66 77.46 36.64 78.28 38.62C79.09 40.61 78.76 44.74 80.08 46.52C81.41 48.31 84.33 48.27 86.24 49.33C88.15 50.39 90.34 51.86 91.55 52.88C92.76 53.9 93.24 54.49 93.5 55.45C93.76 56.41 93.58 57.78 93.08 58.64C92.58 59.5 91.47 60.34 90.51 60.6C89.55 60.85 88.67 60.65 87.31 60.17C85.95 59.7 84.12 58.42 82.33 57.77C80.54 57.11 78.12 56.33 76.56 56.27C75 56.21 73.95 57.14 72.98 57.4C72 57.66 71.45 57.69 70.69 57.83" fill="none" stroke="#1B2440" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(69.6 44.2) rotate(11) scale(1.08)"><ellipse cx="21.15" cy="8.03" rx="1.25" ry="1.5" transform="rotate(19.09 21.15 8.03)" fill="#1B2440"/><ellipse cx="2.4" cy="-2.4" rx="3.1" ry="3" fill="#C98E4E"/><ellipse cx="3" cy="2.8" rx="2.2" ry="1.35" fill="#F08CA5"/><g data-part="eye-open"><ellipse cx="2.4" cy="-2.4" rx="1.95" ry="2.3" fill="#1B2440"/><circle cx="3.08" cy="-3.32" r="0.78" fill="#FFFFFF"/></g><g data-part="eye-closed" opacity="0"><path d="M0.2 -2.3 Q2.4 -0.4 4.6 -2.3" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="eye-happy" opacity="0"><path d="M0.2 -1.5 Q2.4 -5.2 4.6 -1.5" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="mouth-normal"><path d="M9.8 6.2 Q7.4 7.5 5.2 5.5" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="mouth-o" opacity="0"><ellipse cx="7.6" cy="5.9" rx="1.3" ry="1.5" fill="#1B2440"/></g><g data-part="mouth-happy" opacity="0"><path d="M4.8 4.5 L10.8 4.7 C10.6 6.2 9.4 7.15 7.8 7.15 C6.2 7.15 5.0 6.2 4.8 4.5 Z" fill="#F08CA5"/><path d="M10.8 4.7 C10.6 6.2 9.4 7.15 7.8 7.15 C6.2 7.15 5.0 6.2 4.8 4.5" fill="none" stroke="#1B2440" stroke-width="1.67" stroke-linejoin="round" stroke-linecap="round"/></g></g><circle cx="45" cy="60.2" r="10.5" fill="#FFFFFF" stroke="#1B2440" stroke-width="2.2"/><g class="rosette"><path d="M45 51V69.4M35.8 60.2H54.2M38.5 53.7L51.5 66.7M51.5 53.7L38.5 66.7" fill="none" stroke="#C2336F" stroke-width="1.5" stroke-linecap="round"/><circle cx="45" cy="60.2" r="6.5" fill="none" stroke="#C2336F" stroke-width="1.3"/><circle cx="45" cy="60.2" r="2.8" fill="#C2336F"/></g><g data-part="sweat" opacity="0"><path d="M79.8 18.2c2.2 3.6 3.6 5.8 3.6 8a3.6 3.6 0 0 1 -7.2 0c0 -2.2 1.4 -4.4 3.6 -8z" fill="#9FD3F5" stroke="#1B2440" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="sparks" opacity="0"><path d="M88.6 35 l4.2 -4.8 M91.4 43.6 l6.4 -1.4 M88.6 26.8 l2.4 -5.6" fill="none" stroke="#F2B43A" stroke-width="3" stroke-linecap="round"/></g></svg>
+<div style="min-width: 0">
+<div style="font-size: 11px; font-weight: 800; letter-spacing: 0.04em; color: #2F4FD0">HABLAR · GUARANÍ EN VOZ ALTA</div>
+<h1 id="hab-menu-title" style="margin: 2px 0 0; font-size: 26px; font-weight: 800; line-height: 1.25">Escuchá, elegí y repetí</h1>
+</div>
+</div>
+<p style="flex-shrink: 0; margin: 0; font-size: 14px; font-weight: 500; line-height: 1.5; color: #5A6382">Los teléfonos todavía no reconocen el guaraní hablado. Por eso acá no te corrige una máquina: escuchás y elegís, o te grabás y comparás tu voz con el modelo.</p>
+<div style="flex-shrink: 0; display: flex; flex-direction: column; gap: 8px">
+<h2 id="hab-ways" style="margin: 0; font-size: 12px; font-weight: 800; color: #5A6382">Cómo jugar</h2>
+<div role="group" aria-labelledby="hab-ways" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{ ways }}" as="w" hint-placeholder-count="2">
+<button onClick="{{ w.pick }}" aria-pressed="{{ w.on }}" style="text-align: left; padding: 10px 12px 12px; box-sizing: border-box; border-radius: 18px; display: flex; flex-direction: column; gap: 4px; border: {{ w.border }}; background: {{ w.bg }}; box-shadow: {{ w.shadow }}">
+<sc-if value="{{ w.isPick }}" hint-placeholder-val="{{ true }}"><svg viewBox="0 0 140 84" width="100%" height="70" aria-hidden="true" style="border-radius: 12px; background: #F4F5F9"><path d="M38 6v10M38 24v6M98 2v10M98 20v6" stroke="#C9D0E3" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="1 5"/><rect x="16" y="30" width="44" height="22" rx="7" fill="#FFFFFF" stroke="#1B2440" stroke-width="2.4"/><rect x="78" y="26" width="44" height="22" rx="7" fill="#FFFFFF" stroke="#1B2440" stroke-width="2.4"/><path d="M28 41h20M90 37h20" stroke="#1B2440" stroke-width="3" stroke-linecap="round"/><path d="M58 58c4 6 4 12 0 18M64 61c3 4 3 9 0 13" stroke="#2F4FD0" stroke-width="2.4" fill="none" stroke-linecap="round"/><g transform="translate(74.6 52.6) scale(0.355)"><g transform="translate(4.4 4.6) scale(0.9)"><path d="M18.31 69.02C16.68 70.59 14.66 72.54 13.44 73.72C12.22 74.9 11.53 75.66 11.01 76.09C10.48 76.52 10.61 76.34 10.28 76.3C9.95 76.26 9.33 76.14 9.04 75.85C8.75 75.56 8.66 75.06 8.54 74.55C8.43 74.04 8.38 73.04 8.35 72.79C8.32 72.54 7.84 73.29 8.35 73.05C8.87 72.82 10.85 72.48 11.45 71.4C12.05 70.32 12.64 67.63 11.96 66.56C11.28 65.49 8.52 65.09 7.35 65C6.18 64.91 6.01 65.21 4.92 66.05C3.84 66.88 1.64 68.42 0.85 70.01C0.06 71.59 -0.01 73.66 0.21 75.55C0.42 77.44 1.09 79.76 2.16 81.35C3.24 82.93 4.71 84.32 6.64 85.08C8.58 85.84 11.46 86.34 13.79 85.91C16.12 85.47 18.63 83.61 20.61 82.45C22.59 81.3 24 80.14 25.69 78.98Z" fill="#EDC27C" stroke="#1B2440" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><path d="M33.4 50.6 C30 45.6 26.2 42.6 22 41.4 C17.4 40 15.2 35.8 17.4 32.2 C19.6 28.6 24.4 28.4 28 30.8 C33.6 34.6 38 40.6 41.2 47 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><path d="M16.2 71C16.03 66.77 16.93 59.43 19.4 55C21.87 50.57 26.73 46.6 31 44.4C35.27 42.2 40.5 41.67 45 41.8C49.5 41.93 54.47 43.07 58 45.2C61.53 47.33 64.5 50.97 66.2 54.6C67.9 58.23 68.67 62.83 68.2 67C67.73 71.17 66.43 76.5 63.4 79.6C60.37 82.7 55.17 84.63 50 85.6C44.83 86.57 37.33 86.27 32.4 85.4C27.47 84.53 23.1 82.8 20.4 80.4C17.7 78 16.37 75.23 16.2 71Z" fill="#EDC27C"/><path d="M62.47 48.97C63.65 51.32 65.05 53.84 66 56C66.95 58.16 67.46 59.96 68.19 61.95C68.38 63.64 68.38 65.35 68.2 67C67.73 71.17 66.43 76.5 63.4 79.6C60.37 82.7 55.17 84.63 50 85.6C44.83 86.57 37.33 86.27 32.4 85.4C29.93 84.97 27.61 84.32 25.56 83.48C25.84 79.65 26.43 75.91 26.4 72C26.37 68.09 25.06 64.35 25.4 60C25.74 55.65 27.42 50.6 28.42 45.9C29.29 45.34 30.16 44.83 31 44.4C35.27 42.2 40.5 41.67 45 41.8C49.5 41.93 54.47 43.07 58 45.2C59.63 46.19 61.15 47.49 62.47 48.97Z" fill="#2A2120"/><path d="M16.2 71C16.03 66.77 16.93 59.43 19.4 55C21.87 50.57 26.73 46.6 31 44.4C35.27 42.2 40.5 41.67 45 41.8C49.5 41.93 54.47 43.07 58 45.2C61.53 47.33 64.5 50.97 66.2 54.6C67.9 58.23 68.67 62.83 68.2 67C67.73 71.17 66.43 76.5 63.4 79.6C60.37 82.7 55.17 84.63 50 85.6C44.83 86.57 37.33 86.27 32.4 85.4C27.47 84.53 23.1 82.8 20.4 80.4C17.7 78 16.37 75.23 16.2 71Z" fill="none" stroke="#1B2440" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><path d="M53.49 53.49C54.86 53.76 56.79 53.34 57.92 52.58C59.05 51.82 59.79 50.75 60.29 48.91C60.79 47.07 60.51 43.96 60.91 41.55C61.31 39.14 62.53 36.28 62.7 34.43C62.87 32.58 62.65 31.49 61.94 30.43C61.23 29.38 59.7 28.35 58.43 28.1C57.16 27.85 55.36 28.24 54.3 28.95C53.25 29.66 52.83 30.62 52.1 32.37C51.37 34.11 50.44 37.03 49.91 39.42C49.38 41.81 48.94 44.76 48.91 46.69C48.88 48.62 48.97 49.86 49.73 50.99C50.49 52.12 52.13 53.23 53.49 53.49Z" fill="#EDC27C" stroke="#1B2440" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><path d="M62.47 32.26C62.2 31.04 61.17 29.61 60.13 28.95C59.1 28.3 57.58 28.33 56.26 28.33C54.94 28.33 53.51 28.57 52.19 28.93C50.87 29.3 49.49 29.91 48.35 30.52C47.21 31.13 45.97 31.62 45.36 32.57C44.76 33.53 44.47 35.13 44.72 36.25C44.97 37.37 45.93 38.71 46.88 39.31C47.84 39.92 49.2 39.98 50.45 39.88C51.7 39.78 53.04 38.92 54.39 38.69C55.74 38.46 57.31 38.88 58.54 38.47C59.77 38.06 61.12 37.28 61.77 36.25C62.43 35.22 62.74 33.48 62.47 32.26Z" fill="#EDC27C" stroke="#1B2440" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(74 71.4) rotate(-6) scale(1.1)"><path d="M-8.6 -5.8 C-13.6 -8.4 -14.2 -13.6 -10 -14.6 C-5.8 -15.4 -3.6 -11.6 -4.4 -7.2 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="4.09" stroke-linejoin="round" stroke-linecap="round"/><path d="M-10.4 -5.8 C-11.8 -8.6 -11.4 -11.6 -9.4 -12 C-7.4 -12.4 -6.2 -10.2 -6.6 -7.4 Z" fill="#D49A55"/><path d="M-10.4 2.4C-10.53 0.53 -10.67 -2.4 -10 -4.4C-9.33 -6.4 -8.03 -8.43 -6.4 -9.6C-4.77 -10.77 -2.2 -11.43 -0.2 -11.4C1.8 -11.37 4.1 -10.37 5.6 -9.4C7.1 -8.43 7.9 -7.03 8.8 -5.6C9.7 -4.17 9.87 -1.9 11 -0.8C12.13 0.3 14.03 0.4 15.6 1C17.17 1.6 19.17 2.14 20.4 2.8C21.63 3.46 23.2 4.44 23.8 5.4C24.4 6.36 24.76 8.21 24.4 9.2C24.04 10.19 22.66 11.58 21.4 12C20.14 12.42 17.8 11.93 16 12C14.2 12.07 12.5 12.2 10.6 12.4C8.7 12.6 6.57 13.13 4.6 13.2C2.63 13.27 0.5 13.3 -1.2 12.8C-2.9 12.3 -4.27 11.2 -5.6 10.2C-6.93 9.2 -8.4 8.1 -9.2 6.8C-10 5.5 -10.27 4.27 -10.4 2.4Z" fill="#EDC27C" stroke="#1B2440" stroke-width="4.55" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="3" cy="-1.6" rx="3.9" ry="3.8" fill="#C98E4E"/><path d="M3.57 -1.76C3.61 -1.73 3.65 -1.71 3.68 -1.67C3.72 -1.63 3.75 -1.59 3.77 -1.53C3.8 -1.48 3.82 -1.42 3.82 -1.36C3.83 -1.29 3.83 -1.22 3.81 -1.15C3.8 -1.08 3.77 -1.01 3.73 -0.94C3.69 -0.87 3.64 -0.81 3.58 -0.75C3.52 -0.69 3.45 -0.63 3.37 -0.59C3.29 -0.55 3.19 -0.51 3.1 -0.49C3 -0.47 2.89 -0.46 2.79 -0.47C2.68 -0.48 2.57 -0.5 2.46 -0.54C2.35 -0.58 2.24 -0.64 2.15 -0.71C2.05 -0.78 1.95 -0.87 1.87 -0.97C1.79 -1.07 1.72 -1.19 1.67 -1.31C1.61 -1.44 1.57 -1.58 1.55 -1.72C1.54 -1.86 1.53 -2.01 1.55 -2.16C1.57 -2.31 1.62 -2.47 1.68 -2.61C1.74 -2.76 1.82 -2.91 1.93 -3.04C2.03 -3.16 2.16 -3.29 2.3 -3.39C2.44 -3.49 2.6 -3.59 2.76 -3.65C2.93 -3.72 3.12 -3.76 3.31 -3.78C3.49 -3.8 3.69 -3.8 3.89 -3.77C4.08 -3.74 4.28 -3.68 4.47 -3.6C4.65 -3.51 4.84 -3.4 5 -3.27C5.16 -3.14 5.32 -2.97 5.44 -2.8C5.57 -2.62 5.68 -2.42 5.76 -2.2C5.84 -1.99 5.9 -1.76 5.92 -1.53C5.94 -1.3 5.94 -1.05 5.9 -0.81C5.86 -0.57 5.76 -0.34 5.68 -0.1" fill="none" stroke="#1B2440" stroke-width="2.36" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="5.4" cy="5" rx="2.6" ry="1.7" fill="#F08CA5"/><ellipse cx="20.4" cy="7.8" rx="1.6" ry="1.9" transform="rotate(15 20.4 7.8)" fill="#1B2440"/></g><circle cx="40.4" cy="65.4" r="11.6" fill="#FFFFFF" stroke="#1B2440" stroke-width="4.2"/><path d="M40.4 56.12V74.68M31.12 65.4H49.68M33.79 58.79L47.01 72.01M47.01 58.79L33.79 72.01" fill="none" stroke="#C2336F" stroke-width="2.6" stroke-linecap="round"/><circle cx="40.4" cy="65.4" r="3.6" fill="#C2336F"/></g></g><path d="M4 82h132" stroke="#C2336F" stroke-width="3" stroke-linecap="round"/></svg></sc-if>
+<sc-if value="{{ w.isCompare }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 140 84" width="100%" height="70" aria-hidden="true" style="border-radius: 12px; background: #F4F5F9"><rect x="70" y="14" width="56" height="7" rx="3" fill="#C9D0E3"/><rect x="72" y="24" width="52" height="20" rx="7" fill="#FFFFFF" stroke="#1B2440" stroke-width="2.4"/><path d="M82 34h32" stroke="#1B2440" stroke-width="3" stroke-linecap="round"/><path d="M40 60 C46 30 70 18 84 12" stroke="#2F4FD0" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-dasharray="1 5"/><g transform="translate(19.2 47) scale(0.4)"><path d="M24.8 58.46C22.5 60.01 20.2 61.32 17.9 63.1C15.59 64.88 12.58 67.38 10.95 69.14C9.33 70.9 8.67 72.85 8.15 73.66C7.64 74.46 7.73 73.72 7.86 73.98C7.99 74.24 8.82 75.46 8.95 75.23C9.08 75 8.71 73.03 8.63 72.58C8.55 72.13 7.93 72.85 8.48 72.53C9.02 72.22 11.25 71.82 11.91 70.68C12.57 69.54 13.13 66.81 12.42 65.71C11.72 64.62 9.05 64.11 7.69 64.12C6.33 64.13 5.46 64.55 4.28 65.79C3.11 67.03 1.16 69.48 0.64 71.58C0.12 73.67 0.05 76.5 1.18 78.36C2.31 80.23 5.16 82.44 7.39 82.77C9.62 83.1 12.64 81.52 14.56 80.35C16.48 79.19 17.42 77.01 18.91 75.77C20.4 74.52 21.45 73.92 23.49 72.89C25.54 71.85 28.63 70.66 31.2 69.54Z" fill="#EDC27C" stroke="#1B2440" stroke-width="5.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M28.4 68 C27.2 75 27.2 79.6 29.4 82 C31.6 84 38.6 83.6 41.4 82.6 C43.4 81.8 43 79.4 40.8 79 L38.8 78.6 L40 68 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="5.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M24.6 70.4C22.73 67.67 21.9 63.9 22.4 60.4C22.9 56.9 24.93 52.23 27.6 49.4C30.27 46.57 34.67 44.63 38.4 43.4C42.13 42.17 46.4 42 50 42C53.6 42 56.77 42 60 43.4C63.23 44.8 66.97 47.47 69.4 50.4C71.83 53.33 74.03 57.63 74.6 61C75.17 64.37 74.63 67.97 72.8 70.6C70.97 73.23 67.73 75.5 63.6 76.8C59.47 78.1 53 78.4 48 78.4C43 78.4 37.5 78.13 33.6 76.8C29.7 75.47 26.47 73.13 24.6 70.4Z" fill="#EDC27C"/><path d="M58.4 42.82C59.74 45.14 60.73 47.17 62.4 49.8C64.07 52.43 66.33 56.33 68.4 58.6C70.47 60.87 72.68 61.8 74.81 63.4C74.84 66.01 74.2 68.59 72.8 70.6C70.97 73.23 67.73 75.5 63.6 76.8C59.47 78.1 53 78.4 48 78.4C46.69 78.4 45.34 78.38 44 78.33C41.13 76.09 37.67 74.42 35.4 71.6C33.13 68.78 31.57 64.57 30.4 61.4C29.23 58.23 28.66 54.79 28.4 52.6C28.14 50.41 28.68 49.71 28.82 48.26C31.49 46.04 35.19 44.46 38.4 43.4C42.13 42.17 46.4 42 50 42C53.01 42 55.71 42 58.4 42.82Z" fill="#2A2120"/><path d="M24.6 70.4C22.73 67.67 21.9 63.9 22.4 60.4C22.9 56.9 24.93 52.23 27.6 49.4C30.27 46.57 34.67 44.63 38.4 43.4C42.13 42.17 46.4 42 50 42C53.6 42 56.77 42 60 43.4C63.23 44.8 66.97 47.47 69.4 50.4C71.83 53.33 74.03 57.63 74.6 61C75.17 64.37 74.63 67.97 72.8 70.6C70.97 73.23 67.73 75.5 63.6 76.8C59.47 78.1 53 78.4 48 78.4C43 78.4 37.5 78.13 33.6 76.8C29.7 75.47 26.47 73.13 24.6 70.4Z" fill="none" stroke="#1B2440" stroke-width="5.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M63.2 61.4C64.7 61.27 67.5 61.67 68.6 63.2C69.7 64.73 69.47 68.27 69.8 70.6C70.13 72.93 69.87 75.8 70.6 77.2C71.33 78.6 73.4 78.13 74.2 79C75 79.87 75.78 81.96 75.4 82.4C75.02 82.84 71.7 83.32 70.4 83.4C69.1 83.48 63.4 83.48 62.4 83.2C61.4 82.92 60.73 82.63 60.4 80.6C60.07 78.57 60.53 73.77 60.4 71C60.27 68.23 59.13 65.6 59.6 64C60.07 62.4 61.7 61.53 63.2 61.4Z" fill="#EDC27C" stroke="#1B2440" stroke-width="5.6" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(71 43.6) rotate(8) scale(1.12)"><path d="M-8.6 -5.8 C-13.6 -8.4 -14.2 -13.6 -10 -14.6 C-5.8 -15.4 -3.6 -11.6 -4.4 -7.2 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/><path d="M-10.4 -5.8 C-11.8 -8.6 -11.4 -11.6 -9.4 -12 C-7.4 -12.4 -6.2 -10.2 -6.6 -7.4 Z" fill="#D49A55"/><path d="M-10.4 2.4C-10.53 0.53 -10.67 -2.4 -10 -4.4C-9.33 -6.4 -8.03 -8.43 -6.4 -9.6C-4.77 -10.77 -2.2 -11.43 -0.2 -11.4C1.8 -11.37 4.1 -10.37 5.6 -9.4C7.1 -8.43 7.9 -7.03 8.8 -5.6C9.7 -4.17 9.87 -1.9 11 -0.8C12.13 0.3 14.03 0.4 15.6 1C17.17 1.6 19.17 2.14 20.4 2.8C21.63 3.46 23.2 4.44 23.8 5.4C24.4 6.36 24.76 8.21 24.4 9.2C24.04 10.19 22.66 11.58 21.4 12C20.14 12.42 17.8 11.93 16 12C14.2 12.07 12.5 12.2 10.6 12.4C8.7 12.6 6.57 13.13 4.6 13.2C2.63 13.27 0.5 13.3 -1.2 12.8C-2.9 12.3 -4.27 11.2 -5.6 10.2C-6.93 9.2 -8.4 8.1 -9.2 6.8C-10 5.5 -10.27 4.27 -10.4 2.4Z" fill="#EDC27C" stroke="#1B2440" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="3" cy="-1.6" rx="3.9" ry="3.8" fill="#C98E4E"/><circle cx="3.2" cy="-1.6" r="2.6" fill="#1B2440"/><circle cx="4.1" cy="-2.6" r="1" fill="#FFFFFF"/><ellipse cx="5.4" cy="5" rx="2.6" ry="1.7" fill="#F08CA5"/><ellipse cx="20.4" cy="7.8" rx="1.6" ry="1.9" transform="rotate(15 20.4 7.8)" fill="#1B2440"/></g><circle cx="45.4" cy="59.8" r="11.4" fill="#FFFFFF" stroke="#1B2440" stroke-width="4.2"/><path d="M45.4 50.68V68.92M36.28 59.8H54.52M38.9 53.3L51.9 66.3M51.9 53.3L38.9 66.3" fill="none" stroke="#C2336F" stroke-width="2.6" stroke-linecap="round"/><circle cx="45.4" cy="59.8" r="3.6" fill="#C2336F"/></g><path d="M4 81h132" stroke="#C2336F" stroke-width="3" stroke-linecap="round"/></svg></sc-if>
+<span style="font-size: 16px; font-weight: 800; line-height: 1.25">{{ w.title }}</span>
+<span style="font-size: 12px; font-weight: 700; line-height: 1.4; color: #5A6382">{{ w.desc }}</span>
+</button>
+</sc-for>
+</div>
+</div>
+<div style="flex-shrink: 0; padding: 12px 14px; border-radius: 16px; background: #E8ECFB; font-size: 13px; font-weight: 500; line-height: 1.45">En el lienzo no hay micrófono: en <b style="font-weight: 800">Repetí y compará</b>, el botón «Simular toma» hace de grabación. Los audios todavía no están grabados, así que cada botón de sonido se ilumina sin sonar.</div>
+<div style="flex-shrink: 0; margin-top: auto; padding-bottom: 8px">
+<button onClick="{{ start }}" style="width: 100%; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-size: 17px; font-weight: 800"><span lang="gn">Ñepyrũ</span> · Empezar</button>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ inRound }}" hint-placeholder-val="{{ true }}">
+<section aria-label="{{ roundLabel }}" style="position: absolute; left: 0; top: 0; width: 390px; height: 844px; background-color: #F4F5F9; background-image: linear-gradient(#E6E9F3 1px, transparent 1px), linear-gradient(90deg, #E6E9F3 1px, transparent 1px); background-size: {{ wd.grid }} {{ wd.grid }}; background-position: {{ wd.paperPos }}">
+
+<div onPointerDown="{{ worldTap }}" style="position: absolute; left: 0; top: 0; width: 240px; height: {{ wd.h }}; transform: scale({{ wd.s }}); transform-origin: 0 0">
+<div style="position: absolute; left: 0; top: 0; width: 240px; height: 1px; transform: translateY({{ wd.cam }})">
+
+<div aria-hidden="true" style="position: absolute; left: -10px; top: {{ wd.lineY }}; width: 260px; height: 5px; border-radius: 3px; background: #C2336F"></div>
+
+<sc-for list="{{ wd.ledges }}" as="l" hint-placeholder-count="0">
+<div aria-hidden="true" style="position: absolute; left: {{ l.plankL }}; top: {{ l.plankT }}; width: 84px; height: 9px; border-radius: 4px; background: #C9D0E3"></div>
+<div lang="gn" aria-hidden="{{ l.hidden }}" style="position: absolute; left: {{ l.left }}; top: {{ l.top }}; width: {{ l.w }}; height: {{ l.h }}; box-sizing: border-box; padding: 12px; border-radius: 12px; border: {{ l.border }}; background: {{ l.bg }}; box-shadow: {{ l.shadow }}; outline: {{ l.frame }}; outline-offset: 3px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: 'Andika', 'Nunito', sans-serif; font-weight: 700; font-size: {{ l.fs }}; line-height: 1.18; color: {{ l.color }}; opacity: {{ l.alpha }}">
+<sc-for list="{{ l.lines }}" as="t" hint-placeholder-count="1"><div style="white-space: nowrap">{{ t.t }}</div></sc-for>
+<div aria-hidden="true" style="position: absolute; left: {{ l.nodeL }}; top: -18px; width: 48px; height: 48px; opacity: {{ l.nodeO }}; transform: rotate(-9deg) scale(0.62)"><svg viewBox="-24 -24 48 48" width="48" height="48"><path d="{{ ring.spokes }}" stroke="#C2336F" stroke-width="1" stroke-linecap="round" opacity="{{ l.cleanO }}"/><path d="{{ ring.rim }}" fill="none" stroke="#C2336F" stroke-width="1.8" stroke-linejoin="round" opacity="{{ l.cleanO }}"/><circle r="15" fill="#FFFFFF" stroke="{{ l.ring }}" stroke-width="2.5"/><path d="M-6.8 0.6l4.4 4.4 9.4-9.4" fill="none" stroke="#B02A63" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" opacity="{{ l.tickO }}"/><path d="M0 7.5V-7.5M-6 -1.5l6-6 6 6" fill="none" stroke="#0B7A6B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="{{ l.upO }}"/></svg></div>
+<div aria-hidden="true" style="position: absolute; right: 4px; top: 6px; width: 14px; height: 3px; border-radius: 2px; background: #C9D0E3; opacity: {{ l.skipO }}"></div>
+</div>
+</sc-for>
+<sc-if value="{{ wd.summitOn }}" hint-placeholder-val="{{ false }}"><div aria-hidden="true" style="position: absolute; left: 70px; top: {{ wd.summitT }}; width: 100px; height: 10px; border-radius: 5px; background: #F2B43A; border: 2px solid #1B2440; box-sizing: border-box"></div></sc-if>
+
+<sc-for list="{{ wd.nodes }}" as="n" hint-placeholder-count="0">
+<div aria-hidden="true" style="position: absolute; left: {{ n.left }}; top: {{ n.top }}; width: 48px; height: 48px; opacity: {{ n.alpha }}; transform: rotate(-9deg) scale({{ n.k }})"><svg viewBox="-24 -24 48 48" width="48" height="48"><path d="{{ ring.spokes }}" stroke="#C2336F" stroke-width="1" stroke-linecap="round" opacity="{{ n.cleanO }}"/><path d="{{ ring.rim }}" fill="none" stroke="#C2336F" stroke-width="1.8" stroke-linejoin="round" opacity="{{ n.cleanO }}"/><circle r="15" fill="#FFFFFF" stroke="{{ n.ring }}" stroke-width="2.5"/><path d="M-6.8 0.6l4.4 4.4 9.4-9.4" fill="none" stroke="#B02A63" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" opacity="{{ n.tickO }}"/><path d="M0 7.5V-7.5M-6 -1.5l6-6 6 6" fill="none" stroke="#0B7A6B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="{{ n.upO }}"/></svg></div>
+</sc-for>
+
+<sc-for list="{{ wd.gone }}" as="g" hint-placeholder-count="0">
+<div aria-hidden="true" lang="gn" style="position: absolute; left: {{ g.left }}; top: {{ g.top }}; width: {{ g.w }}; height: {{ g.h }}; box-sizing: border-box; border-radius: 12px; border: 1.23px solid #C9D0E3; background: #FFFFFF; opacity: {{ g.alpha }}; transform: rotate({{ g.rot }}); display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: 'Andika', 'Nunito', sans-serif; font-weight: 700; font-size: {{ g.fs }}; color: #5A6382; white-space: nowrap">{{ g.gn }}<div style="position: absolute; left: {{ g.badgeL }}; top: -14px; width: 40px; height: 40px; opacity: {{ g.badgeA }}; transform: {{ g.badgeTf }}"><svg viewBox="-20 -20 40 40" width="40" height="40"><circle r="12" fill="#FFFFFF" stroke="{{ g.ring }}" stroke-width="2"/><path d="M-5.4 0.5l3.5 3.5 7.5-7.5" fill="none" stroke="#B02A63" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" opacity="{{ g.tickO }}"/><path d="M0 6V-6M-4.8 -1.2l4.8-4.8 4.8 4.8" fill="none" stroke="#0B7A6B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" opacity="{{ g.upO }}"/></svg></div></div>
+</sc-for>
+<sc-for list="{{ wd.rings }}" as="g" hint-placeholder-count="0"><div aria-hidden="true" style="position: absolute; left: {{ g.left }}; top: {{ g.top }}; width: {{ g.d }}; height: {{ g.d }}; box-sizing: border-box; border-radius: 50%; border: {{ g.bw }} solid #F2B43A; opacity: {{ g.alpha }}"></div></sc-for>
+<sc-for list="{{ wd.shards }}" as="s" hint-placeholder-count="0"><div aria-hidden="true" style="position: absolute; left: {{ s.left }}; top: {{ s.top }}; width: 1px; height: 1px; opacity: {{ s.alpha }}; transform: rotate({{ s.rot }})"><svg width="1" height="1" style="overflow: visible"><polygon points="{{ s.pts }}" fill="#FFFFFF" stroke="#1B2440" stroke-width="2" stroke-linejoin="round"/></svg></div></sc-for>
+
+<sc-if value="{{ bubUnder }}" hint-placeholder-val="{{ false }}">
+<div aria-hidden="true" style="position: absolute; left: {{ bub.left }}; top: {{ bub.top }}; transform: translate(-50%, -100%) scale({{ bub.pop }}); transform-origin: 50% 100%">
+<div style="position: relative; padding: 3px 8px 4px; border-radius: 10px; background: #FFFFFF; border: 1.25px solid #1B2440; box-shadow: 0 1.8px 0 #1B2440; text-align: center; white-space: nowrap; line-height: 1.2">
+<sc-if value="{{ bub.hasGn }}" hint-placeholder-val="{{ true }}"><div lang="gn" style="font-family: 'Andika', 'Nunito', sans-serif; font-size: 8px; font-weight: 700; color: #1B2440">{{ bub.gn }}</div></sc-if>
+<div style="font-size: {{ bub.esSize }}; font-weight: 800; color: {{ bub.esColor }}">{{ bub.es }}</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ umb.on }}" hint-placeholder-val="{{ false }}"><svg aria-hidden="true" width="1" height="1" style="position: absolute; left: {{ umb.left }}; top: {{ umb.top }}; overflow: visible"><path d="{{ umb.stick }}" stroke="#1B2440" stroke-width="2" fill="none"/><path d="{{ umb.d }}" fill="#C2336F" stroke="#1B2440" stroke-width="2" stroke-linejoin="round"/><path d="{{ umb.ribs }}" stroke="#F2B43A" stroke-width="1.2" fill="none"/></svg></sc-if>
+
+<div aria-hidden="true" style="position: absolute; left: {{ masc.shL }}; top: {{ masc.shT }}; width: {{ masc.shW }}; height: {{ masc.shH }}; border-radius: 50%; background: rgba(27, 36, 64, 0.3)"></div>
+<div aria-hidden="true" style="position: absolute; left: {{ masc.left }}; top: {{ masc.top }}; width: 75px; height: 75px; opacity: {{ masc.standO }}; transform-origin: {{ masc.origin }}; transform: {{ masc.tf }}"><svg viewBox="0 0 100 100" width="75" height="75" style="overflow: visible"><path d="M26.17 58.19C24.25 59.48 22.2 60.42 20.4 62.04C18.61 63.66 16.69 66.08 15.39 67.9C14.09 69.73 13.32 71.72 12.61 72.99C11.89 74.26 11.6 74.92 11.08 75.54C10.56 76.16 9.83 76.41 9.5 76.69C9.16 76.96 9.19 77.35 9.05 77.17C8.92 77 8.8 76.55 8.71 75.64C8.62 74.74 8.48 73.06 8.53 71.75C8.59 70.44 8.79 68.87 9.05 67.77C9.32 66.67 9.83 65.74 10.11 65.16C10.4 64.58 10.35 64.3 10.75 64.3C11.15 64.31 11.94 65.19 12.52 65.2C13.11 65.2 14.02 64.77 14.25 64.31C14.47 63.84 14.36 62.98 13.88 62.4C13.39 61.83 12.43 60.85 11.33 60.88C10.24 60.92 8.35 61.65 7.3 62.61C6.25 63.58 5.59 65.22 5.05 66.68C4.5 68.13 4.23 69.81 4.02 71.35C3.81 72.88 3.62 74.32 3.77 75.9C3.92 77.49 3.9 79.66 4.95 80.83C5.99 81.99 8.35 82.81 10.04 82.9C11.73 83 13.51 82.37 15.1 81.42C16.68 80.46 18.26 78.52 19.54 77.17C20.83 75.83 21.75 74.38 22.82 73.34C23.89 72.31 24.48 71.7 25.98 70.97C27.49 70.25 29.88 69.66 31.83 69.01Z" fill="#EDC27C"/><path d="M20.15 70.47C20.74 70.71 20.68 72.05 20.37 72.87C20.06 73.69 18.95 75.26 18.3 75.41C17.66 75.56 16.75 74.41 16.5 73.75C16.25 73.09 16.21 71.97 16.82 71.42C17.43 70.87 19.56 70.23 20.15 70.47Z" fill="#2A2120"/><path d="M10.57 78.66C10.78 79.01 10.58 80.06 10.18 80.29C9.78 80.52 8.67 80.26 8.16 80.04C7.65 79.82 6.99 79.26 7.12 78.95C7.25 78.64 8.37 78.23 8.94 78.18C9.51 78.13 10.36 78.31 10.57 78.66Z" fill="#2A2120"/><path d="M7.66 68.46C7.88 68.64 7.74 69.25 7.49 69.58C7.24 69.91 6.49 70.46 6.18 70.45C5.87 70.44 5.64 69.82 5.64 69.5C5.64 69.18 5.84 68.68 6.18 68.51C6.52 68.34 7.44 68.28 7.66 68.46Z" fill="#2A2120"/><path d="M26.17 58.19C24.25 59.48 22.2 60.42 20.4 62.04C18.61 63.66 16.69 66.08 15.39 67.9C14.09 69.73 13.32 71.72 12.61 72.99C11.89 74.26 11.6 74.92 11.08 75.54C10.56 76.16 9.83 76.41 9.5 76.69C9.16 76.96 9.19 77.35 9.05 77.17C8.92 77 8.8 76.55 8.71 75.64C8.62 74.74 8.48 73.06 8.53 71.75C8.59 70.44 8.79 68.87 9.05 67.77C9.32 66.67 9.83 65.74 10.11 65.16C10.4 64.58 10.35 64.3 10.75 64.3C11.15 64.31 11.94 65.19 12.52 65.2C13.11 65.2 14.02 64.77 14.25 64.31C14.47 63.84 14.36 62.98 13.88 62.4C13.39 61.83 12.43 60.85 11.33 60.88C10.24 60.92 8.35 61.65 7.3 62.61C6.25 63.58 5.59 65.22 5.05 66.68C4.5 68.13 4.23 69.81 4.02 71.35C3.81 72.88 3.62 74.32 3.77 75.9C3.92 77.49 3.9 79.66 4.95 80.83C5.99 81.99 8.35 82.81 10.04 82.9C11.73 83 13.51 82.37 15.1 81.42C16.68 80.46 18.26 78.52 19.54 77.17C20.83 75.83 21.75 74.38 22.82 73.34C23.89 72.31 24.48 71.7 25.98 70.97C27.49 70.25 29.88 69.66 31.83 69.01Z" fill="none" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M28.6 70 C27.4 75.6 27.4 80 29.2 82 Q30.4 83 32.4 83 L40.6 83 Q42.6 83 42.6 81.2 Q42.4 79.6 40.4 79.3 L38.2 78.8 L39.4 70 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M25 70.6C23.07 68 22.07 64.43 22.4 61C22.73 57.57 24.57 52.83 27 50C29.43 47.17 33.43 45.28 37 44C40.57 42.72 45.17 42.53 48.4 42.3C51.63 42.07 54.51 43.19 56.4 42.6C58.29 42.01 59.76 38.77 59.76 38.77C59.76 38.77 62.59 45.03 64.6 47C66.61 48.97 70.78 48.79 71.8 50.6C72.82 52.41 70.44 56.92 70.69 57.83C70.94 58.75 74.42 59.44 74.8 61.6C75.18 63.76 74.87 68.3 73 70.8C71.13 73.3 67.77 75.38 63.6 76.6C59.43 77.82 52.93 78.1 48 78.1C43.07 78.1 37.83 77.85 34 76.6C30.17 75.35 26.93 73.2 25 70.6Z" fill="#EDC27C"/><path d="M60.65 40.62C61.37 42.68 61.81 44.64 62.8 46.8C63.79 48.96 65.4 51.5 66.6 53.6C67.8 55.7 69 57.93 70 59.4C71 60.87 71.79 61.5 72.6 62.4C73.41 63.3 74.13 64.02 74.89 64.83C74.81 65.79 74.65 66.81 74.38 67.78C74.07 68.91 73.62 69.97 73 70.8C72.38 71.63 71.59 72.42 70.66 73.14C69.73 73.87 68.66 74.53 67.47 75.11C66.29 75.69 64.99 76.19 63.6 76.6C62.21 77.01 60.56 77.31 58.8 77.53C57.04 77.75 55.16 77.89 53.31 77.98C51.46 78.07 49.64 78.1 48 78.1C46.42 78.1 44.8 78.07 43.22 78C40.48 76.13 37.24 74.73 35 72.4C32.76 70.07 31.03 66.73 29.8 64C28.57 61.27 28.07 58.33 27.6 56C27.13 53.67 27.2 52 27 50C27.81 49.06 28.8 48.22 29.88 47.47C30.97 46.72 32.15 46.07 33.36 45.5C34.57 44.92 35.81 44.43 37 44C38.19 43.57 39.49 43.27 40.82 43.04C42.15 42.81 43.51 42.67 44.8 42.56C46.09 42.45 47.32 42.38 48.4 42.3C49.48 42.22 50.52 42.3 51.49 42.4C52.46 42.51 53.38 42.66 54.2 42.73C55.03 42.8 55.77 42.8 56.4 42.6C57.03 42.4 57.62 41.91 58.11 41.34C58.61 40.78 59.02 40.13 59.31 39.63C59.6 39.13 59.76 38.77 59.76 38.77C59.76 38.77 60.08 39.46 60.57 40.46C60.6 40.52 60.62 40.57 60.65 40.62Z" fill="#2A2120"/><path d="M70.69 57.83C70.94 58.75 74.42 59.44 74.8 61.6C75.18 63.76 74.87 68.3 73 70.8C71.13 73.3 67.77 75.38 63.6 76.6C59.43 77.82 52.93 78.1 48 78.1C43.07 78.1 37.83 77.85 34 76.6C30.17 75.35 26.93 73.2 25 70.6C23.07 68 22.07 64.43 22.4 61C22.73 57.57 24.57 52.83 27 50C29.43 47.17 33.43 45.28 37 44C40.57 42.72 45.17 42.53 48.4 42.3C51.63 42.07 54.51 43.19 56.4 42.6C58.29 42.01 59.76 38.77 59.76 38.77" fill="none" stroke="#1B2440" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M64.4 60.2C65.4 60.1 66.93 60.83 67.6 62.2C68.27 63.57 68.18 66.33 68.4 68.4C68.62 70.47 68.52 72.93 68.9 74.6C69.28 76.27 69.92 77.57 70.7 78.4C71.48 79.23 73.11 79.11 73.6 79.6C74.09 80.09 74.58 81.82 74.4 82.1C74.22 82.38 72.08 82.94 71.4 83C70.72 83.06 64.84 83.08 64.2 83C63.56 82.92 62.06 82.54 61.8 81.8C61.54 81.06 61.68 77.9 61.6 75.6C61.52 73.3 61.3 70.13 61.3 68C61.3 65.87 61.08 64.1 61.6 62.8C62.12 61.5 63.4 60.3 64.4 60.2Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M70.86 80.04C70.89 80.41 71.14 80.88 71.42 81.11C71.7 81.34 72.09 81.42 72.54 81.44C72.99 81.46 73.61 81.3 74.14 81.22C74.67 81.15 75.31 81.11 75.73 80.99C76.15 80.87 76.46 80.76 76.67 80.51C76.88 80.26 77.02 79.81 76.99 79.47C76.96 79.13 76.73 78.71 76.48 78.5C76.23 78.29 75.91 78.25 75.47 78.21C75.03 78.17 74.4 78.26 73.86 78.28C73.33 78.31 72.7 78.26 72.26 78.36C71.82 78.46 71.45 78.61 71.22 78.89C70.99 79.17 70.83 79.67 70.86 80.04Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><path d="M71.05 81.65C71.04 82.02 71.23 82.51 71.48 82.78C71.73 83.05 72.1 83.18 72.55 83.25C73 83.32 73.62 83.23 74.15 83.22C74.69 83.21 75.33 83.26 75.76 83.2C76.19 83.14 76.51 83.07 76.75 82.84C76.99 82.61 77.19 82.18 77.2 81.84C77.21 81.5 77.04 81.06 76.81 80.82C76.58 80.58 76.27 80.49 75.84 80.4C75.41 80.31 74.78 80.32 74.25 80.28C73.72 80.24 73.1 80.11 72.65 80.15C72.2 80.2 71.82 80.3 71.55 80.55C71.28 80.8 71.06 81.28 71.05 81.65Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(69.6 44.2) rotate(11) scale(1.08)"><path d="M-8.6 -5.8 C-13.6 -8.4 -14.2 -13.6 -10 -14.6 C-5.8 -15.4 -3.6 -11.6 -4.4 -7.2 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.59" stroke-linejoin="round" stroke-linecap="round"/><path d="M-10.4 -5.8 C-11.8 -8.6 -11.4 -11.6 -9.4 -12 C-7.4 -12.4 -6.2 -10.2 -6.6 -7.4 Z" fill="#D49A55"/></g><path d="M59.76 38.77C60.67 37.11 60.91 34.86 62.49 33.8C64.07 32.73 67.14 32.22 69.26 32.36C71.38 32.5 73.7 33.57 75.2 34.62C76.71 35.66 77.46 36.64 78.28 38.62C79.09 40.61 78.76 44.74 80.08 46.52C81.41 48.31 84.33 48.27 86.24 49.33C88.15 50.39 90.34 51.86 91.55 52.88C92.76 53.9 93.24 54.49 93.5 55.45C93.76 56.41 93.58 57.78 93.08 58.64C92.58 59.5 91.47 60.34 90.51 60.6C89.55 60.85 88.67 60.65 87.31 60.17C85.95 59.7 84.12 58.42 82.33 57.77C80.54 57.11 78.12 56.33 76.56 56.27C75 56.21 73.95 57.14 72.98 57.4C72 57.66 71.45 57.69 70.69 57.83C68.51 56.97 66 56.52 64.15 55.24C62.31 53.97 60.68 51.97 59.64 50.18C58.59 48.4 57.85 46.46 57.87 44.56C57.89 42.66 59.13 40.7 59.76 38.77Z" fill="#EDC27C"/><path d="M59.76 38.77C60.67 37.11 60.91 34.86 62.49 33.8C64.07 32.73 67.14 32.22 69.26 32.36C71.38 32.5 73.7 33.57 75.2 34.62C76.71 35.66 77.46 36.64 78.28 38.62C79.09 40.61 78.76 44.74 80.08 46.52C81.41 48.31 84.33 48.27 86.24 49.33C88.15 50.39 90.34 51.86 91.55 52.88C92.76 53.9 93.24 54.49 93.5 55.45C93.76 56.41 93.58 57.78 93.08 58.64C92.58 59.5 91.47 60.34 90.51 60.6C89.55 60.85 88.67 60.65 87.31 60.17C85.95 59.7 84.12 58.42 82.33 57.77C80.54 57.11 78.12 56.33 76.56 56.27C75 56.21 73.95 57.14 72.98 57.4C72 57.66 71.45 57.69 70.69 57.83" fill="none" stroke="#1B2440" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(69.6 44.2) rotate(11) scale(1.08)"><ellipse cx="21.15" cy="8.03" rx="1.25" ry="1.5" transform="rotate(19.09 21.15 8.03)" fill="#1B2440"/><ellipse cx="2.4" cy="-2.4" rx="3.1" ry="3" fill="#C98E4E"/><ellipse cx="3" cy="2.8" rx="2.2" ry="1.35" fill="#F08CA5"/><g data-part="eye-open" opacity="{{ masc.eyeO }}"><ellipse cx="2.4" cy="-2.4" rx="1.95" ry="2.3" fill="#1B2440"/><circle cx="3.08" cy="-3.32" r="0.78" fill="#FFFFFF"/></g><g data-part="eye-closed" opacity="{{ masc.blinkO }}"><path d="M0.2 -2.3 Q2.4 -0.4 4.6 -2.3" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="eye-happy" opacity="{{ masc.happyO }}"><path d="M0.2 -1.5 Q2.4 -5.2 4.6 -1.5" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="mouth-normal" opacity="{{ masc.mouthO }}"><path d="M9.8 6.2 Q7.4 7.5 5.2 5.5" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="mouth-o" opacity="{{ masc.ohO }}"><ellipse cx="7.6" cy="5.9" rx="1.3" ry="1.5" fill="#1B2440"/></g><g data-part="mouth-happy" opacity="{{ masc.happyMouthO }}"><path d="M4.8 4.5 L10.8 4.7 C10.6 6.2 9.4 7.15 7.8 7.15 C6.2 7.15 5.0 6.2 4.8 4.5 Z" fill="#F08CA5"/><path d="M10.8 4.7 C10.6 6.2 9.4 7.15 7.8 7.15 C6.2 7.15 5.0 6.2 4.8 4.5" fill="none" stroke="#1B2440" stroke-width="1.67" stroke-linejoin="round" stroke-linecap="round"/></g></g><circle cx="45" cy="60.2" r="10.5" fill="#FFFFFF" stroke="#1B2440" stroke-width="2.2"/><g class="rosette"><path d="M45 51V69.4M35.8 60.2H54.2M38.5 53.7L51.5 66.7M51.5 53.7L38.5 66.7" fill="none" stroke="#C2336F" stroke-width="1.5" stroke-linecap="round"/><circle cx="45" cy="60.2" r="6.5" fill="none" stroke="#C2336F" stroke-width="1.3"/><circle cx="45" cy="60.2" r="2.8" fill="#C2336F"/></g><g data-part="sweat" opacity="{{ masc.sweatO }}"><path d="M79.8 18.2c2.2 3.6 3.6 5.8 3.6 8a3.6 3.6 0 0 1 -7.2 0c0 -2.2 1.4 -4.4 3.6 -8z" fill="#9FD3F5" stroke="#1B2440" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></g><g data-part="sparks" opacity="{{ masc.sparkO }}"><path d="M88.6 35 l4.2 -4.8 M91.4 43.6 l6.4 -1.4 M88.6 26.8 l2.4 -5.6" fill="none" stroke="#F2B43A" stroke-width="3" stroke-linecap="round"/></g></svg></div>
+<div aria-hidden="true" style="position: absolute; left: {{ masc.downL }}; top: {{ masc.downT }}; width: 75px; height: 75px; opacity: {{ masc.downO }}; transform-origin: 50% 83%; transform: {{ masc.downTf }}"><svg viewBox="0 0 100 100" width="75" height="75"><path d="M22.55 69.25C21.39 70.05 20.11 70.94 19.06 71.66C18.01 72.38 17.15 73.05 16.26 73.57C15.37 74.09 14.52 74.45 13.72 74.79C12.92 75.13 12.12 75.41 11.44 75.62C10.77 75.83 10.03 75.93 9.64 76.04C9.25 76.16 9.26 76.3 9.12 76.33C8.97 76.36 8.92 76.38 8.77 76.23C8.63 76.07 8.33 75.69 8.24 75.39C8.15 75.1 8.17 74.76 8.21 74.44C8.24 74.12 8.37 73.69 8.45 73.5C8.53 73.31 8.39 73.41 8.7 73.28C9.01 73.15 9.94 73.13 10.32 72.71C10.69 72.3 11.11 71.32 10.94 70.81C10.76 70.31 9.79 69.85 9.28 69.69C8.78 69.52 8.51 69.62 7.89 69.82C7.27 70.02 6.17 70.35 5.55 70.9C4.92 71.44 4.46 72.27 4.13 73.08C3.8 73.9 3.57 74.9 3.56 75.81C3.55 76.72 3.64 77.64 4.06 78.55C4.49 79.46 5.22 80.61 6.08 81.27C6.94 81.94 8.21 82.28 9.22 82.53C10.23 82.78 11.11 82.76 12.16 82.78C13.2 82.81 14.31 82.81 15.51 82.69C16.7 82.56 18 82.34 19.34 82.03C20.69 81.71 22.24 81.21 23.59 80.79C24.94 80.38 26.16 79.96 27.45 79.55Z" fill="#EDC27C"/><path d="M17.68 78.97C17.57 79.46 16.24 79.91 15.36 80.01C14.48 80.11 12.69 79.95 12.41 79.57C12.13 79.19 13.06 78.16 13.66 77.75C14.26 77.34 15.36 76.89 16.03 77.09C16.7 77.29 17.79 78.48 17.68 78.97Z" fill="#2A2120"/><path d="M8.49 79.39C8.17 79.6 6.98 79.63 6.62 79.39C6.26 79.15 6.23 78.33 6.33 77.93C6.43 77.54 6.85 76.98 7.22 77.02C7.59 77.06 8.35 77.77 8.56 78.16C8.77 78.55 8.81 79.19 8.49 79.39Z" fill="#2A2120"/><path d="M22.55 69.25C21.39 70.05 20.11 70.94 19.06 71.66C18.01 72.38 17.15 73.05 16.26 73.57C15.37 74.09 14.52 74.45 13.72 74.79C12.92 75.13 12.12 75.41 11.44 75.62C10.77 75.83 10.03 75.93 9.64 76.04C9.25 76.16 9.26 76.3 9.12 76.33C8.97 76.36 8.92 76.38 8.77 76.23C8.63 76.07 8.33 75.69 8.24 75.39C8.15 75.1 8.17 74.76 8.21 74.44C8.24 74.12 8.37 73.69 8.45 73.5C8.53 73.31 8.39 73.41 8.7 73.28C9.01 73.15 9.94 73.13 10.32 72.71C10.69 72.3 11.11 71.32 10.94 70.81C10.76 70.31 9.79 69.85 9.28 69.69C8.78 69.52 8.51 69.62 7.89 69.82C7.27 70.02 6.17 70.35 5.55 70.9C4.92 71.44 4.46 72.27 4.13 73.08C3.8 73.9 3.57 74.9 3.56 75.81C3.55 76.72 3.64 77.64 4.06 78.55C4.49 79.46 5.22 80.61 6.08 81.27C6.94 81.94 8.21 82.28 9.22 82.53C10.23 82.78 11.11 82.76 12.16 82.78C13.2 82.81 14.31 82.81 15.51 82.69C16.7 82.56 18 82.34 19.34 82.03C20.69 81.71 22.24 81.21 23.59 80.79C24.94 80.38 26.16 79.96 27.45 79.55Z" fill="none" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M29.6 51.4 C26.8 47.8 24 45.4 20.8 44.4 C17.2 43.2 15.6 40 17.2 37.2 C18.8 34.4 22.4 34 25.2 36 C29 38.8 32.2 43.4 34.8 48.4 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M18.8 71C18.13 67.13 18.8 60.63 20.6 56.6C22.4 52.57 25.97 48.93 29.6 46.8C33.23 44.67 38.2 44 42.4 43.8C46.6 43.6 51.33 44.2 54.8 45.6C58.27 47 61.2 49.23 63.2 52.2C65.2 55.17 66.57 59.5 66.8 63.4C67.03 67.3 66.57 72.47 64.6 75.6C62.63 78.73 59.27 81.03 55 82.2C50.73 83.37 44.07 83 39 82.6C33.93 82.2 27.97 81.73 24.6 79.8C21.23 77.87 19.47 74.87 18.8 71Z" fill="#EDC27C"/><path d="M62.54 51.29C63.36 52.99 64.32 54.68 65 56.4C65.68 58.12 66.08 59.87 66.62 61.6C66.7 62.21 66.76 62.81 66.8 63.4C66.88 64.7 66.88 66.14 66.77 67.6C66.66 69.06 66.45 70.54 66.1 71.91C65.74 73.29 65.26 74.56 64.6 75.6C63.94 76.64 63.13 77.6 62.19 78.44C61.24 79.29 60.15 80.04 58.95 80.67C57.74 81.3 56.42 81.81 55 82.2C53.58 82.59 51.89 82.81 50.08 82.91C48.27 83.01 46.35 83 44.45 82.93C42.56 82.86 40.69 82.73 39 82.6C37.31 82.47 35.52 82.33 33.76 82.13C32 81.93 30.27 81.67 28.7 81.3C27.63 81.04 26.63 80.74 25.75 80.37C25.7 77.38 25.69 74.63 25.6 71.4C25.51 68.17 25.02 64.76 25.2 61C25.38 57.24 26.2 52.89 26.71 48.83C27.64 48.06 28.62 47.38 29.6 46.8C30.81 46.09 32.17 45.54 33.6 45.12C35.03 44.7 36.53 44.4 38.02 44.19C39.51 43.99 41 43.87 42.4 43.8C43.8 43.73 45.26 43.76 46.71 43.87C48.16 43.98 49.61 44.18 50.98 44.47C52.35 44.76 53.64 45.13 54.8 45.6C55.96 46.07 57.05 46.63 58.07 47.27C59.1 47.92 60.04 48.66 60.9 49.48C61.49 50.04 62.04 50.65 62.54 51.29Z" fill="#2A2120"/><path d="M18.8 71C18.13 67.13 18.8 60.63 20.6 56.6C22.4 52.57 25.97 48.93 29.6 46.8C33.23 44.67 38.2 44 42.4 43.8C46.6 43.6 51.33 44.2 54.8 45.6C58.27 47 61.2 49.23 63.2 52.2C65.2 55.17 66.57 59.5 66.8 63.4C67.03 67.3 66.57 72.47 64.6 75.6C62.63 78.73 59.27 81.03 55 82.2C50.73 83.37 44.07 83 39 82.6C33.93 82.2 27.97 81.73 24.6 79.8C21.23 77.87 19.47 74.87 18.8 71Z" fill="none" stroke="#1B2440" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M52.09 52.83C52.91 53 54.08 52.76 54.77 52.31C55.46 51.86 55.91 51.47 56.23 50.11C56.55 48.75 56.34 46.1 56.69 44.16C57.04 42.22 58.13 39.8 58.33 38.45C58.53 37.1 58.32 36.7 57.91 36.07C57.5 35.44 56.6 34.83 55.85 34.67C55.1 34.52 54.03 34.73 53.4 35.14C52.77 35.55 52.62 35.87 52.07 37.15C51.53 38.43 50.58 40.88 50.13 42.8C49.68 44.72 49.42 47.28 49.37 48.69C49.32 50.11 49.39 50.6 49.84 51.29C50.29 51.98 51.27 52.66 52.09 52.83Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M58.24 36.79C58 36.06 57.28 35.25 56.6 34.91C55.93 34.57 55.11 34.67 54.19 34.76C53.27 34.85 52.07 35.05 51.08 35.43C50.1 35.81 49.03 36.54 48.28 37.05C47.54 37.56 46.92 37.85 46.61 38.46C46.31 39.07 46.23 40.06 46.45 40.72C46.67 41.38 47.32 42.12 47.93 42.42C48.54 42.73 49.27 42.75 50.12 42.55C50.97 42.35 52 41.51 53.01 41.22C54.03 40.94 55.37 41.16 56.21 40.84C57.05 40.52 57.71 39.96 58.05 39.28C58.39 38.61 58.48 37.52 58.24 36.79Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M49.34 39.6C49.04 39.39 48.52 39.27 48.16 39.33C47.8 39.39 47.47 39.65 47.18 39.96C46.89 40.27 46.67 40.77 46.41 41.17C46.15 41.57 45.82 42 45.65 42.37C45.48 42.74 45.35 43.07 45.4 43.39C45.46 43.72 45.71 44.13 45.98 44.32C46.25 44.52 46.72 44.62 47.04 44.56C47.37 44.51 47.63 44.27 47.93 43.99C48.23 43.71 48.53 43.24 48.82 42.87C49.12 42.5 49.51 42.14 49.7 41.76C49.89 41.39 50.04 40.98 49.98 40.62C49.92 40.26 49.64 39.82 49.34 39.6Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><path d="M49.44 39.82C49.48 39.45 49.32 38.94 49.09 38.66C48.86 38.38 48.46 38.23 48.05 38.13C47.64 38.03 47.11 38.09 46.63 38.07C46.16 38.05 45.61 37.97 45.2 38.01C44.79 38.05 44.44 38.09 44.19 38.3C43.94 38.51 43.71 38.94 43.68 39.27C43.65 39.61 43.79 40.06 44 40.31C44.21 40.56 44.55 40.67 44.94 40.79C45.33 40.91 45.87 40.93 46.34 41C46.81 41.07 47.33 41.23 47.75 41.21C48.17 41.19 48.59 41.11 48.87 40.88C49.15 40.65 49.4 40.19 49.44 39.82Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><path d="M49.42 39.7C49.27 39.36 48.87 39 48.53 38.87C48.19 38.74 47.78 38.81 47.37 38.93C46.97 39.05 46.52 39.37 46.1 39.59C45.68 39.81 45.17 40.01 44.84 40.25C44.51 40.49 44.23 40.7 44.11 41.01C44 41.32 44.01 41.8 44.15 42.1C44.29 42.41 44.64 42.73 44.95 42.84C45.26 42.96 45.6 42.89 46 42.79C46.4 42.7 46.89 42.44 47.33 42.27C47.77 42.1 48.3 41.98 48.65 41.75C49.01 41.52 49.33 41.25 49.46 40.91C49.59 40.57 49.58 40.04 49.42 39.7Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(70.5 70) rotate(-4) scale(1.08)"><path d="M-8.6 -5.8 C-13.6 -8.4 -14.2 -13.6 -10 -14.6 C-5.8 -15.4 -3.6 -11.6 -4.4 -7.2 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.59" stroke-linejoin="round" stroke-linecap="round"/><path d="M-10.4 -5.8 C-11.8 -8.6 -11.4 -11.6 -9.4 -12 C-7.4 -12.4 -6.2 -10.2 -6.6 -7.4 Z" fill="#D49A55"/></g><path d="M59.59 67.3C60.04 65.46 59.69 63.23 60.94 61.79C62.19 60.35 65.03 59.07 67.11 58.65C69.19 58.24 71.71 58.67 73.43 59.29C75.15 59.91 76.14 60.66 77.44 62.37C78.74 64.08 79.48 68.15 81.23 69.53C82.97 70.91 85.78 70.12 87.9 70.65C90.02 71.17 92.51 72.03 93.94 72.7C95.38 73.37 96 73.82 96.5 74.68C96.99 75.54 97.17 76.92 96.91 77.87C96.66 78.83 95.8 79.93 94.94 80.43C94.08 80.92 93.18 80.95 91.74 80.85C90.3 80.74 88.21 79.97 86.31 79.81C84.41 79.64 81.87 79.51 80.35 79.86C78.83 80.2 78.05 81.37 77.18 81.88C76.3 82.38 75.78 82.55 75.08 82.89C72.75 82.62 70.21 82.83 68.1 82.08C65.99 81.32 63.9 79.81 62.42 78.36C60.95 76.91 59.73 75.23 59.26 73.38C58.79 71.54 59.48 69.33 59.59 67.3Z" fill="#EDC27C"/><path d="M59.59 67.3C60.04 65.46 59.69 63.23 60.94 61.79C62.19 60.35 65.03 59.07 67.11 58.65C69.19 58.24 71.71 58.67 73.43 59.29C75.15 59.91 76.14 60.66 77.44 62.37C78.74 64.08 79.48 68.15 81.23 69.53C82.97 70.91 85.78 70.12 87.9 70.65C90.02 71.17 92.51 72.03 93.94 72.7C95.38 73.37 96 73.82 96.5 74.68C96.99 75.54 97.17 76.92 96.91 77.87C96.66 78.83 95.8 79.93 94.94 80.43C94.08 80.92 93.18 80.95 91.74 80.85C90.3 80.74 88.21 79.97 86.31 79.81C84.41 79.64 81.87 79.51 80.35 79.86C78.83 80.2 78.05 81.37 77.18 81.88C76.3 82.38 75.78 82.55 75.08 82.89C72.75 82.62 70.21 82.83 68.1 82.08C65.99 81.32 63.9 79.81 62.42 78.36C60.95 76.91 59.73 75.23 59.26 73.38C58.79 71.54 59.48 69.33 59.59 67.3Z" fill="none" stroke="#1B2440" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(70.5 70) rotate(-4) scale(1.08)"><ellipse cx="21.15" cy="8.03" rx="1.25" ry="1.5" transform="rotate(19.09 21.15 8.03)" fill="#1B2440"/><ellipse cx="2.4" cy="-2.4" rx="3.1" ry="3" fill="#C98E4E"/><ellipse cx="3" cy="2.8" rx="2.2" ry="1.35" fill="#F08CA5"/><path d="M2.65 -2.57C2.69 -2.55 2.73 -2.54 2.76 -2.52C2.8 -2.49 2.84 -2.45 2.86 -2.41C2.89 -2.36 2.91 -2.31 2.93 -2.25C2.94 -2.19 2.94 -2.13 2.93 -2.06C2.92 -2 2.9 -1.93 2.86 -1.86C2.83 -1.8 2.78 -1.73 2.72 -1.68C2.66 -1.62 2.59 -1.57 2.51 -1.53C2.43 -1.5 2.34 -1.47 2.24 -1.46C2.15 -1.44 2.04 -1.45 1.94 -1.47C1.84 -1.49 1.74 -1.52 1.64 -1.58C1.54 -1.63 1.44 -1.7 1.36 -1.79C1.28 -1.87 1.21 -1.98 1.15 -2.09C1.1 -2.21 1.05 -2.34 1.03 -2.47C1.01 -2.6 1.01 -2.75 1.03 -2.89C1.06 -3.03 1.1 -3.17 1.17 -3.31C1.23 -3.44 1.32 -3.58 1.43 -3.69C1.54 -3.8 1.67 -3.91 1.81 -3.99C1.96 -4.07 2.12 -4.14 2.29 -4.18C2.46 -4.21 2.65 -4.23 2.82 -4.21C3 -4.2 3.19 -4.15 3.37 -4.08C3.54 -4.01 3.72 -3.91 3.87 -3.79C4.02 -3.67 4.17 -3.51 4.28 -3.35C4.4 -3.18 4.49 -2.98 4.56 -2.78C4.62 -2.58 4.66 -2.35 4.66 -2.13C4.66 -1.91 4.62 -1.68 4.56 -1.46C4.49 -1.24 4.39 -1.02 4.26 -0.83C4.13 -0.63 3.96 -0.44 3.77 -0.29C3.59 -0.14 3.35 -0.03 3.13 0.09" fill="none" stroke="#1B2440" stroke-width="1.57" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="7.6" cy="5.9" rx="1.3" ry="1.5" fill="#1B2440"/></g><circle cx="40.2" cy="65.6" r="10.5" fill="#FFFFFF" stroke="#1B2440" stroke-width="2.2"/><g class="rosette"><path d="M40.2 56.4V74.8M31 65.6H49.4M33.7 59.1L46.7 72.1M46.7 59.1L33.7 72.1" fill="none" stroke="#C2336F" stroke-width="1.5" stroke-linecap="round"/><circle cx="40.2" cy="65.6" r="6.5" fill="none" stroke="#C2336F" stroke-width="1.3"/><circle cx="40.2" cy="65.6" r="2.8" fill="#C2336F"/></g></svg></div>
+<div aria-hidden="true" style="position: absolute; left: {{ masc.left }}; top: {{ masc.top }}; width: 75px; height: 75px; opacity: {{ masc.upO }}"><svg viewBox="0 0 100 100" width="75" height="75" style="overflow: visible"><path d="M43.2 49.93C43.52 49.26 43.57 48.21 43.32 47.52C43.08 46.83 43.81 46.79 41.73 45.8C39.65 44.81 34.41 43.16 30.87 41.57C27.34 39.98 22.57 37.16 20.52 36.25C18.47 35.34 19.14 35.93 18.56 36.13C17.98 36.34 17.32 36.92 17.05 37.48C16.78 38.04 16.74 38.93 16.95 39.51C17.16 40.09 16.37 39.75 18.28 40.95C20.19 42.15 24.96 44.97 28.42 46.71C31.89 48.45 36.91 50.59 39.07 51.4C41.23 52.21 40.71 51.79 41.4 51.55C42.09 51.31 42.88 50.6 43.2 49.93Z" fill="#D49A55" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M14.69 38.21a3.9 3.9 0 1 0 7.8 0a3.9 3.9 0 1 0 -7.8 0Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="19.04" cy="38.42" rx="1.9" ry="1.55" transform="rotate(-154.54 19.04 38.42)" fill="#FBF3E6"/><path d="M16.87 38.52C16.8 38.15 16.51 37.71 16.21 37.51C15.91 37.31 15.42 37.28 15.06 37.29C14.7 37.3 14.38 37.47 14.04 37.56C13.7 37.65 13.34 37.68 13.02 37.82C12.7 37.96 12.32 38.12 12.13 38.39C11.94 38.66 11.84 39.13 11.9 39.46C11.96 39.79 12.23 40.18 12.5 40.37C12.77 40.56 13.19 40.57 13.54 40.58C13.89 40.59 14.24 40.49 14.59 40.45C14.94 40.41 15.3 40.45 15.64 40.33C15.98 40.21 16.42 40.01 16.62 39.71C16.83 39.41 16.94 38.89 16.87 38.52Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><path d="M17.75 36.67C18.08 36.49 18.41 36.08 18.51 35.73C18.61 35.38 18.49 34.91 18.37 34.57C18.25 34.23 18 33.99 17.81 33.69C17.62 33.39 17.47 33.06 17.24 32.8C17.01 32.54 16.75 32.22 16.43 32.13C16.11 32.04 15.64 32.08 15.34 32.24C15.05 32.4 14.75 32.77 14.66 33.09C14.57 33.41 14.69 33.81 14.78 34.14C14.87 34.47 15.07 34.77 15.21 35.09C15.36 35.41 15.43 35.77 15.65 36.05C15.87 36.33 16.2 36.7 16.55 36.8C16.9 36.9 17.42 36.85 17.75 36.67Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><path d="M17.01 37.45C17.17 37.12 17.19 36.59 17.07 36.25C16.95 35.91 16.57 35.6 16.27 35.39C15.97 35.18 15.62 35.14 15.29 35.01C14.96 34.88 14.65 34.69 14.31 34.62C13.97 34.55 13.57 34.45 13.26 34.56C12.95 34.67 12.59 34.99 12.44 35.29C12.3 35.59 12.28 36.07 12.39 36.38C12.5 36.69 12.84 36.94 13.11 37.16C13.38 37.38 13.72 37.5 14.03 37.67C14.34 37.84 14.6 38.09 14.95 38.19C15.3 38.29 15.77 38.38 16.11 38.26C16.45 38.14 16.85 37.79 17.01 37.45Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><path d="M36.66 65.66C35.05 66.79 33.36 68.05 31.82 69.04C30.29 70.02 29 70.72 27.47 71.56C25.94 72.41 24.17 73.49 22.65 74.13C21.13 74.77 19.82 75.06 18.36 75.43C16.9 75.8 15.12 76.15 13.89 76.37C12.66 76.6 11.65 76.69 10.98 76.77C10.31 76.84 10.22 76.95 9.88 76.84C9.53 76.73 9.13 76.4 8.9 76.11C8.66 75.82 8.52 75.55 8.47 75.11C8.43 74.67 8.55 73.84 8.63 73.49C8.7 73.15 8.58 73.24 8.9 73.03C9.22 72.82 10.21 72.68 10.54 72.22C10.86 71.76 11.11 70.72 10.87 70.25C10.62 69.77 9.62 69.45 9.06 69.38C8.5 69.31 8.14 69.4 7.5 69.82C6.86 70.24 5.78 71.07 5.23 71.91C4.68 72.74 4.27 73.76 4.2 74.82C4.14 75.89 4.38 77.26 4.85 78.32C5.32 79.37 6.05 80.45 7.02 81.16C8 81.86 9.5 82.29 10.7 82.56C11.9 82.83 12.76 82.73 14.21 82.78C15.66 82.84 17.6 83.01 19.4 82.87C21.21 82.72 23.1 82.33 25.06 81.93C27.01 81.53 29.21 81.08 31.16 80.49C33.1 79.91 34.88 79.11 36.71 78.41C38.54 77.72 40.33 77.03 42.14 76.34Z" fill="#EDC27C"/><path d="M32.7 76.53C32.79 77.12 31.47 78.05 30.51 78.44C29.55 78.83 27.44 79.19 26.95 78.85C26.46 78.51 27.06 77.05 27.56 76.39C28.06 75.73 29.11 74.88 29.97 74.9C30.83 74.92 32.61 75.94 32.7 76.53Z" fill="#2A2120"/><path d="M16.2 77.77C16.63 77.96 17.11 78.93 16.87 79.31C16.63 79.7 15.41 80.02 14.78 80.08C14.15 80.14 13.16 80 13.08 79.68C13 79.36 13.79 78.47 14.31 78.15C14.83 77.83 15.77 77.58 16.2 77.77Z" fill="#2A2120"/><path d="M6.46 77.8C6.55 77.4 7.12 76.97 7.48 76.91C7.84 76.85 8.54 77.12 8.61 77.45C8.68 77.78 8.21 78.6 7.93 78.91C7.65 79.22 7.18 79.49 6.93 79.3C6.69 79.11 6.37 78.2 6.46 77.8Z" fill="#2A2120"/><path d="M36.66 65.66C35.05 66.79 33.36 68.05 31.82 69.04C30.29 70.02 29 70.72 27.47 71.56C25.94 72.41 24.17 73.49 22.65 74.13C21.13 74.77 19.82 75.06 18.36 75.43C16.9 75.8 15.12 76.15 13.89 76.37C12.66 76.6 11.65 76.69 10.98 76.77C10.31 76.84 10.22 76.95 9.88 76.84C9.53 76.73 9.13 76.4 8.9 76.11C8.66 75.82 8.52 75.55 8.47 75.11C8.43 74.67 8.55 73.84 8.63 73.49C8.7 73.15 8.58 73.24 8.9 73.03C9.22 72.82 10.21 72.68 10.54 72.22C10.86 71.76 11.11 70.72 10.87 70.25C10.62 69.77 9.62 69.45 9.06 69.38C8.5 69.31 8.14 69.4 7.5 69.82C6.86 70.24 5.78 71.07 5.23 71.91C4.68 72.74 4.27 73.76 4.2 74.82C4.14 75.89 4.38 77.26 4.85 78.32C5.32 79.37 6.05 80.45 7.02 81.16C8 81.86 9.5 82.29 10.7 82.56C11.9 82.83 12.76 82.73 14.21 82.78C15.66 82.84 17.6 83.01 19.4 82.87C21.21 82.72 23.1 82.33 25.06 81.93C27.01 81.53 29.21 81.08 31.16 80.49C33.1 79.91 34.88 79.11 36.71 78.41C38.54 77.72 40.33 77.03 42.14 76.34Z" fill="none" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M40.6 70 L40.4 80.4 Q40.4 83 43 83 L50.4 83 Q52.6 83 52.6 81.3 Q52.5 79.7 50.3 79.5 L47.9 79.2 L48.2 70 Z" fill="#D49A55" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M53.4 69 L53.2 80.4 Q53.2 83 55.8 83 L65.6 83 Q67.8 83 67.8 81.3 Q67.7 79.6 65.4 79.4 L62.8 79.1 L63 69 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M35 46.6C36.85 42.26 42.5 31.54 42.5 31.54C42.5 31.54 45.52 30.96 48 31.2C50.48 31.44 54.82 31.86 57.4 33C59.98 34.14 62.73 36.81 63.5 38.03C64.26 39.24 65.92 43.87 66.6 47.6C67.28 51.33 67.67 56.9 67.6 60.4C67.53 63.9 67.1 66.4 66.2 68.6C65.3 70.8 64 72.37 62.2 73.6C60.4 74.83 57.93 75.57 55.4 76C52.87 76.43 49.63 76.47 47 76.2C44.37 75.93 41.83 75.8 39.6 74.4C37.37 73 34.97 70.6 33.6 67.8C32.23 65 31.17 61.13 31.4 57.6C31.63 54.07 33.15 50.94 35 46.6Z" fill="#EDC27C"/><path d="M37.25 41.81C38.97 41.07 40.37 39.84 42.4 39.6C44.43 39.36 47 39.97 49.4 40.4C51.8 40.83 54.67 41.47 56.8 42.2C58.93 42.93 61 43.47 62.2 44.8C63.4 46.13 63.13 48.54 64 50.2C64.87 51.86 66.29 53.26 67.43 54.78C67.47 55.31 67.5 55.84 67.52 56.35C67.59 57.84 67.62 59.23 67.6 60.4C67.58 61.21 67.55 61.96 67.49 62.67C66.2 63.42 64.65 63.91 63.6 64.9C62.55 65.89 61.83 67.35 61.2 68.6C60.57 69.85 60.2 71.3 59.8 72.4C59.4 73.5 59.13 74.26 58.8 75.19C58.5 75.29 58.2 75.38 57.89 75.46C57.08 75.68 56.24 75.86 55.4 76C54.56 76.14 53.63 76.24 52.68 76.3C51.73 76.36 50.75 76.38 49.79 76.36C48.82 76.34 47.88 76.29 47 76.2C46.12 76.11 45.26 76.04 44.41 75.93C43.56 75.81 42.73 75.67 41.93 75.43C41.12 75.19 40.34 74.87 39.6 74.4C38.86 73.93 38.09 73.36 37.36 72.69C36.62 72.02 35.91 71.27 35.27 70.44C34.63 69.62 34.06 68.73 33.6 67.8C33.14 66.87 32.72 65.81 32.37 64.7C32.02 63.58 31.74 62.39 31.56 61.19C31.39 59.99 31.32 58.78 31.4 57.6C31.48 56.42 31.7 55.29 32.03 54.14C32.35 53 32.79 51.83 33.3 50.6C33.8 49.36 34.38 48.05 35 46.6C35.52 45.38 36.34 43.66 37.25 41.81Z" fill="#2A2120"/><path d="M63.5 38.03C64.26 39.24 65.92 43.87 66.6 47.6C67.28 51.33 67.67 56.9 67.6 60.4C67.53 63.9 67.1 66.4 66.2 68.6C65.3 70.8 64 72.37 62.2 73.6C60.4 74.83 57.93 75.57 55.4 76C52.87 76.43 49.63 76.47 47 76.2C44.37 75.93 41.83 75.8 39.6 74.4C37.37 73 34.97 70.6 33.6 67.8C32.23 65 31.17 61.13 31.4 57.6C31.63 54.07 33.15 50.94 35 46.6C36.85 42.26 42.5 31.54 42.5 31.54" fill="none" stroke="#1B2440" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(53.4 28.8) rotate(-32) scale(1.08)"><path d="M-8.6 -5.8 C-13.6 -8.4 -14.2 -13.6 -10 -14.6 C-5.8 -15.4 -3.6 -11.6 -4.4 -7.2 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.59" stroke-linejoin="round" stroke-linecap="round"/><path d="M-10.4 -5.8 C-11.8 -8.6 -11.4 -11.6 -9.4 -12 C-7.4 -12.4 -6.2 -10.2 -6.6 -7.4 Z" fill="#D49A55"/></g><path d="M42.5 31.54C42.04 29.7 40.68 27.9 41.11 26.04C41.53 24.18 43.44 21.72 45.08 20.37C46.72 19.03 49.15 18.23 50.96 17.97C52.77 17.71 53.99 17.91 55.94 18.81C57.89 19.7 60.47 22.95 62.65 23.35C64.84 23.75 66.95 21.73 69.07 21.2C71.19 20.67 73.79 20.26 75.37 20.18C76.95 20.1 77.71 20.2 78.55 20.73C79.39 21.25 80.2 22.38 80.42 23.35C80.64 24.32 80.4 25.69 79.87 26.53C79.34 27.38 78.57 27.82 77.25 28.4C75.93 28.99 73.72 29.29 71.96 30.04C70.21 30.78 67.91 31.86 66.72 32.88C65.54 33.9 65.41 35.29 64.87 36.15C64.33 37.01 63.95 37.4 63.5 38.03C61.31 38.88 59.16 40.27 56.95 40.59C54.73 40.92 52.17 40.56 50.19 39.97C48.21 39.39 46.35 38.47 45.07 37.06C43.78 35.66 43.36 33.38 42.5 31.54Z" fill="#EDC27C"/><path d="M42.5 31.54C42.04 29.7 40.68 27.9 41.11 26.04C41.53 24.18 43.44 21.72 45.08 20.37C46.72 19.03 49.15 18.23 50.96 17.97C52.77 17.71 53.99 17.91 55.94 18.81C57.89 19.7 60.47 22.95 62.65 23.35C64.84 23.75 66.95 21.73 69.07 21.2C71.19 20.67 73.79 20.26 75.37 20.18C76.95 20.1 77.71 20.2 78.55 20.73C79.39 21.25 80.2 22.38 80.42 23.35C80.64 24.32 80.4 25.69 79.87 26.53C79.34 27.38 78.57 27.82 77.25 28.4C75.93 28.99 73.72 29.29 71.96 30.04C70.21 30.78 67.91 31.86 66.72 32.88C65.54 33.9 65.41 35.29 64.87 36.15C64.33 37.01 63.95 37.4 63.5 38.03" fill="none" stroke="#1B2440" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(53.4 28.8) rotate(-32) scale(1.08)"><ellipse cx="21.15" cy="8.03" rx="1.25" ry="1.5" transform="rotate(19.09 21.15 8.03)" fill="#1B2440"/><ellipse cx="2.4" cy="-2.4" rx="3.1" ry="3" fill="#C98E4E"/><ellipse cx="3" cy="2.8" rx="2.2" ry="1.35" fill="#F08CA5"/><ellipse cx="2.4" cy="-2.4" rx="1.95" ry="2.3" fill="#1B2440"/><circle cx="3.08" cy="-3.32" r="0.78" fill="#FFFFFF"/><path d="M9.8 6.2 Q7.4 7.5 5.2 5.5" fill="none" stroke="#1B2440" stroke-width="1.94" stroke-linejoin="round" stroke-linecap="round"/></g><path d="M59.39 47.16C59.72 47.88 60.55 48.65 61.28 48.92C62.01 49.2 61.54 49.62 63.76 48.81C65.99 48 71.06 45.75 74.63 44.04C78.2 42.33 83.16 39.72 85.16 38.55C87.16 37.38 86.39 37.65 86.62 37.03C86.85 36.41 86.83 35.45 86.55 34.84C86.27 34.23 85.57 33.58 84.95 33.35C84.33 33.12 84.98 32.59 82.84 33.45C80.7 34.31 75.74 36.93 72.11 38.49C68.48 40.05 63.17 41.77 61.04 42.79C58.91 43.81 59.59 43.86 59.31 44.59C59.04 45.32 59.06 46.44 59.39 47.16Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/><path d="M80.92 35.63a3.9 3.9 0 1 0 7.8 0a3.9 3.9 0 1 0 -7.8 0Z" fill="#EDC27C" stroke="#1B2440" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="84.36" cy="35.84" rx="1.9" ry="1.55" transform="rotate(-24.4 84.36 35.84)" fill="#FBF3E6"/><path d="M85.68 34.11C86 34.29 86.53 34.35 86.88 34.25C87.23 34.15 87.57 33.81 87.8 33.53C88.03 33.25 88.1 32.89 88.25 32.57C88.4 32.25 88.61 31.95 88.71 31.62C88.81 31.29 88.94 30.9 88.85 30.58C88.76 30.26 88.47 29.88 88.18 29.71C87.89 29.54 87.42 29.49 87.1 29.58C86.78 29.67 86.51 29.98 86.27 30.24C86.04 30.5 85.89 30.83 85.69 31.12C85.5 31.41 85.23 31.65 85.1 31.99C84.98 32.33 84.84 32.8 84.94 33.15C85.04 33.5 85.36 33.93 85.68 34.11Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><path d="M86.53 35.97C86.45 36.33 86.56 36.85 86.76 37.16C86.96 37.47 87.39 37.68 87.73 37.81C88.07 37.94 88.43 37.9 88.78 37.95C89.13 38 89.47 38.1 89.82 38.09C90.17 38.08 90.58 38.09 90.86 37.91C91.14 37.73 91.41 37.34 91.48 37.01C91.55 36.68 91.46 36.21 91.28 35.93C91.1 35.65 90.72 35.5 90.4 35.35C90.08 35.21 89.72 35.16 89.38 35.06C89.04 34.96 88.73 34.78 88.37 34.77C88.01 34.76 87.53 34.78 87.22 34.98C86.91 35.18 86.61 35.61 86.53 35.97Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><path d="M86.42 34.91C86.58 35.25 86.97 35.61 87.31 35.74C87.65 35.87 88.12 35.77 88.47 35.68C88.82 35.59 89.09 35.35 89.4 35.18C89.71 35.01 90.04 34.88 90.32 34.67C90.6 34.46 90.94 34.22 91.05 33.91C91.17 33.6 91.15 33.13 91.01 32.82C90.87 32.52 90.52 32.2 90.21 32.08C89.9 31.97 89.5 32.06 89.16 32.13C88.82 32.2 88.5 32.37 88.17 32.49C87.84 32.61 87.49 32.66 87.19 32.86C86.89 33.06 86.51 33.36 86.38 33.7C86.25 34.04 86.27 34.57 86.42 34.91Z" fill="#FBF3E6" stroke="#1B2440" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/><circle cx="48.6" cy="60" r="10.5" fill="#FFFFFF" stroke="#1B2440" stroke-width="2.2"/><g class="rosette"><path d="M48.6 50.8V69.2M39.4 60H57.8M42.1 53.5L55.1 66.5M55.1 53.5L42.1 66.5" fill="none" stroke="#C2336F" stroke-width="1.5" stroke-linecap="round"/><circle cx="48.6" cy="60" r="6.5" fill="none" stroke="#C2336F" stroke-width="1.3"/><circle cx="48.6" cy="60" r="2.8" fill="#C2336F"/></g></svg></div>
+<sc-for list="{{ masc.stars }}" as="s" hint-placeholder-count="0"><div aria-hidden="true" style="position: absolute; left: {{ s.left }}; top: {{ s.top }}; width: 11px; height: 11px"><svg viewBox="-10 -10 20 20" width="11" height="11"><path d="M0 -9l2.7 5.6 6.1.8-4.5 4.3 1.1 6.1L0 4.9-5.4 7.8l1.1-6.1-4.5-4.3 6.1-.8z" fill="#F2B43A" stroke="#1B2440" stroke-width="2.4" stroke-linejoin="round"/></svg></div></sc-for>
+
+<sc-for list="{{ wd.things }}" as="t" hint-placeholder-count="2">
+<button onClick="{{ t.tap }}" aria-disabled="{{ t.off }}" style="position: absolute; left: {{ t.left }}; top: {{ t.top }}; width: {{ t.w }}; height: {{ t.h }}; box-sizing: border-box; padding: 0 4px; border-radius: 12px; border: {{ t.border }}; background: {{ t.bg }}; box-shadow: {{ t.shadow }}; outline: {{ t.frame }}; outline-offset: 3px; opacity: {{ t.alpha }}; transform: rotate({{ t.rot }}); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; touch-action: manipulation">
+<svg aria-hidden="true" width="18" height="12" viewBox="0 0 18 12" style="position: absolute; left: 50%; top: -11px; margin-left: -6px; overflow: visible"><path d="M6 12V5" stroke="#1B2440" stroke-width="1.6" stroke-linecap="round"/><path d="M6 6 C7.5 1.5 13 0.5 16 2 C14.5 5.5 10 7 6 6 Z" fill="#2F7A35" stroke="#1B2440" stroke-width="1.4" stroke-linejoin="round"/></svg>
+<span lang="gn" style="font-family: 'Andika', 'Nunito', sans-serif; font-weight: 700; font-size: {{ t.fs }}; line-height: 1.18; color: {{ t.color }}; white-space: nowrap">{{ t.gn }}</span>
+<span style="font-size: {{ t.esFs }}; font-weight: 800; line-height: 1.3; color: #5A6382; text-align: center">{{ t.es }}</span>
+</button>
+</sc-for>
+
+<sc-if value="{{ bubOver }}" hint-placeholder-val="{{ false }}">
+<div aria-hidden="true" style="position: absolute; left: {{ bub.left }}; top: {{ bub.top }}; transform: translate(-50%, -100%) scale({{ bub.pop }}); transform-origin: 50% 100%">
+<div style="position: relative; padding: 3px 8px 4px; border-radius: 10px; background: #FFFFFF; border: 1.25px solid #1B2440; box-shadow: 0 1.8px 0 #1B2440; text-align: center; white-space: nowrap; line-height: 1.2">
+<sc-if value="{{ bub.hasGn }}" hint-placeholder-val="{{ true }}"><div lang="gn" style="font-family: 'Andika', 'Nunito', sans-serif; font-size: 8px; font-weight: 700; color: #1B2440">{{ bub.gn }}</div></sc-if>
+<div style="font-size: {{ bub.esSize }}; font-weight: 800; color: {{ bub.esColor }}">{{ bub.es }}</div>
+</div>
+</div>
+</sc-if>
+
+<sc-for list="{{ wd.drops }}" as="d" hint-placeholder-count="0"><div aria-hidden="true" style="position: absolute; left: {{ d.left }}; top: {{ d.top }}; width: 4px; height: 4px; border-radius: 50%; background: {{ d.color }}; opacity: {{ d.alpha }}"></div></sc-for>
+<sc-if value="{{ fx.on }}" hint-placeholder-val="{{ false }}"><div aria-hidden="true" style="position: absolute; left: {{ fx.left }}; top: {{ fx.top }}; opacity: {{ fx.alpha }}; transform: translate(-50%, -50%) rotate({{ fx.rot }}) scale({{ fx.pop }}); font-family: 'Nunito', sans-serif; font-size: {{ fx.size }}; font-weight: 800; line-height: 1; white-space: nowrap; color: {{ fx.color }}; text-shadow: {{ fx.shadow }}">{{ fx.text }}</div></sc-if>
+
+</div>
+</div>
+
+<sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; left: 24px; right: 24px; top: 300px; padding: 14px 16px; border-radius: 18px; background: #FFFFFF; border: 2px dashed #C9D0E3; text-align: center"><div style="font-size: 18px; font-weight: 800; color: #5A6382">En preparación</div><div style="margin-top: 4px; font-size: 13px; font-weight: 700; color: #5A6382; line-height: 1.45">{{ emptyText }}</div></div>
+</sc-if>
+
+<div style="position: absolute; left: 12px; right: 12px; top: 50px; height: 44px; display: flex; align-items: center; gap: 6px">
+<button onClick="{{ openPause }}" aria-label="Pausa o salir de la ronda" style="flex-shrink: 0; width: 44px; height: 44px; padding: 0; box-sizing: border-box; border: 2px solid #1B2440; border-radius: 50%; background: #FFFFFF; box-shadow: 0 2px 0 #1B2440; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+<div role="img" aria-label="{{ hud.label }}" style="flex: 1; min-width: 30px; box-sizing: border-box; padding: 9px 10px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; box-shadow: 0 2px 6px rgba(27, 36, 64, 0.12); display: flex; gap: {{ hud.gap }}">
+<sc-for list="{{ hud.segs }}" as="g" hint-placeholder-count="10"><span style="flex: 1; height: 10px; border-radius: 5px; background: {{ g.bg }}"></span></sc-for>
+</div>
+<span title="Racha: tarjetas bien a la primera, seguidas" style="position: relative; flex-shrink: 0; height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 16px; display: inline-flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 800; box-shadow: 0 2px 6px rgba(27, 36, 64, 0.12); background: {{ hud.runBg }}; border: {{ hud.runBorder }}; color: {{ hud.runColor }}"><svg width="18" height="18" viewBox="-24 -24 48 48" aria-hidden="true"><path d="{{ ring.rim }}" fill="none" stroke="#B02A63" stroke-width="4" stroke-linejoin="round"/><circle r="6.5" fill="none" stroke="#B02A63" stroke-width="4"/></svg><span>{{ hud.run }}</span><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap">bien a la primera, seguidas</span></span>
+<span title="{{ hud.fallTitle }}" style="position: relative; flex-shrink: 0; height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; box-shadow: 0 2px 6px rgba(27, 36, 64, 0.12); display: inline-flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 800; color: {{ hud.fallColor }}"><svg width="20" height="20" viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(4.4 4.6) scale(0.9)"><path d="M18.31 69.02C16.68 70.59 14.66 72.54 13.44 73.72C12.22 74.9 11.53 75.66 11.01 76.09C10.48 76.52 10.61 76.34 10.28 76.3C9.95 76.26 9.33 76.14 9.04 75.85C8.75 75.56 8.66 75.06 8.54 74.55C8.43 74.04 8.38 73.04 8.35 72.79C8.32 72.54 7.84 73.29 8.35 73.05C8.87 72.82 10.85 72.48 11.45 71.4C12.05 70.32 12.64 67.63 11.96 66.56C11.28 65.49 8.52 65.09 7.35 65C6.18 64.91 6.01 65.21 4.92 66.05C3.84 66.88 1.64 68.42 0.85 70.01C0.06 71.59 -0.01 73.66 0.21 75.55C0.42 77.44 1.09 79.76 2.16 81.35C3.24 82.93 4.71 84.32 6.64 85.08C8.58 85.84 11.46 86.34 13.79 85.91C16.12 85.47 18.63 83.61 20.61 82.45C22.59 81.3 24 80.14 25.69 78.98Z" fill="#EDC27C" stroke="#1B2440" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><path d="M33.4 50.6 C30 45.6 26.2 42.6 22 41.4 C17.4 40 15.2 35.8 17.4 32.2 C19.6 28.6 24.4 28.4 28 30.8 C33.6 34.6 38 40.6 41.2 47 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><path d="M16.2 71C16.03 66.77 16.93 59.43 19.4 55C21.87 50.57 26.73 46.6 31 44.4C35.27 42.2 40.5 41.67 45 41.8C49.5 41.93 54.47 43.07 58 45.2C61.53 47.33 64.5 50.97 66.2 54.6C67.9 58.23 68.67 62.83 68.2 67C67.73 71.17 66.43 76.5 63.4 79.6C60.37 82.7 55.17 84.63 50 85.6C44.83 86.57 37.33 86.27 32.4 85.4C27.47 84.53 23.1 82.8 20.4 80.4C17.7 78 16.37 75.23 16.2 71Z" fill="#EDC27C"/><path d="M62.47 48.97C63.65 51.32 65.05 53.84 66 56C66.95 58.16 67.46 59.96 68.19 61.95C68.38 63.64 68.38 65.35 68.2 67C67.73 71.17 66.43 76.5 63.4 79.6C60.37 82.7 55.17 84.63 50 85.6C44.83 86.57 37.33 86.27 32.4 85.4C29.93 84.97 27.61 84.32 25.56 83.48C25.84 79.65 26.43 75.91 26.4 72C26.37 68.09 25.06 64.35 25.4 60C25.74 55.65 27.42 50.6 28.42 45.9C29.29 45.34 30.16 44.83 31 44.4C35.27 42.2 40.5 41.67 45 41.8C49.5 41.93 54.47 43.07 58 45.2C59.63 46.19 61.15 47.49 62.47 48.97Z" fill="#2A2120"/><path d="M16.2 71C16.03 66.77 16.93 59.43 19.4 55C21.87 50.57 26.73 46.6 31 44.4C35.27 42.2 40.5 41.67 45 41.8C49.5 41.93 54.47 43.07 58 45.2C61.53 47.33 64.5 50.97 66.2 54.6C67.9 58.23 68.67 62.83 68.2 67C67.73 71.17 66.43 76.5 63.4 79.6C60.37 82.7 55.17 84.63 50 85.6C44.83 86.57 37.33 86.27 32.4 85.4C27.47 84.53 23.1 82.8 20.4 80.4C17.7 78 16.37 75.23 16.2 71Z" fill="none" stroke="#1B2440" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><path d="M53.49 53.49C54.86 53.76 56.79 53.34 57.92 52.58C59.05 51.82 59.79 50.75 60.29 48.91C60.79 47.07 60.51 43.96 60.91 41.55C61.31 39.14 62.53 36.28 62.7 34.43C62.87 32.58 62.65 31.49 61.94 30.43C61.23 29.38 59.7 28.35 58.43 28.1C57.16 27.85 55.36 28.24 54.3 28.95C53.25 29.66 52.83 30.62 52.1 32.37C51.37 34.11 50.44 37.03 49.91 39.42C49.38 41.81 48.94 44.76 48.91 46.69C48.88 48.62 48.97 49.86 49.73 50.99C50.49 52.12 52.13 53.23 53.49 53.49Z" fill="#EDC27C" stroke="#1B2440" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><path d="M62.47 32.26C62.2 31.04 61.17 29.61 60.13 28.95C59.1 28.3 57.58 28.33 56.26 28.33C54.94 28.33 53.51 28.57 52.19 28.93C50.87 29.3 49.49 29.91 48.35 30.52C47.21 31.13 45.97 31.62 45.36 32.57C44.76 33.53 44.47 35.13 44.72 36.25C44.97 37.37 45.93 38.71 46.88 39.31C47.84 39.92 49.2 39.98 50.45 39.88C51.7 39.78 53.04 38.92 54.39 38.69C55.74 38.46 57.31 38.88 58.54 38.47C59.77 38.06 61.12 37.28 61.77 36.25C62.43 35.22 62.74 33.48 62.47 32.26Z" fill="#EDC27C" stroke="#1B2440" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(74 71.4) rotate(-6) scale(1.1)"><path d="M-8.6 -5.8 C-13.6 -8.4 -14.2 -13.6 -10 -14.6 C-5.8 -15.4 -3.6 -11.6 -4.4 -7.2 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="4.09" stroke-linejoin="round" stroke-linecap="round"/><path d="M-10.4 -5.8 C-11.8 -8.6 -11.4 -11.6 -9.4 -12 C-7.4 -12.4 -6.2 -10.2 -6.6 -7.4 Z" fill="#D49A55"/><path d="M-10.4 2.4C-10.53 0.53 -10.67 -2.4 -10 -4.4C-9.33 -6.4 -8.03 -8.43 -6.4 -9.6C-4.77 -10.77 -2.2 -11.43 -0.2 -11.4C1.8 -11.37 4.1 -10.37 5.6 -9.4C7.1 -8.43 7.9 -7.03 8.8 -5.6C9.7 -4.17 9.87 -1.9 11 -0.8C12.13 0.3 14.03 0.4 15.6 1C17.17 1.6 19.17 2.14 20.4 2.8C21.63 3.46 23.2 4.44 23.8 5.4C24.4 6.36 24.76 8.21 24.4 9.2C24.04 10.19 22.66 11.58 21.4 12C20.14 12.42 17.8 11.93 16 12C14.2 12.07 12.5 12.2 10.6 12.4C8.7 12.6 6.57 13.13 4.6 13.2C2.63 13.27 0.5 13.3 -1.2 12.8C-2.9 12.3 -4.27 11.2 -5.6 10.2C-6.93 9.2 -8.4 8.1 -9.2 6.8C-10 5.5 -10.27 4.27 -10.4 2.4Z" fill="#EDC27C" stroke="#1B2440" stroke-width="4.55" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="3" cy="-1.6" rx="3.9" ry="3.8" fill="#C98E4E"/><path d="M3.57 -1.76C3.61 -1.73 3.65 -1.71 3.68 -1.67C3.72 -1.63 3.75 -1.59 3.77 -1.53C3.8 -1.48 3.82 -1.42 3.82 -1.36C3.83 -1.29 3.83 -1.22 3.81 -1.15C3.8 -1.08 3.77 -1.01 3.73 -0.94C3.69 -0.87 3.64 -0.81 3.58 -0.75C3.52 -0.69 3.45 -0.63 3.37 -0.59C3.29 -0.55 3.19 -0.51 3.1 -0.49C3 -0.47 2.89 -0.46 2.79 -0.47C2.68 -0.48 2.57 -0.5 2.46 -0.54C2.35 -0.58 2.24 -0.64 2.15 -0.71C2.05 -0.78 1.95 -0.87 1.87 -0.97C1.79 -1.07 1.72 -1.19 1.67 -1.31C1.61 -1.44 1.57 -1.58 1.55 -1.72C1.54 -1.86 1.53 -2.01 1.55 -2.16C1.57 -2.31 1.62 -2.47 1.68 -2.61C1.74 -2.76 1.82 -2.91 1.93 -3.04C2.03 -3.16 2.16 -3.29 2.3 -3.39C2.44 -3.49 2.6 -3.59 2.76 -3.65C2.93 -3.72 3.12 -3.76 3.31 -3.78C3.49 -3.8 3.69 -3.8 3.89 -3.77C4.08 -3.74 4.28 -3.68 4.47 -3.6C4.65 -3.51 4.84 -3.4 5 -3.27C5.16 -3.14 5.32 -2.97 5.44 -2.8C5.57 -2.62 5.68 -2.42 5.76 -2.2C5.84 -1.99 5.9 -1.76 5.92 -1.53C5.94 -1.3 5.94 -1.05 5.9 -0.81C5.86 -0.57 5.76 -0.34 5.68 -0.1" fill="none" stroke="#1B2440" stroke-width="2.36" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="5.4" cy="5" rx="2.6" ry="1.7" fill="#F08CA5"/><ellipse cx="20.4" cy="7.8" rx="1.6" ry="1.9" transform="rotate(15 20.4 7.8)" fill="#1B2440"/></g><circle cx="40.4" cy="65.4" r="11.6" fill="#FFFFFF" stroke="#1B2440" stroke-width="4.2"/><path d="M40.4 56.12V74.68M31.12 65.4H49.68M33.79 58.79L47.01 72.01M47.01 58.79L33.79 72.01" fill="none" stroke="#C2336F" stroke-width="2.6" stroke-linecap="round"/><circle cx="40.4" cy="65.4" r="3.6" fill="#C2336F"/></g></svg><span>{{ hud.falls }}</span><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap">{{ hud.fallTitle }}</span></span>
+</div>
+
+<sc-if value="{{ dockOn }}" hint-placeholder-val="{{ true }}">
+<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 220px; box-sizing: border-box; padding: 6px 12px 34px; background: rgba(255, 255, 255, 0.86); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-top: 2px solid #1B2440; border-radius: 24px 24px 0 0; box-shadow: 0 -6px 20px rgba(27, 36, 64, 0.14); display: flex; flex-direction: column">
+<p style="margin: 0; padding: 0 2px; height: 20px; display: flex; align-items: center; gap: 0 8px; overflow: hidden; font-size: 14px; font-weight: 700; line-height: 20px; color: #5A6382"><sc-if value="{{ dock.hasTag }}" hint-placeholder-val="{{ true }}"><span style="flex-shrink: 0; padding: 0 8px; border-radius: 10px; background: #FCE4EE; color: #B02A63; font-size: 11px; font-weight: 800; line-height: 18px; white-space: nowrap">{{ dock.tag }}</span></sc-if><span style="min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{ dock.say }}</span></p>
+<p style="margin: 0; padding: 0 2px; height: 22px; display: flex; align-items: center; gap: 6px; overflow: hidden; font-size: 14px; font-weight: 700; line-height: 22px; white-space: nowrap; color: {{ dock.heardColor }}"><sc-if value="{{ dock.heardOn }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0">{{ dock.heardLabel }}</span><span lang="gn" style="flex-shrink: 0; font-family: 'Andika', 'Nunito', sans-serif; font-size: 17px; font-weight: 700; color: {{ dock.heardGnColor }}">{{ dock.heardGn }}</span><span style="min-width: 0; overflow: hidden; text-overflow: ellipsis">{{ dock.heardEs }}</span></sc-if></p>
+<p role="status" aria-live="polite" style="margin: 0; padding: 0 2px; min-height: 16px; max-height: 32px; overflow: hidden; font-size: 13px; font-weight: 800; line-height: 16px; color: {{ dock.statusColor }}">{{ dock.status }}</p>
+<div style="margin-top: 2px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 10px">
+<button onClick="{{ sideL }}" aria-label="{{ dock.leftAria }}" aria-disabled="{{ dock.leftOff }}" style="justify-self: center; min-width: 64px; min-height: 56px; padding: 4px 8px; box-sizing: border-box; border-radius: 16px; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 11px; font-weight: 800; line-height: 1.15; border: {{ dock.leftBorder }}; background: {{ dock.leftBg }}; color: {{ dock.leftColor }}; box-shadow: {{ dock.leftShadow }}">
+<sc-if value="{{ dock.leftSlow }}" hint-placeholder-val="{{ true }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 15.5a7.5 6 0 0 1 15 0z"/><path d="M6 15.5v2.5M10 15.5v2.5M13 15.5v2.5M16.5 15.5v2.5"/><path d="M18.5 13.5h1.6a1.6 1.6 0 0 0 0-3.2h-1.2"/></svg></sc-if>
+<sc-if value="{{ dock.leftModel }}" hint-placeholder-val="{{ false }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13L7.5 14.5H4z"/><path d="M15.5 9a4.2 4.2 0 0 1 0 6M18 6.5a7.8 7.8 0 0 1 0 11"/></svg></sc-if>
+<sc-for list="{{ dock.leftLines }}" as="x" hint-placeholder-count="2"><span lang="{{ x.lang }}">{{ x.t }}</span></sc-for>
+</button>
+<div style="position: relative; width: 84px; height: 84px">
+<div aria-hidden="true" style="position: absolute; left: -9px; top: -9px; width: 102px; height: 102px; box-sizing: border-box; border-radius: 50%; border: 3px solid {{ dock.ringColor }}; opacity: {{ dock.ringO }}; transform: scale({{ dock.ringS }})"></div>
+<button onClick="{{ big }}" aria-label="{{ dock.bigAria }}" aria-pressed="{{ dock.bigPressed }}" style="position: relative; width: 84px; height: 84px; padding: 0; box-sizing: border-box; border-radius: 50%; border: 3px solid #1B2440; box-shadow: {{ dock.bigShadow }}; background: {{ dock.bigBg }}; color: {{ dock.bigColor }}; transform: {{ dock.bigTf }}; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; touch-action: manipulation">
+<sc-if value="{{ dock.bigPlay }}" hint-placeholder-val="{{ true }}"><svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true" style="transform: scale({{ dock.iconS }})"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></sc-if>
+<sc-if value="{{ dock.bigMic }}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></sc-if>
+<sc-for list="{{ dock.bigLines }}" as="x" hint-placeholder-count="2"><span lang="{{ x.lang }}" style="font-size: 10px; font-weight: 800; line-height: 1.15">{{ x.t }}</span></sc-for>
+</button>
+</div>
+<button onClick="{{ skip }}" aria-label="Saltear esta tarjeta" aria-disabled="{{ dock.skipOff }}" style="justify-self: center; min-width: 64px; min-height: 56px; padding: 4px 8px; box-sizing: border-box; border-radius: 16px; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 11px; font-weight: 800; border: {{ dock.skipBorder }}; background: #FFFFFF; color: {{ dock.skipColor }}; box-shadow: {{ dock.skipShadow }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6l7 6-7 6zM13 6l7 6-7 6z"/></svg><span>Saltear</span></button>
+</div>
+<p aria-live="polite" style="margin: 2px 0 0; min-height: 18px; text-align: center; font-size: 12px; font-weight: 800; line-height: 18px; color: #5A6382; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{ dock.state }}</p>
+</div>
+</sc-if>
+
+<sc-if value="{{ panelOn }}" hint-placeholder-val="{{ false }}">
+<div role="region" aria-labelledby="hab-cmp-h" style="position: absolute; left: 0; right: 0; bottom: 0; height: 304px; box-sizing: border-box; padding: 14px 16px 40px; background: #F4F5F9; border-top: 2px solid #1B2440; border-radius: 26px 26px 0 0; box-shadow: 0 -6px 20px rgba(27, 36, 64, 0.14); display: flex; flex-direction: column; animation: gn-up 240ms ease-out">
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px"><h2 id="hab-cmp-h" style="margin: 0; font-size: 18px; font-weight: 800; line-height: 24px">¿Sonó igual?</h2><span style="padding: 4px 10px; border-radius: 10px; background: #EEF0F6; font-size: 12px; font-weight: 800">{{ cmp.takeLabel }}</span></div>
+<p style="margin: 4px 0 0; font-size: 13px; font-weight: 500; line-height: 1.4; color: #5A6382">Escuchá el modelo y tu toma. Decidís vos: el teléfono no reconoce el guaraní.</p>
+<sc-for list="{{ cmp.strips }}" as="s" hint-placeholder-count="2">
+<div style="margin-top: 8px; height: 52px; box-sizing: border-box; padding: 0 12px 0 4px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; align-items: center; gap: 10px">
+<button onClick="{{ s.play }}" aria-label="{{ s.aria }}" aria-pressed="{{ s.on }}" style="flex-shrink: 0; width: 44px; height: 44px; padding: 0; box-sizing: border-box; border-radius: 12px; border: 2px solid #1B2440; background: {{ s.btnBg }}; color: {{ s.btnColor }}; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></button>
+<span style="flex-shrink: 0; width: 52px; font-size: 13px; font-weight: 800">{{ s.label }}</span>
+<div aria-hidden="true" style="flex: 1; min-width: 0; height: 32px; display: flex; align-items: center; gap: 2px">
+<sc-for list="{{ s.bars }}" as="b" hint-placeholder-count="28"><span style="flex: 1; min-width: 0; border-radius: 2px; height: {{ b.h }}; background: {{ b.bg }}"></span></sc-for>
+</div>
+<span style="flex-shrink: 0; font-size: 12px; font-weight: 800; color: #5A6382">{{ s.dur }}</span>
+</div>
+</sc-for>
+<div style="margin-top: 12px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<button onClick="{{ sameV }}" style="height: 50px; border-radius: 14px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; color: #FFFFFF; font-size: 16px; font-weight: 800">Igual</button>
+<button onClick="{{ almostV }}" style="height: 50px; border-radius: 14px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; color: #1B2440; font-size: 16px; font-weight: 800">Casi</button>
+<button onClick="{{ againV }}" style="height: 50px; border-radius: 14px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; color: #C7361E; font-size: 16px; font-weight: 800">Otra vez</button>
+</div>
+</div>
+</sc-if>
+
+</section>
+</sc-if>
+
+<sc-if value="{{ isResult }}" hint-placeholder-val="{{ false }}">
+<section aria-labelledby="hab-res-title" style="position: absolute; left: 0; top: 50px; width: 390px; height: 760px; box-sizing: border-box; padding: 0 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; animation: gn-in 220ms ease-out">
+<div style="flex-shrink: 0; min-height: 44px; display: flex; align-items: center; font-size: 15px; font-weight: 800"><span lang="gn">Eñe'ẽ</span><span style="margin-left: 6px; font-size: 12px; font-weight: 700; color: #5A6382">Hablá</span></div>
+<div style="flex-shrink: 0">
+<div style="font-size: 11px; font-weight: 800; letter-spacing: 0.04em; color: #B02A63">RESULTADO · {{ res.way }}</div>
+<h1 id="hab-res-title" style="margin: 2px 0 0; font-size: 26px; font-weight: 800; line-height: 1.25">Ronda terminada</h1>
+</div>
+<div style="flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<div style="min-width: 0">
+<div style="font-size: 13px; font-weight: 700; color: #5A6382">Bien a la primera</div>
+<div style="display: flex; align-items: baseline; gap: 6px"><strong style="font-size: 52px; font-weight: 800; line-height: 1.05">{{ res.clean }}</strong><span style="font-size: 20px; font-weight: 700; color: #5A6382">/ {{ res.total }}</span></div>
+<div style="margin-top: 4px; font-size: 12px; font-weight: 700; color: #5A6382; line-height: 1.45">{{ res.line }}</div>
+</div>
+<div role="img" aria-label="{{ res.stampLabel }}" style="width: 124px; height: 124px; box-sizing: border-box; border-radius: 50%; border: 4px solid #C2336F; padding: 5px; transform: rotate(-9deg); animation: gn-stamp 500ms ease-out 150ms both; flex-shrink: 0; display: flex">
+<div style="flex-grow: 1; border-radius: 50%; border: 2px solid #C2336F; color: #B02A63; font-weight: 800; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-align: center">
+<sc-if value="{{ res.hasGn }}" hint-placeholder-val="{{ true }}"><div lang="gn" style="font-size: 16px; line-height: 1.2">{{ res.stampGn }}</div></sc-if>
+<sc-for list="{{ res.stampEs }}" as="l" hint-placeholder-count="1"><div style="line-height: 1.25; font-size: {{ res.esSize }}">{{ l.t }}</div></sc-for>
+</div>
+</div>
+</div>
+<div style="flex-shrink: 0; padding: 4px 16px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440">
+<div style="display: flex; align-items: center; gap: 12px; padding: 12px 0"><b style="flex-shrink: 0; width: 72px; text-align: right; font-size: 26px; font-weight: 800">{{ res.bestRun }}</b><span style="display: flex; flex-direction: column; font-size: 15px; font-weight: 800">Racha más larga<small style="font-size: 12px; font-weight: 700; color: #5A6382">bien a la primera, una tras otra</small></span></div>
+<div style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 2px solid #DDE1EC"><b style="flex-shrink: 0; width: 72px; text-align: right; font-size: 26px; font-weight: 800">{{ res.falls }}</b><span style="display: flex; flex-direction: column; font-size: 15px; font-weight: 800">{{ res.fallsTitle }}<small style="font-size: 12px; font-weight: 700; color: #5A6382">{{ res.fallsNote }}</small><sc-if value="{{ res.hasUps }}" hint-placeholder-val="{{ false }}"><small style="margin-top: 4px; display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: #1B2440"><span aria-hidden="true" style="flex-shrink: 0; width: 22px; height: 22px; box-sizing: border-box; border-radius: 50%; border: 2px solid #0B7A6B; display: flex; align-items: center; justify-content: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span><span><sc-if value="{{ res.upsGn }}" hint-placeholder-val="{{ false }}"><span lang="gn">¡Opu'ã!</span> </sc-if>{{ res.upsText }}</span></small></sc-if></span></div>
+<div style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 2px solid #DDE1EC"><b style="flex-shrink: 0; width: 72px; text-align: right; font-size: 26px; font-weight: 800">{{ res.hints }}</b><span style="display: flex; flex-direction: column; font-size: 15px; font-weight: 800">Ayudas<small style="font-size: 12px; font-weight: 700; color: #5A6382">{{ res.hintsNote }}</small></span></div>
+</div>
+<sc-if value="{{ res.hasMixed }}" hint-placeholder-val="{{ true }}">
+<div style="flex-shrink: 0; display: flex; flex-direction: column; gap: 6px">
+<h2 style="margin: 0; font-size: 12px; font-weight: 800; color: #5A6382">{{ res.mixedTitle }}</h2>
+<sc-for list="{{ res.mixed }}" as="m" hint-placeholder-count="2"><div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; padding: 8px 12px; border-radius: 14px; background: #FFFFFF; border: 2px solid #DDE1EC; font-size: 13px; font-weight: 700; color: #5A6382"><span>{{ m.a }}</span><span lang="gn" style="font-family: 'Andika', 'Nunito', sans-serif; font-size: 17px; font-weight: 700; color: #1B2440">{{ m.gn }}</span><span>{{ m.es }}</span><span>{{ m.b }}</span><span lang="gn" style="font-family: 'Andika', 'Nunito', sans-serif; font-size: 17px; font-weight: 700; color: #C7361E">{{ m.gn2 }}</span><span>{{ m.es2 }}</span></div></sc-for>
+</div>
+</sc-if>
+<div style="flex-shrink: 0; margin-top: auto; padding-bottom: 8px; display: flex; flex-direction: column; gap: 12px">
+<button onClick="{{ again }}" style="height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-size: 17px; font-weight: 800">Otra ronda</button>
+<button onClick="{{ toMenu }}" style="height: 50px; border-radius: 16px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; color: #1B2440; font-size: 16px; font-weight: 800">Cambiar de juego</button>
+<a href="Main.dc.html" onClick="{{ toMain }}" style="height: 54px; box-sizing: border-box; border-radius: 16px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #1B2440; font-size: 17px; font-weight: 800; display: flex; align-items: center; justify-content: center"><span lang="gn">Mboty</span> · Cerrar</a>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ paused }}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; inset: 0; z-index: 30; background: rgba(27, 36, 64, 0.5); animation: gn-fade 160ms ease-out; display: flex; align-items: flex-end">
+<div role="dialog" aria-modal="true" aria-labelledby="hab-pause-h" style="width: 100%; box-sizing: border-box; border-radius: 26px 26px 0 0; border-top: 2px solid #1B2440; padding: 18px 20px 34px; background: #F4F5F9; display: flex; flex-direction: column; gap: 12px; animation: gn-up 240ms ease-out">
+<h2 id="hab-pause-h" style="margin: 0; font-size: 18px; font-weight: 800">Pausa</h2>
+<p style="margin: 0; font-size: 13px; font-weight: 500; color: #5A6382; line-height: 1.45">Nada se mueve mientras esto está abierto. Las tomas se guardan solo durante la ronda, en el teléfono, y nunca se envían.</p>
+<button onClick="{{ resume }}" style="height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-size: 17px; font-weight: 800"><span lang="gn">Eku'ejey</span> · Continuar</button>
+<button onClick="{{ toMenu }}" style="height: 50px; border-radius: 16px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; color: #1B2440; font-size: 16px; font-weight: 800">Cambiar de juego</button>
+<a href="Main.dc.html" onClick="{{ toMain }}" style="height: 50px; box-sizing: border-box; border-radius: 16px; background: #FFFFFF; border: 2px solid #C7361E; color: #C7361E; font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center">Salir de la ronda</a>
+</div>
+</div>
+</sc-if>
+
+<p aria-live="polite" style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0"><span lang="gn">{{ sr.gn }}</span> {{ sr.es }}</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"go":{"editor":null},"app":{"editor":null},"save":{"editor":null},"miss":{"editor":null},"reviewed":{"editor":null},"level":{"editor":null},"demo":{"editor":null},"$preview":{"width":390,"height":844}}'>
+/* Eñe'ẽ · Hablá: Yaoki Speaking on a phone held upright, for Guarani, without speech recognition (phones do not
+   recognise Guarani, and community recognisers miss too much to score anyone): two of the Y4 judges.
+   - "Escuchá y elegí" (judge 1, Yaoki's Falling): a word plays; two things fall on Kaguare, the word and its minimal-pair
+     partner (window.__gnExtra.speaking.pairs: nasal, puso, y, accent); tap the one you heard before it lands. A wrong
+     tap is a miss (the thing flashes, the word plays again); one that lands knocks Kaguare over, he gets up on his hind
+     legs (¡Opu'ã!) and it comes back after two other cards; after two it waits on his umbrella with the answer shown.
+   - "Repetí y compará" (judge 3, Yaoki's Climb): a sign on the ledge above; say it (the canvas grants no microphone,
+     so «Simular toma» stands for the recording), then the Modelo / Vos strips and ¿Sonó igual? Igual (he jumps up;
+     clean if first time and no model heard), Casi (he scrambles up; not clean), Otra vez (he bumps his head and slips;
+     after two the sign waits and Saltear appears).
+   The words' sound: no clips exist yet, so every sound button lights up for 600 + 120 ms a letter (Yaoki's stand-in)
+   and shows the word being said. The rewards are Yaoki's: the clean run, Se levantó, the stamp; never speed.
+   Props: go, app, demo: "pick" (on its own: a pair falling while its word plays) or "compare" (the ¿Sonó igual? panel
+   open under Kaguare). Inside the app (no demo) it opens on its menu. A designed moment holds still until the first tap. */
+const VW = 240;                /* the world's width in Yaoki Speaking's units, at its narrowest */
+const MASCOT = 0.75;           /* Kaguare: the spec's drawing at 75 % (Yaoki's daruma was 60 %; Kaguare is lower and wider) */
+const FEET = 83;
+const YH = 43;                 /* his height in units, to the top of his ear ((83 − 25.2) × 0.75): what lands on him lands on his head and back */
+const DOWN_TOP = 66 * MASCOT;  /* knocked over: the card rests this high and the stars turn round its lower edge, clear of his raised paw (the fallen pose's top: y 33.2) */
+const UP_T = 0.3;              /* getting up: the rising pose (on his hind legs, ¡Opu'ã!) shows this long before he drops onto all fours */
+const GROUND_GAP = 12;
+const CLIMB_FOOT = 26;
+const SLACK = 1.2;
+const START = { pick: { r: 2.4, p: 3 }, compare: { r: 2.6, p: 3 } };
+const STUCK_FIRST = 6;
+const STUCK_NEXT = 5;
+const RING_T = 0.32;
+const RUN_STEPS = [5, 10, 20, 40];
+const STAMP_T = 0.32;
+const HOP_T = 0.4;
+const HAPPY_T = 0.6;
+const CHEER_T = 1.2;
+const BUBBLE_POP = 0.15;
+const NOD_T = 0.16;
+const BLINK_T = 0.12;
+const FX_T = 0.7;
+const FLASH_T = 0.35;
+const CRUSH_T = 1.7;
+const SLIP_T = 1.3;
+const JUMP_T = 0.62;
+const STEP = 128;
+const SIGN_WAIT = 20;
+const LEN = 10;
+const TRICKS = {
+  pop: { fx: '¡Plaf!', len: 0.55 }, spin: { fx: '¡Zum!', len: 0.8 }, dodge: { fx: '¡Uf!', len: 0.85 }, smash: { fx: '¡Pum!', len: 0.75 },
+  hop: { fx: '¡Hop!', len: JUMP_T }, scramble: { fx: '¡Uy!', len: JUMP_T + 0.25 }, super: { fx: '¡Pum!', len: JUMP_T + 0.1 },
+};
+/* the screen: the bar's foot at 102, the dock 220 high (304 with the comparison open); Yaoki's scale */
+const SW = 390;
+const SH = 844;
+const HUD_B = 102;
+const DOCK_H = 220;
+const PANEL_H = 304;
+const S = Math.max(0.8, Math.min(2.2, SW / VW, Math.max(1, SH - HUD_B - DOCK_H) / 320));
+const W = SW / S;
+const H = SH / S;
+const TOP = HUD_B / S;
+const GROUND_Y = H - DOCK_H / S - GROUND_GAP;
+const IMPACT_Y = GROUND_Y - YH;
+const ES_FS = 12 / S;          /* the Spanish under a word: 12 px */
+const LINES = {
+  start: { es: '¡Vamos!' }, half: { es: '¡La mitad!' }, last: { es: '¡La última!' },
+  step0: { gn: '¡Iporã!', es: '¡Bien!' }, step1: { gn: '¡Iporãiterei!', es: '¡Muy bien!' }, step2: { gn: "¡Eku'e péicha!", es: '¡Seguí así!' }, step3: { gn: "¡Vy'apavẽ!", es: '¡Felicitaciones!' },
+  comeback: { es: '¡Ahora sí!' }, rise: { gn: "¡Opu'ã!", es: '¡Se levantó!' }, halt: { es: 'Con calma' }, miss: { es: '¡Casi!' },
+  endGood: { gn: '¡Iporãiterei!', es: '¡Muy bien!' }, endOk: { gn: '¡Iporã!', es: '¡Bien!' }, endTry: { es: '¡A seguir!' },
+};
+const PRIORITY = { step0: 3, step1: 3, step2: 3, step3: 3, endGood: 3, endOk: 3, endTry: 3, comeback: 2, rise: 2, halt: 2, last: 2, start: 1, half: 1, miss: 1, idle: 0 };
+const STAMPS = [
+  { from: 0.8, gn: '¡Iporãiterei!', es: ['¡Muy bien!'], size: '13px', label: 'Sello: ¡Muy bien!' },
+  { from: 0.6, gn: '¡Iporã!', es: ['¡Bien!'], size: '13px', label: 'Sello: ¡Bien!' },
+  { from: 0, gn: '', es: ['Seguí', 'practicando'], size: '16px', label: 'Sello: seguí practicando' },
+];
+/* what each kind of pair trains, and the tip a miss brings */
+const CONTRAST = {
+  nasal: { tag: 'Nasal o no', tip: 'Escuchá si la vocal suena por la nariz (ã) o no (a).' },
+  puso: { tag: 'Con o sin puso', tip: "Escuchá si la voz se corta un instante: el puso (')." },
+  acento: { tag: 'El acento', tip: 'Escuchá en qué sílaba va la fuerza de la palabra.' },
+  y: { tag: 'La y', tip: 'Escuchá la y, la sexta vocal: no es i ni u.' },
+};
+const WAYS = {
+  pick: { title: 'Escuchá y elegí', desc: 'Suena una palabra y caen dos parecidas. Tocá la que oíste antes de que caiga sobre Kaguare.', kicker: 'ESCUCHÁ Y ELEGÍ' },
+  compare: { title: 'Repetí y compará', desc: 'Decí el cartel, escuchá tu toma junto al modelo y decidí si sonó igual. Sin apuro.', kicker: 'REPETÍ Y COMPARÁ' },
+};
+
+const reduced = () => { try { return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); } catch (e) { return false; } };
+const now = () => (window.performance && performance.now ? performance.now() : Date.now());
+const ease = (t) => 1 - Math.pow(1 - t, 3);
+const smooth = (a, b, u) => { const k = Math.min(1, Math.max(0, (u - a) / (b - a))); return k * k * (3 - 2 * k); };
+const px = (n) => (Math.round(n * 100) / 100) + 'px';
+const num = (n) => String(Math.round(n * 1000) / 1000);
+/* a length inside the scaled world that shows as n screen pixels (outlines, hard shadows) */
+const U = (n) => px(n / S);
+/* a comic's lettering for a trick's word: a white edge round the letters and an ink edge round that (text-shadows) */
+const outline = (inner, outer) => {
+  const dirs = [[1, 0], [-1, 0], [0, 1], [0, -1], [0.71, 0.71], [-0.71, 0.71], [0.71, -0.71], [-0.71, -0.71]];
+  return dirs.map((d) => px(d[0] * inner) + ' ' + px(d[1] * inner) + ' 0 #FFFFFF').concat(dirs.map((d) => px(d[0] * outer) + ' ' + px(d[1] * outer) + ' 0 #1B2440')).join(', ');
+};
+const norm = (s) => { const C = window.gnCourse; if (C && C.norm) return C.norm(s); const t = String(s == null ? '' : s); return t.normalize ? t.normalize('NFC') : t; };
+const chars = (s) => { const C = window.gnCourse; return C && C.chars ? C.chars(s) : Array.from(norm(s)); };
+const plain = (s) => { const C = window.gnCourse; return C && C.plain ? C.plain(s) : norm(s); };
+const backText = (n) => (n <= 0 ? 'Vuelve en la próxima' : 'Vuelve después de ' + n + (n === 1 ? ' tarjeta' : ' tarjetas'));
+const secs = (ms) => (Math.round(ms / 100) / 10).toFixed(1).replace('.', ',') + ' s';
+/* the silent stand-in for a clip: 600 ms and 120 a letter (or the clip's own length, once it exists) */
+const clipMs = (key, text) => { const Sd = window.gnSound; return Sd && Sd.has && Sd.has(key) && Sd.ms ? Sd.ms(key) : 600 + plain(text).length * 120; };
+function seeded(seed) {
+  let a = seed >>> 0;
+  return () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+}
+const hashOf = (s) => { let h = 2166136261; const t = String(s); for (let i = 0; i < t.length; i++) { h ^= t.charCodeAt(i); h = Math.imul(h, 16777619) >>> 0; } return h; };
+let MEASURE = null;
+const WIDTHS = {};
+/* is Andika in yet? Until it is, Guarani text is measured in a stand-in face, with room to spare */
+const andikaIn = () => { try { return !!(document.fonts && document.fonts.check && document.fonts.check('700 20px "Andika"')); } catch (e) { return true; } };
+/* ask for the two faces the games measure with (the Google Fonts link only declares them) */
+const fontsIn = () => {
+  try {
+    if (document.fonts && document.fonts.load) return Promise.all([document.fonts.load('700 26px "Andika"', 'aãẽĩõũỹg̃ñ'), document.fonts.load('800 16px "Nunito"', 'abc')]).catch(() => null);
+  } catch (e) { /* no font loading here: measure with what there is */ }
+  return Promise.resolve(null);
+};
+function textW(text, size, weight, family) {
+  const key = text + '|' + size + '|' + (weight || 700) + '|' + (family || 'g');
+  if (WIDTHS[key] !== undefined) return WIDTHS[key];
+  let w = 0;
+  try {
+    if (!MEASURE && typeof OffscreenCanvas !== 'undefined') MEASURE = new OffscreenCanvas(8, 8).getContext('2d');
+    if (MEASURE) { MEASURE.font = (weight || 700) + ' ' + size + 'px ' + (family || 'Andika, Nunito, sans-serif'); w = MEASURE.measureText(text).width * (!family && !andikaIn() ? 1.08 : 1); }
+  } catch (e) { w = 0; }
+  if (!w) w = chars(text).length * size * 0.58;
+  WIDTHS[key] = w;
+  return w;
+}
+const sizeFor = (n) => (n <= 2 ? 34 : n <= 4 ? 28 : n <= 7 ? 24 : n <= 12 ? 20 : 17);
+const beatsOf = (s) => Math.max(1, (norm(s).toLowerCase().match(/[aeiouyáéíóúýãẽĩõũỹ]/g) || []).length);
+function deal(items, n, rnd) {
+  const pool = items.map((it) => ({ it, k: rnd() })).sort((a, b) => b.k - a.k).map((x) => x.it);
+  const out = [];
+  while (out.length < n && pool.length) {
+    for (const it of pool) {
+      if (out.length >= n) break;
+      if (out.length && out[out.length - 1] === it && pool.length > 1) continue;
+      out.push(it);
+    }
+  }
+  return out;
+}
+function stampPose(t) {
+  const u = Math.min(1, t / STAMP_T);
+  if (u < 0.55) { const k = ease(u / 0.55); return { s: 1.8 - 0.88 * k, tilt: -20 + 10 * k, a: k }; }
+  return { s: 0.92 + 0.08 * ease((u - 0.55) / 0.45), tilt: -10, a: 1 };
+}
+
+/* ---------- the content: pairs to hear, phrases to say ---------- */
+function pairItem(id, words, target, contrast) {
+  const room = (W - 12 - 14) / 2 - 24;
+  const things = words.map((w) => {
+    let size = sizeFor(chars(w.gn).length);
+    while (textW(w.gn, size) > room && size > 13) size -= 1;
+    const esW = textW(w.es, ES_FS, 800, 'Nunito, sans-serif');
+    const inner = Math.min(room, Math.max(textW(w.gn, size), esW));
+    const esLines = w.es ? Math.max(1, Math.ceil(esW / room)) : 0;
+    return { gn: w.gn, es: w.es, size, w: Math.ceil(Math.max(64, inner) + 24), h: Math.ceil(12 + size * 1.18 + esLines * ES_FS * 1.3 + 10) };
+  });
+  const h = Math.max(things[0].h, things[1].h);
+  things[0].cx = W / 2 - 7 - things[0].w / 2;
+  things[1].cx = W / 2 + 7 + things[1].w / 2;
+  return { id, things, target, contrast, h, word: words[target].gn, es: words[target].es, other: words[1 - target], beats: beatsOf(words[target].gn) };
+}
+function makePairs() {
+  const C = window.gnCourse;
+  const X = window.__gnExtra && window.__gnExtra.speaking;
+  let list = X && Array.isArray(X.pairs) ? X.pairs.filter((p) => Array.isArray(p) && p.length >= 4 && p[0] && p[2]) : [];
+  /* without the extras: the unit's own sound pairs, through the engine */
+  if (!list.length && C && C.day) {
+    for (let d = 1; d <= 5; d++) {
+      let day = null;
+      try { day = C.day('a1u01d' + d); } catch (e) { day = null; }
+      const ps = day && day.words && day.words.sound && Array.isArray(day.words.sound.pairs) ? day.words.sound.pairs : [];
+      ps.forEach((p) => { if (Array.isArray(p) && p.length >= 4 && p[0] && p[2]) list.push(p); });
+    }
+  }
+  const out = [];
+  list.forEach((p, k) => {
+    const words = [{ gn: norm(p[0]), es: p[1] || '' }, { gn: norm(p[2]), es: p[3] || '' }];
+    const contrast = CONTRAST[p[4]] ? p[4] : '';
+    /* a pair keeps one order on screen (every other pair the other way round) and each of its words is the target
+       once: where the right one lies never gives it away, only listening does */
+    const flip = k % 2 === 1;
+    for (let t = 0; t < 2; t++) out.push(pairItem('p' + k + '.' + t, flip ? [words[1], words[0]] : words, flip ? 1 - t : t, contrast));
+  });
+  return out;
+}
+function signItem(id, gn, es) {
+  const room = Math.max(120, 0.86 * W) - 28;
+  const words = gn.split(' ');
+  let size = sizeFor(chars(gn).length);
+  let lines = [];
+  for (;;) {
+    lines = [];
+    let cur = '';
+    words.forEach((w) => { const next = cur ? cur + ' ' + w : w; if (cur && textW(next, size) > room) { lines.push(cur); cur = w; } else cur = next; });
+    if (cur) lines.push(cur);
+    if ((lines.length <= 3 && lines.every((l) => textW(l, size) <= room)) || size <= 13) break;
+    size -= 1;
+  }
+  const w = Math.ceil(Math.max(64, ...lines.map((l) => textW(l, size))) + 24);
+  return { id, gn, es, size, lines, w: Math.min(W - 12, w), h: Math.ceil(12 + lines.length * size * 1.18 + 10), beats: beatsOf(gn) };
+}
+function makePhrases() {
+  const C = window.gnCourse;
+  const X = window.__gnExtra && window.__gnExtra.speaking;
+  let list = X && Array.isArray(X.phrases) ? X.phrases.filter((p) => p && typeof p.gn === 'string' && p.gn) : [];
+  if (!list.length && C && C.day) {
+    for (let d = 1; d <= 6; d++) {
+      let day = null;
+      try { day = C.day('a1u01d' + d); } catch (e) { day = null; }
+      const ws = day && day.words && Array.isArray(day.words.words) ? day.words.words : [];
+      ws.forEach((x) => { if (x && x.gn) list.push({ gn: x.gn, es: x.es }); });
+    }
+  }
+  return list.map((p, i) => signItem('s' + i, norm(p.gn), p.es || ''));
+}
+/* a strip's bars: loud on vowels, a little softer on the nasal ones, quiet on consonants, silent at the puso and spaces */
+function waveOf(text, n, seed, stretch) {
+  const cs = chars(norm(text).toLowerCase());
+  if (!cs.length) return [];
+  const amp = cs.map((c) => (c === "'" || c === ' ' || /[.,¿?¡!]/.test(c) ? 0.04 : /[ãẽĩõũỹ]/.test(c) ? 0.72 : /[aeiouyáéíóúý]/.test(c) ? 0.95 : 0.34));
+  const rnd = seeded(seed);
+  const out = [];
+  for (let i = 0; i < n; i++) {
+    const pos = Math.min(cs.length - 1, Math.floor(((i / Math.max(1, n - 1)) * (cs.length - 0.01)) / Math.max(0.6, stretch)));
+    const a = i / Math.max(1, n - 1) > 1 / Math.max(1, stretch) ? 0.05 : amp[pos];
+    out.push(Math.max(0.06, Math.min(1, a * (0.72 + 0.4 * rnd()))));
+  }
+  return out;
+}
+
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.pairs = makePairs();
+this.phrases = makePhrases();
+const ro = window.gnCourse && window.gnCourse.rosette ? window.gnCourse.rosette(9, 9, { rim: true }) : null;
+this.ring = { rim: ro ? ro.rimD : 'M0 -19A19 19 0 1 1 0 19A19 19 0 1 1 0 -19Z', spokes: ro ? ro.spokes : 'M0 0' };
+this.alive = false;
+this.raf = 0;
+this.res = null;
+this.r = null;
+this.frozen = false;
+this.status = null;
+this.heard = null;
+this.sr = { gn: '', es: '' };
+this.take = { state: 'idle', t0: 0, dur: 0, n: 0 };
+this.strip = null;
+const app = props ? props.app : null;
+const d = props && props.demo ? String(props.demo) : '';
+this.demo = d || (app ? '' : 'pick');
+const style = this.demo === 'compare' ? 'compare' : 'pick';
+this.state = { view: this.demo ? 'round' : 'menu', style, pause: false, panel: false };
+if (this.demo) this.begin(style, this.demo);
+}
+componentDidMount() {
+this.alive = true;
+if (this.r && !this.frozen) this.startLoop();
+{
+fontsIn().then(() => {
+if (!this.alive || !this.r || !this.frozen) return;
+Object.keys(WIDTHS).forEach((k) => { delete WIDTHS[k]; });
+this.pairs = makePairs();
+this.phrases = makePhrases();
+this.begin(this.state.style, this.demo);
+this.forceUpdate();
+});
+}
+}
+componentWillUnmount() {
+this.alive = false;
+if (this.raf) cancelAnimationFrame(this.raf);
+this.raf = 0;
+}
+startLoop() {
+if (this.raf || !this.alive) return;
+this.last = now();
+const step = (t) => {
+if (!this.alive) { this.raf = 0; return; }
+const dt = Math.min(0.05, Math.max(0, (t - this.last) / 1000));
+this.last = t;
+if (this.state.view === 'round' && !this.state.pause && !this.frozen && this.r) {
+this.update(dt);
+this.forceUpdate();
+}
+this.raf = requestAnimationFrame(step);
+};
+this.raf = requestAnimationFrame(step);
+}
+
+/* ---------- a round ---------- */
+begin(style, mode) {
+this.r = null;
+this.frozen = false;
+this.status = null;
+this.heard = null;
+this.sr = { gn: '', es: '' };
+this.take = { state: 'idle', t0: 0, dur: 0, n: 0 };
+this.strip = null;
+if (style === 'pick') {
+if (!this.pairs.length) return;
+if (mode === 'pick') this.designPick(); else this.readyPick();
+} else {
+if (!this.phrases.length) return;
+if (mode === 'compare') this.designCompare(); else this.readyCompare();
+}
+}
+base(style, deck) {
+const pace = START[style];
+return {
+style, queue: deck.map((item) => ({ item, falls: 0 })), total: deck.length, cleared: 0, skipped: 0, clean: 0, falls: 0, hints: 0,
+time: 0, rt: pace.r, p: pace.p, cards: [], fall: null, endIn: null, finale: null, target: null,
+run: 0, bestRun: 0, stepChip: false, comebacks: 0, fellEntries: [], mixed: [], started: false, lastFor: null, said: {},
+yk: { happyT: 0, hopT: 0, hopH: 6, bubble: null, nodT: 0, blinkT: -1, blinkAt: 1.5, fx: null, trail: [], trick: null, x: W / 2 },
+shards: [], nodes: [], drops: [], rings: [], voicing: null, firstClip: false,
+head: 0, maxH: 0, speed: 0, T: 0, lastSpawn: null,
+ledges: [], at: -1, camY: 0, jump: null, pending: null, top: 0, atTop: false,
+};
+}
+need(item) { return this.r.rt + item.beats / this.r.p; }
+makeCard(entry) {
+const r = this.r;
+const card = { entry, item: entry.item, state: 'live', y: 0, h: entry.item.h, misses: 0, idle: 0, level: 0, hinted: false, halted: false,
+shownAt: null, firstAt: null, stampT: 0, flash: [0, 0], flashT: 0, clean: false, comeback: false, almost: false, phase: null, trick: null,
+n: r.cards.length + r.cleared + r.skipped, rot: 0, vy: 0, spin: 0, gone: false, fade: 1, picked: -1, played: false, nudged: false, ledge: null, takes: 0 };
+r.cards.push(card);
+return card;
+}
+newPick(rnd) {
+const deck = deal(this.pairs, LEN, rnd);
+const r = this.r = this.base('pick', deck);
+const longest = Math.max(1, ...deck.map((it) => this.need(it)));
+r.T = Math.max(5, Math.min(32, 1.35 * longest));
+r.maxH = Math.max(60, ...deck.map((it) => it.h));
+r.speed = Math.max(8, (IMPACT_Y - r.maxH - 4 - TOP) / r.T);
+return r;
+}
+spacingPick(prev) { return Math.max(prev.h + 26, this.r.speed * SLACK * this.need(prev.item)); }
+readyPick() {
+this.newPick(Math.random);
+this.status = { es: 'Tocá la palabra que escuchaste antes de que caiga.', color: '#5A6382' };
+}
+/* demo "pick": card 3 of 10 half-way down, its word playing (the stand-in), the next pair coming in at the top */
+designPick() {
+const r = this.newPick(seeded(5));
+const k = Math.min(2, r.queue.length - 1);
+let i = r.queue.findIndex((e, j) => j >= k && e.item.contrast === 'nasal' && /[ãẽĩõũỹ]/.test(e.item.word));
+if (i < 0) i = k;
+const [e] = r.queue.splice(i, 1);
+r.queue.splice(k, 0, e);
+const done = r.queue.splice(0, k);
+done.forEach(() => { r.nodes.push({ clean: true, comeback: false, at: -5, stampT: 5 }); r.cleared++; r.clean++; });
+r.run = done.length;
+r.bestRun = done.length;
+r.started = true;
+r.time = 14;
+const t = this.makeCard(r.queue.shift());
+/* far enough up that Kaguare is not yet worried (1.6 s away), the next pair just under the bar */
+t.y = Math.min(TOP + 0.62 * (IMPACT_Y - t.h - TOP), IMPACT_Y - t.h - 1.7 * r.speed);
+t.shownAt = 12.6;
+t.played = true;
+r.head = t.y;
+r.lastSpawn = t;
+if (r.queue.length) {
+const n = this.makeCard(r.queue.shift());
+n.y = Math.max(TOP - 8, Math.min(t.y - n.h - 40, t.y - this.spacingPick(t)));
+n.spin = 0.05;
+r.head = n.y;
+r.lastSpawn = n;
+}
+t.spin = -0.05;
+r.target = t;
+const ms = clipMs(t.item.id, t.item.word);
+r.voicing = { card: t, from: r.time - 0.45, until: r.time - 0.45 + ms / 1000, ms };
+r.firstClip = true;
+this.status = { es: 'Este audio todavía no está grabado.', color: '#B02A63' };
+this.say(t.item.word, '');
+this.frozen = true;
+}
+newCompare(rnd) {
+const deck = deal(this.phrases, Math.min(LEN, this.phrases.length), rnd);
+const r = this.r = this.base('compare', deck);
+let y = 0;
+r.queue.forEach((entry, k) => {
+const card = this.makeCard(entry);
+const x = W * (k % 2 ? 0.66 : 0.34);
+y -= Math.max(STEP, card.h + YH + 34);
+r.ledges.push({ card, x, y, w: 84 });
+card.ledge = r.ledges[k];
+});
+r.queue = [];
+r.top = y - Math.max(STEP, YH + 60);
+r.yk.x = W / 2;
+r.camY = this.camFor(0, false);
+return r;
+}
+readyCompare() {
+this.newCompare(Math.random);
+this.status = { es: 'Decí el cartel de arriba. Si querés, escuchá antes el modelo.', color: '#5A6382' };
+}
+/* demo "compare": Kaguare on the second ledge, the third sign said once, the ¿Sonó igual? panel open */
+designCompare() {
+const r = this.newCompare(seeded(3));
+const n = Math.min(2, r.ledges.length - 1);
+for (let k = 0; k < n; k++) {
+const c = r.ledges[k].card;
+c.state = 'done';
+c.stampT = 5;
+c.almost = k === 0;
+c.clean = !c.almost;
+r.cleared++;
+if (c.clean) r.clean++;
+}
+r.run = n > 1 ? 1 : 0;
+r.bestRun = r.run;
+r.at = n - 1;
+r.yk.x = r.at >= 0 ? r.ledges[r.at].x : W / 2;
+r.started = true;
+r.time = 40;
+const t = r.ledges[n].card;
+t.shownAt = 31;
+t.firstAt = 36;
+t.takes = 1;
+r.target = t;
+this.take = { state: 'recorded', t0: 36, dur: Math.round(clipMs(t.item.id, t.item.gn) * 1.12), n: 1 };
+if (this.alive) this.setState({ panel: true });
+else this.state.panel = true;
+r.camY = this.camFor(this.standY(), true);
+this.heard = { label: 'Tu toma', gn: '', es: secs(this.take.dur), tone: 'muted' };
+this.say(t.item.gn, t.item.es);
+this.frozen = true;
+}
+unfreeze() {
+this.frozen = false;
+this.startLoop();
+}
+say(gn, es) { this.sr = { gn: gn || '', es: es || '' }; }
+standY() { const r = this.r; return r.at < 0 ? 0 : r.ledges[r.at].y; }
+camFor(y, panel) { return y - (H - (panel ? PANEL_H : DOCK_H) / S - CLIMB_FOOT); }
+target() {
+const r = this.r;
+if (!r || r.finale !== null) return null;
+if (r.style === 'compare') {
+if (r.jump || (r.fall && r.fall.kind !== 'slip')) return null;
+const l = r.ledges[r.at + 1];
+return l && l.card.state === 'live' ? l.card : null;
+}
+if (r.fall) return null;
+const c = r.cards.find((x) => x.state === 'live');
+return c && (c.halted || c.y >= TOP + 4) ? c : null;
+}
+cheer(occasion, life) {
+const r = this.r;
+const line = occasion === 'idle' ? { es: r.style === 'pick' ? '¿Cuál sonó?' : '¡Decilo en voz alta!' } : LINES[occasion];
+if (!line) return;
+const yk = r.yk;
+const prio = PRIORITY[occasion] || 0;
+if (yk.bubble && yk.bubble.prio > prio && yk.bubble.t < yk.bubble.life) return;
+yk.bubble = { gn: line.gn || '', es: line.es, prio, t: 0, life };
+r.said[occasion] = true;
+}
+hop(h) {
+const r = this.r;
+if (r.fall || r.yk.trick || r.jump) return;
+r.yk.hopT = HOP_T;
+r.yk.hopH = h;
+}
+/* a word played for the player: its clip, or the silent stand-in, which shows the word being said */
+playClip(c, kind) {
+const r = this.r;
+const text = r.style === 'pick' ? c.item.word : c.item.gn;
+const Sd = window.gnSound;
+let ms = clipMs(c.item.id, text);
+if (Sd && Sd.has && Sd.has(c.item.id)) { try { Sd.unlock(); Sd.play(c.item.id); } catch (e) { ms = clipMs('', text); } }
+else if (!r.firstClip) { r.firstClip = true; this.status = { es: 'Este audio todavía no está grabado.', color: '#B02A63' }; }
+r.voicing = { card: c, from: r.time, until: r.time + ms / 1000, ms, kind: kind || 'word' };
+}
+
+/* ---------- frame by frame ---------- */
+update(dt) {
+const r = this.r;
+r.time += dt;
+for (const c of r.cards) {
+if (c.state === 'done' || c.state === 'skipped') c.stampT += dt;
+if (c.flashT > 0) c.flashT = Math.max(0, c.flashT - dt);
+c.flash = c.flash.map((f) => Math.max(0, f - dt));
+if (c.state === 'done' && c.fade > 0) c.fade = Math.max(0, c.fade - dt / 0.3);
+}
+const yk = r.yk;
+yk.happyT = Math.max(0, yk.happyT - dt);
+yk.hopT = Math.max(0, yk.hopT - dt);
+yk.nodT = Math.max(0, yk.nodT - dt);
+if (yk.bubble && (yk.bubble.t += dt) >= yk.bubble.life) yk.bubble = null;
+if (yk.blinkT >= 0) { yk.blinkT += dt; if (yk.blinkT >= BLINK_T) { yk.blinkT = -1; yk.blinkAt = r.time + 2.2 + 2.8 * Math.random(); } }
+else if (r.time >= yk.blinkAt) yk.blinkT = 0;
+if (yk.fx && (yk.fx.t += dt) >= FX_T) yk.fx = null;
+for (const s of r.shards) { s.x += s.vx * dt; s.vy += 700 * dt; s.y += s.vy * dt; s.a += s.va * dt; s.age += dt; }
+if (r.shards.length) r.shards = r.shards.filter((s) => s.age < 1.4 && s.y < H + 40);
+for (const d of r.drops) { d.age += dt; d.x += d.vx * dt; d.vy += 300 * dt; d.y += d.vy * dt; }
+if (r.drops.length) r.drops = r.drops.filter((d) => d.age < 0.7);
+for (const g of r.rings) g.age += dt;
+if (r.rings.length) r.rings = r.rings.filter((g) => g.age < RING_T);
+if (r.voicing && r.time >= r.voicing.until) r.voicing = null;
+if (this.strip && r.time >= this.strip.until) this.strip = null;
+if (r.endIn !== null) {
+r.endIn -= dt;
+if (r.endIn <= 0) { this.finishRound(); return; }
+}
+if (r.style === 'compare') this.updateCompare(dt);
+else this.updatePick(dt);
+if (!this.r || this.state.view !== 'round') return;
+const t = this.target();
+if (t) {
+if (t.shownAt === null) t.shownAt = r.time;
+const fresh = t !== r.target;
+r.target = t;
+if (!r.voicing && this.take.state === 'idle' && !this.state.panel) t.idle += dt;
+if (t.idle >= 3.5 && !t.nudged) { t.nudged = true; this.cheer('idle', 1.6); }
+/* the climb has no hurry: only the pairs raise their hints with time */
+if (r.style === 'pick') this.raiseHint(t);
+if (r.style === 'compare' && !t.halted && r.time - t.shownAt >= SIGN_WAIT) this.haltSign(t);
+if (fresh) {
+this.heard = null;
+if (r.style === 'pick') { this.say('', 'Escuchá: caen dos palabras parecidas.'); if (!t.played) { t.played = true; this.playClip(t); } }
+else this.say(t.item.gn, t.item.es);
+if (!r.started) { r.started = true; this.cheer('start', 1.4); }
+else if (r.cleared + r.skipped === r.total - 1 && r.lastFor !== t) { r.lastFor = t; this.cheer('last', 1.4); }
+}
+} else if (r.target && !r.fall) r.target = null;
+}
+raiseHint(c) {
+if (c.level >= 2) return;
+const limit = c.level === 0 ? STUCK_FIRST : STUCK_NEXT;
+let level = Math.min(2, c.misses);
+if (c.idle >= limit) level = Math.max(level, c.level + 1);
+if (level > c.level) {
+c.level = level;
+c.idle = 0;
+if (!c.hinted) { c.hinted = true; this.r.hints++; }
+/* the first step: what to listen for in this pair (a miss has already said it, with "Esa no") */
+const tip = CONTRAST[c.item.contrast];
+if (this.r.style === 'pick' && !c.misses && tip) this.status = { es: 'Pista: ' + tip.tip, color: '#1B2440' };
+/* the second step: the word said again (pick: and the answer marked) */
+if (level === 2 && this.r.style === 'pick' && !this.r.voicing) this.playClip(c);
+}
+}
+
+/* ---------- Escuchá y elegí: the pair falls ---------- */
+updatePick(dt) {
+const r = this.r;
+const still = reduced();
+if (r.fall) { this.updateCrush(dt); return; }
+this.updateTrick(dt);
+const live = r.cards.filter((c) => c.state === 'live');
+const target = this.target();
+const halted = !!(target && target.halted);
+const waiting = !target && (live.length > 0 || r.queue.length > 0) && r.finale === null && r.endIn === null;
+/* nothing falls while the word is said for the player */
+let speed = halted || (r.voicing && target) ? 0 : r.speed;
+if (waiting) {
+if (still) this.cutFall(live);
+else speed = Math.max(r.speed * 4, 220);
+}
+let floor = Infinity;
+for (const c of live) {
+if (c.halted) { floor = c.y - 18; continue; }
+c.y = Math.min(c.y + speed * dt, floor - c.h - 18);
+floor = c.y;
+c.rot = still ? 0 : c.spin * Math.sin(r.time * 1.3 + c.n);
+}
+r.head += speed * dt;
+if (r.queue.length && r.finale === null) {
+const prev = r.lastSpawn;
+const h = r.queue[0].item.h;
+if (!prev || r.head - this.spacingPick(prev) >= -h - 6) {
+const c = this.makeCard(r.queue.shift());
+c.y = prev ? Math.min(r.head - this.spacingPick(prev), -c.h - 6) : -c.h - 6;
+c.spin = (c.n % 2 ? 1 : -1) * 0.05;
+r.head = c.y;
+r.lastSpawn = c;
+}
+}
+const first = live[0];
+if (first && !first.halted && first.y + first.h >= IMPACT_Y) {
+if (first.entry.falls >= 2) this.haltOnUmbrella(first);
+else this.startCrush(first);
+}
+r.cards = r.cards.filter((c) => c.state !== 'removed');
+if (r.finale !== null && r.endIn === null && !r.yk.trick) r.endIn = 0.9;
+}
+cutFall(live) {
+const r = this.r;
+const next = live[0];
+if (next) {
+if (next.y < TOP + 4) { const shift = TOP + 4 - next.y; for (const c of live) c.y += shift; r.head += shift; }
+} else if (r.queue.length) r.head = Math.max(r.head, (r.lastSpawn ? this.spacingPick(r.lastSpawn) : 0) - r.queue[0].item.h - 6);
+}
+haltOnUmbrella(c) {
+c.halted = true;
+c.level = 2;
+c.y = IMPACT_Y - c.h - 14;
+this.say(c.item.word, 'Con calma: esta espera sobre el paraguas de Kaguare. «Saltear» la pasa.');
+this.cheer('halt', 2);
+this.playClip(c);
+}
+tapThing(c, i) {
+const r = this.r;
+if (!r || this.state.pause || this.state.view !== 'round') return;
+if (this.frozen) this.unfreeze();
+if (c.state !== 'live' || c !== this.target()) return;
+if (c.firstAt === null) c.firstAt = r.time;
+c.idle = 0;
+r.yk.nodT = NOD_T;
+if (i === c.item.target) {
+this.heard = { label: '', gn: c.item.word, es: c.item.es, tone: 'good' };
+this.clearPick(c);
+} else this.missPick(c, i);
+}
+missPick(c, i) {
+const r = this.r;
+c.misses++;
+c.flash[i] = FLASH_T;
+c.picked = i;
+const other = c.item.things[i];
+if (r.mixed.length < 40) r.mixed.push({ gn: c.item.word, es: c.item.es, gn2: other.gn, es2: other.es });
+this.heard = { label: 'Elegiste', gn: other.gn, es: other.es, tone: 'bad' };
+const tip = CONTRAST[c.item.contrast] ? CONTRAST[c.item.contrast].tip : 'Escuchala otra vez y fijate en lo que cambia.';
+this.status = { es: 'Esa no. ' + tip, color: '#C7361E' };
+this.cheer('miss', 1.2);
+this.raiseHint(c);
+if (c.misses >= 2 && !c.halted) c.halted = true;
+if (!r.voicing) this.playClip(c);
+}
+clearPick(c) {
+const r = this.r;
+c.state = 'done';
+c.stampT = 0;
+r.cleared++;
+const clean = !c.misses && !c.hinted && !c.entry.falls;
+c.clean = clean;
+if (clean) r.clean++;
+c.comeback = !clean && c.entry.falls >= 1 && !c.halted && !c.misses && !c.hinted && c.level === 0;
+this.measure(c);
+this.status = null;
+r.stepChip = false;
+let step = -1;
+if (clean) {
+r.run++;
+r.bestRun = Math.max(r.bestRun, r.run);
+step = RUN_STEPS.indexOf(r.run);
+if (step >= 0) r.stepChip = true;
+} else if (!c.entry.falls) r.run = 0;
+if (c.comeback) r.comebacks++;
+const yk = r.yk;
+if (clean || c.comeback) yk.happyT = HAPPY_T;
+const big = c.comeback || c.halted;
+this.startTrick(c, big ? 'smash' : !clean ? 'dodge' : r.run >= 5 ? 'spin' : 'pop');
+if (step >= 0) this.cheer('step' + step, CHEER_T);
+else if (c.comeback) this.cheer('comeback', 1);
+if (r.cleared + r.skipped >= r.total && r.finale === null) r.finale = r.time;
+this.roundLines();
+}
+measure(c) {
+const r = this.r;
+const a = 0.3;
+const at = c.firstAt === null ? r.time : c.firstAt;
+if (c.shownAt !== null) {
+const react = Math.max(0.4, Math.min(10, at - c.shownAt - (r.style === 'pick' ? clipMs(c.item.id, c.item.word) / 1000 : 0)));
+r.rt = r.rt * (1 - a) + react * a;
+}
+}
+/* what Kaguare does once the pair is answered: a clean card bursts (pop), in a run of five he spins up to it, one answered
+   after a miss lands beside him as he steps out of its way (dodge), a comeback or one that waited he jumps up and smashes */
+startTrick(c, kind) {
+const r = this.r;
+const yk = r.yk;
+this.finishTrick();
+c.phase = 'trick';
+c.trick = kind;
+const still = reduced();
+yk.trick = { kind, card: c, t: 0, len: still ? 0.3 : TRICKS[kind].len, hit: kind === 'pop' ? 0 : kind === 'dodge' ? 0.45 : 0.38, done: false, y0: c.y };
+const tc = c.item.things[c.item.target];
+yk.fx = { text: TRICKS[kind].fx, t: kind === 'pop' ? 0 : -0.25, x: (kind === 'dodge' ? W / 2 - 40 : tc.cx + 30), y: Math.max(40, Math.min(c.y + c.h / 2, IMPACT_Y - 30)), big: kind === 'smash', world: false };
+if (kind === 'pop') this.shatter(c, false);
+}
+updateTrick(dt) {
+const r = this.r;
+const tr = r.yk.trick;
+if (!tr) return;
+tr.t += dt * (r.cards.some((c) => c.state === 'live' && c.y + c.h > IMPACT_Y - 60) ? 1.6 : 1);
+const c = tr.card;
+const u = Math.min(1, tr.t / tr.len);
+if (tr.kind === 'smash' || tr.kind === 'spin') {
+if (!tr.done && u >= tr.hit) {
+tr.done = true;
+this.shatter(c, false);
+if (tr.kind === 'smash') this.burst(c.item.things[c.item.target].cx, c.y + c.h, 10, '#F2B43A');
+} else if (!tr.done) c.y = tr.y0 + (IMPACT_Y - 50 - c.h - tr.y0) * smooth(0, tr.hit, u);
+} else if (tr.kind === 'dodge') {
+if (u < tr.hit) c.y = tr.y0 + (GROUND_Y - c.h - tr.y0) * Math.pow(u / tr.hit, 2);
+else if (!tr.done) { tr.done = true; c.y = GROUND_Y - c.h; this.burst(c.item.things[c.item.target].cx, GROUND_Y - 2, 6, '#C9D0E3'); }
+}
+if (tr.t >= tr.len) this.finishTrick();
+}
+finishTrick() {
+const r = this.r;
+const tr = r.yk.trick;
+if (!tr) return;
+const c = tr.card;
+if (!c.gone) this.shatter(c, true);
+r.nodes.push({ clean: c.clean, comeback: c.comeback, at: r.time, stampT: 0 });
+if (r.nodes.length > 40) r.nodes.shift();
+c.state = 'removed';
+r.yk.trick = null;
+}
+/* the thing breaks into pieces that fly off and fall; its stamp goes to the ground beside Kaguare */
+shatter(c, quiet) {
+const r = this.r;
+c.gone = true;
+const tc = c.item.things[c.item.target];
+const n = reduced() ? 0 : Math.max(6, Math.min(14, Math.round(tc.w / 16)));
+for (let i = 0; i < n; i++) {
+const a = (i / n) * Math.PI * 2 + Math.random() * 0.5;
+const sp = quiet ? 40 + 60 * Math.random() : 90 + 140 * Math.random();
+const size = 6 + Math.random() * Math.min(18, tc.w / 6);
+const pts = [];
+for (let k = 0; k < 4; k++) { const t = (k / 4) * Math.PI * 2 + Math.random() * 0.6; pts.push([Math.cos(t) * size * (0.5 + Math.random() * 0.5), Math.sin(t) * size * (0.5 + Math.random() * 0.5)]); }
+r.shards.push({ x: tc.cx + Math.cos(a) * tc.w * 0.25, y: c.y + c.h / 2 + Math.sin(a) * c.h * 0.25, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - (quiet ? 60 : 160), a: 0, va: (Math.random() - 0.5) * 12, pts, age: 0 });
+}
+if (n && !quiet) {
+r.rings.push({ x: tc.cx, y: c.y + c.h / 2, R: Math.max(tc.w, c.h) * 0.62, age: 0 });
+if (c.clean) this.burst(tc.cx, c.y + c.h / 2, 6, '#F2B43A');
+}
+}
+burst(x, y, n, color) {
+if (reduced()) return;
+for (let i = 0; i < n; i++) {
+const a = (i / n) * Math.PI * 2;
+this.r.drops.push({ x, y, vx: Math.cos(a) * (60 + 60 * Math.random()), vy: Math.sin(a) * (60 + 60 * Math.random()) - 40, age: 0, color });
+}
+}
+/* the pair lands on Kaguare: it knocks him over, he gets up on his hind legs (¡Opu'ã!) and it is thrown back into the sky,
+   to come round again after two other cards */
+startCrush(c) {
+const r = this.r;
+c.state = 'fallen';
+c.entry.falls++;
+const ahead = r.cards.filter((x) => x.state === 'live' && x !== c).length;
+const promised = r.queue.reduce((last, e, i) => (e.falls > 0 ? i : last), -1);
+const at = Math.max(promised + 1, Math.min(2 - ahead, r.queue.length));
+r.fall = { kind: 'crush', t: 0, card: c, length: CRUSH_T, at, back: ahead + at, rose: false, y0: c.y };
+r.falls++;
+r.p = Math.max(0.8, r.p * 0.85);
+this.fallen(c);
+this.heard = { label: 'Era', gn: c.item.word, es: c.item.es, tone: 'bad' };
+this.say(c.item.word, 'Le cayó encima a Kaguare y se levantó. ' + backText(r.fall.back) + '.');
+}
+fallen(c) {
+const r = this.r;
+r.target = null;
+r.run = 0;
+r.stepChip = false;
+if (r.fellEntries.indexOf(c.entry) < 0) r.fellEntries.push(c.entry);
+this.finishTrick();
+const yk = r.yk;
+yk.happyT = 0;
+yk.hopT = 0;
+yk.bubble = null;
+yk.fx = null;
+r.voicing = null;
+this.status = { es: backText(r.fall ? r.fall.back : 0) + '.', color: '#1B2440' };
+}
+updateCrush(dt) {
+const r = this.r;
+const f = r.fall;
+f.t += dt;
+const c = f.card;
+const still = reduced();
+const flat = GROUND_Y - DOWN_TOP;
+if (f.t < 0.14) c.y = f.y0 + (flat - c.h - f.y0) * (still ? 1 : f.t / 0.14);
+else if (f.t < 0.9) c.y = flat - c.h;
+else {
+if (!f.rose) { f.rose = true; c.vy = -620; this.cheer('rise', f.length - f.t + 0.6); }
+if (!still) { c.vy += 380 * dt; c.y += c.vy * dt; c.rot += dt * 5; }
+}
+if (f.t >= f.length) this.endCrush();
+}
+endCrush() {
+const r = this.r;
+const card = r.fall.card;
+r.cards = r.cards.filter((c) => c !== card);
+card.state = 'live';
+card.y = 0;
+card.rot = 0;
+card.halted = false;
+card.level = 0;
+card.played = false;
+r.queue.splice(Math.min(r.fall.at, r.queue.length), 0, card.entry);
+r.fall = null;
+if (r.lastSpawn === card) r.lastSpawn = null;
+this.status = null;
+const live = r.cards.filter((c) => c.state === 'live');
+if (live.length) {
+const most = IMPACT_Y - live[0].h - r.speed * SLACK * this.need(live[0].item);
+const shift = live[0].y - Math.max(TOP + 4, most);
+if (shift > 0) for (const c of live) c.y -= shift;
+r.head = Math.min(r.head, live[live.length - 1].y);
+} else r.head = Math.min(r.head, 0);
+}
+
+/* ---------- Repetí y compará: the climb ---------- */
+updateCompare(dt) {
+const r = this.r;
+const panel = this.state.panel;
+const want = r.jump ? this.camFor(Math.min(this.standY(), r.jump.toY), panel) : r.finale !== null ? this.camFor(r.top, panel) + (H - TOP - DOCK_H / S) * 0.12 : this.camFor(this.standY(), panel);
+r.camY += (want - r.camY) * Math.min(1, dt * (reduced() ? 60 : 4));
+if (r.jump) { r.jump.t += dt; if (r.jump.t >= r.jump.len) this.land(); }
+if (r.fall) {
+r.fall.t += dt;
+if (!r.fall.rose && r.fall.t >= 0.62 * r.fall.length) { r.fall.rose = true; this.cheer('rise', r.fall.length - r.fall.t + 0.5); }
+if (r.fall.t >= r.fall.length) r.fall = null;
+}
+/* the take, simulated: listening, then the voice heard; it ends with a tap, or by itself well after the model's length */
+const tk = this.take;
+if (tk.state === 'listening' && r.time - tk.t0 >= 0.6) tk.state = 'speaking';
+const t = this.target();
+if ((tk.state === 'listening' || tk.state === 'speaking') && t && r.time - tk.t0 >= Math.max(2.5, (2.2 * clipMs(t.item.id, t.item.gn)) / 1000)) this.stopTake();
+if (r.finale !== null && r.endIn === null && !r.jump && r.time - r.finale > 1.6) r.endIn = 0.4;
+}
+jumpTo(card, kind) {
+const r = this.r;
+const ledge = card.ledge;
+r.jump = { t: 0, len: TRICKS[kind].len * (reduced() ? 0.01 : 1), kind, card, fromX: r.yk.x || W / 2, fromY: this.standY(), toX: ledge.x, toY: ledge.y };
+r.yk.fx = { text: TRICKS[kind].fx, t: 0, x: ledge.x, y: ledge.y - YH - 26, big: kind === 'super', world: true };
+}
+land() {
+const r = this.r;
+const j = r.jump;
+r.jump = null;
+r.yk.x = j.toX;
+r.yk.hopT = 0;
+if (!j.card) {
+r.atTop = true;
+this.cheer(['endGood', 'endOk', 'endTry'][this.tier()], 1.6);
+this.hop(10);
+this.burst(j.toX, r.top - YH, 18, '#F2B43A');
+return;
+}
+r.at = r.ledges.indexOf(j.card.ledge);
+if (j.kind === 'super') this.burst(j.toX, j.toY - 10, 12, '#F2B43A');
+if (r.cleared + r.skipped >= r.total) this.toTop();
+}
+toTop() {
+const r = this.r;
+if (r.finale !== null) return;
+r.finale = r.time;
+r.jump = { t: 0, len: reduced() ? 0.01 : 0.8, kind: 'hop', card: null, fromX: r.yk.x, fromY: this.standY(), toX: W / 2, toY: r.top };
+}
+/* the mic: on the canvas a tap stands for the recording (listening, the voice heard, then stopped) */
+micTap() {
+const r = this.r;
+if (this.frozen) this.unfreeze();
+const t = this.target();
+if (!t || r.jump || this.state.panel) return;
+if (r.voicing) r.voicing = null;
+if (this.take.state === 'idle') {
+this.take = { state: 'listening', t0: r.time, dur: 0, n: this.take.n };
+if (t.firstAt === null) t.firstAt = r.time;
+t.idle = 0;
+} else this.stopTake();
+}
+stopTake() {
+const r = this.r;
+const t = this.target();
+if (!t) { this.take.state = 'idle'; return; }
+const tk = this.take;
+tk.dur = Math.max(500, Math.round((r.time - tk.t0) * 1000));
+tk.state = 'recorded';
+t.takes++;
+tk.n = t.takes;
+this.heard = { label: 'Tu toma', gn: '', es: secs(tk.dur), tone: 'muted' };
+this.setState({ panel: true });
+}
+verdict(kind) {
+const r = this.r;
+if (!r) return;
+if (this.frozen) this.unfreeze();
+const t = this.target();
+this.take = { state: 'idle', t0: 0, dur: 0, n: this.take.n };
+this.strip = null;
+this.setState({ panel: false });
+if (!t) return;
+if (kind === 'again') { this.slip(t); return; }
+if (kind === 'almost') t.almost = true;
+this.clearSign(t);
+}
+clearSign(c) {
+const r = this.r;
+c.state = 'done';
+c.stampT = 0;
+r.cleared++;
+const clean = !c.misses && !c.hinted && !c.entry.falls && !c.almost;
+c.clean = clean;
+if (clean) r.clean++;
+/* Se levantó: said right after a slip */
+c.comeback = !clean && c.misses > 0 && !c.halted && !c.almost;
+if (c.almost && r.mixed.length < 40) r.mixed.push({ gn: c.item.gn, es: c.item.es, mark: 'Casi' });
+this.status = null;
+r.stepChip = false;
+let step = -1;
+if (clean) {
+r.run++;
+r.bestRun = Math.max(r.bestRun, r.run);
+step = RUN_STEPS.indexOf(r.run);
+if (step >= 0) r.stepChip = true;
+} else if (!c.entry.falls) r.run = 0;
+if (c.comeback) r.comebacks++;
+const yk = r.yk;
+if (clean || c.comeback) yk.happyT = HAPPY_T;
+const big = c.comeback || c.halted;
+r.fall = null;
+this.jumpTo(c, big ? 'super' : !clean ? 'scramble' : r.run >= 5 ? 'spin' : 'hop');
+if (step >= 0) this.cheer('step' + step, CHEER_T);
+else if (c.comeback) this.cheer('comeback', 1);
+this.roundLines();
+}
+/* Otra vez: he tries for the ledge, bumps his head and slips back down; then up he gets. The model plays for the next try */
+slip(c) {
+const r = this.r;
+c.misses++;
+c.flashT = FLASH_T;
+if (c.misses === 1 && r.mixed.length < 40) r.mixed.push({ gn: c.item.gn, es: c.item.es, mark: 'Otra vez' });
+if (c.misses >= 2 && !c.halted) this.haltSign(c);
+else this.status = { es: 'Otra vez: escuchá el modelo y probá de nuevo.', color: '#C7361E' };
+if (!r.fall && !r.jump) {
+r.fall = { kind: 'slip', t: 0, card: c, length: reduced() ? 0.6 : SLIP_T, rose: false };
+r.falls++;
+if (r.fellEntries.indexOf(c.entry) < 0) r.fellEntries.push(c.entry);
+r.run = 0;
+r.stepChip = false;
+r.yk.fx = { text: '¡Pum!', t: 0.05, x: c.ledge.x + (r.yk.x - c.ledge.x) * 0.4, y: c.ledge.y + c.h + 18, big: false, world: true };
+}
+}
+haltSign(c) {
+if (c.halted) return;
+c.halted = true;
+this.status = { es: 'Con calma: este cartel espera. «Saltear» lo pasa.', color: '#1B2440' };
+this.say(c.item.gn, 'Este cartel espera. «Saltear» lo pasa.');
+}
+playModel() {
+const r = this.r;
+if (!r) return;
+if (this.frozen) this.unfreeze();
+const t = this.target();
+if (!t || this.state.panel || this.take.state !== 'idle') return;
+if (!t.hinted) { t.hinted = true; r.hints++; }
+t.level = Math.max(t.level, 1);
+this.playClip(t, 'model');
+this.heard = { label: 'Modelo', gn: t.item.gn, es: '', tone: 'muted' };
+}
+playStrip(which) {
+const r = this.r;
+const t = this.target();
+if (!r || !t) return;
+if (this.frozen) this.unfreeze();
+const ms = which === 'model' ? clipMs(t.item.id, t.item.gn) : this.take.dur;
+this.strip = { which, from: r.time, until: r.time + ms / 1000, ms };
+}
+skip() {
+const r = this.r;
+const c = this.target();
+if (!r || !c) return;
+if (this.frozen) this.unfreeze();
+const open = c.halted || (r.style === 'compare' && r.time - (c.shownAt || r.time) >= SIGN_WAIT);
+if (!open) return;
+r.skipped++;
+r.target = null;
+this.status = null;
+this.heard = null;
+if (r.style === 'compare') {
+c.state = 'skipped';
+r.fall = null;
+this.take = { state: 'idle', t0: 0, dur: 0, n: 0 };
+this.jumpTo(c, 'hop');
+} else {
+c.state = 'removed';
+r.cards = r.cards.filter((x) => x !== c);
+if (r.cleared + r.skipped >= r.total && r.finale === null) r.finale = r.time;
+}
+this.roundLines();
+this.forceUpdate();
+}
+roundLines() {
+const r = this.r;
+const passed = r.cleared + r.skipped;
+if (passed >= r.total) {
+if (r.style === 'pick') { const tier = this.tier(); this.cheer(['endGood', 'endOk', 'endTry'][tier], 1.2); if (tier === 0) this.hop(10); }
+} else if (r.total >= 10 && passed === Math.floor(r.total / 2)) this.cheer('half', 1.3);
+}
+tier() { const r = this.r; const share = r.total ? r.clean / r.total : 0; return share >= 0.8 ? 0 : share >= 0.6 ? 1 : 2; }
+finishRound() {
+const r = this.r;
+const tier = this.tier();
+const pick = r.style === 'pick';
+const allUp = r.falls > 0 && r.skipped === 0 && r.comebacks === r.fellEntries.length;
+const seen = {};
+const mixed = r.mixed.filter((m) => { const k = m.gn + '|' + (m.gn2 || m.mark); if (seen[k]) return false; seen[k] = true; return true; }).slice(-6)
+.map((m) => (pick ? { a: 'Sonó', gn: m.gn, es: m.es, b: '· elegiste', gn2: m.gn2, es2: m.es2 } : { a: m.mark + ':', gn: m.gn, es: m.es, b: '', gn2: '', es2: '' }));
+this.res = {
+style: r.style, clean: r.clean, total: r.total, tier, bestRun: r.bestRun, falls: r.falls, hints: r.hints,
+way: WAYS[r.style].kicker,
+line: (r.skipped ? r.skipped + (r.skipped === 1 ? ' salteada' : ' salteadas') + ' · ' : '') + (pick ? 'pares que suenan casi igual' : r.atTop ? 'hasta arriba de todo' : 'carteles dichos en voz alta'),
+fallsTitle: pick ? 'Caídas' : 'Resbalones',
+fallsNote: pick ? (!r.falls ? 'nada le cayó encima a Kaguare en toda la ronda' : 'veces que le cayó encima; cada tarjeta volvió') : (!r.falls ? 'ni uno, de abajo hasta arriba' : 'veces que se resbaló del cartel; siempre se levantó'),
+hasUps: r.comebacks > 0, upsGn: allUp,
+upsText: allUp ? (pick ? 'Todas las que le cayeron encima volvieron y las elegiste bien.' : 'Cada cartel que lo hizo resbalar lo dijiste igual a la segunda.')
+: 'Se levantó ×' + r.comebacks + ': ' + (pick ? (r.comebacks === 1 ? 'una volvió y la elegiste bien a la primera.' : r.comebacks + ' volvieron y las elegiste bien a la primera.') : (r.comebacks === 1 ? 'un cartel dicho igual después de un resbalón.' : r.comebacks + ' carteles dichos igual después de un resbalón.')),
+hintsNote: pick ? 'tarjetas donde apareció una ayuda' : 'carteles donde escuchaste el modelo antes de decirlo',
+mixedTitle: pick ? 'Las que confundiste' : 'Para decir otra vez',
+mixed,
+};
+this.say('', 'Ronda terminada. ' + r.clean + ' de ' + r.total + ' bien a la primera. ' + STAMPS[tier].label + '.' + (r.bestRun >= 2 ? ' Racha más larga: ' + r.bestRun + '.' : ''));
+this.setState({ view: 'result', pause: false, panel: false });
+}
+
+/* ---------- Kaguare's pose ---------- */
+pose() {
+const r = this.r;
+const still = reduced();
+const p = { x: W / 2, base: GROUND_Y, lift: 0, rot: 0, sx: 1, sy: 1, down: 0, downRot: 0, downSy: 1, up: 0, dizzy: 0, eye: 'open', mouth: 'normal', sweat: false, sparks: false, pivot: false, umbrella: false };
+if (!r) return p;
+const yk = r.yk;
+const moving = this.state.view === 'round' && !this.state.pause && !this.frozen;
+if (moving && !still) {
+const breath = Math.sin((r.time * 2 * Math.PI) / 2.2) * 0.022;
+p.sy *= 1 + breath;
+p.sx *= 1 - breath * 0.6;
+}
+if (!still && yk.nodT > 0) { const k = Math.sin(Math.PI * (1 - yk.nodT / NOD_T)); p.sy *= 1 - 0.07 * k; p.sx *= 1 + 0.04 * k; }
+if (!still && yk.hopT > 0) {
+const u = 1 - yk.hopT / HOP_T;
+p.lift = yk.hopH * Math.sin(Math.PI * u);
+const s = u < 0.5 ? 0.08 : -0.1 * Math.sin(Math.PI * (u - 0.5) * 2);
+p.sy *= 1 + s;
+p.sx *= 1 - s * 0.6;
+}
+p.sparks = yk.hopT > 0 && r.stepChip;
+if (yk.happyT > 0 || r.run >= 5) { p.eye = 'happy'; p.mouth = 'happy'; }
+if (!still && yk.blinkT >= 0 && yk.blinkT < BLINK_T && p.eye === 'open') p.eye = 'closed';
+if (r.style === 'compare') this.climbPose(p, still);
+else this.fallPose(p, still);
+return p;
+}
+fallPose(p, still) {
+const r = this.r;
+if (r.fall) {
+const f = r.fall;
+if (f.t < 0.9) {
+const k = still ? 1 : Math.min(1, f.t / 0.14);
+p.down = still ? 1 : Math.min(1, f.t / 0.1);
+p.downSy = 1 - 0.14 * k;
+p.dizzy = still ? 0.5 : f.t;
+} else {
+/* getting up: the fallen pose gives way to the rising one, up on his hind legs (¡Opu'ã!), for UP_T; then he drops
+   onto all fours with the springy squash and stretch and the small hop (under reduced motion: standing at once) */
+const len = f.length - 0.9;
+const u = (f.t - 0.9) / len;
+const v = Math.max(0, u - UP_T / len);
+const w = still ? 0 : Math.exp(-4 * v) * Math.cos(12 * v);
+p.down = still ? 0 : Math.max(0, 1 - u / 0.12);
+p.downSy = 0.86;
+p.up = still ? 0 : Math.min(1 - p.down, Math.max(0, 1 - v / 0.12));
+p.sy = 1 + 0.35 * w;
+p.sx = 1 - 0.25 * w;
+p.lift = still ? 0 : 26 * Math.max(0, Math.sin(Math.PI * Math.min(1, v * 2.2))) * (1 - v);
+p.mouth = 'happy';
+p.eye = 'open';
+}
+return;
+}
+const target = this.target();
+if (target) {
+if (target.halted) p.umbrella = true;
+else {
+const near = (IMPACT_Y - target.y - target.h) / Math.max(1, r.speed);
+if (near < 1.6) { p.mouth = 'o'; p.sweat = near < 0.9; }
+}
+}
+const tr = r.yk.trick;
+if (!tr || still) return;
+const u = Math.min(1, tr.t / tr.len);
+if (tr.kind === 'pop') { p.mouth = 'happy'; p.eye = 'happy'; }
+else if (tr.kind === 'dodge') {
+/* he steps aside out of its way with a small lean about his feet, and back */
+const out = smooth(0, 0.35, u) * (1 - smooth(0.6, 1, u));
+p.x += 46 * out;
+p.rot = -0.12 * out;
+} else {
+const k = u < tr.hit ? smooth(0, tr.hit, u) : 1 - smooth(tr.hit, 1, u);
+p.lift = (tr.kind === 'smash' ? 58 : 46) * k;
+p.sy *= 1 + 0.08 * k;
+p.sx *= 1 - 0.05 * k;
+if (tr.kind === 'spin') { p.rot = 2 * Math.PI * smooth(0.05, 0.95, u); p.pivot = true; }
+p.mouth = u < tr.hit + 0.1 && tr.kind === 'smash' ? 'o' : 'happy';
+}
+}
+climbPose(p, still) {
+const r = this.r;
+p.x = r.yk.x || W / 2;
+p.base = this.standY();
+if (r.jump) {
+const j = r.jump;
+const u = Math.min(1, j.t / j.len);
+const k = smooth(0, 1, u);
+p.x = j.fromX + (j.toX - j.fromX) * k;
+const arc = Math.max(40, j.fromY - j.toY) * 0.55 + 24;
+p.base = j.fromY + (j.toY - j.fromY) * k;
+p.lift = arc * Math.sin(Math.PI * u) * (j.kind === 'super' ? 1.25 : 1);
+p.sy *= u < 0.15 ? 1 - 0.18 * Math.sin((Math.PI * u) / 0.15) : u > 0.85 ? 1 - 0.14 * Math.sin((Math.PI * (u - 0.85)) / 0.15) : 1.08;
+p.sx *= 2 - p.sy;
+p.mouth = j.kind === 'scramble' ? 'o' : 'happy';
+if (j.kind === 'spin') { p.rot = 2 * Math.PI * smooth(0.1, 0.9, u); p.pivot = true; }
+else if (j.kind === 'scramble') p.rot = u > 0.6 ? 0.25 * Math.sin((u - 0.6) * 30) * (1 - u) : 0;
+if (still) { p.x = j.toX; p.base = j.toY; p.lift = 0; p.rot = 0; }
+return;
+}
+if (r.fall && r.fall.kind === 'slip') {
+const f = r.fall;
+const u = f.t / f.length;
+const card = f.card;
+const reach = Math.max(20, this.standY() - (card.ledge.y + card.h + 6) - YH);
+p.mouth = 'o';
+if (still) return;
+if (u < 0.22) { p.lift = reach * Math.sin((Math.PI / 2) * (u / 0.22)); p.x += (card.ledge.x - p.x) * 0.3 * (u / 0.22); }
+else if (u < 0.4) { const k = (u - 0.22) / 0.18; p.lift = reach * (1 - k * k); p.x += (card.ledge.x - p.x) * 0.3 * (1 - k); }
+else {
+const k = (u - 0.4) / 0.6;
+p.rot = -1.35 * Math.exp(-4 * k) * Math.cos(9 * k) * (k < 0.08 ? k / 0.08 : 1);
+if (k < 0.45) p.dizzy = f.t;
+}
+return;
+}
+if (r.atTop) { p.base = r.top; p.x = W / 2; }
+const t = this.target();
+if (t && t.halted) p.mouth = 'o';
+}
+
+/* ---------- what the template shows ---------- */
+nodeVals(c, x, y, k) {
+const pose = reduced() ? { s: 1, a: 1 } : stampPose(c.stampT === undefined ? 1 : c.stampT);
+return { left: px(x - 24), top: px(y - 24), k: num(k * pose.s), alpha: num(pose.a), cleanO: c.clean ? 1 : 0, tickO: c.comeback ? 0 : 1, upO: c.comeback ? 1 : 0, ring: c.comeback ? '#0B7A6B' : '#C2336F' };
+}
+worldVals() {
+const r = this.r;
+const still = reduced();
+const pick = this.state.style === 'pick';
+const cam = r && !pick ? r.camY : 0;
+const off = ((cam % 26) + 26) % 26;
+const out = { s: num(S), h: px(H), grid: px(26 * S), paperPos: px((((W / 2) % 26) - 26) * S) + ' ' + px(-off * S), cam: px(-cam),
+lineY: px(pick ? GROUND_Y - 0.5 : -0.5), nodes: [], gone: [], rings: [], shards: [], drops: [], things: [], ledges: [], summitOn: false, summitT: '0px' };
+if (!r) return out;
+r.nodes.forEach((nd) => { if (nd.at !== undefined && nd.at >= 0) nd.stampT = r.time - nd.at; });
+(r.shards || []).forEach((s) => out.shards.push({ left: px(s.x), top: px(s.y), alpha: num(Math.max(0, 1 - s.age / 1.2)), rot: num(s.a) + 'rad', pts: s.pts.map((q) => num(q[0]) + ',' + num(q[1])).join(' ') }));
+(r.rings || []).forEach((g) => { const u = g.age / RING_T; const R = g.R * (0.45 + 0.75 * ease(u)); out.rings.push({ left: px(g.x - R), top: px(g.y - R), d: px(2 * R), bw: px(1 + 5 * (1 - u)), alpha: num(1 - u) }); });
+(r.drops || []).forEach((d) => out.drops.push({ left: px(d.x - 2), top: px(d.y - 2), alpha: num(Math.max(0, 1 - d.age / 0.7)), color: d.color }));
+if (pick) {
+const slots = Math.max(2, Math.floor((W / 2 - 44) / 30));
+const list = r.nodes.slice(-slots * 2);
+list.forEach((nd, i) => {
+const k = list.length - 1 - i;
+const side = k % 2 ? 1 : -1;
+out.nodes.push(this.nodeVals(nd, W / 2 + side * (48 + 30 * Math.floor(k / 2)), GROUND_Y - 16, 1));
+});
+const target = this.target();
+const pulse = still || this.frozen ? 0.7 : 0.55 + 0.25 * Math.sin(r.time * 4);
+for (const c of r.cards) {
+if (c.state === 'removed') continue;
+if (c.state === 'done') {
+/* the one answered, stamped as it breaks or lies on the ground; its partner fades away */
+c.item.things.forEach((th, i) => {
+const right = i === c.item.target;
+if (right && c.gone) return;
+const alpha = right ? 1 : c.fade;
+if (alpha <= 0) return;
+const pose = still ? { s: 1, tilt: -10, a: 1 } : stampPose(c.stampT);
+out.gone.push({ left: px(th.cx - th.w / 2), top: px(c.y), w: px(th.w), h: px(c.h), alpha: num(alpha), rot: num(c.rot) + 'rad', fs: px(th.size), gn: th.gn,
+badgeL: px(th.w - 26), badgeA: num(right ? pose.a : 0), badgeTf: 'rotate(' + num(pose.tilt) + 'deg) scale(' + num(pose.s) + ')', ring: c.comeback ? '#0B7A6B' : '#C2336F', tickO: c.comeback ? 0 : 1, upO: c.comeback ? 1 : 0 });
+});
+continue;
+}
+const isT = c === target;
+const shown = isT && (c.level >= 2 || c.halted);
+c.item.things.forEach((th, i) => {
+const right = i === c.item.target;
+const flash = c.flash[i] > 0 || c.state === 'fallen';
+const answer = shown && right;
+out.things.push({
+left: px(th.cx - th.w / 2), top: px(c.y), w: px(th.w), h: px(c.h), gn: th.gn, es: th.es, fs: px(th.size), esFs: px(ES_FS),
+border: flash ? U(2.5) + ' solid #C7361E' : answer ? U(3) + ' solid #0B7A6B' : isT ? U(3) + ' solid #1B2440' : U(2) + ' solid #C9D0E3',
+bg: flash ? '#FDEBE6' : answer ? '#E0F3EF' : '#FFFFFF',
+shadow: c.state === 'fallen' ? 'none' : isT ? '0 ' + U(5) + ' 0 #1B2440' : '0 ' + U(3) + ' 0 rgba(27, 36, 64, 0.3)',
+frame: isT && !flash ? U(5) + ' solid rgba(' + (answer ? '11, 122, 107, ' : '242, 180, 58, ') + num(pulse) + ')' : 'none',
+alpha: '1', rot: num(c.rot) + 'rad', color: '#1B2440', off: isT && c.state === 'live' ? 'false' : 'true',
+tap: () => this.tapThing(c, i),
+});
+});
+}
+} else {
+const lo = cam - 60;
+const hi = cam + H + 60;
+const target = this.target();
+const pulse = still || this.frozen ? 0.7 : 0.55 + 0.25 * Math.sin(r.time * 4);
+r.ledges.forEach((l) => {
+const c = l.card;
+if (l.y + c.h + 40 < lo || l.y - YH - 40 > hi) return;
+const isT = c === target;
+const flash = c.flashT > 0;
+const left = Math.max(6, Math.min(W - 6 - c.item.w, l.x - c.item.w / 2));
+const live = c.state === 'live';
+out.ledges.push({
+plankL: px(l.x - 42), plankT: px(l.y), left: px(left), top: px(l.y + 12), w: px(c.item.w), h: px(c.h), fs: px(c.item.size), lines: c.item.lines.map((t) => ({ t })),
+border: flash ? U(2.5) + ' solid #C7361E' : isT ? U(3) + ' solid #1B2440' : U(2) + ' solid #C9D0E3', bg: flash ? '#FDEBE6' : '#FFFFFF',
+shadow: isT ? '0 ' + U(5) + ' 0 #1B2440' : live ? '0 ' + U(3) + ' 0 rgba(27, 36, 64, 0.3)' : 'none', frame: isT && !flash ? U(5) + ' solid rgba(242, 180, 58, ' + num(pulse) + ')' : 'none',
+color: live ? '#1B2440' : '#5A6382', alpha: live ? '1' : '0.75', hidden: isT ? 'false' : 'true',
+nodeL: px(c.item.w - 8 - 24), nodeO: c.state === 'done' ? 1 : 0, cleanO: c.clean ? 1 : 0, tickO: c.comeback ? 0 : 1, upO: c.comeback ? 1 : 0, ring: c.comeback ? '#0B7A6B' : '#C2336F', skipO: c.state === 'skipped' ? 1 : 0,
+});
+});
+out.summitOn = true;
+out.summitT = px(r.top);
+}
+return out;
+}
+mascotVals() {
+const p = this.pose();
+const shade = Math.max(0.35, 1 - p.lift / 140);
+const stars = [];
+if (p.dizzy) {
+for (let i = 0; i < 3; i++) {
+const a = p.dizzy * 5 + (i * 2 * Math.PI) / 3;
+const cy = p.down > 0.5 ? p.base - DOWN_TOP - 4 : p.base - YH - 2;
+stars.push({ left: px(p.x + Math.cos(a) * 24 - 5.5), top: px(cy + Math.sin(a) * 6 - 5.5) });
+}
+}
+const o = (on) => (on ? 1 : 0);
+/* three layers on one feet line (y 83), so they crossfade in place: standing, fallen (down) and rising (up). The standing
+   and fallen layers squash about the feet (50% 83%), where the standing one also leans (it spins about 50% 52%); the
+   rising one takes no transform of its own but shares their left and top, so it rises with the hop as it fades */
+return {
+left: px(p.x - 50 * MASCOT), top: px(p.base - p.lift - FEET * MASCOT), origin: p.pivot ? '50% 52%' : '50% ' + FEET + '%',
+tf: 'rotate(' + num((p.rot * 180) / Math.PI) + 'deg) scale(' + num(p.sx) + ', ' + num(p.sy) + ')', standO: num(Math.max(0, 1 - p.down - p.up)),
+downL: px(p.x - 50 * MASCOT), downT: px(p.base - p.lift - FEET * MASCOT), downO: num(p.down), downTf: 'rotate(' + num(p.downRot) + 'deg) scale(' + num(2 - p.downSy) + ', ' + num(p.downSy) + ')',
+upO: num(p.up),
+eyeO: o(p.eye === 'open'), blinkO: o(p.eye === 'closed'), happyO: o(p.eye === 'happy'), mouthO: o(p.mouth === 'normal'), ohO: o(p.mouth === 'o'), happyMouthO: o(p.mouth === 'happy'), sweatO: o(p.sweat), sparkO: o(p.sparks),
+shL: px(p.x - 28 * shade), shT: px(p.base + 2 - 4 * shade), shW: px(56 * shade), shH: px(8 * shade), stars, umbrella: p.umbrella,
+};
+}
+umbrellaVals(p) {
+const r = this.r;
+const t = p.umbrella ? this.target() : null;
+if (!t || r.style !== 'pick') return { on: false, left: '0px', top: '0px', d: 'M0 0', ribs: 'M0 0', stick: 'M0 0' };
+const y = t.y + t.h + 2;
+const R = 60;
+let d = 'M' + -R + ' 12 Q0 -12 ' + R + ' 12';
+for (let k = 0; k < 6; k++) { const x1 = R - (k + 1) * ((2 * R) / 6); d += ' Q' + num(R - (k + 0.5) * ((2 * R) / 6)) + ' 7 ' + num(x1) + ' 12'; }
+d += 'Z';
+let ribs = '';
+for (let k = 1; k < 6; k++) ribs += 'M0 0L' + num(-R + k * ((2 * R) / 6)) + ' 11';
+/* the stick stands over his crown (drawing x 70, clear of the ear) and ends at drawing y 33.3, 37.3 px above his feet
+   (on the ground line in this game), just inside the top of his head (y 30.9): it is drawn behind him, so the head hides its tip */
+return { on: true, left: px(W / 2 + 15), top: px(y), d, ribs, stick: 'M0 0V' + num(GROUND_Y - 37.3 - y) };
+}
+renderVals() {
+const st = this.state;
+const r = this.r;
+const nav = (to) => (e) => { const go = this.props.go; if (go) { e.preventDefault(); go(to); } };
+const pick = st.style === 'pick';
+const inRound = st.view === 'round';
+const still = reduced();
+const t = r && inRound ? this.target() : null;
+const passed = r ? r.cleared + r.skipped : 0;
+const total = r ? r.total : LEN;
+const segs = [];
+for (let i = 0; i < Math.min(total, 40); i++) {
+const done = r && i < r.cleared;
+segs.push({ bg: done ? '#2F4FD0' : r && i < passed ? '#C9D0E3' : r && i === passed ? '#1B2440' : '#DDE1EC' });
+}
+const run = r ? r.run : 0;
+const step = !!(r && r.stepChip);
+const hud = { segs, gap: total > 6 ? '1px' : '3px', label: r ? 'Tarjeta ' + Math.min(passed + 1, total) + ' de ' + total : 'Sin tarjetas todavía', run,
+runBg: step ? '#F2B43A' : '#FFFFFF', runBorder: step ? '2px solid #1B2440' : '2px solid #DDE1EC', runColor: run || step ? '#1B2440' : '#5A6382',
+falls: r ? r.falls : 0, fallColor: r && r.falls ? '#1B2440' : '#5A6382', fallTitle: pick ? 'Caídas' : 'Resbalones' };
+const masc = this.mascotVals();
+const yk = r ? r.yk : null;
+const b = yk && yk.bubble;
+/* his bubble: beside him, on the side away from what comes next */
+let bx = W / 2 - 62;
+let by = GROUND_Y - 30;
+if (r && !pick) {
+const nextL = r.ledges[r.at + 1];
+const px0 = r.yk.x || W / 2;
+bx = nextL && nextL.x > px0 ? px0 - 52 : px0 + 52;
+by = this.standY() - YH - 8;
+}
+bx = Math.max(40, Math.min(W - 40, bx));
+const bub = { gn: b ? b.gn : '', hasGn: !!(b && b.gn), es: b ? b.es : '', esSize: b && b.gn ? '7px' : '8.5px', esColor: b && b.gn ? '#5A6382' : '#1B2440',
+left: px(bx), top: px(by), pop: num(b && !still ? 0.8 + 0.2 * ease(Math.min(1, b.t / BUBBLE_POP)) : 1) };
+const over = !!(t && t.halted);
+const fxo = yk && yk.fx;
+const fu = fxo ? fxo.t / FX_T : 1;
+const fx = { on: !!(fxo && fxo.t >= 0 && fu < 1), text: fxo ? fxo.text : '', left: px(fxo ? fxo.x : 0), top: px(fxo ? fxo.y - 10 * Math.max(0, fu) : 0),
+alpha: num(fu < 0.7 ? 1 : Math.max(0, 1 - (fu - 0.7) / 0.3)), rot: num(fxo && fxo.big ? -0.14 : -0.1) + 'rad', pop: num(fu < 0.2 ? 0.6 + 0.4 * ease(Math.max(0, fu) / 0.2) : 1),
+size: px(fxo && fxo.big ? 13.5 : 11), shadow: outline(1.6 / S, 3.4 / S), color: fxo && fxo.big ? '#B02A63' : '#2F4FD0' };
+/* the dock */
+const voicing = !!(r && r.voicing);
+const tk = this.take;
+const halted = !!(t && t.halted);
+const skipOpen = !!(t && (halted || (!pick && r && r.time - (t.shownAt || r.time) >= SIGN_WAIT)));
+const h0 = this.heard;
+let heardOn = false;
+let heardLabel = '';
+let heardGn = '';
+let heardEs = '';
+let heardColor = '#5A6382';
+let heardGnColor = '#1B2440';
+if (voicing) {
+heardOn = true;
+heardLabel = r.voicing.kind === 'model' ? 'Modelo ·' : 'Suena ·';
+heardGn = pick ? r.voicing.card.item.word : r.voicing.card.item.gn;
+} else if (h0) {
+heardOn = true;
+heardLabel = h0.label ? h0.label + (h0.gn ? ' ·' : '') : '';
+heardGn = h0.gn;
+heardEs = h0.es;
+heardColor = h0.tone === 'good' ? '#0B7A6B' : h0.tone === 'bad' ? '#C7361E' : '#5A6382';
+heardGnColor = h0.tone === 'good' ? '#0B7A6B' : h0.tone === 'bad' ? '#C7361E' : '#1B2440';
+}
+const tagC = pick && t && CONTRAST[t.item.contrast] ? CONTRAST[t.item.contrast] : null;
+/* one line: what to do (pick) or what the sign means (compare); the hint of a pair, what to listen for, goes to the status */
+const say = !r ? '' : pick ? 'Tocá la palabra que escuchaste.' : t ? t.item.es : '';
+const ringOn = !pick && (tk.state === 'listening' || tk.state === 'speaking');
+const ringPeriod = tk.state === 'speaking' ? 0.7 : 1.6;
+const ringU = r && ringOn && !still ? ((r.time - tk.t0) % ringPeriod) / ringPeriod : 0;
+const s0 = this.status;
+const stateLine = !r ? '' : pick
+? (voicing ? 'Sonando… escuchá bien' : halted ? 'Con calma: esta espera hasta que la toques' : t ? 'Tocá «Escuchar» para oírla otra vez' : 'Ya viene la próxima')
+: (voicing ? 'Escuchá: el micrófono vuelve después del audio' : tk.state === 'listening' ? 'Escuchando…' : tk.state === 'speaking' ? 'Te escucho · tocá para terminar' : halted ? 'Con calma: este cartel espera' : r.jump ? 'Sube al cartel' : 'Tocá «Simular toma»: en el lienzo no hay micrófono');
+const dock = {
+hasTag: !!tagC, tag: tagC ? tagC.tag : '', say,
+heardOn, heardLabel, heardGn, heardEs, heardColor, heardGnColor,
+status: s0 ? s0.es : '', statusColor: s0 ? s0.color : '#1B2440',
+leftSlow: pick, leftModel: !pick,
+leftLines: pick ? [{ t: 'Más', lang: 'es' }, { t: 'despacio', lang: 'es' }] : [{ t: 'Ehendu', lang: 'gn' }, { t: 'Escuchar', lang: 'es' }],
+leftAria: pick ? 'Más despacio: todavía no está grabado' : 'Escuchar el modelo (cuenta como ayuda)',
+leftOff: pick ? 'true' : t && !st.panel && tk.state === 'idle' ? 'false' : 'true',
+leftBorder: pick ? '2px dashed #DDE1EC' : '2px solid #1B2440', leftBg: !pick && voicing && r.voicing.kind === 'model' ? '#2F4FD0' : '#FFFFFF',
+leftColor: pick ? '#9AA1B5' : !pick && voicing && r.voicing.kind === 'model' ? '#FFFFFF' : '#1B2440', leftShadow: pick ? 'none' : '0 3px 0 #1B2440',
+bigPlay: pick, bigMic: !pick,
+bigLines: pick ? [{ t: 'Ehendu', lang: 'gn' }, { t: 'Escuchar', lang: 'es' }] : ringOn ? [{ t: 'Terminar', lang: 'es' }, { t: 'toma', lang: 'es' }] : [{ t: 'Simular', lang: 'es' }, { t: 'toma', lang: 'es' }],
+bigAria: pick ? 'Escuchar la palabra otra vez' : ringOn ? 'Terminar la toma' : 'Simular una toma: en el lienzo no hay micrófono',
+bigPressed: pick ? (voicing ? 'true' : 'false') : ringOn ? 'true' : 'false',
+bigBg: (pick && voicing) || ringOn ? '#2F4FD0' : '#FFFFFF', bigColor: (pick && voicing) || ringOn ? '#FFFFFF' : '#1B2440',
+bigShadow: '0 4px 0 #1B2440', bigTf: 'none', iconS: num(pick && voicing && !still ? 1 + 0.09 * (1 + Math.sin(r.time * 7.8)) : 1),
+ringColor: tk.state === 'speaking' ? '#F2B43A' : '#2F4FD0', ringO: num(ringOn ? (still ? 0.5 : 0.7 * (1 - ringU)) : 0), ringS: num(ringOn ? (still ? 1.08 : 0.92 + 0.3 * ringU) : 1),
+skipOff: skipOpen ? 'false' : 'true', skipBorder: skipOpen ? '2px solid #1B2440' : '2px solid #DDE1EC', skipColor: skipOpen ? '#1B2440' : '#9AA1B5', skipShadow: skipOpen ? '0 3px 0 #1B2440' : 'none',
+state: stateLine,
+};
+/* the comparison: Modelo and Vos, each with its strip */
+const panelOn = inRound && !pick && st.panel && !!t;
+const strips = [];
+if (panelOn) {
+const modelMs = clipMs(t.item.id, t.item.gn);
+const takeMs = tk.dur || modelMs;
+[['model', 'Modelo', modelMs, 1, hashOf(t.item.gn)], ['take', 'Vos', takeMs, takeMs / modelMs, hashOf(t.item.gn) + 7 * (tk.n || 1)]].forEach(([which, label, ms, stretch, seed]) => {
+const playing = !!(this.strip && this.strip.which === which && r);
+const prog = playing ? Math.min(1, (r.time - this.strip.from) / Math.max(0.1, ms / 1000)) : 0;
+const bars = waveOf(t.item.gn, 28, seed, which === 'model' ? 1 : stretch).map((a, i, arr) => ({ h: px(4 + 26 * a), bg: playing && i / arr.length <= prog ? (which === 'model' ? '#2F4FD0' : '#C2336F') : '#C9D0E3' }));
+strips.push({ label, dur: secs(ms), bars, on: playing ? 'true' : 'false', aria: which === 'model' ? 'Escuchar el modelo' : 'Escuchar tu toma', btnBg: playing ? '#2F4FD0' : '#FFFFFF', btnColor: playing ? '#FFFFFF' : '#1B2440', play: () => { this.playStrip(which); this.forceUpdate(); } });
+});
+}
+const cmp = { takeLabel: 'Toma ' + (tk.n || 1), strips };
+/* the menu's two ways */
+const ways = ['pick', 'compare'].map((k) => ({ title: WAYS[k].title, desc: WAYS[k].desc, isPick: k === 'pick', isCompare: k === 'compare', on: st.style === k ? 'true' : 'false',
+border: st.style === k ? '2.5px solid #2F4FD0' : '2px solid #DDE1EC', bg: st.style === k ? '#E8ECFB' : '#FFFFFF', shadow: st.style === k ? '0 3px 0 #1B2440' : 'none',
+pick: () => this.setState({ style: k }) }));
+const R = this.res;
+const tier = R ? STAMPS[R.tier] : STAMPS[0];
+const res = R ? Object.assign({}, R, { hasGn: !!tier.gn, stampGn: tier.gn, stampEs: tier.es.map((x) => ({ t: x })), esSize: tier.size, stampLabel: tier.label, hasMixed: R.mixed.length > 0 })
+: { way: '', clean: 0, total: 0, line: '', hasGn: false, stampGn: '', stampEs: [], esSize: '13px', stampLabel: '', bestRun: 0, falls: 0, fallsTitle: '', fallsNote: '', hasUps: false, upsGn: false, upsText: '', hints: 0, hintsNote: '', hasMixed: false, mixedTitle: '', mixed: [] };
+const empty = inRound && !r;
+return {
+isMenu: st.view === 'menu', inRound, isResult: st.view === 'result', paused: inRound && st.pause, ring: this.ring,
+roundLabel: 'Ronda: ' + WAYS[st.style].title,
+wd: this.worldVals(), masc, umb: this.umbrellaVals(masc), bub, bubUnder: !!b && !over, bubOver: !!b && over, fx, hud, dock, dockOn: inRound && !panelOn, panelOn, cmp, ways, res,
+empty, emptyText: pick ? 'Los pares de palabras para escuchar todavía no están cargados.' : 'Las frases para decir todavía no están cargadas.',
+sr: this.sr || { gn: '', es: '' },
+toMain: nav('Main'),
+start: () => { this.res = null; this.begin(this.state.style, ''); this.setState({ view: 'round', pause: false, panel: false }); this.startLoop(); },
+toMenu: () => { this.r = null; this.setState({ view: 'menu', pause: false, panel: false }); },
+again: () => { this.res = null; this.begin(this.state.style, ''); this.setState({ view: 'round', pause: false, panel: false }); this.startLoop(); },
+/* the sheet opens even with no round (no pairs or phrases loaded): it is the way out */
+openPause: () => this.setState({ pause: true }),
+resume: () => { this.last = now(); this.setState({ pause: false }); },
+worldTap: () => { if (this.frozen && this.r && this.state.style === 'pick') { this.unfreeze(); this.forceUpdate(); } },
+big: () => {
+if (!r) return;
+if (this.frozen) this.unfreeze();
+if (pick) { const c = this.target(); if (c && !r.voicing) this.playClip(c); }
+else this.micTap();
+this.forceUpdate();
+},
+sideL: () => { if (!pick) { this.playModel(); this.forceUpdate(); } },
+skip: () => this.skip(),
+sameV: () => this.verdict('same'),
+almostV: () => this.verdict('almost'),
+againV: () => this.verdict('again'),
+};
+}
+}
+</script>
+</body>
+</html>

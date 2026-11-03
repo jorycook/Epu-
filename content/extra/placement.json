@@ -1,0 +1,74 @@
+{
+  "self": [
+    { "id": "pl.s1", "level": "A1", "skill": "comp", "es": "Entiendo saludos y preguntas simples sobre mi nombre o de dónde soy, si me hablan despacio." },
+    { "id": "pl.s2", "level": "A1", "skill": "prod", "es": "Puedo saludar, dar las gracias, despedirme y decir cómo me llamo y de dónde soy." },
+    { "id": "pl.s3", "level": "A2", "skill": "comp", "es": "Entiendo lo esencial de charlas cortas sobre compras, horarios o lugares, y de avisos simples por la radio." },
+    { "id": "pl.s4", "level": "A2", "skill": "prod", "es": "Puedo hacer una compra, preguntar un precio y contar en pocas frases qué hice o qué voy a hacer." },
+    { "id": "pl.s5", "level": "B1", "skill": "comp", "es": "Sigo las ideas principales de una charla o de la radio sobre temas que conozco, si hablan claro." },
+    { "id": "pl.s6", "level": "B1", "skill": "prod", "es": "Puedo conversar sin prepararme sobre temas de todos los días, contar algo que me pasó y dar mi opinión." },
+    { "id": "pl.s7", "level": "B2", "skill": "comp", "es": "Entiendo entrevistas y noticias de la radio sobre temas actuales, y distingo qué opina cada persona." },
+    { "id": "pl.s8", "level": "B2", "skill": "prod", "es": "Puedo defender una opinión con fluidez en una reunión y elegir mis palabras según quién me escucha." }
+  ],
+  "items": [
+    {
+      "id": "pl.1", "level": "A1", "kind": "choice", "area": "listening", "label": "Respuesta rápida",
+      "q": "Sos Ana. Una vecina te saluda. ¿Qué le respondés?",
+      "audio": [["F", "Mba'éichapa reiko?", "¿Cómo andás?"]],
+      "script": ["Mujer: Mba'éichapa reiko?"],
+      "options": ["Jajotopáta.", "Iporã, ha nde?", "Che réra Ana."],
+      "answer": 2,
+      "explain": "La vecina pregunta cómo estás: Mba'éichapa reiko? Se responde Iporã, ha nde? («Bien, ¿y vos?»). Jajotopáta es para despedirse, y Che réra Ana responde a otra pregunta: Mba'éichapa nde réra?"
+    },
+    {
+      "id": "pl.2", "level": "A1", "kind": "choice", "area": "reading", "label": "Qué dice el cartel",
+      "q": "Este cartel está en la puerta de una escuela. ¿Qué dice?",
+      "passage": "Tapeg̃uahẽ porãite",
+      "options": ["Cerrado hasta mañana", "No pasar", "Bienvenidos"],
+      "answer": 3,
+      "explain": "Tapeg̃uahẽ porãite da la bienvenida a todos los que llegan. No dice nada de cerrar ni de no pasar. A una sola persona se le dice Tereg̃uahẽ porãite."
+    },
+    {
+      "id": "pl.3", "level": "A2", "kind": "choice", "area": "listening", "label": "Qué escuchaste",
+      "q": "Una mujer llama a un amigo por teléfono. ¿Dónde está él ahora?",
+      "audio": [["F", "Moõpa reime ko'ág̃a?", "¿Dónde estás ahora?"], ["M", "Ag̃uahẽma che rógape. Ka'aru aháta mbo'ehaópe.", "Ya llegué a mi casa. A la tarde voy a ir a la escuela."]],
+      "script": ["Mujer: Moõpa reime ko'ág̃a?", "Hombre: Ag̃uahẽma che rógape. Ka'aru aháta mbo'ehaópe."],
+      "options": ["En su casa", "En la escuela", "En el trabajo"],
+      "answer": 1,
+      "explain": "Ag̃uahẽma che rógape es «ya llegué a mi casa»: ahí está ahora. A la escuela va a ir a la tarde: ka'aru aháta mbo'ehaópe. Del trabajo no dice nada."
+    },
+    {
+      "id": "pl.4", "level": "A2", "kind": "choice", "area": "reading", "label": "Leer un mensaje",
+      "q": "Rosa te manda este mensaje. ¿Qué hizo ya?",
+      "passage": "Ajapóma chipa che sy ndive. Ko'ẽrõ aháta ajogua kesu.",
+      "options": ["Compró queso.", "Hizo chipá con su mamá.", "Comió chipá con su mamá."],
+      "answer": 2,
+      "explain": "Ajapóma, con -ma, es «ya hice»: ya hizo chipá con su mamá (che sy ndive). Para «comí» diría ha'u. El queso lo va a comprar mañana: ko'ẽrõ aháta ajogua kesu."
+    },
+    {
+      "id": "pl.5", "level": "B1", "kind": "choice", "area": "listening", "label": "Qué escuchaste",
+      "q": "Un compañero de trabajo te deja un mensaje de voz. ¿Qué te dice?",
+      "audio": [["M", "Ko árape ndahái amba'apo, che sy hasýgui.", "Hoy no voy a trabajar porque mi mamá está enferma."], ["M", "Apytáta hendive.", "Me voy a quedar con ella."], ["M", "Ko'ẽrõ amba'apo jeýta.", "Mañana vuelvo a trabajar."]],
+      "script": ["Hombre: Ko árape ndahái amba'apo, che sy hasýgui.", "Hombre: Apytáta hendive.", "Hombre: Ko'ẽrõ amba'apo jeýta."],
+      "options": [
+        "Hoy no trabaja porque él está enfermo.",
+        "Hoy trabaja, y mañana se queda con su mamá.",
+        "Su mamá está enferma, y mañana la lleva al médico.",
+        "Hoy se queda con su mamá enferma, y mañana vuelve a trabajar."
+      ],
+      "answer": 4,
+      "explain": "Ko árape ndahái amba'apo, che sy hasýgui: hoy no va a trabajar porque su mamá está enferma. La enferma es ella, no él. Apytáta hendive: se queda con ella. Ko'ẽrõ amba'apo jeýta: mañana vuelve a trabajar. Del médico no dice nada."
+    },
+    {
+      "id": "pl.6", "level": "B1", "kind": "choice", "area": "reading", "label": "Leer un relato",
+      "q": "Leé lo que cuenta Luis. ¿Qué pasó con el queso?",
+      "passage": "Kuehe ka'aru aha ñemuhápe ajogua hag̃ua kesu. Ag̃uahẽ jave, ndaipóri kesu. Upéi aha che sy rógape, ha che sy ome'ẽ chéve peteĩ kesu.",
+      "options": ["Lo compró en el negocio.", "Lo compró otro día.", "Se lo dio su mamá.", "No consiguió queso."],
+      "answer": 3,
+      "explain": "En el negocio no había queso: ag̃uahẽ jave, ndaipóri kesu («cuando llegué, no había queso»). Después fue a la casa de su mamá, y ella le dio uno: che sy ome'ẽ chéve peteĩ kesu. Así que consiguió queso, pero no lo compró: ni en el negocio ni otro día."
+    }
+  ],
+  "production": {
+    "es": "Presentate en guaraní en unos 30 segundos: tu nombre, de dónde sos y qué hacés. Si te falta una palabra, decila en castellano y seguí.",
+    "seconds": 45
+  }
+}

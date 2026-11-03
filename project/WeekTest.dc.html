@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Prueba de la semana</title>
+<script src="./support.js"></script>
+<script src="./gn-course-a1.js"></script>
+<script src="./gn-course-a2.js"></script>
+<script src="./gn-course-b1.js"></script>
+<script src="./gn-course-b2.js"></script>
+<script src="./gn-course-c1.js"></script>
+<script src="./gn-course-c2.js"></script>
+<script src="./gn-course.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&amp;family=Andika:wght@400;700&amp;text=%20%21%22%23%24%25%26%27%28%29%2A%2B%2C-.%2F0123456789%3A%3B%3C%3D%3E%3F%40ABCDEFGHIJKLMNOPQRSTUVWXYZ%5B%5C%5D%5E_%60abcdefghijklmnopqrstuvwxyz%7B%7C%7D~%C2%A1%C2%BF%C2%AB%C2%BB%C2%B0%C2%B7%C3%97%C3%B7%C2%AA%C2%BA%C2%B2%C3%A1%C3%A9%C3%AD%C3%B3%C3%BA%C3%BC%C3%B1%C3%81%C3%89%C3%8D%C3%93%C3%9A%C3%9C%C3%91%C3%BD%C3%9D%C3%A3%E1%BA%BD%C4%A9%C3%B5%C5%A9%E1%BB%B9%C3%83%E1%BA%BC%C4%A8%C3%95%C5%A8%E1%BB%B8%C3%A7%C3%87%C3%A0%C3%A8%C3%AC%C3%B2%C3%B9%C3%A2%C3%AA%C3%AE%C3%B4%C3%BB%CC%83%CC%81%E2%80%98%E2%80%99%E2%80%9C%E2%80%9D%E2%80%A6%E2%80%93%E2%80%94%E2%80%A2%E2%82%AC%E2%86%92%E2%86%90%E2%86%91%E2%86%93&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:#2F4FD0;text-decoration:none}a:hover{color:#1B2440}
+rt{font-size:9px;font-weight:500;color:#5A6382}
+@keyframes gn-stamp{0%{opacity:0;transform:scale(1.8) rotate(-20deg)}55%{opacity:1;transform:scale(.92) rotate(-9deg)}100%{opacity:1;transform:scale(1) rotate(-9deg)}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; padding: 50px 16px 34px; background: #F4F5F9; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+<div style="display: flex; align-items: center; height: 44px; flex-shrink: 0">
+<a href="Main.dc.html" onClick="{{ toMain }}" aria-label="Cerrar" style="width: 44px; height: 44px; margin-left: -10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+<div style="flex-grow: 1; text-align: center; font-size: 15px; font-weight: 800">{{ heading }}</div>
+<div style="width: 34px; flex-shrink: 0"></div>
+</div>
+
+<sc-if value="{{ showHead }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top: 10px; flex-shrink: 0; display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; align-items: center; gap: 8px">
+<div aria-hidden="true" style="width: 26px; height: 26px; box-sizing: border-box; border-radius: 8px; border: 2px solid #1B2440; background: #F2B43A; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg></div>
+<div style="font-size: 12px; font-weight: 800; color: #B02A63">PRUEBA DE LA SEMANA</div>
+</div>
+<sc-if value="{{ unitHasGn }}" hint-placeholder-val="{{ true }}">
+<h1 style="margin: 0; display: flex; flex-direction: column; gap: 2px"><span lang="gn" style="font-family: 'Andika', 'Nunito', sans-serif; font-size: 26px; font-weight: 700; line-height: 1.25; overflow-wrap: anywhere">{{ unitGn }}</span><span style="font-size: 15px; font-weight: 700; line-height: 1.35; color: #5A6382">{{ unitEs }}</span></h1>
+</sc-if>
+<sc-if value="{{ unitNoGn }}" hint-placeholder-val="{{ false }}">
+<h1 style="margin: 0; font-size: 26px; font-weight: 800; line-height: 1.25">{{ unitEs }}</h1>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ intro }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top: 6px; flex-shrink: 0; font-size: 13px; font-weight: 500; color: #5A6382; line-height: 1.5">{{ introLine }}</div>
+<div style="margin-top: 14px; flex-shrink: 0; padding: 14px 16px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; display: flex; flex-direction: column; gap: 8px">
+<div style="font-size: 14px; font-weight: 800">Por área</div>
+<sc-for list="{{ plan }}" as="a" hint-placeholder-count="4">
+<div style="display: flex; align-items: baseline; gap: 6px"><div style="flex-grow: 1; font-size: 13px; font-weight: 700">{{ a.es }}</div><div style="font-size: 14px; font-weight: 800">{{ a.count }}</div></div>
+</sc-for>
+</div>
+<div style="flex-grow: 1"></div>
+<a href="Exam.dc.html" onClick="{{ start }}" style="flex-shrink: 0; height: 54px; border-radius: 16px; background: #1B2440; border: 2px solid #1B2440; box-shadow: 0 4px 0 #2F4FD0; color: #FFFFFF; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center"><span><span lang="gn">Ñepyrũ</span> · Empezar la prueba</span></a>
+</sc-if>
+
+<sc-if value="{{ notReady }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top: 20px; flex-shrink: 0; padding: 16px; border-radius: 20px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 4px">
+<div style="font-size: 14px; font-weight: 800">En preparación</div>
+<div style="font-size: 13px; font-weight: 500; line-height: 1.45; color: #5A6382">Esta prueba de la semana todavía no está escrita. Cuando esté, la vas a encontrar acá, al final de la semana.</div>
+</div>
+<div style="flex-grow: 1"></div>
+<a href="Main.dc.html" onClick="{{ toMain }}" style="flex-shrink: 0; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center"><span><span lang="gn">Tapykue</span> · Volver</span></a>
+</sc-if>
+
+<sc-if value="{{ result }}" hint-placeholder-val="{{ true }}">
+<div style="margin-top: 6px; flex-shrink: 0; display: flex; align-items: center; gap: 12px">
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<div style="font-size: 12px; font-weight: 700; color: #5A6382">Respuestas correctas</div>
+<div style="display: flex; align-items: baseline; gap: 6px"><h1 style="margin: 0; font-size: 56px; font-weight: 800; line-height: 1.05">{{ r.score }}</h1><div style="font-size: 20px; font-weight: 700; color: #5A6382">/ {{ r.of }}</div></div>
+<div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.5">{{ r.usedLine }}</div>
+</div>
+<div role="img" aria-label="{{ r.stampLabel }}" style="width: 124px; height: 124px; box-sizing: border-box; border-radius: 50%; border: 4px solid #C2336F; padding: 5px; transform: rotate(-9deg); animation: gn-stamp 550ms ease-out 150ms both; flex-shrink: 0; display: flex">
+<div style="flex-grow: 1; border-radius: 50%; border: 2px solid #C2336F; color: #B02A63; font-weight: 800; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-align: center">
+<sc-if value="{{ r.hasGn }}" hint-placeholder-val="{{ true }}"><div lang="gn" style="font-size: 16px; line-height: 1.2">{{ r.stampGn }}</div></sc-if>
+<sc-for list="{{ r.stampEs }}" as="l" hint-placeholder-count="1"><div style="line-height: 1.25; font-size: {{ r.esSize }}">{{ l.t }}</div></sc-for>
+</div>
+</div>
+</div>
+
+<div style="flex-grow: 1; min-height: 0; overflow-y: auto; margin: 0 -16px; padding: 0 16px 8px; display: flex; flex-direction: column">
+<div style="margin-top: 14px; flex-shrink: 0; padding: 10px 14px; border-radius: 16px; background: #FCE4EE; display: flex; align-items: center; gap: 10px">
+<div aria-hidden="true" style="width: 30px; height: 30px; box-sizing: border-box; border-radius: 50%; border: 2.5px solid #C2336F; display: flex; align-items: center; justify-content: center; transform: rotate(-8deg); flex-shrink: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B02A63" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+<div style="font-size: 13px; font-weight: 800; line-height: 1.4">{{ r.cardLine }}</div>
+</div>
+
+<sc-if value="{{ r.hasAreas }}" hint-placeholder-val="{{ true }}">
+<div style="margin-top: 12px; flex-shrink: 0; padding: 14px 16px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; display: flex; flex-direction: column; gap: 11px">
+<div style="font-size: 14px; font-weight: 800">Por área</div>
+<sc-for list="{{ r.areas }}" as="a" hint-placeholder-count="4">
+<div role="img" aria-label="{{ a.aria }}" style="display: flex; flex-direction: column; gap: 5px">
+<div style="display: flex; align-items: baseline; gap: 6px"><div style="flex-grow: 1; font-size: 13px; font-weight: 700">{{ a.es }}</div><div style="font-size: 14px; font-weight: 800">{{ a.right }} / {{ a.of }}</div></div>
+<div style="height: 8px; border-radius: 4px; background: #D9E0F8; overflow: hidden"><div style="height: 8px; border-radius: 0 4px 4px 0; background: #2F4FD0; width: {{ a.w }}"></div></div>
+<sc-if value="{{ a.weak }}" hint-placeholder-val="{{ false }}"><div style="align-self: flex-start; display: flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 10px; background: #FFF4D6; font-size: 12px; font-weight: 800"><svg width="13" height="13" viewBox="0 0 24 24" fill="#F2B43A" stroke="#1B2440" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.3 1.1 6.1L12 16.9 6.6 19.8l1.1-6.1L3.2 9.4l6.1-.8z"/></svg>Punto débil</div></sc-if>
+</div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ r.anyWrong }}" hint-placeholder-val="{{ true }}">
+<div style="margin-top: 12px; flex-shrink: 0; padding: 12px 14px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; align-items: center; gap: 12px">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M6 3h12a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H6z"/><path d="M6 3v18M3 7h3M3 12h3M3 17h3M10 8h5"/></svg>
+<div style="font-size: 13px; font-weight: 700; line-height: 1.45">{{ r.wrongLine }}</div>
+</div>
+</sc-if>
+</div>
+
+<sc-if value="{{ r.anyWrong }}" hint-placeholder-val="{{ true }}">
+<a href="Notebook.dc.html" onClick="{{ toNotebook }}" style="margin-top: 8px; flex-shrink: 0; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center">Ver errores</a>
+<a href="Main.dc.html" onClick="{{ toMain }}" style="margin-top: 8px; flex-shrink: 0; height: 44px; color: #1B2440; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center"><span><sc-if value="{{ r.hasOnwardGn }}" hint-placeholder-val="{{ false }}"><span lang="gn">{{ r.onwardGn }}</span> · </sc-if>{{ r.onward }}</span></a>
+</sc-if>
+<sc-if value="{{ r.noWrong }}" hint-placeholder-val="{{ false }}">
+<a href="Main.dc.html" onClick="{{ toMain }}" style="margin-top: 8px; flex-shrink: 0; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center"><span><sc-if value="{{ r.hasOnwardGn }}" hint-placeholder-val="{{ false }}"><span lang="gn">{{ r.onwardGn }}</span> · </sc-if>{{ r.onward }}</span></a>
+</sc-if>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"view":{"editor":"enum","options":["result","intro"],"default":"result"},"go":{"editor":null},"app":{"editor":null},"save":{"editor":null},"miss":{"editor":null},"reviewed":{"editor":null},"level":{"editor":null},"$preview":{"width":390,"height":844}}'>
+/* The week test, day 7 of every unit: its intro (the unit's questions in exam format, on one 20-minute clock, counted
+   by area) and, once it is taken, its result: the score, the teacher's stamp, the stamp card, the bars by area and
+   where the mistakes went. The test itself runs on Exam with set 'test', which saves { result } and comes back here. */
+const TEST_SECONDS = 1200;
+const AREA_KEYS = ['vocab', 'grammar', 'reading', 'listening', 'mediation', 'sound'];
+/* the teacher's stamp by share: 80 % and up, 60 % and up, and below that. The praise is the glossary's (Guarani first,
+   the Spanish under it); the last band is Spanish only */
+const STAMPS = [
+  { from: 0.8, gn: '¡Iporãiterei!', es: ['¡Muy bien!'], size: '13px', label: 'Sello: ¡Muy bien!' },
+  { from: 0.6, gn: '¡Iporã!', es: ['¡Bien!'], size: '13px', label: 'Sello: ¡Bien!' },
+  { from: 0, gn: '', es: ['Seguí', 'practicando'], size: '16px', label: 'Sello: seguí practicando' },
+];
+/* below this share an area gets the "Punto débil" chip */
+const WEAK = 0.5;
+const DAYS = ['a1u01d1', 'a1u01d2', 'a1u01d3', 'a1u01d4', 'a1u01d5', 'a1u01d6'];
+/* On its own the artboard shows its designed moment, dated from today so it never drifts: A1 unit 1 with its six days
+   stamped and (view "result") the week test taken today, 16 of 20 in 18:40, Escucha the weak spot. View "intro" is the
+   same week before the test. */
+function sample(C, view) {
+  const T = C.today(C.now());
+  const full = { g: 3, k: 1, r: 1 };
+  const done = {};
+  DAYS.forEach((id) => { done[id] = full; });
+  const tests = view === 'intro' ? {} : {
+    a1u01t: { id: 'a1u01t', score: 16, of: 20, used: 1120, at: C.now(), areas: { vocab: { right: 5, of: 6 }, grammar: { right: 7, of: 8 }, reading: { right: 3, of: 3 }, listening: { right: 1, of: 3 } } },
+  };
+  return { screen: 'WeekTest', started: true, level: 'A1', plans: {}, plan: { start: C.addDays(T, -6), target: C.addDays(T, 60), pace: 'fit', minutes: 30 }, cur: 'a1u01t', done, tests, exams: {}, mistakes: [], tp: 0, set: 'test', placement: { comp: 'A2', prod: 'A1', start: 'A1' }, typed: [] };
+}
+function fmt(sec) {
+  const t = Math.max(0, Math.round(sec || 0));
+  return Math.floor(t / 60) + ':' + (t % 60 < 10 ? '0' : '') + (t % 60);
+}
+function questions(n) { return n === 1 ? '1 pregunta' : n + ' preguntas'; }
+class Component extends DCLogic {
+  renderVals() {
+    const C = window.gnCourse;
+    const nav = (to) => (e) => { const go = this.props.go; if (go) { e.preventDefault(); go(to); } };
+    const view = this.props.view === 'intro' ? 'intro' : 'result';
+    const app = this.props.app || C.view(sample(C, view));
+    const lv = app.level || C.level();
+    return C.withLevel(lv, () => {
+      const unit = app.unit || C.unit(1) || { n: 1, gn: '', es: '', test: [] };
+      const n = unit.n || 1;
+      const sid = C.sid(n, 't');
+      const res = (app.tests || {})[sid] || null;
+      /* the unit's test is a list of item ids; an item not written yet is left out */
+      const test = (Array.isArray(unit.test) ? unit.test : []).map((x) => (typeof x === 'string' ? C.item(x) : x)).filter((x) => x && typeof x === 'object');
+      const counts = {};
+      test.forEach((it) => { const k = C.area(it.area).key; counts[k] = (counts[k] || 0) + 1; });
+      let r = { score: 0, of: 0, usedLine: '', hasGn: false, stampGn: '', stampEs: [], esSize: '13px', stampLabel: '', cardLine: '', areas: [], hasAreas: false, anyWrong: false, noWrong: false, wrongLine: '', onward: '', hasOnwardGn: false, onwardGn: '' };
+      if (res) {
+        const of = Math.max(0, res.of || 0);
+        const score = Math.max(0, Math.min(of, res.score || 0));
+        const share = of ? score / of : 0;
+        const st = STAMPS.find((x) => share >= x.from) || STAMPS[STAMPS.length - 1];
+        const wrong = of - score;
+        /* the stamp card counts the unit's stamps as the engine does: every day complete, and the test taken */
+        const prog = app.progress && app.progress.level === lv ? app.progress : C.progress(app, lv);
+        const pu = ((prog && prog.units) || []).find((u) => u.n === n);
+        const next = C.unit(n + 1);
+        const areas = AREA_KEYS.filter((k) => res.areas && res.areas[k] && res.areas[k].of > 0).map((k) => {
+          const x = res.areas[k];
+          const right = Math.max(0, Math.min(x.of, x.right || 0));
+          const weak = right / x.of < WEAK;
+          const es = C.area(k).es;
+          return { es, right, of: x.of, w: ((right / x.of) * 100).toFixed(1) + '%', weak, aria: es + ': ' + right + ' de ' + x.of + (weak ? ', punto débil' : '') };
+        });
+        r = {
+          score,
+          of,
+          usedLine: (res.used != null ? fmt(res.used) + ' de ' + fmt(TEST_SECONDS) + ' · ' : '') + 'sin pistas',
+          hasGn: !!st.gn,
+          stampGn: st.gn,
+          stampEs: st.es.map((t) => ({ t })),
+          esSize: st.size,
+          stampLabel: st.label + ', ' + score + ' de ' + of,
+          cardLine: !pu ? 'Semana ' + n + ': prueba hecha.' : pu.full ? '¡Semana ' + n + ' completa! ' + pu.done + ' de ' + pu.of + ' sellos.' : 'Semana ' + n + ': ' + pu.done + ' de ' + pu.of + ' sellos.',
+          areas,
+          hasAreas: areas.length > 0,
+          anyWrong: wrong > 0,
+          noWrong: wrong <= 0,
+          wrongLine: wrong === 1 ? '1 error fue a tu cuaderno, con su explicación.' : wrong + ' errores fueron a tu cuaderno, cada uno con su explicación.',
+          onward: next ? 'A la semana ' + (n + 1) : 'Volver',
+          hasOnwardGn: !next,
+          onwardGn: next ? '' : 'Tapykue',
+        };
+      }
+      return {
+        heading: 'Semana ' + n + ' · Prueba de la semana',
+        unitHasGn: !!unit.gn,
+        unitNoGn: !unit.gn,
+        unitGn: unit.gn || '',
+        unitEs: unit.es || '',
+        showHead: !res,
+        intro: !res && test.length > 0,
+        notReady: !res && test.length === 0,
+        result: !!res,
+        introLine: questions(test.length) + ' en formato de examen, con un solo reloj de ' + Math.round(TEST_SECONDS / 60) + ' minutos. Sin pistas ni glosas: las respuestas y las explicaciones, al final. Cada error va a tu cuaderno.',
+        plan: AREA_KEYS.filter((k) => counts[k]).map((k) => ({ es: C.area(k).es, count: questions(counts[k]) })),
+        r,
+        start: (e) => {
+          if (this.props.save) this.props.save({ cur: sid, tp: 0, set: 'test' });
+          nav('Exam')(e);
+        },
+        toMain: (e) => {
+          if (this.props.save) this.props.save({ cur: null });
+          nav('Main')(e);
+        },
+        toNotebook: nav('Notebook'),
+      };
+    });
+  }
+}
+</script>
+</body>
+</html>
