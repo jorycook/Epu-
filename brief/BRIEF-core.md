@@ -155,6 +155,7 @@ Same names and meanings as Yaoki's `ykCourse` unless noted. `const C = window.gn
 - Level exam: `C.PARTS` (P1 Lectura, P2 Escucha, P3 Mediación, P4 Escritura, P5 Oral, with `group` and `how`), `C.examResult(parts, mode)` →
   `{ groupC, groupP, apto, comprension, mode }` (Apto: ≥60 % in each group, no part under 40 %; group C alone → Constancia de comprensión).
 - Placement: `C.placed(comp, prod)` → `{ comp, prod, start }` (the plan starts at the production level).
+- Week-test waiver: `C.waives(placement, score, of)` is true when a learner placed higher in comprehension than in production scores at least `C.WAIVE` (80 %) on a week test; `C.waived(testId)` lists that unit's study days whose reading or listening lesson then counts as done. `handlers.save` applies it when a week test's result is saved, as the placement result promises.
 - Text: `C.rich(src, opt)` → segments `{ t, r, ruby, plain, bg, pad, ws, line }` (markup: `{highlight}` also inside words, `[base|gloss]`,
   `_underline_`, `^clue^`; opt `ruby:false` drops glosses, `hl:false`, `clue:'line'|'mark'`); `C.plain(src)`; `C.norm(s)` (NFC, one puso);
   `C.fold(s)` (for matching); `C.chars(s)` (graphemes); `C.cut(s, n)`; `C.spell(typed, answer)` → `{ ok, near, issues: [{ k: 'puso'|'nasal'|'acento'|'letras', more }], at }`
@@ -165,7 +166,7 @@ Same names and meanings as Yaoki's `ykCourse` unless noted. `const C = window.gn
   `save` keys: plain keys are copied (`cur`, `tp`, `set`, `level`, `plan`, `placement`, `screen`); `prog` merges into the current session
   with Math.max; `result` stores a week test at `tests[result.id]`; `exam` stores a level exam result at `exams[level]` (a pass is never replaced
   by a fail); `typed` adds words spelled with the Guarani keyboard.
-- `C.view(state)` → `{ status, plan, sid, session, unit, day, prog, done, tests, exams, exam, tp, set, mistakes, typed, placement, level, meta, levels, progress }`.
+- `C.view(state)` → `{ status, plan, plans, sid, session, unit, day, prog, done, tests, exams, exam, tp, set, mistakes, typed, placement, profile, exposure, level, meta, levels, progress }` (`plans`: the other levels' plans; `profile`: the goal's answers; `exposure`: the «lo usé» marks).
 - Sound: `window.gnSound` — `has(key)`, `ms(key)`, `unlock()`, `play(key)`, `stop()`, `on()`, `at()`. No clips exist: a sound control
   checks `has()` and otherwise lights up as "playing" for `600 + C.plain(text).length * 120` ms (Yaoki's silent stand-in), showing the
   words being said. Clip keys: `<item or example id>` (e.g. `a1u01d1.p1.x0` = point 1, example 0; `a1u01d1.r1` = listening item).
