@@ -285,7 +285,8 @@ const testDay = !!(session && session.kind === 'test');
 return {
 dayLabel: session || sid ? 'Semana ' + unitN + ' · Día ' + dayN : 'Hoy',
 dayN,
-kicker: written ? (later ? 'SIGUIENTE' : 'HOY') + ' · TRES LECCIONES' : testDay ? 'PRUEBA DE LA SEMANA' : 'EN PREPARACIÓN',
+/* a day already stamped, opened again on another day than its own, is not today's: it says it is sealed */
+kicker: written ? (allDone && session && session.date && session.date !== today ? 'DÍA SELLADO' : (later ? 'SIGUIENTE' : 'HOY') + ' · TRES LECCIONES') : testDay ? 'PRUEBA DE LA SEMANA' : 'EN PREPARACIÓN',
 /* a week test has no lessons of its own here (it opens from the week path) */
 waitText: testDay ? 'La prueba de la semana se abre desde el camino de la semana.' : 'Este día está en preparación. Se abre cuando esté escrito.',
 kickerInk: written ? '#2F4FD0' : '#5A6382',

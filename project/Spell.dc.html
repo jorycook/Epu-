@@ -387,6 +387,7 @@ dotColor: now ? '#2F4FD0' : '#5A6382',
 });
 /* the line under the cells: what to do now, or what just happened (the word named without its end marks) */
 const bare = String(t.w || '').replace(/[¿?¡!.,;:«»"]+/g, '').trim();
+const quiet = !(t.clip && window.gnSound && window.gnSound.has && window.gnSound.has(t.clip));
 const at1 = Math.min(n, s.at + 1);
 let msgGn = s.noteGn || '';
 let msgEs = s.note || '';
@@ -395,10 +396,11 @@ let msgTail = '';
 if (!msgGn && !msgEs) {
 if (!n) msgEs = 'Esta palabra no tiene letras nuevas para teclear.';
 else if (s.finished) { msgGn = '¡Oĩma!'; msgEs = ' Escribiste '; msgWord = bare; msgTail = ' tres veces.'; }
-else if (s.playing) msgEs = s.pass >= 2 ? 'Escuchá y escribí de memoria.' : 'Escuchá la palabra.';
+/* with no clip (none is recorded yet) the button lights up in silence: the line says so instead of asking to listen */
+else if (s.playing) msgEs = quiet ? (s.pass >= 2 ? 'Este audio todavía no está grabado: escribila de memoria.' : 'Este audio todavía no está grabado.') : s.pass >= 2 ? 'Escuchá y escribí de memoria.' : 'Escuchá la palabra.';
 else if (s.pass === 0) msgEs = 'Copiá la palabra, letra por letra · letra ' + at1 + ' de ' + n;
 else if (s.pass === 1) msgEs = 'Otra vez, con pistas suaves · letra ' + at1 + ' de ' + n;
-else msgEs = 'Ahora de memoria: escuchá y escribí';
+else msgEs = quiet ? 'Ahora de memoria: escribí la palabra' : 'Ahora de memoria: escuchá y escribí';
 }
 const tone = s.tone === 'miss' ? '#C7361E' : s.tone === 'good' || s.finished ? '#0B7A6B' : '#1B2440';
 const syl = this.props.strip === false ? null : this.syllables(t.w);

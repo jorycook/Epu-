@@ -136,6 +136,9 @@ else manual();
 manual();
 }
 };
+/* a small screen in the browser (an iPhone SE in Safari): the screens come out much smaller here than from the Home
+   Screen (gn-app.js fits them by Yaoki's rules), so the page says so, in lines no longer than the usual ones */
+const small = !!(kit.appScale && kit.appScale() < 0.8);
 const moveText = s.copied === 'yes' ? 'Copiado. En la app, tocá «Pegá tu progreso».'
 : s.copied === 'manual' ? 'No se pudo copiar solo: mantené apretado el código y copialo.'
 : '¿Ya avanzaste en ' + browser + '? Llevá tu progreso a la app.';
@@ -147,13 +150,13 @@ device,
 /* what the Home Screen gives; where the progress stays */
 promise: refused
 ? 'Así se abre a pantalla completa, como una app, y funciona sin conexión. Este navegador no deja guardar tu progreso.'
-: 'Así se abre a pantalla completa, como una app, y funciona sin conexión.',
+: small ? 'Así se abre a pantalla completa, más grande, y funciona sin conexión.' : 'Así se abre a pantalla completa, como una app, y funciona sin conexión.',
 step3: refused
 ? 'Abrilo una vez con internet. Después funciona también sin conexión.'
 : 'Empezá ahí: tu progreso se guarda en la app, en este ' + device + '. Abrila una vez con internet; después funciona sin conexión.',
 stay: refused
 ? 'También podés seguir acá, en el navegador, pero sin guardar tu progreso.'
-: 'También podés seguir acá, en el navegador, pero tu progreso queda en ' + browser + ': la app del ícono no lo ve.',
+: small ? 'También podés seguir acá, pero se ve más chica y tu progreso queda en ' + browser + ': la app del ícono no lo ve.' : 'También podés seguir acá, en el navegador, pero tu progreso queda en ' + browser + ': la app del ícono no lo ve.',
 move: {
 show: has,
 text: moveText,

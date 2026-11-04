@@ -39,7 +39,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </div>
 
 <sc-if value="{{ session }}" hint-placeholder-val="{{ true }}">
-<div style="flex-grow: 1; min-height: 0; overflow-y: auto; margin: 0 -16px; padding: 0 16px 10px; display: flex; flex-direction: column">
+<div ref="{{ boxRef }}" style="flex-grow: 1; min-height: 0; overflow-y: auto; margin: 0 -16px; padding: 0 16px 10px; display: flex; flex-direction: column">
 <div style="margin-top: 6px; display: flex; align-items: center; gap: 8px; flex-shrink: 0">
 <div style="padding: 3px 9px; border-radius: 8px; font-size: 12px; font-weight: 800; background: {{ it.tagBg }}; color: {{ it.tagColor }}">{{ it.tag }}</div>
 <div style="flex-grow: 1; font-size: 12px; font-weight: 700; color: #5A6382">{{ pos }}</div>
@@ -63,13 +63,13 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="font-size: 11px; font-weight: 800; color: #5A6382"><sc-if value="{{ it.contextGn }}" hint-placeholder-val="{{ false }}"><span lang="gn">Moñe'ẽrã</span> · </sc-if>{{ it.contextHead }}</div>
 <sc-if value="{{ it.silentNote }}" hint-placeholder-val="{{ false }}"><div style="font-size: 12px; font-weight: 800; line-height: 1.4; color: #B02A63">Este audio todavía no está grabado: leé lo que se dice.</div></sc-if>
 <sc-if value="{{ it.isPassage }}" hint-placeholder-val="{{ true }}"><div lang="gn" style="max-height: 220px; overflow-y: auto; font-family: 'Andika', 'Nunito', sans-serif; font-size: 14px; font-weight: 400; line-height: 1.75; white-space: pre-line; overflow-wrap: anywhere">{{ it.context }}</div></sc-if>
-<sc-if value="{{ it.isScript }}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-direction: column; gap: 2px"><sc-for list="{{ script }}" as="l" hint-placeholder-count="3"><div style="margin: 0 -6px; padding: 2px 6px; border-radius: 10px; display: flex; align-items: flex-start; gap: 8px; transition: background 200ms; background: {{ l.bg }}"><sc-if value="{{ l.hasWho }}" hint-placeholder-val="{{ true }}"><span style="flex-shrink: 0; box-sizing: border-box; min-width: 68px; margin-top: 3px; padding: 2px 6px; border-radius: 8px; background: #EEF0F6; font-size: 11px; font-weight: 800; line-height: 1.4; text-align: center">{{ l.who }}</span></sc-if><sc-if value="{{ l.hasNum }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0; width: 20px; height: 20px; margin-top: 3px; border-radius: 10px; background: #E8ECFB; color: #2F4FD0; font-size: 11px; font-weight: 800; line-height: 20px; text-align: center">{{ l.num }}</span></sc-if><div lang="{{ l.lang }}" style="flex: 1 1 auto; min-width: 0; line-height: 1.6; overflow-wrap: anywhere; font-family: {{ l.font }}; font-size: {{ l.size }}; font-weight: {{ l.weight }}; color: {{ l.color }}">{{ l.t }}</div></div></sc-for></div></sc-if>
+<sc-if value="{{ it.isScript }}" hint-placeholder-val="{{ false }}"><div ref="{{ linesRef }}" style="display: flex; flex-direction: column; gap: 2px"><sc-for list="{{ script }}" as="l" hint-placeholder-count="3"><div style="margin: 0 -6px; padding: 2px 6px; border-radius: 10px; display: flex; align-items: flex-start; gap: 8px; transition: background 200ms; background: {{ l.bg }}"><sc-if value="{{ l.hasWho }}" hint-placeholder-val="{{ true }}"><span style="flex-shrink: 0; box-sizing: border-box; min-width: 68px; margin-top: 3px; padding: 2px 6px; border-radius: 8px; background: #EEF0F6; font-size: 11px; font-weight: 800; line-height: 1.4; text-align: center">{{ l.who }}</span></sc-if><sc-if value="{{ l.hasNum }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0; width: 20px; height: 20px; margin-top: 3px; border-radius: 10px; background: #E8ECFB; color: #2F4FD0; font-size: 11px; font-weight: 800; line-height: 20px; text-align: center">{{ l.num }}</span></sc-if><div lang="{{ l.lang }}" style="flex: 1 1 auto; min-width: 0; line-height: 1.6; overflow-wrap: anywhere; font-family: {{ l.font }}; font-size: {{ l.size }}; font-weight: {{ l.weight }}; color: {{ l.color }}">{{ l.t }}</div></div></sc-for></div></sc-if>
 </div>
 </sc-if>
 
 <sc-if value="{{ it.isChoice }}" hint-placeholder-val="{{ true }}">
 <div lang="{{ it.qLang }}" style="margin-top: 8px; flex-shrink: 0; padding: 14px 16px; border-radius: 18px; background: #FFFFFF; border: 2px solid #1B2440; font-family: 'Andika', 'Nunito', sans-serif; font-weight: 400; line-height: 1.9; overflow-wrap: anywhere; font-size: {{ it.size }}"><sc-for list="{{ it.segs }}" as="g" hint-placeholder-count="3"><sc-if value="{{ g.ruby }}" hint-placeholder-val="{{ false }}"><ruby lang="{{ g.lang }}">{{ g.t }}<rt lang="es" style="font-size: 10px">{{ g.r }}</rt></ruby></sc-if><sc-if value="{{ g.text }}" hint-placeholder-val="{{ true }}"><span lang="{{ g.lang }}" style="white-space: pre-line; border-bottom: {{ g.line }}">{{ g.t }}</span></sc-if><sc-if value="{{ g.blank }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="espacio en blanco" style="display: inline-block; width: 40px; height: 22px; margin: 0 3px; border-bottom: 2px solid #1B2440; vertical-align: text-bottom"></span></sc-if></sc-for></div>
-<div style="margin-top: 12px; flex-shrink: 0; display: grid; gap: 10px 8px; grid-template-columns: {{ cols }}">
+<div ref="{{ optsRef }}" style="margin-top: 12px; flex-shrink: 0; display: grid; gap: 10px 8px; grid-template-columns: {{ cols }}">
 <sc-for list="{{ opts }}" as="o" hint-placeholder-count="4">
 <button disabled="{{ o.off }}" onClick="{{ o.pick }}" aria-pressed="{{ o.on }}" style="min-height: 54px; padding: 6px 12px; border-radius: 14px; display: flex; align-items: center; gap: 6px; font-family: 'Andika', 'Nunito', sans-serif; font-size: 16px; font-weight: 700; text-align: left; overflow-wrap: anywhere; border: {{ o.border }}; background: {{ o.bg }}; box-shadow: {{ o.shadow }}; color: {{ o.color }}"><span style="flex-shrink: 0; font-family: 'Nunito', 'Avenir Next', sans-serif; font-size: 12px; font-weight: 800; color: #5A6382">{{ o.n }}</span><span lang="{{ o.lang }}" style="flex-grow: 1; min-width: 0">{{ o.label }}</span><sc-if value="{{ o.right }}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Respuesta correcta" style="flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></sc-if><sc-if value="{{ o.bad }}" hint-placeholder-val="{{ false }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C7361E" stroke-width="3.5" stroke-linecap="round" role="img" aria-label="Tu respuesta, incorrecta" style="flex-shrink: 0"><path d="M6 6l12 12M18 6L6 18"/></svg></sc-if></button>
 </sc-for>
@@ -129,7 +129,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </sc-if>
 
 <sc-if value="{{ answered }}" hint-placeholder-val="{{ true }}">
-<div style="margin-top: 12px; flex-shrink: 0; padding: 12px 14px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 6px; animation: gn-up 220ms ease-out">
+<div ref="{{ verdictRef }}" style="margin-top: 12px; flex-shrink: 0; padding: 12px 14px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 6px; animation: gn-up 220ms ease-out">
 <div style="display: flex; align-items: center; gap: 8px">
 <sc-if value="{{ correct }}" hint-placeholder-val="{{ true }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></sc-if>
 <sc-if value="{{ wrong }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C7361E" stroke-width="3.5" stroke-linecap="round" aria-hidden="true" style="flex-shrink: 0"><path d="M5 5l14 14M19 5L5 19"/></svg></sc-if>
@@ -345,6 +345,38 @@ function sample(C) {
   ].filter(Boolean);
   return { screen: 'Review', started: true, level: 'A1', plans: {}, plan: { start: C.addDays(T, -3), target: C.addDays(T, 60), pace: 'fit', minutes: 30 }, cur: 'a1u01d4', done: { a1u01d1: full, a1u01d2: full, a1u01d3: full, a1u01d4: { g: 1 } }, tests: {}, exams: {}, mistakes, tp: 0, set: 'day', placement: { comp: 'A2', prod: 'A1', start: 'A1' }, typed: [] };
 }
+/* with no clip a listening item's transcript opens above the options, and they open with it: the review's own scroll
+   box (never the page) moves down, smoothly, until every option shows, as far as the transcript's first line stays in
+   view, and at least far enough to show the first option. The app scales the design to the phone: distances in its pixels */
+function reveal(box, lines, list) {
+  if (!box || !list || !box.getBoundingClientRect || !list.getBoundingClientRect) return;
+  const b = box.getBoundingClientRect();
+  const k = box.offsetHeight > 0 && b.height > 0 ? b.height / box.offsetHeight : 1;
+  const at = (r) => (r - b.top) / k + box.scrollTop;
+  const view = box.clientHeight;
+  const all = at(list.getBoundingClientRect().bottom) + 12 - view;
+  const first = list.firstElementChild ? at(list.firstElementChild.getBoundingClientRect().bottom) + 12 - view : all;
+  const keep = lines && lines.getBoundingClientRect ? at(lines.getBoundingClientRect().top) - 4 : all;
+  const top = Math.round(Math.max(first, Math.min(all, keep)));
+  if (!(top > box.scrollTop + 1)) return;
+  let calm = false;
+  try { calm = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); } catch (e) { calm = false; }
+  try { box.scrollTo({ top, behavior: calm ? 'auto' : 'smooth' }); } catch (e) { box.scrollTop = top; }
+}
+/* an answer given: the review's own scroll box moves down, smoothly, until the whole verdict below the item shows, as far
+   as its top stays in view (a listening item's transcript can push it out of sight). Measured once its rise is over */
+function bring(box, el) {
+  if (!box || !el || !box.getBoundingClientRect || !el.getBoundingClientRect) return;
+  const b = box.getBoundingClientRect();
+  const k = box.offsetHeight > 0 && b.height > 0 ? b.height / box.offsetHeight : 1;
+  const at = (r) => (r - b.top) / k + box.scrollTop;
+  const r = el.getBoundingClientRect();
+  const top = Math.round(Math.min(at(r.bottom) + 12 - box.clientHeight, at(r.top) - 4));
+  if (!(top > box.scrollTop + 1)) return;
+  let calm = false;
+  try { calm = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); } catch (e) { calm = false; }
+  try { box.scrollTo({ top, behavior: calm ? 'auto' : 'smooth' }); } catch (e) { box.scrollTop = top; }
+}
 /* one answer per item: a choice's option number, a build's tile in each slot, a spell's typed text */
 function fresh(it) {
   return { pick: null, slots: it && it.kind === 'build' ? (it.tiles || []).map(() => null) : [], typed: '', done: false, right: false, notes: [] };
@@ -373,8 +405,23 @@ class Component extends DCLogic {
       played: demo,
       line: -1,
     };
+    this.boxRef = (el) => { this.boxEl = el; };
+    this.linesRef = (el) => { this.linesEl = el; };
+    this.optsRef = (el) => { this.optsEl = el; };
+    this.verdictRef = (el) => { this.verdictEl = el; };
   }
   componentDidUpdate() {
+    /* an answer has just been given: its verdict comes into view once it has risen into place */
+    if (this.verdict) {
+      this.verdict = false;
+      clearTimeout(this.vt);
+      this.vt = setTimeout(() => { if (this.verdictEl) bring(this.boxEl, this.verdictEl); }, 240);
+    }
+    /* a listening item's options have just opened with its transcript (no clip): they are brought into view */
+    if (this.reveal) {
+      this.reveal = false;
+      reveal(this.boxEl, this.linesEl, this.optsEl);
+    }
     /* after a Guarani key, the caret goes right after the letter it put in */
     if (this.caret != null) {
       const el = this.typedEl;
@@ -387,6 +434,7 @@ class Component extends DCLogic {
   }
   componentWillUnmount() {
     clearTimeout(this.tm);
+    clearTimeout(this.vt);
     clearInterval(this.lt);
     if (window.gnSound && window.gnSound.stop) window.gnSound.stop();
   }
@@ -399,6 +447,7 @@ class Component extends DCLogic {
     if (!cur || cur.done) return;
     const entry = this.items[k];
     if (this.props.reviewed && entry) this.props.reviewed(entry.src, !!right);
+    this.verdict = true;
     this.setAns(k, Object.assign({}, patch, { done: true, right: !!right }));
   }
   place(k, t) {
@@ -470,7 +519,8 @@ class Component extends DCLogic {
     const clip = q.clip || entry.src;
     const silent = hasPlay && !(window.gnSound && window.gnSound.has && window.gnSound.has(clip));
     const reading = silent && (s.playing || !!s.played);
-    const locked = answered || (hasPlay && !s.played);
+    /* the options open once the clip has played; with no clip, as soon as the transcript shows */
+    const locked = answered || (hasPlay && !s.played && !reading);
 
     /* a choice: one tap answers; two columns only when every option is short */
     const options = kind === 'choice' && Array.isArray(q.options) ? q.options : [];
@@ -492,7 +542,7 @@ class Component extends DCLogic {
         off: locked,
         right: answered && n === q.answer,
         bad: answered && on && n !== q.answer,
-        pick: () => { if (!this.state.ans[k] || this.state.ans[k].done || (hasPlay && !this.state.played)) return; this.commit(k, n === q.answer, { pick: n }); },
+        pick: () => { if (!this.state.ans[k] || this.state.ans[k].done || (hasPlay && !this.state.played && !(silent && this.state.playing))) return; this.commit(k, n === q.answer, { pick: n }); },
       }, look);
     });
     const qPlain = C.plain(q.q || '');
@@ -578,7 +628,8 @@ class Component extends DCLogic {
     const canCheck = kind === 'build' ? allPlaced : kind === 'spell' ? typed.trim() !== '' : false;
     let btn;
     if (answered) btn = last ? { gn: 'Oĩma', es: 'Listo', on: true } : { gn: 'Upeigua', es: 'Siguiente', on: true };
-    else if (hasPlay && !s.played) btn = { gn: '', es: s.playing ? (silent ? 'Leé lo que se dice' : 'Escuchando…') : 'Escuchá primero', on: false };
+    /* with no clip the options open with the transcript at the first tap: then the button asks for an answer, as for any choice */
+    else if (hasPlay && !s.played && !(silent && s.playing)) btn = { gn: '', es: s.playing ? 'Escuchando…' : silent ? 'Tocá «Escuchar» primero' : 'Escuchá primero', on: false };
     else if (kind !== 'choice') btn = canCheck ? { gn: '', es: 'Comprobar', on: true } : { gn: '', es: kind === 'build' ? 'Poné todas las fichas' : 'Escribí la palabra', on: false };
     else btn = { gn: '', es: 'Elegí una respuesta', on: false };
 
@@ -636,6 +687,10 @@ class Component extends DCLogic {
         last: lastBlank ? '' : lastWrong,
         lastLang: langOf(q, lastWrong),
       },
+      boxRef: this.boxRef,
+      linesRef: this.linesRef,
+      optsRef: this.optsRef,
+      verdictRef: this.verdictRef,
       cols: wide ? '1fr' : 'repeat(2, minmax(0, 1fr))',
       opts,
       slots,
@@ -653,8 +708,14 @@ class Component extends DCLogic {
       playLabel: s.playing ? (silent ? 'Se reproduce en silencio' : 'Sonando el audio') : s.played ? 'Escuchar otra vez' : 'Escuchar el audio',
       playBg: s.playing ? '#F2B43A' : '#E8ECFB',
       playShadow: s.playing ? 'none' : '0 3px 0 #1B2440',
-      playNote: s.playing ? (silent ? 'Se reproduce en silencio…' : 'Sonando…') : !s.played ? 'Escuchá primero: después se abren las respuestas.' : answered ? 'La transcripción está abajo.' : silent ? 'Elegí según lo que se dice.' : 'Elegí lo que escuchaste.',
-      play: () => this.play(clip, playText, ctx && ctx.rows),
+      /* with no clip it says so before the tap, as Listening does, and what to do instead */
+      playNote: s.playing ? (silent ? 'Se reproduce en silencio…' : 'Sonando…') : !s.played ? (silent ? 'Todavía no está grabado: tocá y leé lo que se dice.' : 'Escuchá primero: después se abren las respuestas.') : answered ? 'La transcripción está abajo.' : silent ? 'Elegí según lo que se dice.' : 'Elegí lo que escuchaste.',
+      play: () => {
+        /* the first play with no clip opens the transcript and the options at once: then the options come into view */
+        const st = this.state;
+        if (silent && kind === 'choice' && !st.played && !st.playing && !(st.ans[k] && st.ans[k].done)) this.reveal = true;
+        this.play(clip, playText, ctx && ctx.rows);
+      },
       /* the transcript's rows (a listening item): the speaker, the reply's number, the line, lit while it "plays" */
       script: (ctx && ctx.rows ? ctx.rows : []).map((r, j) => ({
         who: r.who,
@@ -720,9 +781,10 @@ class Component extends DCLogic {
       doneLine: total === 0 ? 'No hay nada para repasar hoy. Cada error vuelve el día que le toca.' : total === 1 ? 'Repasaste la pregunta de hoy.' : 'Repasaste las ' + total + ' preguntas de hoy.',
       hasStats: total > 0,
       stats: [
-        stat(count('step'), 'Avanzaron un paso', 'vuelven un poco más espaciadas', true),
-        stat(count('cleared'), 'Salen del cuaderno', 'tres seguidas: ¡aprendido!'),
-        stat(count('back'), 'Vuelven mañana', 'empiezan otra vez desde el principio'),
+        /* the verbs agree with the count: one question «avanzó», two «avanzaron» */
+        stat(count('step'), count('step') === 1 ? 'Avanzó un paso' : 'Avanzaron un paso', count('step') === 1 ? 'vuelve un poco más espaciada' : 'vuelven un poco más espaciadas', true),
+        stat(count('cleared'), count('cleared') === 1 ? 'Sale del cuaderno' : 'Salen del cuaderno', 'tres seguidas: ¡aprendido!'),
+        stat(count('back'), count('back') === 1 ? 'Vuelve mañana' : 'Vuelven mañana', count('back') === 1 ? 'empieza otra vez desde el principio' : 'empiezan otra vez desde el principio'),
       ],
       toNotebook: nav('Notebook'),
     };

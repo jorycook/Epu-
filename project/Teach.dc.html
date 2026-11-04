@@ -70,6 +70,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
 <div lang="gn" style="margin: 0 -4px; padding: 0 4px; border-radius: 8px; font-family: 'Andika', 'Nunito', sans-serif; font-size: 16px; line-height: 1.8; white-space: pre-line; overflow-wrap: anywhere; transition: background 150ms; background: {{ x.say }}"><sc-for list="{{ x.segs }}" as="g" hint-placeholder-count="3"><sc-if value="{{ g.ruby }}" hint-placeholder-val="{{ false }}"><ruby style="background: {{ g.bg }}; border-radius: 4px">{{ g.t }}<rt lang="es" style="font-size: 10px; font-weight: 700">{{ g.r }}</rt></ruby></sc-if><sc-if value="{{ g.plain }}" hint-placeholder-val="{{ true }}"><span style="background: {{ g.bg }}; border-radius: 4px; padding: {{ g.pad }}; white-space: {{ g.ws }}; border-bottom: {{ g.line }}">{{ g.t }}</span></sc-if><sc-if value="{{ g.blank }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="espacio en blanco" style="display: inline-block; width: 40px; height: 22px; box-sizing: border-box; margin: 0 3px; vertical-align: -6px; border-bottom: 2px solid #1B2440"></span></sc-if></sc-for></div>
 <sc-if value="{{ x.hasEs }}" hint-placeholder-val="{{ true }}"><div style="font-size: 12px; font-weight: 500; line-height: 1.4; white-space: pre-line; color: #5A6382">{{ x.es }}</div></sc-if>
+<sc-if value="{{ x.noted }}" hint-placeholder-val="{{ false }}"><div role="status" style="font-size: 12px; font-weight: 800; line-height: 1.4; color: #B02A63">Este audio todavía no está grabado.</div></sc-if>
 <sc-if value="{{ x.hasParts }}" hint-placeholder-val="{{ false }}">
 <div style="margin-top: 6px; padding: 6px 10px 7px; border-radius: 10px; background: #F4F5F9; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 4px 12px">
 <div style="padding-top: 3px; font-size: 11px; font-weight: 800; line-height: 1.3; color: #5A6382">Partes</div>
@@ -195,7 +196,7 @@ class Component extends DCLogic {
 constructor(props) {
 super(props);
 /* tp: the page shown when there is no save() to keep it in the shared state (the board on its own on the canvas) */
-this.state = { playing: -1, tp: 0 };
+this.state = { playing: -1, tp: 0, quiet: -1 };
 this.scrollRef = (el) => { this.scrollEl = el; };
 }
 componentDidUpdate(prev) {
@@ -211,7 +212,7 @@ if (window.gnSound) window.gnSound.stop();
 turned() {
 clearTimeout(this.timer);
 if (window.gnSound) window.gnSound.stop();
-if (this.state.playing !== -1) this.setState({ playing: -1 });
+if (this.state.playing !== -1 || this.state.quiet !== -1) this.setState({ playing: -1, quiet: -1 });
 if (this.scrollEl) this.scrollEl.scrollTop = 0;
 }
 /* inside the app, the shared view; on its own the artboard shows the designed moment: week 1, day 4, the first point */
@@ -248,7 +249,9 @@ return;
 }
 const sound = !!(key && snd && snd.has(key) && snd.unlock() && snd.play(key));
 if (!sound && snd) snd.stop();
-this.setState({ playing: n });
+/* a silent stand-in says, under the example just played, that its audio is not recorded yet (as the words lesson's
+   speakers do); the note stays there until another example is played */
+this.setState({ playing: n, quiet: sound ? -1 : n });
 this.timer = setTimeout(() => this.setState({ playing: -1 }), sound ? snd.ms(key) : 600 + C.plain(text(said)).length * 120);
 };
 /* a long "where it goes" sits above its rule instead of squeezing it into a narrow column; the rows of one point
@@ -268,6 +271,7 @@ aria: 'Escuchar el ejemplo ' + (n + 1),
 on: s.playing === n,
 bg: s.playing === n ? '#F2B43A' : '#E8ECFB',
 say: s.playing === n ? '#FFF4D6' : 'transparent',
+noted: s.quiet === n,
 play: play(n, text(x.clip) || (pt.id ? pt.id + '.x' + n : ''), x.gn),
 hasParts: parts.length > 0,
 parts: parts.map((p, k) => ({ gn: C.plain(text(p[0])), es: C.plain(text(p[1])), bg: lit[k] ? '#FFE9B0' : 'transparent' })),

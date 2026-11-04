@@ -36,7 +36,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="font-size: 12px; font-weight: 800; color: #2F4FD0">PRÁCTICA</div>
 </div>
 
-<div style="flex: 1 1 auto; min-height: 120px; overflow-y: auto; padding-bottom: {{ scrollPad }}">
+<div ref="{{ boxRef }}" style="flex: 1 1 auto; min-height: 120px; overflow-y: auto; padding-bottom: {{ scrollPad }}">
 <sc-if value="{{ ready }}" hint-placeholder-val="{{ true }}">
 <div style="padding: 6px 16px 0; display: flex; flex-direction: column; gap: 2px">
 <div style="font-size: 12px; font-weight: 800; color: #5A6382">{{ kicker }}</div>
@@ -60,7 +60,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </div>
 
 <sc-if value="{{ readText }}" hint-placeholder-val="{{ false }}">
-<div style="margin: 12px 16px 0; padding: 12px 14px; border-radius: 18px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 8px">
+<div ref="{{ textRef }}" style="margin: 12px 16px 0; padding: 12px 14px; border-radius: 18px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 8px">
 <div style="display: flex; flex-direction: column; gap: 2px">
 <div style="font-size: 12px; font-weight: 800; color: #5A6382">Transcripción</div>
 <div style="font-size: 12px; font-weight: 800; line-height: 1.4; color: #B02A63">Este audio todavía no está grabado: leé lo que se dice.</div>
@@ -73,13 +73,13 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div lang="{{ qLang }}" style="margin: 14px 16px 0; font-size: 15px; font-weight: 800; line-height: 1.45; overflow-wrap: anywhere; font-family: {{ qFont }}"><sc-for list="{{ qSegs }}" as="g" hint-placeholder-count="1"><sc-if value="{{ g.blank }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="espacio en blanco" style="display: inline-block; width: 40px; height: 18px; margin: 0 3px; vertical-align: -3px; border-bottom: 2px solid #1B2440"></span></sc-if><sc-if value="{{ g.plain }}" hint-placeholder-val="{{ true }}"><span style="border-bottom: {{ g.line }}">{{ g.t }}</span></sc-if></sc-for></div>
 </sc-if>
 
-<div style="margin: 12px 16px 0; display: grid; gap: 10px; grid-template-columns: {{ cols }}">
+<div ref="{{ listRef }}" style="margin: 12px 16px 0; display: grid; gap: 10px; grid-template-columns: {{ cols }}">
 <sc-for list="{{ answers }}" as="a" hint-placeholder-count="3">
 <button aria-disabled="{{ a.off }}" aria-pressed="{{ a.on }}" aria-label="{{ a.aria }}" onClick="{{ a.pick }}" style="min-height: 58px; padding: 6px 12px; border-radius: 16px; display: flex; align-items: center; gap: 8px; text-align: left; border: {{ a.border }}; background: {{ a.bg }}; box-shadow: {{ a.shadow }}; color: {{ a.color }}; font-weight: {{ a.weight }}; font-size: {{ a.size }}; justify-content: {{ a.justify }}; cursor: {{ a.cursor }}">{{ a.n }}<sc-if value="{{ a.printed }}" hint-placeholder-val="{{ false }}"><span lang="{{ a.lang }}" style="flex-grow: 1; min-width: 0; font-size: 15px; line-height: 1.35; overflow-wrap: anywhere; font-family: {{ a.font }}">{{ a.label }}</span></sc-if><sc-if value="{{ a.right }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></sc-if><sc-if value="{{ a.bad }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C7361E" stroke-width="3.5" stroke-linecap="round" aria-hidden="true" style="flex-shrink: 0"><path d="M6 6l12 12M18 6L6 18"/></svg></sc-if></button>
 </sc-for>
 </div>
 <sc-if value="{{ waiting }}" hint-placeholder-val="{{ false }}">
-<div style="margin: 10px 16px 0; font-size: 12px; font-weight: 700; color: #5A6382; text-align: center"><span lang="gn">Ehendu</span> · {{ waitNote }}</div>
+<div style="margin: 10px 16px 0; font-size: 12px; font-weight: 700; color: #5A6382; text-align: center"><span lang="gn">{{ waitGn }}</span> · {{ waitNote }}</div>
 </sc-if>
 </sc-if>
 
@@ -149,6 +149,24 @@ const GN_MARK = /[ãẽĩõũỹÃẼĨÕŨỸ]|[gG]\u0303|\p{L}'\p{L}/u;
 const ES_MARK = /[¿¡]|(^|[^\p{L}'])(el|los|las|una?|del?|en|es|son|se|que|qué|cómo|cuál|quién|dónde)(?![\p{L}'])/iu;
 const looksEs = (t) => ES_MARK.test(window.gnCourse.norm(t));
 const looksGn = (t) => GN_MARK.test(window.gnCourse.norm(t)) && !looksEs(t);
+/* with no clip the transcript opens above the answers, and with them: the lesson's own scroll box (never the page) moves
+   down, smoothly, until the whole answer list shows, as far as the transcript's first line stays in view, and at least
+   far enough to show the first answer. The app scales the design to the phone, so distances are taken in its own pixels */
+function reveal(box, lines, list) {
+if (!box || !list || !box.getBoundingClientRect || !list.getBoundingClientRect) return;
+const b = box.getBoundingClientRect();
+const k = box.offsetHeight > 0 && b.height > 0 ? b.height / box.offsetHeight : 1;
+const at = (r) => (r - b.top) / k + box.scrollTop;
+const view = box.clientHeight;
+const all = at(list.getBoundingClientRect().bottom) + 12 - view;
+const first = list.firstElementChild ? at(list.firstElementChild.getBoundingClientRect().bottom) + 12 - view : all;
+const keep = lines && lines.getBoundingClientRect ? at(lines.getBoundingClientRect().top) - 4 : all;
+const top = Math.round(Math.max(first, Math.min(all, keep)));
+if (!(top > box.scrollTop + 1)) return;
+let calm = false;
+try { calm = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); } catch (e) { calm = false; }
+try { box.scrollTo({ top, behavior: calm ? 'auto' : 'smooth' }); } catch (e) { box.scrollTop = top; }
+}
 class Component extends DCLogic {
 constructor(props) {
 super(props);
@@ -157,6 +175,17 @@ super(props);
 this.state = props && props.go
 ? { played: false, playing: false, progress: 0, line: -1, plays: 0, pick: null, es: false }
 : { played: true, playing: false, progress: 1, line: -1, plays: 1, pick: 'right', es: false };
+this.boxRef = (el) => { this.boxEl = el; };
+this.textRef = (el) => { this.textEl = el; };
+this.listRef = (el) => { this.listEl = el; };
+}
+componentDidUpdate() {
+/* the answers have just opened with the transcript (no clip): they are brought into view */
+if (!this.reveal) return;
+this.reveal = false;
+/* the transcript's first line: the card's second child, after its head and its note */
+const card = this.textEl;
+reveal(this.boxEl, (card && card.children && card.children[1]) || card, this.listEl);
 }
 componentWillUnmount() {
 clearInterval(this.timer);
@@ -266,6 +295,9 @@ const snd = window.gnSound;
 const key = rate === 1 ? KEY : SLOW;
 if (!ready || (rate !== 1 && !(snd && SLOW && snd.has(SLOW)))) return;
 clearInterval(this.timer);
+/* the first play with no clip opens the transcript and the answers at once: then the answers come into view */
+const st0 = this.state;
+if (!hasClip && !st0.played && !st0.playing && st0.pick == null) this.reveal = true;
 let sound = !!(snd && key && snd.has(key) && snd.unlock() && snd.play(key));
 let got = false;
 const started = Date.now();
@@ -304,11 +336,13 @@ const wrong = answered && pickN !== ANSWER;
    stands in for the sound, each line lit while it "plays", so the question is answered from the text, and still
    scored. Once answered, the sheet shows it, with its translation */
 const readText = ready && !hasClip && !answered && (s.playing || !!s.played);
+/* the answers open once the clip has played; with no clip, as soon as the transcript shows */
+const open = !!s.played || readText;
 const answers = options.map((_, k) => k + 1).map((n) => {
 const on = pickN === n;
-const off = !s.played || answered;
+const off = !open || answered;
 let look = { border: '2px solid #DDE1EC', bg: '#FFFFFF', shadow: 'none', color: '#5A6382', weight: 700 };
-if (s.played && !answered) look = { border: '2px solid #1B2440', bg: '#FFFFFF', shadow: '0 3px 0 #1B2440', color: '#1B2440', weight: 800 };
+if (open && !answered) look = { border: '2px solid #1B2440', bg: '#FFFFFF', shadow: '0 3px 0 #1B2440', color: '#1B2440', weight: 800 };
 if (answered && n === ANSWER) look = { border: '2.5px solid #0B7A6B', bg: '#E0F3EF', shadow: 'none', color: '#1B2440', weight: 800 };
 else if (answered && on) look = { border: '2.5px solid #C7361E', bg: '#FDEBE6', shadow: 'none', color: '#1B2440', weight: 800 };
 const label = C.plain(options[n - 1]);
@@ -325,12 +359,12 @@ off,
 cursor: off ? 'default' : 'pointer',
 right: answered && n === ANSWER,
 bad: answered && on && n !== ANSWER,
-aria: 'Respuesta ' + n + (printed ? ': ' + label : '') + (!s.played ? ', escuchá primero' : '') + (answered && n === ANSWER ? ', correcta' : '') + (answered && on && n !== ANSWER ? ', tu respuesta, incorrecta' : ''),
-/* one try: the answers open once the clip has played, and an answer cannot be changed */
+aria: 'Respuesta ' + n + (printed ? ': ' + label : '') + (!open ? (hasClip ? ', escuchá primero' : ', leé primero lo que se dice') : '') + (answered && n === ANSWER ? ', correcta' : '') + (answered && on && n !== ANSWER ? ', tu respuesta, incorrecta' : ''),
+/* one try: the answers open once the clip has played (with no clip, with the transcript), and an answer cannot be changed */
 pick: () => {
 const st = this.state;
 const had = st.pick === 'right' ? ANSWER : st.pick;
-if (!st.played || had != null) return;
+if (!(st.played || (!hasClip && st.playing)) || had != null) return;
 if (n !== ANSWER && this.props.miss && it.id) this.props.miss({ src: it.id, wrong: SHORT[n] });
 this.setState({ pick: n });
 },
@@ -356,7 +390,7 @@ const times = s.plays === 1 ? '1 vez' : s.plays + ' veces';
 const status = s.playing
 ? (!row ? 'Escuchando…' : row.num && +row.num <= options.length ? 'Respuesta ' + row.num + ' de ' + options.length + (row.l.who ? ' · ' + row.l.who : '') : 'Línea ' + (at + 1) + ' de ' + rows.length + (row.l.who ? ' · ' + row.l.who : ''))
 : s.plays
-? 'Escuchaste ' + times + (hasClip ? '' : ' · todavía no está grabado')
+? (hasClip ? 'Escuchaste ' + times : 'La leíste ' + times + ' · todavía no está grabado')
 : hasClip ? 'Tocá el botón para escuchar.' : 'Todavía no está grabado: se reproduce en silencio.';
 const narrEs = lv === 'A1';
 const script = rows.map((r, k) => {
@@ -390,7 +424,7 @@ const askText = ready ? C.plain(sk.ask || q || '') : '';
 return {
 ready,
 missing: !ready,
-liveMsg: answered ? (correct ? '¡Correcto!' : 'Casi. La respuesta correcta es la ' + ANSWER + '.') : s.played && ready ? 'Ya podés elegir tu respuesta.' : readText ? 'Este audio todavía no está grabado: leé lo que se dice.' : '',
+liveMsg: answered ? (correct ? '¡Correcto!' : 'Casi. La respuesta correcta es la ' + ANSWER + '.') : readText ? 'Este audio todavía no está grabado: leé lo que se dice y elegí tu respuesta.' : s.played && ready ? 'Ya podés elegir tu respuesta.' : '',
 closeLabel: L.elsewhere ? 'Cerrar la práctica' : 'Cerrar la lección',
 scrollPad: answered ? '12px' : '46px',
 kicker: 'ESCUCHA' + (ready && (sk.es || it.label) ? ' · ' + String(sk.es || it.label).toUpperCase() : ''),
@@ -400,6 +434,9 @@ situation: ready ? sk.situation || '' : '',
 /* with the transcript standing in for the sound, the screen cannot promise that nothing is written: it says how the exam does it */
 note: printed ? 'Las opciones están escritas, como en el examen.' : hasClip ? 'No hay nada escrito hasta que respondas, como en el examen.' : 'En el examen no hay nada escrito: las respuestas se escuchan.',
 readText,
+boxRef: this.boxRef,
+textRef: this.textRef,
+listRef: this.listRef,
 bars: HEIGHTS.map((h, i) => ({ h: h + 'px', bg: i < Math.round(s.progress * HEIGHTS.length) ? '#2F4FD0' : '#C9D0E3' })),
 playBg: s.playing ? '#F2B43A' : '#2F4FD0',
 playInk: s.playing ? '#1B2440' : '#FFFFFF',
@@ -417,8 +454,10 @@ qLang: qGn ? 'gn' : 'es',
 qFont: qGn ? ANDIKA : NUNITO,
 answers,
 cols: 'repeat(' + (printed ? 1 : Math.max(1, options.length)) + ', minmax(0, 1fr))',
-waiting: ready && !s.played,
-waitNote: 'Escuchá primero y después elegí ' + nums.join(', ').replace(/, (\d+)$/, ' o $1') + '.',
+waiting: ready && !open,
+/* with no clip there is nothing to hear: the transcript is read (Emoñe'ẽ · Leer) */
+waitGn: hasClip ? 'Ehendu' : "Emoñe'ẽ",
+waitNote: (hasClip ? 'Escuchá primero' : 'Leé lo que se dice') + ' y después elegí ' + nums.join(', ').replace(/, (\d+)$/, ' o $1') + '.',
 answered,
 correct,
 wrong,

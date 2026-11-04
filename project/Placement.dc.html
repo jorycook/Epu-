@@ -74,7 +74,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </sc-if>
 
 <sc-if value="{{ atComp }}" hint-placeholder-val="{{ true }}">
-<div style="flex: 1 1 auto; min-height: 0; overflow-y: auto; margin: 0 -16px; padding: 0 16px 12px; display: flex; flex-direction: column; animation: gn-in 220ms ease-out">
+<div ref="{{ boxRef }}" style="flex: 1 1 auto; min-height: 0; overflow-y: auto; margin: 0 -16px; padding: 0 16px 12px; display: flex; flex-direction: column; animation: gn-in 220ms ease-out">
 <div style="margin-top: 16px; font-size: 12px; font-weight: 800; color: #5A6382">{{ q.kind }}</div>
 <sc-if value="{{ q.card }}" hint-placeholder-val="{{ false }}">
 <div lang="gn" style="margin-top: 8px; flex-shrink: 0; padding: 14px 16px; border-radius: 18px; background: #FFFFFF; border: 2px solid #1B2440; font-family: 'Andika', 'Nunito', sans-serif; font-size: 18px; font-weight: 400; line-height: 1.9; overflow-wrap: anywhere"><sc-for list="{{ q.segs }}" as="g" hint-placeholder-count="3"><sc-if value="{{ g.text }}" hint-placeholder-val="{{ true }}"><span style="border-bottom: {{ g.line }}">{{ g.t }}</span></sc-if><sc-if value="{{ g.blank }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="espacio en blanco" style="display: inline-block; width: 40px; height: 22px; margin: 0 3px; border-bottom: 2px solid #1B2440; vertical-align: text-bottom"></span></sc-if></sc-for></div>
@@ -100,18 +100,24 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <sc-if value="{{ canReplay }}" hint-placeholder-val="{{ true }}">
 <button onClick="{{ play }}" style="align-self: flex-start; height: 44px; padding: 0 14px; border-radius: 12px; border: 2px solid #1B2440; background: #FFFFFF; font-size: 13px; font-weight: 800; white-space: nowrap"><span lang="gn">Ehendujey</span> · Escuchar otra vez</button>
 </sc-if>
+<sc-if value="{{ reading }}" hint-placeholder-val="{{ false }}">
+<div ref="{{ linesRef }}" style="display: flex; flex-direction: column; gap: 2px">
+<div style="font-size: 12px; font-weight: 800; color: #5A6382">Transcripción</div>
+<sc-for list="{{ script }}" as="l" hint-placeholder-count="2"><div style="margin: 0 -6px; padding: 3px 6px; border-radius: 10px; display: flex; align-items: flex-start; gap: 8px; transition: background 200ms; background: {{ l.bg }}"><span style="flex-shrink: 0; box-sizing: border-box; min-width: 72px; margin-top: 3px; padding: 2px 8px; border-radius: 8px; background: #EEF0F6; font-size: 11px; font-weight: 800; line-height: 1.4; text-align: center">{{ l.who }}</span><div lang="gn" style="flex: 1 1 auto; min-width: 0; font-family: 'Andika', 'Nunito', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.5; overflow-wrap: anywhere">{{ l.t }}</div></div></sc-for>
+</div>
+</sc-if>
 </div>
 </sc-if>
 <sc-if value="{{ q.hasPassage }}" hint-placeholder-val="{{ false }}">
 <div lang="gn" style="margin-top: 12px; max-height: 240px; overflow-y: auto; flex-shrink: 0; padding: 12px 14px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; font-family: 'Andika', 'Nunito', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.7; white-space: pre-line; overflow-wrap: anywhere">{{ q.passageText }}</div>
 </sc-if>
-<div lang="{{ q.optLang }}" style="margin-top: 14px; flex-shrink: 0; display: flex; flex-direction: column; gap: 10px">
+<div ref="{{ optsRef }}" lang="{{ q.optLang }}" style="margin-top: 14px; flex-shrink: 0; display: flex; flex-direction: column; gap: 10px">
 <sc-for list="{{ opts }}" as="o" hint-placeholder-count="3">
 <button aria-pressed="{{ o.on }}" disabled="{{ o.off }}" onClick="{{ o.pick }}" style="min-height: 50px; padding: 8px 14px; border-radius: 14px; display: flex; align-items: center; gap: 10px; text-align: left; border: {{ o.border }}; background: {{ o.bg }}; box-shadow: {{ o.shadow }}; color: {{ o.color }}; transform: {{ o.press }}"><span style="font-family: 'Nunito', 'Avenir Next', sans-serif; font-size: 12px; font-weight: 800; color: {{ o.numColor }}; flex-shrink: 0">{{ o.n }}</span><span style="flex-grow: 1; min-width: 0; font-family: {{ o.font }}; font-size: 16px; font-weight: {{ o.weight }}; line-height: 1.35; overflow-wrap: anywhere">{{ o.label }}</span></button>
 </sc-for>
 </div>
 <sc-if value="{{ waiting }}" hint-placeholder-val="{{ false }}">
-<div style="margin-top: 10px; font-size: 12px; font-weight: 700; color: #5A6382; text-align: center"><span lang="gn">Ehendu</span> · Escuchá primero; después elegí.</div>
+<div style="margin-top: 10px; font-size: 12px; font-weight: 700; color: #5A6382; text-align: center"><span lang="gn">{{ waitGn }}</span> · {{ waitNote }}</div>
 </sc-if>
 </div>
 <div style="flex-shrink: 0; margin-top: 8px; display: flex; flex-direction: column; gap: 6px">
@@ -302,12 +308,38 @@ if (at.every((x) => yes[x.id] === true)) lv = LV[i]; else break;
 }
 return lv;
 }
+/* with no clip a listening question's exchange opens above the options, and they open with it: the part's own scroll
+   box (never the page) moves down, smoothly, until every option shows, as far as the exchange's first line stays in view,
+   and at least far enough to show the first option. The app scales the design to the phone: distances in its pixels */
+function reveal(box, lines, list) {
+if (!box || !list || !box.getBoundingClientRect || !list.getBoundingClientRect) return;
+const b = box.getBoundingClientRect();
+const k = box.offsetHeight > 0 && b.height > 0 ? b.height / box.offsetHeight : 1;
+const at = (r) => (r - b.top) / k + box.scrollTop;
+const view = box.clientHeight;
+const all = at(list.getBoundingClientRect().bottom) + 12 - view;
+const first = list.firstElementChild ? at(list.firstElementChild.getBoundingClientRect().bottom) + 12 - view : all;
+const keep = lines && lines.getBoundingClientRect ? at(lines.getBoundingClientRect().top) - 4 : all;
+const top = Math.round(Math.max(first, Math.min(all, keep)));
+if (!(top > box.scrollTop + 1)) return;
+let calm = false;
+try { calm = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); } catch (e) { calm = false; }
+try { box.scrollTo({ top, behavior: calm ? 'auto' : 'smooth' }); } catch (e) { box.scrollTop = top; }
+}
 class Component extends DCLogic {
 constructor(props) {
 super(props);
 this.state = props && props.go ? this.fresh() : this.designed((props && props.view) || 'question');
+this.boxRef = (el) => { this.boxEl = el; };
+this.linesRef = (el) => { this.linesEl = el; };
+this.optsRef = (el) => { this.optsEl = el; };
 }
 componentDidUpdate(prev) {
+/* a listening question's options have just opened with its exchange (no clip): they are brought into view */
+if (this.reveal) {
+this.reveal = false;
+reveal(this.boxEl, this.linesEl, this.optsEl);
+}
 /* the view lever on the canvas shows that moment */
 const v = this.props.view;
 if (!this.props.go && prev && v !== prev.view) { this.stopSound(); this.setState(this.designed(v || 'question')); }
@@ -413,6 +445,8 @@ ms.reduce((a, x) => { ends.push((a + x) / standIn); return a + x; }, 0);
 const lineAt = (f) => { for (let n = 0; n < ends.length; n++) if (f < ends[n]) return n; return ends.length - 1; };
 const snd = window.gnSound;
 const key = it.clip || it.id;
+/* the first play with no clip opens the exchange and the options at once: then the options come into view */
+if (!(snd && key && snd.has(key)) && s.plays === 0) this.reveal = true;
 let sound = !!(snd && key && snd.has(key) && snd.unlock() && snd.play(key));
 let got = false;
 let over = false;
@@ -500,11 +534,15 @@ const k = s.seq[s.i];
 const it = phase === 'comp' && k != null ? list[k] || null : null;
 const listening = heard(it);
 const lines = listening ? it.audio.filter((l) => Array.isArray(l) && l[1]) : [];
+/* with no clip (none is recorded yet) the speaker still lights up, but the whole exchange shows at its first tap and stays,
+   to be read instead of heard, and the options open with it, as in Listening and Review */
+const hasClip = listening && !!(window.gnSound && window.gnSound.has && window.gnSound.has(it.clip || it.id));
+const reading = listening && !hasClip && (s.playing || s.plays > 0);
 const qText = it ? String(it.q || '') : '';
 const qGn = !!qText && isGn(C.plain(qText));
 const optGn = !!it && it.options.some((o) => isGn(C.plain(o)));
 const picked = it ? s.answers[k] : null;
-const locked = listening && s.plays === 0;
+const locked = listening && s.plays === 0 && !reading;
 const opts = it ? it.options.map((label, j) => {
 const num = j + 1;
 const on = picked === num;
@@ -527,7 +565,7 @@ press: on ? 'translateY(3px)' : 'none',
 }) : [];
 const segs = C.rich(qText, { ruby: false, hl: false }).map((g) => ({ t: g.t, text: !g.blank, blank: !!g.blank, line: g.line }));
 const spent = s.plays >= PLAYS && !s.playing;
-const now = s.playing && s.silent && s.line >= 0 ? lines[s.line] : null;
+const now = s.playing && s.silent && s.line >= 0 && !reading ? lines[s.line] : null;
 
 /* part 3 */
 const prodData = pack().production || {};
@@ -628,14 +666,24 @@ noPlay: spent,
 playBg: s.playing ? '#F2B43A' : spent ? '#DDE1EC' : '#2F4FD0',
 playInk: s.playing ? '#1B2440' : spent ? '#9AA1B5' : '#FFFFFF',
 playShadow: spent ? 'none' : '0 4px 0 #1B2440',
-playNote: s.playing
+playNote: !hasClip
+? (reading ? 'Este audio todavía no está grabado: leé lo que se dice.' : 'Todavía no está grabado: tocá y leé lo que se dice.')
+: s.playing
 ? (s.silent ? 'Todavía sin grabación: así se dice.' : 'Escuchando…')
 : s.plays === 0 ? 'Podés escucharlo dos veces.' : s.plays < PLAYS ? 'Podés escucharlo una vez más.' : 'Ya lo escuchaste dos veces.',
-canReplay: s.plays >= 1 && s.plays < PLAYS && !s.playing,
+canReplay: hasClip && s.plays >= 1 && s.plays < PLAYS && !s.playing,
+reading,
+script: reading ? lines.map((l, j) => ({ who: SAY[l[0]] || 'Voz', t: C.plain(l[1]), bg: s.playing && s.line === j ? '#FFE9B0' : 'transparent' })) : [],
 saying: !!now,
 sayWho: now ? SAY[now[0]] || 'Voz' : '',
 sayText: now ? C.plain(now[1]) : '',
+boxRef: this.boxRef,
+linesRef: this.linesRef,
+optsRef: this.optsRef,
 waiting: listening && s.plays === 0 && !s.playing,
+/* with no clip there is nothing to hear: the exchange is read (Emoñe'ẽ · Leer) */
+waitGn: hasClip ? 'Ehendu' : "Emoñe'ẽ",
+waitNote: hasClip ? 'Escuchá primero; después elegí.' : 'Tocá reproducir y leé lo que se dice; después elegí.',
 noPick: picked == null,
 ck: cta(picked != null),
 next: () => this.next(),

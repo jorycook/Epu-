@@ -1,8 +1,9 @@
 /* Epu'ã app
  * Everything the installed app needs around the screens: fitting the 390 by 844 design to the phone,
- * saved progress, the first-visit page that explains how to put the app on the Home Screen, and the iPhone's
- * audio and screen-lock quirks. The screens themselves are the design canvas's files (see yk-runtime.js);
- * the course, and the one memory every screen reads, are gn-course.js (window.gnCourse). */
+ * saved progress (and a text code that moves it to another copy: Safari and the Home Screen app keep theirs apart),
+ * the first-visit page that explains how to put the app on the Home Screen, and the iPhone's audio and screen-lock
+ * quirks. The screens themselves are the design canvas's files (see yk-runtime.js); the course, and the one memory
+ * every screen reads, are gn-course.js (window.gnCourse). */
 (function () {
   'use strict';
   var W = 390;
@@ -124,6 +125,8 @@
     recheck: function (d) { return dateOk(d) ? d : null; },
     started: function (d) { return dateOk(d) ? d : null; },
     until: function (d) { return dateOk(d) ? d : null; },
+    /* the listening part was read from its transcript (no clips yet): the result and the teacher's text say so */
+    p2Read: function (b) { return b === true ? true : null; },
     /* the parts handed in, P1 to P5 */
     done: function (list) { return Array.isArray(list) ? words(list, PARTS.length).filter(function (k) { return PARTS.indexOf(k) >= 0; }) : null; },
     /* each part's score: right of, or self of selfOf for the parts rated against the rubric */
@@ -240,7 +243,11 @@
     try {
       var from;
       var screen = null;
-      if (TEST) {
+      if (restored) {
+        /* the app opened again on a progress code (see importProgress) */
+        from = restored;
+        restored = null;
+      } else if (TEST) {
         /* ?gntest&screen=Main&level=A1&plan={…}&done={…}&m=[…] (and cur, tp, set, tests, exams, placement, typed,
            profile, exposure, now): any screen in any state, from the address. A screen other than Goal gets a plan
            starting today when the address gives none */
@@ -263,7 +270,7 @@
       s = C.fresh();
     }
     C.setLevel(s.level || 'A1');
-    if (!begun) { begun = true; sent = fieldTexts(s); }
+    if (!begun) { begun = true; sent = fieldTexts(s); held = sent; }
     return s;
   }
   var FIELDS = ['started', 'level', 'plans', 'plan', 'cur', 'done', 'tests', 'exams', 'mistakes', 'tp', 'set', 'placement', 'typed', 'profile', 'exposure'];
@@ -340,8 +347,11 @@
     return out;
   }
   function remember(s) {
-    if (TEST || !canSave || !s) return;
+    if (!s) return;
     var now = fieldTexts(s);
+    /* what the screens hold, for a progress code where nothing is saved (the test hooks, a browser that keeps nothing) */
+    held = now;
+    if (TEST || !canSave) return;
     var was = sent || now;
     sent = now;
     var dirty = !same(now, was) || !wrote;
@@ -391,11 +401,92 @@
     return next;
   }
 
+  /* ---------- moving progress to another copy of the app ----------
+     On an iPhone the app on the Home Screen keeps its own storage, apart from Safari's: what was done in one is not in
+     the other. Progress moves as a text code instead: EPUA1: and, in base64, the save as remember() writes it (only the
+     fields that hold something; the rest read back as a fresh start has them). importProgress reads a code with the
+     checks start() uses, saves it and opens the app again on it; a code it cannot read, or one that holds nothing,
+     changes nothing. */
+  var CODE = 'EPUA1:';
+  var held = null;       /* the fields the screens hold now, as remember() saves them (JSON per field) */
+  var restored = null;   /* the state a code brought, for the next start() */
+  function toBase64(text) {
+    var bytes = new TextEncoder().encode(text);
+    var bin = '';
+    for (var i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+    return btoa(bin);
+  }
+  function fromBase64(b64) {
+    var bin = atob(b64);
+    var bytes = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+  }
+  /* what this copy holds: what is saved here (with what another tab of it saved), else what the screens hold */
+  function holding() {
+    var text = !TEST && canSave ? stored() : null;
+    var from = text ? load(text) : null;
+    if (!from && held) { try { from = JSON.parse(textOf(held)); } catch (e) { from = null; } }
+    return checked(from || {});
+  }
+  /* a state with something to move: a fresh start, or answers that were all taken back, hold nothing */
+  function holdsSomething(s) {
+    var some = function (x) { return !!x && Object.keys(x).length > 0; };
+    var p = s.profile;
+    var x = s.exposure;
+    return !!(s.started || s.plan || some(s.plans) || some(s.done) || some(s.tests) || some(s.exams) || s.mistakes.length || s.placement || s.typed.length ||
+      (p && (p.why.length || p.work || p.where.length || p.understand != null || p.speak != null)) || (x && x.with.length));
+  }
+  function exportProgress() {
+    var parts = fieldTexts(holding());
+    var empty = fieldTexts(checked({}));
+    var out = {};
+    FIELDS.forEach(function (k) { if (parts[k] !== undefined && parts[k] !== empty[k]) out[k] = parts[k]; });
+    return CODE + toBase64(textOf(out));
+  }
+  /* the code in what was pasted: it may come inside a message, broken over lines, or in the address-safe alphabet */
+  function readCode(code) {
+    var m = /EPUA1:\s*([A-Za-z0-9+\/_=-][A-Za-z0-9+\/_=\s-]*)/.exec(String(code == null ? '' : code));
+    if (!m) return null;
+    /* the pieces it was broken into, joined again: all of them, or a few fewer when words follow the code */
+    var pieces = m[1].trim().split(/\s+/);
+    var counts = [];
+    for (var n = pieces.length; n > 0 && n >= pieces.length - 8; n--) counts.push(n);
+    if (counts.indexOf(1) < 0) counts.push(1);
+    for (var i = 0; i < counts.length; i++) {
+      try {
+        var from = JSON.parse(fromBase64(pieces.slice(0, counts[i]).join('').replace(/-/g, '+').replace(/_/g, '/')));
+        if (obj(from) && from.v === 1) return from;
+      } catch (e) { /* not this way */ }
+    }
+    return null;
+  }
+  function importProgress(code) {
+    var from = readCode(code);
+    var s = null;
+    try { s = from ? checked(from) : null; } catch (e) { s = null; }
+    if (!s || !holdsSomething(s)) return false;
+    var parts = fieldTexts(s);
+    if (!TEST && canSave) {
+      var text = textOf(parts);
+      try { localStorage.setItem(KEY, text); } catch (e) { return false; }
+      lastSaved = text;
+    }
+    /* what this tab holds from now on is the code's progress, as saved */
+    newer = null;
+    sent = parts;
+    held = parts;
+    wrote = true;
+    try { window.__gnGoalDraft = null; } catch (e) {}
+    restored = s;
+    /* the screen that asked is still in its tap: the app opens again just after, on the week path once there is a plan */
+    setTimeout(function () { show('Shell'); }, 0);
+    return true;
+  }
+
   /* ---------- fit the design to the screen ---------- */
-  function fit() {
-    var vw = view.clientWidth;
-    var vh = Math.min(view.clientHeight, window.innerHeight || view.clientHeight);
-    if (!vw || !vh) return;
+  /* where the 390 by 844 design goes in a vw by vh area, by Yaoki's rules */
+  function placeOf(vw, vh) {
     var s = vw / W;
     var need = H * s;   /* the height the whole design takes at full width */
     var sx = s;
@@ -403,36 +494,47 @@
     var tx = 0;
     var ty = 0;
     var boxed = false;
+    if (Math.abs(vh / need - 1) <= 0.02) {
+      /* phones with a notch are all within half a percent of the design's shape: stretch to fill exactly */
+      sy = vh / H;
+    } else if (need > vh && (need - vh) / s <= TOP - GAP + 0.03 * H) {
+      /* the screen is shorter by about a status bar, because the system keeps that strip for itself:
+         leave out the design's own empty top zone instead of shrinking everything.
+         When the strip is taller than the zone, the rest is taken up by a squeeze of at most 3%. */
+      var crop = Math.min(TOP - GAP, (need - vh) / s);
+      sy = vh / (H - crop);
+      ty = -crop * sy;
+    } else if (need > vh && vw <= 520) {
+      /* a much shorter screen (an older phone, a browser with its bars): the design cannot keep the full width.
+         Its empty top zone is left out here too, and the rest is as large as the height allows, centred */
+      sx = sy = vh / (H - (TOP - GAP));
+      tx = (vw - W * sx) / 2;
+      ty = -(TOP - GAP) * sy;
+    } else {
+      /* any other shape (a tablet, a laptop window, a very tall screen): the whole design, in proportion, centred */
+      sx = sy = Math.min(s, vh / H);
+      tx = (vw - W * sx) / 2;
+      ty = (vh - H * sy) / 2;
+      boxed = true;
+    }
+    return { sx: sx, sy: sy, tx: tx, ty: ty, boxed: boxed };
+  }
+  function fit() {
+    var vw = view.clientWidth;
+    var vh = Math.min(view.clientHeight, window.innerHeight || view.clientHeight);
+    if (!vw || !vh) return;
+    var sx, sy, tx, ty;
+    var boxed = false;
     if (fluid) {
       /* the Add to Home Screen page: full width, as tall as the browser leaves */
-      sx = sy = Math.min(s, 1.25);
+      sx = sy = Math.min(vw / W, 1.25);
       stage.style.height = Math.round(vh / sx) + 'px';
       tx = (vw - W * sx) / 2;
+      ty = 0;
     } else {
       stage.style.height = H + 'px';
-      if (Math.abs(vh / need - 1) <= 0.02) {
-        /* phones with a notch are all within half a percent of the design's shape: stretch to fill exactly */
-        sy = vh / H;
-      } else if (need > vh && (need - vh) / s <= TOP - GAP + 0.03 * H) {
-        /* the screen is shorter by about a status bar, because the system keeps that strip for itself:
-           leave out the design's own empty top zone instead of shrinking everything.
-           When the strip is taller than the zone, the rest is taken up by a squeeze of at most 3%. */
-        var crop = Math.min(TOP - GAP, (need - vh) / s);
-        sy = vh / (H - crop);
-        ty = -crop * sy;
-      } else if (need > vh && vw <= 520) {
-        /* a much shorter screen (an older phone, a browser with its bars): the design cannot keep the full width.
-           Its empty top zone is left out here too, and the rest is as large as the height allows, centred */
-        sx = sy = vh / (H - (TOP - GAP));
-        tx = (vw - W * sx) / 2;
-        ty = -(TOP - GAP) * sy;
-      } else {
-        /* any other shape (a tablet, a laptop window, a very tall screen): the whole design, in proportion, centred */
-        sx = sy = Math.min(s, vh / H);
-        tx = (vw - W * sx) / 2;
-        ty = (vh - H * sy) / 2;
-        boxed = true;
-      }
+      var at = placeOf(vw, vh);
+      sx = at.sx; sy = at.sy; tx = at.tx; ty = at.ty; boxed = at.boxed;
     }
     stage.style.transform = 'translate(' + tx.toFixed(2) + 'px,' + ty.toFixed(2) + 'px) scale(' + sx.toFixed(5) + ',' + sy.toFixed(5) + ')';
     root.classList.toggle('gn-boxed', boxed && vw > 520);
@@ -521,6 +623,8 @@
   var ua = navigator.userAgent || '';
   var iPad = /iPad/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
   var iPhone = /iPhone|iPod/.test(ua);
+  /* the browser the page is open in, by the name the learner knows it (on an iPhone or an iPad, Safari unless it says otherwise) */
+  var browser = /CriOS/.test(ua) ? 'Chrome' : /FxiOS/.test(ua) ? 'Firefox' : /EdgiOS/.test(ua) ? 'Edge' : iPhone || iPad ? 'Safari' : 'el navegador';
   var skipInstall = TEST || (LOCAL && query.has('browser'));
   try { if (sessionStorage.getItem(KEY + '.browser')) skipInstall = true; } catch (e) {}
   var wantInstall = ((iPhone || iPad) && !standalone && !skipInstall) || (LOCAL && query.has('install'));
@@ -539,6 +643,16 @@
     version: (window.__gnBuild || 'development build'),
     standalone: standalone,
     device: iPad ? 'iPad' : iPhone ? 'iPhone' : 'dispositivo',
+    browser: browser,
+    /* the height of the design as fitted to this screen, in the design's pixels (the install page is as tall as the browser leaves) */
+    room: function () { return parseFloat(stage.style.height) || H; },
+    /* the size the screens are drawn at in this window (1 is the design's own): in Safari on a small iPhone they come out
+       much smaller than from the Home Screen, and the install page says so */
+    appScale: function () {
+      var vw = view.clientWidth;
+      var vh = Math.min(view.clientHeight, window.innerHeight || view.clientHeight);
+      return vw && vh ? placeOf(vw, vh).sx : 1;
+    },
     start: start,
     remember: remember,
     forget: forget,
@@ -548,6 +662,12 @@
     /* another tab saved: fn is called; catchUp(screen) then gives the state to take, at a quiet moment (or null) */
     watch: function (fn) { watchers.push(fn); return function () { watchers = watchers.filter(function (f) { return f !== fn; }); }; },
     catchUp: catchUp,
+    /* the progress as a text code to paste in another copy of the app (Safari and the Home Screen app keep theirs apart),
+       and the way back: true once the code's progress is saved and the app opens again on it, false for a code that does
+       not read (nothing is changed then); whether this copy holds any progress to move */
+    exportProgress: exportProgress,
+    importProgress: importProgress,
+    hasProgress: function () { return holdsSomething(holding()); },
     /* 'yes' once every file of the app is stored on the device, 'no' until then, 'never' where that cannot happen */
     offline: function () { return offline; },
     onScreen: onScreen,

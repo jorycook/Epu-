@@ -921,7 +921,7 @@ async function partC(browser) {
   check((await screenOf(page)) === 'Progress', 'Escribir: the pause menu leaves to Progreso, where it was opened', await screenOf(page));
 
   /* Hablar: a round of "Escuchá y elegí": a card picked */
-  h = await fromProgress('Hablá', 'Hablar', 'C06-hablar');
+  h = await fromProgress('Hablar', 'Hablar', 'C06-hablar');
   check((await page.evaluate(() => window.__locks)) >= 1, 'Hablar keeps the screen awake');
   const canvasWords = (await text(page)).match(/En el lienzo[^.]*\./);
   ok(!canvasWords, 'Hablar\'s intro, as the app shows it, should not talk about the design canvas ("el lienzo") or a «Simular toma» button', canvasWords && canvasWords[0]);

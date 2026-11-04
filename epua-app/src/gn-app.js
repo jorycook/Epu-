@@ -125,6 +125,8 @@
     recheck: function (d) { return dateOk(d) ? d : null; },
     started: function (d) { return dateOk(d) ? d : null; },
     until: function (d) { return dateOk(d) ? d : null; },
+    /* the listening part was read from its transcript (no clips yet): the result and the teacher's text say so */
+    p2Read: function (b) { return b === true ? true : null; },
     /* the parts handed in, P1 to P5 */
     done: function (list) { return Array.isArray(list) ? words(list, PARTS.length).filter(function (k) { return PARTS.indexOf(k) >= 0; }) : null; },
     /* each part's score: right of, or self of selfOf for the parts rated against the rubric */
@@ -483,10 +485,8 @@
   }
 
   /* ---------- fit the design to the screen ---------- */
-  function fit() {
-    var vw = view.clientWidth;
-    var vh = Math.min(view.clientHeight, window.innerHeight || view.clientHeight);
-    if (!vw || !vh) return;
+  /* where the 390 by 844 design goes in a vw by vh area, by Yaoki's rules */
+  function placeOf(vw, vh) {
     var s = vw / W;
     var need = H * s;   /* the height the whole design takes at full width */
     var sx = s;
@@ -494,36 +494,47 @@
     var tx = 0;
     var ty = 0;
     var boxed = false;
+    if (Math.abs(vh / need - 1) <= 0.02) {
+      /* phones with a notch are all within half a percent of the design's shape: stretch to fill exactly */
+      sy = vh / H;
+    } else if (need > vh && (need - vh) / s <= TOP - GAP + 0.03 * H) {
+      /* the screen is shorter by about a status bar, because the system keeps that strip for itself:
+         leave out the design's own empty top zone instead of shrinking everything.
+         When the strip is taller than the zone, the rest is taken up by a squeeze of at most 3%. */
+      var crop = Math.min(TOP - GAP, (need - vh) / s);
+      sy = vh / (H - crop);
+      ty = -crop * sy;
+    } else if (need > vh && vw <= 520) {
+      /* a much shorter screen (an older phone, a browser with its bars): the design cannot keep the full width.
+         Its empty top zone is left out here too, and the rest is as large as the height allows, centred */
+      sx = sy = vh / (H - (TOP - GAP));
+      tx = (vw - W * sx) / 2;
+      ty = -(TOP - GAP) * sy;
+    } else {
+      /* any other shape (a tablet, a laptop window, a very tall screen): the whole design, in proportion, centred */
+      sx = sy = Math.min(s, vh / H);
+      tx = (vw - W * sx) / 2;
+      ty = (vh - H * sy) / 2;
+      boxed = true;
+    }
+    return { sx: sx, sy: sy, tx: tx, ty: ty, boxed: boxed };
+  }
+  function fit() {
+    var vw = view.clientWidth;
+    var vh = Math.min(view.clientHeight, window.innerHeight || view.clientHeight);
+    if (!vw || !vh) return;
+    var sx, sy, tx, ty;
+    var boxed = false;
     if (fluid) {
       /* the Add to Home Screen page: full width, as tall as the browser leaves */
-      sx = sy = Math.min(s, 1.25);
+      sx = sy = Math.min(vw / W, 1.25);
       stage.style.height = Math.round(vh / sx) + 'px';
       tx = (vw - W * sx) / 2;
+      ty = 0;
     } else {
       stage.style.height = H + 'px';
-      if (Math.abs(vh / need - 1) <= 0.02) {
-        /* phones with a notch are all within half a percent of the design's shape: stretch to fill exactly */
-        sy = vh / H;
-      } else if (need > vh && (need - vh) / s <= TOP - GAP + 0.03 * H) {
-        /* the screen is shorter by about a status bar, because the system keeps that strip for itself:
-           leave out the design's own empty top zone instead of shrinking everything.
-           When the strip is taller than the zone, the rest is taken up by a squeeze of at most 3%. */
-        var crop = Math.min(TOP - GAP, (need - vh) / s);
-        sy = vh / (H - crop);
-        ty = -crop * sy;
-      } else if (need > vh && vw <= 520) {
-        /* a much shorter screen (an older phone, a browser with its bars): the design cannot keep the full width.
-           Its empty top zone is left out here too, and the rest is as large as the height allows, centred */
-        sx = sy = vh / (H - (TOP - GAP));
-        tx = (vw - W * sx) / 2;
-        ty = -(TOP - GAP) * sy;
-      } else {
-        /* any other shape (a tablet, a laptop window, a very tall screen): the whole design, in proportion, centred */
-        sx = sy = Math.min(s, vh / H);
-        tx = (vw - W * sx) / 2;
-        ty = (vh - H * sy) / 2;
-        boxed = true;
-      }
+      var at = placeOf(vw, vh);
+      sx = at.sx; sy = at.sy; tx = at.tx; ty = at.ty; boxed = at.boxed;
     }
     stage.style.transform = 'translate(' + tx.toFixed(2) + 'px,' + ty.toFixed(2) + 'px) scale(' + sx.toFixed(5) + ',' + sy.toFixed(5) + ')';
     root.classList.toggle('gn-boxed', boxed && vw > 520);
@@ -635,6 +646,13 @@
     browser: browser,
     /* the height of the design as fitted to this screen, in the design's pixels (the install page is as tall as the browser leaves) */
     room: function () { return parseFloat(stage.style.height) || H; },
+    /* the size the screens are drawn at in this window (1 is the design's own): in Safari on a small iPhone they come out
+       much smaller than from the Home Screen, and the install page says so */
+    appScale: function () {
+      var vw = view.clientWidth;
+      var vh = Math.min(view.clientHeight, window.innerHeight || view.clientHeight);
+      return vw && vh ? placeOf(vw, vh).sx : 1;
+    },
     start: start,
     remember: remember,
     forget: forget,

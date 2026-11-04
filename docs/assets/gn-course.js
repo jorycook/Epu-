@@ -378,6 +378,25 @@
 
   /* ---------- placement ----------
      the result of the placement check: a two-part profile; the plan starts at the production level */
+  /* the placement's waiver (the "prueba de dispensa", notes G6 §5): a learner who understands more than they speak (the
+     placement put comprensión above producción) may take a unit's week test first; with 80 % or more, the comprehension
+     lessons of that unit (each day's reading or listening, the r step) count as done */
+  C.WAIVE = 0.8;
+  C.waives = function (placement, score, of) {
+    if (!placement || !(of > 0) || !(score / of >= C.WAIVE)) return false;
+    return ORDER.indexOf(placement.comp) > ORDER.indexOf(placement.prod);
+  };
+  /* the sessions of a unit whose comprehension lesson the waiver marks done */
+  C.waived = function (testId) {
+    var at = C.parse(testId);
+    if (!at) return [];
+    return C.withLevel(at.level, function () {
+      return C.sessions().filter(function (s) {
+        var d = s.unit === at.unit && s.kind !== 'test' && s.ready ? C.day(s.id) : null;
+        return !!(d && d.skill && (d.skill.kind === 'reading' || d.skill.kind === 'listening'));
+      }).map(function (s) { return s.id; });
+    });
+  };
   C.placed = function (comp, prod) {
     var c = ORDER.indexOf(comp), p = ORDER.indexOf(prod);
     if (c < 0) c = 0;
@@ -504,6 +523,15 @@
             var tests = Object.assign({}, st.tests || {});
             tests[patch.result.id] = patch.result;
             out.tests = tests;
+            /* the waiver: with the placement's profile and 80 % or more, the unit's comprehension lessons count as done */
+            if (C.waives(st.placement, patch.result.score, patch.result.of)) {
+              var credited = Object.assign({}, out.done || st.done || {});
+              C.waived(patch.result.id).forEach(function (id) {
+                var was2 = credited[id] || {};
+                credited[id] = Object.assign({}, was2, { r: Math.max(was2.r || 0, 1) });
+              });
+              out.done = credited;
+            }
           }
           /* a level exam result is kept per level; a better result never gives way to a worse one */
           if (patch.exam) {
