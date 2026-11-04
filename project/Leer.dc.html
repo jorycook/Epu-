@@ -24,7 +24,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; padding: 50px 16px 34px; background: #F4F5F9; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; display: flex; flex-direction: column; overflow: hidden">
 
 <div style="display: flex; align-items: center; gap: 10px; height: 44px; flex-shrink: 0">
-<a href="Main.dc.html" onClick="{{ toMain }}" aria-label="Cerrar la lectura" style="width: 44px; height: 44px; margin-left: -10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+<a href="Progress.dc.html" onClick="{{ toProgress }}" aria-label="Cerrar la lectura" style="width: 44px; height: 44px; margin-left: -10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
 <div style="flex-grow: 1; min-width: 0; font-size: 15px; font-weight: 800"><span lang="gn">Emoñe'ẽ</span> <span style="font-size: 12px; font-weight: 700; color: #5A6382">· Leer</span></div>
 <button type="button" ref="{{ pillRef }}" onClick="{{ openSheet }}" aria-haspopup="dialog" aria-label="Ayuda: qué muestra al mantener apretado" style="height: 44px; padding: 0; border: 0; background: none; flex-shrink: 0; display: flex; align-items: center"><span style="display: flex; align-items: center; gap: 6px; height: 32px; box-sizing: border-box; padding: 0 12px; border-radius: 16px; background: #FFFFFF; border: 2px solid #1B2440; font-size: 13px; font-weight: 800"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7h9M19 7h1M4 17h1M11 17h9"/><circle cx="16" cy="7" r="2.6"/><circle cx="8" cy="17" r="2.6"/></svg><span><span lang="gn">Pytyvõ</span> · Ayuda</span></span></button>
 </div>
@@ -143,7 +143,8 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
    Spanish. The text is the reader library's first work (window.__gnExtra.reader.works[0], from gn-extra.js); until it is
    written the screen says "En preparación" and the help settings still open.
    Props: demo = index of a phrase shown as held when the artboard opens (a designed moment; it clears on the first real
-   touch); view = 'text' (default) or 'settings' (the help sheet open). Inside the prototype: go('Main') closes it. */
+   touch); view = 'text' (default) or 'settings' (the help sheet open). Its close goes back to Progreso, whose «Más
+   práctica» opens it: on the canvas the link moves Play to Progress; inside the prototype and the app, go('Progress'). */
 class Component extends DCLogic {
 constructor(props) {
 super(props);
@@ -495,7 +496,7 @@ boxRef: this.boxRef,
 lensRef: this.lensRef,
 pillRef: this.pillRef,
 sheetRef: this.sheetRef,
-toMain: nav('Main'),
+toProgress: nav('Progress'),
 openSheet: (e) => { this.gnOpener = e && e.currentTarget ? e.currentTarget : null; this.setState({ sheet: true, held: null }); },
 closeSheet: () => this.setState({ sheet: false }),
 /* Escape closes the help sheet, as the reader's sheets do (a handler on the sheet itself, not a global one) */

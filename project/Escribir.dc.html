@@ -100,7 +100,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </div>
 
 <div style="position: absolute; left: 16px; right: 16px; top: 392px; min-height: 44px; display: flex; align-items: center; gap: 10px">
-<p role="status" aria-live="polite" style="flex: 1; min-width: 0; margin: 0; font-size: 15px; font-weight: 800; line-height: 20px; color: {{ stat.color }}"><sc-if value="{{ stat.hasGn }}" hint-placeholder-val="{{ false }}"><span lang="gn">{{ stat.gn }}</span> · </sc-if>{{ stat.es }}</p>
+<p role="status" aria-live="polite" style="flex: 1; min-width: 0; margin: 0; font-size: 15px; font-weight: 800; line-height: 20px; color: {{ stat.color }}"><sc-if value="{{ stat.hasGn }}" hint-placeholder-val="{{ false }}"><span lang="gn">{{ stat.gn }}</span> · </sc-if>{{ stat.es }}<span lang="gn">{{ stat.name }}</span>{{ stat.end }}</p>
 <sc-if value="{{ canSkip }}" hint-placeholder-val="{{ false }}"><button onClick="{{ skip }}" style="flex-shrink: 0; height: 44px; padding: 0 16px; box-sizing: border-box; border-radius: 14px; border: 2px solid #1B2440; background: #FFFFFF; box-shadow: 0 3px 0 #1B2440; font-size: 15px; font-weight: 800; display: flex; align-items: center; gap: 6px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6l7 6-7 6zM13 6l7 6-7 6z"/></svg>Saltear</button></sc-if>
 </div>
 
@@ -142,7 +142,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="flex-shrink: 0; padding: 4px 16px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440">
 <div style="display: flex; align-items: center; gap: 12px; padding: 12px 0"><b style="flex-shrink: 0; width: 96px; text-align: right; font-size: 26px; font-weight: 800; white-space: nowrap">{{ res.keysRight }} <small style="font-size: 14px; font-weight: 700; color: #5A6382">/ {{ res.keysTotal }}</small></b><span style="display: flex; flex-direction: column; font-size: 15px; font-weight: 800">Teclas correctas<small style="font-size: 12px; font-weight: 700; color: #5A6382">de todas las que tocaste</small></span></div>
 <div style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 2px solid #DDE1EC"><b style="flex-shrink: 0; width: 96px; text-align: right; font-size: 26px; font-weight: 800">{{ res.bestRun }}</b><span style="display: flex; flex-direction: column; font-size: 15px; font-weight: 800">Racha más larga<small style="font-size: 12px; font-weight: 700; color: #5A6382">tarjetas seguidas sin ningún error</small></span></div>
-<div style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 2px solid #DDE1EC"><b style="flex-shrink: 0; width: 96px; text-align: right; font-size: 26px; font-weight: 800">{{ res.falls }}</b><span style="display: flex; flex-direction: column; font-size: 15px; font-weight: 800">Caídas<small style="font-size: 12px; font-weight: 700; color: #5A6382">{{ res.fallsNote }}</small><sc-if value="{{ res.hasUps }}" hint-placeholder-val="{{ false }}"><small style="margin-top: 4px; display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: #1B2440"><span aria-hidden="true" style="flex-shrink: 0; width: 22px; height: 22px; box-sizing: border-box; border-radius: 50%; border: 2px solid #0B7A6B; display: flex; align-items: center; justify-content: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span><span><sc-if value="{{ res.upsGn }}" hint-placeholder-val="{{ false }}"><span lang="gn">¡Opu'ã!</span> </sc-if>{{ res.upsText }}</span></small></sc-if></span></div>
+<div style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 2px solid #DDE1EC"><b style="flex-shrink: 0; width: 96px; text-align: right; font-size: 26px; font-weight: 800">{{ res.falls }}</b><span style="display: flex; flex-direction: column; font-size: 15px; font-weight: 800">Caídas<small style="font-size: 12px; font-weight: 700; color: #5A6382">{{ res.fallsNote }}<span lang="gn">{{ res.fallsName }}</span>{{ res.fallsEnd }}</small><sc-if value="{{ res.hasUps }}" hint-placeholder-val="{{ false }}"><small style="margin-top: 4px; display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: #1B2440"><span aria-hidden="true" style="flex-shrink: 0; width: 22px; height: 22px; box-sizing: border-box; border-radius: 50%; border: 2px solid #0B7A6B; display: flex; align-items: center; justify-content: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span><span><sc-if value="{{ res.upsGn }}" hint-placeholder-val="{{ false }}"><span lang="gn">¡Opu'ã!</span> </sc-if>{{ res.upsText }}</span></small></sc-if></span></div>
 <div style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 2px solid #DDE1EC"><b style="flex-shrink: 0; width: 96px; text-align: right; font-size: 26px; font-weight: 800">{{ res.hints }}</b><span style="display: flex; flex-direction: column; font-size: 15px; font-weight: 800">Ayudas<small style="font-size: 12px; font-weight: 700; color: #5A6382">tarjetas donde apareció una ayuda</small></span></div>
 </div>
 
@@ -158,7 +158,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 
 <div style="flex-shrink: 0; margin-top: auto; padding-bottom: 8px; display: flex; flex-direction: column; gap: 12px">
 <button onClick="{{ again }}" style="height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-size: 17px; font-weight: 800">Otra ronda</button>
-<a href="Main.dc.html" onClick="{{ toMain }}" style="height: 54px; box-sizing: border-box; border-radius: 16px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #1B2440; font-size: 17px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 6px"><span><span lang="gn">Mboty</span> · Cerrar</span></a>
+<a href="Progress.dc.html" onClick="{{ toProgress }}" style="height: 54px; box-sizing: border-box; border-radius: 16px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #1B2440; font-size: 17px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 6px"><span><span lang="gn">Mboty</span> · Cerrar</span></a>
 </div>
 </section>
 </sc-if>
@@ -169,7 +169,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <h2 id="esc-pause-h" style="margin: 0; font-size: 18px; font-weight: 800">Pausa</h2>
 <p style="margin: 0; font-size: 13px; font-weight: 500; color: #5A6382; line-height: 1.45">Nada se mueve mientras esto está abierto. Si salís, las palabras que ya escribiste quedan guardadas y la ronda termina acá.</p>
 <button onClick="{{ resume }}" style="height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-size: 17px; font-weight: 800"><span lang="gn">Eku'ejey</span> · Continuar</button>
-<a href="Main.dc.html" onClick="{{ quit }}" style="height: 50px; box-sizing: border-box; border-radius: 16px; background: #FFFFFF; border: 2px solid #C7361E; color: #C7361E; font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center">Salir de la ronda</a>
+<a href="Progress.dc.html" onClick="{{ quit }}" style="height: 50px; box-sizing: border-box; border-radius: 16px; background: #FFFFFF; border: 2px solid #C7361E; color: #C7361E; font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center">Salir de la ronda</a>
 </div>
 </div>
 </sc-if>
@@ -191,7 +191,9 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
    Props: go, app, save (the words typed are kept with save({ typed })), demo: "round" (on its own: a card part-typed,
    with a named near miss) or "fall" (Kaguare knocked over, on his back; he gets up when the round goes on). Inside the app
    (props.app, no demo) the round waits, its first card in view, for the first key. A designed moment holds still
-   until the first key or a tap on the route. */
+   until the first key or a tap on the route. Its way out (the result's Cerrar, the pause sheet's Salir) goes back to
+   Progreso, whose «Más práctica» opens it: the link to Progress on the canvas, go('Progress') in the prototype and the app.
+   Kaguare's name in a line on screen is set apart (cutName) so the template gives it lang="gn". */
 const H = 240;                 /* the world, in Yaoki Typing's units: 240 high, the route at 168, cards 74 high */
 const GROUND = 168;
 const CARD_H = 74;
@@ -293,6 +295,11 @@ const norm = (s) => { const C = window.gnCourse; if (C && C.norm) return C.norm(
 const chars = (s) => { const C = window.gnCourse; return C && C.chars ? C.chars(s) : Array.from(norm(s)); };
 const same = (a, b) => a.length === b.length && a.every((x, i) => x === b[i]);
 const backText = (n) => (n <= 0 ? 'Vuelve en la próxima tarjeta' : 'Vuelve después de ' + n + (n === 1 ? ' tarjeta' : ' tarjetas'));
+/* a line shown on screen that names Kaguare, cut round the name: the template sets the name in a lang="gn" span (a
+   Guarani name, as Goal writes it) between the Spanish before and after. The lines only a screen reader hears (say)
+   keep it inside: the live region gets them whole */
+const NAME = 'Kaguare';
+const cutName = (s) => { const t = String(s == null ? '' : s); const i = t.indexOf(NAME); return i < 0 ? { a: t, name: '', b: '' } : { a: t.slice(0, i), name: NAME, b: t.slice(i + NAME.length) }; };
 /* a seeded random, so a designed moment is the same each time it opens */
 function seeded(seed) {
   let a = seed >>> 0;
@@ -1402,8 +1409,9 @@ const und = this.underVals(r && r.fall ? r.fall.card : t);
 const showInfo = r && r.fall ? r.fall.card : t;
 const info = { on: !!showInfo, gn: showInfo ? showInfo.item.text : '', es: showInfo ? showInfo.item.es : '', empty: !r };
 const s0 = this.status;
-const stat = !r ? { hasGn: false, gn: '', es: 'Las palabras para escribir todavía no están cargadas.', color: '#5A6382' }
-: s0 ? { hasGn: !!s0.gn, gn: s0.gn || '', es: s0.es, color: s0.color } : { hasGn: false, gn: '', es: '', color: '#1B2440' };
+const sn = cutName(s0 ? s0.es : '');
+const stat = !r ? { hasGn: false, gn: '', es: 'Las palabras para escribir todavía no están cargadas.', name: '', end: '', color: '#5A6382' }
+: s0 ? { hasGn: !!s0.gn, gn: s0.gn || '', es: sn.a, name: sn.name, end: sn.b, color: s0.color } : { hasGn: false, gn: '', es: '', name: '', end: '', color: '#1B2440' };
 /* the key to light: the next one, once the whole word is shown (a mark or a digit: the symbols key first) */
 let lit = t && hintLevel(t) >= 2 ? (seqFor(t) || [])[t.pend.length] || null : null;
 const rows = st.sym ? [ROW_G, SYM_1, SYM_2, ROW_3, ROW_4] : [ROW_G, ROW_1, ROW_2, ROW_3, ROW_4];
@@ -1413,8 +1421,9 @@ const kb = rows.map((row) => ({ keys: row.map((k) => this.keyVals(k, lit)) }));
 /* the result */
 const R = this.res;
 const tier = R ? STAMPS[R.tier] : STAMPS[0];
-const res = R ? Object.assign({}, R, { stage: 'PALABRAS DE LA UNIDAD 1', hasGn: !!tier.gn, stampGn: tier.gn, stampEs: tier.es.map((s) => ({ t: s })), esSize: tier.size, stampLabel: tier.label, hasWeak: R.weak.length > 0 })
-: { stage: '', clean: 0, total: 0, line: '', hasGn: false, stampGn: '', stampEs: [], esSize: '13px', stampLabel: '', keysRight: 0, keysTotal: 0, bestRun: 0, falls: 0, fallsNote: '', hasUps: false, upsGn: false, upsText: '', hints: 0, hasWeak: false, weak: [] };
+const fn = cutName(R ? R.fallsNote : '');
+const res = R ? Object.assign({}, R, { fallsNote: fn.a, fallsName: fn.name, fallsEnd: fn.b, stage: 'PALABRAS DE LA UNIDAD 1', hasGn: !!tier.gn, stampGn: tier.gn, stampEs: tier.es.map((s) => ({ t: s })), esSize: tier.size, stampLabel: tier.label, hasWeak: R.weak.length > 0 })
+: { stage: '', clean: 0, total: 0, line: '', hasGn: false, stampGn: '', stampEs: [], esSize: '13px', stampLabel: '', keysRight: 0, keysTotal: 0, bestRun: 0, falls: 0, fallsNote: '', fallsName: '', fallsEnd: '', hasUps: false, upsGn: false, upsText: '', hints: 0, hasWeak: false, weak: [] };
 return {
 inRound, isResult: st.view === 'result', paused: inRound && st.pause, ring: this.ring,
 hud, st: this.stageVals(), masc: this.mascotVals(), bub, fx, und, info, stat, kb,
@@ -1422,8 +1431,8 @@ canSkip: !!(t && t.halted), sr: this.sr || { gn: '', es: '' }, res,
 /* the sheet opens even with no round (no words loaded): it is the way out */
 openPause: () => this.setState({ pause: true }),
 resume: () => { this.last = now(); this.setState({ pause: false }); },
-quit: (e) => { this.saveTyped(); nav('Main')(e); },
-toMain: nav('Main'),
+quit: (e) => { this.saveTyped(); nav('Progress')(e); },
+toProgress: nav('Progress'),
 again: () => { this.res = null; this.flash = {}; this.begin(''); this.setState({ view: 'round', pause: false, shift: false, sym: false }); this.startLoop(); },
 skip: () => { const c = this.targetCard(); if (c && c.halted) { this.skipCard(c); this.forceUpdate(); } },
 stageTap: () => { if (this.frozen) { this.unfreeze(); this.forceUpdate(); } },

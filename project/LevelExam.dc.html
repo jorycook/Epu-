@@ -439,6 +439,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="width: 24px; height: 24px; border-radius: 7px; background: #1B2440; color: #FFFFFF; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0">{{ sq.no }}</div>
 <div style="flex-grow: 1; min-width: 0; font-size: 14px; font-weight: 800; line-height: 1.5; padding-top: 1px; overflow-wrap: anywhere"><sc-for list="{{ sq.prompt }}" as="g" hint-placeholder-count="1"><span lang="{{ g.lang }}" style="font-family: {{ g.font }}">{{ g.t }}</span></sc-for></div>
 </div>
+<sc-if value="{{ sq.sim }}" hint-placeholder-val="{{ true }}">
 <div style="margin-top: 6px; font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.45">Pensá un momento qué vas a decir. Después grabate de una vez, como en el examen.</div>
 <div style="margin-top: 12px; padding: 16px 14px 14px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; display: flex; flex-direction: column; align-items: center; gap: 10px">
 <button onClick="{{ sq.mic }}" aria-label="{{ sq.micLabel }}" aria-pressed="{{ sq.isRec }}" style="width: 88px; height: 88px; border-radius: 50%; padding: 0; display: flex; align-items: center; justify-content: center; border: 2px solid #1B2440; transition: background 150ms; background: {{ sq.micBg }}; box-shadow: {{ sq.micShadow }}; transform: {{ sq.micPress }}"><sc-if value="{{ sq.isRec }}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="3" fill="#FFFFFF"/></svg></sc-if><sc-if value="{{ sq.notRec }}" hint-placeholder-val="{{ true }}"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="{{ sq.micInk }}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></sc-if></button>
@@ -459,11 +460,23 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <button onClick="{{ sq.simulate }}" style="height: 44px; padding: 0 14px; border-radius: 12px; border: 2px dashed #C9D0E3; background: #FFFFFF; color: #5A6382; font-size: 13px; font-weight: 800; flex-shrink: 0; white-space: nowrap">Simular toma</button>
 <div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.4">En el lienzo no hay micrófono: este botón {{ sq.simNext }}</div>
 </div>
+</sc-if>
+<sc-if value="{{ sq.aloud }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top: 6px; font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.45">Pensá un momento qué vas a decir. Después decilo en voz alta, de una vez, como en el examen.</div>
+<div style="margin-top: 12px; padding: 14px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; display: flex; align-items: flex-start; gap: 12px">
+<div style="width: 48px; height: 48px; border-radius: 50%; background: #E8ECFB; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<div style="font-size: 15px; font-weight: 800; line-height: 1.3">Tu voz todavía no se graba</div>
+<div style="font-size: 13px; font-weight: 500; line-height: 1.45">Hablá en voz alta, hasta {{ sq.limit }}. Después te comparás con tres ejemplos y te evaluás con la guía.</div>
+</div>
+</div>
+</sc-if>
 <div style="flex-grow: 1"></div>
 <button onClick="{{ sq.cta }}" style="flex-shrink: 0; height: 54px; border-radius: 16px; font-weight: 800; font-size: 17px; border: {{ sq.ctaBorder }}; background: {{ sq.ctaBg }}; color: {{ sq.ctaInk }}; box-shadow: {{ sq.ctaShadow }}">{{ sq.ctaLabel }}</button>
 </sc-if>
 <sc-if value="{{ sq.rate }}" hint-placeholder-val="{{ false }}">
 <div data-paper-scroll="1" style="flex-grow: 1; min-height: 0; overflow-y: auto; margin: 0 -16px; padding: 0 16px 4px; display: flex; flex-direction: column">
+<sc-if value="{{ sq.sim }}" hint-placeholder-val="{{ true }}">
 <div style="flex-shrink: 0; padding: 8px 8px 8px 14px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 6px">
 <div style="display: flex; align-items: center; gap: 10px">
 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B02A63" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
@@ -475,6 +488,16 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </div>
 <div aria-hidden="true" style="height: 6px; border-radius: 3px; background: #E8ECFB; overflow: hidden"><div style="height: 6px; border-radius: 3px; background: #2F4FD0; width: {{ sq.playW }}"></div></div>
 </div>
+</sc-if>
+<sc-if value="{{ sq.aloud }}" hint-placeholder-val="{{ false }}">
+<div style="flex-shrink: 0; padding: 10px 14px; border-radius: 16px; background: #E8ECFB; display: flex; align-items: flex-start; gap: 10px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 1px"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<div style="font-size: 14px; font-weight: 800">Tu voz no se grabó</div>
+<div style="font-size: 12px; font-weight: 500; line-height: 1.45">Acordate de lo que dijiste: comparalo con los tres ejemplos y evaluate con la guía.</div>
+</div>
+</div>
+</sc-if>
 <div style="margin-top: 14px; font-size: 11px; font-weight: 800; color: #B02A63">COMPARATE CON TRES EJEMPLOS</div>
 <div role="tablist" aria-label="Ejemplos" style="margin-top: 6px; flex-shrink: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px">
 <sc-for list="{{ smp.tabs }}" as="t" hint-placeholder-count="3">
@@ -733,11 +756,16 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <button aria-label="Cerrar" onClick="{{ closeExport }}" style="flex-grow: 1; border: 0; padding: 0; background: transparent"></button>
 <div role="dialog" aria-modal="true" aria-label="Pedir corrección a un docente" style="padding: 18px 20px 34px; border-radius: 26px 26px 0 0; border-top: 2px solid #1B2440; background: #F4F5F9; display: flex; flex-direction: column; gap: 10px; animation: gn-up 240ms ease-out">
 <h2 style="margin: 0; font-size: 18px; font-weight: 800">Pedir corrección a un docente</h2>
+<sc-if value="{{ exp.sim }}" hint-placeholder-val="{{ true }}">
 <div style="font-size: 13px; font-weight: 500; color: #5A6382; line-height: 1.5">Armamos un paquete con tu trabajo y tu evaluación. Se lo mandás a tu docente, y cuando te devuelva la nota el resultado pasa a «verificado por docente».</div>
+</sc-if>
+<sc-if value="{{ exp.app }}" hint-placeholder-val="{{ false }}">
+<div style="font-size: 13px; font-weight: 500; color: #5A6382; line-height: 1.5">Armamos un resumen en texto con tus notas, tu mensaje y tu evaluación, para que se lo mandes a tu docente por mensaje o por correo. Tu voz todavía no se graba: la parte oral te la puede escuchar en persona o en una llamada.</div>
+</sc-if>
 <div style="padding: 4px 14px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column">
 <sc-for list="{{ exp.items }}" as="x" hint-placeholder-count="3">
 <div style="display: flex; align-items: center; gap: 10px; padding: 9px 0; border-top: {{ x.rule }}">
-<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{ x.ink }}" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="{{ x.icon }}"/></svg>
 <div style="flex-grow: 1; font-size: 14px; font-weight: 800">{{ x.es }}</div>
 <div style="font-size: 12px; font-weight: 700; color: #5A6382; white-space: nowrap">{{ x.detail }}</div>
 </div>
@@ -745,6 +773,16 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </div>
 <sc-if value="{{ exp.done }}" hint-placeholder-val="{{ false }}">
 <div role="status" style="padding: 10px 12px; border-radius: 14px; background: #E0F3EF; font-size: 13px; font-weight: 700; line-height: 1.45"><span style="font-weight: 800; color: #0B7A6B">Paquete listo.</span> En el teléfono se abre el menú para compartir; en el lienzo no se envía nada.</div>
+</sc-if>
+<sc-if value="{{ exp.shared }}" hint-placeholder-val="{{ false }}">
+<div role="status" style="padding: 10px 12px; border-radius: 14px; background: #E0F3EF; font-size: 13px; font-weight: 700; line-height: 1.45"><span style="font-weight: 800; color: #0B7A6B">Paquete compartido.</span> Tu docente lo recibe como texto, por donde lo mandaste.</div>
+</sc-if>
+<sc-if value="{{ exp.copied }}" hint-placeholder-val="{{ false }}">
+<div role="status" style="padding: 10px 12px; border-radius: 14px; background: #E0F3EF; font-size: 13px; font-weight: 700; line-height: 1.45"><span style="font-weight: 800; color: #0B7A6B">Copiado:</span> pegalo en un mensaje a tu docente.</div>
+</sc-if>
+<sc-if value="{{ exp.manual }}" hint-placeholder-val="{{ false }}">
+<div role="status" style="padding: 10px 12px; border-radius: 14px; background: #FFF4D6; font-size: 13px; font-weight: 700; line-height: 1.45"><span style="font-weight: 800">No se pudo compartir ni copiar.</span> Mantené apretado el texto, elegí «Seleccionar todo» y copialo.</div>
+<textarea aria-label="Resumen para tu docente" readonly="readonly" rows="6" value="{{ exp.text }}" onFocus="{{ exp.selectAll }}" style="flex-shrink: 0; height: 150px; box-sizing: border-box; padding: 10px 12px; border-radius: 14px; border: 2px solid #1B2440; background: #FFFFFF; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; font-size: 13px; font-weight: 500; line-height: 1.45; resize: none"></textarea>
 </sc-if>
 <button onClick="{{ shareNow }}" style="margin-top: 4px; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px">Compartir con mi docente</button>
 <button onClick="{{ closeExport }}" style="height: 48px; border: 0; background: none; color: #2F4FD0; font-size: 15px; font-weight: 800"><span lang="gn">Mboty</span> · Cerrar</button>
@@ -832,6 +870,67 @@ const add = (list, k) => (list.indexOf(k) >= 0 ? list : list.concat([k]));
 const words = (t) => String(t || '').trim().split(/\s+/).filter(Boolean).length;
 function normText(o) { const out = {}; Object.keys(o || {}).forEach((k) => { out[k] = window.gnCourse.norm(o[k]); }); return out; }
 function keyName(k) { const S = window.gnSpell; return (S && S.name ? S.name(k) : NAMES[k]) || k; }
+/* inside the prototype and the app the voice is not recorded yet: a sentence of the oral task that asks for a recording
+   ("Grabate y después escuchate.") is left out there, and the screen asks for the answer aloud instead */
+function aloudOf(es) { return String(es || '').replace(/(^|\s)(Grabate|Grabá|Escuchate)(?=[\s,.;:!?]|$)[^.!?]*[.!?]?/g, '').replace(/\s{2,}/g, ' ').trim(); }
+
+/* ---------- the package for a teacher, as plain text (shared from the result inside the prototype and the app) ----------
+   the level and the date, each part's score, the written answers, the self-ratings with the rubric's words and the verdict.
+   The written mediation of the higher levels (Spanish to Guarani) has no task in this exam yet: A1's part 3 is picking
+   facts in Spanish, scored by the app, so its score is all it adds */
+const SCALE = ['nada', 'poco', 'bastante', 'todo'];
+function packageOf(M, R, st) {
+  const C = window.gnCourse;
+  const lv = M.level;
+  const parts = (R && R.parts) || st.parts || {};
+  const teacher = !!(R && R.mode === 'teacher');
+  const pc = (r, o) => (o > 0 ? Math.round((r / o) * 100) + ' %' : '—');
+  const group = (g) => (typeof g === 'number' ? Math.round(g * 100) + ' %' : '—');
+  const day = C.today(R && R.at ? R.at : C.now());
+  const verdict = R && R.apto ? 'Apto' : R && R.comprension ? 'Todavía no Apto · Constancia de comprensión (grupo C aprobado)' : 'Todavía no Apto';
+  const out = [];
+  out.push("Epu'ã · Examen de nivel " + lv + ' (' + C.meta(lv).name + ') · guaraní paraguayo');
+  out.push('Fecha: ' + C.dateEs(day, true));
+  out.push('Resultado: ' + verdict + (teacher ? ' · verificado por docente' : ' · autoevaluado'));
+  out.push('');
+  out.push('NOTAS POR PARTE');
+  KEYS.forEach((k, n) => {
+    const p = parts[k];
+    const self = k === 'P4' || k === 'P5';
+    const line = !p ? 'sin entregar' : self ? (p.self || 0) + ' de ' + (p.selfOf || 0) + ' (' + pc(p.self || 0, p.selfOf) + ')' + (teacher ? '' : ', autoevaluada') : (p.right || 0) + ' de ' + (p.of || 0) + ' (' + pc(p.right || 0, p.of) + ')';
+    out.push((n + 1) + '. ' + LONG[k] + ': ' + line);
+  });
+  out.push('Grupo C (comprensión): ' + group(R && R.groupC) + ' · Grupo P (producción): ' + group(R && R.groupP));
+  out.push('Apto: 60 % en cada grupo y ninguna parte por debajo de 40 %.');
+  out.push('');
+  out.push('PARTE 4 · ' + LONG.P4.toUpperCase());
+  M.P4.forEach((t, k) => {
+    const mine = window.gnCourse.norm((st.text && st.text[k]) || '').trim();
+    const n = words(mine);
+    if (M.P4.length > 1) out.push('Tarea ' + (k + 1));
+    out.push('Consigna: ' + t.es);
+    out.push(mine ? 'Mi mensaje (' + (n === 1 ? '1 palabra' : n + ' palabras') + '):' : 'Mi mensaje: no escribí nada.');
+    if (mine) out.push(mine);
+  });
+  out.push('');
+  out.push('PARTE 5 · ' + LONG.P5.toUpperCase());
+  M.P5.forEach((t, k) => {
+    if (M.P5.length > 1) out.push('Tarea ' + (k + 1));
+    out.push('Consigna: ' + aloudOf(t.es));
+  });
+  out.push('La app todavía no graba la voz: para corregir esta parte, escuchame en persona o en una llamada.');
+  out.push('');
+  out.push('MI EVALUACIÓN CON LA GUÍA (0 nada · 1 poco · 2 bastante · 3 todo)');
+  ['P4', 'P5'].forEach((k) => {
+    const rr = (st.rate && st.rate[k]) || {};
+    const sc = scoreSelf(M.crit[k], rr);
+    out.push(LONG[k] + ': ' + sc.self + ' de ' + sc.selfOf);
+    M.crit[k].forEach((c) => { const v = rr[c.key]; out.push('- ' + c.es + ': ' + (typeof v === 'number' ? v + (SCALE[v] ? ' (' + SCALE[v] + ')' : '') : 'sin evaluar')); });
+  });
+  out.push('');
+  out.push('Es una constancia de la app, no un certificado oficial.');
+  return out.join('\n');
+}
 
 /* ---------- the exam, read from the content (every lookup guarded) ---------- */
 function buildExam(lv) {
@@ -1045,6 +1144,7 @@ this.setState(this.firstState(this.props));
 }
 }
 componentWillUnmount() {
+this.gone = true;
 document.removeEventListener('visibilitychange', this.onHide);
 this.clockOff();
 this.hush();
@@ -1338,6 +1438,10 @@ const s = this.state;
 const M = this.model();
 const app = this.app();
 const lv = M.level;
+/* the canvas grants no microphone, so «Simular toma» stands for the recording there; inside the prototype and the app the
+   voice is not recorded yet (as in Hablar), so the oral part asks for the answer aloud and keeps no take, and the teacher's
+   package is really shared as text */
+const inApp = !!this.props.go;
 const nav = (to) => (e) => { const go = this.props.go; if (go) { e.preventDefault(); go(to); } };
 const fmt = (sec) => { const x = Math.max(0, Math.round(sec)); return Math.floor(x / 60) + ':' + (x % 60 < 10 ? '0' : '') + (x % 60); };
 const dayEs = (iso) => String(C.dateEs(iso, false) || '').replace(',', '');
@@ -1378,6 +1482,7 @@ if (k === 'P1') return M.P1.length + (M.P1.length === 1 ? ' pregunta' : ' pregun
 if (k === 'P2') return M.P2.length + (M.P2.length === 1 ? ' audio, dos veces' : ' audios, dos veces');
 if (k === 'P3') { const n = scoreMed(M.P3, {}).of; return n + (n === 1 ? ' dato' : ' datos'); }
 if (k === 'P4') return M.P4.length === 1 ? '1 mensaje' : M.P4.length + ' textos';
+if (inApp) return M.P5.length === 1 ? '1 tarea' : M.P5.length + ' tareas';
 return M.P5.length === 1 ? '1 toma' : M.P5.length + ' tomas';
 };
 const bigOf = (k) => (M.min[k] ? M.min[k] + ' min' : '—');
@@ -1398,7 +1503,7 @@ between: ['', 'Antes de la parte ' + P(s.nextKey), 'Lo entregado quedó guardado
 listening: [GN.P2, SHORT.P2, s.sound || !s.live ? 'Parte 2 de 5 · cada audio suena dos veces' : 'Parte 2 de 5 · sin sonido, solo los tiempos'],
 mediation: ['', SHORT.P3, 'Parte 3 de 5 · al castellano'],
 writing: [GN.P4, SHORT.P4, s.stage4 === 'rate' ? 'Parte 4 de 5 · te evaluás con la guía' : 'Parte 4 de 5 · Expresión escrita'],
-speaking: ['', LONG.P5, s.stage5 === 'rate' ? 'Parte 5 de 5 · te evaluás con la guía' : 'Parte 5 de 5 · grabate y escuchate'],
+speaking: ['', LONG.P5, s.stage5 === 'rate' ? 'Parte 5 de 5 · te evaluás con la guía' : inApp ? 'Parte 5 de 5 · en voz alta' : 'Parte 5 de 5 · grabate y escuchate'],
 result: ['Aranduchauka', 'Resultado', lv + (R && R.at ? ' · ' + dayEs(C.today(R.at)) : '')],
 answers: ['', 'Respuestas', 'Por parte, con las razones'],
 }[s.view] || ['', 'Examen de nivel', lv];
@@ -1620,8 +1725,11 @@ press: () => insert(k),
 /* ---------- part 5: speaking ---------- */
 const list5 = M.P5;
 const t5 = list5[Math.min(s.k5, Math.max(0, list5.length - 1))] || null;
-const takeMs = (s.take && s.take[s.k5]) || 0;
-let sq = { on: false, record: false, rate: false, head: '', pos: '', no: 0, prompt: [], isRec: false, notRec: true, ready: false, micBg: '#2F4FD0', micInk: '#FFFFFF', micShadow: 'none', micPress: 'none', micLabel: 'Empezar a grabar', status: '', live: 'polite', statusInk: '#1B2440', bars: [], mic: () => {}, again: () => {}, simulate: () => {}, simNext: '', playing: false, playLabel: 'Escuchate', playW: '0%', listen: () => {}, takeTitle: '', ctaLabel: '', ctaBg: '#DDE1EC', ctaInk: '#5A6382', ctaBorder: '2px solid #DDE1EC', ctaShadow: 'none', cta: () => {} };
+/* in the app nothing is recorded, so a take kept by an older version of the app is not shown either */
+const takeMs = inApp ? 0 : (s.take && s.take[s.k5]) || 0;
+/* the time to speak in words: "un minuto", "2 minutos", "1:30", "45 segundos" */
+const spanOf = (sec) => (sec < 60 ? sec + ' segundos' : sec % 60 ? fmt(sec) : sec === 60 ? 'un minuto' : sec / 60 + ' minutos');
+let sq = { on: false, record: false, rate: false, sim: !inApp, aloud: inApp, limit: '', head: '', pos: '', no: 0, prompt: [], isRec: false, notRec: true, ready: false, micBg: '#2F4FD0', micInk: '#FFFFFF', micShadow: 'none', micPress: 'none', micLabel: 'Empezar a grabar', status: '', live: 'polite', statusInk: '#1B2440', bars: [], mic: () => {}, again: () => {}, simulate: () => {}, simNext: '', playing: false, playLabel: 'Escuchate', playW: '0%', listen: () => {}, takeTitle: '', ctaLabel: '', ctaBg: '#DDE1EC', ctaInk: '#5A6382', ctaBorder: '2px solid #DDE1EC', ctaShadow: 'none', cta: () => {} };
 if (t5) {
 const max = t5.seconds * 1000;
 const isRec = s.rec === 'rec';
@@ -1636,15 +1744,19 @@ return { h: '6px', bg: '#DDE1EC' };
 });
 const startRec = () => { this.changedAt = Date.now(); this.hush(); this.setState({ rec: 'rec', recMs: 0, playing: false, playMs: 0 }); this.ensureTick(); };
 const stopRec = () => { const st = this.state; const ms = Math.max(1000, Math.round(st.recMs)); this.setState({ rec: 'ready', take: Object.assign({}, st.take, { [st.k5]: ms }), playing: false, playMs: 0 }); };
-const canGo = ready;
+/* in the app the learner says the answer aloud and goes on when done: there is no take to wait for */
+const canGo = inApp || ready;
 sq = {
 on: true,
 record: s.stage5 === 'record',
 rate: s.stage5 === 'rate',
+sim: !inApp,
+aloud: inApp,
+limit: spanOf(t5.seconds),
 head: 'Tarea ' + (s.k5 + 1) + ' · Presentarte',
 pos: 'Hasta ' + fmt(t5.seconds),
 no: s.k5 + 1,
-prompt: mixed(t5.es),
+prompt: mixed(inApp ? aloudOf(t5.es) : t5.es),
 isRec,
 notRec: !isRec,
 ready,
@@ -1678,7 +1790,7 @@ if (this.state.playing) this.setState({ playing: false, playMs: 0 });
 else { this.setState({ playing: true, playMs: 0 }); this.ensureTick(); }
 },
 takeTitle: 'Tu toma · ' + fmt(takeMs / 1000),
-ctaLabel: lastK ? (canGo ? 'Evaluarme' : 'Grabate primero') : canGo ? 'Siguiente tarea' : 'Grabate primero',
+ctaLabel: inApp ? (lastK ? 'Ya lo dije · Evaluarme' : 'Ya lo dije · Siguiente tarea') : lastK ? (canGo ? 'Evaluarme' : 'Grabate primero') : canGo ? 'Siguiente tarea' : 'Grabate primero',
 ctaBg: canGo ? '#2F4FD0' : '#DDE1EC',
 ctaInk: canGo ? '#FFFFFF' : '#5A6382',
 ctaBorder: canGo ? '2px solid #1B2440' : '2px solid #DDE1EC',
