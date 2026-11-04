@@ -182,7 +182,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <button onClick="{{ weave }}" style="flex-shrink: 0; margin-top: 10px; height: 54px; border-radius: 16px; background: #B02A63; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px">Tejé el primer hilo</button>
 </sc-if>
 <sc-if value="{{ woven }}" hint-placeholder-val="{{ false }}">
-<a href="Main.dc.html" onClick="{{ toMain }}" style="flex-shrink: 0; margin-top: 10px; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center"><span lang="gn">Ñepyrũ</span> · Empezar</a>
+<a href="Main.dc.html" onClick="{{ toMain }}" style="flex-shrink: 0; margin-top: 10px; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center"><span><span lang="gn">Ñepyrũ</span> · Empezar</span></a>
 </sc-if>
 </div>
 </sc-if>
@@ -275,8 +275,17 @@ function leftText(n) { return n === 1 ? 'falta 1 día' : 'faltan ' + n + ' días
 function dayWord(n) { return n + (n === 1 ? ' día' : ' días'); }
 /* In the app, while the learner is in the placement check, the answers of steps 1 and 2 wait here with the step to come
    back to (closing the check: step 2; choosing a level from it: step 3, which Placement writes). The app's state keeps
-   them too, as profile, but a screen only reads gnCourse.view. Leaving for the path forgets them; a note left by another
-   run of the prototype (another go) is ignored. Never used on the canvas, where every board shows its own moment. */
+   them too, as profile (gnCourse.view gives it): with no note here, the goal screen starts from those. Leaving for the
+   path forgets the note; a note left by another run of the prototype (another go) is ignored. Never used on the canvas,
+   where every board shows its own moment. */
+/* a level the learner can go back to from this goal screen: another level with a plan (the latest one started), when
+   this level has none yet (the level menu switched here) */
+function backLevel(C, app) {
+if (!app || app.plan || !app.plans) return null;
+const lvs = Object.keys(app.plans).filter((lv) => lv !== app.level && C.ORDER.indexOf(lv) >= 0 && app.plans[lv] && app.plans[lv].start);
+lvs.sort((a, b) => (app.plans[b].start > app.plans[a].start ? 1 : app.plans[b].start < app.plans[a].start ? -1 : C.ORDER.indexOf(a) - C.ORDER.indexOf(b)));
+return lvs[0] || null;
+}
 function draft(v) {
 try {
 if (v !== undefined) window.__gnGoalDraft = v;
@@ -297,7 +306,9 @@ const known = !!(app && (app.placement || app.plan || Object.keys(app.done || {}
 const view = props && STEPS.indexOf(props.view) >= 0 ? props.view : null;
 const note = inApp ? draft() : null;
 const kept = note && note.owner === props.go ? note : null;
-const picks = inApp ? Object.assign({ why: [], work: null, where: [], understand: null, speak: null }, kept || {}) : SAMPLE;
+/* without a draft (the app opened again, or a new visit to the goal), the answers the app kept as the profile */
+const saved = app && app.profile && typeof app.profile === 'object' ? app.profile : null;
+const picks = inApp ? Object.assign({ why: [], work: null, where: [], understand: null, speak: null }, kept || saved || {}) : SAMPLE;
 /* a target date already behind us is no target */
 const ahead = had && had.target && had.target > C.today(C.now()) ? had.target : null;
 this.state = {
@@ -353,6 +364,8 @@ const look = (on) => on
 const si = Math.max(0, STEPS.indexOf(s.step));
 const pill = (k) => (k <= si ? '#2F4FD0' : '#DDE1EC');
 const hasPlan = !!(this.props.go && app.plan);
+/* opened by a level switch: the way back to the level the learner came from, its plan kept */
+const back = this.props.go && this.props.level ? backLevel(C, app) : null;
 
 /* step 1: up to two reasons; "mi trabajo" asks which field */
 const full = s.why.length >= 2;
@@ -473,11 +486,12 @@ pill2: pill(1),
 pill3: pill(2),
 stepLabel: 'Paso ' + (si + 1) + ' de 3',
 backStep: si > 0,
-backMain: si === 0 && hasPlan,
-noBack: si === 0 && !hasPlan,
+backMain: si === 0 && (hasPlan || !!back),
+noBack: si === 0 && !hasPlan && !back,
 back: () => this.setState({ step: STEPS[Math.max(0, si - 1)], sheet: false }),
 toPath: (e) => {
 if (this.props.go) draft(null);
+if (!hasPlan && back && this.props.level) { e.preventDefault(); this.props.level(back); return; }
 nav('Main')(e);
 },
 atWhy: s.step === 'why',

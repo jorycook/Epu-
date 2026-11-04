@@ -205,9 +205,11 @@ class Component extends DCLogic {
           anyWrong: wrong > 0,
           noWrong: wrong <= 0,
           wrongLine: wrong === 1 ? '1 error fue a tu cuaderno, con su explicación.' : wrong + ' errores fueron a tu cuaderno, cada uno con su explicación.',
-          onward: next ? 'A la semana ' + (n + 1) : 'Volver',
-          hasOnwardGn: !next,
-          onwardGn: next ? '' : 'Tapykue',
+          /* on to the next week only once this week is whole (every day stamped and the test taken); a test taken early
+             leads back to the week path, which still shows this week */
+          onward: next && pu && pu.full ? 'A la semana ' + (n + 1) : 'Volver',
+          hasOnwardGn: !(next && pu && pu.full),
+          onwardGn: next && pu && pu.full ? '' : 'Tapykue',
         };
       }
       return {

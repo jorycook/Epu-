@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Marco de la app</title>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@keyframes gn-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F4F5F9; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif">
+<sc-if value="{{ at.Goal }}" hint-placeholder-val="{{ true }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Goal" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Placement }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Placement" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Main }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Main" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Today }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Today" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Levels }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Levels" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Progress }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Progress" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Teach }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Teach" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Compare }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Compare" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Drill }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Drill" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Exam }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Exam" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Words }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Words" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Reading }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Reading" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Listening }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Listening" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.WeekTest }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="WeekTest" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Notebook }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Notebook" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Review }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Review" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.ExamTab }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="ExamTab" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.LevelExam }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="LevelExam" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Leer }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Leer" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Escribir }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Escribir" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ at.Hablar }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Hablar" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<sc-if value="{{ notice }}" hint-placeholder-val="{{ false }}">
+<div role="status" style="position: absolute; left: 12px; right: 12px; bottom: 100px; z-index: 30; box-sizing: border-box; padding: 8px 4px 8px 14px; border-radius: 16px; background: #FFF4D6; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; display: flex; align-items: center; gap: 6px; animation: gn-in 220ms ease-out">
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<div style="font-size: 14px; font-weight: 800; line-height: 1.3">No se puede guardar tu progreso</div>
+<div style="font-size: 12px; font-weight: 500; line-height: 1.4">Este navegador no deja guardar nada: lo que hagas se pierde al cerrar la app.</div>
+</div>
+<button aria-label="Cerrar el aviso" onClick="{{ closeNotice }}" style="width: 44px; height: 44px; flex-shrink: 0; border: 0; padding: 0; background: none; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{}'>
+/* The app's root screen, the counterpart of the canvas's prototype board (App.dc.html): one shared memory, one screen at
+   a time, and every screen gets the same props (go, app, save, miss, reviewed, level). What differs is where the memory
+   comes from: gnApp.start() reads back what was saved on this device (see gn-app.js), and every change is saved again.
+   There is no menu: no screen of the app has a menu button. The build checks that the screens and their props here are
+   the prototype board's. Two things are the app's own: when another tab of the app saves, this one takes what it saved
+   at a quiet moment (gnApp.catchUp); and when the browser keeps nothing, the week path and the goal screen say so. */
+/* the screens that say so when nothing can be saved */
+const NOTICE = { Goal: 1, Main: 1 };
+const SCREENS = ['Goal', 'Placement', 'Main', 'Today', 'Levels', 'Progress', 'Teach', 'Compare', 'Drill', 'Exam', 'Words', 'Reading', 'Listening', 'WeekTest', 'Notebook', 'Review', 'ExamTab', 'LevelExam', 'Leer', 'Escribir', 'Hablar'];
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+/* the app's one memory (see gn-course.js): the level, the plan, the progress of every session, the week tests, the level
+   exams, the mistakes, the placement and the words typed; gnApp.start() checks what was saved against the course */
+this.state = Object.assign(window.gnApp.start(), { noticeClosed: false });
+this.h = window.gnCourse.handlers(() => this.state, (fn) => this.setState(fn));
+}
+componentDidMount() {
+window.gnApp.onScreen(this.state.screen);
+this.unwatch = window.gnApp.watch(() => this.catchUp());
+}
+componentWillUnmount() {
+if (this.unwatch) this.unwatch();
+}
+componentDidUpdate() {
+const s = this.state;
+window.gnApp.remember(s);
+window.gnApp.onScreen(s.screen);
+this.catchUp();
+}
+/* what another tab saved, taken on a quiet screen (in a lesson it waits for the way back to the week path) */
+catchUp() {
+const next = window.gnApp.catchUp(this.state.screen);
+if (next) this.setState(next);
+}
+renderVals() {
+const s = this.state;
+const at = {};
+SCREENS.forEach((n) => { at[n] = s.screen === n; });
+return {
+at,
+notice: !!NOTICE[s.screen] && !s.noticeClosed && window.gnApp.refused(),
+closeNotice: () => this.setState({ noticeClosed: true }),
+app: window.gnCourse.view(s),
+go: this.h.go,
+save: this.h.save,
+miss: this.h.miss,
+reviewed: this.h.reviewed,
+level: this.h.level,
+};
+}
+}
+</script>
+</body>
+</html>

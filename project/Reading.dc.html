@@ -46,7 +46,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="flex: 1 1 auto; min-height: 120px; overflow-y: auto; margin: 0 -16px; padding: 0 16px 14px; display: flex; flex-direction: column">
 
 <sc-if value="{{ ready }}" hint-placeholder-val="{{ true }}">
-<div lang="gn" style="margin-top: 10px; padding: 12px 16px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; font-family: 'Andika', 'Nunito', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.7; white-space: pre-line; overflow-wrap: anywhere; flex-shrink: 0"><sc-for list="{{ tokens }}" as="w" hint-placeholder-count="24"><sc-if value="{{ w.tap }}" hint-placeholder-val="{{ false }}"><button onClick="{{ w.pick }}" aria-pressed="{{ w.on }}" style="display: inline; margin: 0; padding: 0; border: none; border-radius: 0; text-align: inherit; border-bottom: {{ w.under }}; background: {{ w.bg }}"><sc-for list="{{ w.pieces }}" as="p" hint-placeholder-count="1"><span style="transition: background 300ms; border-radius: {{ p.radius }}; background: {{ p.bg }}; padding: {{ p.pad }}; border-bottom: {{ p.line }}">{{ p.t }}</span></sc-for></button></sc-if><sc-if value="{{ w.still }}" hint-placeholder-val="{{ true }}"><sc-for list="{{ w.pieces }}" as="p" hint-placeholder-count="1"><span style="transition: background 300ms; border-radius: {{ p.radius }}; background: {{ p.bg }}; padding: {{ p.pad }}; border-bottom: {{ p.line }}">{{ p.t }}</span></sc-for></sc-if></sc-for></div>
+<div lang="gn" onClick="{{ passTap }}" style="margin-top: 10px; padding: 5px 16px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; font-family: 'Andika', 'Nunito', sans-serif; font-size: 16px; font-weight: 400; line-height: 44px; white-space: pre-line; overflow-wrap: anywhere; flex-shrink: 0"><sc-for list="{{ tokens }}" as="w" hint-placeholder-count="24"><sc-if value="{{ w.tap }}" hint-placeholder-val="{{ false }}"><button data-w="{{ w.i }}" onClick="{{ w.pick }}" aria-pressed="{{ w.on }}" style="display: inline-block; margin: 0; padding: 0; border: none; border-radius: 0; text-align: inherit; line-height: 44px; background: transparent"><sc-for list="{{ w.pieces }}" as="p" hint-placeholder-count="1"><span style="transition: background 300ms; border-radius: {{ p.radius }}; background: {{ p.bg }}; padding: {{ p.pad }}; border-bottom: {{ p.line }}">{{ p.t }}</span></sc-for></button></sc-if><sc-if value="{{ w.still }}" hint-placeholder-val="{{ true }}"><sc-for list="{{ w.pieces }}" as="p" hint-placeholder-count="1"><span style="transition: background 300ms; border-radius: {{ p.radius }}; background: {{ p.bg }}; padding: {{ p.pad }}; border-bottom: {{ p.line }}">{{ p.t }}</span></sc-for></sc-if></sc-for></div>
 
 <sc-if value="{{ tapHint }}" hint-placeholder-val="{{ true }}">
 <div style="margin-top: 6px; font-size: 12px; font-weight: 700; color: #5A6382">Tocá una palabra subrayada para ver qué significa.</div>
@@ -97,7 +97,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </sc-if>
 
 <sc-if value="{{ missing }}" hint-placeholder-val="{{ false }}">
-<a href="Today.dc.html" onClick="{{ toBack }}" style="flex-shrink: 0; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-size: 17px; font-weight: 800; display: flex; align-items: center; justify-content: center"><span lang="gn">Tapykue</span> · Volver</a>
+<a href="Today.dc.html" onClick="{{ toBack }}" style="flex-shrink: 0; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-size: 17px; font-weight: 800; display: flex; align-items: center; justify-content: center"><span><span lang="gn">Tapykue</span> · Volver</span></a>
 </sc-if>
 
 <sc-if value="{{ checked }}" hint-placeholder-val="{{ false }}">
@@ -124,7 +124,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 Guardado en tu cuaderno de errores. Vuelve mañana.
 </div>
 </sc-if>
-<a href="Today.dc.html" onClick="{{ toDone }}" style="flex-shrink: 0; height: 54px; border-radius: 16px; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center; background: {{ tone }}"><span lang="gn">Upeigua</span> · Siguiente</a>
+<a href="Today.dc.html" onClick="{{ toDone }}" style="flex-shrink: 0; height: 54px; border-radius: 16px; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center; background: {{ tone }}"><span><span lang="gn">Upeigua</span> · Siguiente</span></a>
 </div>
 </sc-if>
 
@@ -292,13 +292,15 @@ const text = w.pieces.map((x) => x.t).join('');
 const entry = w.word ? dict[keyOf(text)] || (w.gloss ? { es: w.gloss, parts: [] } : null) : null;
 const on = !!entry && s.word === i;
 if (on) open = { gn: text, es: entry.es, parts: entry.parts, hasParts: entry.parts.length > 1 };
+/* a word to tap is underlined with dots (solid once open, on a tint); the line sits on the letters, and the button
+   around them takes the whole height of its line, so the target is as tall as the line */
+const under = on ? '2px solid #2F4FD0' : '2px dotted #5A6382';
 return {
+i,
 tap: !!entry,
 still: !entry,
-pieces: w.pieces,
+pieces: entry ? w.pieces.map((x) => Object.assign({}, x, { line: x.line && x.line !== 'none' ? x.line : under, bg: on && x.bg === 'transparent' ? '#E8ECFB' : x.bg })) : w.pieces,
 on,
-under: on ? '2px solid #2F4FD0' : '2px dotted #5A6382',
-bg: on ? '#E8ECFB' : 'transparent',
 pick: () => this.setState({ word: this.state.word === i ? -1 : i }),
 };
 });
@@ -365,6 +367,25 @@ hasSkillEs: ready && !!(sk.es || it.label),
 ask: askText,
 hasAsk: !!askText,
 tokens,
+/* a tap beside a short word (in the gap after it) opens that word: the words of a text are small targets */
+passTap: (e) => {
+if (!e || !e.currentTarget || (e.target && e.target.closest && e.target.closest('button'))) return;
+const x = e.clientX;
+const y = e.clientY;
+let best = null;
+let far = 15;
+const all = e.currentTarget.querySelectorAll ? e.currentTarget.querySelectorAll('button[data-w]') : [];
+for (let k = 0; k < all.length; k++) {
+const rects = all[k].getClientRects();
+for (let j = 0; j < rects.length; j++) {
+const q = rects[j];
+const d = Math.max(q.left - x, 0, x - q.right) + 2 * Math.max(q.top - y, 0, y - q.bottom);
+if (d < far) { far = d; best = all[k]; }
+}
+}
+const i = best ? Number(best.getAttribute('data-w')) : NaN;
+if (!isNaN(i)) this.setState({ word: this.state.word === i ? -1 : i });
+},
 tapHint: canTap && !open && !s.checked,
 glossOpen: !!open,
 gloss: open || { gn: '', es: '', parts: [], hasParts: false },

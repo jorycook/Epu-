@@ -83,7 +83,9 @@ const list = app.levels || C.levels();
 const levels = list.map((x) => {
 const lv = x.level;
 const on = lv === cur;
-const off = !x.ready && !on;
+/* a level not written yet is shut, unless the learner has a plan there (the placement started them at it) */
+const kept = !!(app.plans && app.plans[lv]);
+const off = !x.ready && !on && !kept;
 const pg = C.progress(state, lv);
 const units = x.units || (pg.units ? pg.units.length : 0);
 const sessions = units * 7;

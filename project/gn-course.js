@@ -436,6 +436,8 @@
     return {
       status: status,
       plan: state.plan,
+      /* the other levels' plans, kept for a return to them (the level menu and the goal screen offer the way back) */
+      plans: state.plans || {},
       sid: sid,
       session: session,
       unit: C.unit(unitN),

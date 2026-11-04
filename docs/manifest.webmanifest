@@ -1,0 +1,17 @@
+{
+  "name": "Epu'ã",
+  "short_name": "Epu'ã",
+  "description": "Epu'ã: guaraní paraguayo para hispanohablantes, del A1 al C2.",
+  "lang": "es",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F4F5F9",
+  "theme_color": "#F4F5F9",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

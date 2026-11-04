@@ -1,0 +1,4 @@
+# the typeface sources the app build cuts its fonts from (epua-app/fetch-fonts.sh downloads them)
+/fonts-src/
+# the screenshots the checks in check/ write
+/check/out/

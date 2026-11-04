@@ -1,0 +1,5 @@
+node_modules/
+dist/
+dist-*/
+check/out/
+# the typefaces fetch-fonts.sh downloads live in ../fonts-src, ignored by the repository's own .gitignore

@@ -44,7 +44,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="margin-top: 4px; min-height: 18px; display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; flex-shrink: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B02A63" stroke-width="2.4" aria-hidden="true" style="flex-shrink: 0"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5" fill="#B02A63"/></svg><span>Mantené apretada una frase</span><span style="color: #5A6382">y mirá sus partes</span></div>
 
 <sc-if value="{{ hasWork }}" hint-placeholder-val="{{ true }}">
-<div ref="{{ boxRef }}" data-gn-box="1" lang="gn" onPointerMove="{{ move }}" onPointerUp="{{ up }}" onPointerCancel="{{ up }}" onPointerLeave="{{ up }}" onContextMenu="{{ noMenu }}" style="position: relative; flex-shrink: 0; margin-top: 10px; padding: 10px 14px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; font-family: 'Andika', 'Nunito', sans-serif; font-size: 18px; font-weight: 400; line-height: 42px; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; touch-action: none">
+<div ref="{{ boxRef }}" data-gn-box="1" lang="gn" onPointerDown="{{ near }}" onPointerMove="{{ move }}" onPointerUp="{{ up }}" onPointerCancel="{{ up }}" onPointerLeave="{{ up }}" onContextMenu="{{ noMenu }}" style="position: relative; flex-shrink: 0; margin-top: 10px; padding: 10px 14px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; font-family: 'Andika', 'Nunito', sans-serif; font-size: 18px; font-weight: 400; line-height: 42px; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; touch-action: none">
 <sc-for list="{{ items }}" as="c" hint-placeholder-count="12"><span style="white-space: nowrap">{{ c.lead }}<button type="button" data-gn-i="{{ c.i }}" onPointerDown="{{ c.down }}" onFocus="{{ c.focus }}" onBlur="{{ c.blur }}" style="appearance: none; display: inline-block; margin: 0; padding: 0 1px; border: 0; border-bottom: {{ c.line }}; border-radius: 6px 6px 0 0; background: {{ c.bg }}; max-width: 100%; white-space: normal; overflow-wrap: anywhere; outline-offset: 1px"><sc-for list="{{ c.segs }}" as="g" hint-placeholder-count="1"><span style="border-radius: 4px; background: {{ g.bg }}">{{ g.t }}</span></sc-for></button>{{ c.punct }}</span>{{ c.space }}<sc-if value="{{ c.br }}" hint-placeholder-val="{{ false }}"><br></sc-if></sc-for>
 <div aria-live="polite" aria-atomic="true" lang="es">
 <sc-if value="{{ lensOn }}" hint-placeholder-val="{{ false }}">
@@ -97,7 +97,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="margin-top: 8px; flex-shrink: 0; padding: 10px 14px; border-radius: 14px; border: 2px dashed #C9D0E3; font-size: 12px; font-weight: 700; line-height: 1.45; color: #5A6382">Todavía nada. Cada frase que mirás suma su raíz a esta lista y queda subrayada con puntos en el texto.</div>
 </sc-if>
 <sc-if value="{{ someSeen }}" hint-placeholder-val="{{ false }}">
-<div style="margin-top: 8px; flex-shrink: 0; max-height: 74px; overflow: hidden; display: flex; flex-wrap: wrap; gap: 6px">
+<div style="margin-top: 8px; flex: 0 1 auto; min-height: 40px; overflow-y: auto; display: flex; flex-wrap: wrap; align-content: flex-start; gap: 6px">
 <sc-for list="{{ chips }}" as="k" hint-placeholder-count="3">
 <div style="max-width: 100%; height: 34px; box-sizing: border-box; padding: 0 10px; border-radius: 12px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; align-items: center; gap: 6px; white-space: nowrap"><span lang="gn" style="flex-shrink: 0; font-family: 'Andika', 'Nunito', sans-serif; font-size: 15px; font-weight: 700">{{ k.gn }}</span><span style="min-width: 0; overflow: hidden; text-overflow: ellipsis; font-size: 11px; font-weight: 700; color: #5A6382">{{ k.es }}</span></div>
 </sc-for>
@@ -381,6 +381,10 @@ const pos = this.gnPlace(i, el);
 const seen = this.state.seen.indexOf(i) < 0 ? this.state.seen.concat([i]) : this.state.seen;
 this.setState({ held: i, pos, seen, touched: true });
 }
+gnByKeys(el) {
+if (Date.now() - (this.gnUpAt || 0) < 800) return false;
+try { return !el || !el.matches || el.matches(':focus-visible'); } catch (e) { return true; }
+}
 gnRelease() {
 if (this.state.held !== null) this.setState({ held: null, touched: true });
 }
@@ -410,7 +414,9 @@ br: p.br,
 bg: on ? '#FFE9B0' : 'transparent',
 line: on ? '2px solid #1B2440' : was ? '2px dotted #2F4FD0' : '2px solid transparent',
 down: (e) => { this.gnDown = true; this.gnHold(i, e.currentTarget); },
-focus: (e) => { if (!this.gnDown) this.gnHold(i, e.currentTarget); },
+/* the keyboard's way in: a phrase reached with Tab shows its parts. A browser that focuses the button a finger has just
+   let go of (Chromium does; Safari on the iPhone does not) must not open the lens again */
+focus: (e) => { if (!this.gnDown && this.gnByKeys(e.currentTarget)) this.gnHold(i, e.currentTarget); },
 blur: () => { if (!this.gnDown) this.gnRelease(); },
 };
 });
@@ -495,7 +501,30 @@ closeSheet: () => this.setState({ sheet: false }),
 /* Escape closes the help sheet, as the reader's sheets do (a handler on the sheet itself, not a global one) */
 sheetKey: (e) => { if (e.key === 'Escape' || e.key === 'Esc') { e.preventDefault(); e.stopPropagation(); this.setState({ sheet: false }); } },
 noMenu: (e) => e.preventDefault(),
-up: () => { if (!this.gnDown) return; this.gnDown = false; this.gnRelease(); },
+up: () => { if (!this.gnDown) return; this.gnDown = false; this.gnUpAt = Date.now(); this.gnRelease(); },
+/* a finger put down beside a phrase (in the gap after a short word, or just over its line) holds the nearest one, as
+   long as it is that close: the phrases of the text are small targets, and the finger can slide on from there */
+near: (e) => {
+if (this.gnDown || !e || !e.currentTarget || (e.target && e.target.closest && e.target.closest('[data-gn-i]'))) return;
+const x = e.clientX;
+const y = e.clientY;
+let best = null;
+let far = 15;
+const all = e.currentTarget.querySelectorAll ? e.currentTarget.querySelectorAll('[data-gn-i]') : [];
+for (let k = 0; k < all.length; k++) {
+const rects = all[k].getClientRects();
+for (let j = 0; j < rects.length; j++) {
+const q = rects[j];
+const d = Math.max(q.left - x, 0, x - q.right) + 2 * Math.max(q.top - y, 0, y - q.bottom);
+if (d < far) { far = d; best = all[k]; }
+}
+}
+if (!best) return;
+const i = Number(best.getAttribute('data-gn-i'));
+if (isNaN(i)) return;
+this.gnDown = true;
+this.gnHold(i, best);
+},
 move: (e) => {
 /* sliding the finger moves the reveal to the phrase under it */
 if (!this.gnDown) return;

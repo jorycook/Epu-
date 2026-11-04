@@ -105,9 +105,9 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </div>
 
 <div aria-hidden="true" style="position: absolute; left: 16px; top: 458px; font-size: 11px; font-weight: 800; line-height: 16px; letter-spacing: 0.04em; color: #5A6382">TECLADO COMÚN</div>
-<div role="group" aria-label="Teclado común, con la fila guaraní arriba" style="position: absolute; left: 6px; right: 6px; top: 482px; display: flex; flex-direction: column; gap: 7px">
+<div role="group" aria-label="Teclado común, con la fila guaraní arriba" style="position: absolute; left: 4px; right: 4px; top: 482px; display: flex; flex-direction: column; gap: 7px">
 <sc-for list="{{ kb }}" as="row" hint-placeholder-count="5">
-<div style="display: flex; gap: 5px">
+<div style="display: flex; gap: 4px">
 <sc-for list="{{ row.keys }}" as="k" hint-placeholder-count="10">
 <button onClick="{{ k.press }}" aria-label="{{ k.aria }}" aria-pressed="{{ k.pressed }}" style="flex: {{ k.flex }} 1 0px; min-width: 0; height: 50px; padding: 0; box-sizing: border-box; border-radius: 10px; display: flex; align-items: center; justify-content: center; touch-action: manipulation; border: {{ k.border }}; background: {{ k.bg }}; color: {{ k.color }}; box-shadow: {{ k.shadow }}; transform: {{ k.tf }}"><sc-if value="{{ k.isText }}" hint-placeholder-val="{{ true }}"><span lang="{{ k.lang }}" aria-hidden="true" style="font-family: {{ k.font }}; font-size: {{ k.fs }}; font-weight: {{ k.fw }}; line-height: 1">{{ k.label }}</span></sc-if><sc-if value="{{ k.isShift }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linejoin="round" aria-hidden="true"><path d="M12 4l7.5 8.5H15.5V19h-7v-6.5H4.5z"/></svg></sc-if><sc-if value="{{ k.isBack }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11v12H9l-6-6z"/><path d="M12.5 9.5l5 5M17.5 9.5l-5 5"/></svg></sc-if><sc-if value="{{ k.isAcute }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M10 15.5l5-8"/></svg></sc-if></button>
 </sc-for>
@@ -158,7 +158,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 
 <div style="flex-shrink: 0; margin-top: auto; padding-bottom: 8px; display: flex; flex-direction: column; gap: 12px">
 <button onClick="{{ again }}" style="height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-size: 17px; font-weight: 800">Otra ronda</button>
-<a href="Main.dc.html" onClick="{{ toMain }}" style="height: 54px; box-sizing: border-box; border-radius: 16px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #1B2440; font-size: 17px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 6px"><span lang="gn">Mboty</span> · Cerrar</a>
+<a href="Main.dc.html" onClick="{{ toMain }}" style="height: 54px; box-sizing: border-box; border-radius: 16px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #1B2440; font-size: 17px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 6px"><span><span lang="gn">Mboty</span> · Cerrar</span></a>
 </div>
 </section>
 </sc-if>

@@ -1,0 +1,16 @@
+{
+  "name": "epua-app",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Epu'ã, a Paraguayan Guarani course for Spanish speakers: the installable web app built from the design canvas's screens.",
+  "scripts": {
+    "fonts": "bash fetch-fonts.sh",
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "preact": "10.29.8"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.4"
+  }
+}

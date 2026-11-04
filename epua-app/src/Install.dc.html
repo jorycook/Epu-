@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Agregar a inicio</title>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@keyframes gn-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="width: 390px; height: 100%; box-sizing: border-box; padding: 18px 20px 18px; background: #F4F5F9; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; display: flex; flex-direction: column; overflow-y: auto; animation: gn-in 220ms ease-out">
+
+<div style="flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center">
+<div style="margin: -22px 0 -14px">%KAGUARE%</div>
+<h1 style="margin: 0; font-size: 24px; font-weight: 800; line-height: 1.3; text-wrap: balance">Agregá <span lang="gn">%APP_NAME%</span> a tu pantalla de inicio</h1>
+<div style="font-size: 15px; font-weight: 700; color: #5A6382; line-height: 1.4; text-wrap: balance">%APP_ABOUT%</div>
+</div>
+
+<div style="flex-shrink: 0; margin-top: 8px; font-size: 13px; font-weight: 500; color: #5A6382; line-height: 1.5; text-align: center; text-wrap: balance">{{ promise }}</div>
+
+<div style="flex-shrink: 0; margin-top: 12px; padding: 4px 16px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; display: flex; flex-direction: column">
+
+<div style="padding: 10px 0; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #E9ECF4">
+<div style="width: 30px; height: 30px; border-radius: 50%; background: #1B2440; color: #FFFFFF; font-size: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0">1</div>
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 1px">
+<div style="font-size: 15px; font-weight: 800">Tocá Compartir</div>
+<div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.4">El cuadrado con una flecha hacia arriba. Si no lo ves, tocá primero el botón •••.</div>
+</div>
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M12 15V3M8 7l4-4 4 4"/><path d="M7 11H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-1"/></svg>
+</div>
+
+<div style="padding: 10px 0; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #E9ECF4">
+<div style="width: 30px; height: 30px; border-radius: 50%; background: #1B2440; color: #FFFFFF; font-size: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0">2</div>
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 1px">
+<div style="font-size: 15px; font-weight: 800; text-wrap: balance">Tocá «Agregar a pantalla de inicio»</div>
+<div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.4">Bajá en la lista hasta encontrarlo y tocá Agregar. ¿No aparece? Abrí primero esta página en Safari.</div>
+</div>
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8.5v7M8.5 12h7"/></svg>
+</div>
+
+<div style="padding: 10px 0; display: flex; align-items: center; gap: 12px">
+<div style="width: 30px; height: 30px; border-radius: 50%; background: #1B2440; color: #FFFFFF; font-size: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0">3</div>
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 1px">
+<div style="font-size: 15px; font-weight: 800">Abrí <span lang="gn">%APP_NAME%</span> desde su ícono</div>
+<div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.4">Abrilo una vez con internet. Después funciona también sin conexión.</div>
+</div>
+<div style="width: 30px; height: 30px; border-radius: 7px; overflow: hidden; flex-shrink: 0">%ICON%</div>
+</div>
+
+</div>
+
+<div style="flex-grow: 1; flex-shrink: 0; min-height: 12px"></div>
+
+<div style="flex-shrink: 0; font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.45; text-align: center; text-wrap: balance">También podés seguir acá, en el navegador. Así no se instala nada y las pantallas se ven más chicas.</div>
+<button onClick="{{ useBrowser }}" style="flex-shrink: 0; margin-top: 10px; margin-bottom: 2px; height: 52px; border-radius: 16px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #1B2440; font-weight: 800; font-size: 16px; white-space: nowrap">Seguir en el navegador</button>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{}'>
+/* The first-visit page: shown in Safari on an iPhone or an iPad before the app is on the Home Screen, once per visit
+   (see gn-app.js). Kaguare and the little icon are the mascot's own art, put in by the build from brief/mascot/spec.json:
+   the standing pose, and the Home Screen icon as the phone shows it. */
+class Component extends DCLogic {
+renderVals() {
+const device = window.gnApp.device;
+return {
+useBrowser: () => window.gnApp.useBrowser(),
+device,
+/* what the Home Screen gives; progress only where the browser keeps it */
+promise: window.gnApp.refused()
+? 'Así se abre a pantalla completa, como una app, y funciona sin conexión. Este navegador no deja guardar tu progreso.'
+: 'Así se abre a pantalla completa, como una app, funciona sin conexión y guarda tu progreso en este ' + device + '.',
+};
+}
+}
+</script>
+</body>
+</html>

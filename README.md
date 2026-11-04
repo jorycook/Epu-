@@ -23,6 +23,9 @@ native speaker's check.
 | `tools/` | `build-course.mjs` checks the content and writes the level files; `assemble-unit.mjs` merges a unit's day files; `lint-board.mjs` checks a board for the format rules that fail silently; `smoke-boards.mjs` runs each board's logic against the engine and the data, the way the canvas and the prototype call it, without rendering; `blind-export.mjs` exports every question without its answer for a blind solver. |
 | `brief/` | The design brief the boards were built from: `BRIEF-core.md` (format, wiring, typefaces, tokens, engine, content shape), `BRIEF-design.md` (language, look, mascot, the verified Guarani glossary), `BOARDS.md` (every board's spec), `CONTENT-BRIEF.md` (how the lessons are written), the font link, and `mascot/` (Kaguare's final art: `SPEC.md`, `spec.json` with every SVG, and `sheet.png`). |
 | `notes/` | The research the design rests on. Y1 to Y5 map the Yaoki suite (plan and engine, the lesson loop, skills and tests, the satellites, platform and brand). G1 to G8 are the Guarani research, with a source and a confidence mark on every claim: sounds, spelling, fonts and keyboards; a verified grammar reference; learners and prior art; data, audio and licences; culture, naming and UI words; the CEFR and the level exam; the six-level syllabus; and G8, the second mascot (Kaguare: which anteater, its names, three slang screens). |
+| `epua-app/` | The installable app around the screens: `src/` (Yaoki's runtime, the shell, the first-visit page, the offline worker, the page and the manifest), `build.mjs`, `fonts.py`, `fetch-fonts.sh` and `check/app-check.js`. |
+| `docs/` | The built app, for GitHub Pages. This is all a phone needs. |
+| `check/` | Two checks of the built app in Chromium, as GitHub Pages serves it: `flows-test.js` (a learner's flows by taps, saved progress, two tabs, saved data that does not fit) and `platform-test.js` (phone sizes, the Home Screen, offline, updates, the manifest and icons, the typefaces, every screen's frame, tap targets, languages). Their screenshots go to `check/out/`, which is not kept. |
 
 ## Build and check
 
@@ -42,6 +45,46 @@ removed, a build item whose `full` does not match its tiles, a day without its p
 syllabus. Ids carry the level (`a1u01d4.d5`, `a1u01t.12`), so items never clash across levels.
 
 ## The app
+
+`epua-app/` makes the installable iPhone web app from the canvas's screens, the way Yaoki's `yaoki-app/` does. It plays
+the 21 screens of the prototype board (`App.dc.html`) and the spelling pad inside Words, as they are in `project/`, on
+Yaoki's screen runtime (Preact). Around them it has its own shell (the prototype board's routing, with the progress kept
+on the phone and checked against the course each time the app opens), a first-visit page that explains how to put it on
+the Home Screen, and an offline copy of every file. The build copies the screens as they are and changes nothing in
+`project/`; it stops when a screen the shell routes has no way in from another screen.
+
+Needs Node 22 and Python 3 with `fonttools` and `brotli`.
+
+```
+cd epua-app
+npm install                # preact and sharp
+bash fetch-fonts.sh        # Nunito and Andika, into ../fonts-src (once)
+node build.mjs             # checks the content, writes dist/ and replaces ../docs with it
+node check/app-check.js    # the app in Chromium: the first-visit page, every screen, a first day, saved progress, phone sizes, offline, updates
+cd ..
+node check/flows-test.js   # a learner's flows, by taps, against docs/ (about 6 minutes)
+node check/platform-test.js   # phones, offline, updates, fonts, frames, tap targets and languages, against docs/ (about 6 minutes)
+```
+
+The build makes Nunito's 500, 700 and 800 from its variable font, cuts both typefaces down to the characters the app
+shows, and stops if either lacks a Guarani letter. Andika's Reserved Font Names may not be used for a modified copy, so
+its subsets are named EpuaText, and the app's copies of the screens say `'EpuaText'` where the canvas says `'Andika'`.
+The licences are in `docs/licenses.txt`.
+
+`docs/` is the built site. Every address in it is relative, so any https folder works. To put it on the web: Settings →
+Pages → Deploy from a branch, the branch that holds `docs/`, folder `/docs`; the app is then at
+https://jorycook.github.io/epu-/. The empty `.nojekyll` file tells GitHub to serve the files as they are. A new build has
+a new version; a phone that has the app fetches it by itself and switches to it on the week path or the goal screen,
+never in a lesson.
+
+On the iPhone: open the address in Safari, tap Share (Compartir), then Add to Home Screen (Agregar a pantalla de
+inicio), then open Epu'ã from its icon once while online. After that it works offline. In Safari the app first shows a
+page that says the same, with a button to go on in the browser. Progress is kept on the phone only, by each copy of
+the app (the folder's address is part of its name). Two tabs of the app share it: what one tab saves is added to what
+the other saved, never written over it, and each tab takes the other's changes at its next quiet moment (the week path,
+the goal, a tab). A browser that keeps nothing gets a notice on the goal screen and the week path.
+
+## How the app works
 
 - **Who it is for first:** urban, Spanish-dominant Paraguayans of about 18 to 35 who understand some Guarani but do not
   speak it ("entiendo pero no hablo"); then professionals who must serve Guarani speakers (health, justice, public
@@ -64,11 +107,13 @@ syllabus. Ids carry the level (`a1u01d4.d5`, `a1u01t.12`), so items never clash 
   the app; writing, speaking and Spanish-to-Guarani mediation are rated against a rubric and sample answers, by the learner
   (rated again after 48 hours, the lower score kept) or by a teacher. No CEFR framework or certificate exists for Guarani
   anywhere (notes G6), so the app calls its result a constancia, never a certificate.
-- **Read, type, speak** are sections of the same app, not separate installs. Leer shows a text and, while a phrase is
+- **Read, type, speak** are sections of the same app, not separate installs, reached from Progreso ("Más práctica":
+  Emoñe'ẽ · Leer, Ehai · Escribir, Eñe'ẽ · Hablá). Leer shows a text and, while a phrase is
   held, its parts (prefix, root, suffix) with Spanish glosses, the word's meaning and the grammar pattern; never the
   translation of the whole sentence. Escribir is the typing game, on the phone, with the app's own keyboard (the Guarani
   row ã ẽ ĩ õ ũ ỹ g̃ ' first). Hablar has no speech recognition, because no phone or browser recognises Guarani: the learner
-  hears a word and picks it from its minimal pair, or records and compares with the model and rates the take.
+  hears a word and picks it from its minimal pair, or says a phrase aloud, compares it with the model and rates the take
+  (recording the learner's voice is still to come: today the app says so, and on the canvas a button stands in for it).
 - **It rewards accuracy, getting up again and showing up, never speed:** no leaderboards, no lives, no timers in practice.
 
 ## The look

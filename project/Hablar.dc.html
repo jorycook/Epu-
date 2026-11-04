@@ -45,7 +45,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <h1 id="hab-menu-title" style="margin: 2px 0 0; font-size: 26px; font-weight: 800; line-height: 1.25">Escuchá, elegí y repetí</h1>
 </div>
 </div>
-<p style="flex-shrink: 0; margin: 0; font-size: 14px; font-weight: 500; line-height: 1.5; color: #5A6382">Los teléfonos todavía no reconocen el guaraní hablado. Por eso acá no te corrige una máquina: escuchás y elegís, o te grabás y comparás tu voz con el modelo.</p>
+<p style="flex-shrink: 0; margin: 0; font-size: 14px; font-weight: 500; line-height: 1.5; color: #5A6382">{{ mic.intro }}</p>
 <div style="flex-shrink: 0; display: flex; flex-direction: column; gap: 8px">
 <h2 id="hab-ways" style="margin: 0; font-size: 12px; font-weight: 800; color: #5A6382">Cómo jugar</h2>
 <div role="group" aria-labelledby="hab-ways" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
@@ -59,7 +59,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </sc-for>
 </div>
 </div>
-<div style="flex-shrink: 0; padding: 12px 14px; border-radius: 16px; background: #E8ECFB; font-size: 13px; font-weight: 500; line-height: 1.45">En el lienzo no hay micrófono: en <b style="font-weight: 800">Repetí y compará</b>, el botón «Simular toma» hace de grabación. Los audios todavía no están grabados, así que cada botón de sonido se ilumina sin sonar.</div>
+<div style="flex-shrink: 0; padding: 12px 14px; border-radius: 16px; background: #E8ECFB; font-size: 13px; font-weight: 500; line-height: 1.45">{{ mic.noteA }}<b style="font-weight: 800">Repetí y compará</b>{{ mic.noteB }}</div>
 <div style="flex-shrink: 0; margin-top: auto; padding-bottom: 8px">
 <button onClick="{{ start }}" style="width: 100%; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-size: 17px; font-weight: 800"><span lang="gn">Ñepyrũ</span> · Empezar</button>
 </div>
@@ -67,12 +67,12 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </sc-if>
 
 <sc-if value="{{ inRound }}" hint-placeholder-val="{{ true }}">
-<section aria-label="{{ roundLabel }}" style="position: absolute; left: 0; top: 0; width: 390px; height: 844px; background-color: #F4F5F9; background-image: linear-gradient(#E6E9F3 1px, transparent 1px), linear-gradient(90deg, #E6E9F3 1px, transparent 1px); background-size: {{ wd.grid }} {{ wd.grid }}; background-position: {{ wd.paperPos }}">
+<section aria-label="{{ roundLabel }}" style="position: absolute; left: 0; top: 0; width: 390px; height: 844px; overflow: hidden; background-color: #F4F5F9; background-image: linear-gradient(#E6E9F3 1px, transparent 1px), linear-gradient(90deg, #E6E9F3 1px, transparent 1px); background-size: {{ wd.grid }} {{ wd.grid }}; background-position: {{ wd.paperPos }}">
 
 <div onPointerDown="{{ worldTap }}" style="position: absolute; left: 0; top: 0; width: 240px; height: {{ wd.h }}; transform: scale({{ wd.s }}); transform-origin: 0 0">
 <div style="position: absolute; left: 0; top: 0; width: 240px; height: 1px; transform: translateY({{ wd.cam }})">
 
-<div aria-hidden="true" style="position: absolute; left: -10px; top: {{ wd.lineY }}; width: 260px; height: 5px; border-radius: 3px; background: #C2336F"></div>
+<div aria-hidden="true" style="position: absolute; left: 0; top: {{ wd.lineY }}; width: 240px; height: 5px; background: #C2336F"></div>
 
 <sc-for list="{{ wd.ledges }}" as="l" hint-placeholder-count="0">
 <div aria-hidden="true" style="position: absolute; left: {{ l.plankL }}; top: {{ l.plankT }}; width: 84px; height: 9px; border-radius: 4px; background: #C9D0E3"></div>
@@ -175,7 +175,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <sc-if value="{{ panelOn }}" hint-placeholder-val="{{ false }}">
 <div role="region" aria-labelledby="hab-cmp-h" style="position: absolute; left: 0; right: 0; bottom: 0; height: 304px; box-sizing: border-box; padding: 14px 16px 40px; background: #F4F5F9; border-top: 2px solid #1B2440; border-radius: 26px 26px 0 0; box-shadow: 0 -6px 20px rgba(27, 36, 64, 0.14); display: flex; flex-direction: column; animation: gn-up 240ms ease-out">
 <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px"><h2 id="hab-cmp-h" style="margin: 0; font-size: 18px; font-weight: 800; line-height: 24px">¿Sonó igual?</h2><span style="padding: 4px 10px; border-radius: 10px; background: #EEF0F6; font-size: 12px; font-weight: 800">{{ cmp.takeLabel }}</span></div>
-<p style="margin: 4px 0 0; font-size: 13px; font-weight: 500; line-height: 1.4; color: #5A6382">Escuchá el modelo y tu toma. Decidís vos: el teléfono no reconoce el guaraní.</p>
+<p style="margin: 4px 0 0; font-size: 13px; font-weight: 500; line-height: 1.4; color: #5A6382">{{ mic.panel }}</p>
 <sc-for list="{{ cmp.strips }}" as="s" hint-placeholder-count="2">
 <div style="margin-top: 8px; height: 52px; box-sizing: border-box; padding: 0 12px 0 4px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; align-items: center; gap: 10px">
 <button onClick="{{ s.play }}" aria-label="{{ s.aria }}" aria-pressed="{{ s.on }}" style="flex-shrink: 0; width: 44px; height: 44px; padding: 0; box-sizing: border-box; border-radius: 12px; border: 2px solid #1B2440; background: {{ s.btnBg }}; color: {{ s.btnColor }}; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></button>
@@ -231,7 +231,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="flex-shrink: 0; margin-top: auto; padding-bottom: 8px; display: flex; flex-direction: column; gap: 12px">
 <button onClick="{{ again }}" style="height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-size: 17px; font-weight: 800">Otra ronda</button>
 <button onClick="{{ toMenu }}" style="height: 50px; border-radius: 16px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; color: #1B2440; font-size: 16px; font-weight: 800">Cambiar de juego</button>
-<a href="Main.dc.html" onClick="{{ toMain }}" style="height: 54px; box-sizing: border-box; border-radius: 16px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #1B2440; font-size: 17px; font-weight: 800; display: flex; align-items: center; justify-content: center"><span lang="gn">Mboty</span> · Cerrar</a>
+<a href="Main.dc.html" onClick="{{ toMain }}" style="height: 54px; box-sizing: border-box; border-radius: 16px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #1B2440; font-size: 17px; font-weight: 800; display: flex; align-items: center; justify-content: center"><span><span lang="gn">Mboty</span> · Cerrar</span></a>
 </div>
 </section>
 </sc-if>
@@ -333,7 +333,7 @@ const CONTRAST = {
 };
 const WAYS = {
   pick: { title: 'Escuchá y elegí', desc: 'Suena una palabra y caen dos parecidas. Tocá la que oíste antes de que caiga sobre Kaguare.', kicker: 'ESCUCHÁ Y ELEGÍ' },
-  compare: { title: 'Repetí y compará', desc: 'Decí el cartel, escuchá tu toma junto al modelo y decidí si sonó igual. Sin apuro.', kicker: 'REPETÍ Y COMPARÁ' },
+  compare: { title: 'Repetí y compará', desc: 'Decí el cartel, escuchá tu toma junto al modelo y decidí si sonó igual. Sin apuro.', descApp: 'Decí el cartel en voz alta, escuchá el modelo y decidí si sonó igual. Sin apuro.', kicker: 'REPETÍ Y COMPARÁ' },
 };
 
 const reduced = () => { try { return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); } catch (e) { return false; } };
@@ -1531,6 +1531,9 @@ return { on: true, left: px(W / 2 + 15), top: px(y), d, ribs, stick: 'M0 0V' + n
 }
 renderVals() {
 const st = this.state;
+/* the canvas grants no microphone, so «Simular toma» stands for the recording; played inside the prototype or the app
+   the learner says the phrase aloud and nothing is recorded yet, so the words say that instead */
+const inApp = !!this.props.go;
 const r = this.r;
 const nav = (to) => (e) => { const go = this.props.go; if (go) { e.preventDefault(); go(to); } };
 const pick = st.style === 'pick';
@@ -1603,6 +1606,8 @@ const ringU = r && ringOn && !still ? ((r.time - tk.t0) % ringPeriod) / ringPeri
 const s0 = this.status;
 const stateLine = !r ? '' : pick
 ? (voicing ? 'Sonando… escuchá bien' : halted ? 'Con calma: esta espera hasta que la toques' : t ? 'Tocá «Escuchar» para oírla otra vez' : 'Ya viene la próxima')
+: inApp
+? (voicing ? 'Escuchá: después te toca a vos' : tk.state === 'listening' ? 'Ahora, en voz alta…' : tk.state === 'speaking' ? 'Decila en voz alta · tocá «Terminar»' : halted ? 'Con calma: este cartel espera' : r.jump ? 'Sube al cartel' : 'Tocá «Decir» y decí la frase en voz alta')
 : (voicing ? 'Escuchá: el micrófono vuelve después del audio' : tk.state === 'listening' ? 'Escuchando…' : tk.state === 'speaking' ? 'Te escucho · tocá para terminar' : halted ? 'Con calma: este cartel espera' : r.jump ? 'Sube al cartel' : 'Tocá «Simular toma»: en el lienzo no hay micrófono');
 const dock = {
 hasTag: !!tagC, tag: tagC ? tagC.tag : '', say,
@@ -1615,8 +1620,8 @@ leftOff: pick ? 'true' : t && !st.panel && tk.state === 'idle' ? 'false' : 'true
 leftBorder: pick ? '2px dashed #DDE1EC' : '2px solid #1B2440', leftBg: !pick && voicing && r.voicing.kind === 'model' ? '#2F4FD0' : '#FFFFFF',
 leftColor: pick ? '#9AA1B5' : !pick && voicing && r.voicing.kind === 'model' ? '#FFFFFF' : '#1B2440', leftShadow: pick ? 'none' : '0 3px 0 #1B2440',
 bigPlay: pick, bigMic: !pick,
-bigLines: pick ? [{ t: 'Ehendu', lang: 'gn' }, { t: 'Escuchar', lang: 'es' }] : ringOn ? [{ t: 'Terminar', lang: 'es' }, { t: 'toma', lang: 'es' }] : [{ t: 'Simular', lang: 'es' }, { t: 'toma', lang: 'es' }],
-bigAria: pick ? 'Escuchar la palabra otra vez' : ringOn ? 'Terminar la toma' : 'Simular una toma: en el lienzo no hay micrófono',
+bigLines: pick ? [{ t: 'Ehendu', lang: 'gn' }, { t: 'Escuchar', lang: 'es' }] : ringOn ? (inApp ? [{ t: 'Terminar', lang: 'es' }] : [{ t: 'Terminar', lang: 'es' }, { t: 'toma', lang: 'es' }]) : inApp ? [{ t: 'Decir', lang: 'es' }, { t: 'en voz alta', lang: 'es' }] : [{ t: 'Simular', lang: 'es' }, { t: 'toma', lang: 'es' }],
+bigAria: pick ? 'Escuchar la palabra otra vez' : ringOn ? (inApp ? 'Terminar' : 'Terminar la toma') : inApp ? 'Decir la frase en voz alta: tu voz todavía no se graba' : 'Simular una toma: en el lienzo no hay micrófono',
 bigPressed: pick ? (voicing ? 'true' : 'false') : ringOn ? 'true' : 'false',
 bigBg: (pick && voicing) || ringOn ? '#2F4FD0' : '#FFFFFF', bigColor: (pick && voicing) || ringOn ? '#FFFFFF' : '#1B2440',
 bigShadow: '0 4px 0 #1B2440', bigTf: 'none', iconS: num(pick && voicing && !still ? 1 + 0.09 * (1 + Math.sin(r.time * 7.8)) : 1),
@@ -1634,12 +1639,12 @@ const takeMs = tk.dur || modelMs;
 const playing = !!(this.strip && this.strip.which === which && r);
 const prog = playing ? Math.min(1, (r.time - this.strip.from) / Math.max(0.1, ms / 1000)) : 0;
 const bars = waveOf(t.item.gn, 28, seed, which === 'model' ? 1 : stretch).map((a, i, arr) => ({ h: px(4 + 26 * a), bg: playing && i / arr.length <= prog ? (which === 'model' ? '#2F4FD0' : '#C2336F') : '#C9D0E3' }));
-strips.push({ label, dur: secs(ms), bars, on: playing ? 'true' : 'false', aria: which === 'model' ? 'Escuchar el modelo' : 'Escuchar tu toma', btnBg: playing ? '#2F4FD0' : '#FFFFFF', btnColor: playing ? '#FFFFFF' : '#1B2440', play: () => { this.playStrip(which); this.forceUpdate(); } });
+strips.push({ label, dur: secs(ms), bars, on: playing ? 'true' : 'false', aria: which === 'model' ? 'Escuchar el modelo' : inApp ? 'Tu toma: tu voz todavía no se graba' : 'Escuchar tu toma', btnBg: playing ? '#2F4FD0' : '#FFFFFF', btnColor: playing ? '#FFFFFF' : '#1B2440', play: () => { this.playStrip(which); this.forceUpdate(); } });
 });
 }
 const cmp = { takeLabel: 'Toma ' + (tk.n || 1), strips };
 /* the menu's two ways */
-const ways = ['pick', 'compare'].map((k) => ({ title: WAYS[k].title, desc: WAYS[k].desc, isPick: k === 'pick', isCompare: k === 'compare', on: st.style === k ? 'true' : 'false',
+const ways = ['pick', 'compare'].map((k) => ({ title: WAYS[k].title, desc: inApp && WAYS[k].descApp ? WAYS[k].descApp : WAYS[k].desc, isPick: k === 'pick', isCompare: k === 'compare', on: st.style === k ? 'true' : 'false',
 border: st.style === k ? '2.5px solid #2F4FD0' : '2px solid #DDE1EC', bg: st.style === k ? '#E8ECFB' : '#FFFFFF', shadow: st.style === k ? '0 3px 0 #1B2440' : 'none',
 pick: () => this.setState({ style: k }) }));
 const R = this.res;
@@ -1647,7 +1652,15 @@ const tier = R ? STAMPS[R.tier] : STAMPS[0];
 const res = R ? Object.assign({}, R, { hasGn: !!tier.gn, stampGn: tier.gn, stampEs: tier.es.map((x) => ({ t: x })), esSize: tier.size, stampLabel: tier.label, hasMixed: R.mixed.length > 0 })
 : { way: '', clean: 0, total: 0, line: '', hasGn: false, stampGn: '', stampEs: [], esSize: '13px', stampLabel: '', bestRun: 0, falls: 0, fallsTitle: '', fallsNote: '', hasUps: false, upsGn: false, upsText: '', hints: 0, hintsNote: '', hasMixed: false, mixedTitle: '', mixed: [] };
 const empty = inRound && !r;
+const mic = inApp
+? { intro: 'Los teléfonos todavía no reconocen el guaraní hablado. Por eso acá no te corrige una máquina: escuchás y elegís, o decís la frase en voz alta y la comparás con el modelo.',
+noteA: 'Tu voz todavía no se graba: en ', noteB: ', tocá «Decir», decí la frase en voz alta y tocá «Terminar» al acabar. Los audios todavía no están grabados, así que cada botón de sonido se ilumina sin sonar.',
+panel: 'Tu voz todavía no se graba: compará de memoria con el modelo. Decidís vos.' }
+: { intro: 'Los teléfonos todavía no reconocen el guaraní hablado. Por eso acá no te corrige una máquina: escuchás y elegís, o te grabás y comparás tu voz con el modelo.',
+noteA: 'En el lienzo no hay micrófono: en ', noteB: ', el botón «Simular toma» hace de grabación. Los audios todavía no están grabados, así que cada botón de sonido se ilumina sin sonar.',
+panel: 'Escuchá el modelo y tu toma. Decidís vos: el teléfono no reconoce el guaraní.' };
 return {
+mic,
 isMenu: st.view === 'menu', inRound, isResult: st.view === 'result', paused: inRound && st.pause, ring: this.ring,
 roundLabel: 'Ronda: ' + WAYS[st.style].title,
 wd: this.worldVals(), masc, umb: this.umbrellaVals(masc), bub, bubUnder: !!b && !over, bubOver: !!b && over, fx, hud, dock, dockOn: inRound && !panelOn, panelOn, cmp, ways, res,

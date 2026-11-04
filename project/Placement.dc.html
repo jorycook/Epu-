@@ -382,7 +382,10 @@ const placed = C.placed(comp, prod);
 /* with the self-assessment and the comprehension part both skipped nothing was measured: the plan starts at A1 and the
    record says so, so no screen shows these levels as a result */
 const measured = asked.length > 0 || !!self;
-if (this.props.save) this.props.save({ placement: { comp: placed.comp, prod: placed.prod, start: placed.start, self, measured, at: C.now() } });
+/* with no plan yet, the level the result starts at is the learner's level from now on: the app closed before
+   "Empezar en …" opens again on it (the level menu and "Elegir otro nivel" still change it) */
+const plan = this.props.app && this.props.app.plan;
+if (this.props.save) this.props.save(Object.assign({ placement: { comp: placed.comp, prod: placed.prod, start: placed.start, self, measured, at: C.now() } }, plan ? {} : { level: placed.start }));
 this.setState({ phase: 'result', result: { comp: placed.comp, prod: placed.prod, self, compSkipped: !asked.length, prodSkipped: !!skipProd } });
 }
 /* the item's clip, or the silent stand-in: each line "plays" in turn for 600 ms + 120 ms per character and its words show */
