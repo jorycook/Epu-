@@ -59,6 +59,16 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </div>
 </div>
 
+<sc-if value="{{ readText }}" hint-placeholder-val="{{ false }}">
+<div style="margin: 12px 16px 0; padding: 12px 14px; border-radius: 18px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<div style="font-size: 12px; font-weight: 800; color: #5A6382">Transcripción</div>
+<div style="font-size: 12px; font-weight: 800; line-height: 1.4; color: #B02A63">Este audio todavía no está grabado: leé lo que se dice.</div>
+</div>
+<sc-for list="{{ script }}" as="l" hint-placeholder-count="3"><div style="margin: 0 -6px; padding: 3px 6px; border-radius: 10px; display: flex; align-items: flex-start; gap: 8px; transition: background 200ms; background: {{ l.bg }}"><sc-if value="{{ l.hasWho }}" hint-placeholder-val="{{ true }}"><span style="flex-shrink: 0; box-sizing: border-box; min-width: 72px; margin-top: 3px; padding: 2px 8px; border-radius: 8px; background: #EEF0F6; font-size: 11px; font-weight: 800; line-height: 1.4; text-align: center">{{ l.who }}</span></sc-if><div style="flex: 1 1 auto; min-width: 0; display: flex; align-items: flex-start; gap: 6px"><sc-if value="{{ l.hasNum }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0; width: 20px; height: 20px; margin-top: 3px; border-radius: 10px; background: #E8ECFB; color: #2F4FD0; font-family: 'Nunito', 'Avenir Next', sans-serif; font-size: 11px; font-weight: 800; line-height: 20px; text-align: center">{{ l.num }}</span></sc-if><div lang="{{ l.lang }}" style="flex: 1 1 auto; min-width: 0; line-height: 1.6; overflow-wrap: anywhere; font-family: {{ l.font }}; font-size: {{ l.size }}; font-weight: {{ l.weight }}; color: {{ l.color }}">{{ l.t }}</div></div></div></sc-for>
+</div>
+</sc-if>
+
 <sc-if value="{{ showQ }}" hint-placeholder-val="{{ false }}">
 <div lang="{{ qLang }}" style="margin: 14px 16px 0; font-size: 15px; font-weight: 800; line-height: 1.45; overflow-wrap: anywhere; font-family: {{ qFont }}"><sc-for list="{{ qSegs }}" as="g" hint-placeholder-count="1"><sc-if value="{{ g.blank }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="espacio en blanco" style="display: inline-block; width: 40px; height: 18px; margin: 0 3px; vertical-align: -3px; border-bottom: 2px solid #1B2440"></span></sc-if><sc-if value="{{ g.plain }}" hint-placeholder-val="{{ true }}"><span style="border-bottom: {{ g.line }}">{{ g.t }}</span></sc-if></sc-for></div>
 </sc-if>
@@ -290,6 +300,10 @@ const pickN = s.pick === 'right' ? (ready ? ANSWER : null) : s.pick;
 const answered = ready && pickN != null;
 const correct = answered && pickN === ANSWER;
 const wrong = answered && pickN !== ANSWER;
+/* until the clips are recorded, nothing is heard: from the first play on, the transcript (who says what, in Guarani)
+   stands in for the sound, each line lit while it "plays", so the question is answered from the text, and still
+   scored. Once answered, the sheet shows it, with its translation */
+const readText = ready && !hasClip && !answered && (s.playing || !!s.played);
 const answers = options.map((_, k) => k + 1).map((n) => {
 const on = pickN === n;
 const off = !s.played || answered;
@@ -376,14 +390,16 @@ const askText = ready ? C.plain(sk.ask || q || '') : '';
 return {
 ready,
 missing: !ready,
-liveMsg: answered ? (correct ? '¡Correcto!' : 'Casi. La respuesta correcta es la ' + ANSWER + '.') : s.played && ready ? 'Ya podés elegir tu respuesta.' : '',
+liveMsg: answered ? (correct ? '¡Correcto!' : 'Casi. La respuesta correcta es la ' + ANSWER + '.') : s.played && ready ? 'Ya podés elegir tu respuesta.' : readText ? 'Este audio todavía no está grabado: leé lo que se dice.' : '',
 closeLabel: L.elsewhere ? 'Cerrar la práctica' : 'Cerrar la lección',
 scrollPad: answered ? '12px' : '46px',
 kicker: 'ESCUCHA' + (ready && (sk.es || it.label) ? ' · ' + String(sk.es || it.label).toUpperCase() : ''),
 ask: askText,
 hasSituation: ready && !!sk.situation,
 situation: ready ? sk.situation || '' : '',
-note: printed ? 'Las opciones están escritas, como en el examen.' : 'No hay nada escrito hasta que respondas, como en el examen.',
+/* with the transcript standing in for the sound, the screen cannot promise that nothing is written: it says how the exam does it */
+note: printed ? 'Las opciones están escritas, como en el examen.' : hasClip ? 'No hay nada escrito hasta que respondas, como en el examen.' : 'En el examen no hay nada escrito: las respuestas se escuchan.',
+readText,
 bars: HEIGHTS.map((h, i) => ({ h: h + 'px', bg: i < Math.round(s.progress * HEIGHTS.length) ? '#2F4FD0' : '#C9D0E3' })),
 playBg: s.playing ? '#F2B43A' : '#2F4FD0',
 playInk: s.playing ? '#1B2440' : '#FFFFFF',

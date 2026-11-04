@@ -61,7 +61,9 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <sc-if value="{{ it.hasContext }}" hint-placeholder-val="{{ false }}">
 <div style="margin-top: 8px; flex-shrink: 0; padding: 10px 14px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 4px">
 <div style="font-size: 11px; font-weight: 800; color: #5A6382"><sc-if value="{{ it.contextGn }}" hint-placeholder-val="{{ false }}"><span lang="gn">Moñe'ẽrã</span> · </sc-if>{{ it.contextHead }}</div>
-<div lang="gn" style="max-height: 220px; overflow-y: auto; font-family: 'Andika', 'Nunito', sans-serif; font-size: 14px; font-weight: 400; line-height: 1.75; white-space: pre-line; overflow-wrap: anywhere">{{ it.context }}</div>
+<sc-if value="{{ it.silentNote }}" hint-placeholder-val="{{ false }}"><div style="font-size: 12px; font-weight: 800; line-height: 1.4; color: #B02A63">Este audio todavía no está grabado: leé lo que se dice.</div></sc-if>
+<sc-if value="{{ it.isPassage }}" hint-placeholder-val="{{ true }}"><div lang="gn" style="max-height: 220px; overflow-y: auto; font-family: 'Andika', 'Nunito', sans-serif; font-size: 14px; font-weight: 400; line-height: 1.75; white-space: pre-line; overflow-wrap: anywhere">{{ it.context }}</div></sc-if>
+<sc-if value="{{ it.isScript }}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-direction: column; gap: 2px"><sc-for list="{{ script }}" as="l" hint-placeholder-count="3"><div style="margin: 0 -6px; padding: 2px 6px; border-radius: 10px; display: flex; align-items: flex-start; gap: 8px; transition: background 200ms; background: {{ l.bg }}"><sc-if value="{{ l.hasWho }}" hint-placeholder-val="{{ true }}"><span style="flex-shrink: 0; box-sizing: border-box; min-width: 68px; margin-top: 3px; padding: 2px 6px; border-radius: 8px; background: #EEF0F6; font-size: 11px; font-weight: 800; line-height: 1.4; text-align: center">{{ l.who }}</span></sc-if><sc-if value="{{ l.hasNum }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0; width: 20px; height: 20px; margin-top: 3px; border-radius: 10px; background: #E8ECFB; color: #2F4FD0; font-size: 11px; font-weight: 800; line-height: 20px; text-align: center">{{ l.num }}</span></sc-if><div lang="{{ l.lang }}" style="flex: 1 1 auto; min-width: 0; line-height: 1.6; overflow-wrap: anywhere; font-family: {{ l.font }}; font-size: {{ l.size }}; font-weight: {{ l.weight }}; color: {{ l.color }}">{{ l.t }}</div></div></sc-for></div></sc-if>
 </div>
 </sc-if>
 
@@ -198,6 +200,8 @@ const SPAN = ['1 día', '3 días', '1 semana'];
 const DAY = 864e5;
 const LAST = { choice: 'La vez pasada elegiste:', build: 'La vez pasada armaste:', spell: 'La vez pasada escribiste:' };
 const SPEAKER = { N: 'Narrador', F: 'Mujer', M: 'Hombre' };
+const ANDIKA = "'Andika', 'Nunito', sans-serif";
+const NUNITO = "'Nunito', 'Avenir Next', sans-serif";
 /* a mistake's question, from the lesson data or, for a level-exam or placement item, from the extras when loaded;
    an exam item keeps the text of its task (a reading task holds one passage for its questions) */
 function extraItem(src) {
@@ -253,7 +257,8 @@ function bankOf(tiles, bank) {
   return b.length === n && sorted.every((x, k) => x === k) ? b : tiles.map((_, k) => n - 1 - k);
 }
 /* the text a question needs beside it: a reading item's text (on the item, or its day's reading); a listening item's
-   transcript, shown only once it is answered (nothing is printed before, as in the listening lesson) */
+   transcript, shown once it is answered (nothing is printed before, as in the listening lesson), or, while its clip
+   is not recorded yet, from its first play on */
 function contextOf(C, it) {
   if (it.passage) return { head: 'El texto', gn: true, text: C.plain(it.passage), after: false };
   const day = it.step === 'skill' ? C.day(String(it.id || '').split('.')[0]) : null;
@@ -262,9 +267,40 @@ function contextOf(C, it) {
   const lines = Array.isArray(it.script) && it.script.length ? it.script : sk && sk.kind === 'listening' && Array.isArray(sk.audio) ? sk.audio : null;
   if (it.area === 'listening' && lines) {
     const text = lines.map((l) => (Array.isArray(l) ? (SPEAKER[l[0]] || l[0]) + ': ' + C.plain(l[1] || '') : C.plain(l))).join('\n');
-    return { head: 'Transcripción', gn: false, text, after: true };
+    return { head: 'Transcripción', gn: false, text, after: true, rows: rowsOf(C, it, lines) };
   }
   return null;
+}
+/* a transcript as rows, the way the listening lesson shows it: who speaks ("Mujer: …" or [code, Guarani]) and what; a
+   narrator line that only says a reply's number ("1") goes on the reply it introduces. Each row "plays" for 600 ms
+   + 120 ms per character of its lines when there is no clip; the narrator's Spanish (A1) is told apart */
+function rowsOf(C, it, lines) {
+  const rows = [];
+  let num = '';
+  let ms = 0;
+  lines.forEach((l, k) => {
+    let code = '';
+    let who = '';
+    let said = '';
+    if (Array.isArray(l)) {
+      code = String(l[0] == null ? '' : l[0]).trim().toUpperCase();
+      who = SPEAKER[code] || String(l[0] == null ? '' : l[0]).trim();
+      said = String(l[1] == null ? '' : l[1]);
+    } else {
+      const t = String(l == null ? '' : l);
+      const m = /^([^:]{1,24}):\s+([\s\S]*)$/.exec(t);
+      if (m) { who = m[1].trim(); said = m[2]; } else said = t;
+    }
+    const t = C.plain(said).trim();
+    if (!t) return;
+    const narr = code === 'N' || /^narrador/i.test(who);
+    const len = 600 + t.length * 120;
+    if (narr && /^\d{1,2}\.?$/.test(t) && k < lines.length - 1) { num = t.replace('.', ''); ms += len; return; }
+    rows.push({ who, num, t, es: narr && langOf(it, t) === 'es', ms: ms + len });
+    num = '';
+    ms = 0;
+  });
+  return rows;
 }
 /* what a learner who got it wrong put down, for the designed moment (the same shapes Drill and Exam save) */
 function wrongOf(C, it) {
@@ -335,6 +371,7 @@ class Component extends DCLogic {
       summary: false,
       playing: false,
       played: demo,
+      line: -1,
     };
   }
   componentDidUpdate() {
@@ -350,6 +387,7 @@ class Component extends DCLogic {
   }
   componentWillUnmount() {
     clearTimeout(this.tm);
+    clearInterval(this.lt);
     if (window.gnSound && window.gnSound.stop) window.gnSound.stop();
   }
   setAns(k, patch) {
@@ -386,17 +424,29 @@ class Component extends DCLogic {
     this.caret = a + key.length;
     this.setAns(k, { typed: v.slice(0, a) + key + v.slice(b) });
   }
-  /* the stand-in when there is no clip: the button stays lit as long as the lines would take to say */
-  play(src, text) {
+  /* the stand-in when there is no clip: the button stays lit as long as the lines would take to say; a transcript's
+     rows are lit in turn while they "play", as in the listening lesson */
+  play(src, text, rows) {
     const C = window.gnCourse;
     const snd = window.gnSound;
-    let ms = 600 + C.plain(text).length * 120;
     let real = false;
     try { real = !!(snd && snd.has && snd.has(src) && snd.unlock() && snd.play(src)); } catch (x) { real = false; }
+    const parts = !real && Array.isArray(rows) && rows.length ? rows.map((r) => r.ms) : null;
+    let ms = parts ? parts.reduce((a, b) => a + b, 0) : 600 + C.plain(text).length * 120;
     if (real && snd.ms && snd.ms(src)) ms = snd.ms(src);
     clearTimeout(this.tm);
-    this.setState({ playing: true });
-    this.tm = setTimeout(() => this.setState({ playing: false, played: true }), ms);
+    clearInterval(this.lt);
+    this.setState({ playing: true, line: parts ? 0 : -1 });
+    if (parts) {
+      const t0 = Date.now();
+      this.lt = setInterval(() => {
+        let left = Date.now() - t0;
+        let k = 0;
+        while (k < parts.length - 1 && left >= parts[k]) { left -= parts[k]; k += 1; }
+        if (k !== this.state.line) this.setState({ line: k });
+      }, 100);
+    }
+    this.tm = setTimeout(() => { clearInterval(this.lt); this.setState({ playing: false, played: true, line: -1 }); }, ms);
   }
   renderVals() {
     const C = window.gnCourse;
@@ -415,6 +465,11 @@ class Component extends DCLogic {
     const wrong = answered && !a.right;
     const ctx = contextOf(C, q);
     const hasPlay = !!(ctx && ctx.after);
+    /* until the clips are recorded a listening item plays in silence: from its first play on, its transcript (who says
+       what) is shown, each row lit while it "plays", so it is answered from the text, and still scored */
+    const clip = q.clip || entry.src;
+    const silent = hasPlay && !(window.gnSound && window.gnSound.has && window.gnSound.has(clip));
+    const reading = silent && (s.playing || !!s.played);
     const locked = answered || (hasPlay && !s.played);
 
     /* a choice: one tap answers; two columns only when every option is short */
@@ -523,7 +578,7 @@ class Component extends DCLogic {
     const canCheck = kind === 'build' ? allPlaced : kind === 'spell' ? typed.trim() !== '' : false;
     let btn;
     if (answered) btn = last ? { gn: 'Oĩma', es: 'Listo', on: true } : { gn: 'Upeigua', es: 'Siguiente', on: true };
-    else if (hasPlay && !s.played) btn = { gn: '', es: s.playing ? 'Escuchando…' : 'Escuchá primero', on: false };
+    else if (hasPlay && !s.played) btn = { gn: '', es: s.playing ? (silent ? 'Leé lo que se dice' : 'Escuchando…') : 'Escuchá primero', on: false };
     else if (kind !== 'choice') btn = canCheck ? { gn: '', es: 'Comprobar', on: true } : { gn: '', es: kind === 'build' ? 'Poné todas las fichas' : 'Escribí la palabra', on: false };
     else btn = { gn: '', es: 'Elegí una respuesta', on: false };
 
@@ -546,10 +601,13 @@ class Component extends DCLogic {
         isBuild: kind === 'build',
         isSpell: kind === 'spell',
         hasPlay,
-        hasContext: !!ctx && (!ctx.after || answered),
+        hasContext: !!ctx && (!ctx.after || answered || reading),
         contextGn: !!(ctx && ctx.gn),
         contextHead: ctx ? ctx.head : '',
         context: ctx ? ctx.text : '',
+        silentNote: reading,
+        isPassage: !!ctx && !(ctx.rows && ctx.rows.length),
+        isScript: !!(ctx && ctx.rows && ctx.rows.length),
         segs,
         size: C.chars(qPlain).length > 34 ? '17px' : '20px',
         qLang: langOf(q, qPlain),
@@ -592,11 +650,25 @@ class Component extends DCLogic {
       grabInput: (e) => { this.typedEl = e.currentTarget || e.target; },
       playGn: s.played ? 'Ehendujey' : 'Ehendu',
       playEs: s.played ? 'Escuchar otra vez' : 'Escuchar',
-      playLabel: s.playing ? 'Sonando el audio' : s.played ? 'Escuchar otra vez' : 'Escuchar el audio',
+      playLabel: s.playing ? (silent ? 'Se reproduce en silencio' : 'Sonando el audio') : s.played ? 'Escuchar otra vez' : 'Escuchar el audio',
       playBg: s.playing ? '#F2B43A' : '#E8ECFB',
       playShadow: s.playing ? 'none' : '0 3px 0 #1B2440',
-      playNote: s.playing ? 'Sonando…' : !s.played ? 'Escuchá primero: después se abren las respuestas.' : answered ? 'La transcripción está abajo.' : 'Elegí lo que escuchaste.',
-      play: () => this.play(entry.src, playText),
+      playNote: s.playing ? (silent ? 'Se reproduce en silencio…' : 'Sonando…') : !s.played ? 'Escuchá primero: después se abren las respuestas.' : answered ? 'La transcripción está abajo.' : silent ? 'Elegí según lo que se dice.' : 'Elegí lo que escuchaste.',
+      play: () => this.play(clip, playText, ctx && ctx.rows),
+      /* the transcript's rows (a listening item): the speaker, the reply's number, the line, lit while it "plays" */
+      script: (ctx && ctx.rows ? ctx.rows : []).map((r, j) => ({
+        who: r.who,
+        hasWho: !!r.who,
+        num: r.num,
+        hasNum: !!r.num,
+        t: r.t,
+        lang: r.es ? 'es' : 'gn',
+        font: r.es ? NUNITO : ANDIKA,
+        size: r.es ? '13px' : '14px',
+        weight: r.es ? 700 : 400,
+        color: r.es ? '#5A6382' : '#1B2440',
+        bg: s.playing && s.line === j ? '#FFE9B0' : 'transparent',
+      })),
       session: !s.summary && total > 0,
       summary: s.summary || total === 0,
       answered,
@@ -639,9 +711,10 @@ class Component extends DCLogic {
           return;
         }
         clearTimeout(this.tm);
+        clearInterval(this.lt);
         if (window.gnSound && window.gnSound.stop) window.gnSound.stop();
-        if (last) this.setState({ summary: true, playing: false });
-        else this.setState({ i: s.i + 1, playing: false, played: false });
+        if (last) this.setState({ summary: true, playing: false, line: -1 });
+        else this.setState({ i: s.i + 1, playing: false, played: false, line: -1 });
       },
       doneHead: total === 0 ? 'Estás al día' : 'Repaso terminado',
       doneLine: total === 0 ? 'No hay nada para repasar hoy. Cada error vuelve el día que le toca.' : total === 1 ? 'Repasaste la pregunta de hoy.' : 'Repasaste las ' + total + ' preguntas de hoy.',

@@ -12,68 +12,157 @@
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 </style>
 </helmet>
-<div style="width: 390px; height: 100%; box-sizing: border-box; padding: 18px 20px 18px; background: #F4F5F9; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; display: flex; flex-direction: column; overflow-y: auto; animation: gn-in 220ms ease-out">
+<div ref="{{ rootRef }}" style="width: 390px; height: 100%; box-sizing: border-box; padding: {{ k.pad }}; background: #F4F5F9; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; display: flex; flex-direction: column; overflow-y: auto; animation: gn-in 220ms ease-out">
 
-<div style="flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center">
-<div style="margin: -22px 0 -14px">%KAGUARE%</div>
-<h1 style="margin: 0; font-size: 24px; font-weight: 800; line-height: 1.3; text-wrap: balance">Agregá <span lang="gn">%APP_NAME%</span> a tu pantalla de inicio</h1>
-<div style="font-size: 15px; font-weight: 700; color: #5A6382; line-height: 1.4; text-wrap: balance">%APP_ABOUT%</div>
+<div style="flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: {{ k.headGap }}; text-align: center">
+<div style="width: {{ k.art }}; height: {{ k.art }}; margin: {{ k.artMargin }}"><div style="width: 96px; height: 96px; transform: scale({{ k.artScale }}); transform-origin: 0 0">%KAGUARE%</div></div>
+<h1 style="margin: 0; font-size: {{ k.h1 }}; font-weight: 800; line-height: 1.25; text-wrap: balance">Agregá <span lang="gn">%APP_NAME%</span> a tu pantalla de inicio</h1>
+<div style="font-size: {{ k.about }}; font-weight: 700; color: #5A6382; line-height: 1.4; text-wrap: balance">%APP_ABOUT%</div>
 </div>
 
-<div style="flex-shrink: 0; margin-top: 8px; font-size: 13px; font-weight: 500; color: #5A6382; line-height: 1.5; text-align: center; text-wrap: balance">{{ promise }}</div>
+<div style="flex-shrink: 0; margin-top: {{ k.gapS }}; font-size: 13px; font-weight: 500; color: #5A6382; line-height: {{ k.lh }}; text-align: center; text-wrap: balance">{{ promise }}</div>
 
-<div style="flex-shrink: 0; margin-top: 12px; padding: 4px 16px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; display: flex; flex-direction: column">
+<div style="flex-shrink: 0; margin-top: {{ k.gapM }}; padding: 2px 16px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; display: flex; flex-direction: column">
 
-<div style="padding: 10px 0; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #E9ECF4">
+<div style="padding: {{ k.row }}; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #E9ECF4">
 <div style="width: 30px; height: 30px; border-radius: 50%; background: #1B2440; color: #FFFFFF; font-size: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0">1</div>
 <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 1px">
 <div style="font-size: 15px; font-weight: 800">Tocá Compartir</div>
-<div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.4">El cuadrado con una flecha hacia arriba. Si no lo ves, tocá primero el botón •••.</div>
+<div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: {{ k.lh }}">El cuadrado con una flecha hacia arriba. Si no lo ves, tocá primero el botón •••.</div>
 </div>
 <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M12 15V3M8 7l4-4 4 4"/><path d="M7 11H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-1"/></svg>
 </div>
 
-<div style="padding: 10px 0; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #E9ECF4">
+<div style="padding: {{ k.row }}; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #E9ECF4">
 <div style="width: 30px; height: 30px; border-radius: 50%; background: #1B2440; color: #FFFFFF; font-size: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0">2</div>
 <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 1px">
 <div style="font-size: 15px; font-weight: 800; text-wrap: balance">Tocá «Agregar a pantalla de inicio»</div>
-<div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.4">Bajá en la lista hasta encontrarlo y tocá Agregar. ¿No aparece? Abrí primero esta página en Safari.</div>
+<div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: {{ k.lh }}">Bajá en la lista hasta encontrarlo y tocá Agregar. ¿No aparece? Abrí primero esta página en Safari.</div>
 </div>
 <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8.5v7M8.5 12h7"/></svg>
 </div>
 
-<div style="padding: 10px 0; display: flex; align-items: center; gap: 12px">
+<div style="padding: {{ k.row }}; display: flex; align-items: center; gap: 12px">
 <div style="width: 30px; height: 30px; border-radius: 50%; background: #1B2440; color: #FFFFFF; font-size: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0">3</div>
 <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 1px">
 <div style="font-size: 15px; font-weight: 800">Abrí <span lang="gn">%APP_NAME%</span> desde su ícono</div>
-<div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.4">Abrilo una vez con internet. Después funciona también sin conexión.</div>
+<div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: {{ k.lh }}">{{ step3 }}</div>
 </div>
 <div style="width: 30px; height: 30px; border-radius: 7px; overflow: hidden; flex-shrink: 0">%ICON%</div>
 </div>
 
 </div>
 
-<div style="flex-grow: 1; flex-shrink: 0; min-height: 12px"></div>
+<div style="flex-grow: 1; flex-shrink: 0; min-height: {{ k.gapS }}"></div>
 
-<div style="flex-shrink: 0; font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.45; text-align: center; text-wrap: balance">También podés seguir acá, en el navegador. Así no se instala nada y las pantallas se ven más chicas.</div>
-<button onClick="{{ useBrowser }}" style="flex-shrink: 0; margin-top: 10px; margin-bottom: 2px; height: 52px; border-radius: 16px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #1B2440; font-weight: 800; font-size: 16px; white-space: nowrap">Seguir en el navegador</button>
+<sc-if value="{{ move.show }}" hint-placeholder-val="{{ false }}">
+<div style="flex-shrink: 0; margin-bottom: {{ k.gapS }}; padding: 6px 6px 6px 14px; border-radius: 16px; background: #FFF4D6; border: 2px solid #F2B43A; display: flex; align-items: center; gap: 10px">
+<div aria-live="polite" style="flex-grow: 1; min-width: 0; font-size: 12px; font-weight: 700; line-height: 1.4">{{ move.text }}</div>
+<button onClick="{{ move.copy }}" style="flex-shrink: 0; height: 44px; padding: 0 12px; border-radius: 12px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; color: #1B2440; font-size: 13px; font-weight: 800; white-space: nowrap">{{ move.label }}</button>
+</div>
+<sc-if value="{{ move.manual }}" hint-placeholder-val="{{ false }}">
+<textarea aria-label="El código de tu progreso" readonly="readonly" rows="3" value="{{ move.code }}" onFocus="{{ move.selectAll }}" style="flex-shrink: 0; margin-bottom: {{ k.gapS }}; height: 72px; box-sizing: border-box; padding: 8px 10px; border-radius: 12px; border: 2px solid #1B2440; background: #FFFFFF; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; font-size: 16px; font-weight: 500; line-height: 1.35; resize: none; overflow-wrap: anywhere"></textarea>
+</sc-if>
+</sc-if>
+
+<div style="flex-shrink: 0; font-size: 12px; font-weight: 500; color: #5A6382; line-height: {{ k.lh }}; text-align: center; text-wrap: balance">{{ stay }}</div>
+<button onClick="{{ useBrowser }}" style="flex-shrink: 0; margin-top: {{ k.gapS }}; margin-bottom: 2px; height: {{ k.button }}; border-radius: 16px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #1B2440; font-weight: 800; font-size: 16px; white-space: nowrap">Seguir en el navegador</button>
 
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{}'>
 /* The first-visit page: shown in Safari on an iPhone or an iPad before the app is on the Home Screen, once per visit
    (see gn-app.js). Kaguare and the little icon are the mascot's own art, put in by the build from brief/mascot/spec.json:
-   the standing pose, and the Home Screen icon as the phone shows it. */
+   the standing pose, and the Home Screen icon as the phone shows it.
+   The app on the Home Screen keeps its progress apart from the browser's, so the page says where progress stays: in the
+   app when the learner starts there, in the browser when they go on here. When this browser already holds progress,
+   a row offers to copy it (gnApp.exportProgress) for the app's «Pegá tu progreso».
+   On a short screen (an iPhone SE in Safari, with its bars) Kaguare and the gaps shrink so the page fits without
+   scrolling: the page's height is the browser's (gn-app.js fits it), and it is measured again when that changes. */
+/* the page's height (in the design's pixels) from which the full layout fits, and the middle one, without and with
+   the copy row; below that, the short one (it fits the 575 of an iPhone SE in Safari, copy row and all) */
+const FITS = { plain: [680, 630], move: [760, 710] };
+const LOOK = {
+full: { pad: '18px 20px 18px', headGap: '4px', art: '96px', artScale: 1, artMargin: '-22px 0 -14px', h1: '24px', about: '15px', gapS: '10px', gapM: '12px', row: '10px 0', lh: 1.45, button: '52px' },
+mid: { pad: '12px 20px 12px', headGap: '3px', art: '80px', artScale: 0.8333, artMargin: '-18px 0 -12px', h1: '22px', about: '14px', gapS: '8px', gapM: '10px', row: '8px 0', lh: 1.4, button: '50px' },
+short: { pad: '8px 20px 8px', headGap: '2px', art: '52px', artScale: 0.5417, artMargin: '-6px 0 -5px', h1: '20px', about: '13px', gapS: '6px', gapM: '8px', row: '5px 0', lh: 1.35, button: '46px' },
+};
 class Component extends DCLogic {
+constructor(props) {
+super(props);
+const kit = window.gnApp;
+this.state = { h: kit && kit.room ? kit.room() : 844, copied: '', code: '' };
+this.root = null;
+this.rootRef = (el) => { this.root = el; };
+}
+componentDidMount() {
+const measure = () => {
+const h = this.root ? this.root.clientHeight : 0;
+if (h && Math.abs(h - this.state.h) >= 1) this.setState({ h });
+};
+measure();
+if (window.ResizeObserver && this.root) {
+this.watch = new ResizeObserver(measure);
+this.watch.observe(this.root);
+} else {
+this.onResize = measure;
+window.addEventListener('resize', measure);
+}
+}
+componentWillUnmount() {
+if (this.watch) this.watch.disconnect();
+if (this.onResize) window.removeEventListener('resize', this.onResize);
+}
 renderVals() {
-const device = window.gnApp.device;
+const kit = window.gnApp;
+const s = this.state;
+const device = kit.device;
+const browser = kit.browser || 'Safari';
+const refused = kit.refused();
+/* progress this browser already holds, to take to the app before it is installed */
+const has = !refused && !!(kit.hasProgress && kit.hasProgress());
+/* the full layout where it fits; a little tighter below that; on a short screen Kaguare at a little over half, tight
+   gaps, the title on one line and a smaller button */
+const need = has ? FITS.move : FITS.plain;
+const k = s.h >= need[0] ? LOOK.full : s.h >= need[1] ? LOOK.mid : LOOK.short;
+const copy = () => {
+const code = kit.exportProgress();
+const manual = () => this.setState({ copied: 'manual', code });
+try {
+const p = navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(code) : null;
+if (p && p.then) p.then(() => this.setState({ copied: 'yes', code }), manual);
+else manual();
+} catch (e) {
+manual();
+}
+};
+const moveText = s.copied === 'yes' ? 'Copiado. En la app, tocá «Pegá tu progreso».'
+: s.copied === 'manual' ? 'No se pudo copiar solo: mantené apretado el código y copialo.'
+: '¿Ya avanzaste en ' + browser + '? Llevá tu progreso a la app.';
 return {
-useBrowser: () => window.gnApp.useBrowser(),
+rootRef: this.rootRef,
+k,
+useBrowser: () => kit.useBrowser(),
 device,
-/* what the Home Screen gives; progress only where the browser keeps it */
-promise: window.gnApp.refused()
+/* what the Home Screen gives; where the progress stays */
+promise: refused
 ? 'Así se abre a pantalla completa, como una app, y funciona sin conexión. Este navegador no deja guardar tu progreso.'
-: 'Así se abre a pantalla completa, como una app, funciona sin conexión y guarda tu progreso en este ' + device + '.',
+: 'Así se abre a pantalla completa, como una app, y funciona sin conexión.',
+step3: refused
+? 'Abrilo una vez con internet. Después funciona también sin conexión.'
+: 'Empezá ahí: tu progreso se guarda en la app, en este ' + device + '. Abrila una vez con internet; después funciona sin conexión.',
+stay: refused
+? 'También podés seguir acá, en el navegador, pero sin guardar tu progreso.'
+: 'También podés seguir acá, en el navegador, pero tu progreso queda en ' + browser + ': la app del ícono no lo ve.',
+move: {
+show: has,
+text: moveText,
+label: s.copied === 'yes' ? 'Copiar de nuevo' : 'Copiar mi progreso',
+copy,
+manual: s.copied === 'manual',
+code: s.code,
+selectAll: (e) => { try { e.target.select(); e.target.setSelectionRange(0, e.target.value.length); } catch (x) { /* the long press still selects */ } },
+},
 };
 }
 }

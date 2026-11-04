@@ -467,7 +467,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="width: 48px; height: 48px; border-radius: 50%; background: #E8ECFB; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
 <div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
 <div style="font-size: 15px; font-weight: 800; line-height: 1.3">Tu voz todavía no se graba</div>
-<div style="font-size: 13px; font-weight: 500; line-height: 1.45">Hablá en voz alta, hasta {{ sq.limit }}. Después te comparás con tres ejemplos y te evaluás con la guía.</div>
+<div style="font-size: 13px; font-weight: 500; line-height: 1.45">Hablá hasta {{ sq.limit }}. Cuando termines, te comparás con tres ejemplos y te evaluás con la guía.</div>
 </div>
 </div>
 </sc-if>
@@ -497,6 +497,8 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="font-size: 12px; font-weight: 500; line-height: 1.45">Acordate de lo que dijiste: comparalo con los tres ejemplos y evaluate con la guía.</div>
 </div>
 </div>
+<div style="margin-top: 14px; font-size: 11px; font-weight: 800; color: #B02A63">LO QUE TENÍAS QUE DECIR</div>
+<div style="margin-top: 4px; flex-shrink: 0; padding: 10px 14px; border-radius: 14px; background: #FFFFFF; border: 2px solid #C9D0E3; font-size: 14px; font-weight: 700; line-height: 1.5; overflow-wrap: anywhere"><sc-for list="{{ sq.prompt }}" as="g" hint-placeholder-count="1"><span lang="{{ g.lang }}" style="font-family: {{ g.font }}">{{ g.t }}</span></sc-for></div>
 </sc-if>
 <div style="margin-top: 14px; font-size: 11px; font-weight: 800; color: #B02A63">COMPARATE CON TRES EJEMPLOS</div>
 <div role="tablist" aria-label="Ejemplos" style="margin-top: 6px; flex-shrink: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px">
@@ -760,7 +762,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="font-size: 13px; font-weight: 500; color: #5A6382; line-height: 1.5">Armamos un paquete con tu trabajo y tu evaluación. Se lo mandás a tu docente, y cuando te devuelva la nota el resultado pasa a «verificado por docente».</div>
 </sc-if>
 <sc-if value="{{ exp.app }}" hint-placeholder-val="{{ false }}">
-<div style="font-size: 13px; font-weight: 500; color: #5A6382; line-height: 1.5">Armamos un resumen en texto con tus notas, tu mensaje y tu evaluación, para que se lo mandes a tu docente por mensaje o por correo. Tu voz todavía no se graba: la parte oral te la puede escuchar en persona o en una llamada.</div>
+<div style="font-size: 13px; font-weight: 500; color: #5A6382; line-height: 1.5">Armamos un resumen en texto con tus notas, tu mensaje y tu evaluación, para que se lo mandes a tu docente por mensaje o por correo. La parte oral te la puede escuchar en persona o en una llamada.</div>
 </sc-if>
 <div style="padding: 4px 14px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column">
 <sc-for list="{{ exp.items }}" as="x" hint-placeholder-count="3">
@@ -775,14 +777,14 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div role="status" style="padding: 10px 12px; border-radius: 14px; background: #E0F3EF; font-size: 13px; font-weight: 700; line-height: 1.45"><span style="font-weight: 800; color: #0B7A6B">Paquete listo.</span> En el teléfono se abre el menú para compartir; en el lienzo no se envía nada.</div>
 </sc-if>
 <sc-if value="{{ exp.shared }}" hint-placeholder-val="{{ false }}">
-<div role="status" style="padding: 10px 12px; border-radius: 14px; background: #E0F3EF; font-size: 13px; font-weight: 700; line-height: 1.45"><span style="font-weight: 800; color: #0B7A6B">Paquete compartido.</span> Tu docente lo recibe como texto, por donde lo mandaste.</div>
+<div role="status" style="padding: 10px 12px; border-radius: 14px; background: #E0F3EF; font-size: 13px; font-weight: 700; line-height: 1.45"><span style="font-weight: 800; color: #0B7A6B">Paquete compartido.</span> Lo mandaste como texto, por la app que elegiste.</div>
 </sc-if>
 <sc-if value="{{ exp.copied }}" hint-placeholder-val="{{ false }}">
 <div role="status" style="padding: 10px 12px; border-radius: 14px; background: #E0F3EF; font-size: 13px; font-weight: 700; line-height: 1.45"><span style="font-weight: 800; color: #0B7A6B">Copiado:</span> pegalo en un mensaje a tu docente.</div>
 </sc-if>
 <sc-if value="{{ exp.manual }}" hint-placeholder-val="{{ false }}">
-<div role="status" style="padding: 10px 12px; border-radius: 14px; background: #FFF4D6; font-size: 13px; font-weight: 700; line-height: 1.45"><span style="font-weight: 800">No se pudo compartir ni copiar.</span> Mantené apretado el texto, elegí «Seleccionar todo» y copialo.</div>
-<textarea aria-label="Resumen para tu docente" readonly="readonly" rows="6" value="{{ exp.text }}" onFocus="{{ exp.selectAll }}" style="flex-shrink: 0; height: 150px; box-sizing: border-box; padding: 10px 12px; border-radius: 14px; border: 2px solid #1B2440; background: #FFFFFF; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; font-size: 13px; font-weight: 500; line-height: 1.45; resize: none"></textarea>
+<div role="status" style="padding: 10px 12px; border-radius: 14px; background: #FFF4D6; font-size: 13px; font-weight: 700; line-height: 1.45"><span style="font-weight: 800">No se pudo compartir ni copiar.</span> Mantené apretado el texto, elegí «Seleccionar todo» y «Copiar», y pegalo en un mensaje a tu docente.</div>
+<textarea aria-label="Resumen para tu docente" readonly="readonly" rows="6" value="{{ exp.text }}" onFocus="{{ exp.selectAll }}" onChange="{{ exp.keep }}" style="flex-shrink: 0; height: 156px; box-sizing: border-box; padding: 10px 12px; border-radius: 14px; border: 2px solid #1B2440; background: #FFFFFF; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; font-size: 16px; font-weight: 500; line-height: 1.4; resize: none"></textarea>
 </sc-if>
 <button onClick="{{ shareNow }}" style="margin-top: 4px; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px">Compartir con mi docente</button>
 <button onClick="{{ closeExport }}" style="height: 48px; border: 0; background: none; color: #2F4FD0; font-size: 15px; font-weight: 800"><span lang="gn">Mboty</span> · Cerrar</button>
@@ -870,66 +872,73 @@ const add = (list, k) => (list.indexOf(k) >= 0 ? list : list.concat([k]));
 const words = (t) => String(t || '').trim().split(/\s+/).filter(Boolean).length;
 function normText(o) { const out = {}; Object.keys(o || {}).forEach((k) => { out[k] = window.gnCourse.norm(o[k]); }); return out; }
 function keyName(k) { const S = window.gnSpell; return (S && S.name ? S.name(k) : NAMES[k]) || k; }
-/* inside the prototype and the app the voice is not recorded yet: a sentence of the oral task that asks for a recording
-   ("Grabate y después escuchate.") is left out there, and the screen asks for the answer aloud instead */
-function aloudOf(es) { return String(es || '').replace(/(^|\s)(Grabate|Grabá|Escuchate)(?=[\s,.;:!?]|$)[^.!?]*[.!?]?/g, '').replace(/\s{2,}/g, ' ').trim(); }
+/* inside the prototype and the app the voice is not recorded yet: the sentence of the oral task that tells the learner to
+   record and hear themself ("Grabate y después escuchate.") is left out there, and the screen asks for the answer aloud.
+   Only that instruction goes (a sentence opening with Grabate or Escuchate), never the task itself; nothing left: as it was */
+function aloudOf(es) {
+const all = String(es || '');
+const out = all.replace(/(^|\s)(Grabate|Escuchate)(?=[\s,.;:!?]|$)[^.!?]*[.!?]?/g, '').replace(/\s{2,}/g, ' ').trim();
+return out || all;
+}
 
 /* ---------- the package for a teacher, as plain text (shared from the result inside the prototype and the app) ----------
-   the level and the date, each part's score, the written answers, the self-ratings with the rubric's words and the verdict.
-   The written mediation of the higher levels (Spanish to Guarani) has no task in this exam yet: A1's part 3 is picking
-   facts in Spanish, scored by the app, so its score is all it adds */
+   The level and the date, the verdict, each part's score, every written answer (part 4's tasks, with their prompts),
+   the oral prompt (the voice is not recorded yet), and the self-ratings of parts 4 and 5 with the rubric's labels.
+   A1's mediation (part 3) is picking, from a Guarani notice, the facts to pass on in Spanish: the app scores it, so its
+   score is what it adds. The exam has no written Spanish-to-Guarani mediation yet (notes G6 §4.3 gives it to the higher
+   levels, inside parts 4 and 5); a written one would be a task of part 4 here, and its answer would go with the others */
 const SCALE = ['nada', 'poco', 'bastante', 'todo'];
 function packageOf(M, R, st) {
-  const C = window.gnCourse;
-  const lv = M.level;
-  const parts = (R && R.parts) || st.parts || {};
-  const teacher = !!(R && R.mode === 'teacher');
-  const pc = (r, o) => (o > 0 ? Math.round((r / o) * 100) + ' %' : '—');
-  const group = (g) => (typeof g === 'number' ? Math.round(g * 100) + ' %' : '—');
-  const day = C.today(R && R.at ? R.at : C.now());
-  const verdict = R && R.apto ? 'Apto' : R && R.comprension ? 'Todavía no Apto · Constancia de comprensión (grupo C aprobado)' : 'Todavía no Apto';
-  const out = [];
-  out.push("Epu'ã · Examen de nivel " + lv + ' (' + C.meta(lv).name + ') · guaraní paraguayo');
-  out.push('Fecha: ' + C.dateEs(day, true));
-  out.push('Resultado: ' + verdict + (teacher ? ' · verificado por docente' : ' · autoevaluado'));
-  out.push('');
-  out.push('NOTAS POR PARTE');
-  KEYS.forEach((k, n) => {
-    const p = parts[k];
-    const self = k === 'P4' || k === 'P5';
-    const line = !p ? 'sin entregar' : self ? (p.self || 0) + ' de ' + (p.selfOf || 0) + ' (' + pc(p.self || 0, p.selfOf) + ')' + (teacher ? '' : ', autoevaluada') : (p.right || 0) + ' de ' + (p.of || 0) + ' (' + pc(p.right || 0, p.of) + ')';
-    out.push((n + 1) + '. ' + LONG[k] + ': ' + line);
-  });
-  out.push('Grupo C (comprensión): ' + group(R && R.groupC) + ' · Grupo P (producción): ' + group(R && R.groupP));
-  out.push('Apto: 60 % en cada grupo y ninguna parte por debajo de 40 %.');
-  out.push('');
-  out.push('PARTE 4 · ' + LONG.P4.toUpperCase());
-  M.P4.forEach((t, k) => {
-    const mine = window.gnCourse.norm((st.text && st.text[k]) || '').trim();
-    const n = words(mine);
-    if (M.P4.length > 1) out.push('Tarea ' + (k + 1));
-    out.push('Consigna: ' + t.es);
-    out.push(mine ? 'Mi mensaje (' + (n === 1 ? '1 palabra' : n + ' palabras') + '):' : 'Mi mensaje: no escribí nada.');
-    if (mine) out.push(mine);
-  });
-  out.push('');
-  out.push('PARTE 5 · ' + LONG.P5.toUpperCase());
-  M.P5.forEach((t, k) => {
-    if (M.P5.length > 1) out.push('Tarea ' + (k + 1));
-    out.push('Consigna: ' + aloudOf(t.es));
-  });
-  out.push('La app todavía no graba la voz: para corregir esta parte, escuchame en persona o en una llamada.');
-  out.push('');
-  out.push('MI EVALUACIÓN CON LA GUÍA (0 nada · 1 poco · 2 bastante · 3 todo)');
-  ['P4', 'P5'].forEach((k) => {
-    const rr = (st.rate && st.rate[k]) || {};
-    const sc = scoreSelf(M.crit[k], rr);
-    out.push(LONG[k] + ': ' + sc.self + ' de ' + sc.selfOf);
-    M.crit[k].forEach((c) => { const v = rr[c.key]; out.push('- ' + c.es + ': ' + (typeof v === 'number' ? v + (SCALE[v] ? ' (' + SCALE[v] + ')' : '') : 'sin evaluar')); });
-  });
-  out.push('');
-  out.push('Es una constancia de la app, no un certificado oficial.');
-  return out.join('\n');
+const C = window.gnCourse;
+const lv = M.level;
+const parts = (R && R.parts) || st.parts || {};
+const teacher = !!(R && R.mode === 'teacher');
+const pc = (r, o) => (o > 0 ? Math.round((r / o) * 100) + ' %' : '—');
+const group = (g) => (typeof g === 'number' ? Math.round(g * 100) + ' %' : '—');
+const day = C.today(R && R.at ? R.at : C.now());
+const verdict = R && R.apto ? 'Apto' : R && R.comprension ? 'Todavía no Apto, con la Constancia de comprensión (grupo C aprobado)' : 'Todavía no Apto';
+const out = [];
+out.push('Examen de nivel ' + lv + ' (' + C.meta(lv).name + ") de guaraní paraguayo, en la app Epu'ã");
+out.push('Fecha: ' + C.dateEs(day, true));
+out.push('Resultado: ' + verdict + (teacher ? ' · verificado por docente' : ' · autoevaluado'));
+out.push('');
+out.push('NOTAS POR PARTE');
+KEYS.forEach((k, n) => {
+const p = parts[k];
+const self = k === 'P4' || k === 'P5';
+const line = !p ? 'sin entregar' : self ? (p.self || 0) + ' de ' + (p.selfOf || 0) + ' (' + pc(p.self || 0, p.selfOf) + ')' + (teacher ? '' : ', autoevaluada') : (p.right || 0) + ' de ' + (p.of || 0) + ' (' + pc(p.right || 0, p.of) + ')' + (k === 'P3' ? ', del guaraní al castellano' : '');
+out.push((n + 1) + '. ' + LONG[k] + ': ' + line);
+});
+out.push('Grupo C, comprensión (partes 1 a 3): ' + group(R && R.groupC));
+out.push('Grupo P, producción (partes 4 y 5): ' + group(R && R.groupP));
+out.push('Para el Apto: 60 % en cada grupo y ninguna parte por debajo de 40 %.');
+out.push('');
+out.push('PARTE 4 · ' + LONG.P4.toUpperCase());
+M.P4.forEach((t, k) => {
+const mine = C.norm((st.text && st.text[k]) || '').trim();
+const n = words(mine);
+if (M.P4.length > 1) out.push('Tarea ' + (k + 1));
+out.push('Consigna: ' + t.es);
+out.push(mine ? 'Lo que escribí (' + (n === 1 ? '1 palabra' : n + ' palabras') + '):' : 'Lo que escribí: nada.');
+if (mine) out.push(mine);
+});
+out.push('');
+out.push('PARTE 5 · ' + LONG.P5.toUpperCase());
+M.P5.forEach((t, k) => {
+if (M.P5.length > 1) out.push('Tarea ' + (k + 1));
+out.push('Consigna: ' + aloudOf(t.es));
+});
+out.push('La dije en voz alta: la app todavía no graba la voz. Para corregir esta parte, escuchame en persona o en una llamada.');
+out.push('');
+out.push('MI EVALUACIÓN CON LA GUÍA (0 nada · 1 poco · 2 bastante · 3 todo)');
+['P4', 'P5'].forEach((k) => {
+const rr = (st.rate && st.rate[k]) || {};
+out.push(LONG[k] + ':');
+M.crit[k].forEach((c) => { const v = rr[c.key]; out.push('- ' + c.es + ': ' + (typeof v === 'number' ? v + (SCALE[v] ? ' (' + SCALE[v] + ')' : '') : 'sin evaluar')); });
+});
+out.push('');
+out.push('Es una constancia de la app, no un certificado oficial.');
+return out.join('\n');
 }
 
 /* ---------- the exam, read from the content (every lookup guarded) ---------- */
@@ -1040,7 +1049,7 @@ C.withLevel('A1', () => C.sessions().forEach((s) => { if (s.kind === 'test') tes
 return { level: 'A1', started: true, plan: { start: C.addDays(T, -60), target: C.addDays(T, 4), pace: 'fit', minutes: 30 }, done, tests, exams: {}, mistakes: [], cur: null, placement: { comp: 'A2', prod: 'A1', start: 'A1' }, typed: [] };
 }
 
-const BASE = { view: 'briefing', live: false, i: 0, answers: {}, flags: {}, t: 0, used: {}, sheet: false, confirm: '', quit: false, paused: false, noStart: false, timeUp: '', bt: BREAK, checkP: 0, checking: false, checkMs: 2000, checkSound: true, sound: false, li: 0, ph: 0, pt: 0, m: 0, picks: {}, pickNote: false, w: 0, text: {}, stage4: 'write', k5: 0, stage5: 'record', rec: 'idle', recMs: 0, take: {}, playing: false, playMs: 0, sampleTab: 1, rate: { P4: {}, P5: {} }, done: [], parts: {}, result: null, nextKey: 'P3', started: '', until: '', tab: 0, open: null, exportOpen: false, exportDone: false, expired: false };
+const BASE = { view: 'briefing', live: false, i: 0, answers: {}, flags: {}, t: 0, used: {}, sheet: false, confirm: '', quit: false, paused: false, noStart: false, timeUp: '', bt: BREAK, checkP: 0, checking: false, checkMs: 2000, checkSound: true, sound: false, li: 0, ph: 0, pt: 0, m: 0, picks: {}, pickNote: false, w: 0, text: {}, stage4: 'write', k5: 0, stage5: 'record', rec: 'idle', recMs: 0, take: {}, playing: false, playMs: 0, sampleTab: 1, rate: { P4: {}, P5: {} }, done: [], parts: {}, result: null, nextKey: 'P3', started: '', until: '', tab: 0, open: null, exportOpen: false, exportDone: false, exportHow: '', expired: false };
 
 class Component extends DCLogic {
 constructor(props) {
@@ -1432,15 +1441,42 @@ if (had && !had.partial) { prev = Object.assign({}, had); delete prev.prev; dele
 else if (had && had.prev) prev = had.prev;
 this.props.save({ exam: { level: this.model().level, partial: true, apto: false, done: st.done, parts: st.parts, a: st.answers, picks: st.picks, text: normText(st.text), take: st.take, rate: st.rate, used: st.used, started: st.started, until: st.until, prev, at: window.gnCourse.now() } });
 }
+/* the teacher's package goes out as text (inside the prototype and the app): the phone's share menu when there is one,
+   else the clipboard ("Copiado"), else a box to copy it from by hand. Called from the tap itself, which is what lets a
+   browser open the share menu. A share the learner cancels is not an error: the sheet stays as it was */
+sendPackage(title, text) {
+if (this.sharing) return;
+const nav = window.navigator || {};
+const end = (how) => { this.sharing = false; if (!this.gone) this.setState({ exportHow: how }); };
+const copy = () => {
+const clip = nav.clipboard;
+let p = null;
+try { p = clip && clip.writeText ? clip.writeText(text) : null; } catch (e) { p = null; }
+if (!p) { end('manual'); return; }
+Promise.resolve(p).then(() => end('copied'), () => end('manual'));
+};
+let can = typeof nav.share === 'function';
+if (can && typeof nav.canShare === 'function') { try { can = nav.canShare({ title, text }) !== false; } catch (e) { can = false; } }
+if (!can) { copy(); return; }
+this.sharing = true;
+let p = null;
+try { p = nav.share({ title, text }); } catch (e) { p = Promise.reject(e); }
+Promise.resolve(p).then(() => end('shared'), (e) => {
+if (e && e.name === 'AbortError') { this.sharing = false; return; }
+copy();
+});
+}
 renderVals() {
 const C = window.gnCourse;
 const s = this.state;
 const M = this.model();
 const app = this.app();
 const lv = M.level;
-/* the canvas grants no microphone, so «Simular toma» stands for the recording there; inside the prototype and the app the
-   voice is not recorded yet (as in Hablar), so the oral part asks for the answer aloud and keeps no take, and the teacher's
-   package is really shared as text */
+/* the canvas grants no microphone, so «Simular toma» stands for the recording there (the designed moments keep that
+   wording). Inside the prototype and the app (props.go set) the voice is not recorded yet, as in Hablar: the oral part asks
+   for the answer aloud, then the samples and the guide; no recording clock, no take, no word of the canvas, and the answer
+   review claims no recording. Its timing ("Hasta 1:00") and its scoring (the six criteria) stay. The teacher's package is
+   really shared, as text */
 const inApp = !!this.props.go;
 const nav = (to) => (e) => { const go = this.props.go; if (go) { e.preventDefault(); go(to); } };
 const fmt = (sec) => { const x = Math.max(0, Math.round(sec)); return Math.floor(x / 60) + ':' + (x % 60 < 10 ? '0' : '') + (x % 60); };
@@ -1985,6 +2021,12 @@ ans.mineLabel = 'TU MENSAJE · ' + (words(all) === 1 ? '1 PALABRA' : words(all) 
 ans.mineText = all || 'No escribiste nada.';
 ans.hasText = !!all;
 ans.noText = !all;
+} else if (inApp) {
+/* nothing is recorded in the prototype and the app (a take kept by an older version is not shown either) */
+ans.mineLabel = 'TU RESPUESTA ORAL';
+ans.mineText = 'Tu voz no se grabó: la dijiste en voz alta y te evaluaste con la guía.';
+ans.hasText = false;
+ans.noText = true;
 } else {
 const tk = list5.map((t, j) => (s.take && s.take[j]) || 0);
 ans.mineLabel = 'TU TOMA';
@@ -1997,21 +2039,48 @@ ans.total = 'Tu nota: ' + sc.self + ' de ' + sc.selfOf + ' · ' + pct(sc.self, s
 }
 }
 
-/* ---------- the package for a teacher ---------- */
+/* ---------- the package for a teacher ----------
+   On the canvas alone, the designed moment: «Compartir con mi docente» shows «Paquete listo» and sends nothing. Inside the
+   prototype and the app the package is really shared, as text (sendPackage); the voice, never recorded, is not in it */
 const allText = list4.map((t, j) => C.norm(s.text[j] || '')).join(' ').trim();
 const takes = list5.map((t, j) => (s.take && s.take[j]) || 0).reduce((n, x) => n + x, 0);
+const wordsLine = words(allText) === 1 ? '1 palabra' : words(allText) + ' palabras';
+const critLine = (M.crit.P4.length + M.crit.P5.length) + ' criterios';
+const exportOn = v.result && s.exportOpen;
+const how = inApp ? s.exportHow : '';
 const exp = {
-done: s.exportDone,
-items: [
-{ es: 'Tu mensaje escrito', detail: words(allText) === 1 ? '1 palabra' : words(allText) + ' palabras' },
+sim: !inApp,
+app: inApp,
+done: !inApp && s.exportDone,
+shared: how === 'shared',
+copied: how === 'copied',
+manual: how === 'manual',
+/* the text to copy by hand, when neither the share menu nor the clipboard took it */
+text: exportOn && how === 'manual' ? packageOf(M, R, s) : '',
+/* a tap in the box marks the whole text, ready for «Copiar»; marked backward, so the box stays at the text's start */
+selectAll: (e) => {
+const el = e && e.target;
+if (!el || typeof el.setSelectionRange !== 'function') return;
+const all = () => { try { el.setSelectionRange(0, String(el.value || '').length, 'backward'); el.scrollTop = 0; } catch (x) {} };
+all();
+setTimeout(all, 0);
+},
+keep: () => {},
+items: (inApp ? [
+{ es: 'Tus notas por parte', detail: KEYS.length + ' partes' },
+{ es: 'Tu mensaje escrito', detail: wordsLine },
+{ es: 'Tu evaluación con la guía', detail: critLine },
+{ es: 'Tu voz', detail: 'todavía no se graba', icon: DASH, ink: '#5A6382' },
+] : [
+{ es: 'Tu mensaje escrito', detail: wordsLine },
 { es: 'Tu toma oral', detail: takes ? fmt(takes / 1000) : 'sin toma' },
-{ es: 'Tu evaluación con la guía', detail: (M.crit.P4.length + M.crit.P5.length) + ' criterios' },
-].map((x, k) => Object.assign(x, { rule: k === 0 ? 'none' : '2px solid #EEF0F6' })),
+{ es: 'Tu evaluación con la guía', detail: critLine },
+]).map((x, k) => Object.assign({ icon: TICK, ink: '#0B7A6B' }, x, { rule: k === 0 ? 'none' : '2px solid #EEF0F6' })),
 };
 
 /* ---------- the next part, at the break and between parts ---------- */
 const upKey = v.rest ? 'P2' : s.nextKey;
-const notes = { P2: 'Cada audio suena dos veces. Las opciones se pueden marcar mientras suena.', P3: 'Leés un aviso en guaraní y elegís qué le pasarías a alguien que no lo habla.', P4: 'Escribís un mensaje corto y después lo comparás con tres ejemplos.', P5: 'Te grabás hablando y después te evaluás con la misma guía.' };
+const notes = { P2: 'Cada audio suena dos veces. Las opciones se pueden marcar mientras suena.', P3: 'Leés un aviso en guaraní y elegís qué le pasarías a alguien que no lo habla.', P4: 'Escribís un mensaje corto y después lo comparás con tres ejemplos.', P5: inApp ? 'Lo decís en voz alta (tu voz todavía no se graba) y después te evaluás con la misma guía.' : 'Te grabás hablando y después te evaluás con la misma guía.' };
 const up = { n: P(upKey), es: LONG[upKey], how: howOf(upKey), big: bigOf(upKey), small: countOf(upKey), note: notes[upKey] || '' };
 const doneN = s.done.length;
 const betw = {
@@ -2181,10 +2250,15 @@ else if (this.state.confirm === 'P4') this.handInWriting(false);
 },
 res,
 toAnswers: () => { this.changedAt = Date.now(); this.setState({ view: 'answers', tab: 0, open: null }); },
-openExport: () => { this.changedAt = Date.now(); this.setState({ exportOpen: true, exportDone: false }); },
+openExport: () => { this.changedAt = Date.now(); this.sharing = false; this.setState({ exportOpen: true, exportDone: false, exportHow: '' }); },
 closeExport: () => { this.changedAt = Date.now(); this.setState({ exportOpen: false }); },
-shareNow: () => { if (settled()) this.setState({ exportDone: true }); },
-exportOpen: v.result && s.exportOpen,
+shareNow: () => {
+if (!settled()) return;
+if (!inApp) { this.setState({ exportDone: true }); return; }
+const st = this.state;
+this.sendPackage('Examen de nivel ' + lv + " de guaraní · Epu'ã", packageOf(M, st.result, st));
+},
+exportOpen: exportOn,
 exp,
 tabs,
 ans,

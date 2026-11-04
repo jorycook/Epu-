@@ -70,6 +70,9 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="margin-top: 18px; padding: 12px 14px; border-radius: 16px; background: #E8ECFB; font-size: 13px; font-weight: 500; color: #5A6382; line-height: 1.45">Te enseñamos el guaraní paraguayo que se habla hoy, con las palabras del castellano que todos usan, y te mostramos la forma académica al lado.</div>
 </div>
 <button onClick="{{ toStart }}" style="flex-shrink: 0; margin-top: 10px; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px"><span lang="gn">Upeigua</span> · Siguiente</button>
+<sc-if value="{{ mv.link }}" hint-placeholder-val="{{ false }}">
+<button aria-haspopup="dialog" onClick="{{ mv.openPaste }}" style="flex-shrink: 0; margin-top: 4px; height: 44px; border: 0; background: none; padding: 0; color: #2F4FD0; font-size: 14px; font-weight: 800">{{ mv.linkText }}</button>
+</sc-if>
 </div>
 </sc-if>
 
@@ -162,6 +165,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </div>
 </div>
 
+<sc-if value="{{ ready }}" hint-placeholder-val="{{ true }}">
 <div style="margin-top: 14px; padding: 12px 14px; border-radius: 16px; background: #E8ECFB; display: flex; flex-direction: column; gap: 8px">
 <div style="font-size: 15px; font-weight: 800">{{ planTitle }}</div>
 <sc-if value="{{ short }}" hint-placeholder-val="{{ false }}">
@@ -172,11 +176,16 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </div>
 </sc-if>
 <div style="font-size: 12px; font-weight: 500; line-height: 1.45">{{ planNote }}</div>
-<sc-if value="{{ notReady }}" hint-placeholder-val="{{ false }}">
-<div style="font-size: 12px; font-weight: 700; color: #5A6382; line-height: 1.45">{{ notReadyLine }}</div>
+</div>
 </sc-if>
 </div>
+
+<sc-if value="{{ notReady }}" hint-placeholder-val="{{ false }}">
+<div role="note" style="flex-shrink: 0; margin-top: 8px; padding: 6px 6px 6px 12px; border-radius: 14px; background: #FFF4D6; border: 2px solid #F2B43A; display: flex; align-items: center; gap: 10px">
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; line-height: 1.4"><div style="font-size: 13px; font-weight: 800">{{ planTitle }}</div><div style="font-size: 12px; font-weight: 700">{{ notReadyLine }}</div></div>
+<sc-if value="{{ hasFirstReady }}" hint-placeholder-val="{{ true }}"><button onClick="{{ pickFirstReady }}" style="flex-shrink: 0; height: 44px; padding: 0 12px; border-radius: 12px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; color: #1B2440; font-size: 13px; font-weight: 800; white-space: nowrap">{{ firstReadyLabel }}</button></sc-if>
 </div>
+</sc-if>
 
 <sc-if value="{{ blank }}" hint-placeholder-val="{{ true }}">
 <button onClick="{{ weave }}" style="flex-shrink: 0; margin-top: 10px; height: 54px; border-radius: 16px; background: #B02A63; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px">Tejé el primer hilo</button>
@@ -215,6 +224,24 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </div>
 </sc-if>
 <button onClick="{{ closeSheet }}" style="margin-top: 4px; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px"><span lang="gn">Oĩma</span> · Listo</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ mv.sheet }}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; left: 0; top: 0; width: 390px; height: 844px; z-index: 5; display: flex; flex-direction: column; background: rgba(27, 36, 64, 0.5); animation: gn-fade 160ms ease-out">
+<button aria-label="Cerrar" onClick="{{ mv.close }}" style="flex-grow: 1; border: 0; padding: 0; background: transparent"></button>
+<div role="dialog" aria-modal="true" aria-label="Pegar un progreso" style="padding: 18px 20px 34px; border-radius: 26px 26px 0 0; border-top: 2px solid #1B2440; background: #F4F5F9; display: flex; flex-direction: column; gap: 10px; animation: gn-up 240ms ease-out">
+<h2 style="margin: 0; font-size: 18px; font-weight: 800">Pegar un progreso</h2>
+<div style="font-size: 13px; font-weight: 500; color: #5A6382; line-height: 1.5">En la <span lang="gn">Epu'ã</span> donde empezaste, andá a Progreso y tocá «Copiar mi progreso». Después pegá acá el código.</div>
+<label for="gn-goal-code" style="font-size: 13px; font-weight: 800">El código de tu progreso</label>
+<textarea id="gn-goal-code" rows="3" value="{{ mv.text }}" onInput="{{ mv.type }}" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="EPUA1:…" style="flex-shrink: 0; height: 84px; box-sizing: border-box; padding: 10px 12px; border-radius: 14px; border: 2px solid #1B2440; background: #FFFFFF; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; font-size: 16px; font-weight: 500; line-height: 1.35; resize: none; overflow-wrap: anywhere"></textarea>
+<div style="padding: 10px 12px; border-radius: 14px; background: #FDEBE6; font-size: 13px; font-weight: 700; line-height: 1.45"><span style="font-weight: 800; color: #C7361E">Ojo:</span> reemplaza todo el progreso que hay ahora en este {{ mv.device }}.</div>
+<sc-if value="{{ mv.bad }}" hint-placeholder-val="{{ false }}">
+<div role="alert" style="font-size: 13px; font-weight: 800; color: #C7361E; line-height: 1.45">Ese código no sirve: no cambió nada. Copialo de nuevo, entero, y pegalo acá.</div>
+</sc-if>
+<button disabled="{{ mv.empty }}" onClick="{{ mv.use }}" style="margin-top: 2px; height: 54px; border-radius: 16px; font-weight: 800; font-size: 17px; border: {{ mv.ck.border }}; background: {{ mv.ck.bg }}; color: {{ mv.ck.color }}; box-shadow: {{ mv.ck.shadow }}">Usar este progreso</button>
+<button onClick="{{ mv.close }}" style="height: 44px; border: 0; background: none; color: #2F4FD0; font-size: 15px; font-weight: 800"><span lang="gn">Heja</span> · Cancelar</button>
 </div>
 </div>
 </sc-if>
@@ -286,6 +313,12 @@ const lvs = Object.keys(app.plans).filter((lv) => lv !== app.level && C.ORDER.in
 lvs.sort((a, b) => (app.plans[b].start > app.plans[a].start ? 1 : app.plans[b].start < app.plans[a].start ? -1 : C.ORDER.indexOf(a) - C.ORDER.indexOf(b)));
 return lvs[0] || null;
 }
+/* the installed app's way to move progress (gn-app.js; see Progress): on an iPhone the app on the Home Screen and Safari
+   keep theirs apart, so a learner who started in Safari pastes its code here. The canvas has no window.gnApp: no link */
+function appKit() {
+const kit = typeof window !== 'undefined' ? window.gnApp : null;
+return kit && typeof kit.exportProgress === 'function' && typeof kit.importProgress === 'function' ? kit : null;
+}
 function draft(v) {
 try {
 if (v !== undefined) window.__gnGoalDraft = v;
@@ -323,9 +356,14 @@ kind: ahead ? 'custom' : 'none',
 custom: ahead,
 minutes: (had && had.minutes) || 30,
 pace: (had && had.pace) || 'fit',
-/* a plan already made means the first thread was woven */
+/* a plan already made means the first thread was woven (wovenNow: woven on this visit, so changes are saved at once) */
 woven: !!had,
+wovenNow: false,
 sheet: false,
+/* the sheet to paste a progress code into, what was pasted, and whether it failed to read */
+move: false,
+paste: '',
+bad: false,
 };
 }
 componentDidUpdate(prev) {
@@ -334,9 +372,9 @@ const v = this.props.view;
 if (prev && v !== prev.view && STEPS.indexOf(v) >= 0) this.setState({ step: v, sheet: false });
 }
 /* the target date the sheet stands on, or null for "a mi ritmo" */
-target() {
+target(st) {
 const C = window.gnCourse;
-const s = this.state;
+const s = st || this.state;
 const T = C.today(C.now());
 if (s.kind === 'm3') return addMonths(T, 3);
 if (s.kind === 'm6') return addMonths(T, 6);
@@ -344,13 +382,33 @@ if (s.kind === 'custom') return s.custom && s.custom > T ? s.custom : null;
 return null;
 }
 /* steps 1 and 2 answered in this visit (a screen opened again starts empty and must not wipe what was saved) */
-answered() {
-const s = this.state;
+answered(st) {
+const s = st || this.state;
 return s.why.length > 0 || s.where.length > 0 || s.understand != null || s.speak != null;
 }
-profile() {
-const s = this.state;
+profile(st) {
+const s = st || this.state;
 return { why: s.why.slice(), work: s.work, where: s.where.slice(), understand: s.understand, speak: s.speak };
+}
+/* a step answered (the learner moves on, or back): its answers are saved as the profile, so a reopened app keeps them */
+keep() {
+if (this.props.save && this.answered()) this.props.save({ profile: this.profile() });
+}
+/* the plan as this screen stands on it, saved: when the thread is woven (the goal is set from then on, and the app
+   reopens on the week path), and again for any change made to it afterwards */
+plan(change) {
+const C = window.gnCourse;
+const s = Object.assign({}, this.state, change || {});
+const T = C.today(C.now());
+const patch = { level: s.level, plan: { start: T, target: this.target(s), pace: s.pace, minutes: s.minutes }, cur: null, started: true };
+if (this.answered(s)) patch.profile = this.profile(s);
+return patch;
+}
+/* a change to the plan's settings: once the thread is woven on this visit it is saved at once (a goal set earlier and
+   opened again changes only with «Empezar», so the way back to the path still leaves it as it was) */
+setPlan(change) {
+this.setState(change);
+if (this.state.wovenNow && this.props.save) this.props.save(this.plan(change));
 }
 renderVals() {
 const C = window.gnCourse;
@@ -412,7 +470,7 @@ on,
 off,
 aria: x.level + ', ' + x.name + (x.ready ? '' : ', en preparación'),
 subColor: on ? '#FFFFFF' : off ? '#9AA1B5' : '#5A6382',
-pick: () => { if (!off) this.setState({ level: x.level }); },
+pick: () => { if (!off) this.setPlan({ level: x.level }); },
 });
 });
 const lv = s.level;
@@ -435,7 +493,7 @@ const on = s.kind === t.id;
 const n = t.date ? C.daysBetween(T, t.date) : 0;
 return Object.assign({}, t, {
 on,
-pick: () => this.setState(t.id === 'custom' ? { kind: 'custom', custom: mine } : { kind: t.id }),
+pick: () => this.setPlan(t.id === 'custom' ? { kind: 'custom', custom: mine } : { kind: t.id }),
 border: on ? '2.5px solid #2F4FD0' : '2px solid #DDE1EC',
 bg: on ? '#E8ECFB' : '#FFFFFF',
 dot: on ? '#2F4FD0' : '#FFFFFF',
@@ -445,7 +503,7 @@ chip: leftText(n),
 });
 const paces = MINUTES.map((p) => {
 const on = s.minutes === p.min;
-return Object.assign({ big: p.min + ' min', small: p.small, on, pick: () => this.setState({ minutes: p.min }), subColor: on ? '#FFFFFF' : '#5A6382', subWeight: on ? 700 : 500 }, look(on));
+return Object.assign({ big: p.min + ' min', small: p.small, on, pick: () => this.setPlan({ minutes: p.min }), subColor: on ? '#FFFFFF' : '#5A6382', subWeight: on ? 700 : 500 }, look(on));
 });
 /* the plan is worked out for the level picked here, which may not be the one the learner is on yet */
 const units = C.withLevel(lv, () => C.units().length);
@@ -461,7 +519,7 @@ const most = Math.ceil(sessions / room);
 const fits = [
 { id: 'fit', label: 'Meter todo' },
 { id: 'steady', label: 'Una por día' },
-].map((f) => Object.assign({}, f, look(s.pace === f.id), { on: s.pace === f.id, pick: () => this.setState({ pace: f.id }) }));
+].map((f) => Object.assign({}, f, look(s.pace === f.id), { on: s.pace === f.id, pick: () => this.setPlan({ pace: f.id }) }));
 let planNote;
 const weeks = Math.max(1, Math.ceil(sessions / 7));
 if (!units) planNote = 'Las unidades de ' + lv + ' todavía no están cargadas.';
@@ -473,6 +531,31 @@ else if (s.pace === 'fit') planNote = most > 2
 else planNote = reach > 0
 ? 'Una sesión por día: para la fecha terminás ' + reach + ' de ' + units + ' unidades, y lo demás sigue después.'
 : 'Una sesión por día: para la fecha no llegás a terminar una unidad, y el plan sigue después.';
+
+/* a progress code from another copy of the app (Safari and the Home Screen app keep theirs apart): offered on step 1 while
+   nothing has been started here, in the app only, and not where the browser keeps nothing (its notice says so there) */
+const kit = appKit();
+const keeps = !!kit && !(typeof kit.refused === 'function' && kit.refused());
+const some = (x) => !!x && Object.keys(x).some((k) => x[k]);
+const begun = !!(app.plan || some(app.plans) || some(app.done) || some(app.tests) || some(app.exams) || app.placement || (app.mistakes || []).length || (app.typed || []).length);
+const pasted = s.paste || '';
+const mv = {
+link: keeps && s.step === 'why' && !begun,
+linkText: kit && kit.standalone ? '¿Ya empezaste en ' + (kit.browser || 'Safari') + '? Pegá tu progreso' : '¿Ya empezaste en otro lado? Pegá tu progreso',
+sheet: !!kit && s.move,
+device: (kit && kit.device) || 'teléfono',
+text: pasted,
+bad: !!s.bad,
+empty: !pasted.trim(),
+ck: pasted.trim()
+? { border: '2px solid #1B2440', bg: '#2F4FD0', color: '#FFFFFF', shadow: '0 4px 0 #1B2440' }
+: { border: '2px solid #C9D0E3', bg: '#DDE1EC', color: '#5A6382', shadow: 'none' },
+openPaste: () => this.setState({ move: true, paste: '', bad: false, sheet: false }),
+type: (e) => this.setState({ paste: e && e.target ? e.target.value : '', bad: false }),
+/* a code that reads is saved and the app opens again on it; one that does not changes nothing */
+use: () => { if (kit && pasted.trim() && !kit.importProgress(pasted)) this.setState({ bad: true }); },
+close: () => this.setState({ move: false, bad: false }),
+};
 
 /* the level's ñandutí, pinned on Kaguare's vest: only its frame before the goal; the ritual weaves the hub (the first thread) */
 const prog = app.progress && app.level === lv ? app.progress : null;
@@ -488,7 +571,7 @@ stepLabel: 'Paso ' + (si + 1) + ' de 3',
 backStep: si > 0,
 backMain: si === 0 && (hasPlan || !!back),
 noBack: si === 0 && !hasPlan && !back,
-back: () => this.setState({ step: STEPS[Math.max(0, si - 1)], sheet: false }),
+back: () => { this.keep(); this.setState({ step: STEPS[Math.max(0, si - 1)], sheet: false }); },
 toPath: (e) => {
 if (this.props.go) draft(null);
 if (!hasPlan && back && this.props.level) { e.preventDefault(); this.props.level(back); return; }
@@ -502,7 +585,7 @@ why,
 showWork: s.why.indexOf('trabajo') >= 0,
 work,
 where,
-toStart: () => this.setState({ step: 'start' }),
+toStart: () => { this.keep(); this.setState({ step: 'start' }); },
 
 understand: scale(UNDERSTAND, 'understand'),
 speak: scale(SPEAK, 'speak'),
@@ -516,8 +599,8 @@ nav('Placement')(e);
 /* with the card showing, the check is the suggested way on and both buttons step back to white */
 a1Bg: gap ? '#FFFFFF' : '#2F4FD0',
 a1Ink: gap ? '#1B2440' : '#FFFFFF',
-startA1: () => this.setState({ step: 'plan', level: 'A1' }),
-chooseLevel: () => this.setState({ step: 'plan' }),
+startA1: () => { this.keep(); this.setPlan({ step: 'plan', level: 'A1' }); },
+chooseLevel: () => { this.keep(); this.setState({ step: 'plan' }); },
 
 ro,
 mascotLabel: 'Kaguare, el oso melero, con el ñandutí del nivel ' + lv + (s.woven ? ': el primer hilo, tejido' : ': solo el marco, sin tejer'),
@@ -535,18 +618,29 @@ minDate: C.addDays(T, 1),
 customValue: mine,
 setDate: (e) => {
 const v = e && e.target ? e.target.value : '';
-if (/^\d{4}-\d\d-\d\d$/.test(v) && v > T) this.setState({ kind: 'custom', custom: v });
+if (/^\d{4}-\d\d-\d\d$/.test(v) && v > T) this.setPlan({ kind: 'custom', custom: v });
 },
 paces,
 planTitle: units ? units + ' unidades · ' + sessions + ' sesiones' : 'Plan en preparación',
 short: !!target && !fitsOneADay,
 fits,
 planNote,
+/* a level with no written day yet (the placement can start there): said above the button, with the way to the first
+   level that has lessons */
 notReady: !ready[lv],
-notReadyLine: 'Las lecciones de ' + lv + ' están en preparación.' + (firstReady && firstReady !== lv ? ' Mientras tanto, podés empezar en ' + firstReady + ' y cambiar de nivel cuando quieras.' : ''),
+ready: !!ready[lv],
+notReadyLine: 'Las lecciones de ' + lv + ' están en preparación.' + (firstReady && firstReady !== lv ? ' Mientras tanto, podés empezar en ' + firstReady + '.' : ''),
+hasFirstReady: !!firstReady && firstReady !== lv,
+firstReadyLabel: 'Elegir ' + (firstReady || 'A1'),
+pickFirstReady: () => { if (firstReady) this.setPlan({ level: firstReady }); },
 blank: !s.woven,
 woven: s.woven,
-weave: () => this.setState({ woven: true }),
+/* the ritual sets the goal: the plan is saved from here, and the app reopens on the week path */
+weave: () => {
+this.setState({ woven: true, wovenNow: true });
+if (this.props.save) this.props.save(this.plan());
+},
+mv,
 toMain: (e) => {
 if (this.props.go) draft(null);
 if (this.props.save) {

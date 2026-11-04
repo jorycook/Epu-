@@ -168,11 +168,14 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="font-size: 12px; font-weight: 500; color: #5A6382">{{ c.what }}</div>
 <div style="margin-top: 4px; font-size: 52px; font-weight: 800; line-height: 1.05">{{ c.code }}</div>
 <div style="font-size: 13px; font-weight: 700; color: #5A6382">{{ c.name }}</div>
-<sc-if value="{{ c.start }}" hint-placeholder-val="{{ false }}"><div style="margin-top: 8px; align-self: flex-start; padding: 4px 10px; border-radius: 10px; background: #E8ECFB; color: #2F4FD0; font-size: 12px; font-weight: 800">Tu plan empieza acá</div></sc-if>
+<sc-if value="{{ c.start }}" hint-placeholder-val="{{ false }}"><div style="margin-top: 8px; align-self: flex-start; padding: 4px 10px; border-radius: 10px; background: #E8ECFB; color: #2F4FD0; font-size: 12px; font-weight: 800">{{ c.chip }}</div></sc-if>
 </div>
 </sc-for>
 </div>
 <div style="margin-top: 14px; padding: 12px 14px; border-radius: 16px; background: #E8ECFB; font-size: 13px; font-weight: 500; line-height: 1.45">{{ resultNote }}</div>
+<sc-if value="{{ early.on }}" hint-placeholder-val="{{ false }}">
+<div role="note" style="margin-top: 10px; padding: 10px 14px; border-radius: 16px; background: #FFF4D6; border: 2px solid #F2B43A; font-size: 13px; font-weight: 700; line-height: 1.45">{{ early.note }}</div>
+</sc-if>
 <sc-if value="{{ hasSelf }}" hint-placeholder-val="{{ true }}">
 <div style="margin-top: 10px; font-size: 12px; font-weight: 700; color: #5A6382; line-height: 1.45">{{ selfLine }}</div>
 </sc-if>
@@ -181,8 +184,15 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </sc-if>
 </div>
 <div style="flex-shrink: 0; margin-top: 8px; display: flex; flex-direction: column; gap: 10px">
+<sc-if value="{{ early.off }}" hint-placeholder-val="{{ true }}">
 <a href="GoalPlan.dc.html" onClick="{{ startAt }}" style="height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center">{{ startLabel }}</a>
 <a href="GoalPlan.dc.html" onClick="{{ otherLevel }}" style="height: 50px; border-radius: 16px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; color: #1B2440; font-weight: 800; font-size: 16px; display: flex; align-items: center; justify-content: center">Elegir otro nivel</a>
+</sc-if>
+<sc-if value="{{ early.on }}" hint-placeholder-val="{{ false }}">
+<a href="GoalPlan.dc.html" onClick="{{ early.startFirst }}" style="height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center">{{ early.firstLabel }}</a>
+<a href="GoalPlan.dc.html" onClick="{{ startAt }}" style="height: 54px; box-sizing: border-box; border-radius: 16px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; color: #1B2440; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px"><span style="font-size: 16px; font-weight: 800">{{ startLabel }}</span><span style="font-size: 11px; font-weight: 700; color: #5A6382">{{ early.placedSub }}</span></a>
+<a href="GoalPlan.dc.html" onClick="{{ otherLevel }}" style="height: 44px; color: #2F4FD0; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center">Elegir otro nivel</a>
+</sc-if>
 <div style="text-align: center; font-size: 12px; font-weight: 500; color: #5A6382">Es una guía: podés cambiar de nivel cuando quieras.</div>
 </div>
 </div>
@@ -541,21 +551,41 @@ const placed = C.placed(r.comp, r.prod);
 const ci = C.ORDER.indexOf(placed.comp);
 const pi = C.ORDER.indexOf(placed.prod);
 const startOn = pi <= ci ? 'prod' : 'comp';
+/* a placed level whose days are not written yet has no lessons to start: the first level that has some is offered first */
+const LVS = C.levels();
+const placedInfo = LVS.filter((x) => x.level === placed.start)[0] || null;
+const firstWritten = (LVS.filter((x) => x.ready && x.written > 0)[0] || {}).level || null;
+const unwritten = !!placedInfo && !placedInfo.ready && !!firstWritten && firstWritten !== placed.start;
 const card = (key, kicker, what, code) => ({
 kicker,
 what,
 code,
 name: C.meta(code).name,
-start: startOn === key,
+chip: 'Tu plan empieza acá',
+/* the plan starts on this card's level only when that level has lessons (else the note below says where it starts) */
+start: startOn === key && !unwritten,
 border: startOn === key ? '2px solid #1B2440' : '2px solid #DDE1EC',
 shadow: startOn === key ? '0 4px 0 #1B2440' : 'none',
 });
-let resultNote = 'Empezás en ' + placed.start + ': entendés y hablás al mismo nivel.';
-if (ci > pi) resultNote = 'Empezás en ' + placed.start + ': tu plan sigue tu nivel de producción. En cada unidad podés rendir primero la prueba de la semana: con 80 % o más, sus ejercicios de comprensión cuentan como hechos.';
-else if (ci < pi) resultNote = 'Empezás en ' + placed.start + ': tu plan sigue tu nivel de comprensión, el más bajo de los dos.';
+const opening = unwritten ? 'Tu punto de partida es ' + placed.start : 'Empezás en ' + placed.start;
+let resultNote = opening + ': entendés y hablás al mismo nivel.';
+if (ci > pi) resultNote = opening + ': tu plan sigue tu nivel de producción. En cada unidad podés rendir primero la prueba de la semana: con 80 % o más, sus ejercicios de comprensión cuentan como hechos.';
+else if (ci < pi) resultNote = opening + ': tu plan sigue tu nivel de comprensión, el más bajo de los dos.';
 /* nothing measured and nothing said: no claim about the levels */
 if (r.compSkipped && !r.self) resultNote = 'Empezás en ' + placed.start + ': saltaste la autoevaluación y la comprensión, así que tu plan empieza por el principio.';
 const skipped = [];
+/* to Goal's step 3 with a level picked (on the canvas the link moves Play to the plan moment) */
+const startIn = (lv) => (e) => {
+const go = this.props.go;
+if (!go) return;
+e.preventDefault();
+goalStep('plan', go);
+if (this.props.level) this.props.level(lv);
+else {
+if (this.props.save) this.props.save({ level: lv });
+go('Goal');
+}
+};
 if (r.compSkipped && r.self) skipped.push('Saltaste la comprensión: se toma tu autoevaluación.');
 if (r.prodSkipped && !(r.compSkipped && !r.self)) skipped.push('Saltaste la parte oral: tu producción se calcula un nivel por debajo de tu comprensión.');
 
@@ -627,16 +657,15 @@ hasSkip: skipped.length > 0,
 skipLine: skipped.join(' '),
 startLabel: 'Empezar en ' + placed.start,
 /* switching level keeps each level's plan: with no plan there yet, the app opens the goal at step 3 with this level */
-startAt: (e) => {
-const go = this.props.go;
-if (!go) return;
-e.preventDefault();
-goalStep('plan', go);
-if (this.props.level) this.props.level(placed.start);
-else {
-if (this.props.save) this.props.save({ level: placed.start });
-go('Goal');
-}
+startAt: startIn(placed.start),
+/* the placed level still being written: said here, and the first level with written days is the main way on */
+early: {
+on: unwritten,
+off: !unwritten,
+note: unwritten ? 'Las lecciones de ' + placed.start + ' están en preparación. Mientras tanto, empezá en ' + firstWritten + ', que ya tiene lecciones.' : '',
+firstLabel: 'Empezar en ' + (firstWritten || 'A1'),
+startFirst: startIn(firstWritten || placed.start),
+placedSub: 'Sus lecciones están en preparación',
 },
 otherLevel: (e) => {
 if (this.props.go) goalStep('plan', this.props.go);

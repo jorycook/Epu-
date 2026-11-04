@@ -21,51 +21,54 @@ body{margin:0}
 button{font:inherit;color:inherit;cursor:pointer}
 a{color:#2F4FD0;text-decoration:none}a:hover{color:#1B2440}
 rt{font-size:9px;font-weight:500;color:#5A6382}
+@keyframes gn-up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes gn-fade{from{opacity:0}to{opacity:1}}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 </style>
 </helmet>
-<div style="width: 390px; height: 844px; box-sizing: border-box; padding-top: 50px; background: #F4F5F9; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; display: flex; flex-direction: column; overflow: hidden">
+<div style="width: 390px; height: 844px; box-sizing: border-box; padding-top: 50px; background: #F4F5F9; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; display: flex; flex-direction: column; overflow: hidden; position: relative">
 
 <div style="display: flex; align-items: center; gap: 8px; padding: 0 16px; height: 44px; flex-shrink: 0">
 <h1 style="margin: 0; flex-grow: 1; min-width: 0; font-size: 22px; font-weight: 800; white-space: nowrap">¿Cómo voy? <span style="font-size: 14px; font-weight: 700; color: #5A6382">{{ heading }}</span></h1>
 </div>
 
-<div style="flex-grow: 1; min-height: 0; overflow-y: auto; padding: 8px 16px 10px; display: flex; flex-direction: column; gap: 8px">
+<div style="flex-grow: 1; min-height: 0; overflow-y: auto; padding: 6px 16px 8px; display: flex; flex-direction: column; gap: 6px">
 
-<div style="flex-shrink: 0; padding: 12px 14px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; display: flex; align-items: center; gap: 14px">
-<svg viewBox="-24 -24 48 48" width="104" height="104" role="img" aria-label="{{ ro.label }}" style="flex-shrink: 0"><circle r="19.5" fill="none" stroke="#C9D0E3" stroke-width="1" stroke-dasharray="1.6 2.2" opacity="{{ ro.frameOpacity }}"/><path d="{{ ro.rimD }}" fill="#FCE4EE" stroke="#C2336F" stroke-width="1.4" stroke-linejoin="round" opacity="{{ ro.rimOpacity }}"/><path d="{{ ro.off }}" fill="#FFFFFF" stroke="#DDE1EC" stroke-width="0.9"/><path d="{{ ro.on }}" fill="#F8D3E2" stroke="#C2336F" stroke-width="1.1"/><path d="{{ ro.spokes }}" stroke="#C2336F" stroke-width="0.8" stroke-linecap="round"/><circle r="4" fill="{{ ro.hubFill }}" stroke="#C2336F" stroke-width="1.2"/></svg>
-<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<div style="flex-shrink: 0; padding: 10px 14px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; display: flex; align-items: center; gap: 14px">
+<svg viewBox="-24 -24 48 48" width="96" height="96" role="img" aria-label="{{ ro.label }}" style="flex-shrink: 0"><circle r="19.5" fill="none" stroke="#C9D0E3" stroke-width="1" stroke-dasharray="1.6 2.2" opacity="{{ ro.frameOpacity }}"/><path d="{{ ro.rimD }}" fill="#FCE4EE" stroke="#C2336F" stroke-width="1.4" stroke-linejoin="round" opacity="{{ ro.rimOpacity }}"/><path d="{{ ro.off }}" fill="#FFFFFF" stroke="#DDE1EC" stroke-width="0.9"/><path d="{{ ro.on }}" fill="#F8D3E2" stroke="#C2336F" stroke-width="1.1"/><path d="{{ ro.spokes }}" stroke="#C2336F" stroke-width="0.8" stroke-linecap="round"/><circle r="4" fill="{{ ro.hubFill }}" stroke="#C2336F" stroke-width="1.2"/></svg>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px">
 <div style="font-size: 12px; font-weight: 700; color: #5A6382">{{ kicker }}</div>
 <div style="font-size: 20px; font-weight: 800; line-height: 1.2">{{ big }}</div>
 <div style="font-size: 13px; font-weight: 700; color: #5A6382">{{ sub }}</div>
-<div style="display: flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; margin-top: 2px">
+<div style="display: flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; margin-top: 1px">
 <div style="padding: 3px 10px; border-radius: 10px; font-size: 12px; font-weight: 800; white-space: nowrap; background: {{ pace.bg }}; color: {{ pace.ink }}">{{ pace.text }}</div>
 <sc-if value="{{ hasLeft }}" hint-placeholder-val="{{ true }}"><div style="font-size: 12px; font-weight: 700; color: #5A6382; white-space: nowrap">{{ left }}</div></sc-if>
 </div>
 </div>
 </div>
 
-<div style="flex-shrink: 0; padding: 12px 16px 14px; border-radius: 20px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 8px">
+<div style="flex-shrink: 0; padding: 10px 16px 10px; border-radius: 20px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 8px">
 <div style="display: flex; align-items: center; gap: 8px">
 <h2 style="margin: 0; flex-grow: 1; font-size: 14px; font-weight: 800">Por área</h2>
 <div aria-hidden="true" style="width: 2px; height: 14px; background: #1B2440"></div>
 <div style="font-size: 11px; font-weight: 700; color: #5A6382; white-space: nowrap">la línea: 60 %, como el examen</div>
 </div>
 <sc-if value="{{ hasAreas }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 8px">
 <sc-for list="{{ areas }}" as="a" hint-placeholder-count="4">
-<div role="img" aria-label="{{ a.aria }}" style="display: flex; flex-direction: column; gap: 5px">
-<div style="display: flex; align-items: center; gap: 6px; min-height: 20px">
-<div style="font-size: 13px; font-weight: 700">{{ a.name }}</div>
-<sc-if value="{{ a.weak }}" hint-placeholder-val="{{ false }}"><div style="display: flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 8px; background: #FDEBE6; color: #C7361E; font-size: 11px; font-weight: 800; white-space: nowrap"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#C7361E" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>Bajo la línea</div></sc-if>
-<div style="flex-grow: 1"></div>
-<div style="font-size: 16px; font-weight: 800">{{ a.right }}</div><div style="font-size: 11px; font-weight: 700; color: #5A6382">/{{ a.of }}</div>
-</div>
-<div style="position: relative; height: 12px">
+<div role="img" aria-label="{{ a.aria }}" style="display: flex; align-items: center; gap: 8px; min-height: 22px">
+<div style="width: 86px; flex-shrink: 0; font-size: 13px; font-weight: 700; line-height: 1.2">{{ a.name }}</div>
+<div style="flex-grow: 1; min-width: 0; position: relative; height: 12px">
 <div style="height: 12px; border-radius: 6px; overflow: hidden; background: {{ a.track }}"><div style="height: 12px; border-radius: 0 4px 4px 0; width: {{ a.w }}; background: {{ a.fill }}"></div></div>
 <div style="position: absolute; left: 60%; top: -3px; width: 2px; height: 18px; background: #1B2440"></div>
 </div>
+<div style="width: 58px; flex-shrink: 0; display: flex; align-items: baseline; justify-content: flex-end">
+<sc-if value="{{ a.weak }}" hint-placeholder-val="{{ false }}"><div style="display: flex; align-items: center; gap: 3px; padding: 2px 6px; border-radius: 8px; background: #FDEBE6; color: #C7361E; font-size: 12px; font-weight: 800; line-height: 16px; white-space: nowrap"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#C7361E" stroke-width="4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>{{ a.score }}</div></sc-if>
+<sc-if value="{{ a.fine }}" hint-placeholder-val="{{ true }}"><div style="font-size: 16px; font-weight: 800; line-height: 20px">{{ a.right }}</div><div style="font-size: 11px; font-weight: 700; color: #5A6382">/{{ a.of }}</div></sc-if>
+</div>
 </div>
 </sc-for>
+</div>
 </sc-if>
 <sc-if value="{{ noAreas }}" hint-placeholder-val="{{ false }}">
 <div style="display: flex; align-items: center; gap: 12px">
@@ -73,9 +76,10 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="font-size: 13px; font-weight: 500; color: #5A6382; line-height: 1.45">Después de tu primera prueba de la semana vas a ver acá cómo te va en cada área.</div>
 </div>
 </sc-if>
+<div style="font-size: 11px; font-weight: 500; color: #5A6382; line-height: 1.4">Es una guía, calculada con tus pruebas de la semana.</div>
 </div>
 
-<div style="flex-shrink: 0; padding: 12px 14px; border-radius: 18px; background: #FFFFFF; border: 2px solid #1B2440; display: flex; align-items: center; gap: 12px">
+<div style="flex-shrink: 0; padding: 10px 14px; border-radius: 18px; background: #FFFFFF; border: 2px solid #1B2440; display: flex; align-items: center; gap: 12px">
 <div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
 <div style="font-size: 11px; font-weight: 800; color: {{ step.kickerInk }}">PRÓXIMO PASO</div>
 <div style="font-size: 14px; font-weight: 800; line-height: 1.35">{{ step.title }}</div>
@@ -86,17 +90,15 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </sc-if>
 </div>
 
-<div style="flex-shrink: 0; padding: 10px 14px 14px; border-radius: 18px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 8px">
-<h2 id="mas-practica" style="margin: 0; font-size: 14px; font-weight: 800">Más práctica <span style="font-size: 12px; font-weight: 700; color: #5A6382">cuando quieras, aparte del plan</span></h2>
-<div role="group" aria-labelledby="mas-practica" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
-<a href="Leer.dc.html" onClick="{{ toLeer }}" aria-label="Leer" style="height: 52px; box-sizing: border-box; padding: 0 6px 0 8px; border-radius: 14px; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; background: #FFFFFF; color: #1B2440; display: flex; align-items: center; gap: 6px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M19 19v2H6"/></svg><span style="min-width: 0; display: flex; flex-direction: column; line-height: 1.2"><span lang="gn" style="font-size: 13px; font-weight: 800">Emoñe'ẽ</span><span style="font-size: 11px; font-weight: 700; color: #5A6382">Leer</span></span></a>
-<a href="Escribir.dc.html" onClick="{{ toEscribir }}" aria-label="Escribir" style="height: 52px; box-sizing: border-box; padding: 0 6px 0 8px; border-radius: 14px; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; background: #FFFFFF; color: #1B2440; display: flex; align-items: center; gap: 6px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></svg><span style="min-width: 0; display: flex; flex-direction: column; line-height: 1.2"><span lang="gn" style="font-size: 13px; font-weight: 800">Ehai</span><span style="font-size: 11px; font-weight: 700; color: #5A6382">Escribir</span></span></a>
-<a href="Hablar.dc.html" onClick="{{ toHablar }}" aria-label="Hablá" style="height: 52px; box-sizing: border-box; padding: 0 6px 0 8px; border-radius: 14px; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; background: #FFFFFF; color: #1B2440; display: flex; align-items: center; gap: 6px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span style="min-width: 0; display: flex; flex-direction: column; line-height: 1.2"><span lang="gn" style="font-size: 13px; font-weight: 800">Eñe'ẽ</span><span style="font-size: 11px; font-weight: 700; color: #5A6382">Hablá</span></span></a>
-</div>
+<div role="group" aria-labelledby="mas-practica" style="flex-shrink: 0; display: flex; align-items: center; gap: 6px">
+<div id="mas-practica" style="width: 60px; flex-shrink: 0; font-size: 13px; font-weight: 800; line-height: 1.2">Más práctica</div>
+<a href="Leer.dc.html" onClick="{{ toLeer }}" aria-label="Leer" style="flex: 1 1 0; min-width: 0; height: 44px; box-sizing: border-box; padding: 0 4px 0 7px; border-radius: 12px; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; background: #FFFFFF; color: #1B2440; display: flex; align-items: center; gap: 5px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M19 19v2H6"/></svg><span style="min-width: 0; display: flex; flex-direction: column; line-height: 1.15"><span lang="gn" style="font-size: 13px; font-weight: 800">Emoñe'ẽ</span><span style="font-size: 11px; font-weight: 700; color: #5A6382">Leer</span></span></a>
+<a href="Escribir.dc.html" onClick="{{ toEscribir }}" aria-label="Escribir" style="flex: 1 1 0; min-width: 0; height: 44px; box-sizing: border-box; padding: 0 4px 0 7px; border-radius: 12px; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; background: #FFFFFF; color: #1B2440; display: flex; align-items: center; gap: 5px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></svg><span style="min-width: 0; display: flex; flex-direction: column; line-height: 1.15"><span lang="gn" style="font-size: 13px; font-weight: 800">Ehai</span><span style="font-size: 11px; font-weight: 700; color: #5A6382">Escribir</span></span></a>
+<a href="Hablar.dc.html" onClick="{{ toHablar }}" aria-label="Hablá" style="flex: 1 1 0; min-width: 0; height: 44px; box-sizing: border-box; padding: 0 4px 0 7px; border-radius: 12px; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; background: #FFFFFF; color: #1B2440; display: flex; align-items: center; gap: 5px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span style="min-width: 0; display: flex; flex-direction: column; line-height: 1.15"><span lang="gn" style="font-size: 13px; font-weight: 800">Eñe'ẽ</span><span style="font-size: 11px; font-weight: 700; color: #5A6382">Hablá</span></span></a>
 </div>
 
-<div style="flex-shrink: 0; padding: 12px 14px 14px; border-radius: 18px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 8px">
-<div style="display: flex; flex-direction: column; gap: 2px">
+<div style="flex-shrink: 0; padding: 10px 14px 12px; border-radius: 18px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; flex-direction: column; gap: 1px">
 <h2 id="lo-use" style="margin: 0; font-size: 14px; font-weight: 800">Esta semana usé el guaraní con alguien</h2>
 <div style="font-size: 12px; font-weight: 500; color: #5A6382">Lo marcás vos y nadie lo revisa.</div>
 </div>
@@ -107,7 +109,13 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </div>
 </div>
 
-<div style="flex-shrink: 0; font-size: 11px; font-weight: 500; color: #5A6382; line-height: 1.5">Es una guía, calculada con tus pruebas de la semana.</div>
+<sc-if value="{{ mv.on }}" hint-placeholder-val="{{ false }}">
+<div role="group" aria-labelledby="tu-progreso" style="flex-shrink: 0; display: flex; align-items: center; gap: 8px">
+<div id="tu-progreso" style="flex-grow: 1; min-width: 0; font-size: 13px; font-weight: 800; line-height: 1.2">Tu progreso</div>
+<button onClick="{{ mv.copy }}" style="flex-shrink: 0; height: 44px; padding: 0 10px; border-radius: 12px; border: 2px solid #DDE1EC; background: #FFFFFF; color: #1B2440; font-size: 12px; font-weight: 800; white-space: nowrap">Copiar mi progreso</button>
+<button aria-haspopup="dialog" onClick="{{ mv.openPaste }}" style="flex-shrink: 0; height: 44px; padding: 0 10px; border-radius: 12px; border: 2px solid #DDE1EC; background: #FFFFFF; color: #1B2440; font-size: 12px; font-weight: 800; white-space: nowrap">Pegar un progreso</button>
+</div>
+</sc-if>
 
 </div>
 
@@ -117,6 +125,37 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <a href="ExamTab.dc.html" onClick="{{ toExamTab }}" style="height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #5A6382; font-size: 11px; font-weight: 700"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>Examen</a>
 <a href="Progress.dc.html" onClick="{{ toProgress }}" aria-current="page" style="height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #2F4FD0; font-size: 11px; font-weight: 800"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>Progreso</a>
 </nav>
+
+<sc-if value="{{ mv.sheet }}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; left: 0; top: 0; width: 390px; height: 844px; z-index: 5; display: flex; flex-direction: column; background: rgba(27, 36, 64, 0.5); animation: gn-fade 160ms ease-out">
+<button aria-label="Cerrar" onClick="{{ mv.close }}" style="flex-grow: 1; border: 0; padding: 0; background: transparent"></button>
+<div role="dialog" aria-modal="true" aria-label="{{ mv.title }}" style="padding: 18px 20px 34px; border-radius: 26px 26px 0 0; border-top: 2px solid #1B2440; background: #F4F5F9; display: flex; flex-direction: column; gap: 10px; animation: gn-up 240ms ease-out">
+<h2 style="margin: 0; font-size: 18px; font-weight: 800">{{ mv.title }}</h2>
+<sc-if value="{{ mv.copied }}" hint-placeholder-val="{{ false }}">
+<div role="status" style="padding: 10px 12px; border-radius: 14px; background: #E0F3EF; font-size: 13px; font-weight: 700; line-height: 1.45"><span style="font-weight: 800; color: #0B7A6B">Listo, ya está copiado.</span> Es un código de texto con todo lo que hiciste en este {{ mv.device }}.</div>
+</sc-if>
+<sc-if value="{{ mv.manual }}" hint-placeholder-val="{{ false }}">
+<div style="font-size: 13px; font-weight: 500; color: #5A6382; line-height: 1.5">No se pudo copiar solo. Mantené apretado el código, elegí «Seleccionar todo» y después «Copiar».</div>
+<textarea aria-label="El código de tu progreso" readonly="readonly" rows="4" value="{{ mv.code }}" onFocus="{{ mv.selectAll }}" style="flex-shrink: 0; height: 96px; box-sizing: border-box; padding: 10px 12px; border-radius: 14px; border: 2px solid #1B2440; background: #FFFFFF; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; font-size: 16px; font-weight: 500; line-height: 1.35; resize: none; overflow-wrap: anywhere"></textarea>
+</sc-if>
+<sc-if value="{{ mv.out }}" hint-placeholder-val="{{ false }}">
+<div style="font-size: 13px; font-weight: 500; line-height: 1.5">Pegalo en la otra <span lang="gn">Epu'ã</span>, la del ícono o la del navegador: en su primera pantalla, con «Pegá tu progreso», o en Progreso, con «Pegar un progreso».</div>
+<button onClick="{{ mv.close }}" style="margin-top: 4px; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px"><span lang="gn">Oĩma</span> · Listo</button>
+</sc-if>
+<sc-if value="{{ mv.paste }}" hint-placeholder-val="{{ false }}">
+<div style="font-size: 13px; font-weight: 500; color: #5A6382; line-height: 1.5">Pegá el código que copiaste en la otra <span lang="gn">Epu'ã</span> con «Copiar mi progreso».</div>
+<label for="gn-progress-code" style="font-size: 13px; font-weight: 800">El código de tu progreso</label>
+<textarea id="gn-progress-code" rows="3" value="{{ mv.text }}" onInput="{{ mv.type }}" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="EPUA1:…" style="flex-shrink: 0; height: 84px; box-sizing: border-box; padding: 10px 12px; border-radius: 14px; border: 2px solid #1B2440; background: #FFFFFF; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; font-size: 16px; font-weight: 500; line-height: 1.35; resize: none; overflow-wrap: anywhere"></textarea>
+<div style="padding: 10px 12px; border-radius: 14px; background: #FDEBE6; font-size: 13px; font-weight: 700; line-height: 1.45"><span style="font-weight: 800; color: #C7361E">Ojo:</span> reemplaza todo el progreso que hay ahora en este {{ mv.device }}.</div>
+<sc-if value="{{ mv.bad }}" hint-placeholder-val="{{ false }}">
+<div role="alert" style="font-size: 13px; font-weight: 800; color: #C7361E; line-height: 1.45">Ese código no sirve: no cambió nada. Copialo de nuevo, entero, y pegalo acá.</div>
+</sc-if>
+<button disabled="{{ mv.empty }}" onClick="{{ mv.use }}" style="margin-top: 2px; height: 54px; border-radius: 16px; font-weight: 800; font-size: 17px; border: {{ mv.ck.border }}; background: {{ mv.ck.bg }}; color: {{ mv.ck.color }}; box-shadow: {{ mv.ck.shadow }}">Usar este progreso</button>
+<button onClick="{{ mv.close }}" style="height: 44px; border: 0; background: none; color: #2F4FD0; font-size: 15px; font-weight: 800"><span lang="gn">Heja</span> · Cancelar</button>
+</sc-if>
+</div>
+</div>
+</sc-if>
 
 </div>
 </x-dc>
@@ -136,10 +175,18 @@ sound: { to: 'Words', href: 'Words.dc.html', sub: 'Repasá el sonido y la letra.
 const PACE = { good: ['#E0F3EF', '#0B7A6B'], late: ['#FDEBE6', '#C7361E'], wait: ['#E8ECFB', '#2F4FD0'] };
 /* where people use Guarani outside the app: self-reported, never checked */
 const USES = [['familia', 'familia'], ['trabajo', 'trabajo'], ['calle', 'calle'], ['whatsapp', 'WhatsApp']];
+/* the installed app's way to move progress (gn-app.js): on an iPhone the app on the Home Screen and Safari keep theirs
+   apart. The canvas has no window.gnApp, so there the row is not drawn */
+function appKit() {
+const kit = typeof window !== 'undefined' ? window.gnApp : null;
+return kit && typeof kit.exportProgress === 'function' && typeof kit.importProgress === 'function' ? kit : null;
+}
 class Component extends DCLogic {
 constructor(props) {
 super(props);
-this.state = { used: null };
+/* move: the progress sheet open ('copied', 'manual': the code to copy by hand, 'paste'), code: the code given,
+   paste: what was pasted, bad: the pasted code did not read */
+this.state = { used: null, move: '', code: '', paste: '', bad: false };
 }
 renderVals() {
 const C = window.gnCourse;
@@ -189,7 +236,7 @@ const weak = share < LINE;
 const need = Math.max(0, Math.ceil(LINE * x.of - 1e-9) - right);
 const name = C.area(k).es;
 return {
-key: k, name, right, of: x.of, share, need, weak,
+key: k, name, right, of: x.of, score: right + '/' + x.of, share, need, weak, fine: !weak,
 w: Math.max(0, Math.min(100, share * 100)).toFixed(1) + '%',
 track: weak ? '#F8D6CC' : '#D9E0F8',
 fill: weak ? '#C7361E' : '#2F4FD0',
@@ -233,6 +280,45 @@ if (this.props.save) this.props.save({ exposure: { week, with: nextUsed } });
 },
 };
 });
+/* Tu progreso: the code of this copy's progress to the clipboard (or shown to copy by hand), and a pasted one taken in */
+const kit = appKit();
+const ms = this.state.move;
+const pasted = this.state.paste || '';
+const mv = {
+on: !!kit,
+sheet: !!kit && !!ms,
+copied: ms === 'copied',
+manual: ms === 'manual',
+out: ms === 'copied' || ms === 'manual',
+paste: ms === 'paste',
+title: ms === 'paste' ? 'Pegar un progreso' : ms === 'manual' ? 'Copiá tu progreso' : 'Tu progreso',
+device: (kit && kit.device) || 'teléfono',
+code: this.state.code,
+text: pasted,
+bad: !!this.state.bad,
+empty: !pasted.trim(),
+ck: pasted.trim()
+? { border: '2px solid #1B2440', bg: '#2F4FD0', color: '#FFFFFF', shadow: '0 4px 0 #1B2440' }
+: { border: '2px solid #C9D0E3', bg: '#DDE1EC', color: '#5A6382', shadow: 'none' },
+copy: () => {
+if (!kit) return;
+const code = kit.exportProgress();
+const manual = () => this.setState({ move: 'manual', code });
+try {
+const p = navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(code) : null;
+if (p && p.then) p.then(() => this.setState({ move: 'copied', code }), manual);
+else manual();
+} catch (e) {
+manual();
+}
+},
+selectAll: (e) => { try { e.target.select(); e.target.setSelectionRange(0, e.target.value.length); } catch (x) { /* a long press still selects it */ } },
+openPaste: () => this.setState({ move: 'paste', paste: '', bad: false }),
+type: (e) => this.setState({ paste: e && e.target ? e.target.value : '', bad: false }),
+/* a code that reads is saved and the app opens again on it; one that does not changes nothing */
+use: () => { if (kit && pasted.trim() && !kit.importProgress(pasted)) this.setState({ bad: true }); },
+close: () => this.setState({ move: '', bad: false }),
+};
 return {
 heading: 'Progreso · ' + lv,
 ro,
@@ -248,6 +334,7 @@ noAreas: areas.length === 0,
 areas,
 step,
 uses,
+mv,
 toMain: nav('Main'),
 toNotebook: nav('Notebook'),
 toExamTab: nav('ExamTab'),

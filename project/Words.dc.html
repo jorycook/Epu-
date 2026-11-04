@@ -51,7 +51,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <sc-if value="{{ atSound }}" hint-placeholder-val="{{ false }}">
 <div style="flex-grow: 1; min-height: 0; overflow-y: auto; margin: 0 -16px; padding: 0 16px 8px; display: flex; flex-direction: column">
 <div style="margin-top: 6px; display: flex; flex-direction: column; gap: 2px; flex-shrink: 0">
-<h1 style="margin: 0; font-size: 26px; font-weight: 800; line-height: 1.3">{{ sFocus }} <span style="font-size: 15px; font-weight: 700; color: #5A6382"><span lang="gn">Mba'epu</span> · Sonido y letra</span></h1>
+<h1 style="margin: 0; font-size: 26px; font-weight: 800; line-height: 1.3">{{ sFocus }} <span style="font-size: 15px; font-weight: 700; color: #5A6382; white-space: nowrap"><span lang="gn">Mba'epu</span> · Sonido y letra</span></h1>
 <div style="font-size: 13px; font-weight: 500; color: #5A6382">Mirá cómo se escribe y escuchá la diferencia en cada par.</div>
 </div>
 
@@ -89,7 +89,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </sc-for>
 </div>
 </div>
-<div aria-live="polite" style="font-size: 13px; font-weight: 700; line-height: 1.4; color: {{ p.vColor }}"><span lang="gn">{{ p.vGn }}</span>{{ p.vEs }}<span lang="gn">{{ p.vWord }}</span>{{ p.vTail }}</div>
+<div aria-live="polite" style="min-height: 24px; font-size: 13px; font-weight: 700; line-height: 1.4; color: {{ p.vColor }}"><span lang="gn">{{ p.vGn }}</span>{{ p.vEs }}<span lang="gn" style="font-family: {{ p.wFont }}; font-size: {{ p.wSize }}; color: {{ p.wColor }}">{{ p.vWord }}</span>{{ p.vTail }}<sc-if value="{{ p.noted }}" hint-placeholder-val="{{ false }}"><span style="display: block; margin-top: 2px; font-size: 12px; font-weight: 800; color: #B02A63">Este audio todavía no está grabado.</span></sc-if></div>
 </div>
 </sc-for>
 </sc-if>
@@ -121,6 +121,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </div>
 <button aria-label="Escuchar la palabra" aria-pressed="{{ playing }}" onClick="{{ play }}" style="width: 44px; height: 44px; border-radius: 50%; border: 2px solid #1B2440; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 150ms; background: {{ playBg }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 9a4 4 0 0 1 0 6"/></svg></button>
 </div>
+<sc-if value="{{ wordNoted }}" hint-placeholder-val="{{ false }}"><div role="status" style="font-size: 12px; font-weight: 800; line-height: 1.4; color: #B02A63">Este audio todavía no está grabado.</div></sc-if>
 <sc-if value="{{ d.hasNote }}" hint-placeholder-val="{{ false }}"><div style="font-size: 12px; font-weight: 500; line-height: 1.45; color: #5A6382">{{ d.note }}</div></sc-if>
 <sc-if value="{{ d.hasParts }}" hint-placeholder-val="{{ true }}">
 <div style="font-size: 11px; font-weight: 800; color: #5A6382">Partes</div>
@@ -203,14 +204,12 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </div>
 <div style="font-size: 12px; font-weight: 500; line-height: 1.45">{{ explain }}</div>
 </sc-if>
-<div style="font-family: 'Andika', 'Nunito', sans-serif; font-size: 17px; font-weight: 700; line-height: 1.55; overflow-wrap: anywhere"><sc-for list="{{ qSegs }}" as="g" hint-placeholder-count="3"><sc-if value="{{ g.blank }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="espacio en blanco" style="display: inline-block; width: 46px; height: 22px; box-sizing: border-box; margin: 0 3px; vertical-align: -5px; border-radius: 6px; border: 2px solid #1B2440; background: #FFFFFF"></span></sc-if><sc-if value="{{ g.text }}" hint-placeholder-val="{{ true }}"><span style="padding-bottom: 1px; border-bottom: {{ g.line }}">{{ g.t }}</span></sc-if></sc-for></div>
-<sc-if value="{{ asking }}" hint-placeholder-val="{{ true }}">
+<div style="font-family: 'Andika', 'Nunito', sans-serif; font-size: 17px; font-weight: 700; line-height: 1.55; overflow-wrap: anywhere"><sc-for list="{{ qSegs }}" as="g" hint-placeholder-count="3"><sc-if value="{{ g.blank }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="espacio en blanco" style="display: inline-block; width: 46px; height: 22px; box-sizing: border-box; margin: 0 3px; vertical-align: -5px; border-radius: 6px; border: 2px solid #1B2440; background: #FFFFFF"></span></sc-if><sc-if value="{{ g.fill }}" hint-placeholder-val="{{ false }}"><span lang="gn" style="padding: 0 3px; border-radius: 4px; background: #FFE9B0">{{ g.t }}</span></sc-if><sc-if value="{{ g.text }}" hint-placeholder-val="{{ true }}"><span style="padding-bottom: 1px; border-bottom: {{ g.line }}">{{ g.t }}</span></sc-if></sc-for></div>
 <div lang="gn" style="display: grid; gap: 6px; grid-template-columns: {{ choiceCols }}">
 <sc-for list="{{ choices }}" as="c" hint-placeholder-count="4">
-<button onClick="{{ c.pick }}" style="min-height: 44px; min-width: 0; padding: 6px 8px; border-radius: 12px; border: 2px solid #1B2440; background: #FFFFFF; font-family: 'Andika', 'Nunito', sans-serif; font-size: 15px; font-weight: 700; line-height: 1.25; overflow-wrap: anywhere">{{ c.label }}</button>
+<button onClick="{{ c.pick }}" aria-disabled="{{ c.off }}" aria-pressed="{{ c.on }}" style="position: relative; min-height: 44px; min-width: 0; padding: 6px 8px; border-radius: 12px; font-family: 'Andika', 'Nunito', sans-serif; font-size: 15px; font-weight: 700; line-height: 1.25; overflow-wrap: anywhere; border: {{ c.border }}; background: {{ c.bg }}; color: {{ c.color }}; cursor: {{ c.cursor }}">{{ c.label }}<sc-if value="{{ c.tick }}" hint-placeholder-val="{{ false }}"><span role="img" lang="es" aria-label="Respuesta correcta" style="position: absolute; top: -8px; right: -8px; width: 22px; height: 22px; box-sizing: border-box; border-radius: 50%; background: #FFFFFF; border: 2px solid #0B7A6B; display: flex; align-items: center; justify-content: center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></sc-if><sc-if value="{{ c.cross }}" hint-placeholder-val="{{ false }}"><span role="img" lang="es" aria-label="Tu respuesta, incorrecta" style="position: absolute; top: -8px; right: -8px; width: 22px; height: 22px; box-sizing: border-box; border-radius: 50%; background: #FFFFFF; border: 2px solid #C7361E; display: flex; align-items: center; justify-content: center"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#C7361E" stroke-width="3.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></span></sc-if></button>
 </sc-for>
 </div>
-</sc-if>
 </div>
 </sc-if>
 </div>
@@ -227,12 +226,15 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <script type="text/x-dc" data-dc-script data-props='{"go":{"editor":null},"app":{"editor":null},"save":{"editor":null},"miss":{"editor":null},"reviewed":{"editor":null},"level":{"editor":null},"view":{"editor":null},"$preview":{"width":390,"height":844}}'>
 /* The words lesson (Yaoki's kanji in a scene), in up to four steps:
      Sonido  (A1-A2 days with words.sound) the day's sound and letter: the letters big, a short note, and the
-             minimal pairs as listen-and-choose cards (no notebook);
+             minimal pairs as listen-and-choose cards (no notebook). Until the clips are recorded a speaker lights up in
+             silence: meanwhile its pair's line shows the word it stands for ("Suena · ka'a", as Hablar's pairs do), and
+             the lesson's first silent play (a pair, or the scene's word) says «Este audio todavía no está grabado.»;
      Aprender the scene: tap each word on the navy sign board to see it, its Spanish, its parts, and hear it;
      Escribir each word of words.spell typed three times with the Guarani keyboard (Spell.dc.html), one word after
              the other; Next stays shut until the word is typed. What was typed is kept (save: typed), so a word
              is never asked twice, here or in the typing game;
-     Examen  the words check, one question as the exam asks it.
+     Examen  the words check, one question as the exam asks it; once answered, its options stay with their marks
+             and its blank holds the right answer, as in Drill and Exam.
    Progress: ks 1 once the scene is read, kw 1 once everything is typed, k 1 when the lesson is done (Today).
    The Sonido step keeps no progress of its own: a lesson left there opens there again, as Today shows it.
    props.view ('learn' | 'sound' | 'spell' | 'check') opens that step, for the moment boards: Sound.dc.html shows
@@ -268,11 +270,27 @@ const found = L.list.slice(0, 2).map((w) => w.id).filter((id) => !open || id !==
 if (open) found.push(open.id);
 base = { found, sel: open ? open.id : null };
 }
-/* the sound step on its own: the first pair heard and answered, so both looks of a pair are on the board */
+/* the sound step on its own: the first pair heard and answered, so both looks of a pair are on the board (with the
+   note that its audio is not recorded yet, as after a silent play) */
 const heard = {};
 const picks = {};
-if (alone && view === 'sound' && L.pairs.length) { heard[0] = true; picks[0] = this.target(L.pairs[0]); }
-this.state = { ...base, quiz: null, playing: false, steps, step: steps[at], reached: at, queue, qi: 0, qDone: false, wPass: 0, heard, picks, pairOn: -1 };
+let silentAt = null;
+if (alone && view === 'sound' && L.pairs.length) {
+heard[0] = true;
+picks[0] = this.target(L.pairs[0]);
+if (!this.has(this.pairKey(L, 0))) silentAt = 'p0';
+}
+this.state = { ...base, quiz: null, playing: false, steps, step: steps[at], reached: at, queue, qi: 0, qDone: false, wPass: 0, heard, picks, pairOn: -1, silentAt };
+}
+/* is there a recorded clip under this name? (gn-sound.js tells a missing clip from a real one) */
+has(key) {
+const snd = window.gnSound;
+return !!(key && snd && typeof snd.has === 'function' && snd.has(key));
+}
+/* the clip of a pair: the word of the two that plays */
+pairKey(L, i) {
+const pair = L.pairs[i];
+return L.sid && pair ? L.sid + '.s' + i + (this.target(pair) ? 'b' : 'a') : '';
 }
 /* what the screen shows: the app's view, or on its own the shared sample (unit 1, day 4 is today) */
 app(props) {
@@ -444,6 +462,10 @@ this.setState({ picks: { ...st.picks, [i]: k } });
 });
 /* one line under the pair: what to do, then the verdict */
 const ask = !heard ? 'Tocá el parlante: suena una de las dos.' : '¿Cuál escuchaste?';
+const key = this.pairKey(L, i);
+/* until the clips are recorded the speaker lights up in silence: while it does, the line shows the word it stands
+   for (as Hablar's pairs do), and the first silent play of the lesson says the audio is not recorded yet */
+const voicing = playing && !done && !this.has(key);
 return {
 kicker: 'PAR ' + (i + 1) + ' DE ' + L.pairs.length,
 playing,
@@ -452,16 +474,22 @@ playAria: 'Escuchar la palabra del par ' + (i + 1),
 play: () => {
 clearTimeout(this.pairTimer);
 clearTimeout(this.timer);
-this.setState({ pairOn: i, playing: false, heard: { ...this.state.heard, [i]: true } });
-this.pairTimer = this.say(L.sid ? L.sid + '.s' + i + (tgt ? 'b' : 'a') : '', said, () => this.setState({ pairOn: -1 }));
+const st = this.state;
+this.setState({ pairOn: i, playing: false, heard: { ...st.heard, [i]: true }, silentAt: st.silentAt || (this.has(key) ? null : 'p' + i) });
+this.pairTimer = this.say(key, said, () => this.setState({ pairOn: -1 }));
 },
 opts,
 vGn: done && pick === tgt ? '¡Iporã!' : '',
-vEs: !done ? ask : pick === tgt ? ' Sonó ' : 'Era la otra: ',
-vWord: done ? said : '',
+vEs: voicing ? 'Suena · ' : !done ? ask : pick === tgt ? ' Sonó ' : 'Era la otra: ',
+vWord: done || voicing ? said : '',
 /* the meaning in quotes, as the notes cite it, so a gloss with a comma or its own question mark reads whole */
 vTail: done ? (saidEs ? ', «' + saidEs + '»' : '') + '.' : '',
-vColor: !done ? '#1B2440' : pick === tgt ? '#0B7A6B' : '#C7361E',
+vColor: voicing ? '#5A6382' : !done ? '#1B2440' : pick === tgt ? '#0B7A6B' : '#C7361E',
+/* the word being said, in the lesson's Guarani face, as Hablar shows it */
+wFont: voicing ? "'Andika', 'Nunito', sans-serif" : 'inherit',
+wSize: voicing ? '17px' : 'inherit',
+wColor: voicing ? '#1B2440' : 'inherit',
+noted: s.silentAt === 'p' + i,
 };
 });
 Object.assign(base, {
@@ -535,13 +563,16 @@ parts: parts.map((x) => ({ gn: x[0], es: x[1] || '' })),
 },
 playing: !!s.playing,
 playBg: s.playing ? '#F2B43A' : '#E8ECFB',
-/* each word is a short clip: the button stays lit while it is said; without a clip it lights up for as long */
+/* each word is a short clip: the button stays lit while it is said; without a clip it lights up for as long (the
+   word is on the card), and if no silent play came before in this lesson, the card says the audio is not recorded yet */
 play: () => {
 clearTimeout(this.timer);
 clearTimeout(this.pairTimer);
-this.setState({ playing: true, pairOn: -1 });
-this.timer = this.say(L.sid && cur.id ? L.sid + '.w.' + cur.id : '', cur.gn, () => this.setState({ playing: false }));
+const key = L.sid && cur.id ? L.sid + '.w.' + cur.id : '';
+this.setState({ playing: true, pairOn: -1, silentAt: this.state.silentAt || (this.has(key) ? null : 'word') });
+this.timer = this.say(key, cur.gn, () => this.setState({ playing: false }));
 },
+wordNoted: s.silentAt === 'word',
 writeLine,
 writeLetters,
 writeEnd,
@@ -637,16 +668,31 @@ vAns: plain(answer),
 vPost: right ? '' : '. Guardado en tu cuaderno de errores.',
 explain: it.explain || (Array.isArray(it.why) ? it.why[(s.quiz || ans || 1) - 1] || '' : ''),
 tone: right ? '#0B7A6B' : '#C7361E',
-qSegs: segs.map((g) => ({ t: g.t, blank: !!g.blank, text: !g.blank, line: g.line || 'none' })),
+/* once answered, the blank holds the right answer, highlighted as Exam's result shows it */
+qSegs: segs.map((g) => ({ t: g.blank && answered ? plain(answer) : g.t, blank: !!g.blank && !answered, fill: !!g.blank && answered, text: !g.blank, line: g.line || 'none' })),
 choiceCols: 'repeat(' + Math.max(1, cols) + ', minmax(0, 1fr))',
-choices: it.options.map((o, k) => ({
-label: (k + 1) + ' ' + plain(o),
+/* the options stay after the answer, marked as Drill marks them: the right one, a wrong pick, the others quiet */
+choices: it.options.map((o, k) => {
+const n = k + 1;
+const mine = s.quiz === n;
+const look = !answered ? ['2px solid #1B2440', '#FFFFFF', '#1B2440'] : n === ans ? ['2.5px solid #0B7A6B', '#E0F3EF', '#1B2440'] : mine ? ['2.5px solid #C7361E', '#FDEBE6', '#1B2440'] : ['2px solid #DDE1EC', '#FFFFFF', '#5A6382'];
+return {
+label: n + ' ' + plain(o),
+on: mine,
+off: answered,
+tick: answered && n === ans,
+cross: answered && mine && n !== ans,
+border: look[0],
+bg: look[1],
+color: look[2],
+cursor: answered ? 'default' : 'pointer',
 pick: () => {
 if (this.state.quiz !== null) return;
-if (k + 1 !== ans && this.props.miss) this.props.miss({ src: it.id, wrong: plain(o) });
-this.setState({ quiz: k + 1 });
+if (n !== ans && this.props.miss) this.props.miss({ src: it.id, wrong: plain(o) });
+this.setState({ quiz: n });
 },
-})),
+};
+}),
 toDone: (e) => {
 save({ prog: { k: 1 } });
 nav('Today')(e);

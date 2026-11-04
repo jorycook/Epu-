@@ -283,7 +283,11 @@ async function partA(browser) {
   check(await has(page, 'Entra todo, una sesión por día'), 'step 3: the plan note says all of A1 fits one session a day', (await text(page)).slice(0, 500));
   await tap(page, 'Tejé el primer hilo', 800);
   await shot(page, 'A06-goal-woven');
-  check((await storageKeys(page)).length === 0, 'step 3: weaving the first thread saves nothing yet', await storageKeys(page));
+  {
+    /* the ritual sets the goal: from here a reopened app opens on the week path (before, closing the app here lost it all) */
+    const w = await saved(page);
+    check(w && w.started === true && w.level === 'A1' && w.plan && w.plan.start === (await isoIn(page, 0)) && w.plan.target === in3 && w.plan.minutes === 45 && w.profile && w.profile.work === 'salud', 'step 3: weaving the first thread saves the goal: started, the plan as chosen and the answers', w);
+  }
   await tap(page, { sel: '#gn-stage a[href="Main.dc.html"]:has-text("Empezar")' }, 800);
   h = await look(page, 'Empezar', { expect: 'Main', shot: 'A07-main' });
   const today = await isoIn(page, 0);
@@ -877,7 +881,7 @@ async function partC(browser) {
   check((await sw.getAttribute('aria-checked')) !== was, 'Leer: a switch in the help sheet flips', [was, await sw.getAttribute('aria-checked')]);
   await tap(page, 'Mboty · Cerrar', 400);
   await tap(page, { aria: 'Cerrar la lectura' }, 600);
-  check((await screenOf(page)) === 'Main', 'Leer closes to Main', await screenOf(page));
+  check((await screenOf(page)) === 'Progress', 'Leer closes to Progreso, where «Más práctica» opened it', await screenOf(page));
 
   /* Escribir: the first word typed on the game's own keyboard */
   h = await fromProgress('Escribir', 'Escribir', 'C03-escribir');
@@ -914,7 +918,7 @@ async function partC(browser) {
   check(/^\s*1 sin error seguidas/.test(after), `Escribir: "${word.w}" typed without a slip counts 1 in a row`, after.slice(0, 160));
   await tap(page, { aria: 'Pausa o salir de la ronda' }, 500);
   await tap(page, 'Salir de la ronda', 600);
-  check((await screenOf(page)) === 'Main', 'Escribir: the pause menu leaves to Main', await screenOf(page));
+  check((await screenOf(page)) === 'Progress', 'Escribir: the pause menu leaves to Progreso, where it was opened', await screenOf(page));
 
   /* Hablar: a round of "Escuchá y elegí": a card picked */
   h = await fromProgress('Hablá', 'Hablar', 'C06-hablar');
@@ -937,7 +941,7 @@ async function partC(browser) {
   check(card.c && post !== pre, `Hablar: a falling card ("${card.c && card.c.t}", ${card.n} in view) can be picked and the game answers`, { card, pre: pre.slice(0, 160), post: post.slice(0, 160) });
   await tap(page, { aria: 'Pausa o salir de la ronda' }, 500);
   await tap(page, 'Salir de la ronda', 600);
-  check((await screenOf(page)) === 'Main', 'Hablar: the pause menu leaves to Main', await screenOf(page));
+  check((await screenOf(page)) === 'Progress', 'Hablar: the pause menu leaves to Progreso, where it was opened', await screenOf(page));
   await ctx.close();
 }
 
