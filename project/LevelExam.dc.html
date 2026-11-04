@@ -863,6 +863,11 @@ const KEYS = ['P1', 'P2', 'P3', 'P4', 'P5'];
 const GN = { P2: 'Ñehendu', P4: 'Jehai' };
 const SHORT = { P1: 'Lectura', P2: 'Escucha', P3: 'Mediación', P4: 'Escritura', P5: 'Oral' };
 const LONG = { P1: 'Comprensión de lectura', P2: 'Comprensión auditiva', P3: 'Mediación', P4: 'Expresión escrita', P5: 'Expresión oral' };
+/* the content's label for a listening question that speaks of hearing («Qué escuchaste»): read from its transcript (no
+   clip yet, inside the prototype and the app) the question is about what is said. A recording, or the canvas alone,
+   keeps the content's label */
+const SAID = { 'Qué escuchaste': 'Qué se dice' };
+const saidLabel = (label) => SAID[String(label == null ? '' : label).trim()] || label;
 /* minutes per part from the A1 specification (notes G6 §4.3), until the exam file gives its own */
 const MIN_A1 = { P1: 25, P2: 20, P3: 10, P4: 15, P5: 11 };
 /* the break before listening: the length of Yaoki's full-mock break (the briefing's plan card says "Pausa de 10 min") */
@@ -1693,7 +1698,7 @@ lq = {
 on: true,
 timed: !s.read,
 read: !!s.read,
-head: 'Tarea ' + (it2.task + 1) + (it2.label ? ' · ' + it2.label : ''),
+head: 'Tarea ' + (it2.task + 1) + (it2.label ? ' · ' + (s.read ? saidLabel(it2.label) : it2.label) : ''),
 pos: 'Pregunta ' + (s.li + 1) + ' de ' + list2.length,
 /* the task's own instruction asks to listen twice: read from the transcript, the screen says what to do instead */
 rubric: s.read ? 'Leé cada transcripción y elegí la respuesta correcta.' : it2.taskEs,
@@ -2091,6 +2096,8 @@ if (v.answers) {
 if (!M.has[tabKey]) ans = Object.assign(ans, { empty: true, emptyLine: 'Las preguntas de esta parte están en preparación.' });
 else if (tabKey === 'P1' || tabKey === 'P2') {
 const lst = tabKey === 'P1' ? list1 : list2;
+/* the listening part read from its transcript (in the app, with no clip yet): its questions are headed by what is said */
+const heardRead = tabKey === 'P2' && (readP2 || !!(R && R.p2Read) || !!s.p2Read);
 ans.choice = true;
 ans.rows = lst.map((it, k) => {
 const mine = s.answers[it.id] || null;
@@ -2103,7 +2110,7 @@ return {
 ink: ok ? '#0B7A6B' : '#C7361E',
 icon: ok ? TICK : CROSS,
 verdict: ok ? 'Correcta' : 'Incorrecta',
-title: (k + 1) + ' · ' + (it.label || SHORT[tabKey]),
+title: (k + 1) + ' · ' + ((heardRead ? saidLabel(it.label) : it.label) || SHORT[tabKey]),
 bad: !ok,
 yours: mine ? 'Elegiste: ' + C.plain(it.options[mine - 1]) : 'Sin responder',
 ask: C.plain(it.q),

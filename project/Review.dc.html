@@ -218,6 +218,11 @@ function extraItem(src) {
   return hit;
 }
 function itemOf(C, src) { return (src && C.item(src)) || extraItem(src); }
+/* the content's label for a listening question that speaks of hearing («Qué escuchaste»): with no clip yet, inside the
+   prototype and the app, it is answered from its transcript, so the question is about what is said. A recording, or the
+   canvas alone, keeps the content's label */
+const SAID = { 'Qué escuchaste': 'Qué se dice' };
+const saidLabel = (label) => SAID[String(label == null ? '' : label).trim()] || label;
 /* what a board saves when nothing was answered (Exam: 'Sin respuesta', the level exam: 'Sin responder') */
 const BLANK = ['', 'Sin respuesta', 'Sin responder'];
 /* Spanish or Guarani, for lang (the rule Reading and Listening use, with a few more small words): mediation is relayed in
@@ -647,7 +652,7 @@ class Component extends DCLogic {
         tagBg: area.tagBg,
         tagColor: area.tagColor,
         hasAsk: !!C.plain(q.label || '').trim(),
-        ask: C.plain(q.label || '').trim(),
+        ask: C.plain((this.props.go && silent ? saidLabel(q.label) : q.label) || '').trim(),
         isChoice: kind === 'choice',
         isBuild: kind === 'build',
         isSpell: kind === 'spell',

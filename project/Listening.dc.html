@@ -143,6 +143,11 @@ const HEIGHTS = [10, 20, 30, 16, 34, 24, 12, 28, 38, 22, 14, 26, 32, 18, 10, 24,
 const WHO = { N: 'Narrador', F: 'Mujer', M: 'Hombre' };
 const ANDIKA = "'Andika', 'Nunito', sans-serif";
 const NUNITO = "'Nunito', 'Avenir Next', sans-serif";
+/* the content's label for a listening question that speaks of hearing («Qué escuchaste»), where the kicker shows it (a
+   lesson without its own title): with no clip yet, inside the prototype and the app, the exchange is read, so the question
+   is about what is said. A recording, or the canvas alone, keeps the content's label */
+const SAID = { 'Qué escuchaste': 'Qué se dice' };
+const saidLabel = (label) => SAID[String(label == null ? '' : label).trim()] || label;
 /* Guarani or Spanish, for lang and the typeface: Guarani shows a nasal vowel, g̃ or a puso inside a word; Spanish opens
    a question with ¿ or ¡ and has small words Guarani never uses, so a Spanish line that quotes a Guarani word stays Spanish */
 const GN_MARK = /[ãẽĩõũỹÃẼĨÕŨỸ]|[gG]\u0303|\p{L}'\p{L}/u;
@@ -427,7 +432,7 @@ missing: !ready,
 liveMsg: answered ? (correct ? '¡Correcto!' : 'Casi. La respuesta correcta es la ' + ANSWER + '.') : readText ? 'Este audio todavía no está grabado: leé lo que se dice y elegí tu respuesta.' : s.played && ready ? 'Ya podés elegir tu respuesta.' : '',
 closeLabel: L.elsewhere ? 'Cerrar la práctica' : 'Cerrar la lección',
 scrollPad: answered ? '12px' : '46px',
-kicker: 'ESCUCHA' + (ready && (sk.es || it.label) ? ' · ' + String(sk.es || it.label).toUpperCase() : ''),
+kicker: 'ESCUCHA' + (ready && (sk.es || it.label) ? ' · ' + String(sk.es || (this.props.go && !hasClip ? saidLabel(it.label) : it.label)).toUpperCase() : ''),
 ask: askText,
 hasSituation: ready && !!sk.situation,
 situation: ready ? sk.situation || '' : '',

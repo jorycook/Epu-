@@ -232,6 +232,11 @@ const BENCH = [
 { level: 'B2', es: 'Hablé con soltura, sin pasarme al castellano.' },
 ];
 function pack() { const x = window.__gnExtra; return (x && x.placement) || {}; }
+/* the content's label for a listening question that speaks of hearing («Qué escuchaste»): with no clip yet, inside the
+   prototype and the app, the exchange is read, so the question is about what is said. A recording, or the canvas alone,
+   keeps the content's label */
+const SAID = { 'Qué escuchaste': 'Qué se dice' };
+const saidLabel = (label) => SAID[String(label == null ? '' : label).trim()] || label;
 /* in the app, tell the goal screen which step to open at when the learner goes back to it from here (Goal keeps this
    note with the answers of its steps 1 and 2, for this run of the prototype only, and forgets it when the learner
    starts); closing the check needs no note: Goal wrote "step 2" on the way here */
@@ -650,7 +655,7 @@ skipSelf: () => this.toComp(true),
 toComp: () => { if (selfDone) this.toComp(false); },
 
 q: {
-kind: it ? 'Pregunta ' + (s.i + 1) + ' de ' + n + ' · ' + (it.label || C.area(it.area).es) : '',
+kind: it ? 'Pregunta ' + (s.i + 1) + ' de ' + n + ' · ' + ((this.props.go && listening && !hasClip ? saidLabel(it.label) : it.label) || C.area(it.area).es) : '',
 listening,
 hasPassage: !!(it && it.passage),
 passageText: it && it.passage ? C.plain(it.passage) : '',

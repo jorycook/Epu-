@@ -282,7 +282,9 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
      vez (he bumps his head and slips; after two the sign waits and Saltear appears). The canvas grants no microphone,
      so there «Simular toma» stands for the recording. In the prototype and the app the learner says it aloud and
      nothing is recorded: the Vos row reads «Sin grabar» (no bars, no length, no play button), the chip counts tries
-     (Intento), and the pause sheet promises no takes.
+     (Intento), and the pause sheet promises no takes. A model with no clip says so («Este modelo todavía no está
+     grabado: mirá cómo se escribe…»), shows the sign written («Se escribe ·») while its stand-in runs, and a play of it
+     is not counted as help (the sign can still be clean).
    The words' sound: no clips exist yet, so every sound button lights up for 600 + 120 ms a letter (Yaoki's stand-in)
    and shows the word being said. The rewards are Yaoki's: the clean run, Se levantó, the stamp; never speed.
    Props: go, app, demo: "pick" (on its own: a pair falling while its word plays) or "compare" (the ¿Sonó igual? panel
@@ -363,9 +365,12 @@ const LOOK_TIP = {
   acento: 'Fijate en qué vocal va el acento (´).',
   y: 'Fijate en la y, la sexta vocal: no es i ni u.',
 };
+/* a sign's model with no clip (none is recorded yet), inside the prototype and the app: what the dock says instead of
+   «escuchá el modelo»; a silent model is shown written while its stand-in runs and never counts as help */
+const SILENT_MODEL = 'Este modelo todavía no está grabado: mirá cómo se escribe y decilo en voz alta.';
 const WAYS = {
   pick: { title: 'Escuchá y elegí', desc: 'Suena una palabra y caen dos parecidas. Tocá la que oíste antes de que caiga sobre Kaguare.', kicker: 'ESCUCHÁ Y ELEGÍ' },
-  compare: { title: 'Repetí y compará', desc: 'Decí el cartel, escuchá tu toma junto al modelo y decidí si sonó igual. Sin apuro.', descApp: 'Decí el cartel en voz alta, escuchá el modelo y decidí si sonó igual. Sin apuro.', kicker: 'REPETÍ Y COMPARÁ' },
+  compare: { title: 'Repetí y compará', desc: 'Decí el cartel, escuchá tu toma junto al modelo y decidí si sonó igual. Sin apuro.', descApp: 'Decí el cartel en voz alta, escuchá el modelo y decidí si sonó igual. Sin apuro.', descSilent: 'Decí el cartel en voz alta y decidí si te salió como se escribe: los modelos todavía no están grabados. Sin apuro.', kicker: 'REPETÍ Y COMPARÁ' },
 };
 
 const reduced = () => { try { return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); } catch (e) { return false; } };
@@ -640,6 +645,11 @@ this.status = { es: this.mute(first) ? 'Tocá la palabra que se muestra antes de
 }
 /* no clip for this word or phrase (none is recorded yet): inside the prototype and the app the words then say what is
    shown, never what is heard. The canvas alone keeps the designed wording */
+/* no clip registered at all (none is recorded yet), inside the prototype and the app: the menu, the intro and the
+   result say so instead of asking the learner to listen */
+noClips() {
+return !!(this.props && this.props.go) && !Object.keys(window.__gnClips || {}).length;
+}
 mute(item) {
 const Sd = window.gnSound;
 return !!(this.props && this.props.go) && !(item && Sd && Sd.has && Sd.has(item.id));
@@ -699,8 +709,10 @@ r.camY = this.camFor(0, false);
 return r;
 }
 readyCompare() {
-this.newCompare(Math.random);
-this.status = { es: 'Decí el cartel de arriba. Si querés, escuchá antes el modelo.', color: '#5A6382' };
+const r = this.newCompare(Math.random);
+const first = r && r.ledges[0] ? r.ledges[0].card.item : null;
+/* no clip of the model (inside the prototype and the app): the line says so and what to do instead */
+this.status = this.mute(first) ? { es: SILENT_MODEL, color: '#B02A63' } : { es: 'Decí el cartel de arriba. Si querés, escuchá antes el modelo.', color: '#5A6382' };
 }
 /* demo "compare": Kaguare on the second ledge, the third sign said once, the ¿Sonó igual? panel open */
 designCompare() {
@@ -776,6 +788,7 @@ const text = r.style === 'pick' ? c.item.word : c.item.gn;
 const Sd = window.gnSound;
 let ms = clipMs(c.item.id, text);
 if (Sd && Sd.has && Sd.has(c.item.id)) { try { Sd.unlock(); Sd.play(c.item.id); } catch (e) { ms = clipMs('', text); } }
+else if (kind === 'model' && this.mute(c.item)) this.status = { es: SILENT_MODEL, color: '#B02A63' };
 else if (!r.firstClip) { r.firstClip = true; this.status = { es: 'Este audio todavía no está grabado.', color: '#B02A63' }; }
 r.voicing = { card: c, from: r.time, until: r.time + ms / 1000, ms, kind: kind || 'word' };
 }
@@ -1259,10 +1272,15 @@ if (!r) return;
 if (this.frozen) this.unfreeze();
 const t = this.target();
 if (!t || this.state.panel || this.take.state !== 'idle') return;
+/* a model heard before saying the sign is help (the sign is then not clean). A silent one (no clip, inside the prototype
+   and the app) only shows the sign written, so it is not counted against the learner */
+const silent = this.mute(t.item);
+if (!silent) {
 if (!t.hinted) { t.hinted = true; r.hints++; }
 t.level = Math.max(t.level, 1);
+}
 this.playClip(t, 'model');
-this.heard = { label: 'Modelo', gn: t.item.gn, es: '', tone: 'muted' };
+this.heard = { label: silent ? 'Se escribe' : 'Modelo', gn: t.item.gn, es: '', tone: 'muted' };
 }
 playStrip(which) {
 const r = this.r;
@@ -1321,7 +1339,7 @@ fallsNote: pick ? (!r.falls ? 'nada le cayó encima a Kaguare en toda la ronda' 
 hasUps: r.comebacks > 0, upsGn: allUp,
 upsText: allUp ? (pick ? 'Todas las que le cayeron encima volvieron y las elegiste bien.' : 'Cada cartel que lo hizo resbalar lo dijiste igual a la segunda.')
 : 'Se levantó ×' + r.comebacks + ': ' + (pick ? (r.comebacks === 1 ? 'una volvió y la elegiste bien a la primera.' : r.comebacks + ' volvieron y las elegiste bien a la primera.') : (r.comebacks === 1 ? 'un cartel dicho igual después de un resbalón.' : r.comebacks + ' carteles dichos igual después de un resbalón.')),
-hintsNote: pick ? 'tarjetas donde apareció una ayuda' : 'carteles donde escuchaste el modelo antes de decirlo',
+hintsNote: pick ? 'tarjetas donde apareció una ayuda' : this.noClips() ? 'carteles donde escuchaste el modelo antes de decirlo (todavía no hay modelos grabados)' : 'carteles donde escuchaste el modelo antes de decirlo',
 mixedTitle: pick ? 'Las que confundiste' : 'Para decir otra vez',
 mixed,
 };
@@ -1636,7 +1654,7 @@ let heardColor = '#5A6382';
 let heardGnColor = '#1B2440';
 if (voicing) {
 heardOn = true;
-heardLabel = r.voicing.kind === 'model' ? 'Modelo ·' : mute ? 'La palabra ·' : 'Suena ·';
+heardLabel = r.voicing.kind === 'model' ? (mute ? 'Se escribe ·' : 'Modelo ·') : mute ? 'La palabra ·' : 'Suena ·';
 heardGn = pick ? r.voicing.card.item.word : r.voicing.card.item.gn;
 } else if (mute && pick && t && t.state === 'live') {
 heardOn = true;
@@ -1668,7 +1686,7 @@ heardOn, heardLabel, heardGn, heardEs, heardColor, heardGnColor,
 status: s0 ? s0.es : '', statusColor: s0 ? s0.color : '#1B2440',
 leftSlow: pick, leftModel: !pick,
 leftLines: pick ? [{ t: 'Más', lang: 'es' }, { t: 'despacio', lang: 'es' }] : [{ t: 'Ehendu', lang: 'gn' }, { t: 'Escuchar', lang: 'es' }],
-leftAria: pick ? 'Más despacio: todavía no está grabado' : 'Escuchar el modelo (cuenta como ayuda)',
+leftAria: pick ? 'Más despacio: todavía no está grabado' : mute ? 'Escuchar el modelo: todavía no está grabado, se muestra escrito (no cuenta como ayuda)' : 'Escuchar el modelo (cuenta como ayuda)',
 leftOff: pick ? 'true' : t && !st.panel && tk.state === 'idle' ? 'false' : 'true',
 leftBorder: pick ? '2px dashed #DDE1EC' : '2px solid #1B2440', leftBg: !pick && voicing && r.voicing.kind === 'model' ? '#2F4FD0' : '#FFFFFF',
 leftColor: pick ? '#9AA1B5' : !pick && voicing && r.voicing.kind === 'model' ? '#FFFFFF' : '#1B2440', leftShadow: pick ? 'none' : '0 3px 0 #1B2440',
@@ -1702,7 +1720,7 @@ strips.push({ label, dur: secs(ms), bars, on: playing ? 'true' : 'false', aria: 
 const cmp = { takeLabel: (inApp ? 'Intento ' : 'Toma ') + (tk.n || 1), strips, unrecorded: panelOn && inApp, noModel: panelOn && inApp && mute };
 /* the menu's two ways */
 const ways = ['pick', 'compare'].map((k) => {
-const d = cutName(inApp && WAYS[k].descApp ? WAYS[k].descApp : WAYS[k].desc);
+const d = cutName(inApp && this.noClips() && WAYS[k].descSilent ? WAYS[k].descSilent : inApp && WAYS[k].descApp ? WAYS[k].descApp : WAYS[k].desc);
 return { title: WAYS[k].title, desc: d.a, descName: d.name, descEnd: d.b, isPick: k === 'pick', isCompare: k === 'compare', on: st.style === k ? 'true' : 'false',
 border: st.style === k ? '2.5px solid #2F4FD0' : '2px solid #DDE1EC', bg: st.style === k ? '#E8ECFB' : '#FFFFFF', shadow: st.style === k ? '0 3px 0 #1B2440' : 'none',
 pick: () => this.setState({ style: k }) };
@@ -1716,7 +1734,7 @@ const empty = inRound && !r;
 /* the pause sheet: on the canvas the takes it keeps; in the prototype and the app nothing is recorded, so no takes */
 const STILL = 'Nada se mueve mientras esto está abierto.';
 const mic = inApp
-? { intro: 'Los teléfonos todavía no reconocen el guaraní hablado. Por eso acá no te corrige una máquina: escuchás y elegís, o decís la frase en voz alta y la comparás con el modelo.',
+? { intro: this.noClips() ? 'Los teléfonos todavía no reconocen el guaraní hablado, y los audios todavía no están grabados. Por eso acá no te corrige una máquina: mirás la palabra y elegís, o decís la frase en voz alta y la comparás con el cartel.' : 'Los teléfonos todavía no reconocen el guaraní hablado. Por eso acá no te corrige una máquina: escuchás y elegís, o decís la frase en voz alta y la comparás con el modelo.',
 noteA: 'Tu voz todavía no se graba: en ', noteB: ', tocá «Decir», decí la frase en voz alta y tocá «Terminar» al acabar. Los audios todavía no están grabados, así que cada botón de sonido se ilumina sin sonar.',
 panel: mute ? 'Ni el modelo ni tu voz están grabados: compará lo que dijiste con el cartel. Decidís vos.' : 'Tu voz todavía no se graba: compará de memoria con el modelo. Decidís vos.',
 pause: pick ? STILL : STILL + ' Tu voz todavía no se graba.' }
