@@ -9,20 +9,20 @@ The course covers the six CEFR levels A1–C2 in one app; you are writing level 
 
 ## Files and the build
 
-- Folder: `/tmp/claude-0/-home-user/430b6c9f-00ab-547a-bf2b-cc44a7533d75/scratchpad/build` (`$B`).
+- Folder: `/home/user/epu-` (`$B`).
 - Syllabus (titles you must use exactly): `$B/content/levels.json` → `A1.units[0]` (unit 1, "Mba'éichapa · Saludos y sonidos"):
   days 1–5 `days[]` and their sound focus `sound[]`; day 6 title "Repaso de la semana".
 - Your output: the unit file `$B/content/a1/u01.json` is assembled from per-day files you write as
   `$B/content/a1/parts/u01-d<N>.json` (one JSON object: the day), and `u01-test.json` (the week test array).
   The assembler (`node $B/tools/assemble-unit.mjs a1 1`) merges them into `u01.json`; then `node $B/tools/build-course.mjs --check`
   validates everything. Run both and fix every error before you finish. Warnings deserve a look.
-- The JSON shape is below and in `$B/BRIEF-core.md` §7. Yaoki's real examples: `$B/../notes/Y2-lesson-loop.md` §6.2–6.4.
+- The JSON shape is below and in `$B/brief/BRIEF-core.md` §7. Yaoki's real examples: `$B/notes/Y2-lesson-loop.md` §6.2–6.4.
 
 ## The Guarani: accuracy first
 
-- Read before writing: `$B/../notes/G1-sounds-writing.md` (alphabet, nasal harmony, stress and accent rules, puso, minimal pairs),
-  `$B/../notes/G2-grammar-reference.md` (verified forms, examples, the SPELLING OF SUFFIXED FORMS section),
-  `$B/../notes/G5-culture-naming-microcopy.md` (greetings and formulas, verified with confidence marks), `$B/../notes/G7-six-level-syllabus.md` (A1 plan).
+- Read before writing: `$B/notes/G1-sounds-writing.md` (alphabet, nasal harmony, stress and accent rules, puso, minimal pairs),
+  `$B/notes/G2-grammar-reference.md` (verified forms, examples, the SPELLING OF SUFFIXED FORMS section),
+  `$B/notes/G5-culture-naming-microcopy.md` (greetings and formulas, verified with confidence marks), `$B/notes/G7-six-level-syllabus.md` (A1 plan).
   If a notes file does not exist yet, rely on the others and on what you can confirm with WebSearch (load it with ToolSearch "select:WebSearch").
 - Standard Paraguayan Guarani in the Academia de la Lengua Guaraní's spelling (alphabet 2015): a e i o u y; ã ẽ ĩ õ ũ ỹ; á é í ó ú ý
   only where the rules put a written accent; ñ; g̃ (g + U+0303); the puso as the apostrophe ' (U+0027) only; digraphs ch mb nd ng nt rr.
