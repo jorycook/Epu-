@@ -69,10 +69,12 @@ function compile(t) {
       src += `<g data-part="${esc(m[1])}"(?: opacity="([^"]*)")?>`;
       t.slots.push({ type: 'part', name: m[1], at: group++ });
     } else if (m[0].startsWith('<g class="rosette"')) {
-      // the stand-in as shipped, or the engine's rosette nested in its place right after the disc
-      src += `(?:${esc(m[0])}|<g transform="translate\\((-?[\\d.]+) (-?[\\d.]+)\\) scale\\((-?[\\d.]+)\\)">([\\s\\S]*?)<\\/g>)`;
-      t.slots.push({ type: 'rosette', at: group });
-      group += 4;
+      // the stand-in as shipped, a stand-in the board has refreshed with newer engine markup (still class="rosette", as
+      // in the icon), or the engine's rosette nested in its place right after the disc
+      const TR = `translate\\((-?[\\d.]+) (-?[\\d.]+)\\) scale\\((-?[\\d.]+)\\)`;
+      src += `(?:<g class="rosette"( transform="${TR}")?>([\\s\\S]*?)<\\/g>|<g transform="${TR}">([\\s\\S]*?)<\\/g>)`;
+      t.slots.push({ type: 'rosette', at: group, standin: m[0] });
+      group += 9;
     } else {
       src += `<rect width="100" height="100" rx="22\\.3" fill="([^"]*)"\\/>`;
       t.slots.push({ type: 'tile', at: group++ });
@@ -83,6 +85,9 @@ function compile(t) {
   t.re = new RegExp(src, 'g');
 }
 TEMPLATES.forEach(compile);
+// the same matchers built from the NEW art, to tell an instance that is already current from one the tool cannot read
+const CURRENT = TEMPLATES.map((t) => ({ key: t.key, old: t.neu, neu: t.neu }));
+CURRENT.forEach(compile);
 
 /* the replacement: the new markup for the pose, with the instance's own face-part opacities, its nested rosette at the
    new brooch centre, and its tile fill */
@@ -91,8 +96,14 @@ function rebuild(t, m) {
   let engine = null, tile = null;
   for (const s of t.slots) {
     if (s.type === 'part') parts[s.name] = m[s.at];
-    else if (s.type === 'rosette') { if (m[s.at] !== undefined) engine = { cx: m[s.at], cy: m[s.at + 1], s: m[s.at + 2], body: m[s.at + 3] }; }
-    else tile = m[s.at];
+    else if (s.type === 'rosette') {
+      // groups: at = the stand-in form's transform attribute, at+1..3 its cx cy s, at+4 its body; at+5..7 the engine form's
+      // cx cy s, at+8 its body. A stand-in form identical to the old spec's is the shipped stand-in (the new art brings its
+      // own); anything else is the instance's own rosette and is kept
+      if (m[s.at + 4] !== undefined) {
+        if (`<g class="rosette"${m[s.at] || ''}>${m[s.at + 4]}</g>` !== s.standin) engine = { cls: true, moved: m[s.at] !== undefined, cx: m[s.at + 1], cy: m[s.at + 2], s: m[s.at + 3], body: m[s.at + 4] };
+      } else if (m[s.at + 8] !== undefined) engine = { cls: false, moved: true, cx: m[s.at + 5], cy: m[s.at + 6], s: m[s.at + 7], body: m[s.at + 8] };
+    } else tile = m[s.at];
   }
   let out = t.neu;
   out = out.replace(PART, (all, name) => {
@@ -105,12 +116,20 @@ function rebuild(t, m) {
   if (engine) {
     const r = t.newRos;
     if (!r) throw new Error(`${t.key}: the instance nests a rosette but the new spec gives no brooch for this pose`);
-    if (t.oldRos && (+engine.cx !== +t.oldRos.cx || +engine.cy !== +t.oldRos.cy)) notes.push(`nested at (${engine.cx} ${engine.cy}), not at the old brooch (${t.oldRos.cx} ${t.oldRos.cy})`);
-    if (+engine.s !== +r.s) notes.push(`scale ${engine.s} kept (the spec says ${r.s})`);
     if (!STANDIN.test(out)) throw new Error(`${t.key}: the new art has no stand-in group to nest the rosette in`);
-    out = out.replace(STANDIN, () => `<g transform="translate(${r.cx} ${r.cy}) scale(${engine.s})">${engine.body}</g>`);
-    const holes = [...new Set([...engine.body.matchAll(/\{\{\s*([\w$]+)\./g)].map((x) => x[1]))];
-    desc = `rosette (${engine.cx} ${engine.cy}) → (${r.cx} ${r.cy}) scale ${engine.s}${holes.length ? ' holes ' + holes.join(',') : ''}`;
+    const kind = engine.cls ? 'own rosette' : 'rosette';
+    if (!engine.moved) {
+      // a refreshed stand-in in absolute coordinates: it cannot follow the brooch, so it is kept as it is
+      notes.push('a stand-in of its own without a transform: kept where it was drawn');
+      out = out.replace(STANDIN, () => `<g class="rosette">${engine.body}</g>`);
+      desc = `${kind} kept`;
+    } else {
+      if (t.oldRos && (+engine.cx !== +t.oldRos.cx || +engine.cy !== +t.oldRos.cy)) notes.push(`nested at (${engine.cx} ${engine.cy}), not at the old brooch (${t.oldRos.cx} ${t.oldRos.cy})`);
+      if (+engine.s !== +r.s) notes.push(`scale ${engine.s} kept (the spec says ${r.s})`);
+      out = out.replace(STANDIN, () => `<g${engine.cls ? ' class="rosette"' : ''} transform="translate(${r.cx} ${r.cy}) scale(${engine.s})">${engine.body}</g>`);
+      const holes = [...new Set([...engine.body.matchAll(/\{\{\s*([\w$]+)\./g)].map((x) => x[1]))];
+      desc = `${kind} (${engine.cx} ${engine.cy}) → (${r.cx} ${r.cy}) scale ${engine.s}${holes.length ? ' holes ' + holes.join(',') : ''}`;
+    }
   } else desc = t.newRos ? 'stand-in rosette' : 'no brooch';
   if (tile !== null) { out = out.replace(TILE, () => `<rect width="100" height="100" rx="22.3" fill="${tile}"/>`); desc += `, tile ${tile}`; }
   const shown = Object.entries(parts).filter(([, v]) => v !== '0').map(([k, v]) => (v === undefined ? k : `${k}=${v.replace(/\s+/g, '')}`));
@@ -125,7 +144,7 @@ const OLD_ONLY = [...pathsOf(OLD)].filter((d) => !newPaths.has(d));
 const lineOf = (s, i) => s.slice(0, i).split('\n').length;
 const LOOKS = /#EDC27C|#2A2120|data-part="/;
 
-let replaced = 0, unmatched = 0, leftovers = 0, written = 0;
+let replaced = 0, unmatched = 0, leftovers = 0, written = 0, current = 0;
 const perPose = {};
 for (const file of files) {
   const rel = path.relative(ROOT, file);
@@ -152,6 +171,8 @@ for (const file of files) {
     const a = sm.index, b = a + sm[0].length;
     if (edits.some((e) => e.start >= a && e.end <= b)) continue;
     const root = sm[0].match(/^<svg\b[^>]*>/)[0].replace(/aria-label="[^"]*"/, 'aria-label="…"');
+    const cur = CURRENT.find((t) => { t.re.lastIndex = 0; return t.re.test(sm[0]); });
+    if (cur) { console.log(`${rel}:${lineOf(src, a)} already the new art (${cur.key})`); current++; continue; }
     console.log(`${rel}:${lineOf(src, a)} UNMATCHED mascot-looking svg (${sm[0].length} chars) ${root}`);
     unmatched++;
   }
@@ -164,5 +185,5 @@ for (const file of files) {
   if (out !== src && !CHECK) { fs.writeFileSync(file, out); written++; }
 }
 console.log(`${replaced} instance(s) replaced in ${files.length} board(s)${CHECK ? ' (check only, nothing written)' : `, ${written} board(s) written`}: ${Object.entries(perPose).map(([k, v]) => `${k} ×${v}`).join(', ') || 'none'}`);
-console.log(`${unmatched} unmatched mascot-looking svg(s), ${leftovers} leftover line(s) with the old art's paths`);
+console.log(`${unmatched} unmatched mascot-looking svg(s), ${current} already the new art, ${leftovers} leftover line(s) with the old art's paths`);
 if (unmatched || leftovers) process.exitCode = 1;

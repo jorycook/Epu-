@@ -122,12 +122,12 @@ board). Use them as they are; do not redraw the animal.
 
 | Pose | Where | Notes |
 |---|---|---|
-| standing | Goal 104 px (ritual), Main and Progress 60, hints 48, results 72, Escribir at 90 %, Hablar at 75 % | feet on y 83, centre near x 50; the brooch at (45, 60.2); eight switchable face parts as `data-part` (eye-open, eye-closed, eye-happy, mouth-normal, mouth-o, mouth-happy, sweat, sparks): show one eye and one mouth at a time |
-| fallen ("Ho'a", se cayó) | the games, when a card reaches him | on his back, dazed (a spiral eye, never X eyes), on the same ground line; 49.8 units tall so the stars fit above him; brooch at (40.2, 65.6) |
-| rising ("Opu'ã · Se levantó") | the brand board; the middle step of every fall in the games | the tripod stance made friendly: arms up and open, palms out, tail planted; brooch at (48.6, 60) |
-| cheering ("¡Vy'apavẽ!") | level passed, results, clean runs | arms up, happy eyes, open smile, three gold sparks; brooch at (48.6, 60) |
-| studying ("Mbo'epy · Lección") | the brand board | head lowered over an open notebook; brooch at (45, 60.2) |
-| oops ("Eha'ã jey · Intentá de nuevo") | a wrong answer in a lesson (72 px) | sitting back, paw at the cheek, closed happy eyes, a sweat drop; brooch at (48.2, 61.4) |
+| standing | Goal 104 px (ritual), Main and Progress 60, hints 48, results 72, Escribir at 90 %, Hablar at 75 % | feet on y 83, centre near x 50; the brooch at (43, 61.2); eight switchable face parts as `data-part` (eye-open, eye-closed, eye-happy, mouth-normal, mouth-o, mouth-happy, sweat, sparks): show one eye and one mouth at a time |
+| fallen ("Ho'a", se cayó) | the games, when a card reaches him | on his back, dazed (a spiral eye, never X eyes), on the same ground line; 49.6 units tall so the stars fit above him; brooch at (36.4, 65) |
+| rising ("Opu'ã · Se levantó") | the brand board; the middle step of every fall in the games | the tripod stance made friendly: arms up and open, palms out, tail planted; brooch at (48.8, 59.6) |
+| cheering ("¡Vy'apavẽ!") | level passed, results, clean runs | arms up, happy eyes, open smile, three gold sparks; brooch at (48.8, 59.6) |
+| studying ("Mbo'epy · Lección") | the brand board | head lowered over an open notebook; brooch at (43, 61.2) |
+| oops ("Eha'ã jey · Intentá de nuevo") | a wrong answer in a lesson (72 px) | sitting back, paw at the cheek, closed happy eyes, a sweat drop; brooch at (47, 61) |
 | fallen mini | the games' "Caídas" chips (20 px), the notebook's wrong line (36 px) | decorative, `aria-hidden` |
 | icon on pink, icon on yerba green | the app icon (1024 master), 29 to 256 px | the bust over the vest with the brooch, an ink border and a hard ink offset shadow |
 | thumbs | Hablar's two "Cómo jugar" cards (140×84 scenes) | simplified heavy-stroke versions |
@@ -139,7 +139,7 @@ pink threads, a ring and a hub) that the SVGs carry when no engine is present.
 **The games.** The fall is fallen → rising → standing: a card that reaches him crossfades standing → fallen (the stars
 orbit above), getting up crossfades fallen → rising for about 0.3 s (¡Opu'ã!), then rising → standing with the springy
 squash, stretch and small hop; all three layers share the feet line and the origin 50% 83%. The dodge is a sidestep and a
-lean, never a roll. Cards land on his head and back, never on his snout (Escribir's REACH 50; Hablar's YH 43). The umbrella
+lean, never a roll. Cards land on his head and back, never on his snout (Escribir's REACH 47; Hablar's YH 47). The umbrella
 stick ends on his crown, behind him. `spec.json` → `games` has every number.
 
 **What the art and the words never do** (from the slang screens and the culture research, G8): make his nose the joke
