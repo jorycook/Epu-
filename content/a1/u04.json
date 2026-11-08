@@ -1387,6 +1387,1890 @@
      "explain": "El aviso saluda a los padres (tuvakuéra) y dice: Mitãnguéra opurahéi ko ka'aru mbo'ehaópe, «los niños cantan esta tarde en la escuela». Los profesores hablan guaraní, no cantan."
     }
    }
+  },
+  "3": {
+   "title": "Demostrativos ko, pe, amo",
+   "grammar": {
+    "points": [
+     {
+      "id": "a1u04d3.p1",
+      "form": "ko · pe · amo + sustantivo",
+      "gloss": "este, esta · ese, esa · aquel, aquella",
+      "connect": [
+       {
+        "pos": "Cerca de quien habla: «este, esta»",
+        "rule": "{ko} vaka · {ko} óga"
+       },
+       {
+        "pos": "Cerca de quien escucha: «ese, esa»",
+        "rule": "{pe} jagua · {pe} mitã"
+       },
+       {
+        "pos": "Lejos de los dos, a la vista: «aquel, aquella»",
+        "rule": "{amo} óga · {amo} kavaju"
+       },
+       {
+        "pos": "Siempre delante del sustantivo, y sin género: la misma palabra para «este» y «esta». Ya la usás con los momentos del día",
+        "rule": "{ko} ka'aru · {ko} pyhare"
+       }
+      ],
+      "examples": [
+       {
+        "gn": "{Ko} vaka iky'a.",
+        "es": "Esta vaca está sucia.",
+        "parts": [
+         [
+          "ko",
+          "esta"
+         ],
+         [
+          "vaka",
+          "vaca"
+         ],
+         [
+          "i-",
+          "está (él, ella)"
+         ],
+         [
+          "ky'a",
+          "sucio, sucia"
+         ]
+        ]
+       },
+       {
+        "gn": "{Pe} mitã iporã.",
+        "es": "Ese chico es lindo.",
+        "parts": [
+         [
+          "pe",
+          "ese"
+         ],
+         [
+          "mitã",
+          "niño, niña"
+         ],
+         [
+          "iporã",
+          "es lindo, está bien"
+         ]
+        ]
+       },
+       {
+        "gn": "{Amo} óga ituicha.",
+        "es": "Aquella casa es grande.",
+        "parts": [
+         [
+          "amo",
+          "aquella"
+         ],
+         [
+          "óga",
+          "casa"
+         ],
+         [
+          "i-",
+          "es (él, ella)"
+         ],
+         [
+          "tuicha",
+          "grande"
+         ]
+        ]
+       },
+       {
+        "gn": "{Pe} karai che ru.",
+        "es": "Ese señor es mi papá.",
+        "parts": [
+         [
+          "pe",
+          "ese"
+         ],
+         [
+          "karai",
+          "señor"
+         ],
+         [
+          "che ru",
+          "mi papá"
+         ]
+        ]
+       }
+      ],
+      "watch": {
+       "note": "Va siempre delante del sustantivo, como el posesivo, y no cambia: ko sirve para «este» y para «esta».",
+       "bad": "óga ko",
+       "good": "ko óga"
+      }
+     },
+     {
+      "id": "a1u04d3.p2",
+      "form": "ko'ã · umi + sustantivo",
+      "gloss": "estos, estas · esos, esas, aquellos, aquellas",
+      "connect": [
+       {
+        "pos": "Ko, para varios: ko'ã, con puso y ã",
+        "rule": "{ko'ã} mba'e · {ko'ã} óga"
+       },
+       {
+        "pos": "Pe y amo, para varios: umi, que sirve para «esos» y para «aquellos»",
+        "rule": "{umi} mitã · {umi} jagua"
+       },
+       {
+        "pos": "El sustantivo puede ir sin -kuéra: ko'ã y umi ya dicen que son varios. Con -kuéra también se dice",
+        "rule": "{umi} kavaju · {umi} mitãnguéra"
+       }
+      ],
+      "examples": [
+       {
+        "gn": "{Umi} kavaju oĩ korapýpe.",
+        "es": "Esos caballos están en el patio.",
+        "parts": [
+         [
+          "umi",
+          "esos"
+         ],
+         [
+          "kavaju",
+          "caballo"
+         ],
+         [
+          "oĩ",
+          "están"
+         ],
+         [
+          "korapý-pe",
+          "en el patio"
+         ]
+        ]
+       },
+       {
+        "gn": "{Umi} mbarakaja oguereko mokõi nambi.",
+        "es": "Esos gatos tienen dos orejas.",
+        "parts": [
+         [
+          "umi",
+          "esos"
+         ],
+         [
+          "mbarakaja",
+          "gato"
+         ],
+         [
+          "oguereko",
+          "tienen"
+         ],
+         [
+          "mokõi",
+          "dos"
+         ],
+         [
+          "nambi",
+          "oreja"
+         ]
+        ]
+       },
+       {
+        "gn": "{Ko'ã} óga ituicha.",
+        "es": "Estas casas son grandes.",
+        "parts": [
+         [
+          "ko'ã",
+          "estas"
+         ],
+         [
+          "óga",
+          "casa"
+         ],
+         [
+          "ituicha",
+          "es grande, son grandes"
+         ]
+        ]
+       },
+       {
+        "gn": "{Umi} mitã oho mbo'ehaópe.",
+        "es": "Esos chicos van a la escuela.",
+        "parts": [
+         [
+          "umi",
+          "esos"
+         ],
+         [
+          "mitã",
+          "niño, niña"
+         ],
+         [
+          "oho",
+          "van"
+         ],
+         [
+          "mbo'ehaó-pe",
+          "a la escuela"
+         ]
+        ]
+       }
+      ],
+      "watch": {
+       "note": "El plural del demostrativo no se hace con -kuéra: es otra palabra. Y el sustantivo puede quedar como está: ko'ã mitã, «estos chicos».",
+       "bad": "kokuéra mitã",
+       "good": "ko'ã mitã"
+      }
+     }
+    ],
+    "compare": {
+     "intro": "Tres distancias y un plural: fijate dónde está la cosa y si es una o varias.",
+     "forms": [
+      {
+       "form": "ko · pe · amo",
+       "tag": "uno: cerca de mí · cerca de vos · lejos",
+       "mark": "dot",
+       "gn": "{Ko} vaka iky'a.",
+       "es": "Esta vaca está sucia."
+      },
+      {
+       "form": "ko'ã · umi",
+       "tag": "varios: estos · esos, aquellos",
+       "mark": "dot",
+       "gn": "{Umi} kavaju oĩ korapýpe.",
+       "es": "Esos caballos están en el patio."
+      },
+      {
+       "form": "ko + momento del día",
+       "tag": "esta tarde, esta noche (semana 1)",
+       "mark": "dot",
+       "gn": "Jajotopáta {ko} ka'aru.",
+       "es": "Nos vemos esta tarde."
+      }
+     ],
+     "check": {
+      "id": "a1u04d3.c1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Juan señala un perro que está ^al lado de Rosa^.)\nJuan: (   ) jagua iporã.",
+      "options": [
+       "Ko",
+       "Pe",
+       "Amo"
+      ],
+      "answer": 2,
+      "why": [
+       "Ko es «este»: el perro estaría al lado de Juan, el que habla. Y está al lado de Rosa.",
+       "El perro está al lado de Rosa, la que escucha: pe jagua, «ese perro».",
+       "Amo es «aquel», para algo lejos de los dos. El perro está al lado de Rosa."
+      ]
+     }
+    },
+    "drill": [
+     {
+      "id": "a1u04d3.d1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Ana tiene ^un gato en brazos^.)\nAna: (   ) mbarakaja iporã.",
+      "options": [
+       "Amo",
+       "Pe",
+       "Umi",
+       "Ko"
+      ],
+      "answer": 4,
+      "why": [
+       "Amo es «aquel», para algo lejos de los dos. Ana tiene el gato en brazos.",
+       "Pe es «ese»: el gato estaría cerca del que escucha. Lo tiene Ana, la que habla.",
+       "Umi es para varios, «esos». Es un solo gato, y además lo tiene Ana.",
+       "Ana tiene el gato en brazos, cerca de ella, la que habla: ko mbarakaja, «este gato»."
+      ]
+     },
+     {
+      "id": "a1u04d3.d2",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Luis señala ^una casa lejos, al final de la calle^.)\nLuis: (   ) óga ituicha.",
+      "options": [
+       "Ko",
+       "Pe",
+       "Amo",
+       "Ko'ã"
+      ],
+      "answer": 3,
+      "why": [
+       "Ko es «esta», para algo cerca de Luis. La casa está al final de la calle.",
+       "Pe es «esa», para algo cerca del que escucha. La casa está lejos de los dos.",
+       "La casa está lejos de los dos, pero a la vista: amo óga, «aquella casa».",
+       "Ko'ã es «estas», para varias cosas cerca de quien habla. Es una sola casa y está lejos."
+      ]
+     },
+     {
+      "id": "a1u04d3.d3",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Ana tiene ^dos libros en la mano^.)\nAna: (   ) aranduka iporã.",
+      "options": [
+       "Ko'ã",
+       "Umi",
+       "Ko",
+       "Pe"
+      ],
+      "answer": 1,
+      "why": [
+       "Son dos libros y los tiene Ana, la que habla: ko'ã aranduka, «estos libros». Ko'ã es el ko de varios.",
+       "Umi es para varios, pero lejos de quien habla: «esos» o «aquellos». Ana los tiene en la mano.",
+       "Ko es «este», para uno solo. Ana tiene dos libros.",
+       "Pe es «ese»: uno solo, y cerca del que escucha. Son dos y los tiene Ana."
+      ]
+     },
+     {
+      "id": "a1u04d3.d4",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Juan habla de ^los chicos que están con Rosa^.)\nJuan: (   ) mitã oñe'ẽ guaraníme.",
+      "options": [
+       "Ko'ã",
+       "Umi",
+       "Ko",
+       "Pekuéra"
+      ],
+      "answer": 2,
+      "why": [
+       "Ko'ã es «estos», para varios cerca de quien habla. Los chicos están con Rosa, no con Juan.",
+       "Son varios chicos y están con Rosa, no con Juan: umi mitã, «esos chicos». El sustantivo queda como está.",
+       "Ko es «este»: uno solo, y cerca de Juan. Son varios y están con Rosa.",
+       "El plural de pe no se hace con -kuéra: para varios hay otra palabra, umi."
+      ]
+     },
+     {
+      "id": "a1u04d3.d5",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "Umi kavaju oĩ ",
+      "after": ".",
+      "tiles": [
+       "korapy",
+       "pe"
+      ],
+      "bank": [
+       1,
+       0
+      ],
+      "hint": "Primero el lugar, korapy, y después -pe, «en». -pe no se lleva el acento: fijate dónde queda la tilde.",
+      "full": "Umi kavaju oĩ korapý{pe}.",
+      "es": "Esos caballos están en el patio.",
+      "explain": "korapy («patio») + -pe («en») = korapýpe, «en el patio». -pe no se lleva el acento: queda en la y de korapy. Como esa y ya no es la última vocal, se escribe la tilde: korapýpe. Umi, «esos», va delante de kavaju."
+     },
+     {
+      "id": "a1u04d3.d6",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la oración",
+      "join": "sentence",
+      "before": "",
+      "after": "umi mbarakaja iporã.",
+      "tiles": [
+       "ko'ã",
+       "jagua",
+       "ha"
+      ],
+      "bank": [
+       2,
+       0,
+       1
+      ],
+      "hint": "Ko'ã va delante del sustantivo, como ko. Ha, «y», une las dos partes.",
+      "full": "{Ko'ã} jagua ha umi mbarakaja iporã.",
+      "es": "Estos perros y esos gatos son lindos.",
+      "explain": "Ko'ã, «estos», va delante de jagua: ko'ã jagua, «estos perros». Después ha, «y», une con umi mbarakaja, «esos gatos». El demostrativo va siempre primero, y el sustantivo queda sin -kuéra: ko'ã y umi ya dicen que son varios."
+     }
+    ],
+    "exam": [
+     {
+      "id": "a1u04d3.e1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Qué significa",
+      "q": "Rosa: _Amo óga_ ituicha.",
+      "options": [
+       "Esta casa",
+       "Esa casa",
+       "Aquella casa",
+       "Aquellas casas"
+      ],
+      "answer": 3,
+      "explain": "Amo es «aquel, aquella»: algo lejos de los dos, a la vista. Amo óga ituicha: aquella casa es grande. «Esta casa» sería ko óga; «esa casa», pe óga; y para varias casas lejos se usa umi: umi óga."
+     },
+     {
+      "id": "a1u04d3.e2",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Juan señala dos árboles que tiene al lado.)\nJuan: (   ) yvyra ituicha.",
+      "options": [
+       "Ko",
+       "Umi",
+       "Pe",
+       "Ko'ã"
+      ],
+      "answer": 4,
+      "explain": "Son dos árboles y están al lado de Juan, el que habla: ko'ã yvyra, «estos árboles». Ko y pe son para uno solo, y umi es para varios pero lejos de quien habla, «esos» o «aquellos»."
+     },
+     {
+      "id": "a1u04d3.e3",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "Pe jagua oĩ ",
+      "after": ".",
+      "tiles": [
+       "korapy",
+       "pe"
+      ],
+      "bank": [
+       1,
+       0
+      ],
+      "full": "Pe jagua oĩ korapýpe.",
+      "es": "Ese perro está en el patio.",
+      "explain": "korapy («patio») + -pe («en») = korapýpe. -pe no se lleva el acento: queda en la y de korapy, que ya no es la última vocal, y por eso se escribe la tilde. Pe jagua oĩ korapýpe: ese perro está en el patio."
+     }
+    ]
+   },
+   "words": {
+    "gn": "Korapýpe",
+    "es": "En el patio",
+    "intro": "El patio de la casa de Juan: animales y cosas para señalar con ko, pe y amo. Tocá cada palabra. Dos nombres vienen del castellano, escritos a la guaraní: vaka y kavaju.",
+    "sound": {
+     "focus": "La v: vaka, kavaju",
+     "letters": [
+      "v",
+      "k"
+     ],
+     "note": "La v del guaraní no es la b ni la v del castellano: el labio de abajo roza los dientes, sin fuerza: vaka, yvyra. Cuando una palabra entra del castellano se escribe con las letras del guaraní: vaca → vaka, caballo → kavaju, queso → kesu (b → v; c y qu → k; ll → j). No hay pares mínimos seguros con v o con k: son palabras para contrastar con el castellano.",
+     "pairs": [
+      [
+       "vaka",
+       "vaca",
+       "yvyra",
+       "árbol"
+      ],
+      [
+       "kavaju",
+       "caballo",
+       "kesu",
+       "queso"
+      ]
+     ]
+    },
+    "words": [
+     {
+      "id": "jagua",
+      "gn": "jagua",
+      "es": "perro",
+      "note": "La j suena como la y fuerte de «yo», nunca como la jota. Plural: jaguakuéra."
+     },
+     {
+      "id": "mbarakaja",
+      "gn": "mbarakaja",
+      "es": "gato",
+      "note": "Empieza con mb, como mba'e: una sola letra. Una gata es mbarakaja kuña."
+     },
+     {
+      "id": "ryguasu",
+      "gn": "ryguasu",
+      "es": "gallina",
+      "note": "La r es suave, como en «caro», también al principio. Ryguasu rupi'a es «huevo»."
+     },
+     {
+      "id": "kavaju",
+      "gn": "kavaju",
+      "es": "caballo",
+      "note": "Del castellano «caballo», escrito a la guaraní: la c se escribe k y la ll se escribe j."
+     },
+     {
+      "id": "vaka",
+      "gn": "vaka",
+      "es": "vaca",
+      "note": "Del castellano «vaca»: con v y con k. Ko vaka iky'a, «esta vaca está sucia»."
+     },
+     {
+      "id": "yvyra",
+      "gn": "yvyra",
+      "es": "árbol",
+      "note": "Dos y, la sexta vocal: y-vy-ra. También es «madera»."
+     },
+     {
+      "id": "apyka",
+      "gn": "apyka",
+      "es": "silla",
+      "note": "La y del medio es la sexta vocal: a-py-ka."
+     },
+     {
+      "id": "korapy",
+      "gn": "korapy",
+      "es": "patio",
+      "note": "«En el patio» es korapýpe: -pe no se lleva el acento, y aparece la tilde en la ý."
+     }
+    ],
+    "spell": [
+     "kavaju",
+     "vaka",
+     "yvyra",
+     "apyka"
+    ],
+    "check": {
+     "id": "a1u04d3.k1",
+     "kind": "choice",
+     "area": "vocab",
+     "label": "Cómo se escribe",
+     "q": "Juan señala un animal: Amo _caballo_ ituicha. ¿Cómo se escribe «caballo» en guaraní?",
+     "options": [
+      "cavaju",
+      "kavaju",
+      "kabaju",
+      "kavallu"
+     ],
+     "answer": 2,
+     "explain": "Se escribe kavaju: la c de «caballo» se escribe k, porque la c no es una letra del guaraní, y la ll se escribe j. Cavaju deja la c; kabaju escribe b, que sola no es una letra del guaraní, acá va v; y kavallu deja la ll del castellano."
+    }
+   },
+   "skill": {
+    "kind": "listening",
+    "es": "Comprensión de puntos clave",
+    "situation": "En el patio de la casa de Juan. Rosa mira los animales y habla de ellos con Juan.",
+    "ask": "¿Qué animal está lejos de los dos?",
+    "item": {
+     "id": "a1u04d3.r1",
+     "kind": "choice",
+     "area": "listening",
+     "label": "Qué escuchaste",
+     "q": "¿Qué animal está lejos de los dos?",
+     "options": [
+      "El perro.",
+      "El gato.",
+      "El caballo."
+     ],
+     "short": [
+      "Perro",
+      "Gato",
+      "Caballo"
+     ],
+     "printed": true,
+     "answer": 3,
+     "why": [
+      "Rosa dice pe jagua, «ese perro»: pe es para algo cerca del que escucha, Juan. El perro está al lado de Juan, no lejos.",
+      "Rosa dice ko mbarakaja, «este gato»: ko es para algo cerca de quien habla. Rosa tiene el gato al lado.",
+      "Juan dice amo kavaju ituicha, «aquel caballo es grande»: amo es para algo lejos de los dos, a la vista."
+     ],
+     "script": [
+      "Narrador: En el patio de la casa de Juan. Rosa habla de los animales. ¿Qué animal está lejos de los dos?",
+      "Mujer: Pe jagua iporã, Juan.",
+      "Hombre: Héẽ. Ha amo kavaju ituicha.",
+      "Mujer: Ha ko mbarakaja?",
+      "Hombre: Che rajy mbarakaja.",
+      "Narrador: ¿Qué animal está lejos de los dos?"
+     ]
+    },
+    "audio": [
+     [
+      "N",
+      "En el patio de la casa de Juan. Rosa habla de los animales. ¿Qué animal está lejos de los dos?",
+      "En el patio de la casa de Juan. Rosa habla de los animales. ¿Qué animal está lejos de los dos?"
+     ],
+     [
+      "F",
+      "Pe jagua iporã, Juan.",
+      "Ese perro es lindo, Juan."
+     ],
+     [
+      "M",
+      "Héẽ. Ha amo kavaju ituicha.",
+      "Sí. Y aquel caballo es grande."
+     ],
+     [
+      "F",
+      "Ha ko mbarakaja?",
+      "¿Y este gato?"
+     ],
+     [
+      "M",
+      "Che rajy mbarakaja.",
+      "Es el gato de mi hija."
+     ],
+     [
+      "N",
+      "¿Qué animal está lejos de los dos?",
+      "¿Qué animal está lejos de los dos?"
+     ]
+    ]
+   }
+  },
+  "4": {
+   "title": "máva «quién», mba'e «qué»",
+   "grammar": {
+    "points": [
+     {
+      "id": "a1u04d4.p1",
+      "form": "Mávapa …?",
+      "gloss": "¿quién?",
+      "connect": [
+       {
+        "pos": "Para preguntar por una persona: máva, «quién», con -pa pegado",
+        "rule": "{Mávapa} ha'e?"
+       },
+       {
+        "pos": "Con los demostrativos de ayer: ko, pe, amo",
+        "rule": "{Mávapa} pe karai? · {Mávapa} ko mitã?"
+       },
+       {
+        "pos": "En la charla también se oye con piko (semana 3)",
+        "rule": "{Mávapiko} pe karai?"
+       },
+       {
+        "pos": "Se responde con la persona, con o sin ha'e",
+        "rule": "{Che ru}. · Ha'e {che ru}."
+       }
+      ],
+      "examples": [
+       {
+        "gn": "{Mávapa} ha'e?",
+        "es": "¿Quién es?",
+        "parts": [
+         [
+          "máva",
+          "quién"
+         ],
+         [
+          "-pa",
+          "pregunta"
+         ],
+         [
+          "ha'e",
+          "él, ella"
+         ]
+        ]
+       },
+       {
+        "gn": "{Mávapa} pe karai?",
+        "es": "¿Quién es ese señor?",
+        "parts": [
+         [
+          "mávapa",
+          "¿quién?"
+         ],
+         [
+          "pe",
+          "ese"
+         ],
+         [
+          "karai",
+          "señor"
+         ]
+        ]
+       },
+       {
+        "gn": "Juan: {Mávapa} ko mitã?\nRosa: Che memby.",
+        "es": "Juan: ¿Quién es este chico?\nRosa: Mi hijo.",
+        "parts": [
+         [
+          "ko",
+          "este"
+         ],
+         [
+          "mitã",
+          "chico, niño"
+         ],
+         [
+          "che memby",
+          "mi hijo (dice la mamá)"
+         ]
+        ]
+       },
+       {
+        "gn": "Juan: {Mávapa} amo kuñataĩ?\nLuis: Ha'e che rajy.",
+        "es": "Juan: ¿Quién es aquella chica?\nLuis: Es mi hija.",
+        "parts": [
+         [
+          "amo",
+          "aquella"
+         ],
+         [
+          "kuñataĩ",
+          "chica, señorita"
+         ],
+         [
+          "ha'e",
+          "ella"
+         ],
+         [
+          "che rajy",
+          "mi hija (dice el papá)"
+         ]
+        ]
+       }
+      ],
+      "watch": {
+       "note": "Máva no es aguda: el acento cae en la primera a, y ahí va la tilde. La -pa de pregunta no se lleva el acento ni lo mueve.",
+       "bad": "Mavápa",
+       "good": "Mávapa"
+      }
+     },
+     {
+      "id": "a1u04d4.p2",
+      "form": "Mba'épa …?",
+      "gloss": "¿qué?",
+      "connect": [
+       {
+        "pos": "Para preguntar por una cosa o por una acción",
+        "rule": "{Mba'épa} reipota? · {Mba'épa} rejapo?"
+       },
+       {
+        "pos": "La pregunta del alumno: «¿qué significa?»",
+        "rule": "{Mba'épa} he'ise?"
+       },
+       {
+        "pos": "Para preguntar qué hay",
+        "rule": "{Mba'épa} oĩ?"
+       },
+       {
+        "pos": "De mba'e salen una palabra que ya usás, mba'éichapa, «¿cómo?», y otra para reconocer, mba'érepa, «¿por qué?»",
+        "rule": "mba'e + icha + pa → {Mba'éichapa} · mba'e + re + pa → {Mba'érepa}"
+       }
+      ],
+      "examples": [
+       {
+        "gn": "{Mba'épa} he'ise «jarýi»?",
+        "es": "¿Qué significa «jarýi»?",
+        "parts": [
+         [
+          "mba'e",
+          "qué"
+         ],
+         [
+          "-pa",
+          "pregunta"
+         ],
+         [
+          "he'ise",
+          "significa"
+         ],
+         [
+          "jarýi",
+          "abuela"
+         ]
+        ]
+       },
+       {
+        "gn": "{Mba'épa} reipota?",
+        "es": "¿Qué querés?",
+        "parts": [
+         [
+          "mba'épa",
+          "¿qué?"
+         ],
+         [
+          "reipota",
+          "querés"
+         ]
+        ]
+       },
+       {
+        "gn": "{Mba'épa} rejapo, Luis?",
+        "es": "¿Qué hacés, Luis?",
+        "parts": [
+         [
+          "mba'épa",
+          "¿qué?"
+         ],
+         [
+          "re-",
+          "vos"
+         ],
+         [
+          "japo",
+          "hacer"
+         ]
+        ]
+       },
+       {
+        "gn": "{Mba'épa} oĩ korapýpe?",
+        "es": "¿Qué hay en el patio?",
+        "parts": [
+         [
+          "mba'épa",
+          "¿qué?"
+         ],
+         [
+          "oĩ",
+          "hay"
+         ],
+         [
+          "korapy",
+          "patio"
+         ],
+         [
+          "-pe",
+          "en"
+         ]
+        ]
+       }
+      ],
+      "watch": {
+       "note": "Mba'e es aguda: el acento cae en la e. Con -pa, esa e ya no es la última vocal, y hay que escribir la tilde: Mba'épa. Sin tilde, Mba'epa se leería con el acento en la a del final.",
+       "bad": "Mba'epa",
+       "good": "Mba'épa"
+      }
+     }
+    ],
+    "compare": {
+     "intro": "Tres palabras para pedir un dato: por una persona, por una cosa y por un lugar. Las tres llevan -pa pegado, y ninguna se contesta con héẽ ni con nahániri.",
+     "forms": [
+      {
+       "form": "Mávapa",
+       "tag": "¿quién? · una persona",
+       "mark": "dot",
+       "gn": "{Mávapa} pe karai?",
+       "es": "¿Quién es ese señor?"
+      },
+      {
+       "form": "Mba'épa",
+       "tag": "¿qué? · una cosa o una acción",
+       "mark": "dot",
+       "gn": "{Mba'épa} reipota?",
+       "es": "¿Qué querés?"
+      },
+      {
+       "form": "Moõpa",
+       "tag": "¿dónde? · un lugar (semana 1)",
+       "mark": "dot",
+       "gn": "{Moõpa} nde róga?",
+       "es": "¿Dónde queda tu casa?"
+      }
+     ],
+     "check": {
+      "id": "a1u04d4.c1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Rosa quiere saber quién es ^la mujer de la foto^.\nRosa: (   ) pe kuña?",
+      "options": [
+       "Mba'épa",
+       "Moõpa",
+       "Mávapa"
+      ],
+      "answer": 3,
+      "why": [
+       "Mba'épa pregunta por una cosa: Mba'épa pe kuña? sería «¿qué es esa mujer?». Por una persona se pregunta con mávapa.",
+       "Moõpa pregunta «¿dónde?», por un lugar. Rosa no quiere saber dónde está la mujer: quiere saber quién es.",
+       "Rosa pregunta por una persona, la mujer de la foto: Mávapa pe kuña?, «¿quién es esa mujer?»."
+      ]
+     }
+    },
+    "drill": [
+     {
+      "id": "a1u04d4.d1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Juan: (   ) ha'e?\nRosa: ^Che sy.^",
+      "options": [
+       "Moõpa",
+       "Mávapa",
+       "Mba'épa",
+       "Mboýpa"
+      ],
+      "answer": 2,
+      "why": [
+       "Moõpa pregunta «¿dónde?». Che sy no es un lugar: para decir dónde, Rosa respondería con un lugar, como che rógape.",
+       "Rosa responde con una persona, che sy, «mi mamá»: Juan preguntó quién es. Mávapa ha'e?, «¿quién es?».",
+       "Mba'épa pregunta «¿qué?», por una cosa. Che sy es una persona.",
+       "Mboýpa pregunta «¿cuánto?», como en Mboýpa ovale? Che sy no es una cantidad."
+      ]
+     },
+     {
+      "id": "a1u04d4.d2",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Ana: (   ) reipota?\nLuis: ^Mandi'o.^",
+      "options": [
+       "Mávapa",
+       "Moõpa",
+       "Mba'éichapa",
+       "Mba'épa"
+      ],
+      "answer": 4,
+      "why": [
+       "Mávapa pregunta «¿quién?», por una persona, y mandi'o es una cosa.",
+       "Moõpa pregunta «¿dónde?». Mandi'o no es un lugar.",
+       "Mba'éichapa pregunta «¿cómo?», como en Mba'éichapa reiko? Luis no dice cómo: dice qué quiere.",
+       "Luis responde con una cosa, mandi'o: Ana preguntó qué quiere. Mba'épa reipota?, «¿qué querés?»."
+      ]
+     },
+     {
+      "id": "a1u04d4.d3",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Luis: (   ) he'ise «korapy»?\nAna: ^«Patio».^",
+      "options": [
+       "Mboýpa",
+       "Mba'éichapa",
+       "Mba'épa",
+       "Mávapa"
+      ],
+      "answer": 3,
+      "why": [
+       "Mboýpa pregunta «¿cuánto?». «Patio» no es una cantidad.",
+       "Mba'éichapa pregunta «¿cómo?». He'ise es «significa», y lo que Luis pide es un significado: un «qué».",
+       "Luis pregunta el significado de una palabra: Mba'épa he'ise «korapy»?, «¿qué significa korapy?». Ana se lo dice: «patio».",
+       "Mávapa pregunta «¿quién?», y una palabra no es una persona."
+      ]
+     },
+     {
+      "id": "a1u04d4.d4",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Cómo se escribe",
+      "q": "Rosa pregunta ^quién^ es el muchacho de allá.\nRosa: (   ) amo karia'y?",
+      "options": [
+       "Mãvapa",
+       "Mávapa",
+       "Mábapa",
+       "Mávapã"
+      ],
+      "answer": 2,
+      "why": [
+       "Mãvapa pone una ~ en la primera a, como si fuera nasal. Máva es oral: su marca es la tilde de acento, á.",
+       "Máva lleva la tilde de acento en la primera a, y -pa va pegado sin moverla: Mávapa amo karia'y?, «¿quién es aquel muchacho?».",
+       "Mábapa escribe con b: la b sola no es una letra del guaraní, solo está en mb. El sonido de máva se escribe con v.",
+       "Mávapã agrega una ~ a la a de -pa. Esa a es oral: -pa se escribe siempre igual, sin ~."
+      ]
+     },
+     {
+      "id": "a1u04d4.d5",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "",
+      "after": " he'ise «ramói»?",
+      "tiles": [
+       "mba'e",
+       "pa"
+      ],
+      "bank": [
+       1,
+       0
+      ],
+      "hint": "-pa va al final y no se lleva el acento: fijate qué pasa con la tilde.",
+      "full": "{Mba'épa} he'ise «ramói»?",
+      "es": "¿Qué significa «ramói»?",
+      "explain": "mba'e («qué») + -pa (pregunta) = Mba'épa. -pa no se lleva el acento: queda en la e de mba'e, que ya no es la última vocal, y por eso se escribe la tilde. Mba'épa he'ise «ramói»?: ¿qué significa «ramói»?"
+     },
+     {
+      "id": "a1u04d4.d6",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "",
+      "after": " ko mitã?",
+      "tiles": [
+       "máva",
+       "pa"
+      ],
+      "bank": [
+       1,
+       0
+      ],
+      "hint": "Máva ya tiene su tilde, y -pa no la mueve.",
+      "full": "{Mávapa} ko mitã?",
+      "es": "¿Quién es este chico?",
+      "explain": "máva («quién») + -pa (pregunta) = Mávapa. La tilde ya estaba en la primera a de máva y se queda ahí: -pa no se lleva el acento. Mávapa ko mitã?: ¿quién es este chico?"
+     }
+    ],
+    "exam": [
+     {
+      "id": "a1u04d4.e1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Qué significa",
+      "q": "Rosa: _Mba'épa he'ise «ramói»?_",
+      "options": [
+       "¿Quién es tu abuelo?",
+       "¿Qué significa «ramói»?",
+       "¿Dónde está el abuelo?",
+       "¿Cómo se escribe «ramói»?"
+      ],
+      "answer": 2,
+      "explain": "Mba'épa es «¿qué?» y he'ise, «significa»: Rosa pregunta qué significa la palabra ramói. «Quién» sería mávapa, «dónde» sería moõpa y «cómo» sería mba'éichapa."
+     },
+     {
+      "id": "a1u04d4.e2",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Juan: (   ) amo kuña?\nRosa: Che jarýi.",
+      "options": [
+       "Mba'épa",
+       "Moõpa",
+       "Mboýpa",
+       "Mávapa"
+      ],
+      "answer": 4,
+      "explain": "Rosa responde con una persona, che jarýi, «mi abuela»: Juan preguntó quién es aquella mujer, Mávapa amo kuña? Mba'épa pregunta por una cosa, moõpa por un lugar y mboýpa por una cantidad."
+     },
+     {
+      "id": "a1u04d4.e3",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "Vendedor: ",
+      "after": " reipota?",
+      "tiles": [
+       "mba'e",
+       "pa"
+      ],
+      "bank": [
+       1,
+       0
+      ],
+      "full": "Vendedor: Mba'épa reipota?",
+      "es": "Vendedor: ¿Qué querés?",
+      "explain": "mba'e («qué») + -pa (pregunta) = Mba'épa. -pa no se lleva el acento: queda en la e, que ya no es la última vocal, y se escribe la tilde. Mba'épa reipota? es la pregunta del vendedor: «¿qué querés?»."
+     }
+    ]
+   },
+   "words": {
+    "es": "¿Quién es? En el cumpleaños",
+    "intro": "En el cumpleaños de la abuela hay chipa, sopa paraguaya y gente que no conocés. Tocá cada palabra: con ellas preguntás quién es quién y qué significa lo que oís.",
+    "sound": {
+     "focus": "Los dígrafos mb, nd, ng, nt",
+     "letters": [
+      "mb",
+      "nd",
+      "ng",
+      "nt"
+     ],
+     "note": "mb, nd, ng y nt son una sola letra y van en una sola sílaba: empezá con un zumbido, mmm o nnn, y soltalo en la b, la d o la g, sin meter una vocal delante (no «emba'e») y sin perder la nasal (no «ba'e»): mba'e, nde, angirũ. Nt aparece sobre todo en -nte, «solo, nomás»: peteĩnte, «uno solo». No hay pares mínimos seguros: son palabras para contrastar.",
+     "pairs": [
+      [
+       "mba'e",
+       "cosa; ¿qué?",
+       "mboy",
+       "¿cuánto?"
+      ],
+      [
+       "nde",
+       "vos; tu",
+       "ñande",
+       "nosotros (con vos)"
+      ],
+      [
+       "angirũ",
+       "amigo, amiga",
+       "mitãnguéra",
+       "los niños"
+      ]
+     ]
+    },
+    "words": [
+     {
+      "id": "mavapa",
+      "gn": "Mávapa?",
+      "es": "¿Quién?",
+      "parts": [
+       [
+        "máva",
+        "quién"
+       ],
+       [
+        "-pa",
+        "pregunta"
+       ]
+      ],
+      "note": "Tilde en la primera a. En la charla también se oye Mávapiko?"
+     },
+     {
+      "id": "mbaepa",
+      "gn": "Mba'épa?",
+      "es": "¿Qué?",
+      "parts": [
+       [
+        "mba'e",
+        "qué; cosa"
+       ],
+       [
+        "-pa",
+        "pregunta"
+       ]
+      ],
+      "note": "Mba'e es aguda; con -pa aparece la tilde en la é. Mb es una sola letra: mba-'e."
+     },
+     {
+      "id": "mbaerepa",
+      "gn": "Mba'érepa?",
+      "es": "¿Por qué?",
+      "parts": [
+       [
+        "mba'e",
+        "qué"
+       ],
+       [
+        "-re",
+        "por"
+       ],
+       [
+        "-pa",
+        "pregunta"
+       ]
+      ],
+      "note": "Por ahora, solo para reconocerla cuando la oigas."
+     },
+     {
+      "id": "tapicha",
+      "gn": "tapicha",
+      "es": "persona",
+      "note": "Plural: tapichakuéra, «la gente»."
+     },
+     {
+      "id": "kariay",
+      "gn": "karia'y",
+      "es": "muchacho, joven",
+      "note": "Lleva puso antes de la y final, que es la sexta vocal: karia'y."
+     },
+     {
+      "id": "mitakuna",
+      "gn": "mitãkuña",
+      "es": "niña",
+      "parts": [
+       [
+        "mitã",
+        "niño, niña"
+       ],
+       [
+        "kuña",
+        "mujer"
+       ]
+      ],
+      "note": "La del día 2. Plural: mitãkuñanguéra."
+     },
+     {
+      "id": "kuimbae",
+      "gn": "kuimba'e",
+      "es": "hombre",
+      "note": "Mb es una sola letra, en una sola sílaba: kuimba'e. Lleva puso antes de la e."
+     },
+     {
+      "id": "angiru",
+      "gn": "angirũ",
+      "es": "amigo, amiga",
+      "note": "Ng en una sola sílaba: a-ngi-rũ. Con nde se dice ne angirũ."
+     }
+    ],
+    "spell": [
+     "mbaepa",
+     "mbaerepa",
+     "kuimbae",
+     "angiru"
+    ],
+    "check": {
+     "id": "a1u04d4.k1",
+     "kind": "choice",
+     "area": "vocab",
+     "label": "Cómo se escribe",
+     "q": "Luis pregunta _qué_ significa «korapy»: (   ) he'ise «korapy»? ¿Cómo se escribe?",
+     "options": [
+      "Mbaépa",
+      "Mba'ẽpa",
+      "Mba'épa",
+      "Ba'épa"
+     ],
+     "answer": 3,
+     "explain": "«¿Qué?» es Mba'épa: empieza con mb, una sola letra, lleva el puso entre la a y la e, y la tilde va en la é, porque con -pa la e ya no es la última vocal. Mbaépa pierde el puso. Mba'ẽpa pone una ~ en la e, y la e de mba'e es oral: lleva tilde de acento, é. Ba'épa pierde la nasal del principio: la palabra empieza con mb, no con b."
+    }
+   },
+   "skill": {
+    "kind": "reading",
+    "es": "Un chat con foto",
+    "ask": "¿Quién es el señor de la foto?",
+    "seconds": 75,
+    "passage": "Rosa: Mba'éichapa, Juan?\nJuan: Iporã. ^Mávapa pe kuñataĩ?^\nRosa: Che memby, héra Sofía.\nJuan: Ha ^amo karai?^\nRosa: ^Che ramói.^\nJuan: Mba'épa he'ise «ramói»?\nRosa: «Abuelo».",
+    "strategy": "Juan pregunta dos veces por una persona, y la respuesta de Rosa viene justo después de cada pregunta. Al final Juan pregunta qué significa una palabra: esa respuesta también te sirve.",
+    "item": {
+     "id": "a1u04d4.r1",
+     "kind": "choice",
+     "area": "reading",
+     "label": "Texto corto",
+     "q": "¿Quién es el señor de la foto?",
+     "options": [
+      "El papá de Rosa.",
+      "El abuelo de Rosa.",
+      "El hijo de Rosa.",
+      "Un amigo de Rosa."
+     ],
+     "short": [
+      "Su papá",
+      "Su abuelo",
+      "Su hijo",
+      "Un amigo"
+     ],
+     "answer": 2,
+     "why": [
+      "Para el papá, Rosa diría che ru, y no lo dice en el chat.",
+      "Juan pregunta Ha amo karai?, «¿y aquel señor?», y Rosa responde Che ramói, «mi abuelo». Después se lo traduce: ramói es «abuelo».",
+      "Che memby es Sofía, la kuñataĩ de la foto: la hija de Rosa, no el señor.",
+      "Un amigo sería che angirũ, y esa palabra no aparece en el chat."
+     ],
+     "explain": "Juan pregunta por el señor con Ha amo karai?, y Rosa contesta Che ramói, «mi abuelo». Cuando Juan pregunta Mba'épa he'ise «ramói»?, Rosa lo traduce: «abuelo»."
+    }
+   }
+  },
+  "5": {
+   "title": "Números 1–5 en guaraní y números castellanos en el habla",
+   "grammar": {
+    "points": [
+     {
+      "id": "a1u04d5.p1",
+      "form": "peteĩ · mokõi · mbohapy · irundy · po + sustantivo",
+      "gloss": "uno, dos, tres, cuatro, cinco",
+      "connect": [
+       {
+        "pos": "Delante del sustantivo, que queda en singular: el número ya dice cuántos",
+        "rule": "{mokõi} kuña · {mbohapy} memby"
+       },
+       {
+        "pos": "Para contar lo que hay, con oĩ, y para preguntar cuántos, con mboýpa (semana 1)",
+        "rule": "Oĩ {mbohapy} apyka. · Mboýpa ne memby?"
+       },
+       {
+        "pos": "La edad: ary, «año», y el verbo tener: areko, rereko, oguereko",
+        "rule": "Oguereko {mokõi} ary. · Mboy arýpa rereko?"
+       },
+       {
+        "pos": "Po es «cinco» y también «mano»",
+        "rule": "{po} mitã · {po} ary"
+       }
+      ],
+      "examples": [
+       {
+        "gn": "{Mokõi} kuña omba'apo.",
+        "es": "Dos mujeres trabajan.",
+        "parts": [
+         [
+          "mokõi",
+          "dos"
+         ],
+         [
+          "kuña",
+          "mujer (en singular)"
+         ],
+         [
+          "omba'apo",
+          "trabajan"
+         ]
+        ]
+       },
+       {
+        "gn": "Ha'e oguereko {mokõi} ary.",
+        "es": "Él tiene dos años.",
+        "parts": [
+         [
+          "ha'e",
+          "él, ella"
+         ],
+         [
+          "oguereko",
+          "tiene (la forma de ha'e)"
+         ],
+         [
+          "mokõi",
+          "dos"
+         ],
+         [
+          "ary",
+          "año"
+         ]
+        ]
+       },
+       {
+        "gn": "Jareko {peteĩ} jagua.",
+        "es": "Tenemos un perro.",
+        "parts": [
+         [
+          "ja-",
+          "nosotros (con vos)"
+         ],
+         [
+          "reko",
+          "tener"
+         ],
+         [
+          "peteĩ",
+          "uno, un"
+         ],
+         [
+          "jagua",
+          "perro"
+         ]
+        ]
+       },
+       {
+        "gn": "Rosa: Areko {mbohapy} memby.",
+        "es": "Rosa: Tengo tres hijos.",
+        "parts": [
+         [
+          "a-",
+          "yo"
+         ],
+         [
+          "reko",
+          "tener"
+         ],
+         [
+          "mbohapy",
+          "tres"
+         ],
+         [
+          "memby",
+          "hijo o hija (dice la mamá)"
+         ]
+        ]
+       }
+      ],
+      "watch": {
+       "note": "Después del número, el sustantivo va sin -kuéra ni -nguéra: el número ya dice cuántos. En castellano agregás la s; en guaraní, no.",
+       "bad": "mokõi mitãnguéra",
+       "good": "mokõi mitã"
+      }
+     },
+     {
+      "id": "a1u04d5.p2",
+      "form": "número castellano + sustantivo",
+      "gloss": "de seis en adelante, precios y edad, en el habla",
+      "connect": [
+       {
+        "pos": "Los precios se dicen en castellano, como en la semana 1",
+        "rule": "Mboýpa ovale? {Diez mil}."
+       },
+       {
+        "pos": "De seis en adelante, en la charla, el número va en castellano y el sustantivo en guaraní",
+        "rule": "{siete} memby · {diez} mitã"
+       },
+       {
+        "pos": "La edad: con ary o solo el número",
+        "rule": "Mboy arýpa rereko? {Veinte}. · Oguereko {ochenta} ary."
+       },
+       {
+        "pos": "Del 6 al 10 en guaraní, para leerlos: son de la escuela y de los textos",
+        "rule": "{poteĩ} 6 · {pokõi} 7 · {poapy} 8 · {porundy} 9 · {pa} 10"
+       }
+      ],
+      "examples": [
+       {
+        "gn": "Rosa: Mboýpa ovale ko kesu?\nVendedor: {Diez mil}.",
+        "es": "Rosa: ¿Cuánto cuesta este queso?\nVendedor: Diez mil.",
+        "parts": [
+         [
+          "mboýpa",
+          "¿cuánto?"
+         ],
+         [
+          "ovale",
+          "cuesta, vale"
+         ],
+         [
+          "ko kesu",
+          "este queso"
+         ],
+         [
+          "diez mil",
+          "el precio, en castellano"
+         ]
+        ]
+       },
+       {
+        "gn": "Ana: Mboy arýpa rereko?\nLuis: {Veinte}.",
+        "es": "Ana: ¿Cuántos años tenés?\nLuis: Veinte.",
+        "parts": [
+         [
+          "mboy",
+          "cuántos"
+         ],
+         [
+          "ary",
+          "año"
+         ],
+         [
+          "-pa",
+          "pregunta"
+         ],
+         [
+          "rereko",
+          "tenés"
+         ],
+         [
+          "veinte",
+          "la edad, en castellano"
+         ]
+        ]
+       },
+       {
+        "gn": "Che ramói oguereko {ochenta} ary.",
+        "es": "Mi abuelo tiene ochenta años.",
+        "parts": [
+         [
+          "che ramói",
+          "mi abuelo"
+         ],
+         [
+          "oguereko",
+          "tiene"
+         ],
+         [
+          "ochenta",
+          "80, en castellano"
+         ],
+         [
+          "ary",
+          "año"
+         ]
+        ]
+       },
+       {
+        "gn": "Oguereko {pa} ary.",
+        "es": "Tiene diez años.",
+        "parts": [
+         [
+          "oguereko",
+          "tiene"
+         ],
+         [
+          "pa",
+          "diez, el numeral de la escuela"
+         ],
+         [
+          "ary",
+          "año"
+         ]
+        ]
+       }
+      ],
+      "watch": {
+       "note": "El precio se dice entero en castellano. No mezcles los dos sistemas en una misma cifra: pa es «diez» en guaraní, pero diez mil se dice diez mil.",
+       "bad": "Mboýpa ovale? Pa mil.",
+       "good": "Mboýpa ovale? Diez mil."
+      }
+     }
+    ],
+    "compare": {
+     "intro": "Hasta cinco en guaraní y de seis en adelante en castellano; detrás de un número, el sustantivo va sin -kuéra.",
+     "forms": [
+      {
+       "form": "peteĩ … po + sustantivo",
+       "tag": "1 a 5, en guaraní",
+       "mark": "dot",
+       "gn": "{Mokõi} kuña opurahéi.",
+       "es": "Dos mujeres cantan."
+      },
+      {
+       "form": "número castellano",
+       "tag": "más de 5, precios y edad",
+       "mark": "dot",
+       "gn": "Mboýpa ovale? {Diez mil}.",
+       "es": "¿Cuánto cuesta? Diez mil."
+      },
+      {
+       "form": "sustantivo + -kuéra",
+       "tag": "plural sin número (día 2)",
+       "mark": "dot",
+       "gn": "Kuña{nguéra} opurahéi.",
+       "es": "Las mujeres cantan."
+      }
+     ],
+     "check": {
+      "id": "a1u04d5.c1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Luis cuenta las sillas del patio: ^tres^.\nLuis: Oĩ (   ).",
+      "options": [
+       "mbohapy apyka",
+       "mbohapy apykakuéra",
+       "mbohapykuéra apyka"
+      ],
+      "answer": 1,
+      "why": [
+       "Tres sillas: mbohapy apyka. El número va delante, y apyka queda en singular, porque el número ya dice cuántas son.",
+       "Apykakuéra es «las sillas», sin número. Con mbohapy delante, el plural -kuéra sobra.",
+       "-kuéra es el plural del sustantivo, no del número: mbohapy no lo lleva."
+      ]
+     }
+    },
+    "drill": [
+     {
+      "id": "a1u04d5.d1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Rosa tiene ^dos^ hijos.)\nAna: Mboýpa ne memby, Rosa?\nRosa: Areko (   ) memby.",
+      "options": [
+       "mbohapy",
+       "mokõi",
+       "peteĩ",
+       "po"
+      ],
+      "answer": 2,
+      "why": [
+       "Mbohapy es «tres», y Rosa tiene dos hijos.",
+       "Rosa tiene dos hijos: mokõi memby. El número va delante de memby, que queda en singular.",
+       "Peteĩ es «uno», y son dos.",
+       "Po es «cinco». Y acordate: también es «mano»."
+      ]
+     },
+     {
+      "id": "a1u04d5.d2",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Ana cuenta las gallinas del patio: ^cinco^.)\nAna: Oĩ (   ) ryguasu korapýpe.",
+      "options": [
+       "irundy",
+       "mbohapy",
+       "po",
+       "pa"
+      ],
+      "answer": 3,
+      "why": [
+       "Irundy es «cuatro»: una menos.",
+       "Mbohapy es «tres».",
+       "Cinco gallinas: po ryguasu. Po va delante, y ryguasu queda en singular.",
+       "Pa es «diez», el numeral de la escuela. Ana cuenta cinco."
+      ]
+     },
+     {
+      "id": "a1u04d5.d3",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la respuesta",
+      "q": "(El chipá cuesta ^dos mil^ guaraníes.)\nRosa: Mboýpa ovale ko chipa?\nVendedor: (   )",
+      "options": [
+       "Mokõi chipa.",
+       "Pa mil.",
+       "Héẽ.",
+       "Dos mil."
+      ],
+      "answer": 4,
+      "why": [
+       "Mokõi chipa es «dos chipás»: dice cuántos hay, no cuánto cuestan.",
+       "Pa mil mezcla los dos sistemas, y además pa es «diez», no «dos». El precio se dice entero en castellano.",
+       "Héẽ, «sí», contesta preguntas de sí o no. Mboýpa pide una cantidad.",
+       "El precio se dice en castellano: dos mil. Mboýpa ovale? pregunta cuánto cuesta."
+      ]
+     },
+     {
+      "id": "a1u04d5.d4",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Rosa habla de ^sus dos hijos^.\nRosa: Areko mokõi (   ).",
+      "options": [
+       "membykuéra",
+       "memby",
+       "ra'y",
+       "membynguéra"
+      ],
+      "answer": 2,
+      "why": [
+       "Membykuéra es «hijos», en plural, pero detrás de mokõi el sustantivo va sin -kuéra: el número ya dice que son dos.",
+       "Detrás del número, memby queda en singular: mokõi memby, «dos hijos». Lo dice la mamá.",
+       "Ra'y es «hijo» cuando lo dice el papá. Rosa es la mamá: memby.",
+       "Membynguéra falla dos veces: lleva el plural, que no va tras el número, y usa la forma de después de una sílaba nasal, cuando by es oral."
+      ]
+     },
+     {
+      "id": "a1u04d5.d5",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "Ana: Mboy ",
+      "after": " rereko, Luis?",
+      "tiles": [
+       "ary",
+       "pa"
+      ],
+      "bank": [
+       1,
+       0
+      ],
+      "hint": "-pa va pegado a ary y no se lleva el acento: fijate qué pasa con la tilde.",
+      "full": "Ana: Mboy arý{pa} rereko, Luis?",
+      "es": "Ana: ¿Cuántos años tenés, Luis?",
+      "explain": "ary («año») + -pa (pregunta) = arýpa. -pa no se lleva el acento: queda en la y de ary, que ya no es la última vocal, y por eso se escribe la tilde: ý. Mboy arýpa rereko?: ¿cuántos años tenés?"
+     },
+     {
+      "id": "a1u04d5.d6",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la oración",
+      "join": "sentence",
+      "before": "Rosa: Mboýpa ovale ko kesu?\nVendedor:",
+      "after": ".",
+      "tiles": [
+       "diez",
+       "mil",
+       "guaraníes"
+      ],
+      "bank": [
+       2,
+       0,
+       1
+      ],
+      "hint": "El precio se dice en castellano y entero. La moneda también se llama guaraní.",
+      "full": "Rosa: Mboýpa ovale ko kesu?\nVendedor: {Diez mil guaraníes}.",
+      "es": "Rosa: ¿Cuánto cuesta este queso?\nVendedor: Diez mil guaraníes.",
+      "explain": "Rosa pregunta el precio con Mboýpa ovale?, y el vendedor lo dice en castellano, entero y en orden: diez mil guaraníes. La moneda de Paraguay se llama guaraní, como la lengua: en la despensa, guaraníes son los billetes."
+     }
+    ],
+    "exam": [
+     {
+      "id": "a1u04d5.e1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Qué significa",
+      "q": "Rosa: _Areko mbohapy memby._",
+      "options": [
+       "Tengo dos hijos.",
+       "Tengo tres años.",
+       "Tengo muchos hijos.",
+       "Tengo tres hijos."
+      ],
+      "answer": 4,
+      "explain": "Areko es «tengo», mbohapy, «tres», y memby, «hijo» o «hija» cuando lo dice la mamá: «tengo tres hijos». Dos sería mokõi, y «tres años» llevaría ary: mbohapy ary. Mbohapy es un número exacto, no «muchos»."
+     },
+     {
+      "id": "a1u04d5.e2",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la respuesta",
+      "q": "(En la despensa.)\nAna: Mboýpa ovale ko so'o?\nVendedor: (   )",
+      "options": [
+       "Pa.",
+       "Mokõi so'o.",
+       "Veinte mil.",
+       "Oĩ so'o."
+      ],
+      "answer": 3,
+      "explain": "Mboýpa ovale? pregunta el precio, y el precio se dice en castellano y entero: veinte mil. Pa es «diez» en guaraní, el numeral de la escuela, y no es un precio; mokõi so'o, «dos carnes», es una cantidad; y Oĩ so'o, «hay carne», contesta Oĩpa so'o?, no cuánto cuesta."
+     },
+     {
+      "id": "a1u04d5.e3",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "(Juan le pregunta a Rosa por el hijo de ella.)\nJuan: Mboy ",
+      "after": " oguereko ne memby?",
+      "tiles": [
+       "ary",
+       "pa"
+      ],
+      "bank": [
+       1,
+       0
+      ],
+      "full": "(Juan le pregunta a Rosa por el hijo de ella.)\nJuan: Mboy arýpa oguereko ne memby?",
+      "es": "Juan: ¿Cuántos años tiene tu hijo?",
+      "explain": "ary («año») + -pa (pregunta) = arýpa. -pa no se lleva el acento: queda en la y de ary, que ya no es la última vocal, y se escribe la tilde. Oguereko es «tiene», y ne memby, «tu hijo»: ¿cuántos años tiene tu hijo?"
+     }
+    ]
+   },
+   "words": {
+    "es": "En la despensa del barrio",
+    "intro": "En la despensa de la esquina contás lo que llevás. Tocá cada palabra: hasta cinco en guaraní, y el precio en castellano.",
+    "sound": {
+     "focus": "La ch y la k: chipa, kesu",
+     "letters": [
+      "ch",
+      "k"
+     ],
+     "note": "La k escribe el sonido de la c de «casa» y de «qu»: kesu, kamby, mokõi, karai; en guaraní no hay c ni qu. La ch suena entre la «sh» y la ch castellana: chipa, che, mba'éichapa; vas a oír las dos. No hay pares mínimos seguros: son palabras para contrastar.",
+     "pairs": [
+      [
+       "kesu",
+       "queso",
+       "chipa",
+       "chipá"
+      ],
+      [
+       "mokõi",
+       "dos",
+       "che",
+       "yo; mi"
+      ],
+      [
+       "kamby",
+       "leche",
+       "mba'éichapa",
+       "¿cómo estás?"
+      ]
+     ]
+    },
+    "words": [
+     {
+      "id": "petei",
+      "gn": "peteĩ",
+      "es": "uno, una",
+      "note": "Tilde nasal en la ĩ: pe-te-ĩ. Peteĩ jagua es «un perro»."
+     },
+     {
+      "id": "mokoi",
+      "gn": "mokõi",
+      "es": "dos",
+      "note": "Con k y con la õ nasal. Mokõive es «los dos»."
+     },
+     {
+      "id": "mbohapy",
+      "gn": "mbohapy",
+      "es": "tres",
+      "note": "Mb es una sola letra: mbo-ha-py. La h suena."
+     },
+     {
+      "id": "irundy",
+      "gn": "irundy",
+      "es": "cuatro",
+      "note": "Nd es una sola letra, y la y del final es la sexta vocal: i-ru-ndy."
+     },
+     {
+      "id": "po",
+      "gn": "po",
+      "es": "cinco",
+      "note": "También es «mano»: cinco dedos. De seis en adelante, en la charla se dice en castellano."
+     },
+     {
+      "id": "chipa",
+      "gn": "chipa",
+      "es": "chipá",
+      "note": "Sin tilde: en guaraní, sin marca, el acento cae al final. De la semana 1."
+     },
+     {
+      "id": "kesu",
+      "gn": "kesu",
+      "es": "queso",
+      "note": "Del castellano «queso», con k: en guaraní no hay qu. De la semana 1."
+     },
+     {
+      "id": "kamby",
+      "gn": "kamby",
+      "es": "leche",
+      "note": "Con k y con y, la sexta vocal. Vaka kamby es «leche de vaca»."
+     }
+    ],
+    "spell": [
+     "mokoi",
+     "kamby",
+     "chipa",
+     "kesu"
+    ],
+    "check": {
+     "id": "a1u04d5.k1",
+     "kind": "choice",
+     "area": "vocab",
+     "label": "Cómo se escribe",
+     "q": "Rosa lleva _dos_ chipá. ¿Cómo se escribe «dos» en guaraní?",
+     "options": [
+      "mocõi",
+      "mokoi",
+      "mokõi",
+      "mokõĩ"
+     ],
+     "answer": 3,
+     "explain": "Dos es mokõi: con k, porque en guaraní no hay c, y con la õ nasal. Mocõi usa la c del castellano. Mokoi pierde la tilde nasal, y la o de mokõi es nasal. Mokõĩ pone dos tildes nasales, y una palabra lleva una sola, en la vocal del acento."
+    }
+   },
+   "skill": {
+    "kind": "listening",
+    "es": "Comprensión de puntos clave",
+    "situation": "En la despensa. Rosa compra queso y pregunta el precio.",
+    "ask": "¿Cuántos quesos lleva Rosa y cuánto paga?",
+    "item": {
+     "id": "a1u04d5.r1",
+     "kind": "choice",
+     "area": "listening",
+     "label": "Qué escuchaste",
+     "q": "¿Cuántos quesos lleva Rosa y cuánto paga?",
+     "options": [
+      "Tres, y paga veinte mil.",
+      "Dos, y paga veinte mil.",
+      "Dos, y paga diez mil."
+     ],
+     "short": [
+      "Tres, veinte mil",
+      "Dos, veinte mil",
+      "Dos, diez mil"
+     ],
+     "printed": true,
+     "answer": 2,
+     "why": [
+      "Rosa dice mokõi kesu, «dos quesos», no mbohapy, «tres». El precio sí es veinte mil.",
+      "El vendedor pregunta Mboýpa reipota?, «¿cuántos querés?», y Rosa responde Mokõi kesu, «dos quesos». Después pregunta el precio, Mboýpa ovale?, y él dice veinte mil.",
+      "Dos quesos sí, pero el vendedor dice veinte mil, no diez mil."
+     ],
+     "script": [
+      "Narrador: En la despensa. ¿Cuántos quesos lleva Rosa y cuánto paga?",
+      "Mujer: Mba'éichapa. Oĩpa kesu?",
+      "Hombre: Héẽ, oĩ. Mboýpa reipota?",
+      "Mujer: Mokõi kesu. Mboýpa ovale?",
+      "Hombre: Veinte mil.",
+      "Mujer: Aguyje.",
+      "Narrador: ¿Cuántos quesos lleva Rosa y cuánto paga?"
+     ]
+    },
+    "audio": [
+     [
+      "N",
+      "En la despensa. ¿Cuántos quesos lleva Rosa y cuánto paga?",
+      "En la despensa. ¿Cuántos quesos lleva Rosa y cuánto paga?"
+     ],
+     [
+      "F",
+      "Mba'éichapa. Oĩpa kesu?",
+      "Hola. ¿Hay queso?"
+     ],
+     [
+      "M",
+      "Héẽ, oĩ. Mboýpa reipota?",
+      "Sí, hay. ¿Cuántos querés?"
+     ],
+     [
+      "F",
+      "Mokõi kesu. Mboýpa ovale?",
+      "Dos quesos. ¿Cuánto cuesta?"
+     ],
+     [
+      "M",
+      "Veinte mil.",
+      "Veinte mil."
+     ],
+     [
+      "F",
+      "Aguyje.",
+      "Gracias."
+     ],
+     [
+      "N",
+      "¿Cuántos quesos lleva Rosa y cuánto paga?",
+      "¿Cuántos quesos lleva Rosa y cuánto paga?"
+     ]
+    ]
+   }
   }
  },
  "test": []

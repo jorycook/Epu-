@@ -1,0 +1,306 @@
+{
+  "title": "Negación nd-…-i: el «no» rodea al verbo",
+  "grammar": {
+    "points": [
+      {
+        "id": "a1u02d5.p1",
+        "form": "nd-…-i",
+        "gloss": "no (raíz oral)",
+        "connect": [
+          { "pos": "nd- delante del prefijo de persona y -i al final: dos partes, una sola palabra", "rule": "{nd}aguatá{i} · {nd}ereguatá{i} · {nd}oguatá{i}" },
+          { "pos": "Con ir, venir y hacer", "rule": "{nd}ahá{i} · {nd}ohó{i} · {nd}oú{i} · {nd}ajapó{i}" },
+          { "pos": "-i no se lleva el acento: la raíz escribe su tilde", "rule": "ndoguat{á}i · ndajap{ó}i · ndoh{ó}i" }
+        ],
+        "examples": [
+          {
+            "gn": "Ko pyhareve {nd}ahá{i}.",
+            "es": "Esta mañana no voy.",
+            "parts": [["ko pyhareve", "esta mañana"], ["nd-", "no, al principio"], ["a-", "yo"], ["ha", "ir"], ["-i", "no, al final"]]
+          },
+          {
+            "gn": "Che sy {nd}ohó{i} mbo'ehaópe.",
+            "es": "Mi mamá no va a la escuela.",
+            "parts": [["che sy", "mi mamá"], ["nd-", "no"], ["o-", "él, ella"], ["ho", "ir (con o-)"], ["-i", "no"], ["mbo'ehaópe", "a la escuela"]]
+          },
+          {
+            "gn": "{Nd}ajapó{i} mba'eve.",
+            "es": "No hago nada.",
+            "parts": [["nd-", "no"], ["a-", "yo"], ["japo", "hacer"], ["-i", "no"], ["mba'eve", "nada"]]
+          },
+          {
+            "gn": "Luis {nd}oú{i} ko ka'aru: oky.",
+            "es": "Luis no viene esta tarde: llueve.",
+            "parts": [["nd-", "no"], ["ou", "viene"], ["-i", "no"], ["ko ka'aru", "esta tarde"], ["oky", "llueve"]]
+          }
+        ],
+        "watch": {
+          "note": "El castellano pone un solo «no» delante del verbo: «no voy». El guaraní necesita las dos partes, nd- al principio y -i al final, en una sola palabra. Con una sola, la frase queda a medias.",
+          "bad": "Ndaha mbo'ehaópe.",
+          "good": "Ndahái mbo'ehaópe."
+        }
+      },
+      {
+        "id": "a1u02d5.p2",
+        "form": "n-…-i",
+        "gloss": "no (raíz nasal)",
+        "connect": [
+          { "pos": "Si la raíz es nasal, nd- se vuelve n-: na-, nere-, no-", "rule": "{n}añe'ẽ{i} · {n}ereñe'ẽ{i} · {n}oñe'ẽ{i}" },
+          { "pos": "También con mba'apo, hendu y sẽ, que tienen mb, nd o una vocal nasal", "rule": "{n}amba'apó{i} · {n}ohendú{i} · {n}osẽ{i}" },
+          { "pos": "Sobre una vocal nasal no se agrega tilde: la ~ ya marca el acento", "rule": "nos{ẽ}i · nañe'{ẽ}i" }
+        ],
+        "examples": [
+          {
+            "gn": "Che {n}añe'ẽ{i} guaraníme.",
+            "es": "Yo no hablo guaraní.",
+            "parts": [["n-", "no, al principio (raíz nasal)"], ["a-", "yo"], ["ñe'ẽ", "hablar"], ["-i", "no, al final"], ["guaraníme", "en guaraní"]]
+          },
+          {
+            "gn": "Ha'e {n}ohendú{i} ha {n}oñe'ẽ{i}.",
+            "es": "Ella no oye y no habla.",
+            "parts": [["n-", "no"], ["o-", "él, ella"], ["hendu", "oír"], ["-i", "no"], ["ha", "y"], ["ñe'ẽ", "hablar"]]
+          },
+          {
+            "gn": "{N}amba'apó{i} ko pyhare.",
+            "es": "No trabajo esta noche.",
+            "parts": [["n-", "no"], ["a-", "yo"], ["mba'apo", "trabajar"], ["-i", "no"], ["ko pyhare", "esta noche"]]
+          },
+          {
+            "gn": "Che ru {n}osẽ{i} ógagui: oky.",
+            "es": "Mi papá no sale de la casa: llueve.",
+            "parts": [["che ru", "mi papá"], ["n-", "no"], ["o-", "él"], ["sẽ", "salir"], ["-i", "no"], ["ógagui", "de la casa"], ["oky", "llueve"]]
+          }
+        ],
+        "watch": {
+          "note": "Delante de una raíz nasal no va nd-: ndañe'ẽi y ndamba'apói no existen. Se dice nañe'ẽi, namba'apói: la n sola ya es la primera parte del «no».",
+          "bad": "Ndañe'ẽi guaraníme.",
+          "good": "Nañe'ẽi guaraníme."
+        }
+      }
+    ],
+    "compare": {
+      "intro": "Dos «no» dentro del verbo, según la raíz, y el «no» que responde solo.",
+      "forms": [
+        { "form": "nd-…-i", "tag": "no · raíz oral", "mark": "dot", "gn": "{Nd}ahá{i} mbo'ehaópe.", "es": "No voy a la escuela." },
+        { "form": "n-…-i", "tag": "no · raíz nasal", "mark": "dot", "gn": "{N}añe'ẽ{i} guaraníme.", "es": "No hablo guaraní." },
+        { "form": "Nahániri", "tag": "no · respuesta sola (unidad 1)", "mark": "dot", "gn": "{Nahániri}, ndahái.", "es": "No, no voy." }
+      ],
+      "check": {
+        "id": "a1u02d5.c1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Rosa: Reñe'ẽpa guaraníme, Lucas?\nLucas: ^Nahániri^, (   ).",
+        "options": ["ndañe'ẽi", "nañe'ẽi", "añe'ẽ"],
+        "answer": 2,
+        "why": [
+          "ñe'ẽ es una raíz nasal, por la ñ y la ẽ: delante no va nd-, sino n-. Ndañe'ẽi no existe.",
+          "Lucas dice que no y lo niega en el verbo: n- + añe'ẽ + -i = nañe'ẽi, «no hablo». Sobre la ẽ no se agrega tilde: la ~ ya marca el acento.",
+          "Añe'ẽ es «hablo», sin negación: Lucas diría que sí habla. Pero empieza con Nahániri, «no»."
+        ]
+      }
+    },
+    "drill": [
+      {
+        "id": "a1u02d5.d1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Luis: ^Rehópa^ kokuépe ko pyhareve, Juan?\nJuan: Nahániri, (   ): [oky|llueve].",
+        "options": ["ndaha", "nahái", "ndahái", "ndohói"],
+        "answer": 3,
+        "why": [
+          "A ndaha le falta la -i del final. El «no» guaraní tiene dos partes, nd- y -i, y con una sola la palabra queda a medias.",
+          "ha, la raíz de «ir» con a-, es oral: delante va nd-, no n-. Nahái no existe.",
+          "Luis pregunta con re-, «vos», y Juan responde por él, con a-: aha, «voy». El «no» lo rodea: nd- + aha + -i = ndahái, «no voy». La -i no se lleva el acento, y la a de ha se escribe á.",
+          "Ndohói es «no va», con o-: sería otra persona. Juan habla de él mismo, con a-."
+        ]
+      },
+      {
+        "id": "a1u02d5.d2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Llueve, y en la chacra no se trabaja.)\nJuan: ^Che ru^ (   ) ko pyhareve.",
+        "options": ["nomba'apói", "ndomba'apói", "namba'apói", "omba'apói"],
+        "answer": 1,
+        "why": [
+          "Che ru, «mi papá», es otra persona: o-. Y mba'apo es una raíz nasal, por la mb: n- + omba'apo + -i = nomba'apói, «no trabaja».",
+          "Delante de una raíz nasal como mba'apo no va nd-, sino n-: nomba'apói.",
+          "Namba'apói es «no trabajo», con a-, «yo». Juan habla de su papá, con o-.",
+          "A omba'apói le falta la n- del principio: la -i sola no niega nada. El «no» necesita las dos partes."
+        ]
+      },
+      {
+        "id": "a1u02d5.d3",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Ana habla guaraní, pero su mamá no.)\nAna: Che añe'ẽ guaraníme, ha ^che sy^ (   ).",
+        "options": ["nañe'ẽi", "ndoñe'ẽi", "oñe'ẽ", "noñe'ẽi"],
+        "answer": 4,
+        "why": [
+          "Nañe'ẽi es «no hablo», con a-: Ana hablaría de ella misma, y ella sí habla: añe'ẽ.",
+          "ñe'ẽ es una raíz nasal: delante va n-, no nd-. Ndoñe'ẽi no existe.",
+          "Oñe'ẽ es «habla», sin negación: diría que su mamá sí habla guaraní, y no es así.",
+          "Che sy es otra persona: o-. ñe'ẽ es nasal: n- + oñe'ẽ + -i = noñe'ẽi, «no habla». La ẽ ya lleva la tilde nasal: no se agrega otra."
+        ]
+      },
+      {
+        "id": "a1u02d5.d4",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Rosa pregunta si Luis viene esta tarde.)\nAna: Nahániri, ^Luis^ (   ) ko ka'aru.",
+        "options": ["ndoú", "ndoúi", "noúi", "ou"],
+        "answer": 2,
+        "why": [
+          "A ndoú le falta la -i del final: el «no» tiene dos partes, y con una sola la palabra queda a medias.",
+          "Luis es otra persona, y «viene» es ou. El «no» lo rodea: nd- + ou + -i = ndoúi, «no viene». La -i no se lleva el acento: queda en la u, que se escribe ú.",
+          "ou es una raíz oral: delante va nd-, no n-. Noúi no existe.",
+          "Ou es «viene», sin negación: diría que Luis sí viene, y Ana acaba de decir Nahániri, «no»."
+        ]
+      },
+      {
+        "id": "a1u02d5.d5",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "Luis: Ko pyhareve ",
+        "after": " mba'eve.",
+        "tiles": ["nd", "a", "japo", "i"],
+        "bank": [2, 0, 3, 1],
+        "hint": "El «no» rodea al verbo: nd- va primero y -i al final. En el medio, a- («yo») y la raíz japo, «hacer».",
+        "full": "Luis: Ko pyhareve {nd}ajapó{i} mba'eve.",
+        "es": "Luis: Esta mañana no hago nada.",
+        "explain": "nd- + a- («yo») + japo («hacer») + -i = ndajapói, «no hago». Las dos partes del «no» rodean al verbo. La -i no se lleva el acento: queda en la o de japo, que ya no es la última vocal, y se escribe ó. Con mba'eve, «nada»: «no hago nada»."
+      },
+      {
+        "id": "a1u02d5.d6",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Lucas recién empieza a estudiar guaraní.)\nLucas: Che ",
+        "after": " guaraníme.",
+        "tiles": ["n", "a", "ñe'ẽ", "i"],
+        "bank": [3, 2, 0, 1],
+        "hint": "ñe'ẽ es nasal: la primera parte del «no» es n-, sin d. Después a- («yo»), la raíz y, al final, -i.",
+        "full": "(Lucas recién empieza a estudiar guaraní.)\nLucas: Che {n}añe'ẽ{i} guaraníme.",
+        "es": "Lucas: Yo no hablo guaraní.",
+        "explain": "n- + a- («yo») + ñe'ẽ («hablar») + -i = nañe'ẽi, «no hablo». Como ñe'ẽ es una raíz nasal, la primera parte del «no» es n-, no nd-. El acento queda en la ẽ, y la tilde nasal ya lo marca: no se agrega otra."
+      }
+    ],
+    "exam": [
+      {
+        "id": "a1u02d5.e1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Qué significa",
+        "q": "(Llueve.)\nLuis: Che ru _nosẽi_ ko pyhareve.",
+        "options": ["Mi papá sale esta mañana.", "Yo no salgo esta mañana.", "Mi papá no viene esta mañana.", "Mi papá no sale esta mañana."],
+        "answer": 4,
+        "explain": "Lo subrayado es sẽ, «salir», con o-, otra persona, mi papá, y con el «no» en dos partes: n- al principio, porque sẽ es una raíz nasal, y -i al final: nosẽi, «no sale». «Sale» sería osẽ, sin negación; «yo no salgo» llevaría a-, «yo»; y «no viene» sería ndoúi."
+      },
+      {
+        "id": "a1u02d5.e2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Llueve, y la mamá de Ana se queda en casa.)\nAna: Che sy (   ) mbo'ehaópe ko pyhareve.",
+        "options": ["ndahái", "ndohói", "nohói", "ndoho"],
+        "answer": 2,
+        "explain": "Che sy, «mi mamá», es otra persona: o-, y con o- la raíz de «ir» es ho. El «no» la rodea: nd- + oho + -i = ndohói, «no va». Ndahái es «no voy», con a-; nohói lleva n-, que va solo delante de una raíz nasal, y ho es oral; y a ndoho le falta la -i: el «no» necesita las dos partes."
+      },
+      {
+        "id": "a1u02d5.e3",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Recién empezás con el guaraní.)\nVos: Che ",
+        "after": " guaraníme.",
+        "tiles": ["n", "a", "ñe'ẽ", "i"],
+        "bank": [1, 3, 0, 2],
+        "full": "(Recién empezás con el guaraní.)\nVos: Che {n}añe'ẽ{i} guaraníme.",
+        "es": "Vos: Yo no hablo guaraní.",
+        "explain": "n- va primero: ñe'ẽ es una raíz nasal, así que la primera parte del «no» es n-, no nd-. Después a- («yo»), la raíz ñe'ẽ («hablar») y, al final, -i: nañe'ẽi, «no hablo». El acento queda en la ẽ, y la tilde nasal ya lo marca."
+      }
+    ]
+  },
+  "words": {
+    "es": "Un día de lluvia",
+    "intro": "Llueve en Itauguá y nadie sale de la casa de Ana. Tocá cada palabra: mb, nd y nt son una sola letra, con un solo sonido.",
+    "sound": {
+      "focus": "Las letras mb, nd, ng, nt",
+      "letters": ["mb", "nd", "ng", "nt"],
+      "note": "mb, nd, ng y nt son letras del alfabeto: un solo sonido, en una sola sílaba, también al principio de la palabra: mba'e, ndaipóri. Empezá con un zumbido, «mmm» o «nnn», y soltalo en la b o la d, sin poner una e delante: no «embae». ng suena como en «tengo» (angirũ) y nt como en «canto» (mante). No hay pares mínimos seguros: comparamos palabras.",
+      "pairs": [
+        ["mba'eve", "nada", "ndaipóri", "no hay"],
+        ["angirũ", "amigo, amiga", "mante", "nomás"],
+        ["mbarakaja", "gato", "ndaikuaái", "no sé"]
+      ]
+    },
+    "words": [
+      { "id": "ama", "gn": "ama", "es": "lluvia", "note": "La lluvia, la cosa. «Llueve» es oky." },
+      { "id": "oky", "gn": "oky", "es": "llueve", "parts": [["o-", "él, ella"], ["ky", "llover"]], "note": "Un verbo con o-, como «llueve» en castellano: no hay quien lo haga." },
+      { "id": "ndaikuaai", "gn": "ndaikuaái", "es": "no sé", "parts": [["nd-", "no"], ["ai-", "yo"], ["kuaa", "saber"], ["-i", "no"]], "note": "ai- es el «yo» de verbos como kuaa, como el rei- de reikuaa (unidad 1). Lo estudiamos en la unidad 5." },
+      { "id": "ndahai", "gn": "ndahái", "es": "no voy", "parts": [["nd-", "no"], ["a-", "yo"], ["ha", "ir"], ["-i", "no"]], "note": "nd es una sola letra: nda-hái, sin e delante." },
+      { "id": "mbaeve", "gn": "mba'eve", "es": "nada", "note": "Va con un verbo negado: Ndajapói mba'eve, «no hago nada». Adentro está mba'e, «qué, cosa», como en Mba'épa." },
+      { "id": "ndaipori", "gn": "Ndaipóri", "es": "No hay", "note": "Es el «no» de oĩ, «hay»: Oĩpa mandi'o? Ndaipóri. Es irregular: termina en -ri, no en -i. Lo vemos mejor en la unidad 7." },
+      { "id": "mbarakaja", "gn": "mbarakaja", "es": "gato", "note": "mb al principio, en una sola sílaba: mba-ra-ka-ja." },
+      { "id": "aguyjemante", "gn": "Aguyje mante", "es": "Gracias nomás", "parts": [["aguyje", "gracias"], ["mante", "nomás, solamente"]], "note": "Como el «gracias nomás» del castellano paraguayo. nt es una sola letra, como en «canto»." }
+    ],
+    "spell": ["ndaikuaai", "mbaeve", "ndaipori", "mbarakaja"],
+    "check": {
+      "id": "a1u02d5.k1",
+      "kind": "choice",
+      "area": "vocab",
+      "label": "Cómo se escribe",
+      "q": "Rosa pregunta algo y Luis no sabe: Luis dice «_No sé_». ¿Cómo se escribe en guaraní?",
+      "options": ["Ndakuaái", "Naikuaái", "Ndaikuaái", "Ndaikuái"],
+      "answer": 3,
+      "explain": "No sé es Ndaikuaái: nd- al principio, porque kuaa es una raíz oral; ai-, el «yo» de kuaa, con su i; la raíz kuaa, con dos aes; y -i al final, que no se lleva el acento: la última a de kuaa ya no es la última vocal, y se escribe á. Ndakuaái pierde la i de ai-, como reikuaa, que no es rekuaa. Naikuaái pone n-, que va solo delante de una raíz nasal. Ndaikuái se come una a de kuaa."
+    }
+  },
+  "skill": {
+    "kind": "listening",
+    "es": "Respuesta rápida",
+    "situation": "Llueve. Ana le pregunta a Luis si va a la escuela esta tarde.",
+    "ask": "¿Qué responde Luis?",
+    "item": {
+      "id": "a1u02d5.r1",
+      "kind": "choice",
+      "area": "listening",
+      "label": "Respuesta rápida",
+      "q": "¿Qué responde Luis?",
+      "options": ["Nahániri, ndahái. Oky.", "Nahániri, aha.", "Héẽ, ndahái."],
+      "answer": 1,
+      "why": [
+        "Luis dice que no, Nahániri, y lo niega en el verbo: ndahái, «no voy». Después da la razón: oky, «llueve».",
+        "Nahániri, aha se contradice: «no, voy». Aha es «voy», sin negación.",
+        "Héẽ, ndahái se contradice al revés: «sí, no voy». Ndahái es «no voy», y pide un Nahániri delante."
+      ],
+      "script": [
+        "Narrador: Llueve. ¿Qué responde Luis?",
+        "Mujer: Rehópa mbo'ehaópe ko ka'aru, Luis?",
+        "Narrador: 1",
+        "Hombre: Nahániri, ndahái. Oky.",
+        "Narrador: 2",
+        "Hombre: Nahániri, aha.",
+        "Narrador: 3",
+        "Hombre: Héẽ, ndahái."
+      ]
+    },
+    "audio": [
+      ["N", "Llueve. ¿Qué responde Luis?", "Llueve. ¿Qué responde Luis?"],
+      ["F", "Rehópa mbo'ehaópe ko ka'aru, Luis?", "¿Vas a la escuela esta tarde, Luis?"],
+      ["N", "1", "1"],
+      ["M", "Nahániri, ndahái. Oky.", "No, no voy. Llueve."],
+      ["N", "2", "2"],
+      ["M", "Nahániri, aha.", "No, voy."],
+      ["N", "3", "3"],
+      ["M", "Héẽ, ndahái.", "Sí, no voy."]
+    ]
+  }
+}

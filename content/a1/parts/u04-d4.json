@@ -1,0 +1,293 @@
+{
+  "title": "máva «quién», mba'e «qué»",
+  "grammar": {
+    "points": [
+      {
+        "id": "a1u04d4.p1",
+        "form": "Mávapa …?",
+        "gloss": "¿quién?",
+        "connect": [
+          { "pos": "Para preguntar por una persona: máva, «quién», con -pa pegado", "rule": "{Mávapa} ha'e?" },
+          { "pos": "Con los demostrativos de ayer: ko, pe, amo", "rule": "{Mávapa} pe karai? · {Mávapa} ko mitã?" },
+          { "pos": "En la charla también se oye con piko (semana 3)", "rule": "{Mávapiko} pe karai?" },
+          { "pos": "Se responde con la persona, con o sin ha'e", "rule": "{Che ru}. · Ha'e {che ru}." }
+        ],
+        "examples": [
+          {
+            "gn": "{Mávapa} ha'e?",
+            "es": "¿Quién es?",
+            "parts": [["máva", "quién"], ["-pa", "pregunta"], ["ha'e", "él, ella"]]
+          },
+          {
+            "gn": "{Mávapa} pe karai?",
+            "es": "¿Quién es ese señor?",
+            "parts": [["mávapa", "¿quién?"], ["pe", "ese"], ["karai", "señor"]]
+          },
+          {
+            "gn": "Juan: {Mávapa} ko mitã?\nRosa: Che memby.",
+            "es": "Juan: ¿Quién es este chico?\nRosa: Mi hijo.",
+            "parts": [["ko", "este"], ["mitã", "chico, niño"], ["che memby", "mi hijo (dice la mamá)"]]
+          },
+          {
+            "gn": "Juan: {Mávapa} amo kuñataĩ?\nLuis: Ha'e che rajy.",
+            "es": "Juan: ¿Quién es aquella chica?\nLuis: Es mi hija.",
+            "parts": [["amo", "aquella"], ["kuñataĩ", "chica, señorita"], ["ha'e", "ella"], ["che rajy", "mi hija (dice el papá)"]]
+          }
+        ],
+        "watch": {
+          "note": "Máva no es aguda: el acento cae en la primera a, y ahí va la tilde. La -pa de pregunta no se lleva el acento ni lo mueve.",
+          "bad": "Mavápa",
+          "good": "Mávapa"
+        }
+      },
+      {
+        "id": "a1u04d4.p2",
+        "form": "Mba'épa …?",
+        "gloss": "¿qué?",
+        "connect": [
+          { "pos": "Para preguntar por una cosa o por una acción", "rule": "{Mba'épa} reipota? · {Mba'épa} rejapo?" },
+          { "pos": "La pregunta del alumno: «¿qué significa?»", "rule": "{Mba'épa} he'ise?" },
+          { "pos": "Para preguntar qué hay", "rule": "{Mba'épa} oĩ?" },
+          { "pos": "De mba'e salen una palabra que ya usás, mba'éichapa, «¿cómo?», y otra para reconocer, mba'érepa, «¿por qué?»", "rule": "mba'e + icha + pa → {Mba'éichapa} · mba'e + re + pa → {Mba'érepa}" }
+        ],
+        "examples": [
+          {
+            "gn": "{Mba'épa} he'ise «jarýi»?",
+            "es": "¿Qué significa «jarýi»?",
+            "parts": [["mba'e", "qué"], ["-pa", "pregunta"], ["he'ise", "significa"], ["jarýi", "abuela"]]
+          },
+          {
+            "gn": "{Mba'épa} reipota?",
+            "es": "¿Qué querés?",
+            "parts": [["mba'épa", "¿qué?"], ["reipota", "querés"]]
+          },
+          {
+            "gn": "{Mba'épa} rejapo, Luis?",
+            "es": "¿Qué hacés, Luis?",
+            "parts": [["mba'épa", "¿qué?"], ["re-", "vos"], ["japo", "hacer"]]
+          },
+          {
+            "gn": "{Mba'épa} oĩ korapýpe?",
+            "es": "¿Qué hay en el patio?",
+            "parts": [["mba'épa", "¿qué?"], ["oĩ", "hay"], ["korapy", "patio"], ["-pe", "en"]]
+          }
+        ],
+        "watch": {
+          "note": "Mba'e es aguda: el acento cae en la e. Con -pa, esa e ya no es la última vocal, y hay que escribir la tilde: Mba'épa. Sin tilde, Mba'epa se leería con el acento en la a del final.",
+          "bad": "Mba'epa",
+          "good": "Mba'épa"
+        }
+      }
+    ],
+    "compare": {
+      "intro": "Tres palabras para pedir un dato: por una persona, por una cosa y por un lugar. Las tres llevan -pa pegado, y ninguna se contesta con héẽ ni con nahániri.",
+      "forms": [
+        { "form": "Mávapa", "tag": "¿quién? · una persona", "mark": "dot", "gn": "{Mávapa} pe karai?", "es": "¿Quién es ese señor?" },
+        { "form": "Mba'épa", "tag": "¿qué? · una cosa o una acción", "mark": "dot", "gn": "{Mba'épa} reipota?", "es": "¿Qué querés?" },
+        { "form": "Moõpa", "tag": "¿dónde? · un lugar (semana 1)", "mark": "dot", "gn": "{Moõpa} nde róga?", "es": "¿Dónde queda tu casa?" }
+      ],
+      "check": {
+        "id": "a1u04d4.c1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Rosa quiere saber quién es ^la mujer de la foto^.\nRosa: (   ) pe kuña?",
+        "options": ["Mba'épa", "Moõpa", "Mávapa"],
+        "answer": 3,
+        "why": [
+          "Mba'épa pregunta por una cosa: Mba'épa pe kuña? sería «¿qué es esa mujer?». Por una persona se pregunta con mávapa.",
+          "Moõpa pregunta «¿dónde?», por un lugar. Rosa no quiere saber dónde está la mujer: quiere saber quién es.",
+          "Rosa pregunta por una persona, la mujer de la foto: Mávapa pe kuña?, «¿quién es esa mujer?»."
+        ]
+      }
+    },
+    "drill": [
+      {
+        "id": "a1u04d4.d1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Juan: (   ) ha'e?\nRosa: ^Che sy.^",
+        "options": ["Moõpa", "Mávapa", "Mba'épa", "Mboýpa"],
+        "answer": 2,
+        "why": [
+          "Moõpa pregunta «¿dónde?». Che sy no es un lugar: para decir dónde, Rosa respondería con un lugar, como che rógape.",
+          "Rosa responde con una persona, che sy, «mi mamá»: Juan preguntó quién es. Mávapa ha'e?, «¿quién es?».",
+          "Mba'épa pregunta «¿qué?», por una cosa. Che sy es una persona.",
+          "Mboýpa pregunta «¿cuánto?», como en Mboýpa ovale? Che sy no es una cantidad."
+        ]
+      },
+      {
+        "id": "a1u04d4.d2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Ana: (   ) reipota?\nLuis: ^Mandi'o.^",
+        "options": ["Mávapa", "Moõpa", "Mba'éichapa", "Mba'épa"],
+        "answer": 4,
+        "why": [
+          "Mávapa pregunta «¿quién?», por una persona, y mandi'o es una cosa.",
+          "Moõpa pregunta «¿dónde?». Mandi'o no es un lugar.",
+          "Mba'éichapa pregunta «¿cómo?», como en Mba'éichapa reiko? Luis no dice cómo: dice qué quiere.",
+          "Luis responde con una cosa, mandi'o: Ana preguntó qué quiere. Mba'épa reipota?, «¿qué querés?»."
+        ]
+      },
+      {
+        "id": "a1u04d4.d3",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Luis: (   ) he'ise «korapy»?\nAna: ^«Patio».^",
+        "options": ["Mboýpa", "Mba'éichapa", "Mba'épa", "Mávapa"],
+        "answer": 3,
+        "why": [
+          "Mboýpa pregunta «¿cuánto?». «Patio» no es una cantidad.",
+          "Mba'éichapa pregunta «¿cómo?». He'ise es «significa», y lo que Luis pide es un significado: un «qué».",
+          "Luis pregunta el significado de una palabra: Mba'épa he'ise «korapy»?, «¿qué significa korapy?». Ana se lo dice: «patio».",
+          "Mávapa pregunta «¿quién?», y una palabra no es una persona."
+        ]
+      },
+      {
+        "id": "a1u04d4.d4",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Cómo se escribe",
+        "q": "Rosa pregunta ^quién^ es el muchacho de allá.\nRosa: (   ) amo karia'y?",
+        "options": ["Mãvapa", "Mávapa", "Mábapa", "Mávapã"],
+        "answer": 2,
+        "why": [
+          "Mãvapa pone una ~ en la primera a, como si fuera nasal. Máva es oral: su marca es la tilde de acento, á.",
+          "Máva lleva la tilde de acento en la primera a, y -pa va pegado sin moverla: Mávapa amo karia'y?, «¿quién es aquel muchacho?».",
+          "Mábapa escribe con b: la b sola no es una letra del guaraní, solo está en mb. El sonido de máva se escribe con v.",
+          "Mávapã agrega una ~ a la a de -pa. Esa a es oral: -pa se escribe siempre igual, sin ~."
+        ]
+      },
+      {
+        "id": "a1u04d4.d5",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "",
+        "after": " he'ise «ramói»?",
+        "tiles": ["mba'e", "pa"],
+        "bank": [1, 0],
+        "hint": "-pa va al final y no se lleva el acento: fijate qué pasa con la tilde.",
+        "full": "{Mba'épa} he'ise «ramói»?",
+        "es": "¿Qué significa «ramói»?",
+        "explain": "mba'e («qué») + -pa (pregunta) = Mba'épa. -pa no se lleva el acento: queda en la e de mba'e, que ya no es la última vocal, y por eso se escribe la tilde. Mba'épa he'ise «ramói»?: ¿qué significa «ramói»?"
+      },
+      {
+        "id": "a1u04d4.d6",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "",
+        "after": " ko mitã?",
+        "tiles": ["máva", "pa"],
+        "bank": [1, 0],
+        "hint": "Máva ya tiene su tilde, y -pa no la mueve.",
+        "full": "{Mávapa} ko mitã?",
+        "es": "¿Quién es este chico?",
+        "explain": "máva («quién») + -pa (pregunta) = Mávapa. La tilde ya estaba en la primera a de máva y se queda ahí: -pa no se lleva el acento. Mávapa ko mitã?: ¿quién es este chico?"
+      }
+    ],
+    "exam": [
+      {
+        "id": "a1u04d4.e1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Qué significa",
+        "q": "Rosa: _Mba'épa he'ise «ramói»?_",
+        "options": ["¿Quién es tu abuelo?", "¿Qué significa «ramói»?", "¿Dónde está el abuelo?", "¿Cómo se escribe «ramói»?"],
+        "answer": 2,
+        "explain": "Mba'épa es «¿qué?» y he'ise, «significa»: Rosa pregunta qué significa la palabra ramói. «Quién» sería mávapa, «dónde» sería moõpa y «cómo» sería mba'éichapa."
+      },
+      {
+        "id": "a1u04d4.e2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Juan: (   ) amo kuña?\nRosa: Che jarýi.",
+        "options": ["Mba'épa", "Moõpa", "Mboýpa", "Mávapa"],
+        "answer": 4,
+        "explain": "Rosa responde con una persona, che jarýi, «mi abuela»: Juan preguntó quién es aquella mujer, Mávapa amo kuña? Mba'épa pregunta por una cosa, moõpa por un lugar y mboýpa por una cantidad."
+      },
+      {
+        "id": "a1u04d4.e3",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "Vendedor: ",
+        "after": " reipota?",
+        "tiles": ["mba'e", "pa"],
+        "bank": [1, 0],
+        "full": "Vendedor: Mba'épa reipota?",
+        "es": "Vendedor: ¿Qué querés?",
+        "explain": "mba'e («qué») + -pa (pregunta) = Mba'épa. -pa no se lleva el acento: queda en la e, que ya no es la última vocal, y se escribe la tilde. Mba'épa reipota? es la pregunta del vendedor: «¿qué querés?»."
+      }
+    ]
+  },
+  "words": {
+    "es": "¿Quién es? En el cumpleaños",
+    "intro": "En el cumpleaños de la abuela hay chipa, sopa paraguaya y gente que no conocés. Tocá cada palabra: con ellas preguntás quién es quién y qué significa lo que oís.",
+    "sound": {
+      "focus": "Los dígrafos mb, nd, ng, nt",
+      "letters": ["mb", "nd", "ng", "nt"],
+      "note": "mb, nd, ng y nt son una sola letra y van en una sola sílaba: empezá con un zumbido, mmm o nnn, y soltalo en la b, la d o la g, sin meter una vocal delante (no «emba'e») y sin perder la nasal (no «ba'e»): mba'e, nde, angirũ. Nt aparece sobre todo en -nte, «solo, nomás»: peteĩnte, «uno solo». No hay pares mínimos seguros: son palabras para contrastar.",
+      "pairs": [
+        ["mba'e", "cosa; ¿qué?", "mboy", "¿cuánto?"],
+        ["nde", "vos; tu", "ñande", "nosotros (con vos)"],
+        ["angirũ", "amigo, amiga", "mitãnguéra", "los niños"]
+      ]
+    },
+    "words": [
+      { "id": "mavapa", "gn": "Mávapa?", "es": "¿Quién?", "parts": [["máva", "quién"], ["-pa", "pregunta"]], "note": "Tilde en la primera a. En la charla también se oye Mávapiko?" },
+      { "id": "mbaepa", "gn": "Mba'épa?", "es": "¿Qué?", "parts": [["mba'e", "qué; cosa"], ["-pa", "pregunta"]], "note": "Mba'e es aguda; con -pa aparece la tilde en la é. Mb es una sola letra: mba-'e." },
+      { "id": "mbaerepa", "gn": "Mba'érepa?", "es": "¿Por qué?", "parts": [["mba'e", "qué"], ["-re", "por"], ["-pa", "pregunta"]], "note": "Por ahora, solo para reconocerla cuando la oigas." },
+      { "id": "tapicha", "gn": "tapicha", "es": "persona", "note": "Plural: tapichakuéra, «la gente»." },
+      { "id": "kariay", "gn": "karia'y", "es": "muchacho, joven", "note": "Lleva puso antes de la y final, que es la sexta vocal: karia'y." },
+      { "id": "mitakuna", "gn": "mitãkuña", "es": "niña", "parts": [["mitã", "niño, niña"], ["kuña", "mujer"]], "note": "La del día 2. Plural: mitãkuñanguéra." },
+      { "id": "kuimbae", "gn": "kuimba'e", "es": "hombre", "note": "Mb es una sola letra, en una sola sílaba: kuimba'e. Lleva puso antes de la e." },
+      { "id": "angiru", "gn": "angirũ", "es": "amigo, amiga", "note": "Ng en una sola sílaba: a-ngi-rũ. Con nde se dice ne angirũ." }
+    ],
+    "spell": ["mbaepa", "mbaerepa", "kuimbae", "angiru"],
+    "check": {
+      "id": "a1u04d4.k1",
+      "kind": "choice",
+      "area": "vocab",
+      "label": "Cómo se escribe",
+      "q": "Luis pregunta _qué_ significa «korapy»: (   ) he'ise «korapy»? ¿Cómo se escribe?",
+      "options": ["Mbaépa", "Mba'ẽpa", "Mba'épa", "Ba'épa"],
+      "answer": 3,
+      "explain": "«¿Qué?» es Mba'épa: empieza con mb, una sola letra, lleva el puso entre la a y la e, y la tilde va en la é, porque con -pa la e ya no es la última vocal. Mbaépa pierde el puso. Mba'ẽpa pone una ~ en la e, y la e de mba'e es oral: lleva tilde de acento, é. Ba'épa pierde la nasal del principio: la palabra empieza con mb, no con b."
+    }
+  },
+  "skill": {
+    "kind": "reading",
+    "es": "Un chat con foto",
+    "ask": "¿Quién es el señor de la foto?",
+    "seconds": 75,
+    "passage": "Rosa: Mba'éichapa, Juan?\nJuan: Iporã. ^Mávapa pe kuñataĩ?^\nRosa: Che memby, héra Sofía.\nJuan: Ha ^amo karai?^\nRosa: ^Che ramói.^\nJuan: Mba'épa he'ise «ramói»?\nRosa: «Abuelo».",
+    "strategy": "Juan pregunta dos veces por una persona, y la respuesta de Rosa viene justo después de cada pregunta. Al final Juan pregunta qué significa una palabra: esa respuesta también te sirve.",
+    "item": {
+      "id": "a1u04d4.r1",
+      "kind": "choice",
+      "area": "reading",
+      "label": "Texto corto",
+      "q": "¿Quién es el señor de la foto?",
+      "options": ["El papá de Rosa.", "El abuelo de Rosa.", "El hijo de Rosa.", "Un amigo de Rosa."],
+      "short": ["Su papá", "Su abuelo", "Su hijo", "Un amigo"],
+      "answer": 2,
+      "why": [
+        "Para el papá, Rosa diría che ru, y no lo dice en el chat.",
+        "Juan pregunta Ha amo karai?, «¿y aquel señor?», y Rosa responde Che ramói, «mi abuelo». Después se lo traduce: ramói es «abuelo».",
+        "Che memby es Sofía, la kuñataĩ de la foto: la hija de Rosa, no el señor.",
+        "Un amigo sería che angirũ, y esa palabra no aparece en el chat."
+      ],
+      "explain": "Juan pregunta por el señor con Ha amo karai?, y Rosa contesta Che ramói, «mi abuelo». Cuando Juan pregunta Mba'épa he'ise «ramói»?, Rosa lo traduce: «abuelo»."
+    }
+  }
+}

@@ -1,0 +1,291 @@
+{
+  "title": "Sí/no con -pa y piko; respuestas",
+  "grammar": {
+    "points": [
+      {
+        "id": "a1u03d4.p1",
+        "form": "-pa en la primera palabra",
+        "gloss": "pregunta de sí o no, con estados y nombres",
+        "connect": [
+          { "pos": "-pa va pegado a la palabra que preguntás. Si empezás por esa palabra, -pa queda en la primera", "rule": "Ndé{pa} pohanohára?" },
+          { "pos": "Con un estado, va en el estado; la persona viene después", "rule": "Ikane'õ{pa} nde ru?" },
+          { "pos": "Con una acción, en el verbo, como en la unidad 1. Si la vocal tónica deja de ser la última, aparece la tilde", "rule": "Og̃uahẽ{pa} Ana? · Rejú{pa} ko pyhare?" }
+        ],
+        "examples": [
+          {
+            "gn": "Ana: Ndé{pa} pohanohára?\nLuis: Héẽ, che pohanohára.",
+            "es": "Ana: ¿Vos sos médico?\nLuis: Sí, soy médico.",
+            "parts": [["nde", "vos"], ["-pa", "pregunta"], ["pohanohára", "médico, médica"], ["héẽ", "sí"]]
+          },
+          {
+            "gn": "Ikane'õ{pa} nde ru?",
+            "es": "¿Está cansado tu papá?",
+            "parts": [["i-", "él (le pasa)"], ["kane'õ", "cansancio"], ["-pa", "pregunta"], ["nde ru", "tu papá"]]
+          },
+          {
+            "gn": "Og̃uahẽ{pa} Ana?",
+            "es": "¿Llegó Ana?",
+            "parts": [["o-", "ella"], ["g̃uahẽ", "llegar"], ["-pa", "pregunta"]]
+          },
+          {
+            "gn": "Rejú{pa} ko pyhare?",
+            "es": "¿Venís esta noche?",
+            "parts": [["re-", "vos"], ["ju", "venir"], ["-pa", "pregunta"], ["ko pyhare", "esta noche"]]
+          }
+        ],
+        "watch": {
+          "note": "-pa es un sufijo: va pegado, sin espacio, a la palabra que preguntás. No es una palabra suelta, como el «¿no?» que el castellano agrega al final.",
+          "bad": "Ikane'õ pa nde ru?",
+          "good": "Ikane'õpa nde ru?"
+        }
+      },
+      {
+        "id": "a1u03d4.p2",
+        "form": "piko · Héẽ / Nahániri / na-…-i",
+        "gloss": "pregunta con sorpresa · las respuestas",
+        "connect": [
+          { "pos": "piko va suelto, después de la primera palabra, y agrega sorpresa o duda: «¿en serio?». En el castellano del Paraguay se oye «pio»", "rule": "Nde {piko} mbo'ehára? · Ikane'õ {piko}?" },
+          { "pos": "Para responder que sí: Héẽ y el estado desde vos, ya sin -pa. Para responder que no: Nahániri", "rule": "{Héẽ}, chekane'õ. · {Nahániri}." },
+          { "pos": "Para negar un estado, el «no» de dos partes de la unidad 2 rodea a che- y al estado: na-…-i si la palabra es nasal, nda-…-i si es oral", "rule": "{Na}chekane'õ{i}. · {Nda}chevare'á{i}." }
+        ],
+        "examples": [
+          {
+            "gn": "Luis: Nde {piko} mbo'ehára?\nAna: {Héẽ}, che mbo'ehára.",
+            "es": "Luis: ¿En serio sos profesora?\nAna: Sí, soy profesora.",
+            "parts": [["nde", "vos"], ["piko", "¿en serio? (sorpresa, duda)"], ["mbo'ehára", "profesora"], ["héẽ", "sí"]]
+          },
+          {
+            "gn": "Rosa: Og̃uahẽ pohanohára.\nJuan: Añeté{pa}?\nRosa: {Upéicha}.",
+            "es": "Rosa: Llegó el médico.\nJuan: ¿De verdad?\nRosa: Así es.",
+            "parts": [["og̃uahẽ", "llega, llegó"], ["añete", "verdad, cierto"], ["-pa", "pregunta"], ["upéicha", "así, así es"]]
+          },
+          {
+            "gn": "Ana: Nekane'õ{pa}?\nLuis: {Nahániri}, {na}chekane'õ{i}. Chevare'a.",
+            "es": "Ana: ¿Estás cansado?\nLuis: No, no estoy cansado. Tengo hambre.",
+            "parts": [["ne-", "vos, ante una palabra nasal"], ["kane'õ", "cansancio"], ["-pa", "pregunta"], ["nahániri", "no"], ["na-…-i", "no, en dos partes"], ["chevare'a", "tengo hambre"]]
+          },
+          {
+            "gn": "Juan: Og̃uahẽ {piko} Ana?\nRosa: {Héẽ}, og̃uahẽ ko'ág̃a.",
+            "es": "Juan: ¿En serio llegó Ana?\nRosa: Sí, llegó ahora.",
+            "parts": [["og̃uahẽ", "llega, llegó"], ["piko", "¿en serio?"], ["héẽ", "sí"], ["ko'ág̃a", "ahora"]]
+          }
+        ],
+        "watch": {
+          "note": "El «no» del guaraní tiene dos partes que rodean la palabra, como en la unidad 2: na-…-i. Delante de che- es na- si la palabra es nasal (nachekane'õi, nachemandu'ái) y nda- si es oral (ndachevare'ái). Un «no» suelto delante, a la castellana, no niega nada.",
+          "bad": "No chekane'õ.",
+          "good": "Nachekane'õi."
+        }
+      }
+    ],
+    "compare": {
+      "intro": "Tres preguntas: una neutra con -pa, una con sorpresa con piko y una abierta, que no se responde con sí o no.",
+      "forms": [
+        { "form": "-pa", "tag": "sí o no · neutra", "mark": "dot", "gn": "Nekane'õ{pa}?", "es": "¿Estás cansado?" },
+        { "form": "piko", "tag": "sí o no · sorpresa, duda", "mark": "up", "gn": "Nekane'õ {piko}?", "es": "¿Estás cansado? ¿En serio?" },
+        { "form": "Mba'éichapa…?", "tag": "pregunta abierta · unidad 1", "mark": "dot", "gn": "{Mba'éichapa} reiko?", "es": "¿Cómo andás?" }
+      ],
+      "check": {
+        "id": "a1u03d4.c1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la respuesta",
+        "q": "Ana: ^Ndépa^ pohanohára?\nLuis: (   )",
+        "options": ["Nahániri, che mbo'ehára.", "Mba'éichapa?", "Héẽ, chekane'õ."],
+        "answer": 1,
+        "why": [
+          "Ndépa pohanohára? pregunta sí o no por lo que es Luis. Él responde que no y dice qué es: Nahániri, che mbo'ehára, «no, soy profesor».",
+          "Mba'éichapa? es un saludo y una pregunta abierta: no responde a una pregunta de sí o no.",
+          "Héẽ responde que sí, pero chekane'õ habla de cansancio, y Ana preguntó si Luis es médico: la respuesta tiene que hablar de eso."
+        ]
+      }
+    },
+    "drill": [
+      {
+        "id": "a1u03d4.d1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Luis quiere saber si ^el papá de Ana está enfermo^.)\nLuis: (   ) nde ru?",
+        "options": ["Hasýpa", "Hasy", "Rasýpa", "Ikane'õpa"],
+        "answer": 1,
+        "why": [
+          "Hasy, «está enfermo», es la palabra que pregunta, y -pa va pegada a ella: Hasýpa nde ru?, «¿está enfermo tu papá?». Hasy termina en y tónica; con -pa esa y ya no es la última vocal y se escribe la tilde: hasýpa.",
+          "Hasy nde ru, sin -pa, no pregunta: escrito así, afirma «tu papá está enfermo». La pregunta de sí o no lleva -pa.",
+          "Rasy es la forma con che- y nde- (cherasy, nderasy), como réra. Para otra persona, nde ru, va h-: hasy, como héra.",
+          "Ikane'õpa pregunta si está cansado, y Luis quiere saber si está enfermo: hasy."
+        ]
+      },
+      {
+        "id": "a1u03d4.d2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Ana quiere saber si Luis ^es médico^.)\nAna: (   ) pohanohára?",
+        "options": ["Nde", "Ndépa", "Ndaha'éi", "Pa"],
+        "answer": 2,
+        "why": [
+          "Nde pohanohára, sin -pa, no pregunta: escrito así, afirma «vos sos médico». La pregunta de sí o no lleva -pa.",
+          "Ana le pregunta a Luis por él: nde + -pa = Ndépa, con tilde porque la e ya no es la última vocal. Ndépa pohanohára?, «¿vos sos médico?».",
+          "Ndaha'éi es «no es»: niega, no pregunta. Ndaha'éi pohanohára sería «no es médico».",
+          "Pa no va suelto ni al principio: se pega al final de la palabra que pregunta, Ndépa."
+        ]
+      },
+      {
+        "id": "a1u03d4.d3",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la respuesta",
+        "q": "Juan: Nde piko pohanohára?\nRosa: (   ), ^che mbo'ehára^.",
+        "options": ["Héẽ", "Nahániri", "Upéicha", "Añete"],
+        "answer": 2,
+        "why": [
+          "Héẽ es «sí», pero Rosa dice che mbo'ehára, «soy profesora»: no es médica. Responde que no.",
+          "Juan pregunta, con sorpresa, si Rosa es médica. Ella es profesora, así que responde Nahániri, «no», y dice lo que sí es.",
+          "Upéicha es «así es»: confirmaría que Rosa es médica, y ella dice que es profesora.",
+          "Añete es «cierto, verdad», y también confirmaría. Rosa corrige a Juan: Nahániri."
+        ]
+      },
+      {
+        "id": "a1u03d4.d4",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Rosa le ofrece chipa, pero Juan ^no tiene hambre^.)\nRosa: Ndevare'ápa?\nJuan: Nahániri, (   ).",
+        "options": ["ndachevare'ái", "nachevare'ái", "ndavare'ái", "chevare'a"],
+        "answer": 1,
+        "why": [
+          "Vare'a es oral, sin ~ ni m, n, ñ: el «no» de dos partes es nda-…-i alrededor de chevare'a. Ndachevare'ái, «no tengo hambre». La tilde aparece en la á porque -i no se lleva el acento.",
+          "na- va solo delante de una palabra nasal, como en nachemandu'ái. Vare'a es oral: nda-.",
+          "Ndavare'ái no dice de quién es el hambre: le falta che-. El «no» rodea a che- y al estado: ndachevare'ái.",
+          "Chevare'a es «tengo hambre»: afirma, y Juan acaba de decir Nahániri."
+        ]
+      },
+      {
+        "id": "a1u03d4.d5",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Ana pregunta si llegó el médico.)\nAna: ",
+        "after": " pohanohára?",
+        "tiles": ["o", "g̃uahẽ", "pa"],
+        "bank": [2, 0, 1],
+        "hint": "El prefijo de «él, ella» va primero, pegado a g̃uahẽ. -pa cierra la palabra que pregunta.",
+        "full": "(Ana pregunta si llegó el médico.)\nAna: {O}g̃uahẽ{pa} pohanohára?",
+        "es": "Ana: ¿Llegó el médico?",
+        "explain": "o- («él, ella») + g̃uahẽ («llegar») + -pa (pregunta) = Og̃uahẽpa, «¿llegó?». -pa va pegado a la palabra que pregunta, la primera, y la persona, pohanohára, viene después. El acento sigue en la ẽ: la ~ ya lo marca y no se agrega tilde."
+      },
+      {
+        "id": "a1u03d4.d6",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Rosa pregunta por la fiesta, y Juan no se acuerda.)\nRosa: Nemandu'ápa?\nJuan: ",
+        "after": ".",
+        "tiles": ["na", "che", "mandu'a", "i"],
+        "bank": [3, 1, 0, 2],
+        "hint": "El «no» tiene dos partes: una al principio y otra al final. En el medio van che- y el estado.",
+        "full": "(Rosa pregunta por la fiesta, y Juan no se acuerda.)\nRosa: Nemandu'ápa?\nJuan: {Na}chemandu'á{i}.",
+        "es": "Rosa: ¿Te acordás?\nJuan: No me acuerdo.",
+        "explain": "na- + che- + mandu'a («acordarse») + -i = Nachemandu'ái, «no me acuerdo». Mandu'a es nasal, con m y n: por eso va na- y no nda-. -i no se lleva el acento: queda en la a final de mandu'a, que ya no es la última vocal, y se escribe á."
+      }
+    ],
+    "exam": [
+      {
+        "id": "a1u03d4.e1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Qué significa",
+        "q": "Luis: Og̃uahẽ pohanohára.\nAna: _Añetépa?_",
+        "options": ["¿De verdad?", "¿Ahora?", "¿Quién?", "¿Dónde está?"],
+        "answer": 1,
+        "explain": "Añete es «verdad, cierto», y -pa lo vuelve pregunta: Añetépa?, «¿de verdad?». Ahora es ko'ág̃a, ¿quién? es Mávapa y ¿dónde? es Moõpa: ninguna de esas palabras está en lo subrayado."
+      },
+      {
+        "id": "a1u03d4.e2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la respuesta",
+        "q": "(La mamá de Luis está cansada.)\nAna: Ikane'õpa nde sy?\nLuis: (   )",
+        "options": ["Héẽ, ikane'õ.", "Héẽ, chekane'õ.", "Héẽ, nekane'õ.", "Nahániri, ikane'õ."],
+        "answer": 1,
+        "explain": "Ana pregunta por la mamá de Luis, otra persona, y ella sí está cansada: Héẽ, ikane'õ, «sí, está cansada», con la i- de la tercera persona. Héẽ, chekane'õ hablaría de Luis mismo; Héẽ, nekane'õ le diría a Ana que ella está cansada; y Nahániri, ikane'õ se contradice: dice «no» y después «está cansada»."
+      },
+      {
+        "id": "a1u03d4.e3",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Luis comió hace un rato.)\nLuis: ",
+        "after": ".",
+        "tiles": ["nda", "che", "vare'a", "i"],
+        "bank": [2, 0, 3, 1],
+        "full": "(Luis comió hace un rato.)\nLuis: {Nda}chevare'á{i}.",
+        "es": "Luis: No tengo hambre.",
+        "explain": "nda- + che- + vare'a («hambre») + -i = Ndachevare'ái, «no tengo hambre». El «no» tiene dos partes que rodean a che- y al estado. Vare'a es oral, sin ~ ni m, n, ñ: por eso va nda- y no na-. -i no se lleva el acento: queda en la a final de vare'a y se escribe á."
+      }
+    ]
+  },
+  "words": {
+    "es": "¿Ya llegó? Un chat de sí o no",
+    "intro": "Ana le escribe a su mamá: el médico viene a ver a la abuela. Tocá cada palabra del chat.",
+    "sound": {
+      "focus": "La g̃: una g con nariz",
+      "letters": ["g̃"],
+      "note": "La g̃ es la g suave de «agua» con el aire saliendo también por la nariz. Está en pocas palabras, pero muy usadas: og̃uahẽ, ko'ág̃a, ag̃aite, Tereg̃uahẽ. Los diarios la escriben sin la ~ (oguahẽ, ko'ágã): acá va con ~, y aceptamos las dos. No hay pares mínimos: compará la g sin nariz con la g̃ con nariz.",
+      "pairs": [
+        ["aguyje", "gracias", "ag̃aite", "ahora mismo"],
+        ["jagua", "perro", "og̃uahẽ", "llega"],
+        ["óga", "casa", "ko'ág̃a", "ahora"]
+      ]
+    },
+    "words": [
+      { "id": "oguahe", "gn": "og̃uahẽ", "es": "llega, llegó", "parts": [["o-", "él, ella"], ["g̃uahẽ", "llegar"]], "note": "Como en Tereg̃uahẽ porãite (unidad 1). Los diarios escriben oguahẽ, sin la ~: también vale." },
+      { "id": "koaga", "gn": "ko'ág̃a", "es": "ahora", "note": "Og̃uahẽ ko'ág̃a: llegó ahora. También se ve ko'ágã, con la ~ en la a." },
+      { "id": "agaite", "gn": "ag̃aite", "es": "ahora mismo, enseguida", "parts": [["ag̃a", "ahora, pronto"], ["-ite", "mismo, muy"]], "note": "Más inmediato que ko'ág̃a." },
+      { "id": "anete", "gn": "añete", "es": "cierto, verdad", "note": "Añetépa?: ¿de verdad?" },
+      { "id": "upeicha", "gn": "upéicha", "es": "así, así es", "note": "Como respuesta, «así es». Lleva tilde en la é: el acento no cae en la última vocal." },
+      { "id": "ndahaei", "gn": "ndaha'éi", "es": "no es", "parts": [["nda-", "no (primera parte)"], ["ha'e", "es"], ["-i", "no (segunda parte)"]], "note": "Una sola palabra, con la tilde en la é. Ndaha'éi che sy: no es mi mamá." },
+      { "id": "ndaikatui", "gn": "ndaikatúi", "es": "no se puede, no puedo", "parts": [["nda-", "no"], ["ikatu", "se puede"], ["-i", "no"]], "note": "Ikatu es «se puede» (unidad 1): ndaikatúi, «no se puede». Lleva tilde en la ú." },
+      { "id": "nachemandua", "gn": "nachemandu'ái", "es": "no me acuerdo", "parts": [["na-", "no"], ["che-", "yo"], ["mandu'a", "acordarse"], ["-i", "no"]], "note": "Chemandu'a: me acuerdo. Mandu'a es nasal, por eso va na- y no nda-." }
+    ],
+    "spell": ["oguahe", "koaga", "agaite", "ndahaei"],
+    "check": {
+      "id": "a1u03d4.k1",
+      "kind": "choice",
+      "area": "vocab",
+      "label": "Cómo se escribe",
+      "q": "Ana escribe que el médico llegó _ahora_. ¿Cómo se escribe en guaraní?",
+      "options": ["ko'aga", "koág̃a", "ko'ág̃a", "ko'ãga"],
+      "answer": 3,
+      "explain": "Ahora es ko'ág̃a: con puso entre la o y la a, con la tilde en la á, porque el acento no cae en la última vocal, y con la g̃, la g con nariz. Ko'aga no tiene ninguna marca, koág̃a perdió el puso y ko'ãga pone la ~ en la vocal: la nariz va en la g̃. Los diarios escriben ko'ágã, y también lo aceptamos."
+    }
+  },
+  "skill": {
+    "kind": "reading",
+    "es": "Un chat con mamá",
+    "ask": "¿Quién llega ahora?",
+    "seconds": 60,
+    "passage": "Ana: Mba'éichapa, mamá. ^Og̃uahẽpa pohanohára?^\nMamá: ^Héẽ, og̃uahẽ ko'ág̃a.^ Nde jarýi hasy.\nAna: Añetépa? Ikane'õpa?\nMamá: Nahániri. Ivare'a.\nAna: Jaha jakaru.",
+    "strategy": "La pregunta con -pa y su respuesta con Héẽ van juntas: ahí está el dato. Fijate de quién habla la pregunta.",
+    "item": {
+      "id": "a1u03d4.r1",
+      "kind": "choice",
+      "area": "reading",
+      "label": "Buscar el dato",
+      "q": "¿Quién llega ahora?",
+      "options": ["El médico.", "Ana.", "El papá de Ana.", "La abuela."],
+      "short": ["El médico", "Ana", "El papá", "La abuela"],
+      "answer": 1,
+      "why": [
+        "Ana pregunta Og̃uahẽpa pohanohára?, «¿llegó el médico?», y mamá responde Héẽ, og̃uahẽ ko'ág̃a: sí, llegó ahora. El que llega es el médico.",
+        "Ana es la que escribe y pregunta; no dice que ella llegue a ningún lado.",
+        "El papá no aparece en el chat: no hay che ru ni nde ru.",
+        "La abuela, nde jarýi, está enferma, hasy, y tiene hambre, ivare'a. Es a quien viene a ver el médico, no la que llega."
+      ],
+      "explain": "Ana pregunta Og̃uahẽpa pohanohára? y mamá responde Héẽ, og̃uahẽ ko'ág̃a: el médico llegó ahora. La abuela, nde jarýi, está enferma (hasy) y tiene hambre (ivare'a)."
+    }
+  }
+}

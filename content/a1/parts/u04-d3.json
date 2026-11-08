@@ -1,0 +1,305 @@
+{
+  "title": "Demostrativos ko, pe, amo",
+  "grammar": {
+    "points": [
+      {
+        "id": "a1u04d3.p1",
+        "form": "ko · pe · amo + sustantivo",
+        "gloss": "este, esta · ese, esa · aquel, aquella",
+        "connect": [
+          { "pos": "Cerca de quien habla: «este, esta»", "rule": "{ko} vaka · {ko} óga" },
+          { "pos": "Cerca de quien escucha: «ese, esa»", "rule": "{pe} jagua · {pe} mitã" },
+          { "pos": "Lejos de los dos, a la vista: «aquel, aquella»", "rule": "{amo} óga · {amo} kavaju" },
+          { "pos": "Siempre delante del sustantivo, y sin género: la misma palabra para «este» y «esta». Ya la usás con los momentos del día", "rule": "{ko} ka'aru · {ko} pyhare" }
+        ],
+        "examples": [
+          {
+            "gn": "{Ko} vaka iky'a.",
+            "es": "Esta vaca está sucia.",
+            "parts": [["ko", "esta"], ["vaka", "vaca"], ["i-", "está (él, ella)"], ["ky'a", "sucio, sucia"]]
+          },
+          {
+            "gn": "{Pe} mitã iporã.",
+            "es": "Ese chico es lindo.",
+            "parts": [["pe", "ese"], ["mitã", "niño, niña"], ["iporã", "es lindo, está bien"]]
+          },
+          {
+            "gn": "{Amo} óga ituicha.",
+            "es": "Aquella casa es grande.",
+            "parts": [["amo", "aquella"], ["óga", "casa"], ["i-", "es (él, ella)"], ["tuicha", "grande"]]
+          },
+          {
+            "gn": "{Pe} karai che ru.",
+            "es": "Ese señor es mi papá.",
+            "parts": [["pe", "ese"], ["karai", "señor"], ["che ru", "mi papá"]]
+          }
+        ],
+        "watch": {
+          "note": "Va siempre delante del sustantivo, como el posesivo, y no cambia: ko sirve para «este» y para «esta».",
+          "bad": "óga ko",
+          "good": "ko óga"
+        }
+      },
+      {
+        "id": "a1u04d3.p2",
+        "form": "ko'ã · umi + sustantivo",
+        "gloss": "estos, estas · esos, esas, aquellos, aquellas",
+        "connect": [
+          { "pos": "Ko, para varios: ko'ã, con puso y ã", "rule": "{ko'ã} mba'e · {ko'ã} óga" },
+          { "pos": "Pe y amo, para varios: umi, que sirve para «esos» y para «aquellos»", "rule": "{umi} mitã · {umi} jagua" },
+          { "pos": "El sustantivo puede ir sin -kuéra: ko'ã y umi ya dicen que son varios. Con -kuéra también se dice", "rule": "{umi} kavaju · {umi} mitãnguéra" }
+        ],
+        "examples": [
+          {
+            "gn": "{Umi} kavaju oĩ korapýpe.",
+            "es": "Esos caballos están en el patio.",
+            "parts": [["umi", "esos"], ["kavaju", "caballo"], ["oĩ", "están"], ["korapý-pe", "en el patio"]]
+          },
+          {
+            "gn": "{Umi} mbarakaja oguereko mokõi nambi.",
+            "es": "Esos gatos tienen dos orejas.",
+            "parts": [["umi", "esos"], ["mbarakaja", "gato"], ["oguereko", "tienen"], ["mokõi", "dos"], ["nambi", "oreja"]]
+          },
+          {
+            "gn": "{Ko'ã} óga ituicha.",
+            "es": "Estas casas son grandes.",
+            "parts": [["ko'ã", "estas"], ["óga", "casa"], ["ituicha", "es grande, son grandes"]]
+          },
+          {
+            "gn": "{Umi} mitã oho mbo'ehaópe.",
+            "es": "Esos chicos van a la escuela.",
+            "parts": [["umi", "esos"], ["mitã", "niño, niña"], ["oho", "van"], ["mbo'ehaó-pe", "a la escuela"]]
+          }
+        ],
+        "watch": {
+          "note": "El plural del demostrativo no se hace con -kuéra: es otra palabra. Y el sustantivo puede quedar como está: ko'ã mitã, «estos chicos».",
+          "bad": "kokuéra mitã",
+          "good": "ko'ã mitã"
+        }
+      }
+    ],
+    "compare": {
+      "intro": "Tres distancias y un plural: fijate dónde está la cosa y si es una o varias.",
+      "forms": [
+        { "form": "ko · pe · amo", "tag": "uno: cerca de mí · cerca de vos · lejos", "mark": "dot", "gn": "{Ko} vaka iky'a.", "es": "Esta vaca está sucia." },
+        { "form": "ko'ã · umi", "tag": "varios: estos · esos, aquellos", "mark": "dot", "gn": "{Umi} kavaju oĩ korapýpe.", "es": "Esos caballos están en el patio." },
+        { "form": "ko + momento del día", "tag": "esta tarde, esta noche (semana 1)", "mark": "dot", "gn": "Jajotopáta {ko} ka'aru.", "es": "Nos vemos esta tarde." }
+      ],
+      "check": {
+        "id": "a1u04d3.c1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Juan señala un perro que está ^al lado de Rosa^.)\nJuan: (   ) jagua iporã.",
+        "options": ["Ko", "Pe", "Amo"],
+        "answer": 2,
+        "why": [
+          "Ko es «este»: el perro estaría al lado de Juan, el que habla. Y está al lado de Rosa.",
+          "El perro está al lado de Rosa, la que escucha: pe jagua, «ese perro».",
+          "Amo es «aquel», para algo lejos de los dos. El perro está al lado de Rosa."
+        ]
+      }
+    },
+    "drill": [
+      {
+        "id": "a1u04d3.d1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Ana tiene ^un gato en brazos^.)\nAna: (   ) mbarakaja iporã.",
+        "options": ["Amo", "Pe", "Umi", "Ko"],
+        "answer": 4,
+        "why": [
+          "Amo es «aquel», para algo lejos de los dos. Ana tiene el gato en brazos.",
+          "Pe es «ese»: el gato estaría cerca del que escucha. Lo tiene Ana, la que habla.",
+          "Umi es para varios, «esos». Es un solo gato, y además lo tiene Ana.",
+          "Ana tiene el gato en brazos, cerca de ella, la que habla: ko mbarakaja, «este gato»."
+        ]
+      },
+      {
+        "id": "a1u04d3.d2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Luis señala ^una casa lejos, al final de la calle^.)\nLuis: (   ) óga ituicha.",
+        "options": ["Ko", "Pe", "Amo", "Ko'ã"],
+        "answer": 3,
+        "why": [
+          "Ko es «esta», para algo cerca de Luis. La casa está al final de la calle.",
+          "Pe es «esa», para algo cerca del que escucha. La casa está lejos de los dos.",
+          "La casa está lejos de los dos, pero a la vista: amo óga, «aquella casa».",
+          "Ko'ã es «estas», para varias cosas cerca de quien habla. Es una sola casa y está lejos."
+        ]
+      },
+      {
+        "id": "a1u04d3.d3",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Ana tiene ^dos libros en la mano^.)\nAna: (   ) aranduka iporã.",
+        "options": ["Ko'ã", "Umi", "Ko", "Pe"],
+        "answer": 1,
+        "why": [
+          "Son dos libros y los tiene Ana, la que habla: ko'ã aranduka, «estos libros». Ko'ã es el ko de varios.",
+          "Umi es para varios, pero lejos de quien habla: «esos» o «aquellos». Ana los tiene en la mano.",
+          "Ko es «este», para uno solo. Ana tiene dos libros.",
+          "Pe es «ese»: uno solo, y cerca del que escucha. Son dos y los tiene Ana."
+        ]
+      },
+      {
+        "id": "a1u04d3.d4",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Juan habla de ^los chicos que están con Rosa^.)\nJuan: (   ) mitã oñe'ẽ guaraníme.",
+        "options": ["Ko'ã", "Umi", "Ko", "Pekuéra"],
+        "answer": 2,
+        "why": [
+          "Ko'ã es «estos», para varios cerca de quien habla. Los chicos están con Rosa, no con Juan.",
+          "Son varios chicos y están con Rosa, no con Juan: umi mitã, «esos chicos». El sustantivo queda como está.",
+          "Ko es «este»: uno solo, y cerca de Juan. Son varios y están con Rosa.",
+          "El plural de pe no se hace con -kuéra: para varios hay otra palabra, umi."
+        ]
+      },
+      {
+        "id": "a1u04d3.d5",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "Umi kavaju oĩ ",
+        "after": ".",
+        "tiles": ["korapy", "pe"],
+        "bank": [1, 0],
+        "hint": "Primero el lugar, korapy, y después -pe, «en». -pe no se lleva el acento: fijate dónde queda la tilde.",
+        "full": "Umi kavaju oĩ korapý{pe}.",
+        "es": "Esos caballos están en el patio.",
+        "explain": "korapy («patio») + -pe («en») = korapýpe, «en el patio». -pe no se lleva el acento: queda en la y de korapy. Como esa y ya no es la última vocal, se escribe la tilde: korapýpe. Umi, «esos», va delante de kavaju."
+      },
+      {
+        "id": "a1u04d3.d6",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la oración",
+        "join": "sentence",
+        "before": "",
+        "after": "umi mbarakaja iporã.",
+        "tiles": ["ko'ã", "jagua", "ha"],
+        "bank": [2, 0, 1],
+        "hint": "Ko'ã va delante del sustantivo, como ko. Ha, «y», une las dos partes.",
+        "full": "{Ko'ã} jagua ha umi mbarakaja iporã.",
+        "es": "Estos perros y esos gatos son lindos.",
+        "explain": "Ko'ã, «estos», va delante de jagua: ko'ã jagua, «estos perros». Después ha, «y», une con umi mbarakaja, «esos gatos». El demostrativo va siempre primero, y el sustantivo queda sin -kuéra: ko'ã y umi ya dicen que son varios."
+      }
+    ],
+    "exam": [
+      {
+        "id": "a1u04d3.e1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Qué significa",
+        "q": "Rosa: _Amo óga_ ituicha.",
+        "options": ["Esta casa", "Esa casa", "Aquella casa", "Aquellas casas"],
+        "answer": 3,
+        "explain": "Amo es «aquel, aquella»: algo lejos de los dos, a la vista. Amo óga ituicha: aquella casa es grande. «Esta casa» sería ko óga; «esa casa», pe óga; y para varias casas lejos se usa umi: umi óga."
+      },
+      {
+        "id": "a1u04d3.e2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Juan señala dos árboles que tiene al lado.)\nJuan: (   ) yvyra ituicha.",
+        "options": ["Ko", "Umi", "Pe", "Ko'ã"],
+        "answer": 4,
+        "explain": "Son dos árboles y están al lado de Juan, el que habla: ko'ã yvyra, «estos árboles». Ko y pe son para uno solo, y umi es para varios pero lejos de quien habla, «esos» o «aquellos»."
+      },
+      {
+        "id": "a1u04d3.e3",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "Pe jagua oĩ ",
+        "after": ".",
+        "tiles": ["korapy", "pe"],
+        "bank": [1, 0],
+        "full": "Pe jagua oĩ korapýpe.",
+        "es": "Ese perro está en el patio.",
+        "explain": "korapy («patio») + -pe («en») = korapýpe. -pe no se lleva el acento: queda en la y de korapy, que ya no es la última vocal, y por eso se escribe la tilde. Pe jagua oĩ korapýpe: ese perro está en el patio."
+      }
+    ]
+  },
+  "words": {
+    "gn": "Korapýpe",
+    "es": "En el patio",
+    "intro": "El patio de la casa de Juan: animales y cosas para señalar con ko, pe y amo. Tocá cada palabra. Dos nombres vienen del castellano, escritos a la guaraní: vaka y kavaju.",
+    "sound": {
+      "focus": "La v: vaka, kavaju",
+      "letters": ["v", "k"],
+      "note": "La v del guaraní no es la b ni la v del castellano: el labio de abajo roza los dientes, sin fuerza: vaka, yvyra. Cuando una palabra entra del castellano se escribe con las letras del guaraní: vaca → vaka, caballo → kavaju, queso → kesu (b → v; c y qu → k; ll → j). No hay pares mínimos seguros con v o con k: son palabras para contrastar con el castellano.",
+      "pairs": [
+        ["vaka", "vaca", "yvyra", "árbol"],
+        ["kavaju", "caballo", "kesu", "queso"]
+      ]
+    },
+    "words": [
+      { "id": "jagua", "gn": "jagua", "es": "perro", "note": "La j suena como la y fuerte de «yo», nunca como la jota. Plural: jaguakuéra." },
+      { "id": "mbarakaja", "gn": "mbarakaja", "es": "gato", "note": "Empieza con mb, como mba'e: una sola letra. Una gata es mbarakaja kuña." },
+      { "id": "ryguasu", "gn": "ryguasu", "es": "gallina", "note": "La r es suave, como en «caro», también al principio. Ryguasu rupi'a es «huevo»." },
+      { "id": "kavaju", "gn": "kavaju", "es": "caballo", "note": "Del castellano «caballo», escrito a la guaraní: la c se escribe k y la ll se escribe j." },
+      { "id": "vaka", "gn": "vaka", "es": "vaca", "note": "Del castellano «vaca»: con v y con k. Ko vaka iky'a, «esta vaca está sucia»." },
+      { "id": "yvyra", "gn": "yvyra", "es": "árbol", "note": "Dos y, la sexta vocal: y-vy-ra. También es «madera»." },
+      { "id": "apyka", "gn": "apyka", "es": "silla", "note": "La y del medio es la sexta vocal: a-py-ka." },
+      { "id": "korapy", "gn": "korapy", "es": "patio", "note": "«En el patio» es korapýpe: -pe no se lleva el acento, y aparece la tilde en la ý." }
+    ],
+    "spell": ["kavaju", "vaka", "yvyra", "apyka"],
+    "check": {
+      "id": "a1u04d3.k1",
+      "kind": "choice",
+      "area": "vocab",
+      "label": "Cómo se escribe",
+      "q": "Juan señala un animal: Amo _caballo_ ituicha. ¿Cómo se escribe «caballo» en guaraní?",
+      "options": ["cavaju", "kavaju", "kabaju", "kavallu"],
+      "answer": 2,
+      "explain": "Se escribe kavaju: la c de «caballo» se escribe k, porque la c no es una letra del guaraní, y la ll se escribe j. Cavaju deja la c; kabaju escribe b, que sola no es una letra del guaraní, acá va v; y kavallu deja la ll del castellano."
+    }
+  },
+  "skill": {
+    "kind": "listening",
+    "es": "Comprensión de puntos clave",
+    "situation": "En el patio de la casa de Juan. Rosa mira los animales y habla de ellos con Juan.",
+    "ask": "¿Qué animal está lejos de los dos?",
+    "item": {
+      "id": "a1u04d3.r1",
+      "kind": "choice",
+      "area": "listening",
+      "label": "Qué escuchaste",
+      "q": "¿Qué animal está lejos de los dos?",
+      "options": ["El perro.", "El gato.", "El caballo."],
+      "short": ["Perro", "Gato", "Caballo"],
+      "printed": true,
+      "answer": 3,
+      "why": [
+        "Rosa dice pe jagua, «ese perro»: pe es para algo cerca del que escucha, Juan. El perro está al lado de Juan, no lejos.",
+        "Rosa dice ko mbarakaja, «este gato»: ko es para algo cerca de quien habla. Rosa tiene el gato al lado.",
+        "Juan dice amo kavaju ituicha, «aquel caballo es grande»: amo es para algo lejos de los dos, a la vista."
+      ],
+      "script": [
+        "Narrador: En el patio de la casa de Juan. Rosa habla de los animales. ¿Qué animal está lejos de los dos?",
+        "Mujer: Pe jagua iporã, Juan.",
+        "Hombre: Héẽ. Ha amo kavaju ituicha.",
+        "Mujer: Ha ko mbarakaja?",
+        "Hombre: Che rajy mbarakaja.",
+        "Narrador: ¿Qué animal está lejos de los dos?"
+      ]
+    },
+    "audio": [
+      ["N", "En el patio de la casa de Juan. Rosa habla de los animales. ¿Qué animal está lejos de los dos?", "En el patio de la casa de Juan. Rosa habla de los animales. ¿Qué animal está lejos de los dos?"],
+      ["F", "Pe jagua iporã, Juan.", "Ese perro es lindo, Juan."],
+      ["M", "Héẽ. Ha amo kavaju ituicha.", "Sí. Y aquel caballo es grande."],
+      ["F", "Ha ko mbarakaja?", "¿Y este gato?"],
+      ["M", "Che rajy mbarakaja.", "Es el gato de mi hija."],
+      ["N", "¿Qué animal está lejos de los dos?", "¿Qué animal está lejos de los dos?"]
+    ]
+  }
+}

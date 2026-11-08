@@ -7,7 +7,7 @@
         "form": "-pe",
         "gloss": "en, a (lugar)",
         "connect": [
-          { "pos": "Después del lugar, pegado: no va delante, como «en»", "rule": "óga → óga{pe} · mbo'ehao → mbo'ehaó{pe}" },
+          { "pos": "Después del lugar y pegado; no delante, como el «en» castellano", "rule": "óga → óga{pe} · mbo'ehao → mbo'ehaó{pe}" },
           { "pos": "Con ir es «a»; con estar es «en»", "rule": "Aha mbo'ehaó{pe} · Che sy oĩ óga{pe}" },
           { "pos": "-pe no se lleva el acento: la raíz lo guarda y, si esa vocal ya no es la última, lleva tilde", "rule": "koty → kotý{pe} · ka'aguy → ka'aguý{pe}" }
         ],
@@ -23,9 +23,9 @@
             "parts": [["aha", "voy"], ["che jarýi", "mi abuela"], ["róga", "casa (óga después de su dueño: che róga)"], ["-pe", "a"]]
           },
           {
-            "gn": "Mbo'ehára oĩ kotý{pe}.",
-            "es": "La profesora está en la pieza.",
-            "parts": [["mbo'ehára", "profesora, profesor"], ["oĩ", "está (y también «hay»)"], ["koty", "pieza, cuarto"], ["-pe", "en"]]
+            "gn": "Che ru oĩ kotý{pe}.",
+            "es": "Mi papá está en la pieza.",
+            "parts": [["che ru", "mi papá"], ["oĩ", "está (y también «hay»)"], ["koty", "pieza, cuarto"], ["-pe", "en"]]
           },
           {
             "gn": "Rosa: Moõpa remba'apo, Juan?\nJuan: Kokué{pe}.",
@@ -45,7 +45,7 @@
         "gloss": "en, a (tras sílaba nasal)",
         "connect": [
           { "pos": "Si la última sílaba es nasal (vocal con ~, o junto a m, n, ñ), -pe se vuelve -me", "rule": "tetã → tetã{me} · ñu → ñú{me} · guarani → guaraní{me}" },
-          { "pos": "Sobre una vocal con ~ no se agrega tilde: la ~ ya marca el acento", "rule": "tetã{me} · [ñe'ẽ|lengua]{me}" },
+          { "pos": "Sobre una vocal con ~ no se agrega tilde: la ~ ya marca el acento", "rule": "tetã → tetã{me} · [ñe'ẽ|lengua] → ñe'ẽ{me}" },
           { "pos": "Si la última sílaba es oral, va -pe aunque antes haya ñ o mb", "rule": "mbo'ehao → mbo'ehaó{pe} · Ñemby → Ñembý{pe}" }
         ],
         "examples": [
@@ -65,9 +65,9 @@
             "parts": [["oho", "va"], ["Ñemby", "Ñemby (un pueblo)"], ["-pe", "a (tras sílaba oral)"], ["ha", "y"], ["ñu", "campo"], ["-me", "a (tras sílaba nasal)"]]
           },
           {
-            "gn": "Aiko ko tetã{me}, Paraguái{pe}.",
-            "es": "Vivo en este país, en Paraguay.",
-            "parts": [["aiko", "vivo"], ["ko", "este"], ["tetã", "país"], ["-me", "en (tras sílaba nasal)"], ["Paraguái", "Paraguay"], ["-pe", "en (tras sílaba oral)"]]
+            "gn": "Che sy omba'apo ko tetã{me}, Paraguái{pe}.",
+            "es": "Mi mamá trabaja en este país, en Paraguay.",
+            "parts": [["che sy", "mi mamá"], ["omba'apo", "trabaja"], ["ko", "este"], ["tetã", "país"], ["-me", "en (tras sílaba nasal)"], ["Paraguái", "Paraguay, el país"], ["-pe", "en (tras sílaba oral)"]]
           }
         ],
         "watch": {
@@ -135,14 +135,14 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Ana cuenta dónde vive Luis: ^en Ñemby^.)\nAna: Luis [oiko|vive] (   ).",
+        "q": "(Ana cuenta adónde va Luis: ^a Ñemby^.)\nAna: Luis oho (   ).",
         "options": ["Ñembýme", "Ñembýpe", "Ñemby", "Ka'akupépe"],
         "answer": 2,
         "why": [
-          "Ñemby tiene ñ y mb, pero la última sílaba es mby, y mb es otra letra, no m: la y que sigue es oral. Tras sílaba oral va -pe.",
-          "Mirá la última sílaba: mby. Su vocal es oral, así que va -pe, y la y, que ya no es la última vocal, lleva tilde: Ñembýpe, «en Ñemby».",
-          "Ñemby solo es el nombre del pueblo. Para «en Ñemby» se le pega -pe.",
-          "Ka'akupépe es «en Caacupé», y Luis vive en Ñemby."
+          "Ñemby tiene ñ y mb, pero la última sílaba es mby: mb es una letra distinta de m, y la y que la sigue es oral. Tras sílaba oral va -pe.",
+          "Mirá la última sílaba: mby. Su vocal es oral, así que va -pe, y la y, que ya no es la última vocal, lleva tilde: Ñembýpe, «a Ñemby».",
+          "Ñemby solo es el nombre del pueblo. Para «a Ñemby» se le pega -pe.",
+          "Ka'akupépe es «a Caacupé», y Luis va a Ñemby."
         ]
       },
       {
@@ -150,12 +150,12 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "Rosa cuenta que vive ^en este país^: «Aiko ko (   ).»",
+        "q": "(Rosa cuenta dónde trabaja su papá: ^en este país^.)\nRosa: Che ru omba'apo ko (   ).",
         "options": ["tetãpe", "tetáme", "tetã", "tetãme"],
         "answer": 4,
         "why": [
           "La ã es nasal: tras sílaba nasal, -pe se vuelve -me.",
-          "Perdió la ~, y la ~ es la que dice que la a es nasal y que ahí va el acento. Sin ella, la palabra cambia.",
+          "Tetáme perdió la ~, y la ~ es la que dice que la a es nasal y que ahí va el acento. Sin ella la palabra cambia: es tetãme, sin otra tilde.",
           "Tetã solo es «país». Para decir «en este país» se le pega -me: ko tetãme.",
           "Tetã termina en ã, nasal: va -me. Y sobre la ã no se agrega tilde: la ~ ya marca el acento. Ko tetãme, «en este país»."
         ]
@@ -207,7 +207,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Luis cuenta dónde está su abuela: en Caacupé.)\nLuis: Che jarýi oĩ (   ).",
+        "q": "(Ana cuenta dónde está su abuela: en Caacupé.)\nAna: Che jarýi oĩ (   ).",
         "options": ["Ka'akupéme", "Ka'akupe", "Itauguápe", "Ka'akupépe"],
         "answer": 4,
         "explain": "Ka'akupe termina en pe, una sílaba oral: va -pe, y el acento queda en la e de Ka'akupe, que ya no es la última vocal: Ka'akupépe, «en Caacupé». -me va solo tras sílaba nasal, Ka'akupe solo es el nombre del pueblo, sin «en», e Itauguápe es «en Itauguá», otro pueblo."
@@ -218,13 +218,13 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "Rosa: Aiko ko ",
+        "before": "Rosa: Amba'apo ko ",
         "after": ".",
         "tiles": ["tetã", "me"],
         "bank": [1, 0],
-        "full": "Rosa: Aiko ko {tetãme}.",
-        "es": "Rosa: Vivo en este país.",
-        "explain": "tetã («país») va primero y -me pegado atrás: tetãme, «en el país». La ã es nasal, así que no va -pe. El acento sigue en la ã, y la ~ ya lo marca: no se escribe otro acento."
+        "full": "Rosa: Amba'apo ko {tetãme}.",
+        "es": "Rosa: Trabajo en este país.",
+        "explain": "tetã («país») va primero y -me pegado atrás: tetãme, «en el país». La ã es nasal, así que no va -pe. El acento sigue en la ã, y la ~ ya lo marca: no se escribe otra tilde."
       }
     ]
   },

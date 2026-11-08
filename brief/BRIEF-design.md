@@ -62,9 +62,10 @@ paper as in Yaoki (the school notebook). Never emoji, never flags, no tourist cl
 ### The ritual (replaces the daruma's painted eyes)
 
 Yaoki paints the daruma's first eye when the goal is set and the second when the exam is passed. Here Kaguare wears a
-ñandutí pinned to his black vest for the level: on the Goal screen the learner weaves its first ring ("Tejé el primer hilo"); every unit
-finished adds a ring (the level's rosette fills as the units are done: Levels and Progress show it); passing the level
-exam (Apto) completes it. Before the goal, the rosette is only its frame: the outer circle and the radial threads, no rings.
+ñandutí pinned to his black vest for the level: on the Goal screen the learner weaves its hub, the first thread ("Tejé el primer hilo"); every unit
+finished fills a petal (the level's rosette fills as the units are done: Levels and Progress show it); passing the level
+exam (Apto) weaves its rim. Before the goal, the rosette is only its frame: the dashed outer circle, the sun of radial threads
+with their cross-thread ring, and the petals white.
 
 ### The level's ñandutí (one recipe, every screen)
 
@@ -79,6 +80,18 @@ const ro = Object.assign(r, { frameOpacity: passed ? 0 : 1, rimOpacity: passed ?
   label: 'Ñandutí del nivel A1: ' + unitsDone + ' de ' + units + ' unidades' + (passed ? ', nivel aprobado' : '') });
 ```
 Before the goal: frame only (no hub). Goal ritual: the hub fills ("Tejé el primer hilo"). Each unit: a petal. Apto: the rim.
+
+What the strings draw (the "arasape" rosette, the Itauguá sun): `spokes` is one radial thread per unit from under the hub to
+the frame (r 19.3) plus a cross-thread ring (r 17.25) under the rim; `on` and `off` are one pointed lace leaf per unit between
+two threads (r 6.8 to 15.75), each with its midrib as an open subpath; `rimD` is a ring of tight scallops bulging out from the
+frame, `round(24 / units)` per unit (24 around for 6, 8 or 12 units, 20 for 10). Two rules keep the recipe valid: the spokes
+path is stroked with no `fill`, so nothing in it may enclose an area (the ring is a circle traced out and back; a closed shape
+there would fill black), and an open subpath inside a petal adds stroke only, never fill. Painted extent, stroke included:
+r 20.0 before the pass (the frame circle), r 21.5 whole (r 21.7 for 10 units), inside the brooch discs (the mascot's
+9.4 / 0.42 = 22.4; the icon's 8.0 / 0.36 = 22.2). It stays legible at 20 px (the brooch at 48 px): frame = a pink wheel,
+hub = a dot, each unit = a pink leaf, whole = a filled scalloped disc. The same whole 8-unit rosette is baked literally into
+the icon poses (`brief/mascot/spec.json` icon-pink and icon-green, `Icon.dc.html`, `Rules.dc.html`): regenerate those strings
+from `C.rosette(8, 8, { hub: true, rim: true })` whenever the drawing changes.
 
 ## 4. Words in this brief come from verified sources
 

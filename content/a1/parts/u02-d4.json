@@ -20,7 +20,7 @@
           {
             "gn": "Chipa osẽ tatakuá{gui}.",
             "es": "El chipá sale del horno de barro.",
-            "parts": [["chipa", "chipá"], ["osẽ", "sale: o- + sẽ, «salir»"], ["tatakua", "horno de barro"], ["-gui", "de"]]
+            "parts": [["chipa", "chipá"], ["o-", "él, ella: el chipá"], ["sẽ", "salir"], ["tatakua", "horno de barro"], ["-gui", "de"]]
           },
           {
             "gn": "Rosa ou Paraguaý{gui}.",
@@ -30,7 +30,7 @@
           {
             "gn": "Luis osẽ mbo'ehaó{gui} ko ka'aru.",
             "es": "Luis sale de la escuela esta tarde.",
-            "parts": [["osẽ", "sale"], ["mbo'ehao", "escuela"], ["-gui", "de"], ["ko ka'aru", "esta tarde"]]
+            "parts": [["o-", "él"], ["sẽ", "salir"], ["mbo'ehao", "escuela"], ["-gui", "de"], ["ko ka'aru", "esta tarde"]]
           }
         ],
         "watch": {
@@ -89,13 +89,13 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "Luis: ^Moõguipa^ reju, Ana?\nAna: Aju (   ).",
+        "q": "Rosa: ^Moõguipa^ reju, Juan?\nJuan: Aju (   ).",
         "options": ["Itauguápe", "Itauguágui", "Itauguagua"],
         "answer": 2,
         "why": [
-          "-pe dice adónde va o dónde está: Aha Itauguápe, «voy a Itauguá». Luis pregunta de dónde viene.",
+          "-pe dice adónde va o dónde está: Aha Itauguápe, «voy a Itauguá». Rosa pregunta de dónde viene.",
           "Moõguipa pregunta «¿de dónde?», y se responde con -gui: Aju Itauguágui, «vengo de Itauguá».",
-          "-gua dice de dónde sos: Che Itauguagua, «soy de Itauguá». Luis pregunta de dónde viene Ana, no de dónde es."
+          "-gua dice de dónde sos: Che Itauguagua, «soy de Itauguá». Rosa pregunta de dónde viene Juan, no de dónde es."
         ]
       }
     },
@@ -106,12 +106,12 @@
         "area": "grammar",
         "label": "Elegí la forma",
         "q": "(Rosa llega a Itauguá. Viene ^de Asunción^.)\nRosa: Aju (   ).",
-        "options": ["Paraguaýpe", "gui Paraguay", "Paraguaýme", "Paraguaýgui"],
+        "options": ["Paraguaýpe", "gui Paraguay", "Paraguay", "Paraguaýgui"],
         "answer": 4,
         "why": [
           "-pe es «a» o «en»: Aha Paraguaýpe, «voy a Asunción». Rosa viene de ahí: -gui.",
-          "-gui no va delante ni separado, como el «de» castellano: va pegado al final del lugar.",
-          "-me es la forma de -pe después de una sílaba nasal, y además diría «en» o «a». Rosa viene de Asunción: -gui, que nunca cambia.",
+          "-gui no va delante ni separado, como el «de» castellano: va pegado al final del lugar, Paraguaýgui.",
+          "Paraguay solo es el nombre: Asunción. Para decir «de Asunción» hay que pegarle -gui atrás.",
           "Rosa viene de Asunción: el lugar lleva -gui, pegado atrás. Paraguay lleva el acento en la y final; como -gui no se lo lleva, se escribe ý: Paraguaýgui."
         ]
       },
@@ -121,13 +121,13 @@
         "area": "grammar",
         "label": "Elegí la forma",
         "q": "(Luis ^sale de la escuela^ esta tarde.)\nAna: Luis osẽ (   ) ko ka'aru.",
-        "options": ["mbo'ehaógui", "mbo'ehaópe", "mbo'ehaogui", "gui mbo'ehao"],
+        "options": ["mbo'ehaógui", "mbo'ehaópe", "mbo'ehaóme", "mbo'ehaõgui"],
         "answer": 1,
         "why": [
           "Luis sale de la escuela: el lugar lleva -gui, pegado atrás. Mbo'ehao lleva el acento en la o final; con -gui esa o ya no es la última vocal, y se escribe ó: mbo'ehaógui.",
           "-pe es «a» o «en»: Oho mbo'ehaópe, «va a la escuela». Luis sale de ahí: -gui.",
-          "Le falta la tilde: el acento de mbo'ehao queda en la o, que con -gui ya no es la última vocal. Se escribe mbo'ehaógui, como mbo'ehaópe.",
-          "-gui no va delante ni separado: se pega al final del lugar, mbo'ehaógui."
+          "-me es la forma de -pe tras una sílaba nasal, y la última sílaba de mbo'ehao es oral, la o: el mb del principio no cuenta. Además diría «en»; Luis sale de ahí: -gui, que no cambia nunca.",
+          "La ~ es la tilde nasal: haría nasal la o y cambiaría el sonido, y mbo'ehao no tiene vocal nasal. El acento se marca con la tilde aguda: mbo'ehaógui."
         ]
       },
       {
@@ -151,13 +151,13 @@
         "area": "grammar",
         "label": "Elegí la forma",
         "q": "Luis: ^Moõguipa^ ou ko chipa?\nAna: (   )",
-        "options": ["Tatakuápe.", "Tatakuágui.", "Tatakua.", "Tatakuáme."],
+        "options": ["Tatakuápe.", "Tatakuágui.", "Tatakua.", "Gui tatakua."],
         "answer": 2,
         "why": [
           "Tatakuápe es «en el horno», con -pe: dice dónde está, no de dónde viene.",
           "Luis pregunta de dónde viene el chipá, con -gui, y Ana responde con -gui: Tatakuágui, «del horno de barro».",
-          "Tatakua solo es «horno de barro»: le falta el «de», -gui.",
-          "-me es la forma de -pe después de una sílaba nasal, y tatakua no es nasal. Además diría «en»: a Moõguipa se responde con -gui."
+          "Tatakua solo es «horno de barro», el nombre. Le falta el «de»: -gui, pegado atrás.",
+          "-gui no va delante ni separado, como el «de» castellano: se pega al final del lugar, tatakuágui."
         ]
       },
       {
@@ -231,11 +231,11 @@
   "words": {
     "gn": "Moõguipa reju?",
     "es": "¿De dónde venís? En la terminal",
-    "intro": "En la terminal de Asunción llega gente de todas partes. Tocá cada palabra: lugares de donde se viene, ya con -gui.",
+    "intro": "En la terminal de Asunción llega gente de todas partes. Tocá cada palabra: casi todas son lugares de donde se viene, ya con -gui.",
     "sound": {
       "focus": "La armonía nasal: ña-, -me, n-",
       "letters": ["ã", "ẽ", "ñ", "m", "n"],
-      "note": "Una raíz nasal (con ã ẽ ĩ õ ũ ỹ, o con m, n, ñ, mb, nd, ng, nt) contagia lo que se le pega: ja- se vuelve ña- (ñañe'ẽ), -pe se vuelve -me (tetãme) y, en el día 5, nd- se vuelve n-. -gui no cambia: tetãgui. Los dos primeros pares son pares mínimos, oral contra nasal; los otros dos comparan palabras y muestran el contagio.",
+      "note": "Una raíz nasal (con ã ẽ ĩ õ ũ ỹ, o con m, n, ñ, mb, nd, ng, nt) contagia lo que se le pega: ja- se vuelve ña- (ñañe'ẽ, ñamba'apo) y, en el día 5, nd- se vuelve n-. Los sufijos miran solo la última sílaba: tetãme, pero Ñembýpe. -gui no cambia nunca: tetãgui. Los dos primeros pares son pares mínimos, oral contra nasal; los otros dos comparan palabras y muestran el contagio.",
       "pairs": [
         ["tupa", "cama", "Tupã", "Dios"],
         ["pytu", "aliento", "pytũ", "oscuro"],
@@ -260,9 +260,9 @@
       "area": "vocab",
       "label": "Cómo se escribe",
       "q": "Rosa viene de Asunción: Rosa ou _desde Asunción_. ¿Cómo se escribe en guaraní?",
-      "options": ["Paraguaýgui", "Paraguaygui", "Paraguáigui", "Paraguaýpe"],
+      "options": ["Paraguaýgui", "Paraguaýgüi", "Paraguáigui", "Paraguaýpe"],
       "answer": 1,
-      "explain": "Desde Asunción es Paraguaýgui: Paraguay, «Asunción», lleva el acento en la y final, y como -gui no se lo lleva, esa y ya no es la última vocal y se escribe ý. Paraguaygui no marca ese acento. Paraguáigui es «desde Paraguay», el país, con ái. Y Paraguaýpe es «a Asunción» o «en Asunción», con -pe."
+      "explain": "Desde Asunción es Paraguaýgui: Paraguay, «Asunción», lleva el acento en la y final, y como -gui no se lo lleva, esa y ya no es la última vocal y se escribe ý. Paraguaýgüi usa la diéresis del castellano: en guaraní la u de gu siempre suena, también delante de i, y la ü no es una letra del alfabeto. Paraguáigui es «desde Paraguay», el país, con ái. Y Paraguaýpe es «a Asunción» o «en Asunción», con -pe."
     }
   },
   "skill": {
@@ -278,7 +278,7 @@
       "area": "reading",
       "label": "Buscar el dato",
       "q": "¿De dónde viene Ana?",
-      "options": ["De Asunción.", "De Itauguá.", "De Caacupé, de la casa de su abuela.", "De la escuela."],
+      "options": ["De Asunción.", "De Itauguá.", "De Caacupé.", "De la escuela."],
       "short": ["Asunción", "Itauguá", "Caacupé", "La escuela"],
       "answer": 3,
       "why": [
@@ -287,7 +287,7 @@
         "Ana responde Aju Ka'akupégui, che jarýi rógagui: viene de Caacupé, de la casa de su abuela. Las dos palabras terminan en -gui.",
         "Nadie habla de la escuela: mbo'ehao no aparece en el chat."
       ],
-      "explain": "A Moõguipa reju? Ana responde Aju Ka'akupégui, che jarýi rógagui: -gui marca de dónde viene, Caacupé, la casa de su abuela. Paraguaýgui es de donde viene Rosa, e Itauguápe, con -pe, es adónde va."
+      "explain": "A Moõguipa reju? Ana responde Aju Ka'akupégui, che jarýi rógagui: -gui marca de dónde viene, Caacupé, la casa de su abuela. Paraguaýgui es de donde viene Rosa, e Itauguápe, con -pe, es adónde va Rosa."
     }
   }
 }

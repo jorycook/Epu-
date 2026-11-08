@@ -46,7 +46,7 @@
         "connect": [
           { "pos": "Para otra persona: i- pegado al estado", "rule": "Che sy {i}kane'õ." },
           { "pos": "Con el nombre delante, o con ha'e, igual lleva i-", "rule": "Ana {i}pochy. Ha'e {i}vare'a." },
-          { "pos": "Las palabras que con che- empiezan con r, como réra, llevan h- en vez de i-", "rule": "Che{r}asy · {H}asy." }
+          { "pos": "Si con che- la palabra empieza con r, como rasy (y como réra), la tercera persona lleva h- en vez de i-", "rule": "Che{r}asy · {H}asy." }
         ],
         "examples": [
           {
@@ -95,7 +95,7 @@
         "why": [
           "Chekane'õ es «estoy cansado»: Rosa hablaría de ella misma. Acá habla de su papá, otra persona.",
           "Che ru, «mi papá», es otra persona: el estado lleva i-. Che ru ikane'õ, «mi papá está cansado».",
-          "Kane'õ sin marca es solo «cansancio»: no dice de quién es el estado. Falta la i-."
+          "Kane'õ sin marca es solo «cansancio», la cosa: Che ru kane'õ no es una oración. Falta la i-."
         ]
       }
     },
@@ -120,7 +120,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "Rosa ^le dice a Juan^ que está enojado: «(   ), Juan.»",
+        "q": "Rosa ve que Juan está enojado y ^se lo dice a él^: «(   ), Juan.»",
         "options": ["Chepochy", "Ipochy", "Ndepochy", "Nepochy"],
         "answer": 3,
         "why": [
@@ -155,7 +155,7 @@
         "answer": 3,
         "why": [
           "Cherasy es «estoy enfermo»: Luis hablaría de él mismo. Acá habla de su mamá.",
-          "Con las palabras en r, como réra, la tercera persona no lleva i-: lleva h-. Irasy no se dice; es hasy.",
+          "Con las palabras que con che- empiezan con r, como rasy y réra, la tercera persona no lleva i-: lleva h-, como en héra. Irasy no existe; es hasy.",
           "Che sy es otra persona, y rasy es una palabra en r, como réra: lleva h-, como héra. Che sy hasy, «mi mamá está enferma».",
           "Tasy es la palabra suelta, «dolor, enfermedad», sin marcar a nadie: no dice que la mamá esté enferma."
         ]
@@ -207,10 +207,10 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Rosa habla de su papá, que está enojado.)\nRosa: Che ru (   ).",
+        "q": "(Ana habla de su abuela, que está enojada.)\nAna: Che jarýi (   ).",
         "options": ["chepochy", "ndepochy", "ipochy", "pochy"],
         "answer": 3,
-        "explain": "Che ru, «mi papá», es otra persona: el estado lleva i-. Che ru ipochy, «mi papá está enojado». Chepochy sería «estoy enojado», ndepochy, «estás enojado», y pochy solo es «enojo», sin decir de quién."
+        "explain": "Che jarýi, «mi abuela», es otra persona: el estado lleva i-. Che jarýi ipochy, «mi abuela está enojada». Chepochy sería «estoy enojada», ndepochy, «estás enojada», y pochy solo es «enojo», la cosa, sin decir de quién."
       },
       {
         "id": "a1u03d1.e3",
@@ -234,7 +234,7 @@
     "sound": {
       "focus": "mb, nd, ng, nt: una sola letra",
       "letters": ["mb", "nd", "ng", "nt"],
-      "note": "mb, nd, ng y nt son cuatro letras del alfabeto, y cada una suena en una sola sílaba, también al principio de la palabra: mba'e, nde. Empezá con un zumbido, mmm o nnn, y soltalo en la b o la d sin meter una vocal antes: nde, no «ende». Son parientes de m, n y ñ: ñande róga, pero ñane retã. No hay pares mínimos seguros: compará estas palabras.",
+      "note": "mb, nd, ng y nt son letras del alfabeto: cada una suena en una sola sílaba, también al principio de la palabra, como en mba'e y nde. Empezá con un zumbido, mmm o nnn, y soltalo en la b o la d sin meter una vocal antes: nde, no «ende». Son parientes de m y n: ñande róga, pero ñane retã. No hay pares mínimos seguros: compará estas palabras.",
       "pairs": [
         ["mba'e", "cosa, qué", "mitã", "niño"],
         ["ñande róga", "nuestra casa", "ñane retã", "nuestro país"],

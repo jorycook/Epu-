@@ -578,32 +578,57 @@
 
   /* ---------- the level's ñandutí ----------
      Each level is a ñandutí (the lace rosette of Itauguá) that Kaguare, the southern tamandua, wears pinned to his
-     black vest. Before the goal it is only its frame: the radial threads and a dashed rim. Setting the goal weaves the
-     hub (the first thread). Every unit finished fills one petal between two threads. Passing the level exam weaves the
-     scalloped rim: the rosette is whole.
-     The shapes come back as path strings for an SVG with viewBox "-24 -24 48 48", so every screen draws the same thing:
-     <path d={rimD}> (shown when rim), <path d={off}> (petals still to do), <path d={on}> (petals done), <path d={spokes}>,
-     <circle r="4"> (the hub, filled when hub). n = the level's units, done = units finished. */
+     black vest. Before the goal it is only its frame: a sun of radial threads with one cross-thread ring, the petals
+     white, and a dashed rim. Setting the goal weaves the hub (the first thread). Every unit finished fills one petal
+     between two threads. Passing the level exam weaves the scalloped rim: the rosette is whole.
+     The shapes come back as path strings for an SVG with viewBox "-24 -24 48 48", so every screen draws the same thing
+     (the recipe in BRIEF-design.md §3): <path d={rimD}> (shown when rim), <path d={off}> (petals still to do),
+     <path d={on}> (petals done), <path d={spokes}>, <circle r="4"> (the hub, filled when hub). n = the level's units,
+     done = units finished.
+     The drawing ("arasape", the Itauguá sun): one radial thread per unit, from under the hub to the frame (r 19.3); a
+     cross-thread ring (r 17.25) under the rim, that the petal tips reach for; one petal per unit between two threads, a
+     pointed lace leaf (r 6.8 to 15.75, a third of its sector wide) with a midrib along its axis; the rim, tight scallops
+     bulging out from the frame, round(24 / n) per unit (24 around for 6, 8 or 12 units, 20 for 10).
+     Two things the boards impose on the strings. The spokes path is stroked with no fill attribute, so nothing in it
+     may enclose an area (a closed shape there would fill black): the threads are lines and the ring is a circle traced
+     out and back in quarter arcs (the stroke of a path's self-overlap reads as one line). An open subpath inside a petal
+     adds stroke only, never fill: that is how the midrib is drawn, in the petal's own stroke colour.
+     Painted extent, stroke included: r 20.0 before the pass (the frame circle), r 21.5 whole for 8 units (r 21.7 for
+     10: the scallops), inside the brooch discs (the mascot's 9.4 / 0.42 = 22.4; the icon's 8.0 / 0.36 = 22.2). */
   C.rosette = function (n, done, opts) {
     opts = opts || {};
-    var N = Math.max(3, n || 8);
-    var R_IN = 5.2, R_OUT = 17.5, R_RIM = 20.5;
-    function pt(r, a) { return (r * Math.cos(a)).toFixed(2) + ' ' + (r * Math.sin(a)).toFixed(2); }
-    var on = '', off = '', spokes = '', rim = '';
+    var N = Math.max(3, n || 8), D = Math.min(N, done || 0), TAU = 2 * Math.PI;
+    var R_RING = 17.25;                          /* the cross-thread ring under the rim */
+    var R_EDGE = 19.3;                           /* the frame: the threads end there and the scallops meet there */
+    var R_BASE = 6.8, R_TIP = 15.75, X_W = 11.6; /* the petal: base, tip and widest point along its axis */
+    var M = Math.max(1, Math.round(24 / N));     /* scallops per unit */
+    var hw = Math.min(3.7, 2 * X_W * Math.sin(Math.PI / N) * 0.35); /* the petal's half-width: a third of the sector */
+    function f(x) { return String(Math.round(x * 100) / 100); }
+    function pt(r, a) { return f(r * Math.cos(a)) + ' ' + f(r * Math.sin(a)); }
+    function ring(r) { /* a circle traced clockwise and back in quarter arcs: stroked, never filled */
+      var p = f(r), m = f(-r), A = 'A' + p + ' ' + p + ' 0 0 ';
+      return 'M' + p + ' 0' + A + '1 0 ' + p + A + '1 ' + m + ' 0' + A + '1 0 ' + m + A + '1 ' + p + ' 0' +
+        A + '0 0 ' + m + A + '0 ' + m + ' 0' + A + '0 0 ' + p + A + '0 ' + p + ' 0';
+    }
+    var on = '', off = '', spokes = ring(R_RING), rim = '';
     for (var k = 0; k < N; k++) {
-      var a0 = -Math.PI / 2 + (k * 2 * Math.PI) / N;
-      var a1 = -Math.PI / 2 + ((k + 1) * 2 * Math.PI) / N;
-      var am = (a0 + a1) / 2;
-      var w = (a1 - a0) * 0.36;
-      /* a petal: from the hub's edge, out to the rim between two threads, and back */
-      var d = 'M' + pt(R_IN, am - w * 0.55) + 'C' + pt(R_OUT * 0.9, am - w * 1.25) + ' ' + pt(R_OUT * 1.08, am - w * 0.35) + ' ' + pt(R_OUT, am) +
-        'C' + pt(R_OUT * 1.08, am + w * 0.35) + ' ' + pt(R_OUT * 0.9, am + w * 1.25) + ' ' + pt(R_IN, am + w * 0.55) + 'Z';
-      if (k < (done || 0)) on += d; else off += d;
-      spokes += 'M' + pt(R_IN - 1.2, a0) + 'L' + pt(R_RIM - 1, a0);
-      /* the rim: one scallop per unit, bulging outwards */
-      var p0 = pt(R_RIM - 1.5, a0), p1 = pt(R_RIM - 1.5, a1);
-      var sr = (2 * (R_RIM - 1.5) * Math.sin(Math.PI / N) * 0.62).toFixed(2);
-      rim += (k === 0 ? 'M' + p0 : '') + 'A' + sr + ' ' + sr + ' 0 0 1 ' + p1;
+      var a0 = -Math.PI / 2 + (k * TAU) / N, a1 = a0 + TAU / N, am = a0 + Math.PI / N;
+      var ca = Math.cos(am), sa = Math.sin(am);
+      var lp = function (x, y) { return f(x * ca - y * sa) + ' ' + f(x * sa + y * ca); }; /* petal coordinates: x out along its axis, y across */
+      /* the petal: a pointed leaf along the sector's middle, then its midrib as an open subpath */
+      var d = 'M' + lp(R_BASE, 0) +
+        'C' + lp(R_BASE + 1.5, hw * 0.6) + ' ' + lp(X_W - 2, hw) + ' ' + lp(X_W, hw) +
+        'C' + lp(X_W + 2.2, hw) + ' ' + lp(R_TIP - 1.9, hw * 0.38) + ' ' + lp(R_TIP, 0) +
+        'C' + lp(R_TIP - 1.9, -hw * 0.38) + ' ' + lp(X_W + 2.2, -hw) + ' ' + lp(X_W, -hw) +
+        'C' + lp(X_W - 2, -hw) + ' ' + lp(R_BASE + 1.5, -hw * 0.6) + ' ' + lp(R_BASE, 0) + 'Z' +
+        'M' + pt(R_BASE + 0.25 * (R_TIP - R_BASE), am) + 'L' + pt(R_BASE + 0.75 * (R_TIP - R_BASE), am);
+      if (k < D) on += d; else off += d;
+      spokes += 'M' + pt(3.4, a0) + 'L' + pt(R_EDGE, a0); /* the radial thread, from under the hub to the frame */
+      for (var j = 0; j < M; j++) { /* the rim: M tight scallops per unit, bulging outwards from the frame */
+        var b0 = a0 + (j * (a1 - a0)) / M, b1 = a0 + ((j + 1) * (a1 - a0)) / M;
+        var sr = f(2 * R_EDGE * Math.sin((b1 - b0) / 2) * 0.55);
+        rim += (k === 0 && j === 0 ? 'M' + pt(R_EDGE, b0) : '') + 'A' + sr + ' ' + sr + ' 0 0 1 ' + pt(R_EDGE, b1);
+      }
     }
     return {
       view: '-24 -24 48 48',
@@ -614,7 +639,7 @@
       hub: opts.hub !== false,
       rim: !!opts.rim,
       count: N,
-      done: Math.min(N, done || 0)
+      done: D
     };
   };
 
