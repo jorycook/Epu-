@@ -637,10 +637,12 @@ async function fontsUsed(page, cdp, facts) {
     const favInfo = fav ? pngInfo(path.join(SITE, fav[3])) : null;
     ok(favInfo && favInfo.w === +fav[1] && favInfo.h === +fav[2], 'the favicon should be the size it says', favInfo && `${favInfo.w}x${favInfo.h}`);
 
-    const onDisk = walk(SITE).map((f) => './' + path.relative(SITE, f).split(path.sep).join('/')).filter((f) => !['./sw.js', './.nojekyll'].includes(f));
-    const unlisted = onDisk.filter((f) => !FILES.includes(f));
-    const ghost = FILES.filter((f) => f !== './' && !onDisk.includes(f));
-    ok(FILES[0] === './' && unlisted.length === 0 && ghost.length === 0, 'sw.js should list exactly the files of the build (plus ./)', JSON.stringify({ unlisted, ghost }));
+    /* the sound files (stored when first used, listed apart in sw.js under their own hash) and the studio (estudio/, not the app) are not installed */
+    const lazyFiles = Object.keys(JSON.parse((fs.readFileSync(path.join(SITE, 'sw.js'), 'utf8').match(/const LAZY = (\{[\s\S]*?\});/) || [, '{}'])[1]));
+    const onDisk = walk(SITE).map((f) => './' + path.relative(SITE, f).split(path.sep).join('/')).filter((f) => !['./sw.js', './.nojekyll'].includes(f) && !f.startsWith('./estudio/'));
+    const unlisted = onDisk.filter((f) => !FILES.includes(f) && !lazyFiles.includes(f));
+    const ghost = FILES.filter((f) => f !== './' && !onDisk.includes(f)).concat(lazyFiles.filter((f) => !onDisk.includes(f)));
+    ok(FILES[0] === './' && unlisted.length === 0 && ghost.length === 0, 'sw.js should list exactly the files of the build (plus ./; the sound files apart)', JSON.stringify({ unlisted, ghost }));
     ok(fs.existsSync(path.join(SITE, '.nojekyll')), 'the site should have .nojekyll (GitHub Pages serves the files as they are)');
 
     const fontsCss = fs.readFileSync(path.join(SITE, 'assets/fonts.css'), 'utf8');
@@ -992,7 +994,8 @@ async function fontsUsed(page, cdp, facts) {
     const checkStore = (label, stored, base, dir, version, files) => {
       const keys = Object.keys(stored);
       ok(keys.length === 1 && keys[0] === 'epua:' + PREFIX + ':' + version, `${label}: one store, named after the folder and the version`, JSON.stringify(keys));
-      const list = stored[keys[0]] || [];
+      /* the sound files, stored when first used under their own hash (?h=), are not part of the install */
+      const list = (stored[keys[0]] || []).filter((e) => !/[?&]h=/.test(e.url));
       const wantUrls = files.map((f) => new URL(f + '?v=' + version, base).href).sort();
       const got = list.map((e) => e.url).sort();
       ok(JSON.stringify(got) === JSON.stringify(wantUrls), `${label}: the store should hold exactly sw.js's ${files.length} files, each under this version`, JSON.stringify({ missing: wantUrls.filter((u) => !got.includes(u)), extra: got.filter((u) => !wantUrls.includes(u)) }));

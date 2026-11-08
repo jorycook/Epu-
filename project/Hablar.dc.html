@@ -368,6 +368,8 @@ const LOOK_TIP = {
 /* a sign's model with no clip (none is recorded yet), inside the prototype and the app: what the dock says instead of
    «escuchá el modelo»; a silent model is shown written while its stand-in runs and never counts as help */
 const SILENT_MODEL = 'Este modelo todavía no está grabado: mirá cómo se escribe y decilo en voz alta.';
+/* a clip made by a voice model, not a speaker (gn-sound.js knows each clip's kind): said once a round */
+const SYNTH_NOTE = 'Voz sintética: este audio lo hizo un programa, no una persona.';
 const WAYS = {
   pick: { title: 'Escuchá y elegí', desc: 'Suena una palabra y caen dos parecidas. Tocá la que oíste antes de que caiga sobre Kaguare.', kicker: 'ESCUCHÁ Y ELEGÍ' },
   compare: { title: 'Repetí y compará', desc: 'Decí el cartel, escuchá tu toma junto al modelo y decidí si sonó igual. Sin apuro.', descApp: 'Decí el cartel en voz alta, escuchá el modelo y decidí si sonó igual. Sin apuro.', descSilent: 'Decí el cartel en voz alta y decidí si te salió como se escribe: los modelos todavía no están grabados. Sin apuro.', kicker: 'REPETÍ Y COMPARÁ' },
@@ -787,7 +789,10 @@ const r = this.r;
 const text = r.style === 'pick' ? c.item.word : c.item.gn;
 const Sd = window.gnSound;
 let ms = clipMs(c.item.id, text);
-if (Sd && Sd.has && Sd.has(c.item.id)) { try { Sd.unlock(); Sd.play(c.item.id); } catch (e) { ms = clipMs('', text); } }
+if (Sd && Sd.has && Sd.has(c.item.id)) {
+try { Sd.unlock(); Sd.play(c.item.id); } catch (e) { ms = clipMs('', text); }
+if (!r.synthNoted && Sd.kind && Sd.kind(c.item.id) === 'synthetic') { r.synthNoted = true; this.status = { es: SYNTH_NOTE, color: '#5A6382' }; }
+}
 else if (kind === 'model' && this.mute(c.item)) this.status = { es: SILENT_MODEL, color: '#B02A63' };
 else if (!r.firstClip) { r.firstClip = true; this.status = { es: 'Este audio todavía no está grabado.', color: '#B02A63' }; }
 r.voicing = { card: c, from: r.time, until: r.time + ms / 1000, ms, kind: kind || 'word' };
@@ -1654,8 +1659,9 @@ let heardColor = '#5A6382';
 let heardGnColor = '#1B2440';
 if (voicing) {
 heardOn = true;
-heardLabel = r.voicing.kind === 'model' ? (mute ? 'Se escribe ·' : 'Modelo ·') : mute ? 'La palabra ·' : 'Suena ·';
-heardGn = pick ? r.voicing.card.item.word : r.voicing.card.item.gn;
+heardLabel = r.voicing.kind === 'model' ? (mute ? 'Se escribe ·' : 'Modelo ·') : mute ? 'La palabra ·' : pick ? 'Suena…' : 'Suena ·';
+/* a real clip in the pick game is what the learner must hear: the word is not printed with it */
+heardGn = pick && !mute ? '' : pick ? r.voicing.card.item.word : r.voicing.card.item.gn;
 } else if (mute && pick && t && t.state === 'live') {
 heardOn = true;
 heardLabel = 'La palabra ·';

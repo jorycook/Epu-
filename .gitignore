@@ -4,3 +4,5 @@
 /check/out/
 # the blind solver's export (tools/blind-export.mjs)
 /blind/
+# Python byte code (tools/make-tts.py)
+__pycache__/

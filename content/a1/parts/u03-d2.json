@@ -1,0 +1,292 @@
+{
+  "title": "Areal «yo hago» vs. chendal «a mí me pasa»",
+  "grammar": {
+    "points": [
+      {
+        "id": "a1u03d2.p1",
+        "form": "a- · re- · o- + acción",
+        "gloss": "yo hago, vos hacés, él o ella hace",
+        "connect": [
+          { "pos": "Las acciones llevan el prefijo areal de la unidad 2: a- yo, re- vos, o- él o ella", "rule": "{A}karu · {Re}karu · {O}karu" },
+          { "pos": "También las acciones del cuerpo: levantarse, bañarse, dormir", "rule": "{A}pu'ã · {a}jahu · {a}ke" },
+          { "pos": "El castellano pone la persona al final (com-o); el guaraní, al principio", "rule": "{A}karu" }
+        ],
+        "examples": [
+          {
+            "gn": "{A}pu'ã ha {a}jahu.",
+            "es": "Me levanto y me baño.",
+            "parts": [["a-", "yo"], ["pu'ã", "levantarse"], ["ha", "y"], ["jahu", "bañarse"]]
+          },
+          {
+            "gn": "{A}karu ha {a}ke.",
+            "es": "Como y duermo.",
+            "parts": [["a-", "yo"], ["karu", "comer"], ["ke", "dormir"]]
+          },
+          {
+            "gn": "Che sy {o}purahéi ha che ru {o}jeroky.",
+            "es": "Mi mamá canta y mi papá baila.",
+            "parts": [["che sy", "mi mamá"], ["o-", "él, ella"], ["purahéi", "cantar"], ["che ru", "mi papá"], ["jeroky", "bailar"]]
+          },
+          {
+            "gn": "Ko'ág̃a {a}mba'apo.",
+            "es": "Ahora trabajo.",
+            "parts": [["ko'ág̃a", "ahora"], ["a-", "yo"], ["mba'apo", "trabajar"]]
+          }
+        ],
+        "watch": {
+          "note": "Comer es una acción: lleva a-. Che- es para los estados, como chekane'õ. Chekaru no existe.",
+          "bad": "Chekaru.",
+          "good": "Akaru."
+        }
+      },
+      {
+        "id": "a1u03d2.p2",
+        "form": "che- + estado · a- + sentimiento",
+        "gloss": "a mí me pasa · algunos sentimientos van como acciones",
+        "connect": [
+          { "pos": "Un estado o una sensación lleva che-, como ayer", "rule": "{Che}kane'õ · {che}vare'a · {che}mandu'a" },
+          { "pos": "Pero algunos sentimientos se conjugan como acciones, con a-", "rule": "{A}vy'a · {a}kyhyje" },
+          { "pos": "El diccionario dice de qué tipo es cada palabra: aprendé cada una con su prefijo", "rule": "{a}vy'a · {che}mandu'a" }
+        ],
+        "examples": [
+          {
+            "gn": "{A}karu. {Che}vare'a.",
+            "es": "Como. Tengo hambre.",
+            "parts": [["a-", "yo: hago"], ["karu", "comer"], ["che-", "yo: me pasa"], ["vare'a", "hambre"]]
+          },
+          {
+            "gn": "{A}vy'a, Ana.",
+            "es": "Estoy contento, Ana.",
+            "parts": [["a-", "yo"], ["vy'a", "alegrarse"]]
+          },
+          {
+            "gn": "{A}kyhyje.",
+            "es": "Tengo miedo.",
+            "parts": [["a-", "yo"], ["kyhyje", "tener miedo"]]
+          },
+          {
+            "gn": "{Che}mandu'a, Luis.",
+            "es": "Me acuerdo, Luis.",
+            "parts": [["che-", "yo: me pasa"], ["mandu'a", "acordarse"]]
+          }
+        ],
+        "watch": {
+          "note": "«Estoy contento» parece un estado, pero vy'a se conjuga como acción: avy'a. Chevy'a no existe.",
+          "bad": "Chevy'a.",
+          "good": "Avy'a."
+        }
+      }
+    ],
+    "compare": {
+      "intro": "Tres frases de un domingo: una acción con a-, un estado con che- y un lugar con aime.",
+      "forms": [
+        { "form": "akaru", "tag": "acción · a-", "mark": "dot", "gn": "{Akaru}.", "es": "Como." },
+        { "form": "chevare'a", "tag": "estado · che-", "mark": "dot", "gn": "{Chevare'a}.", "es": "Tengo hambre." },
+        { "form": "aime", "tag": "lugar · estoy en", "mark": "dot", "gn": "{Aime} ógape.", "es": "Estoy en casa." }
+      ],
+      "check": {
+        "id": "a1u03d2.c1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Luis le pregunta a Ana ^dónde está^.)\nAna: (   ) ógape.",
+        "options": ["Akaru", "Chevare'a", "Aime"],
+        "answer": 3,
+        "why": [
+          "Akaru es «como», una acción con a-. No dice dónde está Ana.",
+          "Chevare'a es «tengo hambre», un estado con che-. Tampoco dice dónde está.",
+          "Luis pregunta dónde está, y para estar en un lugar va aime: Aime ógape, «estoy en casa»."
+        ]
+      }
+    },
+    "drill": [
+      {
+        "id": "a1u03d2.d1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Luis cuenta qué hace ^a la mañana^.)\nLuis: (   ) ha ajahu.",
+        "options": ["Chepu'ã", "Apu'ã", "Ipu'ã", "Pu'ã"],
+        "answer": 2,
+        "why": [
+          "Che- es para los estados, como chekane'õ. Levantarse es una acción: lleva a-. Chepu'ã no existe.",
+          "Levantarse es una acción y Luis habla de él mismo: a- + pu'ã = apu'ã, «me levanto». Después se baña: ajahu.",
+          "I- marca el estado de otra persona, como en ikane'õ. Pu'ã es una acción, y además Luis habla de él.",
+          "Pu'ã sin prefijo no dice quién se levanta: le falta la persona, como guata sin a- en la unidad 2."
+        ]
+      },
+      {
+        "id": "a1u03d2.d2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Luis comió bien y ^está contento^.)\nLuis: (   ), Ana.",
+        "options": ["Chevy'a", "Ivy'a", "Avy'a", "Vy'a"],
+        "answer": 3,
+        "why": [
+          "Parece un estado, pero vy'a se conjuga como acción. Chevy'a no existe.",
+          "Ivy'a tampoco existe: «ella está contenta» es ovy'a, con o-, como una acción. Y Luis habla de él.",
+          "Vy'a va como una acción, y Luis habla de él: a- + vy'a = avy'a, «estoy contento».",
+          "Vy'a solo es «la alegría», la cosa. Le falta la persona: a-."
+        ]
+      },
+      {
+        "id": "a1u03d2.d3",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Ana cuenta que su papá ^trabaja^.)\nAna: Che ru (   ).",
+        "options": ["amba'apo", "chemba'apo", "imba'apo", "omba'apo"],
+        "answer": 4,
+        "why": [
+          "A- es «yo»: Ana hablaría de ella misma, y habla de su papá.",
+          "Che- es para los estados, como chekane'õ, y además dice «yo». Trabajar es una acción, y la hace otra persona: o-.",
+          "I- marca el estado de otra persona, como en ikane'õ, no una acción. Para «trabaja» va el prefijo de acción: o-.",
+          "Che ru, «mi papá», es otra persona: o- + mba'apo = omba'apo, «trabaja»."
+        ]
+      },
+      {
+        "id": "a1u03d2.d4",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Ana le habla a Luis de la fiesta, y Luis ^se acuerda^.)\nLuis: (   ), Ana.",
+        "options": ["Chemandu'a", "Amandu'a", "Imandu'a", "Mandu'a"],
+        "answer": 1,
+        "why": [
+          "Acordarse es un estado, de los que van con che-: chemandu'a, «me acuerdo». Luis habla de él.",
+          "Mandu'a no se conjuga como acción: amandu'a no existe. Va con che-, como chekane'õ.",
+          "Imandu'a es «se acuerda», otra persona, con la i- de ikane'õ. Luis habla de él mismo.",
+          "Mandu'a solo no dice quién se acuerda: le falta la persona, che-."
+        ]
+      },
+      {
+        "id": "a1u03d2.d5",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Luis cuenta qué hace el domingo.)\nLuis: ",
+        "after": " ha apurahéi.",
+        "tiles": ["a", "jeroky"],
+        "bank": [1, 0],
+        "hint": "Bailar es una acción: el prefijo que dice «yo» va primero, pegado a la raíz.",
+        "full": "(Luis cuenta qué hace el domingo.)\nLuis: {A}jeroky ha apurahéi.",
+        "es": "Luis: Bailo y canto.",
+        "explain": "a- («yo») + jeroky («bailar») = ajeroky, «bailo». El prefijo va al principio, como en apurahéi, «canto»: el guaraní pone la persona adelante, no al final como el castellano (bail-o)."
+      },
+      {
+        "id": "a1u03d2.d6",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Ana vuelve de la cancha.)\nAna: ",
+        "after": ".",
+        "tiles": ["che", "kane'õ", "iterei"],
+        "bank": [2, 0, 1],
+        "hint": "El cansancio es un estado: che- va primero. -iterei, «muy», como en Iporãiterei (U1), va al final.",
+        "full": "(Ana vuelve de la cancha.)\nAna: {Che}kane'õ{iterei}.",
+        "es": "Ana: Estoy muy cansada.",
+        "explain": "che- («yo», me pasa) + kane'õ («cansancio») + -iterei («muy») = chekane'õiterei, «estoy muy cansada». Un estado lleva che-, no a-. El acento pasa a -iterei, al final, así que no se escribe tilde; la õ guarda su tilde nasal."
+      }
+    ],
+    "exam": [
+      {
+        "id": "a1u03d2.e1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Qué significa",
+        "q": "Ana: _Avy'a_, Luis.",
+        "options": ["Me baño, Luis.", "Estoy contenta, Luis.", "Tengo miedo, Luis.", "Estoy cansada, Luis."],
+        "answer": 2,
+        "explain": "Vy'a es «alegrarse» y se conjuga como acción: avy'a, «estoy contenta». «Me baño» es ajahu; «tengo miedo», akyhyje; y «estoy cansada», chekane'õ, con che-."
+      },
+      {
+        "id": "a1u03d2.e2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Ana cuenta que está en su casa.)\nAna: (   ) ógape.",
+        "options": ["Akaru", "Chekane'õ", "Aime", "Oime"],
+        "answer": 3,
+        "explain": "Para estar en un lugar va aime: Aime ógape, «estoy en casa». Akaru es «como», una acción; chekane'õ es «estoy cansada», un estado con che-; y oime es «está», otra persona, no Ana."
+      },
+      {
+        "id": "a1u03d2.e3",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Ana cuenta qué hace a la mañana.)\nAna: Apu'ã ha ",
+        "after": ".",
+        "tiles": ["a", "jahu"],
+        "bank": [1, 0],
+        "full": "(Ana cuenta qué hace a la mañana.)\nAna: Apu'ã ha {a}jahu.",
+        "es": "Ana: Me levanto y me baño.",
+        "explain": "a- («yo») va primero y después la raíz jahu, «bañarse»: ajahu, «me baño». Bañarse es una acción, como levantarse: las dos llevan a-, no che-."
+      }
+    ]
+  },
+  "words": {
+    "es": "Un domingo en casa de Ana",
+    "intro": "Es domingo. Ana cuenta qué hace en su casa, de la mañana a la noche. Tocá cada palabra.",
+    "sound": {
+      "focus": "La j y la h",
+      "letters": ["j", "h"],
+      "note": "La j guaraní suena como la y fuerte de «yo», nunca como la jota castellana: jagua, jasy, ajahu. La h siempre suena: es un soplo, como la jota suave del castellano paraguayo: ha, heta, hendu. Entre j y h no hay pares mínimos seguros: compará palabras. El único par mínimo de acá cambia la vocal, no la h: hendu, hendy.",
+      "pairs": [
+        ["hendu", "oír", "hendy", "arder"],
+        ["jagua", "perro", "jasy", "luna"],
+        ["ha", "y", "heta", "mucho"],
+        ["ajahu", "me baño", "aha", "voy"]
+      ]
+    },
+    "words": [
+      { "id": "apua", "gn": "apu'ã", "es": "me levanto", "parts": [["a-", "yo"], ["pu'ã", "levantarse"]], "note": "Epu'ã, «levantate», es el nombre de la app." },
+      { "id": "ajahu", "gn": "ajahu", "es": "me baño", "parts": [["a-", "yo"], ["jahu", "bañarse"]], "note": "La j suena como la y de «yo», y la h suena: a-ya-hu." },
+      { "id": "akaru", "gn": "akaru", "es": "como", "parts": [["a-", "yo"], ["karu", "comer"]], "note": "Ya la viste en la unidad 2. Jakaru, «comamos», invita a la mesa." },
+      { "id": "ajeroky", "gn": "ajeroky", "es": "bailo", "parts": [["a-", "yo"], ["jeroky", "bailar"]], "note": "Jeroky también es «el baile». Che sy ojeroky: mi mamá baila." },
+      { "id": "apurahei", "gn": "apurahéi", "es": "canto", "parts": [["a-", "yo"], ["purahéi", "cantar; canción"]], "note": "Lleva tilde: el acento va en la e, no en la i del final." },
+      { "id": "ahendu", "gn": "ahendu", "es": "escucho", "parts": [["a-", "yo"], ["hendu", "oír"]], "note": "La h suena, como la jota suave. Con hendy, «arder», solo cambia la vocal." },
+      { "id": "avya", "gn": "avy'a", "es": "estoy contento, contenta", "parts": [["a-", "yo"], ["vy'a", "alegrarse; alegría"]], "note": "Un sentimiento que se conjuga como acción. Vy'a solo es «la alegría»." },
+      { "id": "aime", "gn": "aime", "es": "estoy (en un lugar)", "note": "Ko'ág̃a aime ógape, «ahora estoy en casa». Moõpa reime?, «¿dónde estás?». Para un estado no va: chekane'õ." }
+    ],
+    "spell": ["ajahu", "ajeroky", "apurahei", "ahendu"],
+    "check": {
+      "id": "a1u03d2.k1",
+      "kind": "choice",
+      "area": "vocab",
+      "label": "Cómo se escribe",
+      "q": "Le contás a Luis: «Es domingo y _me baño_ tarde.» ¿Cómo se escribe en guaraní?",
+      "options": ["ayahu", "ajaju", "ajahu", "ajau"],
+      "answer": 3,
+      "explain": "Me baño es ajahu: a-, «yo», la j, que suena como la y de «yo», y la h, que siempre suena. Ayahu la escribe con y, que en guaraní es una vocal, la sexta. Ajaju cambia la h por j, otra letra. Ajau se come la h, que nunca es muda."
+    }
+  },
+  "skill": {
+    "kind": "reading",
+    "es": "Un mensaje de Ana",
+    "ask": "¿Qué hace Ana ahora?",
+    "seconds": 60,
+    "passage": "Mba'éichapa, Luis?\nKo'ág̃a ^ajahu^ ha ^akaru^. Chekane'õiterei.\nJajotopáta ko pyhare.\nAna",
+    "strategy": "Buscá los verbos con a-: son lo que hace Ana. Lo que le pasa va con che-.",
+    "item": {
+      "id": "a1u03d2.r1",
+      "kind": "choice",
+      "area": "reading",
+      "label": "Texto corto",
+      "q": "¿Qué hace Ana ahora?",
+      "options": ["Se baña y come.", "Duerme.", "Baila y canta.", "Va a la escuela."],
+      "short": ["Se baña y come", "Duerme", "Baila y canta", "A la escuela"],
+      "answer": 1,
+      "why": [
+        "Ana escribe ajahu ha akaru: a- es «yo», jahu «bañarse» y karu «comer». Se baña y come.",
+        "Dormir es ke: ake, «duermo». Ana no lo escribe; escribe que está muy cansada, chekane'õiterei.",
+        "Bailar y cantar son ajeroky ha apurahéi, y no están en el mensaje.",
+        "Ir es aha, y la escuela, mbo'ehao: ninguna de las dos está en el mensaje. Ana solo dice que se ven esta noche: Jajotopáta ko pyhare."
+      ],
+      "explain": "Ana escribe Ko'ág̃a ajahu ha akaru: «ahora me baño y como». Los verbos con a- dicen lo que hace; chekane'õiterei, con che-, dice cómo está: muy cansada."
+    }
+  }
+}

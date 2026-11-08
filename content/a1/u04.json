@@ -1,0 +1,1393 @@
+{
+ "n": 4,
+ "gn": "",
+ "es": "Mi familia",
+ "days": {
+  "1": {
+   "title": "Posesión con che/nde + sustantivo",
+   "grammar": {
+    "points": [
+     {
+      "id": "a1u04d1.p1",
+      "form": "che + sustantivo",
+      "gloss": "mi, mis",
+      "connect": [
+       {
+        "pos": "Delante del sustantivo, que no cambia: ni género ni número",
+        "rule": "{che} sy · {che} memby"
+       },
+       {
+        "pos": "Con las palabras en r- que ya usás",
+        "rule": "{che} réra · {che} róga · {che} ru"
+       },
+       {
+        "pos": "El dueño va primero, también cuando es otra persona: «la casa de mi abuela»",
+        "rule": "{che jarýi} róga"
+       },
+       {
+        "pos": "Para «nuestro»: ñande (con vos) · ore (sin vos)",
+        "rule": "{ñande} ru · {ore} róga"
+       }
+      ],
+      "examples": [
+       {
+        "gn": "{Che} róga iporã.",
+        "es": "Mi casa es linda.",
+        "parts": [
+         [
+          "che",
+          "mi"
+         ],
+         [
+          "róga",
+          "casa (con che)"
+         ],
+         [
+          "iporã",
+          "es linda"
+         ]
+        ]
+       },
+       {
+        "gn": "Ha'e {che} ra'y.",
+        "es": "Él es mi hijo.",
+        "parts": [
+         [
+          "ha'e",
+          "él"
+         ],
+         [
+          "che",
+          "mi"
+         ],
+         [
+          "ra'y",
+          "hijo (dice el papá)"
+         ]
+        ]
+       },
+       {
+        "gn": "Aha {che jarýi} rógape.",
+        "es": "Voy a la casa de mi abuela.",
+        "parts": [
+         [
+          "a-ha",
+          "voy"
+         ],
+         [
+          "che jarýi",
+          "mi abuela"
+         ],
+         [
+          "róga-pe",
+          "a la casa"
+         ]
+        ]
+       },
+       {
+        "gn": "{Che} sy ha {che} ru oñe'ẽ guaraníme.",
+        "es": "Mi mamá y mi papá hablan guaraní.",
+        "parts": [
+         [
+          "che sy",
+          "mi mamá"
+         ],
+         [
+          "ha",
+          "y"
+         ],
+         [
+          "che ru",
+          "mi papá"
+         ],
+         [
+          "oñe'ẽ",
+          "hablan"
+         ],
+         [
+          "guaraníme",
+          "en guaraní"
+         ]
+        ]
+       }
+      ],
+      "watch": {
+       "note": "En castellano decís primero la cosa y después de quién es: «la casa de mi abuela». En guaraní es al revés y sin «de»: primero el dueño, después la cosa.",
+       "bad": "róga che jarýi",
+       "good": "che jarýi róga"
+      }
+     },
+     {
+      "id": "a1u04d1.p2",
+      "form": "nde / ne + sustantivo",
+      "gloss": "tu, tus",
+      "connect": [
+       {
+        "pos": "Delante del sustantivo, como che",
+        "rule": "{nde} sy · {nde} ru · {nde} róga"
+       },
+       {
+        "pos": "Delante de una palabra nasal (con ~, o con m, n, ñ, mb, nd, ng), nde pierde la d",
+        "rule": "{ne} memby · {ne} ramói · {ne} angirũ"
+       },
+       {
+        "pos": "Para preguntar el nombre de alguien de la familia",
+        "rule": "Mba'éichapa héra {nde} ru?"
+       },
+       {
+        "pos": "Para preguntar dónde queda la casa",
+        "rule": "Moõpa {nde} róga?"
+       }
+      ],
+      "examples": [
+       {
+        "gn": "Mba'éichapa héra {nde} ru?",
+        "es": "¿Cómo se llama tu papá?",
+        "parts": [
+         [
+          "mba'éichapa",
+          "¿cómo?"
+         ],
+         [
+          "héra",
+          "su nombre"
+         ],
+         [
+          "nde ru",
+          "tu papá"
+         ]
+        ]
+       },
+       {
+        "gn": "Moõpa {nde} róga?",
+        "es": "¿Dónde queda tu casa?",
+        "parts": [
+         [
+          "moõpa",
+          "¿dónde?"
+         ],
+         [
+          "nde",
+          "tu"
+         ],
+         [
+          "róga",
+          "casa (con nde)"
+         ]
+        ]
+       },
+       {
+        "gn": "Mba'éichapa héra {ne} memby?",
+        "es": "¿Cómo se llama tu hijo?",
+        "parts": [
+         [
+          "ne",
+          "tu (ante palabra nasal)"
+         ],
+         [
+          "memby",
+          "hijo o hija (dice la mamá)"
+         ]
+        ]
+       },
+       {
+        "gn": "Mba'éichapa héra {ne} ramói?",
+        "es": "¿Cómo se llama tu abuelo?",
+        "parts": [
+         [
+          "ne",
+          "tu (ante palabra nasal)"
+         ],
+         [
+          "ramói",
+          "abuelo (con che, ne)"
+         ]
+        ]
+       }
+      ],
+      "watch": {
+       "note": "Delante de una palabra nasal, nde pierde la d: ne memby, ne ramói, ne angirũ. Nde memby se entiende, pero no se escribe así.",
+       "bad": "nde memby",
+       "good": "ne memby"
+      }
+     }
+    ],
+    "compare": {
+     "intro": "Che y nde son los pronombres de la semana 1 y también los posesivos: lo que cambia es si van solos o delante de un sustantivo.",
+     "forms": [
+      {
+       "form": "che + sustantivo",
+       "tag": "mi, mis",
+       "mark": "dot",
+       "gn": "{Che} sy oñe'ẽ guaraníme.",
+       "es": "Mi mamá habla guaraní."
+      },
+      {
+       "form": "nde / ne + sustantivo",
+       "tag": "tu, tus",
+       "mark": "dot",
+       "gn": "Mba'éichapa héra {nde} sy?",
+       "es": "¿Cómo se llama tu mamá?"
+      },
+      {
+       "form": "che · nde solos",
+       "tag": "yo · vos (semana 1)",
+       "mark": "dot",
+       "gn": "{Che} Paraguaigua, ha {nde}?",
+       "es": "Yo soy de Paraguay, ¿y vos?"
+      }
+     ],
+     "check": {
+      "id": "a1u04d1.c1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Juan le pregunta a Rosa cómo se llama ^la mamá de ella^.\nJuan: Mba'éichapa héra (   ) sy?",
+      "options": [
+       "che",
+       "nde",
+       "ne"
+      ],
+      "answer": 2,
+      "why": [
+       "Che es «mi»: Juan preguntaría por su propia mamá, y pregunta por la de Rosa.",
+       "Juan le habla a Rosa de la mamá de ella: nde sy, «tu mamá». Sy es una palabra oral, así que nde no cambia.",
+       "Ne es nde delante de una palabra nasal, como en ne memby. Sy no tiene ~ ni m, n, ñ: queda nde sy."
+      ]
+     }
+    },
+    "drill": [
+     {
+      "id": "a1u04d1.d1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Ana le muestra a Juan una foto de ^su abuela^.)\nJuan: Mávapa ha'e?\nAna: Ha'e (   ) jarýi.",
+      "options": [
+       "nde",
+       "ne",
+       "che",
+       "héra"
+      ],
+      "answer": 3,
+      "why": [
+       "Nde es «tu»: sería la abuela de Juan, y la foto es de la abuela de Ana.",
+       "Ne solo va delante de una palabra nasal, y jarýi es oral. Además sería «tu», no «mi».",
+       "Ana habla de su propia abuela: che jarýi, «mi abuela».",
+       "Héra es «su nombre», como en Héra Rosa. No dice de quién es la abuela."
+      ]
+     },
+     {
+      "id": "a1u04d1.d2",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Juan: Mba'éichapa héra (   ) ^memby^, Rosa?",
+      "options": [
+       "nde",
+       "ne",
+       "che",
+       "ñande"
+      ],
+      "answer": 2,
+      "why": [
+       "Nde es «tu», pero memby es una palabra nasal, con m: delante de ella nde pierde la d.",
+       "Juan le pregunta a Rosa por el hijo de ella: «tu hijo». Memby empieza con m, es nasal, así que nde se vuelve ne: ne memby.",
+       "Che es «mi»: Juan preguntaría por su propio hijo, y le pregunta a Rosa por el de ella.",
+       "Ñande es «nuestro» con vos: metería a Juan. Y delante de una palabra nasal sería ñane."
+      ]
+     },
+     {
+      "id": "a1u04d1.d3",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí el orden",
+      "q": "Luis habla de ^la casa de su abuela^.\nLuis: (   ) iporã.",
+      "options": [
+       "Róga che jarýi",
+       "Che róga jarýi",
+       "Jarýi che róga",
+       "Che jarýi róga"
+      ],
+      "answer": 4,
+      "why": [
+       "Róga che jarýi calca el orden del castellano, con la casa primero. En guaraní el dueño va primero, y róga sola, sin dueño delante, no se dice.",
+       "Che róga jarýi es «mi casa» y después «abuela». Jarýi tiene que ir antes de róga, porque es la dueña.",
+       "Jarýi che róga es «abuela» y después «mi casa»: así la casa es de Luis, no de la abuela.",
+       "Primero el dueño, che jarýi, y después la cosa, róga: «la casa de mi abuela», sin «de»."
+      ]
+     },
+     {
+      "id": "a1u04d1.d4",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Ana vive con su hermano Luis. Le muestra la casa a Juan.)\nAna: (   ) róga iporã. ^(nuestra casa)^",
+      "options": [
+       "Ore",
+       "Ñande",
+       "Nde",
+       "Che"
+      ],
+      "answer": 1,
+      "why": [
+       "La casa es de Ana y de Luis, y Juan, el que escucha, no vive ahí: ore róga, «nuestra casa», sin vos.",
+       "Ñande incluye al que escucha: ñande róga sería también la casa de Juan.",
+       "Nde es «tu»: nde róga sería la casa de Juan.",
+       "Che róga es «mi casa»: deja afuera a Luis, y la casa es de los dos, «nuestra»."
+      ]
+     },
+     {
+      "id": "a1u04d1.d5",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la oración",
+      "join": "sentence",
+      "before": "Aha",
+      "after": ".",
+      "tiles": [
+       "che",
+       "ru",
+       "rógape"
+      ],
+      "bank": [
+       2,
+       0,
+       1
+      ],
+      "hint": "Primero el dueño, después la casa. Rógape es róga con -pe, «a».",
+      "full": "Aha {che ru} rógape.",
+      "es": "Voy a la casa de mi papá.",
+      "explain": "Che ru, «mi papá», va primero: es el dueño. Después viene la casa, róga, con -pe, «a»: rógape. En guaraní no hay «de»: el orden ya dice de quién es la casa. Ru sola no se dice: siempre lleva un dueño delante."
+     },
+     {
+      "id": "a1u04d1.d6",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la oración",
+      "join": "sentence",
+      "before": "Moõpa",
+      "after": "?",
+      "tiles": [
+       "ne",
+       "ramói",
+       "róga"
+      ],
+      "bank": [
+       1,
+       2,
+       0
+      ],
+      "hint": "Como Moõpa nde róga?, pero la casa es del abuelo: el dueño va primero. Y delante de ramói, nde cambia.",
+      "full": "Moõpa {ne} ramói róga?",
+      "es": "¿Dónde queda la casa de tu abuelo?",
+      "explain": "Primero el dueño, ne ramói, «tu abuelo», y después róga: «la casa de tu abuelo». Ramói es una palabra nasal, con m, así que nde se vuelve ne. Ramói y róga no van solas: las dos llevan un dueño delante."
+     }
+    ],
+    "exam": [
+     {
+      "id": "a1u04d1.e1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Qué significa",
+      "q": "Luis: _Che sy ha che ru_ oñe'ẽ guaraníme.",
+      "options": [
+       "Tu mamá y tu papá hablan guaraní.",
+       "Mi mamá y tu papá hablan guaraní.",
+       "Mi mamá y mi papá hablan guaraní.",
+       "Mi abuela y mi abuelo hablan guaraní."
+      ],
+      "answer": 3,
+      "explain": "Che es «mi» y va delante de cada sustantivo: che sy, «mi mamá», ha, «y», che ru, «mi papá». «Tu» sería nde: nde sy, nde ru. Y abuela y abuelo son jarýi y ramói."
+     },
+     {
+      "id": "a1u04d1.e2",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Rosa: Mba'éichapa héra (   ) angirũ, Juan?",
+      "options": [
+       "nde",
+       "ne",
+       "che",
+       "héra"
+      ],
+      "answer": 2,
+      "explain": "Rosa le pregunta a Juan por el amigo de él: «tu amigo». Angirũ es una palabra nasal, con ũ, así que nde pierde la d: ne angirũ. Che sería «mi», y héra ya está en la frase: es «su nombre», no un posesivo."
+     },
+     {
+      "id": "a1u04d1.e3",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la oración",
+      "join": "sentence",
+      "before": "(Juan le pregunta a Rosa por la casa del papá de ella.)\nJuan: Moõpa",
+      "after": "?",
+      "tiles": [
+       "nde",
+       "ru",
+       "róga"
+      ],
+      "bank": [
+       2,
+       0,
+       1
+      ],
+      "full": "(Juan le pregunta a Rosa por la casa del papá de ella.)\nJuan: Moõpa nde ru róga?",
+      "es": "Juan: ¿Dónde queda la casa de tu papá?",
+      "explain": "Nde ru, «tu papá», va primero: es el dueño. Después la casa, róga. Ru es una palabra oral, así que nde no cambia. Sin «de»: el orden dice de quién es la casa, y ni ru ni róga van solas."
+     }
+    ]
+   },
+   "words": {
+    "es": "La foto de la familia",
+    "intro": "La foto del domingo, en el patio y con tereré. Tocá cada persona: todas van con che, «mi». Fijate quién lo dice: dos palabras cambian si habla la mamá o el papá.",
+    "sound": {
+     "focus": "La j, la h y la r",
+     "letters": [
+      "j",
+      "h",
+      "r"
+     ],
+     "note": "Tres letras que no suenan como en castellano. La j es como la y fuerte de «yo», nunca la jota: jarýi, rajy. La h siempre suena, como un soplo: héra, hembireko. La r es la r suave de «caro», también al empezar la palabra: ru, ramói; la rr fuerte solo está en préstamos como vúrro. Dos pares cambian una sola letra: che rajy y che ra'y, che rembireko y hembireko. Los otros dos son palabras para contrastar, no pares mínimos.",
+     "pairs": [
+      [
+       "jarýi",
+       "abuela",
+       "héra",
+       "su nombre"
+      ],
+      [
+       "che rajy",
+       "mi hija",
+       "che ra'y",
+       "mi hijo"
+      ],
+      [
+       "che rembireko",
+       "mi esposa",
+       "hembireko",
+       "su esposa"
+      ],
+      [
+       "che ru",
+       "mi papá",
+       "vúrro",
+       "burro"
+      ]
+     ]
+    },
+    "words": [
+     {
+      "id": "sy",
+      "gn": "che sy",
+      "es": "mi mamá",
+      "parts": [
+       [
+        "che",
+        "mi"
+       ],
+       [
+        "sy",
+        "madre"
+       ]
+      ],
+      "note": "Sy es «madre». Es oral: con nde no cambia, nde sy."
+     },
+     {
+      "id": "ru",
+      "gn": "che ru",
+      "es": "mi papá",
+      "parts": [
+       [
+        "che",
+        "mi"
+       ],
+       [
+        "ru",
+        "padre (con che, nde, ñande)"
+       ]
+      ],
+      "note": "Sola, la palabra es túva. Con che, nde, ñande y ore se vuelve ru: che ru, ñande ru."
+     },
+     {
+      "id": "memby",
+      "gn": "che memby",
+      "es": "mi hijo, mi hija",
+      "parts": [
+       [
+        "che",
+        "mi"
+       ],
+       [
+        "memby",
+        "hijo o hija (dice la mamá)"
+       ]
+      ],
+      "note": "Lo dice la mamá, de un hijo o de una hija. Es nasal, con m: con nde se dice ne memby."
+     },
+     {
+      "id": "ray",
+      "gn": "che ra'y",
+      "es": "mi hijo",
+      "parts": [
+       [
+        "che",
+        "mi"
+       ],
+       [
+        "ra'y",
+        "hijo (dice el papá)"
+       ]
+      ],
+      "note": "Lo dice el papá. Lleva puso: ra'y. Sola, la palabra es ta'ýra."
+     },
+     {
+      "id": "rajy",
+      "gn": "che rajy",
+      "es": "mi hija",
+      "parts": [
+       [
+        "che",
+        "mi"
+       ],
+       [
+        "rajy",
+        "hija (dice el papá)"
+       ]
+      ],
+      "note": "Lo dice el papá. La j suena como la y fuerte de «yo»: rajy, nunca con jota. Sola, la palabra es tajýra."
+     },
+     {
+      "id": "jaryi",
+      "gn": "che jarýi",
+      "es": "mi abuela",
+      "parts": [
+       [
+        "che",
+        "mi"
+       ],
+       [
+        "jarýi",
+        "abuela"
+       ]
+      ],
+      "note": "Tilde en la ý: el acento no cae al final. Es oral: con nde no cambia, nde jarýi."
+     },
+     {
+      "id": "ramoi",
+      "gn": "che ramói",
+      "es": "mi abuelo",
+      "parts": [
+       [
+        "che",
+        "mi"
+       ],
+       [
+        "ramói",
+        "abuelo (con che, ne)"
+       ]
+      ],
+      "note": "Sola es tamói. Es nasal, con m: con nde se dice ne ramói. La r es suave, como en «caro»."
+     },
+     {
+      "id": "rembireko",
+      "gn": "che rembireko",
+      "es": "mi esposa",
+      "parts": [
+       [
+        "che",
+        "mi"
+       ],
+       [
+        "rembireko",
+        "esposa (con che)"
+       ]
+      ],
+      "note": "Sola es hembireko, «su esposa»: la h suena. Es nasal, con mb: con nde se dice ne rembireko. «Mi esposo» es che ména."
+     }
+    ],
+    "spell": [
+     "rajy",
+     "ramoi",
+     "rembireko",
+     "jaryi"
+    ],
+    "check": {
+     "id": "a1u04d1.k1",
+     "kind": "choice",
+     "area": "vocab",
+     "label": "Cómo se escribe",
+     "q": "Luis muestra una foto: Ha'e che _hija_. ¿Cómo se escribe «hija» con che?",
+     "options": [
+      "raji",
+      "rally",
+      "rajy",
+      "rayi"
+     ],
+     "answer": 3,
+     "explain": "Con che es rajy: con j, que suena como la y fuerte de «yo», y con y al final, la sexta vocal. Raji cambia esa y por i. Rayi escribe el sonido de la j con la y del castellano y además pierde la sexta vocal. Rally lo escribe con ll, como en castellano; en guaraní ese sonido se escribe j, como en kavaju, «caballo»."
+    }
+   },
+   "skill": {
+    "kind": "listening",
+    "es": "Comprensión de puntos clave",
+    "situation": "Ana le muestra a Juan la foto de su familia y le dice quién es cada uno.",
+    "ask": "¿Cómo se llama el abuelo de Ana?",
+    "item": {
+     "id": "a1u04d1.r1",
+     "kind": "choice",
+     "area": "listening",
+     "label": "Qué escuchaste",
+     "q": "¿Cómo se llama el abuelo de Ana?",
+     "options": [
+      "Luis.",
+      "Pedro.",
+      "Marta."
+     ],
+     "short": [
+      "Luis",
+      "Pedro",
+      "Marta"
+     ],
+     "printed": true,
+     "answer": 2,
+     "why": [
+      "Luis es el papá de Ana: Ha'e che ru, héra Luis, «él es mi papá, se llama Luis».",
+      "Cuando Juan pregunta Mávapa ha'e?, Ana responde Che ramói, héra Pedro: «mi abuelo, se llama Pedro».",
+      "Marta es la mamá de Ana: Ha'e che sy, héra Marta, «ella es mi mamá, se llama Marta»."
+     ],
+     "script": [
+      "Narrador: Ana le muestra a Juan la foto de su familia. ¿Cómo se llama el abuelo de Ana?",
+      "Mujer: Ha'e che sy, héra Marta.",
+      "Mujer: Ha'e che ru, héra Luis.",
+      "Narrador: Juan señala a un señor de la foto.",
+      "Hombre: Mávapa ha'e?",
+      "Mujer: Che ramói, héra Pedro.",
+      "Hombre: Mba'éichapa héra ne memby?",
+      "Mujer: Héra Sofía.",
+      "Narrador: ¿Cómo se llama el abuelo de Ana?"
+     ]
+    },
+    "audio": [
+     [
+      "N",
+      "Ana le muestra a Juan la foto de su familia. ¿Cómo se llama el abuelo de Ana?",
+      "Ana le muestra a Juan la foto de su familia. ¿Cómo se llama el abuelo de Ana?"
+     ],
+     [
+      "F",
+      "Ha'e che sy, héra Marta.",
+      "Ella es mi mamá, se llama Marta."
+     ],
+     [
+      "F",
+      "Ha'e che ru, héra Luis.",
+      "Él es mi papá, se llama Luis."
+     ],
+     [
+      "N",
+      "Juan señala a un señor de la foto.",
+      "Juan señala a un señor de la foto."
+     ],
+     [
+      "M",
+      "Mávapa ha'e?",
+      "¿Quién es?"
+     ],
+     [
+      "F",
+      "Che ramói, héra Pedro.",
+      "Mi abuelo, se llama Pedro."
+     ],
+     [
+      "M",
+      "Mba'éichapa héra ne memby?",
+      "¿Cómo se llama tu hija?"
+     ],
+     [
+      "F",
+      "Héra Sofía.",
+      "Se llama Sofía."
+     ],
+     [
+      "N",
+      "¿Cómo se llama el abuelo de Ana?",
+      "¿Cómo se llama el abuelo de Ana?"
+     ]
+    ]
+   }
+  },
+  "2": {
+   "title": "Plural -kuéra, -nguéra tras nasal (mitãnguéra)",
+   "grammar": {
+    "points": [
+     {
+      "id": "a1u04d2.p1",
+      "form": "-kuéra",
+      "gloss": "plural: los, las (tras sílaba oral)",
+      "connect": [
+       {
+        "pos": "Pegado al sustantivo. Se lleva el acento, y la raíz pierde su tilde",
+        "rule": "óga → oga{kuéra} · túva → tuva{kuéra}"
+       },
+       {
+        "pos": "Con el posesivo, el dueño sigue primero",
+        "rule": "che memby{kuéra} · ne memby{kuéra}"
+       },
+       {
+        "pos": "Ya lo conocés: ha'e, «él», y ha'ekuéra, «ellos»",
+        "rule": "ha'e → ha'e{kuéra}"
+       },
+       {
+        "pos": "No es obligatorio: con un número, el sustantivo va solo",
+        "rule": "[mokõi|dos] {mitã}"
+       }
+      ],
+      "examples": [
+       {
+        "gn": "Jagua{kuéra} oyta.",
+        "es": "Los perros nadan.",
+        "parts": [
+         [
+          "jagua",
+          "perro"
+         ],
+         [
+          "-kuéra",
+          "plural"
+         ],
+         [
+          "o-",
+          "ellos"
+         ],
+         [
+          "yta",
+          "nadar"
+         ]
+        ]
+       },
+       {
+        "gn": "Guyra{kuéra} opurahéi.",
+        "es": "Los pájaros cantan.",
+        "parts": [
+         [
+          "guyra",
+          "pájaro"
+         ],
+         [
+          "-kuéra",
+          "plural"
+         ],
+         [
+          "opurahéi",
+          "cantan"
+         ]
+        ]
+       },
+       {
+        "gn": "Ne memby{kuéra} moõpa oĩ?",
+        "es": "¿Dónde están tus hijos?",
+        "parts": [
+         [
+          "ne",
+          "tu, tus"
+         ],
+         [
+          "memby",
+          "hijo, hija"
+         ],
+         [
+          "-kuéra",
+          "plural"
+         ],
+         [
+          "moõpa",
+          "¿dónde?"
+         ],
+         [
+          "oĩ",
+          "están"
+         ]
+        ]
+       },
+       {
+        "gn": "Mbo'ehara{kuéra} oñe'ẽ guaraníme.",
+        "es": "Los profesores hablan guaraní.",
+        "parts": [
+         [
+          "mbo'ehára",
+          "profesor, profesora"
+         ],
+         [
+          "-kuéra",
+          "plural: el acento pasa a la é"
+         ],
+         [
+          "oñe'ẽ",
+          "hablan"
+         ],
+         [
+          "guaraníme",
+          "en guaraní"
+         ]
+        ]
+       }
+      ],
+      "watch": {
+       "note": "-kuéra se lleva el acento, y una palabra guaraní lleva una sola tilde: la de la raíz desaparece. Óga es «casa»; «las casas» es ogakuéra.",
+       "bad": "ógakuéra",
+       "good": "ogakuéra"
+      }
+     },
+     {
+      "id": "a1u04d2.p2",
+      "form": "-nguéra",
+      "gloss": "plural tras sílaba nasal",
+      "connect": [
+       {
+        "pos": "Última sílaba con tilde nasal (~): la ~ se queda, y el acento pasa a la é",
+        "rule": "mitã → mitã{nguéra} · angirũ → angirũ{nguéra}"
+       },
+       {
+        "pos": "Última sílaba con m, n o ñ, aunque no lleve ~",
+        "rule": "kuña → kuña{nguéra} · mitãkuña → mitãkuña{nguéra}"
+       },
+       {
+        "pos": "Mirá solo la última sílaba: memby empieza con m, pero termina en by, que es oral",
+        "rule": "memby → memby{kuéra}"
+       },
+       {
+        "pos": "Para «a los niños», -pe va después del plural: ra es sílaba oral",
+        "rule": "mitã{nguéra}pe"
+       }
+      ],
+      "examples": [
+       {
+        "gn": "Mitã{nguéra} oho mbo'ehaópe.",
+        "es": "Los niños van a la escuela.",
+        "parts": [
+         [
+          "mitã",
+          "niño, niña"
+         ],
+         [
+          "-nguéra",
+          "plural tras nasal"
+         ],
+         [
+          "oho",
+          "van"
+         ],
+         [
+          "mbo'ehao",
+          "escuela"
+         ],
+         [
+          "-pe",
+          "a"
+         ]
+        ]
+       },
+       {
+        "gn": "Kuña{nguéra} opurahéi.",
+        "es": "Las mujeres cantan.",
+        "parts": [
+         [
+          "kuña",
+          "mujer"
+         ],
+         [
+          "-nguéra",
+          "plural tras nasal"
+         ],
+         [
+          "opurahéi",
+          "cantan"
+         ]
+        ]
+       },
+       {
+        "gn": "Che angirũ{nguéra} Paraguaigua.",
+        "es": "Mis amigos son de Paraguay.",
+        "parts": [
+         [
+          "che",
+          "mi, mis"
+         ],
+         [
+          "angirũ",
+          "amigo, amiga"
+         ],
+         [
+          "-nguéra",
+          "plural tras nasal"
+         ],
+         [
+          "Paraguaigua",
+          "de Paraguay"
+         ]
+        ]
+       },
+       {
+        "gn": "Mitã{nguéra} ho'u chipa.",
+        "es": "Los niños comen chipá.",
+        "parts": [
+         [
+          "mitã",
+          "niño, niña"
+         ],
+         [
+          "-nguéra",
+          "plural tras nasal"
+         ],
+         [
+          "ho'u",
+          "comen"
+         ],
+         [
+          "chipa",
+          "chipá"
+         ]
+        ]
+       }
+      ],
+      "watch": {
+       "note": "Tras una sílaba nasal no va -kuéra. Y no agregues otra ~: mitã ya la tiene, y la a de kuña no la lleva, porque la ñ ya la hace nasal.",
+       "bad": "mitãkuéra",
+       "good": "mitãnguéra"
+      }
+     }
+    ],
+    "compare": {
+     "intro": "El plural que ya conocés de ha'ekuéra tiene dos formas: fijate si la última sílaba de la palabra es oral o nasal.",
+     "forms": [
+      {
+       "form": "-kuéra",
+       "tag": "tras sílaba oral",
+       "mark": "dot",
+       "gn": "Jagua{kuéra} oyta.",
+       "es": "Los perros nadan."
+      },
+      {
+       "form": "-nguéra",
+       "tag": "tras sílaba nasal",
+       "mark": "dot",
+       "gn": "Mitã{nguéra} oho mbo'ehaópe.",
+       "es": "Los niños van a la escuela."
+      },
+      {
+       "form": "ha'ekuéra",
+       "tag": "ellos, ellas (semana 1)",
+       "mark": "dot",
+       "gn": "{Ha'ekuéra} oñe'ẽ guaraníme.",
+       "es": "Ellos hablan guaraní."
+      }
+     ],
+     "check": {
+      "id": "a1u04d2.c1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Ana habla de ^las mujeres^ del barrio: «(   ) opurahéi.»",
+      "options": [
+       "Kuñakuéra",
+       "Kuñanguéra",
+       "Kuñãnguéra"
+      ],
+      "answer": 2,
+      "why": [
+       "Kuña termina en ña, una sílaba nasal por la ñ: ahí no va -kuéra.",
+       "La última sílaba de kuña es nasal, por la ñ: va -nguéra. Kuñanguéra opurahéi: las mujeres cantan.",
+       "Kuñãnguéra agrega una ~ que la palabra no lleva: junto a la ñ, la a ya suena nasal y no se marca."
+      ]
+     }
+    },
+    "drill": [
+     {
+      "id": "a1u04d2.d1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Ana habla de ^los pájaros^ del patio: «(   ) opurahéi ko pyhareve.»",
+      "options": [
+       "Guyrakuéra",
+       "Guyranguéra",
+       "Guirakuéra",
+       "Guyracuéra"
+      ],
+      "answer": 1,
+      "why": [
+       "Guyra termina en ra, sílaba oral: va -kuéra, que se lleva el acento. Guyrakuéra opurahéi ko pyhareve: los pájaros cantan esta mañana.",
+       "-nguéra va solo tras una sílaba nasal, y ra es oral.",
+       "Guirakuéra cambia la y por i. Guy-ra lleva la y, la sexta vocal.",
+       "Guyracuéra escribe el plural con c, y la c no es una letra del guaraní: ese sonido se escribe con k, kuéra."
+      ]
+     },
+     {
+      "id": "a1u04d2.d2",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Ana le pregunta a Rosa dónde están ^los hijos de Rosa^: «Ne (   ) moõpa oĩ?»",
+      "options": [
+       "membynguéra",
+       "mẽmbykuéra",
+       "membykuéra",
+       "membikuéra"
+      ],
+      "answer": 3,
+      "why": [
+       "-nguéra va tras una sílaba nasal, y by es oral: la m del principio no cuenta, se mira la última sílaba.",
+       "Mẽmbykuéra agrega una ~ a la e: junto a la m ya suena nasal, y no se marca.",
+       "La última sílaba de memby, by, es oral: va -kuéra, aunque la palabra empiece con m. Ne membykuéra moõpa oĩ?: ¿dónde están tus hijos?",
+       "Membikuéra cambia la y por i. Memby termina en y, la sexta vocal."
+      ]
+     },
+     {
+      "id": "a1u04d2.d3",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Luis habla de ^sus amigos^: «Che (   ) oĩ [ko'ápe|aquí].»",
+      "options": [
+       "angirũkuéra",
+       "angirũnguéra",
+       "angirunguéra",
+       "ãngirũnguéra"
+      ],
+      "answer": 2,
+      "why": [
+       "-kuéra va tras una sílaba oral, y angirũ termina en ũ, nasal.",
+       "Angirũ termina en ũ, nasal: va -nguéra. Che angirũnguéra oĩ ko'ápe: mis amigos están aquí.",
+       "Angirunguéra pierde la ~ de la ũ. La raíz es angirũ, y la ~ se queda.",
+       "En ãngirũnguéra sobra la ~ de la a: junto a ng ya suena nasal, y no se marca."
+      ]
+     },
+     {
+      "id": "a1u04d2.d4",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Rosa habla de ^las casas^ del barrio: «(   ) iporã.»",
+      "options": [
+       "Oganguéra",
+       "Ogãkuéra",
+       "Ogacuéra",
+       "Ogakuéra"
+      ],
+      "answer": 4,
+      "why": [
+       "-nguéra es la forma de después de una sílaba nasal, y ga es oral.",
+       "Ogãkuéra agrega una ~ que la palabra no lleva: óga no tiene ningún sonido nasal.",
+       "Ogacuéra escribe el plural con c, y la c no es una letra del guaraní: ese sonido se escribe con k, kuéra.",
+       "Óga pierde su tilde porque -kuéra se lleva el acento: ogakuéra, con una sola tilde. Ogakuéra iporã: las casas son lindas."
+      ]
+     },
+     {
+      "id": "a1u04d2.d5",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "Mbo'ehára oñe'ẽ ",
+      "after": ".",
+      "tiles": [
+       "mitã",
+       "nguéra",
+       "pe"
+      ],
+      "bank": [
+       2,
+       0,
+       1
+      ],
+      "hint": "Primero el plural, después -pe, «a». Fijate dónde queda el acento.",
+      "full": "Mbo'ehára oñe'ẽ mitã{nguéra}pe.",
+      "es": "El profesor les habla a los niños.",
+      "explain": "mitã («niño») + -nguéra (plural tras nasal, porque mitã termina en ã) + -pe («a») = mitãnguérape. -nguéra se lleva el acento, y -pe no lo mueve: queda la ~ en la ã y la tilde en la é. Después de -nguéra va -pe, porque ra es sílaba oral."
+     },
+     {
+      "id": "a1u04d2.d6",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "",
+      "after": " oñe'ẽ guaraníme.",
+      "tiles": [
+       "mbo'ehára",
+       "kuéra"
+      ],
+      "bank": [
+       1,
+       0
+      ],
+      "hint": "-kuéra va después del sustantivo y se lleva el acento: mirá qué pasa con la tilde de hára.",
+      "full": "{Mbo'eharakuéra} oñe'ẽ guaraníme.",
+      "es": "Los profesores hablan guaraní.",
+      "explain": "mbo'ehára («profesor») + -kuéra = mbo'eharakuéra, «los profesores». -kuéra se lleva el acento, y la tilde de hára desaparece: una palabra, una sola tilde."
+     }
+    ],
+    "exam": [
+     {
+      "id": "a1u04d2.e1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Qué significa",
+      "q": "Ana: _Che membykuéra_ oho mbo'ehaópe.",
+      "options": [
+       "Mi hijo va a la escuela.",
+       "Mis hijos van a la escuela.",
+       "Tus hijos van a la escuela.",
+       "Nuestros hijos van a la escuela."
+      ],
+      "answer": 2,
+      "explain": "Che es «mi», y -kuéra hace el plural: che membykuéra, «mis hijos». Un solo hijo sería che memby, «tus hijos» sería ne membykuéra, y «nuestros» llevaría ñande u ore, no che."
+     },
+     {
+      "id": "a1u04d2.e2",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Rosa habla de las niñas de la escuela.)\nRosa: (   ) opurahéi mbo'ehaópe.",
+      "options": [
+       "Mitãkuñakuéra",
+       "Mitakuñanguéra",
+       "Mitãkuñanguéra",
+       "Mitãkuñãnguéra"
+      ],
+      "answer": 3,
+      "explain": "Mitãkuña («niña») termina en ña, sílaba nasal por la ñ: va -nguéra, que se lleva el acento. Mitãkuñakuéra usa la forma de después de una sílaba oral, mitakuñanguéra pierde la ~ de mitã, que la palabra sí lleva, y mitãkuñãnguéra agrega una ~ junto a la ñ, donde no se escribe."
+     },
+     {
+      "id": "a1u04d2.e3",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "Che sy oñe'ẽ ",
+      "after": ".",
+      "tiles": [
+       "kuña",
+       "nguéra",
+       "pe"
+      ],
+      "bank": [
+       1,
+       2,
+       0
+      ],
+      "full": "Che sy oñe'ẽ kuña{nguéra}pe.",
+      "es": "Mi mamá les habla a las mujeres.",
+      "explain": "kuña («mujer») + -nguéra (plural tras la ñ, sílaba nasal) + -pe («a») = kuñanguérape. -nguéra se lleva el acento, y -pe va al final sin moverlo: la tilde queda en la é."
+     }
+    ]
+   },
+   "words": {
+    "es": "El patio de la escuela",
+    "intro": "En el patio de la escuela del barrio hay chicos, profesores y animales. Tocá cada palabra y fijate cuáles llevan -kuéra y cuáles -nguéra.",
+    "sound": {
+     "focus": "El acento se mueve: ogakuéra",
+     "letters": [
+      "é"
+     ],
+     "note": "Una palabra lleva una sola tilde, y -kuéra se queda con el acento: la tilde de la raíz desaparece (óga → ogakuéra, túva → tuvakuéra). La ~ no es tilde de acento, así que se queda: mitã → mitãnguéra. No hay pares mínimos seguros de acento: son palabras para contrastar, una sola y varias.",
+     "pairs": [
+      [
+       "óga",
+       "casa",
+       "ogakuéra",
+       "casas"
+      ],
+      [
+       "túva",
+       "padre",
+       "tuvakuéra",
+       "padres"
+      ],
+      [
+       "ha'e",
+       "él, ella",
+       "ha'ekuéra",
+       "ellos, ellas"
+      ],
+      [
+       "mitã",
+       "niño, niña",
+       "mitãnguéra",
+       "niños, niñas"
+      ]
+     ]
+    },
+    "words": [
+     {
+      "id": "mitanguera",
+      "gn": "mitãnguéra",
+      "es": "los niños, las niñas",
+      "parts": [
+       [
+        "mitã",
+        "niño, niña"
+       ],
+       [
+        "-nguéra",
+        "plural tras nasal"
+       ]
+      ],
+      "note": "La ~ se queda y el acento va a la é."
+     },
+     {
+      "id": "mitakuna",
+      "gn": "mitãkuña",
+      "es": "niña",
+      "parts": [
+       [
+        "mitã",
+        "niño"
+       ],
+       [
+        "kuña",
+        "mujer"
+       ]
+      ],
+      "note": "Plural: mitãkuñanguéra, porque termina en ña."
+     },
+     {
+      "id": "mitarusu",
+      "gn": "mitãrusu",
+      "es": "joven, adolescente",
+      "note": "Plural: mitãrusukuéra, porque su es una sílaba oral."
+     },
+     {
+      "id": "mboeharakuera",
+      "gn": "mbo'eharakuéra",
+      "es": "los profesores, las profesoras",
+      "parts": [
+       [
+        "mbo'ehára",
+        "profesor, profesora"
+       ],
+       [
+        "-kuéra",
+        "plural"
+       ]
+      ],
+      "note": "Pierde la tilde de hára: -kuéra se lleva el acento."
+     },
+     {
+      "id": "jaguakuera",
+      "gn": "jaguakuéra",
+      "es": "los perros",
+      "parts": [
+       [
+        "jagua",
+        "perro"
+       ],
+       [
+        "-kuéra",
+        "plural"
+       ]
+      ],
+      "note": "La j suena como la y fuerte de «yo», nunca como la jota."
+     },
+     {
+      "id": "guyrakuera",
+      "gn": "guyrakuéra",
+      "es": "los pájaros",
+      "parts": [
+       [
+        "guyra",
+        "pájaro"
+       ],
+       [
+        "-kuéra",
+        "plural"
+       ]
+      ],
+      "note": "Guy-ra: la y es la sexta vocal."
+     },
+     {
+      "id": "mymbakuera",
+      "gn": "mymbakuéra",
+      "es": "los animales",
+      "parts": [
+       [
+        "mymba",
+        "animal"
+       ],
+       [
+        "-kuéra",
+        "plural"
+       ]
+      ],
+      "note": "Mymba empieza con m, pero termina en ba, sílaba oral: por eso -kuéra."
+     },
+     {
+      "id": "korapy",
+      "gn": "korapy",
+      "es": "patio",
+      "note": "«En el patio» es korapýpe: -pe no se lleva el acento, y aparece la tilde en la ý."
+     }
+    ],
+    "spell": [
+     "mitanguera",
+     "mboeharakuera",
+     "jaguakuera",
+     "mymbakuera"
+    ],
+    "check": {
+     "id": "a1u04d2.k1",
+     "kind": "choice",
+     "area": "vocab",
+     "label": "Cómo se escribe",
+     "q": "Los chicos del patio: _los niños_. ¿Cómo se escribe en guaraní?",
+     "options": [
+      "mitãkuéra",
+      "mitankuéra",
+      "mitãnguéra",
+      "mitanguéra"
+     ],
+     "answer": 3,
+     "explain": "Mitã termina en ã, nasal, así que el plural es -nguéra, con el acento en la é: mitãnguéra. Mitãkuéra usa la forma de después de una sílaba oral. Mitankuéra escribe una n en lugar de la ~, y la nasal de mitã es la ~ de la ã. Mitanguéra pierde esa ~, que la palabra sí lleva."
+    }
+   },
+   "skill": {
+    "kind": "reading",
+    "es": "Un aviso de la escuela",
+    "ask": "¿Quiénes cantan esta tarde?",
+    "seconds": 60,
+    "passage": "Maitei, tuvakuéra.\n^Mitãnguéra opurahéi^ ko ka'aru mbo'ehaópe.\nMbo'eharakuéra oñe'ẽ guaraníme.\nTapeg̃uahẽ porãite.",
+    "strategy": "Buscá quién hace cada cosa: en cada oración, la palabra con -kuéra o -nguéra va primero, y después viene lo que hace.",
+    "item": {
+     "id": "a1u04d2.r1",
+     "kind": "choice",
+     "area": "reading",
+     "label": "Buscar el dato",
+     "q": "¿Quiénes cantan esta tarde?",
+     "options": [
+      "Los niños.",
+      "Los profesores.",
+      "Los padres.",
+      "Los pájaros."
+     ],
+     "short": [
+      "Niños",
+      "Profesores",
+      "Padres",
+      "Pájaros"
+     ],
+     "answer": 1,
+     "why": [
+      "Mitãnguéra opurahéi ko ka'aru: los niños cantan esta tarde. Mitãnguéra es el plural de mitã.",
+      "De los profesores, mbo'eharakuéra, el aviso dice que hablan guaraní (oñe'ẽ guaraníme), no que cantan.",
+      "Tuvakuéra, los padres, son a quienes saluda el aviso: Maitei, tuvakuéra. No cantan.",
+      "Guyrakuéra, los pájaros, no aparece en el aviso."
+     ],
+     "explain": "El aviso saluda a los padres (tuvakuéra) y dice: Mitãnguéra opurahéi ko ka'aru mbo'ehaópe, «los niños cantan esta tarde en la escuela». Los profesores hablan guaraní, no cantan."
+    }
+   }
+  }
+ },
+ "test": []
+}

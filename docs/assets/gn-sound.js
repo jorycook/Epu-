@@ -99,6 +99,8 @@
     has: function (key) { return !!(AC && clips[key] && (!failed || stale)); },
     /* length of a clip in milliseconds, known before it is decoded */
     ms: function (key) { return clips[key] ? clips[key].ms : 0; },
+    /* what made the clip: 'human' (a recording) or 'synthetic' (a voice model, which the screens say so about); '' when there is no clip */
+    kind: function (key) { return clips[key] ? clips[key].kind || 'human' : ''; },
     /* call from inside a tap: browsers only let sound start after one */
     unlock: function () { renew(); return !!context(); },
     /* is sound actually coming out? A browser can hold the audio back even after a tap, or fail to decode a clip.

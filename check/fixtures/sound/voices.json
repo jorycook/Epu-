@@ -1,0 +1,19 @@
+{
+ "kind": "human",
+ "licence": "CC BY 4.0",
+ "note": "test fixtures: short tones, not voices",
+ "voices": {
+  "F": {
+   "name": "Fixture F",
+   "licence": "CC BY 4.0"
+  },
+  "M": {
+   "name": "Fixture M",
+   "licence": "CC BY 4.0"
+  },
+  "N": {
+   "name": "Fixture N",
+   "licence": "CC BY 4.0"
+  }
+ }
+}

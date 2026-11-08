@@ -1,0 +1,1311 @@
+{
+ "n": 3,
+ "gn": "",
+ "es": "¿Cómo estás? Predicados chendales",
+ "days": {
+  "1": {
+   "title": "che-/nde- para estados y cualidades (sin «estar»)",
+   "grammar": {
+    "points": [
+     {
+      "id": "a1u03d1.p1",
+      "form": "che- · nde-/ne- + estado",
+      "gloss": "estoy…, tengo… (sin «estar»)",
+      "connect": [
+       {
+        "pos": "Para hablar de vos mismo: che- pegado al estado",
+        "rule": "{Che}kane'õ."
+       },
+       {
+        "pos": "Para el que escucha: nde-",
+        "rule": "{Nde}pochy."
+       },
+       {
+        "pos": "Si la palabra es nasal (lleva ~ o m, n, ñ, mb, nd, ng, nt), nde- se dice y se escribe ne-",
+        "rule": "{Ne}kane'õ. {Ne}mandu'a."
+       }
+      ],
+      "examples": [
+       {
+        "gn": "Luis: {Che}kane'õ.",
+        "es": "Luis: Estoy cansado.",
+        "parts": [
+         [
+          "che-",
+          "yo (me pasa)"
+         ],
+         [
+          "kane'õ",
+          "cansancio, cansado"
+         ]
+        ]
+       },
+       {
+        "gn": "{Che}vare'a ha {che}y'uhéi.",
+        "es": "Tengo hambre y sed.",
+        "parts": [
+         [
+          "che-",
+          "yo"
+         ],
+         [
+          "vare'a",
+          "hambre"
+         ],
+         [
+          "ha",
+          "y"
+         ],
+         [
+          "y'uhéi",
+          "sed"
+         ]
+        ]
+       },
+       {
+        "gn": "{Nde}pochy, Juan.",
+        "es": "Estás enojado, Juan.",
+        "parts": [
+         [
+          "nde-",
+          "vos (te pasa)"
+         ],
+         [
+          "pochy",
+          "enojo, enojado"
+         ]
+        ]
+       },
+       {
+        "gn": "Rosa: {Ne}kane'õ, Luis.\nLuis: Héẽ, {che}kane'õ ha {che}ro'y.",
+        "es": "Rosa: Estás cansado, Luis.\nLuis: Sí, estoy cansado y tengo frío.",
+        "parts": [
+         [
+          "ne-",
+          "vos, ante una palabra nasal"
+         ],
+         [
+          "kane'õ",
+          "cansancio"
+         ],
+         [
+          "héẽ",
+          "sí"
+         ],
+         [
+          "ro'y",
+          "frío"
+         ]
+        ]
+       }
+      ],
+      "watch": {
+       "note": "En castellano decís «estoy cansado» con el verbo estar. En guaraní no hay verbo: che- va pegado al estado, y con eso alcanza. Tampoco va a-, que es para las acciones, como aguata: akane'õ no es «estoy cansado».",
+       "bad": "Akane'õ.",
+       "good": "Chekane'õ."
+      }
+     },
+     {
+      "id": "a1u03d1.p2",
+      "form": "i- / h- + estado",
+      "gloss": "él, ella está… (tercera persona)",
+      "connect": [
+       {
+        "pos": "Para otra persona: i- pegado al estado",
+        "rule": "Che sy {i}kane'õ."
+       },
+       {
+        "pos": "Con el nombre delante, o con ha'e, igual lleva i-",
+        "rule": "Ana {i}pochy. Ha'e {i}vare'a."
+       },
+       {
+        "pos": "Las palabras que con che- empiezan con r, como réra, llevan h- en vez de i-",
+        "rule": "Che{r}asy · {H}asy."
+       }
+      ],
+      "examples": [
+       {
+        "gn": "Che sy {i}kane'õ.",
+        "es": "Mi mamá está cansada.",
+        "parts": [
+         [
+          "che sy",
+          "mi mamá"
+         ],
+         [
+          "i-",
+          "ella (le pasa)"
+         ],
+         [
+          "kane'õ",
+          "cansancio"
+         ]
+        ]
+       },
+       {
+        "gn": "Ana {i}pochy.",
+        "es": "Ana está enojada.",
+        "parts": [
+         [
+          "i-",
+          "ella"
+         ],
+         [
+          "pochy",
+          "enojo"
+         ]
+        ]
+       },
+       {
+        "gn": "Mitã {i}vare'a.",
+        "es": "El niño tiene hambre.",
+        "parts": [
+         [
+          "mitã",
+          "niño"
+         ],
+         [
+          "i-",
+          "él"
+         ],
+         [
+          "vare'a",
+          "hambre"
+         ]
+        ]
+       },
+       {
+        "gn": "Che ru {h}asy.",
+        "es": "Mi papá está enfermo.",
+        "parts": [
+         [
+          "che ru",
+          "mi papá"
+         ],
+         [
+          "h-",
+          "él, ante una palabra en r"
+         ],
+         [
+          "rasy",
+          "enfermo, dolor"
+         ]
+        ]
+       }
+      ],
+      "watch": {
+       "note": "Sin i- la palabra no dice de quién es el estado: kane'õ solo es «cansancio». El castellano no tiene esta marca: «mi mamá cansada» no es una oración, pero Che sy ikane'õ sí.",
+       "bad": "Che sy kane'õ.",
+       "good": "Che sy ikane'õ."
+      }
+     }
+    ],
+    "compare": {
+     "intro": "Tres cosas con che: un estado tuyo, el estado de otra persona y el «mi» de posesión.",
+     "forms": [
+      {
+       "form": "chekane'õ",
+       "tag": "yo · estado, pegado",
+       "mark": "dot",
+       "gn": "{Chekane'õ}.",
+       "es": "Estoy cansado."
+      },
+      {
+       "form": "ikane'õ",
+       "tag": "él, ella · estado",
+       "mark": "dot",
+       "gn": "Che sy {ikane'õ}.",
+       "es": "Mi mamá está cansada."
+      },
+      {
+       "form": "che sy",
+       "tag": "mi · posesión, separado",
+       "mark": "dot",
+       "gn": "{Che sy} ikane'õ.",
+       "es": "Mi mamá está cansada."
+      }
+     ],
+     "check": {
+      "id": "a1u03d1.c1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Rosa habla de ^su papá^, que está cansado: «Che ru (   ).»",
+      "options": [
+       "chekane'õ",
+       "ikane'õ",
+       "kane'õ"
+      ],
+      "answer": 2,
+      "why": [
+       "Chekane'õ es «estoy cansado»: Rosa hablaría de ella misma. Acá habla de su papá, otra persona.",
+       "Che ru, «mi papá», es otra persona: el estado lleva i-. Che ru ikane'õ, «mi papá está cansado».",
+       "Kane'õ sin marca es solo «cansancio»: no dice de quién es el estado. Falta la i-."
+      ]
+     }
+    },
+    "drill": [
+     {
+      "id": "a1u03d1.d1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Termina el partido. ^Juan dice cómo está él^.)\nJuan: (   ).",
+      "options": [
+       "Akane'õ",
+       "Chekane'õ",
+       "Ikane'õ",
+       "Kane'õ"
+      ],
+      "answer": 2,
+      "why": [
+       "a- es para las acciones, como aguata. Un estado no lleva a-: akane'õ no es «estoy cansado».",
+       "Juan habla de él mismo y de un estado: che- pegado a kane'õ. Chekane'õ, «estoy cansado».",
+       "Ikane'õ es «está cansado», de otra persona. Juan habla de él mismo.",
+       "Kane'õ sin marca es «cansancio», la cosa: no dice de quién es."
+      ]
+     },
+     {
+      "id": "a1u03d1.d2",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Rosa ^le dice a Juan^ que está enojado: «(   ), Juan.»",
+      "options": [
+       "Chepochy",
+       "Ipochy",
+       "Ndepochy",
+       "Nepochy"
+      ],
+      "answer": 3,
+      "why": [
+       "Chepochy es «estoy enojado»: Rosa hablaría de ella misma, y le habla a Juan de él.",
+       "Ipochy es «está enojado», de otra persona. Rosa le habla a Juan directamente, de vos a vos.",
+       "Rosa le habla a Juan: nde- pegado a pochy. Ndepochy, «estás enojado».",
+       "ne- reemplaza a nde- solo antes de una palabra nasal, como nekane'õ. Pochy no es nasal: no tiene ~ ni m, n, ñ. Queda nde-: ndepochy."
+      ]
+     },
+     {
+      "id": "a1u03d1.d3",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Un nene pide chipa: tiene hambre.)\n^Mitã^ (   ).",
+      "options": [
+       "ivare'a",
+       "chevare'a",
+       "ndevare'a",
+       "vare'a"
+      ],
+      "answer": 1,
+      "why": [
+       "Mitã, «el niño», es otra persona: el estado lleva i-. Mitã ivare'a, «el niño tiene hambre».",
+       "Chevare'a es «tengo hambre»: hablaría de mí. Acá se habla del niño.",
+       "Ndevare'a es «tenés hambre», hablándole a vos. Acá se habla del niño, no se le habla a él.",
+       "Vare'a sin marca es «hambre», la cosa: mitã vare'a no es una oración. Falta la i-."
+      ]
+     },
+     {
+      "id": "a1u03d1.d4",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Luis habla de ^su mamá^, que está enferma: «Che sy (   ).»",
+      "options": [
+       "cherasy",
+       "irasy",
+       "hasy",
+       "tasy"
+      ],
+      "answer": 3,
+      "why": [
+       "Cherasy es «estoy enfermo»: Luis hablaría de él mismo. Acá habla de su mamá.",
+       "Con las palabras en r, como réra, la tercera persona no lleva i-: lleva h-. Irasy no se dice; es hasy.",
+       "Che sy es otra persona, y rasy es una palabra en r, como réra: lleva h-, como héra. Che sy hasy, «mi mamá está enferma».",
+       "Tasy es la palabra suelta, «dolor, enfermedad», sin marcar a nadie: no dice que la mamá esté enferma."
+      ]
+     },
+     {
+      "id": "a1u03d1.d5",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "(A Juan le duele la cabeza.)\nJuan: ",
+      "after": ".",
+      "tiles": [
+       "che",
+       "akã",
+       "rasy"
+      ],
+      "bank": [
+       2,
+       0,
+       1
+      ],
+      "hint": "che- va primero. Después la parte del cuerpo, akã, y al final rasy, «dolor».",
+      "full": "(A Juan le duele la cabeza.)\nJuan: {Che}akãrasy.",
+      "es": "Juan: Me duele la cabeza.",
+      "explain": "che- (yo, me pasa) + akã («cabeza») + rasy («dolor, enfermo») = cheakãrasy, «me duele la cabeza»: en guaraní es un estado, todo en una palabra. No lleva tilde: el acento va en la última vocal, sy. La ~ de akã marca la nasal."
+     },
+     {
+      "id": "a1u03d1.d6",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "Rosa: ",
+      "after": ", Luis.",
+      "tiles": [
+       "ne",
+       "kane'õ"
+      ],
+      "bank": [
+       1,
+       0
+      ],
+      "hint": "Kane'õ es nasal, lleva ~: el «vos» no es nde- sino ne-, y va primero.",
+      "full": "Rosa: {Ne}kane'õ, Luis.",
+      "es": "Rosa: Estás cansado, Luis.",
+      "explain": "ne- (vos) + kane'õ («cansancio») = nekane'õ, «estás cansado». Antes de una palabra nasal, nde- se vuelve ne-: nekane'õ, nemandu'a. Con una palabra oral queda nde-: ndepochy."
+     }
+    ],
+    "exam": [
+     {
+      "id": "a1u03d1.e1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Qué significa",
+      "q": "Luis: _Chero'y ha chevare'a_.",
+      "options": [
+       "Tengo frío y hambre.",
+       "Tengo calor y sed.",
+       "Tiene frío y hambre.",
+       "Estoy cansado y enojado."
+      ],
+      "answer": 1,
+      "explain": "Che- marca un estado mío: chero'y es «tengo frío» (ro'y, «frío») y chevare'a, «tengo hambre» (vare'a, «hambre»). «Tiene» sería otra persona, con i-: iro'y ha ivare'a. Calor es haku y sed, y'uhéi; cansado es chekane'õ y enojado, chepochy."
+     },
+     {
+      "id": "a1u03d1.e2",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Rosa habla de su papá, que está enojado.)\nRosa: Che ru (   ).",
+      "options": [
+       "chepochy",
+       "ndepochy",
+       "ipochy",
+       "pochy"
+      ],
+      "answer": 3,
+      "explain": "Che ru, «mi papá», es otra persona: el estado lleva i-. Che ru ipochy, «mi papá está enojado». Chepochy sería «estoy enojado», ndepochy, «estás enojado», y pochy solo es «enojo», sin decir de quién."
+     },
+     {
+      "id": "a1u03d1.e3",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "(Termina el partido.)\nJuan: ",
+      "after": ".",
+      "tiles": [
+       "che",
+       "kane'õ",
+       "iterei"
+      ],
+      "bank": [
+       2,
+       0,
+       1
+      ],
+      "full": "(Termina el partido.)\nJuan: {Che}kane'õ{iterei}.",
+      "es": "Juan: Estoy muy cansado.",
+      "explain": "che- (yo, me pasa) va primero, pegado a kane'õ («cansancio»): chekane'õ, «estoy cansado». -iterei, «muy», va al final, como en iporãiterei: chekane'õiterei, «estoy muy cansado». Todo junto y sin tilde."
+     }
+    ]
+   },
+   "words": {
+    "es": "Después del partido",
+    "intro": "Termina el partido en la cancha del barrio y todos dicen cómo están. Tocá cada palabra.",
+    "sound": {
+     "focus": "mb, nd, ng, nt: una sola letra",
+     "letters": [
+      "mb",
+      "nd",
+      "ng",
+      "nt"
+     ],
+     "note": "mb, nd, ng y nt son cuatro letras del alfabeto, y cada una suena en una sola sílaba, también al principio de la palabra: mba'e, nde. Empezá con un zumbido, mmm o nnn, y soltalo en la b o la d sin meter una vocal antes: nde, no «ende». Son parientes de m, n y ñ: ñande róga, pero ñane retã. No hay pares mínimos seguros: compará estas palabras.",
+     "pairs": [
+      [
+       "mba'e",
+       "cosa, qué",
+       "mitã",
+       "niño"
+      ],
+      [
+       "ñande róga",
+       "nuestra casa",
+       "ñane retã",
+       "nuestro país"
+      ],
+      [
+       "tembi'u",
+       "comida",
+       "temimbo'e",
+       "alumno"
+      ],
+      [
+       "angirũ",
+       "amigo, amiga",
+       "mante",
+       "solamente"
+      ]
+     ]
+    },
+    "words": [
+     {
+      "id": "kaneo",
+      "gn": "chekane'õ",
+      "es": "estoy cansado, cansada",
+      "parts": [
+       [
+        "che-",
+        "yo"
+       ],
+       [
+        "kane'õ",
+        "cansancio"
+       ]
+      ],
+      "note": "Muy cansado: chekane'õiterei. A vos: nekane'õ, porque kane'õ es nasal."
+     },
+     {
+      "id": "varea",
+      "gn": "chevare'a",
+      "es": "tengo hambre",
+      "parts": [
+       [
+        "che-",
+        "yo"
+       ],
+       [
+        "vare'a",
+        "hambre"
+       ]
+      ],
+      "note": "La palabra de todos los días. En el diccionario, el hambre también es ñembyahýi."
+     },
+     {
+      "id": "yuhei",
+      "gn": "chey'uhéi",
+      "es": "tengo sed",
+      "parts": [
+       [
+        "che-",
+        "yo"
+       ],
+       [
+        "y'uhéi",
+        "sed"
+       ]
+      ],
+      "note": "Se escribe con puso y con tilde en la e: y'uhéi. También se ve yuhéi, sin puso."
+     },
+     {
+      "id": "roy",
+      "gn": "chero'y",
+      "es": "tengo frío",
+      "parts": [
+       [
+        "che-",
+        "yo"
+       ],
+       [
+        "ro'y",
+        "frío"
+       ]
+      ],
+      "note": "Ro'y solo es «hace frío»: Ajépa ro'y, «qué frío»."
+     },
+     {
+      "id": "haku",
+      "gn": "haku",
+      "es": "hace calor; está caliente",
+      "note": "Para decir que tenés calor: Haku chéve, «me da calor»."
+     },
+     {
+      "id": "pochy",
+      "gn": "chepochy",
+      "es": "estoy enojado, enojada",
+      "parts": [
+       [
+        "che-",
+        "yo"
+       ],
+       [
+        "pochy",
+        "enojo"
+       ]
+      ],
+      "note": "A vos: ndepochy. Él o ella: ipochy."
+     },
+     {
+      "id": "kaigue",
+      "gn": "chekaigue",
+      "es": "estoy desganado, desganada",
+      "parts": [
+       [
+        "che-",
+        "yo"
+       ],
+       [
+        "kaigue",
+        "desgano"
+       ]
+      ],
+      "note": "Muy paraguayo: en castellano también se dice «ando kaigue»."
+     },
+     {
+      "id": "akarasy",
+      "gn": "cheakãrasy",
+      "es": "me duele la cabeza",
+      "parts": [
+       [
+        "che-",
+        "yo"
+       ],
+       [
+        "akã",
+        "cabeza"
+       ],
+       [
+        "rasy",
+        "dolor, enfermo"
+       ]
+      ],
+      "note": "Rasy es la forma con che-: hasy es «le duele, está enfermo»."
+     }
+    ],
+    "spell": [
+     "kaneo",
+     "yuhei",
+     "akarasy",
+     "pochy"
+    ],
+    "check": {
+     "id": "a1u03d1.k1",
+     "kind": "choice",
+     "area": "vocab",
+     "label": "Cómo se escribe",
+     "q": "Después del partido, Juan dice: «_Tengo sed_.» ¿Cómo se escribe en guaraní?",
+     "options": [
+      "cheyuhei",
+      "chey'uhéi",
+      "chei'uhéi",
+      "cheyu'héi"
+     ],
+     "answer": 2,
+     "explain": "Se escribe chey'uhéi: el puso corta la voz entre la y y la u, y la tilde va en la é porque el acento no cae en la última vocal. Cheyuhei no tiene ni puso ni tilde: así se leería con el acento al final. Chei'uhéi cambia la y por i, otra vocal. Cheyu'héi pone el puso antes de la h, y el puso solo va entre dos vocales."
+    }
+   },
+   "skill": {
+    "kind": "listening",
+    "es": "Comprensión de puntos clave",
+    "situation": "Termina el partido. Una mujer le pregunta a un hombre cómo está.",
+    "ask": "¿Qué le pasa al hombre?",
+    "item": {
+     "id": "a1u03d1.r1",
+     "kind": "choice",
+     "area": "listening",
+     "label": "Qué escuchaste",
+     "q": "¿Qué le pasa al hombre?",
+     "options": [
+      "Está cansado y tiene sed.",
+      "Tiene hambre y frío.",
+      "Está enojado."
+     ],
+     "answer": 1,
+     "why": [
+      "El hombre dice Chekane'õ ha chey'uhéi: che- marca sus estados, kane'õ es «cansancio» y y'uhéi, «sed». Por eso ella le propone tereré.",
+      "Hambre sería chevare'a, y frío, chero'y. El hombre no dice ninguna de las dos.",
+      "Enojado sería chepochy. El hombre habla de cansancio y de sed, y ella lo invita a tomar tereré."
+     ],
+     "script": [
+      "Narrador: Termina el partido. ¿Qué le pasa al hombre?",
+      "Mujer: Mba'éichapa reiko, Luis?",
+      "Hombre: Chekane'õ ha chey'uhéi.",
+      "Mujer: Jaha, oĩ terere."
+     ]
+    },
+    "audio": [
+     [
+      "N",
+      "Termina el partido. ¿Qué le pasa al hombre?",
+      "Termina el partido. ¿Qué le pasa al hombre?"
+     ],
+     [
+      "F",
+      "Mba'éichapa reiko, Luis?",
+      "¿Cómo andás, Luis?"
+     ],
+     [
+      "M",
+      "Chekane'õ ha chey'uhéi.",
+      "Estoy cansado y tengo sed."
+     ],
+     [
+      "F",
+      "Jaha, oĩ terere.",
+      "Vamos, hay tereré."
+     ]
+    ]
+   }
+  },
+  "2": {
+   "title": "Areal «yo hago» vs. chendal «a mí me pasa»",
+   "grammar": {
+    "points": [
+     {
+      "id": "a1u03d2.p1",
+      "form": "a- · re- · o- + acción",
+      "gloss": "yo hago, vos hacés, él o ella hace",
+      "connect": [
+       {
+        "pos": "Las acciones llevan el prefijo areal de la unidad 2: a- yo, re- vos, o- él o ella",
+        "rule": "{A}karu · {Re}karu · {O}karu"
+       },
+       {
+        "pos": "También las acciones del cuerpo: levantarse, bañarse, dormir",
+        "rule": "{A}pu'ã · {a}jahu · {a}ke"
+       },
+       {
+        "pos": "El castellano pone la persona al final (com-o); el guaraní, al principio",
+        "rule": "{A}karu"
+       }
+      ],
+      "examples": [
+       {
+        "gn": "{A}pu'ã ha {a}jahu.",
+        "es": "Me levanto y me baño.",
+        "parts": [
+         [
+          "a-",
+          "yo"
+         ],
+         [
+          "pu'ã",
+          "levantarse"
+         ],
+         [
+          "ha",
+          "y"
+         ],
+         [
+          "jahu",
+          "bañarse"
+         ]
+        ]
+       },
+       {
+        "gn": "{A}karu ha {a}ke.",
+        "es": "Como y duermo.",
+        "parts": [
+         [
+          "a-",
+          "yo"
+         ],
+         [
+          "karu",
+          "comer"
+         ],
+         [
+          "ke",
+          "dormir"
+         ]
+        ]
+       },
+       {
+        "gn": "Che sy {o}purahéi ha che ru {o}jeroky.",
+        "es": "Mi mamá canta y mi papá baila.",
+        "parts": [
+         [
+          "che sy",
+          "mi mamá"
+         ],
+         [
+          "o-",
+          "él, ella"
+         ],
+         [
+          "purahéi",
+          "cantar"
+         ],
+         [
+          "che ru",
+          "mi papá"
+         ],
+         [
+          "jeroky",
+          "bailar"
+         ]
+        ]
+       },
+       {
+        "gn": "Ko'ág̃a {a}mba'apo.",
+        "es": "Ahora trabajo.",
+        "parts": [
+         [
+          "ko'ág̃a",
+          "ahora"
+         ],
+         [
+          "a-",
+          "yo"
+         ],
+         [
+          "mba'apo",
+          "trabajar"
+         ]
+        ]
+       }
+      ],
+      "watch": {
+       "note": "Comer es una acción: lleva a-. Che- es para los estados, como chekane'õ. Chekaru no existe.",
+       "bad": "Chekaru.",
+       "good": "Akaru."
+      }
+     },
+     {
+      "id": "a1u03d2.p2",
+      "form": "che- + estado · a- + sentimiento",
+      "gloss": "a mí me pasa · algunos sentimientos van como acciones",
+      "connect": [
+       {
+        "pos": "Un estado o una sensación lleva che-, como ayer",
+        "rule": "{Che}kane'õ · {che}vare'a · {che}mandu'a"
+       },
+       {
+        "pos": "Pero algunos sentimientos se conjugan como acciones, con a-",
+        "rule": "{A}vy'a · {a}kyhyje"
+       },
+       {
+        "pos": "El diccionario dice de qué tipo es cada palabra: aprendé cada una con su prefijo",
+        "rule": "{a}vy'a · {che}mandu'a"
+       }
+      ],
+      "examples": [
+       {
+        "gn": "{A}karu. {Che}vare'a.",
+        "es": "Como. Tengo hambre.",
+        "parts": [
+         [
+          "a-",
+          "yo: hago"
+         ],
+         [
+          "karu",
+          "comer"
+         ],
+         [
+          "che-",
+          "yo: me pasa"
+         ],
+         [
+          "vare'a",
+          "hambre"
+         ]
+        ]
+       },
+       {
+        "gn": "{A}vy'a, Ana.",
+        "es": "Estoy contento, Ana.",
+        "parts": [
+         [
+          "a-",
+          "yo"
+         ],
+         [
+          "vy'a",
+          "alegrarse"
+         ]
+        ]
+       },
+       {
+        "gn": "{A}kyhyje.",
+        "es": "Tengo miedo.",
+        "parts": [
+         [
+          "a-",
+          "yo"
+         ],
+         [
+          "kyhyje",
+          "tener miedo"
+         ]
+        ]
+       },
+       {
+        "gn": "{Che}mandu'a, Luis.",
+        "es": "Me acuerdo, Luis.",
+        "parts": [
+         [
+          "che-",
+          "yo: me pasa"
+         ],
+         [
+          "mandu'a",
+          "acordarse"
+         ]
+        ]
+       }
+      ],
+      "watch": {
+       "note": "«Estoy contento» parece un estado, pero vy'a se conjuga como acción: avy'a. Chevy'a no existe.",
+       "bad": "Chevy'a.",
+       "good": "Avy'a."
+      }
+     }
+    ],
+    "compare": {
+     "intro": "Tres frases de un domingo: una acción con a-, un estado con che- y un lugar con aime.",
+     "forms": [
+      {
+       "form": "akaru",
+       "tag": "acción · a-",
+       "mark": "dot",
+       "gn": "{Akaru}.",
+       "es": "Como."
+      },
+      {
+       "form": "chevare'a",
+       "tag": "estado · che-",
+       "mark": "dot",
+       "gn": "{Chevare'a}.",
+       "es": "Tengo hambre."
+      },
+      {
+       "form": "aime",
+       "tag": "lugar · estoy en",
+       "mark": "dot",
+       "gn": "{Aime} ógape.",
+       "es": "Estoy en casa."
+      }
+     ],
+     "check": {
+      "id": "a1u03d2.c1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Luis le pregunta a Ana ^dónde está^.)\nAna: (   ) ógape.",
+      "options": [
+       "Akaru",
+       "Chevare'a",
+       "Aime"
+      ],
+      "answer": 3,
+      "why": [
+       "Akaru es «como», una acción con a-. No dice dónde está Ana.",
+       "Chevare'a es «tengo hambre», un estado con che-. Tampoco dice dónde está.",
+       "Luis pregunta dónde está, y para estar en un lugar va aime: Aime ógape, «estoy en casa»."
+      ]
+     }
+    },
+    "drill": [
+     {
+      "id": "a1u03d2.d1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Luis cuenta qué hace ^a la mañana^.)\nLuis: (   ) ha ajahu.",
+      "options": [
+       "Chepu'ã",
+       "Apu'ã",
+       "Ipu'ã",
+       "Pu'ã"
+      ],
+      "answer": 2,
+      "why": [
+       "Che- es para los estados, como chekane'õ. Levantarse es una acción: lleva a-. Chepu'ã no existe.",
+       "Levantarse es una acción y Luis habla de él mismo: a- + pu'ã = apu'ã, «me levanto». Después se baña: ajahu.",
+       "I- marca el estado de otra persona, como en ikane'õ. Pu'ã es una acción, y además Luis habla de él.",
+       "Pu'ã sin prefijo no dice quién se levanta: le falta la persona, como guata sin a- en la unidad 2."
+      ]
+     },
+     {
+      "id": "a1u03d2.d2",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Luis comió bien y ^está contento^.)\nLuis: (   ), Ana.",
+      "options": [
+       "Chevy'a",
+       "Ivy'a",
+       "Avy'a",
+       "Vy'a"
+      ],
+      "answer": 3,
+      "why": [
+       "Parece un estado, pero vy'a se conjuga como acción. Chevy'a no existe.",
+       "Ivy'a tampoco existe: «ella está contenta» es ovy'a, con o-, como una acción. Y Luis habla de él.",
+       "Vy'a va como una acción, y Luis habla de él: a- + vy'a = avy'a, «estoy contento».",
+       "Vy'a solo es «la alegría», la cosa. Le falta la persona: a-."
+      ]
+     },
+     {
+      "id": "a1u03d2.d3",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Ana cuenta que su papá ^trabaja^.)\nAna: Che ru (   ).",
+      "options": [
+       "amba'apo",
+       "chemba'apo",
+       "imba'apo",
+       "omba'apo"
+      ],
+      "answer": 4,
+      "why": [
+       "A- es «yo»: Ana hablaría de ella misma, y habla de su papá.",
+       "Che- es para los estados, como chekane'õ, y además dice «yo». Trabajar es una acción, y la hace otra persona: o-.",
+       "I- marca el estado de otra persona, como en ikane'õ, no una acción. Para «trabaja» va el prefijo de acción: o-.",
+       "Che ru, «mi papá», es otra persona: o- + mba'apo = omba'apo, «trabaja»."
+      ]
+     },
+     {
+      "id": "a1u03d2.d4",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Ana le habla a Luis de la fiesta, y Luis ^se acuerda^.)\nLuis: (   ), Ana.",
+      "options": [
+       "Chemandu'a",
+       "Amandu'a",
+       "Imandu'a",
+       "Mandu'a"
+      ],
+      "answer": 1,
+      "why": [
+       "Acordarse es un estado, de los que van con che-: chemandu'a, «me acuerdo». Luis habla de él.",
+       "Mandu'a no se conjuga como acción: amandu'a no existe. Va con che-, como chekane'õ.",
+       "Imandu'a es «se acuerda», otra persona, con la i- de ikane'õ. Luis habla de él mismo.",
+       "Mandu'a solo no dice quién se acuerda: le falta la persona, che-."
+      ]
+     },
+     {
+      "id": "a1u03d2.d5",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "(Luis cuenta qué hace el domingo.)\nLuis: ",
+      "after": " ha apurahéi.",
+      "tiles": [
+       "a",
+       "jeroky"
+      ],
+      "bank": [
+       1,
+       0
+      ],
+      "hint": "Bailar es una acción: el prefijo que dice «yo» va primero, pegado a la raíz.",
+      "full": "(Luis cuenta qué hace el domingo.)\nLuis: {A}jeroky ha apurahéi.",
+      "es": "Luis: Bailo y canto.",
+      "explain": "a- («yo») + jeroky («bailar») = ajeroky, «bailo». El prefijo va al principio, como en apurahéi, «canto»: el guaraní pone la persona adelante, no al final como el castellano (bail-o)."
+     },
+     {
+      "id": "a1u03d2.d6",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "(Ana vuelve de la cancha.)\nAna: ",
+      "after": ".",
+      "tiles": [
+       "che",
+       "kane'õ",
+       "iterei"
+      ],
+      "bank": [
+       2,
+       0,
+       1
+      ],
+      "hint": "El cansancio es un estado: che- va primero. -iterei, «muy», como en Iporãiterei (U1), va al final.",
+      "full": "(Ana vuelve de la cancha.)\nAna: {Che}kane'õ{iterei}.",
+      "es": "Ana: Estoy muy cansada.",
+      "explain": "che- («yo», me pasa) + kane'õ («cansancio») + -iterei («muy») = chekane'õiterei, «estoy muy cansada». Un estado lleva che-, no a-. El acento pasa a -iterei, al final, así que no se escribe tilde; la õ guarda su tilde nasal."
+     }
+    ],
+    "exam": [
+     {
+      "id": "a1u03d2.e1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Qué significa",
+      "q": "Ana: _Avy'a_, Luis.",
+      "options": [
+       "Me baño, Luis.",
+       "Estoy contenta, Luis.",
+       "Tengo miedo, Luis.",
+       "Estoy cansada, Luis."
+      ],
+      "answer": 2,
+      "explain": "Vy'a es «alegrarse» y se conjuga como acción: avy'a, «estoy contenta». «Me baño» es ajahu; «tengo miedo», akyhyje; y «estoy cansada», chekane'õ, con che-."
+     },
+     {
+      "id": "a1u03d2.e2",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Ana cuenta que está en su casa.)\nAna: (   ) ógape.",
+      "options": [
+       "Akaru",
+       "Chekane'õ",
+       "Aime",
+       "Oime"
+      ],
+      "answer": 3,
+      "explain": "Para estar en un lugar va aime: Aime ógape, «estoy en casa». Akaru es «como», una acción; chekane'õ es «estoy cansada», un estado con che-; y oime es «está», otra persona, no Ana."
+     },
+     {
+      "id": "a1u03d2.e3",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "(Ana cuenta qué hace a la mañana.)\nAna: Apu'ã ha ",
+      "after": ".",
+      "tiles": [
+       "a",
+       "jahu"
+      ],
+      "bank": [
+       1,
+       0
+      ],
+      "full": "(Ana cuenta qué hace a la mañana.)\nAna: Apu'ã ha {a}jahu.",
+      "es": "Ana: Me levanto y me baño.",
+      "explain": "a- («yo») va primero y después la raíz jahu, «bañarse»: ajahu, «me baño». Bañarse es una acción, como levantarse: las dos llevan a-, no che-."
+     }
+    ]
+   },
+   "words": {
+    "es": "Un domingo en casa de Ana",
+    "intro": "Es domingo. Ana cuenta qué hace en su casa, de la mañana a la noche. Tocá cada palabra.",
+    "sound": {
+     "focus": "La j y la h",
+     "letters": [
+      "j",
+      "h"
+     ],
+     "note": "La j guaraní suena como la y fuerte de «yo», nunca como la jota castellana: jagua, jasy, ajahu. La h siempre suena: es un soplo, como la jota suave del castellano paraguayo: ha, heta, hendu. Entre j y h no hay pares mínimos seguros: compará palabras. El único par mínimo de acá cambia la vocal, no la h: hendu, hendy.",
+     "pairs": [
+      [
+       "hendu",
+       "oír",
+       "hendy",
+       "arder"
+      ],
+      [
+       "jagua",
+       "perro",
+       "jasy",
+       "luna"
+      ],
+      [
+       "ha",
+       "y",
+       "heta",
+       "mucho"
+      ],
+      [
+       "ajahu",
+       "me baño",
+       "aha",
+       "voy"
+      ]
+     ]
+    },
+    "words": [
+     {
+      "id": "apua",
+      "gn": "apu'ã",
+      "es": "me levanto",
+      "parts": [
+       [
+        "a-",
+        "yo"
+       ],
+       [
+        "pu'ã",
+        "levantarse"
+       ]
+      ],
+      "note": "Epu'ã, «levantate», es el nombre de la app."
+     },
+     {
+      "id": "ajahu",
+      "gn": "ajahu",
+      "es": "me baño",
+      "parts": [
+       [
+        "a-",
+        "yo"
+       ],
+       [
+        "jahu",
+        "bañarse"
+       ]
+      ],
+      "note": "La j suena como la y de «yo», y la h suena: a-ya-hu."
+     },
+     {
+      "id": "akaru",
+      "gn": "akaru",
+      "es": "como",
+      "parts": [
+       [
+        "a-",
+        "yo"
+       ],
+       [
+        "karu",
+        "comer"
+       ]
+      ],
+      "note": "Ya la viste en la unidad 2. Jakaru, «comamos», invita a la mesa."
+     },
+     {
+      "id": "ajeroky",
+      "gn": "ajeroky",
+      "es": "bailo",
+      "parts": [
+       [
+        "a-",
+        "yo"
+       ],
+       [
+        "jeroky",
+        "bailar"
+       ]
+      ],
+      "note": "Jeroky también es «el baile». Che sy ojeroky: mi mamá baila."
+     },
+     {
+      "id": "apurahei",
+      "gn": "apurahéi",
+      "es": "canto",
+      "parts": [
+       [
+        "a-",
+        "yo"
+       ],
+       [
+        "purahéi",
+        "cantar; canción"
+       ]
+      ],
+      "note": "Lleva tilde: el acento va en la e, no en la i del final."
+     },
+     {
+      "id": "ahendu",
+      "gn": "ahendu",
+      "es": "escucho",
+      "parts": [
+       [
+        "a-",
+        "yo"
+       ],
+       [
+        "hendu",
+        "oír"
+       ]
+      ],
+      "note": "La h suena, como la jota suave. Con hendy, «arder», solo cambia la vocal."
+     },
+     {
+      "id": "avya",
+      "gn": "avy'a",
+      "es": "estoy contento, contenta",
+      "parts": [
+       [
+        "a-",
+        "yo"
+       ],
+       [
+        "vy'a",
+        "alegrarse; alegría"
+       ]
+      ],
+      "note": "Un sentimiento que se conjuga como acción. Vy'a solo es «la alegría»."
+     },
+     {
+      "id": "aime",
+      "gn": "aime",
+      "es": "estoy (en un lugar)",
+      "note": "Ko'ág̃a aime ógape, «ahora estoy en casa». Moõpa reime?, «¿dónde estás?». Para un estado no va: chekane'õ."
+     }
+    ],
+    "spell": [
+     "ajahu",
+     "ajeroky",
+     "apurahei",
+     "ahendu"
+    ],
+    "check": {
+     "id": "a1u03d2.k1",
+     "kind": "choice",
+     "area": "vocab",
+     "label": "Cómo se escribe",
+     "q": "Le contás a Luis: «Es domingo y _me baño_ tarde.» ¿Cómo se escribe en guaraní?",
+     "options": [
+      "ayahu",
+      "ajaju",
+      "ajahu",
+      "ajau"
+     ],
+     "answer": 3,
+     "explain": "Me baño es ajahu: a-, «yo», la j, que suena como la y de «yo», y la h, que siempre suena. Ayahu la escribe con y, que en guaraní es una vocal, la sexta. Ajaju cambia la h por j, otra letra. Ajau se come la h, que nunca es muda."
+    }
+   },
+   "skill": {
+    "kind": "reading",
+    "es": "Un mensaje de Ana",
+    "ask": "¿Qué hace Ana ahora?",
+    "seconds": 60,
+    "passage": "Mba'éichapa, Luis?\nKo'ág̃a ^ajahu^ ha ^akaru^. Chekane'õiterei.\nJajotopáta ko pyhare.\nAna",
+    "strategy": "Buscá los verbos con a-: son lo que hace Ana. Lo que le pasa va con che-.",
+    "item": {
+     "id": "a1u03d2.r1",
+     "kind": "choice",
+     "area": "reading",
+     "label": "Texto corto",
+     "q": "¿Qué hace Ana ahora?",
+     "options": [
+      "Se baña y come.",
+      "Duerme.",
+      "Baila y canta.",
+      "Va a la escuela."
+     ],
+     "short": [
+      "Se baña y come",
+      "Duerme",
+      "Baila y canta",
+      "A la escuela"
+     ],
+     "answer": 1,
+     "why": [
+      "Ana escribe ajahu ha akaru: a- es «yo», jahu «bañarse» y karu «comer». Se baña y come.",
+      "Dormir es ke: ake, «duermo». Ana no lo escribe; escribe que está muy cansada, chekane'õiterei.",
+      "Bailar y cantar son ajeroky ha apurahéi, y no están en el mensaje.",
+      "Ir es aha, y la escuela, mbo'ehao: ninguna de las dos está en el mensaje. Ana solo dice que se ven esta noche: Jajotopáta ko pyhare."
+     ],
+     "explain": "Ana escribe Ko'ág̃a ajahu ha akaru: «ahora me baño y como». Los verbos con a- dicen lo que hace; chekane'õiterei, con che-, dice cómo está: muy cansada."
+    }
+   }
+  }
+ },
+ "test": []
+}

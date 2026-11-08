@@ -1,0 +1,313 @@
+{
+  "title": "Posesión con che/nde + sustantivo",
+  "grammar": {
+    "points": [
+      {
+        "id": "a1u04d1.p1",
+        "form": "che + sustantivo",
+        "gloss": "mi, mis",
+        "connect": [
+          { "pos": "Delante del sustantivo, que no cambia: ni género ni número", "rule": "{che} sy · {che} memby" },
+          { "pos": "Con las palabras en r- que ya usás", "rule": "{che} réra · {che} róga · {che} ru" },
+          { "pos": "El dueño va primero, también cuando es otra persona: «la casa de mi abuela»", "rule": "{che jarýi} róga" },
+          { "pos": "Para «nuestro»: ñande (con vos) · ore (sin vos)", "rule": "{ñande} ru · {ore} róga" }
+        ],
+        "examples": [
+          {
+            "gn": "{Che} róga iporã.",
+            "es": "Mi casa es linda.",
+            "parts": [["che", "mi"], ["róga", "casa (con che)"], ["iporã", "es linda"]]
+          },
+          {
+            "gn": "Ha'e {che} ra'y.",
+            "es": "Él es mi hijo.",
+            "parts": [["ha'e", "él"], ["che", "mi"], ["ra'y", "hijo (dice el papá)"]]
+          },
+          {
+            "gn": "Aha {che jarýi} rógape.",
+            "es": "Voy a la casa de mi abuela.",
+            "parts": [["a-ha", "voy"], ["che jarýi", "mi abuela"], ["róga-pe", "a la casa"]]
+          },
+          {
+            "gn": "{Che} sy ha {che} ru oñe'ẽ guaraníme.",
+            "es": "Mi mamá y mi papá hablan guaraní.",
+            "parts": [["che sy", "mi mamá"], ["ha", "y"], ["che ru", "mi papá"], ["oñe'ẽ", "hablan"], ["guaraníme", "en guaraní"]]
+          }
+        ],
+        "watch": {
+          "note": "En castellano decís primero la cosa y después de quién es: «la casa de mi abuela». En guaraní es al revés y sin «de»: primero el dueño, después la cosa.",
+          "bad": "róga che jarýi",
+          "good": "che jarýi róga"
+        }
+      },
+      {
+        "id": "a1u04d1.p2",
+        "form": "nde / ne + sustantivo",
+        "gloss": "tu, tus",
+        "connect": [
+          { "pos": "Delante del sustantivo, como che", "rule": "{nde} sy · {nde} ru · {nde} róga" },
+          { "pos": "Delante de una palabra nasal (con ~, o con m, n, ñ, mb, nd, ng), nde pierde la d", "rule": "{ne} memby · {ne} ramói · {ne} angirũ" },
+          { "pos": "Para preguntar el nombre de alguien de la familia", "rule": "Mba'éichapa héra {nde} ru?" },
+          { "pos": "Para preguntar dónde queda la casa", "rule": "Moõpa {nde} róga?" }
+        ],
+        "examples": [
+          {
+            "gn": "Mba'éichapa héra {nde} ru?",
+            "es": "¿Cómo se llama tu papá?",
+            "parts": [["mba'éichapa", "¿cómo?"], ["héra", "su nombre"], ["nde ru", "tu papá"]]
+          },
+          {
+            "gn": "Moõpa {nde} róga?",
+            "es": "¿Dónde queda tu casa?",
+            "parts": [["moõpa", "¿dónde?"], ["nde", "tu"], ["róga", "casa (con nde)"]]
+          },
+          {
+            "gn": "Mba'éichapa héra {ne} memby?",
+            "es": "¿Cómo se llama tu hijo?",
+            "parts": [["ne", "tu (ante palabra nasal)"], ["memby", "hijo o hija (dice la mamá)"]]
+          },
+          {
+            "gn": "Mba'éichapa héra {ne} ramói?",
+            "es": "¿Cómo se llama tu abuelo?",
+            "parts": [["ne", "tu (ante palabra nasal)"], ["ramói", "abuelo (con che, ne)"]]
+          }
+        ],
+        "watch": {
+          "note": "Delante de una palabra nasal, nde pierde la d: ne memby, ne ramói, ne angirũ. Nde memby se entiende, pero no se escribe así.",
+          "bad": "nde memby",
+          "good": "ne memby"
+        }
+      }
+    ],
+    "compare": {
+      "intro": "Che y nde son los pronombres de la semana 1 y también los posesivos: lo que cambia es si van solos o delante de un sustantivo.",
+      "forms": [
+        { "form": "che + sustantivo", "tag": "mi, mis", "mark": "dot", "gn": "{Che} sy oñe'ẽ guaraníme.", "es": "Mi mamá habla guaraní." },
+        { "form": "nde / ne + sustantivo", "tag": "tu, tus", "mark": "dot", "gn": "Mba'éichapa héra {nde} sy?", "es": "¿Cómo se llama tu mamá?" },
+        { "form": "che · nde solos", "tag": "yo · vos (semana 1)", "mark": "dot", "gn": "{Che} Paraguaigua, ha {nde}?", "es": "Yo soy de Paraguay, ¿y vos?" }
+      ],
+      "check": {
+        "id": "a1u04d1.c1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Juan le pregunta a Rosa cómo se llama ^la mamá de ella^.\nJuan: Mba'éichapa héra (   ) sy?",
+        "options": ["che", "nde", "ne"],
+        "answer": 2,
+        "why": [
+          "Che es «mi»: Juan preguntaría por su propia mamá, y pregunta por la de Rosa.",
+          "Juan le habla a Rosa de la mamá de ella: nde sy, «tu mamá». Sy es una palabra oral, así que nde no cambia.",
+          "Ne es nde delante de una palabra nasal, como en ne memby. Sy no tiene ~ ni m, n, ñ: queda nde sy."
+        ]
+      }
+    },
+    "drill": [
+      {
+        "id": "a1u04d1.d1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Ana le muestra a Juan una foto de ^su abuela^.)\nJuan: Mávapa ha'e?\nAna: Ha'e (   ) jarýi.",
+        "options": ["nde", "ne", "che", "héra"],
+        "answer": 3,
+        "why": [
+          "Nde es «tu»: sería la abuela de Juan, y la foto es de la abuela de Ana.",
+          "Ne solo va delante de una palabra nasal, y jarýi es oral. Además sería «tu», no «mi».",
+          "Ana habla de su propia abuela: che jarýi, «mi abuela».",
+          "Héra es «su nombre», como en Héra Rosa. No dice de quién es la abuela."
+        ]
+      },
+      {
+        "id": "a1u04d1.d2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Juan: Mba'éichapa héra (   ) ^memby^, Rosa?",
+        "options": ["nde", "ne", "che", "ñande"],
+        "answer": 2,
+        "why": [
+          "Nde es «tu», pero memby es una palabra nasal, con m: delante de ella nde pierde la d.",
+          "Juan le pregunta a Rosa por el hijo de ella: «tu hijo». Memby empieza con m, es nasal, así que nde se vuelve ne: ne memby.",
+          "Che es «mi»: Juan preguntaría por su propio hijo, y le pregunta a Rosa por el de ella.",
+          "Ñande es «nuestro» con vos: metería a Juan. Y delante de una palabra nasal sería ñane."
+        ]
+      },
+      {
+        "id": "a1u04d1.d3",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí el orden",
+        "q": "Luis habla de ^la casa de su abuela^.\nLuis: (   ) iporã.",
+        "options": ["Róga che jarýi", "Che róga jarýi", "Jarýi che róga", "Che jarýi róga"],
+        "answer": 4,
+        "why": [
+          "Róga che jarýi calca el orden del castellano, con la casa primero. En guaraní el dueño va primero, y róga sola, sin dueño delante, no se dice.",
+          "Che róga jarýi es «mi casa» y después «abuela». Jarýi tiene que ir antes de róga, porque es la dueña.",
+          "Jarýi che róga es «abuela» y después «mi casa»: así la casa es de Luis, no de la abuela.",
+          "Primero el dueño, che jarýi, y después la cosa, róga: «la casa de mi abuela», sin «de»."
+        ]
+      },
+      {
+        "id": "a1u04d1.d4",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Ana vive con su hermano Luis. Le muestra la casa a Juan.)\nAna: (   ) róga iporã. ^(nuestra casa)^",
+        "options": ["Ore", "Ñande", "Nde", "Che"],
+        "answer": 1,
+        "why": [
+          "La casa es de Ana y de Luis, y Juan, el que escucha, no vive ahí: ore róga, «nuestra casa», sin vos.",
+          "Ñande incluye al que escucha: ñande róga sería también la casa de Juan.",
+          "Nde es «tu»: nde róga sería la casa de Juan.",
+          "Che róga es «mi casa»: deja afuera a Luis, y la casa es de los dos, «nuestra»."
+        ]
+      },
+      {
+        "id": "a1u04d1.d5",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la oración",
+        "join": "sentence",
+        "before": "Aha",
+        "after": ".",
+        "tiles": ["che", "ru", "rógape"],
+        "bank": [2, 0, 1],
+        "hint": "Primero el dueño, después la casa. Rógape es róga con -pe, «a».",
+        "full": "Aha {che ru} rógape.",
+        "es": "Voy a la casa de mi papá.",
+        "explain": "Che ru, «mi papá», va primero: es el dueño. Después viene la casa, róga, con -pe, «a»: rógape. En guaraní no hay «de»: el orden ya dice de quién es la casa. Ru sola no se dice: siempre lleva un dueño delante."
+      },
+      {
+        "id": "a1u04d1.d6",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la oración",
+        "join": "sentence",
+        "before": "Moõpa",
+        "after": "?",
+        "tiles": ["ne", "ramói", "róga"],
+        "bank": [1, 2, 0],
+        "hint": "Como Moõpa nde róga?, pero la casa es del abuelo: el dueño va primero. Y delante de ramói, nde cambia.",
+        "full": "Moõpa {ne} ramói róga?",
+        "es": "¿Dónde queda la casa de tu abuelo?",
+        "explain": "Primero el dueño, ne ramói, «tu abuelo», y después róga: «la casa de tu abuelo». Ramói es una palabra nasal, con m, así que nde se vuelve ne. Ramói y róga no van solas: las dos llevan un dueño delante."
+      }
+    ],
+    "exam": [
+      {
+        "id": "a1u04d1.e1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Qué significa",
+        "q": "Luis: _Che sy ha che ru_ oñe'ẽ guaraníme.",
+        "options": ["Tu mamá y tu papá hablan guaraní.", "Mi mamá y tu papá hablan guaraní.", "Mi mamá y mi papá hablan guaraní.", "Mi abuela y mi abuelo hablan guaraní."],
+        "answer": 3,
+        "explain": "Che es «mi» y va delante de cada sustantivo: che sy, «mi mamá», ha, «y», che ru, «mi papá». «Tu» sería nde: nde sy, nde ru. Y abuela y abuelo son jarýi y ramói."
+      },
+      {
+        "id": "a1u04d1.e2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Rosa: Mba'éichapa héra (   ) angirũ, Juan?",
+        "options": ["nde", "ne", "che", "héra"],
+        "answer": 2,
+        "explain": "Rosa le pregunta a Juan por el amigo de él: «tu amigo». Angirũ es una palabra nasal, con ũ, así que nde pierde la d: ne angirũ. Che sería «mi», y héra ya está en la frase: es «su nombre», no un posesivo."
+      },
+      {
+        "id": "a1u04d1.e3",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la oración",
+        "join": "sentence",
+        "before": "(Juan le pregunta a Rosa por la casa del papá de ella.)\nJuan: Moõpa",
+        "after": "?",
+        "tiles": ["nde", "ru", "róga"],
+        "bank": [2, 0, 1],
+        "full": "(Juan le pregunta a Rosa por la casa del papá de ella.)\nJuan: Moõpa nde ru róga?",
+        "es": "Juan: ¿Dónde queda la casa de tu papá?",
+        "explain": "Nde ru, «tu papá», va primero: es el dueño. Después la casa, róga. Ru es una palabra oral, así que nde no cambia. Sin «de»: el orden dice de quién es la casa, y ni ru ni róga van solas."
+      }
+    ]
+  },
+  "words": {
+    "es": "La foto de la familia",
+    "intro": "La foto del domingo, en el patio y con tereré. Tocá cada persona: todas van con che, «mi». Fijate quién lo dice: dos palabras cambian si habla la mamá o el papá.",
+    "sound": {
+      "focus": "La j, la h y la r",
+      "letters": ["j", "h", "r"],
+      "note": "Tres letras que no suenan como en castellano. La j es como la y fuerte de «yo», nunca la jota: jarýi, rajy. La h siempre suena, como un soplo: héra, hembireko. La r es la r suave de «caro», también al empezar la palabra: ru, ramói; la rr fuerte solo está en préstamos como vúrro. Dos pares cambian una sola letra: che rajy y che ra'y, che rembireko y hembireko. Los otros dos son palabras para contrastar, no pares mínimos.",
+      "pairs": [
+        ["jarýi", "abuela", "héra", "su nombre"],
+        ["che rajy", "mi hija", "che ra'y", "mi hijo"],
+        ["che rembireko", "mi esposa", "hembireko", "su esposa"],
+        ["che ru", "mi papá", "vúrro", "burro"]
+      ]
+    },
+    "words": [
+      { "id": "sy", "gn": "che sy", "es": "mi mamá", "parts": [["che", "mi"], ["sy", "madre"]], "note": "Sy es «madre». Es oral: con nde no cambia, nde sy." },
+      { "id": "ru", "gn": "che ru", "es": "mi papá", "parts": [["che", "mi"], ["ru", "padre (con che, nde, ñande)"]], "note": "Sola, la palabra es túva. Con che, nde, ñande y ore se vuelve ru: che ru, ñande ru." },
+      { "id": "memby", "gn": "che memby", "es": "mi hijo, mi hija", "parts": [["che", "mi"], ["memby", "hijo o hija (dice la mamá)"]], "note": "Lo dice la mamá, de un hijo o de una hija. Es nasal, con m: con nde se dice ne memby." },
+      { "id": "ray", "gn": "che ra'y", "es": "mi hijo", "parts": [["che", "mi"], ["ra'y", "hijo (dice el papá)"]], "note": "Lo dice el papá. Lleva puso: ra'y. Sola, la palabra es ta'ýra." },
+      { "id": "rajy", "gn": "che rajy", "es": "mi hija", "parts": [["che", "mi"], ["rajy", "hija (dice el papá)"]], "note": "Lo dice el papá. La j suena como la y fuerte de «yo»: rajy, nunca con jota. Sola, la palabra es tajýra." },
+      { "id": "jaryi", "gn": "che jarýi", "es": "mi abuela", "parts": [["che", "mi"], ["jarýi", "abuela"]], "note": "Tilde en la ý: el acento no cae al final. Es oral: con nde no cambia, nde jarýi." },
+      { "id": "ramoi", "gn": "che ramói", "es": "mi abuelo", "parts": [["che", "mi"], ["ramói", "abuelo (con che, ne)"]], "note": "Sola es tamói. Es nasal, con m: con nde se dice ne ramói. La r es suave, como en «caro»." },
+      { "id": "rembireko", "gn": "che rembireko", "es": "mi esposa", "parts": [["che", "mi"], ["rembireko", "esposa (con che)"]], "note": "Sola es hembireko, «su esposa»: la h suena. Es nasal, con mb: con nde se dice ne rembireko. «Mi esposo» es che ména." }
+    ],
+    "spell": ["rajy", "ramoi", "rembireko", "jaryi"],
+    "check": {
+      "id": "a1u04d1.k1",
+      "kind": "choice",
+      "area": "vocab",
+      "label": "Cómo se escribe",
+      "q": "Luis muestra una foto: Ha'e che _hija_. ¿Cómo se escribe «hija» con che?",
+      "options": ["raji", "rally", "rajy", "rayi"],
+      "answer": 3,
+      "explain": "Con che es rajy: con j, que suena como la y fuerte de «yo», y con y al final, la sexta vocal. Raji cambia esa y por i. Rayi escribe el sonido de la j con la y del castellano y además pierde la sexta vocal. Rally lo escribe con ll, como en castellano; en guaraní ese sonido se escribe j, como en kavaju, «caballo»."
+    }
+  },
+  "skill": {
+    "kind": "listening",
+    "es": "Comprensión de puntos clave",
+    "situation": "Ana le muestra a Juan la foto de su familia y le dice quién es cada uno.",
+    "ask": "¿Cómo se llama el abuelo de Ana?",
+    "item": {
+      "id": "a1u04d1.r1",
+      "kind": "choice",
+      "area": "listening",
+      "label": "Qué escuchaste",
+      "q": "¿Cómo se llama el abuelo de Ana?",
+      "options": ["Luis.", "Pedro.", "Marta."],
+      "short": ["Luis", "Pedro", "Marta"],
+      "printed": true,
+      "answer": 2,
+      "why": [
+        "Luis es el papá de Ana: Ha'e che ru, héra Luis, «él es mi papá, se llama Luis».",
+        "Cuando Juan pregunta Mávapa ha'e?, Ana responde Che ramói, héra Pedro: «mi abuelo, se llama Pedro».",
+        "Marta es la mamá de Ana: Ha'e che sy, héra Marta, «ella es mi mamá, se llama Marta»."
+      ],
+      "script": [
+        "Narrador: Ana le muestra a Juan la foto de su familia. ¿Cómo se llama el abuelo de Ana?",
+        "Mujer: Ha'e che sy, héra Marta.",
+        "Mujer: Ha'e che ru, héra Luis.",
+        "Narrador: Juan señala a un señor de la foto.",
+        "Hombre: Mávapa ha'e?",
+        "Mujer: Che ramói, héra Pedro.",
+        "Hombre: Mba'éichapa héra ne memby?",
+        "Mujer: Héra Sofía.",
+        "Narrador: ¿Cómo se llama el abuelo de Ana?"
+      ]
+    },
+    "audio": [
+      ["N", "Ana le muestra a Juan la foto de su familia. ¿Cómo se llama el abuelo de Ana?", "Ana le muestra a Juan la foto de su familia. ¿Cómo se llama el abuelo de Ana?"],
+      ["F", "Ha'e che sy, héra Marta.", "Ella es mi mamá, se llama Marta."],
+      ["F", "Ha'e che ru, héra Luis.", "Él es mi papá, se llama Luis."],
+      ["N", "Juan señala a un señor de la foto.", "Juan señala a un señor de la foto."],
+      ["M", "Mávapa ha'e?", "¿Quién es?"],
+      ["F", "Che ramói, héra Pedro.", "Mi abuelo, se llama Pedro."],
+      ["M", "Mba'éichapa héra ne memby?", "¿Cómo se llama tu hija?"],
+      ["F", "Héra Sofía.", "Se llama Sofía."],
+      ["N", "¿Cómo se llama el abuelo de Ana?", "¿Cómo se llama el abuelo de Ana?"]
+    ]
+  }
+}

@@ -66,9 +66,13 @@ this.h = window.gnCourse.handlers(() => this.state, (fn) => this.setState(fn));
 componentDidMount() {
 window.gnApp.onScreen(this.state.screen);
 this.unwatch = window.gnApp.watch(() => this.catchUp());
+/* a unit's sound file arrived (the engine fetches it when the unit is in use): the screen draws its controls again */
+this.onSound = () => this.forceUpdate();
+document.addEventListener('gnsound', this.onSound);
 }
 componentWillUnmount() {
 if (this.unwatch) this.unwatch();
+document.removeEventListener('gnsound', this.onSound);
 }
 componentDidUpdate() {
 const s = this.state;

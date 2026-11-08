@@ -14,6 +14,7 @@
 <script src="./gn-course.js"></script>
 <script src="./gn-spell.js"></script>
 <script src="./gn-extra.js"></script>
+<script src="./gn-sound-index.js"></script>
 </head>
 <body>
 <x-dc>
@@ -62,6 +63,14 @@ constructor(props) {
 super(props);
 this.state = window.gnCourse.fresh();
 this.h = window.gnCourse.handlers(() => this.state, (fn) => this.setState(fn));
+}
+/* a unit's sound file arrived (the engine fetches it when the unit is in use): the screen draws its controls again */
+componentDidMount() {
+this.onSound = () => this.forceUpdate();
+document.addEventListener('gnsound', this.onSound);
+}
+componentWillUnmount() {
+document.removeEventListener('gnsound', this.onSound);
 }
 renderVals() {
 const s = this.state;

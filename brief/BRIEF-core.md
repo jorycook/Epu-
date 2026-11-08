@@ -26,7 +26,8 @@ board named in your spec and do what it does.
   then this board's own scripts, then `</head><body><x-dc><helmet>…</helmet> ROOT </x-dc><script type="text/x-dc" data-dc-script data-props='…'>class Component extends DCLogic { … }</script></body></html>`.
   Keep the `<script src="./support.js"></script>` line EXACTLY, first in the head.
 - Scripts in the head, in this order, only those the board needs: `./gn-sound.js`, `./gn-course-a1.js`, `./gn-course-a2.js`,
-  `./gn-course-b1.js`, `./gn-course-b2.js`, `./gn-course-c1.js`, `./gn-course-c2.js`, `./gn-course.js`. A board that reads
+  `./gn-course-b1.js`, `./gn-course-b2.js`, `./gn-course-c1.js`, `./gn-course-c2.js`, `./gn-course.js` (then `./gn-spell.js`,
+  `./gn-extra.js`; the prototype board alone also `./gn-sound-index.js`, the list of the sound files that exist). A board that reads
   the course loads ALL six level files, then the engine. A board must load everything it needs to render on its own
   (an imported board too: App imports boards, and each must still open alone).
 - Helmet: the font link (section 4, exactly), then `<style>` with `body{margin:0}`, `button{font:inherit;color:inherit;cursor:pointer}`,
@@ -167,9 +168,13 @@ Same names and meanings as Yaoki's `ykCourse` unless noted. `const C = window.gn
   with Math.max; `result` stores a week test at `tests[result.id]`; `exam` stores a level exam result at `exams[level]` (a pass is never replaced
   by a fail); `typed` adds words spelled with the Guarani keyboard.
 - `C.view(state)` → `{ status, plan, plans, sid, session, unit, day, prog, done, tests, exams, exam, tp, set, mistakes, typed, placement, profile, exposure, level, meta, levels, progress }` (`plans`: the other levels' plans; `profile`: the goal's answers; `exposure`: the «lo usé» marks).
-- Sound: `window.gnSound` — `has(key)`, `ms(key)`, `unlock()`, `play(key)`, `stop()`, `on()`, `at()`. No clips exist: a sound control
+- Sound: `window.gnSound` — `has(key)`, `ms(key)`, `kind(key)` ('human' | 'synthetic' | ''), `unlock()`, `play(key)`, `stop()`, `on()`, `at()`. No clips exist: a sound control
   checks `has()` and otherwise lights up as "playing" for `600 + C.plain(text).length * 120` ms (Yaoki's silent stand-in), showing the
-  words being said. Clip keys: `<item or example id>` (e.g. `a1u01d1.p1.x0` = point 1, example 0; `a1u01d1.r1` = listening item).
+  words being said. Clip keys: `<item or example id>` (e.g. `a1u01d1.p1.x0` = point 1, example 0; `a1u01d1.r1` = listening item);
+  the full list is `sound/A1/manifest.json` (tools/sound-list.mjs). The clips arrive by unit (`gn-sound-a1-u01.js`, made by
+  tools/make-sound.mjs; `gn-sound-index.js` names the files that exist): the engine fetches a unit's file when the unit is in use
+  (`C.needSound`), and fires `gnsound` on `document` when it has loaded, so the prototype draws the screen again. A screen that
+  plays a synthetic clip says «voz sintética» (Words' sound step, Hablar).
 
 ## 7. Content: the shape the screens read
 

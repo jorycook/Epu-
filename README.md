@@ -20,11 +20,12 @@ native speaker's check.
 |---|---|
 | `project/` | The canvas's files: 42 boards (`*.dc.html`), the index (`canvas.json`) and the shared scripts. `gn-course.js` is the course engine (the counterpart of Yaoki's `course.js`, as `window.gnCourse`); `gn-course-a1.js` … `gn-course-c2.js` are the six levels' data, made from `content/`; `gn-extra.js` holds the placement check, the A1 level exam, the reader's text and the typing and speaking lists; `gn-spell.js` is the spelling helper (the letters of the alphabet, the keys a word needs, why a typed letter is off); `gn-sound.js` is Yaoki's sound player under new names. |
 | `content/` | The course as data. `levels.json` is the syllabus of all six levels (52 units, the title of every study day). `a1/parts/` holds A1 unit 1 day by day and its week test; `a1/u01.json` is the unit assembled from them; `extra/` holds the extras. |
-| `tools/` | `build-course.mjs` checks the content and writes the level files; `assemble-unit.mjs` merges a unit's day files; `lint-board.mjs` checks a board for the format rules that fail silently; `smoke-boards.mjs` runs each board's logic against the engine and the data, the way the canvas and the prototype call it, without rendering; `blind-export.mjs` exports every question without its answer for a blind solver. |
+| `tools/` | `build-course.mjs` checks the content and writes the level files; `assemble-unit.mjs` merges a unit's day files; `lint-board.mjs` checks a board for the format rules that fail silently; `smoke-boards.mjs` runs each board's logic against the engine and the data, the way the canvas and the prototype call it, without rendering; `blind-export.mjs` exports every question without its answer for a blind solver; `sound-list.mjs`, `make-sound.mjs` and `make-tts.py` are the sound path (see Sound). |
+| `sound/` | The clip lists: `A1/manifest.json` (every clip the course needs, by key, with its text, voice, place and recording order; read by the tools and the studio) and `A1/lista.csv` (the same, for a spreadsheet). The recordings themselves do not live in the repository: `make-sound.mjs` turns them into `project/gn-sound-*.js`. |
 | `brief/` | The design brief the boards were built from: `BRIEF-core.md` (format, wiring, typefaces, tokens, engine, content shape), `BRIEF-design.md` (language, look, mascot, the verified Guarani glossary), `BOARDS.md` (every board's spec), `CONTENT-BRIEF.md` (how the lessons are written), the font link, and `mascot/` (Kaguare's final art: `SPEC.md`, `spec.json` with every SVG, and `sheet.png`). |
 | `notes/` | The research the design rests on. Y1 to Y5 map the Yaoki suite (plan and engine, the lesson loop, skills and tests, the satellites, platform and brand). G1 to G8 are the Guarani research, with a source and a confidence mark on every claim: sounds, spelling, fonts and keyboards; a verified grammar reference; learners and prior art; data, audio and licences; culture, naming and UI words; the CEFR and the level exam; the six-level syllabus; and G8, the second mascot (Kaguare: which anteater, its names, three slang screens). |
-| `epua-app/` | The installable app around the screens: `src/` (Yaoki's runtime, the shell, the first-visit page, the offline worker, the page and the manifest), `build.mjs`, `fonts.py`, `fetch-fonts.sh` and `check/app-check.js`. |
-| `docs/` | The built app, for GitHub Pages. This is all a phone needs. |
+| `epua-app/` | The installable app around the screens: `src/` (Yaoki's runtime, the shell, the first-visit page, the offline worker, the page and the manifest), `studio/` (the recording studio page), `build.mjs`, `fonts.py`, `fetch-fonts.sh` and `check/app-check.js`. |
+| `docs/` | The built app, for GitHub Pages. This is all a phone needs. `docs/estudio/` is the recording studio, next to the app and not part of it. |
 | `check/` | Two checks of the built app in Chromium, as GitHub Pages serves it: `flows-test.js` (a learner's flows by taps, saved progress, two tabs, saved data that does not fit) and `platform-test.js` (phone sizes, the Home Screen, offline, updates, the manifest and icons, the typefaces, every screen's frame, tap targets, languages). Their screenshots go to `check/out/`, which is not kept. |
 
 ## Build and check
@@ -163,12 +164,55 @@ could not settle are listed in `notes/REVIEW-NEEDED.md`.
 
 ## Sound
 
-No clip exists yet, and none is synthetic. Kokoro-82M has no Guarani voice; espeak-ng's Guarani drops the puso and does not
-nasalise g̃; Meta's MMS model is licensed for non-commercial use only and untested. A synthetic placeholder would teach the
-very sounds the course corrects, so every sound control uses Yaoki's silent stand-in (it lights up for as long as the text
-would take to say) until native recordings exist. The recording plan in notes G4 §6 estimates 3,850 to 6,200 clips, about
-11 hours of finished audio, two main voices plus guest voices, contracts that cover performer rights, and release under
-CC BY 4.0. Record A1 first.
+No clip exists yet. Every sound control uses Yaoki's silent stand-in (it lights up for as long as the text would take to
+say) and says so, until recordings exist; the path for them is built and tested:
+
+```
+node tools/sound-list.mjs A1                       # every clip A1 needs → sound/A1/manifest.json and lista.csv, with the count
+node tools/make-sound.mjs <folder of recordings>   # → project/gn-sound-a1-u01.js … and gn-sound-index.js; reports what is still missing
+node tools/make-sound.mjs check/fixtures/sound --out /tmp/x --dry-run   # a trial with the test fixtures (short tones)
+python3 tools/make-tts.py --out <folder> --dry-run   # the synthetic fallback: what it would say (a model is needed to say it)
+node check/sound-test.js                           # the whole path in Chromium, with the fixtures, in epua-app/dist-sound
+```
+
+- **The list.** `tools/sound-list.mjs` walks the built course (`project/gn-course-a1.js`, `gn-extra.js`) and writes one
+  row per clip with the key the screens ask `window.gnSound` for (`a1u01d1.p1.x0` an example, `a1u01d1.w.maitei` a word,
+  `a1u01d1.s0a` a word of a sound pair, `a1u01d1.r1` a listening item and `a1u01d1.r1.slow` its slower take, `pl.3` and
+  `a1x.4` the placement's and the exam's listening items, `p2.1` and `s0` the speaking game's, `c.check` the exam's test
+  tone), the text, its Spanish, the voice (F the woman, the main voice; M the man; N the narrator, in Spanish), where it is
+  used and the recording order. A text said already by the same voice is listed with `same` and not recorded again; a
+  dialogue is recorded one line at a time (`<key>.l0`, `.l1` …, each line its own voice) and put together by the tool.
+  A1 unit 1 and the extras come to 146 recordings for 202 keys.
+- **The studio.** `docs/estudio/` (source `epua-app/studio/index.html`) is a page in Spanish for a native speaker: it loads
+  the list, shows one line at a time (the Guarani big, in the Guarani face; the Spanish small; the voice and the key),
+  records it with the browser's recorder (Safari on the iPhone gives `audio/mp4`, Chrome `audio/webm`), plays it back,
+  keeps every take in the browser (IndexedDB, so a session goes on another day) and exports them all as one zip named by
+  key, with `voices.json` (name, CC BY 4.0, as notes G4 §6 plans) and `tomas.csv`. It is served next to the app and is not
+  part of the install nor of the offline copy. It loads nothing from another site.
+- **The files.** `tools/make-sound.mjs <folder>` takes the unpacked zip (or any folder of `<key>.wav|mp3|m4a|webm|ogg`
+  with an optional `voices.json`), trims silence and levels loudness with ffmpeg (−16 LUFS, peaks under −1.5 dBTP), pads
+  80 ms before and 150 ms after, encodes mono MP3 at 32 kb/s and 24 kHz (what Safari on iOS decodes for Web Audio; Opus
+  it does not), measures each clip and writes `project/gn-sound-a1-u01.js` (one file per unit), `gn-sound-pl.js`,
+  `gn-sound-a1-x.js` and `gn-sound-sp.js`, each registering `window.__gnClips[key] = { ms, kind: 'human' | 'synthetic',
+  voice, b }` (`b` the MP3 as base64, the field Yaoki's player reads; `cues` on a dialogue, where each line ends), and the
+  index `project/gn-sound-index.js` (`window.__gnSoundFiles`, `window.__gnSoundVoices`). It reports the keys still
+  missing. `App.dc.html` loads the index with the course; the engine (`gnCourse.needSound`) fetches a unit's file next to
+  `gn-course.js` when the unit is first in use, and the placement's, the exam's or the speaking game's file when that
+  screen opens, so the phone never holds every unit's sound at once. The app build ships the files but does not install
+  them: `sw.js` stores each the first time it is fetched and the rest of the level in the background once there is a plan,
+  under a hash of its content, so a new build keeps the unchanged ones. The canvas's other boards keep their stand-ins.
+- **The screens** change nothing when a clip exists (`has()` was always the test): they play it and keep time with it.
+  One honest signal is new: when the clip's kind is `synthetic` (`gnSound.kind(key)`), the Words sound step and Hablar say
+  «voz sintética».
+- **The synthetic fallback.** `tools/make-tts.py` says every recorded row of the manifest with a voice model and writes
+  WAVs plus a `voices.json` marked synthetic, for `make-sound.mjs --kind synthetic`: Meta's MMS-TTS (`facebook/mms-tts-gug`,
+  then `grn`; CC BY-NC 4.0, non-commercial use only; needs huggingface.co and its file hosts) or a Piper voice given as a
+  path (`.onnx` with its `.json`, such as the Guarani "T2" voice of the public-domain guarani-voice project, whose weights
+  the owner exports or trains). No model is reachable from the build environment, so only its `--dry-run` was run. A
+  synthetic placeholder would teach the very sounds the course corrects (Kokoro has no Guarani voice; espeak-ng drops the
+  puso and does not nasalise g̃), so the app marks it and the studio's recordings replace it.
+- **The plan.** Notes G4 §6 estimate 3,850 to 6,200 clips for the six levels, about 11 hours of finished audio, two main
+  voices plus guest voices, contracts that cover performer rights, and release under CC BY 4.0. Record A1 first.
 
 ## Licences
 

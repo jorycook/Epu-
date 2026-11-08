@@ -1,0 +1,299 @@
+{
+  "title": "che-/nde- para estados y cualidades (sin «estar»)",
+  "grammar": {
+    "points": [
+      {
+        "id": "a1u03d1.p1",
+        "form": "che- · nde-/ne- + estado",
+        "gloss": "estoy…, tengo… (sin «estar»)",
+        "connect": [
+          { "pos": "Para hablar de vos mismo: che- pegado al estado", "rule": "{Che}kane'õ." },
+          { "pos": "Para el que escucha: nde-", "rule": "{Nde}pochy." },
+          { "pos": "Si la palabra es nasal (lleva ~ o m, n, ñ, mb, nd, ng, nt), nde- se dice y se escribe ne-", "rule": "{Ne}kane'õ. {Ne}mandu'a." }
+        ],
+        "examples": [
+          {
+            "gn": "Luis: {Che}kane'õ.",
+            "es": "Luis: Estoy cansado.",
+            "parts": [["che-", "yo (me pasa)"], ["kane'õ", "cansancio, cansado"]]
+          },
+          {
+            "gn": "{Che}vare'a ha {che}y'uhéi.",
+            "es": "Tengo hambre y sed.",
+            "parts": [["che-", "yo"], ["vare'a", "hambre"], ["ha", "y"], ["y'uhéi", "sed"]]
+          },
+          {
+            "gn": "{Nde}pochy, Juan.",
+            "es": "Estás enojado, Juan.",
+            "parts": [["nde-", "vos (te pasa)"], ["pochy", "enojo, enojado"]]
+          },
+          {
+            "gn": "Rosa: {Ne}kane'õ, Luis.\nLuis: Héẽ, {che}kane'õ ha {che}ro'y.",
+            "es": "Rosa: Estás cansado, Luis.\nLuis: Sí, estoy cansado y tengo frío.",
+            "parts": [["ne-", "vos, ante una palabra nasal"], ["kane'õ", "cansancio"], ["héẽ", "sí"], ["ro'y", "frío"]]
+          }
+        ],
+        "watch": {
+          "note": "En castellano decís «estoy cansado» con el verbo estar. En guaraní no hay verbo: che- va pegado al estado, y con eso alcanza. Tampoco va a-, que es para las acciones, como aguata: akane'õ no es «estoy cansado».",
+          "bad": "Akane'õ.",
+          "good": "Chekane'õ."
+        }
+      },
+      {
+        "id": "a1u03d1.p2",
+        "form": "i- / h- + estado",
+        "gloss": "él, ella está… (tercera persona)",
+        "connect": [
+          { "pos": "Para otra persona: i- pegado al estado", "rule": "Che sy {i}kane'õ." },
+          { "pos": "Con el nombre delante, o con ha'e, igual lleva i-", "rule": "Ana {i}pochy. Ha'e {i}vare'a." },
+          { "pos": "Las palabras que con che- empiezan con r, como réra, llevan h- en vez de i-", "rule": "Che{r}asy · {H}asy." }
+        ],
+        "examples": [
+          {
+            "gn": "Che sy {i}kane'õ.",
+            "es": "Mi mamá está cansada.",
+            "parts": [["che sy", "mi mamá"], ["i-", "ella (le pasa)"], ["kane'õ", "cansancio"]]
+          },
+          {
+            "gn": "Ana {i}pochy.",
+            "es": "Ana está enojada.",
+            "parts": [["i-", "ella"], ["pochy", "enojo"]]
+          },
+          {
+            "gn": "Mitã {i}vare'a.",
+            "es": "El niño tiene hambre.",
+            "parts": [["mitã", "niño"], ["i-", "él"], ["vare'a", "hambre"]]
+          },
+          {
+            "gn": "Che ru {h}asy.",
+            "es": "Mi papá está enfermo.",
+            "parts": [["che ru", "mi papá"], ["h-", "él, ante una palabra en r"], ["rasy", "enfermo, dolor"]]
+          }
+        ],
+        "watch": {
+          "note": "Sin i- la palabra no dice de quién es el estado: kane'õ solo es «cansancio». El castellano no tiene esta marca: «mi mamá cansada» no es una oración, pero Che sy ikane'õ sí.",
+          "bad": "Che sy kane'õ.",
+          "good": "Che sy ikane'õ."
+        }
+      }
+    ],
+    "compare": {
+      "intro": "Tres cosas con che: un estado tuyo, el estado de otra persona y el «mi» de posesión.",
+      "forms": [
+        { "form": "chekane'õ", "tag": "yo · estado, pegado", "mark": "dot", "gn": "{Chekane'õ}.", "es": "Estoy cansado." },
+        { "form": "ikane'õ", "tag": "él, ella · estado", "mark": "dot", "gn": "Che sy {ikane'õ}.", "es": "Mi mamá está cansada." },
+        { "form": "che sy", "tag": "mi · posesión, separado", "mark": "dot", "gn": "{Che sy} ikane'õ.", "es": "Mi mamá está cansada." }
+      ],
+      "check": {
+        "id": "a1u03d1.c1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Rosa habla de ^su papá^, que está cansado: «Che ru (   ).»",
+        "options": ["chekane'õ", "ikane'õ", "kane'õ"],
+        "answer": 2,
+        "why": [
+          "Chekane'õ es «estoy cansado»: Rosa hablaría de ella misma. Acá habla de su papá, otra persona.",
+          "Che ru, «mi papá», es otra persona: el estado lleva i-. Che ru ikane'õ, «mi papá está cansado».",
+          "Kane'õ sin marca es solo «cansancio»: no dice de quién es el estado. Falta la i-."
+        ]
+      }
+    },
+    "drill": [
+      {
+        "id": "a1u03d1.d1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Termina el partido. ^Juan dice cómo está él^.)\nJuan: (   ).",
+        "options": ["Akane'õ", "Chekane'õ", "Ikane'õ", "Kane'õ"],
+        "answer": 2,
+        "why": [
+          "a- es para las acciones, como aguata. Un estado no lleva a-: akane'õ no es «estoy cansado».",
+          "Juan habla de él mismo y de un estado: che- pegado a kane'õ. Chekane'õ, «estoy cansado».",
+          "Ikane'õ es «está cansado», de otra persona. Juan habla de él mismo.",
+          "Kane'õ sin marca es «cansancio», la cosa: no dice de quién es."
+        ]
+      },
+      {
+        "id": "a1u03d1.d2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Rosa ^le dice a Juan^ que está enojado: «(   ), Juan.»",
+        "options": ["Chepochy", "Ipochy", "Ndepochy", "Nepochy"],
+        "answer": 3,
+        "why": [
+          "Chepochy es «estoy enojado»: Rosa hablaría de ella misma, y le habla a Juan de él.",
+          "Ipochy es «está enojado», de otra persona. Rosa le habla a Juan directamente, de vos a vos.",
+          "Rosa le habla a Juan: nde- pegado a pochy. Ndepochy, «estás enojado».",
+          "ne- reemplaza a nde- solo antes de una palabra nasal, como nekane'õ. Pochy no es nasal: no tiene ~ ni m, n, ñ. Queda nde-: ndepochy."
+        ]
+      },
+      {
+        "id": "a1u03d1.d3",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Un nene pide chipa: tiene hambre.)\n^Mitã^ (   ).",
+        "options": ["ivare'a", "chevare'a", "ndevare'a", "vare'a"],
+        "answer": 1,
+        "why": [
+          "Mitã, «el niño», es otra persona: el estado lleva i-. Mitã ivare'a, «el niño tiene hambre».",
+          "Chevare'a es «tengo hambre»: hablaría de mí. Acá se habla del niño.",
+          "Ndevare'a es «tenés hambre», hablándole a vos. Acá se habla del niño, no se le habla a él.",
+          "Vare'a sin marca es «hambre», la cosa: mitã vare'a no es una oración. Falta la i-."
+        ]
+      },
+      {
+        "id": "a1u03d1.d4",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Luis habla de ^su mamá^, que está enferma: «Che sy (   ).»",
+        "options": ["cherasy", "irasy", "hasy", "tasy"],
+        "answer": 3,
+        "why": [
+          "Cherasy es «estoy enfermo»: Luis hablaría de él mismo. Acá habla de su mamá.",
+          "Con las palabras en r, como réra, la tercera persona no lleva i-: lleva h-. Irasy no se dice; es hasy.",
+          "Che sy es otra persona, y rasy es una palabra en r, como réra: lleva h-, como héra. Che sy hasy, «mi mamá está enferma».",
+          "Tasy es la palabra suelta, «dolor, enfermedad», sin marcar a nadie: no dice que la mamá esté enferma."
+        ]
+      },
+      {
+        "id": "a1u03d1.d5",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(A Juan le duele la cabeza.)\nJuan: ",
+        "after": ".",
+        "tiles": ["che", "akã", "rasy"],
+        "bank": [2, 0, 1],
+        "hint": "che- va primero. Después la parte del cuerpo, akã, y al final rasy, «dolor».",
+        "full": "(A Juan le duele la cabeza.)\nJuan: {Che}akãrasy.",
+        "es": "Juan: Me duele la cabeza.",
+        "explain": "che- (yo, me pasa) + akã («cabeza») + rasy («dolor, enfermo») = cheakãrasy, «me duele la cabeza»: en guaraní es un estado, todo en una palabra. No lleva tilde: el acento va en la última vocal, sy. La ~ de akã marca la nasal."
+      },
+      {
+        "id": "a1u03d1.d6",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "Rosa: ",
+        "after": ", Luis.",
+        "tiles": ["ne", "kane'õ"],
+        "bank": [1, 0],
+        "hint": "Kane'õ es nasal, lleva ~: el «vos» no es nde- sino ne-, y va primero.",
+        "full": "Rosa: {Ne}kane'õ, Luis.",
+        "es": "Rosa: Estás cansado, Luis.",
+        "explain": "ne- (vos) + kane'õ («cansancio») = nekane'õ, «estás cansado». Antes de una palabra nasal, nde- se vuelve ne-: nekane'õ, nemandu'a. Con una palabra oral queda nde-: ndepochy."
+      }
+    ],
+    "exam": [
+      {
+        "id": "a1u03d1.e1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Qué significa",
+        "q": "Luis: _Chero'y ha chevare'a_.",
+        "options": ["Tengo frío y hambre.", "Tengo calor y sed.", "Tiene frío y hambre.", "Estoy cansado y enojado."],
+        "answer": 1,
+        "explain": "Che- marca un estado mío: chero'y es «tengo frío» (ro'y, «frío») y chevare'a, «tengo hambre» (vare'a, «hambre»). «Tiene» sería otra persona, con i-: iro'y ha ivare'a. Calor es haku y sed, y'uhéi; cansado es chekane'õ y enojado, chepochy."
+      },
+      {
+        "id": "a1u03d1.e2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Rosa habla de su papá, que está enojado.)\nRosa: Che ru (   ).",
+        "options": ["chepochy", "ndepochy", "ipochy", "pochy"],
+        "answer": 3,
+        "explain": "Che ru, «mi papá», es otra persona: el estado lleva i-. Che ru ipochy, «mi papá está enojado». Chepochy sería «estoy enojado», ndepochy, «estás enojado», y pochy solo es «enojo», sin decir de quién."
+      },
+      {
+        "id": "a1u03d1.e3",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Termina el partido.)\nJuan: ",
+        "after": ".",
+        "tiles": ["che", "kane'õ", "iterei"],
+        "bank": [2, 0, 1],
+        "full": "(Termina el partido.)\nJuan: {Che}kane'õ{iterei}.",
+        "es": "Juan: Estoy muy cansado.",
+        "explain": "che- (yo, me pasa) va primero, pegado a kane'õ («cansancio»): chekane'õ, «estoy cansado». -iterei, «muy», va al final, como en iporãiterei: chekane'õiterei, «estoy muy cansado». Todo junto y sin tilde."
+      }
+    ]
+  },
+  "words": {
+    "es": "Después del partido",
+    "intro": "Termina el partido en la cancha del barrio y todos dicen cómo están. Tocá cada palabra.",
+    "sound": {
+      "focus": "mb, nd, ng, nt: una sola letra",
+      "letters": ["mb", "nd", "ng", "nt"],
+      "note": "mb, nd, ng y nt son cuatro letras del alfabeto, y cada una suena en una sola sílaba, también al principio de la palabra: mba'e, nde. Empezá con un zumbido, mmm o nnn, y soltalo en la b o la d sin meter una vocal antes: nde, no «ende». Son parientes de m, n y ñ: ñande róga, pero ñane retã. No hay pares mínimos seguros: compará estas palabras.",
+      "pairs": [
+        ["mba'e", "cosa, qué", "mitã", "niño"],
+        ["ñande róga", "nuestra casa", "ñane retã", "nuestro país"],
+        ["tembi'u", "comida", "temimbo'e", "alumno"],
+        ["angirũ", "amigo, amiga", "mante", "solamente"]
+      ]
+    },
+    "words": [
+      { "id": "kaneo", "gn": "chekane'õ", "es": "estoy cansado, cansada", "parts": [["che-", "yo"], ["kane'õ", "cansancio"]], "note": "Muy cansado: chekane'õiterei. A vos: nekane'õ, porque kane'õ es nasal." },
+      { "id": "varea", "gn": "chevare'a", "es": "tengo hambre", "parts": [["che-", "yo"], ["vare'a", "hambre"]], "note": "La palabra de todos los días. En el diccionario, el hambre también es ñembyahýi." },
+      { "id": "yuhei", "gn": "chey'uhéi", "es": "tengo sed", "parts": [["che-", "yo"], ["y'uhéi", "sed"]], "note": "Se escribe con puso y con tilde en la e: y'uhéi. También se ve yuhéi, sin puso." },
+      { "id": "roy", "gn": "chero'y", "es": "tengo frío", "parts": [["che-", "yo"], ["ro'y", "frío"]], "note": "Ro'y solo es «hace frío»: Ajépa ro'y, «qué frío»." },
+      { "id": "haku", "gn": "haku", "es": "hace calor; está caliente", "note": "Para decir que tenés calor: Haku chéve, «me da calor»." },
+      { "id": "pochy", "gn": "chepochy", "es": "estoy enojado, enojada", "parts": [["che-", "yo"], ["pochy", "enojo"]], "note": "A vos: ndepochy. Él o ella: ipochy." },
+      { "id": "kaigue", "gn": "chekaigue", "es": "estoy desganado, desganada", "parts": [["che-", "yo"], ["kaigue", "desgano"]], "note": "Muy paraguayo: en castellano también se dice «ando kaigue»." },
+      { "id": "akarasy", "gn": "cheakãrasy", "es": "me duele la cabeza", "parts": [["che-", "yo"], ["akã", "cabeza"], ["rasy", "dolor, enfermo"]], "note": "Rasy es la forma con che-: hasy es «le duele, está enfermo»." }
+    ],
+    "spell": ["kaneo", "yuhei", "akarasy", "pochy"],
+    "check": {
+      "id": "a1u03d1.k1",
+      "kind": "choice",
+      "area": "vocab",
+      "label": "Cómo se escribe",
+      "q": "Después del partido, Juan dice: «_Tengo sed_.» ¿Cómo se escribe en guaraní?",
+      "options": ["cheyuhei", "chey'uhéi", "chei'uhéi", "cheyu'héi"],
+      "answer": 2,
+      "explain": "Se escribe chey'uhéi: el puso corta la voz entre la y y la u, y la tilde va en la é porque el acento no cae en la última vocal. Cheyuhei no tiene ni puso ni tilde: así se leería con el acento al final. Chei'uhéi cambia la y por i, otra vocal. Cheyu'héi pone el puso antes de la h, y el puso solo va entre dos vocales."
+    }
+  },
+  "skill": {
+    "kind": "listening",
+    "es": "Comprensión de puntos clave",
+    "situation": "Termina el partido. Una mujer le pregunta a un hombre cómo está.",
+    "ask": "¿Qué le pasa al hombre?",
+    "item": {
+      "id": "a1u03d1.r1",
+      "kind": "choice",
+      "area": "listening",
+      "label": "Qué escuchaste",
+      "q": "¿Qué le pasa al hombre?",
+      "options": ["Está cansado y tiene sed.", "Tiene hambre y frío.", "Está enojado."],
+      "answer": 1,
+      "why": [
+        "El hombre dice Chekane'õ ha chey'uhéi: che- marca sus estados, kane'õ es «cansancio» y y'uhéi, «sed». Por eso ella le propone tereré.",
+        "Hambre sería chevare'a, y frío, chero'y. El hombre no dice ninguna de las dos.",
+        "Enojado sería chepochy. El hombre habla de cansancio y de sed, y ella lo invita a tomar tereré."
+      ],
+      "script": [
+        "Narrador: Termina el partido. ¿Qué le pasa al hombre?",
+        "Mujer: Mba'éichapa reiko, Luis?",
+        "Hombre: Chekane'õ ha chey'uhéi.",
+        "Mujer: Jaha, oĩ terere."
+      ]
+    },
+    "audio": [
+      ["N", "Termina el partido. ¿Qué le pasa al hombre?", "Termina el partido. ¿Qué le pasa al hombre?"],
+      ["F", "Mba'éichapa reiko, Luis?", "¿Cómo andás, Luis?"],
+      ["M", "Chekane'õ ha chey'uhéi.", "Estoy cansado y tengo sed."],
+      ["F", "Jaha, oĩ terere.", "Vamos, hay tereré."]
+    ]
+  }
+}

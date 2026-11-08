@@ -1,0 +1,353 @@
+{
+  "title": "Plural -kuéra, -nguéra tras nasal (mitãnguéra)",
+  "grammar": {
+    "points": [
+      {
+        "id": "a1u04d2.p1",
+        "form": "-kuéra",
+        "gloss": "plural: los, las (tras sílaba oral)",
+        "connect": [
+          {
+            "pos": "Pegado al sustantivo. Se lleva el acento, y la raíz pierde su tilde",
+            "rule": "óga → oga{kuéra} · túva → tuva{kuéra}"
+          },
+          {
+            "pos": "Con el posesivo, el dueño sigue primero",
+            "rule": "che memby{kuéra} · ne memby{kuéra}"
+          },
+          {
+            "pos": "Ya lo conocés: ha'e, «él», y ha'ekuéra, «ellos»",
+            "rule": "ha'e → ha'e{kuéra}"
+          },
+          {
+            "pos": "No es obligatorio: con un número, el sustantivo va solo",
+            "rule": "[mokõi|dos] {mitã}"
+          }
+        ],
+        "examples": [
+          {
+            "gn": "Jagua{kuéra} oyta.",
+            "es": "Los perros nadan.",
+            "parts": [["jagua", "perro"], ["-kuéra", "plural"], ["o-", "ellos"], ["yta", "nadar"]]
+          },
+          {
+            "gn": "Guyra{kuéra} opurahéi.",
+            "es": "Los pájaros cantan.",
+            "parts": [["guyra", "pájaro"], ["-kuéra", "plural"], ["opurahéi", "cantan"]]
+          },
+          {
+            "gn": "Ne memby{kuéra} moõpa oĩ?",
+            "es": "¿Dónde están tus hijos?",
+            "parts": [["ne", "tu, tus"], ["memby", "hijo, hija"], ["-kuéra", "plural"], ["moõpa", "¿dónde?"], ["oĩ", "están"]]
+          },
+          {
+            "gn": "Mbo'ehara{kuéra} oñe'ẽ guaraníme.",
+            "es": "Los profesores hablan guaraní.",
+            "parts": [["mbo'ehára", "profesor, profesora"], ["-kuéra", "plural: el acento pasa a la é"], ["oñe'ẽ", "hablan"], ["guaraníme", "en guaraní"]]
+          }
+        ],
+        "watch": {
+          "note": "-kuéra se lleva el acento, y una palabra guaraní lleva una sola tilde: la de la raíz desaparece. Óga es «casa»; «las casas» es ogakuéra.",
+          "bad": "ógakuéra",
+          "good": "ogakuéra"
+        }
+      },
+      {
+        "id": "a1u04d2.p2",
+        "form": "-nguéra",
+        "gloss": "plural tras sílaba nasal",
+        "connect": [
+          {
+            "pos": "Última sílaba con tilde nasal (~): la ~ se queda, y el acento pasa a la é",
+            "rule": "mitã → mitã{nguéra} · angirũ → angirũ{nguéra}"
+          },
+          {
+            "pos": "Última sílaba con m, n o ñ, aunque no lleve ~",
+            "rule": "kuña → kuña{nguéra} · mitãkuña → mitãkuña{nguéra}"
+          },
+          {
+            "pos": "Mirá solo la última sílaba: memby empieza con m, pero termina en by, que es oral",
+            "rule": "memby → memby{kuéra}"
+          },
+          {
+            "pos": "Para «a los niños», -pe va después del plural: ra es sílaba oral",
+            "rule": "mitã{nguéra}pe"
+          }
+        ],
+        "examples": [
+          {
+            "gn": "Mitã{nguéra} oho mbo'ehaópe.",
+            "es": "Los niños van a la escuela.",
+            "parts": [["mitã", "niño, niña"], ["-nguéra", "plural tras nasal"], ["oho", "van"], ["mbo'ehao", "escuela"], ["-pe", "a"]]
+          },
+          {
+            "gn": "Kuña{nguéra} opurahéi.",
+            "es": "Las mujeres cantan.",
+            "parts": [["kuña", "mujer"], ["-nguéra", "plural tras nasal"], ["opurahéi", "cantan"]]
+          },
+          {
+            "gn": "Che angirũ{nguéra} Paraguaigua.",
+            "es": "Mis amigos son de Paraguay.",
+            "parts": [["che", "mi, mis"], ["angirũ", "amigo, amiga"], ["-nguéra", "plural tras nasal"], ["Paraguaigua", "de Paraguay"]]
+          },
+          {
+            "gn": "Mitã{nguéra} ho'u chipa.",
+            "es": "Los niños comen chipá.",
+            "parts": [["mitã", "niño, niña"], ["-nguéra", "plural tras nasal"], ["ho'u", "comen"], ["chipa", "chipá"]]
+          }
+        ],
+        "watch": {
+          "note": "Tras una sílaba nasal no va -kuéra. Y no agregues otra ~: mitã ya la tiene, y la a de kuña no la lleva, porque la ñ ya la hace nasal.",
+          "bad": "mitãkuéra",
+          "good": "mitãnguéra"
+        }
+      }
+    ],
+    "compare": {
+      "intro": "El plural que ya conocés de ha'ekuéra tiene dos formas: fijate si la última sílaba de la palabra es oral o nasal.",
+      "forms": [
+        {
+          "form": "-kuéra",
+          "tag": "tras sílaba oral",
+          "mark": "dot",
+          "gn": "Jagua{kuéra} oyta.",
+          "es": "Los perros nadan."
+        },
+        {
+          "form": "-nguéra",
+          "tag": "tras sílaba nasal",
+          "mark": "dot",
+          "gn": "Mitã{nguéra} oho mbo'ehaópe.",
+          "es": "Los niños van a la escuela."
+        },
+        {
+          "form": "ha'ekuéra",
+          "tag": "ellos, ellas (semana 1)",
+          "mark": "dot",
+          "gn": "{Ha'ekuéra} oñe'ẽ guaraníme.",
+          "es": "Ellos hablan guaraní."
+        }
+      ],
+      "check": {
+        "id": "a1u04d2.c1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Ana habla de ^las mujeres^ del barrio: «(   ) opurahéi.»",
+        "options": ["Kuñakuéra", "Kuñanguéra", "Kuñãnguéra"],
+        "answer": 2,
+        "why": ["Kuña termina en ña, una sílaba nasal por la ñ: ahí no va -kuéra.", "La última sílaba de kuña es nasal, por la ñ: va -nguéra. Kuñanguéra opurahéi: las mujeres cantan.", "Kuñãnguéra agrega una ~ que la palabra no lleva: junto a la ñ, la a ya suena nasal y no se marca."]
+      }
+    },
+    "drill": [
+      {
+        "id": "a1u04d2.d1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Ana habla de ^los pájaros^ del patio: «(   ) opurahéi ko pyhareve.»",
+        "options": ["Guyrakuéra", "Guyranguéra", "Guirakuéra", "Guyracuéra"],
+        "answer": 1,
+        "why": ["Guyra termina en ra, sílaba oral: va -kuéra, que se lleva el acento. Guyrakuéra opurahéi ko pyhareve: los pájaros cantan esta mañana.", "-nguéra va solo tras una sílaba nasal, y ra es oral.", "Guirakuéra cambia la y por i. Guy-ra lleva la y, la sexta vocal.", "Guyracuéra escribe el plural con c, y la c no es una letra del guaraní: ese sonido se escribe con k, kuéra."]
+      },
+      {
+        "id": "a1u04d2.d2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Ana le pregunta a Rosa dónde están ^los hijos de Rosa^: «Ne (   ) moõpa oĩ?»",
+        "options": ["membynguéra", "mẽmbykuéra", "membykuéra", "membikuéra"],
+        "answer": 3,
+        "why": ["-nguéra va tras una sílaba nasal, y by es oral: la m del principio no cuenta, se mira la última sílaba.", "Mẽmbykuéra agrega una ~ a la e: junto a la m ya suena nasal, y no se marca.", "La última sílaba de memby, by, es oral: va -kuéra, aunque la palabra empiece con m. Ne membykuéra moõpa oĩ?: ¿dónde están tus hijos?", "Membikuéra cambia la y por i. Memby termina en y, la sexta vocal."]
+      },
+      {
+        "id": "a1u04d2.d3",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Luis habla de ^sus amigos^: «Che (   ) oĩ [ko'ápe|aquí].»",
+        "options": ["angirũkuéra", "angirũnguéra", "angirunguéra", "ãngirũnguéra"],
+        "answer": 2,
+        "why": ["-kuéra va tras una sílaba oral, y angirũ termina en ũ, nasal.", "Angirũ termina en ũ, nasal: va -nguéra. Che angirũnguéra oĩ ko'ápe: mis amigos están aquí.", "Angirunguéra pierde la ~ de la ũ. La raíz es angirũ, y la ~ se queda.", "En ãngirũnguéra sobra la ~ de la a: junto a ng ya suena nasal, y no se marca."]
+      },
+      {
+        "id": "a1u04d2.d4",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Rosa habla de ^las casas^ del barrio: «(   ) iporã.»",
+        "options": ["Oganguéra", "Ogãkuéra", "Ogacuéra", "Ogakuéra"],
+        "answer": 4,
+        "why": ["-nguéra es la forma de después de una sílaba nasal, y ga es oral.", "Ogãkuéra agrega una ~ que la palabra no lleva: óga no tiene ningún sonido nasal.", "Ogacuéra escribe el plural con c, y la c no es una letra del guaraní: ese sonido se escribe con k, kuéra.", "Óga pierde su tilde porque -kuéra se lleva el acento: ogakuéra, con una sola tilde. Ogakuéra iporã: las casas son lindas."]
+      },
+      {
+        "id": "a1u04d2.d5",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "Mbo'ehára oñe'ẽ ",
+        "after": ".",
+        "tiles": ["mitã", "nguéra", "pe"],
+        "bank": [2, 0, 1],
+        "hint": "Primero el plural, después -pe, «a». Fijate dónde queda el acento.",
+        "full": "Mbo'ehára oñe'ẽ mitã{nguéra}pe.",
+        "es": "El profesor les habla a los niños.",
+        "explain": "mitã («niño») + -nguéra (plural tras nasal, porque mitã termina en ã) + -pe («a») = mitãnguérape. -nguéra se lleva el acento, y -pe no lo mueve: queda la ~ en la ã y la tilde en la é. Después de -nguéra va -pe, porque ra es sílaba oral."
+      },
+      {
+        "id": "a1u04d2.d6",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "",
+        "after": " oñe'ẽ guaraníme.",
+        "tiles": ["mbo'ehára", "kuéra"],
+        "bank": [1, 0],
+        "hint": "-kuéra va después del sustantivo y se lleva el acento: mirá qué pasa con la tilde de hára.",
+        "full": "{Mbo'eharakuéra} oñe'ẽ guaraníme.",
+        "es": "Los profesores hablan guaraní.",
+        "explain": "mbo'ehára («profesor») + -kuéra = mbo'eharakuéra, «los profesores». -kuéra se lleva el acento, y la tilde de hára desaparece: una palabra, una sola tilde."
+      }
+    ],
+    "exam": [
+      {
+        "id": "a1u04d2.e1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Qué significa",
+        "q": "Ana: _Che membykuéra_ oho mbo'ehaópe.",
+        "options": ["Mi hijo va a la escuela.", "Mis hijos van a la escuela.", "Tus hijos van a la escuela.", "Nuestros hijos van a la escuela."],
+        "answer": 2,
+        "explain": "Che es «mi», y -kuéra hace el plural: che membykuéra, «mis hijos». Un solo hijo sería che memby, «tus hijos» sería ne membykuéra, y «nuestros» llevaría ñande u ore, no che."
+      },
+      {
+        "id": "a1u04d2.e2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Rosa habla de las niñas de la escuela.)\nRosa: (   ) opurahéi mbo'ehaópe.",
+        "options": ["Mitãkuñakuéra", "Mitakuñanguéra", "Mitãkuñanguéra", "Mitãkuñãnguéra"],
+        "answer": 3,
+        "explain": "Mitãkuña («niña») termina en ña, sílaba nasal por la ñ: va -nguéra, que se lleva el acento. Mitãkuñakuéra usa la forma de después de una sílaba oral, mitakuñanguéra pierde la ~ de mitã, que la palabra sí lleva, y mitãkuñãnguéra agrega una ~ junto a la ñ, donde no se escribe."
+      },
+      {
+        "id": "a1u04d2.e3",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "Che sy oñe'ẽ ",
+        "after": ".",
+        "tiles": ["kuña", "nguéra", "pe"],
+        "bank": [1, 2, 0],
+        "full": "Che sy oñe'ẽ kuña{nguéra}pe.",
+        "es": "Mi mamá les habla a las mujeres.",
+        "explain": "kuña («mujer») + -nguéra (plural tras la ñ, sílaba nasal) + -pe («a») = kuñanguérape. -nguéra se lleva el acento, y -pe va al final sin moverlo: la tilde queda en la é."
+      }
+    ]
+  },
+  "words": {
+    "es": "El patio de la escuela",
+    "intro": "En el patio de la escuela del barrio hay chicos, profesores y animales. Tocá cada palabra y fijate cuáles llevan -kuéra y cuáles -nguéra.",
+    "sound": {
+      "focus": "El acento se mueve: ogakuéra",
+      "letters": ["é"],
+      "note": "Una palabra lleva una sola tilde, y -kuéra se queda con el acento: la tilde de la raíz desaparece (óga → ogakuéra, túva → tuvakuéra). La ~ no es tilde de acento, así que se queda: mitã → mitãnguéra. No hay pares mínimos seguros de acento: son palabras para contrastar, una sola y varias.",
+      "pairs": [
+        ["óga", "casa", "ogakuéra", "casas"],
+        ["túva", "padre", "tuvakuéra", "padres"],
+        ["ha'e", "él, ella", "ha'ekuéra", "ellos, ellas"],
+        ["mitã", "niño, niña", "mitãnguéra", "niños, niñas"]
+      ]
+    },
+    "words": [
+      {
+        "id": "mitanguera",
+        "gn": "mitãnguéra",
+        "es": "los niños, las niñas",
+        "parts": [["mitã", "niño, niña"], ["-nguéra", "plural tras nasal"]],
+        "note": "La ~ se queda y el acento va a la é."
+      },
+      {
+        "id": "mitakuna",
+        "gn": "mitãkuña",
+        "es": "niña",
+        "parts": [["mitã", "niño"], ["kuña", "mujer"]],
+        "note": "Plural: mitãkuñanguéra, porque termina en ña."
+      },
+      {
+        "id": "mitarusu",
+        "gn": "mitãrusu",
+        "es": "joven, adolescente",
+        "note": "Plural: mitãrusukuéra, porque su es una sílaba oral."
+      },
+      {
+        "id": "mboeharakuera",
+        "gn": "mbo'eharakuéra",
+        "es": "los profesores, las profesoras",
+        "parts": [["mbo'ehára", "profesor, profesora"], ["-kuéra", "plural"]],
+        "note": "Pierde la tilde de hára: -kuéra se lleva el acento."
+      },
+      {
+        "id": "jaguakuera",
+        "gn": "jaguakuéra",
+        "es": "los perros",
+        "parts": [["jagua", "perro"], ["-kuéra", "plural"]],
+        "note": "La j suena como la y fuerte de «yo», nunca como la jota."
+      },
+      {
+        "id": "guyrakuera",
+        "gn": "guyrakuéra",
+        "es": "los pájaros",
+        "parts": [["guyra", "pájaro"], ["-kuéra", "plural"]],
+        "note": "Guy-ra: la y es la sexta vocal."
+      },
+      {
+        "id": "mymbakuera",
+        "gn": "mymbakuéra",
+        "es": "los animales",
+        "parts": [["mymba", "animal"], ["-kuéra", "plural"]],
+        "note": "Mymba empieza con m, pero termina en ba, sílaba oral: por eso -kuéra."
+      },
+      {
+        "id": "korapy",
+        "gn": "korapy",
+        "es": "patio",
+        "note": "«En el patio» es korapýpe: -pe no se lleva el acento, y aparece la tilde en la ý."
+      }
+    ],
+    "spell": ["mitanguera", "mboeharakuera", "jaguakuera", "mymbakuera"],
+    "check": {
+      "id": "a1u04d2.k1",
+      "kind": "choice",
+      "area": "vocab",
+      "label": "Cómo se escribe",
+      "q": "Los chicos del patio: _los niños_. ¿Cómo se escribe en guaraní?",
+      "options": ["mitãkuéra", "mitankuéra", "mitãnguéra", "mitanguéra"],
+      "answer": 3,
+      "explain": "Mitã termina en ã, nasal, así que el plural es -nguéra, con el acento en la é: mitãnguéra. Mitãkuéra usa la forma de después de una sílaba oral. Mitankuéra escribe una n en lugar de la ~, y la nasal de mitã es la ~ de la ã. Mitanguéra pierde esa ~, que la palabra sí lleva."
+    }
+  },
+  "skill": {
+    "kind": "reading",
+    "es": "Un aviso de la escuela",
+    "ask": "¿Quiénes cantan esta tarde?",
+    "seconds": 60,
+    "passage": "Maitei, tuvakuéra.\n^Mitãnguéra opurahéi^ ko ka'aru mbo'ehaópe.\nMbo'eharakuéra oñe'ẽ guaraníme.\nTapeg̃uahẽ porãite.",
+    "strategy": "Buscá quién hace cada cosa: en cada oración, la palabra con -kuéra o -nguéra va primero, y después viene lo que hace.",
+    "item": {
+      "id": "a1u04d2.r1",
+      "kind": "choice",
+      "area": "reading",
+      "label": "Buscar el dato",
+      "q": "¿Quiénes cantan esta tarde?",
+      "options": ["Los niños.", "Los profesores.", "Los padres.", "Los pájaros."],
+      "short": ["Niños", "Profesores", "Padres", "Pájaros"],
+      "answer": 1,
+      "why": ["Mitãnguéra opurahéi ko ka'aru: los niños cantan esta tarde. Mitãnguéra es el plural de mitã.", "De los profesores, mbo'eharakuéra, el aviso dice que hablan guaraní (oñe'ẽ guaraníme), no que cantan.", "Tuvakuéra, los padres, son a quienes saluda el aviso: Maitei, tuvakuéra. No cantan.", "Guyrakuéra, los pájaros, no aparece en el aviso."],
+      "explain": "El aviso saluda a los padres (tuvakuéra) y dice: Mitãnguéra opurahéi ko ka'aru mbo'ehaópe, «los niños cantan esta tarde en la escuela». Los profesores hablan guaraní, no cantan."
+    }
+  }
+}

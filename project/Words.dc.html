@@ -89,7 +89,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </sc-for>
 </div>
 </div>
-<div aria-live="polite" style="min-height: 24px; font-size: 13px; font-weight: 700; line-height: 1.4; color: {{ p.vColor }}"><span lang="gn">{{ p.vGn }}</span>{{ p.vEs }}<span lang="gn" style="font-family: {{ p.wFont }}; font-size: {{ p.wSize }}; color: {{ p.wColor }}">{{ p.vWord }}</span>{{ p.vTail }}<sc-if value="{{ p.noted }}" hint-placeholder-val="{{ false }}"><span style="display: block; margin-top: 2px; font-size: 12px; font-weight: 800; color: #B02A63">Este audio todavía no está grabado.</span></sc-if></div>
+<div aria-live="polite" style="min-height: 24px; font-size: 13px; font-weight: 700; line-height: 1.4; color: {{ p.vColor }}"><span lang="gn">{{ p.vGn }}</span>{{ p.vEs }}<span lang="gn" style="font-family: {{ p.wFont }}; font-size: {{ p.wSize }}; color: {{ p.wColor }}">{{ p.vWord }}</span>{{ p.vTail }}<sc-if value="{{ p.noted }}" hint-placeholder-val="{{ false }}"><span style="display: block; margin-top: 2px; font-size: 12px; font-weight: 800; color: #B02A63">Este audio todavía no está grabado.</span></sc-if><sc-if value="{{ p.synth }}" hint-placeholder-val="{{ false }}"><span style="display: block; margin-top: 2px; font-size: 12px; font-weight: 800; color: #5A6382">Voz sintética: este audio lo hizo un programa, no una persona.</span></sc-if></div>
 </div>
 </sc-for>
 </sc-if>
@@ -121,7 +121,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </div>
 <button aria-label="Escuchar la palabra" aria-pressed="{{ playing }}" onClick="{{ play }}" style="width: 44px; height: 44px; border-radius: 50%; border: 2px solid #1B2440; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 150ms; background: {{ playBg }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 9a4 4 0 0 1 0 6"/></svg></button>
 </div>
-<sc-if value="{{ wordNoted }}" hint-placeholder-val="{{ false }}"><div role="status" style="font-size: 12px; font-weight: 800; line-height: 1.4; color: #B02A63">Este audio todavía no está grabado.</div></sc-if>
+<sc-if value="{{ wordNoted }}" hint-placeholder-val="{{ false }}"><div role="status" style="font-size: 12px; font-weight: 800; line-height: 1.4; color: #B02A63">Este audio todavía no está grabado.</div></sc-if><sc-if value="{{ wordSynth }}" hint-placeholder-val="{{ false }}"><div role="status" style="font-size: 12px; font-weight: 800; line-height: 1.4; color: #5A6382">Voz sintética: este audio lo hizo un programa, no una persona.</div></sc-if>
 <sc-if value="{{ d.hasNote }}" hint-placeholder-val="{{ false }}"><div style="font-size: 12px; font-weight: 500; line-height: 1.45; color: #5A6382">{{ d.note }}</div></sc-if>
 <sc-if value="{{ d.hasParts }}" hint-placeholder-val="{{ true }}">
 <div style="font-size: 11px; font-weight: 800; color: #5A6382">Partes</div>
@@ -286,6 +286,11 @@ this.state = { ...base, quiz: null, playing: false, steps, step: steps[at], reac
 has(key) {
 const snd = window.gnSound;
 return !!(key && snd && typeof snd.has === 'function' && snd.has(key));
+}
+/* was the clip made by a voice model, not a speaker? Then the screen says so (gn-sound.js knows each clip's kind) */
+synth(key) {
+const snd = window.gnSound;
+return !!(key && snd && typeof snd.kind === 'function' && snd.kind(key) === 'synthetic');
 }
 /* the clip of a pair: the word of the two that plays */
 pairKey(L, i) {
@@ -498,6 +503,7 @@ wFont: voicing ? "'Andika', 'Nunito', sans-serif" : 'inherit',
 wSize: voicing ? '17px' : 'inherit',
 wColor: voicing ? '#1B2440' : 'inherit',
 noted: mute ? heard : s.silentAt === 'p' + i,
+synth: !mute && heard && this.synth(key),
 };
 });
 Object.assign(base, {
@@ -579,10 +585,11 @@ play: () => {
 clearTimeout(this.timer);
 clearTimeout(this.pairTimer);
 const key = L.sid && cur.id ? L.sid + '.w.' + cur.id : '';
-this.setState({ playing: true, pairOn: -1, silentAt: this.state.silentAt || (this.has(key) ? null : 'word') });
+this.setState({ playing: true, pairOn: -1, silentAt: this.state.silentAt || (this.has(key) ? null : 'word'), synthAt: this.state.synthAt || (this.synth(key) ? 'word' : null) });
 this.timer = this.say(key, cur.gn, () => this.setState({ playing: false }));
 },
 wordNoted: s.silentAt === 'word',
+wordSynth: s.synthAt === 'word',
 writeLine,
 writeLetters,
 writeEnd,

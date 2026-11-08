@@ -1,0 +1,2123 @@
+{
+ "level": "A1",
+ "made": "2026-11-05",
+ "about": "Every clip the course needs: key (what the screens ask gn-sound.js for), voice (F the woman, the main voice; M the man; N the narrator, in Spanish), text, es, lang, where, file (the unit file make-sound.mjs puts it in), order (the suggested recording order; none for a row with \"same\", said already under that key, for a row with \"parts\", put together from those keys, and for the tone). Rights: notes/G4-resources-licensing.md §6, CC BY 4.0.",
+ "voices": {
+  "F": "mujer, voz principal: palabras, ejemplos, pares y carteles",
+  "M": "hombre: sus líneas de los diálogos",
+  "N": "narrador en castellano: consignas y números de las opciones"
+ },
+ "files": [
+  "gn-sound-a1-u01.js",
+  "gn-sound-pl.js",
+  "gn-sound-a1-x.js",
+  "gn-sound-sp.js"
+ ],
+ "count": {
+  "rows": 202,
+  "toRecord": 146,
+  "slow": 13,
+  "byVoice": {
+   "F": 118,
+   "M": 18,
+   "N": 10
+  },
+  "composed": 12,
+  "same": 43
+ },
+ "clips": [
+  {
+   "key": "a1u01d1.p1.x0.l0",
+   "voice": "F",
+   "text": "Mba'éichapa, Juan?",
+   "es": "",
+   "lang": "gn",
+   "where": "U1 D1 · punto 1, ejemplo 1 (diálogo) · línea 1 de 2",
+   "file": "gn-sound-a1-u01.js",
+   "order": 1
+  },
+  {
+   "key": "a1u01d1.p1.x0.l1",
+   "voice": "M",
+   "text": "Iporã, ha nde?",
+   "es": "",
+   "lang": "gn",
+   "where": "U1 D1 · punto 1, ejemplo 1 (diálogo) · línea 2 de 2",
+   "file": "gn-sound-a1-u01.js",
+   "order": 2
+  },
+  {
+   "key": "a1u01d1.p1.x0",
+   "parts": [
+    "a1u01d1.p1.x0.l0",
+    "a1u01d1.p1.x0.l1"
+   ],
+   "voice": "F+M",
+   "text": "Mba'éichapa, Juan? / Iporã, ha nde?",
+   "es": "",
+   "where": "U1 D1 · punto 1, ejemplo 1 (diálogo)",
+   "file": "gn-sound-a1-u01.js"
+  },
+  {
+   "key": "a1u01d1.p1.x1",
+   "voice": "F",
+   "text": "Mba'éichapa reiko, Ana?",
+   "es": "¿Cómo andás, Ana?",
+   "lang": "gn",
+   "where": "U1 D1 · punto 1, ejemplo 2",
+   "file": "gn-sound-a1-u01.js",
+   "order": 3
+  },
+  {
+   "key": "a1u01d1.p2.x0",
+   "voice": "F",
+   "text": "Jajotopáta, Rosa.",
+   "es": "Nos vemos, Rosa.",
+   "lang": "gn",
+   "where": "U1 D1 · punto 2, ejemplo 1",
+   "file": "gn-sound-a1-u01.js",
+   "order": 4
+  },
+  {
+   "key": "a1u01d1.p2.x1",
+   "voice": "F",
+   "text": "Jajotopáta ko ka'aru.",
+   "es": "Nos vemos esta tarde.",
+   "lang": "gn",
+   "where": "U1 D1 · punto 2, ejemplo 2",
+   "file": "gn-sound-a1-u01.js",
+   "order": 5
+  },
+  {
+   "key": "a1u01d1.w.maitei",
+   "voice": "F",
+   "text": "Maitei",
+   "es": "Hola, saludos",
+   "lang": "gn",
+   "where": "U1 D1 · palabra 1 de la escena «La ronda de tereré»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 6
+  },
+  {
+   "key": "a1u01d1.w.mbaeichapa",
+   "voice": "F",
+   "text": "Mba'éichapa?",
+   "es": "Hola, ¿cómo estás?",
+   "lang": "gn",
+   "where": "U1 D1 · palabra 2 de la escena «La ronda de tereré»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 7
+  },
+  {
+   "key": "a1u01d1.w.ipora",
+   "voice": "F",
+   "text": "Iporã",
+   "es": "Bien",
+   "lang": "gn",
+   "where": "U1 D1 · palabra 3 de la escena «La ronda de tereré»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 8
+  },
+  {
+   "key": "a1u01d1.w.jajotopata",
+   "voice": "F",
+   "text": "Jajotopáta",
+   "es": "Nos vemos",
+   "lang": "gn",
+   "where": "U1 D1 · palabra 4 de la escena «La ronda de tereré»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 9
+  },
+  {
+   "key": "a1u01d1.w.pyhareve",
+   "voice": "F",
+   "text": "pyhareve",
+   "es": "la mañana",
+   "lang": "gn",
+   "where": "U1 D1 · palabra 5 de la escena «La ronda de tereré»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 10
+  },
+  {
+   "key": "a1u01d1.w.kaaru",
+   "voice": "F",
+   "text": "ka'aru",
+   "es": "la tarde",
+   "lang": "gn",
+   "where": "U1 D1 · palabra 6 de la escena «La ronda de tereré»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 11
+  },
+  {
+   "key": "a1u01d1.w.jaryi",
+   "voice": "F",
+   "text": "jarýi",
+   "es": "abuela",
+   "lang": "gn",
+   "where": "U1 D1 · palabra 7 de la escena «La ronda de tereré»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 12
+  },
+  {
+   "key": "a1u01d1.w.karai",
+   "voice": "F",
+   "text": "karai",
+   "es": "señor",
+   "lang": "gn",
+   "where": "U1 D1 · palabra 8 de la escena «La ronda de tereré»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 13
+  },
+  {
+   "key": "a1u01d1.s0a",
+   "voice": "F",
+   "text": "ka'a",
+   "es": "yerba",
+   "lang": "gn",
+   "where": "U1 D1 · par 1, palabra a (Las vocales orales)",
+   "file": "gn-sound-a1-u01.js",
+   "order": 14
+  },
+  {
+   "key": "a1u01d1.s0b",
+   "voice": "F",
+   "text": "ka'i",
+   "es": "mono",
+   "lang": "gn",
+   "where": "U1 D1 · par 1, palabra b (Las vocales orales)",
+   "file": "gn-sound-a1-u01.js",
+   "order": 15
+  },
+  {
+   "key": "a1u01d1.s1a",
+   "voice": "F",
+   "text": "pira",
+   "es": "pez",
+   "lang": "gn",
+   "where": "U1 D1 · par 2, palabra a (Las vocales orales)",
+   "file": "gn-sound-a1-u01.js",
+   "order": 16
+  },
+  {
+   "key": "a1u01d1.s1b",
+   "voice": "F",
+   "text": "pire",
+   "es": "piel",
+   "lang": "gn",
+   "where": "U1 D1 · par 2, palabra b (Las vocales orales)",
+   "file": "gn-sound-a1-u01.js",
+   "order": 17
+  },
+  {
+   "key": "a1u01d1.s2a",
+   "voice": "F",
+   "text": "pire",
+   "es": "piel",
+   "lang": "gn",
+   "where": "U1 D1 · par 3, palabra a (Las vocales orales)",
+   "file": "gn-sound-a1-u01.js",
+   "same": "a1u01d1.s1b"
+  },
+  {
+   "key": "a1u01d1.s2b",
+   "voice": "F",
+   "text": "piru",
+   "es": "flaco",
+   "lang": "gn",
+   "where": "U1 D1 · par 3, palabra b (Las vocales orales)",
+   "file": "gn-sound-a1-u01.js",
+   "order": 18
+  },
+  {
+   "key": "a1u01d1.s3a",
+   "voice": "F",
+   "text": "po",
+   "es": "mano",
+   "lang": "gn",
+   "where": "U1 D1 · par 4, palabra a (Las vocales orales)",
+   "file": "gn-sound-a1-u01.js",
+   "order": 19
+  },
+  {
+   "key": "a1u01d1.s3b",
+   "voice": "F",
+   "text": "py",
+   "es": "pie",
+   "lang": "gn",
+   "where": "U1 D1 · par 4, palabra b (Las vocales orales)",
+   "file": "gn-sound-a1-u01.js",
+   "order": 20
+  },
+  {
+   "key": "a1u01d1.r1.l0",
+   "voice": "N",
+   "text": "En la parada del colectivo. ¿Qué responde el hombre?",
+   "es": "En la parada del colectivo. ¿Qué responde el hombre?",
+   "lang": "es",
+   "where": "U1 D1 · escucha «Respuesta rápida» · línea 1 de 8",
+   "file": "gn-sound-a1-u01.js",
+   "order": 21
+  },
+  {
+   "key": "a1u01d1.r1.l1",
+   "voice": "F",
+   "text": "Mba'éichapa reiko?",
+   "es": "¿Cómo andás?",
+   "lang": "gn",
+   "where": "U1 D1 · escucha «Respuesta rápida» · línea 2 de 8",
+   "file": "gn-sound-a1-u01.js",
+   "order": 22
+  },
+  {
+   "key": "a1u01d1.r1.l2",
+   "voice": "N",
+   "text": "1",
+   "es": "1",
+   "lang": "es",
+   "where": "U1 D1 · escucha «Respuesta rápida» · línea 3 de 8",
+   "file": "gn-sound-a1-u01.js",
+   "order": 23
+  },
+  {
+   "key": "a1u01d1.r1.l3",
+   "voice": "M",
+   "text": "Iporã, ha nde?",
+   "es": "Bien, ¿y vos?",
+   "lang": "gn",
+   "where": "U1 D1 · escucha «Respuesta rápida» · línea 4 de 8",
+   "file": "gn-sound-a1-u01.js",
+   "same": "a1u01d1.p1.x0.l1"
+  },
+  {
+   "key": "a1u01d1.r1.l4",
+   "voice": "N",
+   "text": "2",
+   "es": "2",
+   "lang": "es",
+   "where": "U1 D1 · escucha «Respuesta rápida» · línea 5 de 8",
+   "file": "gn-sound-a1-u01.js",
+   "order": 24
+  },
+  {
+   "key": "a1u01d1.r1.l5",
+   "voice": "M",
+   "text": "Jajotopáta ko ka'aru.",
+   "es": "Nos vemos esta tarde.",
+   "lang": "gn",
+   "where": "U1 D1 · escucha «Respuesta rápida» · línea 6 de 8",
+   "file": "gn-sound-a1-u01.js",
+   "order": 25
+  },
+  {
+   "key": "a1u01d1.r1.l6",
+   "voice": "N",
+   "text": "3",
+   "es": "3",
+   "lang": "es",
+   "where": "U1 D1 · escucha «Respuesta rápida» · línea 7 de 8",
+   "file": "gn-sound-a1-u01.js",
+   "order": 26
+  },
+  {
+   "key": "a1u01d1.r1.l7",
+   "voice": "M",
+   "text": "Iporã, ha che?",
+   "es": "Bien, ¿y yo?",
+   "lang": "gn",
+   "where": "U1 D1 · escucha «Respuesta rápida» · línea 8 de 8",
+   "file": "gn-sound-a1-u01.js",
+   "order": 27
+  },
+  {
+   "key": "a1u01d1.r1",
+   "parts": [
+    "a1u01d1.r1.l0",
+    "a1u01d1.r1.l1",
+    "a1u01d1.r1.l2",
+    "a1u01d1.p1.x0.l1",
+    "a1u01d1.r1.l4",
+    "a1u01d1.r1.l5",
+    "a1u01d1.r1.l6",
+    "a1u01d1.r1.l7"
+   ],
+   "voice": "N+F+M",
+   "text": "En la parada del colectivo. ¿Qué responde el hombre? / Mba'éichapa reiko? / 1 / Iporã, ha nde? / 2 / Jajotopáta ko ka'aru. / 3 / Iporã, ha che?",
+   "es": "En la parada del colectivo. ¿Qué responde el hombre? / ¿Cómo andás? / 1 / Bien, ¿y vos? / 2 / Nos vemos esta tarde. / 3 / Bien, ¿y yo?",
+   "where": "U1 D1 · escucha «Respuesta rápida»",
+   "file": "gn-sound-a1-u01.js"
+  },
+  {
+   "key": "a1u01d1.r1.l1.slow",
+   "voice": "F",
+   "text": "Mba'éichapa reiko?",
+   "es": "¿Cómo andás?",
+   "lang": "gn",
+   "slow": true,
+   "where": "U1 D1 · escucha «Respuesta rápida» · línea 2 de 8, versión lenta",
+   "file": "gn-sound-a1-u01.js",
+   "order": 147
+  },
+  {
+   "key": "a1u01d1.r1.l3.slow",
+   "voice": "M",
+   "text": "Iporã, ha nde?",
+   "es": "Bien, ¿y vos?",
+   "lang": "gn",
+   "slow": true,
+   "where": "U1 D1 · escucha «Respuesta rápida» · línea 4 de 8, versión lenta",
+   "file": "gn-sound-a1-u01.js",
+   "order": 148
+  },
+  {
+   "key": "a1u01d1.r1.l5.slow",
+   "voice": "M",
+   "text": "Jajotopáta ko ka'aru.",
+   "es": "Nos vemos esta tarde.",
+   "lang": "gn",
+   "slow": true,
+   "where": "U1 D1 · escucha «Respuesta rápida» · línea 6 de 8, versión lenta",
+   "file": "gn-sound-a1-u01.js",
+   "order": 149
+  },
+  {
+   "key": "a1u01d1.r1.l7.slow",
+   "voice": "M",
+   "text": "Iporã, ha che?",
+   "es": "Bien, ¿y yo?",
+   "lang": "gn",
+   "slow": true,
+   "where": "U1 D1 · escucha «Respuesta rápida» · línea 8 de 8, versión lenta",
+   "file": "gn-sound-a1-u01.js",
+   "order": 150
+  },
+  {
+   "key": "a1u01d1.r1.slow",
+   "parts": [
+    "a1u01d1.r1.l0",
+    "a1u01d1.r1.l1.slow",
+    "a1u01d1.r1.l2",
+    "a1u01d1.r1.l3.slow",
+    "a1u01d1.r1.l4",
+    "a1u01d1.r1.l5.slow",
+    "a1u01d1.r1.l6",
+    "a1u01d1.r1.l7.slow"
+   ],
+   "slow": true,
+   "voice": "N+F+M",
+   "text": "En la parada del colectivo. ¿Qué responde el hombre? / Mba'éichapa reiko? / 1 / Iporã, ha nde? / 2 / Jajotopáta ko ka'aru. / 3 / Iporã, ha che?",
+   "es": "",
+   "where": "U1 D1 · escucha «Respuesta rápida», versión lenta",
+   "file": "gn-sound-a1-u01.js"
+  },
+  {
+   "key": "a1u01d2.p1.x0",
+   "voice": "F",
+   "text": "Che añe'ẽ guaraníme.",
+   "es": "Yo hablo guaraní.",
+   "lang": "gn",
+   "where": "U1 D2 · punto 1, ejemplo 1",
+   "file": "gn-sound-a1-u01.js",
+   "order": 32
+  },
+  {
+   "key": "a1u01d2.p1.x1",
+   "voice": "F",
+   "text": "Iporã, ha nde?",
+   "es": "Bien, ¿y vos?",
+   "lang": "gn",
+   "where": "U1 D2 · punto 1, ejemplo 2",
+   "file": "gn-sound-a1-u01.js",
+   "order": 33
+  },
+  {
+   "key": "a1u01d2.p1.x2",
+   "voice": "F",
+   "text": "Ha'e oñe'ẽ guaraníme.",
+   "es": "Él (o ella) habla guaraní.",
+   "lang": "gn",
+   "where": "U1 D2 · punto 1, ejemplo 3",
+   "file": "gn-sound-a1-u01.js",
+   "order": 34
+  },
+  {
+   "key": "a1u01d2.p2.x0",
+   "voice": "F",
+   "text": "Ñande ñañe'ẽ guaraníme.",
+   "es": "Nosotros (con vos) hablamos guaraní.",
+   "lang": "gn",
+   "where": "U1 D2 · punto 2, ejemplo 1",
+   "file": "gn-sound-a1-u01.js",
+   "order": 35
+  },
+  {
+   "key": "a1u01d2.p2.x1",
+   "voice": "F",
+   "text": "Ore roñe'ẽ guaraníme.",
+   "es": "Nosotros (sin vos) hablamos guaraní.",
+   "lang": "gn",
+   "where": "U1 D2 · punto 2, ejemplo 2",
+   "file": "gn-sound-a1-u01.js",
+   "order": 36
+  },
+  {
+   "key": "a1u01d2.p2.x2",
+   "voice": "F",
+   "text": "Peẽ peñe'ẽ guaraníme.",
+   "es": "Ustedes hablan guaraní.",
+   "lang": "gn",
+   "where": "U1 D2 · punto 2, ejemplo 3",
+   "file": "gn-sound-a1-u01.js",
+   "order": 37
+  },
+  {
+   "key": "a1u01d2.p2.x3",
+   "voice": "F",
+   "text": "Ha'ekuéra oñe'ẽ guaraníme.",
+   "es": "Ellos (o ellas) hablan guaraní.",
+   "lang": "gn",
+   "where": "U1 D2 · punto 2, ejemplo 4",
+   "file": "gn-sound-a1-u01.js",
+   "order": 38
+  },
+  {
+   "key": "a1u01d2.w.chesy",
+   "voice": "F",
+   "text": "che sy",
+   "es": "mi mamá",
+   "lang": "gn",
+   "where": "U1 D2 · palabra 1 de la escena «Una foto de familia»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 39
+  },
+  {
+   "key": "a1u01d2.w.cheru",
+   "voice": "F",
+   "text": "che ru",
+   "es": "mi papá",
+   "lang": "gn",
+   "where": "U1 D2 · palabra 2 de la escena «Una foto de familia»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 40
+  },
+  {
+   "key": "a1u01d2.w.mita",
+   "voice": "F",
+   "text": "mitã",
+   "es": "niño, niña",
+   "lang": "gn",
+   "where": "U1 D2 · palabra 3 de la escena «Una foto de familia»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 41
+  },
+  {
+   "key": "a1u01d2.w.kunatai",
+   "voice": "F",
+   "text": "kuñataĩ",
+   "es": "chica, muchacha",
+   "lang": "gn",
+   "where": "U1 D2 · palabra 4 de la escena «Una foto de familia»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 42
+  },
+  {
+   "key": "a1u01d2.w.kuna",
+   "voice": "F",
+   "text": "kuña",
+   "es": "mujer",
+   "lang": "gn",
+   "where": "U1 D2 · palabra 5 de la escena «Una foto de familia»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 43
+  },
+  {
+   "key": "a1u01d2.w.kuimbae",
+   "voice": "F",
+   "text": "kuimba'e",
+   "es": "hombre",
+   "lang": "gn",
+   "where": "U1 D2 · palabra 6 de la escena «Una foto de familia»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 44
+  },
+  {
+   "key": "a1u01d2.w.angiru",
+   "voice": "F",
+   "text": "angirũ",
+   "es": "amigo, amiga",
+   "lang": "gn",
+   "where": "U1 D2 · palabra 7 de la escena «Una foto de familia»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 45
+  },
+  {
+   "key": "a1u01d2.s0a",
+   "voice": "F",
+   "text": "pytu",
+   "es": "aliento",
+   "lang": "gn",
+   "where": "U1 D2 · par 1, palabra a (Las vocales nasales)",
+   "file": "gn-sound-a1-u01.js",
+   "order": 46
+  },
+  {
+   "key": "a1u01d2.s0b",
+   "voice": "F",
+   "text": "pytũ",
+   "es": "oscuro",
+   "lang": "gn",
+   "where": "U1 D2 · par 1, palabra b (Las vocales nasales)",
+   "file": "gn-sound-a1-u01.js",
+   "order": 47
+  },
+  {
+   "key": "a1u01d2.s1a",
+   "voice": "F",
+   "text": "oke",
+   "es": "duerme",
+   "lang": "gn",
+   "where": "U1 D2 · par 2, palabra a (Las vocales nasales)",
+   "file": "gn-sound-a1-u01.js",
+   "order": 48
+  },
+  {
+   "key": "a1u01d2.s1b",
+   "voice": "F",
+   "text": "okẽ",
+   "es": "puerta",
+   "lang": "gn",
+   "where": "U1 D2 · par 2, palabra b (Las vocales nasales)",
+   "file": "gn-sound-a1-u01.js",
+   "order": 49
+  },
+  {
+   "key": "a1u01d2.s2a",
+   "voice": "F",
+   "text": "tupa",
+   "es": "cama",
+   "lang": "gn",
+   "where": "U1 D2 · par 3, palabra a (Las vocales nasales)",
+   "file": "gn-sound-a1-u01.js",
+   "order": 50
+  },
+  {
+   "key": "a1u01d2.s2b",
+   "voice": "F",
+   "text": "Tupã",
+   "es": "Dios",
+   "lang": "gn",
+   "where": "U1 D2 · par 3, palabra b (Las vocales nasales)",
+   "file": "gn-sound-a1-u01.js",
+   "order": 51
+  },
+  {
+   "key": "a1u01d2.s3a",
+   "voice": "F",
+   "text": "pyta",
+   "es": "talón; quedarse",
+   "lang": "gn",
+   "where": "U1 D2 · par 4, palabra a (Las vocales nasales)",
+   "file": "gn-sound-a1-u01.js",
+   "order": 52
+  },
+  {
+   "key": "a1u01d2.s3b",
+   "voice": "F",
+   "text": "pytã",
+   "es": "rojo",
+   "lang": "gn",
+   "where": "U1 D2 · par 4, palabra b (Las vocales nasales)",
+   "file": "gn-sound-a1-u01.js",
+   "order": 53
+  },
+  {
+   "key": "a1u01d3.p1.x0",
+   "voice": "F",
+   "text": "Mba'éichapa. Che réra Ana.",
+   "es": "Hola. Me llamo Ana.",
+   "lang": "gn",
+   "where": "U1 D3 · punto 1, ejemplo 1",
+   "file": "gn-sound-a1-u01.js",
+   "order": 54
+  },
+  {
+   "key": "a1u01d3.p1.x1",
+   "voice": "F",
+   "text": "Mba'éichapa nde réra?",
+   "es": "¿Cómo te llamás?",
+   "lang": "gn",
+   "where": "U1 D3 · punto 1, ejemplo 2",
+   "file": "gn-sound-a1-u01.js",
+   "order": 55
+  },
+  {
+   "key": "a1u01d3.p1.x2",
+   "voice": "F",
+   "text": "Mbo'ehára héra Rosa.",
+   "es": "La profesora se llama Rosa.",
+   "lang": "gn",
+   "where": "U1 D3 · punto 1, ejemplo 3",
+   "file": "gn-sound-a1-u01.js",
+   "order": 56
+  },
+  {
+   "key": "a1u01d3.p2.x0",
+   "voice": "F",
+   "text": "Che Paraguaigua.",
+   "es": "Soy de Paraguay.",
+   "lang": "gn",
+   "where": "U1 D3 · punto 2, ejemplo 1",
+   "file": "gn-sound-a1-u01.js",
+   "order": 57
+  },
+  {
+   "key": "a1u01d3.p2.x1",
+   "voice": "F",
+   "text": "Che réra Lucas. Che Argentina-gua.",
+   "es": "Me llamo Lucas. Soy de Argentina.",
+   "lang": "gn",
+   "where": "U1 D3 · punto 2, ejemplo 2",
+   "file": "gn-sound-a1-u01.js",
+   "order": 58
+  },
+  {
+   "key": "a1u01d3.p2.x2",
+   "voice": "F",
+   "text": "Mbo'ehára héra Rosa. Ha'e Paraguaigua.",
+   "es": "La profesora se llama Rosa. Es de Paraguay.",
+   "lang": "gn",
+   "where": "U1 D3 · punto 2, ejemplo 3",
+   "file": "gn-sound-a1-u01.js",
+   "order": 59
+  },
+  {
+   "key": "a1u01d3.w.tera",
+   "voice": "F",
+   "text": "téra",
+   "es": "nombre",
+   "lang": "gn",
+   "where": "U1 D3 · palabra 1 de la escena «En la escuela»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 60
+  },
+  {
+   "key": "a1u01d3.w.mboehara",
+   "voice": "F",
+   "text": "mbo'ehára",
+   "es": "profesor, profesora",
+   "lang": "gn",
+   "where": "U1 D3 · palabra 2 de la escena «En la escuela»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 61
+  },
+  {
+   "key": "a1u01d3.w.temimboe",
+   "voice": "F",
+   "text": "temimbo'e",
+   "es": "alumno, alumna",
+   "lang": "gn",
+   "where": "U1 D3 · palabra 3 de la escena «En la escuela»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 62
+  },
+  {
+   "key": "a1u01d3.w.pyahu",
+   "voice": "F",
+   "text": "pyahu",
+   "es": "nuevo, nueva",
+   "lang": "gn",
+   "where": "U1 D3 · palabra 4 de la escena «En la escuela»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 63
+  },
+  {
+   "key": "a1u01d3.w.mboehao",
+   "voice": "F",
+   "text": "mbo'ehao",
+   "es": "escuela",
+   "lang": "gn",
+   "where": "U1 D3 · palabra 5 de la escena «En la escuela»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 64
+  },
+  {
+   "key": "a1u01d3.w.mboepy",
+   "voice": "F",
+   "text": "mbo'epy",
+   "es": "clase, lección",
+   "lang": "gn",
+   "where": "U1 D3 · palabra 6 de la escena «En la escuela»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 65
+  },
+  {
+   "key": "a1u01d3.w.aranduka",
+   "voice": "F",
+   "text": "aranduka",
+   "es": "libro",
+   "lang": "gn",
+   "where": "U1 D3 · palabra 7 de la escena «En la escuela»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 66
+  },
+  {
+   "key": "a1u01d3.w.neeryru",
+   "voice": "F",
+   "text": "ñe'ẽryru",
+   "es": "diccionario",
+   "lang": "gn",
+   "where": "U1 D3 · palabra 8 de la escena «En la escuela»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 67
+  },
+  {
+   "key": "a1u01d3.s0a",
+   "voice": "F",
+   "text": "ita",
+   "es": "piedra",
+   "lang": "gn",
+   "where": "U1 D3 · par 1, palabra a (La y, sexta vocal)",
+   "file": "gn-sound-a1-u01.js",
+   "order": 68
+  },
+  {
+   "key": "a1u01d3.s0b",
+   "voice": "F",
+   "text": "yta",
+   "es": "nadar",
+   "lang": "gn",
+   "where": "U1 D3 · par 1, palabra b (La y, sexta vocal)",
+   "file": "gn-sound-a1-u01.js",
+   "order": 69
+  },
+  {
+   "key": "a1u01d3.s1a",
+   "voice": "F",
+   "text": "sa'i",
+   "es": "poco",
+   "lang": "gn",
+   "where": "U1 D3 · par 2, palabra a (La y, sexta vocal)",
+   "file": "gn-sound-a1-u01.js",
+   "order": 70
+  },
+  {
+   "key": "a1u01d3.s1b",
+   "voice": "F",
+   "text": "sa'y",
+   "es": "color",
+   "lang": "gn",
+   "where": "U1 D3 · par 2, palabra b (La y, sexta vocal)",
+   "file": "gn-sound-a1-u01.js",
+   "order": 71
+  },
+  {
+   "key": "a1u01d3.s2a",
+   "voice": "F",
+   "text": "yvytu",
+   "es": "viento",
+   "lang": "gn",
+   "where": "U1 D3 · par 3, palabra a (La y, sexta vocal)",
+   "file": "gn-sound-a1-u01.js",
+   "order": 72
+  },
+  {
+   "key": "a1u01d3.s2b",
+   "voice": "F",
+   "text": "yvyty",
+   "es": "cerro",
+   "lang": "gn",
+   "where": "U1 D3 · par 3, palabra b (La y, sexta vocal)",
+   "file": "gn-sound-a1-u01.js",
+   "order": 73
+  },
+  {
+   "key": "a1u01d3.s3a",
+   "voice": "F",
+   "text": "hendu",
+   "es": "oír",
+   "lang": "gn",
+   "where": "U1 D3 · par 4, palabra a (La y, sexta vocal)",
+   "file": "gn-sound-a1-u01.js",
+   "order": 74
+  },
+  {
+   "key": "a1u01d3.s3b",
+   "voice": "F",
+   "text": "hendy",
+   "es": "arder",
+   "lang": "gn",
+   "where": "U1 D3 · par 4, palabra b (La y, sexta vocal)",
+   "file": "gn-sound-a1-u01.js",
+   "order": 75
+  },
+  {
+   "key": "a1u01d3.r1.l0",
+   "voice": "N",
+   "text": "Primer día de clase de guaraní. La profesora habla de ella y de una alumna nueva.",
+   "es": "Primer día de clase de guaraní. La profesora habla de ella y de una alumna nueva.",
+   "lang": "es",
+   "where": "U1 D3 · escucha «Comprensión de puntos clave» · línea 1 de 7",
+   "file": "gn-sound-a1-u01.js",
+   "order": 76
+  },
+  {
+   "key": "a1u01d3.r1.l1",
+   "voice": "N",
+   "text": "¿Qué dato de la alumna nueva es correcto?",
+   "es": "¿Qué dato de la alumna nueva es correcto?",
+   "lang": "es",
+   "where": "U1 D3 · escucha «Comprensión de puntos clave» · línea 2 de 7",
+   "file": "gn-sound-a1-u01.js",
+   "order": 77
+  },
+  {
+   "key": "a1u01d3.r1.l2",
+   "voice": "F",
+   "text": "Mba'éichapa. Che réra Nilda.",
+   "es": "Hola. Me llamo Nilda.",
+   "lang": "gn",
+   "where": "U1 D3 · escucha «Comprensión de puntos clave» · línea 3 de 7",
+   "file": "gn-sound-a1-u01.js",
+   "order": 78
+  },
+  {
+   "key": "a1u01d3.r1.l3",
+   "voice": "F",
+   "text": "Che Paraguaigua.",
+   "es": "Soy de Paraguay.",
+   "lang": "gn",
+   "where": "U1 D3 · escucha «Comprensión de puntos clave» · línea 4 de 7",
+   "file": "gn-sound-a1-u01.js",
+   "same": "a1u01d3.p2.x0"
+  },
+  {
+   "key": "a1u01d3.r1.l4",
+   "voice": "F",
+   "text": "Temimbo'e pyahu héra Sofía.",
+   "es": "La alumna nueva se llama Sofía.",
+   "lang": "gn",
+   "where": "U1 D3 · escucha «Comprensión de puntos clave» · línea 5 de 7",
+   "file": "gn-sound-a1-u01.js",
+   "order": 79
+  },
+  {
+   "key": "a1u01d3.r1.l5",
+   "voice": "F",
+   "text": "Ha'e Argentina-gua.",
+   "es": "Es de Argentina.",
+   "lang": "gn",
+   "where": "U1 D3 · escucha «Comprensión de puntos clave» · línea 6 de 7",
+   "file": "gn-sound-a1-u01.js",
+   "order": 80
+  },
+  {
+   "key": "a1u01d3.r1.l6",
+   "voice": "N",
+   "text": "¿Qué dato de la alumna nueva es correcto?",
+   "es": "¿Qué dato de la alumna nueva es correcto?",
+   "lang": "es",
+   "where": "U1 D3 · escucha «Comprensión de puntos clave» · línea 7 de 7",
+   "file": "gn-sound-a1-u01.js",
+   "same": "a1u01d3.r1.l1"
+  },
+  {
+   "key": "a1u01d3.r1",
+   "parts": [
+    "a1u01d3.r1.l0",
+    "a1u01d3.r1.l1",
+    "a1u01d3.r1.l2",
+    "a1u01d3.p2.x0",
+    "a1u01d3.r1.l4",
+    "a1u01d3.r1.l5",
+    "a1u01d3.r1.l1"
+   ],
+   "voice": "N+F",
+   "text": "Primer día de clase de guaraní. La profesora habla de ella y de una alumna nueva. / ¿Qué dato de la alumna nueva es correcto? / Mba'éichapa. Che réra Nilda. / Che Paraguaigua. / Temimbo'e pyahu héra Sofía. / Ha'e Argentina-gua. / ¿Qué dato de la alumna nueva es correcto?",
+   "es": "Primer día de clase de guaraní. La profesora habla de ella y de una alumna nueva. / ¿Qué dato de la alumna nueva es correcto? / Hola. Me llamo Nilda. / Soy de Paraguay. / La alumna nueva se llama Sofía. / Es de Argentina. / ¿Qué dato de la alumna nueva es correcto?",
+   "where": "U1 D3 · escucha «Comprensión de puntos clave»",
+   "file": "gn-sound-a1-u01.js"
+  },
+  {
+   "key": "a1u01d3.r1.l2.slow",
+   "voice": "F",
+   "text": "Mba'éichapa. Che réra Nilda.",
+   "es": "Hola. Me llamo Nilda.",
+   "lang": "gn",
+   "slow": true,
+   "where": "U1 D3 · escucha «Comprensión de puntos clave» · línea 3 de 7, versión lenta",
+   "file": "gn-sound-a1-u01.js",
+   "order": 151
+  },
+  {
+   "key": "a1u01d3.r1.l3.slow",
+   "voice": "F",
+   "text": "Che Paraguaigua.",
+   "es": "Soy de Paraguay.",
+   "lang": "gn",
+   "slow": true,
+   "where": "U1 D3 · escucha «Comprensión de puntos clave» · línea 4 de 7, versión lenta",
+   "file": "gn-sound-a1-u01.js",
+   "order": 152
+  },
+  {
+   "key": "a1u01d3.r1.l4.slow",
+   "voice": "F",
+   "text": "Temimbo'e pyahu héra Sofía.",
+   "es": "La alumna nueva se llama Sofía.",
+   "lang": "gn",
+   "slow": true,
+   "where": "U1 D3 · escucha «Comprensión de puntos clave» · línea 5 de 7, versión lenta",
+   "file": "gn-sound-a1-u01.js",
+   "order": 153
+  },
+  {
+   "key": "a1u01d3.r1.l5.slow",
+   "voice": "F",
+   "text": "Ha'e Argentina-gua.",
+   "es": "Es de Argentina.",
+   "lang": "gn",
+   "slow": true,
+   "where": "U1 D3 · escucha «Comprensión de puntos clave» · línea 6 de 7, versión lenta",
+   "file": "gn-sound-a1-u01.js",
+   "order": 154
+  },
+  {
+   "key": "a1u01d3.r1.slow",
+   "parts": [
+    "a1u01d3.r1.l0",
+    "a1u01d3.r1.l1",
+    "a1u01d3.r1.l2.slow",
+    "a1u01d3.r1.l3.slow",
+    "a1u01d3.r1.l4.slow",
+    "a1u01d3.r1.l5.slow",
+    "a1u01d3.r1.l1"
+   ],
+   "slow": true,
+   "voice": "N+F",
+   "text": "Primer día de clase de guaraní. La profesora habla de ella y de una alumna nueva. / ¿Qué dato de la alumna nueva es correcto? / Mba'éichapa. Che réra Nilda. / Che Paraguaigua. / Temimbo'e pyahu héra Sofía. / Ha'e Argentina-gua. / ¿Qué dato de la alumna nueva es correcto?",
+   "es": "",
+   "where": "U1 D3 · escucha «Comprensión de puntos clave», versión lenta",
+   "file": "gn-sound-a1-u01.js"
+  },
+  {
+   "key": "a1u01d4.p1.x0",
+   "voice": "F",
+   "text": "Reñe'ẽpa guaraníme? Héẽ, michĩmi.",
+   "es": "¿Hablás guaraní? Sí, un poquito.",
+   "lang": "gn",
+   "where": "U1 D4 · punto 1, ejemplo 1",
+   "file": "gn-sound-a1-u01.js",
+   "order": 85
+  },
+  {
+   "key": "a1u01d4.p1.x1",
+   "voice": "F",
+   "text": "Ikatúpa aike? Héẽ, ikatu.",
+   "es": "¿Puedo pasar? Sí, se puede.",
+   "lang": "gn",
+   "where": "U1 D4 · punto 1, ejemplo 2",
+   "file": "gn-sound-a1-u01.js",
+   "order": 86
+  },
+  {
+   "key": "a1u01d4.p1.x2",
+   "voice": "F",
+   "text": "Ndépa Juan? Nahániri, che Pedro.",
+   "es": "¿Vos sos Juan? No, soy Pedro.",
+   "lang": "gn",
+   "where": "U1 D4 · punto 1, ejemplo 3",
+   "file": "gn-sound-a1-u01.js",
+   "order": 87
+  },
+  {
+   "key": "a1u01d4.p2.x0",
+   "voice": "F",
+   "text": "Mba'épa reipota?",
+   "es": "¿Qué querés?",
+   "lang": "gn",
+   "where": "U1 D4 · punto 2, ejemplo 1",
+   "file": "gn-sound-a1-u01.js",
+   "order": 88
+  },
+  {
+   "key": "a1u01d4.p2.x1",
+   "voice": "F",
+   "text": "Mávapa ha'e?",
+   "es": "¿Quién es?",
+   "lang": "gn",
+   "where": "U1 D4 · punto 2, ejemplo 2",
+   "file": "gn-sound-a1-u01.js",
+   "order": 89
+  },
+  {
+   "key": "a1u01d4.p2.x2",
+   "voice": "F",
+   "text": "Moõpa reiko?",
+   "es": "¿Dónde vivís?",
+   "lang": "gn",
+   "where": "U1 D4 · punto 2, ejemplo 3",
+   "file": "gn-sound-a1-u01.js",
+   "order": 90
+  },
+  {
+   "key": "a1u01d4.p2.x3",
+   "voice": "F",
+   "text": "Mboýpa ovale ko kesu?",
+   "es": "¿Cuánto cuesta este queso?",
+   "lang": "gn",
+   "where": "U1 D4 · punto 2, ejemplo 4",
+   "file": "gn-sound-a1-u01.js",
+   "order": 91
+  },
+  {
+   "key": "a1u01d4.w.chipa",
+   "voice": "F",
+   "text": "chipa",
+   "es": "chipá",
+   "lang": "gn",
+   "where": "U1 D4 · palabra 1 de la escena «Un puesto en el mercado»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 92
+  },
+  {
+   "key": "a1u01d4.w.kesu",
+   "voice": "F",
+   "text": "kesu",
+   "es": "queso",
+   "lang": "gn",
+   "where": "U1 D4 · palabra 2 de la escena «Un puesto en el mercado»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 93
+  },
+  {
+   "key": "a1u01d4.w.soo",
+   "voice": "F",
+   "text": "so'o",
+   "es": "carne",
+   "lang": "gn",
+   "where": "U1 D4 · palabra 3 de la escena «Un puesto en el mercado»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 94
+  },
+  {
+   "key": "a1u01d4.w.mandio",
+   "voice": "F",
+   "text": "mandi'o",
+   "es": "mandioca",
+   "lang": "gn",
+   "where": "U1 D4 · palabra 4 de la escena «Un puesto en el mercado»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 95
+  },
+  {
+   "key": "a1u01d4.w.kaa",
+   "voice": "F",
+   "text": "ka'a",
+   "es": "yerba mate",
+   "lang": "gn",
+   "where": "U1 D4 · palabra 5 de la escena «Un puesto en el mercado»",
+   "file": "gn-sound-a1-u01.js",
+   "same": "a1u01d1.s0a"
+  },
+  {
+   "key": "a1u01d4.w.hee",
+   "voice": "F",
+   "text": "he'ẽ",
+   "es": "dulce",
+   "lang": "gn",
+   "where": "U1 D4 · palabra 6 de la escena «Un puesto en el mercado»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 96
+  },
+  {
+   "key": "a1u01d4.w.oipa",
+   "voice": "F",
+   "text": "Oĩpa chipa?",
+   "es": "¿Hay chipá?",
+   "lang": "gn",
+   "where": "U1 D4 · palabra 7 de la escena «Un puesto en el mercado»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 97
+  },
+  {
+   "key": "a1u01d4.w.mboypa",
+   "voice": "F",
+   "text": "Mboýpa ovale?",
+   "es": "¿Cuánto cuesta?",
+   "lang": "gn",
+   "where": "U1 D4 · palabra 8 de la escena «Un puesto en el mercado»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 98
+  },
+  {
+   "key": "a1u01d4.s0a",
+   "voice": "F",
+   "text": "mbo'y",
+   "es": "collar",
+   "lang": "gn",
+   "where": "U1 D4 · par 1, palabra a (El puso ('))",
+   "file": "gn-sound-a1-u01.js",
+   "order": 99
+  },
+  {
+   "key": "a1u01d4.s0b",
+   "voice": "F",
+   "text": "mboy",
+   "es": "¿cuántos?",
+   "lang": "gn",
+   "where": "U1 D4 · par 1, palabra b (El puso ('))",
+   "file": "gn-sound-a1-u01.js",
+   "order": 100
+  },
+  {
+   "key": "a1u01d4.s1a",
+   "voice": "F",
+   "text": "ka'i",
+   "es": "mono",
+   "lang": "gn",
+   "where": "U1 D4 · par 2, palabra a (El puso ('))",
+   "file": "gn-sound-a1-u01.js",
+   "same": "a1u01d1.s0b"
+  },
+  {
+   "key": "a1u01d4.s1b",
+   "voice": "F",
+   "text": "kái",
+   "es": "quemarse",
+   "lang": "gn",
+   "where": "U1 D4 · par 2, palabra b (El puso ('))",
+   "file": "gn-sound-a1-u01.js",
+   "order": 101
+  },
+  {
+   "key": "a1u01d4.s2a",
+   "voice": "F",
+   "text": "sevo'i",
+   "es": "lombriz",
+   "lang": "gn",
+   "where": "U1 D4 · par 3, palabra a (El puso ('))",
+   "file": "gn-sound-a1-u01.js",
+   "order": 102
+  },
+  {
+   "key": "a1u01d4.s2b",
+   "voice": "F",
+   "text": "sevói",
+   "es": "cebolla",
+   "lang": "gn",
+   "where": "U1 D4 · par 3, palabra b (El puso ('))",
+   "file": "gn-sound-a1-u01.js",
+   "order": 103
+  },
+  {
+   "key": "a1u01d4.r1.l0",
+   "voice": "N",
+   "text": "En un puesto del mercado. ¿Qué hay en el puesto?",
+   "es": "En un puesto del mercado. ¿Qué hay en el puesto?",
+   "lang": "es",
+   "where": "U1 D4 · escucha «Comprensión de puntos clave» · línea 1 de 7",
+   "file": "gn-sound-a1-u01.js",
+   "order": 104
+  },
+  {
+   "key": "a1u01d4.r1.l1",
+   "voice": "M",
+   "text": "Mba'éichapa. Mba'épa reipota?",
+   "es": "Hola, ¿qué tal? ¿Qué querés?",
+   "lang": "gn",
+   "where": "U1 D4 · escucha «Comprensión de puntos clave» · línea 2 de 7",
+   "file": "gn-sound-a1-u01.js",
+   "order": 105
+  },
+  {
+   "key": "a1u01d4.r1.l2",
+   "voice": "F",
+   "text": "Iporã. Oĩpa chipa?",
+   "es": "Bien. ¿Hay chipá?",
+   "lang": "gn",
+   "where": "U1 D4 · escucha «Comprensión de puntos clave» · línea 3 de 7",
+   "file": "gn-sound-a1-u01.js",
+   "order": 106
+  },
+  {
+   "key": "a1u01d4.r1.l3",
+   "voice": "M",
+   "text": "Nahániri. Oĩ kesu ha mandi'o.",
+   "es": "No. Hay queso y mandioca.",
+   "lang": "gn",
+   "where": "U1 D4 · escucha «Comprensión de puntos clave» · línea 4 de 7",
+   "file": "gn-sound-a1-u01.js",
+   "order": 107
+  },
+  {
+   "key": "a1u01d4.r1.l4",
+   "voice": "F",
+   "text": "Mboýpa ovale ko kesu?",
+   "es": "¿Cuánto cuesta este queso?",
+   "lang": "gn",
+   "where": "U1 D4 · escucha «Comprensión de puntos clave» · línea 5 de 7",
+   "file": "gn-sound-a1-u01.js",
+   "same": "a1u01d4.p2.x3"
+  },
+  {
+   "key": "a1u01d4.r1.l5",
+   "voice": "M",
+   "text": "Diez mil.",
+   "es": "Diez mil.",
+   "lang": "gn",
+   "where": "U1 D4 · escucha «Comprensión de puntos clave» · línea 6 de 7",
+   "file": "gn-sound-a1-u01.js",
+   "order": 108
+  },
+  {
+   "key": "a1u01d4.r1.l6",
+   "voice": "N",
+   "text": "¿Qué hay en el puesto?",
+   "es": "¿Qué hay en el puesto?",
+   "lang": "es",
+   "where": "U1 D4 · escucha «Comprensión de puntos clave» · línea 7 de 7",
+   "file": "gn-sound-a1-u01.js",
+   "order": 109
+  },
+  {
+   "key": "a1u01d4.r1",
+   "parts": [
+    "a1u01d4.r1.l0",
+    "a1u01d4.r1.l1",
+    "a1u01d4.r1.l2",
+    "a1u01d4.r1.l3",
+    "a1u01d4.p2.x3",
+    "a1u01d4.r1.l5",
+    "a1u01d4.r1.l6"
+   ],
+   "voice": "N+M+F",
+   "text": "En un puesto del mercado. ¿Qué hay en el puesto? / Mba'éichapa. Mba'épa reipota? / Iporã. Oĩpa chipa? / Nahániri. Oĩ kesu ha mandi'o. / Mboýpa ovale ko kesu? / Diez mil. / ¿Qué hay en el puesto?",
+   "es": "En un puesto del mercado. ¿Qué hay en el puesto? / Hola, ¿qué tal? ¿Qué querés? / Bien. ¿Hay chipá? / No. Hay queso y mandioca. / ¿Cuánto cuesta este queso? / Diez mil. / ¿Qué hay en el puesto?",
+   "where": "U1 D4 · escucha «Comprensión de puntos clave»",
+   "file": "gn-sound-a1-u01.js"
+  },
+  {
+   "key": "a1u01d4.r1.l1.slow",
+   "voice": "M",
+   "text": "Mba'éichapa. Mba'épa reipota?",
+   "es": "Hola, ¿qué tal? ¿Qué querés?",
+   "lang": "gn",
+   "slow": true,
+   "where": "U1 D4 · escucha «Comprensión de puntos clave» · línea 2 de 7, versión lenta",
+   "file": "gn-sound-a1-u01.js",
+   "order": 155
+  },
+  {
+   "key": "a1u01d4.r1.l2.slow",
+   "voice": "F",
+   "text": "Iporã. Oĩpa chipa?",
+   "es": "Bien. ¿Hay chipá?",
+   "lang": "gn",
+   "slow": true,
+   "where": "U1 D4 · escucha «Comprensión de puntos clave» · línea 3 de 7, versión lenta",
+   "file": "gn-sound-a1-u01.js",
+   "order": 156
+  },
+  {
+   "key": "a1u01d4.r1.l3.slow",
+   "voice": "M",
+   "text": "Nahániri. Oĩ kesu ha mandi'o.",
+   "es": "No. Hay queso y mandioca.",
+   "lang": "gn",
+   "slow": true,
+   "where": "U1 D4 · escucha «Comprensión de puntos clave» · línea 4 de 7, versión lenta",
+   "file": "gn-sound-a1-u01.js",
+   "order": 157
+  },
+  {
+   "key": "a1u01d4.r1.l4.slow",
+   "voice": "F",
+   "text": "Mboýpa ovale ko kesu?",
+   "es": "¿Cuánto cuesta este queso?",
+   "lang": "gn",
+   "slow": true,
+   "where": "U1 D4 · escucha «Comprensión de puntos clave» · línea 5 de 7, versión lenta",
+   "file": "gn-sound-a1-u01.js",
+   "order": 158
+  },
+  {
+   "key": "a1u01d4.r1.l5.slow",
+   "voice": "M",
+   "text": "Diez mil.",
+   "es": "Diez mil.",
+   "lang": "gn",
+   "slow": true,
+   "where": "U1 D4 · escucha «Comprensión de puntos clave» · línea 6 de 7, versión lenta",
+   "file": "gn-sound-a1-u01.js",
+   "order": 159
+  },
+  {
+   "key": "a1u01d4.r1.slow",
+   "parts": [
+    "a1u01d4.r1.l0",
+    "a1u01d4.r1.l1.slow",
+    "a1u01d4.r1.l2.slow",
+    "a1u01d4.r1.l3.slow",
+    "a1u01d4.r1.l4.slow",
+    "a1u01d4.r1.l5.slow",
+    "a1u01d4.r1.l6"
+   ],
+   "slow": true,
+   "voice": "N+M+F",
+   "text": "En un puesto del mercado. ¿Qué hay en el puesto? / Mba'éichapa. Mba'épa reipota? / Iporã. Oĩpa chipa? / Nahániri. Oĩ kesu ha mandi'o. / Mboýpa ovale ko kesu? / Diez mil. / ¿Qué hay en el puesto?",
+   "es": "",
+   "where": "U1 D4 · escucha «Comprensión de puntos clave», versión lenta",
+   "file": "gn-sound-a1-u01.js"
+  },
+  {
+   "key": "a1u01d5.p1.x0",
+   "voice": "F",
+   "text": "Aguyje ndéve, Lucía.",
+   "es": "Gracias a vos, Lucía.",
+   "lang": "gn",
+   "where": "U1 D5 · punto 1, ejemplo 1",
+   "file": "gn-sound-a1-u01.js",
+   "order": 115
+  },
+  {
+   "key": "a1u01d5.p1.x1",
+   "voice": "F",
+   "text": "Nahániri, aguyje.",
+   "es": "No, gracias.",
+   "lang": "gn",
+   "where": "U1 D5 · punto 1, ejemplo 2",
+   "file": "gn-sound-a1-u01.js",
+   "order": 116
+  },
+  {
+   "key": "a1u01d5.p1.x2",
+   "voice": "F",
+   "text": "Aguyjevete peẽme.",
+   "es": "Muchas gracias a ustedes.",
+   "lang": "gn",
+   "where": "U1 D5 · punto 1, ejemplo 3",
+   "file": "gn-sound-a1-u01.js",
+   "order": 117
+  },
+  {
+   "key": "a1u01d5.p2.x0",
+   "voice": "F",
+   "text": "Ikatúpa aporandumi ndéve peteĩ mba'e?",
+   "es": "¿Te puedo preguntar una cosa?",
+   "lang": "gn",
+   "where": "U1 D5 · punto 2, ejemplo 1",
+   "file": "gn-sound-a1-u01.js",
+   "order": 118
+  },
+  {
+   "key": "a1u01d5.p2.x1",
+   "voice": "F",
+   "text": "Cheñyrõmi, ña Ramona.",
+   "es": "Perdón, doña Ramona.",
+   "lang": "gn",
+   "where": "U1 D5 · punto 2, ejemplo 2",
+   "file": "gn-sound-a1-u01.js",
+   "order": 119
+  },
+  {
+   "key": "a1u01d5.p2.x2",
+   "voice": "F",
+   "text": "Eike, Lucía. Tereg̃uahẽ porãite.",
+   "es": "Pasá, Lucía. Bienvenida.",
+   "lang": "gn",
+   "where": "U1 D5 · punto 2, ejemplo 3",
+   "file": "gn-sound-a1-u01.js",
+   "order": 120
+  },
+  {
+   "key": "a1u01d5.w.oga",
+   "voice": "F",
+   "text": "óga",
+   "es": "casa",
+   "lang": "gn",
+   "where": "U1 D5 · palabra 1 de la escena «De visita en una casa paraguaya»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 121
+  },
+  {
+   "key": "a1u01d5.w.oke",
+   "voice": "F",
+   "text": "okẽ",
+   "es": "puerta",
+   "lang": "gn",
+   "where": "U1 D5 · palabra 2 de la escena «De visita en una casa paraguaya»",
+   "file": "gn-sound-a1-u01.js",
+   "same": "a1u01d2.s1b"
+  },
+  {
+   "key": "a1u01d5.w.tereguahe",
+   "voice": "F",
+   "text": "Tereg̃uahẽ porãite",
+   "es": "bienvenido, bienvenida",
+   "lang": "gn",
+   "where": "U1 D5 · palabra 3 de la escena «De visita en una casa paraguaya»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 122
+  },
+  {
+   "key": "a1u01d5.w.terere",
+   "voice": "F",
+   "text": "terere",
+   "es": "tereré",
+   "lang": "gn",
+   "where": "U1 D5 · palabra 4 de la escena «De visita en una casa paraguaya»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 123
+  },
+  {
+   "key": "a1u01d5.w.kaay",
+   "voice": "F",
+   "text": "ka'ay",
+   "es": "mate",
+   "lang": "gn",
+   "where": "U1 D5 · palabra 5 de la escena «De visita en una casa paraguaya»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 124
+  },
+  {
+   "key": "a1u01d5.w.angiru",
+   "voice": "F",
+   "text": "angirũ",
+   "es": "amigo, amiga",
+   "lang": "gn",
+   "where": "U1 D5 · palabra 6 de la escena «De visita en una casa paraguaya»",
+   "file": "gn-sound-a1-u01.js",
+   "same": "a1u01d2.w.angiru"
+  },
+  {
+   "key": "a1u01d5.w.avanee",
+   "voice": "F",
+   "text": "avañe'ẽ",
+   "es": "guaraní (la lengua)",
+   "lang": "gn",
+   "where": "U1 D5 · palabra 7 de la escena «De visita en una casa paraguaya»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 125
+  },
+  {
+   "key": "a1u01d5.w.cheniromi",
+   "voice": "F",
+   "text": "Cheñyrõmi",
+   "es": "perdón, disculpá",
+   "lang": "gn",
+   "where": "U1 D5 · palabra 8 de la escena «De visita en una casa paraguaya»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 126
+  },
+  {
+   "key": "a1u01d5.s0a",
+   "voice": "F",
+   "text": "okẽ",
+   "es": "puerta",
+   "lang": "gn",
+   "where": "U1 D5 · par 1, palabra a (Teclear ã ẽ ĩ õ ũ ỹ, g̃ y el puso ('))",
+   "file": "gn-sound-a1-u01.js",
+   "same": "a1u01d2.s1b"
+  },
+  {
+   "key": "a1u01d5.s0b",
+   "voice": "F",
+   "text": "oke",
+   "es": "duerme",
+   "lang": "gn",
+   "where": "U1 D5 · par 1, palabra b (Teclear ã ẽ ĩ õ ũ ỹ, g̃ y el puso ('))",
+   "file": "gn-sound-a1-u01.js",
+   "same": "a1u01d2.s1a"
+  },
+  {
+   "key": "a1u01d5.s1a",
+   "voice": "F",
+   "text": "porã",
+   "es": "lindo, bien",
+   "lang": "gn",
+   "where": "U1 D5 · par 2, palabra a (Teclear ã ẽ ĩ õ ũ ỹ, g̃ y el puso ('))",
+   "file": "gn-sound-a1-u01.js",
+   "order": 127
+  },
+  {
+   "key": "a1u01d5.s1b",
+   "voice": "F",
+   "text": "póra",
+   "es": "fantasma",
+   "lang": "gn",
+   "where": "U1 D5 · par 2, palabra b (Teclear ã ẽ ĩ õ ũ ỹ, g̃ y el puso ('))",
+   "file": "gn-sound-a1-u01.js",
+   "order": 128
+  },
+  {
+   "key": "a1u01d5.s2a",
+   "voice": "F",
+   "text": "téra",
+   "es": "nombre",
+   "lang": "gn",
+   "where": "U1 D5 · par 3, palabra a (Teclear ã ẽ ĩ õ ũ ỹ, g̃ y el puso ('))",
+   "file": "gn-sound-a1-u01.js",
+   "same": "a1u01d3.w.tera"
+  },
+  {
+   "key": "a1u01d5.s2b",
+   "voice": "F",
+   "text": "térã",
+   "es": "o",
+   "lang": "gn",
+   "where": "U1 D5 · par 3, palabra b (Teclear ã ẽ ĩ õ ũ ỹ, g̃ y el puso ('))",
+   "file": "gn-sound-a1-u01.js",
+   "order": 129
+  },
+  {
+   "key": "a1u01d6.w.ikatupa",
+   "voice": "F",
+   "text": "Ikatúpa aike?",
+   "es": "¿Puedo pasar?",
+   "lang": "gn",
+   "where": "U1 D6 · palabra 1 de la escena «Rosa visita a Ana»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 130
+  },
+  {
+   "key": "a1u01d6.w.hee",
+   "voice": "F",
+   "text": "Héẽ",
+   "es": "Sí",
+   "lang": "gn",
+   "where": "U1 D6 · palabra 2 de la escena «Rosa visita a Ana»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 131
+  },
+  {
+   "key": "a1u01d6.w.teregua",
+   "voice": "F",
+   "text": "Tereg̃uahẽ porãite",
+   "es": "Bienvenida, bienvenido",
+   "lang": "gn",
+   "where": "U1 D6 · palabra 3 de la escena «Rosa visita a Ana»",
+   "file": "gn-sound-a1-u01.js",
+   "same": "a1u01d5.w.tereguahe"
+  },
+  {
+   "key": "a1u01d6.w.mbaeichapa",
+   "voice": "F",
+   "text": "Mba'éichapa?",
+   "es": "Hola, ¿cómo estás?",
+   "lang": "gn",
+   "where": "U1 D6 · palabra 4 de la escena «Rosa visita a Ana»",
+   "file": "gn-sound-a1-u01.js",
+   "same": "a1u01d1.w.mbaeichapa"
+  },
+  {
+   "key": "a1u01d6.w.ipora",
+   "voice": "F",
+   "text": "Iporã, ha nde?",
+   "es": "Bien, ¿y vos?",
+   "lang": "gn",
+   "where": "U1 D6 · palabra 5 de la escena «Rosa visita a Ana»",
+   "file": "gn-sound-a1-u01.js",
+   "same": "a1u01d2.p1.x1"
+  },
+  {
+   "key": "a1u01d6.w.chenyromi",
+   "voice": "F",
+   "text": "Cheñyrõmi",
+   "es": "Perdón, disculpá",
+   "lang": "gn",
+   "where": "U1 D6 · palabra 6 de la escena «Rosa visita a Ana»",
+   "file": "gn-sound-a1-u01.js",
+   "same": "a1u01d5.w.cheniromi"
+  },
+  {
+   "key": "a1u01d6.w.aguyje",
+   "voice": "F",
+   "text": "Aguyje",
+   "es": "Gracias",
+   "lang": "gn",
+   "where": "U1 D6 · palabra 7 de la escena «Rosa visita a Ana»",
+   "file": "gn-sound-a1-u01.js",
+   "order": 132
+  },
+  {
+   "key": "a1u01d6.w.jajotopata",
+   "voice": "F",
+   "text": "Jajotopáta",
+   "es": "Nos vemos",
+   "lang": "gn",
+   "where": "U1 D6 · palabra 8 de la escena «Rosa visita a Ana»",
+   "file": "gn-sound-a1-u01.js",
+   "same": "a1u01d1.w.jajotopata"
+  },
+  {
+   "key": "a1u01d6.s0a",
+   "voice": "F",
+   "text": "pyta",
+   "es": "talón",
+   "lang": "gn",
+   "where": "U1 D6 · par 1, palabra a (Repaso: nasales, la y y el puso)",
+   "file": "gn-sound-a1-u01.js",
+   "same": "a1u01d2.s3a"
+  },
+  {
+   "key": "a1u01d6.s0b",
+   "voice": "F",
+   "text": "pytã",
+   "es": "rojo",
+   "lang": "gn",
+   "where": "U1 D6 · par 1, palabra b (Repaso: nasales, la y y el puso)",
+   "file": "gn-sound-a1-u01.js",
+   "same": "a1u01d2.s3b"
+  },
+  {
+   "key": "a1u01d6.s1a",
+   "voice": "F",
+   "text": "ita",
+   "es": "piedra",
+   "lang": "gn",
+   "where": "U1 D6 · par 2, palabra a (Repaso: nasales, la y y el puso)",
+   "file": "gn-sound-a1-u01.js",
+   "same": "a1u01d3.s0a"
+  },
+  {
+   "key": "a1u01d6.s1b",
+   "voice": "F",
+   "text": "yta",
+   "es": "nadar",
+   "lang": "gn",
+   "where": "U1 D6 · par 2, palabra b (Repaso: nasales, la y y el puso)",
+   "file": "gn-sound-a1-u01.js",
+   "same": "a1u01d3.s0b"
+  },
+  {
+   "key": "a1u01d6.s2a",
+   "voice": "F",
+   "text": "ka'i",
+   "es": "mono",
+   "lang": "gn",
+   "where": "U1 D6 · par 3, palabra a (Repaso: nasales, la y y el puso)",
+   "file": "gn-sound-a1-u01.js",
+   "same": "a1u01d1.s0b"
+  },
+  {
+   "key": "a1u01d6.s2b",
+   "voice": "F",
+   "text": "kái",
+   "es": "quemarse",
+   "lang": "gn",
+   "where": "U1 D6 · par 3, palabra b (Repaso: nasales, la y y el puso)",
+   "file": "gn-sound-a1-u01.js",
+   "same": "a1u01d4.s1b"
+  },
+  {
+   "key": "pl.1.l0",
+   "voice": "F",
+   "text": "Mba'éichapa reiko?",
+   "es": "¿Cómo andás?",
+   "lang": "gn",
+   "where": "Ubicación · pregunta 1 · línea 1 de 1",
+   "file": "gn-sound-pl.js",
+   "same": "a1u01d1.r1.l1"
+  },
+  {
+   "key": "pl.1",
+   "parts": [
+    "a1u01d1.r1.l1"
+   ],
+   "voice": "F",
+   "text": "Mba'éichapa reiko?",
+   "es": "¿Cómo andás?",
+   "where": "Ubicación · pregunta 1",
+   "file": "gn-sound-pl.js"
+  },
+  {
+   "key": "pl.3.l0",
+   "voice": "F",
+   "text": "Moõpa reime ko'ág̃a?",
+   "es": "¿Dónde estás ahora?",
+   "lang": "gn",
+   "where": "Ubicación · pregunta 3 · línea 1 de 2",
+   "file": "gn-sound-pl.js",
+   "order": 133
+  },
+  {
+   "key": "pl.3.l1",
+   "voice": "M",
+   "text": "Ag̃uahẽma che rógape. Ka'aru aháta mbo'ehaópe.",
+   "es": "Ya llegué a mi casa. A la tarde voy a ir a la escuela.",
+   "lang": "gn",
+   "where": "Ubicación · pregunta 3 · línea 2 de 2",
+   "file": "gn-sound-pl.js",
+   "order": 134
+  },
+  {
+   "key": "pl.3",
+   "parts": [
+    "pl.3.l0",
+    "pl.3.l1"
+   ],
+   "voice": "F+M",
+   "text": "Moõpa reime ko'ág̃a? / Ag̃uahẽma che rógape. Ka'aru aháta mbo'ehaópe.",
+   "es": "¿Dónde estás ahora? / Ya llegué a mi casa. A la tarde voy a ir a la escuela.",
+   "where": "Ubicación · pregunta 3",
+   "file": "gn-sound-pl.js"
+  },
+  {
+   "key": "pl.5.l0",
+   "voice": "M",
+   "text": "Ko árape ndahái amba'apo, che sy hasýgui.",
+   "es": "Hoy no voy a trabajar porque mi mamá está enferma.",
+   "lang": "gn",
+   "where": "Ubicación · pregunta 5 · línea 1 de 3",
+   "file": "gn-sound-pl.js",
+   "order": 135
+  },
+  {
+   "key": "pl.5.l1",
+   "voice": "M",
+   "text": "Apytáta hendive.",
+   "es": "Me voy a quedar con ella.",
+   "lang": "gn",
+   "where": "Ubicación · pregunta 5 · línea 2 de 3",
+   "file": "gn-sound-pl.js",
+   "order": 136
+  },
+  {
+   "key": "pl.5.l2",
+   "voice": "M",
+   "text": "Ko'ẽrõ amba'apo jeýta.",
+   "es": "Mañana vuelvo a trabajar.",
+   "lang": "gn",
+   "where": "Ubicación · pregunta 5 · línea 3 de 3",
+   "file": "gn-sound-pl.js",
+   "order": 137
+  },
+  {
+   "key": "pl.5",
+   "parts": [
+    "pl.5.l0",
+    "pl.5.l1",
+    "pl.5.l2"
+   ],
+   "voice": "M",
+   "text": "Ko árape ndahái amba'apo, che sy hasýgui. / Apytáta hendive. / Ko'ẽrõ amba'apo jeýta.",
+   "es": "Hoy no voy a trabajar porque mi mamá está enferma. / Me voy a quedar con ella. / Mañana vuelvo a trabajar.",
+   "where": "Ubicación · pregunta 5",
+   "file": "gn-sound-pl.js"
+  },
+  {
+   "key": "a1x.4.l0",
+   "voice": "N",
+   "text": "En la feria. ¿Qué pide el hombre?",
+   "es": "En la feria. ¿Qué pide el hombre?",
+   "lang": "es",
+   "where": "Examen A1 · escucha 1 · línea 1 de 3",
+   "file": "gn-sound-a1-x.js",
+   "order": 138
+  },
+  {
+   "key": "a1x.4.l1",
+   "voice": "F",
+   "text": "Mba'épa reipota?",
+   "es": "¿Qué querés?",
+   "lang": "gn",
+   "where": "Examen A1 · escucha 1 · línea 2 de 3",
+   "file": "gn-sound-a1-x.js",
+   "same": "a1u01d4.p2.x0"
+  },
+  {
+   "key": "a1x.4.l2",
+   "voice": "M",
+   "text": "Mbohapy chipa ha peteĩ kesu, aguyje.",
+   "es": "Tres chipás y un queso, gracias.",
+   "lang": "gn",
+   "where": "Examen A1 · escucha 1 · línea 3 de 3",
+   "file": "gn-sound-a1-x.js",
+   "order": 139
+  },
+  {
+   "key": "a1x.4",
+   "parts": [
+    "a1x.4.l0",
+    "a1u01d4.p2.x0",
+    "a1x.4.l2"
+   ],
+   "voice": "N+F+M",
+   "text": "En la feria. ¿Qué pide el hombre? / Mba'épa reipota? / Mbohapy chipa ha peteĩ kesu, aguyje.",
+   "es": "En la feria. ¿Qué pide el hombre? / ¿Qué querés? / Tres chipás y un queso, gracias.",
+   "where": "Examen A1 · escucha 1",
+   "file": "gn-sound-a1-x.js"
+  },
+  {
+   "key": "a1x.5.l0",
+   "voice": "N",
+   "text": "Dos personas se conocen. ¿Con quién vive el hombre?",
+   "es": "Dos personas se conocen. ¿Con quién vive el hombre?",
+   "lang": "es",
+   "where": "Examen A1 · escucha 2 · línea 1 de 3",
+   "file": "gn-sound-a1-x.js",
+   "order": 140
+  },
+  {
+   "key": "a1x.5.l1",
+   "voice": "F",
+   "text": "Moõpa reiko?",
+   "es": "¿Dónde vivís?",
+   "lang": "gn",
+   "where": "Examen A1 · escucha 2 · línea 2 de 3",
+   "file": "gn-sound-a1-x.js",
+   "same": "a1u01d4.p2.x2"
+  },
+  {
+   "key": "a1x.5.l2",
+   "voice": "M",
+   "text": "Aiko távape, che sy ha che ru ndive.",
+   "es": "Vivo en la ciudad, con mi mamá y mi papá.",
+   "lang": "gn",
+   "where": "Examen A1 · escucha 2 · línea 3 de 3",
+   "file": "gn-sound-a1-x.js",
+   "order": 141
+  },
+  {
+   "key": "a1x.5",
+   "parts": [
+    "a1x.5.l0",
+    "a1u01d4.p2.x2",
+    "a1x.5.l2"
+   ],
+   "voice": "N+F+M",
+   "text": "Dos personas se conocen. ¿Con quién vive el hombre? / Moõpa reiko? / Aiko távape, che sy ha che ru ndive.",
+   "es": "Dos personas se conocen. ¿Con quién vive el hombre? / ¿Dónde vivís? / Vivo en la ciudad, con mi mamá y mi papá.",
+   "where": "Examen A1 · escucha 2",
+   "file": "gn-sound-a1-x.js"
+  },
+  {
+   "key": "c.check",
+   "tone": true,
+   "voice": "-",
+   "text": "(tono de prueba: lo hace make-sound.mjs)",
+   "es": "",
+   "where": "Examen A1 · prueba de sonido antes de la escucha",
+   "file": "gn-sound-a1-x.js"
+  },
+  {
+   "key": "p0.0",
+   "voice": "F",
+   "text": "pyta",
+   "es": "talón; quedarse",
+   "lang": "gn",
+   "where": "Hablá · par 1, palabra a (nasal)",
+   "file": "gn-sound-sp.js",
+   "same": "a1u01d2.s3a"
+  },
+  {
+   "key": "p0.1",
+   "voice": "F",
+   "text": "pytã",
+   "es": "rojo",
+   "lang": "gn",
+   "where": "Hablá · par 1, palabra b (nasal)",
+   "file": "gn-sound-sp.js",
+   "same": "a1u01d2.s3b"
+  },
+  {
+   "key": "p1.0",
+   "voice": "F",
+   "text": "pytu",
+   "es": "aliento",
+   "lang": "gn",
+   "where": "Hablá · par 2, palabra a (nasal)",
+   "file": "gn-sound-sp.js",
+   "same": "a1u01d2.s0a"
+  },
+  {
+   "key": "p1.1",
+   "voice": "F",
+   "text": "pytũ",
+   "es": "oscuro",
+   "lang": "gn",
+   "where": "Hablá · par 2, palabra b (nasal)",
+   "file": "gn-sound-sp.js",
+   "same": "a1u01d2.s0b"
+  },
+  {
+   "key": "p2.0",
+   "voice": "F",
+   "text": "téra",
+   "es": "nombre",
+   "lang": "gn",
+   "where": "Hablá · par 3, palabra a (nasal)",
+   "file": "gn-sound-sp.js",
+   "same": "a1u01d3.w.tera"
+  },
+  {
+   "key": "p2.1",
+   "voice": "F",
+   "text": "térã",
+   "es": "o (una cosa o la otra)",
+   "lang": "gn",
+   "where": "Hablá · par 3, palabra b (nasal)",
+   "file": "gn-sound-sp.js",
+   "same": "a1u01d5.s2b"
+  },
+  {
+   "key": "p3.0",
+   "voice": "F",
+   "text": "po'i",
+   "es": "delgado, fino",
+   "lang": "gn",
+   "where": "Hablá · par 4, palabra a (puso)",
+   "file": "gn-sound-sp.js",
+   "order": 142
+  },
+  {
+   "key": "p3.1",
+   "voice": "F",
+   "text": "poi",
+   "es": "soltar",
+   "lang": "gn",
+   "where": "Hablá · par 4, palabra b (puso)",
+   "file": "gn-sound-sp.js",
+   "order": 143
+  },
+  {
+   "key": "p4.0",
+   "voice": "F",
+   "text": "mbo'y",
+   "es": "collar",
+   "lang": "gn",
+   "where": "Hablá · par 5, palabra a (puso)",
+   "file": "gn-sound-sp.js",
+   "same": "a1u01d4.s0a"
+  },
+  {
+   "key": "p4.1",
+   "voice": "F",
+   "text": "mboy",
+   "es": "¿cuántos?",
+   "lang": "gn",
+   "where": "Hablá · par 5, palabra b (puso)",
+   "file": "gn-sound-sp.js",
+   "same": "a1u01d4.s0b"
+  },
+  {
+   "key": "p5.0",
+   "voice": "F",
+   "text": "ka'i",
+   "es": "mono",
+   "lang": "gn",
+   "where": "Hablá · par 6, palabra a (puso)",
+   "file": "gn-sound-sp.js",
+   "same": "a1u01d1.s0b"
+  },
+  {
+   "key": "p5.1",
+   "voice": "F",
+   "text": "kái",
+   "es": "quemarse",
+   "lang": "gn",
+   "where": "Hablá · par 6, palabra b (puso)",
+   "file": "gn-sound-sp.js",
+   "same": "a1u01d4.s1b"
+  },
+  {
+   "key": "p6.0",
+   "voice": "F",
+   "text": "ita",
+   "es": "piedra",
+   "lang": "gn",
+   "where": "Hablá · par 7, palabra a (y)",
+   "file": "gn-sound-sp.js",
+   "same": "a1u01d3.s0a"
+  },
+  {
+   "key": "p6.1",
+   "voice": "F",
+   "text": "yta",
+   "es": "nadar",
+   "lang": "gn",
+   "where": "Hablá · par 7, palabra b (y)",
+   "file": "gn-sound-sp.js",
+   "same": "a1u01d3.s0b"
+  },
+  {
+   "key": "p7.0",
+   "voice": "F",
+   "text": "yvytu",
+   "es": "viento",
+   "lang": "gn",
+   "where": "Hablá · par 8, palabra a (y)",
+   "file": "gn-sound-sp.js",
+   "same": "a1u01d3.s2a"
+  },
+  {
+   "key": "p7.1",
+   "voice": "F",
+   "text": "yvyty",
+   "es": "cerro",
+   "lang": "gn",
+   "where": "Hablá · par 8, palabra b (y)",
+   "file": "gn-sound-sp.js",
+   "same": "a1u01d3.s2b"
+  },
+  {
+   "key": "s0",
+   "voice": "F",
+   "text": "Mba'éichapa?",
+   "es": "Hola, ¿cómo estás?",
+   "lang": "gn",
+   "where": "Hablá · cartel 1",
+   "file": "gn-sound-sp.js",
+   "same": "a1u01d1.w.mbaeichapa"
+  },
+  {
+   "key": "s1",
+   "voice": "F",
+   "text": "Iporã, ha nde?",
+   "es": "Bien, ¿y vos?",
+   "lang": "gn",
+   "where": "Hablá · cartel 2",
+   "file": "gn-sound-sp.js",
+   "same": "a1u01d2.p1.x1"
+  },
+  {
+   "key": "s2",
+   "voice": "F",
+   "text": "Che réra Ana.",
+   "es": "Me llamo Ana.",
+   "lang": "gn",
+   "where": "Hablá · cartel 3",
+   "file": "gn-sound-sp.js",
+   "order": 144
+  },
+  {
+   "key": "s3",
+   "voice": "F",
+   "text": "Mba'éichapa nde réra?",
+   "es": "¿Cómo te llamás?",
+   "lang": "gn",
+   "where": "Hablá · cartel 4",
+   "file": "gn-sound-sp.js",
+   "same": "a1u01d3.p1.x1"
+  },
+  {
+   "key": "s4",
+   "voice": "F",
+   "text": "Aguyjevete.",
+   "es": "Muchas gracias.",
+   "lang": "gn",
+   "where": "Hablá · cartel 5",
+   "file": "gn-sound-sp.js",
+   "order": 145
+  },
+  {
+   "key": "s5",
+   "voice": "F",
+   "text": "Jajotopáta.",
+   "es": "Nos vemos.",
+   "lang": "gn",
+   "where": "Hablá · cartel 6",
+   "file": "gn-sound-sp.js",
+   "order": 146
+  }
+ ]
+}

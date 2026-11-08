@@ -426,15 +426,20 @@
     return list.length ? list[0].id : null;
   };
   /* ---------- sound by unit ----------
-     Each unit's clips are one file (gn-sound-a1-u03.js), fetched next to gn-course.js when the unit is first in use, so
-     the phone never holds every unit's sound at once. Only files the build lists in window.__gnSoundFiles are asked for:
-     until the recordings exist there are none, and every sound control falls back to its silent stand-in. */
+     Each unit's clips are one file (gn-sound-a1-u03.js, made by tools/make-sound.mjs), fetched next to gn-course.js when
+     the unit is first in use, so the phone never holds every unit's sound at once; the placement check (gn-sound-pl.js),
+     the level exam (gn-sound-a1-x.js) and the speaking game (gn-sound-sp.js) have files of their own, fetched when their
+     screen opens. A file registers its clips in window.__gnClips, which gn-sound.js plays. Only files the index lists in
+     window.__gnSoundFiles (gn-sound-index.js) are asked for: until the recordings exist there are none, and every sound
+     control falls back to its silent stand-in. In the app the offline worker stores a file the first time it is fetched. */
   var soundAsked = {};
   C.soundFile = function (lv, unit) { return 'gn-sound-' + prefix(lv) + '-u' + pad(unit) + '.js'; };
-  C.needSound = function (lv, unit) {
-    var f = C.soundFile(lv, unit);
+  /* the files of the screens outside the units: 'pl' the placement check, 'x' the level's exam, 'sp' the speaking game */
+  C.soundExtra = function (what, lv) { return what === 'x' ? 'gn-sound-' + prefix(lv || LEVEL) + '-x.js' : 'gn-sound-' + what + '.js'; };
+  C.soundLoaded = function (f) { return !!soundAsked[f]; };
+  C.needSoundFile = function (f) {
     var listed = window.__gnSoundFiles || [];
-    if (soundAsked[f] || listed.indexOf(f) < 0 || typeof document === 'undefined') return;
+    if (!f || soundAsked[f] || listed.indexOf(f) < 0 || typeof document === 'undefined') return;
     soundAsked[f] = true;
     var base = '';
     var tags = document.getElementsByTagName('script');
@@ -442,8 +447,12 @@
     var el = document.createElement('script');
     el.async = true;
     el.src = base + f;
+    /* the clips arrived: a screen that is open may want to draw its controls again */
+    el.onload = function () { try { document.dispatchEvent(new CustomEvent('gnsound', { detail: { file: f } })); } catch (e) {} };
     (document.head || document.body || document.documentElement).appendChild(el);
   };
+  C.needSound = function (lv, unit) { C.needSoundFile(C.soundFile(lv, unit)); };
+  var EXTRA_SOUND = { Placement: 'pl', PlacementResult: 'pl', LevelExam: 'x', ExamTab: 'x', Hablar: 'sp', HablarCompare: 'sp' };
   C.view = function (state) {
     C.setLevel(state.level || 'A1');
     var status = C.status(state, C.now());
@@ -452,6 +461,9 @@
     status.plan.forEach(function (p) { if (p.id === sid) session = p; });
     var unitN = session ? session.unit : C.units().length ? C.units()[0].n : 1;
     C.needSound(LEVEL, unitN);
+    /* the units the notebook will ask about, and the screens with sound of their own */
+    (state.mistakes || []).forEach(function (m) { var at = C.parse(m.src); if (at && at.level === LEVEL) C.needSound(LEVEL, at.unit); });
+    if (EXTRA_SOUND[state.screen]) C.needSoundFile(C.soundExtra(EXTRA_SOUND[state.screen], LEVEL));
     return {
       status: status,
       plan: state.plan,

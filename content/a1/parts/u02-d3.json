@@ -1,0 +1,302 @@
+{
+  "title": "-pe/-me «en, a»",
+  "grammar": {
+    "points": [
+      {
+        "id": "a1u02d3.p1",
+        "form": "-pe",
+        "gloss": "en, a (lugar)",
+        "connect": [
+          { "pos": "Después del lugar, pegado: no va delante, como «en»", "rule": "óga → óga{pe} · mbo'ehao → mbo'ehaó{pe}" },
+          { "pos": "Con ir es «a»; con estar es «en»", "rule": "Aha mbo'ehaó{pe} · Che sy oĩ óga{pe}" },
+          { "pos": "-pe no se lleva el acento: la raíz lo guarda y, si esa vocal ya no es la última, lleva tilde", "rule": "koty → kotý{pe} · ka'aguy → ka'aguý{pe}" }
+        ],
+        "examples": [
+          {
+            "gn": "Che amba'apo mbo'ehaó{pe}.",
+            "es": "Yo trabajo en la escuela.",
+            "parts": [["che", "yo"], ["a-", "yo"], ["mba'apo", "trabajar"], ["mbo'ehao", "escuela"], ["-pe", "en"]]
+          },
+          {
+            "gn": "Aha che jarýi róga{pe}.",
+            "es": "Voy a la casa de mi abuela.",
+            "parts": [["aha", "voy"], ["che jarýi", "mi abuela"], ["róga", "casa (óga después de su dueño: che róga)"], ["-pe", "a"]]
+          },
+          {
+            "gn": "Mbo'ehára oĩ kotý{pe}.",
+            "es": "La profesora está en la pieza.",
+            "parts": [["mbo'ehára", "profesora, profesor"], ["oĩ", "está (y también «hay»)"], ["koty", "pieza, cuarto"], ["-pe", "en"]]
+          },
+          {
+            "gn": "Rosa: Moõpa remba'apo, Juan?\nJuan: Kokué{pe}.",
+            "es": "Rosa: ¿Dónde trabajás, Juan?\nJuan: En la chacra.",
+            "parts": [["moõpa", "¿dónde?"], ["remba'apo", "trabajás"], ["kokue", "chacra"], ["-pe", "en"]]
+          }
+        ],
+        "watch": {
+          "note": "El castellano dice «en la escuela», con «en» delante. El guaraní lo pega atrás: mbo'ehaópe. Y la tilde: mbo'ehao lleva el acento en la o final; con -pe esa o ya no es la última vocal, y se escribe mbo'ehaópe.",
+          "bad": "mbo'ehaope",
+          "good": "mbo'ehaópe"
+        }
+      },
+      {
+        "id": "a1u02d3.p2",
+        "form": "-me",
+        "gloss": "en, a (tras sílaba nasal)",
+        "connect": [
+          { "pos": "Si la última sílaba es nasal (vocal con ~, o junto a m, n, ñ), -pe se vuelve -me", "rule": "tetã → tetã{me} · ñu → ñú{me} · guarani → guaraní{me}" },
+          { "pos": "Sobre una vocal con ~ no se agrega tilde: la ~ ya marca el acento", "rule": "tetã{me} · [ñe'ẽ|lengua]{me}" },
+          { "pos": "Si la última sílaba es oral, va -pe aunque antes haya ñ o mb", "rule": "mbo'ehao → mbo'ehaó{pe} · Ñemby → Ñembý{pe}" }
+        ],
+        "examples": [
+          {
+            "gn": "Añe'ẽ guaraní{me}.",
+            "es": "Hablo en guaraní.",
+            "parts": [["a-", "yo"], ["ñe'ẽ", "hablar"], ["guarani", "guaraní"], ["-me", "en (tras sílaba nasal)"]]
+          },
+          {
+            "gn": "Ha'ekuéra omba'apo ñú{me}.",
+            "es": "Ellos trabajan en el campo.",
+            "parts": [["ha'ekuéra", "ellos, ellas"], ["o-", "ellos, ellas"], ["mba'apo", "trabajar"], ["ñu", "campo"], ["-me", "en (tras sílaba nasal)"]]
+          },
+          {
+            "gn": "Luis oho Ñembý{pe}, ha Rosa oho ñú{me}.",
+            "es": "Luis va a Ñemby, y Rosa va al campo.",
+            "parts": [["oho", "va"], ["Ñemby", "Ñemby (un pueblo)"], ["-pe", "a (tras sílaba oral)"], ["ha", "y"], ["ñu", "campo"], ["-me", "a (tras sílaba nasal)"]]
+          },
+          {
+            "gn": "Aiko ko tetã{me}, Paraguái{pe}.",
+            "es": "Vivo en este país, en Paraguay.",
+            "parts": [["aiko", "vivo"], ["ko", "este"], ["tetã", "país"], ["-me", "en (tras sílaba nasal)"], ["Paraguái", "Paraguay"], ["-pe", "en (tras sílaba oral)"]]
+          }
+        ],
+        "watch": {
+          "note": "Después de una sílaba nasal no va -pe: no se dice tetãpe, se dice tetãme. Y sobre la ã no se agrega tilde: la ~ ya marca el acento.",
+          "bad": "tetãpe",
+          "good": "tetãme"
+        }
+      }
+    ],
+    "compare": {
+      "intro": "Dos formas de «en, a» y el «de» de la unidad 1: mirá la última sílaba del lugar y lo que querés decir.",
+      "forms": [
+        { "form": "-pe", "tag": "en, a · tras sílaba oral", "mark": "dot", "gn": "Che sy oĩ óga{pe}.", "es": "Mi mamá está en casa." },
+        { "form": "-me", "tag": "en, a · tras sílaba nasal", "mark": "dot", "gn": "Añe'ẽ guaraní{me}.", "es": "Hablo en guaraní." },
+        { "form": "-gua", "tag": "de (origen) · unidad 1", "mark": "dot", "gn": "Che Paraguai{gua}.", "es": "Soy de Paraguay." }
+      ],
+      "check": {
+        "id": "a1u02d3.c1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Luis trabaja ^en el campo^.)\nLuis: Amba'apo (   ).",
+        "options": ["ñúpe", "ñúme", "ñugua"],
+        "answer": 2,
+        "why": [
+          "Ñu termina en sílaba nasal, por la ñ: ahí no va -pe.",
+          "La ñ hace nasal la u de ñu: -pe se vuelve -me. Amba'apo ñúme, «trabajo en el campo».",
+          "-gua es el «de» de origen, como en Paraguaigua: diría de dónde es Luis. Él dice dónde trabaja: ñúme."
+        ]
+      }
+    },
+    "drill": [
+      {
+        "id": "a1u02d3.d1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Luis contesta que su mamá está ^en casa^.)\nAna: Moõpa oĩ nde sy, Luis?\nLuis: Oĩ (   ).",
+        "options": ["ógape", "ógame", "óga", "kotýpe"],
+        "answer": 1,
+        "why": [
+          "Moõpa pregunta dónde, y Luis responde con un lugar: óga, «casa», con -pe pegado atrás. Óga termina en sílaba oral y guarda su tilde: ógape, «en casa».",
+          "-me va solo tras sílaba nasal, y ga es oral: ógape.",
+          "Óga solo es «casa», el nombre de la cosa. Para decir «en casa» hay que pegarle -pe.",
+          "Kotýpe es «en la pieza», y Luis dice que su mamá está en casa: óga."
+        ]
+      },
+      {
+        "id": "a1u02d3.d2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Juan trabaja ^en la chacra^.)\nJuan: Amba'apo (   ).",
+        "options": ["kokuéme", "kokuépe", "kokue", "ka'aguýpe"],
+        "answer": 2,
+        "why": [
+          "-me va tras sílaba nasal, y kue es oral: kokuépe.",
+          "Kokue termina en sílaba oral: va -pe. El acento queda en la e, que ya no es la última vocal, y se escribe: kokuépe, «en la chacra».",
+          "Kokue solo es «chacra». Para «en la chacra» se le pega -pe: kokuépe.",
+          "Ka'aguýpe es «en el monte», y Juan trabaja en la chacra: kokue."
+        ]
+      },
+      {
+        "id": "a1u02d3.d3",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Ana cuenta dónde vive Luis: ^en Ñemby^.)\nAna: Luis [oiko|vive] (   ).",
+        "options": ["Ñembýme", "Ñembýpe", "Ñemby", "Ka'akupépe"],
+        "answer": 2,
+        "why": [
+          "Ñemby tiene ñ y mb, pero la última sílaba es mby, y mb es otra letra, no m: la y que sigue es oral. Tras sílaba oral va -pe.",
+          "Mirá la última sílaba: mby. Su vocal es oral, así que va -pe, y la y, que ya no es la última vocal, lleva tilde: Ñembýpe, «en Ñemby».",
+          "Ñemby solo es el nombre del pueblo. Para «en Ñemby» se le pega -pe.",
+          "Ka'akupépe es «en Caacupé», y Luis vive en Ñemby."
+        ]
+      },
+      {
+        "id": "a1u02d3.d4",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Rosa cuenta que vive ^en este país^: «Aiko ko (   ).»",
+        "options": ["tetãpe", "tetáme", "tetã", "tetãme"],
+        "answer": 4,
+        "why": [
+          "La ã es nasal: tras sílaba nasal, -pe se vuelve -me.",
+          "Perdió la ~, y la ~ es la que dice que la a es nasal y que ahí va el acento. Sin ella, la palabra cambia.",
+          "Tetã solo es «país». Para decir «en este país» se le pega -me: ko tetãme.",
+          "Tetã termina en ã, nasal: va -me. Y sobre la ã no se agrega tilde: la ~ ya marca el acento. Ko tetãme, «en este país»."
+        ]
+      },
+      {
+        "id": "a1u02d3.d5",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "Che amba'apo ",
+        "after": ".",
+        "tiles": ["mbo'ehao", "pe"],
+        "bank": [1, 0],
+        "hint": "-pe es un sufijo: va después del lugar, pegado. Después fijate dónde queda el acento.",
+        "full": "Che amba'apo {mbo'ehaópe}.",
+        "es": "Yo trabajo en la escuela.",
+        "explain": "mbo'ehao («escuela») + -pe («en») = mbo'ehaópe. La última sílaba de mbo'ehao es oral, así que va -pe. -pe no se lleva el acento: queda en la o de mbo'ehao, que ya no es la última vocal, y se escribe ó."
+      },
+      {
+        "id": "a1u02d3.d6",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "Che jarýi oñe'ẽ ",
+        "after": ".",
+        "tiles": ["guarani", "me"],
+        "bank": [1, 0],
+        "hint": "La última sílaba de guarani es ni, con n: ¿va -pe o -me? Después fijate dónde queda el acento.",
+        "full": "Che jarýi oñe'ẽ {guaraníme}.",
+        "es": "Mi abuela habla en guaraní.",
+        "explain": "guarani + -me: la n hace nasal la última sílaba, así que no va -pe. -me no se lleva el acento: queda en la i de guarani, que ya no es la última vocal, y se escribe í: guaraníme."
+      }
+    ],
+    "exam": [
+      {
+        "id": "a1u02d3.e1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Qué significa",
+        "q": "Ana: Che ru _omba'apo ñúme_.",
+        "options": ["Mi papá trabaja en el campo.", "Mi papá va al campo.", "Mi papá trabaja en la chacra.", "Mi papá trabaja en la ciudad."],
+        "answer": 1,
+        "explain": "Omba'apo es «trabaja», con o-, y ñúme es ñu, «campo», con -me, «en»: tras la ñ nasal no va -pe. «Va» sería oho; «la chacra», kokue; y «la ciudad», táva."
+      },
+      {
+        "id": "a1u02d3.e2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Luis cuenta dónde está su abuela: en Caacupé.)\nLuis: Che jarýi oĩ (   ).",
+        "options": ["Ka'akupéme", "Ka'akupe", "Itauguápe", "Ka'akupépe"],
+        "answer": 4,
+        "explain": "Ka'akupe termina en pe, una sílaba oral: va -pe, y el acento queda en la e de Ka'akupe, que ya no es la última vocal: Ka'akupépe, «en Caacupé». -me va solo tras sílaba nasal, Ka'akupe solo es el nombre del pueblo, sin «en», e Itauguápe es «en Itauguá», otro pueblo."
+      },
+      {
+        "id": "a1u02d3.e3",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "Rosa: Aiko ko ",
+        "after": ".",
+        "tiles": ["tetã", "me"],
+        "bank": [1, 0],
+        "full": "Rosa: Aiko ko {tetãme}.",
+        "es": "Rosa: Vivo en este país.",
+        "explain": "tetã («país») va primero y -me pegado atrás: tetãme, «en el país». La ã es nasal, así que no va -pe. El acento sigue en la ã, y la ~ ya lo marca: no se escribe otro acento."
+      }
+    ]
+  },
+  "words": {
+    "gn": "Itauguápe",
+    "es": "El pueblo de Ana",
+    "intro": "Ana te muestra Itauguá y los lugares de su semana. Tocá cada palabra: ya llevan -pe o -me.",
+    "sound": {
+      "focus": "La tilde con sufijo: ógape, kotýpe",
+      "letters": ["á", "é", "í", "ó", "ú", "ý"],
+      "note": "-pe y -me no se llevan el acento: la raíz lo guarda. Si esa vocal ya no es la última, se escribe la tilde: koty → kotýpe, ka'aguy → ka'aguýpe. Sobre una vocal nasal no se agrega tilde: tetã → tetãme. En guaraní no hay pares mínimos seguros de acento: comparamos cada palabra sola y con su sufijo.",
+      "pairs": [
+        ["óga", "casa", "ógape", "en casa"],
+        ["koty", "pieza", "kotýpe", "en la pieza"],
+        ["ka'aguy", "monte", "ka'aguýpe", "en el monte"],
+        ["tetã", "país", "tetãme", "en el país"]
+      ]
+    },
+    "words": [
+      { "id": "tavape", "gn": "távape", "es": "en el pueblo, en la ciudad", "parts": [["táva", "pueblo, ciudad"], ["-pe", "en, a"]], "note": "Táva lleva tilde: el acento no cae al final. Con -pe la guarda." },
+      { "id": "kokuepe", "gn": "kokuépe", "es": "en la chacra", "parts": [["kokue", "chacra"], ["-pe", "en, a"]], "note": "Kokue termina en e: con -pe se escribe é." },
+      { "id": "kaaguype", "gn": "ka'aguýpe", "es": "en el monte", "parts": [["ka'aguy", "monte, bosque"], ["-pe", "en, a"]], "note": "Ka'aguy termina en y: con -pe se escribe ý. El puso corta: ka-'a-guy." },
+      { "id": "nume", "gn": "ñúme", "es": "en el campo", "parts": [["ñu", "campo"], ["-me", "en, a (tras nasal)"]], "note": "Ñu es nasal por la ñ: va -me, y la u se escribe ú." },
+      { "id": "kotype", "gn": "kotýpe", "es": "en la pieza, en el cuarto", "parts": [["koty", "pieza, cuarto"], ["-pe", "en, a"]], "note": "Ana oĩ kotýpe: Ana está en la pieza." },
+      { "id": "ysyrype", "gn": "ysyrýpe", "es": "en el arroyo", "parts": [["ysyry", "arroyo"], ["-pe", "en, a"]], "note": "Dos veces la y, la sexta vocal, y la última con tilde." },
+      { "id": "tetame", "gn": "tetãme", "es": "en el país", "parts": [["tetã", "país"], ["-me", "en, a (tras nasal)"]], "note": "Sobre la ã no se pone tilde: la ~ ya marca el acento." },
+      { "id": "koape", "gn": "ko'ápe", "es": "aquí, acá", "note": "Termina en -pe, como los lugares: «en este lugar». Se escribe con puso y con tilde en la á: ko-'á-pe." }
+    ],
+    "spell": ["kotype", "kaaguype", "nume", "tetame"],
+    "check": {
+      "id": "a1u02d3.k1",
+      "kind": "choice",
+      "area": "vocab",
+      "label": "Cómo se escribe",
+      "q": "Ana está en la pieza: «Ana oĩ _en la pieza_.» ¿Cómo se escribe en guaraní?",
+      "options": ["kotýme", "kotípe", "kotýpe", "cotýpe"],
+      "answer": 3,
+      "explain": "En la pieza es kotýpe: koty, «pieza», con -pe. El acento queda en la y, que ya no es la última vocal, y lleva tilde. Kotýme lleva -me, que va solo tras sílaba nasal; kotípe cambia la y por i, otra vocal; y cotýpe usa la c, que no es una letra del guaraní: acá va k."
+    }
+  },
+  "skill": {
+    "kind": "listening",
+    "es": "Comprensión de puntos clave",
+    "situation": "En la ronda de tereré, Rosa y Juan hablan de dónde trabajan.",
+    "ask": "¿Dónde trabaja Juan?",
+    "item": {
+      "id": "a1u02d3.r1",
+      "kind": "choice",
+      "area": "listening",
+      "label": "Qué escuchaste",
+      "q": "¿Dónde trabaja Juan?",
+      "options": ["En la escuela.", "En la chacra.", "En Itauguá."],
+      "answer": 2,
+      "why": [
+        "La escuela es de Rosa: ella dice che amba'apo mbo'ehaópe, «yo trabajo en la escuela».",
+        "Juan dice amba'apo kokuépe: «trabajo en la chacra». Kokue es «chacra», y -pe, «en».",
+        "Itauguápe, «en Itauguá», también lo dice Rosa, de su escuela. Juan solo dice kokuépe."
+      ],
+      "script": [
+        "Narrador: En la ronda de tereré. ¿Dónde trabaja Juan?",
+        "Mujer: Moõpa remba'apo, Juan?",
+        "Hombre: Amba'apo kokuépe. Ha nde?",
+        "Mujer: Che amba'apo mbo'ehaópe, Itauguápe.",
+        "Narrador: ¿Dónde trabaja Juan?"
+      ]
+    },
+    "audio": [
+      ["N", "En la ronda de tereré. ¿Dónde trabaja Juan?", "En la ronda de tereré. ¿Dónde trabaja Juan?"],
+      ["F", "Moõpa remba'apo, Juan?", "¿Dónde trabajás, Juan?"],
+      ["M", "Amba'apo kokuépe. Ha nde?", "Trabajo en la chacra. ¿Y vos?"],
+      ["F", "Che amba'apo mbo'ehaópe, Itauguápe.", "Yo trabajo en la escuela, en Itauguá."],
+      ["N", "¿Dónde trabaja Juan?", "¿Dónde trabaja Juan?"]
+    ]
+  }
+}

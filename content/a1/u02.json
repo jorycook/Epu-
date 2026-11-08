@@ -1,0 +1,2111 @@
+{
+ "n": 2,
+ "gn": "",
+ "es": "¿Quién sos? Verbos de acción",
+ "days": {
+  "1": {
+   "title": "Prefijos areales a-/re-/o-: quién hace la acción",
+   "grammar": {
+    "points": [
+     {
+      "id": "a1u02d1.p1",
+      "form": "a- · re- · o-",
+      "gloss": "yo · vos · él, ella",
+      "connect": [
+       {
+        "pos": "Al principio del verbo, pegado a la raíz",
+        "rule": "{a}guata · {re}guata · {o}guata"
+       },
+       {
+        "pos": "Con o sin pronombre: el prefijo ya dice quién",
+        "rule": "Che {a}purahéi = {A}purahéi"
+       },
+       {
+        "pos": "Para preguntar quién lo hace: Mávapa + o-",
+        "rule": "Mávapa {o}purahéi?"
+       }
+      ],
+      "examples": [
+       {
+        "gn": "Che {a}purahéi.",
+        "es": "Yo canto.",
+        "parts": [
+         [
+          "che",
+          "yo"
+         ],
+         [
+          "a-",
+          "yo"
+         ],
+         [
+          "purahéi",
+          "cantar"
+         ]
+        ]
+       },
+       {
+        "gn": "Nde {re}mba'apo heta.",
+        "es": "Vos trabajás mucho.",
+        "parts": [
+         [
+          "nde",
+          "vos"
+         ],
+         [
+          "re-",
+          "vos"
+         ],
+         [
+          "mba'apo",
+          "trabajar"
+         ],
+         [
+          "heta",
+          "mucho"
+         ]
+        ]
+       },
+       {
+        "gn": "Ha'e {o}jeroky.",
+        "es": "Ella baila.",
+        "parts": [
+         [
+          "ha'e",
+          "él, ella"
+         ],
+         [
+          "o-",
+          "él, ella"
+         ],
+         [
+          "jeroky",
+          "bailar"
+         ]
+        ]
+       },
+       {
+        "gn": "Rosa: Mávapa {o}karu?\nAna: Che {a}karu.",
+        "es": "Rosa: ¿Quién come?\nAna: Yo como.",
+        "parts": [
+         [
+          "mávapa",
+          "¿quién?"
+         ],
+         [
+          "o-",
+          "él, ella"
+         ],
+         [
+          "karu",
+          "comer"
+         ],
+         [
+          "che",
+          "yo"
+         ],
+         [
+          "a-",
+          "yo"
+         ]
+        ]
+       }
+      ],
+      "watch": {
+       "note": "El castellano pone la persona al final del verbo: camin-o, camin-ás. El guaraní la pone al principio: a-guata, re-guata. Sin prefijo, guata no es «camino»: le falta la persona.",
+       "bad": "Che guata.",
+       "good": "Che aguata."
+      }
+     },
+     {
+      "id": "a1u02d1.p2",
+      "form": "aha · reho · oho / aju · reju · ou",
+      "gloss": "voy · vas · va / vengo · venís · viene",
+      "connect": [
+       {
+        "pos": "Ir cambia la raíz: ha con a-, ho con re- y o-",
+        "rule": "{aha} · {reho} · {oho}"
+       },
+       {
+        "pos": "Venir: ju con a- y re-; «viene» es ou, sin j",
+        "rule": "{aju} · {reju} · {ou}"
+       },
+       {
+        "pos": "Con un momento del día, como en la unidad 1",
+        "rule": "Rosa {ou} ko ka'aru."
+       }
+      ],
+      "examples": [
+       {
+        "gn": "Rosa {ou} ko pyhareve.",
+        "es": "Rosa viene esta mañana.",
+        "parts": [
+         [
+          "ou",
+          "viene"
+         ],
+         [
+          "ko",
+          "esta"
+         ],
+         [
+          "pyhareve",
+          "mañana"
+         ]
+        ]
+       },
+       {
+        "gn": "{Rejú}pa ko pyhare?",
+        "es": "¿Venís esta noche?",
+        "parts": [
+         [
+          "re-",
+          "vos"
+         ],
+         [
+          "ju",
+          "venir"
+         ],
+         [
+          "-pa",
+          "pregunta"
+         ],
+         [
+          "ko pyhare",
+          "esta noche"
+         ]
+        ]
+       },
+       {
+        "gn": "Luis {oho} ko ka'aru, ha che {aha} ko pyhare.",
+        "es": "Luis va esta tarde, y yo voy esta noche.",
+        "parts": [
+         [
+          "oho",
+          "va"
+         ],
+         [
+          "ko ka'aru",
+          "esta tarde"
+         ],
+         [
+          "ha",
+          "y"
+         ],
+         [
+          "aha",
+          "voy"
+         ],
+         [
+          "ko pyhare",
+          "esta noche"
+         ]
+        ]
+       },
+       {
+        "gn": "Luis: Mávapa {ou}?\nAna: {Ou} che sy.",
+        "es": "Luis: ¿Quién viene?\nAna: Viene mi mamá.",
+        "parts": [
+         [
+          "mávapa",
+          "¿quién?"
+         ],
+         [
+          "ou",
+          "viene"
+         ],
+         [
+          "che sy",
+          "mi mamá"
+         ]
+        ]
+       }
+      ],
+      "watch": {
+       "note": "Ir y venir son irregulares. La raíz de «ir» es ha solo con a-: aha. Con re- y o- es ho: reho, oho. Y «viene» es ou: oju no existe.",
+       "bad": "Ha'e oju.",
+       "good": "Ha'e ou."
+      }
+     }
+    ],
+    "compare": {
+     "intro": "Tres personas en un verbo: el prefijo cambia y la raíz queda. En «ir», hasta la raíz cambia.",
+     "forms": [
+      {
+       "form": "a-",
+       "tag": "yo",
+       "mark": "dot",
+       "gn": "Che {a}ha ko ka'aru.",
+       "es": "Yo voy esta tarde."
+      },
+      {
+       "form": "re-",
+       "tag": "vos",
+       "mark": "dot",
+       "gn": "Nde {re}ho ko ka'aru.",
+       "es": "Vos vas esta tarde."
+      },
+      {
+       "form": "o-",
+       "tag": "él, ella",
+       "mark": "dot",
+       "gn": "Ha'e {o}ho ko ka'aru.",
+       "es": "Él va esta tarde."
+      }
+     ],
+     "check": {
+      "id": "a1u02d1.c1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Luis: Mávapa ^ou^ ko ka'aru?\nAna: (   ) che sy.",
+      "options": [
+       "Aju",
+       "Reju",
+       "Ou"
+      ],
+      "answer": 3,
+      "why": [
+       "Aju es «vengo», con a-: Ana hablaría de ella misma, y habla de su mamá.",
+       "Reju es «venís», con re-: el que viene sería Luis, y Ana habla de su mamá.",
+       "Ana habla de su mamá, otra persona: ou, «viene». Ou che sy es «viene mi mamá»."
+      ]
+     }
+    },
+    "drill": [
+     {
+      "id": "a1u02d1.d1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(En la fiesta, Rosa cuenta qué hace esta noche.)\nRosa: ^Che^ (   ) ko pyhare.",
+      "options": [
+       "apurahéi",
+       "repurahéi",
+       "opurahéi",
+       "purahéi"
+      ],
+      "answer": 1,
+      "why": [
+       "Che es «yo», y el verbo lo repite al principio: a- + purahéi = apurahéi, «canto».",
+       "repurahéi es «cantás», con re-, «vos». Rosa habla de ella misma, no de vos.",
+       "opurahéi es «canta», con o-: sería otra persona, él o ella.",
+       "purahéi sin prefijo es «canción», la cosa: che purahéi sería «mi canción». Le falta la persona: a-."
+      ]
+     },
+     {
+      "id": "a1u02d1.d2",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Ana: (   ) ^remba'apo^ heta, Luis.",
+      "options": [
+       "Che",
+       "Nde",
+       "Ha'e",
+       "Mávapa"
+      ],
+      "answer": 2,
+      "why": [
+       "Che es «yo» y va con a-: che amba'apo. Acá el verbo lleva re-.",
+       "re- es «vos»: nde remba'apo, «vos trabajás». Ana le habla a Luis.",
+       "Ha'e es «él» o «ella» y va con o-: ha'e omba'apo.",
+       "Mávapa, «¿quién?», pregunta por otra persona y va con o-: Mávapa omba'apo? Con re- no cuadra."
+      ]
+     },
+     {
+      "id": "a1u02d1.d3",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Luis: Ana, ^rehópa^ ko ka'aru?\nAna: Héẽ, (   ) ko ka'aru.",
+      "options": [
+       "aha",
+       "aho",
+       "reho",
+       "oho"
+      ],
+      "answer": 1,
+      "why": [
+       "Luis pregunta con re-, «vos», y Ana responde por ella, con a-. Con a-, la raíz de «ir» es ha: aha, «voy».",
+       "aho no existe: ho es la raíz de «ir» con re- y con o-, nunca con a-.",
+       "reho es «vas», con re-: es lo que pregunta Luis. Ana responde por ella misma.",
+       "oho es «va», con o-: sería otra persona, no Ana."
+      ]
+     },
+     {
+      "id": "a1u02d1.d4",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Rosa: ^Che ru^ (   ) ko ka'aru, ha che sy ou ko pyhare.",
+      "options": [
+       "aha",
+       "oha",
+       "reho",
+       "oho"
+      ],
+      "answer": 4,
+      "why": [
+       "aha es «voy», con a-: Rosa hablaría de ella misma, y habla de su papá.",
+       "oha no existe: con o-, la raíz de «ir» es ho. Ha va solo con a-: aha.",
+       "reho es «vas», con re-: Rosa le hablaría a vos. Ella habla de su papá, otra persona.",
+       "Che ru, «mi papá», es otra persona: o- + ho = oho, «va». Mi papá va esta tarde, y mi mamá viene esta noche."
+      ]
+     },
+     {
+      "id": "a1u02d1.d5",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "Luis, ",
+      "after": " ko pyhare?",
+      "tiles": [
+       "re",
+       "ju",
+       "pa"
+      ],
+      "bank": [
+       2,
+       0,
+       1
+      ],
+      "hint": "re- es «vos» y va primero; -pa cierra la pregunta. Después fijate dónde queda el acento.",
+      "full": "Luis, {re}jú{pa} ko pyhare?",
+      "es": "Luis, ¿venís esta noche?",
+      "explain": "re- (vos) + ju (venir) + -pa (pregunta) = rejúpa, «¿venís?». La -pa no se lleva el acento: queda en la u de ju, que ya no es la última vocal, y se escribe ú."
+     },
+     {
+      "id": "a1u02d1.d6",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "Nde sy ",
+      "after": " ko ka'aru?",
+      "tiles": [
+       "o",
+       "ho",
+       "pa"
+      ],
+      "bank": [
+       1,
+       2,
+       0
+      ],
+      "hint": "Nde sy, «tu mamá», es otra persona: el verbo empieza con o-, y con o- la raíz de «ir» es ho. -pa va al final.",
+      "full": "Nde sy {o}hó{pa} ko ka'aru?",
+      "es": "¿Tu mamá va esta tarde?",
+      "explain": "Nde sy es otra persona: o- + ho = oho, «va». -pa cierra la pregunta: ohópa. El acento queda en la o de ho, que ya no es la última vocal, y se escribe ó."
+     }
+    ],
+    "exam": [
+     {
+      "id": "a1u02d1.e1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Qué significa",
+      "q": "Ana: _Che apurahéi_ ko pyhare.",
+      "options": [
+       "Vos cantás esta noche.",
+       "Yo canto esta noche.",
+       "Ella canta esta noche.",
+       "Yo bailo esta noche."
+      ],
+      "answer": 2,
+      "explain": "Che es «yo», y a- lo repite al principio del verbo: apurahéi es «canto». «Cantás» sería repurahéi, con re-; «canta», opurahéi, con o-; y «bailo», ajeroky."
+     },
+     {
+      "id": "a1u02d1.e2",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Rosa habla de su mamá.)\nRosa: Che sy (   ) ko pyhareve.",
+      "options": [
+       "aju",
+       "reju",
+       "oju",
+       "ou"
+      ],
+      "answer": 4,
+      "explain": "Che sy, «mi mamá», es otra persona: el verbo lleva o-. Y con o-, «venir» es ou: oju no existe. Aju es «vengo», con a-, y reju, «venís», con re-."
+     },
+     {
+      "id": "a1u02d1.e3",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "(Ana invita a Luis.)\nAna: ",
+      "after": " ko ka'aru, Luis?",
+      "tiles": [
+       "re",
+       "ju",
+       "pa"
+      ],
+      "bank": [
+       1,
+       2,
+       0
+      ],
+      "full": "(Ana invita a Luis.)\nAna: {Re}jú{pa} ko ka'aru, Luis?",
+      "es": "Ana: ¿Venís esta tarde, Luis?",
+      "explain": "re- (vos) va primero: Ana le habla a Luis. Después la raíz ju, «venir», y al final -pa, que hace la pregunta: rejúpa, «¿venís?». La -pa no se lleva el acento: queda en la u, que ya no es la última vocal, y se escribe ú."
+     }
+    ]
+   },
+   "words": {
+    "es": "Un sábado en casa de Ana",
+    "intro": "Es sábado en la casa de Ana, en Itauguá. Tocá cada acción: todas empiezan con a-, «yo».",
+    "sound": {
+     "focus": "La j y la h",
+     "letters": [
+      "j",
+      "h"
+     ],
+     "note": "La j guaraní suena como la y de «yo» dicha con fuerza, nunca como la jota castellana: ajapo, ajeroky, jagua. El sonido de la jota suave paraguaya, un soplo, se escribe h: aha, ahendu, heta. La h nunca es muda. Entre j y h no hay pares mínimos seguros: comparamos palabras.",
+     "pairs": [
+      [
+       "ajapo",
+       "hago",
+       "aha",
+       "voy"
+      ],
+      [
+       "ajeroky",
+       "bailo",
+       "ahendu",
+       "escucho"
+      ],
+      [
+       "jagua",
+       "perro",
+       "heta",
+       "mucho"
+      ]
+     ]
+    },
+    "words": [
+     {
+      "id": "ajapo",
+      "gn": "ajapo",
+      "es": "hago",
+      "parts": [
+       [
+        "a-",
+        "yo"
+       ],
+       [
+        "japo",
+        "hacer"
+       ]
+      ],
+      "note": "La j suena como la y de «yo» dicha con fuerza, nunca como la jota."
+     },
+     {
+      "id": "ajeroky",
+      "gn": "ajeroky",
+      "es": "bailo",
+      "parts": [
+       [
+        "a-",
+        "yo"
+       ],
+       [
+        "jeroky",
+        "bailar"
+       ]
+      ],
+      "note": "jeroky también es «danza»: el baile y la acción."
+     },
+     {
+      "id": "aju",
+      "gn": "aju",
+      "es": "vengo",
+      "parts": [
+       [
+        "a-",
+        "yo"
+       ],
+       [
+        "ju",
+        "venir"
+       ]
+      ],
+      "note": "Con vos: reju. Con él o ella: ou, sin j."
+     },
+     {
+      "id": "aha",
+      "gn": "aha",
+      "es": "voy",
+      "parts": [
+       [
+        "a-",
+        "yo"
+       ],
+       [
+        "ha",
+        "ir"
+       ]
+      ],
+      "note": "La h suena: un soplo, como la jota suave paraguaya. Con vos: reho; con él o ella: oho."
+     },
+     {
+      "id": "ahendu",
+      "gn": "ahendu",
+      "es": "escucho, oigo",
+      "parts": [
+       [
+        "a-",
+        "yo"
+       ],
+       [
+        "hendu",
+        "oír"
+       ]
+      ],
+      "note": "nd es una sola letra: a-he-ndu."
+     },
+     {
+      "id": "apurahei",
+      "gn": "apurahéi",
+      "es": "canto",
+      "parts": [
+       [
+        "a-",
+        "yo"
+       ],
+       [
+        "purahéi",
+        "cantar"
+       ]
+      ],
+      "note": "purahéi también es «canción». Lleva tilde: el acento no cae en la última vocal."
+     },
+     {
+      "id": "ambaapo",
+      "gn": "amba'apo",
+      "es": "trabajo",
+      "parts": [
+       [
+        "a-",
+        "yo"
+       ],
+       [
+        "mba'apo",
+        "trabajar"
+       ]
+      ],
+      "note": "mba'apo también es «trabajo», la cosa. El puso corta la voz: mba-'a-po."
+     },
+     {
+      "id": "akaru",
+      "gn": "akaru",
+      "es": "como",
+      "parts": [
+       [
+        "a-",
+        "yo"
+       ],
+       [
+        "karu",
+        "comer"
+       ]
+      ],
+      "note": "karu también es «almuerzo»."
+     }
+    ],
+    "spell": [
+     "ajeroky",
+     "ahendu",
+     "apurahei",
+     "ambaapo"
+    ],
+    "check": {
+     "id": "a1u02d1.k1",
+     "kind": "choice",
+     "area": "vocab",
+     "label": "Cómo se escribe",
+     "q": "Es sábado y Ana _canta_ en el patio. ¿Cómo se escribe en guaraní?",
+     "options": [
+      "opurajéi",
+      "opurahéi",
+      "opurahéy",
+      "opuraéi"
+     ],
+     "answer": 2,
+     "explain": "Canta es opurahéi: con o-, porque es Ana, otra persona, y con h, que suena como la jota suave paraguaya. Opurajéi la escribe con j, que es otra letra, la y fuerte de «yo». Opurahéy cambia la i por la y, que en guaraní es otra vocal, la sexta. Opuraéi se come la h, que nunca es muda."
+    }
+   },
+   "skill": {
+    "kind": "listening",
+    "es": "Respuesta rápida",
+    "situation": "En el patio, Ana le pregunta a Luis qué hace.",
+    "ask": "¿Qué responde Luis?",
+    "item": {
+     "id": "a1u02d1.r1",
+     "kind": "choice",
+     "area": "listening",
+     "label": "Respuesta rápida",
+     "q": "¿Qué responde Luis?",
+     "options": [
+      "Amba'apo.",
+      "Remba'apo.",
+      "Omba'apo."
+     ],
+     "answer": 1,
+     "why": [
+      "Ana pregunta con re-, «vos»: rejapo, «hacés». Luis responde por él, con a-: amba'apo, «trabajo».",
+      "Remba'apo es «trabajás», con re-: Luis hablaría de Ana, no de él.",
+      "Omba'apo es «trabaja», con o-: sería otra persona, no Luis."
+     ],
+     "script": [
+      "Narrador: En el patio. ¿Qué responde Luis?",
+      "Mujer: Mba'épa rejapo, Luis?",
+      "Narrador: 1",
+      "Hombre: Amba'apo.",
+      "Narrador: 2",
+      "Hombre: Remba'apo.",
+      "Narrador: 3",
+      "Hombre: Omba'apo."
+     ]
+    },
+    "audio": [
+     [
+      "N",
+      "En el patio. ¿Qué responde Luis?",
+      "En el patio. ¿Qué responde Luis?"
+     ],
+     [
+      "F",
+      "Mba'épa rejapo, Luis?",
+      "¿Qué hacés, Luis?"
+     ],
+     [
+      "N",
+      "1",
+      "1"
+     ],
+     [
+      "M",
+      "Amba'apo.",
+      "Trabajo."
+     ],
+     [
+      "N",
+      "2",
+      "2"
+     ],
+     [
+      "M",
+      "Remba'apo.",
+      "Trabajás."
+     ],
+     [
+      "N",
+      "3",
+      "3"
+     ],
+     [
+      "M",
+      "Omba'apo.",
+      "Trabaja."
+     ]
+    ]
+   }
+  },
+  "2": {
+   "title": "ja-/ña-, ro-, pe-: plural de persona",
+   "grammar": {
+    "points": [
+     {
+      "id": "a1u02d2.p1",
+      "form": "ja- / ña- · ro-",
+      "gloss": "nosotros con vos · nosotros sin vos",
+      "connect": [
+       {
+        "pos": "ja- es el «nosotros» de ñande: incluye al que escucha",
+        "rule": "Ñande {ja}karu."
+       },
+       {
+        "pos": "Si la raíz es nasal (lleva ñ, m, n, mb, nd, ng o una vocal con ~), ja- se vuelve ña-",
+        "rule": "{ña}ñe'ẽ · {ña}mba'apo · {ña}hendu"
+       },
+       {
+        "pos": "ro- es el «nosotros» de ore, sin el que escucha; no cambia",
+        "rule": "Ore {ro}karu · {ro}mba'apo"
+       }
+      ],
+      "examples": [
+       {
+        "gn": "Ñande {ja}karu ko ka'aru.",
+        "es": "Nosotros (con vos) comemos esta tarde.",
+        "parts": [
+         [
+          "ñande",
+          "nosotros, con vos"
+         ],
+         [
+          "ja-",
+          "nosotros (con vos)"
+         ],
+         [
+          "karu",
+          "comer"
+         ],
+         [
+          "ko ka'aru",
+          "esta tarde"
+         ]
+        ]
+       },
+       {
+        "gn": "{Ña}ñe'ẽ guaraníme.",
+        "es": "Hablamos (vos y yo) en guaraní.",
+        "parts": [
+         [
+          "ña-",
+          "nosotros (con vos)"
+         ],
+         [
+          "ñe'ẽ",
+          "hablar"
+         ],
+         [
+          "guaraníme",
+          "en guaraní"
+         ]
+        ]
+       },
+       {
+        "gn": "Ore {ro}mba'apo ko pyhareve.",
+        "es": "Nosotros (sin vos) trabajamos esta mañana.",
+        "parts": [
+         [
+          "ore",
+          "nosotros, sin vos"
+         ],
+         [
+          "ro-",
+          "nosotros (sin vos)"
+         ],
+         [
+          "mba'apo",
+          "trabajar"
+         ],
+         [
+          "ko pyhareve",
+          "esta mañana"
+         ]
+        ]
+       },
+       {
+        "gn": "{Ro}ju ha {ro}ho.",
+        "es": "Venimos y vamos (sin vos).",
+        "parts": [
+         [
+          "ro-",
+          "nosotros (sin vos)"
+         ],
+         [
+          "ju",
+          "venir"
+         ],
+         [
+          "ha",
+          "y"
+         ],
+         [
+          "ho",
+          "ir"
+         ]
+        ]
+       }
+      ],
+      "watch": {
+       "note": "Delante de una raíz nasal, ja- se vuelve ña-: jañe'ẽ y jamba'apo no existen. Ro- no cambia: roñe'ẽ, romba'apo.",
+       "bad": "Jañe'ẽ guaraníme.",
+       "good": "Ñañe'ẽ guaraníme."
+      }
+     },
+     {
+      "id": "a1u02d2.p2",
+      "form": "pe- · o-",
+      "gloss": "ustedes · ellos, ellas",
+      "connect": [
+       {
+        "pos": "pe- es el prefijo de peẽ, «ustedes»; no cambia ante una raíz nasal",
+        "rule": "Peẽ {pe}karu · {pe}ñe'ẽ"
+       },
+       {
+        "pos": "Ellos y ellas llevan o-, igual que él o ella: el pronombre o la situación dice que son varios",
+        "rule": "Ha'ekuéra {o}mba'apo."
+       },
+       {
+        "pos": "Para preguntarles a varios adónde van",
+        "rule": "Moõpa {pe}ho?"
+       }
+      ],
+      "examples": [
+       {
+        "gn": "Peẽ {pe}purahéi.",
+        "es": "Ustedes cantan.",
+        "parts": [
+         [
+          "peẽ",
+          "ustedes"
+         ],
+         [
+          "pe-",
+          "ustedes"
+         ],
+         [
+          "purahéi",
+          "cantar"
+         ]
+        ]
+       },
+       {
+        "gn": "Peẽ {pe}jeroky ko pyhare.",
+        "es": "Ustedes bailan esta noche.",
+        "parts": [
+         [
+          "peẽ",
+          "ustedes"
+         ],
+         [
+          "pe-",
+          "ustedes"
+         ],
+         [
+          "jeroky",
+          "bailar"
+         ],
+         [
+          "ko pyhare",
+          "esta noche"
+         ]
+        ]
+       },
+       {
+        "gn": "Ha'ekuéra {o}mba'apo heta.",
+        "es": "Ellos (o ellas) trabajan mucho.",
+        "parts": [
+         [
+          "ha'ekuéra",
+          "ellos, ellas"
+         ],
+         [
+          "o-",
+          "ellos, ellas"
+         ],
+         [
+          "mba'apo",
+          "trabajar"
+         ],
+         [
+          "heta",
+          "mucho"
+         ]
+        ]
+       },
+       {
+        "gn": "Moõpa {pe}ho?",
+        "es": "¿Adónde van ustedes?",
+        "parts": [
+         [
+          "moõ",
+          "dónde"
+         ],
+         [
+          "-pa",
+          "pregunta"
+         ],
+         [
+          "pe-",
+          "ustedes"
+         ],
+         [
+          "ho",
+          "ir"
+         ]
+        ]
+       }
+      ],
+      "watch": {
+       "note": "Si les hablás a varios, no uses re-: re- es para una sola persona. Para ustedes va pe-.",
+       "bad": "Peẽ rekaru.",
+       "good": "Peẽ pekaru."
+      }
+     }
+    ],
+    "compare": {
+     "intro": "Dos «nosotros» y un «ustedes» que el castellano no separa igual: fijate si el que escucha come o no.",
+     "forms": [
+      {
+       "form": "ja-",
+       "tag": "nosotros con vos",
+       "mark": "dot",
+       "gn": "Ñande {ja}karu.",
+       "es": "Comemos, vos y yo."
+      },
+      {
+       "form": "ro-",
+       "tag": "nosotros sin vos",
+       "mark": "dot",
+       "gn": "Ore {ro}karu.",
+       "es": "Comemos, sin vos."
+      },
+      {
+       "form": "pe-",
+       "tag": "ustedes",
+       "mark": "dot",
+       "gn": "Peẽ {pe}karu.",
+       "es": "Ustedes comen."
+      }
+     ],
+     "check": {
+      "id": "a1u02d2.c1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Ana les pregunta a Luis y a Rosa ^adónde van^.)\nAna: Moõpa (   )?",
+      "options": [
+       "jaha",
+       "roho",
+       "peho"
+      ],
+      "answer": 3,
+      "why": [
+       "Jaha es «vamos», con ja-: incluiría a Ana, y ella pregunta por Luis y Rosa.",
+       "Roho es «vamos, sin vos»: Ana hablaría de ella y de otros. Pero pregunta por los dos que la escuchan.",
+       "Ana les pregunta a Luis y a Rosa, los que escuchan: «ustedes», peẽ, lleva pe-. Moõpa peho?: ¿adónde van?"
+      ]
+     }
+    },
+    "drill": [
+     {
+      "id": "a1u02d2.d1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Ana le habla ^a Luis^.)\nAna: Ñande (   ) ko ka'aru.",
+      "options": [
+       "jakaru",
+       "rokaru",
+       "pekaru",
+       "okaru"
+      ],
+      "answer": 1,
+      "why": [
+       "Ana le habla a Luis y lo incluye: ñande, «nosotros con vos», lleva ja-. Ñande jakaru: comemos, Ana y Luis.",
+       "Ro- es el prefijo de ore, «nosotros sin vos». Con ñande no va: Luis está incluido.",
+       "Pe- es el prefijo de peẽ, «ustedes». Ana se incluye, por eso dice ñande.",
+       "O- es «él, ella» o «ellos, ellas». Ñande pide ja-."
+      ]
+     },
+     {
+      "id": "a1u02d2.d2",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Luis y Ana trabajan esta mañana. Luis se lo dice ^a Ana^.)\nLuis: Ñande (   ) ko pyhareve.",
+      "options": [
+       "jamba'apo",
+       "ñamba'apo",
+       "romba'apo",
+       "omba'apo"
+      ],
+      "answer": 2,
+      "why": [
+       "Mba'apo empieza con mb, una letra nasal: ja- se vuelve ña-. Jamba'apo no existe.",
+       "Ñande pide ja-, y como mba'apo es nasal (mb), ja- se vuelve ña-: ñamba'apo, «trabajamos, vos y yo».",
+       "Ro- es el prefijo de ore, «nosotros sin vos». Luis incluye a Ana, que lo escucha: ñande.",
+       "O- es «él, ella» o «ellos». Luis habla de él y de Ana: ñande."
+      ]
+     },
+     {
+      "id": "a1u02d2.d3",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Ana les habla a Luis y a Rosa.)\nAna: ^Peẽ^ (   ) ko pyhare.",
+      "options": [
+       "rejeroky",
+       "pejeroky",
+       "jajeroky",
+       "ojeroky"
+      ],
+      "answer": 2,
+      "why": [
+       "Re- es «vos», una sola persona. Ana les habla a dos: peẽ, con pe-.",
+       "Peẽ, «ustedes», lleva pe-: pejeroky, «ustedes bailan».",
+       "Ja- es el «nosotros» de ñande e incluiría a Ana. Ella habla de Luis y de Rosa, los que escuchan: peẽ.",
+       "O- es «él, ella» o «ellos»: así Ana hablaría de otras personas, no de los dos que la escuchan."
+      ]
+     },
+     {
+      "id": "a1u02d2.d4",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Luis habla de ^sus abuelos^: «Ha'ekuéra (   ) heta.»",
+      "options": [
+       "amba'apo",
+       "remba'apo",
+       "romba'apo",
+       "omba'apo"
+      ],
+      "answer": 4,
+      "why": [
+       "A- es «yo». Luis habla de sus abuelos, no de él.",
+       "Re- es «vos», el que escucha. Luis habla de otras personas.",
+       "Ro- es «nosotros sin vos» y sumaría a Luis. Él habla solo de sus abuelos.",
+       "Ha'ekuéra, «ellos», lleva o-, igual que ha'e: omba'apo heta, «trabajan mucho»."
+      ]
+     },
+     {
+      "id": "a1u02d2.d5",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "(Ana les pregunta a Luis y a Rosa.)\nAna: ",
+      "after": " ko pyhare?",
+      "tiles": [
+       "pe",
+       "jeroky",
+       "pa"
+      ],
+      "bank": [
+       2,
+       0,
+       1
+      ],
+      "hint": "Pe- es el prefijo: va primero. -pa cierra la pregunta. Después fijate dónde queda el acento.",
+      "full": "(Ana les pregunta a Luis y a Rosa.)\nAna: {Pe}jeroký{pa} ko pyhare?",
+      "es": "(Ana les pregunta a Luis y a Rosa.)\nAna: ¿Bailan ustedes esta noche?",
+      "explain": "pe- («ustedes») + jeroky («bailar») + -pa (pregunta) = pejerokýpa. La -pa no se lleva el acento: queda en la y de jeroky. Como esa y ya no es la última vocal, se escribe con tilde, como en mboýpa."
+     },
+     {
+      "id": "a1u02d2.d6",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "(Ana le pregunta a Luis.)\nAna: ",
+      "after": " guaraníme?",
+      "tiles": [
+       "ña",
+       "ñe'ẽ",
+       "pa"
+      ],
+      "bank": [
+       1,
+       2,
+       0
+      ],
+      "hint": "ñe'ẽ es nasal: ¿qué prefijo lleva el «nosotros con vos»? -pa va al final.",
+      "full": "(Ana le pregunta a Luis.)\nAna: {Ña}ñe'ẽ{pa} guaraníme?",
+      "es": "(Ana le pregunta a Luis.)\nAna: ¿Hablamos en guaraní, vos y yo?",
+      "explain": "ña- («nosotros, con vos»: ñe'ẽ es nasal, así que no va ja-) + ñe'ẽ («hablar») + -pa (pregunta) = ñañe'ẽpa. El acento sigue en la ẽ, y la tilde nasal ya lo marca: no se escribe otro acento."
+     }
+    ],
+    "exam": [
+     {
+      "id": "a1u02d2.e1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Qué significa",
+      "q": "Rosa le escribe a Juan: «_Ore roju_ ko pyhare.»",
+      "options": [
+       "Ustedes vienen esta noche.",
+       "Venimos esta noche, vos también.",
+       "Venimos esta noche, sin vos.",
+       "Ellos vienen esta noche."
+      ],
+      "answer": 3,
+      "explain": "Ore es «nosotros sin vos», y ro- es su prefijo: ore roju, «venimos», sin Juan, el que lee. Con Juan incluido sería ñande, con ja-; «ustedes vienen» sería peẽ peju, y «ellos vienen», ha'ekuéra ou."
+     },
+     {
+      "id": "a1u02d2.e2",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Ana le habla a su abuela de ella y de Luis.)\nAna: (   ) ko ka'aru, ña Ramona.",
+      "options": [
+       "Aju",
+       "Roju",
+       "Peju",
+       "Ou"
+      ],
+      "answer": 2,
+      "explain": "Ana habla de ella y de Luis, y la abuela, que la escucha, no está en el grupo: ore, con ro-. Roju ko ka'aru: venimos esta tarde. Aju sería «vengo», Ana sola; peju, «ustedes vienen»; ou, «viene», otra persona."
+     },
+     {
+      "id": "a1u02d2.e3",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "Ñande ",
+      "after": " ko pyhareve.",
+      "tiles": [
+       "ña",
+       "mba'apo"
+      ],
+      "bank": [
+       1,
+       0
+      ],
+      "full": "Ñande {ñamba'apo} ko pyhareve.",
+      "es": "Nosotros (con vos) trabajamos esta mañana.",
+      "explain": "Ña- va primero: es el prefijo, la parte que dice quién. Mba'apo es nasal por el mb, y por eso el «nosotros con vos» es ña-, no ja-: ñamba'apo, «trabajamos»."
+     }
+    ]
+   },
+   "words": {
+    "gn": "Jaha!",
+    "es": "Domingo en familia",
+    "intro": "Domingo en la casa de la abuela Ramona, en Caacupé. Hay sopa paraguaya en el tatakua y después, baile. Tocá cada palabra: todas empiezan con el prefijo que dice quiénes.",
+    "sound": {
+     "focus": "La r, siempre suave",
+     "letters": [
+      "r",
+      "rr"
+     ],
+     "note": "La r guaraní es siempre la r suave de «caro», también al principio de la palabra: ru, réra, roju, reho. El hispanohablante tiende a decir «rroju»: no. La rr fuerte solo aparece en préstamos del castellano, como karréta y vúrro. No hay pares mínimos r/rr en palabras guaraníes: comparamos palabras.",
+     "pairs": [
+      [
+       "ru",
+       "padre",
+       "vúrro",
+       "burro"
+      ],
+      [
+       "réra",
+       "nombre",
+       "karréta",
+       "carreta"
+      ],
+      [
+       "roju",
+       "venimos (sin vos)",
+       "arro",
+       "arroz"
+      ]
+     ]
+    },
+    "words": [
+     {
+      "id": "jaha",
+      "gn": "Jaha!",
+      "es": "¡Vamos!",
+      "parts": [
+       [
+        "ja-",
+        "nosotros (con vos)"
+       ],
+       [
+        "ha",
+        "ir"
+       ]
+      ],
+      "note": "Se dice hasta en castellano paraguayo. Es «vamos» y también «vayamos»."
+     },
+     {
+      "id": "jakaru",
+      "gn": "jakaru",
+      "es": "comemos (vos y yo)",
+      "parts": [
+       [
+        "ja-",
+        "nosotros (con vos)"
+       ],
+       [
+        "karu",
+        "comer"
+       ]
+      ],
+      "note": "También sirve para invitar: Jakaru!, «¡comamos!»."
+     },
+     {
+      "id": "nanee",
+      "gn": "ñañe'ẽ",
+      "es": "hablamos (vos y yo)",
+      "parts": [
+       [
+        "ña-",
+        "nosotros (con vos)"
+       ],
+       [
+        "ñe'ẽ",
+        "hablar"
+       ]
+      ],
+      "note": "ñe'ẽ es nasal: ja- se vuelve ña-."
+     },
+     {
+      "id": "nambaapo",
+      "gn": "ñamba'apo",
+      "es": "trabajamos (vos y yo)",
+      "parts": [
+       [
+        "ña-",
+        "nosotros (con vos)"
+       ],
+       [
+        "mba'apo",
+        "trabajar"
+       ]
+      ],
+      "note": "mb es nasal: ña-. El puso corta: ña-mba-'a-po."
+     },
+     {
+      "id": "roju",
+      "gn": "roju",
+      "es": "venimos (sin vos)",
+      "parts": [
+       [
+        "ro-",
+        "nosotros (sin vos)"
+       ],
+       [
+        "ju",
+        "venir"
+       ]
+      ],
+      "note": "La r es suave, como en «caro», también al principio: no es «rroju»."
+     },
+     {
+      "id": "roho",
+      "gn": "roho",
+      "es": "vamos (sin vos)",
+      "parts": [
+       [
+        "ro-",
+        "nosotros (sin vos)"
+       ],
+       [
+        "ho",
+        "ir"
+       ]
+      ],
+      "note": "Con ro- la raíz de «ir» es ho, como con re- y o-: roho, reho, oho. Con ja- es ha: jaha."
+     },
+     {
+      "id": "peju",
+      "gn": "peju",
+      "es": "ustedes vienen; ¡vengan!",
+      "parts": [
+       [
+        "pe-",
+        "ustedes"
+       ],
+       [
+        "ju",
+        "venir"
+       ]
+      ],
+      "note": "Con pe- la misma forma sirve para invitar: Peju!, «¡vengan!»."
+     },
+     {
+      "id": "pekaru",
+      "gn": "pekaru",
+      "es": "ustedes comen",
+      "parts": [
+       [
+        "pe-",
+        "ustedes"
+       ],
+       [
+        "karu",
+        "comer"
+       ]
+      ],
+      "note": "Y para invitar a varios: Pekaru!, «¡coman!»."
+     }
+    ],
+    "spell": [
+     "nanee",
+     "nambaapo",
+     "roju",
+     "pekaru"
+    ],
+    "check": {
+     "id": "a1u02d2.k1",
+     "kind": "choice",
+     "area": "vocab",
+     "label": "Cómo se escribe",
+     "q": "Le decís a Ana: «Vos y yo _trabajamos_.» ¿Cómo se escribe en guaraní?",
+     "options": [
+      "ñamba'apo",
+      "jamba'apo",
+      "ñambaapo",
+      "ñama'apo"
+     ],
+     "answer": 1,
+     "explain": "Trabajamos, vos y yo, es ñamba'apo: mba'apo es nasal por el mb, así que el prefijo es ña-, no ja-. Ñambaapo pierde el puso, que corta la voz entre las dos a: mba-'a-po. Y en ñama'apo cambió la raíz: la que cambia es la parte de adelante, ja- a ña-; mba'apo queda igual."
+    }
+   },
+   "skill": {
+    "kind": "reading",
+    "es": "Un mensaje al grupo",
+    "ask": "¿Quiénes comen esta tarde?",
+    "seconds": 60,
+    "passage": "Mba'éichapa! Ko ka'aru ^jakaru^ ha ^jajeroky^. Oĩ chipa ha so'o. ^Peju^!\nAna",
+    "strategy": "Mirá el prefijo del verbo: ja- incluye a los que leen el mensaje; ro- los dejaría afuera.",
+    "item": {
+     "id": "a1u02d2.r1",
+     "kind": "choice",
+     "area": "reading",
+     "label": "Texto corto",
+     "q": "¿Quiénes comen esta tarde?",
+     "options": [
+      "Ana y los del grupo, con vos.",
+      "Ana y su familia, sin el grupo.",
+      "Solo los del grupo, sin Ana.",
+      "Ana sola."
+     ],
+     "short": [
+      "Ana y el grupo",
+      "Ana y su familia",
+      "Solo el grupo",
+      "Ana sola"
+     ],
+     "answer": 1,
+     "why": [
+      "Jakaru lleva ja-, el «nosotros» de ñande: incluye a los que leen el mensaje, el grupo, con vos.",
+      "Sin el grupo sería ore, con ro-: rokaru. Ana escribe jakaru.",
+      "Solo ustedes, sin Ana, sería peẽ pekaru, con pe-. Peju! sí lleva pe-, pero es la invitación: «vengan».",
+      "Ana sola sería akaru, con a-. Jakaru habla de varios, con vos."
+     ],
+     "explain": "Ana escribe jakaru ha jajeroky: ja- es el «nosotros» de ñande, que incluye a los que leen. Comen Ana y los del grupo, con vos. Peju!, con pe-, es la invitación: «vengan»."
+    }
+   }
+  },
+  "3": {
+   "title": "-pe/-me «en, a»",
+   "grammar": {
+    "points": [
+     {
+      "id": "a1u02d3.p1",
+      "form": "-pe",
+      "gloss": "en, a (lugar)",
+      "connect": [
+       {
+        "pos": "Después del lugar, pegado: no va delante, como «en»",
+        "rule": "óga → óga{pe} · mbo'ehao → mbo'ehaó{pe}"
+       },
+       {
+        "pos": "Con ir es «a»; con estar es «en»",
+        "rule": "Aha mbo'ehaó{pe} · Che sy oĩ óga{pe}"
+       },
+       {
+        "pos": "-pe no se lleva el acento: la raíz lo guarda y, si esa vocal ya no es la última, lleva tilde",
+        "rule": "koty → kotý{pe} · ka'aguy → ka'aguý{pe}"
+       }
+      ],
+      "examples": [
+       {
+        "gn": "Che amba'apo mbo'ehaó{pe}.",
+        "es": "Yo trabajo en la escuela.",
+        "parts": [
+         [
+          "che",
+          "yo"
+         ],
+         [
+          "a-",
+          "yo"
+         ],
+         [
+          "mba'apo",
+          "trabajar"
+         ],
+         [
+          "mbo'ehao",
+          "escuela"
+         ],
+         [
+          "-pe",
+          "en"
+         ]
+        ]
+       },
+       {
+        "gn": "Aha che jarýi róga{pe}.",
+        "es": "Voy a la casa de mi abuela.",
+        "parts": [
+         [
+          "aha",
+          "voy"
+         ],
+         [
+          "che jarýi",
+          "mi abuela"
+         ],
+         [
+          "róga",
+          "casa (óga después de su dueño: che róga)"
+         ],
+         [
+          "-pe",
+          "a"
+         ]
+        ]
+       },
+       {
+        "gn": "Mbo'ehára oĩ kotý{pe}.",
+        "es": "La profesora está en la pieza.",
+        "parts": [
+         [
+          "mbo'ehára",
+          "profesora, profesor"
+         ],
+         [
+          "oĩ",
+          "está (y también «hay»)"
+         ],
+         [
+          "koty",
+          "pieza, cuarto"
+         ],
+         [
+          "-pe",
+          "en"
+         ]
+        ]
+       },
+       {
+        "gn": "Rosa: Moõpa remba'apo, Juan?\nJuan: Kokué{pe}.",
+        "es": "Rosa: ¿Dónde trabajás, Juan?\nJuan: En la chacra.",
+        "parts": [
+         [
+          "moõpa",
+          "¿dónde?"
+         ],
+         [
+          "remba'apo",
+          "trabajás"
+         ],
+         [
+          "kokue",
+          "chacra"
+         ],
+         [
+          "-pe",
+          "en"
+         ]
+        ]
+       }
+      ],
+      "watch": {
+       "note": "El castellano dice «en la escuela», con «en» delante. El guaraní lo pega atrás: mbo'ehaópe. Y la tilde: mbo'ehao lleva el acento en la o final; con -pe esa o ya no es la última vocal, y se escribe mbo'ehaópe.",
+       "bad": "mbo'ehaope",
+       "good": "mbo'ehaópe"
+      }
+     },
+     {
+      "id": "a1u02d3.p2",
+      "form": "-me",
+      "gloss": "en, a (tras sílaba nasal)",
+      "connect": [
+       {
+        "pos": "Si la última sílaba es nasal (vocal con ~, o junto a m, n, ñ), -pe se vuelve -me",
+        "rule": "tetã → tetã{me} · ñu → ñú{me} · guarani → guaraní{me}"
+       },
+       {
+        "pos": "Sobre una vocal con ~ no se agrega tilde: la ~ ya marca el acento",
+        "rule": "tetã{me} · [ñe'ẽ|lengua]{me}"
+       },
+       {
+        "pos": "Si la última sílaba es oral, va -pe aunque antes haya ñ o mb",
+        "rule": "mbo'ehao → mbo'ehaó{pe} · Ñemby → Ñembý{pe}"
+       }
+      ],
+      "examples": [
+       {
+        "gn": "Añe'ẽ guaraní{me}.",
+        "es": "Hablo en guaraní.",
+        "parts": [
+         [
+          "a-",
+          "yo"
+         ],
+         [
+          "ñe'ẽ",
+          "hablar"
+         ],
+         [
+          "guarani",
+          "guaraní"
+         ],
+         [
+          "-me",
+          "en (tras sílaba nasal)"
+         ]
+        ]
+       },
+       {
+        "gn": "Ha'ekuéra omba'apo ñú{me}.",
+        "es": "Ellos trabajan en el campo.",
+        "parts": [
+         [
+          "ha'ekuéra",
+          "ellos, ellas"
+         ],
+         [
+          "o-",
+          "ellos, ellas"
+         ],
+         [
+          "mba'apo",
+          "trabajar"
+         ],
+         [
+          "ñu",
+          "campo"
+         ],
+         [
+          "-me",
+          "en (tras sílaba nasal)"
+         ]
+        ]
+       },
+       {
+        "gn": "Luis oho Ñembý{pe}, ha Rosa oho ñú{me}.",
+        "es": "Luis va a Ñemby, y Rosa va al campo.",
+        "parts": [
+         [
+          "oho",
+          "va"
+         ],
+         [
+          "Ñemby",
+          "Ñemby (un pueblo)"
+         ],
+         [
+          "-pe",
+          "a (tras sílaba oral)"
+         ],
+         [
+          "ha",
+          "y"
+         ],
+         [
+          "ñu",
+          "campo"
+         ],
+         [
+          "-me",
+          "a (tras sílaba nasal)"
+         ]
+        ]
+       },
+       {
+        "gn": "Aiko ko tetã{me}, Paraguái{pe}.",
+        "es": "Vivo en este país, en Paraguay.",
+        "parts": [
+         [
+          "aiko",
+          "vivo"
+         ],
+         [
+          "ko",
+          "este"
+         ],
+         [
+          "tetã",
+          "país"
+         ],
+         [
+          "-me",
+          "en (tras sílaba nasal)"
+         ],
+         [
+          "Paraguái",
+          "Paraguay"
+         ],
+         [
+          "-pe",
+          "en (tras sílaba oral)"
+         ]
+        ]
+       }
+      ],
+      "watch": {
+       "note": "Después de una sílaba nasal no va -pe: no se dice tetãpe, se dice tetãme. Y sobre la ã no se agrega tilde: la ~ ya marca el acento.",
+       "bad": "tetãpe",
+       "good": "tetãme"
+      }
+     }
+    ],
+    "compare": {
+     "intro": "Dos formas de «en, a» y el «de» de la unidad 1: mirá la última sílaba del lugar y lo que querés decir.",
+     "forms": [
+      {
+       "form": "-pe",
+       "tag": "en, a · tras sílaba oral",
+       "mark": "dot",
+       "gn": "Che sy oĩ óga{pe}.",
+       "es": "Mi mamá está en casa."
+      },
+      {
+       "form": "-me",
+       "tag": "en, a · tras sílaba nasal",
+       "mark": "dot",
+       "gn": "Añe'ẽ guaraní{me}.",
+       "es": "Hablo en guaraní."
+      },
+      {
+       "form": "-gua",
+       "tag": "de (origen) · unidad 1",
+       "mark": "dot",
+       "gn": "Che Paraguai{gua}.",
+       "es": "Soy de Paraguay."
+      }
+     ],
+     "check": {
+      "id": "a1u02d3.c1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Luis trabaja ^en el campo^.)\nLuis: Amba'apo (   ).",
+      "options": [
+       "ñúpe",
+       "ñúme",
+       "ñugua"
+      ],
+      "answer": 2,
+      "why": [
+       "Ñu termina en sílaba nasal, por la ñ: ahí no va -pe.",
+       "La ñ hace nasal la u de ñu: -pe se vuelve -me. Amba'apo ñúme, «trabajo en el campo».",
+       "-gua es el «de» de origen, como en Paraguaigua: diría de dónde es Luis. Él dice dónde trabaja: ñúme."
+      ]
+     }
+    },
+    "drill": [
+     {
+      "id": "a1u02d3.d1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Luis contesta que su mamá está ^en casa^.)\nAna: Moõpa oĩ nde sy, Luis?\nLuis: Oĩ (   ).",
+      "options": [
+       "ógape",
+       "ógame",
+       "óga",
+       "kotýpe"
+      ],
+      "answer": 1,
+      "why": [
+       "Moõpa pregunta dónde, y Luis responde con un lugar: óga, «casa», con -pe pegado atrás. Óga termina en sílaba oral y guarda su tilde: ógape, «en casa».",
+       "-me va solo tras sílaba nasal, y ga es oral: ógape.",
+       "Óga solo es «casa», el nombre de la cosa. Para decir «en casa» hay que pegarle -pe.",
+       "Kotýpe es «en la pieza», y Luis dice que su mamá está en casa: óga."
+      ]
+     },
+     {
+      "id": "a1u02d3.d2",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Juan trabaja ^en la chacra^.)\nJuan: Amba'apo (   ).",
+      "options": [
+       "kokuéme",
+       "kokuépe",
+       "kokue",
+       "ka'aguýpe"
+      ],
+      "answer": 2,
+      "why": [
+       "-me va tras sílaba nasal, y kue es oral: kokuépe.",
+       "Kokue termina en sílaba oral: va -pe. El acento queda en la e, que ya no es la última vocal, y se escribe: kokuépe, «en la chacra».",
+       "Kokue solo es «chacra». Para «en la chacra» se le pega -pe: kokuépe.",
+       "Ka'aguýpe es «en el monte», y Juan trabaja en la chacra: kokue."
+      ]
+     },
+     {
+      "id": "a1u02d3.d3",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Ana cuenta dónde vive Luis: ^en Ñemby^.)\nAna: Luis [oiko|vive] (   ).",
+      "options": [
+       "Ñembýme",
+       "Ñembýpe",
+       "Ñemby",
+       "Ka'akupépe"
+      ],
+      "answer": 2,
+      "why": [
+       "Ñemby tiene ñ y mb, pero la última sílaba es mby, y mb es otra letra, no m: la y que sigue es oral. Tras sílaba oral va -pe.",
+       "Mirá la última sílaba: mby. Su vocal es oral, así que va -pe, y la y, que ya no es la última vocal, lleva tilde: Ñembýpe, «en Ñemby».",
+       "Ñemby solo es el nombre del pueblo. Para «en Ñemby» se le pega -pe.",
+       "Ka'akupépe es «en Caacupé», y Luis vive en Ñemby."
+      ]
+     },
+     {
+      "id": "a1u02d3.d4",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Rosa cuenta que vive ^en este país^: «Aiko ko (   ).»",
+      "options": [
+       "tetãpe",
+       "tetáme",
+       "tetã",
+       "tetãme"
+      ],
+      "answer": 4,
+      "why": [
+       "La ã es nasal: tras sílaba nasal, -pe se vuelve -me.",
+       "Perdió la ~, y la ~ es la que dice que la a es nasal y que ahí va el acento. Sin ella, la palabra cambia.",
+       "Tetã solo es «país». Para decir «en este país» se le pega -me: ko tetãme.",
+       "Tetã termina en ã, nasal: va -me. Y sobre la ã no se agrega tilde: la ~ ya marca el acento. Ko tetãme, «en este país»."
+      ]
+     },
+     {
+      "id": "a1u02d3.d5",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "Che amba'apo ",
+      "after": ".",
+      "tiles": [
+       "mbo'ehao",
+       "pe"
+      ],
+      "bank": [
+       1,
+       0
+      ],
+      "hint": "-pe es un sufijo: va después del lugar, pegado. Después fijate dónde queda el acento.",
+      "full": "Che amba'apo {mbo'ehaópe}.",
+      "es": "Yo trabajo en la escuela.",
+      "explain": "mbo'ehao («escuela») + -pe («en») = mbo'ehaópe. La última sílaba de mbo'ehao es oral, así que va -pe. -pe no se lleva el acento: queda en la o de mbo'ehao, que ya no es la última vocal, y se escribe ó."
+     },
+     {
+      "id": "a1u02d3.d6",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "Che jarýi oñe'ẽ ",
+      "after": ".",
+      "tiles": [
+       "guarani",
+       "me"
+      ],
+      "bank": [
+       1,
+       0
+      ],
+      "hint": "La última sílaba de guarani es ni, con n: ¿va -pe o -me? Después fijate dónde queda el acento.",
+      "full": "Che jarýi oñe'ẽ {guaraníme}.",
+      "es": "Mi abuela habla en guaraní.",
+      "explain": "guarani + -me: la n hace nasal la última sílaba, así que no va -pe. -me no se lleva el acento: queda en la i de guarani, que ya no es la última vocal, y se escribe í: guaraníme."
+     }
+    ],
+    "exam": [
+     {
+      "id": "a1u02d3.e1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Qué significa",
+      "q": "Ana: Che ru _omba'apo ñúme_.",
+      "options": [
+       "Mi papá trabaja en el campo.",
+       "Mi papá va al campo.",
+       "Mi papá trabaja en la chacra.",
+       "Mi papá trabaja en la ciudad."
+      ],
+      "answer": 1,
+      "explain": "Omba'apo es «trabaja», con o-, y ñúme es ñu, «campo», con -me, «en»: tras la ñ nasal no va -pe. «Va» sería oho; «la chacra», kokue; y «la ciudad», táva."
+     },
+     {
+      "id": "a1u02d3.e2",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Luis cuenta dónde está su abuela: en Caacupé.)\nLuis: Che jarýi oĩ (   ).",
+      "options": [
+       "Ka'akupéme",
+       "Ka'akupe",
+       "Itauguápe",
+       "Ka'akupépe"
+      ],
+      "answer": 4,
+      "explain": "Ka'akupe termina en pe, una sílaba oral: va -pe, y el acento queda en la e de Ka'akupe, que ya no es la última vocal: Ka'akupépe, «en Caacupé». -me va solo tras sílaba nasal, Ka'akupe solo es el nombre del pueblo, sin «en», e Itauguápe es «en Itauguá», otro pueblo."
+     },
+     {
+      "id": "a1u02d3.e3",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "Rosa: Aiko ko ",
+      "after": ".",
+      "tiles": [
+       "tetã",
+       "me"
+      ],
+      "bank": [
+       1,
+       0
+      ],
+      "full": "Rosa: Aiko ko {tetãme}.",
+      "es": "Rosa: Vivo en este país.",
+      "explain": "tetã («país») va primero y -me pegado atrás: tetãme, «en el país». La ã es nasal, así que no va -pe. El acento sigue en la ã, y la ~ ya lo marca: no se escribe otro acento."
+     }
+    ]
+   },
+   "words": {
+    "gn": "Itauguápe",
+    "es": "El pueblo de Ana",
+    "intro": "Ana te muestra Itauguá y los lugares de su semana. Tocá cada palabra: ya llevan -pe o -me.",
+    "sound": {
+     "focus": "La tilde con sufijo: ógape, kotýpe",
+     "letters": [
+      "á",
+      "é",
+      "í",
+      "ó",
+      "ú",
+      "ý"
+     ],
+     "note": "-pe y -me no se llevan el acento: la raíz lo guarda. Si esa vocal ya no es la última, se escribe la tilde: koty → kotýpe, ka'aguy → ka'aguýpe. Sobre una vocal nasal no se agrega tilde: tetã → tetãme. En guaraní no hay pares mínimos seguros de acento: comparamos cada palabra sola y con su sufijo.",
+     "pairs": [
+      [
+       "óga",
+       "casa",
+       "ógape",
+       "en casa"
+      ],
+      [
+       "koty",
+       "pieza",
+       "kotýpe",
+       "en la pieza"
+      ],
+      [
+       "ka'aguy",
+       "monte",
+       "ka'aguýpe",
+       "en el monte"
+      ],
+      [
+       "tetã",
+       "país",
+       "tetãme",
+       "en el país"
+      ]
+     ]
+    },
+    "words": [
+     {
+      "id": "tavape",
+      "gn": "távape",
+      "es": "en el pueblo, en la ciudad",
+      "parts": [
+       [
+        "táva",
+        "pueblo, ciudad"
+       ],
+       [
+        "-pe",
+        "en, a"
+       ]
+      ],
+      "note": "Táva lleva tilde: el acento no cae al final. Con -pe la guarda."
+     },
+     {
+      "id": "kokuepe",
+      "gn": "kokuépe",
+      "es": "en la chacra",
+      "parts": [
+       [
+        "kokue",
+        "chacra"
+       ],
+       [
+        "-pe",
+        "en, a"
+       ]
+      ],
+      "note": "Kokue termina en e: con -pe se escribe é."
+     },
+     {
+      "id": "kaaguype",
+      "gn": "ka'aguýpe",
+      "es": "en el monte",
+      "parts": [
+       [
+        "ka'aguy",
+        "monte, bosque"
+       ],
+       [
+        "-pe",
+        "en, a"
+       ]
+      ],
+      "note": "Ka'aguy termina en y: con -pe se escribe ý. El puso corta: ka-'a-guy."
+     },
+     {
+      "id": "nume",
+      "gn": "ñúme",
+      "es": "en el campo",
+      "parts": [
+       [
+        "ñu",
+        "campo"
+       ],
+       [
+        "-me",
+        "en, a (tras nasal)"
+       ]
+      ],
+      "note": "Ñu es nasal por la ñ: va -me, y la u se escribe ú."
+     },
+     {
+      "id": "kotype",
+      "gn": "kotýpe",
+      "es": "en la pieza, en el cuarto",
+      "parts": [
+       [
+        "koty",
+        "pieza, cuarto"
+       ],
+       [
+        "-pe",
+        "en, a"
+       ]
+      ],
+      "note": "Ana oĩ kotýpe: Ana está en la pieza."
+     },
+     {
+      "id": "ysyrype",
+      "gn": "ysyrýpe",
+      "es": "en el arroyo",
+      "parts": [
+       [
+        "ysyry",
+        "arroyo"
+       ],
+       [
+        "-pe",
+        "en, a"
+       ]
+      ],
+      "note": "Dos veces la y, la sexta vocal, y la última con tilde."
+     },
+     {
+      "id": "tetame",
+      "gn": "tetãme",
+      "es": "en el país",
+      "parts": [
+       [
+        "tetã",
+        "país"
+       ],
+       [
+        "-me",
+        "en, a (tras nasal)"
+       ]
+      ],
+      "note": "Sobre la ã no se pone tilde: la ~ ya marca el acento."
+     },
+     {
+      "id": "koape",
+      "gn": "ko'ápe",
+      "es": "aquí, acá",
+      "note": "Termina en -pe, como los lugares: «en este lugar». Se escribe con puso y con tilde en la á: ko-'á-pe."
+     }
+    ],
+    "spell": [
+     "kotype",
+     "kaaguype",
+     "nume",
+     "tetame"
+    ],
+    "check": {
+     "id": "a1u02d3.k1",
+     "kind": "choice",
+     "area": "vocab",
+     "label": "Cómo se escribe",
+     "q": "Ana está en la pieza: «Ana oĩ _en la pieza_.» ¿Cómo se escribe en guaraní?",
+     "options": [
+      "kotýme",
+      "kotípe",
+      "kotýpe",
+      "cotýpe"
+     ],
+     "answer": 3,
+     "explain": "En la pieza es kotýpe: koty, «pieza», con -pe. El acento queda en la y, que ya no es la última vocal, y lleva tilde. Kotýme lleva -me, que va solo tras sílaba nasal; kotípe cambia la y por i, otra vocal; y cotýpe usa la c, que no es una letra del guaraní: acá va k."
+    }
+   },
+   "skill": {
+    "kind": "listening",
+    "es": "Comprensión de puntos clave",
+    "situation": "En la ronda de tereré, Rosa y Juan hablan de dónde trabajan.",
+    "ask": "¿Dónde trabaja Juan?",
+    "item": {
+     "id": "a1u02d3.r1",
+     "kind": "choice",
+     "area": "listening",
+     "label": "Qué escuchaste",
+     "q": "¿Dónde trabaja Juan?",
+     "options": [
+      "En la escuela.",
+      "En la chacra.",
+      "En Itauguá."
+     ],
+     "answer": 2,
+     "why": [
+      "La escuela es de Rosa: ella dice che amba'apo mbo'ehaópe, «yo trabajo en la escuela».",
+      "Juan dice amba'apo kokuépe: «trabajo en la chacra». Kokue es «chacra», y -pe, «en».",
+      "Itauguápe, «en Itauguá», también lo dice Rosa, de su escuela. Juan solo dice kokuépe."
+     ],
+     "script": [
+      "Narrador: En la ronda de tereré. ¿Dónde trabaja Juan?",
+      "Mujer: Moõpa remba'apo, Juan?",
+      "Hombre: Amba'apo kokuépe. Ha nde?",
+      "Mujer: Che amba'apo mbo'ehaópe, Itauguápe.",
+      "Narrador: ¿Dónde trabaja Juan?"
+     ]
+    },
+    "audio": [
+     [
+      "N",
+      "En la ronda de tereré. ¿Dónde trabaja Juan?",
+      "En la ronda de tereré. ¿Dónde trabaja Juan?"
+     ],
+     [
+      "F",
+      "Moõpa remba'apo, Juan?",
+      "¿Dónde trabajás, Juan?"
+     ],
+     [
+      "M",
+      "Amba'apo kokuépe. Ha nde?",
+      "Trabajo en la chacra. ¿Y vos?"
+     ],
+     [
+      "F",
+      "Che amba'apo mbo'ehaópe, Itauguápe.",
+      "Yo trabajo en la escuela, en Itauguá."
+     ],
+     [
+      "N",
+      "¿Dónde trabaja Juan?",
+      "¿Dónde trabaja Juan?"
+     ]
+    ]
+   }
+  }
+ },
+ "test": []
+}

@@ -12,8 +12,10 @@
 //   3. cuts the two typefaces down to the characters used (fonts.py), names the Andika subsets EpuaText in the app's
 //      copies of the screens (the canvas's files keep 'Andika'), and draws the icons;
 //   4. copies the runtime, the sound player and the course's scripts, the page and the manifest, and writes the licences;
+//      with them the sound files that exist (project/gn-sound-*.js, by unit) and, in estudio/, the recording studio
+//      (studio/) with the clip lists it reads (../sound/<level>/manifest.json);
 //   5. writes sw.js with the exact list of files and a hash of their content, so the whole app is stored on the phone
-//      for offline use, and a new build replaces it;
+//      for offline use, and a new build replaces it; the sound files are listed apart, stored when first used;
 //   6. replaces ../docs with the build.
 // Settings, all optional: EPUA_OUT (the output folder, relative to epua-app/, default dist), EPUA_DOCS (where the copy
 // for the web goes, default ../docs when EPUA_OUT is not set; empty: no copy), EPUA_APP_VERSION (default 0.1),
@@ -46,7 +48,17 @@ const OWN = ['Shell', 'Install'];
    stand-in), then the course: the six levels' data, the engine, the spelling helper and the extras (placement, level
    exam, the reader's text, the typing and speaking lists). The same scripts, in the same order, as App.dc.html */
 const SOUND = 'gn-sound.js';
-const SCRIPTS = ['gn-course-a1.js', 'gn-course-a2.js', 'gn-course-b1.js', 'gn-course-b2.js', 'gn-course-c1.js', 'gn-course-c2.js', 'gn-course.js', 'gn-spell.js', 'gn-extra.js'];
+const SCRIPTS = ['gn-course-a1.js', 'gn-course-a2.js', 'gn-course-b1.js', 'gn-course-b2.js', 'gn-course-c1.js', 'gn-course-c2.js', 'gn-course.js', 'gn-spell.js', 'gn-extra.js', 'gn-sound-index.js'];
+/* the clips: one file per unit (gn-sound-a1-u01.js) and one each for the placement check, a level's exam and the speaking
+   game, made by tools/make-sound.mjs, which also writes the index (gn-sound-index.js, loaded with the course). They are
+   shipped but not installed: the engine fetches a file when its unit or screen is in use, and the offline worker stores it
+   then (lazy, as Yaoki's unit sound), so the first download stays small */
+const UNIT_SOUND = fs.readdirSync(PROJECT).filter((f) => /^gn-sound-(?:[abc][12]-(?:u\d\d|x)|pl|sp)\.js$/.test(f)).sort();
+const isLazy = (f) => /^\.\/assets\/gn-sound-(?:[abc][12]-(?:u\d\d|x)|pl|sp)\.js$/.test(f);
+/* the recording studio (studio/, a page for a native speaker) and the clip lists it reads (../sound/<level>/manifest.json)
+   go to estudio/ next to the app: the same site, not part of the install, never stored by the worker */
+const STUDIO = path.join(HERE, 'studio');
+const SOUND_LISTS = path.join(REPO, 'sound');
 
 const read = (f) => fs.readFileSync(f, 'utf8');
 const write = (rel, data) => { const f = path.join(OUT, rel); fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, data); };
@@ -128,6 +140,12 @@ try {
   if (JSON.stringify(importsOf(shell)) !== JSON.stringify(routed)) fail('src/Shell.dc.html must show the same screens with the same props as App.dc.html');
   const listed = /const SCREENS = \[([^\]]*)\]/.exec(shell);
   if (!listed || listed[1].replace(/['\s]/g, '') !== SCREENS.join()) fail('the SCREENS list in src/Shell.dc.html differs from the build\'s');
+}
+/* the index names exactly the sound files present (both are make-sound.mjs's): a stale index would ask for a file that is not there */
+{
+  const listed = JSON.parse((/__gnSoundFiles = (\[[^\]]*\])/.exec(read(path.join(PROJECT, 'gn-sound-index.js'))) || [, '[]'])[1]);
+  if (listed.join() !== UNIT_SOUND.join()) fail(`gn-sound-index.js lists ${listed.join(', ') || 'no sound file'} and ${path.relative(REPO, PROJECT)}/ holds ${UNIT_SOUND.join(', ') || 'none'}: run node tools/make-sound.mjs to bring them in line`);
+  if (!fs.existsSync(path.join(STUDIO, 'index.html'))) fail('studio/index.html is missing');
 }
 
 fs.rmSync(OUT, { recursive: true, force: true });
@@ -216,7 +234,12 @@ copy(path.join(preactDir, 'dist/preact.min.js'), 'assets/preact.min.js');
 copy(path.join(SRC, 'yk-runtime.js'), 'assets/yk-runtime.js');
 write('assets/app.css', ownFace(read(path.join(SRC, 'app.css'))));
 write('assets/gn-app.js', ownFace(fill(read(path.join(SRC, 'gn-app.js')))));
-for (const f of [SOUND, ...SCRIPTS]) copy(path.join(PROJECT, f), 'assets/' + f);
+for (const f of [SOUND, ...SCRIPTS, ...UNIT_SOUND]) copy(path.join(PROJECT, f), 'assets/' + f);
+/* the studio, and the clip list of every level that has one (sound/<level>/manifest.json), with an index of them */
+for (const f of fs.readdirSync(STUDIO)) copy(path.join(STUDIO, f), 'estudio/' + f);
+const soundLevels = fs.existsSync(SOUND_LISTS) ? fs.readdirSync(SOUND_LISTS).filter((d) => fs.existsSync(path.join(SOUND_LISTS, d, 'manifest.json'))).sort() : [];
+for (const lv of soundLevels) copy(path.join(SOUND_LISTS, lv, 'manifest.json'), `estudio/${lv}/manifest.json`);
+write('estudio/lista.json', JSON.stringify(soundLevels.map((lv) => { const m = JSON.parse(read(path.join(SOUND_LISTS, lv, 'manifest.json'))); return { level: lv, file: `${lv}/manifest.json`, clips: (m.count || {}).toRecord || 0, made: m.made || '' }; })) + '\n');
 write('index.html', fill(read(path.join(SRC, 'index.html'))));
 write('manifest.webmanifest', fill(read(path.join(SRC, 'manifest.webmanifest'))));
 /* the typefaces' copyright lines, as their licence files give them, and the licence (one text: the files differ only in line ends) */
@@ -229,6 +252,21 @@ const oflOf = (dir) => {
 const nunito = oflOf('nunito');
 const andika = oflOf('andika');
 const oflBodies = nunito.body.replace(/\s+/g, ' ') === andika.body.replace(/\s+/g, ' ') ? [nunito.body] : [nunito.body, andika.body];
+/* the clips' credits, from the index make-sound.mjs writes: each voice's name, what made it and its licence */
+const soundVoices = (() => { try { return JSON.parse((/__gnSoundVoices = (\{[\s\S]*?\});/.exec(read(path.join(PROJECT, 'gn-sound-index.js'))) || [, '{}'])[1]); } catch (e) { return {}; } })();
+const soundLicence = UNIT_SOUND.length ? [
+  '== Sound ==',
+  `Spoken clips: ${UNIT_SOUND.join(', ')} (assets/), each fetched when its unit or screen is in use and stored on the`,
+  'phone from then on. Voices: ' + (Object.keys(soundVoices).map((v) => `${v}: ${soundVoices[v].name || 'not named'} (${soundVoices[v].kind === 'synthetic' ? 'synthetic, ' + (soundVoices[v].model || 'a voice model') : 'a recording'}; ${soundVoices[v].licence || 'licence not stated'})`).join('; ') || 'not stated') + '.',
+  'A clip made by a voice model is marked synthetic in the file, and the screens say so (voz sintética). The sound',
+  'player (assets/gn-sound.js) is the player of the Yaoki apps, under new names.',
+  '',
+] : [
+  '== Sound ==',
+  'No recordings exist yet: every sound control uses a silent stand-in. The sound player (assets/gn-sound.js) is the',
+  'player of the Yaoki apps, under new names.',
+  '',
+];
 write('licenses.txt', [
   "Epu'ã app: licencias de terceros · third-party licences",
   '',
@@ -253,10 +291,7 @@ write('licenses.txt', [
   'native teacher\'s review. The level exam\'s result is the app\'s own constancia: no CEFR framework or certificate exists',
   'for Guarani, and the app issues no official certificate.',
   '',
-  '== Sound ==',
-  'No recordings exist yet: every sound control uses a silent stand-in. The sound player (assets/gn-sound.js) is the',
-  'player of the Yaoki apps, under new names.',
-  '',
+  ...soundLicence,
 ].join('\n'));
 
 /* every file the app ships names the text face by its new name */
@@ -267,11 +302,17 @@ for (const f of walk(OUT).filter((f) => /\.(js|css|html)$/.test(f))) if (namesAn
 const day = process.env.EPUA_BUILD_DATE || new Date().toISOString().slice(0, 10);
 const hash = crypto.createHash('sha256');
 hash.update(APP_VERSION + '|' + day);
-for (const f of walk(OUT).sort()) { hash.update(path.relative(OUT, f)); hash.update(fs.readFileSync(f)); }
+/* the studio is not the app: a change to it is no new version of the app on the phones */
+const rel = (f) => './' + path.relative(OUT, f).split(path.sep).join('/');
+const isStudio = (f) => f.startsWith('./estudio/');
+for (const f of walk(OUT).sort()) { if (isStudio(rel(f))) continue; hash.update(path.relative(OUT, f)); hash.update(fs.readFileSync(f)); }
 const digest = hash.digest('hex').slice(0, 10);
 write('assets/build.js', `/* Generated by build.mjs. */\nwindow.__gnBuild = ${JSON.stringify(`${APP.name} ${APP_VERSION} · ${day} · ${digest.slice(0, 6)}`)};\n`);
-const files = walk(OUT).map((f) => './' + path.relative(OUT, f).split(path.sep).join('/')).filter((f) => f !== './sw.js').sort();
-write('sw.js', fill(read(path.join(SRC, 'sw.js'))).replace('__VERSION__', digest).replace('__FILES__', JSON.stringify(['./', ...files], null, 1)));
+const files = walk(OUT).map(rel).filter((f) => f !== './sw.js' && !isStudio(f)).sort();
+/* the sound that is stored when used, not at install (sw.js); each file's own hash lets a new build keep the unchanged ones */
+const lazy = {};
+files.filter(isLazy).forEach((f) => { lazy[f] = crypto.createHash('sha256').update(fs.readFileSync(path.join(OUT, f))).digest('hex').slice(0, 10); });
+write('sw.js', fill(read(path.join(SRC, 'sw.js'))).replace('__VERSION__', digest).replace('__FILES__', JSON.stringify(['./', ...files.filter((f) => !isLazy(f))], null, 1)).replace('__LAZY__', JSON.stringify(lazy, null, 1)));
 /* GitHub Pages: serve the files as they are */
 write('.nojekyll', '');
 

@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Estudio · Epu'ã</title>
+<meta name="description" content="Estudio de grabación de Epu'ã: las frases del curso, una por una, para grabarlas con el celular o la computadora.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F4F5F9">
+<meta name="color-scheme" content="light">
+<link rel="stylesheet" href="../assets/fonts.css">
+<style>
+/* The recording studio: a page for a native speaker, served next to the app (docs/estudio/) and not part of it. It reads
+   the clip lists the build copies beside it (A1/manifest.json …), shows one line at a time, records it with the
+   browser's own recorder (Safari on the iPhone gives audio/mp4, Chrome audio/webm), keeps every take in the browser
+   (IndexedDB, so a session can go on another day) and exports them all as one zip, named by clip key, for
+   tools/make-sound.mjs. No script or font comes from another site; nothing leaves the device until the zip is saved. */
+:root { --ink: #1B2440; --ground: #F4F5F9; --paper: #FFFFFF; --soft: #5A6382; --line: #C9D0E3; --pink: #C2336F; --pinkInk: #B02A63; --tint: #FCE4EE; --gold: #F2B43A; --teal: #0B7A6B; --tealTint: #E0F3EF; --red: #C7361E; --indigo: #2F4FD0; --indigoTint: #E8ECFB; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--ground); color: var(--ink); font-family: 'Nunito', 'Avenir Next', 'Segoe UI', sans-serif; font-weight: 500; line-height: 1.4; }
+body { min-height: 100vh; padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
+button { font: inherit; color: inherit; cursor: pointer; }
+input, select { font: inherit; color: inherit; }
+[lang="gn"] { font-family: 'EpuaText', 'Charis SIL', 'Gentium Plus', serif; }
+.wrap { max-width: 560px; margin: 0 auto; padding: 16px 16px 40px; }
+header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+h1 { font-size: 20px; font-weight: 800; margin: 0; }
+h1 small { font-weight: 700; color: var(--soft); font-size: 14px; }
+h2 { font-size: 16px; font-weight: 800; margin: 0 0 8px; }
+.card { background: var(--paper); border: 2px solid var(--ink); border-radius: 20px; box-shadow: 0 3px 0 var(--ink); padding: 16px; margin-bottom: 14px; }
+.note { font-size: 13px; color: var(--soft); font-weight: 700; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.btn { min-height: 48px; padding: 0 18px; border-radius: 14px; border: 2px solid var(--ink); background: var(--paper); font-weight: 800; font-size: 15px; box-shadow: 0 3px 0 var(--ink); display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink); }
+.btn[disabled] { opacity: 0.45; cursor: default; }
+.btn.main { background: var(--pink); color: #fff; border-color: var(--pinkInk); box-shadow: 0 3px 0 var(--pinkInk); }
+.btn.rec { background: var(--red); color: #fff; border-color: var(--ink); min-width: 170px; }
+.btn.on { background: var(--gold); }
+.btn.quiet { border-color: var(--line); box-shadow: none; }
+.big { font-size: 34px; line-height: 1.25; font-weight: 700; margin: 6px 0 4px; word-wrap: break-word; }
+.es { font-size: 17px; color: var(--soft); font-weight: 700; margin: 0 0 10px; }
+.key { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; color: var(--soft); }
+.where { font-size: 13px; font-weight: 700; color: var(--indigo); }
+.tag { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 12px; font-weight: 800; background: var(--indigoTint); color: var(--indigo); margin-right: 6px; }
+.tag.es { background: var(--tint); color: var(--pinkInk); }
+.tag.slow { background: #FFF4D6; color: var(--ink); }
+.bar { height: 10px; border-radius: 6px; background: var(--indigoTint); overflow: hidden; margin: 6px 0 2px; }
+.bar div { height: 100%; background: var(--pink); width: 0; transition: width 240ms; }
+.take { padding: 10px 12px; border-radius: 12px; background: var(--tealTint); color: var(--teal); font-weight: 800; font-size: 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.take.none { background: var(--indigoTint); color: var(--soft); }
+.level { display: block; width: 100%; min-height: 44px; padding: 8px 12px; border-radius: 12px; border: 2px solid var(--line); background: var(--paper); margin-bottom: 8px; }
+label.check { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; margin: 10px 0; }
+label.check input { width: 22px; height: 22px; margin: 2px 0 0; flex-shrink: 0; }
+.msg { min-height: 20px; font-size: 14px; font-weight: 800; color: var(--pinkInk); margin: 8px 0 0; }
+.list { font-size: 14px; max-height: 40vh; overflow: auto; border: 2px solid var(--line); border-radius: 12px; }
+.list button { display: flex; width: 100%; gap: 8px; align-items: baseline; text-align: left; border: 0; border-bottom: 1px solid var(--line); background: none; padding: 8px 10px; font-weight: 700; }
+.list button.done { color: var(--teal); }
+.list button.cur { background: var(--indigoTint); }
+.list button .k { font-size: 11px; color: var(--soft); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; margin-left: auto; white-space: nowrap; }
+.hidden { display: none !important; }
+kbd { font-family: inherit; font-size: 12px; padding: 0 5px; border: 1px solid var(--line); border-radius: 6px; background: var(--ground); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>Estudio de grabación <small>· <span lang="gn">Epu'ã</span></small></h1>
+<span class="note" id="who"></span>
+</header>
+
+<section class="card" id="start">
+<h2>Antes de empezar</h2>
+<p class="note" style="margin: 0 0 10px">Vas a grabar las frases del curso, una por una, con el micrófono de este aparato. Grabá en un lugar silencioso, con el celular a un palmo de la boca, y decí cada frase con naturalidad, como se la dirías a alguien. Las tomas quedan guardadas en este navegador hasta que las exportes.</p>
+<div id="levels"></div>
+<label class="note" for="voice">Qué voz grabás</label>
+<select id="voice" class="level">
+<option value="F">F · la mujer, voz principal (palabras, ejemplos, pares y carteles)</option>
+<option value="M">M · el hombre (sus líneas de los diálogos)</option>
+<option value="N">N · el narrador, en castellano (consignas y números)</option>
+<option value="*">Todas las voces, en orden</option>
+</select>
+<label class="note" for="name">Tu nombre o seudónimo (así figura en los créditos)</label>
+<input id="name" class="level" type="text" autocomplete="name" placeholder="Nombre o seudónimo">
+<label class="check"><input type="checkbox" id="agree"><span>Acepto que estas grabaciones se publiquen con la licencia Creative Commons Atribución 4.0 (CC BY 4.0), con mi nombre o seudónimo, en la app y aparte de ella, y que se recorten y editen. Puedo pedir que se vuelva a grabar cualquier toma.</span></label>
+<p class="note">La voz es un dato personal: se usa solo para estos clips. Entrenar una voz sintética con ellas necesitaría un acuerdo aparte (no lo estás dando acá).</p>
+<div class="row"><button class="btn main" id="begin" disabled>Empezar a grabar</button><button class="btn quiet" id="resume" disabled>Seguir donde dejé</button></div>
+<p class="msg" id="startMsg"></p>
+<div id="loadFile" class="hidden"><p class="note">No se pudo leer la lista de clips de este sitio. Cargá un manifest.json (sound/A1/manifest.json del repositorio):</p><input type="file" id="manifestFile" accept="application/json,.json" class="level"></div>
+</section>
+
+<section class="card hidden" id="studio">
+<div class="row" style="justify-content: space-between">
+<span class="note" id="progress"></span>
+<button class="btn quiet" id="listBtn" style="min-height: 36px; padding: 0 12px; font-size: 13px">Lista</button>
+</div>
+<div class="bar"><div id="barFill"></div></div>
+<div id="listBox" class="list hidden"></div>
+<p style="margin: 14px 0 0"><span class="tag" id="voiceTag"></span><span class="tag es hidden" id="langTag">en castellano</span><span class="tag slow hidden" id="slowTag">más despacio</span><span class="where" id="where"></span></p>
+<p class="big" id="text" lang="gn"></p>
+<p class="es" id="esText"></p>
+<p class="key" id="key"></p>
+<div class="take none" id="take"><span id="takeText">Sin toma todavía</span><button class="btn quiet" id="play" style="min-height: 36px; padding: 0 12px; font-size: 13px" disabled>Escuchar</button></div>
+<div class="row" style="margin-top: 14px">
+<button class="btn rec" id="rec">Grabar</button>
+<button class="btn" id="prev">Anterior</button>
+<button class="btn" id="next">Siguiente</button>
+</div>
+<p class="msg" id="msg"></p>
+<p class="note" style="margin: 10px 0 0">Tocá <b>Grabar</b>, decí la frase y tocá <b>Parar</b>. Una toma nueva reemplaza la anterior. En la computadora: <kbd>espacio</kbd> graba y para, <kbd>→</kbd> pasa a la siguiente, <kbd>←</kbd> vuelve.</p>
+</section>
+
+<section class="card hidden" id="finish">
+<h2>Exportar</h2>
+<p class="note" id="exportNote"></p>
+<div class="row"><button class="btn main" id="export">Descargar las tomas (zip)</button><button class="btn quiet" id="wipe">Borrar todo</button></div>
+<p class="msg" id="exportMsg"></p>
+<p class="note" style="margin-top: 10px">El zip trae una grabación por clave (<span class="key">clave.m4a</span> o <span class="key">.webm</span>), voices.json con los créditos y tomas.csv. Después, en el repositorio: <span class="key">node tools/make-sound.mjs &lt;carpeta&gt;</span>.</p>
+</section>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var S = { levels: [], level: '', manifest: null, voice: 'F', rows: [], i: 0, takes: {}, name: '', agreed: false, db: null, rec: null, chunks: [], stream: null, since: 0, timer: null, url: '' };
+
+  /* ---------- what is kept in the browser ---------- */
+  function open() {
+    return new Promise(function (ok, fail) {
+      if (!window.indexedDB) { fail(new Error('sin IndexedDB')); return; }
+      var req = indexedDB.open('epua-estudio', 1);
+      req.onupgradeneeded = function () {
+        var db = req.result;
+        if (!db.objectStoreNames.contains('tomas')) db.createObjectStore('tomas', { keyPath: 'key' });
+        if (!db.objectStoreNames.contains('ajustes')) db.createObjectStore('ajustes', { keyPath: 'k' });
+      };
+      req.onsuccess = function () { ok(req.result); };
+      req.onerror = function () { fail(req.error); };
+    });
+  }
+  function tx(store, mode, fn) {
+    return new Promise(function (ok, fail) {
+      if (!S.db) { fail(new Error('sin base')); return; }
+      var t = S.db.transaction(store, mode);
+      var r = fn(t.objectStore(store));
+      t.oncomplete = function () { ok(r && r.result); };
+      t.onerror = function () { fail(t.error); };
+    });
+  }
+  var put = function (store, v) { return tx(store, 'readwrite', function (s) { return s.put(v); }); };
+  var all = function (store) { return tx(store, 'readonly', function (s) { return s.getAll(); }); };
+  var del = function (store, k) { return tx(store, 'readwrite', function (s) { return s.delete(k); }); };
+  var clear = function (store) { return tx(store, 'readwrite', function (s) { return s.clear(); }); };
+
+  /* ---------- the clip lists ---------- */
+  function fetchJson(url) { return fetch(url, { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }); }
+  function useManifest(m, level) {
+    S.manifest = m;
+    S.level = level || m.level || 'A1';
+    $('who').textContent = 'Nivel ' + S.level + ' · ' + (m.count && m.count.toRecord ? m.count.toRecord + ' clips' : '');
+    $('begin').disabled = !S.agreed;
+    $('resume').disabled = !S.agreed;
+    $('loadFile').classList.add('hidden');
+  }
+  function showLevels() {
+    var box = $('levels');
+    box.innerHTML = '';
+    if (S.levels.length <= 1) return;
+    var label = document.createElement('label');
+    label.className = 'note';
+    label.textContent = 'Nivel';
+    var sel = document.createElement('select');
+    sel.className = 'level';
+    S.levels.forEach(function (l) { var o = document.createElement('option'); o.value = l.level; o.textContent = l.level + ' · ' + l.clips + ' clips'; sel.appendChild(o); });
+    sel.onchange = function () { loadLevel(sel.value); };
+    box.appendChild(label);
+    box.appendChild(sel);
+  }
+  function loadLevel(lv) {
+    var l = S.levels.filter(function (x) { return x.level === lv; })[0] || S.levels[0];
+    return fetchJson('./' + l.file).then(function (m) { useManifest(m, l.level); }).catch(function () { $('startMsg').textContent = 'No se pudo leer la lista del nivel ' + lv + '.'; });
+  }
+  fetchJson('./lista.json').then(function (list) {
+    S.levels = Array.isArray(list) ? list : [];
+    if (!S.levels.length) throw new Error('vacío');
+    showLevels();
+    return loadLevel(S.levels[0].level);
+  }).catch(function () { $('loadFile').classList.remove('hidden'); });
+  $('manifestFile').addEventListener('change', function () {
+    var f = this.files && this.files[0];
+    if (!f) return;
+    f.text().then(function (t) { useManifest(JSON.parse(t)); $('startMsg').textContent = 'Lista cargada: ' + f.name; }).catch(function () { $('startMsg').textContent = 'Ese archivo no es un manifest.json.'; });
+  });
+
+  /* ---------- the rights, the name, the voice ---------- */
+  function gate() {
+    S.agreed = $('agree').checked && $('name').value.trim().length > 0;
+    S.name = $('name').value.trim();
+    var ready = S.agreed && !!S.manifest;
+    $('begin').disabled = !ready;
+    $('resume').disabled = !ready;
+  }
+  $('agree').addEventListener('change', gate);
+  $('name').addEventListener('input', gate);
+  $('voice').addEventListener('change', function () { S.voice = this.value; });
+  function rowsOf(voice) {
+    var rows = (S.manifest.clips || []).filter(function (r) { return r.order && !r.same && !r.parts && !r.tone && (voice === '*' || r.voice === voice); });
+    rows.sort(function (a, b) { return a.order - b.order; });
+    return rows;
+  }
+  function begin(resume) {
+    S.voice = $('voice').value;
+    S.rows = rowsOf(S.voice);
+    if (!S.rows.length) { $('startMsg').textContent = 'Esta voz no tiene líneas en el nivel ' + S.level + '.'; return; }
+    put('ajustes', { k: 'quien', name: S.name, agreed: new Date().toISOString(), voice: S.voice, level: S.level }).catch(function () {});
+    S.i = 0;
+    if (resume) { for (var k = 0; k < S.rows.length; k++) if (!S.takes[S.rows[k].key]) { S.i = k; break; } }
+    $('start').classList.add('hidden');
+    $('studio').classList.remove('hidden');
+    $('finish').classList.remove('hidden');
+    show();
+  }
+  $('begin').addEventListener('click', function () { begin(false); });
+  $('resume').addEventListener('click', function () { begin(true); });
+
+  /* ---------- one line at a time ---------- */
+  function row() { return S.rows[S.i]; }
+  function done() { return S.rows.filter(function (r) { return !!S.takes[r.key]; }).length; }
+  function show() {
+    var r = row();
+    if (!r) return;
+    stopPlay();
+    $('progress').textContent = (S.i + 1) + ' de ' + S.rows.length + ' · ' + done() + ' grabadas' + (S.voice === '*' ? '' : ' · voz ' + S.voice);
+    $('barFill').style.width = Math.round((100 * done()) / S.rows.length) + '%';
+    $('voiceTag').textContent = { F: 'mujer', M: 'hombre', N: 'narrador' }[r.voice] || r.voice;
+    $('langTag').classList.toggle('hidden', r.lang !== 'es');
+    $('slowTag').classList.toggle('hidden', !r.slow);
+    $('where').textContent = r.where || '';
+    $('text').textContent = r.text;
+    $('text').setAttribute('lang', r.lang === 'es' ? 'es' : 'gn');
+    $('esText').textContent = r.lang === 'es' ? '' : r.es || '';
+    $('key').textContent = r.key;
+    var t = S.takes[r.key];
+    $('take').classList.toggle('none', !t);
+    $('takeText').textContent = t ? 'Toma guardada · ' + (t.ms / 1000).toFixed(1).replace('.', ',') + ' s' : 'Sin toma todavía';
+    $('play').disabled = !t;
+    $('rec').textContent = t ? 'Grabar de nuevo' : 'Grabar';
+    $('prev').disabled = S.i === 0;
+    $('next').textContent = S.i >= S.rows.length - 1 ? 'Terminar' : 'Siguiente';
+    $('msg').textContent = '';
+    $('exportNote').textContent = done() + ' de ' + S.rows.length + ' tomas de esta voz' + (Object.keys(S.takes).length > done() ? ' (y ' + (Object.keys(S.takes).length - done()) + ' de otras voces)' : '') + '. Podés exportar cuando quieras y seguir después.';
+    renderList();
+  }
+  function go(d) {
+    if (S.rec) return;
+    var n = S.i + d;
+    if (n < 0) return;
+    if (n >= S.rows.length) { $('msg').textContent = 'Es la última. Exportá abajo, o volvé a alguna para regrabarla.'; $('finish').scrollIntoView({ behavior: 'smooth' }); return; }
+    S.i = n;
+    show();
+  }
+  $('prev').addEventListener('click', function () { go(-1); });
+  $('next').addEventListener('click', function () { go(1); });
+  $('listBtn').addEventListener('click', function () { $('listBox').classList.toggle('hidden'); renderList(); });
+  function renderList() {
+    var box = $('listBox');
+    if (box.classList.contains('hidden')) return;
+    box.innerHTML = '';
+    S.rows.forEach(function (r, k) {
+      var b = document.createElement('button');
+      b.className = (S.takes[r.key] ? 'done ' : '') + (k === S.i ? 'cur' : '');
+      b.setAttribute('lang', r.lang === 'es' ? 'es' : 'gn');
+      b.textContent = (k + 1) + '. ' + r.text;
+      var s = document.createElement('span');
+      s.className = 'k';
+      s.textContent = S.takes[r.key] ? 'ok' : '';
+      b.appendChild(s);
+      b.onclick = function () { if (!S.rec) { S.i = k; show(); } };
+      box.appendChild(b);
+    });
+  }
+
+  /* ---------- recording ---------- */
+  var MIMES = ['audio/mp4', 'audio/webm;codecs=opus', 'audio/webm', 'audio/ogg;codecs=opus', 'audio/ogg', 'audio/wav'];
+  function mime() {
+    if (!window.MediaRecorder) return '';
+    for (var i = 0; i < MIMES.length; i++) if (MediaRecorder.isTypeSupported(MIMES[i])) return MIMES[i];
+    return '';
+  }
+  function ext(type) {
+    var t = String(type || '').split(';')[0];
+    return t === 'audio/mp4' ? 'm4a' : t === 'audio/webm' ? 'webm' : t === 'audio/ogg' ? 'ogg' : t === 'audio/wav' || t === 'audio/wave' ? 'wav' : t === 'audio/mpeg' ? 'mp3' : 'bin';
+  }
+  function mic() {
+    if (S.stream) return Promise.resolve(S.stream);
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) return Promise.reject(new Error('Este navegador no puede grabar. Probá con Safari (iPhone) o Chrome.'));
+    return navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false, channelCount: 1 } }).then(function (st) { S.stream = st; return st; });
+  }
+  function tick() {
+    var s = (Date.now() - S.since) / 1000;
+    $('rec').textContent = 'Parar · ' + s.toFixed(1).replace('.', ',') + ' s';
+    if (s > 30) stopRec();
+  }
+  function startRec() {
+    var r = row();
+    if (!r || S.rec) return;
+    mic().then(function (st) {
+      var type = mime();
+      var rec;
+      try { rec = type ? new MediaRecorder(st, { mimeType: type }) : new MediaRecorder(st); } catch (e) { rec = new MediaRecorder(st); }
+      S.chunks = [];
+      rec.ondataavailable = function (e) { if (e.data && e.data.size) S.chunks.push(e.data); };
+      rec.onstop = function () { kept(r, new Blob(S.chunks, { type: rec.mimeType || type || 'audio/webm' })); };
+      S.rec = rec;
+      S.since = Date.now();
+      rec.start();
+      $('rec').classList.add('on');
+      $('msg').textContent = 'Grabando… decí la frase y tocá Parar.';
+      S.timer = setInterval(tick, 100);
+      tick();
+    }).catch(function (e) {
+      $('msg').textContent = e && e.name === 'NotAllowedError' ? 'Hay que permitir el micrófono para grabar.' : (e && e.message) || 'No se pudo abrir el micrófono.';
+    });
+  }
+  function stopRec() {
+    if (!S.rec) return;
+    clearInterval(S.timer);
+    var rec = S.rec;
+    S.rec = null;
+    $('rec').classList.remove('on');
+    try { rec.stop(); } catch (e) {}
+  }
+  /* a take: measured (the browser's own decoder; a recorder's file can say no length), kept, shown */
+  function kept(r, blob) {
+    var ms = Math.max(0, Date.now() - S.since);
+    var finish = function (len) {
+      var t = { key: r.key, blob: blob, type: blob.type, ms: len || ms, at: new Date().toISOString(), voice: r.voice, level: S.level, text: r.text };
+      S.takes[r.key] = t;
+      put('tomas', t).then(function () { $('msg').textContent = 'Toma guardada. Escuchala, o pasá a la siguiente.'; }).catch(function () { $('msg').textContent = 'La toma quedó en memoria, pero este navegador no la guarda entre sesiones: exportá antes de cerrar.'; });
+      if (row() === r) show();
+    };
+    if (blob.size < 200) { $('msg').textContent = 'No se grabó nada: probá de nuevo.'; return; }
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) { finish(ms); return; }
+    blob.arrayBuffer().then(function (buf) {
+      var ctx = new AC();
+      return new Promise(function (ok, fail) {
+        var p = ctx.decodeAudioData(buf, ok, fail);
+        if (p && p.catch) p.catch(fail);
+      }).then(function (a) { try { ctx.close(); } catch (e) {} finish(Math.round(a.duration * 1000)); }, function () { try { ctx.close(); } catch (e) {} finish(ms); });
+    }).catch(function () { finish(ms); });
+  }
+  $('rec').addEventListener('click', function () { if (S.rec) stopRec(); else startRec(); });
+
+  /* ---------- listening to a take ---------- */
+  var audio = new Audio();
+  function stopPlay() { try { audio.pause(); } catch (e) {} if (S.url) { URL.revokeObjectURL(S.url); S.url = ''; } }
+  $('play').addEventListener('click', function () {
+    var t = S.takes[row().key];
+    if (!t) return;
+    stopPlay();
+    S.url = URL.createObjectURL(t.blob);
+    audio.src = S.url;
+    audio.play().catch(function () { $('msg').textContent = 'No se pudo reproducir la toma.'; });
+  });
+  document.addEventListener('keydown', function (e) {
+    if ($('studio').classList.contains('hidden') || /input|select|textarea/i.test(e.target.tagName)) return;
+    if (e.code === 'Space') { e.preventDefault(); if (S.rec) stopRec(); else startRec(); }
+    else if (e.key === 'ArrowRight') go(1);
+    else if (e.key === 'ArrowLeft') go(-1);
+  });
+
+  /* ---------- the zip (stored, not compressed: the takes are compressed audio already) ---------- */
+  var CRC = (function () { var t = []; for (var n = 0; n < 256; n++) { var c = n; for (var k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; } return t; })();
+  function crc32(bytes) { var c = 0xFFFFFFFF; for (var i = 0; i < bytes.length; i++) c = CRC[(c ^ bytes[i]) & 0xFF] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; }
+  function zip(entries) {
+    /* entries: [{ name, bytes: Uint8Array }] → a Blob; names in UTF-8 (flag bit 11), one date for all */
+    var d = new Date();
+    var time = ((d.getHours() << 11) | (d.getMinutes() << 5) | (d.getSeconds() >> 1)) & 0xFFFF;
+    var date = (((d.getFullYear() - 1980) << 9) | ((d.getMonth() + 1) << 5) | d.getDate()) & 0xFFFF;
+    var parts = [], central = [], offset = 0;
+    var enc = new TextEncoder();
+    function u16(v) { return [v & 255, (v >>> 8) & 255]; }
+    function u32(v) { return [v & 255, (v >>> 8) & 255, (v >>> 16) & 255, (v >>> 24) & 255]; }
+    entries.forEach(function (e) {
+      var name = enc.encode(e.name);
+      var crc = crc32(e.bytes);
+      var head = new Uint8Array([].concat([0x50, 0x4B, 3, 4], u16(20), u16(0x0800), u16(0), u16(time), u16(date), u32(crc), u32(e.bytes.length), u32(e.bytes.length), u16(name.length), u16(0)));
+      parts.push(head, name, e.bytes);
+      central.push(new Uint8Array([].concat([0x50, 0x4B, 1, 2], u16(20), u16(20), u16(0x0800), u16(0), u16(time), u16(date), u32(crc), u32(e.bytes.length), u32(e.bytes.length), u16(name.length), u16(0), u16(0), u16(0), u16(0), u32(0), u32(offset))), name);
+      offset += head.length + name.length + e.bytes.length;
+    });
+    var cdSize = central.reduce(function (n, c) { return n + c.length; }, 0);
+    var end = new Uint8Array([].concat([0x50, 0x4B, 5, 6], u16(0), u16(0), u16(entries.length), u16(entries.length), u32(cdSize), u32(offset), u16(0)));
+    return new Blob(parts.concat(central, [end]), { type: 'application/zip' });
+  }
+  $('export').addEventListener('click', function () {
+    var takes = Object.keys(S.takes).map(function (k) { return S.takes[k]; });
+    if (!takes.length) { $('exportMsg').textContent = 'No hay tomas todavía.'; return; }
+    $('exportMsg').textContent = 'Armando el zip…';
+    var voices = {};
+    takes.forEach(function (t) { voices[t.voice] = { name: S.name, licence: 'CC BY 4.0', kind: 'human', agreed: S.agreed ? new Date().toISOString().slice(0, 10) : '', format: t.type }; });
+    var csv = ['clave,archivo,voz,ms,fecha,texto'].concat(takes.map(function (t) { return [t.key, t.key + '.' + ext(t.type), t.voice, t.ms, t.at, '"' + String(t.text || '').replace(/"/g, '""') + '"'].join(','); })).join('\n');
+    var enc = new TextEncoder();
+    Promise.all(takes.map(function (t) { return t.blob.arrayBuffer().then(function (b) { return { name: t.key + '.' + ext(t.type), bytes: new Uint8Array(b) }; }); })).then(function (entries) {
+      entries.push({ name: 'voices.json', bytes: enc.encode(JSON.stringify({ kind: 'human', licence: 'CC BY 4.0', level: S.level, voices: voices }, null, 1)) });
+      entries.push({ name: 'tomas.csv', bytes: enc.encode('﻿' + csv) });
+      var blob = zip(entries);
+      var a = document.createElement('a');
+      var url = URL.createObjectURL(blob);
+      a.href = url;
+      a.download = 'epua-tomas-' + S.level + '-' + (S.name || 'voz').replace(/[^\w-]+/g, '_') + '-' + new Date().toISOString().slice(0, 10) + '.zip';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () { document.body.removeChild(a); URL.revokeObjectURL(url); }, 4000);
+      $('exportMsg').textContent = takes.length + ' tomas en el zip (' + Math.round(blob.size / 1024) + ' KB). Mandáselo a quien arma la app.';
+    }).catch(function (e) { $('exportMsg').textContent = 'No se pudo armar el zip: ' + ((e && e.message) || e); });
+  });
+  $('wipe').addEventListener('click', function () {
+    if (!window.confirm('¿Borrar todas las tomas guardadas en este navegador? Si no las exportaste, se pierden.')) return;
+    clear('tomas').then(function () { S.takes = {}; show(); $('exportMsg').textContent = 'Tomas borradas.'; }).catch(function () { S.takes = {}; show(); });
+  });
+
+  /* ---------- the session kept from last time ---------- */
+  open().then(function (db) {
+    S.db = db;
+    return all('tomas').then(function (list) {
+      (list || []).forEach(function (t) { S.takes[t.key] = t; });
+      return all('ajustes');
+    }).then(function (list) {
+      var who = (list || []).filter(function (x) { return x.k === 'quien'; })[0];
+      if (who) {
+        $('name').value = who.name || '';
+        if (who.voice) $('voice').value = who.voice;
+        if (Object.keys(S.takes).length) $('startMsg').textContent = Object.keys(S.takes).length + ' tomas guardadas de otra vez: «Seguir donde dejé» va a la primera que falta.';
+      }
+    });
+  }).catch(function () {
+    $('startMsg').textContent = 'Este navegador no guarda las tomas entre sesiones (modo privado?): exportá antes de cerrar la página.';
+  });
+})();
+</script>
+</body>
+</html>

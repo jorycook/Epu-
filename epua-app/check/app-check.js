@@ -433,14 +433,18 @@ const items = (page, sid, part) => page.evaluate(([sid, part]) => {
     const stored = await page.evaluate(async () => { const keys = await caches.keys(); const c = await caches.open(keys[0]); return { keys, urls: (await c.keys()).map((r) => r.url) }; });
     const sw = fs.readFileSync(path.join(DIR, 'sw.js'), 'utf8');
     const listed = JSON.parse(sw.match(/const FILES = (\[[\s\S]*?\]);/)[1]);
+    /* the sound files are stored when first used, under their own hash, not at install; the studio (estudio/) is not the app */
+    const lazy = Object.keys(JSON.parse((sw.match(/const LAZY = (\{[\s\S]*?\});/) || [, '{}'])[1]));
     const version = sw.match(/const VERSION = '([0-9a-f]+)'/)[1];
     ok(stored.keys.length === 1 && stored.keys[0] === 'epua:/:' + version, 'the offline copy should be one store named after the folder and the version, got ' + JSON.stringify(stored.keys));
-    ok(stored.urls.length === listed.length && stored.urls.every((u) => u.includes('v=' + version)), `the offline copy should hold all ${listed.length} files, each asked for under this version, got ${stored.urls.length}`);
+    const installed = stored.urls.filter((u) => !/[?&]h=/.test(u));
+    ok(installed.length === listed.length && installed.every((u) => u.includes('v=' + version)), `the offline copy should hold all ${listed.length} files, each asked for under this version, got ${installed.length}`);
+    ok(stored.urls.every((u) => !/[?&]h=/.test(u) || lazy.some((f) => u.includes(f.slice(1)))), 'whatever else the store holds should be a sound file stored under its hash');
     const onDisk = [];
     const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).forEach((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : onDisk.push('./' + path.relative(DIR, path.join(d, e.name)).split(path.sep).join('/'))));
     walk(DIR);
-    const missing = onDisk.filter((f) => !['./sw.js', './.nojekyll'].includes(f) && !listed.includes(f));
-    ok(missing.length === 0 && listed.filter((f) => f !== './' && !onDisk.includes(f)).length === 0, 'sw.js should list exactly the files of the build, unlisted: ' + JSON.stringify(missing));
+    const missing = onDisk.filter((f) => !['./sw.js', './.nojekyll'].includes(f) && !f.startsWith('./estudio/') && !lazy.includes(f) && !listed.includes(f));
+    ok(missing.length === 0 && listed.filter((f) => f !== './' && !onDisk.includes(f)).length === 0 && lazy.every((f) => onDisk.includes(f)), 'sw.js should list exactly the files of the build (the sound files apart), unlisted: ' + JSON.stringify(missing));
     const v1 = await page.evaluate(() => window.__gnBuild);
     {
       const other = await ctx.newPage();

@@ -346,8 +346,20 @@
     });
     return out;
   }
+  /* the offline copy stores the level's sound in the background once the learner has a plan (see sw.js): a file the
+     engine fetched already is kept as it is, the others come in while the app is open */
+  var soundKept = '';
+  function keepLevelSound(s) {
+    var lv = String((s && s.plan && s.level) || '').toLowerCase();
+    if (!/^[abc][12]$/.test(lv) || lv === soundKept) return;
+    try {
+      var sw = navigator.serviceWorker && navigator.serviceWorker.controller;
+      if (sw) { sw.postMessage({ keepLevel: lv }); soundKept = lv; }
+    } catch (e) {}
+  }
   function remember(s) {
     if (!s) return;
+    keepLevelSound(s);
     var now = fieldTexts(s);
     /* what the screens hold, for a progress code where nothing is saved (the test hooks, a browser that keeps nothing) */
     held = now;

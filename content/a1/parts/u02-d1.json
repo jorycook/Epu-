@@ -1,0 +1,306 @@
+{
+  "title": "Prefijos areales a-/re-/o-: quién hace la acción",
+  "grammar": {
+    "points": [
+      {
+        "id": "a1u02d1.p1",
+        "form": "a- · re- · o-",
+        "gloss": "yo · vos · él, ella",
+        "connect": [
+          { "pos": "Al principio del verbo, pegado a la raíz", "rule": "{a}guata · {re}guata · {o}guata" },
+          { "pos": "Con o sin pronombre: el prefijo ya dice quién", "rule": "Che {a}purahéi = {A}purahéi" },
+          { "pos": "Para preguntar quién lo hace: Mávapa + o-", "rule": "Mávapa {o}purahéi?" }
+        ],
+        "examples": [
+          {
+            "gn": "Che {a}purahéi.",
+            "es": "Yo canto.",
+            "parts": [["che", "yo"], ["a-", "yo"], ["purahéi", "cantar"]]
+          },
+          {
+            "gn": "Nde {re}mba'apo heta.",
+            "es": "Vos trabajás mucho.",
+            "parts": [["nde", "vos"], ["re-", "vos"], ["mba'apo", "trabajar"], ["heta", "mucho"]]
+          },
+          {
+            "gn": "Ha'e {o}jeroky.",
+            "es": "Ella baila.",
+            "parts": [["ha'e", "él, ella"], ["o-", "él, ella"], ["jeroky", "bailar"]]
+          },
+          {
+            "gn": "Rosa: Mávapa {o}karu?\nAna: Che {a}karu.",
+            "es": "Rosa: ¿Quién come?\nAna: Yo como.",
+            "parts": [["mávapa", "¿quién?"], ["o-", "él, ella"], ["karu", "comer"], ["che", "yo"], ["a-", "yo"]]
+          }
+        ],
+        "watch": {
+          "note": "El castellano pone la persona al final del verbo: camin-o, camin-ás. El guaraní la pone al principio: a-guata, re-guata. Sin prefijo, guata no es «camino»: le falta la persona.",
+          "bad": "Che guata.",
+          "good": "Che aguata."
+        }
+      },
+      {
+        "id": "a1u02d1.p2",
+        "form": "aha · reho · oho / aju · reju · ou",
+        "gloss": "voy · vas · va / vengo · venís · viene",
+        "connect": [
+          { "pos": "Ir cambia la raíz: ha con a-, ho con re- y o-", "rule": "{aha} · {reho} · {oho}" },
+          { "pos": "Venir: ju con a- y re-; «viene» es ou, sin j", "rule": "{aju} · {reju} · {ou}" },
+          { "pos": "Con un momento del día, como en la unidad 1", "rule": "Rosa {ou} ko ka'aru." }
+        ],
+        "examples": [
+          {
+            "gn": "Rosa {ou} ko pyhareve.",
+            "es": "Rosa viene esta mañana.",
+            "parts": [["ou", "viene"], ["ko", "esta"], ["pyhareve", "mañana"]]
+          },
+          {
+            "gn": "{Rejú}pa ko pyhare?",
+            "es": "¿Venís esta noche?",
+            "parts": [["re-", "vos"], ["ju", "venir"], ["-pa", "pregunta"], ["ko pyhare", "esta noche"]]
+          },
+          {
+            "gn": "Luis {oho} ko ka'aru, ha che {aha} ko pyhare.",
+            "es": "Luis va esta tarde, y yo voy esta noche.",
+            "parts": [["oho", "va"], ["ko ka'aru", "esta tarde"], ["ha", "y"], ["aha", "voy"], ["ko pyhare", "esta noche"]]
+          },
+          {
+            "gn": "Luis: Mávapa {ou}?\nAna: {Ou} che sy.",
+            "es": "Luis: ¿Quién viene?\nAna: Viene mi mamá.",
+            "parts": [["mávapa", "¿quién?"], ["ou", "viene"], ["che sy", "mi mamá"]]
+          }
+        ],
+        "watch": {
+          "note": "Ir y venir son irregulares. La raíz de «ir» es ha solo con a-: aha. Con re- y o- es ho: reho, oho. Y «viene» es ou: oju no existe.",
+          "bad": "Ha'e oju.",
+          "good": "Ha'e ou."
+        }
+      }
+    ],
+    "compare": {
+      "intro": "Tres personas en un verbo: el prefijo cambia y la raíz queda. En «ir», hasta la raíz cambia.",
+      "forms": [
+        { "form": "a-", "tag": "yo", "mark": "dot", "gn": "Che {a}ha ko ka'aru.", "es": "Yo voy esta tarde." },
+        { "form": "re-", "tag": "vos", "mark": "dot", "gn": "Nde {re}ho ko ka'aru.", "es": "Vos vas esta tarde." },
+        { "form": "o-", "tag": "él, ella", "mark": "dot", "gn": "Ha'e {o}ho ko ka'aru.", "es": "Él va esta tarde." }
+      ],
+      "check": {
+        "id": "a1u02d1.c1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Luis: Mávapa ^ou^ ko ka'aru?\nAna: (   ) che sy.",
+        "options": ["Aju", "Reju", "Ou"],
+        "answer": 3,
+        "why": [
+          "Aju es «vengo», con a-: Ana hablaría de ella misma, y habla de su mamá.",
+          "Reju es «venís», con re-: el que viene sería Luis, y Ana habla de su mamá.",
+          "Ana habla de su mamá, otra persona: ou, «viene». Ou che sy es «viene mi mamá»."
+        ]
+      }
+    },
+    "drill": [
+      {
+        "id": "a1u02d1.d1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(En la fiesta, Rosa cuenta qué hace esta noche.)\nRosa: ^Che^ (   ) ko pyhare.",
+        "options": ["apurahéi", "repurahéi", "opurahéi", "purahéi"],
+        "answer": 1,
+        "why": [
+          "Che es «yo», y el verbo lo repite al principio: a- + purahéi = apurahéi, «canto».",
+          "repurahéi es «cantás», con re-, «vos». Rosa habla de ella misma, no de vos.",
+          "opurahéi es «canta», con o-: sería otra persona, él o ella.",
+          "purahéi sin prefijo es «canción», la cosa: che purahéi sería «mi canción». Le falta la persona: a-."
+        ]
+      },
+      {
+        "id": "a1u02d1.d2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Ana: (   ) ^remba'apo^ heta, Luis.",
+        "options": ["Che", "Nde", "Ha'e", "Mávapa"],
+        "answer": 2,
+        "why": [
+          "Che es «yo» y va con a-: che amba'apo. Acá el verbo lleva re-.",
+          "re- es «vos»: nde remba'apo, «vos trabajás». Ana le habla a Luis.",
+          "Ha'e es «él» o «ella» y va con o-: ha'e omba'apo.",
+          "Mávapa, «¿quién?», pregunta por otra persona y va con o-: Mávapa omba'apo? Con re- no cuadra."
+        ]
+      },
+      {
+        "id": "a1u02d1.d3",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Luis: Ana, ^rehópa^ ko ka'aru?\nAna: Héẽ, (   ) ko ka'aru.",
+        "options": ["aha", "aho", "reho", "oho"],
+        "answer": 1,
+        "why": [
+          "Luis pregunta con re-, «vos», y Ana responde por ella, con a-. Con a-, la raíz de «ir» es ha: aha, «voy».",
+          "aho no existe: ho es la raíz de «ir» con re- y con o-, nunca con a-.",
+          "reho es «vas», con re-: es lo que pregunta Luis. Ana responde por ella misma.",
+          "oho es «va», con o-: sería otra persona, no Ana."
+        ]
+      },
+      {
+        "id": "a1u02d1.d4",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Rosa: ^Che ru^ (   ) ko ka'aru, ha che sy ou ko pyhare.",
+        "options": ["aha", "oha", "reho", "oho"],
+        "answer": 4,
+        "why": [
+          "aha es «voy», con a-: Rosa hablaría de ella misma, y habla de su papá.",
+          "oha no existe: con o-, la raíz de «ir» es ho. Ha va solo con a-: aha.",
+          "reho es «vas», con re-: Rosa le hablaría a vos. Ella habla de su papá, otra persona.",
+          "Che ru, «mi papá», es otra persona: o- + ho = oho, «va». Mi papá va esta tarde, y mi mamá viene esta noche."
+        ]
+      },
+      {
+        "id": "a1u02d1.d5",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "Luis, ",
+        "after": " ko pyhare?",
+        "tiles": ["re", "ju", "pa"],
+        "bank": [2, 0, 1],
+        "hint": "re- es «vos» y va primero; -pa cierra la pregunta. Después fijate dónde queda el acento.",
+        "full": "Luis, {re}jú{pa} ko pyhare?",
+        "es": "Luis, ¿venís esta noche?",
+        "explain": "re- (vos) + ju (venir) + -pa (pregunta) = rejúpa, «¿venís?». La -pa no se lleva el acento: queda en la u de ju, que ya no es la última vocal, y se escribe ú."
+      },
+      {
+        "id": "a1u02d1.d6",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "Nde sy ",
+        "after": " ko ka'aru?",
+        "tiles": ["o", "ho", "pa"],
+        "bank": [1, 2, 0],
+        "hint": "Nde sy, «tu mamá», es otra persona: el verbo empieza con o-, y con o- la raíz de «ir» es ho. -pa va al final.",
+        "full": "Nde sy {o}hó{pa} ko ka'aru?",
+        "es": "¿Tu mamá va esta tarde?",
+        "explain": "Nde sy es otra persona: o- + ho = oho, «va». -pa cierra la pregunta: ohópa. El acento queda en la o de ho, que ya no es la última vocal, y se escribe ó."
+      }
+    ],
+    "exam": [
+      {
+        "id": "a1u02d1.e1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Qué significa",
+        "q": "Ana: _Che apurahéi_ ko pyhare.",
+        "options": ["Vos cantás esta noche.", "Yo canto esta noche.", "Ella canta esta noche.", "Yo bailo esta noche."],
+        "answer": 2,
+        "explain": "Che es «yo», y a- lo repite al principio del verbo: apurahéi es «canto». «Cantás» sería repurahéi, con re-; «canta», opurahéi, con o-; y «bailo», ajeroky."
+      },
+      {
+        "id": "a1u02d1.e2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Rosa habla de su mamá.)\nRosa: Che sy (   ) ko pyhareve.",
+        "options": ["aju", "reju", "oju", "ou"],
+        "answer": 4,
+        "explain": "Che sy, «mi mamá», es otra persona: el verbo lleva o-. Y con o-, «venir» es ou: oju no existe. Aju es «vengo», con a-, y reju, «venís», con re-."
+      },
+      {
+        "id": "a1u02d1.e3",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Ana invita a Luis.)\nAna: ",
+        "after": " ko ka'aru, Luis?",
+        "tiles": ["re", "ju", "pa"],
+        "bank": [1, 2, 0],
+        "full": "(Ana invita a Luis.)\nAna: {Re}jú{pa} ko ka'aru, Luis?",
+        "es": "Ana: ¿Venís esta tarde, Luis?",
+        "explain": "re- (vos) va primero: Ana le habla a Luis. Después la raíz ju, «venir», y al final -pa, que hace la pregunta: rejúpa, «¿venís?». La -pa no se lleva el acento: queda en la u, que ya no es la última vocal, y se escribe ú."
+      }
+    ]
+  },
+  "words": {
+    "es": "Un sábado en casa de Ana",
+    "intro": "Es sábado en la casa de Ana, en Itauguá. Tocá cada acción: todas empiezan con a-, «yo».",
+    "sound": {
+      "focus": "La j y la h",
+      "letters": ["j", "h"],
+      "note": "La j guaraní suena como la y de «yo» dicha con fuerza, nunca como la jota castellana: ajapo, ajeroky, jagua. El sonido de la jota suave paraguaya, un soplo, se escribe h: aha, ahendu, heta. La h nunca es muda. Entre j y h no hay pares mínimos seguros: comparamos palabras.",
+      "pairs": [
+        ["ajapo", "hago", "aha", "voy"],
+        ["ajeroky", "bailo", "ahendu", "escucho"],
+        ["jagua", "perro", "heta", "mucho"]
+      ]
+    },
+    "words": [
+      { "id": "ajapo", "gn": "ajapo", "es": "hago", "parts": [["a-", "yo"], ["japo", "hacer"]], "note": "La j suena como la y de «yo» dicha con fuerza, nunca como la jota." },
+      { "id": "ajeroky", "gn": "ajeroky", "es": "bailo", "parts": [["a-", "yo"], ["jeroky", "bailar"]], "note": "jeroky también es «danza»: el baile y la acción." },
+      { "id": "aju", "gn": "aju", "es": "vengo", "parts": [["a-", "yo"], ["ju", "venir"]], "note": "Con vos: reju. Con él o ella: ou, sin j." },
+      { "id": "aha", "gn": "aha", "es": "voy", "parts": [["a-", "yo"], ["ha", "ir"]], "note": "La h suena: un soplo, como la jota suave paraguaya. Con vos: reho; con él o ella: oho." },
+      { "id": "ahendu", "gn": "ahendu", "es": "escucho, oigo", "parts": [["a-", "yo"], ["hendu", "oír"]], "note": "nd es una sola letra: a-he-ndu." },
+      { "id": "apurahei", "gn": "apurahéi", "es": "canto", "parts": [["a-", "yo"], ["purahéi", "cantar"]], "note": "purahéi también es «canción». Lleva tilde: el acento no cae en la última vocal." },
+      { "id": "ambaapo", "gn": "amba'apo", "es": "trabajo", "parts": [["a-", "yo"], ["mba'apo", "trabajar"]], "note": "mba'apo también es «trabajo», la cosa. El puso corta la voz: mba-'a-po." },
+      { "id": "akaru", "gn": "akaru", "es": "como", "parts": [["a-", "yo"], ["karu", "comer"]], "note": "karu también es «almuerzo»." }
+    ],
+    "spell": ["ajeroky", "ahendu", "apurahei", "ambaapo"],
+    "check": {
+      "id": "a1u02d1.k1",
+      "kind": "choice",
+      "area": "vocab",
+      "label": "Cómo se escribe",
+      "q": "Es sábado y Ana _canta_ en el patio. ¿Cómo se escribe en guaraní?",
+      "options": ["opurajéi", "opurahéi", "opurahéy", "opuraéi"],
+      "answer": 2,
+      "explain": "Canta es opurahéi: con o-, porque es Ana, otra persona, y con h, que suena como la jota suave paraguaya. Opurajéi la escribe con j, que es otra letra, la y fuerte de «yo». Opurahéy cambia la i por la y, que en guaraní es otra vocal, la sexta. Opuraéi se come la h, que nunca es muda."
+    }
+  },
+  "skill": {
+    "kind": "listening",
+    "es": "Respuesta rápida",
+    "situation": "En el patio, Ana le pregunta a Luis qué hace.",
+    "ask": "¿Qué responde Luis?",
+    "item": {
+      "id": "a1u02d1.r1",
+      "kind": "choice",
+      "area": "listening",
+      "label": "Respuesta rápida",
+      "q": "¿Qué responde Luis?",
+      "options": ["Amba'apo.", "Remba'apo.", "Omba'apo."],
+      "answer": 1,
+      "why": [
+        "Ana pregunta con re-, «vos»: rejapo, «hacés». Luis responde por él, con a-: amba'apo, «trabajo».",
+        "Remba'apo es «trabajás», con re-: Luis hablaría de Ana, no de él.",
+        "Omba'apo es «trabaja», con o-: sería otra persona, no Luis."
+      ],
+      "script": [
+        "Narrador: En el patio. ¿Qué responde Luis?",
+        "Mujer: Mba'épa rejapo, Luis?",
+        "Narrador: 1",
+        "Hombre: Amba'apo.",
+        "Narrador: 2",
+        "Hombre: Remba'apo.",
+        "Narrador: 3",
+        "Hombre: Omba'apo."
+      ]
+    },
+    "audio": [
+      ["N", "En el patio. ¿Qué responde Luis?", "En el patio. ¿Qué responde Luis?"],
+      ["F", "Mba'épa rejapo, Luis?", "¿Qué hacés, Luis?"],
+      ["N", "1", "1"],
+      ["M", "Amba'apo.", "Trabajo."],
+      ["N", "2", "2"],
+      ["M", "Remba'apo.", "Trabajás."],
+      ["N", "3", "3"],
+      ["M", "Omba'apo.", "Trabaja."]
+    ]
+  }
+}
