@@ -586,23 +586,29 @@
      <path d={on}> (petals done), <path d={spokes}>, <circle r="4"> (the hub, filled when hub). n = the level's units,
      done = units finished.
      The drawing ("arasape", the Itauguá sun): one radial thread per unit, from under the hub to the frame (r 19.3); a
-     cross-thread ring (r 17.25) under the rim, that the petal tips reach for; one petal per unit between two threads, a
-     pointed lace leaf (r 6.8 to 15.75, a third of its sector wide) with a midrib along its axis; the rim, tight scallops
-     bulging out from the frame, round(24 / n) per unit (24 around for 6, 8 or 12 units, 20 for 10).
+     cross-thread ring (r 15.4) that the petal tips are tied to; one petal per unit between two threads, a pointed lace
+     leaf (r 6.8 to 14.8, 37 % of its sector wide) with a midrib along its axis; the rim, round scallops bulging out from
+     the frame to r 21.3, about a dozen around: round(13 / n) per unit (two per unit up to 8 units, one from 9 up: 16 for
+     8, 12 for 6 or 12, 10 for 10, 9 for the games' stage ring).
+     The games (Hablar, Escribir) stroke only spokes and rimD around a white disc r 15 (stroke 2.5), so between r 16.25
+     and the frame the spokes string must hold nothing but the radial threads (the ring sits under the disc) and the rim
+     must stay a bold flower of one scallop per unit there, or the stamp turns into a cog.
      Two things the boards impose on the strings. The spokes path is stroked with no fill attribute, so nothing in it
      may enclose an area (a closed shape there would fill black): the threads are lines and the ring is a circle traced
      out and back in quarter arcs (the stroke of a path's self-overlap reads as one line). An open subpath inside a petal
      adds stroke only, never fill: that is how the midrib is drawn, in the petal's own stroke colour.
-     Painted extent, stroke included: r 20.0 before the pass (the frame circle), r 21.5 whole for 8 units (r 21.7 for
-     10: the scallops), inside the brooch discs (the mascot's 9.4 / 0.42 = 22.4; the icon's 8.0 / 0.36 = 22.2). */
+     Painted extent, stroke included: r 20.0 before the pass (the frame circle), r 22.0 whole for any unit count (the
+     scallops all reach r 21.3), inside the brooch discs (the mascot's 9.4 / 0.42 = 22.4; the icon's 8.0 / 0.36 = 22.2). */
   C.rosette = function (n, done, opts) {
     opts = opts || {};
     var N = Math.max(3, n || 8), D = Math.min(N, done || 0), TAU = 2 * Math.PI;
-    var R_RING = 17.25;                          /* the cross-thread ring under the rim */
+    var R_RING = 15.4;                           /* the cross-thread ring the petal tips are tied to (under the games' disc) */
     var R_EDGE = 19.3;                           /* the frame: the threads end there and the scallops meet there */
-    var R_BASE = 6.8, R_TIP = 15.75, X_W = 11.6; /* the petal: base, tip and widest point along its axis */
-    var M = Math.max(1, Math.round(24 / N));     /* scallops per unit */
-    var hw = Math.min(3.7, 2 * X_W * Math.sin(Math.PI / N) * 0.35); /* the petal's half-width: a third of the sector */
+    var R_OUT = 21.3;                            /* how far the scallops reach at their middle */
+    var R_BASE = 6.8, R_TIP = 14.8, X_W = 10.8;  /* the petal: base, tip and widest point along its axis */
+    var L = R_TIP - R_BASE;                      /* the petal's length */
+    var M = Math.max(1, Math.round(13 / N));     /* scallops per unit: about a dozen around, one per unit from 9 units up */
+    var hw = Math.min(4.4, 2 * X_W * Math.sin(Math.PI / N) * 0.37); /* the petal's half-width: 37 % of the sector */
     function f(x) { return String(Math.round(x * 100) / 100); }
     function pt(r, a) { return f(r * Math.cos(a)) + ' ' + f(r * Math.sin(a)); }
     function ring(r) { /* a circle traced clockwise and back in quarter arcs: stroked, never filled */
@@ -617,16 +623,18 @@
       var lp = function (x, y) { return f(x * ca - y * sa) + ' ' + f(x * sa + y * ca); }; /* petal coordinates: x out along its axis, y across */
       /* the petal: a pointed leaf along the sector's middle, then its midrib as an open subpath */
       var d = 'M' + lp(R_BASE, 0) +
-        'C' + lp(R_BASE + 1.5, hw * 0.6) + ' ' + lp(X_W - 2, hw) + ' ' + lp(X_W, hw) +
-        'C' + lp(X_W + 2.2, hw) + ' ' + lp(R_TIP - 1.9, hw * 0.38) + ' ' + lp(R_TIP, 0) +
-        'C' + lp(R_TIP - 1.9, -hw * 0.38) + ' ' + lp(X_W + 2.2, -hw) + ' ' + lp(X_W, -hw) +
-        'C' + lp(X_W - 2, -hw) + ' ' + lp(R_BASE + 1.5, -hw * 0.6) + ' ' + lp(R_BASE, 0) + 'Z' +
-        'M' + pt(R_BASE + 0.25 * (R_TIP - R_BASE), am) + 'L' + pt(R_BASE + 0.75 * (R_TIP - R_BASE), am);
+        'C' + lp(R_BASE + 0.17 * L, hw * 0.6) + ' ' + lp(X_W - 0.22 * L, hw) + ' ' + lp(X_W, hw) +
+        'C' + lp(X_W + 0.25 * L, hw) + ' ' + lp(R_TIP - 0.21 * L, hw * 0.38) + ' ' + lp(R_TIP, 0) +
+        'C' + lp(R_TIP - 0.21 * L, -hw * 0.38) + ' ' + lp(X_W + 0.25 * L, -hw) + ' ' + lp(X_W, -hw) +
+        'C' + lp(X_W - 0.22 * L, -hw) + ' ' + lp(R_BASE + 0.17 * L, -hw * 0.6) + ' ' + lp(R_BASE, 0) + 'Z' +
+        'M' + pt(R_BASE + 0.25 * L, am) + 'L' + pt(R_BASE + 0.75 * L, am);
       if (k < D) on += d; else off += d;
       spokes += 'M' + pt(3.4, a0) + 'L' + pt(R_EDGE, a0); /* the radial thread, from under the hub to the frame */
-      for (var j = 0; j < M; j++) { /* the rim: M tight scallops per unit, bulging outwards from the frame */
-        var b0 = a0 + (j * (a1 - a0)) / M, b1 = a0 + ((j + 1) * (a1 - a0)) / M;
-        var sr = f(2 * R_EDGE * Math.sin((b1 - b0) / 2) * 0.55);
+      for (var j = 0; j < M; j++) { /* the rim: M round scallops per unit, from the frame out to R_OUT */
+        var b0 = a0 + (j * (a1 - a0)) / M, b1 = a0 + ((j + 1) * (a1 - a0)) / M, half = (b1 - b0) / 2;
+        var c = 2 * R_EDGE * Math.sin(half);                         /* the scallop's chord */
+        var s = Math.min(R_OUT - R_EDGE * Math.cos(half), 0.36 * c); /* its height: to R_OUT, at most 0.36 of the chord */
+        var sr = f((s * s + (c * c) / 4) / (2 * s));                 /* the arc's radius */
         rim += (k === 0 && j === 0 ? 'M' + pt(R_EDGE, b0) : '') + 'A' + sr + ' ' + sr + ' 0 0 1 ' + pt(R_EDGE, b1);
       }
     }

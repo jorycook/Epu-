@@ -3271,7 +3271,778 @@
      ]
     ]
    }
+  },
+  "6": {
+   "title": "Repaso de la semana",
+   "grammar": {
+    "points": [],
+    "compare": {
+     "intro": "Cuatro pares de la semana que se parecen: fijate si la palabra que sigue es nasal, si son uno o varios, y si preguntás por una persona o por una cosa.",
+     "forms": [
+      {
+       "form": "nde · ne",
+       "tag": "tu: ante palabra oral · ante palabra nasal",
+       "mark": "dot",
+       "gn": "Mba'éichapa héra {nde} sy?\nMba'éichapa héra {ne} memby?",
+       "es": "¿Cómo se llama tu mamá?\n¿Cómo se llama tu hijo?"
+      },
+      {
+       "form": "-kuéra · -nguéra",
+       "tag": "plural: tras sílaba oral · tras sílaba nasal",
+       "mark": "dot",
+       "gn": "Jagua{kuéra} oyta.\nMitã{nguéra} oho mbo'ehaópe.",
+       "es": "Los perros nadan.\nLos niños van a la escuela."
+      },
+      {
+       "form": "ko · ko'ã · pe · umi",
+       "tag": "uno · varios",
+       "mark": "dot",
+       "gn": "{Ko} óga · {ko'ã} óga\n{Pe} mitã · {umi} mitã",
+       "es": "esta casa · estas casas\nese chico · esos chicos"
+      },
+      {
+       "form": "Mávapa · Mba'épa",
+       "tag": "¿quién? · ¿qué?",
+       "mark": "dot",
+       "gn": "{Mávapa} ha'e?\n{Mba'épa} he'ise?",
+       "es": "¿Quién es?\n¿Qué significa?"
+      }
+     ],
+     "check": {
+      "id": "a1u04d6.c1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Rosa pregunta por ^el muchacho de la foto^.\nRosa: (   ) amo karia'y?\nJuan: ^Che ra'y.^",
+      "options": [
+       "Mba'épa",
+       "Mávapa",
+       "Moõpa"
+      ],
+      "answer": 2,
+      "why": [
+       "Mba'épa pregunta por una cosa: Mba'épa amo karia'y? sería «¿qué es aquel muchacho?». Juan responde con una persona.",
+       "Rosa pregunta por una persona, el muchacho: Mávapa amo karia'y?, «¿quién es aquel muchacho?». Juan responde Che ra'y, «mi hijo».",
+       "Moõpa pregunta «¿dónde?», por un lugar. Juan no dice un lugar: dice quién es."
+      ]
+     }
+    },
+    "drill": [
+     {
+      "id": "a1u04d6.d1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Luis le pregunta a Juan cómo se llama ^la esposa de él^.\nLuis: Mba'éichapa héra (   ) rembireko, Juan?",
+      "options": [
+       "nde",
+       "che",
+       "ne",
+       "ñande"
+      ],
+      "answer": 3,
+      "why": [
+       "Nde es «tu», pero rembireko es una palabra nasal: empieza con mb. Delante de una palabra nasal, nde pierde la d.",
+       "Che es «mi»: Luis preguntaría por su propia esposa, y pregunta por la de Juan.",
+       "Luis le pregunta a Juan por la esposa de él, «tu esposa». Rembireko tiene mb, una letra nasal, así que nde se vuelve ne: ne rembireko.",
+       "Ñande es «nuestro» con vos: sumaría a Luis. Y delante de una palabra nasal sería ñane."
+      ]
+     },
+     {
+      "id": "a1u04d6.d2",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Rosa habla de ^las gallinas^ del patio.\nRosa: (   ) oĩ korapýpe.",
+      "options": [
+       "Ryguasunguéra",
+       "Riguasukuéra",
+       "Ryguasucuéra",
+       "Ryguasukuéra"
+      ],
+      "answer": 4,
+      "why": [
+       "-nguéra va solo tras una sílaba nasal, y ryguasu termina en su, una sílaba oral.",
+       "Riguasukuéra cambia la y por i. Ry-gua-su empieza con la y, la sexta vocal.",
+       "Ryguasucuéra escribe el plural con c, y la c no es una letra del guaraní: ese sonido se escribe con k, kuéra.",
+       "Ryguasu termina en su, sílaba oral: va -kuéra, que se lleva el acento. Ryguasukuéra oĩ korapýpe: las gallinas están en el patio."
+      ]
+     },
+     {
+      "id": "a1u04d6.d3",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Juan y Rosa están en la puerta. Juan señala ^un caballo al fondo del patio, lejos de los dos^.)\nJuan: (   ) kavaju ituicha.",
+      "options": [
+       "Amo",
+       "Ko",
+       "Pe",
+       "Umi"
+      ],
+      "answer": 1,
+      "why": [
+       "El caballo está lejos de los dos, pero a la vista: amo kavaju, «aquel caballo». Amo kavaju ituicha: aquel caballo es grande.",
+       "Ko es «este», para algo cerca de Juan, el que habla. El caballo está al fondo del patio.",
+       "Pe es «ese», para algo cerca de Rosa, la que escucha. El caballo está lejos de los dos.",
+       "Umi es para varios, «esos» o «aquellos». Es un solo caballo."
+      ]
+     },
+     {
+      "id": "a1u04d6.d4",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "Luis cuenta ^los chicos^ del patio: son ^cuatro^.\nLuis: Oĩ irundy (   ).",
+      "options": [
+       "mitãnguéra",
+       "mitã",
+       "mitãkuéra",
+       "mitakuéra"
+      ],
+      "answer": 2,
+      "why": [
+       "Mitãnguéra es «los niños», el plural de mitã, pero después de un número el sustantivo va solo: irundy ya dice que son cuatro.",
+       "Después del número, el sustantivo va en singular: irundy mitã, «cuatro chicos». El número ya dice cuántos son.",
+       "Mitãkuéra usa la forma de después de una sílaba oral, y mitã termina en ã, nasal. Y después de un número no va plural.",
+       "Mitakuéra pierde la ~ de mitã, que la palabra sí lleva, y además pone un plural después del número."
+      ]
+     },
+     {
+      "id": "a1u04d6.d5",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "Che sy oñe'ẽ ",
+      "after": ".",
+      "tiles": [
+       "mitã",
+       "nguéra",
+       "pe"
+      ],
+      "bank": [
+       2,
+       1,
+       0
+      ],
+      "hint": "Primero el plural, que se lleva el acento, y al final -pe, «a».",
+      "full": "Che sy oñe'ẽ mitã{nguéra}pe.",
+      "es": "Mi mamá les habla a los niños.",
+      "explain": "mitã («niño») + -nguéra (plural tras nasal, porque mitã termina en ã) + -pe («a») = mitãnguérape. -nguéra se lleva el acento, y -pe no lo mueve: la ~ queda en la ã y la tilde en la é. Después de -nguéra va -pe, porque ra es una sílaba oral."
+     },
+     {
+      "id": "a1u04d6.d6",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "",
+      "after": " oĩ korapýpe?",
+      "tiles": [
+       "mba'e",
+       "pa"
+      ],
+      "bank": [
+       1,
+       0
+      ],
+      "hint": "-pa va al final y no se lleva el acento: mirá dónde aparece la tilde.",
+      "full": "{Mba'épa} oĩ korapýpe?",
+      "es": "¿Qué hay en el patio?",
+      "explain": "mba'e («qué») + -pa (pregunta) = Mba'épa. -pa no se lleva el acento: queda en la e de mba'e, que ya no es la última vocal, y por eso se escribe la tilde. Mba'épa oĩ korapýpe?: ¿qué hay en el patio?"
+     }
+    ],
+    "exam": [
+     {
+      "id": "a1u04d6.e1",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Qué significa",
+      "q": "Rosa: _Ne membykuéra moõpa oĩ?_",
+      "options": [
+       "¿Dónde están tus hijos?",
+       "¿Dónde está tu hijo?",
+       "¿Quiénes son tus hijos?",
+       "¿Dónde están mis hijos?"
+      ],
+      "answer": 1,
+      "explain": "Ne es «tu» delante de una palabra nasal, y -kuéra hace el plural: ne membykuéra, «tus hijos». Moõpa es «¿dónde?» y oĩ, «están». Un solo hijo sería ne memby, «mis» sería che, y «quiénes» se pregunta con mávapa."
+     },
+     {
+      "id": "a1u04d6.e2",
+      "kind": "choice",
+      "area": "grammar",
+      "label": "Elegí la forma",
+      "q": "(Ana tiene dos chipá en la mano y se los muestra a Luis.)\nAna: (   ) chipa iporã.",
+      "options": [
+       "Umi",
+       "Ko",
+       "Pe",
+       "Ko'ã"
+      ],
+      "answer": 4,
+      "explain": "Son dos chipá y los tiene Ana, la que habla: ko'ã chipa, «estos chipá». Ko'ã es el ko de varios. Umi es para varios pero lejos de quien habla; ko y pe son para uno solo, y pe, además, para algo cerca del que escucha."
+     },
+     {
+      "id": "a1u04d6.e3",
+      "kind": "build",
+      "area": "grammar",
+      "label": "Armá la palabra",
+      "join": "word",
+      "before": "Mboy ",
+      "after": " rereko?",
+      "tiles": [
+       "ary",
+       "pa"
+      ],
+      "bank": [
+       1,
+       0
+      ],
+      "full": "Mboy arýpa rereko?",
+      "es": "¿Cuántos años tenés?",
+      "explain": "ary («año») + -pa (pregunta) = arýpa. -pa se pega a la última palabra de lo que se pregunta, mboy ary, «cuántos años», y no se lleva el acento: queda en la y de ary, que ya no es la última vocal, y por eso se escribe la tilde. Rereko es «tenés»: Mboy arýpa rereko?, ¿cuántos años tenés?"
+     }
+    ]
+   },
+   "words": {
+    "es": "La familia en la fiesta",
+    "intro": "El cumpleaños de la abuela, en el patio. Ana presenta a su familia y señala quién es quién. Tocá cada palabra: son las de toda la semana.",
+    "sound": {
+     "focus": "Repaso: el acento que se mueve y los dígrafos",
+     "letters": [
+      "é",
+      "mb",
+      "ng"
+     ],
+     "note": "Dos cosas de la semana para repasar. El acento: -kuéra y -nguéra se lo llevan, y la tilde de la raíz desaparece (óga → ogakuéra, túva → tuvakuéra); -pa y -pe no se lo llevan, y por eso aparece la tilde en la raíz (mba'e → Mba'épa, korapy → korapýpe). Los dígrafos mb, nd y ng son una sola letra, en una sola sílaba: mba'e, irundy, mitãnguéra. No hay pares mínimos seguros: son palabras para contrastar, una sola y varias, o con y sin -pa.",
+     "pairs": [
+      [
+       "óga",
+       "casa",
+       "ogakuéra",
+       "casas"
+      ],
+      [
+       "túva",
+       "padre",
+       "tuvakuéra",
+       "padres"
+      ],
+      [
+       "mba'e",
+       "cosa; qué",
+       "Mba'épa",
+       "¿qué?"
+      ],
+      [
+       "mitã",
+       "niño, niña",
+       "mitãnguéra",
+       "niños, niñas"
+      ]
+     ]
+    },
+    "words": [
+     {
+      "id": "ramoi",
+      "gn": "che ramói",
+      "es": "mi abuelo",
+      "parts": [
+       [
+        "che",
+        "mi"
+       ],
+       [
+        "ramói",
+        "abuelo (con che, ne)"
+       ]
+      ],
+      "note": "Sola, la palabra es tamói. Es nasal, con m: con nde se dice ne ramói. Tilde en la ó: el acento no cae al final."
+     },
+     {
+      "id": "rembireko",
+      "gn": "che rembireko",
+      "es": "mi esposa",
+      "parts": [
+       [
+        "che",
+        "mi"
+       ],
+       [
+        "rembireko",
+        "esposa (con che, ne)"
+       ]
+      ],
+      "note": "Sola es hembireko, «su esposa». Es nasal, con mb: con nde se dice ne rembireko."
+     },
+     {
+      "id": "tuvakuera",
+      "gn": "tuvakuéra",
+      "es": "los padres, los papás",
+      "parts": [
+       [
+        "túva",
+        "padre"
+       ],
+       [
+        "-kuéra",
+        "plural"
+       ]
+      ],
+      "note": "Túva pierde su tilde: -kuéra se lleva el acento. Sy ha tuvakuéra, «madres y padres». Con che, «mi papá» es che ru."
+     },
+     {
+      "id": "mitanguera",
+      "gn": "mitãnguéra",
+      "es": "los niños, las niñas",
+      "parts": [
+       [
+        "mitã",
+        "niño, niña"
+       ],
+       [
+        "-nguéra",
+        "plural tras nasal"
+       ]
+      ],
+      "note": "La ~ se queda y el acento va a la é. Ng es una sola letra: mi-tã-ngué-ra."
+     },
+     {
+      "id": "koa",
+      "gn": "ko'ã",
+      "es": "estos, estas",
+      "parts": [
+       [
+        "ko",
+        "este, esta"
+       ],
+       [
+        "-'ã",
+        "varios"
+       ]
+      ],
+      "note": "El plural de ko, con puso y ã: ko'ã mitã, «estos chicos». El sustantivo queda como está."
+     },
+     {
+      "id": "umi",
+      "gn": "umi",
+      "es": "esos, esas; aquellos, aquellas",
+      "note": "El plural de pe y de amo: umi mitã, «esos chicos». Con un número: umi mokõi karia'y, «esos dos muchachos»."
+     },
+     {
+      "id": "mbaepa",
+      "gn": "Mba'épa?",
+      "es": "¿Qué?",
+      "parts": [
+       [
+        "mba'e",
+        "qué; cosa"
+       ],
+       [
+        "-pa",
+        "pregunta"
+       ]
+      ],
+      "note": "Mba'e es aguda; con -pa aparece la tilde en la é. Mb es una sola letra: mba-'e."
+     },
+     {
+      "id": "irundy",
+      "gn": "irundy",
+      "es": "cuatro",
+      "note": "Nd es una sola letra, en una sola sílaba: i-ru-ndy. Después del número, el sustantivo va sin plural: irundy mitã, «cuatro chicos»."
+     }
+    ],
+    "spell": [
+     "mitanguera",
+     "tuvakuera",
+     "mbaepa",
+     "koa"
+    ],
+    "check": {
+     "id": "a1u04d6.k1",
+     "kind": "choice",
+     "area": "vocab",
+     "label": "Cómo se escribe",
+     "q": "Ana saluda a _los padres_ de los chicos: Maitei, (   ). ¿Cómo se escribe en guaraní?",
+     "options": [
+      "tuvanguéra",
+      "tuvacuéra",
+      "tuvakuéra",
+      "tubakuéra"
+     ],
+     "answer": 3,
+     "explain": "«Los padres» es tuvakuéra: túva, «padre», más -kuéra, que se lleva el acento, así que la tilde de túva desaparece. Va es una sílaba oral: por eso -kuéra y no -nguéra. Tuvacuéra escribe el plural con c, que no es una letra del guaraní: ese sonido se escribe con k. Tubakuéra escribe con b, que sola tampoco es una letra del guaraní: acá va v."
+    }
+   },
+   "skill": {
+    "kind": "reading",
+    "es": "Un mensaje con foto",
+    "ask": "¿Cuántos hijos tiene Rosa?",
+    "seconds": 75,
+    "passage": "Maitei, Juan.\n^Ko'ã mitã che membykuéra: Sofía ha Tomás.^\nPe karai che ramói, héra Pedro. Oguereko ochenta ary.\n^Umi mokõi mitãkuña che angirũ memby.^\nJajotopáta ko ka'aru.\nRosa",
+    "strategy": "Buscá de quién es cada grupo: después de ko'ã mitã y de umi mokõi mitãkuña viene el dueño, che membykuéra o che angirũ memby. Ha, «y», une dos nombres.",
+    "item": {
+     "id": "a1u04d6.r1",
+     "kind": "choice",
+     "area": "reading",
+     "label": "Buscar el dato",
+     "q": "¿Cuántos hijos tiene Rosa?",
+     "options": [
+      "Uno.",
+      "Dos.",
+      "Cuatro.",
+      "No lo dice."
+     ],
+     "short": [
+      "Uno",
+      "Dos",
+      "Cuatro",
+      "No lo dice"
+     ],
+     "answer": 2,
+     "why": [
+      "Un solo hijo sería che memby. Rosa escribe che membykuéra, con -kuéra: más de uno, y da dos nombres.",
+      "Ko'ã mitã che membykuéra: Sofía ha Tomás, «estos chicos son mis hijos: Sofía y Tomás». Son dos.",
+      "Las dos nenas, umi mokõi mitãkuña, son che angirũ memby: las hijas de la amiga de Rosa, no de Rosa.",
+      "Sí lo dice: después de che membykuéra vienen los nombres, Sofía ha Tomás."
+     ],
+     "explain": "Rosa escribe Ko'ã mitã che membykuéra: Sofía ha Tomás, «estos chicos son mis hijos: Sofía y Tomás». Son dos. Las dos nenas, umi mokõi mitãkuña, son che angirũ memby: las hijas de su amiga."
+    }
+   }
   }
  },
- "test": []
+ "test": [
+  {
+   "id": "a1u04t.1",
+   "kind": "choice",
+   "area": "vocab",
+   "label": "Qué significa",
+   "q": "(Rosa le muestra a Juan una foto.)\nRosa: Ha'e _che jarýi_.",
+   "options": [
+    "mi mamá",
+    "mi abuela",
+    "mi hija",
+    "tu abuela"
+   ],
+   "answer": 2,
+   "explain": "Che es «mi» y jarýi, «abuela»: Ha'e che jarýi, «ella es mi abuela». Mi mamá sería che sy; mi hija, che memby si lo dice la mamá o che rajy si lo dice el papá; y tu abuela, nde jarýi."
+  },
+  {
+   "id": "a1u04t.2",
+   "kind": "choice",
+   "area": "vocab",
+   "label": "Cómo se escribe",
+   "q": "Rosa habla de los chicos del barrio: _los niños_ cantan en la escuela. ¿Cómo se escribe «los niños» en guaraní?",
+   "options": [
+    "mitãkuéra",
+    "mitakuéra",
+    "mitãnguéra",
+    "mitãnguẽra"
+   ],
+   "answer": 3,
+   "explain": "Mitã termina en ã, sílaba nasal: el plural es -nguéra, que se lleva el acento. Mitãkuéra usa la forma de después de una sílaba oral. Mitakuéra además pierde la ~ de mitã, que la palabra sí lleva. Mitãnguẽra pone una ~ en la e, y esa e es oral: lleva la tilde de acento, é."
+  },
+  {
+   "id": "a1u04t.3",
+   "kind": "choice",
+   "area": "vocab",
+   "label": "Qué significa",
+   "q": "(En el patio.)\nJuan: Amo _kavaju_ ituicha.",
+   "options": [
+    "caballo",
+    "vaca",
+    "perro",
+    "gallina"
+   ],
+   "answer": 1,
+   "explain": "Kavaju es «caballo», del castellano y escrito a la guaraní: la c se escribe k y la ll se escribe j. Amo kavaju ituicha: aquel caballo es grande. Vaca es vaka, perro es jagua y gallina, ryguasu."
+  },
+  {
+   "id": "a1u04t.4",
+   "kind": "choice",
+   "area": "vocab",
+   "label": "Elegí la palabra",
+   "q": "(Rosa, la mamá, le muestra a Juan una foto de su hija.)\nRosa: Che (   ).",
+   "options": [
+    "ra'y",
+    "rajy",
+    "ru",
+    "memby"
+   ],
+   "answer": 4,
+   "explain": "Rosa es la mamá, y la mamá dice che memby de su hijo o de su hija. Ra'y, «hijo», y rajy, «hija», son las palabras del papá: Rosa no las usa. Che ru es «mi papá», y en la foto está su hija."
+  },
+  {
+   "id": "a1u04t.5",
+   "kind": "choice",
+   "area": "vocab",
+   "label": "Cómo se escribe",
+   "q": "Luis pregunta _qué_ significa una palabra: (   ) he'ise «mymba»? ¿Cómo se escribe?",
+   "options": [
+    "Mba'ẽpa",
+    "Mba'épa",
+    "Mbaépa",
+    "Mba'épã"
+   ],
+   "answer": 2,
+   "explain": "«¿Qué?» es Mba'épa: mba'e lleva el puso entre la a y la e, y con -pa esa e deja de ser la última vocal, así que se escribe la tilde de acento, é. Mba'ẽpa pone una ~ en la e, y esa e es oral. Mbaépa pierde el puso. Mba'épã agrega una ~ a la a de -pa, que se escribe siempre igual, sin ~."
+  },
+  {
+   "id": "a1u04t.6",
+   "kind": "choice",
+   "area": "vocab",
+   "label": "Qué significa",
+   "q": "(Luis cuenta las sillas del patio.)\nLuis: Oĩ _irundy_ apyka.",
+   "options": [
+    "tres",
+    "cinco",
+    "cuatro",
+    "dos"
+   ],
+   "answer": 3,
+   "explain": "Irundy es «cuatro»: Oĩ irundy apyka, «hay cuatro sillas». Tres es mbohapy, cinco es po y dos, mokõi. Después del número, apyka queda en singular."
+  },
+  {
+   "id": "a1u04t.7",
+   "kind": "choice",
+   "area": "grammar",
+   "label": "Elegí la forma",
+   "q": "Juan: Mba'éichapa héra (   ) ramói, Rosa?",
+   "options": [
+    "che",
+    "nde",
+    "ne",
+    "héra"
+   ],
+   "answer": 3,
+   "explain": "Juan le pregunta a Rosa por el abuelo de ella: «tu abuelo». Ramói es una palabra nasal, con m, y delante de ella nde pierde la d: ne ramói. Che sería «mi», el abuelo de Juan. Nde queda igual solo ante una palabra oral, como nde sy. Y héra ya está en la pregunta: es «su nombre», no un posesivo."
+  },
+  {
+   "id": "a1u04t.8",
+   "kind": "choice",
+   "area": "grammar",
+   "label": "Elegí la forma",
+   "q": "Ana habla de los animales de su abuela.\nAna: (   ) oĩ che jarýi rógape.",
+   "options": [
+    "Mymbakuéra",
+    "Mymbanguéra",
+    "Mỹmbakuéra",
+    "Mimbakuéra"
+   ],
+   "answer": 1,
+   "explain": "Mymba, «animal», empieza con m, pero el plural mira la última sílaba, ba, que es oral: va -kuéra, y se lleva el acento. Mymbakuéra oĩ che jarýi rógape: los animales están en la casa de mi abuela. Mymbanguéra usa la forma de después de una sílaba nasal. Mỹmbakuéra agrega una ~ junto a mb, donde no se escribe. Mimbakuéra cambia la y por i, y mymba lleva la y, la sexta vocal."
+  },
+  {
+   "id": "a1u04t.9",
+   "kind": "choice",
+   "area": "grammar",
+   "label": "Elegí la forma",
+   "q": "(Rosa señala un árbol lejos, al final de la calle.)\nRosa: (   ) yvyra ituicha.",
+   "options": [
+    "Ko",
+    "Amo",
+    "Pe",
+    "Ko'ã"
+   ],
+   "answer": 2,
+   "explain": "El árbol está lejos de los dos, pero a la vista: amo yvyra, «aquel árbol». Ko es «este», para algo cerca de Rosa, la que habla; pe es «ese», para algo cerca del que escucha; y ko'ã es «estos», para varios y cerca de quien habla."
+  },
+  {
+   "id": "a1u04t.10",
+   "kind": "choice",
+   "area": "grammar",
+   "label": "Elegí la forma",
+   "q": "(Luis señala dos sillas que tiene al lado.)\nLuis: (   ) apyka iporã.",
+   "options": [
+    "Ko",
+    "Umi",
+    "Pe",
+    "Ko'ã"
+   ],
+   "answer": 4,
+   "explain": "Son dos sillas y están al lado de Luis, el que habla: ko'ã apyka, «estas sillas». Ko y pe son para una sola cosa, y umi es para varias, pero lejos de quien habla: «esas» o «aquellas». El sustantivo queda como está: ko'ã ya dice que son varias."
+  },
+  {
+   "id": "a1u04t.11",
+   "kind": "choice",
+   "area": "grammar",
+   "label": "Elegí la forma",
+   "q": "Luis: (   ) pe karia'y?\nAna: Che memby.",
+   "options": [
+    "Mávapa",
+    "Mba'épa",
+    "Moõpa",
+    "Mboýpa"
+   ],
+   "answer": 1,
+   "explain": "Ana responde con una persona, che memby, «mi hijo»: Luis preguntó quién es ese muchacho, Mávapa pe karia'y? Mba'épa pregunta por una cosa, moõpa por un lugar y mboýpa por una cantidad."
+  },
+  {
+   "id": "a1u04t.12",
+   "kind": "choice",
+   "area": "grammar",
+   "label": "Elegí la forma",
+   "q": "(Rosa habla de su hija, que tiene cinco años.)\nRosa: Che memby oguereko po (   ).",
+   "options": [
+    "arykuéra",
+    "arynguéra",
+    "ary",
+    "arýpa"
+   ],
+   "answer": 3,
+   "explain": "Ary es «año»: oguereko po ary, «tiene cinco años». Después de un número el sustantivo va sin plural, así que no van arykuéra ni arynguéra, que además usa la forma de después de una sílaba nasal, y ry es oral. Arýpa lleva la -pa de pregunta, y Rosa no pregunta: cuenta."
+  },
+  {
+   "id": "a1u04t.13",
+   "kind": "build",
+   "area": "grammar",
+   "label": "Armá la palabra",
+   "join": "word",
+   "before": "Che ru oñe'ẽ ",
+   "after": ".",
+   "tiles": [
+    "mbo'ehára",
+    "kuéra",
+    "pe"
+   ],
+   "bank": [
+    2,
+    0,
+    1
+   ],
+   "full": "Che ru oñe'ẽ mbo'eharakuérape.",
+   "es": "Mi papá les habla a los profesores.",
+   "explain": "mbo'ehára, kuéra, pe. Mbo'ehára («profesor») + -kuéra (plural, porque ra es una sílaba oral) + -pe («a») = mbo'eharakuérape, «a los profesores». -kuéra se lleva el acento y la tilde de hára desaparece: una palabra, una sola tilde. -pe va al final y no lo mueve: la tilde queda en la é."
+  },
+  {
+   "id": "a1u04t.14",
+   "kind": "build",
+   "area": "grammar",
+   "label": "Armá la palabra",
+   "join": "word",
+   "before": "(Luis le pregunta a Ana por el papá de ella.)\nLuis: Mboy ",
+   "after": " oguereko nde ru?",
+   "tiles": [
+    "ary",
+    "pa"
+   ],
+   "bank": [
+    1,
+    0
+   ],
+   "full": "(Luis le pregunta a Ana por el papá de ella.)\nLuis: Mboy arýpa oguereko nde ru?",
+   "es": "Luis: ¿Cuántos años tiene tu papá?",
+   "explain": "ary, pa. Ary («año») + -pa (pregunta) = arýpa. -pa no se lleva el acento: queda en la y de ary, que ya no es la última vocal, y por eso se escribe la tilde, ý. Oguereko es «tiene», y nde ru, «tu papá»: ru es oral, así que nde no cambia."
+  },
+  {
+   "id": "a1u04t.15",
+   "kind": "choice",
+   "area": "reading",
+   "label": "Buscar el dato",
+   "q": "¿Quiénes son Lucía y Mateo?",
+   "passage": "Ana: Mba'éichapa, Luis? Ko'ã che membykuéra, Lucía ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko sesenta ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
+   "options": [
+    "Los papás de Ana.",
+    "Los hijos de Ana.",
+    "Los hijos de Luis.",
+    "Los abuelos de Ana."
+   ],
+   "short": [
+    "Sus papás",
+    "Sus hijos",
+    "Hijos de Luis",
+    "Sus abuelos"
+   ],
+   "answer": 2,
+   "explain": "Ana escribe Ko'ã che membykuéra, Lucía ha Mateo: «estos son mis hijos, Lucía y Mateo». Che es «mi» y membykuéra, «hijos», en plural. Lo dice Ana, no Luis. El papá de Ana es Carlos, y de abuelos no habla."
+  },
+  {
+   "id": "a1u04t.16",
+   "kind": "choice",
+   "area": "reading",
+   "label": "Buscar el dato",
+   "q": "¿Cuántos años tiene el papá de Ana?",
+   "passage": "Ana: Mba'éichapa, Luis? Ko'ã che membykuéra, Lucía ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko sesenta ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
+   "options": [
+    "Veinte.",
+    "Dos.",
+    "Seis.",
+    "Sesenta."
+   ],
+   "short": [
+    "Veinte",
+    "Dos",
+    "Seis",
+    "Sesenta"
+   ],
+   "answer": 4,
+   "explain": "Luis pregunta Ha pe karai?, «¿y ese señor?», y Ana responde Che ru, héra Carlos. Oguereko sesenta ary: «mi papá, se llama Carlos. Tiene sesenta años». La edad va en castellano dentro de la frase guaraní, y ary es «año». Mokõi, «dos», es la cantidad de hijos, no una edad."
+  },
+  {
+   "id": "a1u04t.17",
+   "kind": "choice",
+   "area": "reading",
+   "label": "Texto corto",
+   "q": "¿Qué le pregunta Luis a Ana al final?",
+   "passage": "Ana: Mba'éichapa, Luis? Ko'ã che membykuéra, Lucía ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko sesenta ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
+   "options": [
+    "Cuántos hijos tiene.",
+    "Cómo se llama su papá.",
+    "Dónde vive.",
+    "Cuántos años tiene."
+   ],
+   "short": [
+    "Cuántos hijos",
+    "El nombre del papá",
+    "Dónde vive",
+    "Cuántos años"
+   ],
+   "answer": 1,
+   "explain": "Al final Luis pregunta Mboýpa ne memby?, «¿cuántos hijos tenés?», y Ana responde Mokõi, «dos». El nombre del papá y su edad los dice Ana sin que Luis los pregunte, y nadie pregunta dónde vive."
+  },
+  {
+   "id": "a1u04t.18",
+   "kind": "choice",
+   "area": "listening",
+   "label": "Respuesta rápida",
+   "q": "Juan: Mávapa pe kuña?\n¿Qué le responde Rosa?",
+   "options": [
+    "Che róga.",
+    "Mokõi.",
+    "Che sy."
+   ],
+   "answer": 3,
+   "explain": "Mávapa pe kuña? pregunta quién es esa mujer, y se responde con una persona: Che sy, «mi mamá». Che róga es «mi casa», una cosa, y Mokõi, «dos», es una cantidad: respondería a Mboýpa?"
+  },
+  {
+   "id": "a1u04t.19",
+   "kind": "choice",
+   "area": "listening",
+   "label": "Respuesta rápida",
+   "q": "(En la despensa.)\nAna: Mboýpa ovale ko kamby?\n¿Qué le responde el vendedor?",
+   "options": [
+    "Cinco mil.",
+    "Po mil.",
+    "Héẽ."
+   ],
+   "answer": 1,
+   "explain": "Mboýpa ovale? pregunta el precio, y el precio se dice entero en castellano: cinco mil. Po mil mezcla los dos sistemas, y nadie dice un precio con numerales guaraníes. Héẽ, «sí», responde preguntas de sí o no, como Oĩpa kamby?"
+  },
+  {
+   "id": "a1u04t.20",
+   "kind": "choice",
+   "area": "listening",
+   "label": "Respuesta rápida",
+   "q": "Luis: Mba'éichapa héra ne memby?\n¿Qué le responde Rosa?",
+   "options": [
+    "Che réra Rosa.",
+    "Héra Tomás.",
+    "Mokõi memby."
+   ],
+   "answer": 2,
+   "explain": "Luis pregunta el nombre del hijo de Rosa, ne memby, y ella dice el nombre de él: Héra Tomás, «se llama Tomás». Che réra Rosa sería el nombre de ella misma, y Mokõi memby, «dos hijos», responde cuántos son, no cómo se llama."
+  }
+ ]
 }

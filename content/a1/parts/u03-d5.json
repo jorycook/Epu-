@@ -1,0 +1,300 @@
+{
+  "title": "Acento: palabra aguda por defecto y tilde",
+  "grammar": {
+    "points": [
+      {
+        "id": "a1u03d5.p1",
+        "form": "sin tilde: aguda · con tilde: el acento va antes",
+        "gloss": "dónde cae el acento",
+        "connect": [
+          { "pos": "Sin ninguna marca, el acento cae en la última vocal: al revés del castellano", "rule": "jagu{a} · kara{i} · terer{e} · Ypakara{i}" },
+          { "pos": "Si cae antes, se escribe la tilde en esa vocal, también en los diptongos", "rule": "{ó}ga · {á}ra · purah{é}i · Paragu{á}i · mba'{é}ichapa" },
+          { "pos": "Una vocal con ~ nunca lleva tilde: la ~ ya marca el acento", "rule": "mit{ã} · kane'{õ} · pete{ĩ}" }
+        ],
+        "examples": [
+          {
+            "gn": "{Jagua} okaru.",
+            "es": "El perro come.",
+            "parts": [["jagua", "perro: ja-GUA, aguda, sin tilde"], ["okaru", "come: o-ka-RU, aguda, sin tilde"]]
+          },
+          {
+            "gn": "{Karai} Juan ipochy.",
+            "es": "Don Juan está enojado.",
+            "parts": [["karai", "señor: ka-ra-I, aguda, sin tilde"], ["karai Juan", "don Juan"], ["ipochy", "está enojado: i-po-CHY, sin tilde"]]
+          },
+          {
+            "gn": "Che {róga} ituicha.",
+            "es": "Mi casa es grande.",
+            "parts": [["róga", "casa, después de che: RÓ-ga, el acento va antes y se escribe la tilde"], ["ituicha", "es grande: i-tui-CHA, aguda, sin tilde"]]
+          },
+          {
+            "gn": "{Purahéi} iporã.",
+            "es": "La canción es linda.",
+            "parts": [["purahéi", "canción: pu-ra-HÉI, la tilde va en la e del diptongo"], ["iporã", "es linda: i-po-RÃ, la ~ marca la nasal y el acento"]]
+          }
+        ],
+        "watch": {
+          "note": "El castellano marca la palabra aguda con tilde: tereré, ñandutí, guaraní. El guaraní no la marca: terere, ñanduti y, en los textos en guaraní, guarani. La tilde guaraní marca lo que NO es aguda. Si le ponés tilde a jagua, le cambiás el acento a una palabra que ya lo tenía bien.",
+          "bad": "Jaguá okaru.",
+          "good": "Jagua okaru."
+        }
+      },
+      {
+        "id": "a1u03d5.p2",
+        "form": "palabra + sufijo átono: aparece la tilde",
+        "gloss": "ikatúpa · Itauguápe · ógape",
+        "connect": [
+          { "pos": "-pa, -pe y -gui no se llevan el acento: queda en la raíz, que ya no termina la palabra, y por eso se escribe la tilde", "rule": "ikatu → ikat{ú}pa · Itaugua → Itaugu{á}pe · Ypakarai → Ypakara{í}pe" },
+          { "pos": "Con estos sufijos, si la palabra ya tenía tilde, la tilde se queda donde estaba", "rule": "óga → {ó}gape · Paraguái → Paragu{á}ipe" },
+          { "pos": "Si la vocal tónica lleva ~, no cambia nada: la ~ ya marca el acento", "rule": "tetã → tet{ã}gui · oĩ → o{ĩ}pa · oñe'ẽ → oñe'{ẽ}pa" },
+          { "pos": "Ojo con -gua, el «de» de origen de la unidad 1: ese sí se lleva el acento, y la raíz pierde su tilde", "rule": "Paraguái → Paraguai{gua}" }
+        ],
+        "examples": [
+          {
+            "gn": "Aha {Itauguápe}.",
+            "es": "Voy a Itauguá.",
+            "parts": [["aha", "voy"], ["Itaugua", "Itauguá: I-tau-GUA, sola va sin tilde"], ["-pe", "a: no se lleva el acento, y la a de Itaugua se escribe á"]]
+          },
+          {
+            "gn": "Aju {Paraguáigui}.",
+            "es": "Vengo de Paraguay.",
+            "parts": [["aju", "vengo"], ["Paraguái", "Paraguay: Pa-ra-GUÁI, ya lleva tilde"], ["-gui", "de: no se lleva el acento, la tilde se queda"]]
+          },
+          {
+            "gn": "{Reikuaápa} Ypakarai?",
+            "es": "¿Conocés Ypacaraí?",
+            "parts": [["reikuaa", "conocés, sabés: rei-kua-A"], ["-pa", "pregunta: no se lleva el acento, y la a final se escribe á"], ["Ypakarai", "Ypacaraí: sola, aguda y sin tilde"]]
+          },
+          {
+            "gn": "Aike {mbo'ehaópe}.",
+            "es": "Entro a la escuela.",
+            "parts": [["aike", "entro, paso"], ["mbo'ehao", "escuela: mbo-'e-ha-O"], ["-pe", "a, en: la o de mbo'ehao se escribe ó"]]
+          }
+        ],
+        "watch": {
+          "note": "Itaugua, sola, no lleva tilde: es aguda. Con -pe, la a tónica ya no es la última vocal y la tilde se escribe: Itauguápe. Son las dos caras de la misma regla, y la segunda es la que se olvida.",
+          "bad": "Itauguape",
+          "good": "Itauguápe"
+        }
+      }
+    ],
+    "compare": {
+      "intro": "Tres palabras y tres acentos: una aguda sin tilde, una con tilde y una que recibe la tilde cuando lleva sufijo.",
+      "forms": [
+        { "form": "jagua", "tag": "sin tilde · aguda", "mark": "dot", "gn": "{Jagua} okaru.", "es": "El perro come." },
+        { "form": "óga · che róga", "tag": "con tilde · el acento va antes", "mark": "dot", "gn": "Che {róga} ituicha.", "es": "Mi casa es grande." },
+        { "form": "ikatúpa", "tag": "sufijo átono · aparece la tilde", "mark": "dot", "gn": "{Ikatúpa} aike?", "es": "¿Puedo pasar?" }
+      ],
+      "check": {
+        "id": "a1u03d5.c1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Cuál está bien escrita",
+        "q": "Luis escribe en la pizarra: jaguá, óga, Itauguape. Se dicen ^ja-GUA, Ó-ga, i-tau-GUÁ-pe^. ¿Cuál de las tres está _bien escrita_?",
+        "options": ["jaguá", "óga", "Itauguape"],
+        "answer": 2,
+        "why": [
+          "Jagua es aguda, ja-GUA, y en guaraní la aguda no lleva tilde. Esa tilde es la costumbre del castellano.",
+          "Óga se dice Ó-ga: el acento va antes de la última vocal, y por eso se escribe la tilde. Está bien.",
+          "Itaugua es aguda y va sin tilde, pero con -pe la a tónica ya no es la última vocal: hay que escribirla, Itauguápe."
+        ]
+      }
+    },
+    "drill": [
+      {
+        "id": "a1u03d5.d1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Cuál está bien escrita",
+        "q": "Rosa escribe cuatro palabras que se dicen ^con el acento en la última vocal^: ja-GUA, ka-ra-I, te-re-RE, y-pa-ka-ra-I. Solo una está _bien escrita_. ¿Cuál?",
+        "options": ["terere", "jaguá", "karái", "Ypakaraí"],
+        "answer": 1,
+        "why": [
+          "Terere es aguda, te-re-RE, y en guaraní la aguda no lleva ninguna marca. El castellano escribe tereré; el guaraní, terere.",
+          "Jagua es aguda, ja-GUA: sin tilde. Jaguá lleva la tilde del castellano, que acá sobra.",
+          "Karai se dice ka-ra-I, con el acento al final: sin tilde. Karái movería el acento a la a del medio.",
+          "Ypakarai se dice y-pa-ka-ra-I: aguda, sin tilde. La tilde de Ypacaraí es del castellano, y el guaraní no la copia."
+        ]
+      },
+      {
+        "id": "a1u03d5.d2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Cómo se escribe",
+        "q": "(^El niño^ tiene hambre.)\n(   ) ivare'a.",
+        "options": ["mitá", "mintã", "mitán", "mitã"],
+        "answer": 4,
+        "why": [
+          "El acento cae en la a final, pero esa a es nasal: lleva la ~, nunca la tilde aguda. Además, una tilde en la última vocal no marca nada en guaraní.",
+          "Mintã mete una n antes de la t que la palabra no tiene. La nasal está en la vocal, con ~, no en una consonante nueva.",
+          "La n del final es la costumbre castellana de cerrar la vocal nasal. En guaraní la nasal es la vocal sola: ã.",
+          "Mitã: aguda, con la a nasal. La ~ marca a la vez la nasal y el acento, y no hace falta otra tilde."
+        ]
+      },
+      {
+        "id": "a1u03d5.d3",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Cuál está bien escrita",
+        "q": "Luis escribe cuatro lugares con -pe, «en». ^-pe no se lleva el acento^. Solo uno está _bien escrito_. ¿Cuál?",
+        "options": ["Ka'akupepe", "Ypakaraipe", "Itauguápe", "mbo'ehaope"],
+        "answer": 3,
+        "why": [
+          "Ka'akupe es aguda, ka-'a-ku-PE. Con -pe esa e ya no es la última vocal: hay que escribir la tilde, Ka'akupépe.",
+          "Ypakarai termina en i tónica. Con -pe esa i queda adentro de la palabra y lleva tilde: Ypakaraípe.",
+          "Itaugua es aguda y va sin tilde. Con -pe, la a tónica ya no es la última vocal y se escribe la tilde: Itauguápe. Está bien.",
+          "Mbo'ehao lleva el acento en la o final (unidad 2). Con -pe esa o queda adentro y se escribe mbo'ehaópe: acá falta la tilde."
+        ]
+      },
+      {
+        "id": "a1u03d5.d4",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la respuesta",
+        "q": "Ana escribe «Aju Paraguáigui», «vengo de Paraguay». ^Paraguái ya tenía tilde^. ¿Qué pasa con la _tilde_ al agregar -gui?",
+        "options": ["Se queda en la á: -gui no se lleva el acento.", "Se mueve a la u de -gui, que es la última vocal.", "Se borra: con sufijo no hay tilde.", "Se escriben dos: Paraguáiguí."],
+        "answer": 1,
+        "why": [
+          "Paraguái ya lleva su tilde en la á. -gui no se lleva el acento, así que todo queda igual: Paraguáigui. Lo mismo pasa con -pe: Paraguáipe.",
+          "-gui es un sufijo átono: nunca se lleva el acento. El que sí se lo lleva es -gua, y por eso Paraguaigua va sin tilde.",
+          "La tilde no se borra: el acento sigue en la á, que no es la última vocal, y por eso se escribe. Solo se pierde con un sufijo que se lleva el acento, como -gua.",
+          "Una palabra lleva una sola tilde, en la vocal tónica. Paraguáiguí tendría dos, y -gui no es tónico."
+        ]
+      },
+      {
+        "id": "a1u03d5.d5",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Luis va a Ypacaraí.)\nLuis: Aha ",
+        "after": ".",
+        "tiles": ["Ypakarai", "pe"],
+        "bank": [1, 0],
+        "hint": "-pe va después del lugar, pegado. Después fijate dónde queda el acento: ¿sigue en la última vocal?",
+        "full": "(Luis va a Ypacaraí.)\nLuis: Aha {Ypakaraípe}.",
+        "es": "Luis: Voy a Ypacaraí.",
+        "explain": "Ypakarai («Ypacaraí») + -pe («a») = Ypakaraípe. Ypakarai es aguda, y-pa-ka-ra-I, y sola va sin tilde. -pe no se lleva el acento: queda en esa i, que ya no es la última vocal, y por eso ahora se escribe í."
+      },
+      {
+        "id": "a1u03d5.d6",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Ana le pregunta a Luis si conoce Caacupé.)\nAna: ",
+        "after": " Ka'akupe?",
+        "tiles": ["reikuaa", "pa"],
+        "bank": [1, 0],
+        "hint": "-pa cierra la palabra que pregunta y no se lleva el acento. ¿En qué vocal queda?",
+        "full": "(Ana le pregunta a Luis si conoce Caacupé.)\nAna: {Reikuaápa} Ka'akupe?",
+        "es": "Ana: ¿Conocés Caacupé?",
+        "explain": "reikuaa («conocés, sabés») + -pa (pregunta) = Reikuaápa. Reikuaa termina en a tónica, rei-kua-A. -pa no se lleva el acento: queda en esa a, que ya no es la última vocal, y se escribe á. Ka'akupe, sola, sigue sin tilde: es aguda."
+      }
+    ],
+    "exam": [
+      {
+        "id": "a1u03d5.e1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Cuál está bien escrita",
+        "q": "Rosa anota en su cuaderno cuatro palabras que ya conocés. Solo una está _bien escrita_. ¿Cuál?",
+        "options": ["Paraguai", "óga", "jaryi", "mba'eichapa"],
+        "answer": 2,
+        "explain": "Óga se dice Ó-ga: el acento va antes de la última vocal y la tilde se escribe. Las otras tres también llevan el acento antes del final y necesitan su tilde: Paraguái (Pa-ra-GUÁI), jarýi (ja-RÝ-i) y mba'éichapa (mba-'ÉI-cha-pa). Sin la tilde se leerían como agudas."
+      },
+      {
+        "id": "a1u03d5.e2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Cuál está bien escrita",
+        "q": "Cuatro palabras con sufijo. Solo una está _bien escrita_. ¿Cuál?",
+        "options": ["reikuaapa", "ikatupa", "Paraguaigui", "oñe'ẽpa"],
+        "answer": 4,
+        "explain": "En oñe'ẽpa la vocal tónica es la ẽ, con ~, y la ~ ya marca el acento: con -pa no cambia nada. En las otras tres la vocal tónica es oral y con el sufijo deja de ser la última, así que la tilde tiene que estar: reikuaápa, ikatúpa y Paraguáigui, que conserva la tilde de Paraguái."
+      },
+      {
+        "id": "a1u03d5.e3",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Luis va a Itauguá.)\nAna: Luis oho ",
+        "after": ".",
+        "tiles": ["Itaugua", "pe"],
+        "bank": [1, 0],
+        "full": "(Luis va a Itauguá.)\nAna: Luis oho {Itauguápe}.",
+        "es": "Ana: Luis va a Itauguá.",
+        "explain": "Itaugua («Itauguá») + -pe («a») = Itauguápe. Itaugua es aguda, I-tau-GUA, y sola va sin tilde. -pe no se lleva el acento: queda en la a de Itaugua, que ya no es la última vocal, y por eso se escribe á."
+      }
+    ]
+  },
+  "words": {
+    "es": "Nombres que cambian de acento en castellano",
+    "intro": "Un mapa del Paraguay y tres cosas muy nuestras. Casi todas son agudas en guaraní y van sin tilde; el castellano, al tomarlas, les pone la tilde. Una, Paraguái, es al revés. Tocá cada una.",
+    "sound": {
+      "focus": "La tilde nasal (~) también es tilde",
+      "letters": ["ã", "ẽ", "ĩ", "õ", "ũ", "ỹ"],
+      "note": "Una vocal con ~ nunca lleva tilde aguda, ni cuando es la tónica: mitã, kane'õ, peteĩ, oñe'ẽpa. Si el acento cae en una vocal nasal, la ~ lo marca sola. Junto a m, n o ñ la vocal suena nasal, pero no se escribe la ~: kuña, ñande. Una palabra puede llevar las dos marcas en vocales distintas: térã, «o». Escuchá estos pares: cambia la ~ y cambia la palabra, y en porã y póra cambia también el acento.",
+      "pairs": [
+        ["téra", "nombre", "térã", "o"],
+        ["porã", "lindo, bien", "póra", "fantasma"],
+        ["pytu", "aliento", "pytũ", "oscuro"]
+      ]
+    },
+    "words": [
+      { "id": "paraguai", "gn": "Paraguái", "es": "Paraguay", "note": "Lleva tilde: el acento no cae en la última vocal, Pa-ra-GUÁI. Con -pe la tilde se queda, Paraguáipe, «en Paraguay»; con -gua se pierde, Paraguaigua (unidad 1)." },
+      { "id": "kaakupe", "gn": "Ka'akupe", "es": "Caacupé", "note": "Ka-'a-ku-PE, aguda y sin tilde; el castellano escribe Caacupé. Es el pueblo de la Virgen de Caacupé, patrona del Paraguay, adonde se peregrina en diciembre. Con -pe: Ka'akupépe." },
+      { "id": "ypakarai", "gn": "Ypakarai", "es": "Ypacaraí", "note": "El lago y el pueblo. Y-pa-ka-ra-I: sin tilde en guaraní, con tilde en castellano. Con -pe: Ypakaraípe." },
+      { "id": "itaugua", "gn": "Itaugua", "es": "Itauguá", "note": "La capital del ñanduti. I-tau-GUA, sin tilde. En castellano es Itauguá, y así aparece también en muchos textos en guaraní. Con -pe: Itauguápe." },
+      { "id": "kaaguasu", "gn": "Ka'aguasu", "es": "Caaguazú", "parts": [["ka'a", "yerba, monte"], ["guasu", "grande"]], "note": "Ka-'a-gua-SU, sin tilde. El castellano lo escribe Caaguazú, con z y con tilde." },
+      { "id": "terere", "gn": "terere", "es": "tereré", "note": "Sin tilde en guaraní (unidad 1): te-re-RE. El castellano la necesita: tereré." },
+      { "id": "nanduti", "gn": "ñanduti", "es": "ñandutí (el encaje)", "note": "El encaje de Itaugua, redondo como un sol. Quiere decir «telaraña»: viene de ñandu, «araña». Ñan-du-TI, sin tilde; en castellano, ñandutí." },
+      { "id": "jaguarete", "gn": "jaguarete", "es": "yaguareté (el jaguar)", "parts": [["jagua", "perro"], ["-ete", "verdadero"]], "note": "Ja-gua-re-TE, sin tilde. El castellano lo escribe con y y con tilde: yaguareté. La j suena como la y de «yo»." }
+    ],
+    "spell": ["paraguai", "kaakupe", "ypakarai", "nanduti"],
+    "check": {
+      "id": "a1u03d5.k1",
+      "kind": "choice",
+      "area": "vocab",
+      "label": "Cómo se escribe",
+      "q": "En el mapa, Ana señala el lago: «_Ypacaraí_». ¿Cómo se escribe en guaraní?",
+      "options": ["Ipakaraí", "Ypacarai", "Ypakarai", "Ypakarãi"],
+      "answer": 3,
+      "explain": "Ypakarai: con y, la sexta vocal, con k y sin tilde, porque es aguda y en guaraní la aguda no se marca; la tilde de Ypacaraí es del castellano. Ipakaraí cambia la y por i y le pone la tilde castellana. Ypacarai usa la c, que no es una letra del guaraní. Ypakarãi le pone una ~ a una vocal que no es nasal, y la ~ cambia el sonido."
+    }
+  },
+  "skill": {
+    "kind": "listening",
+    "es": "Buscar el dato",
+    "situation": "En la terminal, una mujer le cuenta a un hombre de dónde viene y adónde va.",
+    "ask": "¿Adónde va la mujer?",
+    "item": {
+      "id": "a1u03d5.r1",
+      "kind": "choice",
+      "area": "listening",
+      "label": "Buscar el dato",
+      "q": "¿Adónde va la mujer?",
+      "options": ["A Caacupé.", "A Itauguá.", "A Ypacaraí."],
+      "answer": 2,
+      "why": [
+        "Ka'akupégui lleva -gui, «de»: Caacupé es de donde viene la mujer, no adónde va.",
+        "La mujer dice Ko'ág̃a aha Itauguápe: aha es «voy» y -pe, «a». Va a Itauguá.",
+        "Ypakaraípe lo dice el hombre, y habla de él: Ha che aha Ypakaraípe, «y yo voy a Ypacaraí»."
+      ],
+      "explain": "La mujer dice Aju Ka'akupégui, «vengo de Caacupé», y Ko'ág̃a aha Itauguápe, «ahora voy a Itauguá»: -gui es de donde viene y -pe, adónde va. Ypacaraí es adonde va el hombre.",
+      "script": [
+        "Narrador: En la terminal. ¿Adónde va la mujer?",
+        "Mujer: Aju Ka'akupégui. Ko'ág̃a aha Itauguápe.",
+        "Hombre: Ha che aha Ypakaraípe.",
+        "Narrador: ¿Adónde va la mujer?"
+      ]
+    },
+    "audio": [
+      ["N", "En la terminal. ¿Adónde va la mujer?", "En la terminal. ¿Adónde va la mujer?"],
+      ["F", "Aju Ka'akupégui. Ko'ág̃a aha Itauguápe.", "Vengo de Caacupé. Ahora voy a Itauguá."],
+      ["M", "Ha che aha Ypakaraípe.", "Y yo voy a Ypacaraí."],
+      ["N", "¿Adónde va la mujer?", "¿Adónde va la mujer?"]
+    ]
+  }
+}

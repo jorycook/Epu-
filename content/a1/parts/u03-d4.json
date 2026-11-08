@@ -89,13 +89,13 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la respuesta",
-        "q": "Ana: ^Ndépa^ pohanohára?\nLuis: (   )",
+        "q": "(Rosa es ^profesora^.)\nAna: Ndépa pohanohára?\nRosa: (   )",
         "options": ["Nahániri, che mbo'ehára.", "Mba'éichapa?", "Héẽ, chekane'õ."],
         "answer": 1,
         "why": [
-          "Ndépa pohanohára? pregunta sí o no por lo que es Luis. Él responde que no y dice qué es: Nahániri, che mbo'ehára, «no, soy profesor».",
+          "Ndépa pohanohára? pregunta sí o no por lo que es Rosa. Ella responde que no y dice qué es: Nahániri, che mbo'ehára, «no, soy profesora».",
           "Mba'éichapa? es un saludo y una pregunta abierta: no responde a una pregunta de sí o no.",
-          "Héẽ responde que sí, pero chekane'õ habla de cansancio, y Ana preguntó si Luis es médico: la respuesta tiene que hablar de eso."
+          "Héẽ diría que sí es médica, y Rosa es profesora. Además, chekane'õ habla de cansancio, y Ana preguntó qué es Rosa, no cómo está."
         ]
       }
     },
@@ -126,7 +126,7 @@
         "why": [
           "Nde pohanohára, sin -pa, no pregunta: escrito así, afirma «vos sos médico». La pregunta de sí o no lleva -pa.",
           "Ana le pregunta a Luis por él: nde + -pa = Ndépa, con tilde porque la e ya no es la última vocal. Ndépa pohanohára?, «¿vos sos médico?».",
-          "Ndaha'éi es «no es»: niega, no pregunta. Ndaha'éi pohanohára sería «no es médico».",
+          "Ndaha'éi es «no es», de otra persona: niega y no pregunta. Para preguntarle a Luis por él va nde con -pa: Ndépa.",
           "Pa no va suelto ni al principio: se pega al final de la palabra que pregunta, Ndépa."
         ]
       },
@@ -135,14 +135,14 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la respuesta",
-        "q": "Juan: Nde piko pohanohára?\nRosa: (   ), ^che mbo'ehára^.",
-        "options": ["Héẽ", "Nahániri", "Upéicha", "Añete"],
+        "q": "Juan: Nde piko pohanohára?\nAna: (   ), ^che mbo'ehára^.",
+        "options": ["Héẽ", "Nahániri", "Upéicha", "Aguyje"],
         "answer": 2,
         "why": [
-          "Héẽ es «sí», pero Rosa dice che mbo'ehára, «soy profesora»: no es médica. Responde que no.",
-          "Juan pregunta, con sorpresa, si Rosa es médica. Ella es profesora, así que responde Nahániri, «no», y dice lo que sí es.",
-          "Upéicha es «así es»: confirmaría que Rosa es médica, y ella dice que es profesora.",
-          "Añete es «cierto, verdad», y también confirmaría. Rosa corrige a Juan: Nahániri."
+          "Héẽ es «sí», pero Ana dice che mbo'ehára, «soy profesora»: no es médica. Responde que no.",
+          "Juan pregunta, con sorpresa, si Ana es médica. Ella es profesora, así que responde Nahániri, «no», y dice lo que sí es.",
+          "Upéicha es «así es»: confirmaría que Ana es médica, y ella dice que es profesora.",
+          "Aguyje es «gracias»: no responde que sí ni que no. Ana corrige a Juan: Nahániri."
         ]
       },
       {
@@ -208,9 +208,9 @@
         "area": "grammar",
         "label": "Elegí la respuesta",
         "q": "(La mamá de Luis está cansada.)\nAna: Ikane'õpa nde sy?\nLuis: (   )",
-        "options": ["Héẽ, ikane'õ.", "Héẽ, chekane'õ.", "Héẽ, nekane'õ.", "Nahániri, ikane'õ."],
+        "options": ["Héẽ, ikane'õ.", "Héẽ, kane'õ.", "Héẽ, nekane'õ.", "Nahániri, ikane'õ."],
         "answer": 1,
-        "explain": "Ana pregunta por la mamá de Luis, otra persona, y ella sí está cansada: Héẽ, ikane'õ, «sí, está cansada», con la i- de la tercera persona. Héẽ, chekane'õ hablaría de Luis mismo; Héẽ, nekane'õ le diría a Ana que ella está cansada; y Nahániri, ikane'õ se contradice: dice «no» y después «está cansada»."
+        "explain": "Ana pregunta por la mamá de Luis, otra persona, y ella sí está cansada: Héẽ, ikane'õ, «sí, está cansada», con la i- de la tercera persona. Héẽ, kane'õ no dice de quién es el cansancio, le falta la i-; Héẽ, nekane'õ le diría a Ana que ella está cansada; y Nahániri, ikane'õ se contradice: dice «no» y después «está cansada»."
       },
       {
         "id": "a1u03d4.e3",

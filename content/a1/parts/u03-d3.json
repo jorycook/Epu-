@@ -52,7 +52,7 @@
           {
             "gn": "Ana {ha'e} che sy.",
             "es": "Ana es mi mamá.",
-            "parts": [["Ana", "Ana"], ["ha'e", "es"], ["che sy", "mi mamá"]]
+            "parts": [["ha'e", "es"], ["che sy", "mi mamá"]]
           },
           {
             "gn": "Luis: Mávapa ha'e?\nRosa: {Ha'e} che angirũ.",
@@ -124,7 +124,7 @@
         "options": ["Che", "Nde", "Ha'e", "Peẽ"],
         "answer": 3,
         "why": [
-          "Che pohanohára es «soy médica»: Ana hablaría de ella misma, y habla de un señor.",
+          "Che pohanohára es «soy médica» o, como che sy, «mi médico»: ninguna de las dos dice que él sea médico, y Ana habla de un señor.",
           "Nde pohanohára es «vos sos médico», hablándole a él. Ana habla de él, no con él.",
           "Ana habla de otra persona: ha'e, «él». Ha'e pohanohára, «él es médico», sin ningún «es».",
           "Peẽ es «ustedes», varias personas a las que les hablás. Es un solo señor, y Ana habla de él."

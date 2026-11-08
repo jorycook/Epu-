@@ -82,13 +82,17 @@ const ro = Object.assign(r, { frameOpacity: passed ? 0 : 1, rimOpacity: passed ?
 Before the goal: frame only (no hub). Goal ritual: the hub fills ("Tejé el primer hilo"). Each unit: a petal. Apto: the rim.
 
 What the strings draw (the "arasape" rosette, the Itauguá sun): `spokes` is one radial thread per unit from under the hub to
-the frame (r 19.3) plus a cross-thread ring (r 17.25) under the rim; `on` and `off` are one pointed lace leaf per unit between
-two threads (r 6.8 to 15.75), each with its midrib as an open subpath; `rimD` is a ring of tight scallops bulging out from the
-frame, `round(24 / units)` per unit (24 around for 6, 8 or 12 units, 20 for 10). Two rules keep the recipe valid: the spokes
-path is stroked with no `fill`, so nothing in it may enclose an area (the ring is a circle traced out and back; a closed shape
-there would fill black), and an open subpath inside a petal adds stroke only, never fill. Painted extent, stroke included:
-r 20.0 before the pass (the frame circle), r 21.5 whole (r 21.7 for 10 units), inside the brooch discs (the mascot's
-9.4 / 0.42 = 22.4; the icon's 8.0 / 0.36 = 22.2). It stays legible at 20 px (the brooch at 48 px): frame = a pink wheel,
+the frame (r 19.3) plus a cross-thread ring (r 15.4) that the leaf tips are tied to; `on` and `off` are one pointed lace leaf
+per unit between two threads (r 6.8 to 14.8), each with its midrib as an open subpath; `rimD` is a ring of round scallops
+bulging out from the frame to r 21.3, about a dozen around: `round(13 / units)` per unit (two per unit up to 8 units, one from
+9 up: 16 for 8, 12 for 6 or 12, 10 for 10, 9 for the games' stage ring). Two rules keep the recipe valid: the spokes path is
+stroked with no `fill`, so nothing in it may enclose an area (the ring is a circle traced out and back; a closed shape there
+would fill black), and an open subpath inside a petal adds stroke only, never fill. A third rule comes from the games: Hablar
+and Escribir stroke only `spokes` and `rimD` around a white disc r 15 (stroke 2.5) for the clean-answer stamp, the stage ring
+and the HUD ring, so between r 16.25 and the frame the spokes string holds nothing but the radial threads (the ring sits under
+the disc) and the rim stays a bold flower of one scallop per unit there. Painted extent, stroke included: r 20.0 before the
+pass (the frame circle), r 22.0 whole for any unit count, inside the brooch discs (the mascot's 9.4 / 0.42 = 22.4; the icon's
+8.0 / 0.36 = 22.2). It stays legible at 20 px (the brooch at 48 px): frame = a pink wheel,
 hub = a dot, each unit = a pink leaf, whole = a filled scalloped disc. The same whole 8-unit rosette is baked literally into
 the icon poses (`brief/mascot/spec.json` icon-pink and icon-green, `Icon.dc.html`, `Rules.dc.html`): regenerate those strings
 from `C.rosette(8, 8, { hub: true, rim: true })` whenever the drawing changes.
