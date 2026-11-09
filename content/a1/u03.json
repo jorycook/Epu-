@@ -1692,7 +1692,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(En la fiesta, Marta dice qué es: vendedora.)\nMarta: Che (   ).",
+      "q": "(En la fiesta, una vecina dice qué es: vendedora.)\nVecina: Che (   ).",
       "options": [
        "añemuhára",
        "oñemuhára",
@@ -1878,10 +1878,10 @@
      }
     ],
     "spell": [
+     "pohanohara",
      "mbaapohara",
      "nemuhara",
-     "mitarusu",
-     "kunakarai"
+     "mitarusu"
     ],
     "check": {
      "id": "a1u03d3.k1",
@@ -2266,7 +2266,7 @@
       ],
       "answer": 3,
       "why": [
-       "Rasy es la forma que va con che- y nde- (cherasy, nderasy), como réra. Para otra persona, nde ru, va h-: hasy, como héra.",
+       "Rasy es la forma que va con che- y nde-, como réra en che réra y nde réra: cherasy. Para otra persona, nde ru, va h-: hasy, como héra.",
        "-pa no va delante ni suelto: es un sufijo y se pega al final de la palabra que preguntás, Hasýpa.",
        "Hasy, «está enfermo», es la palabra que pregunta, y -pa va pegado a ella: Hasýpa nde ru?, «¿está enfermo tu papá?». Hasy termina en y tónica; con -pa esa y ya no es la última vocal y se escribe la tilde: hasýpa.",
        "Ikane'õpa pregunta si está cansado, y Luis quiere saber si está enfermo: hasy."
@@ -2635,7 +2635,7 @@
      "why": [
       "Ana es la que pregunta Og̃uahẽpa pohanohára?: quiere saber si llegó el médico. No dice que ella llegue a ningún lado.",
       "Ana pregunta Og̃uahẽpa pohanohára?, «¿llegó el médico?», y mamá responde Héẽ, og̃uahẽ ko'ág̃a: sí, llegó ahora. El que llega es el médico.",
-      "De la mamá habla la última pregunta, Nekane'õpa?, «¿estás cansada?». Ella responde Nahániri, chevare'a: no está cansada, tiene hambre. No dice que llegue.",
+      "De la mamá habla la última pregunta, Nekane'õpa?, «¿estás cansada?». Ella responde Nahániri, «no», y agrega Chevare'a, «tengo hambre». No dice que llegue.",
       "La abuela, nde jarýi, está enferma, hasy: por eso viene el médico. La que llega no es ella."
      ],
      "explain": "Ana pregunta Og̃uahẽpa pohanohára? y mamá responde Héẽ, og̃uahẽ ko'ág̃a: el médico llegó ahora. La abuela, nde jarýi, está enferma (hasy), y la mamá no está cansada: tiene hambre (chevare'a)."

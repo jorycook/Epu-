@@ -208,7 +208,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(En la fiesta, Marta dice qué es: vendedora.)\nMarta: Che (   ).",
+        "q": "(En la fiesta, una vecina dice qué es: vendedora.)\nVecina: Che (   ).",
         "options": ["añemuhára", "oñemuhára", "iñemuhára", "ñemuhára"],
         "answer": 4,
         "explain": "Para decir qué sos, che y el sustantivo, nada más: Che ñemuhára, «soy vendedora». Añemuhára y oñemuhára llevan a- y o-, los prefijos de las acciones, y ñemuhára es un sustantivo: va sin prefijo. Iñemuhára lleva i-, que es de otra persona, como en ikane'õ."
