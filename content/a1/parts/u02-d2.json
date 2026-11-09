@@ -8,7 +8,7 @@
         "gloss": "nosotros con vos · nosotros sin vos",
         "connect": [
           { "pos": "ja- es el «nosotros» de ñande: incluye al que escucha", "rule": "Ñande {ja}karu." },
-          { "pos": "Si la raíz es nasal (lleva ñ, m, n, mb, nd, ng o una vocal con ~), ja- se vuelve ña-", "rule": "{ña}ñe'ẽ · {ña}mba'apo · {ña}hendu" },
+          { "pos": "Si la raíz es nasal (lleva ñ, m, n, mb, nd, ng, nt o una vocal con ~), ja- se vuelve ña-", "rule": "{ña}ñe'ẽ · {ña}mba'apo · {ña}hendu" },
           { "pos": "ro- es el «nosotros» de ore, sin el que escucha; no cambia", "rule": "Ore {ro}karu · {ro}mba'apo" }
         ],
         "examples": [
@@ -28,9 +28,9 @@
             "parts": [["ore", "nosotros, sin vos"], ["ro-", "nosotros (sin vos)"], ["mba'apo", "trabajar"], ["ko pyhareve", "esta mañana"]]
           },
           {
-            "gn": "{Ro}ju ha {ro}ho.",
-            "es": "Venimos y vamos (sin vos).",
-            "parts": [["ro-", "nosotros (sin vos)"], ["ju", "venir"], ["ha", "y"], ["ho", "ir"]]
+            "gn": "Ore {ro}ju ko ka'aru ha {ro}ho ko pyhare.",
+            "es": "Venimos esta tarde y nos vamos esta noche (sin vos).",
+            "parts": [["ore", "nosotros, sin vos"], ["ro-", "nosotros (sin vos)"], ["ju", "venir"], ["ko ka'aru", "esta tarde"], ["ha", "y"], ["ho", "ir"], ["ko pyhare", "esta noche"]]
           }
         ],
         "watch": {
@@ -44,7 +44,7 @@
         "form": "pe- · o-",
         "gloss": "ustedes · ellos, ellas",
         "connect": [
-          { "pos": "pe- es el prefijo de peẽ, «ustedes»; no cambia ante una raíz nasal", "rule": "Peẽ {pe}karu · {pe}ñe'ẽ" },
+          { "pos": "pe- es el prefijo de peẽ, «ustedes»; no cambia ante una raíz nasal", "rule": "Peẽ {pe}karu · {pe}hendu" },
           { "pos": "Ellos y ellas llevan o-, igual que él o ella: el pronombre o la situación dice que son varios", "rule": "Ha'ekuéra {o}mba'apo." },
           { "pos": "Para preguntarles a varios adónde van", "rule": "Moõpa {pe}ho?" }
         ],
@@ -78,7 +78,7 @@
       }
     ],
     "compare": {
-      "intro": "Dos «nosotros» y un «ustedes» que el castellano no separa igual: fijate si el que escucha come o no.",
+      "intro": "Dos «nosotros» que el castellano no separa, y el «ustedes»: fijate si el que escucha come o no.",
       "forms": [
         { "form": "ja-", "tag": "nosotros con vos", "mark": "dot", "gn": "Ñande {ja}karu.", "es": "Comemos, vos y yo." },
         { "form": "ro-", "tag": "nosotros sin vos", "mark": "dot", "gn": "Ore {ro}karu.", "es": "Comemos, sin vos." },
@@ -166,14 +166,14 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "(Ana les pregunta a Luis y a Rosa.)\nAna: ",
-        "after": " ko pyhare?",
-        "tiles": ["pe", "jeroky", "pa"],
-        "bank": [2, 0, 1],
-        "hint": "Pe- es el prefijo: va primero. -pa cierra la pregunta. Después fijate dónde queda el acento.",
-        "full": "(Ana les pregunta a Luis y a Rosa.)\nAna: {Pe}jeroký{pa} ko pyhare?",
-        "es": "(Ana les pregunta a Luis y a Rosa.)\nAna: ¿Bailan ustedes esta noche?",
-        "explain": "pe- («ustedes») + jeroky («bailar») + -pa (pregunta) = pejerokýpa. La -pa no se lleva el acento: queda en la y de jeroky. Como esa y ya no es la última vocal, se escribe con tilde, como en mboýpa."
+        "before": "(Ana les habla a Luis y a Rosa.)\nAna: Peẽ ",
+        "after": " ko ka'aru.",
+        "tiles": ["pe", "karu"],
+        "bank": [1, 0],
+        "hint": "Pe- es el prefijo de peẽ, «ustedes»: va primero, pegado a la raíz.",
+        "full": "(Ana les habla a Luis y a Rosa.)\nAna: Peẽ {pe}karu ko ka'aru.",
+        "es": "(Ana les habla a Luis y a Rosa.)\nAna: Ustedes comen esta tarde.",
+        "explain": "pe- («ustedes») + karu («comer») = pekaru: el prefijo va primero, pegado a la raíz. Peẽ pekaru ko ka'aru: ustedes comen esta tarde. El acento queda en la u final, así que no se escribe tilde."
       },
       {
         "id": "a1u02d2.d6",
@@ -181,14 +181,14 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "(Ana le pregunta a Luis.)\nAna: ",
-        "after": " guaraníme?",
-        "tiles": ["ña", "ñe'ẽ", "pa"],
-        "bank": [1, 2, 0],
-        "hint": "ñe'ẽ es nasal: ¿qué prefijo lleva el «nosotros con vos»? -pa va al final.",
-        "full": "(Ana le pregunta a Luis.)\nAna: {Ña}ñe'ẽ{pa} guaraníme?",
-        "es": "(Ana le pregunta a Luis.)\nAna: ¿Hablamos en guaraní, vos y yo?",
-        "explain": "ña- («nosotros, con vos»: ñe'ẽ es nasal, así que no va ja-) + ñe'ẽ («hablar») + -pa (pregunta) = ñañe'ẽpa. El acento sigue en la ẽ, y la tilde nasal ya lo marca: no se escribe otro acento."
+        "before": "(Ana invita a Luis.)\nAna: ",
+        "after": " guaraníme!",
+        "tiles": ["ña", "ñe'ẽ"],
+        "bank": [1, 0],
+        "hint": "ñe'ẽ es nasal: ¿qué prefijo lleva el «nosotros con vos»? Va primero, pegado a la raíz.",
+        "full": "(Ana invita a Luis.)\nAna: {Ña}ñe'ẽ guaraníme!",
+        "es": "(Ana invita a Luis.)\nAna: ¡Hablemos en guaraní!",
+        "explain": "ña- («nosotros, con vos») + ñe'ẽ («hablar») = ñañe'ẽ: como ñe'ẽ es nasal, no va ja-. Ñañe'ẽ es «hablamos» y también, como invitación, «¡hablemos!», igual que Jaha! o Jakaru!. El acento está en la ẽ, y la tilde nasal ya lo marca: no se escribe otro acento."
       }
     ],
     "exam": [
@@ -207,10 +207,10 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Ana le habla a su abuela de ella y de Luis.)\nAna: (   ) ko ka'aru, ña Ramona.",
+        "q": "(Ana y Luis van esta tarde a la casa de la abuela Ramona. Ana la llama y le avisa.)\nAna: (   ) ko ka'aru, ña Ramona.",
         "options": ["Aju", "Roju", "Peju", "Ou"],
         "answer": 2,
-        "explain": "Ana habla de ella y de Luis, y la abuela, que la escucha, no está en el grupo: ore, con ro-. Roju ko ka'aru: venimos esta tarde. Aju sería «vengo», Ana sola; peju, «ustedes vienen»; ou, «viene», otra persona."
+        "explain": "Ana habla de ella y de Luis, los que van, y la abuela, que la escucha, no está en el grupo: ore, con ro-. Roju ko ka'aru: venimos esta tarde. Aju sería «vengo», Ana sola, y Luis también va; peju, «ustedes vienen», como si la abuela viniera; ou, «viene», otra persona sola, sin Ana."
       },
       {
         "id": "a1u02d2.e3",
@@ -231,14 +231,14 @@
   "words": {
     "gn": "Jaha!",
     "es": "Domingo en familia",
-    "intro": "Domingo en la casa de la abuela Ramona, en Caacupé. Hay sopa paraguaya en el tatakua y después, baile. Tocá cada palabra: todas empiezan con el prefijo que dice quiénes.",
+    "intro": "Domingo en lo de la abuela Ramona, en Caacupé: sopa paraguaya del tatakua, el horno de barro, y después, baile. Tocá cada palabra: cada una empieza con el prefijo que dice quiénes.",
     "sound": {
       "focus": "La r, siempre suave",
       "letters": ["r", "rr"],
       "note": "La r guaraní es siempre la r suave de «caro», también al principio de la palabra: ru, réra, roju, reho. El hispanohablante tiende a decir «rroju»: no. La rr fuerte solo aparece en préstamos del castellano, como karréta y vúrro. No hay pares mínimos r/rr en palabras guaraníes: comparamos palabras.",
       "pairs": [
         ["ru", "padre", "vúrro", "burro"],
-        ["réra", "nombre", "karréta", "carreta"],
+        ["nde réra", "tu nombre", "karréta", "carreta"],
         ["roju", "venimos (sin vos)", "arro", "arroz"]
       ]
     },
@@ -269,7 +269,7 @@
     "es": "Un mensaje al grupo",
     "ask": "¿Quiénes comen esta tarde?",
     "seconds": 60,
-    "passage": "Mba'éichapa! Ko ka'aru ^jakaru^ ha ^jajeroky^. Oĩ chipa ha so'o. ^Peju^!\nAna",
+    "passage": "Mba'éichapa? Ko ka'aru ^jakaru^ ha ^jajeroky^. Oĩ chipa ha so'o. ^Peju^!\nAna",
     "strategy": "Mirá el prefijo del verbo: ja- incluye a los que leen el mensaje; ro- los dejaría afuera.",
     "item": {
       "id": "a1u02d2.r1",

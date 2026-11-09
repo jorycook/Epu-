@@ -29,9 +29,9 @@
             "parts": [["amo", "aquella"], ["óga", "casa"], ["i-", "es (él, ella)"], ["tuicha", "grande"]]
           },
           {
-            "gn": "{Pe} karai che ru.",
+            "gn": "{Pe} karai ha'e che ru.",
             "es": "Ese señor es mi papá.",
-            "parts": [["pe", "ese"], ["karai", "señor"], ["che ru", "mi papá"]]
+            "parts": [["pe", "ese"], ["karai", "señor"], ["ha'e", "es (entre dos nombres)"], ["che ru", "mi papá"]]
           }
         ],
         "watch": {
@@ -47,7 +47,8 @@
         "connect": [
           { "pos": "Ko, para varios: ko'ã, con puso y ã", "rule": "{ko'ã} mba'e · {ko'ã} óga" },
           { "pos": "Pe y amo, para varios: umi, que sirve para «esos» y para «aquellos»", "rule": "{umi} mitã · {umi} jagua" },
-          { "pos": "El sustantivo puede ir sin -kuéra: ko'ã y umi ya dicen que son varios. Con -kuéra también se dice", "rule": "{umi} kavaju · {umi} mitãnguéra" }
+          { "pos": "El sustantivo puede ir sin -kuéra: ko'ã y umi ya dicen que son varios. Con -kuéra también se dice", "rule": "{umi} kavaju · {umi} mitãnguéra" },
+          { "pos": "Pe, umi y ko'ã se usan también donde el castellano pone «el, los, las»: pe karai, «el señor»; umi mitã, «los chicos». Acá los practicamos como «ese, esos»", "rule": "{pe} karai · {umi} mitã" }
         ],
         "examples": [
           {
@@ -56,9 +57,9 @@
             "parts": [["umi", "esos"], ["kavaju", "caballo"], ["oĩ", "están"], ["korapý-pe", "en el patio"]]
           },
           {
-            "gn": "{Umi} mbarakaja oguereko mokõi nambi.",
-            "es": "Esos gatos tienen dos orejas.",
-            "parts": [["umi", "esos"], ["mbarakaja", "gato"], ["oguereko", "tienen"], ["mokõi", "dos"], ["nambi", "oreja"]]
+            "gn": "{Umi} jagua oyta.",
+            "es": "Esos perros nadan.",
+            "parts": [["umi", "esos"], ["jagua", "perro"], ["o-", "ellos"], ["yta", "nadar"]]
           },
           {
             "gn": "{Ko'ã} óga ituicha.",
@@ -208,24 +209,24 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Juan señala dos árboles que tiene al lado.)\nJuan: (   ) yvyra ituicha.",
+        "q": "(Juan señala dos gallinas que tiene al lado.)\nJuan: (   ) ryguasu ituicha.",
         "options": ["Ko", "Umi", "Pe", "Ko'ã"],
         "answer": 4,
-        "explain": "Son dos árboles y están al lado de Juan, el que habla: ko'ã yvyra, «estos árboles». Ko y pe son para uno solo, y umi es para varios pero lejos de quien habla, «esos» o «aquellos»."
+        "explain": "Son dos gallinas y están al lado de Juan, el que habla: ko'ã ryguasu, «estas gallinas». Ko y pe son para una sola, y umi es para varias pero lejos de quien habla, «esas» o «aquellas»."
       },
       {
         "id": "a1u04d3.e3",
         "kind": "build",
         "area": "grammar",
-        "label": "Armá la palabra",
-        "join": "word",
-        "before": "Pe jagua oĩ ",
-        "after": ".",
-        "tiles": ["korapy", "pe"],
-        "bank": [1, 0],
-        "full": "Pe jagua oĩ korapýpe.",
-        "es": "Ese perro está en el patio.",
-        "explain": "korapy («patio») + -pe («en») = korapýpe. -pe no se lleva el acento: queda en la y de korapy, que ya no es la última vocal, y por eso se escribe la tilde. Pe jagua oĩ korapýpe: ese perro está en el patio."
+        "label": "Armá la oración",
+        "join": "sentence",
+        "before": "",
+        "after": "ko'ã vaka oĩ korapýpe.",
+        "tiles": ["umi", "kavaju", "ha"],
+        "bank": [1, 2, 0],
+        "full": "Umi kavaju ha ko'ã vaka oĩ korapýpe.",
+        "es": "Esos caballos y estas vacas están en el patio.",
+        "explain": "Umi, «esos», va delante de kavaju: umi kavaju, «esos caballos». Después ha, «y», une con ko'ã vaka, «estas vacas». El demostrativo va siempre primero, y el sustantivo queda sin -kuéra: umi y ko'ã ya dicen que son varios. Oĩ korapýpe: están en el patio."
       }
     ]
   },
@@ -236,19 +237,19 @@
     "sound": {
       "focus": "La v: vaka, kavaju",
       "letters": ["v", "k"],
-      "note": "La v del guaraní no es la b ni la v del castellano: el labio de abajo roza los dientes, sin fuerza: vaka, yvyra. Cuando una palabra entra del castellano se escribe con las letras del guaraní: vaca → vaka, caballo → kavaju, queso → kesu (b → v; c y qu → k; ll → j). No hay pares mínimos seguros con v o con k: son palabras para contrastar con el castellano.",
+      "note": "La v del guaraní no es la b ni la v del castellano: el labio de abajo roza los dientes, sin fuerza: vaka, yvyra. Una palabra que entra del castellano se escribe con las letras del guaraní y, como no lleva tilde, se dice con el acento al final: vaca → vaka (va-ká), caballo → kavaju (ka-va-jú), queso → kesu (ke-sú); b → v, c y qu → k, ll → j. No hay pares mínimos seguros con v o con k: son palabras para contrastar con el castellano.",
       "pairs": [
-        ["vaka", "vaca", "yvyra", "árbol"],
-        ["kavaju", "caballo", "kesu", "queso"]
+        ["vaka", "vaca", "kavaju", "caballo"],
+        ["yvyra", "árbol", "kesu", "queso"]
       ]
     },
     "words": [
       { "id": "jagua", "gn": "jagua", "es": "perro", "note": "La j suena como la y fuerte de «yo», nunca como la jota. Plural: jaguakuéra." },
-      { "id": "mbarakaja", "gn": "mbarakaja", "es": "gato", "note": "Empieza con mb, como mba'e: una sola letra. Una gata es mbarakaja kuña." },
+      { "id": "mbarakaja", "gn": "mbarakaja", "es": "gato", "note": "Empieza con mb, como mba'e: una sola letra. Plural: mbarakajakuéra." },
       { "id": "ryguasu", "gn": "ryguasu", "es": "gallina", "note": "La r es suave, como en «caro», también al principio. Ryguasu rupi'a es «huevo»." },
-      { "id": "kavaju", "gn": "kavaju", "es": "caballo", "note": "Del castellano «caballo», escrito a la guaraní: la c se escribe k y la ll se escribe j." },
-      { "id": "vaka", "gn": "vaka", "es": "vaca", "note": "Del castellano «vaca»: con v y con k. Ko vaka iky'a, «esta vaca está sucia»." },
-      { "id": "yvyra", "gn": "yvyra", "es": "árbol", "note": "Dos y, la sexta vocal: y-vy-ra. También es «madera»." },
+      { "id": "kavaju", "gn": "kavaju", "es": "caballo", "note": "Del castellano «caballo», escrito a la guaraní: la c se escribe k y la ll se escribe j. Sin tilde, el acento va al final: ka-va-jú." },
+      { "id": "vaka", "gn": "vaka", "es": "vaca", "note": "Del castellano «vaca»: con v y con k, y con el acento al final: va-ká. Ko vaka iky'a, «esta vaca está sucia»." },
+      { "id": "yvyra", "gn": "yvyra", "es": "árbol, madera", "note": "Dos y, la sexta vocal: y-vy-ra. Es el árbol y también la madera; el árbol como planta se dice también yvyramáta." },
       { "id": "apyka", "gn": "apyka", "es": "silla", "note": "La y del medio es la sexta vocal: a-py-ka." },
       { "id": "korapy", "gn": "korapy", "es": "patio", "note": "«En el patio» es korapýpe: -pe no se lleva el acento, y aparece la tilde en la ý." }
     ],

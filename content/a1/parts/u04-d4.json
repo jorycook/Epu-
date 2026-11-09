@@ -9,7 +9,7 @@
         "connect": [
           { "pos": "Para preguntar por una persona: máva, «quién», con -pa pegado", "rule": "{Mávapa} ha'e?" },
           { "pos": "Con los demostrativos de ayer: ko, pe, amo", "rule": "{Mávapa} pe karai? · {Mávapa} ko mitã?" },
-          { "pos": "En la charla también se oye con piko (semana 3)", "rule": "{Mávapiko} pe karai?" },
+          { "pos": "En la charla también se oye con piko. Pegado a la palabra que pregunta se escribe junto: Mávapiko. Con nde lo viste suelto: Nde piko (semana 3)", "rule": "{Mávapiko} pe karai?" },
           { "pos": "Se responde con la persona, con o sin ha'e", "rule": "{Che ru}. · Ha'e {che ru}." }
         ],
         "examples": [
@@ -137,7 +137,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "Luis: (   ) he'ise «korapy»?\nAna: ^«Patio».^",
+        "q": "Luis: (   ) [he'ise|significa] «korapy»?\nAna: ^«Patio».^",
         "options": ["Mboýpa", "Mba'éichapa", "Mba'épa", "Mávapa"],
         "answer": 3,
         "why": [
@@ -152,7 +152,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Cómo se escribe",
-        "q": "Rosa pregunta ^quién^ es el muchacho de allá.\nRosa: (   ) amo karia'y?",
+        "q": "Rosa pregunta ^quién^ es el muchacho de allá.\nRosa: (   ) amo [karia'y|muchacho]?",
         "options": ["Mãvapa", "Mávapa", "Mábapa", "Mávapã"],
         "answer": 2,
         "why": [
@@ -199,10 +199,10 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Qué significa",
-        "q": "Rosa: _Mba'épa he'ise «ramói»?_",
-        "options": ["¿Quién es tu abuelo?", "¿Qué significa «ramói»?", "¿Dónde está el abuelo?", "¿Cómo se escribe «ramói»?"],
+        "q": "Rosa: _Mba'épa he'ise «kuñataĩ»?_",
+        "options": ["¿Quién es esa chica?", "¿Qué significa «kuñataĩ»?", "¿Dónde está la chica?", "¿Cómo se escribe «kuñataĩ»?"],
         "answer": 2,
-        "explain": "Mba'épa es «¿qué?» y he'ise, «significa»: Rosa pregunta qué significa la palabra ramói. «Quién» sería mávapa, «dónde» sería moõpa y «cómo» sería mba'éichapa."
+        "explain": "Mba'épa es «¿qué?» y he'ise, «significa»: Rosa pregunta qué significa la palabra kuñataĩ. «Quién» sería mávapa, «dónde» sería moõpa y «cómo» sería mba'éichapa."
       },
       {
         "id": "a1u04d4.e2",
@@ -236,30 +236,31 @@
     "sound": {
       "focus": "Los dígrafos mb, nd, ng, nt",
       "letters": ["mb", "nd", "ng", "nt"],
-      "note": "mb, nd, ng y nt son una sola letra y van en una sola sílaba: empezá con un zumbido, mmm o nnn, y soltalo en la b, la d o la g, sin meter una vocal delante (no «emba'e») y sin perder la nasal (no «ba'e»): mba'e, nde, angirũ. Nt aparece sobre todo en -nte, «solo, nomás»: peteĩnte, «uno solo». No hay pares mínimos seguros: son palabras para contrastar.",
+      "note": "mb, nd, ng y nt son una sola letra y van en una sola sílaba: empezá con un zumbido, mmm o nnn, y soltalo en la b, la d, la g o la t, sin meter una vocal delante (no «emba'e») y sin perder la nasal (no «ba'e»): mba'e, nde, angirũ, peteĩnte. Nt aparece sobre todo en -nte, «solo, nomás»: peteĩnte, «uno solo». No hay pares mínimos seguros: cada par pone la letra doble al lado de la m o la n sola, o muestra dónde aparece.",
       "pairs": [
-        ["mba'e", "cosa; ¿qué?", "mboy", "¿cuánto?"],
-        ["nde", "vos; tu", "ñande", "nosotros (con vos)"],
-        ["angirũ", "amigo, amiga", "mitãnguéra", "los niños"]
+        ["mba'e", "cosa; ¿qué?", "máva", "quién"],
+        ["nde sy", "tu mamá", "ne memby", "tu hijo, tu hija"],
+        ["mitã", "niño, niña", "mitãnguéra", "los niños"],
+        ["peteĩ", "uno", "peteĩnte", "uno solo"]
       ]
     },
     "words": [
-      { "id": "mavapa", "gn": "Mávapa?", "es": "¿Quién?", "parts": [["máva", "quién"], ["-pa", "pregunta"]], "note": "Tilde en la primera a. En la charla también se oye Mávapiko?" },
+      { "id": "mavapa", "gn": "Mávapa?", "es": "¿Quién?", "parts": [["máva", "quién"], ["-pa", "pregunta"]], "note": "Tilde en la primera a. En la charla también se oye Mávapiko?, con piko pegado a la palabra que pregunta; con nde va suelto: Nde piko (semana 3)." },
       { "id": "mbaepa", "gn": "Mba'épa?", "es": "¿Qué?", "parts": [["mba'e", "qué; cosa"], ["-pa", "pregunta"]], "note": "Mba'e es aguda; con -pa aparece la tilde en la é. Mb es una sola letra: mba-'e." },
+      { "id": "mbaepaheise", "gn": "Mba'épa he'ise?", "es": "¿Qué significa?", "parts": [["mba'épa", "¿qué?"], ["he'ise", "significa"]], "note": "La pregunta del alumno. La palabra va después: Mba'épa he'ise «ramói»?" },
       { "id": "mbaerepa", "gn": "Mba'érepa?", "es": "¿Por qué?", "parts": [["mba'e", "qué"], ["-re", "por"], ["-pa", "pregunta"]], "note": "Por ahora, solo para reconocerla cuando la oigas." },
-      { "id": "tapicha", "gn": "tapicha", "es": "persona", "note": "Plural: tapichakuéra, «la gente»." },
       { "id": "kariay", "gn": "karia'y", "es": "muchacho, joven", "note": "Lleva puso antes de la y final, que es la sexta vocal: karia'y." },
       { "id": "mitakuna", "gn": "mitãkuña", "es": "niña", "parts": [["mitã", "niño, niña"], ["kuña", "mujer"]], "note": "La del día 2. Plural: mitãkuñanguéra." },
       { "id": "kuimbae", "gn": "kuimba'e", "es": "hombre", "note": "Mb es una sola letra, en una sola sílaba: kuimba'e. Lleva puso antes de la e." },
       { "id": "angiru", "gn": "angirũ", "es": "amigo, amiga", "note": "Ng en una sola sílaba: a-ngi-rũ. Con nde se dice ne angirũ." }
     ],
-    "spell": ["mbaepa", "mbaerepa", "kuimbae", "angiru"],
+    "spell": ["mbaepa", "mavapa", "kuimbae", "angiru"],
     "check": {
       "id": "a1u04d4.k1",
       "kind": "choice",
       "area": "vocab",
       "label": "Cómo se escribe",
-      "q": "Luis pregunta _qué_ significa «korapy»: (   ) he'ise «korapy»? ¿Cómo se escribe?",
+      "q": "Luis pregunta _qué_ significa «mitãkuña»: (   ) he'ise «mitãkuña»? ¿Cómo se escribe?",
       "options": ["Mbaépa", "Mba'ẽpa", "Mba'épa", "Ba'épa"],
       "answer": 3,
       "explain": "«¿Qué?» es Mba'épa: empieza con mb, una sola letra, lleva el puso entre la a y la e, y la tilde va en la é, porque con -pa la e ya no es la última vocal. Mbaépa pierde el puso. Mba'ẽpa pone una ~ en la e, y la e de mba'e es oral: lleva tilde de acento, é. Ba'épa pierde la nasal del principio: la palabra empieza con mb, no con b."
@@ -270,7 +271,7 @@
     "es": "Un chat con foto",
     "ask": "¿Quién es el señor de la foto?",
     "seconds": 75,
-    "passage": "Rosa: Mba'éichapa, Juan?\nJuan: Iporã. ^Mávapa pe kuñataĩ?^\nRosa: Che memby, héra Sofía.\nJuan: Ha ^amo karai?^\nRosa: ^Che ramói.^\nJuan: Mba'épa he'ise «ramói»?\nRosa: «Abuelo».",
+    "passage": "Rosa: Mba'éichapa, Juan?\nJuan: Iporã. ^Mávapa pe kuñataĩ?^\nRosa: Che memby, héra Sofía.\nJuan: Ha ^pe karai?^\nRosa: ^Che ramói.^\nJuan: Mba'épa he'ise «ramói»?\nRosa: «Abuelo».",
     "strategy": "Juan pregunta dos veces por una persona, y la respuesta de Rosa viene justo después de cada pregunta. Al final Juan pregunta qué significa una palabra: esa respuesta también te sirve.",
     "item": {
       "id": "a1u04d4.r1",
@@ -283,11 +284,11 @@
       "answer": 2,
       "why": [
         "Para el papá, Rosa diría che ru, y no lo dice en el chat.",
-        "Juan pregunta Ha amo karai?, «¿y aquel señor?», y Rosa responde Che ramói, «mi abuelo». Después se lo traduce: ramói es «abuelo».",
+        "Juan pregunta Ha pe karai?, «¿y ese señor?», y Rosa responde Che ramói, «mi abuelo». Después se lo traduce: ramói es «abuelo».",
         "Che memby es Sofía, la kuñataĩ de la foto: la hija de Rosa, no el señor.",
         "Un amigo sería che angirũ, y esa palabra no aparece en el chat."
       ],
-      "explain": "Juan pregunta por el señor con Ha amo karai?, y Rosa contesta Che ramói, «mi abuelo». Cuando Juan pregunta Mba'épa he'ise «ramói»?, Rosa lo traduce: «abuelo»."
+      "explain": "Juan pregunta por el señor con Ha pe karai?, y Rosa contesta Che ramói, «mi abuelo». Cuando Juan pregunta Mba'épa he'ise «ramói»?, Rosa lo traduce: «abuelo»."
     }
   }
 }

@@ -46,7 +46,7 @@
         "connect": [
           { "pos": "Si la última sílaba es nasal (vocal con ~, o junto a m, n, ñ), -pe se vuelve -me", "rule": "tetã → tetã{me} · ñu → ñú{me} · guarani → guaraní{me}" },
           { "pos": "Sobre una vocal con ~ no se agrega tilde: la ~ ya marca el acento", "rule": "tetã → tetã{me} · [ñe'ẽ|lengua] → ñe'ẽ{me}" },
-          { "pos": "Si la última sílaba es oral, va -pe aunque antes haya ñ o mb", "rule": "mbo'ehao → mbo'ehaó{pe} · Ñemby → Ñembý{pe}" }
+          { "pos": "Si la última sílaba es oral, va -pe aunque antes haya ñ o mb: -pe/-me solo miran la última sílaba, no toda la raíz como ña-", "rule": "mbo'ehao → mbo'ehaó{pe} · Ñemby → Ñembý{pe}" }
         ],
         "examples": [
           {
@@ -62,7 +62,7 @@
           {
             "gn": "Luis oho Ñembý{pe}, ha Rosa oho ñú{me}.",
             "es": "Luis va a Ñemby, y Rosa va al campo.",
-            "parts": [["oho", "va"], ["Ñemby", "Ñemby (un pueblo)"], ["-pe", "a (tras sílaba oral)"], ["ha", "y"], ["ñu", "campo"], ["-me", "a (tras sílaba nasal)"]]
+            "parts": [["oho", "va"], ["Ñemby", "Ñemby (una ciudad cerca de Asunción)"], ["-pe", "a (tras sílaba oral)"], ["ha", "y"], ["ñu", "campo"], ["-me", "a (tras sílaba nasal)"]]
           },
           {
             "gn": "Che sy omba'apo ko tetã{me}, Paraguái{pe}.",
@@ -82,7 +82,7 @@
       "forms": [
         { "form": "-pe", "tag": "en, a · tras sílaba oral", "mark": "dot", "gn": "Che sy oĩ óga{pe}.", "es": "Mi mamá está en casa." },
         { "form": "-me", "tag": "en, a · tras sílaba nasal", "mark": "dot", "gn": "Añe'ẽ guaraní{me}.", "es": "Hablo en guaraní." },
-        { "form": "-gua", "tag": "de (origen) · unidad 1", "mark": "dot", "gn": "Che Paraguai{gua}.", "es": "Soy de Paraguay." }
+        { "form": "-gua", "tag": "de (origen) · unidad 1 · -gua sí se lleva el acento", "mark": "dot", "gn": "Che Paraguai{gua}.", "es": "Soy de Paraguay." }
       ],
       "check": {
         "id": "a1u02d3.c1",
@@ -139,9 +139,9 @@
         "options": ["Ñembýme", "Ñembýpe", "Ñemby", "Ka'akupépe"],
         "answer": 2,
         "why": [
-          "Ñemby tiene ñ y mb, pero la última sílaba es mby: mb es una letra distinta de m, y la y que la sigue es oral. Tras sílaba oral va -pe.",
+          "Ñemby tiene ñ y mb, pero la última sílaba es mby: mb es una letra distinta de m, y la y que la sigue es oral. Tras sílaba oral va -pe. El día 2, con ja-/ña-, una mb en la raíz ya pedía ña- (ñamba'apo): los prefijos miran toda la raíz; -pe/-me, solo la última sílaba.",
           "Mirá la última sílaba: mby. Su vocal es oral, así que va -pe, y la y, que ya no es la última vocal, lleva tilde: Ñembýpe, «a Ñemby».",
-          "Ñemby solo es el nombre del pueblo. Para «a Ñemby» se le pega -pe.",
+          "Ñemby solo es el nombre de la ciudad. Para «a Ñemby» se le pega -pe.",
           "Ka'akupépe es «a Caacupé», y Luis va a Ñemby."
         ]
       },
@@ -197,7 +197,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Qué significa",
-        "q": "Ana: Che ru _omba'apo ñúme_.",
+        "q": "Rosa: Che ru _omba'apo ñúme_.",
         "options": ["Mi papá trabaja en el campo.", "Mi papá va al campo.", "Mi papá trabaja en la chacra.", "Mi papá trabaja en la ciudad."],
         "answer": 1,
         "explain": "Omba'apo es «trabaja», con o-, y ñúme es ñu, «campo», con -me, «en»: tras la ñ nasal no va -pe. «Va» sería oho; «la chacra», kokue; y «la ciudad», táva."
@@ -210,7 +210,7 @@
         "q": "(Ana cuenta dónde está su abuela: en Caacupé.)\nAna: Che jarýi oĩ (   ).",
         "options": ["Ka'akupéme", "Ka'akupe", "Itauguápe", "Ka'akupépe"],
         "answer": 4,
-        "explain": "Ka'akupe termina en pe, una sílaba oral: va -pe, y el acento queda en la e de Ka'akupe, que ya no es la última vocal: Ka'akupépe, «en Caacupé». -me va solo tras sílaba nasal, Ka'akupe solo es el nombre del pueblo, sin «en», e Itauguápe es «en Itauguá», otro pueblo."
+        "explain": "Ka'akupe termina en pe, una sílaba oral: va -pe, y el acento queda en la e de Ka'akupe, que ya no es la última vocal: Ka'akupépe, «en Caacupé». -me va solo tras sílaba nasal, Ka'akupe solo es el nombre de la ciudad, sin «en», e Itauguápe es «en Itauguá», otra ciudad."
       },
       {
         "id": "a1u02d3.e3",
@@ -235,7 +235,7 @@
     "sound": {
       "focus": "La tilde con sufijo: ógape, kotýpe",
       "letters": ["á", "é", "í", "ó", "ú", "ý"],
-      "note": "-pe y -me no se llevan el acento: la raíz lo guarda. Si esa vocal ya no es la última, se escribe la tilde: koty → kotýpe, ka'aguy → ka'aguýpe. Sobre una vocal nasal no se agrega tilde: tetã → tetãme. En guaraní no hay pares mínimos seguros de acento: comparamos cada palabra sola y con su sufijo.",
+      "note": "-pe y -me no se llevan el acento: la raíz lo guarda y, si esa vocal ya no es la última, se escribe la tilde: koty → kotýpe, ka'aguy → ka'aguýpe. Sobre una vocal con ~ no se agrega tilde (tetã → tetãme); si la vocal es nasal solo por la ñ, la m o la n de al lado, no lleva ~ y sí puede llevar tilde: ñu → ñúme. Los pares mínimos de acento son raros en guaraní: acá comparamos cada palabra sola y con su sufijo.",
       "pairs": [
         ["óga", "casa", "ógape", "en casa"],
         ["koty", "pieza", "kotýpe", "en la pieza"],
@@ -249,9 +249,9 @@
       { "id": "kaaguype", "gn": "ka'aguýpe", "es": "en el monte", "parts": [["ka'aguy", "monte, bosque"], ["-pe", "en, a"]], "note": "Ka'aguy termina en y: con -pe se escribe ý. El puso corta: ka-'a-guy." },
       { "id": "nume", "gn": "ñúme", "es": "en el campo", "parts": [["ñu", "campo"], ["-me", "en, a (tras nasal)"]], "note": "Ñu es nasal por la ñ: va -me, y la u se escribe ú." },
       { "id": "kotype", "gn": "kotýpe", "es": "en la pieza, en el cuarto", "parts": [["koty", "pieza, cuarto"], ["-pe", "en, a"]], "note": "Ana oĩ kotýpe: Ana está en la pieza." },
-      { "id": "ysyrype", "gn": "ysyrýpe", "es": "en el arroyo", "parts": [["ysyry", "arroyo"], ["-pe", "en, a"]], "note": "Dos veces la y, la sexta vocal, y la última con tilde." },
+      { "id": "ysyrype", "gn": "ysyrýpe", "es": "en el arroyo", "parts": [["ysyry", "arroyo"], ["-pe", "en, a"]], "note": "Tres veces la y, la sexta vocal, y la última con tilde." },
       { "id": "tetame", "gn": "tetãme", "es": "en el país", "parts": [["tetã", "país"], ["-me", "en, a (tras nasal)"]], "note": "Sobre la ã no se pone tilde: la ~ ya marca el acento." },
-      { "id": "koape", "gn": "ko'ápe", "es": "aquí, acá", "note": "Termina en -pe, como los lugares: «en este lugar». Se escribe con puso y con tilde en la á: ko-'á-pe." }
+      { "id": "koape", "gn": "ko'ápe", "es": "aquí, acá", "note": "Termina en -pe, como los lugares. Se escribe con puso y con tilde en la á: ko-'á-pe." }
     ],
     "spell": ["kotype", "kaaguype", "nume", "tetame"],
     "check": {

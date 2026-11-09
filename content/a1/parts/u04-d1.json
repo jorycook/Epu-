@@ -7,7 +7,7 @@
         "form": "che + sustantivo",
         "gloss": "mi, mis",
         "connect": [
-          { "pos": "Delante del sustantivo, que no cambia: ni género ni número", "rule": "{che} sy · {che} memby" },
+          { "pos": "Delante del sustantivo. Che no cambia: es «mi» y también «mis»", "rule": "{che} sy · {che} memby" },
           { "pos": "Con las palabras en r- que ya usás", "rule": "{che} réra · {che} róga · {che} ru" },
           { "pos": "El dueño va primero, también cuando es otra persona: «la casa de mi abuela»", "rule": "{che jarýi} róga" },
           { "pos": "Para «nuestro»: ñande (con vos) · ore (sin vos)", "rule": "{ñande} ru · {ore} róga" }
@@ -63,7 +63,7 @@
           },
           {
             "gn": "Mba'éichapa héra {ne} memby?",
-            "es": "¿Cómo se llama tu hijo?",
+            "es": "¿Cómo se llama tu hijo? (o tu hija)",
             "parts": [["ne", "tu (ante palabra nasal)"], ["memby", "hijo o hija (dice la mamá)"]]
           },
           {
@@ -107,7 +107,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Ana le muestra a Juan una foto de ^su abuela^.)\nJuan: Mávapa ha'e?\nAna: Ha'e (   ) jarýi.",
+        "q": "(Ana le muestra a Juan una foto de ^la abuela de ella^.)\nJuan: Mávapa ha'e?\nAna: Ha'e (   ) jarýi.",
         "options": ["nde", "ne", "che", "héra"],
         "answer": 3,
         "why": [
@@ -175,7 +175,7 @@
         "hint": "Primero el dueño, después la casa. Rógape es róga con -pe, «a».",
         "full": "Aha {che ru} rógape.",
         "es": "Voy a la casa de mi papá.",
-        "explain": "Che ru, «mi papá», va primero: es el dueño. Después viene la casa, róga, con -pe, «a»: rógape. En guaraní no hay «de»: el orden ya dice de quién es la casa. Ru sola no se dice: siempre lleva un dueño delante."
+        "explain": "Che ru, «mi papá», va primero: es el dueño. Después viene la casa, róga, con -pe, «a»: rógape. Para decir de quién es algo no hace falta «de»: el orden ya lo dice. Ru sola no se dice: siempre lleva un dueño delante."
       },
       {
         "id": "a1u04d1.d6",
@@ -202,14 +202,14 @@
         "q": "Luis: _Che sy ha che ru_ oñe'ẽ guaraníme.",
         "options": ["Tu mamá y tu papá hablan guaraní.", "Mi mamá y tu papá hablan guaraní.", "Mi mamá y mi papá hablan guaraní.", "Mi abuela y mi abuelo hablan guaraní."],
         "answer": 3,
-        "explain": "Che es «mi» y va delante de cada sustantivo: che sy, «mi mamá», ha, «y», che ru, «mi papá». «Tu» sería nde: nde sy, nde ru. Y abuela y abuelo son jarýi y ramói."
+        "explain": "Che es «mi» y va delante de cada sustantivo: che sy, «mi mamá», ha, «y», che ru, «mi papá». «Tu» sería nde: nde sy, nde ru. Y abuela y abuelo son che jarýi y che ramói."
       },
       {
         "id": "a1u04d1.e2",
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "Rosa: Mba'éichapa héra (   ) angirũ, Juan?",
+        "q": "(Rosa le pregunta a Juan por el amigo de él.)\nRosa: Mba'éichapa héra (   ) angirũ, Juan?",
         "options": ["nde", "ne", "che", "héra"],
         "answer": 2,
         "explain": "Rosa le pregunta a Juan por el amigo de él: «tu amigo». Angirũ es una palabra nasal, con ũ, así que nde pierde la d: ne angirũ. Che sería «mi», y héra ya está en la frase: es «su nombre», no un posesivo."
@@ -232,11 +232,11 @@
   },
   "words": {
     "es": "La foto de la familia",
-    "intro": "La foto del domingo, en el patio y con tereré. Tocá cada persona: todas van con che, «mi». Fijate quién lo dice: dos palabras cambian si habla la mamá o el papá.",
+    "intro": "La foto del domingo, en el patio y con tereré. Tocá cada persona: todas van con che, «mi». Fijate quién lo dice: «hijo» e «hija» cambian según quién habla. La mamá dice memby; el papá, ra'y y rajy.",
     "sound": {
       "focus": "La j, la h y la r",
       "letters": ["j", "h", "r"],
-      "note": "Tres letras que no suenan como en castellano. La j es como la y fuerte de «yo», nunca la jota: jarýi, rajy. La h siempre suena, como un soplo: héra, hembireko. La r es la r suave de «caro», también al empezar la palabra: ru, ramói; la rr fuerte solo está en préstamos como vúrro. Dos pares cambian una sola letra: che rajy y che ra'y, che rembireko y hembireko. Los otros dos son palabras para contrastar, no pares mínimos.",
+      "note": "Tres letras que no suenan como en castellano. La j es como la y fuerte de «yo», nunca la jota: jarýi, rajy. La h siempre suena, como un soplo: héra, hembireko. La r es la r suave de «caro», también al empezar la palabra: ru, ramói; la rr fuerte solo está en préstamos como vúrro. Un solo par cambia una letra: che rajy y che ra'y, j frente a puso. En che rembireko y hembireko cambia la r por la h: la misma palabra con «mi» y con «su». Los otros dos son palabras para contrastar, no pares mínimos.",
       "pairs": [
         ["jarýi", "abuela", "héra", "su nombre"],
         ["che rajy", "mi hija", "che ra'y", "mi hijo"],
@@ -252,7 +252,7 @@
       { "id": "rajy", "gn": "che rajy", "es": "mi hija", "parts": [["che", "mi"], ["rajy", "hija (dice el papá)"]], "note": "Lo dice el papá. La j suena como la y fuerte de «yo»: rajy, nunca con jota. Sola, la palabra es tajýra." },
       { "id": "jaryi", "gn": "che jarýi", "es": "mi abuela", "parts": [["che", "mi"], ["jarýi", "abuela"]], "note": "Tilde en la ý: el acento no cae al final. Es oral: con nde no cambia, nde jarýi." },
       { "id": "ramoi", "gn": "che ramói", "es": "mi abuelo", "parts": [["che", "mi"], ["ramói", "abuelo (con che, ne)"]], "note": "Sola es tamói. Es nasal, con m: con nde se dice ne ramói. La r es suave, como en «caro»." },
-      { "id": "rembireko", "gn": "che rembireko", "es": "mi esposa", "parts": [["che", "mi"], ["rembireko", "esposa (con che)"]], "note": "Sola es hembireko, «su esposa»: la h suena. Es nasal, con mb: con nde se dice ne rembireko. «Mi esposo» es che ména." }
+      { "id": "rembireko", "gn": "che rembireko", "es": "mi esposa", "parts": [["che", "mi"], ["rembireko", "esposa (con che)"]], "note": "Sola es tembireko. Con che es rembireko y con «su» es hembireko: la h suena. Es nasal, con mb: con nde se dice ne rembireko. «Mi esposo» es che ména." }
     ],
     "spell": ["rajy", "ramoi", "rembireko", "jaryi"],
     "check": {
@@ -263,7 +263,7 @@
       "q": "Luis muestra una foto: Ha'e che _hija_. ¿Cómo se escribe «hija» con che?",
       "options": ["raji", "rally", "rajy", "rayi"],
       "answer": 3,
-      "explain": "Con che es rajy: con j, que suena como la y fuerte de «yo», y con y al final, la sexta vocal. Raji cambia esa y por i. Rayi escribe el sonido de la j con la y del castellano y además pierde la sexta vocal. Rally lo escribe con ll, como en castellano; en guaraní ese sonido se escribe j, como en kavaju, «caballo»."
+      "explain": "Con che es rajy: con j, que suena como la y fuerte de «yo», y con y al final, la sexta vocal. Raji cambia esa y por i. Rayi escribe el sonido de la j con la y del castellano y además pierde la sexta vocal. Rally lo escribe con ll, como en castellano; en guaraní no hay ll: ese sonido se escribe j."
     }
   },
   "skill": {

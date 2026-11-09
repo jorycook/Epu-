@@ -9,7 +9,7 @@
         "connect": [
           { "pos": "Delante del sustantivo, que queda en singular: el número ya dice cuántos", "rule": "{mokõi} kuña · {mbohapy} memby" },
           { "pos": "Para contar lo que hay, con oĩ, y para preguntar cuántos, con mboýpa (semana 1)", "rule": "Oĩ {mbohapy} apyka. · Mboýpa ne memby?" },
-          { "pos": "La edad: ary, «año», y el verbo tener: areko, rereko, oguereko", "rule": "Oguereko {mokõi} ary. · Mboy arýpa rereko?" },
+          { "pos": "La edad: ary, «año», con tener: areko, rereko, oguereko. -pa se pega a la última palabra de lo que preguntás: mboy ary → Mboy arýpa", "rule": "Oguereko {mokõi} ary. · Mboy arýpa rereko?" },
           { "pos": "Po es «cinco» y también «mano»", "rule": "{po} mitã · {po} ary" }
         ],
         "examples": [
@@ -46,8 +46,8 @@
         "gloss": "de seis en adelante, precios y edad, en el habla",
         "connect": [
           { "pos": "Los precios se dicen en castellano, como en la semana 1", "rule": "Mboýpa ovale? {Diez mil}." },
-          { "pos": "De seis en adelante, en la charla, el número va en castellano y el sustantivo en guaraní", "rule": "{siete} memby · {diez} mitã" },
-          { "pos": "La edad: con ary o solo el número", "rule": "Mboy arýpa rereko? {Veinte}. · Oguereko {ochenta} ary." },
+          { "pos": "De seis en adelante, en la charla, el número suele ir en castellano, y el sustantivo puede seguir en guaraní", "rule": "{doce} mitã · {mil} tapicha" },
+          { "pos": "La edad: el número en castellano, con ary o solo; por escrito suele ir en cifras: 80 ary", "rule": "Mboy arýpa rereko? {Veinte}. · Oguereko {ochenta} ary." },
           { "pos": "Del 6 al 10 en guaraní, para leerlos: son de la escuela y de los textos", "rule": "{poteĩ} 6 · {pokõi} 7 · {poapy} 8 · {porundy} 9 · {pa} 10" }
         ],
         "examples": [
@@ -64,7 +64,7 @@
           {
             "gn": "Che ramói oguereko {ochenta} ary.",
             "es": "Mi abuelo tiene ochenta años.",
-            "parts": [["che ramói", "mi abuelo"], ["oguereko", "tiene"], ["ochenta", "80, en castellano"], ["ary", "año"]]
+            "parts": [["che ramói", "mi abuelo"], ["oguereko", "tiene"], ["ochenta", "80, en castellano; en un texto se escribe la cifra: 80 ary"], ["ary", "año"]]
           },
           {
             "gn": "Oguereko {pa} ary.",
@@ -80,11 +80,11 @@
       }
     ],
     "compare": {
-      "intro": "Hasta cinco en guaraní y de seis en adelante en castellano; detrás de un número, el sustantivo va sin -kuéra.",
+      "intro": "Hasta cinco en guaraní y, en la charla, de seis en adelante en castellano; detrás de un número, el sustantivo va sin -kuéra.",
       "forms": [
         { "form": "peteĩ … po + sustantivo", "tag": "1 a 5, en guaraní", "mark": "dot", "gn": "{Mokõi} kuña opurahéi.", "es": "Dos mujeres cantan." },
         { "form": "número castellano", "tag": "más de 5, precios y edad", "mark": "dot", "gn": "Mboýpa ovale? {Diez mil}.", "es": "¿Cuánto cuesta? Diez mil." },
-        { "form": "sustantivo + -kuéra", "tag": "plural sin número (día 2)", "mark": "dot", "gn": "Kuña{nguéra} opurahéi.", "es": "Las mujeres cantan." }
+        { "form": "sustantivo + -kuéra / -nguéra", "tag": "plural sin número (día 2)", "mark": "dot", "gn": "Kuña{nguéra} opurahéi.", "es": "Las mujeres cantan." }
       ],
       "check": {
         "id": "a1u04d5.c1",
@@ -183,14 +183,14 @@
         "area": "grammar",
         "label": "Armá la oración",
         "join": "sentence",
-        "before": "Rosa: Mboýpa ovale ko kesu?\nVendedor:",
-        "after": ".",
-        "tiles": ["diez", "mil", "guaraníes"],
-        "bank": [2, 0, 1],
-        "hint": "El precio se dice en castellano y entero. La moneda también se llama guaraní.",
-        "full": "Rosa: Mboýpa ovale ko kesu?\nVendedor: {Diez mil guaraníes}.",
-        "es": "Rosa: ¿Cuánto cuesta este queso?\nVendedor: Diez mil guaraníes.",
-        "explain": "Rosa pregunta el precio con Mboýpa ovale?, y el vendedor lo dice en castellano, entero y en orden: diez mil guaraníes. La moneda de Paraguay se llama guaraní, como la lengua: en la despensa, guaraníes son los billetes."
+        "before": "Rosa:",
+        "after": " kesu?\nVendedor: Diez mil.",
+        "tiles": ["mboýpa", "ovale", "ko"],
+        "bank": [1, 2, 0],
+        "hint": "Empezá por la palabra que pregunta. Ko va pegado a kesu, como en ko ka'aru.",
+        "full": "Rosa: {Mboýpa} ovale ko kesu?\nVendedor: Diez mil.",
+        "es": "Rosa: ¿Cuánto cuesta este queso?\nVendedor: Diez mil.",
+        "explain": "Mboýpa, «¿cuánto?», va primero: es la palabra que pregunta, como Mba'éichapa en Mba'éichapa nde réra?. Después el verbo, ovale, «cuesta», y al final ko kesu, «este queso», con ko delante del sustantivo, como el día 3. El vendedor contesta el precio entero en castellano: diez mil. La moneda de Paraguay se llama guaraní, como la lengua: el precio va en guaraníes."
       }
     ],
     "exam": [
@@ -212,7 +212,7 @@
         "q": "(En la despensa.)\nAna: Mboýpa ovale ko so'o?\nVendedor: (   )",
         "options": ["Pa.", "Mokõi so'o.", "Veinte mil.", "Oĩ so'o."],
         "answer": 3,
-        "explain": "Mboýpa ovale? pregunta el precio, y el precio se dice en castellano y entero: veinte mil. Pa es «diez» en guaraní, el numeral de la escuela, y no es un precio; mokõi so'o, «dos carnes», es una cantidad; y Oĩ so'o, «hay carne», contesta Oĩpa so'o?, no cuánto cuesta."
+        "explain": "Mboýpa ovale? pregunta el precio, y el precio se dice en castellano y entero: veinte mil. Pa es «diez» en guaraní, el numeral de la escuela, y no es un precio; mokõi so'o, «dos» de carne, dice una cantidad, no un precio; y Oĩ so'o, «hay carne», contesta Oĩpa so'o?, no cuánto cuesta."
       },
       {
         "id": "a1u04d5.e3",
@@ -248,7 +248,7 @@
       { "id": "mokoi", "gn": "mokõi", "es": "dos", "note": "Con k y con la õ nasal. Mokõive es «los dos»." },
       { "id": "mbohapy", "gn": "mbohapy", "es": "tres", "note": "Mb es una sola letra: mbo-ha-py. La h suena." },
       { "id": "irundy", "gn": "irundy", "es": "cuatro", "note": "Nd es una sola letra, y la y del final es la sexta vocal: i-ru-ndy." },
-      { "id": "po", "gn": "po", "es": "cinco", "note": "También es «mano»: cinco dedos. De seis en adelante, en la charla se dice en castellano." },
+      { "id": "po", "gn": "po", "es": "cinco", "note": "También es «mano»: cinco dedos. De seis en adelante, en la charla el número suele decirse en castellano." },
       { "id": "chipa", "gn": "chipa", "es": "chipá", "note": "Sin tilde: en guaraní, sin marca, el acento cae al final. De la semana 1." },
       { "id": "kesu", "gn": "kesu", "es": "queso", "note": "Del castellano «queso», con k: en guaraní no hay qu. De la semana 1." },
       { "id": "kamby", "gn": "kamby", "es": "leche", "note": "Con k y con y, la sexta vocal. Vaka kamby es «leche de vaca»." }
@@ -259,50 +259,50 @@
       "kind": "choice",
       "area": "vocab",
       "label": "Cómo se escribe",
-      "q": "Rosa lleva _dos_ chipá. ¿Cómo se escribe «dos» en guaraní?",
+      "q": "Rosa lleva _dos_ chipás. ¿Cómo se escribe «dos» en guaraní?",
       "options": ["mocõi", "mokoi", "mokõi", "mokõĩ"],
       "answer": 3,
-      "explain": "Dos es mokõi: con k, porque en guaraní no hay c, y con la õ nasal. Mocõi usa la c del castellano. Mokoi pierde la tilde nasal, y la o de mokõi es nasal. Mokõĩ pone dos tildes nasales, y una palabra lleva una sola, en la vocal del acento."
+      "explain": "Dos es mokõi: con k, porque en guaraní no hay c, y con la õ nasal. Mocõi usa la c del castellano. Mokoi pierde la tilde nasal, y la o de mokõi es nasal. Mokõĩ marca también la i: en mokõi la tilde nasal va solo en la õ, la vocal del acento, y la i va sin marca."
     }
   },
   "skill": {
     "kind": "listening",
     "es": "Comprensión de puntos clave",
     "situation": "En la despensa. Rosa compra queso y pregunta el precio.",
-    "ask": "¿Cuántos quesos lleva Rosa y cuánto paga?",
+    "ask": "¿Cuántos quesos lleva Rosa y cuánto cuesta el queso?",
     "item": {
       "id": "a1u04d5.r1",
       "kind": "choice",
       "area": "listening",
       "label": "Qué escuchaste",
-      "q": "¿Cuántos quesos lleva Rosa y cuánto paga?",
-      "options": ["Tres, y paga veinte mil.", "Dos, y paga veinte mil.", "Dos, y paga diez mil."],
-      "short": ["Tres, veinte mil", "Dos, veinte mil", "Dos, diez mil"],
+      "q": "¿Cuántos quesos lleva Rosa y cuánto cuesta el queso?",
+      "options": ["Tres, y el queso cuesta diez mil.", "Dos, y el queso cuesta diez mil.", "Dos, y el queso cuesta veinte mil."],
+      "short": ["Tres, diez mil", "Dos, diez mil", "Dos, veinte mil"],
       "printed": true,
       "answer": 2,
       "why": [
-        "Rosa dice mokõi kesu, «dos quesos», no mbohapy, «tres». El precio sí es veinte mil.",
-        "El vendedor pregunta Mboýpa reipota?, «¿cuántos querés?», y Rosa responde Mokõi kesu, «dos quesos». Después pregunta el precio, Mboýpa ovale?, y él dice veinte mil.",
-        "Dos quesos sí, pero el vendedor dice veinte mil, no diez mil."
+        "Rosa pide mokõi kesu, «dos quesos», no mbohapy, «tres». El precio sí es diez mil.",
+        "Rosa pregunta el precio, Mboýpa ovale?, y el vendedor dice diez mil. Después ella pide mokõi kesu, «dos quesos».",
+        "Dos quesos sí, pero el vendedor dice diez mil, no veinte mil."
       ],
       "script": [
-        "Narrador: En la despensa. ¿Cuántos quesos lleva Rosa y cuánto paga?",
-        "Mujer: Mba'éichapa. Oĩpa kesu?",
-        "Hombre: Héẽ, oĩ. Mboýpa reipota?",
-        "Mujer: Mokõi kesu. Mboýpa ovale?",
-        "Hombre: Veinte mil.",
-        "Mujer: Aguyje.",
-        "Narrador: ¿Cuántos quesos lleva Rosa y cuánto paga?"
+        "Narrador: En la despensa. ¿Cuántos quesos lleva Rosa y cuánto cuesta el queso?",
+        "Mujer: Mba'éichapa? Oĩpa kesu?",
+        "Hombre: Héẽ, oĩ.",
+        "Mujer: Mboýpa ovale?",
+        "Hombre: Diez mil.",
+        "Mujer: Mokõi kesu, aguyje.",
+        "Narrador: ¿Cuántos quesos lleva Rosa y cuánto cuesta el queso?"
       ]
     },
     "audio": [
-      ["N", "En la despensa. ¿Cuántos quesos lleva Rosa y cuánto paga?", "En la despensa. ¿Cuántos quesos lleva Rosa y cuánto paga?"],
-      ["F", "Mba'éichapa. Oĩpa kesu?", "Hola. ¿Hay queso?"],
-      ["M", "Héẽ, oĩ. Mboýpa reipota?", "Sí, hay. ¿Cuántos querés?"],
-      ["F", "Mokõi kesu. Mboýpa ovale?", "Dos quesos. ¿Cuánto cuesta?"],
-      ["M", "Veinte mil.", "Veinte mil."],
-      ["F", "Aguyje.", "Gracias."],
-      ["N", "¿Cuántos quesos lleva Rosa y cuánto paga?", "¿Cuántos quesos lleva Rosa y cuánto paga?"]
+      ["N", "En la despensa. ¿Cuántos quesos lleva Rosa y cuánto cuesta el queso?", "En la despensa. ¿Cuántos quesos lleva Rosa y cuánto cuesta el queso?"],
+      ["F", "Mba'éichapa? Oĩpa kesu?", "Hola. ¿Hay queso?"],
+      ["M", "Héẽ, oĩ.", "Sí, hay."],
+      ["F", "Mboýpa ovale?", "¿Cuánto cuesta?"],
+      ["M", "Diez mil.", "Diez mil."],
+      ["F", "Mokõi kesu, aguyje.", "Dos quesos, gracias."],
+      ["N", "¿Cuántos quesos lleva Rosa y cuánto cuesta el queso?", "¿Cuántos quesos lleva Rosa y cuánto cuesta el queso?"]
     ]
   }
 }

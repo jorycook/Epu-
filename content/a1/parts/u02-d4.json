@@ -5,17 +5,17 @@
       {
         "id": "a1u02d4.p1",
         "form": "-gui",
-        "gloss": "de, desde (el lugar de donde se viene)",
+        "gloss": "de, desde (el lugar de donde se viene o se sale)",
         "connect": [
           { "pos": "Después del lugar, pegado, como -pe", "rule": "Itaugua → Itauguá{gui} · Paraguay → Paraguaý{gui}" },
-          { "pos": "Con venir (ou) y con salir (osẽ)", "rule": "Ou Paraguaý{gui} · Osẽ tatakuá{gui}" },
-          { "pos": "No cambia tras una sílaba nasal y no se lleva el acento: la raíz escribe su tilde", "rule": "tetã{gui} · mbo'ehaó{gui}" }
+          { "pos": "Con venir (ou) y con salir (osẽ: o- + sẽ, «salir»)", "rule": "Ou Paraguaý{gui} · Osẽ tatakuá{gui}" },
+          { "pos": "No cambia tras una sílaba nasal y no se lleva el acento: el acento queda en la raíz, que lleva tilde solo si hace falta", "rule": "tetã{gui} · mbo'ehaó{gui}" }
         ],
         "examples": [
           {
-            "gn": "Aju Itakuruví{gui}.",
+            "gn": "Che aju Itakuruví{gui}.",
             "es": "Vengo de Itacurubí.",
-            "parts": [["a-", "yo"], ["ju", "venir"], ["Itakuruvi", "Itacurubí"], ["-gui", "de, desde"]]
+            "parts": [["che", "yo"], ["a-", "yo"], ["ju", "venir"], ["Itakuruvi", "Itacurubí"], ["-gui", "de, desde"]]
           },
           {
             "gn": "Chipa osẽ tatakuá{gui}.",
@@ -60,14 +60,14 @@
             "parts": [["moõguipa", "¿de dónde?"], ["reju", "venís"], ["aju", "vengo"], ["Itauguágui", "de Itauguá"]]
           },
           {
-            "gn": "Rosa: {Moõguipa} ou ko chipa?\nAna: Tatakuá{gui}.",
-            "es": "Rosa: ¿De dónde viene este chipá?\nAna: Del horno de barro.",
-            "parts": [["ko", "este"], ["chipa", "chipá"], ["tatakua", "horno de barro"], ["-gui", "de"]]
+            "gn": "Rosa: {Moõguipa} osẽ ko chipa?\nAna: Tatakuá{gui}.",
+            "es": "Rosa: ¿De dónde sale este chipá?\nAna: Del horno de barro.",
+            "parts": [["osẽ", "sale"], ["ko", "este"], ["chipa", "chipá"], ["tatakua", "horno de barro"], ["-gui", "de"]]
           },
           {
-            "gn": "Ana: {Moõguipa} peju?\nLuis: Roju Ka'akupé{gui}.",
-            "es": "Ana: ¿De dónde vienen ustedes?\nLuis: Venimos (sin vos) de Caacupé.",
-            "parts": [["peju", "ustedes vienen"], ["roju", "venimos (sin vos)"], ["Ka'akupe", "Caacupé"], ["-gui", "de"]]
+            "gn": "Ana: {Moõguipa} peju?\nLuis: Roju mbo'ehaó{gui}.",
+            "es": "Ana: ¿De dónde vienen ustedes?\nLuis: Venimos (sin vos) de la escuela.",
+            "parts": [["peju", "ustedes vienen"], ["roju", "venimos (sin vos)"], ["mbo'ehao", "escuela"], ["-gui", "de"]]
           }
         ],
         "watch": {
@@ -110,7 +110,7 @@
         "answer": 4,
         "why": [
           "-pe es «a» o «en»: Aha Paraguaýpe, «voy a Asunción». Rosa viene de ahí: -gui.",
-          "-gui no va delante ni separado, como el «de» castellano: va pegado al final del lugar, Paraguaýgui.",
+          "A diferencia del «de» castellano, -gui no va delante ni separado: se pega al final del lugar, Paraguaýgui.",
           "Paraguay solo es el nombre: Asunción. Para decir «de Asunción» hay que pegarle -gui atrás.",
           "Rosa viene de Asunción: el lugar lleva -gui, pegado atrás. Paraguay lleva el acento en la y final; como -gui no se lo lleva, se escribe ý: Paraguaýgui."
         ]
@@ -150,14 +150,14 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "Luis: ^Moõguipa^ ou ko chipa?\nAna: (   )",
-        "options": ["Tatakuápe.", "Tatakuágui.", "Tatakua.", "Gui tatakua."],
+        "q": "Luis: ^Moõguipa^ osẽ ko chipa?\nAna: (   )",
+        "options": ["Tatakuápe.", "Tatakuágui.", "Tatakuáme.", "Gui tatakua."],
         "answer": 2,
         "why": [
-          "Tatakuápe es «en el horno», con -pe: dice dónde está, no de dónde viene.",
-          "Luis pregunta de dónde viene el chipá, con -gui, y Ana responde con -gui: Tatakuágui, «del horno de barro».",
-          "Tatakua solo es «horno de barro», el nombre. Le falta el «de»: -gui, pegado atrás.",
-          "-gui no va delante ni separado, como el «de» castellano: se pega al final del lugar, tatakuágui."
+          "Tatakuápe es «en el horno», con -pe: dice dónde está, no de dónde sale.",
+          "Luis pregunta de dónde sale el chipá, con -gui, y Ana responde con -gui: Tatakuágui, «del horno de barro».",
+          "-me es la forma de -pe tras una sílaba nasal, y kua, la última sílaba de tatakua, es oral. Además diría «en»; el chipá sale de ahí: -gui, que no cambia nunca.",
+          "A diferencia del «de» castellano, -gui no va delante ni separado: se pega al final del lugar, tatakuágui."
         ]
       },
       {
@@ -218,11 +218,11 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "(Rosa le pregunta a Ana por su mamá.)\nRosa: ",
+        "before": "(Rosa quiere saber de dónde viene la mamá de Ana.)\nRosa: ",
         "after": " ou nde sy?",
         "tiles": ["moõ", "gui", "pa"],
         "bank": [1, 2, 0],
-        "full": "(Rosa le pregunta a Ana por su mamá.)\nRosa: {Moõguipa} ou nde sy?",
+        "full": "(Rosa quiere saber de dónde viene la mamá de Ana.)\nRosa: {Moõguipa} ou nde sy?",
         "es": "Rosa: ¿De dónde viene tu mamá?",
         "explain": "moõ («dónde») va primero: es la palabra que pregunta. Después -gui («de»), y al final -pa, que cierra la pregunta, como en Mba'éichapa: Moõguipa, «¿de dónde?». Con ou nde sy, «viene tu mamá», queda «¿de dónde viene tu mamá?»."
       }
@@ -231,11 +231,11 @@
   "words": {
     "gn": "Moõguipa reju?",
     "es": "¿De dónde venís? En la terminal",
-    "intro": "En la terminal de Asunción llega gente de todas partes. Tocá cada palabra: casi todas son lugares de donde se viene, ya con -gui.",
+    "intro": "En la terminal de Asunción llega gente de todas partes. Tocá cada palabra: los lugares ya llevan -gui, «de».",
     "sound": {
       "focus": "La armonía nasal: ña-, -me, n-",
       "letters": ["ã", "ẽ", "ñ", "m", "n"],
-      "note": "Una raíz nasal (con ã ẽ ĩ õ ũ ỹ, o con m, n, ñ, mb, nd, ng, nt) contagia lo que se le pega: ja- se vuelve ña- (ñañe'ẽ, ñamba'apo) y, en el día 5, nd- se vuelve n-. Los sufijos miran solo la última sílaba: tetãme, pero Ñembýpe. -gui no cambia nunca: tetãgui. Los dos primeros pares son pares mínimos, oral contra nasal; los otros dos comparan palabras y muestran el contagio.",
+      "note": "Una raíz nasal (vocal con ~, o m, n, ñ, mb, nd, ng, nt) contagia el prefijo: ja- se vuelve ña- (ñañe'ẽ) y, mañana, nd- se vuelve n- (nañe'ẽi, «no hablo»). Los sufijos miran solo la última sílaba: tetãme, pero Ñembýpe; -gui no cambia: tetãgui. Los dos primeros pares son mínimos, oral contra nasal; los otros dos muestran el contagio.",
       "pairs": [
         ["tupa", "cama", "Tupã", "Dios"],
         ["pytu", "aliento", "pytũ", "oscuro"],
@@ -246,14 +246,14 @@
     "words": [
       { "id": "mooguipa", "gn": "Moõguipa reju?", "es": "¿De dónde venís?", "parts": [["moõ", "dónde"], ["-gui", "de"], ["-pa", "pregunta"], ["reju", "venís"]], "note": "Moõpa reiko? es «¿dónde vivís?» (unidad 1). Con -gui adentro, la pregunta es de dónde." },
       { "id": "paraguaygui", "gn": "Paraguaýgui", "es": "desde Asunción", "parts": [["Paraguay", "Asunción"], ["-gui", "de, desde"]], "note": "En guaraní, Paraguay (con y, acento al final) es Asunción. El país es Paraguái, con ái." },
-      { "id": "kaakupegui", "gn": "Ka'akupégui", "es": "desde Caacupé", "parts": [["Ka'akupe", "Caacupé"], ["-gui", "de, desde"]], "note": "Ka'akupe lleva puso: ka-'a-ku-pe. Es el pueblo de la Virgen de Caacupé, patrona del Paraguay." },
+      { "id": "ose", "gn": "osẽ", "es": "sale", "parts": [["o-", "él, ella"], ["sẽ", "salir"]], "note": "Palabra nueva: sẽ, «salir», con o-, el prefijo del día 1. Con -gui dice de dónde sale algo: Chipa osẽ tatakuágui." },
       { "id": "itauguagui", "gn": "Itauguágui", "es": "desde Itauguá", "parts": [["Itaugua", "Itauguá"], ["-gui", "de, desde"]], "note": "La capital del ñandutí. Itaugua termina en a: con -gui se escribe á." },
       { "id": "itakuruvigui", "gn": "Itakuruvígui", "es": "desde Itacurubí", "parts": [["Itakuruvi", "Itacurubí"], ["-gui", "de, desde"]], "note": "En castellano se escribe Itacurubí; en guaraní, con k y v. Con -gui, la i final se escribe í." },
       { "id": "tatakuagui", "gn": "tatakuágui", "es": "del horno de barro", "parts": [["tatakua", "horno de barro"], ["-gui", "de"]], "note": "tata, «fuego», y kua, «hueco». De ahí sale el chipá." },
-      { "id": "nanduti", "gn": "ñanduti", "es": "ñandutí (encaje)", "note": "Quiere decir «telaraña». Es el encaje de Itauguá, redondo como un sol. Sin tilde: el acento va en la última vocal." },
+      { "id": "nanduti", "gn": "ñanduti", "es": "ñandutí (encaje)", "note": "Quiere decir «telaraña». Es el encaje de Itauguá, redondo como un sol. Como terere, no lleva tilde aguda: el acento va en la última vocal." },
       { "id": "kokuegui", "gn": "kokuégui", "es": "de la chacra", "parts": [["kokue", "chacra"], ["-gui", "de"]], "note": "En la chacra es kokuépe, del día 3. De la chacra, kokuégui: la é queda igual." }
     ],
-    "spell": ["kaakupegui", "itauguagui", "paraguaygui", "nanduti"],
+    "spell": ["paraguaygui", "itauguagui", "itakuruvigui", "tatakuagui"],
     "check": {
       "id": "a1u02d4.k1",
       "kind": "choice",
@@ -270,24 +270,24 @@
     "es": "Un chat en la terminal",
     "ask": "¿De dónde viene Ana?",
     "seconds": 60,
-    "passage": "Rosa: Mba'éichapa, Ana? ^Moõguipa reju?^\nAna: ^Aju Ka'akupégui^, che jarýi rógagui. Ha nde?\nRosa: Che aju Paraguaýgui. Aha Itauguápe.\nAna: Jajotopáta ko ka'aru.",
-    "strategy": "Buscá -gui después del nombre de un lugar: ahí está el «de dónde». -pe dice adónde va.",
+    "passage": "Rosa: Mba'éichapa, Ana? ^Moõguipa reju?^\nAna: ^Aju Itauguágui.^ Aha Ka'akupépe, che jarýi rógape. Ha nde?\nRosa: Che aju Paraguaýgui. Aha Ñembýpe.\nAna: Jajotopáta, Rosa.",
+    "strategy": "Buscá -gui después del nombre de un lugar: ahí está el «de dónde». -pe dice adónde va. Y fijate quién habla.",
     "item": {
       "id": "a1u02d4.r1",
       "kind": "choice",
       "area": "reading",
       "label": "Buscar el dato",
       "q": "¿De dónde viene Ana?",
-      "options": ["De Asunción.", "De Itauguá.", "De Caacupé.", "De la escuela."],
-      "short": ["Asunción", "Itauguá", "Caacupé", "La escuela"],
+      "options": ["De Asunción.", "De Caacupé.", "De Itauguá.", "De Ñemby."],
+      "short": ["Asunción", "Caacupé", "Itauguá", "Ñemby"],
       "answer": 3,
       "why": [
         "Paraguaýgui, «de Asunción», lo dice Rosa de ella misma: Che aju Paraguaýgui.",
-        "Itauguápe lleva -pe: es adónde va Rosa, no de dónde viene Ana.",
-        "Ana responde Aju Ka'akupégui, che jarýi rógagui: viene de Caacupé, de la casa de su abuela. Las dos palabras terminan en -gui.",
-        "Nadie habla de la escuela: mbo'ehao no aparece en el chat."
+        "Ka'akupépe lleva -pe: es adónde va Ana, a la casa de su abuela, no de dónde viene.",
+        "Ana responde Aju Itauguágui: viene de Itauguá. El lugar lleva -gui, «de».",
+        "Ñembýpe lleva -pe, y lo dice Rosa: es adónde va ella."
       ],
-      "explain": "A Moõguipa reju? Ana responde Aju Ka'akupégui, che jarýi rógagui: -gui marca de dónde viene, Caacupé, la casa de su abuela. Paraguaýgui es de donde viene Rosa, e Itauguápe, con -pe, es adónde va Rosa."
+      "explain": "A Moõguipa reju? Ana responde Aju Itauguágui: -gui marca de dónde viene, Itauguá. Ka'akupépe y Ñembýpe llevan -pe, adónde va cada una, y Paraguaýgui es de donde viene Rosa."
     }
   }
 }

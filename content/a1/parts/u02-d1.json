@@ -7,7 +7,7 @@
         "form": "a- · re- · o-",
         "gloss": "yo · vos · él, ella",
         "connect": [
-          { "pos": "Al principio del verbo, pegado a la raíz", "rule": "{a}guata · {re}guata · {o}guata" },
+          { "pos": "Al principio del verbo, pegado a la raíz: guata, «caminar»", "rule": "{a}guata · {re}guata · {o}guata" },
           { "pos": "Con o sin pronombre: el prefijo ya dice quién", "rule": "Che {a}purahéi = {A}purahéi" },
           { "pos": "Para preguntar quién lo hace: Mávapa + o-", "rule": "Mávapa {o}purahéi?" }
         ],
@@ -71,14 +71,14 @@
           }
         ],
         "watch": {
-          "note": "Ir y venir son irregulares. La raíz de «ir» es ha solo con a-: aha. Con re- y o- es ho: reho, oho. Y «viene» es ou: oju no existe.",
+          "note": "Ir y venir son irregulares. Con a-, la raíz de «ir» es ha: aha. Con re- y o- es ho: reho, oho. Y «viene» es ou: oju no existe.",
           "bad": "Ha'e oju.",
           "good": "Ha'e ou."
         }
       }
     ],
     "compare": {
-      "intro": "Tres personas en un verbo: el prefijo cambia y la raíz queda. En «ir», hasta la raíz cambia.",
+      "intro": "Tres personas en un verbo: el prefijo cambia y la raíz queda, salvo en «ir», donde hasta la raíz cambia.",
       "forms": [
         { "form": "a-", "tag": "yo", "mark": "dot", "gn": "Che {a}ha ko ka'aru.", "es": "Yo voy esta tarde." },
         { "form": "re-", "tag": "vos", "mark": "dot", "gn": "Nde {re}ho ko ka'aru.", "es": "Vos vas esta tarde." },
@@ -89,13 +89,13 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "Luis: Mávapa ^ou^ ko ka'aru?\nAna: (   ) che sy.",
+        "q": "Rosa: Mávapa ^ou^ ko pyhare?\nAna: (   ) che ru.",
         "options": ["Aju", "Reju", "Ou"],
         "answer": 3,
         "why": [
-          "Aju es «vengo», con a-: Ana hablaría de ella misma, y habla de su mamá.",
-          "Reju es «venís», con re-: el que viene sería Luis, y Ana habla de su mamá.",
-          "Ana habla de su mamá, otra persona: ou, «viene». Ou che sy es «viene mi mamá»."
+          "Aju es «vengo», con a-: Ana hablaría de ella misma, y habla de su papá.",
+          "Reju es «venís», con re-: la que viene sería Rosa, y Ana habla de su papá.",
+          "Ana habla de su papá, otra persona: ou, «viene». Ou che ru es «viene mi papá»."
         ]
       }
     },
@@ -120,7 +120,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "Ana: (   ) ^remba'apo^ heta, Luis.",
+        "q": "Ana: (   ) ^remba'apo^ [heta|mucho], Luis.",
         "options": ["Che", "Nde", "Ha'e", "Mávapa"],
         "answer": 2,
         "why": [
@@ -139,7 +139,7 @@
         "options": ["aha", "aho", "reho", "oho"],
         "answer": 1,
         "why": [
-          "Luis pregunta con re-, «vos», y Ana responde por ella, con a-. Con a-, la raíz de «ir» es ha: aha, «voy».",
+          "Luis pregunta con re-, «vos», y Ana responde por ella misma, con a-. Con a-, la raíz de «ir» es ha: aha, «voy».",
           "aho no existe: ho es la raíz de «ir» con re- y con o-, nunca con a-.",
           "reho es «vas», con re-: es lo que pregunta Luis. Ana responde por ella misma.",
           "oho es «va», con o-: sería otra persona, no Ana."
@@ -155,7 +155,7 @@
         "answer": 4,
         "why": [
           "aha es «voy», con a-: Rosa hablaría de ella misma, y habla de su papá.",
-          "oha no existe: con o-, la raíz de «ir» es ho. Ha va solo con a-: aha.",
+          "oha no existe: con o-, la raíz de «ir» es ho. Con a- es ha: aha.",
           "reho es «vas», con re-: Rosa le hablaría a vos. Ella habla de su papá, otra persona.",
           "Che ru, «mi papá», es otra persona: o- + ho = oho, «va». Mi papá va esta tarde, y mi mamá viene esta noche."
         ]
@@ -197,7 +197,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Qué significa",
-        "q": "Ana: _Che apurahéi_ ko pyhare.",
+        "q": "Ana: _Che apurahéi ko pyhare_.",
         "options": ["Vos cantás esta noche.", "Yo canto esta noche.", "Ella canta esta noche.", "Yo bailo esta noche."],
         "answer": 2,
         "explain": "Che es «yo», y a- lo repite al principio del verbo: apurahéi es «canto». «Cantás» sería repurahéi, con re-; «canta», opurahéi, con o-; y «bailo», ajeroky."
@@ -222,7 +222,7 @@
         "after": " ko ka'aru, Luis?",
         "tiles": ["re", "ju", "pa"],
         "bank": [1, 2, 0],
-        "full": "(Ana invita a Luis.)\nAna: {Re}jú{pa} ko ka'aru, Luis?",
+        "full": "(Ana invita a Luis.)\nAna: Rejúpa ko ka'aru, Luis?",
         "es": "Ana: ¿Venís esta tarde, Luis?",
         "explain": "re- (vos) va primero: Ana le habla a Luis. Después la raíz ju, «venir», y al final -pa, que hace la pregunta: rejúpa, «¿venís?». La -pa no se lleva el acento: queda en la u, que ya no es la última vocal, y se escribe ú."
       }
@@ -234,7 +234,7 @@
     "sound": {
       "focus": "La j y la h",
       "letters": ["j", "h"],
-      "note": "La j guaraní suena como la y de «yo» dicha con fuerza, nunca como la jota castellana: ajapo, ajeroky, jagua. El sonido de la jota suave paraguaya, un soplo, se escribe h: aha, ahendu, heta. La h nunca es muda. Entre j y h no hay pares mínimos seguros: comparamos palabras.",
+      "note": "La j guaraní suena como la y de «yo» en boca de un paraguayo, o la j inglesa de «John»: nunca la jota castellana. La jota suave paraguaya, un soplo, se escribe h y siempre suena: aha, ahendu, heta. Acá no usamos pares mínimos: comparamos palabras.",
       "pairs": [
         ["ajapo", "hago", "aha", "voy"],
         ["ajeroky", "bailo", "ahendu", "escucho"],
@@ -242,16 +242,16 @@
       ]
     },
     "words": [
-      { "id": "ajapo", "gn": "ajapo", "es": "hago", "parts": [["a-", "yo"], ["japo", "hacer"]], "note": "La j suena como la y de «yo» dicha con fuerza, nunca como la jota." },
+      { "id": "ajapo", "gn": "ajapo", "es": "hago", "parts": [["a-", "yo"], ["japo", "hacer"]], "note": "La j suena como la y de «yo» en boca de un paraguayo, o la j inglesa de «John»: nunca la jota." },
       { "id": "ajeroky", "gn": "ajeroky", "es": "bailo", "parts": [["a-", "yo"], ["jeroky", "bailar"]], "note": "jeroky también es «danza»: el baile y la acción." },
       { "id": "aju", "gn": "aju", "es": "vengo", "parts": [["a-", "yo"], ["ju", "venir"]], "note": "Con vos: reju. Con él o ella: ou, sin j." },
       { "id": "aha", "gn": "aha", "es": "voy", "parts": [["a-", "yo"], ["ha", "ir"]], "note": "La h suena: un soplo, como la jota suave paraguaya. Con vos: reho; con él o ella: oho." },
       { "id": "ahendu", "gn": "ahendu", "es": "escucho, oigo", "parts": [["a-", "yo"], ["hendu", "oír"]], "note": "nd es una sola letra: a-he-ndu." },
       { "id": "apurahei", "gn": "apurahéi", "es": "canto", "parts": [["a-", "yo"], ["purahéi", "cantar"]], "note": "purahéi también es «canción». Lleva tilde: el acento no cae en la última vocal." },
       { "id": "ambaapo", "gn": "amba'apo", "es": "trabajo", "parts": [["a-", "yo"], ["mba'apo", "trabajar"]], "note": "mba'apo también es «trabajo», la cosa. El puso corta la voz: mba-'a-po." },
-      { "id": "akaru", "gn": "akaru", "es": "como", "parts": [["a-", "yo"], ["karu", "comer"]], "note": "karu también es «almuerzo»." }
+      { "id": "akaru", "gn": "akaru", "es": "como (de comer)", "parts": [["a-", "yo"], ["karu", "comer"]], "note": "karu también es «almuerzo»." }
     ],
-    "spell": ["ajeroky", "ahendu", "apurahei", "ambaapo"],
+    "spell": ["ajeroky", "ahendu", "apurahei", "ajapo"],
     "check": {
       "id": "a1u02d1.k1",
       "kind": "choice",
@@ -260,7 +260,7 @@
       "q": "Es sábado y Ana _canta_ en el patio. ¿Cómo se escribe en guaraní?",
       "options": ["opurajéi", "opurahéi", "opurahéy", "opuraéi"],
       "answer": 2,
-      "explain": "Canta es opurahéi: con o-, porque es Ana, otra persona, y con h, que suena como la jota suave paraguaya. Opurajéi la escribe con j, que es otra letra, la y fuerte de «yo». Opurahéy cambia la i por la y, que en guaraní es otra vocal, la sexta. Opuraéi se come la h, que nunca es muda."
+      "explain": "Canta es opurahéi: con o-, porque es Ana, otra persona, y con h, que suena como la jota suave paraguaya. Opurajéi la escribe con j, que es otra letra: suena como la j inglesa de «John». Opurahéy cambia la i por la y, que en guaraní es otra vocal, la sexta. Opuraéi se come la h, que nunca es muda."
     }
   },
   "skill": {

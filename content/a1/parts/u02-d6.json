@@ -24,7 +24,7 @@
     "options": ["Aha", "Aju", "Ou"],
     "answer": 2,
     "why": [
-     "Aha es «voy»: diría adónde va Juan, como Aha kokuépe. Rosa pregunta de dónde viene, con reju, y Juan responde con ese verbo: venir.",
+     "Aha es «voy», el verbo de ir. Rosa pregunta con reju, «venís», y Juan responde con el mismo verbo, venir, y con a-: aju, «vengo».",
      "Moõguipa reju? es «¿de dónde venís?», y Juan responde por él, con a-: aju, «vengo». Aju kokuégui: vengo de la chacra.",
      "Ou es «viene», con o-: sería otra persona. Juan habla de él mismo: a-."
     ]
@@ -82,20 +82,20 @@
    {
     "id": "a1u02d6.d5", "kind": "build", "area": "grammar", "label": "Armá la palabra", "join": "word",
     "before": "(Llueve.)\nRosa: Che sy ", "after": " ko pyhare.",
-    "tiles": ["nd", "o", "u", "i"], "bank": [2, 0, 3, 1],
-    "hint": "Che sy es otra persona: el «no» va delante de o-, y la otra parte del «no» cierra la palabra. Con o-, «venir» es ou.",
+    "tiles": ["nd", "ou", "i"], "bank": [2, 0, 1],
+    "hint": "Che sy es otra persona, y «viene» es ou, entera. El «no» la rodea: nd- delante y -i al final.",
     "full": "(Llueve.)\nRosa: Che sy {nd}oú{i} ko pyhare.",
     "es": "Rosa: Mi mamá no viene esta noche.",
-    "explain": "nd- (no) + o- (ella) + u (venir, con o-: ou) + -i (no) = ndoúi, «no viene». Las dos partes del «no» rodean al verbo, y la -i no se lleva el acento: queda en la u, que ya no es la última vocal, y se escribe ú."
+    "explain": "nd- (no) + ou (viene) + -i (no) = ndoúi, «no viene». Las dos partes del «no» rodean al verbo, como en ndohói. La -i no se lleva el acento: queda en la u de ou, que ya no es la última vocal, y se escribe ú."
    },
    {
     "id": "a1u02d6.d6", "kind": "build", "area": "grammar", "label": "Armá la palabra", "join": "word",
-    "before": "(Ana le pregunta a Luis por Rosa.)\nAna: ", "after": " ou Rosa?",
-    "tiles": ["moõ", "gui", "pa"], "bank": [1, 2, 0],
-    "hint": "Moõ, «dónde», va primero. -pa cierra la palabra que pregunta, como en Mba'éichapa.",
-    "full": "(Ana le pregunta a Luis por Rosa.)\nAna: {Moõguipa} ou Rosa?",
-    "es": "Ana: ¿De dónde viene Rosa?",
-    "explain": "moõ («dónde») + -gui («de») + -pa (pregunta) = Moõguipa, «¿de dónde?». -pa va al final, como en Mba'éichapa: moõpagui no existe. Ni -gui ni -pa se llevan el acento: queda en la õ, y la tilde nasal ya lo marca."
+    "before": "(Ana cuenta dónde está su mamá: en la pieza.)\nAna: Che sy oĩ ", "after": ".",
+    "tiles": ["koty", "pe"], "bank": [1, 0],
+    "hint": "Koty, «pieza», va primero y el sufijo pegado atrás. La última sílaba de koty es oral: ¿-pe o -me? Después fijate dónde queda el acento.",
+    "full": "(Ana cuenta dónde está su mamá: en la pieza.)\nAna: Che sy oĩ {kotýpe}.",
+    "es": "Ana: Mi mamá está en la pieza.",
+    "explain": "koty («pieza») + -pe («en») = kotýpe, «en la pieza». Ty, la última sílaba de koty, es oral: va -pe, no -me. -pe no se lleva el acento: queda en la y de koty, que ya no es la última vocal, y se escribe ý."
    }
   ],
   "exam": [
@@ -129,12 +129,12 @@
   "sound": {
    "focus": "Repaso: j, h, r y las letras dobles",
    "letters": ["j", "h", "r", "mb", "nd"],
-   "note": "Cinco cosas de la semana: la j suena como la y fuerte de «yo»; la h suena, como la jota suave paraguaya; la r es siempre suave, también al principio; mb y nd son una sola letra, en una sola sílaba; y la raíz guarda su acento cuando se le pega -pe, -gui o -i, y por eso se escribe la tilde: kotýpe, ndoúi. Comparamos palabras: no son pares mínimos.",
+   "note": "Cuatro cosas de la semana: la j suena como la y fuerte de «yo»; la h suena, como la jota suave paraguaya; la r es siempre suave, también al principio; y mb y nd son una sola letra, en una sola sílaba, incluso al principio de la palabra. Comparamos palabras: no son pares mínimos. La tilde con sufijo, kotýpe o ndaikuaái, la repasás en las palabras.",
    "pairs": [
     ["aha", "voy", "aju", "vengo"],
     ["ru", "padre", "vúrro", "burro"],
     ["amba'apo", "trabajo", "ahendu", "escucho"],
-    ["koty", "pieza", "kotýpe", "en la pieza"]
+    ["mbarakaja", "gato", "ndaipóri", "no hay"]
    ]
   },
   "words": [
@@ -150,7 +150,7 @@
   "spell": ["nanee", "kotype", "itauguagui", "ndaikuaai"],
   "check": {
    "id": "a1u02d6.k1", "kind": "choice", "area": "vocab", "label": "Cómo se escribe",
-   "q": "Luis escucha una canción y dice: «_Escucho_.» ¿Cómo se escribe en guaraní?",
+   "q": "Ana le pregunta a Luis si oye la música. Luis: «_Escucho_.» ¿Cómo se escribe en guaraní?",
    "options": ["ajendu", "ahendu", "aendu", "ahendy"],
    "answer": 2,
    "explain": "Escucho es ahendu: a-, «yo», y hendu, «oír». La h suena como la jota suave paraguaya, pero se escribe h: con j sería otra letra, la y fuerte de «yo». Aendu se come la h, que nunca es muda. Y ahendy cambia la u por la y, la sexta vocal: hendy es otra palabra, «arder»."

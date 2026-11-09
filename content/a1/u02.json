@@ -13,7 +13,7 @@
       "gloss": "yo · vos · él, ella",
       "connect": [
        {
-        "pos": "Al principio del verbo, pegado a la raíz",
+        "pos": "Al principio del verbo, pegado a la raíz: guata, «caminar»",
         "rule": "{a}guata · {re}guata · {o}guata"
        },
        {
@@ -222,14 +222,14 @@
        }
       ],
       "watch": {
-       "note": "Ir y venir son irregulares. La raíz de «ir» es ha solo con a-: aha. Con re- y o- es ho: reho, oho. Y «viene» es ou: oju no existe.",
+       "note": "Ir y venir son irregulares. Con a-, la raíz de «ir» es ha: aha. Con re- y o- es ho: reho, oho. Y «viene» es ou: oju no existe.",
        "bad": "Ha'e oju.",
        "good": "Ha'e ou."
       }
      }
     ],
     "compare": {
-     "intro": "Tres personas en un verbo: el prefijo cambia y la raíz queda. En «ir», hasta la raíz cambia.",
+     "intro": "Tres personas en un verbo: el prefijo cambia y la raíz queda, salvo en «ir», donde hasta la raíz cambia.",
      "forms": [
       {
        "form": "a-",
@@ -258,7 +258,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "Luis: Mávapa ^ou^ ko ka'aru?\nAna: (   ) che sy.",
+      "q": "Rosa: Mávapa ^ou^ ko pyhare?\nAna: (   ) che ru.",
       "options": [
        "Aju",
        "Reju",
@@ -266,9 +266,9 @@
       ],
       "answer": 3,
       "why": [
-       "Aju es «vengo», con a-: Ana hablaría de ella misma, y habla de su mamá.",
-       "Reju es «venís», con re-: el que viene sería Luis, y Ana habla de su mamá.",
-       "Ana habla de su mamá, otra persona: ou, «viene». Ou che sy es «viene mi mamá»."
+       "Aju es «vengo», con a-: Ana hablaría de ella misma, y habla de su papá.",
+       "Reju es «venís», con re-: la que viene sería Rosa, y Ana habla de su papá.",
+       "Ana habla de su papá, otra persona: ou, «viene». Ou che ru es «viene mi papá»."
       ]
      }
     },
@@ -298,7 +298,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "Ana: (   ) ^remba'apo^ heta, Luis.",
+      "q": "Ana: (   ) ^remba'apo^ [heta|mucho], Luis.",
       "options": [
        "Che",
        "Nde",
@@ -327,7 +327,7 @@
       ],
       "answer": 1,
       "why": [
-       "Luis pregunta con re-, «vos», y Ana responde por ella, con a-. Con a-, la raíz de «ir» es ha: aha, «voy».",
+       "Luis pregunta con re-, «vos», y Ana responde por ella misma, con a-. Con a-, la raíz de «ir» es ha: aha, «voy».",
        "aho no existe: ho es la raíz de «ir» con re- y con o-, nunca con a-.",
        "reho es «vas», con re-: es lo que pregunta Luis. Ana responde por ella misma.",
        "oho es «va», con o-: sería otra persona, no Ana."
@@ -348,7 +348,7 @@
       "answer": 4,
       "why": [
        "aha es «voy», con a-: Rosa hablaría de ella misma, y habla de su papá.",
-       "oha no existe: con o-, la raíz de «ir» es ho. Ha va solo con a-: aha.",
+       "oha no existe: con o-, la raíz de «ir» es ho. Con a- es ha: aha.",
        "reho es «vas», con re-: Rosa le hablaría a vos. Ella habla de su papá, otra persona.",
        "Che ru, «mi papá», es otra persona: o- + ho = oho, «va». Mi papá va esta tarde, y mi mamá viene esta noche."
       ]
@@ -406,7 +406,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Qué significa",
-      "q": "Ana: _Che apurahéi_ ko pyhare.",
+      "q": "Ana: _Che apurahéi ko pyhare_.",
       "options": [
        "Vos cantás esta noche.",
        "Yo canto esta noche.",
@@ -449,7 +449,7 @@
        2,
        0
       ],
-      "full": "(Ana invita a Luis.)\nAna: {Re}jú{pa} ko ka'aru, Luis?",
+      "full": "(Ana invita a Luis.)\nAna: Rejúpa ko ka'aru, Luis?",
       "es": "Ana: ¿Venís esta tarde, Luis?",
       "explain": "re- (vos) va primero: Ana le habla a Luis. Después la raíz ju, «venir», y al final -pa, que hace la pregunta: rejúpa, «¿venís?». La -pa no se lleva el acento: queda en la u, que ya no es la última vocal, y se escribe ú."
      }
@@ -464,7 +464,7 @@
       "j",
       "h"
      ],
-     "note": "La j guaraní suena como la y de «yo» dicha con fuerza, nunca como la jota castellana: ajapo, ajeroky, jagua. El sonido de la jota suave paraguaya, un soplo, se escribe h: aha, ahendu, heta. La h nunca es muda. Entre j y h no hay pares mínimos seguros: comparamos palabras.",
+     "note": "La j guaraní suena como la y de «yo» en boca de un paraguayo, o la j inglesa de «John»: nunca la jota castellana. La jota suave paraguaya, un soplo, se escribe h y siempre suena: aha, ahendu, heta. Acá no usamos pares mínimos: comparamos palabras.",
      "pairs": [
       [
        "ajapo",
@@ -501,7 +501,7 @@
         "hacer"
        ]
       ],
-      "note": "La j suena como la y de «yo» dicha con fuerza, nunca como la jota."
+      "note": "La j suena como la y de «yo» en boca de un paraguayo, o la j inglesa de «John»: nunca la jota."
      },
      {
       "id": "ajeroky",
@@ -602,7 +602,7 @@
      {
       "id": "akaru",
       "gn": "akaru",
-      "es": "como",
+      "es": "como (de comer)",
       "parts": [
        [
         "a-",
@@ -620,7 +620,7 @@
      "ajeroky",
      "ahendu",
      "apurahei",
-     "ambaapo"
+     "ajapo"
     ],
     "check": {
      "id": "a1u02d1.k1",
@@ -635,7 +635,7 @@
       "opuraéi"
      ],
      "answer": 2,
-     "explain": "Canta es opurahéi: con o-, porque es Ana, otra persona, y con h, que suena como la jota suave paraguaya. Opurajéi la escribe con j, que es otra letra, la y fuerte de «yo». Opurahéy cambia la i por la y, que en guaraní es otra vocal, la sexta. Opuraéi se come la h, que nunca es muda."
+     "explain": "Canta es opurahéi: con o-, porque es Ana, otra persona, y con h, que suena como la jota suave paraguaya. Opurajéi la escribe con j, que es otra letra: suena como la j inglesa de «John». Opurahéy cambia la i por la y, que en guaraní es otra vocal, la sexta. Opuraéi se come la h, que nunca es muda."
     }
    },
    "skill": {
@@ -729,7 +729,7 @@
         "rule": "Ñande {ja}karu."
        },
        {
-        "pos": "Si la raíz es nasal (lleva ñ, m, n, mb, nd, ng o una vocal con ~), ja- se vuelve ña-",
+        "pos": "Si la raíz es nasal (lleva ñ, m, n, mb, nd, ng, nt o una vocal con ~), ja- se vuelve ña-",
         "rule": "{ña}ñe'ẽ · {ña}mba'apo · {ña}hendu"
        },
        {
@@ -801,9 +801,13 @@
         ]
        },
        {
-        "gn": "{Ro}ju ha {ro}ho.",
-        "es": "Venimos y vamos (sin vos).",
+        "gn": "Ore {ro}ju ko ka'aru ha {ro}ho ko pyhare.",
+        "es": "Venimos esta tarde y nos vamos esta noche (sin vos).",
         "parts": [
+         [
+          "ore",
+          "nosotros, sin vos"
+         ],
          [
           "ro-",
           "nosotros (sin vos)"
@@ -813,12 +817,20 @@
           "venir"
          ],
          [
+          "ko ka'aru",
+          "esta tarde"
+         ],
+         [
           "ha",
           "y"
          ],
          [
           "ho",
           "ir"
+         ],
+         [
+          "ko pyhare",
+          "esta noche"
          ]
         ]
        }
@@ -836,7 +848,7 @@
       "connect": [
        {
         "pos": "pe- es el prefijo de peẽ, «ustedes»; no cambia ante una raíz nasal",
-        "rule": "Peẽ {pe}karu · {pe}ñe'ẽ"
+        "rule": "Peẽ {pe}karu · {pe}hendu"
        },
        {
         "pos": "Ellos y ellas llevan o-, igual que él o ella: el pronombre o la situación dice que son varios",
@@ -941,7 +953,7 @@
      }
     ],
     "compare": {
-     "intro": "Dos «nosotros» y un «ustedes» que el castellano no separa igual: fijate si el que escucha come o no.",
+     "intro": "Dos «nosotros» que el castellano no separa, y el «ustedes»: fijate si el que escucha come o no.",
      "forms": [
       {
        "form": "ja-",
@@ -1071,22 +1083,20 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Ana les pregunta a Luis y a Rosa.)\nAna: ",
-      "after": " ko pyhare?",
+      "before": "(Ana les habla a Luis y a Rosa.)\nAna: Peẽ ",
+      "after": " ko ka'aru.",
       "tiles": [
        "pe",
-       "jeroky",
-       "pa"
+       "karu"
       ],
       "bank": [
-       2,
-       0,
-       1
+       1,
+       0
       ],
-      "hint": "Pe- es el prefijo: va primero. -pa cierra la pregunta. Después fijate dónde queda el acento.",
-      "full": "(Ana les pregunta a Luis y a Rosa.)\nAna: {Pe}jeroký{pa} ko pyhare?",
-      "es": "(Ana les pregunta a Luis y a Rosa.)\nAna: ¿Bailan ustedes esta noche?",
-      "explain": "pe- («ustedes») + jeroky («bailar») + -pa (pregunta) = pejerokýpa. La -pa no se lleva el acento: queda en la y de jeroky. Como esa y ya no es la última vocal, se escribe con tilde, como en mboýpa."
+      "hint": "Pe- es el prefijo de peẽ, «ustedes»: va primero, pegado a la raíz.",
+      "full": "(Ana les habla a Luis y a Rosa.)\nAna: Peẽ {pe}karu ko ka'aru.",
+      "es": "(Ana les habla a Luis y a Rosa.)\nAna: Ustedes comen esta tarde.",
+      "explain": "pe- («ustedes») + karu («comer») = pekaru: el prefijo va primero, pegado a la raíz. Peẽ pekaru ko ka'aru: ustedes comen esta tarde. El acento queda en la u final, así que no se escribe tilde."
      },
      {
       "id": "a1u02d2.d6",
@@ -1094,22 +1104,20 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Ana le pregunta a Luis.)\nAna: ",
-      "after": " guaraníme?",
+      "before": "(Ana invita a Luis.)\nAna: ",
+      "after": " guaraníme!",
       "tiles": [
        "ña",
-       "ñe'ẽ",
-       "pa"
+       "ñe'ẽ"
       ],
       "bank": [
        1,
-       2,
        0
       ],
-      "hint": "ñe'ẽ es nasal: ¿qué prefijo lleva el «nosotros con vos»? -pa va al final.",
-      "full": "(Ana le pregunta a Luis.)\nAna: {Ña}ñe'ẽ{pa} guaraníme?",
-      "es": "(Ana le pregunta a Luis.)\nAna: ¿Hablamos en guaraní, vos y yo?",
-      "explain": "ña- («nosotros, con vos»: ñe'ẽ es nasal, así que no va ja-) + ñe'ẽ («hablar») + -pa (pregunta) = ñañe'ẽpa. El acento sigue en la ẽ, y la tilde nasal ya lo marca: no se escribe otro acento."
+      "hint": "ñe'ẽ es nasal: ¿qué prefijo lleva el «nosotros con vos»? Va primero, pegado a la raíz.",
+      "full": "(Ana invita a Luis.)\nAna: {Ña}ñe'ẽ guaraníme!",
+      "es": "(Ana invita a Luis.)\nAna: ¡Hablemos en guaraní!",
+      "explain": "ña- («nosotros, con vos») + ñe'ẽ («hablar») = ñañe'ẽ: como ñe'ẽ es nasal, no va ja-. Ñañe'ẽ es «hablamos» y también, como invitación, «¡hablemos!», igual que Jaha! o Jakaru!. El acento está en la ẽ, y la tilde nasal ya lo marca: no se escribe otro acento."
      }
     ],
     "exam": [
@@ -1133,7 +1141,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Ana le habla a su abuela de ella y de Luis.)\nAna: (   ) ko ka'aru, ña Ramona.",
+      "q": "(Ana y Luis van esta tarde a la casa de la abuela Ramona. Ana la llama y le avisa.)\nAna: (   ) ko ka'aru, ña Ramona.",
       "options": [
        "Aju",
        "Roju",
@@ -1141,7 +1149,7 @@
        "Ou"
       ],
       "answer": 2,
-      "explain": "Ana habla de ella y de Luis, y la abuela, que la escucha, no está en el grupo: ore, con ro-. Roju ko ka'aru: venimos esta tarde. Aju sería «vengo», Ana sola; peju, «ustedes vienen»; ou, «viene», otra persona."
+      "explain": "Ana habla de ella y de Luis, los que van, y la abuela, que la escucha, no está en el grupo: ore, con ro-. Roju ko ka'aru: venimos esta tarde. Aju sería «vengo», Ana sola, y Luis también va; peju, «ustedes vienen», como si la abuela viniera; ou, «viene», otra persona sola, sin Ana."
      },
      {
       "id": "a1u02d2.e3",
@@ -1168,7 +1176,7 @@
    "words": {
     "gn": "Jaha!",
     "es": "Domingo en familia",
-    "intro": "Domingo en la casa de la abuela Ramona, en Caacupé. Hay sopa paraguaya en el tatakua y después, baile. Tocá cada palabra: todas empiezan con el prefijo que dice quiénes.",
+    "intro": "Domingo en lo de la abuela Ramona, en Caacupé: sopa paraguaya del tatakua, el horno de barro, y después, baile. Tocá cada palabra: cada una empieza con el prefijo que dice quiénes.",
     "sound": {
      "focus": "La r, siempre suave",
      "letters": [
@@ -1184,8 +1192,8 @@
        "burro"
       ],
       [
-       "réra",
-       "nombre",
+       "nde réra",
+       "tu nombre",
        "karréta",
        "carreta"
       ],
@@ -1354,7 +1362,7 @@
     "es": "Un mensaje al grupo",
     "ask": "¿Quiénes comen esta tarde?",
     "seconds": 60,
-    "passage": "Mba'éichapa! Ko ka'aru ^jakaru^ ha ^jajeroky^. Oĩ chipa ha so'o. ^Peju^!\nAna",
+    "passage": "Mba'éichapa? Ko ka'aru ^jakaru^ ha ^jajeroky^. Oĩ chipa ha so'o. ^Peju^!\nAna",
     "strategy": "Mirá el prefijo del verbo: ja- incluye a los que leen el mensaje; ro- los dejaría afuera.",
     "item": {
      "id": "a1u02d2.r1",
@@ -1521,7 +1529,7 @@
         "rule": "tetã → tetã{me} · [ñe'ẽ|lengua] → ñe'ẽ{me}"
        },
        {
-        "pos": "Si la última sílaba es oral, va -pe aunque antes haya ñ o mb",
+        "pos": "Si la última sílaba es oral, va -pe aunque antes haya ñ o mb: -pe/-me solo miran la última sílaba, no toda la raíz como ña-",
         "rule": "mbo'ehao → mbo'ehaó{pe} · Ñemby → Ñembý{pe}"
        }
       ],
@@ -1584,7 +1592,7 @@
          ],
          [
           "Ñemby",
-          "Ñemby (un pueblo)"
+          "Ñemby (una ciudad cerca de Asunción)"
          ],
          [
           "-pe",
@@ -1665,7 +1673,7 @@
       },
       {
        "form": "-gua",
-       "tag": "de (origen) · unidad 1",
+       "tag": "de (origen) · unidad 1 · -gua sí se lleva el acento",
        "mark": "dot",
        "gn": "Che Paraguai{gua}.",
        "es": "Soy de Paraguay."
@@ -1745,9 +1753,9 @@
       ],
       "answer": 2,
       "why": [
-       "Ñemby tiene ñ y mb, pero la última sílaba es mby: mb es una letra distinta de m, y la y que la sigue es oral. Tras sílaba oral va -pe.",
+       "Ñemby tiene ñ y mb, pero la última sílaba es mby: mb es una letra distinta de m, y la y que la sigue es oral. Tras sílaba oral va -pe. El día 2, con ja-/ña-, una mb en la raíz ya pedía ña- (ñamba'apo): los prefijos miran toda la raíz; -pe/-me, solo la última sílaba.",
        "Mirá la última sílaba: mby. Su vocal es oral, así que va -pe, y la y, que ya no es la última vocal, lleva tilde: Ñembýpe, «a Ñemby».",
-       "Ñemby solo es el nombre del pueblo. Para «a Ñemby» se le pega -pe.",
+       "Ñemby solo es el nombre de la ciudad. Para «a Ñemby» se le pega -pe.",
        "Ka'akupépe es «a Caacupé», y Luis va a Ñemby."
       ]
      },
@@ -1820,7 +1828,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Qué significa",
-      "q": "Ana: Che ru _omba'apo ñúme_.",
+      "q": "Rosa: Che ru _omba'apo ñúme_.",
       "options": [
        "Mi papá trabaja en el campo.",
        "Mi papá va al campo.",
@@ -1843,7 +1851,7 @@
        "Ka'akupépe"
       ],
       "answer": 4,
-      "explain": "Ka'akupe termina en pe, una sílaba oral: va -pe, y el acento queda en la e de Ka'akupe, que ya no es la última vocal: Ka'akupépe, «en Caacupé». -me va solo tras sílaba nasal, Ka'akupe solo es el nombre del pueblo, sin «en», e Itauguápe es «en Itauguá», otro pueblo."
+      "explain": "Ka'akupe termina en pe, una sílaba oral: va -pe, y el acento queda en la e de Ka'akupe, que ya no es la última vocal: Ka'akupépe, «en Caacupé». -me va solo tras sílaba nasal, Ka'akupe solo es el nombre de la ciudad, sin «en», e Itauguápe es «en Itauguá», otra ciudad."
      },
      {
       "id": "a1u02d3.e3",
@@ -1881,7 +1889,7 @@
       "ú",
       "ý"
      ],
-     "note": "-pe y -me no se llevan el acento: la raíz lo guarda. Si esa vocal ya no es la última, se escribe la tilde: koty → kotýpe, ka'aguy → ka'aguýpe. Sobre una vocal nasal no se agrega tilde: tetã → tetãme. En guaraní no hay pares mínimos seguros de acento: comparamos cada palabra sola y con su sufijo.",
+     "note": "-pe y -me no se llevan el acento: la raíz lo guarda y, si esa vocal ya no es la última, se escribe la tilde: koty → kotýpe, ka'aguy → ka'aguýpe. Sobre una vocal con ~ no se agrega tilde (tetã → tetãme); si la vocal es nasal solo por la ñ, la m o la n de al lado, no lleva ~ y sí puede llevar tilde: ñu → ñúme. Los pares mínimos de acento son raros en guaraní: acá comparamos cada palabra sola y con su sufijo.",
      "pairs": [
       [
        "óga",
@@ -2004,7 +2012,7 @@
         "en, a"
        ]
       ],
-      "note": "Dos veces la y, la sexta vocal, y la última con tilde."
+      "note": "Tres veces la y, la sexta vocal, y la última con tilde."
      },
      {
       "id": "tetame",
@@ -2026,7 +2034,7 @@
       "id": "koape",
       "gn": "ko'ápe",
       "es": "aquí, acá",
-      "note": "Termina en -pe, como los lugares: «en este lugar». Se escribe con puso y con tilde en la á: ko-'á-pe."
+      "note": "Termina en -pe, como los lugares. Se escribe con puso y con tilde en la á: ko-'á-pe."
      }
     ],
     "spell": [
@@ -2117,26 +2125,30 @@
      {
       "id": "a1u02d4.p1",
       "form": "-gui",
-      "gloss": "de, desde (el lugar de donde se viene)",
+      "gloss": "de, desde (el lugar de donde se viene o se sale)",
       "connect": [
        {
         "pos": "Después del lugar, pegado, como -pe",
         "rule": "Itaugua → Itauguá{gui} · Paraguay → Paraguaý{gui}"
        },
        {
-        "pos": "Con venir (ou) y con salir (osẽ)",
+        "pos": "Con venir (ou) y con salir (osẽ: o- + sẽ, «salir»)",
         "rule": "Ou Paraguaý{gui} · Osẽ tatakuá{gui}"
        },
        {
-        "pos": "No cambia tras una sílaba nasal y no se lleva el acento: la raíz escribe su tilde",
+        "pos": "No cambia tras una sílaba nasal y no se lleva el acento: el acento queda en la raíz, que lleva tilde solo si hace falta",
         "rule": "tetã{gui} · mbo'ehaó{gui}"
        }
       ],
       "examples": [
        {
-        "gn": "Aju Itakuruví{gui}.",
+        "gn": "Che aju Itakuruví{gui}.",
         "es": "Vengo de Itacurubí.",
         "parts": [
+         [
+          "che",
+          "yo"
+         ],
          [
           "a-",
           "yo"
@@ -2296,9 +2308,13 @@
         ]
        },
        {
-        "gn": "Rosa: {Moõguipa} ou ko chipa?\nAna: Tatakuá{gui}.",
-        "es": "Rosa: ¿De dónde viene este chipá?\nAna: Del horno de barro.",
+        "gn": "Rosa: {Moõguipa} osẽ ko chipa?\nAna: Tatakuá{gui}.",
+        "es": "Rosa: ¿De dónde sale este chipá?\nAna: Del horno de barro.",
         "parts": [
+         [
+          "osẽ",
+          "sale"
+         ],
          [
           "ko",
           "este"
@@ -2318,8 +2334,8 @@
         ]
        },
        {
-        "gn": "Ana: {Moõguipa} peju?\nLuis: Roju Ka'akupé{gui}.",
-        "es": "Ana: ¿De dónde vienen ustedes?\nLuis: Venimos (sin vos) de Caacupé.",
+        "gn": "Ana: {Moõguipa} peju?\nLuis: Roju mbo'ehaó{gui}.",
+        "es": "Ana: ¿De dónde vienen ustedes?\nLuis: Venimos (sin vos) de la escuela.",
         "parts": [
          [
           "peju",
@@ -2330,8 +2346,8 @@
           "venimos (sin vos)"
          ],
          [
-          "Ka'akupe",
-          "Caacupé"
+          "mbo'ehao",
+          "escuela"
          ],
          [
           "-gui",
@@ -2407,7 +2423,7 @@
       "answer": 4,
       "why": [
        "-pe es «a» o «en»: Aha Paraguaýpe, «voy a Asunción». Rosa viene de ahí: -gui.",
-       "-gui no va delante ni separado, como el «de» castellano: va pegado al final del lugar, Paraguaýgui.",
+       "A diferencia del «de» castellano, -gui no va delante ni separado: se pega al final del lugar, Paraguaýgui.",
        "Paraguay solo es el nombre: Asunción. Para decir «de Asunción» hay que pegarle -gui atrás.",
        "Rosa viene de Asunción: el lugar lleva -gui, pegado atrás. Paraguay lleva el acento en la y final; como -gui no se lo lleva, se escribe ý: Paraguaýgui."
       ]
@@ -2457,19 +2473,19 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "Luis: ^Moõguipa^ ou ko chipa?\nAna: (   )",
+      "q": "Luis: ^Moõguipa^ osẽ ko chipa?\nAna: (   )",
       "options": [
        "Tatakuápe.",
        "Tatakuágui.",
-       "Tatakua.",
+       "Tatakuáme.",
        "Gui tatakua."
       ],
       "answer": 2,
       "why": [
-       "Tatakuápe es «en el horno», con -pe: dice dónde está, no de dónde viene.",
-       "Luis pregunta de dónde viene el chipá, con -gui, y Ana responde con -gui: Tatakuágui, «del horno de barro».",
-       "Tatakua solo es «horno de barro», el nombre. Le falta el «de»: -gui, pegado atrás.",
-       "-gui no va delante ni separado, como el «de» castellano: se pega al final del lugar, tatakuágui."
+       "Tatakuápe es «en el horno», con -pe: dice dónde está, no de dónde sale.",
+       "Luis pregunta de dónde sale el chipá, con -gui, y Ana responde con -gui: Tatakuágui, «del horno de barro».",
+       "-me es la forma de -pe tras una sílaba nasal, y kua, la última sílaba de tatakua, es oral. Además diría «en»; el chipá sale de ahí: -gui, que no cambia nunca.",
+       "A diferencia del «de» castellano, -gui no va delante ni separado: se pega al final del lugar, tatakuágui."
       ]
      },
      {
@@ -2554,7 +2570,7 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Rosa le pregunta a Ana por su mamá.)\nRosa: ",
+      "before": "(Rosa quiere saber de dónde viene la mamá de Ana.)\nRosa: ",
       "after": " ou nde sy?",
       "tiles": [
        "moõ",
@@ -2566,7 +2582,7 @@
        2,
        0
       ],
-      "full": "(Rosa le pregunta a Ana por su mamá.)\nRosa: {Moõguipa} ou nde sy?",
+      "full": "(Rosa quiere saber de dónde viene la mamá de Ana.)\nRosa: {Moõguipa} ou nde sy?",
       "es": "Rosa: ¿De dónde viene tu mamá?",
       "explain": "moõ («dónde») va primero: es la palabra que pregunta. Después -gui («de»), y al final -pa, que cierra la pregunta, como en Mba'éichapa: Moõguipa, «¿de dónde?». Con ou nde sy, «viene tu mamá», queda «¿de dónde viene tu mamá?»."
      }
@@ -2575,7 +2591,7 @@
    "words": {
     "gn": "Moõguipa reju?",
     "es": "¿De dónde venís? En la terminal",
-    "intro": "En la terminal de Asunción llega gente de todas partes. Tocá cada palabra: casi todas son lugares de donde se viene, ya con -gui.",
+    "intro": "En la terminal de Asunción llega gente de todas partes. Tocá cada palabra: los lugares ya llevan -gui, «de».",
     "sound": {
      "focus": "La armonía nasal: ña-, -me, n-",
      "letters": [
@@ -2585,7 +2601,7 @@
       "m",
       "n"
      ],
-     "note": "Una raíz nasal (con ã ẽ ĩ õ ũ ỹ, o con m, n, ñ, mb, nd, ng, nt) contagia lo que se le pega: ja- se vuelve ña- (ñañe'ẽ, ñamba'apo) y, en el día 5, nd- se vuelve n-. Los sufijos miran solo la última sílaba: tetãme, pero Ñembýpe. -gui no cambia nunca: tetãgui. Los dos primeros pares son pares mínimos, oral contra nasal; los otros dos comparan palabras y muestran el contagio.",
+     "note": "Una raíz nasal (vocal con ~, o m, n, ñ, mb, nd, ng, nt) contagia el prefijo: ja- se vuelve ña- (ñañe'ẽ) y, mañana, nd- se vuelve n- (nañe'ẽi, «no hablo»). Los sufijos miran solo la última sílaba: tetãme, pero Ñembýpe; -gui no cambia: tetãgui. Los dos primeros pares son mínimos, oral contra nasal; los otros dos muestran el contagio.",
      "pairs": [
       [
        "tupa",
@@ -2655,20 +2671,20 @@
       "note": "En guaraní, Paraguay (con y, acento al final) es Asunción. El país es Paraguái, con ái."
      },
      {
-      "id": "kaakupegui",
-      "gn": "Ka'akupégui",
-      "es": "desde Caacupé",
+      "id": "ose",
+      "gn": "osẽ",
+      "es": "sale",
       "parts": [
        [
-        "Ka'akupe",
-        "Caacupé"
+        "o-",
+        "él, ella"
        ],
        [
-        "-gui",
-        "de, desde"
+        "sẽ",
+        "salir"
        ]
       ],
-      "note": "Ka'akupe lleva puso: ka-'a-ku-pe. Es el pueblo de la Virgen de Caacupé, patrona del Paraguay."
+      "note": "Palabra nueva: sẽ, «salir», con o-, el prefijo del día 1. Con -gui dice de dónde sale algo: Chipa osẽ tatakuágui."
      },
      {
       "id": "itauguagui",
@@ -2722,7 +2738,7 @@
       "id": "nanduti",
       "gn": "ñanduti",
       "es": "ñandutí (encaje)",
-      "note": "Quiere decir «telaraña». Es el encaje de Itauguá, redondo como un sol. Sin tilde: el acento va en la última vocal."
+      "note": "Quiere decir «telaraña». Es el encaje de Itauguá, redondo como un sol. Como terere, no lleva tilde aguda: el acento va en la última vocal."
      },
      {
       "id": "kokuegui",
@@ -2742,10 +2758,10 @@
      }
     ],
     "spell": [
-     "kaakupegui",
-     "itauguagui",
      "paraguaygui",
-     "nanduti"
+     "itauguagui",
+     "itakuruvigui",
+     "tatakuagui"
     ],
     "check": {
      "id": "a1u02d4.k1",
@@ -2768,8 +2784,8 @@
     "es": "Un chat en la terminal",
     "ask": "¿De dónde viene Ana?",
     "seconds": 60,
-    "passage": "Rosa: Mba'éichapa, Ana? ^Moõguipa reju?^\nAna: ^Aju Ka'akupégui^, che jarýi rógagui. Ha nde?\nRosa: Che aju Paraguaýgui. Aha Itauguápe.\nAna: Jajotopáta ko ka'aru.",
-    "strategy": "Buscá -gui después del nombre de un lugar: ahí está el «de dónde». -pe dice adónde va.",
+    "passage": "Rosa: Mba'éichapa, Ana? ^Moõguipa reju?^\nAna: ^Aju Itauguágui.^ Aha Ka'akupépe, che jarýi rógape. Ha nde?\nRosa: Che aju Paraguaýgui. Aha Ñembýpe.\nAna: Jajotopáta, Rosa.",
+    "strategy": "Buscá -gui después del nombre de un lugar: ahí está el «de dónde». -pe dice adónde va. Y fijate quién habla.",
     "item": {
      "id": "a1u02d4.r1",
      "kind": "choice",
@@ -2778,24 +2794,24 @@
      "q": "¿De dónde viene Ana?",
      "options": [
       "De Asunción.",
-      "De Itauguá.",
       "De Caacupé.",
-      "De la escuela."
+      "De Itauguá.",
+      "De Ñemby."
      ],
      "short": [
       "Asunción",
-      "Itauguá",
       "Caacupé",
-      "La escuela"
+      "Itauguá",
+      "Ñemby"
      ],
      "answer": 3,
      "why": [
       "Paraguaýgui, «de Asunción», lo dice Rosa de ella misma: Che aju Paraguaýgui.",
-      "Itauguápe lleva -pe: es adónde va Rosa, no de dónde viene Ana.",
-      "Ana responde Aju Ka'akupégui, che jarýi rógagui: viene de Caacupé, de la casa de su abuela. Las dos palabras terminan en -gui.",
-      "Nadie habla de la escuela: mbo'ehao no aparece en el chat."
+      "Ka'akupépe lleva -pe: es adónde va Ana, a la casa de su abuela, no de dónde viene.",
+      "Ana responde Aju Itauguágui: viene de Itauguá. El lugar lleva -gui, «de».",
+      "Ñembýpe lleva -pe, y lo dice Rosa: es adónde va ella."
      ],
-     "explain": "A Moõguipa reju? Ana responde Aju Ka'akupégui, che jarýi rógagui: -gui marca de dónde viene, Caacupé, la casa de su abuela. Paraguaýgui es de donde viene Rosa, e Itauguápe, con -pe, es adónde va Rosa."
+     "explain": "A Moõguipa reju? Ana responde Aju Itauguágui: -gui marca de dónde viene, Itauguá. Ka'akupépe y Ñembýpe llevan -pe, adónde va cada una, y Paraguaýgui es de donde viene Rosa."
     }
    }
   },
@@ -2809,7 +2825,7 @@
       "gloss": "no (raíz oral)",
       "connect": [
        {
-        "pos": "nd- delante del prefijo de persona y -i al final: dos partes, una sola palabra",
+        "pos": "nd- delante del prefijo de persona y -i al final: dos partes, una sola palabra. Con vos, delante de re- va nde-: hoy solo lo mirás, no se practica",
         "rule": "{nd}aguatá{i} · {nd}ereguatá{i} · {nd}oguatá{i}"
        },
        {
@@ -2943,12 +2959,12 @@
       "gloss": "no (raíz nasal)",
       "connect": [
        {
-        "pos": "Si la raíz es nasal, nd- se vuelve n-: na-, nere-, no-",
-        "rule": "{n}añe'ẽ{i} · {n}ereñe'ẽ{i} · {n}oñe'ẽ{i}"
+        "pos": "Si la raíz es nasal, nd- se vuelve n-: na-, nere-, no-. Con sẽ, «salir»",
+        "rule": "{n}asẽ{i} · {n}eresẽ{i} · {n}osẽ{i}"
        },
        {
-        "pos": "También con mba'apo, hendu y sẽ, que tienen mb, nd o una vocal nasal",
-        "rule": "{n}amba'apó{i} · {n}ohendú{i} · {n}osẽ{i}"
+        "pos": "También con ñe'ẽ, mba'apo y hendu, que tienen ñ y ẽ, mb o nd",
+        "rule": "{n}añe'ẽ{i} · {n}omba'apó{i} · {n}ohendú{i}"
        },
        {
         "pos": "Sobre una vocal nasal no se agrega tilde: la ~ ya marca el acento",
@@ -3293,12 +3309,12 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Recién empezás con el guaraní.)\nVos: Che ",
-      "after": " guaraníme.",
+      "before": "(Llueve.)\nRosa: Juan ",
+      "after": " kokuépe ko pyhareve.",
       "tiles": [
        "n",
-       "a",
-       "ñe'ẽ",
+       "o",
+       "mba'apo",
        "i"
       ],
       "bank": [
@@ -3307,15 +3323,15 @@
        0,
        2
       ],
-      "full": "(Recién empezás con el guaraní.)\nVos: Che {n}añe'ẽ{i} guaraníme.",
-      "es": "Vos: Yo no hablo guaraní.",
-      "explain": "n- va primero: ñe'ẽ es una raíz nasal, así que la primera parte del «no» es n-, no nd-. Después a- («yo»), la raíz ñe'ẽ («hablar») y, al final, -i: nañe'ẽi, «no hablo». El acento queda en la ẽ, y la tilde nasal ya lo marca."
+      "full": "(Llueve.)\nRosa: Juan {n}omba'apó{i} kokuépe ko pyhareve.",
+      "es": "Rosa: Juan no trabaja en la chacra esta mañana.",
+      "explain": "n- va primero: mba'apo es una raíz nasal, por la mb, así que la primera parte del «no» es n-, no nd-. Después o- (él: Juan), la raíz mba'apo («trabajar») y, al final, -i: nomba'apói, «no trabaja». La -i no se lleva el acento: queda en la última o de mba'apo, que ya no es la última vocal, y se escribe ó."
      }
     ]
    },
    "words": {
     "es": "Un día de lluvia",
-    "intro": "Llueve en Itauguá y nadie sale de la casa de Ana. Tocá cada palabra: mb, nd y nt son una sola letra, con un solo sonido.",
+    "intro": "Llueve en Itauguá y nadie sale de la casa de Ana. Tocá cada palabra: mb, nd, ng y nt son una sola letra, con un solo sonido.",
     "sound": {
      "focus": "Las letras mb, nd, ng, nt",
      "letters": [
@@ -3324,7 +3340,7 @@
       "ng",
       "nt"
      ],
-     "note": "mb, nd, ng y nt son letras del alfabeto: un solo sonido, en una sola sílaba, también al principio de la palabra: mba'e, ndaipóri. Empezá con un zumbido, «mmm» o «nnn», y soltalo en la b o la d, sin poner una e delante: no «embae». ng suena como en «tengo» (angirũ) y nt como en «canto» (mante). No hay pares mínimos seguros: comparamos palabras.",
+     "note": "mb, nd, ng y nt son letras del alfabeto: un solo sonido, en una sola sílaba. mb y nd aparecen también al principio de la palabra: mba'e, ndaipóri. Empezá con un zumbido, «mmm» o «nnn», y soltalo en la b o la d, sin poner una e delante: no «embae». ng y nt van casi siempre dentro de la palabra: ng suena como en «tengo» (angirũ) y nt como en «canto» (mante). No hay pares mínimos seguros: comparamos palabras.",
      "pairs": [
       [
        "mba'eve",
@@ -3427,7 +3443,7 @@
       "id": "ndaipori",
       "gn": "Ndaipóri",
       "es": "No hay",
-      "note": "Es el «no» de oĩ, «hay»: Oĩpa mandi'o? Ndaipóri. Es irregular: termina en -ri, no en -i. Lo vemos mejor en la unidad 7."
+      "note": "Es el «no» de oĩ, «hay»: Oĩpa mandi'o? Ndaipóri. Es una palabra aparte, que no se arma con oĩ, y termina en -ri. Lo vemos mejor en la unidad 7."
      },
      {
       "id": "mbarakaja",
@@ -3600,7 +3616,7 @@
       ],
       "answer": 2,
       "why": [
-       "Aha es «voy»: diría adónde va Juan, como Aha kokuépe. Rosa pregunta de dónde viene, con reju, y Juan responde con ese verbo: venir.",
+       "Aha es «voy», el verbo de ir. Rosa pregunta con reju, «venís», y Juan responde con el mismo verbo, venir, y con a-: aju, «vengo».",
        "Moõguipa reju? es «¿de dónde venís?», y Juan responde por él, con a-: aju, «vengo». Aju kokuégui: vengo de la chacra.",
        "Ou es «viene», con o-: sería otra persona. Juan habla de él mismo: a-."
       ]
@@ -3697,20 +3713,18 @@
       "after": " ko pyhare.",
       "tiles": [
        "nd",
-       "o",
-       "u",
+       "ou",
        "i"
       ],
       "bank": [
        2,
        0,
-       3,
        1
       ],
-      "hint": "Che sy es otra persona: el «no» va delante de o-, y la otra parte del «no» cierra la palabra. Con o-, «venir» es ou.",
+      "hint": "Che sy es otra persona, y «viene» es ou, entera. El «no» la rodea: nd- delante y -i al final.",
       "full": "(Llueve.)\nRosa: Che sy {nd}oú{i} ko pyhare.",
       "es": "Rosa: Mi mamá no viene esta noche.",
-      "explain": "nd- (no) + o- (ella) + u (venir, con o-: ou) + -i (no) = ndoúi, «no viene». Las dos partes del «no» rodean al verbo, y la -i no se lleva el acento: queda en la u, que ya no es la última vocal, y se escribe ú."
+      "explain": "nd- (no) + ou (viene) + -i (no) = ndoúi, «no viene». Las dos partes del «no» rodean al verbo, como en ndohói. La -i no se lleva el acento: queda en la u de ou, que ya no es la última vocal, y se escribe ú."
      },
      {
       "id": "a1u02d6.d6",
@@ -3718,22 +3732,20 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Ana le pregunta a Luis por Rosa.)\nAna: ",
-      "after": " ou Rosa?",
+      "before": "(Ana cuenta dónde está su mamá: en la pieza.)\nAna: Che sy oĩ ",
+      "after": ".",
       "tiles": [
-       "moõ",
-       "gui",
-       "pa"
+       "koty",
+       "pe"
       ],
       "bank": [
        1,
-       2,
        0
       ],
-      "hint": "Moõ, «dónde», va primero. -pa cierra la palabra que pregunta, como en Mba'éichapa.",
-      "full": "(Ana le pregunta a Luis por Rosa.)\nAna: {Moõguipa} ou Rosa?",
-      "es": "Ana: ¿De dónde viene Rosa?",
-      "explain": "moõ («dónde») + -gui («de») + -pa (pregunta) = Moõguipa, «¿de dónde?». -pa va al final, como en Mba'éichapa: moõpagui no existe. Ni -gui ni -pa se llevan el acento: queda en la õ, y la tilde nasal ya lo marca."
+      "hint": "Koty, «pieza», va primero y el sufijo pegado atrás. La última sílaba de koty es oral: ¿-pe o -me? Después fijate dónde queda el acento.",
+      "full": "(Ana cuenta dónde está su mamá: en la pieza.)\nAna: Che sy oĩ {kotýpe}.",
+      "es": "Ana: Mi mamá está en la pieza.",
+      "explain": "koty («pieza») + -pe («en») = kotýpe, «en la pieza». Ty, la última sílaba de koty, es oral: va -pe, no -me. -pe no se lleva el acento: queda en la y de koty, que ya no es la última vocal, y se escribe ý."
      }
     ],
     "exam": [
@@ -3805,7 +3817,7 @@
       "mb",
       "nd"
      ],
-     "note": "Cinco cosas de la semana: la j suena como la y fuerte de «yo»; la h suena, como la jota suave paraguaya; la r es siempre suave, también al principio; mb y nd son una sola letra, en una sola sílaba; y la raíz guarda su acento cuando se le pega -pe, -gui o -i, y por eso se escribe la tilde: kotýpe, ndoúi. Comparamos palabras: no son pares mínimos.",
+     "note": "Cuatro cosas de la semana: la j suena como la y fuerte de «yo»; la h suena, como la jota suave paraguaya; la r es siempre suave, también al principio; y mb y nd son una sola letra, en una sola sílaba, incluso al principio de la palabra. Comparamos palabras: no son pares mínimos. La tilde con sufijo, kotýpe o ndaikuaái, la repasás en las palabras.",
      "pairs": [
       [
        "aha",
@@ -3826,10 +3838,10 @@
        "escucho"
       ],
       [
-       "koty",
-       "pieza",
-       "kotýpe",
-       "en la pieza"
+       "mbarakaja",
+       "gato",
+       "ndaipóri",
+       "no hay"
       ]
      ]
     },
@@ -3972,7 +3984,7 @@
      "kind": "choice",
      "area": "vocab",
      "label": "Cómo se escribe",
-     "q": "Luis escucha una canción y dice: «_Escucho_.» ¿Cómo se escribe en guaraní?",
+     "q": "Ana le pregunta a Luis si oye la música. Luis: «_Escucho_.» ¿Cómo se escribe en guaraní?",
      "options": [
       "ajendu",
       "ahendu",

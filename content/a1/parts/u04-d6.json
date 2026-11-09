@@ -59,7 +59,7 @@
         "options": ["nde", "che", "ne", "ñande"],
         "answer": 3,
         "why": [
-          "Nde es «tu», pero rembireko es una palabra nasal: empieza con mb. Delante de una palabra nasal, nde pierde la d.",
+          "Nde es «tu», pero rembireko es una palabra nasal: tiene mb (re-mbi-re-ko). Delante de una palabra nasal, nde pierde la d: ne rembireko.",
           "Che es «mi»: Luis preguntaría por su propia esposa, y pregunta por la de Juan.",
           "Luis le pregunta a Juan por la esposa de él, «tu esposa». Rembireko tiene mb, una letra nasal, así que nde se vuelve ne: ne rembireko.",
           "Ñande es «nuestro» con vos: sumaría a Luis. Y delante de una palabra nasal sería ñane."
@@ -75,7 +75,7 @@
         "answer": 4,
         "why": [
           "-nguéra va solo tras una sílaba nasal, y ryguasu termina en su, una sílaba oral.",
-          "Riguasukuéra cambia la y por i. Ry-gua-su empieza con la y, la sexta vocal.",
+          "Riguasukuéra cambia la y por i. La primera sílaba de ry-gua-su lleva la y, la sexta vocal.",
           "Ryguasucuéra escribe el plural con c, y la c no es una letra del guaraní: ese sonido se escribe con k, kuéra.",
           "Ryguasu termina en su, sílaba oral: va -kuéra, que se lleva el acento. Ryguasukuéra oĩ korapýpe: las gallinas están en el patio."
         ]
@@ -100,7 +100,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "Luis cuenta ^los chicos^ del patio: son ^cuatro^.\nLuis: Oĩ irundy (   ).",
+        "q": "Luis cuenta ^a los chicos^ del patio: son ^cuatro^.\nLuis: Oĩ irundy (   ).",
         "options": ["mitãnguéra", "mitã", "mitãkuéra", "mitakuéra"],
         "answer": 2,
         "why": [
@@ -183,7 +183,7 @@
     "intro": "El cumpleaños de la abuela, en el patio. Ana presenta a su familia y señala quién es quién. Tocá cada palabra: son las de toda la semana.",
     "sound": {
       "focus": "Repaso: el acento que se mueve y los dígrafos",
-      "letters": ["é", "mb", "ng"],
+      "letters": ["é", "mb", "nd", "ng"],
       "note": "Dos cosas de la semana para repasar. El acento: -kuéra y -nguéra se lo llevan, y la tilde de la raíz desaparece (óga → ogakuéra, túva → tuvakuéra); -pa y -pe no se lo llevan, y por eso aparece la tilde en la raíz (mba'e → Mba'épa, korapy → korapýpe). Los dígrafos mb, nd y ng son una sola letra, en una sola sílaba: mba'e, irundy, mitãnguéra. No hay pares mínimos seguros: son palabras para contrastar, una sola y varias, o con y sin -pa.",
       "pairs": [
         ["óga", "casa", "ogakuéra", "casas"],
@@ -205,7 +205,7 @@
         "gn": "che rembireko",
         "es": "mi esposa",
         "parts": [["che", "mi"], ["rembireko", "esposa (con che, ne)"]],
-        "note": "Sola es hembireko, «su esposa». Es nasal, con mb: con nde se dice ne rembireko."
+        "note": "Sola, la palabra es tembireko, y «su esposa» es hembireko: la h suena. Es nasal, con mb: con nde se dice ne rembireko."
       },
       {
         "id": "tuvakuera",
@@ -225,8 +225,7 @@
         "id": "koa",
         "gn": "ko'ã",
         "es": "estos, estas",
-        "parts": [["ko", "este, esta"], ["-'ã", "varios"]],
-        "note": "El plural de ko, con puso y ã: ko'ã mitã, «estos chicos». El sustantivo queda como está."
+        "note": "El plural de ko, en una sola palabra, con puso y ã: ko'ã mitã, «estos chicos». El sustantivo queda como está."
       },
       {
         "id": "umi",
@@ -263,26 +262,26 @@
   "skill": {
     "kind": "reading",
     "es": "Un mensaje con foto",
-    "ask": "¿Cuántos hijos tiene Rosa?",
+    "ask": "¿Cuántos hijos de Rosa hay en la foto?",
     "seconds": 75,
-    "passage": "Maitei, Juan.\n^Ko'ã mitã che membykuéra: Sofía ha Tomás.^\nPe karai che ramói, héra Pedro. Oguereko ochenta ary.\n^Umi mokõi mitãkuña che angirũ memby.^\nJajotopáta ko ka'aru.\nRosa",
+    "passage": "Maitei, Juan.\n^Ko'ã mitã che membykuéra: Sofía ha Tomás.^\nPe karai che ramói, héra Pedro. Oguereko 80 ary.\n^Umi mokõi mitãkuña che angirũ memby.^\nJajotopáta ko ka'aru.\nRosa",
     "strategy": "Buscá de quién es cada grupo: después de ko'ã mitã y de umi mokõi mitãkuña viene el dueño, che membykuéra o che angirũ memby. Ha, «y», une dos nombres.",
     "item": {
       "id": "a1u04d6.r1",
       "kind": "choice",
       "area": "reading",
       "label": "Buscar el dato",
-      "q": "¿Cuántos hijos tiene Rosa?",
+      "q": "¿Cuántos hijos de Rosa hay en la foto?",
       "options": ["Uno.", "Dos.", "Cuatro.", "No lo dice."],
       "short": ["Uno", "Dos", "Cuatro", "No lo dice"],
       "answer": 2,
       "why": [
         "Un solo hijo sería che memby. Rosa escribe che membykuéra, con -kuéra: más de uno, y da dos nombres.",
-        "Ko'ã mitã che membykuéra: Sofía ha Tomás, «estos chicos son mis hijos: Sofía y Tomás». Son dos.",
-        "Las dos nenas, umi mokõi mitãkuña, son che angirũ memby: las hijas de la amiga de Rosa, no de Rosa.",
-        "Sí lo dice: después de che membykuéra vienen los nombres, Sofía ha Tomás."
+        "Ko'ã mitã che membykuéra: Sofía ha Tomás, «estos chicos son mis hijos: Sofía y Tomás». En la foto hay dos hijos de Rosa.",
+        "En la foto hay cuatro chicos, pero las dos nenas, umi mokõi mitãkuña, son che angirũ memby: las hijas de la amiga de Rosa, no de Rosa.",
+        "Sí lo dice: después de che membykuéra, «mis hijos», vienen los nombres, Sofía ha Tomás."
       ],
-      "explain": "Rosa escribe Ko'ã mitã che membykuéra: Sofía ha Tomás, «estos chicos son mis hijos: Sofía y Tomás». Son dos. Las dos nenas, umi mokõi mitãkuña, son che angirũ memby: las hijas de su amiga."
+      "explain": "Rosa escribe Ko'ã mitã che membykuéra: Sofía ha Tomás, «estos chicos son mis hijos: Sofía y Tomás»: en la foto hay dos hijos de Rosa. Las otras dos, umi mokõi mitãkuña, son che angirũ memby: las hijas de su amiga."
     }
   }
 }

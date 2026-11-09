@@ -62,12 +62,12 @@
             "rule": "mitã → mitã{nguéra} · angirũ → angirũ{nguéra}"
           },
           {
-            "pos": "Última sílaba con m, n o ñ, aunque no lleve ~",
+            "pos": "Última sílaba con m, n o ñ, aunque no lleve ~ (mb, nd y ng son otras letras, y no cuentan)",
             "rule": "kuña → kuña{nguéra} · mitãkuña → mitãkuña{nguéra}"
           },
           {
-            "pos": "Mirá solo la última sílaba: memby empieza con m, pero termina en by, que es oral",
-            "rule": "memby → memby{kuéra}"
+            "pos": "Solo la última sílaba: memby termina en mby, y mb es otra letra, no una m: esa sílaba es oral. Para nde → ne cuenta toda la palabra",
+            "rule": "ne memby → ne memby{kuéra}"
           },
           {
             "pos": "Para «a los niños», -pe va después del plural: ra es sílaba oral",
@@ -91,9 +91,9 @@
             "parts": [["che", "mi, mis"], ["angirũ", "amigo, amiga"], ["-nguéra", "plural tras nasal"], ["Paraguaigua", "de Paraguay"]]
           },
           {
-            "gn": "Mitã{nguéra} ho'u chipa.",
-            "es": "Los niños comen chipá.",
-            "parts": [["mitã", "niño, niña"], ["-nguéra", "plural tras nasal"], ["ho'u", "comen"], ["chipa", "chipá"]]
+            "gn": "Mitã{nguéra} okaru korapýpe.",
+            "es": "Los niños comen en el patio.",
+            "parts": [["mitã", "niño, niña"], ["-nguéra", "plural tras nasal"], ["o-", "ellos"], ["karu", "comer"], ["korapy", "patio"], ["-pe", "en"]]
           }
         ],
         "watch": {
@@ -158,7 +158,7 @@
         "q": "Ana le pregunta a Rosa dónde están ^los hijos de Rosa^: «Ne (   ) moõpa oĩ?»",
         "options": ["membynguéra", "mẽmbykuéra", "membykuéra", "membikuéra"],
         "answer": 3,
-        "why": ["-nguéra va tras una sílaba nasal, y by es oral: la m del principio no cuenta, se mira la última sílaba.", "Mẽmbykuéra agrega una ~ a la e: junto a la m ya suena nasal, y no se marca.", "La última sílaba de memby, by, es oral: va -kuéra, aunque la palabra empiece con m. Ne membykuéra moõpa oĩ?: ¿dónde están tus hijos?", "Membikuéra cambia la y por i. Memby termina en y, la sexta vocal."]
+        "why": ["-nguéra va tras una sílaba nasal, y la última sílaba de memby, mby, es oral: mb es otra letra, no una m. Para el plural se mira solo la última sílaba.", "Mẽmbykuéra agrega una ~ a la e: junto a la m ya suena nasal, y no se marca.", "La última sílaba de memby es mby, y es oral: mb es otra letra, no una m. Va -kuéra. Para nde → ne cuenta toda la palabra (ne memby); para el plural, solo la última sílaba (membykuéra). Ne membykuéra moõpa oĩ?: ¿dónde están tus hijos?", "Membikuéra cambia la y por i. Memby termina en y, la sexta vocal."]
       },
       {
         "id": "a1u04d2.d3",
@@ -220,7 +220,7 @@
         "q": "Ana: _Che membykuéra_ oho mbo'ehaópe.",
         "options": ["Mi hijo va a la escuela.", "Mis hijos van a la escuela.", "Tus hijos van a la escuela.", "Nuestros hijos van a la escuela."],
         "answer": 2,
-        "explain": "Che es «mi», y -kuéra hace el plural: che membykuéra, «mis hijos». Un solo hijo sería che memby, «tus hijos» sería ne membykuéra, y «nuestros» llevaría ñande u ore, no che."
+        "explain": "Che es «mi», y -kuéra hace el plural: che membykuéra, «mis hijos». Un solo hijo sería che memby, «tus hijos» sería ne membykuéra, y «nuestros» llevaría ñane u ore, no che: delante de una palabra nasal como memby, ñande se vuelve ñane, igual que nde se vuelve ne."
       },
       {
         "id": "a1u04d2.e2",
@@ -254,7 +254,7 @@
     "sound": {
       "focus": "El acento se mueve: ogakuéra",
       "letters": ["é"],
-      "note": "Una palabra lleva una sola tilde, y -kuéra se queda con el acento: la tilde de la raíz desaparece (óga → ogakuéra, túva → tuvakuéra). La ~ no es tilde de acento, así que se queda: mitã → mitãnguéra. No hay pares mínimos seguros de acento: son palabras para contrastar, una sola y varias.",
+      "note": "Una palabra lleva una sola tilde de acento, y -kuéra se queda con él: la de la raíz desaparece (óga → ogakuéra, túva → tuvakuéra). La ~ es otra marca: dice que la vocal es nasal, y por eso se queda aunque el acento pase a la é: mitã → mitãnguéra. No hay pares mínimos seguros de acento: son palabras para contrastar, en singular y en plural.",
       "pairs": [
         ["óga", "casa", "ogakuéra", "casas"],
         ["túva", "padre", "tuvakuéra", "padres"],
@@ -309,7 +309,7 @@
         "gn": "mymbakuéra",
         "es": "los animales",
         "parts": [["mymba", "animal"], ["-kuéra", "plural"]],
-        "note": "Mymba empieza con m, pero termina en ba, sílaba oral: por eso -kuéra."
+        "note": "Mymba termina en mba: mb es una sola letra, no una m, y esa sílaba es oral: por eso -kuéra."
       },
       {
         "id": "korapy",
@@ -335,8 +335,8 @@
     "es": "Un aviso de la escuela",
     "ask": "¿Quiénes cantan esta tarde?",
     "seconds": 60,
-    "passage": "Maitei, tuvakuéra.\n^Mitãnguéra opurahéi^ ko ka'aru mbo'ehaópe.\nMbo'eharakuéra oñe'ẽ guaraníme.\nTapeg̃uahẽ porãite.",
-    "strategy": "Buscá quién hace cada cosa: en cada oración, la palabra con -kuéra o -nguéra va primero, y después viene lo que hace.",
+    "passage": "Maitei, sy ha tuvakuéra.\n^Mitãnguéra opurahéi^ ko ka'aru mbo'ehaópe.\nMbo'eharakuéra oñe'ẽ guaraníme.\nTapeg̃uahẽ porãite.",
+    "strategy": "La primera línea saluda y la última da la bienvenida. En las dos del medio, la palabra con -kuéra o -nguéra va primero y después viene lo que hace: buscá opurahéi, «cantan», y mirá qué palabra va delante.",
     "item": {
       "id": "a1u04d2.r1",
       "kind": "choice",
@@ -346,8 +346,8 @@
       "options": ["Los niños.", "Los profesores.", "Los padres.", "Los pájaros."],
       "short": ["Niños", "Profesores", "Padres", "Pájaros"],
       "answer": 1,
-      "why": ["Mitãnguéra opurahéi ko ka'aru: los niños cantan esta tarde. Mitãnguéra es el plural de mitã.", "De los profesores, mbo'eharakuéra, el aviso dice que hablan guaraní (oñe'ẽ guaraníme), no que cantan.", "Tuvakuéra, los padres, son a quienes saluda el aviso: Maitei, tuvakuéra. No cantan.", "Guyrakuéra, los pájaros, no aparece en el aviso."],
-      "explain": "El aviso saluda a los padres (tuvakuéra) y dice: Mitãnguéra opurahéi ko ka'aru mbo'ehaópe, «los niños cantan esta tarde en la escuela». Los profesores hablan guaraní, no cantan."
+      "why": ["Mitãnguéra opurahéi ko ka'aru: los niños cantan esta tarde. Mitãnguéra es el plural de mitã.", "De los profesores, mbo'eharakuéra, el aviso dice que hablan guaraní (oñe'ẽ guaraníme), no que cantan.", "Sy ha tuvakuéra, las madres y los padres, son a quienes saluda el aviso: Maitei, sy ha tuvakuéra. No cantan.", "Guyrakuéra, los pájaros, no aparece en el aviso."],
+      "explain": "El aviso saluda a las madres y a los padres (sy ha tuvakuéra) y dice: Mitãnguéra opurahéi ko ka'aru mbo'ehaópe, «los niños cantan esta tarde en la escuela». Los profesores hablan guaraní, no cantan."
     }
   }
 }
