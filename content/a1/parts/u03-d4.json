@@ -236,7 +236,7 @@
     "sound": {
       "focus": "La g̃: una g con nariz",
       "letters": ["g̃"],
-      "note": "La g̃ es la g suave de «agua» con el aire saliendo también por la nariz. Está en pocas palabras, pero muy usadas: og̃uahẽ, ko'ág̃a, ag̃aite, Tereg̃uahẽ. Los diarios escriben la g sin la ~ (oguahẽ) o pasan la ~ a la vocal (ko'ágã): las dos formas valen, y acá va g̃. No hay pares mínimos: compará la g sin nariz con la g̃ con nariz.",
+      "note": "La g̃ es la g suave de «agua» con el aire saliendo también por la nariz. Está en pocas palabras, pero muy usadas: og̃uahẽ, ko'ág̃a, ag̃aite, Tereg̃uahẽ. Los diarios escriben la g sin la ~ (oguahẽ) o pasan la ~ a la vocal (ko'ágã). Son las mismas palabras; acá las escribimos con g̃. No hay pares mínimos: compará la g sin nariz con la g̃ con nariz.",
       "pairs": [
         ["aguyje", "gracias", "ag̃aite", "enseguida"],
         ["jagua", "perro", "og̃uahẽ", "llega"],
@@ -244,7 +244,7 @@
       ]
     },
     "words": [
-      { "id": "oguahe", "gn": "og̃uahẽ", "es": "llega, llegó", "parts": [["o-", "él, ella"], ["g̃uahẽ", "llegar"]], "note": "Como en Tereg̃uahẽ porãite (unidad 1). Los diarios escriben oguahẽ, sin la ~ en la g: también vale." },
+      { "id": "oguahe", "gn": "og̃uahẽ", "es": "llega, llegó", "parts": [["o-", "él, ella"], ["g̃uahẽ", "llegar"]], "note": "Como en Tereg̃uahẽ porãite (unidad 1). Los diarios escriben oguahẽ, sin la ~ en la g; acá va con g̃." },
       { "id": "koaga", "gn": "ko'ág̃a", "es": "ahora", "note": "Og̃uahẽ ko'ág̃a: llegó ahora. También se ve ko'ágã, con la ~ en la última a." },
       { "id": "agaite", "gn": "ag̃aite", "es": "enseguida, ahora mismo", "parts": [["ag̃a", "luego, pronto"], ["-ite", "muy, mismo"]], "note": "Ag̃aite ag̃uahẽta: enseguida llego. La -ta es la del futuro, como en Jajotopáta." },
       { "id": "anete", "gn": "añete", "es": "cierto, verdad", "note": "Añetépa?: ¿de verdad?" },
@@ -262,7 +262,7 @@
       "q": "Ana escribe que el médico llegó _ahora_. ¿Cómo se escribe en guaraní?",
       "options": ["ko'ág̃a", "koág̃a", "ko'aga", "ko'ãga"],
       "answer": 1,
-      "explain": "Ahora es ko'ág̃a: con puso entre la o y la a, con la tilde en la á, porque el acento no cae en la última vocal, y con la g̃, la g con nariz. Koág̃a perdió el puso y ko'aga no tiene ninguna marca. Ko'ãga pone la ~ en la primera a: ahí va la tilde del acento, y la nariz va después, en la g̃. Los diarios la escriben en la última a, ko'ágã: esa forma también vale."
+      "explain": "Ahora es ko'ág̃a: con puso entre la o y la a, con la tilde en la á, porque el acento no cae en la última vocal, y con la g̃, la g con nariz. Koág̃a perdió el puso y ko'aga no tiene ninguna marca. Ko'ãga pone la ~ en la primera a: ahí va la tilde del acento, y la nariz va después, en la g̃. Los diarios la escriben en la última a: ko'ágã."
     }
   },
   "skill": {
