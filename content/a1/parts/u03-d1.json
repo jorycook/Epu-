@@ -7,9 +7,9 @@
         "form": "che- · nde-/ne- + estado",
         "gloss": "estoy…, tengo… (sin «estar»)",
         "connect": [
-          { "pos": "Para hablar de vos mismo: che- pegado al estado", "rule": "{Che}kane'õ." },
+          { "pos": "Para hablar de vos mismo: che- pegado al estado. En otros textos lo vas a ver separado, che kane'õ: se dice igual", "rule": "{Che}kane'õ." },
           { "pos": "Para el que escucha: nde-", "rule": "{Nde}pochy." },
-          { "pos": "Si la palabra es nasal (lleva ~ o m, n, ñ, mb, nd, ng, nt), nde- se dice y se escribe ne-", "rule": "{Ne}kane'õ. {Ne}mandu'a." }
+          { "pos": "Si la palabra es nasal (lleva ~ o m, n, ñ, mb, nd, ng, nt), nde- se dice y se escribe ne-", "rule": "{Ne}kane'õ." }
         ],
         "examples": [
           {
@@ -44,9 +44,10 @@
         "form": "i- / h- + estado",
         "gloss": "él, ella está… (tercera persona)",
         "connect": [
-          { "pos": "Para otra persona: i- pegado al estado", "rule": "Che sy {i}kane'õ." },
+          { "pos": "Para otra persona: i- pegado al estado. Antes de una vocal la i- cambia un poco, como en ijy'uhéi, «tiene sed»: hoy solo lo mirás", "rule": "Che sy {i}kane'õ." },
           { "pos": "Con el nombre delante, o con ha'e, igual lleva i-", "rule": "Ana {i}pochy. Ha'e {i}vare'a." },
-          { "pos": "Si con che- la palabra empieza con r, como rasy (y como réra), la tercera persona lleva h- en vez de i-", "rule": "Che{r}asy · {H}asy." }
+          { "pos": "Algunas palabras tienen tres formas, como téra · che réra · héra. Rasy es así: tasy suelta, cherasy con che-, hasy para él o ella", "rule": "{t}asy · che{r}asy · {h}asy" },
+          { "pos": "Ojo: no toda palabra que empieza con r cambia. Ro'y lleva i-, como kane'õ", "rule": "che{r}o'y · {i}ro'y" }
         ],
         "examples": [
           {
@@ -67,7 +68,7 @@
           {
             "gn": "Che ru {h}asy.",
             "es": "Mi papá está enfermo.",
-            "parts": [["che ru", "mi papá"], ["h-", "él, ante una palabra en r"], ["rasy", "enfermo, dolor"]]
+            "parts": [["che ru", "mi papá"], ["hasy", "está enfermo; con che- es cherasy"]]
           }
         ],
         "watch": {
@@ -93,7 +94,7 @@
         "options": ["chekane'õ", "ikane'õ", "kane'õ"],
         "answer": 2,
         "why": [
-          "Chekane'õ es «estoy cansado»: Rosa hablaría de ella misma. Acá habla de su papá, otra persona.",
+          "Chekane'õ es «estoy cansada»: Rosa hablaría de ella misma. Acá habla de su papá, otra persona.",
           "Che ru, «mi papá», es otra persona: el estado lleva i-. Che ru ikane'õ, «mi papá está cansado».",
           "Kane'õ sin marca es solo «cansancio», la cosa: Che ru kane'õ no es una oración. Falta la i-."
         ]
@@ -105,7 +106,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Termina el partido. ^Juan dice cómo está él^.)\nJuan: (   ).",
+        "q": "(Termina el partido. ^Juan dice cómo está él mismo^.)\nJuan: (   ).",
         "options": ["Akane'õ", "Chekane'õ", "Ikane'õ", "Kane'õ"],
         "answer": 2,
         "why": [
@@ -124,7 +125,7 @@
         "options": ["Chepochy", "Ipochy", "Ndepochy", "Nepochy"],
         "answer": 3,
         "why": [
-          "Chepochy es «estoy enojado»: Rosa hablaría de ella misma, y le habla a Juan de él.",
+          "Chepochy es «estoy enojada»: Rosa hablaría de ella misma, y le habla a Juan de él.",
           "Ipochy es «está enojado», de otra persona. Rosa le habla a Juan directamente, de vos a vos.",
           "Rosa le habla a Juan: nde- pegado a pochy. Ndepochy, «estás enojado».",
           "ne- reemplaza a nde- solo antes de una palabra nasal, como nekane'õ. Pochy no es nasal: no tiene ~ ni m, n, ñ. Queda nde-: ndepochy."
@@ -155,8 +156,8 @@
         "answer": 3,
         "why": [
           "Cherasy es «estoy enfermo»: Luis hablaría de él mismo. Acá habla de su mamá.",
-          "Con las palabras que con che- empiezan con r, como rasy y réra, la tercera persona no lleva i-: lleva h-, como en héra. Irasy no existe; es hasy.",
-          "Che sy es otra persona, y rasy es una palabra en r, como réra: lleva h-, como héra. Che sy hasy, «mi mamá está enferma».",
+          "Rasy es de las palabras con tres formas, como téra, che réra, héra: tasy, cherasy, hasy. Para él o ella es hasy: irasy no existe.",
+          "Che sy es otra persona, y para él o ella rasy tiene su propia forma, hasy, como réra tiene héra. Che sy hasy, «mi mamá está enferma».",
           "Tasy es la palabra suelta, «dolor, enfermedad», sin marcar a nadie: no dice que la mamá esté enferma."
         ]
       },
@@ -173,7 +174,7 @@
         "hint": "che- va primero. Después la parte del cuerpo, akã, y al final rasy, «dolor».",
         "full": "(A Juan le duele la cabeza.)\nJuan: {Che}akãrasy.",
         "es": "Juan: Me duele la cabeza.",
-        "explain": "che- (yo, me pasa) + akã («cabeza») + rasy («dolor, enfermo») = cheakãrasy, «me duele la cabeza»: en guaraní es un estado, todo en una palabra. No lleva tilde: el acento va en la última vocal, sy. La ~ de akã marca la nasal."
+        "explain": "che- (yo, me pasa) + akã («cabeza») + rasy («dolor, enfermo») = cheakãrasy, «me duele la cabeza»: en guaraní es un estado, todo en una palabra. No lleva tilde: el acento va en la última vocal, la y. La ~ de akã marca la nasal."
       },
       {
         "id": "a1u03d1.d6",
@@ -188,7 +189,7 @@
         "hint": "Kane'õ es nasal, lleva ~: el «vos» no es nde- sino ne-, y va primero.",
         "full": "Rosa: {Ne}kane'õ, Luis.",
         "es": "Rosa: Estás cansado, Luis.",
-        "explain": "ne- (vos) + kane'õ («cansancio») = nekane'õ, «estás cansado». Antes de una palabra nasal, nde- se vuelve ne-: nekane'õ, nemandu'a. Con una palabra oral queda nde-: ndepochy."
+        "explain": "ne- (vos) + kane'õ («cansancio») = nekane'õ, «estás cansado». Antes de una palabra nasal, nde- se vuelve ne-: nekane'õ. Con una palabra oral queda nde-: ndepochy."
       }
     ],
     "exam": [
@@ -200,7 +201,7 @@
         "q": "Luis: _Chero'y ha chevare'a_.",
         "options": ["Tengo frío y hambre.", "Tengo calor y sed.", "Tiene frío y hambre.", "Estoy cansado y enojado."],
         "answer": 1,
-        "explain": "Che- marca un estado mío: chero'y es «tengo frío» (ro'y, «frío») y chevare'a, «tengo hambre» (vare'a, «hambre»). «Tiene» sería otra persona, con i-: iro'y ha ivare'a. Calor es haku y sed, y'uhéi; cansado es chekane'õ y enojado, chepochy."
+        "explain": "Che- marca un estado mío: chero'y es «tengo frío» (ro'y, «frío») y chevare'a, «tengo hambre» (vare'a, «hambre»). «Tiene» sería otra persona, con i-: iro'y ha ivare'a. Calor y sed son otras palabras: «tengo sed» es chey'uhéi. Cansado es chekane'õ y enojado, chepochy."
       },
       {
         "id": "a1u03d1.e2",
@@ -218,13 +219,13 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "(Termina el partido.)\nJuan: ",
+        "before": "Ana: Mba'éichapa reiko, Rosa?\nRosa: ",
         "after": ".",
-        "tiles": ["che", "kane'õ", "iterei"],
-        "bank": [2, 0, 1],
-        "full": "(Termina el partido.)\nJuan: {Che}kane'õ{iterei}.",
-        "es": "Juan: Estoy muy cansado.",
-        "explain": "che- (yo, me pasa) va primero, pegado a kane'õ («cansancio»): chekane'õ, «estoy cansado». -iterei, «muy», va al final, como en iporãiterei: chekane'õiterei, «estoy muy cansado». Todo junto y sin tilde."
+        "tiles": ["che", "akã", "rasy"],
+        "bank": [2, 1, 0],
+        "full": "Ana: Mba'éichapa reiko, Rosa?\nRosa: Cheakãrasy.",
+        "es": "Ana: ¿Cómo andás, Rosa?\nRosa: Me duele la cabeza.",
+        "explain": "che- (yo, me pasa) va primero. Después va akã («cabeza») y al final rasy («dolor»): cheakãrasy, «me duele la cabeza». Es un estado de Rosa: todo junto, en una sola palabra, y sin tilde."
       }
     ]
   },
@@ -234,7 +235,7 @@
     "sound": {
       "focus": "mb, nd, ng, nt: una sola letra",
       "letters": ["mb", "nd", "ng", "nt"],
-      "note": "mb, nd, ng y nt son letras del alfabeto: cada una suena en una sola sílaba, también al principio de la palabra, como en mba'e y nde. Empezá con un zumbido, mmm o nnn, y soltalo en la b o la d sin meter una vocal antes: nde, no «ende». Son parientes de m y n: ñande róga, pero ñane retã. No hay pares mínimos seguros: compará estas palabras.",
+      "note": "mb, nd, ng y nt son letras del alfabeto y cada una suena en una sola sílaba. mb y nd van también al principio de la palabra, como en mba'e y nde; ng y nt casi siempre van adentro, como en angirũ y mante. Empezá con un zumbido, mmm o nnn, y soltalo en la b o la d sin meter una vocal antes: nde, no «ende». Son parientes de m y n: ñande róga, pero ñane retã. No hay pares mínimos seguros: compará estas palabras.",
       "pairs": [
         ["mba'e", "cosa, qué", "mitã", "niño"],
         ["ñande róga", "nuestra casa", "ñane retã", "nuestro país"],
@@ -244,10 +245,10 @@
     },
     "words": [
       { "id": "kaneo", "gn": "chekane'õ", "es": "estoy cansado, cansada", "parts": [["che-", "yo"], ["kane'õ", "cansancio"]], "note": "Muy cansado: chekane'õiterei. A vos: nekane'õ, porque kane'õ es nasal." },
-      { "id": "varea", "gn": "chevare'a", "es": "tengo hambre", "parts": [["che-", "yo"], ["vare'a", "hambre"]], "note": "La palabra de todos los días. En el diccionario, el hambre también es ñembyahýi." },
-      { "id": "yuhei", "gn": "chey'uhéi", "es": "tengo sed", "parts": [["che-", "yo"], ["y'uhéi", "sed"]], "note": "Se escribe con puso y con tilde en la e: y'uhéi. También se ve yuhéi, sin puso." },
-      { "id": "roy", "gn": "chero'y", "es": "tengo frío", "parts": [["che-", "yo"], ["ro'y", "frío"]], "note": "Ro'y solo es «hace frío»: Ajépa ro'y, «qué frío»." },
-      { "id": "haku", "gn": "haku", "es": "hace calor; está caliente", "note": "Para decir que tenés calor: Haku chéve, «me da calor»." },
+      { "id": "varea", "gn": "chevare'a", "es": "tengo hambre", "parts": [["che-", "yo"], ["vare'a", "hambre"]], "note": "La palabra de todos los días. En cursos y diccionarios, el hambre es también ñembyahýi; para algunos hablantes, vare'a es más bien «angurria»." },
+      { "id": "yuhei", "gn": "chey'uhéi", "es": "tengo sed", "parts": [["che-", "yo"], ["y'uhéi", "sed"]], "note": "Se escribe con puso entre la y y la u, y con tilde en la e: y'uhéi." },
+      { "id": "roy", "gn": "chero'y", "es": "tengo frío", "parts": [["che-", "yo"], ["ro'y", "frío"]], "note": "Sin che-, ro'y es «hace frío»: Ajépa ro'y, «qué frío»." },
+      { "id": "haku", "gn": "haku", "es": "hace calor; está caliente", "note": "Habla del día o de una cosa, por eso va sin che-. «Tengo calor» es otra palabra: chembyry'ái." },
       { "id": "pochy", "gn": "chepochy", "es": "estoy enojado, enojada", "parts": [["che-", "yo"], ["pochy", "enojo"]], "note": "A vos: ndepochy. Él o ella: ipochy." },
       { "id": "kaigue", "gn": "chekaigue", "es": "estoy desganado, desganada", "parts": [["che-", "yo"], ["kaigue", "desgano"]], "note": "Muy paraguayo: en castellano también se dice «ando kaigue»." },
       { "id": "akarasy", "gn": "cheakãrasy", "es": "me duele la cabeza", "parts": [["che-", "yo"], ["akã", "cabeza"], ["rasy", "dolor, enfermo"]], "note": "Rasy es la forma con che-: hasy es «le duele, está enfermo»." }
@@ -259,9 +260,9 @@
       "area": "vocab",
       "label": "Cómo se escribe",
       "q": "Después del partido, Juan dice: «_Tengo sed_.» ¿Cómo se escribe en guaraní?",
-      "options": ["cheyuhei", "chey'uhéi", "chei'uhéi", "cheyu'héi"],
+      "options": ["chey'uhẽi", "chey'uhéi", "chei'uhéi", "cheyu'héi"],
       "answer": 2,
-      "explain": "Se escribe chey'uhéi: el puso corta la voz entre la y y la u, y la tilde va en la é porque el acento no cae en la última vocal. Cheyuhei no tiene ni puso ni tilde: así se leería con el acento al final. Chei'uhéi cambia la y por i, otra vocal. Cheyu'héi pone el puso antes de la h, y el puso solo va entre dos vocales."
+      "explain": "Se escribe chey'uhéi: el puso corta la voz entre la y y la u, y la tilde va en la é porque el acento no cae en la última vocal. Chey'uhẽi cambia la tilde por una ~, y la e de y'uhéi no es nasal. Chei'uhéi cambia la y por i, otra vocal. Cheyu'héi pone el puso antes de la h, y el puso solo va entre dos vocales."
     }
   },
   "skill": {

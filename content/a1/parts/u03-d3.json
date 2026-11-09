@@ -34,7 +34,7 @@
           }
         ],
         "watch": {
-          "note": "No hay «soy»: che y la palabra. El contexto dice si Che mbo'ehára es «soy profesora» o «mi profesora», porque che + sustantivo también es «mi», como en che sy. Lo que no va es ha'e: con che, ha'e quiere decir «digo», y Che ha'e mbo'ehára se oye como «yo digo profesora».",
+          "note": "No hay «soy»: che y la palabra. Vas a oír y leer también Che ha'e mbo'ehára, con ha'e en el lugar de «soy»: es el molde del castellano con palabras guaraníes, y la forma propia del guaraní va sin ha'e. Ojo: che + sustantivo también es «mi», como en che sy. El contexto dice si Che mbo'ehára es «soy profesora» o «mi profesora».",
           "bad": "Che ha'e mbo'ehára.",
           "good": "Che mbo'ehára."
         }
@@ -44,15 +44,16 @@
         "form": "X ha'e Y · ndaha'éi",
         "gloss": "X es Y · no es",
         "connect": [
-          { "pos": "Entre dos nombres, ha'e dice «es»: así queda claro quién es quién", "rule": "Ana {ha'e} che sy." },
+          { "pos": "Con otra persona adelante (Ana, che ru), podés poner ha'e en el medio: hace de «es»", "rule": "Ana {ha'e} che sy." },
+          { "pos": "Las dos formas se dicen y se escriben: sin nada o con ha'e", "rule": "Che ru chokokue. · Che ru {ha'e} chokokue." },
           { "pos": "A Mávapa ha'e? (unidad 1) respondés con ha'e y quién es", "rule": "Mávapa ha'e? {Ha'e} che angirũ." },
-          { "pos": "Para negar: ndaha'éi, una sola palabra, con el nd-…-i de la unidad 2 alrededor de ha'e", "rule": "{Ndaha'éi} che sy." }
+          { "pos": "Para negar: ndaha'éi, una sola palabra, con el nd-…-i de la unidad 2 alrededor de ha'e. No cambia con la persona: también es «no soy»", "rule": "{Ndaha'éi} che sy. · Che {ndaha'éi} mbo'ehára." }
         ],
         "examples": [
           {
             "gn": "Ana {ha'e} che sy.",
             "es": "Ana es mi mamá.",
-            "parts": [["ha'e", "es"], ["che sy", "mi mamá"]]
+            "parts": [["ha'e", "él, ella; acá hace de «es»"], ["che sy", "mi mamá"]]
           },
           {
             "gn": "Luis: Mávapa ha'e?\nRosa: {Ha'e} che angirũ.",
@@ -71,7 +72,7 @@
           }
         ],
         "watch": {
-          "note": "Ha'e une dos nombres. Un estado o una cualidad no lleva ha'e: lleva i-, como el lunes. «Ana está cansada» es Ana ikane'õ, y «Ana es hábil», Ana ikatupyry.",
+          "note": "Ha'e puede unir dos nombres, pero no hace de «está» ni de «es» delante de un estado o una cualidad: ahí va la i- del día 1. «Ana está cansada» es Ana ikane'õ, y «Ana es hábil», Ana ikatupyry.",
           "bad": "Ana ha'e kane'õ.",
           "good": "Ana ikane'õ."
         }
@@ -81,8 +82,8 @@
       "intro": "Tres oraciones sin «ser» ni «estar»: con un sustantivo solo, con ha'e entre dos nombres y con una cualidad.",
       "forms": [
         { "form": "che mbo'ehára", "tag": "pronombre + sustantivo · sin verbo", "mark": "dot", "gn": "{Che mbo'ehára}.", "es": "Soy profesora." },
-        { "form": "ha'e", "tag": "entre dos nombres · «es»", "mark": "dot", "gn": "Ana {ha'e} che sy.", "es": "Ana es mi mamá." },
-        { "form": "ikatupyry", "tag": "cualidad · i-, como el lunes", "mark": "dot", "gn": "Ana {ikatupyry}.", "es": "Ana es hábil." }
+        { "form": "ha'e", "tag": "entre dos nombres · puede hacer de «es»", "mark": "dot", "gn": "Ana {ha'e} che sy.", "es": "Ana es mi mamá." },
+        { "form": "ikatupyry", "tag": "cualidad · i-, como el día 1", "mark": "dot", "gn": "Ana {ikatupyry}.", "es": "Ana es hábil." }
       ],
       "check": {
         "id": "a1u03d3.c1",
@@ -93,9 +94,9 @@
         "options": ["ha'e", "ndaha'éi", "ikatupyry"],
         "answer": 1,
         "why": [
-          "Rosa y che angirũ son dos nombres: entre los dos va ha'e, «es». Rosa ha'e che angirũ, «Rosa es mi amiga».",
+          "Luis dice quién es Rosa: entre Rosa y che angirũ, ha'e hace de «es». Rosa ha'e che angirũ, «Rosa es mi amiga».",
           "Ndaha'éi es «no es», y Rosa sí es su amiga: Luis la presenta como tal.",
-          "Ikatupyry es una cualidad, «es hábil», con la i- del lunes. No une dos nombres: Rosa ikatupyry che angirũ no es una oración."
+          "Ikatupyry es una cualidad, «es hábil», con la i- del día 1. No dice quién es Rosa, y Luis la presenta como su amiga."
         ]
       }
     },
@@ -105,13 +106,13 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(En la fiesta, Luis dice qué es: ^agricultor^.)\nLuis: Che (   ).",
-        "options": ["ha'e chokokue", "achokokue", "ichokokue", "chokokue"],
+        "q": "(En la fiesta, Juan dice qué es: ^agricultor^.)\nJuan: Che (   ).",
+        "options": ["aime chokokue", "achokokue", "ichokokue", "chokokue"],
         "answer": 4,
         "why": [
-          "Che ha'e chokokue se oye como «yo digo agricultor»: ha'e con che es «digo». Para decir qué sos no hace falta ningún «soy».",
+          "Aime es «estoy», como en Aime ógape, del día 2. Para decir qué sos no va ningún verbo: ni «soy» ni «estoy».",
           "A- es el prefijo de las acciones, como en amba'apo. Chokokue es un sustantivo y no lleva a-.",
-          "I- dice «él, ella», como en ikane'õ: no sirve para hablar de uno mismo. Después de che, el sustantivo va solo.",
+          "I- trae a otra persona, «él, ella», como en ikane'õ. Juan habla de él mismo: después de che, el sustantivo va solo.",
           "Para decir qué sos: che y el sustantivo, nada más. Che chokokue, «soy agricultor»."
         ]
       },
@@ -121,10 +122,10 @@
         "area": "grammar",
         "label": "Elegí la forma",
         "q": "(Ana habla ^de un señor^ que conoce: él es médico.)\nAna: (   ) pohanohára.",
-        "options": ["Che", "Nde", "Ha'e", "Peẽ"],
+        "options": ["Ndaha'éi", "Nde", "Ha'e", "Peẽ"],
         "answer": 3,
         "why": [
-          "Che pohanohára es «soy médica» o, como che sy, «mi médico»: ninguna de las dos dice que él sea médico, y Ana habla de un señor.",
+          "Ndaha'éi pohanohára es «no es médico», y el señor sí es médico.",
           "Nde pohanohára es «vos sos médico», hablándole a él. Ana habla de él, no con él.",
           "Ana habla de otra persona: ha'e, «él». Ha'e pohanohára, «él es médico», sin ningún «es».",
           "Peẽ es «ustedes», varias personas a las que les hablás. Es un solo señor, y Ana habla de él."
@@ -139,7 +140,7 @@
         "options": ["Che", "Ha'e", "Nde", "Ndaha'éi"],
         "answer": 2,
         "why": [
-          "Che che irũ no es una oración: che es «yo» y che irũ, «mi compañero». Así no se dice quién es el muchacho.",
+          "Che che irũ sería «yo soy mi compañero»: che es «yo» y che irũ, «mi compañero». Así no se dice quién es el muchacho.",
           "Rosa pregunta quién es él, y Luis responde con ha'e y quién es: Ha'e che irũ, «es mi compañero».",
           "Nde che irũ es «vos sos mi compañero», hablándole a Rosa. Luis habla del muchacho.",
           "Ndaha'éi che irũ es «no es mi compañero», y sí lo es: Rosa señala al compañero de Luis."
@@ -157,7 +158,7 @@
           "Para negar un «es», ndaha'éi: el nd-…-i de la unidad 2 alrededor de ha'e. Ndaha'éi che sy, «no es mi mamá».",
           "Nahániri es «no», la respuesta suelta a una pregunta de sí o no. Para decir «no es» hace falta ndaha'éi, una sola palabra.",
           "Ha'e che sy es «es mi mamá», y la de la foto no es su mamá: Luis lo niega.",
-          "Che che sy no es una oración. Luis no habla de él mismo: dice quién es la de la foto."
+          "Che che sy sería «yo soy mi mamá». Luis no habla de él mismo: dice quién es la de la foto."
         ]
       },
       {
@@ -183,12 +184,12 @@
         "join": "word",
         "before": "(En la fiesta, Luis dice qué es.)\nLuis: Che ",
         "after": ".",
-        "tiles": ["mba'apo", "hára"],
+        "tiles": ["pohano", "hára"],
         "bank": [1, 0],
         "hint": "-hára, «el que hace», es un sufijo: va después de la raíz, como en mbo'ehára.",
-        "full": "(En la fiesta, Luis dice qué es.)\nLuis: Che mba'apo{hára}.",
-        "es": "Luis: Soy trabajador.",
-        "explain": "mba'apo («trabajar») + -hára («el que») = mba'apohára, «trabajador», como mbo'ehára, «el que enseña». Con che adelante y sin verbo: Che mba'apohára, «soy trabajador». -hára se lleva el acento: por eso la tilde va en su a, y mba'apo no lleva ninguna."
+        "full": "(En la fiesta, Luis dice qué es.)\nLuis: Che pohano{hára}.",
+        "es": "Luis: Soy médico.",
+        "explain": "pohano («curar») + -hára («el que») = pohanohára, «el que cura», el médico, como mbo'ehára, «el que enseña». Con che adelante y sin verbo: Che pohanohára, «soy médico». -hára se lleva el acento: por eso la tilde va en hára, y pohano no lleva ninguna."
       }
     ],
     "exam": [
@@ -207,10 +208,10 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(En la fiesta, Rosa dice qué es: vendedora.)\nRosa: Che (   ).",
-        "options": ["añemuhára", "ha'e ñemuhára", "iñemuhára", "ñemuhára"],
+        "q": "(En la fiesta, Marta dice qué es: vendedora.)\nMarta: Che (   ).",
+        "options": ["añemuhára", "oñemuhára", "iñemuhára", "ñemuhára"],
         "answer": 4,
-        "explain": "Para decir qué sos, che y el sustantivo, nada más: Che ñemuhára, «soy vendedora». Añemuhára pone a-, el prefijo de las acciones, en un sustantivo; che ha'e ñemuhára se oye como «yo digo vendedora»; e iñemuhára lleva i-, que es de otra persona, como en ikane'õ."
+        "explain": "Para decir qué sos, che y el sustantivo, nada más: Che ñemuhára, «soy vendedora». Añemuhára y oñemuhára llevan a- y o-, los prefijos de las acciones, y ñemuhára es un sustantivo: va sin prefijo. Iñemuhára lleva i-, que es de otra persona, como en ikane'õ."
       },
       {
         "id": "a1u03d3.e3",
@@ -234,20 +235,20 @@
     "sound": {
       "focus": "La r suave y la rr",
       "letters": ["r", "rr"],
-      "note": "La r guaraní es siempre la suave de «caro», también al principio de la palabra, como en réra, ru y rasy, y entre vocales, como en irũ, karai y pohanohára. El castellano empieza «rosa» con una rr fuerte; el guaraní no tiene esa r inicial: ru se dice con la r de «caro». La rr fuerte solo aparece en préstamos del castellano: vúrro, karréta, arriéro. No hay pares mínimos: compará la r y la rr en estas palabras.",
+      "note": "Ya conocés la r de la unidad 2: hoy vuelve en las palabras del día. La r guaraní es siempre la suave de «caro»: al principio de la palabra, como en ru y réra, y entre vocales, como en irũ, mitãrusu y kuñakarai. El castellano empieza «rosa» con una rr fuerte; el guaraní no tiene esa r inicial. La rr fuerte solo aparece en préstamos del castellano, como vúrro, karréta y arro. No hay pares mínimos: compará la r y la rr en estas palabras.",
       "pairs": [
-        ["ru", "padre", "vúrro", "burro"],
-        ["karai", "señor", "karréta", "carreta"],
-        ["réra", "nombre", "arriéro", "arriero"]
+        ["mitãrusu", "muchacho, joven", "vúrro", "burro"],
+        ["kuñakarai", "señora", "karréta", "carreta"],
+        ["irũ", "compañero, compañera", "arro", "arroz"]
       ]
     },
     "words": [
-      { "id": "pohanohara", "gn": "pohanohára", "es": "médico, médica", "parts": [["pohano", "curar, sanar"], ["-hára", "el que, la que"]], "note": "Como mbo'ehára: -hára es «el que hace» y se lleva el acento: po-ha-no-HÁ-ra." },
-      { "id": "mbaapohara", "gn": "mba'apohára", "es": "trabajador, trabajadora", "parts": [["mba'apo", "trabajar"], ["-hára", "el que"]], "note": "Mba'apohára Ára es el Día del Trabajador, el 1 de mayo." },
-      { "id": "chokokue", "gn": "chokokue", "es": "agricultor, agricultora", "note": "La ch suena como en che. Es la palabra de los diarios para los campesinos." },
+      { "id": "pohanohara", "gn": "pohanohára", "es": "médico, médica", "parts": [["pohano", "curar, sanar"], ["-hára", "el que, la que"]], "note": "Como mbo'ehára: -hára es «el que hace» y se lleva el acento: po-ha-no-HÁ-ra. También se ve escrito pohãnohára, con la ~ de pohã, «remedio»: es la misma palabra." },
+      { "id": "mbaapohara", "gn": "mba'apohára", "es": "trabajador, trabajadora", "parts": [["mba'apo", "trabajar"], ["-hára", "el que"]], "note": "El que trabaja en un lugar: un obrero, una empleada. En los diarios se lee mucho, por «los trabajadores»." },
+      { "id": "chokokue", "gn": "chokokue", "es": "agricultor, agricultora", "note": "La ch suena como en che. Es la palabra para «campesino, agricultor»; los diarios la usan mucho." },
       { "id": "nemuhara", "gn": "ñemuhára", "es": "vendedor, vendedora", "parts": [["ñemu", "vender, comerciar"], ["-hára", "el que"]], "note": "También «comerciante»." },
-      { "id": "mitarusu", "gn": "mitãrusu", "es": "muchacho, joven", "parts": [["mitã", "niño"], ["rusu", "grande, crecido"]], "note": "Un niño ya grande: un adolescente, un joven." },
-      { "id": "mitakuna", "gn": "mitãkuña", "es": "chica, nena", "parts": [["mitã", "niño, niña"], ["kuña", "mujer"]], "note": "Una nena o una chica joven. Kuñataĩ (unidad 1) es la muchacha ya más grande, la señorita." },
+      { "id": "mitarusu", "gn": "mitãrusu", "es": "muchacho, joven", "parts": [["mitã", "niño"], ["-rusu", "grande"]], "note": "Un niño ya grande: un adolescente, un joven." },
+      { "id": "mitakuna", "gn": "mitãkuña", "es": "chica, muchacha joven", "parts": [["mitã", "niño, niña"], ["kuña", "mujer"]], "note": "Va de la niña a la muchacha joven. Kuñataĩ (unidad 1) es la muchacha ya más grande, la señorita." },
       { "id": "kunakarai", "gn": "kuñakarai", "es": "señora", "parts": [["kuña", "mujer"], ["karai", "señor"]], "note": "Ña Ramona (unidad 1) es una kuñakarai. Sin tilde: el acento cae al final, ka-ra-i." },
       { "id": "cheiru", "gn": "che irũ", "es": "mi compañero, mi compañera", "parts": [["che", "mi"], ["irũ", "compañero, compañera"]], "note": "Un amigo cercano es che angirũ (unidad 1). Che + sustantivo también puede ser una oración: Che mbo'ehára, «soy profesora». El contexto decide." }
     ],
@@ -260,7 +261,7 @@
       "q": "En la fiesta, Ana te presenta a una _señora_, la mamá de Luis. ¿Cómo se escribe en guaraní?",
       "options": ["kuñacarai", "kunakarai", "kuñakarai", "kuñakarãi"],
       "answer": 3,
-      "explain": "Se escribe kuñakarai: kuña, «mujer», con ñ, y karai, «señor», con k, porque la c no es una letra del guaraní. Kunakarai pierde la ñ. Kuñakarãi le pone una tilde nasal a la a, y karai es todo oral: ka-ra-i, con el acento al final y sin ninguna marca."
+      "explain": "Se escribe kuñakarai: kuña, «mujer», con ñ, y karai, «señor», con k, porque la c no es una letra del guaraní. Kunakarai pierde la ñ. Kuñakarãi le pone una tilde nasal a la a: karãi es otra palabra, «arañar». Karai, «señor», es todo oral: ka-ra-i, con el acento al final y sin ninguna marca."
     }
   },
   "skill": {
@@ -277,23 +278,23 @@
       "options": ["Médico.", "Profesor.", "Agricultor."],
       "answer": 1,
       "why": [
-        "Ana dice Lucas ha'e pohanohára: ha'e une los dos nombres, Lucas y pohanohára, «médico». Lucas es médico.",
-        "Mbo'ehára, «profesora», es la mamá de Ana: Ha'e che sy. Ha'e mbo'ehára. No habla de Lucas.",
+        "Ana dice Lucas ha'e che irũ, «Lucas es mi compañero», y enseguida Ha'e pohanohára: ese ha'e es Lucas, y pohanohára es «médico».",
+        "Mbo'ehára, «profesora», es la mamá de Ana: de ella dice Ha'e mbo'ehára, antes de presentar a Lucas.",
         "Agricultor es chokokue, y nadie lo dice en la fiesta."
       ],
       "script": [
         "Narrador: En la fiesta de San Juan. Ana presenta a dos personas. ¿Qué es Lucas?",
-        "Mujer: Luis, ha'e che sy. Ha'e mbo'ehára.",
+        "Mujer: Ha'e che sy, Luis. Ha'e mbo'ehára.",
         "Hombre: Mba'éichapa, kuñakarai.",
-        "Mujer: Ha che irũ héra Lucas. Lucas ha'e pohanohára.",
+        "Mujer: Ha Lucas ha'e che irũ. Ha'e pohanohára.",
         "Hombre: Maitei, Lucas."
       ]
     },
     "audio": [
       ["N", "En la fiesta de San Juan. Ana presenta a dos personas. ¿Qué es Lucas?", "En la fiesta de San Juan. Ana presenta a dos personas. ¿Qué es Lucas?"],
-      ["F", "Luis, ha'e che sy. Ha'e mbo'ehára.", "Luis, ella es mi mamá. Es profesora."],
+      ["F", "Ha'e che sy, Luis. Ha'e mbo'ehára.", "Ella es mi mamá, Luis. Es profesora."],
       ["M", "Mba'éichapa, kuñakarai.", "Hola, señora."],
-      ["F", "Ha che irũ héra Lucas. Lucas ha'e pohanohára.", "Y mi compañero se llama Lucas. Lucas es médico."],
+      ["F", "Ha Lucas ha'e che irũ. Ha'e pohanohára.", "Y Lucas es mi compañero. Es médico."],
       ["M", "Maitei, Lucas.", "Hola, Lucas."]
     ]
   }

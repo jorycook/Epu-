@@ -9,9 +9,9 @@
  {
   "id": "a1u02t.2", "kind": "choice", "area": "vocab", "label": "Qué significa",
   "q": "Rosa le dice a Juan: «_Jaha_, Juan.»",
-  "options": ["Vengan, Juan.", "Comamos, Juan.", "Gracias, Juan.", "Vamos, Juan."],
+  "options": ["Venimos, Juan.", "Comamos, Juan.", "Gracias, Juan.", "Vamos, Juan."],
   "answer": 4,
-  "explain": "Jaha es ja-, el «nosotros» de ñande, más ha, «ir»: «vamos», vos y yo. Se dice hasta en castellano paraguayo. Vengan sería Peju, comamos sería Jakaru y gracias es Aguyje."
+  "explain": "Jaha es ja-, el «nosotros» de ñande, más ha, «ir»: «vamos», vos y yo. Se dice hasta en castellano paraguayo. Venimos sería Roju: otro verbo, ju, «venir», y el «nosotros» sin vos. Comamos sería Jakaru y gracias es Aguyje."
  },
  {
   "id": "a1u02t.3", "kind": "choice", "area": "vocab", "label": "Cómo se escribe",
@@ -22,24 +22,24 @@
  },
  {
   "id": "a1u02t.4", "kind": "choice", "area": "vocab", "label": "Cómo se escribe",
-  "q": "Le escribís a Ana: «Vos y yo _hablamos_ guaraní.» ¿Cómo se escribe en guaraní?",
-  "options": ["jañe'ẽ", "ñañe'e", "ñañe'ẽ", "ñañeẽ"],
+  "q": "Le escribís a Ana: «Vos y yo _salimos_.» ¿Cómo se escribe en guaraní?",
+  "options": ["jasẽ", "ñase", "ñasẽ", "ñasen"],
   "answer": 3,
-  "explain": "Hablamos, vos y yo, es ñañe'ẽ: ñe'ẽ es una raíz nasal, así que el «nosotros con vos» es ña-, no ja-. Jañe'ẽ no existe. Ñañe'e perdió la tilde nasal de la ẽ, y ñañeẽ perdió el puso, que corta la voz entre las dos vocales: ñe-'ẽ."
+  "explain": "Salimos, vos y yo, es ñasẽ: sẽ, «salir», es una raíz nasal, por la ẽ, así que el «nosotros con vos» es ña-, no ja-. Ñase perdió la tilde nasal de la ẽ, y ñasen la cambió por una n que la palabra no lleva: la ẽ es una sola vocal, nasal."
  },
  {
   "id": "a1u02t.5", "kind": "choice", "area": "vocab", "label": "Elegí la palabra",
-  "q": "(Ana saca el chipá del horno de barro.)\nAna: Chipa osẽ (   ).",
+  "q": "(El gato de Ana sale del horno de barro.)\nAna: Mbarakaja osẽ (   ).",
   "options": ["kokuégui", "tatakuágui", "ñanduti", "kotýpe"],
   "answer": 2,
-  "explain": "El chipá sale del horno de barro: tatakua, «horno de barro», con -gui, «de»: tatakuágui. Kokuégui es «de la chacra», ñanduti es el encaje de Itauguá y kotýpe es «en la pieza»."
+  "explain": "El gato sale del horno de barro: tatakua, «horno de barro», con -gui, «de»: tatakuágui. Mbarakaja es «gato» y osẽ, «sale». Kokuégui es «de la chacra», ñanduti es el encaje de Itauguá y kotýpe es «en la pieza»."
  },
  {
   "id": "a1u02t.6", "kind": "choice", "area": "vocab", "label": "Qué significa",
   "q": "Rosa le pregunta algo a Ana, y Ana responde: «_Ndaikuaái_.»",
   "options": ["No voy.", "No hay.", "No sé.", "Nada."],
   "answer": 3,
-  "explain": "Ndaikuaái es «no sé»: nd- al principio, ai-, el «yo» de kuaa, «saber», y -i al final. No voy es ndahái, no hay es Ndaipóri y nada es mba'eve."
+  "explain": "Ndaikuaái es «no sé»: nd- al principio, ai-, el «yo» de kuaa, «saber», y -i al final. No voy es ndahái, no hay es ndaipóri y nada es mba'eve."
  },
  {
   "id": "a1u02t.7", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
@@ -57,17 +57,17 @@
  },
  {
   "id": "a1u02t.9", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-  "q": "(Juan les pregunta a Ana y a Rosa adónde van.)\nJuan: Moõpa (   )?",
+  "q": "(Juan les pregunta a Ana y a Rosa adónde van esta mañana.)\nJuan: Moõpa (   ) ko pyhareve?",
   "options": ["reho", "peho", "jaha", "oho"],
   "answer": 2,
-  "explain": "Juan les pregunta a dos personas, Ana y Rosa: «ustedes», peẽ, lleva pe-. Moõpa peho?: ¿adónde van? Reho es «vas», para una sola persona; jaha es «vamos» e incluiría a Juan; y oho es «va» o «van», otras personas, no las dos que escuchan."
+  "explain": "Juan les pregunta a dos personas, Ana y Rosa: «ustedes», peẽ, lleva pe-. Moõpa peho ko pyhareve?: ¿adónde van esta mañana? Reho es «vas», para una sola persona; jaha es «vamos» e incluiría a Juan; y oho es «va» o «van», otras personas, no las dos que escuchan."
  },
  {
   "id": "a1u02t.10", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-  "q": "(Rosa cuenta dónde está su mamá: en el pueblo.)\nRosa: Che sy oĩ (   ).",
-  "options": ["távame", "táva", "távape", "távagui"],
-  "answer": 3,
-  "explain": "En el pueblo es távape: táva, «pueblo», con -pe pegado atrás. Táva termina en sílaba oral, así que va -pe y no -me, y guarda su tilde: -pe no se lleva el acento. Táva solo es «pueblo», el nombre del lugar, sin el «en». Távagui es «del pueblo», de donde viene alguien, y Rosa dice dónde está su mamá."
+  "q": "(Rosa cuenta dónde está su papá: en el campo.)\nRosa: Che ru oĩ (   ).",
+  "options": ["ñúme", "ñúpe", "ñu", "ñúgui"],
+  "answer": 1,
+  "explain": "En el campo es ñúme: ñu, «campo», con -me, porque la ñ hace nasal su única sílaba. -me no se lleva el acento, y la u, que ya no es la última vocal, se escribe ú. Ñúpe pone -pe tras una sílaba nasal; ñu solo es «campo», sin el «en»; y ñúgui es «del campo», de donde viene alguien, y Rosa dice dónde está su papá."
  },
  {
   "id": "a1u02t.11", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
@@ -92,26 +92,26 @@
  },
  {
   "id": "a1u02t.14", "kind": "build", "area": "grammar", "label": "Armá la palabra", "join": "word",
-  "before": "(Llueve.)\nRosa: Che ru ", "after": " ñúme ko ka'aru.",
+  "before": "(Llueve.)\nRosa: Luis ", "after": " mbo'ehaópe ko ka'aru.",
   "tiles": ["nd", "o", "ho", "i"], "bank": [2, 0, 3, 1],
-  "full": "(Llueve.)\nRosa: Che ru {nd}ohó{i} ñúme ko ka'aru.",
-  "es": "(Llueve.)\nRosa: Mi papá no va al campo esta tarde.",
-  "explain": "nd- va primero: es la primera parte del «no». Después o-, porque che ru, «mi papá», es otra persona, y con o- la raíz de «ir» es ho. Al final, -i, la segunda parte del «no»: ndohói, «no va». La -i no se lleva el acento: queda en la o de ho, que ya no es la última vocal, y se escribe ó."
+  "full": "(Llueve.)\nRosa: Luis {nd}ohó{i} mbo'ehaópe ko ka'aru.",
+  "es": "(Llueve.)\nRosa: Luis no va a la escuela esta tarde.",
+  "explain": "nd- va primero: es la primera parte del «no». Después o-, porque Luis es otra persona, y con o- la raíz de «ir» es ho. Al final, -i, la segunda parte del «no»: ndohói, «no va». La -i no se lleva el acento: queda en la o de ho, que ya no es la última vocal, y se escribe ó."
  },
  {
   "id": "a1u02t.15", "kind": "choice", "area": "reading", "label": "Buscar el dato",
   "q": "¿Adónde va Juan?",
-  "passage": "Rosa: Mba'éichapa, Juan? Moõpa reho?\nJuan: Aha mbo'ehaópe: amba'apo upépe. Ha nde, moõguipa reju?\nRosa: Aju Itauguágui, che jarýi rógagui.\nJuan: Ha nde sy?\nRosa: Ha'e ndoúi ko pyhareve: omba'apo ógape.",
+  "passage": "Rosa: Mba'éichapa, Juan? Moõpa reho?\nJuan: Aha mbo'ehaópe. Ha nde, moõguipa reju?\nRosa: Aju Itauguágui, che jarýi rógagui.\nJuan: Ha nde sy?\nRosa: Ha'e ndoúi ko pyhareve: omba'apo ógape.",
   "options": ["A la chacra.", "A la escuela.", "A Itauguá.", "A su casa."],
   "short": ["Chacra", "Escuela", "Itauguá", "Su casa"],
   "answer": 2,
-  "explain": "Juan responde Aha mbo'ehaópe, «voy a la escuela», y agrega amba'apo upépe, «trabajo ahí». La chacra, kokue, no aparece; Itauguágui es de donde viene Rosa, con -gui; y ógape, «en casa», es donde trabaja la mamá de Rosa."
+  "explain": "Juan responde Aha mbo'ehaópe, «voy a la escuela»: mbo'ehao, «escuela», con -pe. La chacra, kokue, no aparece; Itauguágui es de donde viene Rosa, con -gui; y ógape, «en casa», es donde trabaja la mamá de Rosa."
  },
  {
   "id": "a1u02t.16", "kind": "choice", "area": "reading", "label": "Buscar el dato",
   "q": "¿De dónde viene Rosa?",
-  "passage": "Rosa: Mba'éichapa, Juan? Moõpa reho?\nJuan: Aha mbo'ehaópe: amba'apo upépe. Ha nde, moõguipa reju?\nRosa: Aju Itauguágui, che jarýi rógagui.\nJuan: Ha nde sy?\nRosa: Ha'e ndoúi ko pyhareve: omba'apo ógape.",
-  "options": ["De Asunción.", "De la escuela.", "De Caacupé.", "De Itauguá, de la casa de su abuela."],
+  "passage": "Rosa: Mba'éichapa, Juan? Moõpa reho?\nJuan: Aha mbo'ehaópe. Ha nde, moõguipa reju?\nRosa: Aju Itauguágui, che jarýi rógagui.\nJuan: Ha nde sy?\nRosa: Ha'e ndoúi ko pyhareve: omba'apo ógape.",
+  "options": ["De Asunción.", "De la escuela.", "De Caacupé.", "De Itauguá."],
   "short": ["Asunción", "La escuela", "Caacupé", "Itauguá"],
   "answer": 4,
   "explain": "A Moõguipa reju? Rosa responde Aju Itauguágui, che jarýi rógagui: viene de Itauguá, de la casa de su abuela. Las dos palabras terminan en -gui, «de». La escuela es adonde va Juan, con -pe; Asunción y Caacupé no aparecen en el chat."
@@ -119,11 +119,11 @@
  {
   "id": "a1u02t.17", "kind": "choice", "area": "reading", "label": "Texto corto",
   "q": "¿Qué hace la mamá de Rosa esta mañana?",
-  "passage": "Rosa: Mba'éichapa, Juan? Moõpa reho?\nJuan: Aha mbo'ehaópe: amba'apo upépe. Ha nde, moõguipa reju?\nRosa: Aju Itauguágui, che jarýi rógagui.\nJuan: Ha nde sy?\nRosa: Ha'e ndoúi ko pyhareve: omba'apo ógape.",
+  "passage": "Rosa: Mba'éichapa, Juan? Moõpa reho?\nJuan: Aha mbo'ehaópe. Ha nde, moõguipa reju?\nRosa: Aju Itauguágui, che jarýi rógagui.\nJuan: Ha nde sy?\nRosa: Ha'e ndoúi ko pyhareve: omba'apo ógape.",
   "options": ["Va a la escuela.", "Viene con Rosa.", "Trabaja en casa.", "Trabaja en la chacra."],
   "short": ["Va a la escuela", "Viene con Rosa", "Trabaja en casa", "En la chacra"],
   "answer": 3,
-  "explain": "Rosa dice de su mamá: Ha'e ndoúi ko pyhareve: omba'apo ógape. Ndoúi es «no viene», con el «no» en dos partes: no viene con Rosa. Omba'apo ógape es «trabaja en casa»: óga, «casa», con -pe. A la escuela va Juan, y la chacra no aparece."
+  "explain": "Rosa dice de su mamá: Ha'e ndoúi ko pyhareve: omba'apo ógape. Ndoúi es «no viene», con el «no» en dos partes: no viene esta mañana, así que «viene con Rosa» no va. Omba'apo ógape es «trabaja en casa»: óga, «casa», con -pe. A la escuela va Juan, y la chacra no aparece."
  },
  {
   "id": "a1u02t.18", "kind": "choice", "area": "listening", "label": "Respuesta rápida",

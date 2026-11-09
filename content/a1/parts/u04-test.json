@@ -25,11 +25,11 @@
   "q": "(Rosa, la mamá, le muestra a Juan una foto de su hija.)\nRosa: Che (   ).",
   "options": ["ra'y", "rajy", "ru", "memby"],
   "answer": 4,
-  "explain": "Rosa es la mamá, y la mamá dice che memby de su hijo o de su hija. Ra'y, «hijo», y rajy, «hija», son las palabras del papá: Rosa no las usa. Che ru es «mi papá», y en la foto está su hija."
+  "explain": "Rosa es la mamá, y la mamá dice che memby de su hijo o de su hija. Ra'y, «hijo», y rajy, «hija», las dice el papá. Che ru es «mi papá», y en la foto está su hija."
  },
  {
   "id": "a1u04t.5", "kind": "choice", "area": "vocab", "label": "Cómo se escribe",
-  "q": "Luis pregunta _qué_ significa una palabra: (   ) he'ise «mymba»? ¿Cómo se escribe?",
+  "q": "Luis pregunta qué significa una palabra: (   ) he'ise «mymba»? ¿Cómo se escribe «qué»?",
   "options": ["Mba'ẽpa", "Mba'épa", "Mbaépa", "Mba'épã"],
   "answer": 2,
   "explain": "«¿Qué?» es Mba'épa: mba'e lleva el puso entre la a y la e, y con -pa esa e deja de ser la última vocal, así que se escribe la tilde de acento, é. Mba'ẽpa pone una ~ en la e, y esa e es oral. Mbaépa pierde el puso. Mba'épã agrega una ~ a la a de -pa, que se escribe siempre igual, sin ~."
@@ -50,10 +50,10 @@
  },
  {
   "id": "a1u04t.8", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-  "q": "Ana habla de los animales de su abuela.\nAna: (   ) oĩ che jarýi rógape.",
-  "options": ["Mymbakuéra", "Mymbanguéra", "Mỹmbakuéra", "Mimbakuéra"],
+  "q": "(En la despensa.)\nVendedor: (   ) reipota?\nAna: Kamby ha kesu.",
+  "options": ["Mba'épa", "Mávapa", "Mba'éichapa", "Mboýpa"],
   "answer": 1,
-  "explain": "Mymba, «animal», empieza con m, pero el plural mira la última sílaba, ba, que es oral: va -kuéra, y se lleva el acento. Mymbakuéra oĩ che jarýi rógape: los animales están en la casa de mi abuela. Mymbanguéra usa la forma de después de una sílaba nasal. Mỹmbakuéra agrega una ~ junto a mb, donde no se escribe. Mimbakuéra cambia la y por i, y mymba lleva la y, la sexta vocal."
+  "explain": "Ana responde con dos cosas: kamby ha kesu, «leche y queso». El vendedor le preguntó qué quiere: Mba'épa reipota? Mávapa pregunta por una persona, mba'éichapa pregunta cómo y mboýpa, cuánto."
  },
  {
   "id": "a1u04t.9", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
@@ -64,10 +64,10 @@
  },
  {
   "id": "a1u04t.10", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-  "q": "(Luis señala dos sillas que tiene al lado.)\nLuis: (   ) apyka iporã.",
+  "q": "(Luis toca dos sillas que tiene al lado. Al fondo del patio hay otras.)\nLuis: (   ) apyka iporã.",
   "options": ["Ko", "Umi", "Pe", "Ko'ã"],
   "answer": 4,
-  "explain": "Son dos sillas y están al lado de Luis, el que habla: ko'ã apyka, «estas sillas». Ko y pe son para una sola cosa, y umi es para varias, pero lejos de quien habla: «esas» o «aquellas». El sustantivo queda como está: ko'ã ya dice que son varias."
+  "explain": "Son dos sillas y Luis las toca: están al lado del que habla. Por eso va ko'ã apyka, «estas sillas». Ko y pe son para una sola cosa. Umi es para varias, pero lejos de quien habla: «esas» o «aquellas», como las del fondo. El sustantivo puede quedar como está: ko'ã ya dice que son varias."
  },
  {
   "id": "a1u04t.11", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
@@ -81,15 +81,15 @@
   "q": "(Rosa habla de su hija, que tiene cinco años.)\nRosa: Che memby oguereko po (   ).",
   "options": ["arykuéra", "arynguéra", "ary", "arýpa"],
   "answer": 3,
-  "explain": "Ary es «año»: oguereko po ary, «tiene cinco años». Después de un número el sustantivo va sin plural, así que no van arykuéra ni arynguéra, que además usa la forma de después de una sílaba nasal, y ry es oral. Arýpa lleva la -pa de pregunta, y Rosa no pregunta: cuenta."
+  "explain": "Ary es «año»: oguereko po ary, «tiene cinco años». Después de un número el sustantivo va sin plural: no van arykuéra ni arynguéra. Arynguéra, además, usa la forma de después de una sílaba nasal, y ry es oral. Arýpa lleva la -pa de pregunta, y Rosa no pregunta: cuenta."
  },
  {
   "id": "a1u04t.13", "kind": "build", "area": "grammar", "label": "Armá la palabra", "join": "word",
-  "before": "Che ru oñe'ẽ ", "after": ".",
+  "before": "(Ana le escribe a la escuela de sus hijos.)\nAna: Aguyje ", "after": ".",
   "tiles": ["mbo'ehára", "kuéra", "pe"], "bank": [2, 0, 1],
-  "full": "Che ru oñe'ẽ mbo'eharakuérape.",
-  "es": "Mi papá les habla a los profesores.",
-  "explain": "mbo'ehára, kuéra, pe. Mbo'ehára («profesor») + -kuéra (plural, porque ra es una sílaba oral) + -pe («a») = mbo'eharakuérape, «a los profesores». -kuéra se lleva el acento y la tilde de hára desaparece: una palabra, una sola tilde. -pe va al final y no lo mueve: la tilde queda en la é."
+  "full": "(Ana le escribe a la escuela de sus hijos.)\nAna: Aguyje mbo'eharakuérape.",
+  "es": "Ana: Gracias a los profesores.",
+  "explain": "mbo'ehára, kuéra, pe. Mbo'ehára («profesor») + -kuéra (plural, porque ra es una sílaba oral) + -pe («a») = mbo'eharakuérape, «a los profesores». -kuéra se lleva el acento y la tilde de hára desaparece: una palabra, una sola tilde. -pe va al final y no lo mueve: la tilde queda en la é. Es como Aguyje ndéve, «gracias a vos», pero con un sustantivo y -pe."
  },
  {
   "id": "a1u04t.14", "kind": "build", "area": "grammar", "label": "Armá la palabra", "join": "word",
@@ -102,25 +102,25 @@
  {
   "id": "a1u04t.15", "kind": "choice", "area": "reading", "label": "Buscar el dato",
   "q": "¿Quiénes son Lucía y Mateo?",
-  "passage": "Ana: Mba'éichapa, Luis? Ko'ã che membykuéra, Lucía ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko sesenta ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
+  "passage": "Ana: Mba'éichapa, Luis? Ko'ã mitã che membykuéra, Lucía ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko 60 ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
   "options": ["Los papás de Ana.", "Los hijos de Ana.", "Los hijos de Luis.", "Los abuelos de Ana."],
   "short": ["Sus papás", "Sus hijos", "Hijos de Luis", "Sus abuelos"],
   "answer": 2,
-  "explain": "Ana escribe Ko'ã che membykuéra, Lucía ha Mateo: «estos son mis hijos, Lucía y Mateo». Che es «mi» y membykuéra, «hijos», en plural. Lo dice Ana, no Luis. El papá de Ana es Carlos, y de abuelos no habla."
+  "explain": "Ana escribe Ko'ã mitã che membykuéra, Lucía ha Mateo: «estos chicos son mis hijos, Lucía y Mateo». Che es «mi» y membykuéra, «hijos», en plural. Lo dice Ana, no Luis. El papá de Ana es Carlos, y de abuelos no habla."
  },
  {
   "id": "a1u04t.16", "kind": "choice", "area": "reading", "label": "Buscar el dato",
   "q": "¿Cuántos años tiene el papá de Ana?",
-  "passage": "Ana: Mba'éichapa, Luis? Ko'ã che membykuéra, Lucía ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko sesenta ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
+  "passage": "Ana: Mba'éichapa, Luis? Ko'ã mitã che membykuéra, Lucía ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko 60 ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
   "options": ["Veinte.", "Dos.", "Seis.", "Sesenta."],
   "short": ["Veinte", "Dos", "Seis", "Sesenta"],
   "answer": 4,
-  "explain": "Luis pregunta Ha pe karai?, «¿y ese señor?», y Ana responde Che ru, héra Carlos. Oguereko sesenta ary: «mi papá, se llama Carlos. Tiene sesenta años». La edad va en castellano dentro de la frase guaraní, y ary es «año». Mokõi, «dos», es la cantidad de hijos, no una edad."
+  "explain": "Luis pregunta Ha pe karai?, «¿y ese señor?», y Ana responde Che ru, héra Carlos. Oguereko 60 ary: «mi papá, se llama Carlos. Tiene 60 años». Oguereko es «tiene» y ary, «año»; la edad está escrita en cifras: 60, sesenta. Mokõi, «dos», es la cantidad de hijos de Ana, no una edad. Y en el chat no hay ningún seis ni ningún veinte."
  },
  {
   "id": "a1u04t.17", "kind": "choice", "area": "reading", "label": "Texto corto",
   "q": "¿Qué le pregunta Luis a Ana al final?",
-  "passage": "Ana: Mba'éichapa, Luis? Ko'ã che membykuéra, Lucía ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko sesenta ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
+  "passage": "Ana: Mba'éichapa, Luis? Ko'ã mitã che membykuéra, Lucía ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko 60 ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
   "options": ["Cuántos hijos tiene.", "Cómo se llama su papá.", "Dónde vive.", "Cuántos años tiene."],
   "short": ["Cuántos hijos", "El nombre del papá", "Dónde vive", "Cuántos años"],
   "answer": 1,
@@ -138,7 +138,7 @@
   "q": "(En la despensa.)\nAna: Mboýpa ovale ko kamby?\n¿Qué le responde el vendedor?",
   "options": ["Cinco mil.", "Po mil.", "Héẽ."],
   "answer": 1,
-  "explain": "Mboýpa ovale? pregunta el precio, y el precio se dice entero en castellano: cinco mil. Po mil mezcla los dos sistemas, y nadie dice un precio con numerales guaraníes. Héẽ, «sí», responde preguntas de sí o no, como Oĩpa kamby?"
+  "explain": "Mboýpa ovale? pregunta el precio, y en la charla el precio se dice entero en castellano: cinco mil. Po mil mezcla los dos sistemas en una misma cifra: po es «cinco» en guaraní, pero cinco mil se dice cinco mil. Héẽ, «sí», responde preguntas de sí o no, como Oĩpa kamby?"
  },
  {
   "id": "a1u04t.20", "kind": "choice", "area": "listening", "label": "Respuesta rápida",
