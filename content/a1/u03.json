@@ -2268,7 +2268,7 @@
       "why": [
        "Rasy es la forma que va con che- y nde-, como réra en che réra y nde réra: cherasy. Para otra persona, nde ru, va h-: hasy, como héra.",
        "-pa no va delante ni suelto: es un sufijo y se pega al final de la palabra que preguntás, Hasýpa.",
-       "Hasy, «está enfermo», es la palabra que pregunta, y -pa va pegado a ella: Hasýpa nde ru?, «¿está enfermo tu papá?». Hasy termina en y tónica; con -pa esa y ya no es la última vocal y se escribe la tilde: hasýpa.",
+       "Luis pregunta por hasy, «está enfermo», y -pa va pegado a esa palabra: Hasýpa nde ru?, «¿está enfermo tu papá?». Hasy termina en y tónica; con -pa esa y ya no es la última vocal y se escribe la tilde: hasýpa.",
        "Ikane'õpa pregunta si está cansado, y Luis quiere saber si está enfermo: hasy."
       ]
      },
@@ -2328,7 +2328,7 @@
       "why": [
        "Chevare'a es «tengo hambre»: afirma, y Juan no tiene hambre.",
        "na- va solo delante de una palabra nasal, como en nachemandu'ái. Vare'a es oral: nda-.",
-       "Ndavare'ái conjuga vare'a como una acción: nd- + a- + vare'a + -i, con la a- de ndaguatái (unidad 2). Vare'a es un estado y lleva che-: ndachevare'ái.",
+       "Ndavare'ái conjuga vare'a como una acción: nd- + a- + vare'a + -i, con la a- de ndahái, «no voy» (unidad 2). Vare'a es un estado y lleva che-: ndachevare'ái.",
        "Vare'a es oral, sin ~ ni m, n, ñ: el «no» de dos partes es nda-…-i alrededor de chevare'a. Ndachevare'ái, «no tengo hambre». La tilde aparece en la á porque -i no se lleva el acento."
       ]
      },
@@ -2648,8 +2648,8 @@
     "points": [
      {
       "id": "a1u03d5.p1",
-      "form": "sin tilde: aguda · con tilde: el acento va antes",
-      "gloss": "dónde cae el acento",
+      "form": "jagua · óga · mitã",
+      "gloss": "sin marca: aguda · con tilde: el acento va antes · vocal con ~: nunca tilde",
       "connect": [
        {
         "pos": "Sin ninguna marca, el acento cae en la última vocal: al revés del castellano",
@@ -2657,10 +2657,10 @@
        },
        {
         "pos": "Si cae antes, se escribe la tilde en esa vocal, también en los diptongos",
-        "rule": "{ó}ga · {á}ra · purah{é}i · Paragu{á}i · mba'{é}ichapa"
+        "rule": "{ó}ga · jar{ý}i · purah{é}i · Paragu{á}i · mba'{é}ichapa"
        },
        {
-        "pos": "Una vocal con ~ nunca lleva tilde: la ~ ya marca el acento",
+        "pos": "Una vocal con ~ nunca lleva tilde, ni cuando es la tónica: si el acento cae en ella, la ~ basta",
         "rule": "mit{ã} · kane'{õ} · pete{ĩ}"
        }
       ],
@@ -2727,18 +2727,18 @@
        }
       ],
       "watch": {
-       "note": "El castellano marca la palabra aguda con tilde: tereré, ñandutí, guaraní. El guaraní no la marca: terere, ñanduti y, en los textos en guaraní, guarani. La tilde guaraní marca lo que NO es aguda. Si le ponés tilde a jagua, le cambiás el acento a una palabra que ya lo tenía bien.",
+       "note": "El castellano marca con tilde la aguda que termina en vocal: tereré, ñandutí, guaraní. El guaraní no la marca: terere, ñanduti y, en los textos en guaraní, guarani. La tilde guaraní marca lo que NO es aguda. Si le ponés tilde a jagua, escribís una marca que el guaraní no usa: sin ninguna marca, el acento ya cae en la última vocal.",
        "bad": "Jaguá okaru.",
        "good": "Jagua okaru."
       }
      },
      {
       "id": "a1u03d5.p2",
-      "form": "palabra + sufijo átono: aparece la tilde",
-      "gloss": "ikatúpa · Itauguápe · ógape",
+      "form": "ikatúpa · Itauguápe · ógape",
+      "gloss": "con -pa, -pe o -gui, la tilde aparece o se queda donde estaba",
       "connect": [
        {
-        "pos": "-pa, -pe y -gui no se llevan el acento: queda en la raíz, que ya no termina la palabra, y por eso se escribe la tilde",
+        "pos": "-pa, -pe (o -me) y -gui no se llevan el acento: queda en la raíz, y como esa vocal ya no es la última de la palabra, se escribe la tilde",
         "rule": "ikatu → ikat{ú}pa · Itaugua → Itaugu{á}pe · Ypakarai → Ypakara{í}pe"
        },
        {
@@ -2747,7 +2747,7 @@
        },
        {
         "pos": "Si la vocal tónica lleva ~, no cambia nada: la ~ ya marca el acento",
-        "rule": "tetã → tet{ã}gui · oĩ → o{ĩ}pa · oñe'ẽ → oñe'{ẽ}pa"
+        "rule": "tetã → tet{ã}me · tet{ã}gui · oĩ → o{ĩ}pa"
        },
        {
         "pos": "Ojo con -gua, el «de» de origen de la unidad 1: ese sí se lleva el acento, y la raíz pierde su tilde",
@@ -2854,7 +2854,7 @@
       },
       {
        "form": "ikatúpa",
-       "tag": "sufijo átono · aparece la tilde",
+       "tag": "con sufijo · aparece la tilde",
        "mark": "dot",
        "gn": "{Ikatúpa} aike?",
        "es": "¿Puedo pasar?"
@@ -2865,17 +2865,17 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Cuál está bien escrita",
-      "q": "Luis escribe en la pizarra: jaguá, óga, Itauguape. Se dicen ^ja-GUA, Ó-ga, i-tau-GUÁ-pe^. ¿Cuál de las tres está _bien escrita_?",
+      "q": "Luis escribe en la pizarra: jaguá, óga, ikatupa. Se dicen ^ja-GUA, Ó-ga, i-ka-TÚ-pa^. ¿Cuál de las tres está _bien escrita_?",
       "options": [
        "jaguá",
        "óga",
-       "Itauguape"
+       "ikatupa"
       ],
       "answer": 2,
       "why": [
        "Jagua es aguda, ja-GUA, y en guaraní la aguda no lleva tilde. Esa tilde es la costumbre del castellano.",
        "Óga se dice Ó-ga: el acento va antes de la última vocal, y por eso se escribe la tilde. Está bien.",
-       "Itaugua es aguda y va sin tilde, pero con -pe la a tónica ya no es la última vocal: hay que escribirla, Itauguápe."
+       "Ikatu es aguda y va sin tilde, pero con -pa la u tónica ya no es la última vocal y hay que escribir la tilde: ikatúpa."
       ]
      }
     },
@@ -2885,39 +2885,39 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Cuál está bien escrita",
-      "q": "Rosa escribe cuatro palabras que se dicen ^con el acento en la última vocal^: ja-GUA, ka-ra-I, te-re-RE, y-pa-ka-ra-I. Solo una está _bien escrita_. ¿Cuál?",
+      "q": "Rosa escribe cuatro palabras que se dicen ^con el acento en la última vocal^: ja-GUA, ka-ra-I, mi-TÃ, te-re-RE. Solo una está _bien escrita_. ¿Cuál?",
       "options": [
        "terere",
        "jaguá",
        "karái",
-       "Ypakaraí"
+       "mitá"
       ],
       "answer": 1,
       "why": [
-       "Terere es aguda, te-re-RE, y en guaraní la aguda no lleva ninguna marca. El castellano escribe tereré; el guaraní, terere.",
+       "Terere es aguda, te-re-RE, y en guaraní la aguda no lleva tilde. El castellano escribe tereré; el guaraní, terere.",
        "Jagua es aguda, ja-GUA: sin tilde. Jaguá lleva la tilde del castellano, que acá sobra.",
        "Karai se dice ka-ra-I, con el acento al final: sin tilde. Karái movería el acento a la a del medio.",
-       "Ypakarai se dice y-pa-ka-ra-I: aguda, sin tilde. La tilde de Ypacaraí es del castellano, y el guaraní no la copia."
+       "Mitã es aguda, pero su a es nasal: lleva la ~, y una vocal con ~ nunca lleva tilde. Mitá cambia la ~ por la tilde y pierde la nasal."
       ]
      },
      {
       "id": "a1u03d5.d2",
       "kind": "choice",
       "area": "grammar",
-      "label": "Cómo se escribe",
-      "q": "(^El niño^ tiene hambre.)\n(   ) ivare'a.",
+      "label": "Cuál está bien escrita",
+      "q": "Luis escribe cuatro palabras que se dicen ^con el acento antes de la última vocal^: na-HÁ-ni-ri, mbo-'e-HÁ-ra, TÉ-ra, pu-ra-HÉI. Solo una está _bien escrita_. ¿Cuál?",
       "options": [
-       "mitá",
-       "mintã",
-       "mitán",
-       "mitã"
+       "nahaniri",
+       "mbo'éhara",
+       "terá",
+       "purahéi"
       ],
       "answer": 4,
       "why": [
-       "El acento cae en la a final, pero esa a es nasal: lleva la ~, nunca la tilde aguda. Además, una tilde en la última vocal no marca nada en guaraní.",
-       "Mintã mete una n antes de la t que la palabra no tiene. La nasal está en la vocal, con ~, no en una consonante nueva.",
-       "La n del final es la costumbre castellana de cerrar la vocal nasal. En guaraní la nasal es la vocal sola: ã.",
-       "Mitã: aguda, con la a nasal. La ~ marca a la vez la nasal y el acento, y no hace falta otra tilde."
+       "Sin tilde, nahaniri se leería na-ha-ni-RI, como una aguda. El acento va en la segunda a, y por eso lleva tilde: nahániri.",
+       "La tilde está, pero en otra vocal: mbo'éhara se leería mbo-'É-ha-ra. El acento va en la a de hára: mbo'ehára.",
+       "Terá lleva la tilde en la última vocal, donde el guaraní no la escribe nunca, y así se leería te-RA. El acento va en la e: téra.",
+       "Purahéi se dice pu-ra-HÉI: el acento cae antes de la última vocal y se escribe la tilde, en la e del diptongo. Está bien."
       ]
      },
      {
@@ -2927,17 +2927,17 @@
       "label": "Cuál está bien escrita",
       "q": "Luis escribe cuatro lugares con -pe, «en». ^-pe no se lleva el acento^. Solo uno está _bien escrito_. ¿Cuál?",
       "options": [
-       "Ka'akupepe",
-       "Ypakaraipe",
+       "kotype",
+       "ogápe",
        "Itauguápe",
        "mbo'ehaope"
       ],
       "answer": 3,
       "why": [
-       "Ka'akupe es aguda, ka-'a-ku-PE. Con -pe esa e ya no es la última vocal: hay que escribir la tilde, Ka'akupépe.",
-       "Ypakarai termina en i tónica. Con -pe esa i queda adentro de la palabra y lleva tilde: Ypakaraípe.",
+       "Koty lleva el acento en la y final (unidad 2). Con -pe esa y ya no es la última vocal y hay que escribir la tilde: kotýpe.",
+       "Óga ya tenía su tilde en la o, y con -pe se queda ahí: ógape. Ogápe la mueve a la a, y así se leería o-GÁ-pe.",
        "Itaugua es aguda y va sin tilde. Con -pe, la a tónica ya no es la última vocal y se escribe la tilde: Itauguápe. Está bien.",
-       "Mbo'ehao lleva el acento en la o final (unidad 2). Con -pe esa o queda adentro y se escribe mbo'ehaópe: acá falta la tilde."
+       "Mbo'ehao lleva el acento en la o final (unidad 2). Con -pe esa o queda adentro de la palabra y se escribe mbo'ehaópe: acá falta la tilde."
       ]
      },
      {
@@ -2948,16 +2948,16 @@
       "q": "Ana escribe «Aju Paraguáigui», «vengo de Paraguay». ^Paraguái ya tenía tilde^. ¿Qué pasa con la _tilde_ al agregar -gui?",
       "options": [
        "Se queda en la á: -gui no se lleva el acento.",
-       "Se mueve a la u de -gui, que es la última vocal.",
+       "Se mueve a -gui, que ahora es el final de la palabra.",
        "Se borra: con sufijo no hay tilde.",
        "Se escriben dos: Paraguáiguí."
       ],
       "answer": 1,
       "why": [
        "Paraguái ya lleva su tilde en la á. -gui no se lleva el acento, así que todo queda igual: Paraguáigui. Lo mismo pasa con -pe: Paraguáipe.",
-       "-gui es un sufijo átono: nunca se lleva el acento. El que sí se lo lleva es -gua, y por eso Paraguaigua va sin tilde.",
+       "-gui nunca se lleva el acento: sigue en la á de Paraguái. El que sí se lo lleva es -gua, y por eso Paraguaigua va sin tilde.",
        "La tilde no se borra: el acento sigue en la á, que no es la última vocal, y por eso se escribe. Solo se pierde con un sufijo que se lleva el acento, como -gua.",
-       "Una palabra lleva una sola tilde, en la vocal tónica. Paraguáiguí tendría dos, y -gui no es tónico."
+       "Una palabra lleva una sola tilde, en la vocal tónica. Paraguáiguí tendría dos, y -gui no se lleva el acento."
       ]
      },
      {
@@ -3011,13 +3011,13 @@
       "label": "Cuál está bien escrita",
       "q": "Rosa anota en su cuaderno cuatro palabras que ya conocés. Solo una está _bien escrita_. ¿Cuál?",
       "options": [
-       "Paraguai",
-       "óga",
-       "jaryi",
+       "ndeve",
+       "okarú",
+       "jarýi",
        "mba'eichapa"
       ],
-      "answer": 2,
-      "explain": "Óga se dice Ó-ga: el acento va antes de la última vocal y la tilde se escribe. Las otras tres también llevan el acento antes del final y necesitan su tilde: Paraguái (Pa-ra-GUÁI), jarýi (ja-RÝ-i) y mba'éichapa (mba-'ÉI-cha-pa). Sin la tilde se leerían como agudas."
+      "answer": 3,
+      "explain": "Jarýi lleva el acento en la y, antes de la última vocal, y por eso se escribe la tilde. Ndeve y mba'eichapa también lo llevan antes del final y necesitan la suya: ndéve y mba'éichapa. Okaru, en cambio, es aguda, o-ka-RU, y va sin tilde: la de okarú es la costumbre del castellano."
      },
      {
       "id": "a1u03d5.e2",
@@ -3027,12 +3027,12 @@
       "q": "Cuatro palabras con sufijo. Solo una está _bien escrita_. ¿Cuál?",
       "options": [
        "reikuaapa",
-       "ikatupa",
+       "tetáme",
        "Paraguaigui",
-       "oñe'ẽpa"
+       "oĩpa"
       ],
       "answer": 4,
-      "explain": "En oñe'ẽpa la vocal tónica es la ẽ, con ~, y la ~ ya marca el acento: con -pa no cambia nada. En las otras tres la vocal tónica es oral y con el sufijo deja de ser la última, así que la tilde tiene que estar: reikuaápa, ikatúpa y Paraguáigui, que conserva la tilde de Paraguái."
+      "explain": "En oĩpa la vocal tónica es la ĩ, con ~: una vocal con ~ nunca lleva tilde, así que con -pa no cambia nada. En reikuaapa y Paraguaigui la vocal tónica es oral y no es la última, así que la tilde tiene que estar: reikuaápa y Paraguáigui, que conserva la de Paraguái. Y tetáme cambia la ~ por una tilde: es tetãme, con la ã nasal."
      },
      {
       "id": "a1u03d5.e3",
@@ -3040,25 +3040,25 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Luis va a Itauguá.)\nAna: Luis oho ",
+      "before": "(Luis va a Caacupé.)\nAna: Luis oho ",
       "after": ".",
       "tiles": [
-       "Itaugua",
+       "Ka'akupe",
        "pe"
       ],
       "bank": [
        1,
        0
       ],
-      "full": "(Luis va a Itauguá.)\nAna: Luis oho {Itauguápe}.",
-      "es": "Ana: Luis va a Itauguá.",
-      "explain": "Itaugua («Itauguá») + -pe («a») = Itauguápe. Itaugua es aguda, I-tau-GUA, y sola va sin tilde. -pe no se lleva el acento: queda en la a de Itaugua, que ya no es la última vocal, y por eso se escribe á."
+      "full": "(Luis va a Caacupé.)\nAna: Luis oho {Ka'akupépe}.",
+      "es": "Ana: Luis va a Caacupé.",
+      "explain": "Ka'akupe («Caacupé») + -pe («a») = Ka'akupépe. Ka'akupe es aguda, ka-'a-ku-PE, y sola va sin tilde. -pe no se lleva el acento: queda en la e final de Ka'akupe, que ya no es la última vocal, y por eso se escribe é."
      }
     ]
    },
    "words": {
-    "es": "Nombres que cambian de acento en castellano",
-    "intro": "Un mapa del Paraguay y tres cosas muy nuestras. Casi todas son agudas en guaraní y van sin tilde; el castellano, al tomarlas, les pone la tilde. Una, Paraguái, es al revés. Tocá cada una.",
+    "es": "Nombres que cambian de tilde en castellano",
+    "intro": "Un mapa del Paraguay y tres cosas muy paraguayas. Casi todas son agudas y van sin tilde en guaraní; el castellano les pone la suya. Solo Paraguái lleva tilde en guaraní y no en castellano. Tocá cada una.",
     "sound": {
      "focus": "La tilde nasal (~) también es tilde",
      "letters": [
@@ -3069,7 +3069,7 @@
       "ũ",
       "ỹ"
      ],
-     "note": "Una vocal con ~ nunca lleva tilde aguda, ni cuando es la tónica: mitã, kane'õ, peteĩ, oñe'ẽpa. Si el acento cae en una vocal nasal, la ~ lo marca sola. Junto a m, n o ñ la vocal suena nasal, pero no se escribe la ~: kuña, ñande. Una palabra puede llevar las dos marcas en vocales distintas: térã, «o». Escuchá estos pares: cambia la ~ y cambia la palabra, y en porã y póra cambia también el acento.",
+     "note": "Una vocal con ~ nunca lleva tilde, ni cuando es la tónica: ahí la ~ marca también el acento, como en mitã, kane'õ y peteĩ. Una palabra puede llevar las dos marcas, en vocales distintas: térã, «o». Escuchá los pares: cambia la ~ y cambia la palabra, y en porã y póra cambia también el acento.",
      "pairs": [
       [
        "téra",
@@ -3096,41 +3096,31 @@
       "id": "paraguai",
       "gn": "Paraguái",
       "es": "Paraguay",
-      "note": "Lleva tilde: el acento no cae en la última vocal, Pa-ra-GUÁI. Con -pe la tilde se queda, Paraguáipe, «en Paraguay»; con -gua se pierde, Paraguaigua (unidad 1)."
+      "note": "Lleva tilde: el acento no cae en la última vocal, Pa-ra-GUÁI. Con -pe la tilde se queda, Paraguáipe; con -gua se pierde, Paraguaigua (unidad 1), aunque algunos diarios escriben Paraguáigua."
      },
      {
       "id": "kaakupe",
       "gn": "Ka'akupe",
       "es": "Caacupé",
-      "note": "Ka-'a-ku-PE, aguda y sin tilde; el castellano escribe Caacupé. Es el pueblo de la Virgen de Caacupé, patrona del Paraguay, adonde se peregrina en diciembre. Con -pe: Ka'akupépe."
+      "note": "Ka-'a-ku-PE, aguda y sin tilde; el castellano escribe Caacupé. Es la ciudad de la Virgen de Caacupé, patrona del Paraguay, adonde se peregrina en diciembre. Con -pe: Ka'akupépe."
      },
      {
       "id": "ypakarai",
       "gn": "Ypakarai",
       "es": "Ypacaraí",
-      "note": "El lago y el pueblo. Y-pa-ka-ra-I: sin tilde en guaraní, con tilde en castellano. Con -pe: Ypakaraípe."
+      "note": "El lago y el pueblo. Y-pa-ka-ra-I, sin tilde. El castellano escribe Ypacaraí, y en algunos textos en guaraní se copia esa tilde. Con -pe: Ypakaraípe."
      },
      {
       "id": "itaugua",
       "gn": "Itaugua",
       "es": "Itauguá",
-      "note": "La capital del ñanduti. I-tau-GUA, sin tilde. En castellano es Itauguá, y así aparece también en muchos textos en guaraní. Con -pe: Itauguápe."
+      "note": "La capital del ñandutí. I-tau-GUA, sin tilde. En castellano es Itauguá, y así aparece también en muchos textos en guaraní. Con -pe: Itauguápe."
      },
      {
-      "id": "kaaguasu",
-      "gn": "Ka'aguasu",
-      "es": "Caaguazú",
-      "parts": [
-       [
-        "ka'a",
-        "yerba, monte"
-       ],
-       [
-        "guasu",
-        "grande"
-       ]
-      ],
-      "note": "Ka-'a-gua-SU, sin tilde. El castellano lo escribe Caaguazú, con z y con tilde."
+      "id": "tovati",
+      "gn": "Tovatĩ",
+      "es": "Tobatí",
+      "note": "To-va-TĨ: aguda, con la última vocal nasal. Lleva la ~ y ninguna tilde; el castellano escribe Tobatí, con b y con tilde. Es un pueblo de oleros y ceramistas, cerca de Caacupé. Con -me: Tovatĩme."
      },
      {
       "id": "terere",
@@ -3142,7 +3132,7 @@
       "id": "nanduti",
       "gn": "ñanduti",
       "es": "ñandutí (el encaje)",
-      "note": "El encaje de Itaugua, redondo como un sol. Quiere decir «telaraña»: viene de ñandu, «araña». Ñan-du-TI, sin tilde; en castellano, ñandutí."
+      "note": "El encaje de Itauguá, redondo como un sol. Quiere decir «telaraña». Ñan-du-TI, sin tilde en guaraní; también se ve ñandutí, a la castellana."
      },
      {
       "id": "jaguarete",
@@ -3165,7 +3155,7 @@
      "paraguai",
      "kaakupe",
      "ypakarai",
-     "nanduti"
+     "tovati"
     ],
     "check": {
      "id": "a1u03d5.k1",
@@ -3180,7 +3170,7 @@
       "Ypakarãi"
      ],
      "answer": 3,
-     "explain": "Ypakarai: con y, la sexta vocal, con k y sin tilde, porque es aguda y en guaraní la aguda no se marca; la tilde de Ypacaraí es del castellano. Ipakaraí cambia la y por i y le pone la tilde castellana. Ypacarai usa la c, que no es una letra del guaraní. Ypakarãi le pone una ~ a una vocal que no es nasal, y la ~ cambia el sonido."
+     "explain": "Ypakarai: con y, la sexta vocal, con k y sin tilde, porque es aguda y en guaraní la aguda no lleva tilde; la de Ypacaraí es del castellano, aunque a veces se copia. Ipakaraí cambia la y por i y le pone la tilde castellana. Ypacarai usa la c, que no es una letra del guaraní. Ypakarãi le pone una ~ a una vocal que no es nasal, y la ~ cambia el sonido."
     }
    },
    "skill": {
@@ -3195,20 +3185,20 @@
      "label": "Buscar el dato",
      "q": "¿Adónde va la mujer?",
      "options": [
-      "A Caacupé.",
       "A Itauguá.",
+      "A Caacupé.",
       "A Ypacaraí."
      ],
      "answer": 2,
      "why": [
-      "Ka'akupégui lleva -gui, «de»: Caacupé es de donde viene la mujer, no adónde va.",
-      "La mujer dice Ko'ág̃a aha Itauguápe: aha es «voy» y -pe, «a». Va a Itauguá.",
+      "Itauguágui lleva -gui, «de»: Itauguá es de donde viene la mujer, no adónde va.",
+      "La mujer dice Ko'ág̃a aha Ka'akupépe: aha es «voy» y -pe, «a». Va a Caacupé.",
       "Ypakaraípe lo dice el hombre, y habla de él: Ha che aha Ypakaraípe, «y yo voy a Ypacaraí»."
      ],
-     "explain": "La mujer dice Aju Ka'akupégui, «vengo de Caacupé», y Ko'ág̃a aha Itauguápe, «ahora voy a Itauguá»: -gui es de donde viene y -pe, adónde va. Ypacaraí es adonde va el hombre.",
+     "explain": "La mujer dice Aju Itauguágui, «vengo de Itauguá», y Ko'ág̃a aha Ka'akupépe, «ahora voy a Caacupé»: -gui es de donde viene y -pe, adónde va. Ypacaraí es adonde va el hombre.",
      "script": [
       "Narrador: En la terminal. ¿Adónde va la mujer?",
-      "Mujer: Aju Ka'akupégui. Ko'ág̃a aha Itauguápe.",
+      "Mujer: Aju Itauguágui. Ko'ág̃a aha Ka'akupépe.",
       "Hombre: Ha che aha Ypakaraípe.",
       "Narrador: ¿Adónde va la mujer?"
      ]
@@ -3221,8 +3211,8 @@
      ],
      [
       "F",
-      "Aju Ka'akupégui. Ko'ág̃a aha Itauguápe.",
-      "Vengo de Caacupé. Ahora voy a Itauguá."
+      "Aju Itauguágui. Ko'ág̃a aha Ka'akupépe.",
+      "Vengo de Itauguá. Ahora voy a Caacupé."
      ],
      [
       "M",
@@ -3262,8 +3252,8 @@
        "form": "-pa · piko",
        "tag": "pregunta neutra · con sorpresa",
        "mark": "dot",
-       "gn": "Nekane'õ{pa}? · Nekane'õ {piko}?",
-       "es": "¿Estás cansado? · ¿Estás cansado? ¿En serio?"
+       "gn": "Ndé{pa} mbo'ehára? · Nde {piko} mbo'ehára?",
+       "es": "¿Vos sos profesora? · ¿Vos sos profesora? ¿En serio?"
       },
       {
        "form": "ha'e · ndaha'éi",
@@ -3308,8 +3298,8 @@
       "answer": 3,
       "why": [
        "Cherasy es «estoy enferma»: Ana hablaría de ella misma. Acá habla de su abuela.",
-       "Con las palabras que con che- empiezan con r, como rasy y réra, la tercera persona no lleva i-: lleva h-, como héra. Irasy no existe.",
-       "Che jarýi, «mi abuela», es otra persona, y rasy es una palabra en r: lleva h-, como héra. Che jarýi hasy, «mi abuela está enferma».",
+       "Rasy es de las palabras con tres formas, como téra, che réra, héra: tasy, cherasy, hasy. Para él o ella es hasy: irasy no existe.",
+       "Che jarýi, «mi abuela», es otra persona, y para él o ella rasy tiene su propia forma, hasy, como réra tiene héra. Che jarýi hasy, «mi abuela está enferma».",
        "Nderasy es «estás enferma», hablándole a ella. Ana habla de su abuela, no con ella."
       ]
      },
@@ -3318,7 +3308,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Luis le cuenta a Ana qué hace: ^trabaja^.)\nLuis: Ko'ág̃a (   ), Ana.",
+      "q": "(Luis le cuenta a Ana ^qué hace él mismo^: trabaja.)\nLuis: Ko'ág̃a (   ), Ana.",
       "options": [
        "amba'apo",
        "chemba'apo",
@@ -3328,7 +3318,7 @@
       "answer": 1,
       "why": [
        "Trabajar es una acción y Luis habla de él mismo: a- + mba'apo = amba'apo, «trabajo». Ko'ág̃a amba'apo, «ahora trabajo».",
-       "Che- es para los estados, como chekane'õ. Con una acción no va: chemba'apo se entiende como «mi trabajo», la cosa.",
+       "Che- es para los estados, como chekane'õ. Trabajar es una acción y lleva a-: chemba'apo no es «yo trabajo».",
        "O- es «él, ella»: omba'apo es «trabaja», de otra persona. Luis habla de él mismo.",
        "Mba'apo sin prefijo es «trabajo», la cosa, o la raíz sin persona: no dice quién trabaja."
       ]
@@ -3338,19 +3328,19 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Rosa quiere saber si Juan ^está enojado^, y se lo pregunta a él.)\nRosa: (   ), Juan?",
+      "q": "(Rosa quiere saber si Juan está enojado. ^Se lo pregunta a él^.)\nRosa: (   ), Juan?",
       "options": [
-       "Ndepochy",
+       "Repochýpa",
        "Ipochýpa",
        "Nepochýpa",
        "Ndepochýpa"
       ],
       "answer": 4,
       "why": [
-       "Ndepochy, sin -pa, no pregunta: escrito así, afirma «estás enojado». La pregunta de sí o no lleva -pa.",
+       "Re- es el «vos» de las acciones, como en rekaru, «comés». Pochy es un estado, y con los estados el «vos» es nde-, no re-: Repochýpa no va.",
        "I- es «él, ella»: Ipochýpa pregunta si otra persona está enojada. Rosa le pregunta a Juan por él mismo: nde-.",
        "Ne- reemplaza a nde- solo antes de una palabra nasal, como nekane'õ. Pochy es oral, sin ~ ni m, n, ñ: queda nde-.",
-       "Rosa le habla a Juan, de vos a vos: nde- + pochy, y -pa pegado al estado, que es la palabra que pregunta. La y tónica ya no es la última vocal, así que aparece la tilde: Ndepochýpa?, «¿estás enojado?»."
+       "Rosa le habla a Juan, de vos a vos, y de un estado: nde- + pochy, y -pa pegado al estado, que es lo que Rosa pregunta. La y tónica ya no es la última vocal, así que aparece la tilde: Ndepochýpa?, «¿estás enojado?»."
       ]
      },
      {
@@ -3358,19 +3348,19 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(En la fiesta, Rosa señala a una señora: es ^la mamá de Luis^.)\nRosa: Mávapa ha'e?\nLuis: (   ) che sy.",
+      "q": "(En la fiesta, ^Luis dice qué es él mismo^: médico.)\nLuis: (   ) pohanohára.",
       "options": [
-       "Ikane'õ",
-       "Che",
+       "Aime",
        "Ha'e",
+       "Che",
        "Ndaha'éi"
       ],
       "answer": 3,
       "why": [
-       "Ikane'õ es «está cansada», un estado con i-. Rosa pregunta quién es la señora, no cómo está.",
-       "Che che sy no es una oración: che es «yo» y che sy, «mi mamá». Así no se dice quién es ella.",
-       "A Mávapa ha'e? se responde con ha'e y quién es: Ha'e che sy, «es mi mamá».",
-       "Ndaha'éi che sy es «no es mi mamá», y la señora sí es la mamá de Luis."
+       "Aime es «estoy» en un lugar, como en Aime ógape. Para decir qué sos no va ningún verbo: ni «soy» ni «estoy».",
+       "Ha'e pohanohára es «él es médico», de otra persona. Luis habla de él mismo: che.",
+       "Para decir qué sos: che y el sustantivo, nada más. Che pohanohára, «soy médico».",
+       "Ndaha'éi pohanohára niega: «no es médico» o «no soy médico». Luis sí es médico, y eso es lo que dice."
       ]
      },
      {
@@ -3379,22 +3369,22 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Ana no va a la fiesta.)\nAna: ",
-      "after": ".",
+      "before": "(Luis ve que Ana sonríe.)\nLuis: ",
+      "after": ", Ana?",
       "tiles": [
-       "che",
-       "akã",
-       "rasy"
+       "re",
+       "vy'a",
+       "pa"
       ],
       "bank": [
        1,
        2,
        0
       ],
-      "hint": "che- va primero. Después la parte del cuerpo, akã, y al final rasy, «dolor».",
-      "full": "(Ana no va a la fiesta.)\nAna: {Che}akãrasy.",
-      "es": "Ana: Me duele la cabeza.",
-      "explain": "che- (yo, me pasa) + akã («cabeza») + rasy («dolor, enfermo») = cheakãrasy, «me duele la cabeza»: un estado, todo en una palabra. Sin tilde: el acento cae en la última vocal, sy, y la ~ de akã marca la nasal."
+      "hint": "Vy'a va como una acción: el «vos» es re-, y va primero. -pa va al final.",
+      "full": "(Luis ve que Ana sonríe.)\nLuis: {Re}vy'á{pa}, Ana?",
+      "es": "Luis: ¿Estás contenta, Ana?",
+      "explain": "re- («vos») + vy'a («alegrarse») + -pa (pregunta) = Revy'ápa, «¿estás contenta?». Vy'a va como una acción: por eso lleva re-, el «vos» de las acciones, y no nde-. -pa no se lleva el acento: queda en la a de vy'a, que ya no es la última vocal, y se escribe á."
      },
      {
       "id": "a1u03d6.d6",
@@ -3414,10 +3404,10 @@
        1,
        0
       ],
-      "hint": "El prefijo de «él, ella» va primero, pegado a g̃uahẽ. -pa cierra la palabra que pregunta, y nde sy viene después.",
+      "hint": "Nde sy es otra persona: el verbo empieza con el prefijo de «él, ella». -pa va al final.",
       "full": "(Luis pregunta si llegó la mamá de Ana.)\nLuis: {O}g̃uahẽ{pa} nde sy?",
       "es": "Luis: ¿Llegó tu mamá?",
-      "explain": "o- («él, ella») + g̃uahẽ («llegar») + -pa (pregunta) = Og̃uahẽpa, «¿llegó?». -pa va pegado a la palabra que pregunta, la primera, y la persona, nde sy, viene después. El acento sigue en la ẽ: la ~ ya lo marca y no se agrega tilde."
+      "explain": "o- («él, ella») + g̃uahẽ («llegar») + -pa (pregunta) = Og̃uahẽpa, «¿llegó?». Nde sy, «tu mamá», es otra persona: por eso el verbo lleva o-. -pa va pegado al verbo, y nde sy viene después. Acá no aparece ninguna tilde: el acento cae en la ẽ, y la ~ ya lo marca. Compará con Revy'ápa, donde la a es oral y recibe la tilde."
      }
     ],
     "exam": [
@@ -3431,25 +3421,25 @@
        "No me acuerdo.",
        "Me acuerdo.",
        "No sé.",
-       "No estoy cansado."
+       "No tengo hambre."
       ],
       "answer": 1,
-      "explain": "Na-…-i es el «no» de dos partes alrededor de che- y mandu'a, «acordarse»: nachemandu'ái, «no me acuerdo». Mandu'a es nasal, por eso va na- y no nda-. «Me acuerdo» sería chemandu'a, sin negar; «no sé» es ndaikuaái; y «no estoy cansado», nachekane'õi."
+      "explain": "Na-…-i es el «no» de dos partes alrededor de che- y mandu'a, «acordarse»: nachemandu'ái, «no me acuerdo». Mandu'a es nasal, por eso va na- y no nda-. «Me acuerdo» sería chemandu'a, sin negar; «no sé» es ndaikuaái; y «no tengo hambre», ndachevare'ái, con nda- porque vare'a es oral."
      },
      {
       "id": "a1u03d6.e2",
       "kind": "choice",
       "area": "grammar",
-      "label": "Elegí la forma",
-      "q": "(Luis le pregunta a Ana dónde está. Ana está en la escuela.)\nAna: (   ) mbo'ehaópe.",
+      "label": "Cuál está bien escrita",
+      "q": "Luis repasa cuatro palabras de la semana. Solo una está _bien escrita_. ¿Cuál?",
       "options": [
-       "Oime",
-       "Akaru",
-       "Chekane'õ",
-       "Aime"
+       "ndaha'ei",
+       "Ka'akupé",
+       "añetepa",
+       "hasýpa"
       ],
       "answer": 4,
-      "explain": "Para estar en un lugar va aime, con a- porque Ana habla de ella: Aime mbo'ehaópe, «estoy en la escuela». Oime es «está», otra persona. Akaru es «como», una acción: diría qué hace, no dónde está. Y chekane'õ es un estado, «estoy cansada»: tampoco dice dónde está."
+      "explain": "Hasýpa está bien: hasy es aguda, ha-SY, y sola va sin tilde, pero -pa no se lleva el acento, así que la y tónica ya no es la última vocal y se escribe ý. Por lo mismo les falta la tilde a añetepa y a ndaha'ei: son añetépa, con -pa, y ndaha'éi, con -i. Ka'akupé lleva la tilde del castellano: en guaraní es aguda y va sin tilde, Ka'akupe."
      },
      {
       "id": "a1u03d6.e3",
@@ -3487,19 +3477,13 @@
       "h",
       "g̃"
      ],
-     "note": "Tres cosas de la semana. nd y mb son una sola letra, en una sola sílaba: nde, no «ende». La h suena, como la jota suave paraguaya, y la j suena como la y de «yo»: hendu, jagua. Y la g̃ es la g con nariz: og̃uahẽ. Solo hendu y hendy son un par mínimo; los otros son pares de palabras para comparar.",
+     "note": "Tres cosas de la semana. nd y mb son letras del alfabeto y cada una suena en una sola sílaba, también al principio de la palabra: nde, no «ende». La j suena como la y de «yo» en boca de un paraguayo, nunca como la jota castellana, y la h siempre suena, como una jota suave: ajahu lleva las dos. La g̃ es la g con nariz: og̃uahẽ. No hay pares mínimos: compará estas palabras. En ñande y ñane fijate en la nd frente a la n.",
      "pairs": [
       [
-       "hendu",
-       "oír",
-       "hendy",
-       "arder"
-      ],
-      [
-       "jagua",
-       "perro",
-       "og̃uahẽ",
-       "llega"
+       "ñande róga",
+       "nuestra casa",
+       "ñane retã",
+       "nuestro país"
       ],
       [
        "mitã",
@@ -3512,6 +3496,12 @@
        "me baño",
        "aha",
        "voy"
+      ],
+      [
+       "jagua",
+       "perro",
+       "og̃uahẽ",
+       "llega"
       ]
      ]
     },
@@ -3562,7 +3552,7 @@
         "alegrarse; alegría"
        ]
       ],
-      "note": "Un sentimiento que va como acción, con a-: avy'a, no chevy'a."
+      "note": "Un sentimiento que va como acción, con a-: avy'a, no chevy'a. A vos: revy'a."
      },
      {
       "id": "oguahe",
@@ -3679,9 +3669,9 @@
      "answer": 2,
      "why": [
       "Che sy ikane'õ: la mamá está cansada, con i- y kane'õ, «cansancio». Cansada, no enferma.",
-      "Ana escribe che jarýi hasy: hasy es «está enferma», con la h- de las palabras en r, como héra. La enferma es su abuela.",
+      "Ana escribe che jarýi hasy: hasy es «está enferma», la forma de rasy para él o ella, como héra. La enferma es su abuela.",
       "De ella misma, Ana dice Chey'uhéi, «tengo sed»: ni cansancio ni enfermedad.",
-      "Luis pregunta y propone el tereré; no dice nada de cómo está él."
+      "Luis pregunta, y al final responde Héẽ, «sí», y Jaha, «vamos». Por el tereré pregunta Ana: Oĩpa terere? De cómo está él, Luis no dice nada."
      ],
      "explain": "Ana escribe Che sy ikane'õ ha che jarýi hasy: su mamá está cansada (ikane'õ) y su abuela está enferma (hasy). Ella misma solo tiene sed, chey'uhéi."
     }
