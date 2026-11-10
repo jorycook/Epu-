@@ -16,7 +16,7 @@
 //      reading); its week test; then the learner stays on that week, on the path, on Progreso and on Niveles, across
 //      a reload, and no week that is written is said to be waiting to be written.
 //   E  every one of the 21 screens reached, with no page error, no console error and nothing blank.
-// usage: node check/flows-test.js [site folder]      (default: ../docs, the built site as it is; about 8 minutes)
+// usage: node check/flows-test.js [site folder]      (default: ../docs, the built site as it is; about 7 minutes)
 //   ONLY=A,B,C,D,F,G,H runs some parts (E reports on what ran); PORT=8795 picks the port (default: any free one).
 // Screenshots (device scale 1) go to check/out/flows/. Exit code 1 when a check fails.
 // Chromium stands in for Safari (WebKit cannot run here): the user agent, the screen and touch are an iPhone's.

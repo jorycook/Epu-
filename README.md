@@ -64,8 +64,8 @@ bash fetch-fonts.sh        # Nunito and Andika, into ../fonts-src (once)
 node build.mjs             # checks the content, writes dist/ and replaces ../docs with it
 node check/app-check.js    # the app in Chromium: the first-visit page, every screen, a first day, saved progress, phone sizes, offline, updates
 cd ..
-node check/flows-test.js   # a learner's flows, by taps, against docs/ (about 6 minutes)
-node check/platform-test.js   # phones, offline, updates, fonts, frames, tap targets and languages, against docs/ (about 6 minutes)
+node check/flows-test.js   # a learner's flows, by taps, against docs/ (about 7 minutes)
+node check/platform-test.js   # phones, offline, updates, fonts, frames, tap targets and languages, against docs/ (about 8 minutes)
 ```
 
 The build makes Nunito's 500, 700 and 800 from its variable font, cuts both typefaces down to the characters the app
