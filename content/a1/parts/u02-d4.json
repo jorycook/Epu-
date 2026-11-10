@@ -210,7 +210,7 @@
         "q": "(Juan sale de su casa. Rosa le pregunta adónde va.)\nRosa: (   ) reho, Juan?",
         "options": ["Moõpa", "Mávapa", "Moõpagui", "Moõguipa"],
         "answer": 1,
-        "explain": "Rosa pregunta «adónde»: Moõpa reho? es «¿adónde vas?». Moõguipa pregunta «de dónde», y va con venir: Moõguipa reju? Mávapa pregunta «quién»; y moõpagui no existe, porque -pa cierra la palabra."
+        "explain": "Rosa pregunta «adónde»: Moõpa reho? es «¿adónde vas?». Moõguipa pregunta «de dónde», como en Moõguipa reju? Mávapa pregunta «quién»; y moõpagui no existe, porque -pa cierra la palabra."
       },
       {
         "id": "a1u02d4.e3",

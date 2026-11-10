@@ -9,7 +9,9 @@ were confirmed right); for units 2, 3 and 4 all 92 of each unit agreed, and four
 Lengua Guaraní's 2016 spelling rules and its dictionary at hand, should rule on it before the lessons ship.
 
 The sections from «Settle first» to «Everything the reviewers listed» are about A1 unit 1 and the extras. Units 2, 3 and
-4 come after them: first what touches more than one of the three, then a section for each unit.
+4 come after them: first what touches more than one of the three, then a section for each unit. The last section,
+«Entre unidades (1 a 4)», is what the cross-unit reading of the four units left open; where it says that a line above
+is out of date, it is the one to follow.
 
 ## The mascot's name (before anything ships)
 
@@ -556,3 +558,128 @@ The others the reviewers named, day by day:
 - **pe, umi and ko'ã where Spanish says «el, los, las»** (a1u04d3.p2) is given as a warning from aligned corpus lines,
   not as a rule. The same point takes umi with or without the plural on the noun (umi kavaju, umi mitãnguéra).
 - **The two rewritten questions**, a1u04d1.k1 and a1u04d4.k1 (see the end of the list above), have had no reader.
+
+## Entre unidades (1 a 4)
+
+Units 2, 3 and 4 were written side by side by teams that knew only unit 1. An inventory and two auditors then read
+the four units against one another (98 findings), and a fixer made 327 changes, 322 in content/a1/parts and five in
+the extras: one cast with one set of facts, one gloss for a word, one way of writing a cross-reference, a greeting, a
+plural and a stressed syllable, and other frames where one item printed what the next one asked. 73 items changed;
+none of them has been before a reviewer or a blind solver since (the list is at the end). What follows is what those
+changes leave for a native teacher. The words in which the learner is told a rule are the fixer's, not a grammar's.
+
+### Rulings
+
+1. **mitãkuña, mitãrusu, karia'y, kuñataĩ** (item 8 of «Units 2 to 4: settle first»). The four now have one gloss each
+   in every list: mitãkuña «niña, chica» (u03-d3, u04-d2, u04-d4), mitãrusu «joven, adolescente» (u03-d3, u04-d2),
+   karia'y «muchacho, hombre joven» (u04-d4; «mozo» was avoided, it is also a waiter), kuñataĩ «chica, muchacha»
+   (u01-d2, a1u04d4.p1). The cast follows them: Rosa's daughter of five is a mitãkuña (a1u04d4.r1, a1u04t.12), Juan's
+   daughter a kuñataĩ (a1u04d4.p1), his son a karia'y (a1u04d6.c1), the friend of Ana in a1u04t.11 a karia'y. Which
+   ages does each word cover, and is «niña, chica» right for mitãkuña (the SPL uses it for «niña», the news for
+   «joven»)?
+2. **piko** (item 6). Unit 4 now says what unit 3 says: «Con nde lo viste suelto, Nde piko, y también se escribe
+   pegado: Ndépiko», and after máva joined, Mávapiko (a1u04d4.p1, the note of Mávapa in u04-d4). Still usage (mávapiko
+   5 against máva piko 0; nde piko 5, ndépiko 4), not the Academy's rule 4.
+3. **The first part of the «no» before ha'e, ikatu and che-.** The learner is now told that it is nda- (na- before a
+   nasal word) and that «esa a no es la a- de «yo»» (a1u03d3.p2, a1u03d4.p2, the hint of a1u03d3.d5, a1u03d6.c1). G2
+   reads ndaikatúi as nd-a-ikatu-i, «no puedo». Is the sentence true as it stands for ndaha'éi, for ndaikatúi and for
+   ndachevare'ái, or should a learner be told something else?
+4. **ñane.** «Ñande hace lo mismo: ñane» is now in the rule row of a1u04d1.p2, because three explanations lean on it
+   (a1u04d1.d2, a1u04d2.e1, a1u04d6.d1). ñane retã and ñane ñe'ẽ are attested; ñane memby has no token.
+5. **Where the person goes in a question.** a1u03d4.p1 now says that with a state the person may come after it
+   («Ikane'õpa nde ru?») or before it («Nde sy oñe'ẽpa guaraníme?»). Both orders are in the corpora (Common Voice «ha
+   ne membykuéra moõpa oĩ», «Moõpa nde róga.»). Is either one marked?
+6. **«Moõpa nde róga?» without a verb.** The row of a1u04d1.p2 now says that the house goes without a verb and a
+   person with oĩ («Moõpa oĩ nde sy?»). Corpus: Moõpa oĩ 14 lines, Moõpa opyta nde róga 8, Moõpa nde róga 2. Is
+   «Moõpa oĩ nde róga?» also said, and should the lesson prefer opyta?
+7. **A bare verb read as past.** The note of og̃uahẽ (u03-d4) now says «El verbo no cambia para el pasado: og̃uahẽ es
+   «llega» y también «llegó». El pasado se estudia en la unidad 6». And the note of aime (u03-d2) links it to unit 2:
+   «Con él o ella ya lo conocés: oĩ». Confirm both wordings (oime is not shown).
+8. **ru and pyta in the sound pairs.** ru is now glossed «padre (con che, nde)» (u02-d2, u02-d6), as unit 4 says that
+   it does not stand alone (túva does); pyta is «talón; quedarse» in u01-d6 as in u01-d2. «Talón» still rests on one
+   dictionary.
+9. **«chipá», «chipás»** (item 9) and **the greeting with its question mark** (item 11). The Spanish now writes «el
+   chipá», plural «chipás», in every place, and «Mba'éichapa?» takes the question mark also before another sentence
+   («Mba'éichapa? Che réra Ana.», a1u01d3; «Mba'éichapa, kuñakarai?», a1u03d3.r1; the two spoken samples of
+   content/extra/exam-a1.json). Paraguayan Spanish also says «la chipa», and Common Voice writes «Mba'éichapa.».
+10. **po'i / poi** stays in content/extra/speaking.json as a «puso» pair. An auditor asked to take the row out until
+    the stress of poi is settled (item 10 above); it was kept because G1 §10 rates the pair H, and the brief asks
+    only for pairs G1 has verified. A native speaker should hear it before it is recorded.
+11. **«Mbo'ehaópe.» as an answer** to «Moõpa reñe'ẽ guaraníme?» (a1u01d4.c1, in place of «Che rógape.», which the
+    learner could not read yet), and **«Mokõi.»** alone as the answer to «Mboýpa ne memby, Rosa?» (a1u04d5.d1, as in
+    the chat of a1u04t.15 to t.17): are both natural one-word answers?
+12. **Stress shown in capitals** for the loans: va-KA, ka-va-JU (the sound note and two word notes of u04-d3; they
+    were «va-ká», «ka-va-jú»). The doubt about where the stress of vaka and kavaju falls is the one of unit 4's list.
+
+### Composed sentences that are new
+
+As everywhere in the course, the word forms are attested and the sentences are the authors'. A native reader should
+go through these once:
+
+- Unit 1: Héra Lucas. Ha'e Argentina-gua (a1u01d3.d4); Mboýpa ovale ko mandi'o? (a1u01d4.d6; «Ko mandi'o» is Common
+  Voice's).
+- Unit 2: Rehópa ko pyhare, Rosa? (a1u02d1.e3); Roju ko ka'aru, che jarýi (a1u02d2.e2: «che jarýi» said to the
+  grandmother, where it was «ña Ramona»); Ore romba'apo ko ka'aru (a1u02d2.e3); Moõpa remba'apo? with no name
+  (a1u02d3.r1); Aju Itakuruvígui (a1u02d4.d5; a textbook line); Moõguipa peju? (a1u02d4.d6); Moõpa reho, Juan?
+  (a1u02d4.e2); Aju kokuégui (a1u02d4.e3, as in a1u02d6.c1); Ko ka'aru ndahái távape (a1u02d6.e3; ndahái has two
+  corpus lines).
+- Unit 3: Luis pohanohára (a1u03d3.p1); Ndaha'éi che angirũ (a1u03d3.e1); Ha'e mbo'ehára (a1u03d3.e3, a build of
+  mbo'e + hára); Mba'éichapa, kuñakarai? (a1u03d3.r1); Ndépa ñemuhára? Nahániri, che chokokue (a1u03d4.c1); Nahániri,
+  ndahái (a1u03d4.p2); Che ru hasy (a1u03d6.d1); Ikane'õpa nde sy, Juan? (a1u03d6.d6; Ikane'õpa has no token as a
+  whole word); Ikatúpa aike? Nahániri, ndaikatúi (a1u03t.14: ndaikatúi has 96 corpus lines and «Ndaikatúi.» alone
+  three, the pair of lines none); and «Ndépa chokokue, Juan?» said by «Vecina» (a1u03t.19).
+- Unit 4: Ha'e che sy. Ha'e che ru, héra Carlos. Héra Mateo (a1u04d1.r1); Peju! Tapeg̃uahẽ porãite (the notice of
+  a1u04d2.r1; Peju! alone has no corpus line); Ko vaka ivare'a (a1u04d3.p1, the compare and the note of vaka);
+  Umi ryguasu ituicha (the key of a1u04d3.e2, hens far from both); Mávapa ha'e? Ha'e che rembireko; Mávapa amo
+  kuñataĩ? Ha'e che rajy, now asked by Rosa and answered by Juan (a1u04d4.p1); Mba'épa jajapo ko ka'aru?; Mba'épa
+  rejapo ko pyhare? Aha che jarýi rógape (a1u04d4.p2); Mávapa pe mitãkuña? Che memby, héra Elena. Ha pe karai?
+  Ndaha'éi che ru, ha'e che ramói (the chat of a1u04d4.r1); Mboy arýpa rereko? Treinta (a1u04d5.p2); Areko mbohapy
+  memby, now said by Ramona (a1u04d5.p1, a1u04d5.e1); Itauguápe ogakuéra iporã (a1u04d6.d5); Pe chipa iporã (the key
+  of a1u04d6.e2); Pe karai che ramói, héra José (a1u04d6.r1); Mávapa pe karia'y? Che angirũ (a1u04t.11); Clara ha
+  Mateo (a1u04t.15 to t.17).
+
+### Pedagogy and keys
+
+- **Keys that changed.** a1u01d2.e2 now keys Ñande ñañe'ẽ (two pupils, one speaks to the other of both), with the
+  wrong option «Peẽ peñe'ẽ», a form with no corpus token. a1u02d4.e2 keys Moõpa («Moõpa reho, Juan?»); a1u02d4.r1
+  asks where Rosa goes (Ñembýpe). a1u04d3.e2 keys Umi for two hens far from both speakers, and a1u04d6.e2 keys Pe
+  for one chipá in the listener's hand; so the doubt of unit 4's list, umi as wrong for what the speaker touches,
+  now touches only a1u04d3.d3 and a1u04t.10. a1u04d5.e2 has «Ndaipóri.» as a wrong reply to «Mboýpa ovale ko so'o?».
+- **Left as they are.** A day's exam-style build still has the tiles of its drill build in a1u01d1 (ja + jo +
+  topáta), a1u01d3 (the sentence Mba'éichapa nde réra?), a1u03d1 (che + akã + rasy) and a1u04d5 (ary + pa, built
+  four times with a1u04d6.e3 and a1u04t.14): those days have no other build that is safe. A teacher who confirms one
+  longer build for any of them gives the day a second one.
+- **The cast**, for whoever reads the lines for sense: Ana is a teacher in Itauguá with two small children, Clara and
+  Mateo; her father is Carlos, her grandfather Pedro, her grandmother doña Ramona, her mother has no name. Luis is
+  her friend, a doctor of thirty, the son of Marta. Rosa is a teacher with two children, Elena and Tomás, and a
+  grandfather José. Juan is a farmer with a wife, a daughter and a son. Lucas is a young doctor from Argentina who
+  is learning Guarani. Luis still goes to «la escuela» and has a teacher in six places of units 2 and 3 (a1u02d4.p1,
+  a1u02d4.d2, a1u02d5.r1, a1u02t.11, a1u02t.14, a1u03d6.c1).
+
+### Lines above that are out of date
+
+- «Units 2 to 4: settle first»: item 6 (unit 4 no longer says «con nde va suelto»); item 8 (one gloss each, see 1);
+  item 9 (no «dos chipá» and no plain «chipa» in the Spanish); item 11 (the question mark also in unit 1, days 3 and
+  4).
+- Unit 2: «Moõguipa ou nde sy?» is gone (a1u02d4.e3 builds kokuégui); Roju now stands before «ko ka'aru, che jarýi»;
+  a1u02d1.e3 is «Rehópa ko pyhare, Rosa?»; a1u02d4.d5 builds Itakuruvígui and a1u02d4.d6 stands in «Moõguipa peju?»;
+  a1u02d6.e3 is «Ko ka'aru ndahái távape» and no longer repeats a1u02d5.e3.
+- Unit 3: jaguarete has no parts; a1u03d4.c1 asks «Ndépa ñemuhára?»; a1u03d3.e1 is «Ndaha'éi che angirũ» and
+  a1u03d3.e3 builds mbo'ehára; a1u03d6.d6 builds Ikane'õpa, not Og̃uahẽpa; a1u03t.14 builds ndaikatúi, not
+  nachemandu'ái; in a1u03t.19 a new neighbour asks, not Rosa.
+- Unit 4: only Juan says che rajy (a1u04d4.p1); «Mávapa pe mitãkuña?», not «pe kuñataĩ», in the chat of a1u04d4.r1;
+  the names after héra are Carlos, Pedro, Mateo, Elena and José, and Ana's mother has none; «Treinta.», not
+  «Veinte.», as Luis's age; tapicha is glossed; «Ko vaka iky'a» is «Ko vaka ivare'a»; a1u04d4.e3 builds mba'e + icha
+  + pa and a1u04d6.d5 builds ogakuéra («Che sy oñe'ẽ mitãnguérape» is gone; a1u04d2.d5 keeps «Mbo'ehára oñe'ẽ
+  mitãnguérape»);
+  a1u04d6.e2 is «Pe chipa iporã».
+
+### Items changed since the last blind solve
+
+Question, options, tiles, key or explanation (60): a1u01d1.d1, a1u01d2.e2, a1u01d3.d1, .d3, .d4, .d6, .e2, .r1,
+a1u01d4.c1, .d6, .e2, .r1, a1u01d5.e2, a1u02d1.e3, a1u02d2.e2, .e3, a1u02d3.c1, .r1, a1u02d4.d5, .d6, .e2, .e3, .r1,
+a1u02d5.d3, a1u02d6.e3, a1u03d1.d2, .d3, a1u03d3.d3, .d4, .d5, .e1, .e3, .r1, a1u03d4.c1, .d4, .e3, a1u03d6.c1, .d1,
+.d3, .d6, a1u03t.14, t.19, a1u04d1.c1, .d4, .r1, a1u04d2.r1, a1u04d3.e2, a1u04d4.e3, .r1, a1u04d5.d1, .d6, .e1, .e2,
+a1u04d6.d5, .e2, .r1, a1u04t.11, t.15, t.16, t.17. Only the highlight taken out of the solution shown after the
+answer (13): a1u01d2.e3, a1u01d4.e3, a1u01d5.e3, a1u01d6.e3, a1u01t.13, t.14, a1u02d3.e3, a1u02d5.e3, a1u02t.14,
+a1u03d2.e3, a1u03d5.e3, a1u03d6.e3, a1u04d2.e3.

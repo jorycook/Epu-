@@ -92,11 +92,11 @@
  },
  {
   "id": "a1u03t.14", "kind": "build", "area": "grammar", "label": "Armá la palabra", "join": "word",
-  "before": "(Rosa le pregunta a Juan cómo se llama el médico. Juan no se acuerda.)\nJuan: ", "after": ".",
-  "tiles": ["na", "che", "mandu'a", "i"], "bank": [1, 3, 0, 2],
-  "full": "(Rosa le pregunta a Juan cómo se llama el médico. Juan no se acuerda.)\nJuan: Nachemandu'ái.",
-  "es": "(Rosa le pregunta a Juan cómo se llama el médico. Juan no se acuerda.)\nJuan: No me acuerdo.",
-  "explain": "na, che, mandu'a, i. El «no» del guaraní tiene dos partes que rodean la palabra: na- al principio y -i al final. En el medio van che-, «yo, me pasa», y mandu'a, «acordarse»: nachemandu'ái, «no me acuerdo». Va na- y no nda- porque mandu'a es nasal, con m y nd. Y aparece una tilde: -i no se lleva el acento, que queda en la a final de mandu'a; como ya no es la última vocal, se escribe á."
+  "before": "(El médico está con la abuela. Juan quiere pasar.)\nJuan: Ikatúpa aike?\nRosa: Nahániri, ", "after": ".",
+  "tiles": ["nda", "ikatu", "i"], "bank": [2, 0, 1],
+  "full": "(El médico está con la abuela. Juan quiere pasar.)\nJuan: Ikatúpa aike?\nRosa: Nahániri, ndaikatúi.",
+  "es": "Juan: ¿Puedo pasar?\nRosa: No, no se puede.",
+  "explain": "nda, ikatu, i. El «no» del guaraní tiene dos partes que rodean la palabra: acá nda- al principio y -i al final. En el medio va ikatu, «se puede», el de Ikatúpa aike?: ndaikatúi, «no se puede». Y aparece una tilde: -i no se lleva el acento, que queda en la u de ikatu; como ya no es la última vocal, se escribe ú."
  },
  {
   "id": "a1u03t.15", "kind": "choice", "area": "reading", "label": "Buscar el dato",

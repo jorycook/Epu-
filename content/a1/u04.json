@@ -2667,7 +2667,7 @@
     "es": "Un chat con foto",
     "ask": "¿Quién es el señor de la foto?",
     "seconds": 75,
-    "passage": "Rosa: Mba'éichapa, Juan?\nJuan: Iporã. ^Mávapa pe mitãkuña?^\nRosa: Che memby, héra Sofía.\nJuan: Ha ^pe karai?^\nRosa: ^Ndaha'éi che ru, ha'e che ramói.^\nJuan: Mba'épa he'ise «ramói»?\nRosa: «Abuelo».",
+    "passage": "Rosa: Mba'éichapa, Juan?\nJuan: Iporã. ^Mávapa pe mitãkuña?^\nRosa: Che memby, héra Elena.\nJuan: Ha ^pe karai?^\nRosa: ^Ndaha'éi che ru, ha'e che ramói.^\nJuan: Mba'épa he'ise «ramói»?\nRosa: «Abuelo».",
     "strategy": "Juan pregunta dos veces por una persona, y la respuesta de Rosa viene justo después de cada pregunta. Al final Juan pregunta qué significa una palabra: esa respuesta también te sirve.",
     "item": {
      "id": "a1u04d4.r1",
@@ -2691,7 +2691,7 @@
      "why": [
       "Che ru aparece en el chat, pero negado: Ndaha'éi che ru, «no es mi papá».",
       "Juan pregunta Ha pe karai?, «¿y ese señor?», y Rosa responde Ndaha'éi che ru, ha'e che ramói: «no es mi papá, es mi abuelo». Después se lo traduce: ramói es «abuelo».",
-      "Che memby es Sofía, la mitãkuña de la foto: la hija de Rosa, no el señor.",
+      "Che memby es Elena, la mitãkuña de la foto: la hija de Rosa, no el señor.",
       "Un amigo sería che angirũ, y esa palabra no aparece en el chat."
      ],
      "explain": "Juan pregunta por el señor con Ha pe karai?, y Rosa contesta Ndaha'éi che ru, ha'e che ramói: «no es mi papá, es mi abuelo». Cuando Juan pregunta Mba'épa he'ise «ramói»?, Rosa lo traduce: «abuelo»."
@@ -3736,7 +3736,7 @@
     "es": "Un mensaje con foto",
     "ask": "¿Cuántos hijos de Rosa hay en la foto?",
     "seconds": 75,
-    "passage": "Maitei, Juan.\n^Ko'ã mitã che membykuéra: Sofía ha Tomás.^\nPe karai che ramói, héra José. Oguereko 80 ary.\n^Umi mokõi mitãkuña che angirũ memby.^\nJajotopáta ko ka'aru.\nRosa",
+    "passage": "Maitei, Juan.\n^Ko'ã mitã che membykuéra: Elena ha Tomás.^\nPe karai che ramói, héra José. Oguereko 80 ary.\n^Umi mokõi mitãkuña che angirũ memby.^\nJajotopáta ko ka'aru.\nRosa",
     "strategy": "Buscá de quién es cada grupo: después de ko'ã mitã y de umi mokõi mitãkuña viene el dueño, che membykuéra o che angirũ memby. Ha, «y», une dos nombres.",
     "item": {
      "id": "a1u04d6.r1",
@@ -3759,11 +3759,11 @@
      "answer": 2,
      "why": [
       "Un solo hijo sería che memby. Rosa escribe che membykuéra, con -kuéra: más de uno, y da dos nombres.",
-      "Ko'ã mitã che membykuéra: Sofía ha Tomás, «estos chicos son mis hijos: Sofía y Tomás». En la foto hay dos hijos de Rosa.",
+      "Ko'ã mitã che membykuéra: Elena ha Tomás, «estos chicos son mis hijos: Elena y Tomás». En la foto hay dos hijos de Rosa.",
       "En la foto hay cuatro chicos, pero las dos nenas, umi mokõi mitãkuña, son che angirũ memby: las hijas de la amiga de Rosa, no de Rosa.",
-      "Sí lo dice: después de che membykuéra, «mis hijos», vienen los nombres, Sofía ha Tomás."
+      "Sí lo dice: después de che membykuéra, «mis hijos», vienen los nombres, Elena ha Tomás."
      ],
-     "explain": "Rosa escribe Ko'ã mitã che membykuéra: Sofía ha Tomás, «estos chicos son mis hijos: Sofía y Tomás»: en la foto hay dos hijos de Rosa. Las otras dos, umi mokõi mitãkuña, son che angirũ memby: las hijas de su amiga."
+     "explain": "Rosa escribe Ko'ã mitã che membykuéra: Elena ha Tomás, «estos chicos son mis hijos: Elena y Tomás»: en la foto hay dos hijos de Rosa. Las otras dos, umi mokõi mitãkuña, son che angirũ memby: las hijas de su amiga."
     }
    }
   }
@@ -3996,8 +3996,8 @@
    "kind": "choice",
    "area": "reading",
    "label": "Buscar el dato",
-   "q": "¿Quiénes son Lucía y Mateo?",
-   "passage": "Ana: Mba'éichapa, Luis? Ko'ã mitã che membykuéra, Lucía ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko 60 ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
+   "q": "¿Quiénes son Clara y Mateo?",
+   "passage": "Ana: Mba'éichapa, Luis? Ko'ã mitã che membykuéra, Clara ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko 60 ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
    "options": [
     "Los papás de Ana.",
     "Los hijos de Ana.",
@@ -4011,7 +4011,7 @@
     "Sus abuelos"
    ],
    "answer": 2,
-   "explain": "Ana escribe Ko'ã mitã che membykuéra, Lucía ha Mateo: «estos chicos son mis hijos, Lucía y Mateo». Che es «mi» y membykuéra, «hijos», en plural. Lo dice Ana, no Luis. El papá de Ana es Carlos, y de abuelos no habla."
+   "explain": "Ana escribe Ko'ã mitã che membykuéra, Clara ha Mateo: «estos chicos son mis hijos, Clara y Mateo». Che es «mi» y membykuéra, «hijos», en plural. Lo dice Ana, no Luis. El papá de Ana es Carlos, y de abuelos no habla."
   },
   {
    "id": "a1u04t.16",
@@ -4019,7 +4019,7 @@
    "area": "reading",
    "label": "Buscar el dato",
    "q": "¿Cuántos años tiene el papá de Ana?",
-   "passage": "Ana: Mba'éichapa, Luis? Ko'ã mitã che membykuéra, Lucía ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko 60 ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
+   "passage": "Ana: Mba'éichapa, Luis? Ko'ã mitã che membykuéra, Clara ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko 60 ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
    "options": [
     "Veinte.",
     "Dos.",
@@ -4041,7 +4041,7 @@
    "area": "reading",
    "label": "Texto corto",
    "q": "¿Qué le pregunta Luis a Ana al final?",
-   "passage": "Ana: Mba'éichapa, Luis? Ko'ã mitã che membykuéra, Lucía ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko 60 ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
+   "passage": "Ana: Mba'éichapa, Luis? Ko'ã mitã che membykuéra, Clara ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko 60 ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
    "options": [
     "Cuántos hijos tiene.",
     "Cómo se llama su papá.",

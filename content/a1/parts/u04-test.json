@@ -101,17 +101,17 @@
  },
  {
   "id": "a1u04t.15", "kind": "choice", "area": "reading", "label": "Buscar el dato",
-  "q": "¿Quiénes son Lucía y Mateo?",
-  "passage": "Ana: Mba'éichapa, Luis? Ko'ã mitã che membykuéra, Lucía ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko 60 ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
+  "q": "¿Quiénes son Clara y Mateo?",
+  "passage": "Ana: Mba'éichapa, Luis? Ko'ã mitã che membykuéra, Clara ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko 60 ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
   "options": ["Los papás de Ana.", "Los hijos de Ana.", "Los hijos de Luis.", "Los abuelos de Ana."],
   "short": ["Sus papás", "Sus hijos", "Hijos de Luis", "Sus abuelos"],
   "answer": 2,
-  "explain": "Ana escribe Ko'ã mitã che membykuéra, Lucía ha Mateo: «estos chicos son mis hijos, Lucía y Mateo». Che es «mi» y membykuéra, «hijos», en plural. Lo dice Ana, no Luis. El papá de Ana es Carlos, y de abuelos no habla."
+  "explain": "Ana escribe Ko'ã mitã che membykuéra, Clara ha Mateo: «estos chicos son mis hijos, Clara y Mateo». Che es «mi» y membykuéra, «hijos», en plural. Lo dice Ana, no Luis. El papá de Ana es Carlos, y de abuelos no habla."
  },
  {
   "id": "a1u04t.16", "kind": "choice", "area": "reading", "label": "Buscar el dato",
   "q": "¿Cuántos años tiene el papá de Ana?",
-  "passage": "Ana: Mba'éichapa, Luis? Ko'ã mitã che membykuéra, Lucía ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko 60 ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
+  "passage": "Ana: Mba'éichapa, Luis? Ko'ã mitã che membykuéra, Clara ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko 60 ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
   "options": ["Veinte.", "Dos.", "Seis.", "Sesenta."],
   "short": ["Veinte", "Dos", "Seis", "Sesenta"],
   "answer": 4,
@@ -120,7 +120,7 @@
  {
   "id": "a1u04t.17", "kind": "choice", "area": "reading", "label": "Texto corto",
   "q": "¿Qué le pregunta Luis a Ana al final?",
-  "passage": "Ana: Mba'éichapa, Luis? Ko'ã mitã che membykuéra, Lucía ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko 60 ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
+  "passage": "Ana: Mba'éichapa, Luis? Ko'ã mitã che membykuéra, Clara ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko 60 ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
   "options": ["Cuántos hijos tiene.", "Cómo se llama su papá.", "Dónde vive.", "Cuántos años tiene."],
   "short": ["Cuántos hijos", "El nombre del papá", "Dónde vive", "Cuántos años"],
   "answer": 1,

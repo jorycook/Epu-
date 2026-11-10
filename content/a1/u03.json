@@ -1701,21 +1701,19 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Rosa muestra una foto de un señor.)\nRosa: ",
-      "after": " che ru, ha'e che angirũ.",
+      "before": "(En la fiesta, Luis presenta a Rosa.)\nLuis: Ha'e ",
+      "after": ".",
       "tiles": [
-       "nda",
-       "ha'e",
-       "i"
+       "mbo'e",
+       "hára"
       ],
       "bank": [
        1,
-       2,
        0
       ],
-      "full": "(Rosa muestra una foto de un señor.)\nRosa: Ndaha'éi che ru, ha'e che angirũ.",
-      "es": "Rosa: No es mi papá, es mi amigo.",
-      "explain": "nda- va primero, después ha'e y al final -i: ndaha'éi, «no es». El «no» del guaraní tiene dos partes que rodean la palabra. La tilde va en la é porque -i no se lleva el acento. Después, sin negar: ha'e che angirũ, «es mi amigo»."
+      "full": "(En la fiesta, Luis presenta a Rosa.)\nLuis: Ha'e mbo'ehára.",
+      "es": "Luis: Ella es profesora.",
+      "explain": "mbo'e («enseñar») + -hára («el que, la que») = mbo'ehára, «la que enseña»: la profesora. -hára va después de la raíz y se lleva el acento: por eso la tilde va en hára. Con ha'e adelante y sin ningún «es»: Ha'e mbo'ehára, «ella es profesora»."
      }
     ]
    },
@@ -3371,8 +3369,8 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Rosa pregunta si el papá de Juan está cansado.)\nRosa: ",
-      "after": " nde ru, Juan?",
+      "before": "(Rosa pregunta si la mamá de Juan está cansada.)\nRosa: ",
+      "after": " nde sy, Juan?",
       "tiles": [
        "i",
        "kane'õ",
@@ -3383,10 +3381,10 @@
        1,
        0
       ],
-      "hint": "Nde ru es otra persona: el estado empieza con la marca de «él, ella». -pa va al final.",
-      "full": "(Rosa pregunta si el papá de Juan está cansado.)\nRosa: {I}kane'õ{pa} nde ru, Juan?",
-      "es": "Rosa: ¿Está cansado tu papá, Juan?",
-      "explain": "i- («él, ella») + kane'õ («cansancio») + -pa (pregunta) = Ikane'õpa, «¿está cansado?». Nde ru, «tu papá», es otra persona: por eso el estado lleva i-. -pa va pegado al estado, y nde ru viene después. Acá no aparece ninguna tilde: el acento cae en la õ, y la ~ ya lo marca. Compará con Revy'ápa, donde la a es oral y recibe la tilde."
+      "hint": "Nde sy es otra persona: el estado empieza con la marca de «él, ella». -pa va al final.",
+      "full": "(Rosa pregunta si la mamá de Juan está cansada.)\nRosa: {I}kane'õ{pa} nde sy, Juan?",
+      "es": "Rosa: ¿Está cansada tu mamá, Juan?",
+      "explain": "i- («él, ella») + kane'õ («cansancio») + -pa (pregunta) = Ikane'õpa, «¿está cansada?». Nde sy, «tu mamá», es otra persona: por eso el estado lleva i-. -pa va pegado al estado, y nde sy viene después. Acá no aparece ninguna tilde: el acento cae en la õ, y la ~ ya lo marca. Compará con Revy'ápa, donde la a es oral y recibe la tilde."
      }
     ],
     "exam": [
@@ -3860,23 +3858,21 @@
    "area": "grammar",
    "label": "Armá la palabra",
    "join": "word",
-   "before": "(Rosa le pregunta a Juan cómo se llama el médico. Juan no se acuerda.)\nJuan: ",
+   "before": "(El médico está con la abuela. Juan quiere pasar.)\nJuan: Ikatúpa aike?\nRosa: Nahániri, ",
    "after": ".",
    "tiles": [
-    "na",
-    "che",
-    "mandu'a",
+    "nda",
+    "ikatu",
     "i"
    ],
    "bank": [
-    1,
-    3,
+    2,
     0,
-    2
+    1
    ],
-   "full": "(Rosa le pregunta a Juan cómo se llama el médico. Juan no se acuerda.)\nJuan: Nachemandu'ái.",
-   "es": "(Rosa le pregunta a Juan cómo se llama el médico. Juan no se acuerda.)\nJuan: No me acuerdo.",
-   "explain": "na, che, mandu'a, i. El «no» del guaraní tiene dos partes que rodean la palabra: na- al principio y -i al final. En el medio van che-, «yo, me pasa», y mandu'a, «acordarse»: nachemandu'ái, «no me acuerdo». Va na- y no nda- porque mandu'a es nasal, con m y nd. Y aparece una tilde: -i no se lleva el acento, que queda en la a final de mandu'a; como ya no es la última vocal, se escribe á."
+   "full": "(El médico está con la abuela. Juan quiere pasar.)\nJuan: Ikatúpa aike?\nRosa: Nahániri, ndaikatúi.",
+   "es": "Juan: ¿Puedo pasar?\nRosa: No, no se puede.",
+   "explain": "nda, ikatu, i. El «no» del guaraní tiene dos partes que rodean la palabra: acá nda- al principio y -i al final. En el medio va ikatu, «se puede», el de Ikatúpa aike?: ndaikatúi, «no se puede». Y aparece una tilde: -i no se lleva el acento, que queda en la u de ikatu; como ya no es la última vocal, se escribe ú."
   },
   {
    "id": "a1u03t.15",

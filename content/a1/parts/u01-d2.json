@@ -158,9 +158,9 @@
       {
         "id": "a1u01d2.e2", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
         "q": "Dos alumnas descubren que las dos hablan guaraní. Una le dice a la otra, hablando de las dos: «(   ) guaraníme.»",
-        "options": ["Ore roñe'ẽ", "Ha'ekuéra oñe'ẽ", "Ñande ñañe'ẽ", "Che añe'ẽ"],
+        "options": ["Ore roñe'ẽ", "Ha'ekuéra oñe'ẽ", "Ñande ñañe'ẽ", "Peẽ peñe'ẽ"],
         "answer": 3,
-        "explain": "Una alumna le habla a la otra, y las dos hablan guaraní: la que escucha está en el grupo, y por eso va ñande ñañe'ẽ. Ore roñe'ẽ la dejaría afuera, ha'ekuéra oñe'ẽ hablaría de otras personas y che añe'ẽ, de una sola alumna."
+        "explain": "Una alumna le habla a la otra, y las dos hablan guaraní: la que escucha está en el grupo, y por eso va ñande ñañe'ẽ. Ore roñe'ẽ la dejaría afuera, ha'ekuéra oñe'ẽ hablaría de otras personas y peẽ peñe'ẽ, «ustedes hablan», dejaría afuera a la que habla."
       },
       {
         "id": "a1u01d2.e3", "kind": "build", "area": "grammar", "label": "Armá la palabra",

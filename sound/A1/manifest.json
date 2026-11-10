@@ -17,16 +17,16 @@
   "gn-sound-sp.js"
  ],
  "count": {
-  "rows": 732,
-  "toRecord": 497,
+  "rows": 736,
+  "toRecord": 502,
   "slow": 47,
   "byVoice": {
-   "F": 406,
-   "M": 66,
+   "F": 410,
+   "M": 67,
    "N": 25
   },
-  "composed": 47,
-  "same": 187,
+  "composed": 49,
+  "same": 184,
   "unused": 82,
   "toRecordUnused": 25
  },
@@ -213,7 +213,7 @@
    "where": "U1 D1 · par 2, palabra b (Las vocales orales) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u01.js",
    "unused": true,
-   "order": 545
+   "order": 550
   },
   {
    "key": "a1u01d1.s2a",
@@ -255,7 +255,7 @@
    "where": "U1 D1 · par 4, palabra b (Las vocales orales) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u01.js",
    "unused": true,
-   "order": 546
+   "order": 551
   },
   {
    "key": "a1u01d1.r1.l0",
@@ -364,7 +364,7 @@
    "slow": true,
    "where": "U1 D1 · escucha «Respuesta rápida» · línea 2 de 8, versión lenta",
    "file": "gn-sound-a1-u01.js",
-   "order": 498
+   "order": 503
   },
   {
    "key": "a1u01d1.r1.l3.slow",
@@ -375,7 +375,7 @@
    "slow": true,
    "where": "U1 D1 · escucha «Respuesta rápida» · línea 4 de 8, versión lenta",
    "file": "gn-sound-a1-u01.js",
-   "order": 499
+   "order": 504
   },
   {
    "key": "a1u01d1.r1.l5.slow",
@@ -386,7 +386,7 @@
    "slow": true,
    "where": "U1 D1 · escucha «Respuesta rápida» · línea 6 de 8, versión lenta",
    "file": "gn-sound-a1-u01.js",
-   "order": 500
+   "order": 505
   },
   {
    "key": "a1u01d1.r1.l7.slow",
@@ -397,7 +397,7 @@
    "slow": true,
    "where": "U1 D1 · escucha «Respuesta rápida» · línea 8 de 8, versión lenta",
    "file": "gn-sound-a1-u01.js",
-   "order": 501
+   "order": 506
   },
   {
    "key": "a1u01d1.r1.slow",
@@ -609,7 +609,7 @@
    "where": "U1 D2 · par 3, palabra a (Las vocales nasales) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u01.js",
    "unused": true,
-   "order": 547
+   "order": 552
   },
   {
    "key": "a1u01d2.s2b",
@@ -645,7 +645,7 @@
   {
    "key": "a1u01d3.p1.x0",
    "voice": "F",
-   "text": "Mba'éichapa. Che réra Ana.",
+   "text": "Mba'éichapa? Che réra Ana.",
    "es": "Hola. Me llamo Ana.",
    "lang": "gn",
    "where": "U1 D3 · punto 1, ejemplo 1",
@@ -812,7 +812,7 @@
    "where": "U1 D3 · par 2, palabra a (La y, sexta vocal) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u01.js",
    "unused": true,
-   "order": 548
+   "order": 553
   },
   {
    "key": "a1u01d3.s1b",
@@ -864,7 +864,7 @@
    "where": "U1 D3 · par 4, palabra b (La y, sexta vocal) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u01.js",
    "unused": true,
-   "order": 549
+   "order": 554
   },
   {
    "key": "a1u01d3.r1.l0",
@@ -889,7 +889,7 @@
   {
    "key": "a1u01d3.r1.l2",
    "voice": "F",
-   "text": "Mba'éichapa. Che réra Nilda.",
+   "text": "Mba'éichapa? Che réra Nilda.",
    "es": "Hola. Me llamo Nilda.",
    "lang": "gn",
    "where": "U1 D3 · escucha «Comprensión de puntos clave» · línea 3 de 7",
@@ -948,7 +948,7 @@
     "a1u01d3.r1.l1"
    ],
    "voice": "N+F",
-   "text": "Primer día de clase de guaraní. La profesora habla de ella y de una alumna nueva. / ¿Qué dato de la alumna nueva es correcto? / Mba'éichapa. Che réra Nilda. / Che Paraguaigua. / Temimbo'e pyahu héra Sofía. / Ha'e Argentina-gua. / ¿Qué dato de la alumna nueva es correcto?",
+   "text": "Primer día de clase de guaraní. La profesora habla de ella y de una alumna nueva. / ¿Qué dato de la alumna nueva es correcto? / Mba'éichapa? Che réra Nilda. / Che Paraguaigua. / Temimbo'e pyahu héra Sofía. / Ha'e Argentina-gua. / ¿Qué dato de la alumna nueva es correcto?",
    "es": "Primer día de clase de guaraní. La profesora habla de ella y de una alumna nueva. / ¿Qué dato de la alumna nueva es correcto? / Hola. Me llamo Nilda. / Soy de Paraguay. / La alumna nueva se llama Sofía. / Es de Argentina. / ¿Qué dato de la alumna nueva es correcto?",
    "where": "U1 D3 · escucha «Comprensión de puntos clave»",
    "file": "gn-sound-a1-u01.js"
@@ -956,13 +956,13 @@
   {
    "key": "a1u01d3.r1.l2.slow",
    "voice": "F",
-   "text": "Mba'éichapa. Che réra Nilda.",
+   "text": "Mba'éichapa? Che réra Nilda.",
    "es": "Hola. Me llamo Nilda.",
    "lang": "gn",
    "slow": true,
    "where": "U1 D3 · escucha «Comprensión de puntos clave» · línea 3 de 7, versión lenta",
    "file": "gn-sound-a1-u01.js",
-   "order": 502
+   "order": 507
   },
   {
    "key": "a1u01d3.r1.l3.slow",
@@ -973,7 +973,7 @@
    "slow": true,
    "where": "U1 D3 · escucha «Comprensión de puntos clave» · línea 4 de 7, versión lenta",
    "file": "gn-sound-a1-u01.js",
-   "order": 503
+   "order": 508
   },
   {
    "key": "a1u01d3.r1.l4.slow",
@@ -984,7 +984,7 @@
    "slow": true,
    "where": "U1 D3 · escucha «Comprensión de puntos clave» · línea 5 de 7, versión lenta",
    "file": "gn-sound-a1-u01.js",
-   "order": 504
+   "order": 509
   },
   {
    "key": "a1u01d3.r1.l5.slow",
@@ -995,7 +995,7 @@
    "slow": true,
    "where": "U1 D3 · escucha «Comprensión de puntos clave» · línea 6 de 7, versión lenta",
    "file": "gn-sound-a1-u01.js",
-   "order": 505
+   "order": 510
   },
   {
    "key": "a1u01d3.r1.slow",
@@ -1010,7 +1010,7 @@
    ],
    "slow": true,
    "voice": "N+F",
-   "text": "Primer día de clase de guaraní. La profesora habla de ella y de una alumna nueva. / ¿Qué dato de la alumna nueva es correcto? / Mba'éichapa. Che réra Nilda. / Che Paraguaigua. / Temimbo'e pyahu héra Sofía. / Ha'e Argentina-gua. / ¿Qué dato de la alumna nueva es correcto?",
+   "text": "Primer día de clase de guaraní. La profesora habla de ella y de una alumna nueva. / ¿Qué dato de la alumna nueva es correcto? / Mba'éichapa? Che réra Nilda. / Che Paraguaigua. / Temimbo'e pyahu héra Sofía. / Ha'e Argentina-gua. / ¿Qué dato de la alumna nueva es correcto?",
    "es": "",
    "where": "U1 D3 · escucha «Comprensión de puntos clave», versión lenta",
    "file": "gn-sound-a1-u01.js"
@@ -1226,7 +1226,7 @@
    "where": "U1 D4 · par 3, palabra b (El puso (')) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u01.js",
    "unused": true,
-   "order": 550
+   "order": 555
   },
   {
    "key": "a1u01d4.r1.l0",
@@ -1241,7 +1241,7 @@
   {
    "key": "a1u01d4.r1.l1",
    "voice": "M",
-   "text": "Mba'éichapa. Mba'épa reipota?",
+   "text": "Mba'éichapa? Mba'épa reipota?",
    "es": "Hola, ¿qué tal? ¿Qué querés?",
    "lang": "gn",
    "where": "U1 D4 · escucha «Comprensión de puntos clave» · línea 2 de 7",
@@ -1310,7 +1310,7 @@
     "a1u01d4.r1.l6"
    ],
    "voice": "N+M+F",
-   "text": "En un puesto del mercado. ¿Qué hay en el puesto? / Mba'éichapa. Mba'épa reipota? / Iporã. Oĩpa chipa? / Nahániri. Oĩ kesu ha mandi'o. / Mboýpa ovale ko kesu? / Diez mil. / ¿Qué hay en el puesto?",
+   "text": "En un puesto del mercado. ¿Qué hay en el puesto? / Mba'éichapa? Mba'épa reipota? / Iporã. Oĩpa chipa? / Nahániri. Oĩ kesu ha mandi'o. / Mboýpa ovale ko kesu? / Diez mil. / ¿Qué hay en el puesto?",
    "es": "En un puesto del mercado. ¿Qué hay en el puesto? / Hola, ¿qué tal? ¿Qué querés? / Bien. ¿Hay chipá? / No. Hay queso y mandioca. / ¿Cuánto cuesta este queso? / Diez mil. / ¿Qué hay en el puesto?",
    "where": "U1 D4 · escucha «Comprensión de puntos clave»",
    "file": "gn-sound-a1-u01.js"
@@ -1318,13 +1318,13 @@
   {
    "key": "a1u01d4.r1.l1.slow",
    "voice": "M",
-   "text": "Mba'éichapa. Mba'épa reipota?",
+   "text": "Mba'éichapa? Mba'épa reipota?",
    "es": "Hola, ¿qué tal? ¿Qué querés?",
    "lang": "gn",
    "slow": true,
    "where": "U1 D4 · escucha «Comprensión de puntos clave» · línea 2 de 7, versión lenta",
    "file": "gn-sound-a1-u01.js",
-   "order": 506
+   "order": 511
   },
   {
    "key": "a1u01d4.r1.l2.slow",
@@ -1335,7 +1335,7 @@
    "slow": true,
    "where": "U1 D4 · escucha «Comprensión de puntos clave» · línea 3 de 7, versión lenta",
    "file": "gn-sound-a1-u01.js",
-   "order": 507
+   "order": 512
   },
   {
    "key": "a1u01d4.r1.l3.slow",
@@ -1346,7 +1346,7 @@
    "slow": true,
    "where": "U1 D4 · escucha «Comprensión de puntos clave» · línea 4 de 7, versión lenta",
    "file": "gn-sound-a1-u01.js",
-   "order": 508
+   "order": 513
   },
   {
    "key": "a1u01d4.r1.l4.slow",
@@ -1357,7 +1357,7 @@
    "slow": true,
    "where": "U1 D4 · escucha «Comprensión de puntos clave» · línea 5 de 7, versión lenta",
    "file": "gn-sound-a1-u01.js",
-   "order": 509
+   "order": 514
   },
   {
    "key": "a1u01d4.r1.l5.slow",
@@ -1368,7 +1368,7 @@
    "slow": true,
    "where": "U1 D4 · escucha «Comprensión de puntos clave» · línea 6 de 7, versión lenta",
    "file": "gn-sound-a1-u01.js",
-   "order": 510
+   "order": 515
   },
   {
    "key": "a1u01d4.r1.slow",
@@ -1383,7 +1383,7 @@
    ],
    "slow": true,
    "voice": "N+M+F",
-   "text": "En un puesto del mercado. ¿Qué hay en el puesto? / Mba'éichapa. Mba'épa reipota? / Iporã. Oĩpa chipa? / Nahániri. Oĩ kesu ha mandi'o. / Mboýpa ovale ko kesu? / Diez mil. / ¿Qué hay en el puesto?",
+   "text": "En un puesto del mercado. ¿Qué hay en el puesto? / Mba'éichapa? Mba'épa reipota? / Iporã. Oĩpa chipa? / Nahániri. Oĩ kesu ha mandi'o. / Mboýpa ovale ko kesu? / Diez mil. / ¿Qué hay en el puesto?",
    "es": "",
    "where": "U1 D4 · escucha «Comprensión de puntos clave», versión lenta",
    "file": "gn-sound-a1-u01.js"
@@ -1568,7 +1568,7 @@
    "where": "U1 D5 · par 2, palabra b (Teclear ã ẽ ĩ õ ũ ỹ, g̃ y el puso (')) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u01.js",
    "unused": true,
-   "order": 551
+   "order": 556
   },
   {
    "key": "a1u01d5.s2a",
@@ -1675,7 +1675,7 @@
    "key": "a1u01d6.s0a",
    "voice": "F",
    "text": "pyta",
-   "es": "talón",
+   "es": "talón; quedarse",
    "lang": "gn",
    "where": "U1 D6 · par 1, palabra a (Repaso: nasales, la y y el puso)",
    "file": "gn-sound-a1-u01.js",
@@ -2108,7 +2108,7 @@
    "slow": true,
    "where": "U2 D1 · escucha «Respuesta rápida» · línea 2 de 8, versión lenta",
    "file": "gn-sound-a1-u02.js",
-   "order": 511
+   "order": 516
   },
   {
    "key": "a1u02d1.r1.l3.slow",
@@ -2119,7 +2119,7 @@
    "slow": true,
    "where": "U2 D1 · escucha «Respuesta rápida» · línea 4 de 8, versión lenta",
    "file": "gn-sound-a1-u02.js",
-   "order": 512
+   "order": 517
   },
   {
    "key": "a1u02d1.r1.l5.slow",
@@ -2130,7 +2130,7 @@
    "slow": true,
    "where": "U2 D1 · escucha «Respuesta rápida» · línea 6 de 8, versión lenta",
    "file": "gn-sound-a1-u02.js",
-   "order": 513
+   "order": 518
   },
   {
    "key": "a1u02d1.r1.l7.slow",
@@ -2141,7 +2141,7 @@
    "slow": true,
    "where": "U2 D1 · escucha «Respuesta rápida» · línea 8 de 8, versión lenta",
    "file": "gn-sound-a1-u02.js",
-   "order": 514
+   "order": 519
   },
   {
    "key": "a1u02d1.r1.slow",
@@ -2326,7 +2326,7 @@
    "key": "a1u02d2.s0a",
    "voice": "F",
    "text": "ru",
-   "es": "padre",
+   "es": "padre (con che, nde)",
    "lang": "gn",
    "where": "U2 D2 · par 1, palabra a (La r, siempre suave)",
    "file": "gn-sound-a1-u02.js",
@@ -2341,7 +2341,7 @@
    "where": "U2 D2 · par 1, palabra b (La r, siempre suave) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u02.js",
    "unused": true,
-   "order": 552
+   "order": 557
   },
   {
    "key": "a1u02d2.s1a",
@@ -2352,7 +2352,7 @@
    "where": "U2 D2 · par 2, palabra a (La r, siempre suave) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u02.js",
    "unused": true,
-   "order": 553
+   "order": 558
   },
   {
    "key": "a1u02d2.s1b",
@@ -2597,7 +2597,7 @@
    "where": "U2 D3 · par 2, palabra a (La tilde con sufijo: ógape, kotýpe) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u02.js",
    "unused": true,
-   "order": 554
+   "order": 559
   },
   {
    "key": "a1u02d3.s1b",
@@ -2654,8 +2654,8 @@
   {
    "key": "a1u02d3.r1.l0",
    "voice": "N",
-   "text": "En la ronda de tereré. ¿Dónde trabaja Juan?",
-   "es": "En la ronda de tereré. ¿Dónde trabaja Juan?",
+   "text": "En la ronda de tereré, Rosa habla con un vecino. ¿Dónde trabaja el vecino?",
+   "es": "En la ronda de tereré, Rosa habla con un vecino. ¿Dónde trabaja el vecino?",
    "lang": "es",
    "where": "U2 D3 · escucha «Comprensión de puntos clave» · línea 1 de 5",
    "file": "gn-sound-a1-u02.js",
@@ -2664,12 +2664,12 @@
   {
    "key": "a1u02d3.r1.l1",
    "voice": "F",
-   "text": "Moõpa remba'apo, Juan?",
-   "es": "¿Dónde trabajás, Juan?",
+   "text": "Moõpa remba'apo?",
+   "es": "¿Dónde trabajás?",
    "lang": "gn",
    "where": "U2 D3 · escucha «Comprensión de puntos clave» · línea 2 de 5",
    "file": "gn-sound-a1-u02.js",
-   "same": "a1u02d3.p1.x3.l0"
+   "order": 205
   },
   {
    "key": "a1u02d3.r1.l2",
@@ -2679,7 +2679,7 @@
    "lang": "gn",
    "where": "U2 D3 · escucha «Comprensión de puntos clave» · línea 3 de 5",
    "file": "gn-sound-a1-u02.js",
-   "order": 205
+   "order": 206
   },
   {
    "key": "a1u02d3.r1.l3",
@@ -2689,43 +2689,43 @@
    "lang": "gn",
    "where": "U2 D3 · escucha «Comprensión de puntos clave» · línea 4 de 5",
    "file": "gn-sound-a1-u02.js",
-   "order": 206
+   "order": 207
   },
   {
    "key": "a1u02d3.r1.l4",
    "voice": "N",
-   "text": "¿Dónde trabaja Juan?",
-   "es": "¿Dónde trabaja Juan?",
+   "text": "¿Dónde trabaja el vecino?",
+   "es": "¿Dónde trabaja el vecino?",
    "lang": "es",
    "where": "U2 D3 · escucha «Comprensión de puntos clave» · línea 5 de 5",
    "file": "gn-sound-a1-u02.js",
-   "order": 207
+   "order": 208
   },
   {
    "key": "a1u02d3.r1",
    "parts": [
     "a1u02d3.r1.l0",
-    "a1u02d3.p1.x3.l0",
+    "a1u02d3.r1.l1",
     "a1u02d3.r1.l2",
     "a1u02d3.r1.l3",
     "a1u02d3.r1.l4"
    ],
    "voice": "N+F+M",
-   "text": "En la ronda de tereré. ¿Dónde trabaja Juan? / Moõpa remba'apo, Juan? / Amba'apo kokuépe. Ha nde? / Che amba'apo mbo'ehaópe, Itauguápe. / ¿Dónde trabaja Juan?",
-   "es": "En la ronda de tereré. ¿Dónde trabaja Juan? / ¿Dónde trabajás, Juan? / Trabajo en la chacra. ¿Y vos? / Yo trabajo en la escuela, en Itauguá. / ¿Dónde trabaja Juan?",
+   "text": "En la ronda de tereré, Rosa habla con un vecino. ¿Dónde trabaja el vecino? / Moõpa remba'apo? / Amba'apo kokuépe. Ha nde? / Che amba'apo mbo'ehaópe, Itauguápe. / ¿Dónde trabaja el vecino?",
+   "es": "En la ronda de tereré, Rosa habla con un vecino. ¿Dónde trabaja el vecino? / ¿Dónde trabajás? / Trabajo en la chacra. ¿Y vos? / Yo trabajo en la escuela, en Itauguá. / ¿Dónde trabaja el vecino?",
    "where": "U2 D3 · escucha «Comprensión de puntos clave»",
    "file": "gn-sound-a1-u02.js"
   },
   {
    "key": "a1u02d3.r1.l1.slow",
    "voice": "F",
-   "text": "Moõpa remba'apo, Juan?",
-   "es": "¿Dónde trabajás, Juan?",
+   "text": "Moõpa remba'apo?",
+   "es": "¿Dónde trabajás?",
    "lang": "gn",
    "slow": true,
    "where": "U2 D3 · escucha «Comprensión de puntos clave» · línea 2 de 5, versión lenta",
    "file": "gn-sound-a1-u02.js",
-   "order": 515
+   "order": 520
   },
   {
    "key": "a1u02d3.r1.l2.slow",
@@ -2736,7 +2736,7 @@
    "slow": true,
    "where": "U2 D3 · escucha «Comprensión de puntos clave» · línea 3 de 5, versión lenta",
    "file": "gn-sound-a1-u02.js",
-   "order": 516
+   "order": 521
   },
   {
    "key": "a1u02d3.r1.l3.slow",
@@ -2747,7 +2747,7 @@
    "slow": true,
    "where": "U2 D3 · escucha «Comprensión de puntos clave» · línea 4 de 5, versión lenta",
    "file": "gn-sound-a1-u02.js",
-   "order": 517
+   "order": 522
   },
   {
    "key": "a1u02d3.r1.slow",
@@ -2760,7 +2760,7 @@
    ],
    "slow": true,
    "voice": "N+F+M",
-   "text": "En la ronda de tereré. ¿Dónde trabaja Juan? / Moõpa remba'apo, Juan? / Amba'apo kokuépe. Ha nde? / Che amba'apo mbo'ehaópe, Itauguápe. / ¿Dónde trabaja Juan?",
+   "text": "En la ronda de tereré, Rosa habla con un vecino. ¿Dónde trabaja el vecino? / Moõpa remba'apo? / Amba'apo kokuépe. Ha nde? / Che amba'apo mbo'ehaópe, Itauguápe. / ¿Dónde trabaja el vecino?",
    "es": "",
    "where": "U2 D3 · escucha «Comprensión de puntos clave», versión lenta",
    "file": "gn-sound-a1-u02.js"
@@ -2773,7 +2773,7 @@
    "lang": "gn",
    "where": "U2 D4 · punto 1, ejemplo 1",
    "file": "gn-sound-a1-u02.js",
-   "order": 211
+   "order": 212
   },
   {
    "key": "a1u02d4.p1.x1",
@@ -2783,7 +2783,7 @@
    "lang": "gn",
    "where": "U2 D4 · punto 1, ejemplo 2",
    "file": "gn-sound-a1-u02.js",
-   "order": 212
+   "order": 213
   },
   {
    "key": "a1u02d4.p1.x2",
@@ -2793,7 +2793,7 @@
    "lang": "gn",
    "where": "U2 D4 · punto 1, ejemplo 3",
    "file": "gn-sound-a1-u02.js",
-   "order": 213
+   "order": 214
   },
   {
    "key": "a1u02d4.p1.x3",
@@ -2803,7 +2803,7 @@
    "lang": "gn",
    "where": "U2 D4 · punto 1, ejemplo 4",
    "file": "gn-sound-a1-u02.js",
-   "order": 214
+   "order": 215
   },
   {
    "key": "a1u02d4.p2.x0",
@@ -2813,7 +2813,7 @@
    "lang": "gn",
    "where": "U2 D4 · punto 2, ejemplo 1",
    "file": "gn-sound-a1-u02.js",
-   "order": 215
+   "order": 216
   },
   {
    "key": "a1u02d4.p2.x1.l0",
@@ -2823,7 +2823,7 @@
    "lang": "gn",
    "where": "U2 D4 · punto 2, ejemplo 2 (diálogo) · línea 1 de 2",
    "file": "gn-sound-a1-u02.js",
-   "order": 216
+   "order": 217
   },
   {
    "key": "a1u02d4.p2.x1.l1",
@@ -2833,7 +2833,7 @@
    "lang": "gn",
    "where": "U2 D4 · punto 2, ejemplo 2 (diálogo) · línea 2 de 2",
    "file": "gn-sound-a1-u02.js",
-   "order": 217
+   "order": 218
   },
   {
    "key": "a1u02d4.p2.x1",
@@ -2855,7 +2855,7 @@
    "lang": "gn",
    "where": "U2 D4 · punto 2, ejemplo 3 (diálogo) · línea 1 de 2",
    "file": "gn-sound-a1-u02.js",
-   "order": 218
+   "order": 219
   },
   {
    "key": "a1u02d4.p2.x2.l1",
@@ -2865,7 +2865,7 @@
    "lang": "gn",
    "where": "U2 D4 · punto 2, ejemplo 3 (diálogo) · línea 2 de 2",
    "file": "gn-sound-a1-u02.js",
-   "order": 219
+   "order": 220
   },
   {
    "key": "a1u02d4.p2.x2",
@@ -2887,7 +2887,7 @@
    "lang": "gn",
    "where": "U2 D4 · punto 2, ejemplo 4 (diálogo) · línea 1 de 2",
    "file": "gn-sound-a1-u02.js",
-   "order": 220
+   "order": 221
   },
   {
    "key": "a1u02d4.p2.x3.l1",
@@ -2897,7 +2897,7 @@
    "lang": "gn",
    "where": "U2 D4 · punto 2, ejemplo 4 (diálogo) · línea 2 de 2",
    "file": "gn-sound-a1-u02.js",
-   "order": 221
+   "order": 222
   },
   {
    "key": "a1u02d4.p2.x3",
@@ -2919,7 +2919,7 @@
    "lang": "gn",
    "where": "U2 D4 · palabra 1 de la escena «¿De dónde venís? En la terminal»",
    "file": "gn-sound-a1-u02.js",
-   "order": 222
+   "order": 223
   },
   {
    "key": "a1u02d4.w.paraguaygui",
@@ -2929,7 +2929,7 @@
    "lang": "gn",
    "where": "U2 D4 · palabra 2 de la escena «¿De dónde venís? En la terminal»",
    "file": "gn-sound-a1-u02.js",
-   "order": 223
+   "order": 224
   },
   {
    "key": "a1u02d4.w.ose",
@@ -2939,7 +2939,7 @@
    "lang": "gn",
    "where": "U2 D4 · palabra 3 de la escena «¿De dónde venís? En la terminal»",
    "file": "gn-sound-a1-u02.js",
-   "order": 224
+   "order": 225
   },
   {
    "key": "a1u02d4.w.itauguagui",
@@ -2949,7 +2949,7 @@
    "lang": "gn",
    "where": "U2 D4 · palabra 4 de la escena «¿De dónde venís? En la terminal»",
    "file": "gn-sound-a1-u02.js",
-   "order": 225
+   "order": 226
   },
   {
    "key": "a1u02d4.w.itakuruvigui",
@@ -2959,7 +2959,7 @@
    "lang": "gn",
    "where": "U2 D4 · palabra 5 de la escena «¿De dónde venís? En la terminal»",
    "file": "gn-sound-a1-u02.js",
-   "order": 226
+   "order": 227
   },
   {
    "key": "a1u02d4.w.tatakuagui",
@@ -2969,7 +2969,7 @@
    "lang": "gn",
    "where": "U2 D4 · palabra 6 de la escena «¿De dónde venís? En la terminal»",
    "file": "gn-sound-a1-u02.js",
-   "order": 227
+   "order": 228
   },
   {
    "key": "a1u02d4.w.nanduti",
@@ -2979,7 +2979,7 @@
    "lang": "gn",
    "where": "U2 D4 · palabra 7 de la escena «¿De dónde venís? En la terminal»",
    "file": "gn-sound-a1-u02.js",
-   "order": 228
+   "order": 229
   },
   {
    "key": "a1u02d4.w.kokuegui",
@@ -2989,7 +2989,7 @@
    "lang": "gn",
    "where": "U2 D4 · palabra 8 de la escena «¿De dónde venís? En la terminal»",
    "file": "gn-sound-a1-u02.js",
-   "order": 229
+   "order": 230
   },
   {
    "key": "a1u02d4.s0a",
@@ -3083,7 +3083,7 @@
    "lang": "gn",
    "where": "U2 D5 · punto 1, ejemplo 1",
    "file": "gn-sound-a1-u02.js",
-   "order": 230
+   "order": 231
   },
   {
    "key": "a1u02d5.p1.x1",
@@ -3093,7 +3093,7 @@
    "lang": "gn",
    "where": "U2 D5 · punto 1, ejemplo 2",
    "file": "gn-sound-a1-u02.js",
-   "order": 231
+   "order": 232
   },
   {
    "key": "a1u02d5.p1.x2",
@@ -3103,7 +3103,7 @@
    "lang": "gn",
    "where": "U2 D5 · punto 1, ejemplo 3",
    "file": "gn-sound-a1-u02.js",
-   "order": 232
+   "order": 233
   },
   {
    "key": "a1u02d5.p1.x3",
@@ -3113,7 +3113,7 @@
    "lang": "gn",
    "where": "U2 D5 · punto 1, ejemplo 4",
    "file": "gn-sound-a1-u02.js",
-   "order": 233
+   "order": 234
   },
   {
    "key": "a1u02d5.p2.x0",
@@ -3123,7 +3123,7 @@
    "lang": "gn",
    "where": "U2 D5 · punto 2, ejemplo 1",
    "file": "gn-sound-a1-u02.js",
-   "order": 234
+   "order": 235
   },
   {
    "key": "a1u02d5.p2.x1",
@@ -3133,7 +3133,7 @@
    "lang": "gn",
    "where": "U2 D5 · punto 2, ejemplo 2",
    "file": "gn-sound-a1-u02.js",
-   "order": 235
+   "order": 236
   },
   {
    "key": "a1u02d5.p2.x2",
@@ -3143,7 +3143,7 @@
    "lang": "gn",
    "where": "U2 D5 · punto 2, ejemplo 3",
    "file": "gn-sound-a1-u02.js",
-   "order": 236
+   "order": 237
   },
   {
    "key": "a1u02d5.p2.x3",
@@ -3153,7 +3153,7 @@
    "lang": "gn",
    "where": "U2 D5 · punto 2, ejemplo 4",
    "file": "gn-sound-a1-u02.js",
-   "order": 237
+   "order": 238
   },
   {
    "key": "a1u02d5.w.ama",
@@ -3163,7 +3163,7 @@
    "lang": "gn",
    "where": "U2 D5 · palabra 1 de la escena «Un día de lluvia»",
    "file": "gn-sound-a1-u02.js",
-   "order": 238
+   "order": 239
   },
   {
    "key": "a1u02d5.w.oky",
@@ -3173,7 +3173,7 @@
    "lang": "gn",
    "where": "U2 D5 · palabra 2 de la escena «Un día de lluvia»",
    "file": "gn-sound-a1-u02.js",
-   "order": 239
+   "order": 240
   },
   {
    "key": "a1u02d5.w.ndaikuaai",
@@ -3183,7 +3183,7 @@
    "lang": "gn",
    "where": "U2 D5 · palabra 3 de la escena «Un día de lluvia»",
    "file": "gn-sound-a1-u02.js",
-   "order": 240
+   "order": 241
   },
   {
    "key": "a1u02d5.w.ndahai",
@@ -3193,7 +3193,7 @@
    "lang": "gn",
    "where": "U2 D5 · palabra 4 de la escena «Un día de lluvia»",
    "file": "gn-sound-a1-u02.js",
-   "order": 241
+   "order": 242
   },
   {
    "key": "a1u02d5.w.mbaeve",
@@ -3203,7 +3203,7 @@
    "lang": "gn",
    "where": "U2 D5 · palabra 5 de la escena «Un día de lluvia»",
    "file": "gn-sound-a1-u02.js",
-   "order": 242
+   "order": 243
   },
   {
    "key": "a1u02d5.w.ndaipori",
@@ -3213,7 +3213,7 @@
    "lang": "gn",
    "where": "U2 D5 · palabra 6 de la escena «Un día de lluvia»",
    "file": "gn-sound-a1-u02.js",
-   "order": 243
+   "order": 244
   },
   {
    "key": "a1u02d5.w.mbarakaja",
@@ -3223,7 +3223,7 @@
    "lang": "gn",
    "where": "U2 D5 · palabra 7 de la escena «Un día de lluvia»",
    "file": "gn-sound-a1-u02.js",
-   "order": 244
+   "order": 245
   },
   {
    "key": "a1u02d5.w.aguyjemante",
@@ -3233,7 +3233,7 @@
    "lang": "gn",
    "where": "U2 D5 · palabra 8 de la escena «Un día de lluvia»",
    "file": "gn-sound-a1-u02.js",
-   "order": 245
+   "order": 246
   },
   {
    "key": "a1u02d5.s0a",
@@ -3275,7 +3275,7 @@
    "where": "U2 D5 · par 2, palabra b (Las letras mb, nd, ng, nt) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u02.js",
    "unused": true,
-   "order": 555
+   "order": 560
   },
   {
    "key": "a1u02d5.s2a",
@@ -3286,7 +3286,7 @@
    "where": "U2 D5 · par 3, palabra a (Las letras mb, nd, ng, nt) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u02.js",
    "unused": true,
-   "order": 556
+   "order": 561
   },
   {
    "key": "a1u02d5.s2b",
@@ -3306,7 +3306,7 @@
    "lang": "es",
    "where": "U2 D5 · escucha «Respuesta rápida» · línea 1 de 8",
    "file": "gn-sound-a1-u02.js",
-   "order": 248
+   "order": 249
   },
   {
    "key": "a1u02d5.r1.l1",
@@ -3316,7 +3316,7 @@
    "lang": "gn",
    "where": "U2 D5 · escucha «Respuesta rápida» · línea 2 de 8",
    "file": "gn-sound-a1-u02.js",
-   "order": 249
+   "order": 250
   },
   {
    "key": "a1u02d5.r1.l2",
@@ -3336,7 +3336,7 @@
    "lang": "gn",
    "where": "U2 D5 · escucha «Respuesta rápida» · línea 4 de 8",
    "file": "gn-sound-a1-u02.js",
-   "order": 250
+   "order": 251
   },
   {
    "key": "a1u02d5.r1.l4",
@@ -3356,7 +3356,7 @@
    "lang": "gn",
    "where": "U2 D5 · escucha «Respuesta rápida» · línea 6 de 8",
    "file": "gn-sound-a1-u02.js",
-   "order": 251
+   "order": 252
   },
   {
    "key": "a1u02d5.r1.l6",
@@ -3376,7 +3376,7 @@
    "lang": "gn",
    "where": "U2 D5 · escucha «Respuesta rápida» · línea 8 de 8",
    "file": "gn-sound-a1-u02.js",
-   "order": 252
+   "order": 253
   },
   {
    "key": "a1u02d5.r1",
@@ -3405,7 +3405,7 @@
    "slow": true,
    "where": "U2 D5 · escucha «Respuesta rápida» · línea 2 de 8, versión lenta",
    "file": "gn-sound-a1-u02.js",
-   "order": 518
+   "order": 523
   },
   {
    "key": "a1u02d5.r1.l3.slow",
@@ -3416,7 +3416,7 @@
    "slow": true,
    "where": "U2 D5 · escucha «Respuesta rápida» · línea 4 de 8, versión lenta",
    "file": "gn-sound-a1-u02.js",
-   "order": 519
+   "order": 524
   },
   {
    "key": "a1u02d5.r1.l5.slow",
@@ -3427,7 +3427,7 @@
    "slow": true,
    "where": "U2 D5 · escucha «Respuesta rápida» · línea 6 de 8, versión lenta",
    "file": "gn-sound-a1-u02.js",
-   "order": 520
+   "order": 525
   },
   {
    "key": "a1u02d5.r1.l7.slow",
@@ -3438,7 +3438,7 @@
    "slow": true,
    "where": "U2 D5 · escucha «Respuesta rápida» · línea 8 de 8, versión lenta",
    "file": "gn-sound-a1-u02.js",
-   "order": 521
+   "order": 526
   },
   {
    "key": "a1u02d5.r1.slow",
@@ -3564,7 +3564,7 @@
    "key": "a1u02d6.s1a",
    "voice": "F",
    "text": "ru",
-   "es": "padre",
+   "es": "padre (con che, nde)",
    "lang": "gn",
    "where": "U2 D6 · par 2, palabra a (Repaso: j, h, r, la tilde, ña- y mb, nd)",
    "file": "gn-sound-a1-u02.js",
@@ -3652,7 +3652,7 @@
    "lang": "gn",
    "where": "U3 D1 · punto 1, ejemplo 1",
    "file": "gn-sound-a1-u03.js",
-   "order": 257
+   "order": 258
   },
   {
    "key": "a1u03d1.p1.x1",
@@ -3662,7 +3662,7 @@
    "lang": "gn",
    "where": "U3 D1 · punto 1, ejemplo 2",
    "file": "gn-sound-a1-u03.js",
-   "order": 258
+   "order": 259
   },
   {
    "key": "a1u03d1.p1.x2",
@@ -3672,7 +3672,7 @@
    "lang": "gn",
    "where": "U3 D1 · punto 1, ejemplo 3",
    "file": "gn-sound-a1-u03.js",
-   "order": 259
+   "order": 260
   },
   {
    "key": "a1u03d1.p1.x3.l0",
@@ -3682,7 +3682,7 @@
    "lang": "gn",
    "where": "U3 D1 · punto 1, ejemplo 4 (diálogo) · línea 1 de 2",
    "file": "gn-sound-a1-u03.js",
-   "order": 260
+   "order": 261
   },
   {
    "key": "a1u03d1.p1.x3.l1",
@@ -3692,7 +3692,7 @@
    "lang": "gn",
    "where": "U3 D1 · punto 1, ejemplo 4 (diálogo) · línea 2 de 2",
    "file": "gn-sound-a1-u03.js",
-   "order": 261
+   "order": 262
   },
   {
    "key": "a1u03d1.p1.x3",
@@ -3714,7 +3714,7 @@
    "lang": "gn",
    "where": "U3 D1 · punto 2, ejemplo 1",
    "file": "gn-sound-a1-u03.js",
-   "order": 262
+   "order": 263
   },
   {
    "key": "a1u03d1.p2.x1",
@@ -3724,7 +3724,7 @@
    "lang": "gn",
    "where": "U3 D1 · punto 2, ejemplo 2",
    "file": "gn-sound-a1-u03.js",
-   "order": 263
+   "order": 264
   },
   {
    "key": "a1u03d1.p2.x2",
@@ -3734,7 +3734,7 @@
    "lang": "gn",
    "where": "U3 D1 · punto 2, ejemplo 3",
    "file": "gn-sound-a1-u03.js",
-   "order": 264
+   "order": 265
   },
   {
    "key": "a1u03d1.p2.x3",
@@ -3744,7 +3744,7 @@
    "lang": "gn",
    "where": "U3 D1 · punto 2, ejemplo 4",
    "file": "gn-sound-a1-u03.js",
-   "order": 265
+   "order": 266
   },
   {
    "key": "a1u03d1.w.kaneo",
@@ -3754,7 +3754,7 @@
    "lang": "gn",
    "where": "U3 D1 · palabra 1 de la escena «Después del partido»",
    "file": "gn-sound-a1-u03.js",
-   "order": 266
+   "order": 267
   },
   {
    "key": "a1u03d1.w.varea",
@@ -3764,7 +3764,7 @@
    "lang": "gn",
    "where": "U3 D1 · palabra 2 de la escena «Después del partido»",
    "file": "gn-sound-a1-u03.js",
-   "order": 267
+   "order": 268
   },
   {
    "key": "a1u03d1.w.yuhei",
@@ -3774,7 +3774,7 @@
    "lang": "gn",
    "where": "U3 D1 · palabra 3 de la escena «Después del partido»",
    "file": "gn-sound-a1-u03.js",
-   "order": 268
+   "order": 269
   },
   {
    "key": "a1u03d1.w.roy",
@@ -3784,7 +3784,7 @@
    "lang": "gn",
    "where": "U3 D1 · palabra 4 de la escena «Después del partido»",
    "file": "gn-sound-a1-u03.js",
-   "order": 269
+   "order": 270
   },
   {
    "key": "a1u03d1.w.haku",
@@ -3794,7 +3794,7 @@
    "lang": "gn",
    "where": "U3 D1 · palabra 5 de la escena «Después del partido»",
    "file": "gn-sound-a1-u03.js",
-   "order": 270
+   "order": 271
   },
   {
    "key": "a1u03d1.w.pochy",
@@ -3804,7 +3804,7 @@
    "lang": "gn",
    "where": "U3 D1 · palabra 6 de la escena «Después del partido»",
    "file": "gn-sound-a1-u03.js",
-   "order": 271
+   "order": 272
   },
   {
    "key": "a1u03d1.w.kaigue",
@@ -3814,7 +3814,7 @@
    "lang": "gn",
    "where": "U3 D1 · palabra 7 de la escena «Después del partido»",
    "file": "gn-sound-a1-u03.js",
-   "order": 272
+   "order": 273
   },
   {
    "key": "a1u03d1.w.akarasy",
@@ -3824,7 +3824,7 @@
    "lang": "gn",
    "where": "U3 D1 · palabra 8 de la escena «Después del partido»",
    "file": "gn-sound-a1-u03.js",
-   "order": 273
+   "order": 274
   },
   {
    "key": "a1u03d1.s0a",
@@ -3835,7 +3835,7 @@
    "where": "U3 D1 · par 1, palabra a (La ch: che, chepochy) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u03.js",
    "unused": true,
-   "order": 557
+   "order": 562
   },
   {
    "key": "a1u03d1.s0b",
@@ -3856,7 +3856,7 @@
    "where": "U3 D1 · par 2, palabra a (La ch: che, chepochy) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u03.js",
    "unused": true,
-   "order": 558
+   "order": 563
   },
   {
    "key": "a1u03d1.s1b",
@@ -3877,7 +3877,7 @@
    "where": "U3 D1 · par 3, palabra a (La ch: che, chepochy) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u03.js",
    "unused": true,
-   "order": 559
+   "order": 564
   },
   {
    "key": "a1u03d1.s2b",
@@ -3897,7 +3897,7 @@
    "lang": "es",
    "where": "U3 D1 · escucha «Comprensión de puntos clave» · línea 1 de 4",
    "file": "gn-sound-a1-u03.js",
-   "order": 277
+   "order": 278
   },
   {
    "key": "a1u03d1.r1.l1",
@@ -3907,7 +3907,7 @@
    "lang": "gn",
    "where": "U3 D1 · escucha «Comprensión de puntos clave» · línea 2 de 4",
    "file": "gn-sound-a1-u03.js",
-   "order": 278
+   "order": 279
   },
   {
    "key": "a1u03d1.r1.l2",
@@ -3917,7 +3917,7 @@
    "lang": "gn",
    "where": "U3 D1 · escucha «Comprensión de puntos clave» · línea 3 de 4",
    "file": "gn-sound-a1-u03.js",
-   "order": 279
+   "order": 280
   },
   {
    "key": "a1u03d1.r1.l3",
@@ -3927,7 +3927,7 @@
    "lang": "gn",
    "where": "U3 D1 · escucha «Comprensión de puntos clave» · línea 4 de 4",
    "file": "gn-sound-a1-u03.js",
-   "order": 280
+   "order": 281
   },
   {
    "key": "a1u03d1.r1",
@@ -3952,7 +3952,7 @@
    "slow": true,
    "where": "U3 D1 · escucha «Comprensión de puntos clave» · línea 2 de 4, versión lenta",
    "file": "gn-sound-a1-u03.js",
-   "order": 522
+   "order": 527
   },
   {
    "key": "a1u03d1.r1.l2.slow",
@@ -3963,7 +3963,7 @@
    "slow": true,
    "where": "U3 D1 · escucha «Comprensión de puntos clave» · línea 3 de 4, versión lenta",
    "file": "gn-sound-a1-u03.js",
-   "order": 523
+   "order": 528
   },
   {
    "key": "a1u03d1.r1.l3.slow",
@@ -3974,7 +3974,7 @@
    "slow": true,
    "where": "U3 D1 · escucha «Comprensión de puntos clave» · línea 4 de 4, versión lenta",
    "file": "gn-sound-a1-u03.js",
-   "order": 524
+   "order": 529
   },
   {
    "key": "a1u03d1.r1.slow",
@@ -3999,7 +3999,7 @@
    "lang": "gn",
    "where": "U3 D2 · punto 1, ejemplo 1",
    "file": "gn-sound-a1-u03.js",
-   "order": 284
+   "order": 285
   },
   {
    "key": "a1u03d2.p1.x1",
@@ -4009,7 +4009,7 @@
    "lang": "gn",
    "where": "U3 D2 · punto 1, ejemplo 2",
    "file": "gn-sound-a1-u03.js",
-   "order": 285
+   "order": 286
   },
   {
    "key": "a1u03d2.p1.x2",
@@ -4019,7 +4019,7 @@
    "lang": "gn",
    "where": "U3 D2 · punto 1, ejemplo 3",
    "file": "gn-sound-a1-u03.js",
-   "order": 286
+   "order": 287
   },
   {
    "key": "a1u03d2.p1.x3",
@@ -4029,7 +4029,7 @@
    "lang": "gn",
    "where": "U3 D2 · punto 1, ejemplo 4",
    "file": "gn-sound-a1-u03.js",
-   "order": 287
+   "order": 288
   },
   {
    "key": "a1u03d2.p2.x0",
@@ -4039,7 +4039,7 @@
    "lang": "gn",
    "where": "U3 D2 · punto 2, ejemplo 1",
    "file": "gn-sound-a1-u03.js",
-   "order": 288
+   "order": 289
   },
   {
    "key": "a1u03d2.p2.x1",
@@ -4049,7 +4049,7 @@
    "lang": "gn",
    "where": "U3 D2 · punto 2, ejemplo 2",
    "file": "gn-sound-a1-u03.js",
-   "order": 289
+   "order": 290
   },
   {
    "key": "a1u03d2.p2.x2",
@@ -4059,7 +4059,7 @@
    "lang": "gn",
    "where": "U3 D2 · punto 2, ejemplo 3",
    "file": "gn-sound-a1-u03.js",
-   "order": 290
+   "order": 291
   },
   {
    "key": "a1u03d2.p2.x3",
@@ -4069,7 +4069,7 @@
    "lang": "gn",
    "where": "U3 D2 · punto 2, ejemplo 4",
    "file": "gn-sound-a1-u03.js",
-   "order": 291
+   "order": 292
   },
   {
    "key": "a1u03d2.w.apua",
@@ -4079,7 +4079,7 @@
    "lang": "gn",
    "where": "U3 D2 · palabra 1 de la escena «Un domingo en casa de Ana»",
    "file": "gn-sound-a1-u03.js",
-   "order": 292
+   "order": 293
   },
   {
    "key": "a1u03d2.w.ajahu",
@@ -4089,7 +4089,7 @@
    "lang": "gn",
    "where": "U3 D2 · palabra 2 de la escena «Un domingo en casa de Ana»",
    "file": "gn-sound-a1-u03.js",
-   "order": 293
+   "order": 294
   },
   {
    "key": "a1u03d2.w.avya",
@@ -4099,7 +4099,7 @@
    "lang": "gn",
    "where": "U3 D2 · palabra 3 de la escena «Un domingo en casa de Ana»",
    "file": "gn-sound-a1-u03.js",
-   "order": 294
+   "order": 295
   },
   {
    "key": "a1u03d2.w.akyhyje",
@@ -4109,7 +4109,7 @@
    "lang": "gn",
    "where": "U3 D2 · palabra 4 de la escena «Un domingo en casa de Ana»",
    "file": "gn-sound-a1-u03.js",
-   "order": 295
+   "order": 296
   },
   {
    "key": "a1u03d2.w.chemandua",
@@ -4119,7 +4119,7 @@
    "lang": "gn",
    "where": "U3 D2 · palabra 5 de la escena «Un domingo en casa de Ana»",
    "file": "gn-sound-a1-u03.js",
-   "order": 296
+   "order": 297
   },
   {
    "key": "a1u03d2.w.aime",
@@ -4129,7 +4129,7 @@
    "lang": "gn",
    "where": "U3 D2 · palabra 6 de la escena «Un domingo en casa de Ana»",
    "file": "gn-sound-a1-u03.js",
-   "order": 297
+   "order": 298
   },
   {
    "key": "a1u03d2.w.koaga",
@@ -4139,7 +4139,7 @@
    "lang": "gn",
    "where": "U3 D2 · palabra 7 de la escena «Un domingo en casa de Ana»",
    "file": "gn-sound-a1-u03.js",
-   "order": 298
+   "order": 299
   },
   {
    "key": "a1u03d2.w.ake",
@@ -4149,7 +4149,7 @@
    "lang": "gn",
    "where": "U3 D2 · palabra 8 de la escena «Un domingo en casa de Ana»",
    "file": "gn-sound-a1-u03.js",
-   "order": 299
+   "order": 300
   },
   {
    "key": "a1u03d2.s0a",
@@ -4212,7 +4212,7 @@
    "where": "U3 D2 · par 3, palabra b (Sin marca, el acento va al final: ajahu, akyhyje) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u03.js",
    "unused": true,
-   "order": 560
+   "order": 565
   },
   {
    "key": "a1u03d3.p1.x0",
@@ -4222,7 +4222,7 @@
    "lang": "gn",
    "where": "U3 D3 · punto 1, ejemplo 1",
    "file": "gn-sound-a1-u03.js",
-   "order": 301
+   "order": 302
   },
   {
    "key": "a1u03d3.p1.x1",
@@ -4232,7 +4232,7 @@
    "lang": "gn",
    "where": "U3 D3 · punto 1, ejemplo 2",
    "file": "gn-sound-a1-u03.js",
-   "order": 302
+   "order": 303
   },
   {
    "key": "a1u03d3.p1.x2",
@@ -4242,7 +4242,7 @@
    "lang": "gn",
    "where": "U3 D3 · punto 1, ejemplo 3",
    "file": "gn-sound-a1-u03.js",
-   "order": 303
+   "order": 304
   },
   {
    "key": "a1u03d3.p1.x3",
@@ -4252,7 +4252,7 @@
    "lang": "gn",
    "where": "U3 D3 · punto 1, ejemplo 4",
    "file": "gn-sound-a1-u03.js",
-   "order": 304
+   "order": 305
   },
   {
    "key": "a1u03d3.p2.x0",
@@ -4262,7 +4262,7 @@
    "lang": "gn",
    "where": "U3 D3 · punto 2, ejemplo 1",
    "file": "gn-sound-a1-u03.js",
-   "order": 305
+   "order": 306
   },
   {
    "key": "a1u03d3.p2.x1.l0",
@@ -4272,7 +4272,7 @@
    "lang": "gn",
    "where": "U3 D3 · punto 2, ejemplo 2 (diálogo) · línea 1 de 2",
    "file": "gn-sound-a1-u03.js",
-   "order": 306
+   "order": 307
   },
   {
    "key": "a1u03d3.p2.x1.l1",
@@ -4282,7 +4282,7 @@
    "lang": "gn",
    "where": "U3 D3 · punto 2, ejemplo 2 (diálogo) · línea 2 de 2",
    "file": "gn-sound-a1-u03.js",
-   "order": 307
+   "order": 308
   },
   {
    "key": "a1u03d3.p2.x1",
@@ -4304,7 +4304,7 @@
    "lang": "gn",
    "where": "U3 D3 · punto 2, ejemplo 3",
    "file": "gn-sound-a1-u03.js",
-   "order": 308
+   "order": 309
   },
   {
    "key": "a1u03d3.p2.x3",
@@ -4314,7 +4314,7 @@
    "lang": "gn",
    "where": "U3 D3 · punto 2, ejemplo 4",
    "file": "gn-sound-a1-u03.js",
-   "order": 309
+   "order": 310
   },
   {
    "key": "a1u03d3.w.pohanohara",
@@ -4324,7 +4324,7 @@
    "lang": "gn",
    "where": "U3 D3 · palabra 1 de la escena «La fiesta de San Juan del barrio»",
    "file": "gn-sound-a1-u03.js",
-   "order": 310
+   "order": 311
   },
   {
    "key": "a1u03d3.w.mbaapohara",
@@ -4334,7 +4334,7 @@
    "lang": "gn",
    "where": "U3 D3 · palabra 2 de la escena «La fiesta de San Juan del barrio»",
    "file": "gn-sound-a1-u03.js",
-   "order": 311
+   "order": 312
   },
   {
    "key": "a1u03d3.w.chokokue",
@@ -4344,7 +4344,7 @@
    "lang": "gn",
    "where": "U3 D3 · palabra 3 de la escena «La fiesta de San Juan del barrio»",
    "file": "gn-sound-a1-u03.js",
-   "order": 312
+   "order": 313
   },
   {
    "key": "a1u03d3.w.nemuhara",
@@ -4354,27 +4354,27 @@
    "lang": "gn",
    "where": "U3 D3 · palabra 4 de la escena «La fiesta de San Juan del barrio»",
    "file": "gn-sound-a1-u03.js",
-   "order": 313
+   "order": 314
   },
   {
    "key": "a1u03d3.w.mitarusu",
    "voice": "F",
    "text": "mitãrusu",
-   "es": "muchacho, joven",
+   "es": "joven, adolescente",
    "lang": "gn",
    "where": "U3 D3 · palabra 5 de la escena «La fiesta de San Juan del barrio»",
    "file": "gn-sound-a1-u03.js",
-   "order": 314
+   "order": 315
   },
   {
    "key": "a1u03d3.w.mitakuna",
    "voice": "F",
    "text": "mitãkuña",
-   "es": "chica, muchacha joven",
+   "es": "niña, chica",
    "lang": "gn",
    "where": "U3 D3 · palabra 6 de la escena «La fiesta de San Juan del barrio»",
    "file": "gn-sound-a1-u03.js",
-   "order": 315
+   "order": 316
   },
   {
    "key": "a1u03d3.w.kunakarai",
@@ -4384,7 +4384,7 @@
    "lang": "gn",
    "where": "U3 D3 · palabra 7 de la escena «La fiesta de San Juan del barrio»",
    "file": "gn-sound-a1-u03.js",
-   "order": 316
+   "order": 317
   },
   {
    "key": "a1u03d3.w.cheiru",
@@ -4394,7 +4394,7 @@
    "lang": "gn",
    "where": "U3 D3 · palabra 8 de la escena «La fiesta de San Juan del barrio»",
    "file": "gn-sound-a1-u03.js",
-   "order": 317
+   "order": 318
   },
   {
    "key": "a1u03d3.s0a",
@@ -4436,7 +4436,7 @@
    "where": "U3 D3 · par 2, palabra b (La ñ, sin ~ al lado: kuña, ñemuhára) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u03.js",
    "unused": true,
-   "order": 561
+   "order": 566
   },
   {
    "key": "a1u03d3.s2a",
@@ -4447,7 +4447,7 @@
    "where": "U3 D3 · par 3, palabra a (La ñ, sin ~ al lado: kuña, ñemuhára) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u03.js",
    "unused": true,
-   "order": 562
+   "order": 567
   },
   {
    "key": "a1u03d3.s2b",
@@ -4457,7 +4457,7 @@
    "lang": "gn",
    "where": "U3 D3 · par 3, palabra b (La ñ, sin ~ al lado: kuña, ñemuhára)",
    "file": "gn-sound-a1-u03.js",
-   "order": 320
+   "order": 321
   },
   {
    "key": "a1u03d3.r1.l0",
@@ -4467,7 +4467,7 @@
    "lang": "es",
    "where": "U3 D3 · escucha «Comprensión de puntos clave» · línea 1 de 5",
    "file": "gn-sound-a1-u03.js",
-   "order": 321
+   "order": 322
   },
   {
    "key": "a1u03d3.r1.l1",
@@ -4477,17 +4477,17 @@
    "lang": "gn",
    "where": "U3 D3 · escucha «Comprensión de puntos clave» · línea 2 de 5",
    "file": "gn-sound-a1-u03.js",
-   "order": 322
+   "order": 323
   },
   {
    "key": "a1u03d3.r1.l2",
    "voice": "M",
-   "text": "Mba'éichapa, kuñakarai.",
+   "text": "Mba'éichapa, kuñakarai?",
    "es": "Hola, señora.",
    "lang": "gn",
    "where": "U3 D3 · escucha «Comprensión de puntos clave» · línea 3 de 5",
    "file": "gn-sound-a1-u03.js",
-   "order": 323
+   "order": 324
   },
   {
    "key": "a1u03d3.r1.l3",
@@ -4497,7 +4497,7 @@
    "lang": "gn",
    "where": "U3 D3 · escucha «Comprensión de puntos clave» · línea 4 de 5",
    "file": "gn-sound-a1-u03.js",
-   "order": 324
+   "order": 325
   },
   {
    "key": "a1u03d3.r1.l4",
@@ -4507,7 +4507,7 @@
    "lang": "gn",
    "where": "U3 D3 · escucha «Comprensión de puntos clave» · línea 5 de 5",
    "file": "gn-sound-a1-u03.js",
-   "order": 325
+   "order": 326
   },
   {
    "key": "a1u03d3.r1",
@@ -4519,7 +4519,7 @@
     "a1u03d3.r1.l4"
    ],
    "voice": "N+F+M",
-   "text": "En la fiesta de San Juan. Ana presenta a dos personas. ¿Qué es Lucas? / Ha'e che sy, Luis. Ha'e mbo'ehára. / Mba'éichapa, kuñakarai. / Ha Lucas ha'e che irũ. Ha'e pohanohára. / Maitei, Lucas.",
+   "text": "En la fiesta de San Juan. Ana presenta a dos personas. ¿Qué es Lucas? / Ha'e che sy, Luis. Ha'e mbo'ehára. / Mba'éichapa, kuñakarai? / Ha Lucas ha'e che irũ. Ha'e pohanohára. / Maitei, Lucas.",
    "es": "En la fiesta de San Juan. Ana presenta a dos personas. ¿Qué es Lucas? / Ella es mi mamá, Luis. Es profesora. / Hola, señora. / Y Lucas es mi compañero. Es médico. / Hola, Lucas.",
    "where": "U3 D3 · escucha «Comprensión de puntos clave»",
    "file": "gn-sound-a1-u03.js"
@@ -4533,18 +4533,18 @@
    "slow": true,
    "where": "U3 D3 · escucha «Comprensión de puntos clave» · línea 2 de 5, versión lenta",
    "file": "gn-sound-a1-u03.js",
-   "order": 525
+   "order": 530
   },
   {
    "key": "a1u03d3.r1.l2.slow",
    "voice": "M",
-   "text": "Mba'éichapa, kuñakarai.",
+   "text": "Mba'éichapa, kuñakarai?",
    "es": "Hola, señora.",
    "lang": "gn",
    "slow": true,
    "where": "U3 D3 · escucha «Comprensión de puntos clave» · línea 3 de 5, versión lenta",
    "file": "gn-sound-a1-u03.js",
-   "order": 526
+   "order": 531
   },
   {
    "key": "a1u03d3.r1.l3.slow",
@@ -4555,7 +4555,7 @@
    "slow": true,
    "where": "U3 D3 · escucha «Comprensión de puntos clave» · línea 4 de 5, versión lenta",
    "file": "gn-sound-a1-u03.js",
-   "order": 527
+   "order": 532
   },
   {
    "key": "a1u03d3.r1.l4.slow",
@@ -4566,7 +4566,7 @@
    "slow": true,
    "where": "U3 D3 · escucha «Comprensión de puntos clave» · línea 5 de 5, versión lenta",
    "file": "gn-sound-a1-u03.js",
-   "order": 528
+   "order": 533
   },
   {
    "key": "a1u03d3.r1.slow",
@@ -4579,7 +4579,7 @@
    ],
    "slow": true,
    "voice": "N+F+M",
-   "text": "En la fiesta de San Juan. Ana presenta a dos personas. ¿Qué es Lucas? / Ha'e che sy, Luis. Ha'e mbo'ehára. / Mba'éichapa, kuñakarai. / Ha Lucas ha'e che irũ. Ha'e pohanohára. / Maitei, Lucas.",
+   "text": "En la fiesta de San Juan. Ana presenta a dos personas. ¿Qué es Lucas? / Ha'e che sy, Luis. Ha'e mbo'ehára. / Mba'éichapa, kuñakarai? / Ha Lucas ha'e che irũ. Ha'e pohanohára. / Maitei, Lucas.",
    "es": "",
    "where": "U3 D3 · escucha «Comprensión de puntos clave», versión lenta",
    "file": "gn-sound-a1-u03.js"
@@ -4592,7 +4592,7 @@
    "lang": "gn",
    "where": "U3 D4 · punto 1, ejemplo 1 (diálogo) · línea 1 de 2",
    "file": "gn-sound-a1-u03.js",
-   "order": 330
+   "order": 331
   },
   {
    "key": "a1u03d4.p1.x0.l1",
@@ -4602,7 +4602,7 @@
    "lang": "gn",
    "where": "U3 D4 · punto 1, ejemplo 1 (diálogo) · línea 2 de 2",
    "file": "gn-sound-a1-u03.js",
-   "order": 331
+   "order": 332
   },
   {
    "key": "a1u03d4.p1.x0",
@@ -4624,7 +4624,7 @@
    "lang": "gn",
    "where": "U3 D4 · punto 1, ejemplo 2",
    "file": "gn-sound-a1-u03.js",
-   "order": 332
+   "order": 333
   },
   {
    "key": "a1u03d4.p1.x2",
@@ -4634,7 +4634,7 @@
    "lang": "gn",
    "where": "U3 D4 · punto 1, ejemplo 3",
    "file": "gn-sound-a1-u03.js",
-   "order": 333
+   "order": 334
   },
   {
    "key": "a1u03d4.p1.x3",
@@ -4654,7 +4654,7 @@
    "lang": "gn",
    "where": "U3 D4 · punto 2, ejemplo 1 (diálogo) · línea 1 de 2",
    "file": "gn-sound-a1-u03.js",
-   "order": 334
+   "order": 335
   },
   {
    "key": "a1u03d4.p2.x0.l1",
@@ -4664,7 +4664,7 @@
    "lang": "gn",
    "where": "U3 D4 · punto 2, ejemplo 1 (diálogo) · línea 2 de 2",
    "file": "gn-sound-a1-u03.js",
-   "order": 335
+   "order": 336
   },
   {
    "key": "a1u03d4.p2.x0",
@@ -4686,7 +4686,7 @@
    "lang": "gn",
    "where": "U3 D4 · punto 2, ejemplo 2 (diálogo) · línea 1 de 3",
    "file": "gn-sound-a1-u03.js",
-   "order": 336
+   "order": 337
   },
   {
    "key": "a1u03d4.p2.x1.l1",
@@ -4696,7 +4696,7 @@
    "lang": "gn",
    "where": "U3 D4 · punto 2, ejemplo 2 (diálogo) · línea 2 de 3",
    "file": "gn-sound-a1-u03.js",
-   "order": 337
+   "order": 338
   },
   {
    "key": "a1u03d4.p2.x1.l2",
@@ -4706,7 +4706,7 @@
    "lang": "gn",
    "where": "U3 D4 · punto 2, ejemplo 2 (diálogo) · línea 3 de 3",
    "file": "gn-sound-a1-u03.js",
-   "order": 338
+   "order": 339
   },
   {
    "key": "a1u03d4.p2.x1",
@@ -4729,7 +4729,7 @@
    "lang": "gn",
    "where": "U3 D4 · punto 2, ejemplo 3 (diálogo) · línea 1 de 2",
    "file": "gn-sound-a1-u03.js",
-   "order": 339
+   "order": 340
   },
   {
    "key": "a1u03d4.p2.x2.l1",
@@ -4739,7 +4739,7 @@
    "lang": "gn",
    "where": "U3 D4 · punto 2, ejemplo 3 (diálogo) · línea 2 de 2",
    "file": "gn-sound-a1-u03.js",
-   "order": 340
+   "order": 341
   },
   {
    "key": "a1u03d4.p2.x2",
@@ -4761,7 +4761,7 @@
    "lang": "gn",
    "where": "U3 D4 · punto 2, ejemplo 4 (diálogo) · línea 1 de 2",
    "file": "gn-sound-a1-u03.js",
-   "order": 341
+   "order": 342
   },
   {
    "key": "a1u03d4.p2.x3.l1",
@@ -4771,7 +4771,7 @@
    "lang": "gn",
    "where": "U3 D4 · punto 2, ejemplo 4 (diálogo) · línea 2 de 2",
    "file": "gn-sound-a1-u03.js",
-   "order": 342
+   "order": 343
   },
   {
    "key": "a1u03d4.p2.x3",
@@ -4793,7 +4793,7 @@
    "lang": "gn",
    "where": "U3 D4 · palabra 1 de la escena «¿Ya llegó? Un chat de sí o no»",
    "file": "gn-sound-a1-u03.js",
-   "order": 343
+   "order": 344
   },
   {
    "key": "a1u03d4.w.koaga",
@@ -4813,7 +4813,7 @@
    "lang": "gn",
    "where": "U3 D4 · palabra 3 de la escena «¿Ya llegó? Un chat de sí o no»",
    "file": "gn-sound-a1-u03.js",
-   "order": 344
+   "order": 345
   },
   {
    "key": "a1u03d4.w.anete",
@@ -4823,7 +4823,7 @@
    "lang": "gn",
    "where": "U3 D4 · palabra 4 de la escena «¿Ya llegó? Un chat de sí o no»",
    "file": "gn-sound-a1-u03.js",
-   "order": 345
+   "order": 346
   },
   {
    "key": "a1u03d4.w.upeicha",
@@ -4833,7 +4833,7 @@
    "lang": "gn",
    "where": "U3 D4 · palabra 5 de la escena «¿Ya llegó? Un chat de sí o no»",
    "file": "gn-sound-a1-u03.js",
-   "order": 346
+   "order": 347
   },
   {
    "key": "a1u03d4.w.ndahaei",
@@ -4843,7 +4843,7 @@
    "lang": "gn",
    "where": "U3 D4 · palabra 6 de la escena «¿Ya llegó? Un chat de sí o no»",
    "file": "gn-sound-a1-u03.js",
-   "order": 347
+   "order": 348
   },
   {
    "key": "a1u03d4.w.ndaikatui",
@@ -4853,7 +4853,7 @@
    "lang": "gn",
    "where": "U3 D4 · palabra 7 de la escena «¿Ya llegó? Un chat de sí o no»",
    "file": "gn-sound-a1-u03.js",
-   "order": 348
+   "order": 349
   },
   {
    "key": "a1u03d4.w.nachemandua",
@@ -4863,7 +4863,7 @@
    "lang": "gn",
    "where": "U3 D4 · palabra 8 de la escena «¿Ya llegó? Un chat de sí o no»",
    "file": "gn-sound-a1-u03.js",
-   "order": 349
+   "order": 350
   },
   {
    "key": "a1u03d4.s0a",
@@ -4936,7 +4936,7 @@
    "lang": "gn",
    "where": "U3 D5 · punto 1, ejemplo 1",
    "file": "gn-sound-a1-u03.js",
-   "order": 350
+   "order": 351
   },
   {
    "key": "a1u03d5.p1.x1",
@@ -4946,7 +4946,7 @@
    "lang": "gn",
    "where": "U3 D5 · punto 1, ejemplo 2",
    "file": "gn-sound-a1-u03.js",
-   "order": 351
+   "order": 352
   },
   {
    "key": "a1u03d5.p1.x2",
@@ -4956,7 +4956,7 @@
    "lang": "gn",
    "where": "U3 D5 · punto 1, ejemplo 3",
    "file": "gn-sound-a1-u03.js",
-   "order": 352
+   "order": 353
   },
   {
    "key": "a1u03d5.p1.x3",
@@ -4966,7 +4966,7 @@
    "lang": "gn",
    "where": "U3 D5 · punto 1, ejemplo 4",
    "file": "gn-sound-a1-u03.js",
-   "order": 353
+   "order": 354
   },
   {
    "key": "a1u03d5.p2.x0",
@@ -4976,7 +4976,7 @@
    "lang": "gn",
    "where": "U3 D5 · punto 2, ejemplo 1",
    "file": "gn-sound-a1-u03.js",
-   "order": 354
+   "order": 355
   },
   {
    "key": "a1u03d5.p2.x1",
@@ -4986,7 +4986,7 @@
    "lang": "gn",
    "where": "U3 D5 · punto 2, ejemplo 2",
    "file": "gn-sound-a1-u03.js",
-   "order": 355
+   "order": 356
   },
   {
    "key": "a1u03d5.p2.x2",
@@ -4996,7 +4996,7 @@
    "lang": "gn",
    "where": "U3 D5 · punto 2, ejemplo 3",
    "file": "gn-sound-a1-u03.js",
-   "order": 356
+   "order": 357
   },
   {
    "key": "a1u03d5.p2.x3",
@@ -5006,7 +5006,7 @@
    "lang": "gn",
    "where": "U3 D5 · punto 2, ejemplo 4",
    "file": "gn-sound-a1-u03.js",
-   "order": 357
+   "order": 358
   },
   {
    "key": "a1u03d5.w.paraguai",
@@ -5016,7 +5016,7 @@
    "lang": "gn",
    "where": "U3 D5 · palabra 1 de la escena «Nombres que cambian de tilde en castellano»",
    "file": "gn-sound-a1-u03.js",
-   "order": 358
+   "order": 359
   },
   {
    "key": "a1u03d5.w.kaakupe",
@@ -5026,7 +5026,7 @@
    "lang": "gn",
    "where": "U3 D5 · palabra 2 de la escena «Nombres que cambian de tilde en castellano»",
    "file": "gn-sound-a1-u03.js",
-   "order": 359
+   "order": 360
   },
   {
    "key": "a1u03d5.w.ypakarai",
@@ -5036,7 +5036,7 @@
    "lang": "gn",
    "where": "U3 D5 · palabra 3 de la escena «Nombres que cambian de tilde en castellano»",
    "file": "gn-sound-a1-u03.js",
-   "order": 360
+   "order": 361
   },
   {
    "key": "a1u03d5.w.itaugua",
@@ -5046,7 +5046,7 @@
    "lang": "gn",
    "where": "U3 D5 · palabra 4 de la escena «Nombres que cambian de tilde en castellano»",
    "file": "gn-sound-a1-u03.js",
-   "order": 361
+   "order": 362
   },
   {
    "key": "a1u03d5.w.tovati",
@@ -5056,7 +5056,7 @@
    "lang": "gn",
    "where": "U3 D5 · palabra 5 de la escena «Nombres que cambian de tilde en castellano»",
    "file": "gn-sound-a1-u03.js",
-   "order": 362
+   "order": 363
   },
   {
    "key": "a1u03d5.w.terere",
@@ -5086,7 +5086,7 @@
    "lang": "gn",
    "where": "U3 D5 · palabra 8 de la escena «Nombres que cambian de tilde en castellano»",
    "file": "gn-sound-a1-u03.js",
-   "order": 363
+   "order": 364
   },
   {
    "key": "a1u03d5.s0a",
@@ -5097,7 +5097,7 @@
    "where": "U3 D5 · par 1, palabra a (La tilde nasal (~) también es tilde) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u03.js",
    "unused": true,
-   "order": 563
+   "order": 568
   },
   {
    "key": "a1u03d5.s0b",
@@ -5107,7 +5107,7 @@
    "lang": "gn",
    "where": "U3 D5 · par 1, palabra b (La tilde nasal (~) también es tilde)",
    "file": "gn-sound-a1-u03.js",
-   "order": 365
+   "order": 366
   },
   {
    "key": "a1u03d5.s1a",
@@ -5118,7 +5118,7 @@
    "where": "U3 D5 · par 2, palabra a (La tilde nasal (~) también es tilde) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u03.js",
    "unused": true,
-   "order": 564
+   "order": 569
   },
   {
    "key": "a1u03d5.s1b",
@@ -5128,7 +5128,7 @@
    "lang": "gn",
    "where": "U3 D5 · par 2, palabra b (La tilde nasal (~) también es tilde)",
    "file": "gn-sound-a1-u03.js",
-   "order": 367
+   "order": 368
   },
   {
    "key": "a1u03d5.s2a",
@@ -5149,7 +5149,7 @@
    "where": "U3 D5 · par 3, palabra b (La tilde nasal (~) también es tilde) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u03.js",
    "unused": true,
-   "order": 565
+   "order": 570
   },
   {
    "key": "a1u03d5.r1.l0",
@@ -5159,7 +5159,7 @@
    "lang": "es",
    "where": "U3 D5 · escucha «Buscar el dato» · línea 1 de 4",
    "file": "gn-sound-a1-u03.js",
-   "order": 369
+   "order": 370
   },
   {
    "key": "a1u03d5.r1.l1",
@@ -5169,7 +5169,7 @@
    "lang": "gn",
    "where": "U3 D5 · escucha «Buscar el dato» · línea 2 de 4",
    "file": "gn-sound-a1-u03.js",
-   "order": 370
+   "order": 371
   },
   {
    "key": "a1u03d5.r1.l2",
@@ -5179,7 +5179,7 @@
    "lang": "gn",
    "where": "U3 D5 · escucha «Buscar el dato» · línea 3 de 4",
    "file": "gn-sound-a1-u03.js",
-   "order": 371
+   "order": 372
   },
   {
    "key": "a1u03d5.r1.l3",
@@ -5189,7 +5189,7 @@
    "lang": "es",
    "where": "U3 D5 · escucha «Buscar el dato» · línea 4 de 4",
    "file": "gn-sound-a1-u03.js",
-   "order": 372
+   "order": 373
   },
   {
    "key": "a1u03d5.r1",
@@ -5214,7 +5214,7 @@
    "slow": true,
    "where": "U3 D5 · escucha «Buscar el dato» · línea 2 de 4, versión lenta",
    "file": "gn-sound-a1-u03.js",
-   "order": 529
+   "order": 534
   },
   {
    "key": "a1u03d5.r1.l2.slow",
@@ -5225,7 +5225,7 @@
    "slow": true,
    "where": "U3 D5 · escucha «Buscar el dato» · línea 3 de 4, versión lenta",
    "file": "gn-sound-a1-u03.js",
-   "order": 530
+   "order": 535
   },
   {
    "key": "a1u03d5.r1.slow",
@@ -5414,7 +5414,7 @@
    "lang": "gn",
    "where": "U4 D1 · punto 1, ejemplo 1",
    "file": "gn-sound-a1-u04.js",
-   "order": 375
+   "order": 376
   },
   {
    "key": "a1u04d1.p1.x1",
@@ -5424,7 +5424,7 @@
    "lang": "gn",
    "where": "U4 D1 · punto 1, ejemplo 2",
    "file": "gn-sound-a1-u04.js",
-   "order": 376
+   "order": 377
   },
   {
    "key": "a1u04d1.p1.x2",
@@ -5444,7 +5444,7 @@
    "lang": "gn",
    "where": "U4 D1 · punto 1, ejemplo 4",
    "file": "gn-sound-a1-u04.js",
-   "order": 377
+   "order": 378
   },
   {
    "key": "a1u04d1.p2.x0",
@@ -5454,7 +5454,7 @@
    "lang": "gn",
    "where": "U4 D1 · punto 2, ejemplo 1",
    "file": "gn-sound-a1-u04.js",
-   "order": 378
+   "order": 379
   },
   {
    "key": "a1u04d1.p2.x1",
@@ -5464,7 +5464,7 @@
    "lang": "gn",
    "where": "U4 D1 · punto 2, ejemplo 2",
    "file": "gn-sound-a1-u04.js",
-   "order": 379
+   "order": 380
   },
   {
    "key": "a1u04d1.p2.x2",
@@ -5474,7 +5474,7 @@
    "lang": "gn",
    "where": "U4 D1 · punto 2, ejemplo 3",
    "file": "gn-sound-a1-u04.js",
-   "order": 380
+   "order": 381
   },
   {
    "key": "a1u04d1.p2.x3",
@@ -5484,7 +5484,7 @@
    "lang": "gn",
    "where": "U4 D1 · punto 2, ejemplo 4",
    "file": "gn-sound-a1-u04.js",
-   "order": 381
+   "order": 382
   },
   {
    "key": "a1u04d1.w.sy",
@@ -5514,7 +5514,7 @@
    "lang": "gn",
    "where": "U4 D1 · palabra 3 de la escena «La foto de la familia»",
    "file": "gn-sound-a1-u04.js",
-   "order": 382
+   "order": 383
   },
   {
    "key": "a1u04d1.w.ray",
@@ -5524,7 +5524,7 @@
    "lang": "gn",
    "where": "U4 D1 · palabra 4 de la escena «La foto de la familia»",
    "file": "gn-sound-a1-u04.js",
-   "order": 383
+   "order": 384
   },
   {
    "key": "a1u04d1.w.rajy",
@@ -5534,7 +5534,7 @@
    "lang": "gn",
    "where": "U4 D1 · palabra 5 de la escena «La foto de la familia»",
    "file": "gn-sound-a1-u04.js",
-   "order": 384
+   "order": 385
   },
   {
    "key": "a1u04d1.w.jaryi",
@@ -5544,7 +5544,7 @@
    "lang": "gn",
    "where": "U4 D1 · palabra 6 de la escena «La foto de la familia»",
    "file": "gn-sound-a1-u04.js",
-   "order": 385
+   "order": 386
   },
   {
    "key": "a1u04d1.w.ramoi",
@@ -5554,7 +5554,7 @@
    "lang": "gn",
    "where": "U4 D1 · palabra 7 de la escena «La foto de la familia»",
    "file": "gn-sound-a1-u04.js",
-   "order": 386
+   "order": 387
   },
   {
    "key": "a1u04d1.w.rembireko",
@@ -5564,7 +5564,7 @@
    "lang": "gn",
    "where": "U4 D1 · palabra 8 de la escena «La foto de la familia»",
    "file": "gn-sound-a1-u04.js",
-   "order": 387
+   "order": 388
   },
   {
    "key": "a1u04d1.s0a",
@@ -5596,7 +5596,7 @@
    "where": "U4 D1 · par 2, palabra a (La tilde en dos vocales juntas: jarýi, ramói) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u04.js",
    "unused": true,
-   "order": 566
+   "order": 571
   },
   {
    "key": "a1u04d1.s1b",
@@ -5617,7 +5617,7 @@
    "where": "U4 D1 · par 3, palabra a (La tilde en dos vocales juntas: jarýi, ramói) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u04.js",
    "unused": true,
-   "order": 567
+   "order": 572
   },
   {
    "key": "a1u04d1.s2b",
@@ -5637,27 +5637,27 @@
    "lang": "es",
    "where": "U4 D1 · escucha «Comprensión de puntos clave» · línea 1 de 9",
    "file": "gn-sound-a1-u04.js",
-   "order": 390
+   "order": 391
   },
   {
    "key": "a1u04d1.r1.l1",
    "voice": "F",
-   "text": "Ha'e che sy, héra Marta.",
-   "es": "Ella es mi mamá, se llama Marta.",
+   "text": "Ha'e che sy.",
+   "es": "Ella es mi mamá.",
    "lang": "gn",
    "where": "U4 D1 · escucha «Comprensión de puntos clave» · línea 2 de 9",
    "file": "gn-sound-a1-u04.js",
-   "order": 391
+   "order": 392
   },
   {
    "key": "a1u04d1.r1.l2",
    "voice": "F",
-   "text": "Ha'e che ru, héra Luis.",
-   "es": "Él es mi papá, se llama Luis.",
+   "text": "Ha'e che ru, héra Carlos.",
+   "es": "Él es mi papá, se llama Carlos.",
    "lang": "gn",
    "where": "U4 D1 · escucha «Comprensión de puntos clave» · línea 3 de 9",
    "file": "gn-sound-a1-u04.js",
-   "order": 392
+   "order": 393
   },
   {
    "key": "a1u04d1.r1.l3",
@@ -5667,7 +5667,7 @@
    "lang": "es",
    "where": "U4 D1 · escucha «Comprensión de puntos clave» · línea 4 de 9",
    "file": "gn-sound-a1-u04.js",
-   "order": 393
+   "order": 394
   },
   {
    "key": "a1u04d1.r1.l4",
@@ -5687,27 +5687,27 @@
    "lang": "gn",
    "where": "U4 D1 · escucha «Comprensión de puntos clave» · línea 6 de 9",
    "file": "gn-sound-a1-u04.js",
-   "order": 394
+   "order": 395
   },
   {
    "key": "a1u04d1.r1.l6",
    "voice": "M",
    "text": "Mba'éichapa héra ne memby?",
-   "es": "¿Cómo se llama tu hija?",
+   "es": "¿Cómo se llama tu hijo?",
    "lang": "gn",
    "where": "U4 D1 · escucha «Comprensión de puntos clave» · línea 7 de 9",
    "file": "gn-sound-a1-u04.js",
-   "order": 395
+   "order": 396
   },
   {
    "key": "a1u04d1.r1.l7",
    "voice": "F",
-   "text": "Héra Sofía.",
-   "es": "Se llama Sofía.",
+   "text": "Héra Mateo.",
+   "es": "Se llama Mateo.",
    "lang": "gn",
    "where": "U4 D1 · escucha «Comprensión de puntos clave» · línea 8 de 9",
    "file": "gn-sound-a1-u04.js",
-   "order": 396
+   "order": 397
   },
   {
    "key": "a1u04d1.r1.l8",
@@ -5717,7 +5717,7 @@
    "lang": "es",
    "where": "U4 D1 · escucha «Comprensión de puntos clave» · línea 9 de 9",
    "file": "gn-sound-a1-u04.js",
-   "order": 397
+   "order": 398
   },
   {
    "key": "a1u04d1.r1",
@@ -5733,32 +5733,32 @@
     "a1u04d1.r1.l8"
    ],
    "voice": "N+F+M",
-   "text": "Ana le muestra a Juan la foto de su familia. ¿Cómo se llama el abuelo de Ana? / Ha'e che sy, héra Marta. / Ha'e che ru, héra Luis. / Juan señala a un señor de la foto. / Mávapa ha'e? / Che ramói, héra Pedro. / Mba'éichapa héra ne memby? / Héra Sofía. / ¿Cómo se llama el abuelo de Ana?",
-   "es": "Ana le muestra a Juan la foto de su familia. ¿Cómo se llama el abuelo de Ana? / Ella es mi mamá, se llama Marta. / Él es mi papá, se llama Luis. / Juan señala a un señor de la foto. / ¿Quién es? / Mi abuelo, se llama Pedro. / ¿Cómo se llama tu hija? / Se llama Sofía. / ¿Cómo se llama el abuelo de Ana?",
+   "text": "Ana le muestra a Juan la foto de su familia. ¿Cómo se llama el abuelo de Ana? / Ha'e che sy. / Ha'e che ru, héra Carlos. / Juan señala a un señor de la foto. / Mávapa ha'e? / Che ramói, héra Pedro. / Mba'éichapa héra ne memby? / Héra Mateo. / ¿Cómo se llama el abuelo de Ana?",
+   "es": "Ana le muestra a Juan la foto de su familia. ¿Cómo se llama el abuelo de Ana? / Ella es mi mamá. / Él es mi papá, se llama Carlos. / Juan señala a un señor de la foto. / ¿Quién es? / Mi abuelo, se llama Pedro. / ¿Cómo se llama tu hijo? / Se llama Mateo. / ¿Cómo se llama el abuelo de Ana?",
    "where": "U4 D1 · escucha «Comprensión de puntos clave»",
    "file": "gn-sound-a1-u04.js"
   },
   {
    "key": "a1u04d1.r1.l1.slow",
    "voice": "F",
-   "text": "Ha'e che sy, héra Marta.",
-   "es": "Ella es mi mamá, se llama Marta.",
+   "text": "Ha'e che sy.",
+   "es": "Ella es mi mamá.",
    "lang": "gn",
    "slow": true,
    "where": "U4 D1 · escucha «Comprensión de puntos clave» · línea 2 de 9, versión lenta",
    "file": "gn-sound-a1-u04.js",
-   "order": 531
+   "order": 536
   },
   {
    "key": "a1u04d1.r1.l2.slow",
    "voice": "F",
-   "text": "Ha'e che ru, héra Luis.",
-   "es": "Él es mi papá, se llama Luis.",
+   "text": "Ha'e che ru, héra Carlos.",
+   "es": "Él es mi papá, se llama Carlos.",
    "lang": "gn",
    "slow": true,
    "where": "U4 D1 · escucha «Comprensión de puntos clave» · línea 3 de 9, versión lenta",
    "file": "gn-sound-a1-u04.js",
-   "order": 532
+   "order": 537
   },
   {
    "key": "a1u04d1.r1.l4.slow",
@@ -5769,7 +5769,7 @@
    "slow": true,
    "where": "U4 D1 · escucha «Comprensión de puntos clave» · línea 5 de 9, versión lenta",
    "file": "gn-sound-a1-u04.js",
-   "order": 533
+   "order": 538
   },
   {
    "key": "a1u04d1.r1.l5.slow",
@@ -5780,29 +5780,29 @@
    "slow": true,
    "where": "U4 D1 · escucha «Comprensión de puntos clave» · línea 6 de 9, versión lenta",
    "file": "gn-sound-a1-u04.js",
-   "order": 534
+   "order": 539
   },
   {
    "key": "a1u04d1.r1.l6.slow",
    "voice": "M",
    "text": "Mba'éichapa héra ne memby?",
-   "es": "¿Cómo se llama tu hija?",
+   "es": "¿Cómo se llama tu hijo?",
    "lang": "gn",
    "slow": true,
    "where": "U4 D1 · escucha «Comprensión de puntos clave» · línea 7 de 9, versión lenta",
    "file": "gn-sound-a1-u04.js",
-   "order": 535
+   "order": 540
   },
   {
    "key": "a1u04d1.r1.l7.slow",
    "voice": "F",
-   "text": "Héra Sofía.",
-   "es": "Se llama Sofía.",
+   "text": "Héra Mateo.",
+   "es": "Se llama Mateo.",
    "lang": "gn",
    "slow": true,
    "where": "U4 D1 · escucha «Comprensión de puntos clave» · línea 8 de 9, versión lenta",
    "file": "gn-sound-a1-u04.js",
-   "order": 536
+   "order": 541
   },
   {
    "key": "a1u04d1.r1.slow",
@@ -5819,7 +5819,7 @@
    ],
    "slow": true,
    "voice": "N+F+M",
-   "text": "Ana le muestra a Juan la foto de su familia. ¿Cómo se llama el abuelo de Ana? / Ha'e che sy, héra Marta. / Ha'e che ru, héra Luis. / Juan señala a un señor de la foto. / Mávapa ha'e? / Che ramói, héra Pedro. / Mba'éichapa héra ne memby? / Héra Sofía. / ¿Cómo se llama el abuelo de Ana?",
+   "text": "Ana le muestra a Juan la foto de su familia. ¿Cómo se llama el abuelo de Ana? / Ha'e che sy. / Ha'e che ru, héra Carlos. / Juan señala a un señor de la foto. / Mávapa ha'e? / Che ramói, héra Pedro. / Mba'éichapa héra ne memby? / Héra Mateo. / ¿Cómo se llama el abuelo de Ana?",
    "es": "",
    "where": "U4 D1 · escucha «Comprensión de puntos clave», versión lenta",
    "file": "gn-sound-a1-u04.js"
@@ -5832,7 +5832,7 @@
    "lang": "gn",
    "where": "U4 D2 · punto 1, ejemplo 1",
    "file": "gn-sound-a1-u04.js",
-   "order": 404
+   "order": 405
   },
   {
    "key": "a1u04d2.p1.x1",
@@ -5842,7 +5842,7 @@
    "lang": "gn",
    "where": "U4 D2 · punto 1, ejemplo 2",
    "file": "gn-sound-a1-u04.js",
-   "order": 405
+   "order": 406
   },
   {
    "key": "a1u04d2.p1.x2",
@@ -5852,7 +5852,7 @@
    "lang": "gn",
    "where": "U4 D2 · punto 1, ejemplo 3",
    "file": "gn-sound-a1-u04.js",
-   "order": 406
+   "order": 407
   },
   {
    "key": "a1u04d2.p1.x3",
@@ -5862,7 +5862,7 @@
    "lang": "gn",
    "where": "U4 D2 · punto 1, ejemplo 4",
    "file": "gn-sound-a1-u04.js",
-   "order": 407
+   "order": 408
   },
   {
    "key": "a1u04d2.p2.x0",
@@ -5872,7 +5872,7 @@
    "lang": "gn",
    "where": "U4 D2 · punto 2, ejemplo 1",
    "file": "gn-sound-a1-u04.js",
-   "order": 408
+   "order": 409
   },
   {
    "key": "a1u04d2.p2.x1",
@@ -5882,7 +5882,7 @@
    "lang": "gn",
    "where": "U4 D2 · punto 2, ejemplo 2",
    "file": "gn-sound-a1-u04.js",
-   "order": 409
+   "order": 410
   },
   {
    "key": "a1u04d2.p2.x2",
@@ -5892,7 +5892,7 @@
    "lang": "gn",
    "where": "U4 D2 · punto 2, ejemplo 3",
    "file": "gn-sound-a1-u04.js",
-   "order": 410
+   "order": 411
   },
   {
    "key": "a1u04d2.p2.x3",
@@ -5902,7 +5902,7 @@
    "lang": "gn",
    "where": "U4 D2 · punto 2, ejemplo 4",
    "file": "gn-sound-a1-u04.js",
-   "order": 411
+   "order": 412
   },
   {
    "key": "a1u04d2.w.mitanguera",
@@ -5912,13 +5912,13 @@
    "lang": "gn",
    "where": "U4 D2 · palabra 1 de la escena «El patio de la escuela»",
    "file": "gn-sound-a1-u04.js",
-   "order": 412
+   "order": 413
   },
   {
    "key": "a1u04d2.w.mitakuna",
    "voice": "F",
    "text": "mitãkuña",
-   "es": "niña",
+   "es": "niña, chica",
    "lang": "gn",
    "where": "U4 D2 · palabra 2 de la escena «El patio de la escuela»",
    "file": "gn-sound-a1-u04.js",
@@ -5942,7 +5942,7 @@
    "lang": "gn",
    "where": "U4 D2 · palabra 4 de la escena «El patio de la escuela»",
    "file": "gn-sound-a1-u04.js",
-   "order": 413
+   "order": 414
   },
   {
    "key": "a1u04d2.w.jaguakuera",
@@ -5952,7 +5952,7 @@
    "lang": "gn",
    "where": "U4 D2 · palabra 5 de la escena «El patio de la escuela»",
    "file": "gn-sound-a1-u04.js",
-   "order": 414
+   "order": 415
   },
   {
    "key": "a1u04d2.w.guyrakuera",
@@ -5962,7 +5962,7 @@
    "lang": "gn",
    "where": "U4 D2 · palabra 6 de la escena «El patio de la escuela»",
    "file": "gn-sound-a1-u04.js",
-   "order": 415
+   "order": 416
   },
   {
    "key": "a1u04d2.w.mymbakuera",
@@ -5972,7 +5972,7 @@
    "lang": "gn",
    "where": "U4 D2 · palabra 7 de la escena «El patio de la escuela»",
    "file": "gn-sound-a1-u04.js",
-   "order": 416
+   "order": 417
   },
   {
    "key": "a1u04d2.w.korapy",
@@ -5982,7 +5982,7 @@
    "lang": "gn",
    "where": "U4 D2 · palabra 8 de la escena «El patio de la escuela»",
    "file": "gn-sound-a1-u04.js",
-   "order": 417
+   "order": 418
   },
   {
    "key": "a1u04d2.s0a",
@@ -6003,7 +6003,7 @@
    "where": "U4 D2 · par 1, palabra b (El acento se mueve: ogakuéra) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u04.js",
    "unused": true,
-   "order": 568
+   "order": 573
   },
   {
    "key": "a1u04d2.s1a",
@@ -6013,7 +6013,7 @@
    "lang": "gn",
    "where": "U4 D2 · par 2, palabra a (El acento se mueve: ogakuéra)",
    "file": "gn-sound-a1-u04.js",
-   "order": 419
+   "order": 420
   },
   {
    "key": "a1u04d2.s1b",
@@ -6024,7 +6024,7 @@
    "where": "U4 D2 · par 2, palabra b (El acento se mueve: ogakuéra)",
    "file": "gn-sound-a1-u04.js",
    "unused": true,
-   "order": 420
+   "order": 421
   },
   {
    "key": "a1u04d2.s2a",
@@ -6034,7 +6034,7 @@
    "lang": "gn",
    "where": "U4 D2 · par 3, palabra a (El acento se mueve: ogakuéra)",
    "file": "gn-sound-a1-u04.js",
-   "order": 421
+   "order": 422
   },
   {
    "key": "a1u04d2.s2b",
@@ -6045,7 +6045,7 @@
    "where": "U4 D2 · par 3, palabra b (El acento se mueve: ogakuéra) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u04.js",
    "unused": true,
-   "order": 569
+   "order": 574
   },
   {
    "key": "a1u04d2.s3a",
@@ -6071,12 +6071,12 @@
   {
    "key": "a1u04d3.p1.x0",
    "voice": "F",
-   "text": "Ko vaka iky'a.",
-   "es": "Esta vaca está sucia.",
+   "text": "Ko vaka ivare'a.",
+   "es": "Esta vaca tiene hambre.",
    "lang": "gn",
    "where": "U4 D3 · punto 1, ejemplo 1",
    "file": "gn-sound-a1-u04.js",
-   "order": 423
+   "order": 424
   },
   {
    "key": "a1u04d3.p1.x1",
@@ -6086,7 +6086,7 @@
    "lang": "gn",
    "where": "U4 D3 · punto 1, ejemplo 2",
    "file": "gn-sound-a1-u04.js",
-   "order": 424
+   "order": 425
   },
   {
    "key": "a1u04d3.p1.x2",
@@ -6096,7 +6096,7 @@
    "lang": "gn",
    "where": "U4 D3 · punto 1, ejemplo 3",
    "file": "gn-sound-a1-u04.js",
-   "order": 425
+   "order": 426
   },
   {
    "key": "a1u04d3.p1.x3",
@@ -6106,7 +6106,7 @@
    "lang": "gn",
    "where": "U4 D3 · punto 1, ejemplo 4",
    "file": "gn-sound-a1-u04.js",
-   "order": 426
+   "order": 427
   },
   {
    "key": "a1u04d3.p2.x0",
@@ -6116,7 +6116,7 @@
    "lang": "gn",
    "where": "U4 D3 · punto 2, ejemplo 1",
    "file": "gn-sound-a1-u04.js",
-   "order": 427
+   "order": 428
   },
   {
    "key": "a1u04d3.p2.x1",
@@ -6126,7 +6126,7 @@
    "lang": "gn",
    "where": "U4 D3 · punto 2, ejemplo 2",
    "file": "gn-sound-a1-u04.js",
-   "order": 428
+   "order": 429
   },
   {
    "key": "a1u04d3.p2.x2",
@@ -6136,7 +6136,7 @@
    "lang": "gn",
    "where": "U4 D3 · punto 2, ejemplo 3",
    "file": "gn-sound-a1-u04.js",
-   "order": 429
+   "order": 430
   },
   {
    "key": "a1u04d3.p2.x3",
@@ -6146,7 +6146,7 @@
    "lang": "gn",
    "where": "U4 D3 · punto 2, ejemplo 4",
    "file": "gn-sound-a1-u04.js",
-   "order": 430
+   "order": 431
   },
   {
    "key": "a1u04d3.w.jagua",
@@ -6176,7 +6176,7 @@
    "lang": "gn",
    "where": "U4 D3 · palabra 3 de la escena «En el patio»",
    "file": "gn-sound-a1-u04.js",
-   "order": 431
+   "order": 432
   },
   {
    "key": "a1u04d3.w.kavaju",
@@ -6186,7 +6186,7 @@
    "lang": "gn",
    "where": "U4 D3 · palabra 4 de la escena «En el patio»",
    "file": "gn-sound-a1-u04.js",
-   "order": 432
+   "order": 433
   },
   {
    "key": "a1u04d3.w.vaka",
@@ -6196,7 +6196,7 @@
    "lang": "gn",
    "where": "U4 D3 · palabra 5 de la escena «En el patio»",
    "file": "gn-sound-a1-u04.js",
-   "order": 433
+   "order": 434
   },
   {
    "key": "a1u04d3.w.yvyra",
@@ -6206,7 +6206,7 @@
    "lang": "gn",
    "where": "U4 D3 · palabra 6 de la escena «En el patio»",
    "file": "gn-sound-a1-u04.js",
-   "order": 434
+   "order": 435
   },
   {
    "key": "a1u04d3.w.apyka",
@@ -6216,17 +6216,17 @@
    "lang": "gn",
    "where": "U4 D3 · palabra 7 de la escena «En el patio»",
    "file": "gn-sound-a1-u04.js",
-   "order": 435
+   "order": 436
   },
   {
-   "key": "a1u04d3.w.korapy",
+   "key": "a1u04d3.w.korapype",
    "voice": "F",
-   "text": "korapy",
-   "es": "patio",
+   "text": "korapýpe",
+   "es": "en el patio",
    "lang": "gn",
    "where": "U4 D3 · palabra 8 de la escena «En el patio»",
    "file": "gn-sound-a1-u04.js",
-   "same": "a1u04d2.w.korapy"
+   "order": 437
   },
   {
    "key": "a1u04d3.s0a",
@@ -6278,7 +6278,7 @@
    "lang": "es",
    "where": "U4 D3 · escucha «Comprensión de puntos clave» · línea 1 de 6",
    "file": "gn-sound-a1-u04.js",
-   "order": 436
+   "order": 438
   },
   {
    "key": "a1u04d3.r1.l1",
@@ -6288,7 +6288,7 @@
    "lang": "gn",
    "where": "U4 D3 · escucha «Comprensión de puntos clave» · línea 2 de 6",
    "file": "gn-sound-a1-u04.js",
-   "order": 437
+   "order": 439
   },
   {
    "key": "a1u04d3.r1.l2",
@@ -6298,7 +6298,7 @@
    "lang": "gn",
    "where": "U4 D3 · escucha «Comprensión de puntos clave» · línea 3 de 6",
    "file": "gn-sound-a1-u04.js",
-   "order": 438
+   "order": 440
   },
   {
    "key": "a1u04d3.r1.l3",
@@ -6308,7 +6308,7 @@
    "lang": "gn",
    "where": "U4 D3 · escucha «Comprensión de puntos clave» · línea 4 de 6",
    "file": "gn-sound-a1-u04.js",
-   "order": 439
+   "order": 441
   },
   {
    "key": "a1u04d3.r1.l4",
@@ -6318,7 +6318,7 @@
    "lang": "gn",
    "where": "U4 D3 · escucha «Comprensión de puntos clave» · línea 5 de 6",
    "file": "gn-sound-a1-u04.js",
-   "order": 440
+   "order": 442
   },
   {
    "key": "a1u04d3.r1.l5",
@@ -6328,7 +6328,7 @@
    "lang": "es",
    "where": "U4 D3 · escucha «Comprensión de puntos clave» · línea 6 de 6",
    "file": "gn-sound-a1-u04.js",
-   "order": 441
+   "order": 443
   },
   {
    "key": "a1u04d3.r1",
@@ -6355,7 +6355,7 @@
    "slow": true,
    "where": "U4 D3 · escucha «Comprensión de puntos clave» · línea 2 de 6, versión lenta",
    "file": "gn-sound-a1-u04.js",
-   "order": 537
+   "order": 542
   },
   {
    "key": "a1u04d3.r1.l2.slow",
@@ -6366,7 +6366,7 @@
    "slow": true,
    "where": "U4 D3 · escucha «Comprensión de puntos clave» · línea 3 de 6, versión lenta",
    "file": "gn-sound-a1-u04.js",
-   "order": 538
+   "order": 543
   },
   {
    "key": "a1u04d3.r1.l3.slow",
@@ -6377,7 +6377,7 @@
    "slow": true,
    "where": "U4 D3 · escucha «Comprensión de puntos clave» · línea 4 de 6, versión lenta",
    "file": "gn-sound-a1-u04.js",
-   "order": 539
+   "order": 544
   },
   {
    "key": "a1u04d3.r1.l4.slow",
@@ -6388,7 +6388,7 @@
    "slow": true,
    "where": "U4 D3 · escucha «Comprensión de puntos clave» · línea 5 de 6, versión lenta",
    "file": "gn-sound-a1-u04.js",
-   "order": 540
+   "order": 545
   },
   {
    "key": "a1u04d3.r1.slow",
@@ -6408,14 +6408,36 @@
    "file": "gn-sound-a1-u04.js"
   },
   {
-   "key": "a1u04d4.p1.x0",
+   "key": "a1u04d4.p1.x0.l0",
    "voice": "F",
    "text": "Mávapa ha'e?",
-   "es": "¿Quién es?",
+   "es": "",
    "lang": "gn",
-   "where": "U4 D4 · punto 1, ejemplo 1",
+   "where": "U4 D4 · punto 1, ejemplo 1 (diálogo) · línea 1 de 2",
    "file": "gn-sound-a1-u04.js",
    "same": "a1u01d4.p2.x1"
+  },
+  {
+   "key": "a1u04d4.p1.x0.l1",
+   "voice": "M",
+   "text": "Ha'e che rembireko.",
+   "es": "",
+   "lang": "gn",
+   "where": "U4 D4 · punto 1, ejemplo 1 (diálogo) · línea 2 de 2",
+   "file": "gn-sound-a1-u04.js",
+   "order": 448
+  },
+  {
+   "key": "a1u04d4.p1.x0",
+   "parts": [
+    "a1u01d4.p2.x1",
+    "a1u04d4.p1.x0.l1"
+   ],
+   "voice": "F+M",
+   "text": "Mávapa ha'e? / Ha'e che rembireko.",
+   "es": "",
+   "where": "U4 D4 · punto 1, ejemplo 1 (diálogo)",
+   "file": "gn-sound-a1-u04.js"
   },
   {
    "key": "a1u04d4.p1.x1",
@@ -6425,7 +6447,7 @@
    "lang": "gn",
    "where": "U4 D4 · punto 1, ejemplo 2",
    "file": "gn-sound-a1-u04.js",
-   "order": 446
+   "order": 449
   },
   {
    "key": "a1u04d4.p1.x2.l0",
@@ -6435,7 +6457,7 @@
    "lang": "gn",
    "where": "U4 D4 · punto 1, ejemplo 3 (diálogo) · línea 1 de 2",
    "file": "gn-sound-a1-u04.js",
-   "order": 447
+   "order": 450
   },
   {
    "key": "a1u04d4.p1.x2.l1",
@@ -6445,7 +6467,7 @@
    "lang": "gn",
    "where": "U4 D4 · punto 1, ejemplo 3 (diálogo) · línea 2 de 2",
    "file": "gn-sound-a1-u04.js",
-   "order": 448
+   "order": 451
   },
   {
    "key": "a1u04d4.p1.x2",
@@ -6461,13 +6483,13 @@
   },
   {
    "key": "a1u04d4.p1.x3.l0",
-   "voice": "M",
+   "voice": "F",
    "text": "Mávapa amo kuñataĩ?",
    "es": "",
    "lang": "gn",
    "where": "U4 D4 · punto 1, ejemplo 4 (diálogo) · línea 1 de 2",
    "file": "gn-sound-a1-u04.js",
-   "order": 449
+   "order": 452
   },
   {
    "key": "a1u04d4.p1.x3.l1",
@@ -6477,7 +6499,7 @@
    "lang": "gn",
    "where": "U4 D4 · punto 1, ejemplo 4 (diálogo) · línea 2 de 2",
    "file": "gn-sound-a1-u04.js",
-   "order": 450
+   "order": 453
   },
   {
    "key": "a1u04d4.p1.x3",
@@ -6485,7 +6507,7 @@
     "a1u04d4.p1.x3.l0",
     "a1u04d4.p1.x3.l1"
    ],
-   "voice": "M",
+   "voice": "F+M",
    "text": "Mávapa amo kuñataĩ? / Ha'e che rajy.",
    "es": "",
    "where": "U4 D4 · punto 1, ejemplo 4 (diálogo)",
@@ -6499,27 +6521,49 @@
    "lang": "gn",
    "where": "U4 D4 · punto 2, ejemplo 1",
    "file": "gn-sound-a1-u04.js",
-   "order": 451
+   "order": 454
   },
   {
    "key": "a1u04d4.p2.x1",
    "voice": "F",
-   "text": "Mba'épa reipota?",
-   "es": "¿Qué querés?",
+   "text": "Mba'épa jajapo ko ka'aru?",
+   "es": "¿Qué hacemos esta tarde?",
    "lang": "gn",
    "where": "U4 D4 · punto 2, ejemplo 2",
    "file": "gn-sound-a1-u04.js",
-   "same": "a1u01d4.p2.x0"
+   "order": 455
+  },
+  {
+   "key": "a1u04d4.p2.x2.l0",
+   "voice": "M",
+   "text": "Mba'épa rejapo ko pyhare?",
+   "es": "",
+   "lang": "gn",
+   "where": "U4 D4 · punto 2, ejemplo 3 (diálogo) · línea 1 de 2",
+   "file": "gn-sound-a1-u04.js",
+   "order": 456
+  },
+  {
+   "key": "a1u04d4.p2.x2.l1",
+   "voice": "F",
+   "text": "Aha che jarýi rógape.",
+   "es": "",
+   "lang": "gn",
+   "where": "U4 D4 · punto 2, ejemplo 3 (diálogo) · línea 2 de 2",
+   "file": "gn-sound-a1-u04.js",
+   "same": "a1u02d3.p1.x1"
   },
   {
    "key": "a1u04d4.p2.x2",
-   "voice": "F",
-   "text": "Mba'épa rejapo, Luis?",
-   "es": "¿Qué hacés, Luis?",
-   "lang": "gn",
-   "where": "U4 D4 · punto 2, ejemplo 3",
-   "file": "gn-sound-a1-u04.js",
-   "same": "a1u02d1.r1.l1"
+   "parts": [
+    "a1u04d4.p2.x2.l0",
+    "a1u02d3.p1.x1"
+   ],
+   "voice": "M+F",
+   "text": "Mba'épa rejapo ko pyhare? / Aha che jarýi rógape.",
+   "es": "",
+   "where": "U4 D4 · punto 2, ejemplo 3 (diálogo)",
+   "file": "gn-sound-a1-u04.js"
   },
   {
    "key": "a1u04d4.p2.x3",
@@ -6529,7 +6573,7 @@
    "lang": "gn",
    "where": "U4 D4 · punto 2, ejemplo 4",
    "file": "gn-sound-a1-u04.js",
-   "order": 452
+   "order": 457
   },
   {
    "key": "a1u04d4.w.mavapa",
@@ -6539,7 +6583,7 @@
    "lang": "gn",
    "where": "U4 D4 · palabra 1 de la escena «¿Quién es? En el cumpleaños»",
    "file": "gn-sound-a1-u04.js",
-   "order": 453
+   "order": 458
   },
   {
    "key": "a1u04d4.w.mbaepa",
@@ -6549,7 +6593,7 @@
    "lang": "gn",
    "where": "U4 D4 · palabra 2 de la escena «¿Quién es? En el cumpleaños»",
    "file": "gn-sound-a1-u04.js",
-   "order": 454
+   "order": 459
   },
   {
    "key": "a1u04d4.w.mbaepaheise",
@@ -6559,7 +6603,7 @@
    "lang": "gn",
    "where": "U4 D4 · palabra 3 de la escena «¿Quién es? En el cumpleaños»",
    "file": "gn-sound-a1-u04.js",
-   "order": 455
+   "order": 460
   },
   {
    "key": "a1u04d4.w.mbaerepa",
@@ -6569,23 +6613,23 @@
    "lang": "gn",
    "where": "U4 D4 · palabra 4 de la escena «¿Quién es? En el cumpleaños»",
    "file": "gn-sound-a1-u04.js",
-   "order": 456
+   "order": 461
   },
   {
    "key": "a1u04d4.w.kariay",
    "voice": "F",
    "text": "karia'y",
-   "es": "muchacho, joven",
+   "es": "muchacho, hombre joven",
    "lang": "gn",
    "where": "U4 D4 · palabra 5 de la escena «¿Quién es? En el cumpleaños»",
    "file": "gn-sound-a1-u04.js",
-   "order": 457
+   "order": 462
   },
   {
    "key": "a1u04d4.w.mitakuna",
    "voice": "F",
    "text": "mitãkuña",
-   "es": "niña",
+   "es": "niña, chica",
    "lang": "gn",
    "where": "U4 D4 · palabra 6 de la escena «¿Quién es? En el cumpleaños»",
    "file": "gn-sound-a1-u04.js",
@@ -6651,7 +6695,7 @@
    "lang": "gn",
    "where": "U4 D4 · par 2, palabra b (La u siempre suena: kuimba'e, -gui)",
    "file": "gn-sound-a1-u04.js",
-   "order": 458
+   "order": 463
   },
   {
    "key": "a1u04d4.s2a",
@@ -6693,7 +6737,7 @@
    "lang": "gn",
    "where": "U4 D4 · par 4, palabra b (La u siempre suena: kuimba'e, -gui)",
    "file": "gn-sound-a1-u04.js",
-   "order": 459
+   "order": 464
   },
   {
    "key": "a1u04d5.p1.x0",
@@ -6703,7 +6747,7 @@
    "lang": "gn",
    "where": "U4 D5 · punto 1, ejemplo 1",
    "file": "gn-sound-a1-u04.js",
-   "order": 460
+   "order": 465
   },
   {
    "key": "a1u04d5.p1.x1",
@@ -6713,27 +6757,27 @@
    "lang": "gn",
    "where": "U4 D5 · punto 1, ejemplo 2",
    "file": "gn-sound-a1-u04.js",
-   "order": 461
+   "order": 466
   },
   {
    "key": "a1u04d5.p1.x2",
    "voice": "F",
    "text": "Jareko peteĩ jagua.",
-   "es": "Tenemos un perro.",
+   "es": "Tenemos un perro, vos y yo.",
    "lang": "gn",
    "where": "U4 D5 · punto 1, ejemplo 3",
    "file": "gn-sound-a1-u04.js",
-   "order": 462
+   "order": 467
   },
   {
    "key": "a1u04d5.p1.x3",
    "voice": "F",
    "text": "Areko mbohapy memby.",
-   "es": "Rosa: Tengo tres hijos.",
+   "es": "Ramona: Tengo tres hijos.",
    "lang": "gn",
    "where": "U4 D5 · punto 1, ejemplo 4",
    "file": "gn-sound-a1-u04.js",
-   "order": 463
+   "order": 468
   },
   {
    "key": "a1u04d5.p2.x0.l0",
@@ -6775,17 +6819,17 @@
    "lang": "gn",
    "where": "U4 D5 · punto 2, ejemplo 2 (diálogo) · línea 1 de 2",
    "file": "gn-sound-a1-u04.js",
-   "order": 464
+   "order": 469
   },
   {
    "key": "a1u04d5.p2.x1.l1",
    "voice": "M",
-   "text": "Veinte.",
+   "text": "Treinta.",
    "es": "",
    "lang": "gn",
    "where": "U4 D5 · punto 2, ejemplo 2 (diálogo) · línea 2 de 2",
    "file": "gn-sound-a1-u04.js",
-   "order": 465
+   "order": 470
   },
   {
    "key": "a1u04d5.p2.x1",
@@ -6794,7 +6838,7 @@
     "a1u04d5.p2.x1.l1"
    ],
    "voice": "F+M",
-   "text": "Mboy arýpa rereko? / Veinte.",
+   "text": "Mboy arýpa rereko? / Treinta.",
    "es": "",
    "where": "U4 D5 · punto 2, ejemplo 2 (diálogo)",
    "file": "gn-sound-a1-u04.js"
@@ -6807,7 +6851,7 @@
    "lang": "gn",
    "where": "U4 D5 · punto 2, ejemplo 3",
    "file": "gn-sound-a1-u04.js",
-   "order": 466
+   "order": 471
   },
   {
    "key": "a1u04d5.p2.x3",
@@ -6817,7 +6861,7 @@
    "lang": "gn",
    "where": "U4 D5 · punto 2, ejemplo 4",
    "file": "gn-sound-a1-u04.js",
-   "order": 467
+   "order": 472
   },
   {
    "key": "a1u04d5.w.petei",
@@ -6827,7 +6871,7 @@
    "lang": "gn",
    "where": "U4 D5 · palabra 1 de la escena «En la despensa del barrio»",
    "file": "gn-sound-a1-u04.js",
-   "order": 468
+   "order": 473
   },
   {
    "key": "a1u04d5.w.mokoi",
@@ -6837,7 +6881,7 @@
    "lang": "gn",
    "where": "U4 D5 · palabra 2 de la escena «En la despensa del barrio»",
    "file": "gn-sound-a1-u04.js",
-   "order": 469
+   "order": 474
   },
   {
    "key": "a1u04d5.w.mbohapy",
@@ -6847,7 +6891,7 @@
    "lang": "gn",
    "where": "U4 D5 · palabra 3 de la escena «En la despensa del barrio»",
    "file": "gn-sound-a1-u04.js",
-   "order": 470
+   "order": 475
   },
   {
    "key": "a1u04d5.w.irundy",
@@ -6857,7 +6901,7 @@
    "lang": "gn",
    "where": "U4 D5 · palabra 4 de la escena «En la despensa del barrio»",
    "file": "gn-sound-a1-u04.js",
-   "order": 471
+   "order": 476
   },
   {
    "key": "a1u04d5.w.po",
@@ -6897,7 +6941,7 @@
    "lang": "gn",
    "where": "U4 D5 · palabra 8 de la escena «En la despensa del barrio»",
    "file": "gn-sound-a1-u04.js",
-   "order": 472
+   "order": 477
   },
   {
    "key": "a1u04d5.s0a",
@@ -6970,7 +7014,7 @@
    "lang": "es",
    "where": "U4 D5 · escucha «Comprensión de puntos clave» · línea 1 de 7",
    "file": "gn-sound-a1-u04.js",
-   "order": 473
+   "order": 478
   },
   {
    "key": "a1u04d5.r1.l1",
@@ -6980,7 +7024,7 @@
    "lang": "gn",
    "where": "U4 D5 · escucha «Comprensión de puntos clave» · línea 2 de 7",
    "file": "gn-sound-a1-u04.js",
-   "order": 474
+   "order": 479
   },
   {
    "key": "a1u04d5.r1.l2",
@@ -6990,7 +7034,7 @@
    "lang": "gn",
    "where": "U4 D5 · escucha «Comprensión de puntos clave» · línea 3 de 7",
    "file": "gn-sound-a1-u04.js",
-   "order": 475
+   "order": 480
   },
   {
    "key": "a1u04d5.r1.l3",
@@ -7020,7 +7064,7 @@
    "lang": "gn",
    "where": "U4 D5 · escucha «Comprensión de puntos clave» · línea 6 de 7",
    "file": "gn-sound-a1-u04.js",
-   "order": 476
+   "order": 481
   },
   {
    "key": "a1u04d5.r1.l6",
@@ -7030,7 +7074,7 @@
    "lang": "es",
    "where": "U4 D5 · escucha «Comprensión de puntos clave» · línea 7 de 7",
    "file": "gn-sound-a1-u04.js",
-   "order": 477
+   "order": 482
   },
   {
    "key": "a1u04d5.r1",
@@ -7058,7 +7102,7 @@
    "slow": true,
    "where": "U4 D5 · escucha «Comprensión de puntos clave» · línea 2 de 7, versión lenta",
    "file": "gn-sound-a1-u04.js",
-   "order": 541
+   "order": 546
   },
   {
    "key": "a1u04d5.r1.l2.slow",
@@ -7069,7 +7113,7 @@
    "slow": true,
    "where": "U4 D5 · escucha «Comprensión de puntos clave» · línea 3 de 7, versión lenta",
    "file": "gn-sound-a1-u04.js",
-   "order": 542
+   "order": 547
   },
   {
    "key": "a1u04d5.r1.l3.slow",
@@ -7080,7 +7124,7 @@
    "slow": true,
    "where": "U4 D5 · escucha «Comprensión de puntos clave» · línea 4 de 7, versión lenta",
    "file": "gn-sound-a1-u04.js",
-   "order": 543
+   "order": 548
   },
   {
    "key": "a1u04d5.r1.l4.slow",
@@ -7102,7 +7146,7 @@
    "slow": true,
    "where": "U4 D5 · escucha «Comprensión de puntos clave» · línea 6 de 7, versión lenta",
    "file": "gn-sound-a1-u04.js",
-   "order": 544
+   "order": 549
   },
   {
    "key": "a1u04d5.r1.slow",
@@ -7170,7 +7214,7 @@
    "lang": "gn",
    "where": "U4 D6 · palabra 5 de la escena «La familia en la fiesta»",
    "file": "gn-sound-a1-u04.js",
-   "order": 482
+   "order": 487
   },
   {
    "key": "a1u04d6.w.umi",
@@ -7180,7 +7224,7 @@
    "lang": "gn",
    "where": "U4 D6 · palabra 6 de la escena «La familia en la fiesta»",
    "file": "gn-sound-a1-u04.js",
-   "order": 483
+   "order": 488
   },
   {
    "key": "a1u04d6.w.mbaepa",
@@ -7315,7 +7359,7 @@
    "lang": "gn",
    "where": "Ubicación · pregunta 3 · línea 1 de 2",
    "file": "gn-sound-pl.js",
-   "order": 484
+   "order": 489
   },
   {
    "key": "pl.3.l1",
@@ -7325,7 +7369,7 @@
    "lang": "gn",
    "where": "Ubicación · pregunta 3 · línea 2 de 2",
    "file": "gn-sound-pl.js",
-   "order": 485
+   "order": 490
   },
   {
    "key": "pl.3",
@@ -7347,7 +7391,7 @@
    "lang": "gn",
    "where": "Ubicación · pregunta 5 · línea 1 de 3",
    "file": "gn-sound-pl.js",
-   "order": 486
+   "order": 491
   },
   {
    "key": "pl.5.l1",
@@ -7357,7 +7401,7 @@
    "lang": "gn",
    "where": "Ubicación · pregunta 5 · línea 2 de 3",
    "file": "gn-sound-pl.js",
-   "order": 487
+   "order": 492
   },
   {
    "key": "pl.5.l2",
@@ -7367,7 +7411,7 @@
    "lang": "gn",
    "where": "Ubicación · pregunta 5 · línea 3 de 3",
    "file": "gn-sound-pl.js",
-   "order": 488
+   "order": 493
   },
   {
    "key": "pl.5",
@@ -7390,7 +7434,7 @@
    "lang": "es",
    "where": "Examen A1 · escucha 1 · línea 1 de 3",
    "file": "gn-sound-a1-x.js",
-   "order": 489
+   "order": 494
   },
   {
    "key": "a1x.4.l1",
@@ -7410,7 +7454,7 @@
    "lang": "gn",
    "where": "Examen A1 · escucha 1 · línea 3 de 3",
    "file": "gn-sound-a1-x.js",
-   "order": 490
+   "order": 495
   },
   {
    "key": "a1x.4",
@@ -7433,7 +7477,7 @@
    "lang": "es",
    "where": "Examen A1 · escucha 2 · línea 1 de 3",
    "file": "gn-sound-a1-x.js",
-   "order": 491
+   "order": 496
   },
   {
    "key": "a1x.5.l1",
@@ -7453,7 +7497,7 @@
    "lang": "gn",
    "where": "Examen A1 · escucha 2 · línea 3 de 3",
    "file": "gn-sound-a1-x.js",
-   "order": 492
+   "order": 497
   },
   {
    "key": "a1x.5",
@@ -7545,7 +7589,7 @@
    "lang": "gn",
    "where": "Hablá · par 4, palabra a (puso)",
    "file": "gn-sound-sp.js",
-   "order": 493
+   "order": 498
   },
   {
    "key": "p3.1",
@@ -7555,7 +7599,7 @@
    "lang": "gn",
    "where": "Hablá · par 4, palabra b (puso)",
    "file": "gn-sound-sp.js",
-   "order": 494
+   "order": 499
   },
   {
    "key": "p4.0",
@@ -7665,7 +7709,7 @@
    "lang": "gn",
    "where": "Hablá · cartel 3",
    "file": "gn-sound-sp.js",
-   "order": 495
+   "order": 500
   },
   {
    "key": "s3",
@@ -7685,7 +7729,7 @@
    "lang": "gn",
    "where": "Hablá · cartel 5",
    "file": "gn-sound-sp.js",
-   "order": 496
+   "order": 501
   },
   {
    "key": "s5",
@@ -7695,7 +7739,7 @@
    "lang": "gn",
    "where": "Hablá · cartel 6",
    "file": "gn-sound-sp.js",
-   "order": 497
+   "order": 502
   }
  ]
 }

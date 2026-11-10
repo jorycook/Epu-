@@ -90,12 +90,12 @@
       },
       {
         "id": "a1u03d6.d6", "kind": "build", "area": "grammar", "label": "Armá la palabra", "join": "word",
-        "before": "(Rosa pregunta si el papá de Juan está cansado.)\nRosa: ", "after": " nde ru, Juan?",
+        "before": "(Rosa pregunta si la mamá de Juan está cansada.)\nRosa: ", "after": " nde sy, Juan?",
         "tiles": ["i", "kane'õ", "pa"], "bank": [2, 1, 0],
-        "hint": "Nde ru es otra persona: el estado empieza con la marca de «él, ella». -pa va al final.",
-        "full": "(Rosa pregunta si el papá de Juan está cansado.)\nRosa: {I}kane'õ{pa} nde ru, Juan?",
-        "es": "Rosa: ¿Está cansado tu papá, Juan?",
-        "explain": "i- («él, ella») + kane'õ («cansancio») + -pa (pregunta) = Ikane'õpa, «¿está cansado?». Nde ru, «tu papá», es otra persona: por eso el estado lleva i-. -pa va pegado al estado, y nde ru viene después. Acá no aparece ninguna tilde: el acento cae en la õ, y la ~ ya lo marca. Compará con Revy'ápa, donde la a es oral y recibe la tilde."
+        "hint": "Nde sy es otra persona: el estado empieza con la marca de «él, ella». -pa va al final.",
+        "full": "(Rosa pregunta si la mamá de Juan está cansada.)\nRosa: {I}kane'õ{pa} nde sy, Juan?",
+        "es": "Rosa: ¿Está cansada tu mamá, Juan?",
+        "explain": "i- («él, ella») + kane'õ («cansancio») + -pa (pregunta) = Ikane'õpa, «¿está cansada?». Nde sy, «tu mamá», es otra persona: por eso el estado lleva i-. -pa va pegado al estado, y nde sy viene después. Acá no aparece ninguna tilde: el acento cae en la õ, y la ~ ya lo marca. Compará con Revy'ápa, donde la a es oral y recibe la tilde."
       }
     ],
     "exam": [

@@ -264,7 +264,7 @@
     "es": "Un mensaje con foto",
     "ask": "¿Cuántos hijos de Rosa hay en la foto?",
     "seconds": 75,
-    "passage": "Maitei, Juan.\n^Ko'ã mitã che membykuéra: Sofía ha Tomás.^\nPe karai che ramói, héra José. Oguereko 80 ary.\n^Umi mokõi mitãkuña che angirũ memby.^\nJajotopáta ko ka'aru.\nRosa",
+    "passage": "Maitei, Juan.\n^Ko'ã mitã che membykuéra: Elena ha Tomás.^\nPe karai che ramói, héra José. Oguereko 80 ary.\n^Umi mokõi mitãkuña che angirũ memby.^\nJajotopáta ko ka'aru.\nRosa",
     "strategy": "Buscá de quién es cada grupo: después de ko'ã mitã y de umi mokõi mitãkuña viene el dueño, che membykuéra o che angirũ memby. Ha, «y», une dos nombres.",
     "item": {
       "id": "a1u04d6.r1",
@@ -277,11 +277,11 @@
       "answer": 2,
       "why": [
         "Un solo hijo sería che memby. Rosa escribe che membykuéra, con -kuéra: más de uno, y da dos nombres.",
-        "Ko'ã mitã che membykuéra: Sofía ha Tomás, «estos chicos son mis hijos: Sofía y Tomás». En la foto hay dos hijos de Rosa.",
+        "Ko'ã mitã che membykuéra: Elena ha Tomás, «estos chicos son mis hijos: Elena y Tomás». En la foto hay dos hijos de Rosa.",
         "En la foto hay cuatro chicos, pero las dos nenas, umi mokõi mitãkuña, son che angirũ memby: las hijas de la amiga de Rosa, no de Rosa.",
-        "Sí lo dice: después de che membykuéra, «mis hijos», vienen los nombres, Sofía ha Tomás."
+        "Sí lo dice: después de che membykuéra, «mis hijos», vienen los nombres, Elena ha Tomás."
       ],
-      "explain": "Rosa escribe Ko'ã mitã che membykuéra: Sofía ha Tomás, «estos chicos son mis hijos: Sofía y Tomás»: en la foto hay dos hijos de Rosa. Las otras dos, umi mokõi mitãkuña, son che angirũ memby: las hijas de su amiga."
+      "explain": "Rosa escribe Ko'ã mitã che membykuéra: Elena ha Tomás, «estos chicos son mis hijos: Elena y Tomás»: en la foto hay dos hijos de Rosa. Las otras dos, umi mokõi mitãkuña, son che angirũ memby: las hijas de su amiga."
     }
   }
 }

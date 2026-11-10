@@ -1036,10 +1036,10 @@
        "Ore roñe'ẽ",
        "Ha'ekuéra oñe'ẽ",
        "Ñande ñañe'ẽ",
-       "Che añe'ẽ"
+       "Peẽ peñe'ẽ"
       ],
       "answer": 3,
-      "explain": "Una alumna le habla a la otra, y las dos hablan guaraní: la que escucha está en el grupo, y por eso va ñande ñañe'ẽ. Ore roñe'ẽ la dejaría afuera, ha'ekuéra oñe'ẽ hablaría de otras personas y che añe'ẽ, de una sola alumna."
+      "explain": "Una alumna le habla a la otra, y las dos hablan guaraní: la que escucha está en el grupo, y por eso va ñande ñañe'ẽ. Ore roñe'ẽ la dejaría afuera, ha'ekuéra oñe'ẽ hablaría de otras personas y peẽ peñe'ẽ, «ustedes hablan», dejaría afuera a la que habla."
      },
      {
       "id": "a1u01d2.e3",
@@ -1568,7 +1568,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Marta se presenta en la clase.)\nMarta: Che réra Marta. Che (   ).",
+      "q": "(Marta se presenta.)\nMarta: Che réra Marta. Che (   ).",
       "options": [
        "gua Paraguái",
        "Paraguái",
@@ -2037,13 +2037,13 @@
       "options": [
        "Héẽ, añe'ẽ.",
        "Nahániri.",
-       "Che rógape."
+       "Mbo'ehaópe."
       ],
       "answer": 3,
       "why": [
        "Héẽ contesta preguntas de sí o no. Moõpa pide un lugar.",
        "Nahániri también es para sí o no, y acá te preguntan dónde.",
-       "Moõpa pregunta «¿dónde?», y che rógape (en mi casa) es un lugar."
+       "Moõpa pregunta «¿dónde?», y mbo'ehaópe (en la escuela) es un lugar."
       ]
      }
     },

@@ -86,12 +86,12 @@
         "area": "grammar",
         "label": "Elegí la respuesta",
         "q": "A: ^Moõpa^ reñe'ẽ guaraníme?\nB: (   )",
-        "options": ["Héẽ, añe'ẽ.", "Nahániri.", "Che rógape."],
+        "options": ["Héẽ, añe'ẽ.", "Nahániri.", "Mbo'ehaópe."],
         "answer": 3,
         "why": [
           "Héẽ contesta preguntas de sí o no. Moõpa pide un lugar.",
           "Nahániri también es para sí o no, y acá te preguntan dónde.",
-          "Moõpa pregunta «¿dónde?», y che rógape (en mi casa) es un lugar."
+          "Moõpa pregunta «¿dónde?», y mbo'ehaópe (en la escuela) es un lugar."
         ]
       }
     },

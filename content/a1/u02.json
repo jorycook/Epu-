@@ -1169,7 +1169,7 @@
       ],
       "full": "(Luis le habla a Rosa de él y de Ana.)\nLuis: Ore romba'apo ko ka'aru.",
       "es": "Luis: Nosotros (sin vos) trabajamos esta tarde.",
-      "explain": "Ro- va primero: es el prefijo de ore, «nosotros sin vos». Mba'apo es nasal por el mb, pero ro- no cambia: romba'apo, «trabajamos». Solo ja- se vuelve ña-."
+      "explain": "Ro- va primero: es el prefijo de ore, «nosotros sin vos». Mba'apo es nasal por el mb, pero ro- no cambia: romba'apo, «trabajamos». De los prefijos de persona, solo ja- se vuelve ña-."
      }
     ]
    },
@@ -2562,7 +2562,7 @@
        "Moõguipa"
       ],
       "answer": 1,
-      "explain": "Rosa pregunta «adónde»: Moõpa reho? es «¿adónde vas?». Moõguipa pregunta «de dónde», y va con venir: Moõguipa reju? Mávapa pregunta «quién»; y moõpagui no existe, porque -pa cierra la palabra."
+      "explain": "Rosa pregunta «adónde»: Moõpa reho? es «¿adónde vas?». Moõguipa pregunta «de dónde», como en Moõguipa reju? Mávapa pregunta «quién»; y moõpagui no existe, porque -pa cierra la palabra."
      },
      {
       "id": "a1u02d4.e3",

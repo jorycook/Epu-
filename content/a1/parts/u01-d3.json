@@ -173,7 +173,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Marta se presenta en la clase.)\nMarta: Che réra Marta. Che (   ).",
+        "q": "(Marta se presenta.)\nMarta: Che réra Marta. Che (   ).",
         "options": ["gua Paraguái", "Paraguái", "Paraguái réra", "Paraguaigua"],
         "answer": 4,
         "explain": "Para decir de dónde es, Marta pega -gua al lugar, sin verbo «ser»: Che Paraguaigua, «soy de Paraguay». Sin -gua, Che Paraguái no lo dice; -gua no va adelante como el «de» castellano; y réra es «nombre», no habla de un lugar."
