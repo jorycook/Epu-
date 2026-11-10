@@ -234,11 +234,11 @@
     "sound": {
       "focus": "Las letras mb, nd, ng, nt",
       "letters": ["mb", "nd", "ng", "nt"],
-      "note": "mb, nd, ng y nt son letras del alfabeto: un solo sonido, en una sola sílaba. mb y nd aparecen también al principio de la palabra: mba'e, ndaipóri. Empezá con un zumbido, «mmm» o «nnn», y soltalo en la b o la d, sin poner una e delante: no «embae». ng y nt van casi siempre dentro de la palabra: ng suena como en «tengo» (angirũ) y nt como en «canto» (mante). No hay pares mínimos seguros: comparamos palabras.",
+      "note": "mb, nd, ng y nt son letras del alfabeto: un solo sonido, en una sola sílaba. Empezá con un zumbido, «mmm» o «nnn», y soltalo en la b o la d, sin poner una e delante: mba'e, no «embae». No hay pares mínimos seguros: comparamos palabras, con mb y nd al principio y con ng y nt adentro, donde van casi siempre.",
       "pairs": [
         ["mba'eve", "nada", "ndaipóri", "no hay"],
         ["angirũ", "amigo, amiga", "mante", "nomás"],
-        ["mbarakaja", "gato", "ndaikuaái", "no sé"]
+        ["mba'e", "cosa; qué", "ndahái", "no voy"]
       ]
     },
     "words": [

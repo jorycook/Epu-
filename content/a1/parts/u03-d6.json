@@ -127,13 +127,13 @@
     "es": "Volver de Caacupé",
     "intro": "Ana y su familia vuelven de la peregrinación a Caacupé. Tocá cada palabra: cómo están, quién llega y quién es quién.",
     "sound": {
-      "focus": "Repaso: nd y mb, j y h, g̃",
-      "letters": ["nd", "mb", "j", "h", "g̃"],
-      "note": "Tres cosas de la semana. nd y mb son letras del alfabeto y cada una suena en una sola sílaba, también al principio de la palabra: nde, no «ende». La j suena como la y de «yo» en boca de un paraguayo, nunca como la jota castellana, y la h siempre suena, como una jota suave: ajahu lleva las dos. La g̃ es la g con nariz: og̃uahẽ. No hay pares mínimos: compará estas palabras. En ñande y ñane fijate en la nd frente a la n.",
+      "focus": "Repaso: la ch, el acento, la ñ, la g̃ y la ~",
+      "letters": ["ch", "a", "á", "ñ", "g̃", "ẽ"],
+      "note": "Lo de la semana, en cuatro pares de palabras para contrastar: no son pares mínimos. La ch de chey'uhéi suena más bien como «sh»; avy'a, sin ninguna marca, lleva el acento al final, y ko'ág̃a lo lleva donde está la tilde. Junto a la ñ la vocal va sin ~ (kuña), y og̃uahẽ lleva la g̃, la g con nariz, y una ẽ cuya ~ marca también el acento.",
       "pairs": [
-        ["ñande róga", "nuestra casa", "ñane retã", "nuestro país"],
-        ["mitã", "niño", "mba'e", "cosa, qué"],
-        ["ajahu", "me baño", "aha", "voy"],
+        ["y'uhéi", "sed", "chey'uhéi", "tengo sed"],
+        ["avy'a", "estoy contento, contenta", "ko'ág̃a", "ahora"],
+        ["kuña", "mujer", "mitã", "niño, niña"],
         ["jagua", "perro", "og̃uahẽ", "llega"]
       ]
     },

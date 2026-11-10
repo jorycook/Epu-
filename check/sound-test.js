@@ -1,16 +1,18 @@
 // Checks the sound path end to end in Chromium: the fixture recordings (check/fixtures/sound, short tones named by clip
-// key) are turned into sound files by tools/make-sound.mjs, marked synthetic, the app is built with them into
-// epua-app/dist-sound (never into docs/), and the built app is checked for: the Words sound step playing a clip (has()
-// true, its wording in the recorded state, and the «voz sintética» note), Hablar's note, a dialogue put together for
-// Listening, the unit file fetched when its unit is in use and not at install, stored by the offline worker after that
-// first use and served from the store with no connection, the whole level stored once there is a plan, and the studio
-// page (recording with a fake microphone, the take kept, the zip exported). Screenshots go to check/out/.
+// key) are turned into sound files by tools/make-sound.mjs, marked synthetic (a stereo take must come out as loud as a
+// mono one, a silent take must make no clip, the exam's test tone must be at about the level of the voices), the app is
+// built with them into epua-app/dist-sound (never into docs/), and the built app is checked for: the Words sound step
+// playing a clip (has() true, its wording in the recorded state, and the «voz sintética» note), Hablar's note, a dialogue
+// put together for Listening, the unit file fetched when its unit is in use and not at install, stored by the offline
+// worker after that first use and served from the store with no connection, the whole level stored once there is a
+// plan, the studio page (recording with a fake microphone, the take kept, the zip exported), and the notebook fetching
+// the exam's and the placement's sound for a mistake made there. Screenshots go to check/out/.
 // usage: node check/sound-test.js      (from the repository root; needs ffmpeg, playwright and the fonts in fonts-src/)
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const http = require('http');
-const { execFileSync } = require('child_process');
+const { execFileSync, spawnSync } = require('child_process');
 const { chromium } = require('playwright');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -40,6 +42,31 @@ const unitJs = fs.readFileSync(path.join(PROJECT, 'gn-sound-a1-u01.js'), 'utf8')
 ok(/c\['a1u01d1\.s0a'\] = \{ ms: \d+, kind: 'synthetic', voice: 'F', b: '[A-Za-z0-9+/=]+' \};/.test(unitJs), 'a clip registers as { ms, kind, voice, b } under its key');
 ok(/c\['a1u01d1\.r1'\] = \{ ms: \d+, kind: 'synthetic', voice: 'N\+F\+M', cues: \[[\d, ]+\], b: /.test(unitJs), 'a dialogue is put together from its lines, with cues');
 ok(/c\['a1u01d1\.s2a'\] = c\['a1u01d1\.s1b'\];/.test(unitJs), 'a text said already is registered under its other key by reference');
+/* the level of a clip as it ships: its MP3, decoded, and its integrated loudness in LUFS (ffmpeg's ebur128) */
+const PROBE = fs.mkdtempSync(path.join(os.tmpdir(), 'epua-sound-probe-'));
+process.on('exit', () => fs.rmSync(PROBE, { recursive: true, force: true }));
+const lufs = (js, key) => {
+  const m = new RegExp("c\\['" + key.replace(/\./g, '\\.') + "'\\] = \\{ ms: \\d+, [^}]*?b: '([A-Za-z0-9+/=]+)' \\};").exec(js);
+  if (!m) return NaN;
+  const mp3 = path.join(PROBE, 'clip.mp3');
+  fs.writeFileSync(mp3, Buffer.from(m[1], 'base64'));
+  const said = spawnSync('ffmpeg', ['-hide_banner', '-nostats', '-i', mp3, '-af', 'ebur128', '-f', 'null', '-'], { encoding: 'utf8' }).stderr || '';
+  const i = /I:\s+(-?[\d.]+) LUFS/.exec(said.slice(said.lastIndexOf('Summary:')));
+  return i ? parseFloat(i[1]) : NaN;
+};
+/* three takes of the same second of tone (check/fixtures/sound/make-fixtures.mjs): mono, stereo, and stereo with the
+   voice on the left channel only. Measured on its own two channels, a stereo take came out 3 dB (one side: 6 dB) under */
+const level = { mono: lufs(unitJs, 'a1u01d1.w.maitei'), stereo: lufs(unitJs, 'a1u01d1.w.pyhareve'), oneSide: lufs(unitJs, 'a1u01d1.w.kaaru') };
+ok(level.mono > -18 && level.mono < -15, 'a mono take of a second comes out at about −16 LUFS (measured with its air)', level);
+ok(Math.abs(level.stereo - level.mono) <= 0.5 && Math.abs(level.oneSide - level.mono) <= 0.5, 'a stereo take, and one with the voice on one channel only, come out as loud as the mono one', level);
+/* a take that is silence all along (a hum under the trim threshold) */
+ok(/\n1 recording is silent[^\n]*a1u01d1\.w\.ipora \(a1u01d1\.w\.ipora\.wav\)/.test(made) && /still missing \([^)\n]*; 1 of them recorded but silent\)/.test(made), 'a silent take is named in the summary and counted with the recordings still missing', made.split('\n').filter((l) => /silent/.test(l)).join(' | '));
+ok(!/c\['a1u01d1\.w\.ipora'\]/.test(unitJs), 'and it makes no clip');
+/* the level exam's file: its test tone, and its first listening item, put together from two lines of its own and one a lesson says */
+const examJs = fs.readFileSync(path.join(PROJECT, 'gn-sound-a1-x.js'), 'utf8');
+const tone = lufs(examJs, 'c.check');
+ok(tone > -22 && tone < -18 && Math.abs(tone - level.mono) < 6, 'the exam\'s test tone is at about the level of the voices (−20 LUFS; it was 18 dB under them)', { tone, voice: level.mono });
+ok(/c\['a1x\.4'\] = \{ ms: \d+, kind: 'synthetic', voice: 'N\+F\+M', cues: \[[\d, ]+\], b: /.test(examJs), 'the exam\'s first listening item is put together, one of its lines from a lesson\'s recording');
 execFileSync(process.execPath, ['build.mjs'], { cwd: APPDIR, env: { ...process.env, EPUA_OUT: 'dist-sound', EPUA_DOCS: '', EPUA_PROJECT: PROJECT, EPUA_BUILD_DATE: 'sound test' }, stdio: 'ignore' });
 const sw = fs.readFileSync(path.join(DIST, 'sw.js'), 'utf8');
 const FILES = JSON.parse(sw.match(/const FILES = (\[[\s\S]*?\]);/)[1]);
@@ -216,6 +243,28 @@ const clipsLoaded = (page, key) => page.waitForFunction((k) => !!(window.__gnCli
     ok(errors.length === 0, 'no page errors in the studio', errors);
     const studio = fs.readFileSync(path.join(DIST, 'estudio/index.html'), 'utf8');
     ok(!/<script[^>]*src=|https?:\/\/|\/\/[a-z0-9.-]+\.[a-z]{2,}/i.test(studio), 'the studio loads no script and names no other site');
+    await ctx.close();
+  }
+
+  /* ---------- 6. the notebook: a mistake made in the level exam or the placement check plays its clip ---------- */
+  note('6. Review asks for the exam\'s and the placement\'s sound');
+  for (const [src, file] of [['a1x.4', 'gn-sound-a1-x.js'], ['pl.1', 'gn-sound-pl.js']]) {
+    const ctx = await phone();
+    const page = await ctx.newPage();
+    const errors = [];
+    page.on('pageerror', (e) => errors.push(String(e)));
+    hits.length = 0;
+    const mistakes = [{ src, wrong: 'Sin responder', at: 0, step: 0, due: '2020-01-01' }];
+    await page.goto(BASE + '?gntest&screen=Review&level=A1&m=' + encodeURIComponent(JSON.stringify(mistakes)));
+    await ready(page);
+    ok(await clipsLoaded(page, src), `with a ${src} mistake in the notebook, the engine fetches ${file} (its clip registers)`, hits.filter((u) => /gn-sound/.test(u)));
+    ok(hits.some((u) => u.includes(file)), `${file} came from the server`, hits.filter((u) => /gn-sound/.test(u)));
+    let seen = '';
+    for (let i = 0; i < 12 && !/Escuchá primero/.test(seen); i++) { seen = await text(page); if (!/Escuchá primero/.test(seen)) await page.waitForTimeout(250); }
+    await shot(page, 'sound-review-' + src.replace('.', '-'));
+    ok(/Escuchá primero/.test(seen) && !/no está grabado/.test(seen), `Review offers the ${src} clip to listen to, not the silent stand-in`, seen.slice(0, 300));
+    const has = await page.evaluate((k) => window.gnSound.has(k) && window.gnSound.ms(k) > 300, src);
+    ok(has && errors.length === 0, `gnSound.has('${src}') is true, and no page errors`, errors);
     await ctx.close();
   }
 

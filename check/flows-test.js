@@ -281,7 +281,21 @@ async function partA(browser) {
   await tap(page, /^\s*45 min/, 300);
   check(await pressed(page, /^\s*45 min/), 'step 3: 45 minutes a day is picked');
   check(await has(page, 'Entra todo, una sesión por día'), 'step 3: the plan note says all of A1 fits one session a day', (await text(page)).slice(0, 500));
+  /* the ñandutí on Kaguare's vest: before the goal only its frame (the radial threads, no ring, an empty hub); weaving
+     the first thread brings the cross-thread ring and fills the hub */
+  const brooch = () => page.evaluate(() => {
+    const g = document.querySelector('#gn-stage svg[aria-label*="ñandutí del nivel"] g[transform="translate(43 61.2) scale(0.42)"]');
+    const threads = g && g.querySelector('path[stroke-width="0.8"]');
+    const hub = g && g.querySelector('circle[r="4"]');
+    if (!threads || !hub) return null;
+    const d = threads.getAttribute('d') || '';
+    return { ring: /A15\.4 15\.4/.test(d), threads: (d.match(/L/g) || []).length, hub: getComputedStyle(hub).fill };
+  });
+  const unwoven = await brooch();
+  check(unwoven && !unwoven.ring && unwoven.threads === 8 && /255, 255, 255/.test(unwoven.hub), 'step 3: before the goal the ñandutí is only its frame: eight radial threads, no ring, the hub empty', unwoven);
   await tap(page, 'Tejé el primer hilo', 800);
+  const woven = await brooch();
+  check(woven && woven.ring && woven.threads === 8 && /194, 51, 111/.test(woven.hub), 'step 3: weaving the first thread brings the ring and fills the hub', woven);
   await shot(page, 'A06-goal-woven');
   {
     /* the ritual sets the goal: from here a reopened app opens on the week path (before, closing the app here lost it all) */

@@ -4,8 +4,10 @@
 // sound/<LEVEL>/lista.csv (the same, for a spreadsheet). Usage: node tools/sound-list.mjs [A1]
 //
 // The keys are the screens' own (see brief/BRIEF-core.md): Teach plays <point id>.x<n> for example n of a point; Words
-// and Spell play <session id>.w.<word id> for a word of the scene and <session id>.s<n>a | b for the two words of
-// sound pair n; Listening, Review, Placement and LevelExam play the item's id (a1u01d1.r1, pl.3, a1x.4), and
+// and Spell play <session id>.w.<word id> for a word of the scene, and Words <session id>.s<n>a | b for the two words
+// of sound pair n: one of the two, its target, the same every time, so the other word's row carries "unused": true
+// (both are listed and recorded: a pair needs both voices if its words ever change; the recordings no screen plays
+// today come last in the order); Listening, Review, Placement and LevelExam play the item's id (a1u01d1.r1, pl.3, a1x.4), and
 // Listening also <id>.slow when a slower take exists; LevelExam plays c.check, a test tone, before its listening part;
 // Hablar plays p<n>.0 | 1 for the two words of speaking pair n and s<n> for sign n. One recording serves every place the
 // same text is said by the same voice: a later row with the same text carries "same": the first row's key, and is not
@@ -25,11 +27,14 @@ const SLOW = LEVEL === 'A1' || LEVEL === 'A2';   /* the slower takes of the list
 
 const ctx = vm.createContext({ window: {} });
 ctx.window.window = ctx.window;
-for (const f of [`gn-course-${lv}.js`, 'gn-extra.js']) vm.runInContext(fs.readFileSync(path.join(P, f), 'utf8'), ctx);
+for (const f of [`gn-course-${lv}.js`, 'gn-extra.js', 'gn-spell.js']) vm.runInContext(fs.readFileSync(path.join(P, f), 'utf8'), ctx);
 const W = ctx.window;
 const course = (W.__gnCourses || {})[LEVEL];
 if (!course) { console.error(`no level ${LEVEL} in project/gn-course-${lv}.js`); process.exit(1); }
 const X = W.__gnExtra || {};
+/* which of the two words of a sound pair the Words step plays, 0 or 1: the screen's own rule (Words.dc.html target(),
+   with gn-spell.js's stable shuffle), fixed by the pair's two words, the same every time */
+const target = (p) => (W.gnSpell && W.gnSpell.shuffle ? W.gnSpell.shuffle([0, 1], p[0] + '|' + p[2])[0] : 0);
 
 /* ---------- text ---------- */
 const PUSO = /[’‘ʼ´`ʹʻ]/g;
@@ -105,11 +110,13 @@ for (const u of course.units) {
     /* the words of the scene (Words, and Spell's dictation) */
     const w = d.words || {};
     (w.words || []).forEach((x, n) => add({ key: `${sid}.w.${x.id}`, voice: 'F', text: plain(x.gn), es: plain(x.es), lang: 'gn', where: `${at} · palabra ${n + 1} de la escena «${plain(w.es)}»`, file }));
-    /* the sound step's minimal pairs: the two words of each pair */
-    ((w.sound && w.sound.pairs) || []).forEach((p, n) => {
-      if (!Array.isArray(p) || p.length < 4) return;
-      add({ key: `${sid}.s${n}a`, voice: 'F', text: plain(p[0]), es: plain(p[1]), lang: 'gn', where: `${at} · par ${n + 1}, palabra a (${plain(w.sound.focus)})`, file });
-      add({ key: `${sid}.s${n}b`, voice: 'F', text: plain(p[2]), es: plain(p[3]), lang: 'gn', where: `${at} · par ${n + 1}, palabra b (${plain(w.sound.focus)})`, file });
+    /* the sound step's minimal pairs: the two words of each pair, counted as Words counts them (the pairs it can show).
+       Words plays one word of a pair, its target; the other word is listed too (a pair needs both voices if its words,
+       and so its target, ever change) and marked "unused": no screen asks for its key today */
+    ((w.sound && w.sound.pairs) || []).filter((p) => Array.isArray(p) && p.length >= 4 && p[0] && p[2]).forEach((p, n) => {
+      const played = target(p);
+      add({ key: `${sid}.s${n}a`, voice: 'F', text: plain(p[0]), es: plain(p[1]), lang: 'gn', where: `${at} · par ${n + 1}, palabra a (${plain(w.sound.focus)})`, file, ...(played === 0 ? {} : { unused: true }) });
+      add({ key: `${sid}.s${n}b`, voice: 'F', text: plain(p[2]), es: plain(p[3]), lang: 'gn', where: `${at} · par ${n + 1}, palabra b (${plain(w.sound.focus)})`, file, ...(played === 1 ? {} : { unused: true }) });
     });
     /* the listening lesson: its script line by line, and the slower take of the Guarani lines */
     const sk = d.skill;
@@ -156,6 +163,11 @@ if (LEVEL === 'A1' && X.speaking) {
 }
 /* the slower takes come last in the recording order */
 rows.filter((r) => r.slow && r.order).sort((a, b) => a.order - b.order).forEach((r) => { r.order = ++order; });
+/* and after them the recordings no screen plays today: an unused key's own recording, unless a key in use shares it
+   (a row in use whose "same" names it). Their place of use says so, for the speaker and the spreadsheet */
+const shared = new Set(rows.filter((r) => r.same && !r.unused).map((r) => r.same));
+const idle = rows.filter((r) => r.unused && r.order && !shared.has(r.key)).sort((a, b) => a.order - b.order);
+idle.forEach((r) => { r.order = ++order; r.where += ' · hoy no suena: la lección reproduce la otra palabra del par'; });
 const recorded = rows.filter((r) => r.order);
 const slowN = recorded.filter((r) => r.slow).length;
 const byVoice = {};
@@ -168,16 +180,16 @@ const files = [...new Set(rows.map((r) => r.file))];
 const manifest = {
   level: LEVEL,
   made: new Date().toISOString().slice(0, 10),
-  about: 'Every clip the course needs: key (what the screens ask gn-sound.js for), voice (F the woman, the main voice; M the man; N the narrator, in Spanish), text, es, lang, where, file (the unit file make-sound.mjs puts it in), order (the suggested recording order; none for a row with "same", said already under that key, for a row with "parts", put together from those keys, and for the tone). Rights: notes/G4-resources-licensing.md §6, CC BY 4.0.',
+  about: 'Every clip the course needs: key (what the screens ask gn-sound.js for), voice (F the woman, the main voice; M the man; N the narrator, in Spanish), text, es, lang, where, file (the unit file make-sound.mjs puts it in), order (the suggested recording order; none for a row with "same", said already under that key, for a row with "parts", put together from those keys, and for the tone; the slower takes come after the rest, and the recordings no screen plays today last of all), unused (true on a key no screen asks for today: of the two words of a sound pair the Words step plays one, always the same, and the other word is the unused one. It stays in the list, and is recorded, because a pair needs both voices if its words, and with them the word that plays, ever change; its recording comes last in the order unless a key in use shares it through "same"). Rights: notes/G4-resources-licensing.md §6, CC BY 4.0.',
   voices: { F: 'mujer, voz principal: palabras, ejemplos, pares y carteles', M: 'hombre: sus líneas de los diálogos', N: 'narrador en castellano: consignas y números de las opciones' },
   files,
-  count: { rows: rows.length, toRecord: recorded.length, slow: slowN, byVoice, composed: rows.filter((r) => r.parts).length, same: rows.filter((r) => r.same).length },
+  count: { rows: rows.length, toRecord: recorded.length, slow: slowN, byVoice, composed: rows.filter((r) => r.parts).length, same: rows.filter((r) => r.same).length, unused: rows.filter((r) => r.unused).length, toRecordUnused: idle.length },
   clips: rows,
 };
 fs.writeFileSync(path.join(OUT, 'manifest.json'), JSON.stringify(manifest, null, 1) + '\n');
 const cell = (v) => { const s = String(v == null ? '' : v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
-const csv = [['orden', 'clave', 'voz', 'texto', 'castellano', 'idioma', 'uso', 'archivo', 'igual_que', 'partes'].join(',')];
-rows.forEach((r) => csv.push([r.order || '', r.key, r.voice, r.text, r.es, r.lang || '', r.where, r.file, r.same || '', r.parts ? r.parts.join(' ') : ''].map(cell).join(',')));
+const csv = [['orden', 'clave', 'voz', 'texto', 'castellano', 'idioma', 'uso', 'archivo', 'igual_que', 'partes', 'sin_uso'].join(',')];
+rows.forEach((r) => csv.push([r.order || '', r.key, r.voice, r.text, r.es, r.lang || '', r.where, r.file, r.same || '', r.parts ? r.parts.join(' ') : '', r.unused ? 'sí' : ''].map(cell).join(',')));
 fs.writeFileSync(path.join(OUT, 'lista.csv'), '﻿' + csv.join('\n') + '\n');
-console.log(`${LEVEL}: ${rows.length} rows; ${recorded.length} clips to record (${Object.entries(byVoice).map(([v, n]) => `${v} ${n}`).join(', ')}; ${slowN} of them slower takes), ${manifest.count.same} said already, ${manifest.count.composed} put together from lines, 1 tone; files: ${files.join(', ')}`);
+console.log(`${LEVEL}: ${rows.length} rows; ${recorded.length} clips to record (${Object.entries(byVoice).map(([v, n]) => `${v} ${n}`).join(', ')}; ${slowN} of them slower takes; ${idle.length} of them, last in the order, for the ${manifest.count.unused} keys no screen plays today), ${manifest.count.same} said already, ${manifest.count.composed} put together from lines, 1 tone; files: ${files.join(', ')}`);
 console.log(`written: ${path.relative(ROOT, path.join(OUT, 'manifest.json'))}, ${path.relative(ROOT, path.join(OUT, 'lista.csv'))}`);

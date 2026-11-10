@@ -1183,7 +1183,7 @@
       "r",
       "rr"
      ],
-     "note": "La r guaraní es siempre la r suave de «caro», también al principio de la palabra: ru, réra, roju, reho. El hispanohablante tiende a decir «rroju»: no. La rr fuerte solo aparece en préstamos del castellano, como karréta y vúrro. No hay pares mínimos r/rr en palabras guaraníes: comparamos palabras.",
+     "note": "La r guaraní es siempre la r suave de «caro», también al principio de la palabra: ru, réra, roju, nunca «rroju». La rr fuerte solo aparece en préstamos del castellano, como karréta y vúrro. No hay pares mínimos r/rr en palabras guaraníes: comparamos palabras.",
      "pairs": [
       [
        "ru",
@@ -1904,10 +1904,10 @@
        "en la pieza"
       ],
       [
-       "ka'aguy",
-       "monte",
-       "ka'aguýpe",
-       "en el monte"
+       "ñu",
+       "campo",
+       "ñúme",
+       "en el campo"
       ],
       [
        "tetã",
@@ -3340,7 +3340,7 @@
       "ng",
       "nt"
      ],
-     "note": "mb, nd, ng y nt son letras del alfabeto: un solo sonido, en una sola sílaba. mb y nd aparecen también al principio de la palabra: mba'e, ndaipóri. Empezá con un zumbido, «mmm» o «nnn», y soltalo en la b o la d, sin poner una e delante: no «embae». ng y nt van casi siempre dentro de la palabra: ng suena como en «tengo» (angirũ) y nt como en «canto» (mante). No hay pares mínimos seguros: comparamos palabras.",
+     "note": "mb, nd, ng y nt son letras del alfabeto: un solo sonido, en una sola sílaba. Empezá con un zumbido, «mmm» o «nnn», y soltalo en la b o la d, sin poner una e delante: mba'e, no «embae». No hay pares mínimos seguros: comparamos palabras, con mb y nd al principio y con ng y nt adentro, donde van casi siempre.",
      "pairs": [
       [
        "mba'eve",
@@ -3355,10 +3355,10 @@
        "nomás"
       ],
       [
-       "mbarakaja",
-       "gato",
-       "ndaikuaái",
-       "no sé"
+       "mba'e",
+       "cosa; qué",
+       "ndahái",
+       "no voy"
       ]
      ]
     },
@@ -3809,15 +3809,17 @@
     "es": "La semana de Ana",
     "intro": "Repasamos la semana de Ana: de su casa, en Itauguá, a la casa de la abuela, en Caacupé. Tocá cada palabra.",
     "sound": {
-     "focus": "Repaso: j, h, r y las letras dobles",
+     "focus": "Repaso: j, h, r, la tilde, ña- y mb, nd",
      "letters": [
       "j",
       "h",
       "r",
+      "ý",
+      "ñ",
       "mb",
       "nd"
      ],
-     "note": "Cuatro cosas de la semana: la j suena como la y fuerte de «yo»; la h suena, como la jota suave paraguaya; la r es siempre suave, también al principio; y mb y nd son una sola letra, en una sola sílaba, incluso al principio de la palabra. Comparamos palabras: no son pares mínimos. La tilde con sufijo, kotýpe o ndaikuaái, la repasás en las palabras.",
+     "note": "Lo de la semana, en cinco pares de palabras para contrastar: no son pares mínimos. La j suena como la y fuerte de «yo», la h siempre suena, como la jota suave paraguaya, y la r es siempre suave, también al principio. -pe no se lleva el acento, y por eso koty se vuelve kotýpe; con una raíz nasal, ja- se vuelve ña-, como en ñañe'ẽ; y mb y nd son una sola letra, en una sola sílaba.",
      "pairs": [
       [
        "aha",
@@ -3832,14 +3834,20 @@
        "burro"
       ],
       [
-       "amba'apo",
-       "trabajo",
-       "ahendu",
-       "escucho"
+       "koty",
+       "pieza",
+       "kotýpe",
+       "en la pieza"
       ],
       [
-       "mbarakaja",
-       "gato",
+       "jakaru",
+       "comemos (vos y yo)",
+       "ñañe'ẽ",
+       "hablamos (vos y yo)"
+      ],
+      [
+       "mba'eve",
+       "nada",
        "ndaipóri",
        "no hay"
       ]

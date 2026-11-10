@@ -2,7 +2,7 @@
  * Every file of the app is stored on the phone when this installs, and served from there afterwards,
  * so the app opens without a connection. A new build has a new version (a hash of the content of every file),
  * which replaces the stored copy. The sound files are stored when first used (see LAZY below). */
-const VERSION = '6921b49bee';
+const VERSION = '3d02b1e85c';
 /* the store is named after the folder this copy of the app lives in: a second copy under the same web
    address (a trial version, say) keeps its own store and never touches this one */
 const HOME = new URL('./', self.location.href).pathname;

@@ -19,7 +19,7 @@ native speaker's check.
 | Folder | What it holds |
 |---|---|
 | `project/` | The canvas's files: 42 boards (`*.dc.html`), the index (`canvas.json`) and the shared scripts. `gn-course.js` is the course engine (the counterpart of Yaoki's `course.js`, as `window.gnCourse`); `gn-course-a1.js` … `gn-course-c2.js` are the six levels' data, made from `content/`; `gn-extra.js` holds the placement check, the A1 level exam, the reader's text and the typing and speaking lists; `gn-spell.js` is the spelling helper (the letters of the alphabet, the keys a word needs, why a typed letter is off); `gn-sound.js` is Yaoki's sound player under new names. |
-| `content/` | The course as data. `levels.json` is the syllabus of all six levels (52 units, the title of every study day). `a1/parts/` holds A1 unit 1 day by day and its week test; `a1/u01.json` is the unit assembled from them; `extra/` holds the extras. |
+| `content/` | The course as data. `levels.json` is the syllabus of all six levels (52 units, the title of every study day and, for the units written, each day's sound focus). `a1/parts/` holds A1 units 1 to 4 day by day, each with its week test (`u01-d1.json` … `u04-test.json`); `a1/u01.json` … `a1/u04.json` are the units assembled from them; `extra/` holds the extras. |
 | `tools/` | `build-course.mjs` checks the content and writes the level files; `assemble-unit.mjs` merges a unit's day files; `lint-board.mjs` checks a board for the format rules that fail silently; `smoke-boards.mjs` runs each board's logic against the engine and the data, the way the canvas and the prototype call it, without rendering; `blind-export.mjs` exports every question without its answer for a blind solver; `sound-list.mjs`, `make-sound.mjs` and `make-tts.py` are the sound path (see Sound). |
 | `sound/` | The clip lists: `A1/manifest.json` (every clip the course needs, by key, with its text, voice, place and recording order; read by the tools and the studio) and `A1/lista.csv` (the same, for a spreadsheet). The recordings themselves do not live in the repository: `make-sound.mjs` turns them into `project/gn-sound-*.js`. |
 | `brief/` | The design brief the boards were built from: `BRIEF-core.md` (format, wiring, typefaces, tokens, engine, content shape), `BRIEF-design.md` (language, look, mascot, the verified Guarani glossary), `BOARDS.md` (every board's spec), `CONTENT-BRIEF.md` (how the lessons are written), the font link, and `mascot/` (Kaguare's final art: `SPEC.md`, `spec.json` with every SVG, and `sheet.png`). |
@@ -33,7 +33,7 @@ native speaker's check.
 Needs Node 22.
 
 ```
-node tools/assemble-unit.mjs a1 1      # merge A1 unit 1's day files into content/a1/u01.json
+node tools/assemble-unit.mjs a1 2      # merge one unit's day files into its unit file (here A1 unit 2, into content/a1/u02.json)
 node tools/build-course.mjs            # check every content file and write project/gn-course-*.js and gn-extra.js
 node tools/build-course.mjs --check    # check only
 node tools/lint-board.mjs project/*.dc.html
@@ -126,7 +126,8 @@ for rings and marks, `#B02A63` for text and the ritual button, `#FCE4EE` for tin
 vest a warm near-black, `#2A2120`.
 
 Each level is a ñandutí, the lace rosette of Itauguá, that Kaguare wears pinned to his black vest. Before the goal it is
-only its frame; setting the goal weaves the hub ("Tejé el primer hilo"); each unit finished fills a petal; passing the
+only its frame, the radial threads with nothing woven; setting the goal weaves the hub and the first ring round it
+("Tejé el primer hilo"); each unit finished fills a petal; passing the
 level exam weaves the rim. `gnCourse.rosette()` draws it the same way on every screen. The done stamp is a pink ring with a tick, the
 comeback stamp says Opu'ã ("se levantó"), and a clean answer earns ¡Iporãiterei!.
 
@@ -149,18 +150,37 @@ people speak today, Spanish loans included.
 ## What is written
 
 - **The syllabus of all six levels:** every unit and the title of every study day, so each level's week path exists;
-  days not written show "En preparación", as Yaoki's 準備中.
-- **A1 unit 1, "Mba'éichapa · Saludos y sonidos", in full:** five study days (greetings and farewells; ñande and ore; che
-  réra; questions with -pa; Aguyje and courtesy), the review day and a 20-question week test: 92 items. Its sound steps
-  cover the oral vowels, the nasal vowels, the y, the puso and typing the Guarani letters.
+  days not written (A1 units 5 to 8 and the five other levels) show "En preparación", as Yaoki's 準備中.
+- **A1 units 1 to 4, in full:** half of the level. Each unit is five study days, the review day and a 20-question week
+  test, 92 items; `node tools/build-course.mjs --check` counts 24 days written (the four review days among them) and
+  368 items.
+  - Unit 1, "Mba'éichapa · Saludos y sonidos": greetings and farewells; ñande and ore; che réra; questions with -pa;
+    Aguyje and courtesy.
+  - Unit 2, "¿Quién sos? Verbos de acción": the person prefixes a-, re-, o-; ja-/ña-, ro- and pe- for the plural;
+    -pe/-me, "en, a"; -gui, "de, desde"; the negation nd-…-i.
+  - Unit 3, "¿Cómo estás? Predicados chendales": che-/nde- for states and qualities, with no "estar"; areal "yo hago"
+    against chendal "a mí me pasa"; the nominal sentence, with no "ser"; yes-or-no questions with -pa and piko, and
+    their answers; stress and the accent mark.
+  - Unit 4, "Mi familia": possession with che and nde; the plural -kuéra, -nguéra after a nasal; the demonstratives ko,
+    pe, amo; máva, "quién", and mba'e, "qué"; the numbers 1 to 5, and Spanish numbers in speech.
+
+  Every study day's sound step has a focus of its own, 20 in all and none repeated: unit 1 covers the oral vowels, the
+  nasal vowels, the y, the puso and typing the Guarani letters; units 2 to 4 cover j and h, the soft r, ch, ñ, g̃, v, k,
+  the letters mb, nd, ng, nt, the u that always sounds, nasal harmony, the nasal tilde, and stress and the accent mark
+  (where stress falls without a mark, with a suffix, on two vowels together, and when -kuéra takes it).
 - **The extras:** a placement check (8 can-do statements and 6 questions), a reduced A1 level exam (all five parts, with
   sample answers and the rubric), an original reading text for the reader, 8 minimal pairs for the speaking game and a
   word list for the typing game.
 
 Every Guarani string was checked by two independent reviewers (spelling and morphology; meaning, Spanish and the answer
 keys), with corpus counts where the notes had no answer, and the questions were answered by a blind solver who never saw
-the keys. The lessons are original. They still need a native teacher's review before they ship: the doubts the reviewers
-could not settle are listed in `notes/REVIEW-NEEDED.md`.
+the keys. Units 2 to 4 went through this file by file: each of a unit's seven files (its six days and the week test)
+had the two reviewers and then a fixer, and once the unit was whole a blind solver answered its 92 questions; in each of
+the three units all 92 answers matched the keys. After that the sound steps of units 2 to 4 were reworked so that no
+focus repeats, in a round with one checker and a fixer. The fixer also rewrote four questions (`a1u03d1.k1`,
+`a1u03d2.k1`, `a1u04d1.k1`, `a1u04d4.k1`): they were written after the checker's reading and have not been put to a
+blind solver. The lessons are original. They still need a native teacher's review before they ship: the doubts the
+reviewers could not settle are listed in `notes/REVIEW-NEEDED.md`, unit by unit.
 
 ## Sound
 
@@ -182,7 +202,12 @@ node check/sound-test.js                           # the whole path in Chromium,
   tone), the text, its Spanish, the voice (F the woman, the main voice; M the man; N the narrator, in Spanish), where it is
   used and the recording order. A text said already by the same voice is listed with `same` and not recorded again; a
   dialogue is recorded one line at a time (`<key>.l0`, `.l1` …, each line its own voice) and put together by the tool.
-  A1 unit 1 and the extras come to 146 recordings for 202 keys.
+  Both words of every «Sonido y letra» pair are listed, though the Words step plays only one of the two (its target, the
+  same every time): the other word's row carries `"unused": true`. It stays in the list, and is recorded, because a pair
+  needs both voices if its words, and with them the word that plays, ever change; the recordings no screen plays today
+  come last in the recording order, after the slower takes, and say so in their place of use («hoy no suena»).
+  A1 units 1 to 4 and the extras come to 497 recordings for 732 keys; 82 of the keys are unused, and 25 of the
+  recordings serve only those.
 - **The studio.** `docs/estudio/` (source `epua-app/studio/index.html`) is a page in Spanish for a native speaker: it loads
   the list, shows one line at a time (the Guarani big, in the Guarani face; the Spanish small; the voice and the key),
   records it with the browser's recorder (Safari on the iPhone gives `audio/mp4`, Chrome `audio/webm`), plays it back,
@@ -190,15 +215,19 @@ node check/sound-test.js                           # the whole path in Chromium,
   key, with `voices.json` (name, CC BY 4.0, as notes G4 §6 plans) and `tomas.csv`. It is served next to the app and is not
   part of the install nor of the offline copy. It loads nothing from another site.
 - **The files.** `tools/make-sound.mjs <folder>` takes the unpacked zip (or any folder of `<key>.wav|mp3|m4a|webm|ogg`
-  with an optional `voices.json`), trims silence and levels loudness with ffmpeg (−16 LUFS, peaks under −1.5 dBTP), pads
+  with an optional `voices.json`), mixes each take down to mono, trims silence and levels loudness with ffmpeg (−16 LUFS,
+  peaks under −1.5 dBTP, measured on the mono mix that is encoded, so a stereo take comes out as loud as a mono one), pads
   80 ms before and 150 ms after, encodes mono MP3 at 32 kb/s and 24 kHz (what Safari on iOS decodes for Web Audio; Opus
   it does not), measures each clip and writes `project/gn-sound-a1-u01.js` (one file per unit), `gn-sound-pl.js`,
   `gn-sound-a1-x.js` and `gn-sound-sp.js`, each registering `window.__gnClips[key] = { ms, kind: 'human' | 'synthetic',
   voice, b }` (`b` the MP3 as base64, the field Yaoki's player reads; `cues` on a dialogue, where each line ends), and the
   index `project/gn-sound-index.js` (`window.__gnSoundFiles`, `window.__gnSoundVoices`). It reports the keys still
-  missing. `App.dc.html` loads the index with the course; the engine (`gnCourse.needSound`) fetches a unit's file next to
-  `gn-course.js` when the unit is first in use, and the placement's, the exam's or the speaking game's file when that
-  screen opens, so the phone never holds every unit's sound at once. The app build ships the files but does not install
+  missing; a take that is silence all along (under 100 ms left after the trim) makes no clip and is listed with them. The
+  exam's test tone (`c.check`) is made by the tool, at −20 LUFS, about the level of the voices, so the volume set on it
+  suits the listening part. `App.dc.html` loads the index with the course; the engine (`gnCourse.needSound`) fetches a
+  unit's file next to `gn-course.js` when the unit is first in use, and the placement's, the exam's or the speaking game's
+  file when that screen opens (the first two also when the notebook holds a mistake made there, for Review to play), so
+  the phone never holds every unit's sound at once. The app build ships the files but does not install
   them: `sw.js` stores each the first time it is fetched and the rest of the level in the background once there is a plan,
   under a hash of its content, so a new build keeps the unchanged ones. The canvas's other boards keep their stand-ins.
 - **The screens** change nothing when a clip exists (`has()` was always the test): they play it and keep time with it.

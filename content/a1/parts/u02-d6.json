@@ -127,14 +127,15 @@
   "es": "La semana de Ana",
   "intro": "Repasamos la semana de Ana: de su casa, en Itauguá, a la casa de la abuela, en Caacupé. Tocá cada palabra.",
   "sound": {
-   "focus": "Repaso: j, h, r y las letras dobles",
-   "letters": ["j", "h", "r", "mb", "nd"],
-   "note": "Cuatro cosas de la semana: la j suena como la y fuerte de «yo»; la h suena, como la jota suave paraguaya; la r es siempre suave, también al principio; y mb y nd son una sola letra, en una sola sílaba, incluso al principio de la palabra. Comparamos palabras: no son pares mínimos. La tilde con sufijo, kotýpe o ndaikuaái, la repasás en las palabras.",
+   "focus": "Repaso: j, h, r, la tilde, ña- y mb, nd",
+   "letters": ["j", "h", "r", "ý", "ñ", "mb", "nd"],
+   "note": "Lo de la semana, en cinco pares de palabras para contrastar: no son pares mínimos. La j suena como la y fuerte de «yo», la h siempre suena, como la jota suave paraguaya, y la r es siempre suave, también al principio. -pe no se lleva el acento, y por eso koty se vuelve kotýpe; con una raíz nasal, ja- se vuelve ña-, como en ñañe'ẽ; y mb y nd son una sola letra, en una sola sílaba.",
    "pairs": [
     ["aha", "voy", "aju", "vengo"],
     ["ru", "padre", "vúrro", "burro"],
-    ["amba'apo", "trabajo", "ahendu", "escucho"],
-    ["mbarakaja", "gato", "ndaipóri", "no hay"]
+    ["koty", "pieza", "kotýpe", "en la pieza"],
+    ["jakaru", "comemos (vos y yo)", "ñañe'ẽ", "hablamos (vos y yo)"],
+    ["mba'eve", "nada", "ndaipóri", "no hay"]
    ]
   },
   "words": [

@@ -443,37 +443,32 @@
     "es": "La foto de la familia",
     "intro": "La foto del domingo, en el patio y con tereré. Tocá cada persona: todas van con che, «mi». Fijate quién lo dice: «hijo» e «hija» cambian según quién habla. La mamá dice memby; el papá, ra'y y rajy.",
     "sound": {
-     "focus": "La j, la h y la r",
+     "focus": "La tilde en dos vocales juntas: jarýi, ramói",
      "letters": [
-      "j",
-      "h",
-      "r"
+      "ýi",
+      "ói",
+      "éi",
+      "ái"
      ],
-     "note": "Tres letras que no suenan como en castellano. La j es como la y fuerte de «yo», nunca la jota: jarýi, rajy. La h siempre suena, como un soplo: héra, hembireko. La r es la r suave de «caro», también al empezar la palabra: ru, ramói; la rr fuerte solo está en préstamos como vúrro. Un solo par cambia una letra: che rajy y che ra'y, j frente a puso. En che rembireko y hembireko cambia la r por la h: la misma palabra con «mi» y con «su». Los otros dos son palabras para contrastar, no pares mínimos.",
+     "note": "Jarýi, ramói y Paraguái terminan en dos vocales, y el acento va en la primera: como no es la última vocal de la palabra, lleva tilde. Sin tilde, el acento cae en la i del final, como en karai y en Ypakarai. No hay pares mínimos seguros: los dos primeros pares contrastan una palabra sin tilde con una que la lleva, y el tercero trae las dos de hoy.",
      "pairs": [
       [
+       "Ypakarai",
+       "Ypacaraí",
+       "Paraguái",
+       "Paraguay"
+      ],
+      [
+       "ahai",
+       "escribo",
+       "apurahéi",
+       "canto"
+      ],
+      [
+       "ramói",
+       "abuelo (con che)",
        "jarýi",
-       "abuela",
-       "héra",
-       "su nombre"
-      ],
-      [
-       "che rajy",
-       "mi hija",
-       "che ra'y",
-       "mi hijo"
-      ],
-      [
-       "che rembireko",
-       "mi esposa",
-       "hembireko",
-       "su esposa"
-      ],
-      [
-       "che ru",
-       "mi papá",
-       "vúrro",
-       "burro"
+       "abuela"
       ]
      ]
     },
@@ -588,7 +583,7 @@
         "abuelo (con che, ne)"
        ]
       ],
-      "note": "Sola es tamói. Es nasal, con m: con nde se dice ne ramói. La r es suave, como en «caro»."
+      "note": "Sola es tamói. Es nasal, con m: con nde se dice ne ramói. Tilde en la ó: el acento no cae en la última vocal."
      },
      {
       "id": "rembireko",
@@ -617,16 +612,16 @@
      "id": "a1u04d1.k1",
      "kind": "choice",
      "area": "vocab",
-     "label": "Cómo se escribe",
-     "q": "Luis muestra una foto: Ha'e che _hija_. ¿Cómo se escribe «hija» con che?",
+     "label": "Cuál está bien escrita",
+     "q": "Luis anota quién es quién en la foto. Solo una palabra está _bien escrita_. ¿Cuál?",
      "options": [
-      "raji",
-      "rally",
-      "rajy",
-      "rayi"
+      "jaryi",
+      "rajý",
+      "ramói",
+      "membý"
      ],
      "answer": 3,
-     "explain": "Con che es rajy: con j, que suena como la y fuerte de «yo», y con y al final, la sexta vocal. Raji cambia esa y por i. Rayi escribe el sonido de la j con la y del castellano y además pierde la sexta vocal. Rally lo escribe con ll, como en castellano; en guaraní no hay ll: ese sonido se escribe j."
+     "explain": "Ramói está bien: termina en dos vocales y el acento va en la primera, la o, que no es la última de la palabra, y por eso lleva tilde. A jaryi le falta la suya, por lo mismo: se escribe jarýi. Rajy y memby llevan el acento en la última vocal, y en guaraní eso no se marca: en rajý y en membý la tilde sobra."
     }
    },
    "skill": {
@@ -1861,10 +1856,9 @@
     "sound": {
      "focus": "La v: vaka, kavaju",
      "letters": [
-      "v",
-      "k"
+      "v"
      ],
-     "note": "La v del guaraní no es la b ni la v del castellano: el labio de abajo roza los dientes, sin fuerza: vaka, yvyra. Una palabra que entra del castellano se escribe con las letras del guaraní y, como no lleva tilde, se dice con el acento al final: vaca → vaka (va-ká), caballo → kavaju (ka-va-jú), queso → kesu (ke-sú); b → v, c y qu → k, ll → j. No hay pares mínimos seguros con v o con k: son palabras para contrastar con el castellano.",
+     "note": "La v del guaraní no es la b ni la v del castellano: el labio de abajo roza los dientes, sin fuerza, como en yvyra y túva. Vaka y kavaju vienen del castellano y se escriben a la guaraní, con v donde «caballo» lleva b; como no llevan tilde, el acento va al final: va-ká, ka-va-jú. No hay pares mínimos seguros con v: son palabras para contrastar.",
      "pairs": [
       [
        "vaka",
@@ -1875,8 +1869,8 @@
       [
        "yvyra",
        "árbol",
-       "kesu",
-       "queso"
+       "túva",
+       "padre"
       ]
      ]
     },
@@ -2465,38 +2459,36 @@
     "es": "¿Quién es? En el cumpleaños",
     "intro": "En el cumpleaños de la abuela hay chipa, sopa paraguaya y gente que no conocés. Tocá cada palabra: con ellas preguntás quién es quién y qué significa lo que oís.",
     "sound": {
-     "focus": "Los dígrafos mb, nd, ng, nt",
+     "focus": "La u siempre suena: kuimba'e, -gui",
      "letters": [
-      "mb",
-      "nd",
-      "ng",
-      "nt"
+      "ku",
+      "gu"
      ],
-     "note": "mb, nd, ng y nt son una sola letra y van en una sola sílaba: empezá con un zumbido, mmm o nnn, y soltalo en la b, la d, la g o la t, sin meter una vocal delante (no «emba'e») y sin perder la nasal (no «ba'e»): mba'e, nde, angirũ, peteĩnte. Nt aparece sobre todo en -nte, «solo, nomás»: peteĩnte, «uno solo». No hay pares mínimos seguros: cada par pone la letra doble al lado de la m o la n sola, o muestra dónde aparece.",
+     "note": "En castellano la u de «que», «qui», «gue» y «gui» no suena; en guaraní la u suena siempre. Kuimba'e empieza como «cuidar», y -gui y -nguéra se dicen como con diéresis: «güi», «ngüéra». No hay pares mínimos seguros: son palabras para contrastar, y la segunda de cada par lleva ku o gu antes de otra vocal.",
      "pairs": [
       [
-       "mba'e",
-       "cosa; ¿qué?",
-       "máva",
-       "quién"
+       "kuña",
+       "mujer",
+       "kuimba'e",
+       "hombre"
       ],
       [
-       "nde sy",
-       "tu mamá",
-       "ne memby",
-       "tu hijo, tu hija"
+       "ake",
+       "duermo",
+       "kokue",
+       "chacra"
       ],
       [
-       "mitã",
-       "niño, niña",
-       "mitãnguéra",
-       "los niños"
+       "óga",
+       "casa",
+       "jagua",
+       "perro"
       ],
       [
-       "peteĩ",
-       "uno",
-       "peteĩnte",
-       "uno solo"
+       "ógape",
+       "en casa",
+       "ógagui",
+       "de la casa"
       ]
      ]
     },
@@ -2595,7 +2587,7 @@
       "id": "kuimbae",
       "gn": "kuimba'e",
       "es": "hombre",
-      "note": "Mb es una sola letra, en una sola sílaba: kuimba'e. Lleva puso antes de la e."
+      "note": "La u suena: empieza como «cuidar». Mb es una sola letra, y lleva puso antes de la e: kui-mba-'e."
      },
      {
       "id": "angiru",
@@ -2615,15 +2607,15 @@
      "kind": "choice",
      "area": "vocab",
      "label": "Cómo se escribe",
-     "q": "Luis pregunta _qué_ significa «mitãkuña»: (   ) he'ise «mitãkuña»? ¿Cómo se escribe?",
+     "q": "En el cumpleaños hay un _hombre_ que no conocés. ¿Cómo se escribe «hombre» en guaraní?",
      "options": [
-      "Mbaépa",
-      "Mba'ẽpa",
-      "Mba'épa",
-      "Ba'épa"
+      "kuimbae",
+      "cuimba'e",
+      "kuimba'e",
+      "küimba'e"
      ],
      "answer": 3,
-     "explain": "«¿Qué?» es Mba'épa: empieza con mb, una sola letra, lleva el puso entre la a y la e, y la tilde va en la é, porque con -pa la e ya no es la última vocal. Mbaépa pierde el puso. Mba'ẽpa pone una ~ en la e, y la e de mba'e es oral: lleva tilde de acento, é. Ba'épa pierde la nasal del principio: la palabra empieza con mb, no con b."
+     "explain": "Hombre es kuimba'e: con k, con la u, que en guaraní siempre suena, y con puso antes de la e. Kuimbae pierde el puso. Cuimba'e usa la c, que sola no es una letra del guaraní: ese sonido se escribe k. Küimba'e le pone la diéresis del castellano: en guaraní la u suena sin ninguna marca, y la ü no es una letra del alfabeto."
     }
    },
    "skill": {
@@ -3126,30 +3118,29 @@
     "es": "En la despensa del barrio",
     "intro": "En la despensa de la esquina contás lo que llevás. Tocá cada palabra: hasta cinco en guaraní, y el precio en castellano.",
     "sound": {
-     "focus": "La ch y la k: chipa, kesu",
+     "focus": "La k: kesu, kamby",
      "letters": [
-      "ch",
       "k"
      ],
-     "note": "La k escribe el sonido de la c de «casa» y de «qu»: kesu, kamby, mokõi, karai; en guaraní no hay c ni qu. La ch suena entre la «sh» y la ch castellana: chipa, che, mba'éichapa; vas a oír las dos. No hay pares mínimos seguros: son palabras para contrastar.",
+     "note": "La k escribe siempre el mismo sonido, el de la c de «casa» y la qu de «queso»: kesu, kamby, mokõi. La c sola y la q no son letras del guaraní, y por eso queso se escribe kesu. No hay pares mínimos seguros: son palabras para contrastar, con la k delante de vocales distintas.",
      "pairs": [
       [
        "kesu",
        "queso",
-       "chipa",
-       "chipá"
+       "kamby",
+       "leche"
       ],
       [
        "mokõi",
        "dos",
-       "che",
-       "yo; mi"
+       "kuña",
+       "mujer"
       ],
       [
-       "kamby",
-       "leche",
-       "mba'éichapa",
-       "¿cómo estás?"
+       "apyka",
+       "silla",
+       "korapy",
+       "patio"
       ]
      ]
     },
@@ -3540,15 +3531,22 @@
     "es": "La familia en la fiesta",
     "intro": "El cumpleaños de la abuela, en el patio. Ana presenta a su familia y señala quién es quién. Tocá cada palabra: son las de toda la semana.",
     "sound": {
-     "focus": "Repaso: el acento que se mueve y los dígrafos",
+     "focus": "Repaso: la tilde, el acento, la v, la u y la k",
      "letters": [
+      "ói",
       "é",
-      "mb",
-      "nd",
-      "ng"
+      "v",
+      "gu",
+      "k"
      ],
-     "note": "Dos cosas de la semana para repasar. El acento: -kuéra y -nguéra se lo llevan, y la tilde de la raíz desaparece (óga → ogakuéra, túva → tuvakuéra); -pa y -pe no se lo llevan, y por eso aparece la tilde en la raíz (mba'e → Mba'épa, korapy → korapýpe). Los dígrafos mb, nd y ng son una sola letra, en una sola sílaba: mba'e, irundy, mitãnguéra. No hay pares mínimos seguros: son palabras para contrastar, una sola y varias, o con y sin -pa.",
+     "note": "La tilde va en la vocal del acento cuando no es la última (ramói). -kuéra y -nguéra se llevan el acento y la tilde de la raíz desaparece (ogakuéra); con -pa, -pe o -gui el acento se queda en la raíz (Mba'épa, ógape, ógagui). La u siempre suena, también en -gui y -kuéra; vaka va con v y con k, y kesu con k, sin c ni qu: son palabras para contrastar, no pares mínimos.",
      "pairs": [
+      [
+       "karai",
+       "señor",
+       "ramói",
+       "abuelo (con che)"
+      ],
       [
        "óga",
        "casa",
@@ -3556,22 +3554,16 @@
        "casas"
       ],
       [
-       "túva",
-       "padre",
-       "tuvakuéra",
-       "padres"
+       "ógape",
+       "en casa",
+       "ógagui",
+       "de la casa"
       ],
       [
-       "mba'e",
-       "cosa; qué",
-       "Mba'épa",
-       "¿qué?"
-      ],
-      [
-       "mitã",
-       "niño, niña",
-       "mitãnguéra",
-       "niños, niñas"
+       "vaka",
+       "vaca",
+       "kesu",
+       "queso"
       ]
      ]
     },

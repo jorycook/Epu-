@@ -182,14 +182,14 @@
     "es": "La familia en la fiesta",
     "intro": "El cumpleaños de la abuela, en el patio. Ana presenta a su familia y señala quién es quién. Tocá cada palabra: son las de toda la semana.",
     "sound": {
-      "focus": "Repaso: el acento que se mueve y los dígrafos",
-      "letters": ["é", "mb", "nd", "ng"],
-      "note": "Dos cosas de la semana para repasar. El acento: -kuéra y -nguéra se lo llevan, y la tilde de la raíz desaparece (óga → ogakuéra, túva → tuvakuéra); -pa y -pe no se lo llevan, y por eso aparece la tilde en la raíz (mba'e → Mba'épa, korapy → korapýpe). Los dígrafos mb, nd y ng son una sola letra, en una sola sílaba: mba'e, irundy, mitãnguéra. No hay pares mínimos seguros: son palabras para contrastar, una sola y varias, o con y sin -pa.",
+      "focus": "Repaso: la tilde, el acento, la v, la u y la k",
+      "letters": ["ói", "é", "v", "gu", "k"],
+      "note": "La tilde va en la vocal del acento cuando no es la última (ramói). -kuéra y -nguéra se llevan el acento y la tilde de la raíz desaparece (ogakuéra); con -pa, -pe o -gui el acento se queda en la raíz (Mba'épa, ógape, ógagui). La u siempre suena, también en -gui y -kuéra; vaka va con v y con k, y kesu con k, sin c ni qu: son palabras para contrastar, no pares mínimos.",
       "pairs": [
+        ["karai", "señor", "ramói", "abuelo (con che)"],
         ["óga", "casa", "ogakuéra", "casas"],
-        ["túva", "padre", "tuvakuéra", "padres"],
-        ["mba'e", "cosa; qué", "Mba'épa", "¿qué?"],
-        ["mitã", "niño, niña", "mitãnguéra", "niños, niñas"]
+        ["ógape", "en casa", "ógagui", "de la casa"],
+        ["vaka", "vaca", "kesu", "queso"]
       ]
     },
     "words": [

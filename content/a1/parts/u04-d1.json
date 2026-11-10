@@ -234,14 +234,13 @@
     "es": "La foto de la familia",
     "intro": "La foto del domingo, en el patio y con tereré. Tocá cada persona: todas van con che, «mi». Fijate quién lo dice: «hijo» e «hija» cambian según quién habla. La mamá dice memby; el papá, ra'y y rajy.",
     "sound": {
-      "focus": "La j, la h y la r",
-      "letters": ["j", "h", "r"],
-      "note": "Tres letras que no suenan como en castellano. La j es como la y fuerte de «yo», nunca la jota: jarýi, rajy. La h siempre suena, como un soplo: héra, hembireko. La r es la r suave de «caro», también al empezar la palabra: ru, ramói; la rr fuerte solo está en préstamos como vúrro. Un solo par cambia una letra: che rajy y che ra'y, j frente a puso. En che rembireko y hembireko cambia la r por la h: la misma palabra con «mi» y con «su». Los otros dos son palabras para contrastar, no pares mínimos.",
+      "focus": "La tilde en dos vocales juntas: jarýi, ramói",
+      "letters": ["ýi", "ói", "éi", "ái"],
+      "note": "Jarýi, ramói y Paraguái terminan en dos vocales, y el acento va en la primera: como no es la última vocal de la palabra, lleva tilde. Sin tilde, el acento cae en la i del final, como en karai y en Ypakarai. No hay pares mínimos seguros: los dos primeros pares contrastan una palabra sin tilde con una que la lleva, y el tercero trae las dos de hoy.",
       "pairs": [
-        ["jarýi", "abuela", "héra", "su nombre"],
-        ["che rajy", "mi hija", "che ra'y", "mi hijo"],
-        ["che rembireko", "mi esposa", "hembireko", "su esposa"],
-        ["che ru", "mi papá", "vúrro", "burro"]
+        ["Ypakarai", "Ypacaraí", "Paraguái", "Paraguay"],
+        ["ahai", "escribo", "apurahéi", "canto"],
+        ["ramói", "abuelo (con che)", "jarýi", "abuela"]
       ]
     },
     "words": [
@@ -251,7 +250,7 @@
       { "id": "ray", "gn": "che ra'y", "es": "mi hijo", "parts": [["che", "mi"], ["ra'y", "hijo (dice el papá)"]], "note": "Lo dice el papá. Lleva puso: ra'y. Sola, la palabra es ta'ýra." },
       { "id": "rajy", "gn": "che rajy", "es": "mi hija", "parts": [["che", "mi"], ["rajy", "hija (dice el papá)"]], "note": "Lo dice el papá. La j suena como la y fuerte de «yo»: rajy, nunca con jota. Sola, la palabra es tajýra." },
       { "id": "jaryi", "gn": "che jarýi", "es": "mi abuela", "parts": [["che", "mi"], ["jarýi", "abuela"]], "note": "Tilde en la ý: el acento no cae al final. Es oral: con nde no cambia, nde jarýi." },
-      { "id": "ramoi", "gn": "che ramói", "es": "mi abuelo", "parts": [["che", "mi"], ["ramói", "abuelo (con che, ne)"]], "note": "Sola es tamói. Es nasal, con m: con nde se dice ne ramói. La r es suave, como en «caro»." },
+      { "id": "ramoi", "gn": "che ramói", "es": "mi abuelo", "parts": [["che", "mi"], ["ramói", "abuelo (con che, ne)"]], "note": "Sola es tamói. Es nasal, con m: con nde se dice ne ramói. Tilde en la ó: el acento no cae en la última vocal." },
       { "id": "rembireko", "gn": "che rembireko", "es": "mi esposa", "parts": [["che", "mi"], ["rembireko", "esposa (con che)"]], "note": "Sola es tembireko. Con che es rembireko y con «su» es hembireko: la h suena. Es nasal, con mb: con nde se dice ne rembireko. «Mi esposo» es che ména." }
     ],
     "spell": ["rajy", "ramoi", "rembireko", "jaryi"],
@@ -259,11 +258,11 @@
       "id": "a1u04d1.k1",
       "kind": "choice",
       "area": "vocab",
-      "label": "Cómo se escribe",
-      "q": "Luis muestra una foto: Ha'e che _hija_. ¿Cómo se escribe «hija» con che?",
-      "options": ["raji", "rally", "rajy", "rayi"],
+      "label": "Cuál está bien escrita",
+      "q": "Luis anota quién es quién en la foto. Solo una palabra está _bien escrita_. ¿Cuál?",
+      "options": ["jaryi", "rajý", "ramói", "membý"],
       "answer": 3,
-      "explain": "Con che es rajy: con j, que suena como la y fuerte de «yo», y con y al final, la sexta vocal. Raji cambia esa y por i. Rayi escribe el sonido de la j con la y del castellano y además pierde la sexta vocal. Rally lo escribe con ll, como en castellano; en guaraní no hay ll: ese sonido se escribe j."
+      "explain": "Ramói está bien: termina en dos vocales y el acento va en la primera, la o, que no es la última de la palabra, y por eso lleva tilde. A jaryi le falta la suya, por lo mismo: se escribe jarýi. Rajy y memby llevan el acento en la última vocal, y en guaraní eso no se marca: en rajý y en membý la tilde sobra."
     }
   },
   "skill": {

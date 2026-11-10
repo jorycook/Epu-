@@ -234,13 +234,13 @@
     "es": "En la despensa del barrio",
     "intro": "En la despensa de la esquina contás lo que llevás. Tocá cada palabra: hasta cinco en guaraní, y el precio en castellano.",
     "sound": {
-      "focus": "La ch y la k: chipa, kesu",
-      "letters": ["ch", "k"],
-      "note": "La k escribe el sonido de la c de «casa» y de «qu»: kesu, kamby, mokõi, karai; en guaraní no hay c ni qu. La ch suena entre la «sh» y la ch castellana: chipa, che, mba'éichapa; vas a oír las dos. No hay pares mínimos seguros: son palabras para contrastar.",
+      "focus": "La k: kesu, kamby",
+      "letters": ["k"],
+      "note": "La k escribe siempre el mismo sonido, el de la c de «casa» y la qu de «queso»: kesu, kamby, mokõi. La c sola y la q no son letras del guaraní, y por eso queso se escribe kesu. No hay pares mínimos seguros: son palabras para contrastar, con la k delante de vocales distintas.",
       "pairs": [
-        ["kesu", "queso", "chipa", "chipá"],
-        ["mokõi", "dos", "che", "yo; mi"],
-        ["kamby", "leche", "mba'éichapa", "¿cómo estás?"]
+        ["kesu", "queso", "kamby", "leche"],
+        ["mokõi", "dos", "kuña", "mujer"],
+        ["apyka", "silla", "korapy", "patio"]
       ]
     },
     "words": [

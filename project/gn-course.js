@@ -460,8 +460,16 @@
     status.plan.forEach(function (p) { if (p.id === sid) session = p; });
     var unitN = session ? session.unit : C.units().length ? C.units()[0].n : 1;
     C.needSound(LEVEL, unitN);
-    /* the units the notebook will ask about, and the screens with sound of their own */
-    (state.mistakes || []).forEach(function (m) { var at = C.parse(m.src); if (at && at.level === LEVEL) C.needSound(LEVEL, at.unit); });
+    /* the units the notebook will ask about, and the screens with sound of their own. A mistake of the level exam
+       (a1x.4) or of the placement check (pl.3) is no unit's: its clip is in the exam's or the placement's file, which
+       the notebook needs as well (pl. ids carry no level and are kept with A1, as levelOf has it) */
+    (state.mistakes || []).forEach(function (m) {
+      var at = C.parse(m.src);
+      var x = at ? null : /^([abc][12])x\./i.exec(m.src || '');
+      if (at) { if (at.level === LEVEL) C.needSound(LEVEL, at.unit); }
+      else if (x) { if (x[1].toUpperCase() === LEVEL) C.needSoundFile(C.soundExtra('x', LEVEL)); }
+      else if (/^pl\./.test(m.src || '') && C.levelOf(m.src) === LEVEL) C.needSoundFile(C.soundExtra('pl'));
+    });
     if (EXTRA_SOUND[state.screen]) C.needSoundFile(C.soundExtra(EXTRA_SOUND[state.screen], LEVEL));
     return {
       status: status,
@@ -578,15 +586,17 @@
 
   /* ---------- the level's ñandutí ----------
      Each level is a ñandutí (the lace rosette of Itauguá) that Kaguare, the southern tamandua, wears pinned to his
-     black vest. Before the goal it is only its frame: a sun of radial threads with one cross-thread ring, the petals
-     white, and a dashed rim. Setting the goal weaves the hub (the first thread). Every unit finished fills one petal
-     between two threads. Passing the level exam weaves the scalloped rim: the rosette is whole.
+     black vest. Before the goal it is only its frame, quiet and unwoven: the radial threads (the warp) stretched inside
+     the dashed outer circle, the petals white. Setting the goal weaves the first thread ("Tejé el primer hilo"): the
+     hub, and with it the cross-thread ring the petal tips are tied to. Every unit finished fills one petal between two
+     threads. Passing the level exam weaves the scalloped rim: the rosette is whole.
      The shapes come back as path strings for an SVG with viewBox "-24 -24 48 48", so every screen draws the same thing
      (the recipe in BRIEF-design.md §3): <path d={rimD}> (shown when rim), <path d={off}> (petals still to do),
      <path d={on}> (petals done), <path d={spokes}>, <circle r="4"> (the hub, filled when hub). n = the level's units,
      done = units finished.
      The drawing ("arasape", the Itauguá sun): one radial thread per unit, from under the hub to the frame (r 19.3); a
-     cross-thread ring (r 15.4) that the petal tips are tied to; one petal per unit between two threads, a pointed lace
+     cross-thread ring (r 15.4) that the petal tips are tied to, part of the first thread woven (while hub is false and
+     no unit is done, spokes holds the radial threads alone); one petal per unit between two threads, a pointed lace
      leaf (r 6.8 to 14.8, 37 % of its sector wide) with a midrib along its axis; the rim, round scallops bulging out from
      the frame to r 21.3, about a dozen around: round(13 / n) per unit (two per unit up to 8 units, one from 9 up: 16 for
      8, 12 for 6 or 12, 10 for 10, 9 for the games' stage ring).
@@ -598,7 +608,8 @@
      out and back in quarter arcs (the stroke of a path's self-overlap reads as one line). An open subpath inside a petal
      adds stroke only, never fill: that is how the midrib is drawn, in the petal's own stroke colour.
      Painted extent, stroke included: r 20.0 before the pass (the frame circle), r 22.0 whole for any unit count (the
-     scallops all reach r 21.3), inside the brooch discs (the mascot's 9.4 / 0.42 = 22.4; the icon's 8.0 / 0.36 = 22.2). */
+     scallops all reach r 21.3), inside the brooch discs (the mascot's 9.4 / 0.42 = 22.4; the icon's 8.0 / 0.345 = 23.2,
+     where the whole rosette is baked: Icon.dc.html, Rules.dc.html and brief/mascot carry these strings literally). */
   C.rosette = function (n, done, opts) {
     opts = opts || {};
     var N = Math.max(3, n || 8), D = Math.min(N, done || 0), TAU = 2 * Math.PI;
@@ -616,7 +627,8 @@
       return 'M' + p + ' 0' + A + '1 0 ' + p + A + '1 ' + m + ' 0' + A + '1 0 ' + m + A + '1 ' + p + ' 0' +
         A + '0 0 ' + m + A + '0 ' + m + ' 0' + A + '0 0 ' + p + A + '0 ' + p + ' 0';
     }
-    var on = '', off = '', spokes = ring(R_RING), rim = '';
+    var bare = opts.hub === false && D === 0;    /* nothing woven yet: the warp alone, without the cross-thread ring */
+    var on = '', off = '', spokes = bare ? '' : ring(R_RING), rim = '';
     for (var k = 0; k < N; k++) {
       var a0 = -Math.PI / 2 + (k * TAU) / N, a1 = a0 + TAU / N, am = a0 + Math.PI / N;
       var ca = Math.cos(am), sa = Math.sin(am);

@@ -62,10 +62,11 @@ paper as in Yaoki (the school notebook). Never emoji, never flags, no tourist cl
 ### The ritual (replaces the daruma's painted eyes)
 
 Yaoki paints the daruma's first eye when the goal is set and the second when the exam is passed. Here Kaguare wears a
-ñandutí pinned to his black vest for the level: on the Goal screen the learner weaves its hub, the first thread ("Tejé el primer hilo"); every unit
-finished fills a petal (the level's rosette fills as the units are done: Levels and Progress show it); passing the level
-exam (Apto) weaves its rim. Before the goal, the rosette is only its frame: the dashed outer circle, the sun of radial threads
-with their cross-thread ring, and the petals white.
+ñandutí pinned to his black vest for the level: on the Goal screen the learner weaves the first thread ("Tejé el primer
+hilo"): its hub, and with it the cross-thread ring round the petals; every unit finished fills a petal (the level's rosette
+fills as the units are done: Levels and Progress show it); passing the level exam (Apto) weaves its rim. Before the goal,
+the rosette is only its frame, quiet and unwoven: the dashed outer circle, the radial threads (the warp) and the petals
+white, with no ring yet.
 
 ### The level's ñandutí (one recipe, every screen)
 
@@ -79,10 +80,12 @@ const r = C.rosette(units, unitsDone, { hub: goalSet, rim: passed });
 const ro = Object.assign(r, { frameOpacity: passed ? 0 : 1, rimOpacity: passed ? 1 : 0, hubFill: goalSet ? '#C2336F' : '#FFFFFF',
   label: 'Ñandutí del nivel A1: ' + unitsDone + ' de ' + units + ' unidades' + (passed ? ', nivel aprobado' : '') });
 ```
-Before the goal: frame only (no hub). Goal ritual: the hub fills ("Tejé el primer hilo"). Each unit: a petal. Apto: the rim.
+Before the goal: frame only (the radial threads; no ring, no hub). Goal ritual: the hub fills and the cross-thread ring
+appears ("Tejé el primer hilo"). Each unit: a petal. Apto: the rim.
 
 What the strings draw (the "arasape" rosette, the Itauguá sun): `spokes` is one radial thread per unit from under the hub to
-the frame (r 19.3) plus a cross-thread ring (r 15.4) that the leaf tips are tied to; `on` and `off` are one pointed lace leaf
+the frame (r 19.3) plus a cross-thread ring (r 15.4) that the leaf tips are tied to (the ring is part of the first thread
+woven: with `hub: false` and no unit done, `spokes` holds the radial threads alone); `on` and `off` are one pointed lace leaf
 per unit between two threads (r 6.8 to 14.8), each with its midrib as an open subpath; `rimD` is a ring of round scallops
 bulging out from the frame to r 21.3, about a dozen around: `round(13 / units)` per unit (two per unit up to 8 units, one from
 9 up: 16 for 8, 12 for 6 or 12, 10 for 10, 9 for the games' stage ring). Two rules keep the recipe valid: the spokes path is
@@ -92,10 +95,12 @@ and Escribir stroke only `spokes` and `rimD` around a white disc r 15 (stroke 2.
 and the HUD ring, so between r 16.25 and the frame the spokes string holds nothing but the radial threads (the ring sits under
 the disc) and the rim stays a bold flower of one scallop per unit there. Painted extent, stroke included: r 20.0 before the
 pass (the frame circle), r 22.0 whole for any unit count, inside the brooch discs (the mascot's 9.4 / 0.42 = 22.4; the icon's
-8.0 / 0.36 = 22.2). It stays legible at 20 px (the brooch at 48 px): frame = a pink wheel,
-hub = a dot, each unit = a pink leaf, whole = a filled scalloped disc. The same whole 8-unit rosette is baked literally into
-the icon poses (`brief/mascot/spec.json` icon-pink and icon-green, `Icon.dc.html`, `Rules.dc.html`): regenerate those strings
-from `C.rosette(8, 8, { hub: true, rim: true })` whenever the drawing changes.
+8.0 / 0.345 = 23.2, so the whole rosette keeps 0.41 units of white inside the icon's ring). It stays legible at 20 px (the
+brooch at 48 px): frame = a faint star of threads, hub = a pink wheel with its dot, each unit = a pink leaf, whole = a
+filled scalloped disc. The same whole 8-unit rosette is baked literally into the icon poses (`brief/mascot/spec.json`
+icon-pink and icon-green, `brief/mascot/SPEC.md`, `Icon.dc.html`, `Rules.dc.html`), nested at
+`translate(36.4 85.8) scale(0.345)`: regenerate those strings from `C.rosette(8, 8, { hub: true, rim: true })` whenever
+the drawing changes.
 
 ## 4. Words in this brief come from verified sources
 
@@ -133,7 +138,7 @@ board). Use them as they are; do not redraw the animal.
 | thumbs | Hablar's two "Cómo jugar" cards (140×84 scenes) | simplified heavy-stroke versions |
 
 **The brooch.** A white disc r 10.5 with a 2.2 ink ring on the vest. The boards nest the level's rosette from
-`C.rosette()` in it as `<g transform="translate(cx cy) scale(0.42)">` (0.36 in the icon), in place of the stand-in (four
+`C.rosette()` in it as `<g transform="translate(cx cy) scale(0.42)">` (0.345 in the icon), in place of the stand-in (four
 pink threads, a ring and a hub) that the SVGs carry when no engine is present.
 
 **The games.** The fall is fallen → rising → standing: a card that reaches him crossfades standing → fallen (the stars

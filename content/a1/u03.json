@@ -429,38 +429,29 @@
     "es": "Después del partido",
     "intro": "Termina el partido en la cancha del barrio y todos dicen cómo están. Tocá cada palabra.",
     "sound": {
-     "focus": "mb, nd, ng, nt: una sola letra",
+     "focus": "La ch: che, chepochy",
      "letters": [
-      "mb",
-      "nd",
-      "ng",
-      "nt"
+      "ch"
      ],
-     "note": "mb, nd, ng y nt son letras del alfabeto y cada una suena en una sola sílaba. mb y nd van también al principio de la palabra, como en mba'e y nde; ng y nt casi siempre van adentro, como en angirũ y mante. Empezá con un zumbido, mmm o nnn, y soltalo en la b o la d sin meter una vocal antes: nde, no «ende». Son parientes de m y n: ñande róga, pero ñane retã. No hay pares mínimos seguros: compará estas palabras.",
+     "note": "La ch suena más bien como «sh», aunque también vas a oír la ch castellana. Es una sola letra, y hoy abre casi todas las palabras: che-, «yo», como en chepochy y chero'y. No hay pares mínimos seguros: cada par trae una palabra sola y la misma con che-.",
      "pairs": [
       [
-       "mba'e",
-       "cosa, qué",
-       "mitã",
-       "niño"
+       "pochy",
+       "enojo",
+       "chepochy",
+       "estoy enojado, enojada"
       ],
       [
-       "ñande róga",
-       "nuestra casa",
-       "ñane retã",
-       "nuestro país"
+       "ro'y",
+       "frío",
+       "chero'y",
+       "tengo frío"
       ],
       [
-       "tembi'u",
-       "comida",
-       "temimbo'e",
-       "alumno"
-      ],
-      [
-       "angirũ",
-       "amigo, amiga",
-       "mante",
-       "solamente"
+       "y'uhéi",
+       "sed",
+       "chey'uhéi",
+       "tengo sed"
       ]
      ]
     },
@@ -549,7 +540,7 @@
         "enojo"
        ]
       ],
-      "note": "A vos: ndepochy. Él o ella: ipochy."
+      "note": "A vos: ndepochy. Él o ella: ipochy. Lleva dos veces la ch: che-po-chy."
      },
      {
       "id": "kaigue",
@@ -604,10 +595,10 @@
       "chey'uhẽi",
       "chey'uhéi",
       "chei'uhéi",
-      "cheyu'héi"
+      "shey'uhéi"
      ],
      "answer": 2,
-     "explain": "Se escribe chey'uhéi: el puso corta la voz entre la y y la u, y la tilde va en la é porque el acento no cae en la última vocal. Chey'uhẽi cambia la tilde por una ~, y la e de y'uhéi no es nasal. Chei'uhéi cambia la y por i, otra vocal. Cheyu'héi pone el puso antes de la h, y el puso solo va entre dos vocales."
+     "explain": "Se escribe chey'uhéi: con ch al principio, con el puso que corta la voz entre la y y la u, y con la tilde en la é, porque el acento no cae en la última vocal. Shey'uhéi escribe el primer sonido con sh, y en guaraní se escribe con la ch. Chey'uhẽi cambia la tilde por una ~, y la e de y'uhéi no es nasal. Chei'uhéi cambia la y por i, otra vocal."
     }
    },
    "skill": {
@@ -1101,30 +1092,32 @@
     "es": "Un domingo en casa de Ana",
     "intro": "Es domingo. Ana cuenta qué hace y qué le pasa en su casa, de la mañana a la noche. Tocá cada palabra.",
     "sound": {
-     "focus": "La j y la h",
+     "focus": "Sin marca, el acento va al final: ajahu, akyhyje",
      "letters": [
-      "j",
-      "h"
+      "u",
+      "e",
+      "ó",
+      "á"
      ],
-     "note": "Ya conocés estas dos letras de la unidad 2: hoy vuelven en las palabras del día. La j suena como la y de «yo» en boca de un paraguayo, o la j inglesa de «John»: nunca la jota castellana. La h siempre suena: es un soplo, como la jota suave paraguaya. Ajahu y akyhyje llevan las dos. En jasy y hasy solo cambia la primera letra; los otros pares son palabras para comparar.",
+     "note": "Una palabra sin ninguna marca, ni tilde ni ~, lleva el acento en la última vocal: la u de ajahu, la e de akyhyje. Es al revés del castellano, que pondría el acento antes: a-JA-hu. Cuando una palabra lleva tilde, el acento va ahí, como en óga y ko'ág̃a: no son pares mínimos, cada par trae una palabra sin tilde y otra con tilde.",
      "pairs": [
       [
-       "jasy",
-       "luna",
-       "hasy",
-       "le duele, está enfermo"
-      ],
-      [
-       "ajeroky",
-       "bailo",
-       "apurahéi",
-       "canto"
+       "ake",
+       "duermo",
+       "óga",
+       "casa"
       ],
       [
        "ajahu",
        "me baño",
-       "aha",
-       "voy"
+       "ko'ág̃a",
+       "ahora"
+      ],
+      [
+       "akyhyje",
+       "tengo miedo",
+       "nahániri",
+       "no"
       ]
      ]
     },
@@ -1159,7 +1152,7 @@
         "bañarse"
        ]
       ],
-      "note": "Lleva las dos letras de hoy: la j, como la y de «yo» en boca de un paraguayo, y la h, un soplo que siempre suena."
+      "note": "La j suena como la y de «yo» en boca de un paraguayo, y la h es un soplo que siempre suena. Va sin tilde: el acento cae en la u, a-ja-HU."
      },
      {
       "id": "avya",
@@ -1191,7 +1184,7 @@
         "tener miedo; miedo"
        ]
       ],
-      "note": "Otro sentimiento que va como acción, igual que avy'a: akyhyje, no chekyhyje. Tiene h y j: a-ky-hy-je."
+      "note": "Otro sentimiento que va como acción, igual que avy'a: akyhyje, no chekyhyje. Tiene h y j, y va sin tilde: a-ky-hy-JE."
      },
      {
       "id": "chemandua",
@@ -1248,16 +1241,16 @@
      "id": "a1u03d2.k1",
      "kind": "choice",
      "area": "vocab",
-     "label": "Cómo se escribe",
-     "q": "Le contás a Luis: «Es domingo y _me baño_ tarde.» ¿Cómo se escribe en guaraní?",
+     "label": "Cuál está bien escrita",
+     "q": "Ana anota cuatro palabras de su domingo. Solo una está _bien escrita_. ¿Cuál?",
      "options": [
-      "ayahu",
-      "ajaju",
+      "akyhyjé",
+      "ko'ag̃a",
       "ajahu",
-      "ajau"
+      "aké"
      ],
      "answer": 3,
-     "explain": "Me baño es ajahu: a-, «yo», y la raíz jahu, con j y con h. El sonido de la y de «yo» en boca de un paraguayo se escribe j: ayahu lo escribe con y, que en guaraní es una vocal, la sexta. Ajaju cambia la h por otra j. Ajau se come la h, que nunca es muda."
+     "explain": "Ajahu está bien: va sin tilde porque el acento cae en la última vocal, la u, y en guaraní eso no se marca. Por lo mismo sobra la tilde de akyhyjé y de aké, que es la costumbre del castellano: se escriben akyhyje y ake. A ko'ag̃a, en cambio, le falta la suya: el acento va antes del final, en la primera a, y ahí sí se escribe, ko'ág̃a."
     }
    },
    "skill": {
@@ -1730,30 +1723,29 @@
     "es": "La fiesta de San Juan del barrio",
     "intro": "Es la noche de San Juan en el barrio: hay fuego, chipa y música. Ana te presenta a su gente: quién es cada uno y qué hace. Tocá cada palabra.",
     "sound": {
-     "focus": "La r suave y la rr",
+     "focus": "La ñ, sin ~ al lado: kuña, ñemuhára",
      "letters": [
-      "r",
-      "rr"
+      "ñ"
      ],
-     "note": "Ya conocés la r de la unidad 2: hoy vuelve en las palabras del día. La r guaraní es siempre la suave de «caro»: al principio de la palabra, como en ru y réra, y entre vocales, como en irũ, mitãrusu y kuñakarai. El castellano empieza «rosa» con una rr fuerte; el guaraní no tiene esa r inicial. La rr fuerte solo aparece en préstamos del castellano, como vúrro, karréta y arro. No hay pares mínimos: compará la r y la rr en estas palabras.",
+     "note": "La ñ suena como en castellano, y en guaraní también empieza muchas palabras: ñemuhára, ñande, ñu. La vocal que la toca ya suena nasal por ella, y por eso se escribe sin ~: kuña, no «kuñã». No hay pares mínimos seguros: son palabras para contrastar, unas con ~ y otras sin ~.",
      "pairs": [
       [
-       "mitãrusu",
-       "muchacho, joven",
-       "vúrro",
-       "burro"
+       "kuña",
+       "mujer",
+       "mitã",
+       "niño, niña"
       ],
       [
-       "kuñakarai",
-       "señora",
-       "karréta",
-       "carreta"
-      ],
-      [
+       "ñu",
+       "campo",
        "irũ",
-       "compañero, compañera",
-       "arro",
-       "arroz"
+       "compañero, compañera"
+      ],
+      [
+       "ñande",
+       "nosotros, con vos",
+       "ñe'ẽ",
+       "hablar"
       ]
      ]
     },
@@ -1881,7 +1873,7 @@
      "pohanohara",
      "mbaapohara",
      "nemuhara",
-     "mitarusu"
+     "mitakuna"
     ],
     "check": {
      "id": "a1u03d3.k1",
@@ -2446,7 +2438,7 @@
      "letters": [
       "g̃"
      ],
-     "note": "La g̃ es la g suave de «agua» con el aire saliendo también por la nariz. Está en pocas palabras, pero muy usadas: og̃uahẽ, ko'ág̃a, ag̃aite, Tereg̃uahẽ. Los diarios escriben la g sin la ~ (oguahẽ) o pasan la ~ a la vocal (ko'ágã). Son las mismas palabras; acá las escribimos con g̃. No hay pares mínimos: compará la g sin nariz con la g̃ con nariz.",
+     "note": "La g̃ es la g suave de «agua» con el aire saliendo también por la nariz: og̃uahẽ, ko'ág̃a, ag̃aite. Los diarios escriben la g sin la ~ (oguahẽ) o pasan la ~ a la vocal (ko'ágã): son las mismas palabras, y acá las escribimos con g̃. No hay pares mínimos: compará la g sin nariz con la g̃ con nariz.",
      "pairs": [
       [
        "aguyje",
@@ -3063,31 +3055,28 @@
      "focus": "La tilde nasal (~) también es tilde",
      "letters": [
       "ã",
-      "ẽ",
-      "ĩ",
       "õ",
-      "ũ",
-      "ỹ"
+      "ĩ"
      ],
-     "note": "Una vocal con ~ nunca lleva tilde, ni cuando es la tónica: ahí la ~ marca también el acento, como en mitã, kane'õ y peteĩ. Una palabra puede llevar las dos marcas, en vocales distintas: térã, «o». Escuchá los pares: cambia la ~ y cambia la palabra, y en porã y póra cambia también el acento.",
+     "note": "Una vocal con ~ nunca lleva tilde, ni cuando es la tónica: ahí la ~ marca también el acento, como en mitã, kane'õ y peteĩ. Con un sufijo que no se lleva el acento, la vocal oral recibe la tilde (ikatúpa) y la nasal queda como estaba (oĩpa, Tovatĩme). No son pares mínimos: cada par trae una palabra sola y la misma con sufijo.",
      "pairs": [
       [
-       "téra",
-       "nombre",
-       "térã",
-       "o"
+       "ikatu",
+       "se puede",
+       "ikatúpa",
+       "¿se puede?"
       ],
       [
-       "porã",
-       "lindo, bien",
-       "póra",
-       "fantasma"
+       "oĩ",
+       "hay",
+       "oĩpa",
+       "¿hay?"
       ],
       [
-       "pytu",
-       "aliento",
-       "pytũ",
-       "oscuro"
+       "Tovatĩ",
+       "Tobatí",
+       "Tovatĩme",
+       "en Tobatí"
       ]
      ]
     },
@@ -3469,33 +3458,34 @@
     "es": "Volver de Caacupé",
     "intro": "Ana y su familia vuelven de la peregrinación a Caacupé. Tocá cada palabra: cómo están, quién llega y quién es quién.",
     "sound": {
-     "focus": "Repaso: nd y mb, j y h, g̃",
+     "focus": "Repaso: la ch, el acento, la ñ, la g̃ y la ~",
      "letters": [
-      "nd",
-      "mb",
-      "j",
-      "h",
-      "g̃"
+      "ch",
+      "a",
+      "á",
+      "ñ",
+      "g̃",
+      "ẽ"
      ],
-     "note": "Tres cosas de la semana. nd y mb son letras del alfabeto y cada una suena en una sola sílaba, también al principio de la palabra: nde, no «ende». La j suena como la y de «yo» en boca de un paraguayo, nunca como la jota castellana, y la h siempre suena, como una jota suave: ajahu lleva las dos. La g̃ es la g con nariz: og̃uahẽ. No hay pares mínimos: compará estas palabras. En ñande y ñane fijate en la nd frente a la n.",
+     "note": "Lo de la semana, en cuatro pares de palabras para contrastar: no son pares mínimos. La ch de chey'uhéi suena más bien como «sh»; avy'a, sin ninguna marca, lleva el acento al final, y ko'ág̃a lo lleva donde está la tilde. Junto a la ñ la vocal va sin ~ (kuña), y og̃uahẽ lleva la g̃, la g con nariz, y una ẽ cuya ~ marca también el acento.",
      "pairs": [
       [
-       "ñande róga",
-       "nuestra casa",
-       "ñane retã",
-       "nuestro país"
+       "y'uhéi",
+       "sed",
+       "chey'uhéi",
+       "tengo sed"
       ],
       [
+       "avy'a",
+       "estoy contento, contenta",
+       "ko'ág̃a",
+       "ahora"
+      ],
+      [
+       "kuña",
+       "mujer",
        "mitã",
-       "niño",
-       "mba'e",
-       "cosa, qué"
-      ],
-      [
-       "ajahu",
-       "me baño",
-       "aha",
-       "voy"
+       "niño, niña"
       ],
       [
        "jagua",

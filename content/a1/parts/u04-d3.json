@@ -236,11 +236,11 @@
     "intro": "El patio de la casa de Juan: animales y cosas para señalar con ko, pe y amo. Tocá cada palabra. Dos nombres vienen del castellano, escritos a la guaraní: vaka y kavaju.",
     "sound": {
       "focus": "La v: vaka, kavaju",
-      "letters": ["v", "k"],
-      "note": "La v del guaraní no es la b ni la v del castellano: el labio de abajo roza los dientes, sin fuerza: vaka, yvyra. Una palabra que entra del castellano se escribe con las letras del guaraní y, como no lleva tilde, se dice con el acento al final: vaca → vaka (va-ká), caballo → kavaju (ka-va-jú), queso → kesu (ke-sú); b → v, c y qu → k, ll → j. No hay pares mínimos seguros con v o con k: son palabras para contrastar con el castellano.",
+      "letters": ["v"],
+      "note": "La v del guaraní no es la b ni la v del castellano: el labio de abajo roza los dientes, sin fuerza, como en yvyra y túva. Vaka y kavaju vienen del castellano y se escriben a la guaraní, con v donde «caballo» lleva b; como no llevan tilde, el acento va al final: va-ká, ka-va-jú. No hay pares mínimos seguros con v: son palabras para contrastar.",
       "pairs": [
         ["vaka", "vaca", "kavaju", "caballo"],
-        ["yvyra", "árbol", "kesu", "queso"]
+        ["yvyra", "árbol", "túva", "padre"]
       ]
     },
     "words": [

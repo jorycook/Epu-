@@ -1,0 +1,9 @@
+{
+ "about": "Which clips the synthetic voice must not say (tools/make-tts.py reads this; the measurements are in sound/VOICE.md). The rows named here are not synthesised and are left out of the manifest the tool writes next to its WAVs, so tools/make-sound.mjs registers no clip for them and the screens keep their written stand-in there. 'contrasts': the two words of a sound pair (keys …s<n>a and …s<n>b of «Sonido y letra», p<n>.0 and p<n>.1 of Hablar) when the only thing that sets them apart is this: 'nasal' (a tilde on a vowel), 'puso', 'y-i', 'y-u', 'stress'. 'keys': clip keys or patterns (a1u01d2.s*). 'texts': a text that is never said, in any place. A word that is silent as half of a pair is still said where it is a word of a scene. Delete an entry once a native speaker has heard the clips and found them right.",
+ "contrasts": ["nasal"],
+ "why": {
+  "nasal": "The voice says ã ẽ ĩ õ ũ ỹ differently from a e i o u y (the vowel's spectrum is apart from its oral twin's in every take of 21 pairs out of 22), but what the pictures show is a higher pitch and brighter upper formants, not a nasal murmur or a weakened first formant, and neither recogniser ever hears the ã of pytã or térã as nasal (pyta/pytã and téra/térã come back as one word). A pair whose point is «el aire sale también por la nariz» would teach the learner to listen for the wrong thing."
+ },
+ "keys": [],
+ "texts": []
+}

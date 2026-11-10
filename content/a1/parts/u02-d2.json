@@ -235,7 +235,7 @@
     "sound": {
       "focus": "La r, siempre suave",
       "letters": ["r", "rr"],
-      "note": "La r guaraní es siempre la r suave de «caro», también al principio de la palabra: ru, réra, roju, reho. El hispanohablante tiende a decir «rroju»: no. La rr fuerte solo aparece en préstamos del castellano, como karréta y vúrro. No hay pares mínimos r/rr en palabras guaraníes: comparamos palabras.",
+      "note": "La r guaraní es siempre la r suave de «caro», también al principio de la palabra: ru, réra, roju, nunca «rroju». La rr fuerte solo aparece en préstamos del castellano, como karréta y vúrro. No hay pares mínimos r/rr en palabras guaraníes: comparamos palabras.",
       "pairs": [
         ["ru", "padre", "vúrro", "burro"],
         ["nde réra", "tu nombre", "karréta", "carreta"],

@@ -233,13 +233,13 @@
     "es": "La fiesta de San Juan del barrio",
     "intro": "Es la noche de San Juan en el barrio: hay fuego, chipa y música. Ana te presenta a su gente: quién es cada uno y qué hace. Tocá cada palabra.",
     "sound": {
-      "focus": "La r suave y la rr",
-      "letters": ["r", "rr"],
-      "note": "Ya conocés la r de la unidad 2: hoy vuelve en las palabras del día. La r guaraní es siempre la suave de «caro»: al principio de la palabra, como en ru y réra, y entre vocales, como en irũ, mitãrusu y kuñakarai. El castellano empieza «rosa» con una rr fuerte; el guaraní no tiene esa r inicial. La rr fuerte solo aparece en préstamos del castellano, como vúrro, karréta y arro. No hay pares mínimos: compará la r y la rr en estas palabras.",
+      "focus": "La ñ, sin ~ al lado: kuña, ñemuhára",
+      "letters": ["ñ"],
+      "note": "La ñ suena como en castellano, y en guaraní también empieza muchas palabras: ñemuhára, ñande, ñu. La vocal que la toca ya suena nasal por ella, y por eso se escribe sin ~: kuña, no «kuñã». No hay pares mínimos seguros: son palabras para contrastar, unas con ~ y otras sin ~.",
       "pairs": [
-        ["mitãrusu", "muchacho, joven", "vúrro", "burro"],
-        ["kuñakarai", "señora", "karréta", "carreta"],
-        ["irũ", "compañero, compañera", "arro", "arroz"]
+        ["kuña", "mujer", "mitã", "niño, niña"],
+        ["ñu", "campo", "irũ", "compañero, compañera"],
+        ["ñande", "nosotros, con vos", "ñe'ẽ", "hablar"]
       ]
     },
     "words": [
@@ -252,7 +252,7 @@
       { "id": "kunakarai", "gn": "kuñakarai", "es": "señora", "parts": [["kuña", "mujer"], ["karai", "señor"]], "note": "Ña Ramona (unidad 1) es una kuñakarai. Sin tilde: el acento cae al final, ka-ra-i." },
       { "id": "cheiru", "gn": "che irũ", "es": "mi compañero, mi compañera", "parts": [["che", "mi"], ["irũ", "compañero, compañera"]], "note": "Un amigo cercano es che angirũ (unidad 1). Che + sustantivo también puede ser una oración: Che mbo'ehára, «soy profesora». El contexto decide." }
     ],
-    "spell": ["pohanohara", "mbaapohara", "nemuhara", "mitarusu"],
+    "spell": ["pohanohara", "mbaapohara", "nemuhara", "mitakuna"],
     "check": {
       "id": "a1u03d3.k1",
       "kind": "choice",

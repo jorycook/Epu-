@@ -13,13 +13,16 @@
 // "licence": "…", "voices": { … } } (tools/make-tts.py writes it). --kind marks every clip of this run; a voice's own
 // kind in voices.json wins. Needs ffmpeg and ffprobe.
 //
-// Each recording is trimmed of its silence (what is quieter than -45 dB at either end, 60 ms of it kept at the start),
-// brought to the same loudness (-16 LUFS integrated, the usual target on a phone, peaks under -1.5 dBTP, by one gain:
-// nothing is compressed), given 80 ms of air before and 150 ms after, and encoded as mono MP3 at 32 kb/s and 24 kHz, the
-// format of Yaoki's clips (every browser plays MP3; Safari on iOS does not decode Opus for Web Audio). A clip the
-// manifest puts together from lines (a dialogue) is the lines in order with a quarter second between them; the test tone
-// of the level exam (c.check) is made here. A row with "same" is the recording of another key, registered under both
-// names. Whatever recording is missing is reported at the end, and a file is written only for a group that has clips.
+// Each recording is mixed down to mono, trimmed of its silence (what is quieter than -45 dB at either end, 60 ms of it
+// kept at the start), brought to the same loudness (-16 LUFS integrated, the usual target on a phone, peaks under
+// -1.5 dBTP, by one gain: nothing is compressed; it is measured on the mono mix, the signal that is encoded), given
+// 80 ms of air before and 150 ms after, and encoded as mono MP3 at 32 kb/s and 24 kHz, the format of Yaoki's clips
+// (every browser plays MP3; Safari on iOS does not decode Opus for Web Audio). A take that is silence all along (under
+// 100 ms left once trimmed) makes no clip: it is reported with the recordings still missing. A clip the manifest puts
+// together from lines (a dialogue) is the lines in order with a quarter second between them; the test tone of the level
+// exam (c.check) is made here, at about the level of the voices (-20 LUFS). A row with "same" is the recording of
+// another key, registered under both names. Whatever recording is missing is reported at the end, and a file is written
+// only for a group that has clips.
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -51,6 +54,7 @@ const PEAK = -1.5;      /* dBTP */
 const HEAD = 80;        /* ms of air before a clip */
 const TAIL = 150;       /* and after it */
 const GAP = 0.25;       /* s between the lines of a dialogue, besides their own air */
+const LEAST = 100;      /* ms a take must leave once trimmed: one that never rises over the trim's threshold leaves 0 to 60 (what the trim keeps before a last blip), no voice */
 const RATE = 24000;
 
 const manifest = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'));
@@ -71,7 +75,11 @@ const voiceCredit = (voice) => { const v = voices[voice] || {}; return { name: v
 const run = (cmd, a) => { const r = spawnSync(cmd, a, { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 }); if (r.error) throw r.error; return r; };
 try { execFileSync('ffmpeg', ['-version'], { stdio: 'ignore' }); execFileSync('ffprobe', ['-version'], { stdio: 'ignore' }); } catch (e) { console.error('ffmpeg and ffprobe are needed'); process.exit(1); }
 const seconds = (f) => parseFloat(run('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', f]).stdout) || 0;
-const TRIM = 'silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.06,areverse,silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.1,areverse';
+/* every pass over a recording starts by mixing it down to mono, in one fixed way (as double, so nothing clips on the
+   way): the loudness is then measured on the very signal that is encoded. A stereo take measured on its two channels
+   came out 3 dB under the target once mixed down, and 6 dB under with the voice on one side only */
+const MONO = 'aformat=sample_fmts=dbl:channel_layouts=mono';
+const TRIM = MONO + ',silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.06,areverse,silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.1,areverse';
 /* one recording → a trimmed, levelled, padded mono WAV at 24 kHz */
 function prepare(src, wav) {
   const probe = run('ffmpeg', ['-hide_banner', '-nostats', '-v', 'info', '-i', src, '-af', `${TRIM},loudnorm=I=${LOUDNESS}:TP=${PEAK}:LRA=11:print_format=json`, '-f', 'null', '-']);
@@ -112,13 +120,22 @@ function join(parts, wav) {
   parts.forEach((p, i) => { at += seconds(p); cues.push(Math.round(at * 1000)); if (i < parts.length - 1) at += GAP; });
   return cues;
 }
-/* the level exam's test tone: three soft notes going up, so the learner sets the volume before the listening part */
+/* the level exam's test tone: three soft notes going up, so the learner sets the volume before the listening part. The
+   joined notes are measured and brought to TONE by one gain, about the level of the voices: a tone much quieter than
+   the speech (it was 18 dB under it) has the learner turn the volume up too far */
+const TONE = -20;       /* LUFS, integrated: a little under the speech's -16, since a pure tone sounds harder at the same loudness */
 function tone(wav) {
   const notes = [523.25, 659.25, 783.99];
   const a = [];
   notes.forEach((f) => { a.push('-f', 'lavfi', '-i', `sine=frequency=${f}:duration=0.32:sample_rate=${RATE}`); });
   const chain = notes.map((f, i) => `[${i}:a]afade=t=in:d=0.02,afade=t=out:st=0.24:d=0.08,volume=0.35,apad=pad_dur=${i < notes.length - 1 ? 0.12 : 0.4}[a${i}]`).join(';');
-  const r = run('ffmpeg', ['-v', 'error', '-y', ...a, '-filter_complex', `${chain};[a0][a1][a2]concat=n=3:v=0:a=1[out]`, '-map', '[out]', '-ac', '1', '-c:a', 'pcm_s16le', wav]);
+  const joined = `${chain};[a0][a1][a2]concat=n=3:v=0:a=1`;
+  const probe = run('ffmpeg', ['-hide_banner', '-nostats', '-v', 'info', ...a, '-filter_complex', `${joined},loudnorm=I=${TONE}:TP=${PEAK}:LRA=11:print_format=json[out]`, '-map', '[out]', '-f', 'null', '-']);
+  const m = /\{[^{}]*"input_i"[^{}]*\}/.exec(probe.stderr || '');
+  const meas = m ? JSON.parse(m[0]) : {};
+  let gain = isFinite(parseFloat(meas.input_i)) ? TONE - parseFloat(meas.input_i) : 0;
+  if (isFinite(parseFloat(meas.input_tp))) gain = Math.min(gain, PEAK - parseFloat(meas.input_tp));   /* never past the peak ceiling */
+  const r = run('ffmpeg', ['-v', 'error', '-y', ...a, '-filter_complex', `${joined},volume=${gain.toFixed(2)}dB[out]`, '-map', '[out]', '-ac', '1', '-c:a', 'pcm_s16le', wav]);
   if (r.status !== 0) throw new Error('ffmpeg could not make the tone');
 }
 function mp3(wav, out) {
@@ -137,6 +154,7 @@ for (const f of fs.readdirSync(FOLDER)) {
 }
 const wanted = (r) => !ONLY || ONLY.has(r.key);
 const missing = [];
+const silent = [];     /* the recordings that hold nothing but silence: counted with the missing ones, never made into a clip */
 const made = {};       /* key → { ms, kind, voice, b, cues? } */
 const wavs = {};       /* key → the prepared WAV (parts of a dialogue are needed again) */
 const TMP = fs.mkdtempSync(path.join(os.tmpdir(), 'epua-sound-'));
@@ -157,6 +175,14 @@ for (const r of rows) {
   if (DRY) { console.log(`  ${String(n).padStart(4)}  ${r.key}  [${r.voice}, ${kindOf(r.voice)}]  ${path.basename(have[r.key])}`); continue; }
   try {
     const p = prepare(have[r.key], tmp(r.key, 'wav'));
+    const left = Math.max(0, Math.round(p.s * 1000) - HEAD - TAIL);   /* what the trim left of the take, without the air put round it */
+    if (left < LEAST) {
+      /* nothing but silence (it would be a clip of air alone): not made, and reported with the recordings still missing */
+      console.log(`  x ${r.key}: ${path.basename(have[r.key])} is silent, ${left} ms left after trimming: no clip made`);
+      silent.push(r);
+      missing.push(r);
+      continue;
+    }
     if (p.s < 0.35) console.log(`  ! ${r.key}: only ${(p.s * 1000).toFixed(0)} ms after trimming: is ${path.basename(have[r.key])} silent?`);
     wavs[r.key] = tmp(r.key, 'wav');
     made[r.key] = Object.assign({ kind: kindOf(r.voice), voice: r.voice }, mp3(wavs[r.key], tmp(r.key, 'mp3')));
@@ -240,10 +266,11 @@ const count = Object.keys(made).length;
 const outName = path.relative(ROOT, OUT).startsWith('..') ? OUT : path.relative(ROOT, OUT);
 console.log(`\n${DRY ? 'would make' : 'made'} ${DRY ? n : count} clips from ${FOLDER}${written.length ? '; written to ' + outName + '/: ' + written.join(', ') : ''}${ONLY ? ' (--only: the files hold these clips alone)' : ''}`);
 if (incomplete.length) console.log(`${incomplete.length} clip${incomplete.length === 1 ? '' : 's'} not put together, lines missing: ` + incomplete.map((x) => `${x.row.key} (${x.lacking.join(', ')})`).join('; '));
+if (silent.length) console.log(`${silent.length} recording${silent.length === 1 ? ' is' : 's are'} silent (under ${LEAST} ms left after trimming) and made no clip: ` + silent.map((r) => `${r.key} (${path.basename(have[r.key])})`).join(', '));
 if (missing.length) {
   const by = {};
   missing.forEach((r) => { by[r.voice] = (by[r.voice] || 0) + 1; });
-  console.log(`${missing.length} of the manifest's ${rows.filter((r) => !r.same && !r.parts && !r.tone && wanted(r)).length} recordings still missing (${Object.entries(by).map(([v, c]) => `${v} ${c}`).join(', ')}):`);
-  missing.slice(0, 40).forEach((r) => console.log(`  - ${r.key}  [${r.voice}]  ${r.text}  (${r.where})`));
+  console.log(`${missing.length} of the manifest's ${rows.filter((r) => !r.same && !r.parts && !r.tone && wanted(r)).length} recordings still missing (${Object.entries(by).map(([v, c]) => `${v} ${c}`).join(', ')}${silent.length ? `; ${silent.length} of them recorded but silent` : ''}):`);
+  missing.slice(0, 40).forEach((r) => console.log(`  - ${r.key}  [${r.voice}]  ${r.text}  (${r.where})${silent.includes(r) ? '  — the take is silent' : ''}`));
   if (missing.length > 40) console.log(`  … and ${missing.length - 40} more (see the manifest's order column)`);
 } else if (!ONLY) console.log('every recording of the manifest is in: nothing is missing');

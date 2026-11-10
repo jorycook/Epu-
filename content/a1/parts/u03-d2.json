@@ -232,20 +232,20 @@
     "es": "Un domingo en casa de Ana",
     "intro": "Es domingo. Ana cuenta qué hace y qué le pasa en su casa, de la mañana a la noche. Tocá cada palabra.",
     "sound": {
-      "focus": "La j y la h",
-      "letters": ["j", "h"],
-      "note": "Ya conocés estas dos letras de la unidad 2: hoy vuelven en las palabras del día. La j suena como la y de «yo» en boca de un paraguayo, o la j inglesa de «John»: nunca la jota castellana. La h siempre suena: es un soplo, como la jota suave paraguaya. Ajahu y akyhyje llevan las dos. En jasy y hasy solo cambia la primera letra; los otros pares son palabras para comparar.",
+      "focus": "Sin marca, el acento va al final: ajahu, akyhyje",
+      "letters": ["u", "e", "ó", "á"],
+      "note": "Una palabra sin ninguna marca, ni tilde ni ~, lleva el acento en la última vocal: la u de ajahu, la e de akyhyje. Es al revés del castellano, que pondría el acento antes: a-JA-hu. Cuando una palabra lleva tilde, el acento va ahí, como en óga y ko'ág̃a: no son pares mínimos, cada par trae una palabra sin tilde y otra con tilde.",
       "pairs": [
-        ["jasy", "luna", "hasy", "le duele, está enfermo"],
-        ["ajeroky", "bailo", "apurahéi", "canto"],
-        ["ajahu", "me baño", "aha", "voy"]
+        ["ake", "duermo", "óga", "casa"],
+        ["ajahu", "me baño", "ko'ág̃a", "ahora"],
+        ["akyhyje", "tengo miedo", "nahániri", "no"]
       ]
     },
     "words": [
       { "id": "apua", "gn": "apu'ã", "es": "me levanto", "parts": [["a-", "yo"], ["pu'ã", "levantarse"]], "note": "Epu'ã, «levantate», es el nombre de la app." },
-      { "id": "ajahu", "gn": "ajahu", "es": "me baño", "parts": [["a-", "yo"], ["jahu", "bañarse"]], "note": "Lleva las dos letras de hoy: la j, como la y de «yo» en boca de un paraguayo, y la h, un soplo que siempre suena." },
+      { "id": "ajahu", "gn": "ajahu", "es": "me baño", "parts": [["a-", "yo"], ["jahu", "bañarse"]], "note": "La j suena como la y de «yo» en boca de un paraguayo, y la h es un soplo que siempre suena. Va sin tilde: el acento cae en la u, a-ja-HU." },
       { "id": "avya", "gn": "avy'a", "es": "estoy contento, contenta", "parts": [["a-", "yo"], ["vy'a", "alegrarse; alegría"]], "note": "Un sentimiento que se conjuga como acción. Vy'a solo es «la alegría»." },
-      { "id": "akyhyje", "gn": "akyhyje", "es": "tengo miedo", "parts": [["a-", "yo"], ["kyhyje", "tener miedo; miedo"]], "note": "Otro sentimiento que va como acción, igual que avy'a: akyhyje, no chekyhyje. Tiene h y j: a-ky-hy-je." },
+      { "id": "akyhyje", "gn": "akyhyje", "es": "tengo miedo", "parts": [["a-", "yo"], ["kyhyje", "tener miedo; miedo"]], "note": "Otro sentimiento que va como acción, igual que avy'a: akyhyje, no chekyhyje. Tiene h y j, y va sin tilde: a-ky-hy-JE." },
       { "id": "chemandua", "gn": "chemandu'a", "es": "me acuerdo", "parts": [["che-", "yo: me pasa"], ["mandu'a", "acordarse; recuerdo"]], "note": "Un estado: va con che-, pegado, y no con a-. Él o ella: imandu'a." },
       { "id": "aime", "gn": "aime", "es": "estoy (en un lugar)", "note": "Aime ógape, «estoy en casa». Con los estados de ayer no va: «estoy cansada» es chekane'õ, no aime kane'õ. Con porã sí se dice: Aime porãiterei, «estoy muy bien»." },
       { "id": "koaga", "gn": "ko'ág̃a", "es": "ahora", "note": "Ko'ág̃a amba'apo: ahora trabajo. Se escribe con puso, con tilde en la á y con g̃, la g con nariz. También se ve ko'ágã, con la ~ en la a." },
@@ -256,11 +256,11 @@
       "id": "a1u03d2.k1",
       "kind": "choice",
       "area": "vocab",
-      "label": "Cómo se escribe",
-      "q": "Le contás a Luis: «Es domingo y _me baño_ tarde.» ¿Cómo se escribe en guaraní?",
-      "options": ["ayahu", "ajaju", "ajahu", "ajau"],
+      "label": "Cuál está bien escrita",
+      "q": "Ana anota cuatro palabras de su domingo. Solo una está _bien escrita_. ¿Cuál?",
+      "options": ["akyhyjé", "ko'ag̃a", "ajahu", "aké"],
       "answer": 3,
-      "explain": "Me baño es ajahu: a-, «yo», y la raíz jahu, con j y con h. El sonido de la y de «yo» en boca de un paraguayo se escribe j: ayahu lo escribe con y, que en guaraní es una vocal, la sexta. Ajaju cambia la h por otra j. Ajau se come la h, que nunca es muda."
+      "explain": "Ajahu está bien: va sin tilde porque el acento cae en la última vocal, la u, y en guaraní eso no se marca. Por lo mismo sobra la tilde de akyhyjé y de aké, que es la costumbre del castellano: se escriben akyhyje y ake. A ko'ag̃a, en cambio, le falta la suya: el acento va antes del final, en la primera a, y ahí sí se escribe, ko'ág̃a."
     }
   },
   "skill": {

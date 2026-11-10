@@ -233,14 +233,13 @@
     "es": "Después del partido",
     "intro": "Termina el partido en la cancha del barrio y todos dicen cómo están. Tocá cada palabra.",
     "sound": {
-      "focus": "mb, nd, ng, nt: una sola letra",
-      "letters": ["mb", "nd", "ng", "nt"],
-      "note": "mb, nd, ng y nt son letras del alfabeto y cada una suena en una sola sílaba. mb y nd van también al principio de la palabra, como en mba'e y nde; ng y nt casi siempre van adentro, como en angirũ y mante. Empezá con un zumbido, mmm o nnn, y soltalo en la b o la d sin meter una vocal antes: nde, no «ende». Son parientes de m y n: ñande róga, pero ñane retã. No hay pares mínimos seguros: compará estas palabras.",
+      "focus": "La ch: che, chepochy",
+      "letters": ["ch"],
+      "note": "La ch suena más bien como «sh», aunque también vas a oír la ch castellana. Es una sola letra, y hoy abre casi todas las palabras: che-, «yo», como en chepochy y chero'y. No hay pares mínimos seguros: cada par trae una palabra sola y la misma con che-.",
       "pairs": [
-        ["mba'e", "cosa, qué", "mitã", "niño"],
-        ["ñande róga", "nuestra casa", "ñane retã", "nuestro país"],
-        ["tembi'u", "comida", "temimbo'e", "alumno"],
-        ["angirũ", "amigo, amiga", "mante", "solamente"]
+        ["pochy", "enojo", "chepochy", "estoy enojado, enojada"],
+        ["ro'y", "frío", "chero'y", "tengo frío"],
+        ["y'uhéi", "sed", "chey'uhéi", "tengo sed"]
       ]
     },
     "words": [
@@ -249,7 +248,7 @@
       { "id": "yuhei", "gn": "chey'uhéi", "es": "tengo sed", "parts": [["che-", "yo"], ["y'uhéi", "sed"]], "note": "Se escribe con puso entre la y y la u, y con tilde en la e: y'uhéi." },
       { "id": "roy", "gn": "chero'y", "es": "tengo frío", "parts": [["che-", "yo"], ["ro'y", "frío"]], "note": "Sin che-, ro'y es «hace frío»: Ajépa ro'y, «qué frío»." },
       { "id": "haku", "gn": "haku", "es": "hace calor; está caliente", "note": "Habla del día o de una cosa, por eso va sin che-. «Tengo calor» es otra palabra: chembyry'ái." },
-      { "id": "pochy", "gn": "chepochy", "es": "estoy enojado, enojada", "parts": [["che-", "yo"], ["pochy", "enojo"]], "note": "A vos: ndepochy. Él o ella: ipochy." },
+      { "id": "pochy", "gn": "chepochy", "es": "estoy enojado, enojada", "parts": [["che-", "yo"], ["pochy", "enojo"]], "note": "A vos: ndepochy. Él o ella: ipochy. Lleva dos veces la ch: che-po-chy." },
       { "id": "kaigue", "gn": "chekaigue", "es": "estoy desganado, desganada", "parts": [["che-", "yo"], ["kaigue", "desgano"]], "note": "Muy paraguayo: en castellano también se dice «ando kaigue»." },
       { "id": "akarasy", "gn": "cheakãrasy", "es": "me duele la cabeza", "parts": [["che-", "yo"], ["akã", "cabeza"], ["rasy", "dolor, enfermo"]], "note": "Rasy es la forma con che-: hasy es «le duele, está enfermo»." }
     ],
@@ -260,9 +259,9 @@
       "area": "vocab",
       "label": "Cómo se escribe",
       "q": "Después del partido, Juan dice: «_Tengo sed_.» ¿Cómo se escribe en guaraní?",
-      "options": ["chey'uhẽi", "chey'uhéi", "chei'uhéi", "cheyu'héi"],
+      "options": ["chey'uhẽi", "chey'uhéi", "chei'uhéi", "shey'uhéi"],
       "answer": 2,
-      "explain": "Se escribe chey'uhéi: el puso corta la voz entre la y y la u, y la tilde va en la é porque el acento no cae en la última vocal. Chey'uhẽi cambia la tilde por una ~, y la e de y'uhéi no es nasal. Chei'uhéi cambia la y por i, otra vocal. Cheyu'héi pone el puso antes de la h, y el puso solo va entre dos vocales."
+      "explain": "Se escribe chey'uhéi: con ch al principio, con el puso que corta la voz entre la y y la u, y con la tilde en la é, porque el acento no cae en la última vocal. Shey'uhéi escribe el primer sonido con sh, y en guaraní se escribe con la ch. Chey'uhẽi cambia la tilde por una ~, y la e de y'uhéi no es nasal. Chei'uhéi cambia la y por i, otra vocal."
     }
   },
   "skill": {

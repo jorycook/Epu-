@@ -234,12 +234,12 @@
     "intro": "Un mapa del Paraguay y tres cosas muy paraguayas. Casi todas son agudas y van sin tilde en guaraní; el castellano les pone la suya. Solo Paraguái lleva tilde en guaraní y no en castellano. Tocá cada una.",
     "sound": {
       "focus": "La tilde nasal (~) también es tilde",
-      "letters": ["ã", "ẽ", "ĩ", "õ", "ũ", "ỹ"],
-      "note": "Una vocal con ~ nunca lleva tilde, ni cuando es la tónica: ahí la ~ marca también el acento, como en mitã, kane'õ y peteĩ. Una palabra puede llevar las dos marcas, en vocales distintas: térã, «o». Escuchá los pares: cambia la ~ y cambia la palabra, y en porã y póra cambia también el acento.",
+      "letters": ["ã", "õ", "ĩ"],
+      "note": "Una vocal con ~ nunca lleva tilde, ni cuando es la tónica: ahí la ~ marca también el acento, como en mitã, kane'õ y peteĩ. Con un sufijo que no se lleva el acento, la vocal oral recibe la tilde (ikatúpa) y la nasal queda como estaba (oĩpa, Tovatĩme). No son pares mínimos: cada par trae una palabra sola y la misma con sufijo.",
       "pairs": [
-        ["téra", "nombre", "térã", "o"],
-        ["porã", "lindo, bien", "póra", "fantasma"],
-        ["pytu", "aliento", "pytũ", "oscuro"]
+        ["ikatu", "se puede", "ikatúpa", "¿se puede?"],
+        ["oĩ", "hay", "oĩpa", "¿hay?"],
+        ["Tovatĩ", "Tobatí", "Tovatĩme", "en Tobatí"]
       ]
     },
     "words": [

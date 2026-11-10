@@ -236,7 +236,7 @@
     "sound": {
       "focus": "La g̃: una g con nariz",
       "letters": ["g̃"],
-      "note": "La g̃ es la g suave de «agua» con el aire saliendo también por la nariz. Está en pocas palabras, pero muy usadas: og̃uahẽ, ko'ág̃a, ag̃aite, Tereg̃uahẽ. Los diarios escriben la g sin la ~ (oguahẽ) o pasan la ~ a la vocal (ko'ágã). Son las mismas palabras; acá las escribimos con g̃. No hay pares mínimos: compará la g sin nariz con la g̃ con nariz.",
+      "note": "La g̃ es la g suave de «agua» con el aire saliendo también por la nariz: og̃uahẽ, ko'ág̃a, ag̃aite. Los diarios escriben la g sin la ~ (oguahẽ) o pasan la ~ a la vocal (ko'ágã): son las mismas palabras, y acá las escribimos con g̃. No hay pares mínimos: compará la g sin nariz con la g̃ con nariz.",
       "pairs": [
         ["aguyje", "gracias", "ag̃aite", "enseguida"],
         ["jagua", "perro", "og̃uahẽ", "llega"],

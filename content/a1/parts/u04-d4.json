@@ -234,14 +234,14 @@
     "es": "¿Quién es? En el cumpleaños",
     "intro": "En el cumpleaños de la abuela hay chipa, sopa paraguaya y gente que no conocés. Tocá cada palabra: con ellas preguntás quién es quién y qué significa lo que oís.",
     "sound": {
-      "focus": "Los dígrafos mb, nd, ng, nt",
-      "letters": ["mb", "nd", "ng", "nt"],
-      "note": "mb, nd, ng y nt son una sola letra y van en una sola sílaba: empezá con un zumbido, mmm o nnn, y soltalo en la b, la d, la g o la t, sin meter una vocal delante (no «emba'e») y sin perder la nasal (no «ba'e»): mba'e, nde, angirũ, peteĩnte. Nt aparece sobre todo en -nte, «solo, nomás»: peteĩnte, «uno solo». No hay pares mínimos seguros: cada par pone la letra doble al lado de la m o la n sola, o muestra dónde aparece.",
+      "focus": "La u siempre suena: kuimba'e, -gui",
+      "letters": ["ku", "gu"],
+      "note": "En castellano la u de «que», «qui», «gue» y «gui» no suena; en guaraní la u suena siempre. Kuimba'e empieza como «cuidar», y -gui y -nguéra se dicen como con diéresis: «güi», «ngüéra». No hay pares mínimos seguros: son palabras para contrastar, y la segunda de cada par lleva ku o gu antes de otra vocal.",
       "pairs": [
-        ["mba'e", "cosa; ¿qué?", "máva", "quién"],
-        ["nde sy", "tu mamá", "ne memby", "tu hijo, tu hija"],
-        ["mitã", "niño, niña", "mitãnguéra", "los niños"],
-        ["peteĩ", "uno", "peteĩnte", "uno solo"]
+        ["kuña", "mujer", "kuimba'e", "hombre"],
+        ["ake", "duermo", "kokue", "chacra"],
+        ["óga", "casa", "jagua", "perro"],
+        ["ógape", "en casa", "ógagui", "de la casa"]
       ]
     },
     "words": [
@@ -251,7 +251,7 @@
       { "id": "mbaerepa", "gn": "Mba'érepa?", "es": "¿Por qué?", "parts": [["mba'e", "qué"], ["-re", "por"], ["-pa", "pregunta"]], "note": "Por ahora, solo para reconocerla cuando la oigas." },
       { "id": "kariay", "gn": "karia'y", "es": "muchacho, joven", "note": "Lleva puso antes de la y final, que es la sexta vocal: karia'y." },
       { "id": "mitakuna", "gn": "mitãkuña", "es": "niña", "parts": [["mitã", "niño, niña"], ["kuña", "mujer"]], "note": "La del día 2. Plural: mitãkuñanguéra." },
-      { "id": "kuimbae", "gn": "kuimba'e", "es": "hombre", "note": "Mb es una sola letra, en una sola sílaba: kuimba'e. Lleva puso antes de la e." },
+      { "id": "kuimbae", "gn": "kuimba'e", "es": "hombre", "note": "La u suena: empieza como «cuidar». Mb es una sola letra, y lleva puso antes de la e: kui-mba-'e." },
       { "id": "angiru", "gn": "angirũ", "es": "amigo, amiga", "note": "Ng en una sola sílaba: a-ngi-rũ. Con nde se dice ne angirũ." }
     ],
     "spell": ["mbaepa", "mavapa", "kuimbae", "angiru"],
@@ -260,10 +260,10 @@
       "kind": "choice",
       "area": "vocab",
       "label": "Cómo se escribe",
-      "q": "Luis pregunta _qué_ significa «mitãkuña»: (   ) he'ise «mitãkuña»? ¿Cómo se escribe?",
-      "options": ["Mbaépa", "Mba'ẽpa", "Mba'épa", "Ba'épa"],
+      "q": "En el cumpleaños hay un _hombre_ que no conocés. ¿Cómo se escribe «hombre» en guaraní?",
+      "options": ["kuimbae", "cuimba'e", "kuimba'e", "küimba'e"],
       "answer": 3,
-      "explain": "«¿Qué?» es Mba'épa: empieza con mb, una sola letra, lleva el puso entre la a y la e, y la tilde va en la é, porque con -pa la e ya no es la última vocal. Mbaépa pierde el puso. Mba'ẽpa pone una ~ en la e, y la e de mba'e es oral: lleva tilde de acento, é. Ba'épa pierde la nasal del principio: la palabra empieza con mb, no con b."
+      "explain": "Hombre es kuimba'e: con k, con la u, que en guaraní siempre suena, y con puso antes de la e. Kuimbae pierde el puso. Cuimba'e usa la c, que sola no es una letra del guaraní: ese sonido se escribe k. Küimba'e le pone la diéresis del castellano: en guaraní la u suena sin ninguna marca, y la ü no es una letra del alfabeto."
     }
   },
   "skill": {
