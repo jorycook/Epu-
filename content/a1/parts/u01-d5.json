@@ -165,10 +165,10 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la fórmula",
-        "q": "(Lucía vuelca sin querer el tereré de doña Ramona.)\nLucía: (   ), ña Ramona.",
+        "q": "(Ana pisa sin querer a Luis.)\nAna: (   ), Luis.",
         "options": ["Aguyje", "Tereg̃uahẽ porãite", "Jajotopáta", "Cheñyrõmi"],
         "answer": 4,
-        "explain": "Lucía volcó el tereré sin querer: pide perdón con Cheñyrõmi. Aguyje da las gracias, Tereg̃uahẽ porãite da la bienvenida y Jajotopáta es para despedirse. Ninguna de esas tres pide perdón."
+        "explain": "Ana pisó a Luis sin querer: pide perdón con Cheñyrõmi. Aguyje da las gracias, Tereg̃uahẽ porãite da la bienvenida y Jajotopáta es para despedirse. Ninguna de esas tres pide perdón."
       },
       {
         "id": "a1u01d5.e3",
@@ -180,7 +180,7 @@
         "after": " aike, ña Ramona?",
         "tiles": ["ikatu", "pa"],
         "bank": [1, 0],
-        "full": "(Lucía llega a la casa de doña Ramona.)\nLucía: {Ikatúpa} aike, ña Ramona?",
+        "full": "(Lucía llega a la casa de doña Ramona.)\nLucía: Ikatúpa aike, ña Ramona?",
         "es": "Lucía: ¿Puedo pasar, doña Ramona?",
         "explain": "ikatu, pa. -pa va al final y no se lleva el acento: queda en la u de ikatu. Como esa u ya no es la última vocal, se escribe: Ikatúpa."
       }
@@ -205,7 +205,7 @@
       { "id": "tereguahe", "gn": "Tereg̃uahẽ porãite", "es": "bienvenido, bienvenida", "parts": [["tere-", "que (vos)"], ["g̃uahẽ", "llegar"], ["porã", "bien"], ["-ite", "muy"]], "note": "A varias personas: Tapeg̃uahẽ porãite. En diarios también se ve Tereguahẽ, sin la ~ de la g. En la app escribimos g̃." },
       { "id": "terere", "gn": "terere", "es": "tereré", "note": "Va sin tilde: en guaraní el acento al final no se marca. En la ronda, decir aguyje («gracias») al devolver la guampa quiere decir «no quiero más»." },
       { "id": "kaay", "gn": "ka'ay", "es": "mate", "parts": [["ka'a", "yerba"], ["y", "agua"]], "note": "Es el mate, que se toma caliente. El frío es el terere." },
-      { "id": "angiru", "gn": "angirũ", "es": "amigo, amiga", "note": "Sirve para amigo y para amiga. La ~ va solo en la ũ del final." },
+      { "id": "angiru", "gn": "angirũ", "es": "amigo, amiga", "note": "Ya la viste el día 2: sirve para amigo y para amiga. La ~ va solo en la ũ del final." },
       { "id": "avanee", "gn": "avañe'ẽ", "es": "guaraní (la lengua)", "parts": [["ava", "gente"], ["ñe'ẽ", "lengua"]], "note": "Es el nombre del guaraní en guaraní." },
       { "id": "cheniromi", "gn": "Cheñyrõmi", "es": "perdón, disculpá", "parts": [["che-", "me"], ["ñyrõ", "perdonar"], ["-mi", "más suave"]] }
     ],

@@ -7,16 +7,16 @@
         "form": "Mávapa …?",
         "gloss": "¿quién?",
         "connect": [
-          { "pos": "Para preguntar por una persona: máva, «quién», con -pa pegado", "rule": "{Mávapa} ha'e?" },
-          { "pos": "Con los demostrativos de ayer: ko, pe, amo", "rule": "{Mávapa} pe karai? · {Mávapa} ko mitã?" },
-          { "pos": "En la charla también se oye con piko. Pegado a la palabra que pregunta se escribe junto: Mávapiko. Con nde lo viste suelto: Nde piko (semana 3)", "rule": "{Mávapiko} pe karai?" },
+          { "pos": "Ya la conocés de la unidad 1. Para preguntar por una persona: máva, «quién», con -pa pegado", "rule": "{Mávapa} ha'e?" },
+          { "pos": "Con los demostrativos del día 3: ko, pe, amo", "rule": "{Mávapa} pe karai? · {Mávapa} ko mitã?" },
+          { "pos": "En la charla también se oye con piko. Pegado a la palabra que pregunta se escribe junto: Mávapiko. Con nde lo viste suelto, Nde piko, y también se escribe pegado: Ndépiko (unidad 3)", "rule": "{Mávapiko} pe karai?" },
           { "pos": "Se responde con la persona, con o sin ha'e", "rule": "{Che ru}. · Ha'e {che ru}." }
         ],
         "examples": [
           {
-            "gn": "{Mávapa} ha'e?",
-            "es": "¿Quién es?",
-            "parts": [["máva", "quién"], ["-pa", "pregunta"], ["ha'e", "él, ella"]]
+            "gn": "Rosa: {Mávapa} ha'e?\nJuan: Ha'e che rembireko.",
+            "es": "Rosa: ¿Quién es?\nJuan: Es mi esposa.",
+            "parts": [["máva", "quién"], ["-pa", "pregunta"], ["ha'e", "él, ella"], ["che rembireko", "mi esposa"]]
           },
           {
             "gn": "{Mávapa} pe karai?",
@@ -29,9 +29,9 @@
             "parts": [["ko", "este"], ["mitã", "chico, niño"], ["che memby", "mi hijo (dice la mamá)"]]
           },
           {
-            "gn": "Juan: {Mávapa} amo kuñataĩ?\nLuis: Ha'e che rajy.",
-            "es": "Juan: ¿Quién es aquella chica?\nLuis: Es mi hija.",
-            "parts": [["amo", "aquella"], ["kuñataĩ", "chica, señorita"], ["ha'e", "ella"], ["che rajy", "mi hija (dice el papá)"]]
+            "gn": "Rosa: {Mávapa} amo kuñataĩ?\nJuan: Ha'e che rajy.",
+            "es": "Rosa: ¿Quién es aquella chica?\nJuan: Es mi hija.",
+            "parts": [["amo", "aquella"], ["kuñataĩ", "chica, muchacha"], ["ha'e", "ella"], ["che rajy", "mi hija (dice el papá)"]]
           }
         ],
         "watch": {
@@ -45,7 +45,7 @@
         "form": "Mba'épa …?",
         "gloss": "¿qué?",
         "connect": [
-          { "pos": "Para preguntar por una cosa o por una acción", "rule": "{Mba'épa} reipota? · {Mba'épa} rejapo?" },
+          { "pos": "También la conocés de la unidad 1. Para preguntar por una cosa o por una acción", "rule": "{Mba'épa} reipota? · {Mba'épa} rejapo?" },
           { "pos": "La pregunta del alumno: «¿qué significa?»", "rule": "{Mba'épa} he'ise?" },
           { "pos": "Para preguntar qué hay", "rule": "{Mba'épa} oĩ?" },
           { "pos": "De mba'e salen una palabra que ya usás, mba'éichapa, «¿cómo?», y otra para reconocer, mba'érepa, «¿por qué?»", "rule": "mba'e + icha + pa → {Mba'éichapa} · mba'e + re + pa → {Mba'érepa}" }
@@ -57,14 +57,14 @@
             "parts": [["mba'e", "qué"], ["-pa", "pregunta"], ["he'ise", "significa"], ["jarýi", "abuela"]]
           },
           {
-            "gn": "{Mba'épa} reipota?",
-            "es": "¿Qué querés?",
-            "parts": [["mba'épa", "¿qué?"], ["reipota", "querés"]]
+            "gn": "{Mba'épa} jajapo ko ka'aru?",
+            "es": "¿Qué hacemos esta tarde?",
+            "parts": [["mba'épa", "¿qué?"], ["ja-", "nosotros (con vos)"], ["japo", "hacer"], ["ko ka'aru", "esta tarde"]]
           },
           {
-            "gn": "{Mba'épa} rejapo, Luis?",
-            "es": "¿Qué hacés, Luis?",
-            "parts": [["mba'épa", "¿qué?"], ["re-", "vos"], ["japo", "hacer"]]
+            "gn": "Luis: {Mba'épa} rejapo ko pyhare?\nAna: Aha che jarýi rógape.",
+            "es": "Luis: ¿Qué hacés esta noche?\nAna: Voy a la casa de mi abuela.",
+            "parts": [["mba'épa", "¿qué?"], ["re-", "vos"], ["japo", "hacer"], ["ko pyhare", "esta noche"], ["aha", "voy"], ["che jarýi rógape", "a la casa de mi abuela"]]
           },
           {
             "gn": "{Mba'épa} oĩ korapýpe?",
@@ -84,7 +84,7 @@
       "forms": [
         { "form": "Mávapa", "tag": "¿quién? · una persona", "mark": "dot", "gn": "{Mávapa} pe karai?", "es": "¿Quién es ese señor?" },
         { "form": "Mba'épa", "tag": "¿qué? · una cosa o una acción", "mark": "dot", "gn": "{Mba'épa} reipota?", "es": "¿Qué querés?" },
-        { "form": "Moõpa", "tag": "¿dónde? · un lugar (semana 1)", "mark": "dot", "gn": "{Moõpa} nde róga?", "es": "¿Dónde queda tu casa?" }
+        { "form": "Moõpa", "tag": "¿dónde? · un lugar (unidad 1)", "mark": "dot", "gn": "{Moõpa} nde róga?", "es": "¿Dónde queda tu casa?" }
       ],
       "check": {
         "id": "a1u04d4.c1",
@@ -220,19 +220,19 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "Vendedor: ",
-        "after": " reipota?",
-        "tiles": ["mba'e", "pa"],
-        "bank": [1, 0],
-        "full": "Vendedor: Mba'épa reipota?",
-        "es": "Vendedor: ¿Qué querés?",
-        "explain": "mba'e («qué») + -pa (pregunta) = Mba'épa. -pa no se lleva el acento: queda en la e, que ya no es la última vocal, y se escribe la tilde. Mba'épa reipota? es la pregunta del vendedor: «¿qué querés?»."
+        "before": "(Juan le pregunta a Rosa por el papá de ella.)\nJuan: ",
+        "after": " héra nde ru?",
+        "tiles": ["mba'e", "icha", "pa"],
+        "bank": [2, 0, 1],
+        "full": "(Juan le pregunta a Rosa por el papá de ella.)\nJuan: Mba'éichapa héra nde ru?",
+        "es": "Juan: ¿Cómo se llama tu papá?",
+        "explain": "mba'e («qué») + -icha («como») + -pa (pregunta) = Mba'éichapa, «¿cómo?». Ni -icha ni -pa se llevan el acento: queda en la e de mba'e, que ya no es la última vocal, y se escribe é. Mba'éichapa héra nde ru? es «¿cómo se llama tu papá?»."
       }
     ]
   },
   "words": {
     "es": "¿Quién es? En el cumpleaños",
-    "intro": "En el cumpleaños de la abuela hay chipa, sopa paraguaya y gente que no conocés. Tocá cada palabra: con ellas preguntás quién es quién y qué significa lo que oís.",
+    "intro": "En el cumpleaños de la abuela hay chipá, sopa paraguaya y gente que no conocés. Tocá cada palabra: con ellas preguntás quién es quién y qué significa lo que oís.",
     "sound": {
       "focus": "La u siempre suena: kuimba'e, -gui",
       "letters": ["ku", "gu"],
@@ -245,14 +245,14 @@
       ]
     },
     "words": [
-      { "id": "mavapa", "gn": "Mávapa?", "es": "¿Quién?", "parts": [["máva", "quién"], ["-pa", "pregunta"]], "note": "Tilde en la primera a. En la charla también se oye Mávapiko?, con piko pegado a la palabra que pregunta; con nde va suelto: Nde piko (semana 3)." },
+      { "id": "mavapa", "gn": "Mávapa?", "es": "¿Quién?", "parts": [["máva", "quién"], ["-pa", "pregunta"]], "note": "Tilde en la primera a. En la charla también se oye Mávapiko?, con piko pegado a la palabra que pregunta. Con nde lo viste suelto, Nde piko, y también se escribe pegado: Ndépiko (unidad 3)." },
       { "id": "mbaepa", "gn": "Mba'épa?", "es": "¿Qué?", "parts": [["mba'e", "qué; cosa"], ["-pa", "pregunta"]], "note": "Mba'e es aguda; con -pa aparece la tilde en la é. Mb es una sola letra: mba-'e." },
       { "id": "mbaepaheise", "gn": "Mba'épa he'ise?", "es": "¿Qué significa?", "parts": [["mba'épa", "¿qué?"], ["he'ise", "significa"]], "note": "La pregunta del alumno. La palabra va después: Mba'épa he'ise «ramói»?" },
       { "id": "mbaerepa", "gn": "Mba'érepa?", "es": "¿Por qué?", "parts": [["mba'e", "qué"], ["-re", "por"], ["-pa", "pregunta"]], "note": "Por ahora, solo para reconocerla cuando la oigas." },
-      { "id": "kariay", "gn": "karia'y", "es": "muchacho, joven", "note": "Lleva puso antes de la y final, que es la sexta vocal: karia'y." },
-      { "id": "mitakuna", "gn": "mitãkuña", "es": "niña", "parts": [["mitã", "niño, niña"], ["kuña", "mujer"]], "note": "La del día 2. Plural: mitãkuñanguéra." },
-      { "id": "kuimbae", "gn": "kuimba'e", "es": "hombre", "note": "La u suena: empieza como «cuidar». Mb es una sola letra, y lleva puso antes de la e: kui-mba-'e." },
-      { "id": "angiru", "gn": "angirũ", "es": "amigo, amiga", "note": "Ng en una sola sílaba: a-ngi-rũ. Con nde se dice ne angirũ." }
+      { "id": "kariay", "gn": "karia'y", "es": "muchacho, hombre joven", "note": "Lleva puso antes de la y final, que es la sexta vocal: karia'y." },
+      { "id": "mitakuna", "gn": "mitãkuña", "es": "niña, chica", "parts": [["mitã", "niño, niña"], ["kuña", "mujer"]], "note": "La de la unidad 3 y del día 2. Plural: mitãkuñanguéra." },
+      { "id": "kuimbae", "gn": "kuimba'e", "es": "hombre", "note": "La u suena: empieza como «cuidar». Mb es una sola letra, y lleva puso antes de la e: kui-mba-'e. De la unidad 1." },
+      { "id": "angiru", "gn": "angirũ", "es": "amigo, amiga", "note": "Ng en una sola sílaba: a-ngi-rũ. Con nde se dice ne angirũ. De la unidad 1." }
     ],
     "spell": ["mbaepa", "mavapa", "kuimbae", "angiru"],
     "check": {
@@ -271,7 +271,7 @@
     "es": "Un chat con foto",
     "ask": "¿Quién es el señor de la foto?",
     "seconds": 75,
-    "passage": "Rosa: Mba'éichapa, Juan?\nJuan: Iporã. ^Mávapa pe kuñataĩ?^\nRosa: Che memby, héra Sofía.\nJuan: Ha ^pe karai?^\nRosa: ^Che ramói.^\nJuan: Mba'épa he'ise «ramói»?\nRosa: «Abuelo».",
+    "passage": "Rosa: Mba'éichapa, Juan?\nJuan: Iporã. ^Mávapa pe mitãkuña?^\nRosa: Che memby, héra Sofía.\nJuan: Ha ^pe karai?^\nRosa: ^Ndaha'éi che ru, ha'e che ramói.^\nJuan: Mba'épa he'ise «ramói»?\nRosa: «Abuelo».",
     "strategy": "Juan pregunta dos veces por una persona, y la respuesta de Rosa viene justo después de cada pregunta. Al final Juan pregunta qué significa una palabra: esa respuesta también te sirve.",
     "item": {
       "id": "a1u04d4.r1",
@@ -283,12 +283,12 @@
       "short": ["Su papá", "Su abuelo", "Su hijo", "Un amigo"],
       "answer": 2,
       "why": [
-        "Para el papá, Rosa diría che ru, y no lo dice en el chat.",
-        "Juan pregunta Ha pe karai?, «¿y ese señor?», y Rosa responde Che ramói, «mi abuelo». Después se lo traduce: ramói es «abuelo».",
-        "Che memby es Sofía, la kuñataĩ de la foto: la hija de Rosa, no el señor.",
+        "Che ru aparece en el chat, pero negado: Ndaha'éi che ru, «no es mi papá».",
+        "Juan pregunta Ha pe karai?, «¿y ese señor?», y Rosa responde Ndaha'éi che ru, ha'e che ramói: «no es mi papá, es mi abuelo». Después se lo traduce: ramói es «abuelo».",
+        "Che memby es Sofía, la mitãkuña de la foto: la hija de Rosa, no el señor.",
         "Un amigo sería che angirũ, y esa palabra no aparece en el chat."
       ],
-      "explain": "Juan pregunta por el señor con Ha pe karai?, y Rosa contesta Che ramói, «mi abuelo». Cuando Juan pregunta Mba'épa he'ise «ramói»?, Rosa lo traduce: «abuelo»."
+      "explain": "Juan pregunta por el señor con Ha pe karai?, y Rosa contesta Ndaha'éi che ru, ha'e che ramói: «no es mi papá, es mi abuelo». Cuando Juan pregunta Mba'épa he'ise «ramói»?, Rosa lo traduce: «abuelo»."
     }
   }
 }

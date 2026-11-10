@@ -166,14 +166,14 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "(Ana llega a Caacupé, a la casa de su abuela.)\nAna: Aju ",
+        "before": "(Mirta llega a la terminal de Asunción.)\nMirta: Aju ",
         "after": ".",
-        "tiles": ["Itaugua", "gui"],
+        "tiles": ["Itakuruvi", "gui"],
         "bank": [1, 0],
-        "hint": "Itaugua es el lugar y -gui es el sufijo: va después, pegado. Después fijate dónde queda el acento.",
-        "full": "(Ana llega a Caacupé, a la casa de su abuela.)\nAna: Aju Itauguá{gui}.",
-        "es": "Ana: Vengo de Itauguá.",
-        "explain": "Itaugua («Itauguá») + -gui («de») = Itauguágui, «de Itauguá». -gui no se lleva el acento: queda en la a final de Itaugua, que ya no es la última vocal, y se escribe á."
+        "hint": "Itakuruvi es el lugar y -gui es el sufijo: va después, pegado. Después fijate dónde queda el acento.",
+        "full": "(Mirta llega a la terminal de Asunción.)\nMirta: Aju Itakuruví{gui}.",
+        "es": "Mirta: Vengo de Itacurubí.",
+        "explain": "Itakuruvi («Itacurubí») + -gui («de») = Itakuruvígui, «de Itacurubí». -gui no se lleva el acento: queda en la i final de Itakuruvi, que ya no es la última vocal, y se escribe í."
       },
       {
         "id": "a1u02d4.d6",
@@ -181,13 +181,13 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "(Luis llega a la casa de Ana.)\nAna: ",
-        "after": " reju, Luis?",
+        "before": "(Luis y Rosa llegan a la casa de Ana.)\nAna: ",
+        "after": " peju?",
         "tiles": ["moõ", "gui", "pa"],
         "bank": [2, 0, 1],
         "hint": "moõ, «dónde», va primero. -pa cierra la pregunta, como en Mba'éichapa.",
-        "full": "(Luis llega a la casa de Ana.)\nAna: {Moõguipa} reju, Luis?",
-        "es": "Ana: ¿De dónde venís, Luis?",
+        "full": "(Luis y Rosa llegan a la casa de Ana.)\nAna: {Moõguipa} peju?",
+        "es": "Ana: ¿De dónde vienen ustedes?",
         "explain": "moõ («dónde») + -gui («de») + -pa (pregunta) = Moõguipa, «¿de dónde?». -pa va al final, como en Mba'éichapa: moõpagui no existe. Ni -gui ni -pa se llevan el acento: queda en la õ, y la tilde nasal ya lo marca."
       }
     ],
@@ -207,10 +207,10 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la palabra",
-        "q": "(Luis y Rosa llegan. Ana les pregunta de dónde vienen.)\nAna: (   ) peju?",
+        "q": "(Juan sale de su casa. Rosa le pregunta adónde va.)\nRosa: (   ) reho, Juan?",
         "options": ["Moõpa", "Mávapa", "Moõpagui", "Moõguipa"],
-        "answer": 4,
-        "explain": "Ana pregunta «de dónde»: moõ («dónde») + -gui («de») + -pa (pregunta) = Moõguipa. Peju es «ustedes vienen», así que Moõguipa peju? es «¿de dónde vienen?». Moõpa pregunta «dónde» o «adónde», sin el «de»; Mávapa pregunta «quién»; y moõpagui no existe, porque -pa cierra la palabra."
+        "answer": 1,
+        "explain": "Rosa pregunta «adónde»: Moõpa reho? es «¿adónde vas?». Moõguipa pregunta «de dónde», y va con venir: Moõguipa reju? Mávapa pregunta «quién»; y moõpagui no existe, porque -pa cierra la palabra."
       },
       {
         "id": "a1u02d4.e3",
@@ -218,13 +218,13 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "(Rosa quiere saber de dónde viene la mamá de Ana.)\nRosa: ",
-        "after": " ou nde sy?",
-        "tiles": ["moõ", "gui", "pa"],
-        "bank": [1, 2, 0],
-        "full": "(Rosa quiere saber de dónde viene la mamá de Ana.)\nRosa: {Moõguipa} ou nde sy?",
-        "es": "Rosa: ¿De dónde viene tu mamá?",
-        "explain": "moõ («dónde») va primero: es la palabra que pregunta. Después -gui («de»), y al final -pa, que cierra la pregunta, como en Mba'éichapa: Moõguipa, «¿de dónde?». Con ou nde sy, «viene tu mamá», queda «¿de dónde viene tu mamá?»."
+        "before": "(Juan llega de la chacra.)\nJuan: Aju ",
+        "after": ".",
+        "tiles": ["kokue", "gui"],
+        "bank": [1, 0],
+        "full": "(Juan llega de la chacra.)\nJuan: Aju kokuégui.",
+        "es": "Juan: Vengo de la chacra.",
+        "explain": "Kokue («chacra») va primero y -gui («de»), después, pegado: kokuégui, «de la chacra». -gui no se lleva el acento: queda en la e de kokue, que ya no es la última vocal, y se escribe é."
       }
     ]
   },
@@ -268,26 +268,26 @@
   "skill": {
     "kind": "reading",
     "es": "Un chat en la terminal",
-    "ask": "¿De dónde viene Ana?",
+    "ask": "¿Adónde va Rosa?",
     "seconds": 60,
-    "passage": "Rosa: Mba'éichapa, Ana? ^Moõguipa reju?^\nAna: ^Aju Itauguágui.^ Aha Ka'akupépe, che jarýi rógape. Ha nde?\nRosa: Che aju Paraguaýgui. Aha Ñembýpe.\nAna: Jajotopáta, Rosa.",
-    "strategy": "Buscá -gui después del nombre de un lugar: ahí está el «de dónde». -pe dice adónde va. Y fijate quién habla.",
+    "passage": "Rosa: Mba'éichapa, Ana? Moõguipa reju?\nAna: Aju Itauguágui. Aha Ka'akupépe, che jarýi rógape. Ha nde?\nRosa: ^Che aju Paraguaýgui.^ ^Aha Ñembýpe.^\nAna: Jajotopáta, Rosa.",
+    "strategy": "Buscá -pe después del nombre de un lugar: ahí está el «adónde». -gui dice de dónde viene. Y fijate quién habla.",
     "item": {
       "id": "a1u02d4.r1",
       "kind": "choice",
       "area": "reading",
       "label": "Buscar el dato",
-      "q": "¿De dónde viene Ana?",
-      "options": ["De Asunción.", "De Caacupé.", "De Itauguá.", "De Ñemby."],
+      "q": "¿Adónde va Rosa?",
+      "options": ["A Asunción.", "A Caacupé.", "A Itauguá.", "A Ñemby."],
       "short": ["Asunción", "Caacupé", "Itauguá", "Ñemby"],
-      "answer": 3,
+      "answer": 4,
       "why": [
-        "Paraguaýgui, «de Asunción», lo dice Rosa de ella misma: Che aju Paraguaýgui.",
-        "Ka'akupépe lleva -pe: es adónde va Ana, a la casa de su abuela, no de dónde viene.",
-        "Ana responde Aju Itauguágui: viene de Itauguá. El lugar lleva -gui, «de».",
-        "Ñembýpe lleva -pe, y lo dice Rosa: es adónde va ella."
+        "Paraguaýgui lleva -gui: Asunción es de donde viene Rosa, no adónde va.",
+        "A Caacupé va Ana, a la casa de su abuela: Aha Ka'akupépe, che jarýi rógape.",
+        "Itauguágui lleva -gui, y lo dice Ana: es de donde viene ella.",
+        "Rosa dice Aha Ñembýpe: va a Ñemby. El lugar lleva -pe, «a»."
       ],
-      "explain": "A Moõguipa reju? Ana responde Aju Itauguágui: -gui marca de dónde viene, Itauguá. Ka'akupépe y Ñembýpe llevan -pe, adónde va cada una, y Paraguaýgui es de donde viene Rosa."
+      "explain": "Rosa dice Che aju Paraguaýgui. Aha Ñembýpe: -gui marca de dónde viene, Asunción, y -pe, adónde va, Ñemby. Ka'akupépe es adónde va Ana, e Itauguágui, de donde viene."
     }
   }
 }

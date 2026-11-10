@@ -116,14 +116,14 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "Che sy oñe'ẽ ",
-        "after": ".",
-        "tiles": ["mitã", "nguéra", "pe"],
-        "bank": [2, 1, 0],
-        "hint": "Primero el plural, que se lleva el acento, y al final -pe, «a».",
-        "full": "Che sy oñe'ẽ mitã{nguéra}pe.",
-        "es": "Mi mamá les habla a los niños.",
-        "explain": "mitã («niño») + -nguéra (plural tras nasal, porque mitã termina en ã) + -pe («a») = mitãnguérape. -nguéra se lleva el acento, y -pe no lo mueve: la ~ queda en la ã y la tilde en la é. Después de -nguéra va -pe, porque ra es una sílaba oral."
+        "before": "(Ana habla de las casas de su pueblo.)\nAna: Itauguápe ",
+        "after": " iporã.",
+        "tiles": ["óga", "kuéra"],
+        "bank": [1, 0],
+        "hint": "Primero la palabra, óga, y después el plural. -kuéra se lleva el acento: fijate qué pasa con la tilde de óga.",
+        "full": "(Ana habla de las casas de su pueblo.)\nAna: Itauguápe oga{kuéra} iporã.",
+        "es": "Ana: En Itauguá las casas son lindas.",
+        "explain": "óga («casa») + -kuéra (plural, porque ga es una sílaba oral) = ogakuéra, «las casas». -kuéra se lleva el acento, y una palabra lleva una sola tilde: la de óga desaparece. Itauguápe, con -pe, es dónde: en Itauguá."
       },
       {
         "id": "a1u04d6.d6",
@@ -157,10 +157,10 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Ana tiene dos chipá en la mano y se los muestra a Luis.)\nAna: (   ) chipa iporã.",
+        "q": "(Luis tiene un chipá en la mano. Ana, desde la puerta, se lo señala.)\nAna: (   ) chipa iporã.",
         "options": ["Umi", "Ko", "Pe", "Ko'ã"],
-        "answer": 4,
-        "explain": "Son dos chipá y los tiene Ana, la que habla: ko'ã chipa, «estos chipá». Ko'ã es el ko de varios. Umi es para varios pero lejos de quien habla; ko y pe son para uno solo, y pe, además, para algo cerca del que escucha."
+        "answer": 3,
+        "explain": "El chipá es uno solo y lo tiene Luis, el que escucha: pe chipa, «ese chipá». Ko sería para algo que tiene Ana, la que habla; ko'ã y umi son para varios."
       },
       {
         "id": "a1u04d6.e3",
@@ -264,7 +264,7 @@
     "es": "Un mensaje con foto",
     "ask": "¿Cuántos hijos de Rosa hay en la foto?",
     "seconds": 75,
-    "passage": "Maitei, Juan.\n^Ko'ã mitã che membykuéra: Sofía ha Tomás.^\nPe karai che ramói, héra Pedro. Oguereko 80 ary.\n^Umi mokõi mitãkuña che angirũ memby.^\nJajotopáta ko ka'aru.\nRosa",
+    "passage": "Maitei, Juan.\n^Ko'ã mitã che membykuéra: Sofía ha Tomás.^\nPe karai che ramói, héra José. Oguereko 80 ary.\n^Umi mokõi mitãkuña che angirũ memby.^\nJajotopáta ko ka'aru.\nRosa",
     "strategy": "Buscá de quién es cada grupo: después de ko'ã mitã y de umi mokõi mitãkuña viene el dueño, che membykuéra o che angirũ memby. Ha, «y», une dos nombres.",
     "item": {
       "id": "a1u04d6.r1",

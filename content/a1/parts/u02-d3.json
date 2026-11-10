@@ -89,13 +89,13 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Luis trabaja ^en el campo^.)\nLuis: Amba'apo (   ).",
+        "q": "(Mirta trabaja ^en el campo^.)\nMirta: Amba'apo (   ).",
         "options": ["ñúpe", "ñúme", "ñugua"],
         "answer": 2,
         "why": [
           "Ñu termina en sílaba nasal, por la ñ: ahí no va -pe.",
           "La ñ hace nasal la u de ñu: -pe se vuelve -me. Amba'apo ñúme, «trabajo en el campo».",
-          "-gua es el «de» de origen, como en Paraguaigua: diría de dónde es Luis. Él dice dónde trabaja: ñúme."
+          "-gua es el «de» de origen, como en Paraguaigua: diría de dónde es Mirta. Ella dice dónde trabaja: ñúme."
         ]
       }
     },
@@ -222,7 +222,7 @@
         "after": ".",
         "tiles": ["tetã", "me"],
         "bank": [1, 0],
-        "full": "Rosa: Amba'apo ko {tetãme}.",
+        "full": "Rosa: Amba'apo ko tetãme.",
         "es": "Rosa: Trabajo en este país.",
         "explain": "tetã («país») va primero y -me pegado atrás: tetãme, «en el país». La ã es nasal, así que no va -pe. El acento sigue en la ã, y la ~ ya lo marca: no se escribe otra tilde."
       }
@@ -268,35 +268,35 @@
   "skill": {
     "kind": "listening",
     "es": "Comprensión de puntos clave",
-    "situation": "En la ronda de tereré, Rosa y Juan hablan de dónde trabajan.",
-    "ask": "¿Dónde trabaja Juan?",
+    "situation": "En la ronda de tereré, Rosa y un vecino hablan de dónde trabajan.",
+    "ask": "¿Dónde trabaja el vecino?",
     "item": {
       "id": "a1u02d3.r1",
       "kind": "choice",
       "area": "listening",
       "label": "Qué escuchaste",
-      "q": "¿Dónde trabaja Juan?",
+      "q": "¿Dónde trabaja el vecino?",
       "options": ["En la escuela.", "En la chacra.", "En Itauguá."],
       "answer": 2,
       "why": [
         "La escuela es de Rosa: ella dice che amba'apo mbo'ehaópe, «yo trabajo en la escuela».",
-        "Juan dice amba'apo kokuépe: «trabajo en la chacra». Kokue es «chacra», y -pe, «en».",
-        "Itauguápe, «en Itauguá», también lo dice Rosa, de su escuela. Juan solo dice kokuépe."
+        "El vecino dice amba'apo kokuépe: «trabajo en la chacra». Kokue es «chacra», y -pe, «en».",
+        "Itauguápe, «en Itauguá», también lo dice Rosa, de su escuela. El vecino solo dice kokuépe."
       ],
       "script": [
-        "Narrador: En la ronda de tereré. ¿Dónde trabaja Juan?",
-        "Mujer: Moõpa remba'apo, Juan?",
+        "Narrador: En la ronda de tereré, Rosa habla con un vecino. ¿Dónde trabaja el vecino?",
+        "Mujer: Moõpa remba'apo?",
         "Hombre: Amba'apo kokuépe. Ha nde?",
         "Mujer: Che amba'apo mbo'ehaópe, Itauguápe.",
-        "Narrador: ¿Dónde trabaja Juan?"
+        "Narrador: ¿Dónde trabaja el vecino?"
       ]
     },
     "audio": [
-      ["N", "En la ronda de tereré. ¿Dónde trabaja Juan?", "En la ronda de tereré. ¿Dónde trabaja Juan?"],
-      ["F", "Moõpa remba'apo, Juan?", "¿Dónde trabajás, Juan?"],
+      ["N", "En la ronda de tereré, Rosa habla con un vecino. ¿Dónde trabaja el vecino?", "En la ronda de tereré, Rosa habla con un vecino. ¿Dónde trabaja el vecino?"],
+      ["F", "Moõpa remba'apo?", "¿Dónde trabajás?"],
       ["M", "Amba'apo kokuépe. Ha nde?", "Trabajo en la chacra. ¿Y vos?"],
       ["F", "Che amba'apo mbo'ehaópe, Itauguápe.", "Yo trabajo en la escuela, en Itauguá."],
-      ["N", "¿Dónde trabaja Juan?", "¿Dónde trabaja Juan?"]
+      ["N", "¿Dónde trabaja el vecino?", "¿Dónde trabaja el vecino?"]
     ]
   }
 }

@@ -94,7 +94,7 @@
   "id": "a1u03t.14", "kind": "build", "area": "grammar", "label": "Armá la palabra", "join": "word",
   "before": "(Rosa le pregunta a Juan cómo se llama el médico. Juan no se acuerda.)\nJuan: ", "after": ".",
   "tiles": ["na", "che", "mandu'a", "i"], "bank": [1, 3, 0, 2],
-  "full": "(Rosa le pregunta a Juan cómo se llama el médico. Juan no se acuerda.)\nJuan: {Na}chemandu'á{i}.",
+  "full": "(Rosa le pregunta a Juan cómo se llama el médico. Juan no se acuerda.)\nJuan: Nachemandu'ái.",
   "es": "(Rosa le pregunta a Juan cómo se llama el médico. Juan no se acuerda.)\nJuan: No me acuerdo.",
   "explain": "na, che, mandu'a, i. El «no» del guaraní tiene dos partes que rodean la palabra: na- al principio y -i al final. En el medio van che-, «yo, me pasa», y mandu'a, «acordarse»: nachemandu'ái, «no me acuerdo». Va na- y no nda- porque mandu'a es nasal, con m y nd. Y aparece una tilde: -i no se lleva el acento, que queda en la a final de mandu'a; como ya no es la última vocal, se escribe á."
  },
@@ -134,10 +134,10 @@
  },
  {
   "id": "a1u03t.19", "kind": "choice", "area": "listening", "label": "Respuesta rápida",
-  "q": "(En la fiesta de San Juan, Rosa conoce a Juan.)\nRosa: Ndépa chokokue, Juan?\n¿Qué responde Juan?",
+  "q": "(En la fiesta de San Juan, una vecina nueva conoce a Juan.)\nVecina: Ndépa chokokue, Juan?\n¿Qué responde Juan?",
   "options": ["Héẽ, ha'e chokokue.", "Héẽ, che chokokue.", "Nahániri, che chokokue."],
   "answer": 2,
-  "explain": "Rosa le pregunta a Juan por él, con nde y -pa: Ndépa chokokue?, «¿vos sos agricultor?». Juan responde por él mismo, con che y sin verbo: Héẽ, che chokokue, «sí, soy agricultor». Héẽ, ha'e chokokue habla de otra persona, «él es agricultor». Y Nahániri, che chokokue se contradice: dice «no» y después «soy agricultor»."
+  "explain": "La vecina le pregunta a Juan por él, con nde y -pa: Ndépa chokokue?, «¿vos sos agricultor?». Juan responde por él mismo, con che y sin verbo: Héẽ, che chokokue, «sí, soy agricultor». Héẽ, ha'e chokokue habla de otra persona, «él es agricultor». Y Nahániri, che chokokue se contradice: dice «no» y después «soy agricultor»."
  },
  {
   "id": "a1u03t.20", "kind": "choice", "area": "listening", "label": "Respuesta rápida",

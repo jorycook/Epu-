@@ -115,11 +115,11 @@
    },
    {
     "id": "a1u02d6.e3", "kind": "build", "area": "grammar", "label": "Armá la palabra", "join": "word",
-    "before": "(Llueve.)\nJuan: Che ru ", "after": " kokuépe ko pyhareve.",
-    "tiles": ["n", "o", "mba'apo", "i"], "bank": [2, 3, 1, 0],
-    "full": "(Llueve.)\nJuan: Che ru {n}omba'apó{i} kokuépe ko pyhareve.",
-    "es": "Juan: Mi papá no trabaja en la chacra esta mañana.",
-    "explain": "n- (el «no» delante de una raíz nasal) + o- (él) + mba'apo (trabajar) + -i (la otra parte del «no») = nomba'apói, «no trabaja». Mba'apo es nasal por la mb: por eso no va nd-. La -i no se lleva el acento: queda en la o de mba'apo, que ya no es la última vocal, y se escribe ó. Kokuépe, con -pe, es dónde: en la chacra."
+    "before": "(Juan se queda en la chacra.)\nJuan: Ko ka'aru ", "after": " távape.",
+    "tiles": ["nd", "a", "ha", "i"], "bank": [2, 3, 1, 0],
+    "full": "(Juan se queda en la chacra.)\nJuan: Ko ka'aru ndahái távape.",
+    "es": "Juan: Esta tarde no voy al pueblo.",
+    "explain": "nd- (la primera parte del «no») + a- (yo) + ha (ir, con a-) + -i (la otra parte) = ndahái, «no voy». Ha es una raíz oral: por eso va nd- y no n-. La -i no se lleva el acento: queda en la a de ha, que ya no es la última vocal, y se escribe á. Távape, con -pe, es adónde: al pueblo."
    }
   ]
  },
@@ -132,7 +132,7 @@
    "note": "Lo de la semana, en cinco pares de palabras para contrastar: no son pares mínimos. La j suena como la y fuerte de «yo», la h siempre suena, como la jota suave paraguaya, y la r es siempre suave, también al principio. -pe no se lleva el acento, y por eso koty se vuelve kotýpe; con una raíz nasal, ja- se vuelve ña-, como en ñañe'ẽ; y mb y nd son una sola letra, en una sola sílaba.",
    "pairs": [
     ["aha", "voy", "aju", "vengo"],
-    ["ru", "padre", "vúrro", "burro"],
+    ["ru", "padre (con che, nde)", "vúrro", "burro"],
     ["koty", "pieza", "kotýpe", "en la pieza"],
     ["jakaru", "comemos (vos y yo)", "ñañe'ẽ", "hablamos (vos y yo)"],
     ["mba'eve", "nada", "ndaipóri", "no hay"]

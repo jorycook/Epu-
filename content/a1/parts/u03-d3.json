@@ -9,7 +9,7 @@
         "connect": [
           { "pos": "Para decir qué sos: che y el sustantivo, nada más, como en Che Paraguaigua", "rule": "{Che} mbo'ehára." },
           { "pos": "Para el que escucha: nde", "rule": "{Nde} temimbo'e pyahu." },
-          { "pos": "Para otra persona: ha'e, o directamente su nombre", "rule": "{Ha'e} pohanohára. · Ana pohanohára." }
+          { "pos": "Para otra persona: ha'e, o directamente su nombre", "rule": "{Ha'e} pohanohára. · Luis pohanohára." }
         ],
         "examples": [
           {
@@ -47,7 +47,7 @@
           { "pos": "Con otra persona adelante (Ana, che ru), podés poner ha'e en el medio: hace de «es»", "rule": "Ana {ha'e} che sy." },
           { "pos": "Las dos formas se dicen y se escriben: sin nada o con ha'e", "rule": "Che ru chokokue. · Che ru {ha'e} chokokue." },
           { "pos": "A Mávapa ha'e? (unidad 1) respondés con ha'e y quién es", "rule": "Mávapa ha'e? {Ha'e} che angirũ." },
-          { "pos": "Para negar: ndaha'éi, una sola palabra, con el nd-…-i de la unidad 2 alrededor de ha'e. No cambia con la persona: también es «no soy»", "rule": "{Ndaha'éi} che sy. · Che {ndaha'éi} mbo'ehára." }
+          { "pos": "Para negar: ndaha'éi, una sola palabra, con el «no» de dos partes de la unidad 2 alrededor de ha'e. Acá la primera parte es nda-, y esa a no es la a- de «yo»: ndaha'éi no cambia con la persona, y también es «no soy»", "rule": "{Ndaha'éi} che sy. · Che {ndaha'éi} mbo'ehára." }
         ],
         "examples": [
           {
@@ -136,7 +136,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Rosa señala a un muchacho, ^el compañero de Luis^.)\nRosa: Mávapa ha'e?\nLuis: (   ) che irũ.",
+        "q": "(Rosa señala a un muchacho, ^el compañero de Luis^.)\nRosa: Mávapa ha'e?\nLuis: (   ) che [irũ|compañero].",
         "options": ["Che", "Ha'e", "Nde", "Ndaha'éi"],
         "answer": 2,
         "why": [
@@ -155,7 +155,7 @@
         "options": ["Ndaha'éi", "Nahániri", "Ha'e", "Che"],
         "answer": 1,
         "why": [
-          "Para negar un «es», ndaha'éi: el nd-…-i de la unidad 2 alrededor de ha'e. Ndaha'éi che sy, «no es mi mamá».",
+          "Para negar un «es», ndaha'éi: el «no» de dos partes de la unidad 2, acá nda-…-i, alrededor de ha'e. Ndaha'éi che sy, «no es mi mamá».",
           "Nahániri es «no», la respuesta suelta a una pregunta de sí o no. Para decir «no es» hace falta ndaha'éi, una sola palabra.",
           "Ha'e che sy es «es mi mamá», y la de la foto no es su mamá: Luis lo niega.",
           "Che che sy sería «yo soy mi mamá». Luis no habla de él mismo: dice quién es la de la foto."
@@ -171,7 +171,7 @@
         "after": " mbo'ehára, ha'e pohanohára.",
         "tiles": ["nda", "ha'e", "i"],
         "bank": [2, 0, 1],
-        "hint": "El «no» de la unidad 2 tiene dos partes que rodean la palabra: nda- adelante y -i al final.",
+        "hint": "El «no» de la unidad 2 tiene dos partes que rodean la palabra: la primera, que acá es nda-, va adelante, y -i al final.",
         "full": "(Luis no es profesor.)\nAna: Luis {nda}ha'é{i} mbo'ehára, ha'e pohanohára.",
         "es": "Ana: Luis no es profesor, es médico.",
         "explain": "nda- + ha'e + -i = ndaha'éi, «no es»: el «no» de dos partes rodea a ha'e. La -i no se lleva el acento: queda en la e de ha'e, que ya no es la última vocal, y por eso se escribe é: ndaha'éi. Después, sin negación: ha'e pohanohára, «es médico»."
@@ -198,10 +198,10 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Qué significa",
-        "q": "(Rosa pregunta por un hombre de la foto.)\nLuis: _Ndaha'éi che irũ_.",
-        "options": ["Es mi compañero.", "No es mi compañero.", "No es mi mamá.", "Mi compañero no está."],
+        "q": "(Rosa pregunta por un hombre de la foto.)\nLuis: _Ndaha'éi che angirũ_.",
+        "options": ["Es mi amigo.", "No es mi amigo.", "No es mi mamá.", "Mi amigo no está."],
         "answer": 2,
-        "explain": "Ndaha'éi es «no es»: el nd-…-i de la negación alrededor de ha'e. Che irũ es «mi compañero». «Es mi compañero» sería Ha'e che irũ, sin negar; «mi mamá» es che sy; y «no está» hablaría de un lugar, no de quién es alguien."
+        "explain": "Ndaha'éi es «no es»: el «no» de dos partes, nda-…-i, alrededor de ha'e. Che angirũ es «mi amigo». «Es mi amigo» sería Ha'e che angirũ, sin negar; «mi mamá» es che sy; y «no está» hablaría de un lugar, no de quién es alguien."
       },
       {
         "id": "a1u03d3.e2",
@@ -223,7 +223,7 @@
         "after": " che ru, ha'e che angirũ.",
         "tiles": ["nda", "ha'e", "i"],
         "bank": [1, 2, 0],
-        "full": "(Rosa muestra una foto de un señor.)\nRosa: {Nda}ha'é{i} che ru, ha'e che angirũ.",
+        "full": "(Rosa muestra una foto de un señor.)\nRosa: Ndaha'éi che ru, ha'e che angirũ.",
         "es": "Rosa: No es mi papá, es mi amigo.",
         "explain": "nda- va primero, después ha'e y al final -i: ndaha'éi, «no es». El «no» del guaraní tiene dos partes que rodean la palabra. La tilde va en la é porque -i no se lleva el acento. Después, sin negar: ha'e che angirũ, «es mi amigo»."
       }
@@ -231,7 +231,7 @@
   },
   "words": {
     "es": "La fiesta de San Juan del barrio",
-    "intro": "Es la noche de San Juan en el barrio: hay fuego, chipa y música. Ana te presenta a su gente: quién es cada uno y qué hace. Tocá cada palabra.",
+    "intro": "Es la noche de San Juan en el barrio: hay fuego, chipá y música. Ana te presenta a su gente: quién es cada uno y qué hace. Tocá cada palabra.",
     "sound": {
       "focus": "La ñ, sin ~ al lado: kuña, ñemuhára",
       "letters": ["ñ"],
@@ -247,8 +247,8 @@
       { "id": "mbaapohara", "gn": "mba'apohára", "es": "trabajador, trabajadora", "parts": [["mba'apo", "trabajar"], ["-hára", "el que"]], "note": "El que trabaja en un lugar: un obrero, una empleada. En los diarios se lee mucho, por «los trabajadores»." },
       { "id": "chokokue", "gn": "chokokue", "es": "agricultor, agricultora", "note": "La ch suena como en che. Es la palabra para «campesino, agricultor»; los diarios la usan mucho." },
       { "id": "nemuhara", "gn": "ñemuhára", "es": "vendedor, vendedora", "parts": [["ñemu", "vender, comerciar"], ["-hára", "el que"]], "note": "También «comerciante»." },
-      { "id": "mitarusu", "gn": "mitãrusu", "es": "muchacho, joven", "parts": [["mitã", "niño"], ["-rusu", "grande"]], "note": "Un niño ya grande: un adolescente, un joven." },
-      { "id": "mitakuna", "gn": "mitãkuña", "es": "chica, muchacha joven", "parts": [["mitã", "niño, niña"], ["kuña", "mujer"]], "note": "Va de la niña a la muchacha joven. Kuñataĩ (unidad 1) es la muchacha ya más grande, la señorita." },
+      { "id": "mitarusu", "gn": "mitãrusu", "es": "joven, adolescente", "parts": [["mitã", "niño"], ["-rusu", "grande"]], "note": "Un niño ya grande: un adolescente, un joven." },
+      { "id": "mitakuna", "gn": "mitãkuña", "es": "niña, chica", "parts": [["mitã", "niño, niña"], ["kuña", "mujer"]], "note": "Va de la niña a la muchacha joven. Kuñataĩ (unidad 1) es la muchacha ya más grande, la señorita." },
       { "id": "kunakarai", "gn": "kuñakarai", "es": "señora", "parts": [["kuña", "mujer"], ["karai", "señor"]], "note": "Ña Ramona (unidad 1) es una kuñakarai. Sin tilde: el acento cae al final, ka-ra-i." },
       { "id": "cheiru", "gn": "che irũ", "es": "mi compañero, mi compañera", "parts": [["che", "mi"], ["irũ", "compañero, compañera"]], "note": "Un amigo cercano es che angirũ (unidad 1). Che + sustantivo también puede ser una oración: Che mbo'ehára, «soy profesora». El contexto decide." }
     ],
@@ -285,7 +285,7 @@
       "script": [
         "Narrador: En la fiesta de San Juan. Ana presenta a dos personas. ¿Qué es Lucas?",
         "Mujer: Ha'e che sy, Luis. Ha'e mbo'ehára.",
-        "Hombre: Mba'éichapa, kuñakarai.",
+        "Hombre: Mba'éichapa, kuñakarai?",
         "Mujer: Ha Lucas ha'e che irũ. Ha'e pohanohára.",
         "Hombre: Maitei, Lucas."
       ]
@@ -293,7 +293,7 @@
     "audio": [
       ["N", "En la fiesta de San Juan. Ana presenta a dos personas. ¿Qué es Lucas?", "En la fiesta de San Juan. Ana presenta a dos personas. ¿Qué es Lucas?"],
       ["F", "Ha'e che sy, Luis. Ha'e mbo'ehára.", "Ella es mi mamá, Luis. Es profesora."],
-      ["M", "Mba'éichapa, kuñakarai.", "Hola, señora."],
+      ["M", "Mba'éichapa, kuñakarai?", "Hola, señora."],
       ["F", "Ha Lucas ha'e che irũ. Ha'e pohanohára.", "Y Lucas es mi compañero. Es médico."],
       ["M", "Maitei, Lucas.", "Hola, Lucas."]
     ]

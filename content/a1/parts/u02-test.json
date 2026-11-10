@@ -94,7 +94,7 @@
   "id": "a1u02t.14", "kind": "build", "area": "grammar", "label": "Armá la palabra", "join": "word",
   "before": "(Llueve.)\nRosa: Luis ", "after": " mbo'ehaópe ko ka'aru.",
   "tiles": ["nd", "o", "ho", "i"], "bank": [2, 0, 3, 1],
-  "full": "(Llueve.)\nRosa: Luis {nd}ohó{i} mbo'ehaópe ko ka'aru.",
+  "full": "(Llueve.)\nRosa: Luis ndohói mbo'ehaópe ko ka'aru.",
   "es": "(Llueve.)\nRosa: Luis no va a la escuela esta tarde.",
   "explain": "nd- va primero: es la primera parte del «no». Después o-, porque Luis es otra persona, y con o- la raíz de «ir» es ho. Al final, -i, la segunda parte del «no»: ndohói, «no va». La -i no se lleva el acento: queda en la o de ho, que ya no es la última vocal, y se escribe ó."
  },

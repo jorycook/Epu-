@@ -117,7 +117,7 @@
     "id": "a1u01d6.e3", "kind": "build", "area": "grammar", "label": "Armá la palabra", "join": "word",
     "before": "", "after": " nde réra?",
     "tiles": ["mba'e", "icha", "pa"], "bank": [2, 0, 1],
-    "full": "Mba'éicha{pa} nde réra?",
+    "full": "Mba'éichapa nde réra?",
     "es": "¿Cómo te llamás?",
     "explain": "mba'e («qué») + -icha («como») + -pa (pregunta). Ni -icha ni -pa se llevan el acento: queda en la e de mba'e, que ya no es la última vocal, y se escribe: Mba'éichapa."
    }
@@ -131,7 +131,7 @@
    "letters": ["ã", "y", "'"],
    "note": "Tres cosas de la semana cambian la palabra: la tilde nasal, la sexta vocal (y) y el puso. Escuchá cada par y fijate qué cambia.",
    "pairs": [
-    ["pyta", "talón", "pytã", "rojo"],
+    ["pyta", "talón; quedarse", "pytã", "rojo"],
     ["ita", "piedra", "yta", "nadar"],
     ["ka'i", "mono", "kái", "quemarse"]
    ]

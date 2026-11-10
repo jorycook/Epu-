@@ -85,11 +85,11 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "Rosa: ^Mba'éichapa^, Juan?\nJuan: (   ), ha nde?",
+        "q": "Rosa: ^Mba'éichapa reiko^, Juan?\nJuan: (   ).",
         "options": ["Iporã", "Jajotopáta", "Reiko", "Mba'éichapa"],
         "answer": 1,
         "why": [
-          "Rosa pregunta cómo está Juan, y él responde Iporã, «bien». Después le devuelve la pregunta: ha nde?",
+          "Rosa pregunta cómo anda Juan, y él responde Iporã, «bien».",
           "Jajotopáta es para despedirse, y Rosa recién saluda.",
           "reiko es «andás», hablando de vos, como en Mba'éichapa reiko? Juan tiene que decir cómo está él: Iporã.",
           "Mba'éichapa es la pregunta de Rosa. Juan tiene que responderla: Iporã."

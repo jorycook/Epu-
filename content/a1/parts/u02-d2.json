@@ -207,7 +207,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Ana y Luis van esta tarde a la casa de la abuela Ramona. Ana la llama y le avisa.)\nAna: (   ) ko ka'aru, ña Ramona.",
+        "q": "(Ana y Luis van esta tarde a la casa de la abuela Ramona. Ana la llama y le avisa.)\nAna: (   ) ko ka'aru, che jarýi.",
         "options": ["Aju", "Roju", "Peju", "Ou"],
         "answer": 2,
         "explain": "Ana habla de ella y de Luis, los que van, y la abuela, que la escucha, no está en el grupo: ore, con ro-. Roju ko ka'aru: venimos esta tarde. Aju sería «vengo», Ana sola, y Luis también va; peju, «ustedes vienen», como si la abuela viniera; ou, «viene», otra persona sola, sin Ana."
@@ -218,13 +218,13 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "Ñande ",
-        "after": " ko pyhareve.",
-        "tiles": ["ña", "mba'apo"],
+        "before": "(Luis le habla a Rosa de él y de Ana.)\nLuis: Ore ",
+        "after": " ko ka'aru.",
+        "tiles": ["ro", "mba'apo"],
         "bank": [1, 0],
-        "full": "Ñande {ñamba'apo} ko pyhareve.",
-        "es": "Nosotros (con vos) trabajamos esta mañana.",
-        "explain": "Ña- va primero: es el prefijo, la parte que dice quién. Mba'apo es nasal por el mb, y por eso el «nosotros con vos» es ña-, no ja-: ñamba'apo, «trabajamos»."
+        "full": "(Luis le habla a Rosa de él y de Ana.)\nLuis: Ore romba'apo ko ka'aru.",
+        "es": "Luis: Nosotros (sin vos) trabajamos esta tarde.",
+        "explain": "Ro- va primero: es el prefijo de ore, «nosotros sin vos». Mba'apo es nasal por el mb, pero ro- no cambia: romba'apo, «trabajamos». Solo ja- se vuelve ña-."
       }
     ]
   },
@@ -237,7 +237,7 @@
       "letters": ["r", "rr"],
       "note": "La r guaraní es siempre la r suave de «caro», también al principio de la palabra: ru, réra, roju, nunca «rroju». La rr fuerte solo aparece en préstamos del castellano, como karréta y vúrro. No hay pares mínimos r/rr en palabras guaraníes: comparamos palabras.",
       "pairs": [
-        ["ru", "padre", "vúrro", "burro"],
+        ["ru", "padre (con che, nde)", "vúrro", "burro"],
         ["nde réra", "tu nombre", "karréta", "carreta"],
         ["roju", "venimos (sin vos)", "arro", "arroz"]
       ]

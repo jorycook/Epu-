@@ -157,10 +157,10 @@
       },
       {
         "id": "a1u01d2.e2", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-        "q": "Dos alumnas hablan guaraní y se lo cuentan a su docente: «(   ) guaraníme.»",
-        "options": ["Ñande ñañe'ẽ", "Ha'ekuéra oñe'ẽ", "Ore roñe'ẽ", "Che añe'ẽ"],
+        "q": "Dos alumnas descubren que las dos hablan guaraní. Una le dice a la otra, hablando de las dos: «(   ) guaraníme.»",
+        "options": ["Ore roñe'ẽ", "Ha'ekuéra oñe'ẽ", "Ñande ñañe'ẽ", "Che añe'ẽ"],
         "answer": 3,
-        "explain": "Las alumnas hablan de ellas dos, y la docente que las escucha no está en ese grupo: ore roñe'ẽ. Ñande ñañe'ẽ sumaría a la docente, ha'ekuéra oñe'ẽ hablaría de otras personas y che añe'ẽ, de una sola alumna."
+        "explain": "Una alumna le habla a la otra, y las dos hablan guaraní: la que escucha está en el grupo, y por eso va ñande ñañe'ẽ. Ore roñe'ẽ la dejaría afuera, ha'ekuéra oñe'ẽ hablaría de otras personas y che añe'ẽ, de una sola alumna."
       },
       {
         "id": "a1u01d2.e3", "kind": "build", "area": "grammar", "label": "Armá la palabra",
@@ -169,7 +169,7 @@
         "after": " oñe'ẽ guaraníme.",
         "tiles": ["ha'e", "kuéra"],
         "bank": [1, 0],
-        "full": "(Ana habla de su mamá y su papá.) {Ha'ekuéra} oñe'ẽ guaraníme.",
+        "full": "(Ana habla de su mamá y su papá.) Ha'ekuéra oñe'ẽ guaraníme.",
         "es": "(Ana habla de su mamá y su papá.) Ellos hablan guaraní.",
         "explain": "Ana habla de dos personas, su mamá y su papá, así que va el plural: ha'e, «él, ella», más -kuéra da ha'ekuéra, «ellos». El acento pasa a -kuéra."
       }

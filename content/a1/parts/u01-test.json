@@ -87,7 +87,7 @@
   "id": "a1u01t.13", "kind": "build", "area": "grammar", "label": "Armá la palabra", "join": "word",
   "before": "(Rosa les habla a Juan y a Lucas.)\nRosa: ", "after": " guaraníme?",
   "tiles": ["pe", "ñe'ẽ", "pa"], "bank": [2, 0, 1],
-  "full": "(Rosa les habla a Juan y a Lucas.)\nRosa: {Pe}ñe'ẽ{pa} guaraníme?",
+  "full": "(Rosa les habla a Juan y a Lucas.)\nRosa: Peñe'ẽpa guaraníme?",
   "es": "(Rosa les habla a Juan y a Lucas.)\nRosa: ¿Ustedes hablan guaraní?",
   "explain": "pe, ñe'ẽ, pa. Rosa les habla a dos personas, Juan y Lucas, así que el verbo lleva pe-, el de peẽ («ustedes»): pe- + ñe'ẽ = peñe'ẽ, «hablan». -pa va al final y hace la pregunta: peñe'ẽpa. El acento sigue en la ẽ, y la tilde nasal ya lo marca."
  },
@@ -95,7 +95,7 @@
   "id": "a1u01t.14", "kind": "build", "area": "grammar", "label": "Armá la oración", "join": "sentence",
   "before": "Luis: Mba'éichapa, Ana?\nAna:", "after": "?",
   "tiles": ["iporã", "ha", "nde"], "bank": [2, 0, 1],
-  "full": "Luis: Mba'éichapa, Ana?\nAna: {Iporã}, ha nde?",
+  "full": "Luis: Mba'éichapa, Ana?\nAna: Iporã, ha nde?",
   "es": "Luis: Hola, Ana, ¿cómo estás?\nAna: Bien, ¿y vos?",
   "explain": "Iporã, ha, nde. Ana primero responde cómo está: iporã, «bien». Después le devuelve la pregunta a Luis con ha nde, «¿y vos?»: ha, «y», va antes de nde."
  },

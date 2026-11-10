@@ -12,7 +12,7 @@
           { "pos": "Él o ella (para entender)", "rule": "{Héra} …" }
         ],
         "examples": [
-          { "gn": "Mba'éichapa. Che {réra} Ana.", "es": "Hola. Me llamo Ana.", "parts": [["mba'éichapa", "hola"], ["che", "mi"], ["réra", "nombre"]] },
+          { "gn": "Mba'éichapa? Che {réra} Ana.", "es": "Hola. Me llamo Ana.", "parts": [["mba'éichapa", "hola"], ["che", "mi"], ["réra", "nombre"]] },
           { "gn": "Mba'éichapa nde {réra}?", "es": "¿Cómo te llamás?", "parts": [["mba'éichapa", "¿cómo?"], ["nde", "tu"], ["réra", "nombre"]] },
           { "gn": "Mbo'ehára {héra} Rosa.", "es": "La profesora se llama Rosa.", "parts": [["mbo'ehára", "profesora"], ["héra", "su nombre"]] }
         ],
@@ -71,7 +71,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(^Carlos se presenta^.) Mba'éichapa. (   ) Carlos. [Ha nde|¿y vos?]?",
+        "q": "(^Carlos se presenta^.) Mba'éichapa? (   ) Carlos. [Ha nde|¿y vos?]?",
         "options": ["Nde réra", "Héra", "Che téra", "Che réra"],
         "answer": 4,
         "why": [
@@ -101,7 +101,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(^Lucas es de Argentina^.) Mba'éichapa. Che réra Lucas. Che (   ).",
+        "q": "(^Lucas es de Argentina^.) Mba'éichapa? Che réra Lucas. Che (   ).",
         "options": ["Argentina-gua", "gua Argentina", "Argentina", "ha'e Argentina"],
         "answer": 1,
         "why": [
@@ -116,14 +116,14 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "A: Che Paraguaigua. ^[Ha nde|¿y vos?]?^\nB: (   ) Argentina-gua.",
-        "options": ["Nde", "Ha'e", "Che", "Ñande"],
+        "q": "(Ana ^presenta a Lucas^, un chico de Argentina.)\nAna: Héra Lucas. (   ) Argentina-gua.",
+        "options": ["Nde", "Che", "Ha'e", "Ñande"],
         "answer": 3,
         "why": [
-          "Nde Argentina-gua sería «vos sos de Argentina». A pregunta por B, y B responde por sí: che.",
-          "Ha'e es «él, ella». B habla de sí.",
-          "A pregunta ha nde?, «¿y vos?», y B responde por sí: Che Argentina-gua, «soy de Argentina».",
-          "Ñande incluye a A, y A es de Paraguay. B habla solo de sí: che."
+          "Nde es «vos»: Ana le hablaría a Lucas. Acá habla de él con otra persona.",
+          "Che Argentina-gua sería «yo soy de Argentina»: Ana no habla de ella, habla de Lucas.",
+          "Ana habla de otra persona, Lucas: Ha'e Argentina-gua, «él es de Argentina».",
+          "Ñande es «nosotros, con vos». Ana habla solo de Lucas: ha'e."
         ]
       },
       {
@@ -147,12 +147,12 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "Mba'éichapa. Che réra Ana. Che ",
+        "before": "Mba'éichapa? Che réra Ana. Che ",
         "after": ".",
         "tiles": ["Paraguái", "gua"],
         "bank": [1, 0],
         "hint": "-gua dice de dónde es alguien. ¿Va antes o después del lugar?",
-        "full": "Mba'éichapa. Che réra Ana. Che Paraguai{gua}.",
+        "full": "Mba'éichapa? Che réra Ana. Che Paraguai{gua}.",
         "es": "Hola. Me llamo Ana. Soy de Paraguay.",
         "explain": "-gua va después del lugar y pegado, en una sola palabra: Paraguaigua, «de Paraguay». -gua se lleva el acento de la palabra y, como queda al final, no se escribe tilde: Paraguái pierde la suya."
       }
@@ -173,7 +173,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "A: Mba'éichapa nde réra?\nB: Che réra Marta. Che (   ).",
+        "q": "(Marta se presenta en la clase.)\nMarta: Che réra Marta. Che (   ).",
         "options": ["gua Paraguái", "Paraguái", "Paraguái réra", "Paraguaigua"],
         "answer": 4,
         "explain": "Para decir de dónde es, Marta pega -gua al lugar, sin verbo «ser»: Che Paraguaigua, «soy de Paraguay». Sin -gua, Che Paraguái no lo dice; -gua no va adelante como el «de» castellano; y réra es «nombre», no habla de un lugar."
@@ -254,7 +254,7 @@
       "script": [
         "Narrador: Primer día de clase de guaraní. La profesora habla de ella y de una alumna nueva.",
         "Narrador: ¿Qué dato de la alumna nueva es correcto?",
-        "Mujer: Mba'éichapa. Che réra Nilda.",
+        "Mujer: Mba'éichapa? Che réra Nilda.",
         "Mujer: Che Paraguaigua.",
         "Mujer: Temimbo'e pyahu héra Sofía.",
         "Mujer: Ha'e Argentina-gua.",
@@ -264,7 +264,7 @@
     "audio": [
       ["N", "Primer día de clase de guaraní. La profesora habla de ella y de una alumna nueva.", "Primer día de clase de guaraní. La profesora habla de ella y de una alumna nueva."],
       ["N", "¿Qué dato de la alumna nueva es correcto?", "¿Qué dato de la alumna nueva es correcto?"],
-      ["F", "Mba'éichapa. Che réra Nilda.", "Hola. Me llamo Nilda."],
+      ["F", "Mba'éichapa? Che réra Nilda.", "Hola. Me llamo Nilda."],
       ["F", "Che Paraguaigua.", "Soy de Paraguay."],
       ["F", "Temimbo'e pyahu héra Sofía.", "La alumna nueva se llama Sofía."],
       ["F", "Ha'e Argentina-gua.", "Es de Argentina."],

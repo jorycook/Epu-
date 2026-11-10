@@ -16,11 +16,12 @@ usage:  python3 tools/make-tts.py --out <folder> [--manifest sound/A1/manifest.j
 
 The voices: Meta's MMS-TTS, one VITS model a language (36 M weights, 145 MB each; a CPU is enough).
   facebook/mms-tts-grn   Guarani, one male speaker (median pitch 143 Hz, measured). The manifest's F is this voice as
-                         it is and M the same voice 2 semitones lower (ffmpeg's rubberband), so that the two speakers of
-                         a dialogue differ: F is not a woman's voice. More than that costs accuracy: any shift takes
-                         single words from 14 % to 22 % CER, and 3 semitones down takes sentences from 15 % to 20 %.
-  facebook/mms-tts-spa   Spanish: the narrator (lang "es"), as it is; and any line of F or M that is nothing but a
-                         Spanish number («Diez mil.»), which the Guarani model cannot say.
+                         it is and M the same voice 2 semitones lower (ffmpeg's rubberband, formants kept), so that the
+                         two speakers of a dialogue differ: F is not a woman's voice. More costs accuracy: a shift
+                         upward takes single words from 14 % to 22 % CER on the large recogniser, 3 semitones down
+                         take sentences from 15 % to 20 % on the independent one; M's 2 semitones cost 1 to 3 points.
+  facebook/mms-tts-spa   Spanish: the narrator (lang "es"), as it is; and a line of F or M that is nothing but a
+                         Spanish number the Guarani model cannot say («Diez mil.» comes back «ndiehmi»), unshifted.
   Licence: CC BY-NC 4.0, NON-COMMERCIAL USE ONLY, with attribution (Pratap et al. 2023, "Scaling Speech Technology to
   1,000+ Languages", Meta AI). Clips made with these models may not ship in a paid or ad-funded app. The licence goes
   into voices.json, and from there into the sound files' headers and the sound index.
@@ -46,10 +47,11 @@ and compared with the models' own when they load):
 How a clip is said. Both models garble a short utterance said on its own (ka'a comes back as «haha», «uno» as «gono»),
 so every sentence is said after a carrier, «ha upéi he'i —» ("and then he said:"), in one utterance, and the carrier
 is cut off at the pause the model makes for the dash, with the model's own alignment (a hook on its duration
-predictor). A line of two words or fewer is said with the model's noise scale at 0.33 instead of 0.667 (measured:
-145 single words go from 19.7 % to 17.8 % CER on the independent recogniser); the duration noise stays at 0.8. Slow
-takes (rows with "slow", keys ending in .slow) are said at 0.8 of the speaking rate. Each clip's seed comes from its
-key, so a rebuild gives the same audio (checked: 572 clips said twice came out the same to the last bit but one).
+predictor); the clip starts 10 ms inside the place of its first letter, because the model hums before it. A line of
+two words or fewer is said with the model's noise scale at 0.33 instead of 0.667 (measured: 145 single words go from
+19.7 % to 17.8 % CER on the independent recogniser); the duration noise stays at 0.8. Slow takes (rows with "slow",
+keys ending in .slow) are said at 0.8 of the speaking rate. Each clip's seed comes from its key, so a rebuild gives
+the same audio (checked: 568 clips said twice an hour apart came out the same).
 
 --verify sends each clip back through the speech recognisers found in the cache and writes what each heard and its
 character error rate (CER) against the text that was said:
@@ -105,9 +107,9 @@ NASAL = {'a': 'ã', 'e': 'ẽ', 'i': 'ĩ', 'o': 'õ', 'u': 'ũ', 'y': 'ỹ'}
 ACUTE = {'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ú': 'u', 'ý': 'y'}
 VOWELS = 'aeiouyáéíóúýãẽĩõũỹ'
 
-VOICES = {          # the manifest's voices: which model, how far its pitch is moved (semitones) and whether the formants move with it
-    'F': {'lang': 'gn', 'semitones': 0.0},          # the model as it is: any shift costs single words 3 to 8 points of CER
-    'M': {'lang': 'gn', 'semitones': -2.0},         # sentences keep their CER at 2 semitones, not at 3
+VOICES = {          # the manifest's voices: which model, and how far its pitch is moved (semitones, formants kept)
+    'F': {'lang': 'gn', 'semitones': 0.0},          # the model as it is: a shift upward costs single words 3 to 8 points of CER
+    'M': {'lang': 'gn', 'semitones': -2.0},         # costs 1 point on sentences and 3 on lines of one to four words; 3 semitones cost more
     'N': {'lang': 'es', 'semitones': 0.0},
 }
 CARRIER = {          # said before every sentence and cut off; the next one is tried when the model makes no pause after the first
@@ -150,19 +152,21 @@ def es_number(n):
 
 def load_respell(path):
     """sound/respell.json → {'words': {word: synthesis spelling}, 'stems': [starts of names said as written],
-    'spanish': {words that make a line Spanish}}; nothing of it when the file is not there."""
+    'spanish': {Spanish number words}, 'es_only': {words the Guarani voice cannot say at all}}; empty when there is no file."""
     data = {}
     if path and os.path.exists(path):
         with open(path, encoding='utf-8') as f:
             data = json.load(f)
-    words = {}
+    words, es_only = {}, set()
     for w, v in (data.get('words') or {}).items():
         words[clean(w).lower()] = clean(v['say'] if isinstance(v, dict) else v).lower()
+        if isinstance(v, dict) and v.get('voice') == 'es':
+            es_only.add(clean(w).lower())
     return {'words': words, 'stems': [strip_acutes(clean(x).lower()) for x in data.get('as_written') or []],
-            'spanish': {clean(x).lower() for x in data.get('spanish') or []}}
+            'spanish': {clean(x).lower() for x in data.get('spanish') or []}, 'es_only': es_only}
 
 
-NO_RESPELL = {'words': {}, 'stems': [], 'spanish': set()}
+NO_RESPELL = {'words': {}, 'stems': [], 'spanish': set(), 'es_only': set()}
 
 
 def strip_acutes(w):
@@ -232,6 +236,9 @@ def prepare(text, lang, respell=NO_RESPELL):
                 w = words_table[w]
             elif '-' in w:
                 problems.append(f'the hyphenated word «{raw}» is not in sound/respell.json (say how it is said: a loan with its suffix)')
+                return
+            elif w in respell['spanish']:
+                problems.append(f'the Spanish number «{raw}» inside a Guarani sentence is not in sound/respell.json (the Guarani voice needs its stress written: ochenta → ochénta)')
                 return
             else:
                 known = any(strip_acutes(bare).startswith(s) for s in stems)
@@ -305,11 +312,16 @@ def select(manifest, voices, only):
 
 def lang_of(row, respell=NO_RESPELL):
     """Which model says a row: the Spanish one for the narrator, and for a line of the Guarani voices that is nothing
-    but Spanish words of sound/respell.json's "spanish" list (a price: «Diez mil.»), which the Guarani model garbles."""
+    but a Spanish number (the words of sound/respell.json's "spanish" list) with a word in it that the Guarani voice
+    cannot say (marked "voice": "es": diez, mil) or was never tried with (no entry). «Diez mil.» goes to the Spanish
+    voice; «Veinte.», which the Guarani voice says right, stays."""
     if row.get('lang') == 'es' or VOICES.get(row.get('voice'), {}).get('lang') == 'es':
         return 'es'
-    words = re.findall(r"[^\W\d_]+", clean(row.get('text', '')).lower())
-    return 'es' if words and all(w in respell['spanish'] for w in words) else 'gn'
+    words = re.findall(r"[^\W\d_]+(?:'[^\W\d_]+)*", clean(row.get('text', '')).lower())
+    numbers = [w for w in words if not (w == 'y' and len(words) > 2)]          # «treinta y cinco»; a lone y is Guarani: water
+    if numbers and all(w in respell['spanish'] for w in numbers) and any(w in respell['es_only'] or w not in respell['words'] for w in numbers):
+        return 'es'
+    return 'gn'
 
 
 def is_slow(row):
@@ -454,15 +466,15 @@ def quiet_run(x, a, b, floor):
 
 
 def rubberband(x, semitones):
-    """pitch moved with ffmpeg's rubberband, the tempo kept; the formants move with the pitch (a smaller or a larger
-    speaker), which is why the shift stays within about 3 semitones"""
+    """pitch moved with ffmpeg's rubberband, the tempo and the formants kept (with the formants moved, a number said by
+    the Spanish voice came back as other words)"""
     if abs(semitones) < 1e-6:
         return x
     import soundfile as sf
     with tempfile.TemporaryDirectory() as d:
         a, b = os.path.join(d, 'a.wav'), os.path.join(d, 'b.wav')
         sf.write(a, x, RATE, subtype='FLOAT')
-        r = subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', a, '-af', f'rubberband=pitch={2 ** (semitones / 12):.6f}:pitchq=quality:formant=shifted',
+        r = subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', a, '-af', f'rubberband=pitch={2 ** (semitones / 12):.6f}:pitchq=quality:formant=preserved',
                             '-ar', str(RATE), '-ac', '1', '-c:a', 'pcm_f32le', b], capture_output=True, text=True)
         if r.returncode:
             raise RuntimeError('ffmpeg rubberband: ' + (r.stderr or '').strip().split('\n')[-1])
@@ -703,7 +715,7 @@ def main(argv=None):
         lang = lang_of(r, respell)
         sentences, notes, problems = prepare(r['text'], lang, respell)
         if lang == 'es' and VOICES[r['voice']]['lang'] != 'es':
-            notes.append('Spanish words: said by the Spanish voice')
+            notes.append('a Spanish number: said by the Spanish voice, unshifted')
         plan.append((r, lang, sentences, notes))
         for pr in problems:
             bad.append((r['key'], r['text'], pr))
@@ -773,7 +785,7 @@ def main(argv=None):
                 if n >= tries and best is not None:
                     break                        # the two extra seeds are only for a take whose cut was not clean
                 try:
-                    x = finish(engines[lang].say(sentences, seed, rate), pitch.get(r['voice'], 0.0))
+                    x = finish(engines[lang].say(sentences, seed, rate), pitch.get(r['voice'], 0.0) if VOICES[r['voice']]['lang'] == lang else 0.0)
                 except ValueError as err:        # no clear pause after any carrier: the next seed
                     last = str(err)
                     continue
@@ -861,4 +873,8 @@ def write_report(out, report, names):
 
 
 if __name__ == '__main__':
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except BrokenPipeError:          # the listing was piped into head
+        os.dup2(os.open(os.devnull, os.O_WRONLY), sys.stdout.fileno())
+        sys.exit(0)

@@ -46,7 +46,7 @@
         "connect": [
           { "pos": "Para otra persona: i- pegado al estado. Antes de una vocal la i- cambia un poco, como en ijy'uhéi, «tiene sed»: hoy solo lo mirás", "rule": "Che sy {i}kane'õ." },
           { "pos": "Con el nombre delante, o con ha'e, igual lleva i-", "rule": "Ana {i}pochy. Ha'e {i}vare'a." },
-          { "pos": "Algunas palabras tienen tres formas, como téra · che réra · héra. Rasy es así: tasy suelta, cherasy con che-, hasy para él o ella", "rule": "{t}asy · che{r}asy · {h}asy" },
+          { "pos": "Algunas palabras tienen tres formas, como téra · che réra · héra. Rasy es así: tasy suelta, cherasy con che-, hasy para él o ella. Con akã, «cabeza», en el medio: cheakãrasy, «me duele la cabeza»", "rule": "{t}asy · che{r}asy · {h}asy · cheakã{r}asy" },
           { "pos": "Ojo: no toda palabra que empieza con r cambia. Ro'y lleva i-, como kane'õ", "rule": "che{r}o'y · {i}ro'y" }
         ],
         "examples": [
@@ -128,7 +128,7 @@
           "Chepochy es «estoy enojada»: Rosa hablaría de ella misma, y le habla a Juan de él.",
           "Ipochy es «está enojado», de otra persona. Rosa le habla a Juan directamente, de vos a vos.",
           "Rosa le habla a Juan: nde- pegado a pochy. Ndepochy, «estás enojado».",
-          "ne- reemplaza a nde- solo antes de una palabra nasal, como nekane'õ. Pochy no es nasal: no tiene ~ ni m, n, ñ. Queda nde-: ndepochy."
+          "ne- reemplaza a nde- solo antes de una palabra nasal, como nekane'õ. Pochy no es nasal: no tiene ~ ni ninguna letra nasal. Queda nde-: ndepochy."
         ]
       },
       {
@@ -136,7 +136,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Un nene pide chipa: tiene hambre.)\n^Mitã^ (   ).",
+        "q": "(Un nene pide chipá: tiene hambre.)\n^Mitã^ (   ).",
         "options": ["ivare'a", "chevare'a", "ndevare'a", "vare'a"],
         "answer": 1,
         "why": [

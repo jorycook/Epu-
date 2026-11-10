@@ -7,7 +7,7 @@
         "form": "a- · re- · o- + acción",
         "gloss": "yo hago, vos hacés, él o ella hace",
         "connect": [
-          { "pos": "Las acciones llevan el prefijo areal de la unidad 2: a- yo, re- vos, o- él o ella", "rule": "{A}karu · {Re}karu · {O}karu" },
+          { "pos": "Las acciones llevan los prefijos areales de la unidad 2: a- yo, re- vos, o- él o ella, y ja-, ro-, pe- para varios", "rule": "{A}karu · {Re}karu · {O}karu · {Ja}karu · {Ro}karu · {Pe}karu" },
           { "pos": "También las acciones del cuerpo: levantarse, bañarse, dormir", "rule": "{A}pu'ã · {a}jahu · {a}ke" },
           { "pos": "El castellano pone la persona al final (com-o); el guaraní, al principio", "rule": "{A}karu" }
         ],
@@ -44,7 +44,7 @@
         "form": "che- + estado · a- + sentimiento",
         "gloss": "a mí me pasa · algunos sentimientos van como acciones",
         "connect": [
-          { "pos": "Un estado o una sensación lleva che-, como ayer", "rule": "{Che}kane'õ · {che}vare'a · {che}mandu'a" },
+          { "pos": "Un estado o una sensación lleva che-, como el día 1", "rule": "{Che}kane'õ · {che}vare'a · {che}mandu'a" },
           { "pos": "Pero algunos sentimientos se conjugan como acciones, con a-", "rule": "{A}vy'a · {a}kyhyje" },
           { "pos": "El diccionario dice de qué tipo es cada palabra: aprendé cada una con su prefijo", "rule": "{a}vy'a · {che}mandu'a" }
         ],
@@ -222,7 +222,7 @@
         "after": ".",
         "tiles": ["a", "mba'apo"],
         "bank": [1, 0],
-        "full": "(Luis cuenta qué hace el lunes a la mañana.)\nLuis: Apu'ã ha {a}mba'apo.",
+        "full": "(Luis cuenta qué hace el lunes a la mañana.)\nLuis: Apu'ã ha amba'apo.",
         "es": "Luis: Me levanto y trabajo.",
         "explain": "a- («yo») va primero y después la raíz mba'apo, «trabajar»: amba'apo, «trabajo». Trabajar es una acción, como levantarse: las dos llevan a-, no che-."
       }
@@ -247,7 +247,7 @@
       { "id": "avya", "gn": "avy'a", "es": "estoy contento, contenta", "parts": [["a-", "yo"], ["vy'a", "alegrarse; alegría"]], "note": "Un sentimiento que se conjuga como acción. Vy'a solo es «la alegría»." },
       { "id": "akyhyje", "gn": "akyhyje", "es": "tengo miedo", "parts": [["a-", "yo"], ["kyhyje", "tener miedo; miedo"]], "note": "Otro sentimiento que va como acción, igual que avy'a: akyhyje, no chekyhyje. Tiene h y j, y va sin tilde: a-ky-hy-JE." },
       { "id": "chemandua", "gn": "chemandu'a", "es": "me acuerdo", "parts": [["che-", "yo: me pasa"], ["mandu'a", "acordarse; recuerdo"]], "note": "Un estado: va con che-, pegado, y no con a-. Él o ella: imandu'a." },
-      { "id": "aime", "gn": "aime", "es": "estoy (en un lugar)", "note": "Aime ógape, «estoy en casa». Con los estados de ayer no va: «estoy cansada» es chekane'õ, no aime kane'õ. Con porã sí se dice: Aime porãiterei, «estoy muy bien»." },
+      { "id": "aime", "gn": "aime", "es": "estoy (en un lugar)", "note": "Aime ógape, «estoy en casa». Con él o ella ya lo conocés: oĩ (Che sy oĩ ógape, unidad 2). Con los estados del día 1 no va: «estoy cansada» es chekane'õ, no aime kane'õ. Con porã sí se dice: Aime porãiterei, «estoy muy bien»." },
       { "id": "koaga", "gn": "ko'ág̃a", "es": "ahora", "note": "Ko'ág̃a amba'apo: ahora trabajo. Se escribe con puso, con tilde en la á y con g̃, la g con nariz. También se ve ko'ágã, con la ~ en la a." },
       { "id": "ake", "gn": "ake", "es": "duermo", "parts": [["a-", "yo"], ["ke", "dormir"]], "note": "Con él o ella: oke. Che ru oke, «mi papá duerme»." }
     ],

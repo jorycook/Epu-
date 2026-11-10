@@ -135,11 +135,11 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Ana habla guaraní, pero su mamá no.)\nAna: Che añe'ẽ guaraníme, ha ^che sy^ (   ).",
+        "q": "(Diego habla guaraní, pero su mamá no.)\nDiego: Che añe'ẽ guaraníme, ha ^che sy^ (   ).",
         "options": ["nañe'ẽi", "ndoñe'ẽi", "oñe'ẽ", "noñe'ẽi"],
         "answer": 4,
         "why": [
-          "Nañe'ẽi es «no hablo», con a-: Ana hablaría de ella misma, y ella sí habla: añe'ẽ.",
+          "Nañe'ẽi es «no hablo», con a-: Diego hablaría de él mismo, y él sí habla: añe'ẽ.",
           "ñe'ẽ es una raíz nasal: delante va n-, no nd-. Ndoñe'ẽi no existe.",
           "Oñe'ẽ es «habla», sin negación: diría que su mamá sí habla guaraní, y no es así.",
           "Che sy es otra persona: o-. ñe'ẽ es nasal: n- + oñe'ẽ + -i = noñe'ẽi, «no habla». La ẽ ya lleva la tilde nasal: no se agrega otra."
@@ -222,7 +222,7 @@
         "after": " kokuépe ko pyhareve.",
         "tiles": ["n", "o", "mba'apo", "i"],
         "bank": [1, 3, 0, 2],
-        "full": "(Llueve.)\nRosa: Juan {n}omba'apó{i} kokuépe ko pyhareve.",
+        "full": "(Llueve.)\nRosa: Juan nomba'apói kokuépe ko pyhareve.",
         "es": "Rosa: Juan no trabaja en la chacra esta mañana.",
         "explain": "n- va primero: mba'apo es una raíz nasal, por la mb, así que la primera parte del «no» es n-, no nd-. Después o- (él: Juan), la raíz mba'apo («trabajar») y, al final, -i: nomba'apói, «no trabaja». La -i no se lleva el acento: queda en la última o de mba'apo, que ya no es la última vocal, y se escribe ó."
       }

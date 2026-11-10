@@ -122,7 +122,7 @@
         },
         {
           "form": "ha'ekuéra",
-          "tag": "ellos, ellas (semana 1)",
+          "tag": "ellos, ellas (unidad 1)",
           "mark": "dot",
           "gn": "{Ha'ekuéra} oñe'ẽ guaraníme.",
           "es": "Ellos hablan guaraní."
@@ -242,7 +242,7 @@
         "after": ".",
         "tiles": ["kuña", "nguéra", "pe"],
         "bank": [1, 2, 0],
-        "full": "Che sy oñe'ẽ kuña{nguéra}pe.",
+        "full": "Che sy oñe'ẽ kuñanguérape.",
         "es": "Mi mamá les habla a las mujeres.",
         "explain": "kuña («mujer») + -nguéra (plural tras la ñ, sílaba nasal) + -pe («a») = kuñanguérape. -nguéra se lleva el acento, y -pe va al final sin moverlo: la tilde queda en la é."
       }
@@ -273,15 +273,15 @@
       {
         "id": "mitakuna",
         "gn": "mitãkuña",
-        "es": "niña",
+        "es": "niña, chica",
         "parts": [["mitã", "niño"], ["kuña", "mujer"]],
-        "note": "Plural: mitãkuñanguéra, porque termina en ña."
+        "note": "De la unidad 3. Plural: mitãkuñanguéra, porque termina en ña."
       },
       {
         "id": "mitarusu",
         "gn": "mitãrusu",
         "es": "joven, adolescente",
-        "note": "Plural: mitãrusukuéra, porque su es una sílaba oral."
+        "note": "De la unidad 3. Plural: mitãrusukuéra, porque su es una sílaba oral."
       },
       {
         "id": "mboeharakuera",
@@ -335,7 +335,7 @@
     "es": "Un aviso de la escuela",
     "ask": "¿Quiénes cantan esta tarde?",
     "seconds": 60,
-    "passage": "Maitei, sy ha tuvakuéra.\n^Mitãnguéra opurahéi^ ko ka'aru mbo'ehaópe.\nMbo'eharakuéra oñe'ẽ guaraníme.\nTapeg̃uahẽ porãite.",
+    "passage": "Maitei, sy ha tuvakuéra.\n^Mitãnguéra opurahéi^ ko ka'aru mbo'ehaópe.\nMbo'eharakuéra oñe'ẽ guaraníme.\nPeju! Tapeg̃uahẽ porãite.",
     "strategy": "La primera línea saluda y la última da la bienvenida. En las dos del medio, la palabra con -kuéra o -nguéra va primero y después viene lo que hace: buscá opurahéi, «cantan», y mirá qué palabra va delante.",
     "item": {
       "id": "a1u04d2.r1",

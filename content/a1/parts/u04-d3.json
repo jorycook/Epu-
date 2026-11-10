@@ -14,9 +14,9 @@
         ],
         "examples": [
           {
-            "gn": "{Ko} vaka iky'a.",
-            "es": "Esta vaca está sucia.",
-            "parts": [["ko", "esta"], ["vaka", "vaca"], ["i-", "está (él, ella)"], ["ky'a", "sucio, sucia"]]
+            "gn": "{Ko} vaka ivare'a.",
+            "es": "Esta vaca tiene hambre.",
+            "parts": [["ko", "esta"], ["vaka", "vaca"], ["i-", "ella (le pasa)"], ["vare'a", "hambre"]]
           },
           {
             "gn": "{Pe} mitã iporã.",
@@ -54,7 +54,7 @@
           {
             "gn": "{Umi} kavaju oĩ korapýpe.",
             "es": "Esos caballos están en el patio.",
-            "parts": [["umi", "esos"], ["kavaju", "caballo"], ["oĩ", "están"], ["korapý-pe", "en el patio"]]
+            "parts": [["umi", "esos"], ["kavaju", "caballo"], ["oĩ", "están"], ["korapy", "patio"], ["-pe", "en"]]
           },
           {
             "gn": "{Umi} jagua oyta.",
@@ -69,7 +69,7 @@
           {
             "gn": "{Umi} mitã oho mbo'ehaópe.",
             "es": "Esos chicos van a la escuela.",
-            "parts": [["umi", "esos"], ["mitã", "niño, niña"], ["oho", "van"], ["mbo'ehaó-pe", "a la escuela"]]
+            "parts": [["umi", "esos"], ["mitã", "niño, niña"], ["oho", "van"], ["mbo'ehaópe", "a la escuela"]]
           }
         ],
         "watch": {
@@ -82,9 +82,9 @@
     "compare": {
       "intro": "Tres distancias y un plural: fijate dónde está la cosa y si es una o varias.",
       "forms": [
-        { "form": "ko · pe · amo", "tag": "uno: cerca de mí · cerca de vos · lejos", "mark": "dot", "gn": "{Ko} vaka iky'a.", "es": "Esta vaca está sucia." },
+        { "form": "ko · pe · amo", "tag": "uno: cerca de mí · cerca de vos · lejos", "mark": "dot", "gn": "{Ko} vaka ivare'a.", "es": "Esta vaca tiene hambre." },
         { "form": "ko'ã · umi", "tag": "varios: estos · esos, aquellos", "mark": "dot", "gn": "{Umi} kavaju oĩ korapýpe.", "es": "Esos caballos están en el patio." },
-        { "form": "ko + momento del día", "tag": "esta tarde, esta noche (semana 1)", "mark": "dot", "gn": "Jajotopáta {ko} ka'aru.", "es": "Nos vemos esta tarde." }
+        { "form": "ko + momento del día", "tag": "esta tarde, esta noche (unidad 1)", "mark": "dot", "gn": "Jajotopáta {ko} ka'aru.", "es": "Nos vemos esta tarde." }
       ],
       "check": {
         "id": "a1u04d3.c1",
@@ -209,10 +209,10 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Juan señala dos gallinas que tiene al lado.)\nJuan: (   ) ryguasu ituicha.",
+        "q": "(Juan señala dos gallinas al fondo del patio, lejos de él y de Rosa.)\nJuan: (   ) ryguasu ituicha.",
         "options": ["Ko", "Umi", "Pe", "Ko'ã"],
-        "answer": 4,
-        "explain": "Son dos gallinas y están al lado de Juan, el que habla: ko'ã ryguasu, «estas gallinas». Ko y pe son para una sola, y umi es para varias pero lejos de quien habla, «esas» o «aquellas»."
+        "answer": 2,
+        "explain": "Son dos gallinas y están lejos de Juan y de Rosa: umi ryguasu, «aquellas gallinas». Umi es el plural de pe y de amo. Ko y pe son para una sola, y ko'ã es para varias pero cerca de quien habla, «estas»."
       },
       {
         "id": "a1u04d3.e3",
@@ -237,7 +237,7 @@
     "sound": {
       "focus": "La v: vaka, kavaju",
       "letters": ["v"],
-      "note": "La v del guaraní no es la b ni la v del castellano: el labio de abajo roza los dientes, sin fuerza, como en yvyra y túva. Vaka y kavaju vienen del castellano y se escriben a la guaraní, con v donde «caballo» lleva b; como no llevan tilde, el acento va al final: va-ká, ka-va-jú. No hay pares mínimos seguros con v: son palabras para contrastar.",
+      "note": "La v del guaraní no es la b ni la v del castellano: el labio de abajo roza los dientes, sin fuerza, como en yvyra y túva. Vaka y kavaju vienen del castellano y se escriben a la guaraní, con v donde «caballo» lleva b; como no llevan tilde, el acento va al final: va-KA, ka-va-JU. No hay pares mínimos seguros con v: son palabras para contrastar.",
       "pairs": [
         ["vaka", "vaca", "kavaju", "caballo"],
         ["yvyra", "árbol", "túva", "padre"]
@@ -245,13 +245,13 @@
     },
     "words": [
       { "id": "jagua", "gn": "jagua", "es": "perro", "note": "La j suena como la y fuerte de «yo», nunca como la jota. Plural: jaguakuéra." },
-      { "id": "mbarakaja", "gn": "mbarakaja", "es": "gato", "note": "Empieza con mb, como mba'e: una sola letra. Plural: mbarakajakuéra." },
+      { "id": "mbarakaja", "gn": "mbarakaja", "es": "gato", "note": "Empieza con mb, como mba'e: una sola letra. Plural: mbarakajakuéra. De la unidad 2." },
       { "id": "ryguasu", "gn": "ryguasu", "es": "gallina", "note": "La r es suave, como en «caro», también al principio. Ryguasu rupi'a es «huevo»." },
-      { "id": "kavaju", "gn": "kavaju", "es": "caballo", "note": "Del castellano «caballo», escrito a la guaraní: la c se escribe k y la ll se escribe j. Sin tilde, el acento va al final: ka-va-jú." },
-      { "id": "vaka", "gn": "vaka", "es": "vaca", "note": "Del castellano «vaca»: con v y con k, y con el acento al final: va-ká. Ko vaka iky'a, «esta vaca está sucia»." },
+      { "id": "kavaju", "gn": "kavaju", "es": "caballo", "note": "Del castellano «caballo», escrito a la guaraní: la c se escribe k y la ll se escribe j. Sin tilde, el acento va al final: ka-va-JU." },
+      { "id": "vaka", "gn": "vaka", "es": "vaca", "note": "Del castellano «vaca»: con v y con k, y con el acento al final: va-KA. Ko vaka ivare'a, «esta vaca tiene hambre»." },
       { "id": "yvyra", "gn": "yvyra", "es": "árbol, madera", "note": "Dos y, la sexta vocal: y-vy-ra. Es el árbol y también la madera; el árbol como planta se dice también yvyramáta." },
       { "id": "apyka", "gn": "apyka", "es": "silla", "note": "La y del medio es la sexta vocal: a-py-ka." },
-      { "id": "korapy", "gn": "korapy", "es": "patio", "note": "«En el patio» es korapýpe: -pe no se lleva el acento, y aparece la tilde en la ý." }
+      { "id": "korapype", "gn": "korapýpe", "es": "en el patio", "parts": [["korapy", "patio"], ["-pe", "en, a"]], "note": "Korapy, «patio», es del día 2. -pe no se lleva el acento, y aparece la tilde en la ý." }
     ],
     "spell": ["kavaju", "vaka", "yvyra", "apyka"],
     "check": {

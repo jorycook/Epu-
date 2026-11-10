@@ -218,13 +218,13 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "(Ana invita a Luis.)\nAna: ",
-        "after": " ko ka'aru, Luis?",
-        "tiles": ["re", "ju", "pa"],
+        "before": "(Juan le pregunta a Rosa si va esta noche.)\nJuan: ",
+        "after": " ko pyhare, Rosa?",
+        "tiles": ["re", "ho", "pa"],
         "bank": [1, 2, 0],
-        "full": "(Ana invita a Luis.)\nAna: Rejúpa ko ka'aru, Luis?",
-        "es": "Ana: ¿Venís esta tarde, Luis?",
-        "explain": "re- (vos) va primero: Ana le habla a Luis. Después la raíz ju, «venir», y al final -pa, que hace la pregunta: rejúpa, «¿venís?». La -pa no se lleva el acento: queda en la u, que ya no es la última vocal, y se escribe ú."
+        "full": "(Juan le pregunta a Rosa si va esta noche.)\nJuan: Rehópa ko pyhare, Rosa?",
+        "es": "Juan: ¿Vas esta noche, Rosa?",
+        "explain": "re- (vos) va primero: Juan le habla a Rosa. Después ho, la raíz de «ir» con re-, y al final -pa, que hace la pregunta: rehópa, «¿vas?». La -pa no se lleva el acento: queda en la o, que ya no es la última vocal, y se escribe ó."
       }
     ]
   },

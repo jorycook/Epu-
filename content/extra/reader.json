@@ -62,7 +62,7 @@
             { "t": "jarýi", "m": [["jarýi", "abuela", "r"]], "e": "abuela" }
           ],
           "g": null,
-          "n": "Lleva tilde porque la fuerza va en la ý, no en la i del final."
+          "n": "Lleva tilde porque el acento va en la ý, no en la i del final."
         },
         {
           "t": "Iporã",
@@ -140,7 +140,7 @@
             { "t": "rúpe", "m": [["ru", "padre", "r"], ["-pe", "a", "c"]], "e": "a papá" }
           ],
           "g": ["-pe", "a: la persona que saludo"],
-          "n": "ru + -pe se escribe rúpe: la fuerza sigue en ru y la tilde lo marca. Acá -pe va una sola vez, al final: che sy ha che rúpe."
+          "n": "ru + -pe se escribe rúpe: el acento sigue en ru y la tilde lo marca. Acá -pe va una sola vez, al final: che sy ha che rúpe."
         },
         {
           "t": "Che jarýi",
@@ -176,7 +176,7 @@
             { "t": "terere", "m": [["terere", "tereré", "r"]], "e": "tereré" }
           ],
           "g": null,
-          "n": "En guaraní se escribe sin tilde: sin marca, la fuerza va al final."
+          "n": "En guaraní se escribe sin tilde: sin marca, el acento va al final."
         }
       ]
     }

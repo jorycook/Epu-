@@ -178,12 +178,12 @@
         "label": "Armá la palabra",
         "join": "word",
         "before": "",
-        "after": " ovale ko kesu?",
+        "after": " ovale ko mandi'o?",
         "tiles": ["mboy", "pa"],
         "bank": [1, 0],
         "hint": "¿Dónde va -pa en mba'épa? Acá va igual. Después fijate dónde queda el acento.",
-        "full": "{Mboýpa} ovale ko kesu?",
-        "es": "¿Cuánto cuesta este queso?",
+        "full": "{Mboýpa} ovale ko mandi'o?",
+        "es": "¿Cuánto cuesta esta mandioca?",
         "explain": "mboy (cuánto) va primero y -pa al final: mboýpa. La -pa de pregunta no se lleva el acento: este queda en la y de mboy. Como esa y ya no es la última vocal, se escribe con tilde: ý."
       }
     ],
@@ -203,7 +203,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "A: (   ) reipota?\nB: Chipa.",
+        "q": "(En un puesto del mercado, B pide chipá.)\nA: (   ) reipota?\nB: Chipa.",
         "options": ["Mboýpa", "Moõpa", "Mávapa", "Mba'épa"],
         "answer": 4,
         "explain": "B contesta con una cosa, chipa: la pregunta es Mba'épa reipota?, ¿qué querés? Mboýpa pregunta cuánto, moõpa dónde y mávapa quién."
@@ -218,7 +218,7 @@
         "after": " guaraníme?",
         "tiles": ["re", "ñe'ẽ", "pa"],
         "bank": [1, 2, 0],
-        "full": "Rosa, reñe'ẽ{pa} guaraníme?",
+        "full": "Rosa, reñe'ẽpa guaraníme?",
         "es": "Rosa, ¿hablás guaraní?",
         "explain": "re (vos) + ñe'ẽ (hablar) + pa (pregunta) = reñe'ẽpa. El acento sigue en la ẽ, y la tilde nasal (~) ya lo marca: no se escribe otro acento."
       }
@@ -279,7 +279,7 @@
       ],
       "script": [
         "Narrador: En un puesto del mercado. ¿Qué hay en el puesto?",
-        "Hombre: Mba'éichapa. Mba'épa reipota?",
+        "Hombre: Mba'éichapa? Mba'épa reipota?",
         "Mujer: Iporã. Oĩpa chipa?",
         "Hombre: Nahániri. Oĩ kesu ha mandi'o.",
         "Mujer: Mboýpa ovale ko kesu?",
@@ -289,7 +289,7 @@
     },
     "audio": [
       ["N", "En un puesto del mercado. ¿Qué hay en el puesto?", "En un puesto del mercado. ¿Qué hay en el puesto?"],
-      ["M", "Mba'éichapa. Mba'épa reipota?", "Hola, ¿qué tal? ¿Qué querés?"],
+      ["M", "Mba'éichapa? Mba'épa reipota?", "Hola, ¿qué tal? ¿Qué querés?"],
       ["F", "Iporã. Oĩpa chipa?", "Bien. ¿Hay chipá?"],
       ["M", "Nahániri. Oĩ kesu ha mandi'o.", "No. Hay queso y mandioca."],
       ["F", "Mboýpa ovale ko kesu?", "¿Cuánto cuesta este queso?"],

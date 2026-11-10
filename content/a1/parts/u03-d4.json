@@ -8,7 +8,7 @@
         "gloss": "pregunta de sí o no, con estados y nombres",
         "connect": [
           { "pos": "-pa va pegado a la palabra que preguntás, que suele ir primera. Con nde queda Ndépa, como en la unidad 1", "rule": "Ndé{pa} pohanohára?" },
-          { "pos": "Con un estado, va en el estado; la persona viene después", "rule": "Ikane'õ{pa} nde ru?" },
+          { "pos": "Con un estado, va en el estado. La persona puede ir después, como acá, o primero, como en Nde sy oñe'ẽpa guaraníme? (unidad 1)", "rule": "Ikane'õ{pa} nde ru?" },
           { "pos": "Con una acción, en el verbo, como en la unidad 1", "rule": "Og̃uahẽ{pa} Ana? · Rejú{pa} ko pyhare?" },
           { "pos": "-pa no se lleva el acento. Si la vocal tónica deja de ser la última, se escribe la tilde; sobre una vocal con ~ no se agrega nada", "rule": "nde → ndé{pa} · reju → rejú{pa} · og̃uahẽ → og̃uahẽ{pa}" }
         ],
@@ -47,8 +47,8 @@
         "connect": [
           { "pos": "piko va donde iría -pa, después de la palabra que preguntás. En la charla suele sumar sorpresa o duda: «¿en serio?»", "rule": "Nde {piko} mbo'ehára? · Og̃uahẽ {piko} Ana?" },
           { "pos": "Acá piko va suelto. También lo vas a ver pegado, y entonces nde lleva tilde. En el castellano del Paraguay se oye «pio»", "rule": "Nde {piko} mbo'ehára? · Ndé{piko} mbo'ehára?" },
-          { "pos": "Para responder que sí: Héẽ y el estado, ya sin -pa. Si te preguntan por vos (Nekane'õpa?), respondés con che-. Para responder que no: Nahániri", "rule": "{Héẽ}, chekane'õ. · {Nahániri}." },
-          { "pos": "Para negar un estado, el «no» de dos partes de la unidad 2 rodea a che- y al estado: na-…-i si la palabra es nasal, nda-…-i si es oral", "rule": "{Na}chemandu'á{i}. · {Nda}chevare'á{i}." }
+          { "pos": "Para responder que sí: Héẽ y el estado, ya sin -pa. Si te preguntan por vos (Nekane'õpa?), respondés con che-. Para responder que no: Nahániri, solo o con el «no» de la unidad 2", "rule": "{Héẽ}, chekane'õ. · {Nahániri}. · {Nahániri}, ndahái." },
+          { "pos": "Para negar un estado, el «no» de dos partes de la unidad 2 rodea a che- y al estado: na-…-i si la palabra es nasal, nda-…-i si es oral. Como en ndaha'éi, esa a no es la a- de «yo»", "rule": "{Na}chemandu'á{i}. · {Nda}chevare'á{i}." }
         ],
         "examples": [
           {
@@ -91,13 +91,13 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la respuesta",
-        "q": "(Rosa es ^profesora^.)\nAna: Ndépa pohanohára?\nRosa: (   )",
-        "options": ["Mba'éichapa?", "Nahániri, che mbo'ehára.", "Héẽ, chekane'õ."],
+        "q": "(Juan es ^agricultor^.)\nLucas: Ndépa ñemuhára?\nJuan: (   )",
+        "options": ["Mba'éichapa?", "Nahániri, che chokokue.", "Héẽ, chekane'õ."],
         "answer": 2,
         "why": [
           "Mba'éichapa? es un saludo y una pregunta abierta: no responde a una pregunta de sí o no.",
-          "Ndépa pohanohára? pregunta sí o no por lo que es Rosa. Ella responde que no y dice qué es: Nahániri, che mbo'ehára, «no, soy profesora».",
-          "Héẽ diría que sí es médica, y Rosa es profesora. Además, chekane'õ habla de cansancio, y Ana preguntó qué es Rosa, no cómo está."
+          "Ndépa ñemuhára? pregunta sí o no por lo que es Juan. Él responde que no y dice qué es: Nahániri, che chokokue, «no, soy agricultor».",
+          "Héẽ diría que sí es vendedor, y Juan es agricultor. Además, chekane'õ habla de cansancio, y Lucas preguntó qué es Juan, no cómo está."
         ]
       }
     },
@@ -159,7 +159,7 @@
           "Chevare'a es «tengo hambre»: afirma, y Juan no tiene hambre.",
           "na- va solo delante de una palabra nasal, como en nachemandu'ái. Vare'a es oral: nda-.",
           "Ndavare'ái conjuga vare'a como una acción: nd- + a- + vare'a + -i, con la a- de ndahái, «no voy» (unidad 2). Vare'a es un estado y lleva che-: ndachevare'ái.",
-          "Vare'a es oral, sin ~ ni m, n, ñ: el «no» de dos partes es nda-…-i alrededor de chevare'a. Ndachevare'ái, «no tengo hambre». La tilde aparece en la á porque -i no se lleva el acento."
+          "Vare'a es oral, sin ~ ni ninguna letra nasal: el «no» de dos partes es nda-…-i alrededor de chevare'a. Ndachevare'ái, «no tengo hambre». La tilde aparece en la á porque -i no se lleva el acento."
         ]
       },
       {
@@ -224,9 +224,9 @@
         "after": ".",
         "tiles": ["nda", "che", "vare'a", "i"],
         "bank": [2, 0, 3, 1],
-        "full": "(Luis comió hace un rato.)\nLuis: {Nda}chevare'á{i}.",
+        "full": "(Luis comió hace un rato.)\nLuis: Ndachevare'ái.",
         "es": "Luis: No tengo hambre.",
-        "explain": "nda- + che- + vare'a («hambre») + -i = Ndachevare'ái, «no tengo hambre». El «no» tiene dos partes que rodean a che- y al estado. Vare'a es oral, sin ~ ni m, n, ñ: por eso va nda- y no na-. -i no se lleva el acento: queda en la a final de vare'a y se escribe á."
+        "explain": "nda- + che- + vare'a («hambre») + -i = Ndachevare'ái, «no tengo hambre». El «no» tiene dos partes que rodean a che- y al estado. Vare'a es oral, sin ~ ni ninguna letra nasal: por eso va nda- y no na-. -i no se lleva el acento: queda en la a final de vare'a y se escribe á."
       }
     ]
   },
@@ -244,8 +244,8 @@
       ]
     },
     "words": [
-      { "id": "oguahe", "gn": "og̃uahẽ", "es": "llega, llegó", "parts": [["o-", "él, ella"], ["g̃uahẽ", "llegar"]], "note": "Como en Tereg̃uahẽ porãite (unidad 1). Los diarios escriben oguahẽ, sin la ~ en la g; acá va con g̃." },
-      { "id": "koaga", "gn": "ko'ág̃a", "es": "ahora", "note": "Og̃uahẽ ko'ág̃a: llegó ahora. También se ve ko'ágã, con la ~ en la última a." },
+      { "id": "oguahe", "gn": "og̃uahẽ", "es": "llega, llegó", "parts": [["o-", "él, ella"], ["g̃uahẽ", "llegar"]], "note": "Como en Tereg̃uahẽ porãite (unidad 1). Los diarios escriben oguahẽ, sin la ~ en la g; acá va con g̃. El verbo no cambia para el pasado: og̃uahẽ es «llega» y también «llegó». El pasado se estudia en la unidad 6." },
+      { "id": "koaga", "gn": "ko'ág̃a", "es": "ahora", "note": "La del día 2. Og̃uahẽ ko'ág̃a: llegó ahora. También se ve ko'ágã, con la ~ en la última a." },
       { "id": "agaite", "gn": "ag̃aite", "es": "enseguida, ahora mismo", "parts": [["ag̃a", "luego, pronto"], ["-ite", "muy, mismo"]], "note": "Ag̃aite ag̃uahẽta: enseguida llego. La -ta es la del futuro, como en Jajotopáta." },
       { "id": "anete", "gn": "añete", "es": "cierto, verdad", "note": "Añetépa?: ¿de verdad?" },
       { "id": "upeicha", "gn": "upéicha", "es": "así", "note": "Para confirmar lo que te dicen: Héẽ, upéicha, «sí, así es». Lleva tilde en la é: el acento no cae en la última vocal." },

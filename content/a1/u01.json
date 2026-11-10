@@ -194,7 +194,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "Rosa: ^Mba'éichapa^, Juan?\nJuan: (   ), ha nde?",
+      "q": "Rosa: ^Mba'éichapa reiko^, Juan?\nJuan: (   ).",
       "options": [
        "Iporã",
        "Jajotopáta",
@@ -203,7 +203,7 @@
       ],
       "answer": 1,
       "why": [
-       "Rosa pregunta cómo está Juan, y él responde Iporã, «bien». Después le devuelve la pregunta: ha nde?",
+       "Rosa pregunta cómo anda Juan, y él responde Iporã, «bien».",
        "Jajotopáta es para despedirse, y Rosa recién saluda.",
        "reiko es «andás», hablando de vos, como en Mba'éichapa reiko? Juan tiene que decir cómo está él: Iporã.",
        "Mba'éichapa es la pregunta de Rosa. Juan tiene que responderla: Iporã."
@@ -1031,15 +1031,15 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "Dos alumnas hablan guaraní y se lo cuentan a su docente: «(   ) guaraníme.»",
+      "q": "Dos alumnas descubren que las dos hablan guaraní. Una le dice a la otra, hablando de las dos: «(   ) guaraníme.»",
       "options": [
-       "Ñande ñañe'ẽ",
-       "Ha'ekuéra oñe'ẽ",
        "Ore roñe'ẽ",
+       "Ha'ekuéra oñe'ẽ",
+       "Ñande ñañe'ẽ",
        "Che añe'ẽ"
       ],
       "answer": 3,
-      "explain": "Las alumnas hablan de ellas dos, y la docente que las escucha no está en ese grupo: ore roñe'ẽ. Ñande ñañe'ẽ sumaría a la docente, ha'ekuéra oñe'ẽ hablaría de otras personas y che añe'ẽ, de una sola alumna."
+      "explain": "Una alumna le habla a la otra, y las dos hablan guaraní: la que escucha está en el grupo, y por eso va ñande ñañe'ẽ. Ore roñe'ẽ la dejaría afuera, ha'ekuéra oñe'ẽ hablaría de otras personas y che añe'ẽ, de una sola alumna."
      },
      {
       "id": "a1u01d2.e3",
@@ -1057,7 +1057,7 @@
        1,
        0
       ],
-      "full": "(Ana habla de su mamá y su papá.) {Ha'ekuéra} oñe'ẽ guaraníme.",
+      "full": "(Ana habla de su mamá y su papá.) Ha'ekuéra oñe'ẽ guaraníme.",
       "es": "(Ana habla de su mamá y su papá.) Ellos hablan guaraní.",
       "explain": "Ana habla de dos personas, su mamá y su papá, así que va el plural: ha'e, «él, ella», más -kuéra da ha'ekuéra, «ellos». El acento pasa a -kuéra."
      }
@@ -1244,7 +1244,7 @@
       ],
       "examples": [
        {
-        "gn": "Mba'éichapa. Che {réra} Ana.",
+        "gn": "Mba'éichapa? Che {réra} Ana.",
         "es": "Hola. Me llamo Ana.",
         "parts": [
          [
@@ -1427,7 +1427,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(^Carlos se presenta^.) Mba'éichapa. (   ) Carlos. [Ha nde|¿y vos?]?",
+      "q": "(^Carlos se presenta^.) Mba'éichapa? (   ) Carlos. [Ha nde|¿y vos?]?",
       "options": [
        "Nde réra",
        "Héra",
@@ -1467,7 +1467,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(^Lucas es de Argentina^.) Mba'éichapa. Che réra Lucas. Che (   ).",
+      "q": "(^Lucas es de Argentina^.) Mba'éichapa? Che réra Lucas. Che (   ).",
       "options": [
        "Argentina-gua",
        "gua Argentina",
@@ -1487,19 +1487,19 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "A: Che Paraguaigua. ^[Ha nde|¿y vos?]?^\nB: (   ) Argentina-gua.",
+      "q": "(Ana ^presenta a Lucas^, un chico de Argentina.)\nAna: Héra Lucas. (   ) Argentina-gua.",
       "options": [
        "Nde",
-       "Ha'e",
        "Che",
+       "Ha'e",
        "Ñande"
       ],
       "answer": 3,
       "why": [
-       "Nde Argentina-gua sería «vos sos de Argentina». A pregunta por B, y B responde por sí: che.",
-       "Ha'e es «él, ella». B habla de sí.",
-       "A pregunta ha nde?, «¿y vos?», y B responde por sí: Che Argentina-gua, «soy de Argentina».",
-       "Ñande incluye a A, y A es de Paraguay. B habla solo de sí: che."
+       "Nde es «vos»: Ana le hablaría a Lucas. Acá habla de él con otra persona.",
+       "Che Argentina-gua sería «yo soy de Argentina»: Ana no habla de ella, habla de Lucas.",
+       "Ana habla de otra persona, Lucas: Ha'e Argentina-gua, «él es de Argentina».",
+       "Ñande es «nosotros, con vos». Ana habla solo de Lucas: ha'e."
       ]
      },
      {
@@ -1531,7 +1531,7 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "Mba'éichapa. Che réra Ana. Che ",
+      "before": "Mba'éichapa? Che réra Ana. Che ",
       "after": ".",
       "tiles": [
        "Paraguái",
@@ -1542,7 +1542,7 @@
        0
       ],
       "hint": "-gua dice de dónde es alguien. ¿Va antes o después del lugar?",
-      "full": "Mba'éichapa. Che réra Ana. Che Paraguai{gua}.",
+      "full": "Mba'éichapa? Che réra Ana. Che Paraguai{gua}.",
       "es": "Hola. Me llamo Ana. Soy de Paraguay.",
       "explain": "-gua va después del lugar y pegado, en una sola palabra: Paraguaigua, «de Paraguay». -gua se lleva el acento de la palabra y, como queda al final, no se escribe tilde: Paraguái pierde la suya."
      }
@@ -1568,7 +1568,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "A: Mba'éichapa nde réra?\nB: Che réra Marta. Che (   ).",
+      "q": "(Marta se presenta en la clase.)\nMarta: Che réra Marta. Che (   ).",
       "options": [
        "gua Paraguái",
        "Paraguái",
@@ -1766,7 +1766,7 @@
      "script": [
       "Narrador: Primer día de clase de guaraní. La profesora habla de ella y de una alumna nueva.",
       "Narrador: ¿Qué dato de la alumna nueva es correcto?",
-      "Mujer: Mba'éichapa. Che réra Nilda.",
+      "Mujer: Mba'éichapa? Che réra Nilda.",
       "Mujer: Che Paraguaigua.",
       "Mujer: Temimbo'e pyahu héra Sofía.",
       "Mujer: Ha'e Argentina-gua.",
@@ -1786,7 +1786,7 @@
      ],
      [
       "F",
-      "Mba'éichapa. Che réra Nilda.",
+      "Mba'éichapa? Che réra Nilda.",
       "Hola. Me llamo Nilda."
      ],
      [
@@ -2158,7 +2158,7 @@
       "label": "Armá la palabra",
       "join": "word",
       "before": "",
-      "after": " ovale ko kesu?",
+      "after": " ovale ko mandi'o?",
       "tiles": [
        "mboy",
        "pa"
@@ -2168,8 +2168,8 @@
        0
       ],
       "hint": "¿Dónde va -pa en mba'épa? Acá va igual. Después fijate dónde queda el acento.",
-      "full": "{Mboýpa} ovale ko kesu?",
-      "es": "¿Cuánto cuesta este queso?",
+      "full": "{Mboýpa} ovale ko mandi'o?",
+      "es": "¿Cuánto cuesta esta mandioca?",
       "explain": "mboy (cuánto) va primero y -pa al final: mboýpa. La -pa de pregunta no se lleva el acento: este queda en la y de mboy. Como esa y ya no es la última vocal, se escribe con tilde: ý."
      }
     ],
@@ -2194,7 +2194,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "A: (   ) reipota?\nB: Chipa.",
+      "q": "(En un puesto del mercado, B pide chipá.)\nA: (   ) reipota?\nB: Chipa.",
       "options": [
        "Mboýpa",
        "Moõpa",
@@ -2222,7 +2222,7 @@
        2,
        0
       ],
-      "full": "Rosa, reñe'ẽ{pa} guaraníme?",
+      "full": "Rosa, reñe'ẽpa guaraníme?",
       "es": "Rosa, ¿hablás guaraní?",
       "explain": "re (vos) + ñe'ẽ (hablar) + pa (pregunta) = reñe'ẽpa. El acento sigue en la ẽ, y la tilde nasal (~) ya lo marca: no se escribe otro acento."
      }
@@ -2381,7 +2381,7 @@
      ],
      "script": [
       "Narrador: En un puesto del mercado. ¿Qué hay en el puesto?",
-      "Hombre: Mba'éichapa. Mba'épa reipota?",
+      "Hombre: Mba'éichapa? Mba'épa reipota?",
       "Mujer: Iporã. Oĩpa chipa?",
       "Hombre: Nahániri. Oĩ kesu ha mandi'o.",
       "Mujer: Mboýpa ovale ko kesu?",
@@ -2397,7 +2397,7 @@
      ],
      [
       "M",
-      "Mba'éichapa. Mba'épa reipota?",
+      "Mba'éichapa? Mba'épa reipota?",
       "Hola, ¿qué tal? ¿Qué querés?"
      ],
      [
@@ -2812,7 +2812,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la fórmula",
-      "q": "(Lucía vuelca sin querer el tereré de doña Ramona.)\nLucía: (   ), ña Ramona.",
+      "q": "(Ana pisa sin querer a Luis.)\nAna: (   ), Luis.",
       "options": [
        "Aguyje",
        "Tereg̃uahẽ porãite",
@@ -2820,7 +2820,7 @@
        "Cheñyrõmi"
       ],
       "answer": 4,
-      "explain": "Lucía volcó el tereré sin querer: pide perdón con Cheñyrõmi. Aguyje da las gracias, Tereg̃uahẽ porãite da la bienvenida y Jajotopáta es para despedirse. Ninguna de esas tres pide perdón."
+      "explain": "Ana pisó a Luis sin querer: pide perdón con Cheñyrõmi. Aguyje da las gracias, Tereg̃uahẽ porãite da la bienvenida y Jajotopáta es para despedirse. Ninguna de esas tres pide perdón."
      },
      {
       "id": "a1u01d5.e3",
@@ -2838,7 +2838,7 @@
        1,
        0
       ],
-      "full": "(Lucía llega a la casa de doña Ramona.)\nLucía: {Ikatúpa} aike, ña Ramona?",
+      "full": "(Lucía llega a la casa de doña Ramona.)\nLucía: Ikatúpa aike, ña Ramona?",
       "es": "Lucía: ¿Puedo pasar, doña Ramona?",
       "explain": "ikatu, pa. -pa va al final y no se lleva el acento: queda en la u de ikatu. Como esa u ya no es la última vocal, se escribe: Ikatúpa."
      }
@@ -2944,7 +2944,7 @@
       "id": "angiru",
       "gn": "angirũ",
       "es": "amigo, amiga",
-      "note": "Sirve para amigo y para amiga. La ~ va solo en la ũ del final."
+      "note": "Ya la viste el día 2: sirve para amigo y para amiga. La ~ va solo en la ũ del final."
      },
      {
       "id": "avanee",
@@ -3269,7 +3269,7 @@
        0,
        1
       ],
-      "full": "Mba'éicha{pa} nde réra?",
+      "full": "Mba'éichapa nde réra?",
       "es": "¿Cómo te llamás?",
       "explain": "mba'e («qué») + -icha («como») + -pa (pregunta). Ni -icha ni -pa se llevan el acento: queda en la e de mba'e, que ya no es la última vocal, y se escribe: Mba'éichapa."
      }
@@ -3289,7 +3289,7 @@
      "pairs": [
       [
        "pyta",
-       "talón",
+       "talón; quedarse",
        "pytã",
        "rojo"
       ],
@@ -3705,7 +3705,7 @@
     0,
     1
    ],
-   "full": "(Rosa les habla a Juan y a Lucas.)\nRosa: {Pe}ñe'ẽ{pa} guaraníme?",
+   "full": "(Rosa les habla a Juan y a Lucas.)\nRosa: Peñe'ẽpa guaraníme?",
    "es": "(Rosa les habla a Juan y a Lucas.)\nRosa: ¿Ustedes hablan guaraní?",
    "explain": "pe, ñe'ẽ, pa. Rosa les habla a dos personas, Juan y Lucas, así que el verbo lleva pe-, el de peẽ («ustedes»): pe- + ñe'ẽ = peñe'ẽ, «hablan». -pa va al final y hace la pregunta: peñe'ẽpa. El acento sigue en la ẽ, y la tilde nasal ya lo marca."
   },
@@ -3727,7 +3727,7 @@
     0,
     1
    ],
-   "full": "Luis: Mba'éichapa, Ana?\nAna: {Iporã}, ha nde?",
+   "full": "Luis: Mba'éichapa, Ana?\nAna: Iporã, ha nde?",
    "es": "Luis: Hola, Ana, ¿cómo estás?\nAna: Bien, ¿y vos?",
    "explain": "Iporã, ha, nde. Ana primero responde cómo está: iporã, «bien». Después le devuelve la pregunta a Luis con ha nde, «¿y vos?»: ha, «y», va antes de nde."
   },

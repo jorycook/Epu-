@@ -71,10 +71,10 @@
  },
  {
   "id": "a1u04t.11", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-  "q": "Luis: (   ) pe karia'y?\nAna: Che memby.",
+  "q": "Luis: (   ) pe karia'y?\nAna: Che angirũ.",
   "options": ["Mávapa", "Mba'épa", "Moõpa", "Mboýpa"],
   "answer": 1,
-  "explain": "Ana responde con una persona, che memby, «mi hijo»: Luis preguntó quién es ese muchacho, Mávapa pe karia'y? Mba'épa pregunta por una cosa, moõpa por un lugar y mboýpa por una cantidad."
+  "explain": "Ana responde con una persona, che angirũ, «mi amigo»: Luis preguntó quién es ese muchacho, Mávapa pe karia'y? Mba'épa pregunta por una cosa, moõpa por un lugar y mboýpa por una cantidad."
  },
  {
   "id": "a1u04t.12", "kind": "choice", "area": "grammar", "label": "Elegí la forma",

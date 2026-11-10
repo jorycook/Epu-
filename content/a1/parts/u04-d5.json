@@ -8,7 +8,7 @@
         "gloss": "uno, dos, tres, cuatro, cinco",
         "connect": [
           { "pos": "Delante del sustantivo, que queda en singular: el número ya dice cuántos", "rule": "{mokõi} kuña · {mbohapy} memby" },
-          { "pos": "Para contar lo que hay, con oĩ, y para preguntar cuántos, con mboýpa (semana 1)", "rule": "Oĩ {mbohapy} apyka. · Mboýpa ne memby?" },
+          { "pos": "Para contar lo que hay, con oĩ, y para preguntar cuántos, con mboýpa (unidad 1)", "rule": "Oĩ {mbohapy} apyka. · Mboýpa ne memby?" },
           { "pos": "La edad: ary, «año», con tener: areko, rereko, oguereko. -pa se pega a la última palabra de lo que preguntás: mboy ary → Mboy arýpa", "rule": "Oguereko {mokõi} ary. · Mboy arýpa rereko?" },
           { "pos": "Po es «cinco» y también «mano»", "rule": "{po} mitã · {po} ary" }
         ],
@@ -25,12 +25,12 @@
           },
           {
             "gn": "Jareko {peteĩ} jagua.",
-            "es": "Tenemos un perro.",
+            "es": "Tenemos un perro, vos y yo.",
             "parts": [["ja-", "nosotros (con vos)"], ["reko", "tener"], ["peteĩ", "uno, un"], ["jagua", "perro"]]
           },
           {
-            "gn": "Rosa: Areko {mbohapy} memby.",
-            "es": "Rosa: Tengo tres hijos.",
+            "gn": "Ramona: Areko {mbohapy} memby.",
+            "es": "Ramona: Tengo tres hijos.",
             "parts": [["a-", "yo"], ["reko", "tener"], ["mbohapy", "tres"], ["memby", "hijo o hija (dice la mamá)"]]
           }
         ],
@@ -45,10 +45,10 @@
         "form": "número castellano + sustantivo",
         "gloss": "de seis en adelante, precios y edad, en el habla",
         "connect": [
-          { "pos": "Los precios se dicen en castellano, como en la semana 1", "rule": "Mboýpa ovale? {Diez mil}." },
-          { "pos": "De seis en adelante, en la charla, el número suele ir en castellano, y el sustantivo puede seguir en guaraní", "rule": "{doce} mitã · {mil} tapicha" },
-          { "pos": "La edad: el número en castellano, con ary o solo; por escrito suele ir en cifras: 80 ary", "rule": "Mboy arýpa rereko? {Veinte}. · Oguereko {ochenta} ary." },
-          { "pos": "Del 6 al 10 en guaraní, para leerlos: son de la escuela y de los textos", "rule": "{poteĩ} 6 · {pokõi} 7 · {poapy} 8 · {porundy} 9 · {pa} 10" }
+          { "pos": "Los precios se dicen en castellano, como en la unidad 1", "rule": "Mboýpa ovale? {Diez mil}." },
+          { "pos": "De seis en adelante, en la charla, el número suele ir en castellano, y el sustantivo puede seguir en guaraní", "rule": "{doce} mitã · {mil} [tapicha|persona]" },
+          { "pos": "La edad: el número en castellano, con ary o solo; por escrito suele ir en cifras: 80 ary", "rule": "Mboy arýpa rereko? {Treinta}. · Oguereko {ochenta} ary." },
+          { "pos": "Del 6 al 10 en guaraní, para leerlos: son de la escuela y de los textos. Pa, «diez», es otra palabra que la -pa de pregunta", "rule": "{poteĩ} 6 · {pokõi} 7 · {poapy} 8 · {porundy} 9 · {pa} 10" }
         ],
         "examples": [
           {
@@ -57,9 +57,9 @@
             "parts": [["mboýpa", "¿cuánto?"], ["ovale", "cuesta, vale"], ["ko kesu", "este queso"], ["diez mil", "el precio, en castellano"]]
           },
           {
-            "gn": "Ana: Mboy arýpa rereko?\nLuis: {Veinte}.",
-            "es": "Ana: ¿Cuántos años tenés?\nLuis: Veinte.",
-            "parts": [["mboy", "cuántos"], ["ary", "año"], ["-pa", "pregunta"], ["rereko", "tenés"], ["veinte", "la edad, en castellano"]]
+            "gn": "Ana: Mboy arýpa rereko?\nLuis: {Treinta}.",
+            "es": "Ana: ¿Cuántos años tenés?\nLuis: Treinta.",
+            "parts": [["mboy", "cuántos"], ["ary", "año"], ["-pa", "pregunta"], ["rereko", "tenés"], ["treinta", "la edad, en castellano"]]
           },
           {
             "gn": "Che ramói oguereko {ochenta} ary.",
@@ -107,12 +107,12 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Rosa tiene ^dos^ hijos.)\nAna: Mboýpa ne memby, Rosa?\nRosa: Areko (   ) memby.",
-        "options": ["mbohapy", "mokõi", "peteĩ", "po"],
+        "q": "(Rosa tiene ^dos^ hijos.)\nAna: Mboýpa ne memby, Rosa?\nRosa: (   ).",
+        "options": ["Mbohapy", "Mokõi", "Peteĩ", "Po"],
         "answer": 2,
         "why": [
           "Mbohapy es «tres», y Rosa tiene dos hijos.",
-          "Rosa tiene dos hijos: mokõi memby. El número va delante de memby, que queda en singular.",
+          "Rosa tiene dos hijos: responde con el número solo, Mokõi, «dos».",
           "Peteĩ es «uno», y son dos.",
           "Po es «cinco». Y acordate: también es «mano»."
         ]
@@ -187,7 +187,7 @@
         "after": " kesu?\nVendedor: Diez mil.",
         "tiles": ["mboýpa", "ovale", "ko"],
         "bank": [1, 2, 0],
-        "hint": "Empezá por la palabra que pregunta. Ko va pegado a kesu, como en ko ka'aru.",
+        "hint": "Empezá por la palabra que pregunta. Ko va justo delante de kesu, como en ko ka'aru.",
         "full": "Rosa: {Mboýpa} ovale ko kesu?\nVendedor: Diez mil.",
         "es": "Rosa: ¿Cuánto cuesta este queso?\nVendedor: Diez mil.",
         "explain": "Mboýpa, «¿cuánto?», va primero: es la palabra que pregunta, como Mba'éichapa en Mba'éichapa nde réra?. Después el verbo, ovale, «cuesta», y al final ko kesu, «este queso», con ko delante del sustantivo, como el día 3. El vendedor contesta el precio entero en castellano: diez mil. La moneda de Paraguay se llama guaraní, como la lengua: el precio va en guaraníes."
@@ -199,7 +199,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Qué significa",
-        "q": "Rosa: _Areko mbohapy memby._",
+        "q": "Ramona: _Areko mbohapy memby._",
         "options": ["Tengo dos hijos.", "Tengo tres años.", "Tengo muchos hijos.", "Tengo tres hijos."],
         "answer": 4,
         "explain": "Areko es «tengo», mbohapy, «tres», y memby, «hijo» o «hija» cuando lo dice la mamá: «tengo tres hijos». Dos sería mokõi, y «tres años» llevaría ary: mbohapy ary. Mbohapy es un número exacto, no «muchos»."
@@ -210,9 +210,9 @@
         "area": "grammar",
         "label": "Elegí la respuesta",
         "q": "(En la despensa.)\nAna: Mboýpa ovale ko so'o?\nVendedor: (   )",
-        "options": ["Pa.", "Mokõi so'o.", "Veinte mil.", "Oĩ so'o."],
+        "options": ["Pa.", "Mokõi so'o.", "Veinte mil.", "Ndaipóri."],
         "answer": 3,
-        "explain": "Mboýpa ovale? pregunta el precio, y el precio se dice en castellano y entero: veinte mil. Pa es «diez» en guaraní, el numeral de la escuela, y no es un precio; mokõi so'o, «dos» de carne, dice una cantidad, no un precio; y Oĩ so'o, «hay carne», contesta Oĩpa so'o?, no cuánto cuesta."
+        "explain": "Mboýpa ovale? pregunta el precio, y el precio se dice en castellano y entero: veinte mil. Pa es «diez» en guaraní, el numeral de la escuela, y no es un precio; mokõi so'o, «dos» de carne, dice una cantidad, no un precio; y Ndaipóri, «no hay», contesta Oĩpa so'o?, no cuánto cuesta."
       },
       {
         "id": "a1u04d5.e3",
@@ -249,8 +249,8 @@
       { "id": "mbohapy", "gn": "mbohapy", "es": "tres", "note": "Mb es una sola letra: mbo-ha-py. La h suena." },
       { "id": "irundy", "gn": "irundy", "es": "cuatro", "note": "Nd es una sola letra, y la y del final es la sexta vocal: i-ru-ndy." },
       { "id": "po", "gn": "po", "es": "cinco", "note": "También es «mano»: cinco dedos. De seis en adelante, en la charla el número suele decirse en castellano." },
-      { "id": "chipa", "gn": "chipa", "es": "chipá", "note": "Sin tilde: en guaraní, sin marca, el acento cae al final. De la semana 1." },
-      { "id": "kesu", "gn": "kesu", "es": "queso", "note": "Del castellano «queso», con k: en guaraní no hay qu. De la semana 1." },
+      { "id": "chipa", "gn": "chipa", "es": "chipá", "note": "Sin tilde: en guaraní, sin marca, el acento cae al final. De la unidad 1." },
+      { "id": "kesu", "gn": "kesu", "es": "queso", "note": "Del castellano «queso», con k: en guaraní no hay qu. De la unidad 1." },
       { "id": "kamby", "gn": "kamby", "es": "leche", "note": "Con k y con y, la sexta vocal. Vaka kamby es «leche de vaca»." }
     ],
     "spell": ["mokoi", "kamby", "chipa", "kesu"],

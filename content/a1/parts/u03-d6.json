@@ -26,21 +26,21 @@
         "why": [
           "Ha'e che sy diría «es mi mamá», y la de la foto es su profesora: Luis lo niega.",
           "Rosa se equivoca, y Luis niega el «es» con ndaha'éi, una sola palabra: Ndaha'éi che sy, «no es mi mamá». Después, sin negar: ha'e che mbo'ehára, «es mi profesora».",
-          "Ndaikatúi es «no se puede»: el nd-…-i rodea a ikatu, no a ha'e. Ndaikatúi che sy no dice nada. Para negar un «es» va ndaha'éi."
+          "Ndaikatúi es «no se puede»: el nda-…-i rodea a ikatu, no a ha'e. Ndaikatúi che sy no dice nada. Para negar un «es» va ndaha'éi."
         ]
       }
     },
     "drill": [
       {
         "id": "a1u03d6.d1", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-        "q": "(Ana habla de ^su abuela^, que está enferma.)\nAna: Che jarýi (   ).",
+        "q": "(Rosa habla de ^su papá^, que está enfermo.)\nRosa: Che ru (   ).",
         "options": ["cherasy", "irasy", "hasy", "nderasy"],
         "answer": 3,
         "why": [
-          "Cherasy es «estoy enferma»: Ana hablaría de ella misma. Acá habla de su abuela.",
+          "Cherasy es «estoy enferma»: Rosa hablaría de ella misma. Acá habla de su papá.",
           "Rasy es de las palabras con tres formas, como téra, che réra, héra: tasy, cherasy, hasy. Para él o ella es hasy: irasy no existe.",
-          "Che jarýi, «mi abuela», es otra persona, y para él o ella rasy tiene su propia forma, hasy, como réra tiene héra. Che jarýi hasy, «mi abuela está enferma».",
-          "Nderasy es «estás enferma», hablándole a ella. Ana habla de su abuela, no con ella."
+          "Che ru, «mi papá», es otra persona, y para él o ella rasy tiene su propia forma, hasy, como réra tiene héra. Che ru hasy, «mi papá está enfermo».",
+          "Nderasy es «estás enfermo», hablándole a él. Rosa habla de su papá, no con él."
         ]
       },
       {
@@ -63,7 +63,7 @@
         "why": [
           "Re- es el «vos» de las acciones, como en rekaru, «comés». Pochy es un estado, y con los estados el «vos» es nde-, no re-: Repochýpa no va.",
           "I- es «él, ella»: Ipochýpa pregunta si otra persona está enojada. Rosa le pregunta a Juan por él mismo: nde-.",
-          "Ne- reemplaza a nde- solo antes de una palabra nasal, como nekane'õ. Pochy es oral, sin ~ ni m, n, ñ: queda nde-.",
+          "Ne- reemplaza a nde- solo antes de una palabra nasal, como nekane'õ. Pochy es oral, sin ~ ni ninguna letra nasal: queda nde-.",
           "Rosa le habla a Juan, de vos a vos, y de un estado: nde- + pochy, y -pa pegado al estado, que es lo que Rosa pregunta. La y tónica ya no es la última vocal, así que aparece la tilde: Ndepochýpa?, «¿estás enojado?»."
         ]
       },
@@ -90,12 +90,12 @@
       },
       {
         "id": "a1u03d6.d6", "kind": "build", "area": "grammar", "label": "Armá la palabra", "join": "word",
-        "before": "(Luis pregunta si llegó la mamá de Ana.)\nLuis: ", "after": " nde sy?",
-        "tiles": ["o", "g̃uahẽ", "pa"], "bank": [2, 1, 0],
-        "hint": "Nde sy es otra persona: el verbo empieza con el prefijo de «él, ella». -pa va al final.",
-        "full": "(Luis pregunta si llegó la mamá de Ana.)\nLuis: {O}g̃uahẽ{pa} nde sy?",
-        "es": "Luis: ¿Llegó tu mamá?",
-        "explain": "o- («él, ella») + g̃uahẽ («llegar») + -pa (pregunta) = Og̃uahẽpa, «¿llegó?». Nde sy, «tu mamá», es otra persona: por eso el verbo lleva o-. -pa va pegado al verbo, y nde sy viene después. Acá no aparece ninguna tilde: el acento cae en la ẽ, y la ~ ya lo marca. Compará con Revy'ápa, donde la a es oral y recibe la tilde."
+        "before": "(Rosa pregunta si el papá de Juan está cansado.)\nRosa: ", "after": " nde ru, Juan?",
+        "tiles": ["i", "kane'õ", "pa"], "bank": [2, 1, 0],
+        "hint": "Nde ru es otra persona: el estado empieza con la marca de «él, ella». -pa va al final.",
+        "full": "(Rosa pregunta si el papá de Juan está cansado.)\nRosa: {I}kane'õ{pa} nde ru, Juan?",
+        "es": "Rosa: ¿Está cansado tu papá, Juan?",
+        "explain": "i- («él, ella») + kane'õ («cansancio») + -pa (pregunta) = Ikane'õpa, «¿está cansado?». Nde ru, «tu papá», es otra persona: por eso el estado lleva i-. -pa va pegado al estado, y nde ru viene después. Acá no aparece ninguna tilde: el acento cae en la õ, y la ~ ya lo marca. Compará con Revy'ápa, donde la a es oral y recibe la tilde."
       }
     ],
     "exam": [
@@ -117,7 +117,7 @@
         "id": "a1u03d6.e3", "kind": "build", "area": "grammar", "label": "Armá la palabra", "join": "word",
         "before": "(En la fiesta, Rosa cree que la señora es la abuela de Luis.)\nLuis: ", "after": " che jarýi, ha'e che sy.",
         "tiles": ["nda", "ha'e", "i"], "bank": [1, 0, 2],
-        "full": "(En la fiesta, Rosa cree que la señora es la abuela de Luis.)\nLuis: {Nda}ha'é{i} che jarýi, ha'e che sy.",
+        "full": "(En la fiesta, Rosa cree que la señora es la abuela de Luis.)\nLuis: Ndaha'éi che jarýi, ha'e che sy.",
         "es": "Luis: No es mi abuela, es mi mamá.",
         "explain": "nda- va primero, después ha'e y al final -i: ndaha'éi, «no es». El «no» del guaraní tiene dos partes que rodean la palabra. La tilde va en la é porque -i no se lleva el acento. Después, sin negar: ha'e che sy, «es mi mamá»."
       }
