@@ -6,64 +6,64 @@
    "intro": "Cuatro pares de la semana que se parecen: fijate a cuántos les hablás, si incluís al que escucha, de quién es el nombre y si la frase lleva -pa.",
    "forms": [
     { "form": "ndéve · peẽme", "tag": "a vos · a ustedes", "mark": "dot",
-      "gn": "Aguyje {ndéve}, Ana. Aguyjevete {peẽme}, Ana ha Luis.",
-      "es": "Gracias a vos, Ana. Muchas gracias a ustedes, Ana y Luis." },
+      "gn": "Aguyje {ndéve}, Ana. Aguyjevete {peẽme}, Ana ha Vicente.",
+      "es": "Gracias a vos, Ana. Muchas gracias a ustedes, Ana y Vicente." },
     { "form": "ñande · ore", "tag": "con vos · sin vos", "mark": "dot",
-      "gn": "{Ñande}: che ha nde. {Ore}: che ha Luis.",
-      "es": "Ñande: yo y vos. Ore: yo y Luis, sin vos." },
+      "gn": "{Ñande}: che ha nde. {Ore}: che ha Vicente.",
+      "es": "Ñande: yo y vos. Ore: yo y Vicente, sin vos." },
     { "form": "che réra · nde réra", "tag": "mi nombre · tu nombre", "mark": "dot",
-      "gn": "Rosa: Mba'éichapa {nde réra}?\nLuis: {Che réra} Luis.",
-      "es": "Rosa: ¿Cómo te llamás?\nLuis: Me llamo Luis." },
+      "gn": "Rosa: Mba'éichapa {nde réra}?\nVicente: {Che réra} Vicente.",
+      "es": "Rosa: ¿Cómo te llamás?\nVicente: Me llamo Vicente." },
     { "form": "-pa", "tag": "pregunta · respuesta", "mark": "dot",
-      "gn": "Ana: Ndé{pa} Luis?\nLuis: Héẽ, che Luis.",
-      "es": "Ana: ¿Vos sos Luis?\nLuis: Sí, soy Luis." }
+      "gn": "Ana: Ndé{pa} Vicente?\nVicente: Héẽ, che Vicente.",
+      "es": "Ana: ¿Vos sos Vicente?\nVicente: Sí, soy Vicente." }
    ],
    "check": {
     "id": "a1u01d6.c1", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-    "q": "Ana: ^Reñe'ẽpa^ guaraníme?\nLuis: ^Héẽ^, (   ) guaraníme.",
+    "q": "Ana: ^Reñe'ẽpa^ guaraníme?\nVicente: ^Héẽ^, (   ) guaraníme.",
     "options": ["reñe'ẽpa", "añe'ẽ", "oñe'ẽ"],
     "answer": 2,
     "why": [
-     "Reñe'ẽpa es la pregunta de Ana, con -pa. Luis ya responde y afirma: sin -pa.",
-     "Luis responde que sí y habla de él: añe'ẽ, «hablo». No lleva -pa porque afirma.",
-     "Oñe'ẽ es la forma de ha'e, otra persona. Ana le pregunta a Luis con re- («vos»): él responde por él mismo, añe'ẽ."
+     "Reñe'ẽpa es la pregunta de Ana, con -pa. Vicente ya responde y afirma: sin -pa.",
+     "Vicente responde que sí y habla de él: añe'ẽ, «hablo». No lleva -pa porque afirma.",
+     "Oñe'ẽ es la forma de ha'e, otra persona. Ana le pregunta a Vicente con re- («vos»): él responde por él mismo, añe'ẽ."
     ]
    }
   },
   "drill": [
    {
     "id": "a1u01d6.d1", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-    "q": "Luis cuenta de dónde son ^sus abuelos^: «(   ) Paraguaigua.»",
+    "q": "Vicente cuenta de dónde son ^sus abuelos^: «(   ) Paraguaigua.»",
     "options": ["Ha'e", "Ore", "Peẽ", "Ha'ekuéra"],
     "answer": 4,
     "why": [
      "Ha'e es una sola persona, «él» o «ella». Los abuelos son más de uno.",
-     "Ore es «nosotros» y sumaría a Luis, pero él cuenta de dónde son sus abuelos.",
-     "Peẽ es «ustedes», para hablarles a ellos. Luis cuenta de dónde son sus abuelos, no les habla a ellos.",
-     "Luis habla de varias personas, sus abuelos: ha'ekuéra, «ellos». Ha'ekuéra Paraguaigua: son de Paraguay."
+     "Ore es «nosotros» y sumaría a Vicente, pero él cuenta de dónde son sus abuelos.",
+     "Peẽ es «ustedes», para hablarles a ellos. Vicente cuenta de dónde son sus abuelos, no les habla a ellos.",
+     "Vicente habla de varias personas, sus abuelos: ha'ekuéra, «ellos». Ha'ekuéra Paraguaigua: son de Paraguay."
     ]
    },
    {
     "id": "a1u01d6.d2", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-    "q": "Ana le habla a la profesora. Para decir «nosotros: ^Luis y yo^», Ana dice (   ).",
+    "q": "Ana le habla a la profesora. Para decir «nosotros: ^Vicente y yo^», Ana dice (   ).",
     "options": ["ore", "ñande", "peẽ", "ha'ekuéra"],
     "answer": 1,
     "why": [
-     "La profesora escucha y no está en el grupo: son Luis y Ana. Ese «nosotros» es ore.",
+     "La profesora escucha y no está en el grupo: son Vicente y Ana. Ese «nosotros» es ore.",
      "Ñande incluye al que escucha: sumaría a la profesora.",
-     "Peẽ es «ustedes». Ana habla de ella misma y de Luis.",
+     "Peẽ es «ustedes». Ana habla de ella misma y de Vicente.",
      "Ha'ekuéra es «ellos» o «ellas». Ana se incluye: dice «nosotros»."
     ]
    },
    {
     "id": "a1u01d6.d3", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-    "q": "Rosa: Mba'éichapa? Che réra Rosa. ^[Ha nde|¿y vos?]^?\nLuis: Iporã. (   ) Luis.",
+    "q": "Rosa: Mba'éichapa? Che réra Rosa. ^[Ha nde|¿y vos?]^?\nVicente: Iporã. (   ) Vicente.",
     "options": ["Nde réra", "Héra", "Che réra", "Ha nde"],
     "answer": 3,
     "why": [
-     "Nde réra es «tu nombre», el de Rosa. Luis dice el suyo.",
-     "Héra es el nombre de otra persona, de él o de ella. Luis habla de él mismo.",
-     "Rosa pregunta ha nde?, «¿y vos?». Luis dice su nombre: che réra, «mi nombre».",
+     "Nde réra es «tu nombre», el de Rosa. Vicente dice el suyo.",
+     "Héra es el nombre de otra persona, de él o de ella. Vicente habla de él mismo.",
+     "Rosa pregunta ha nde?, «¿y vos?». Vicente dice su nombre: che réra, «mi nombre».",
      "Ha nde es «¿y vos?»: devuelve una pregunta, no dice un nombre."
     ]
    },
@@ -101,17 +101,17 @@
   "exam": [
    {
     "id": "a1u01d6.e1", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-    "q": "Ana le habla a Luis. Para decir «nosotros: vos y yo», Ana dice (   ).",
+    "q": "Ana le habla a Vicente. Para decir «nosotros: vos y yo», Ana dice (   ).",
     "options": ["ore", "peẽ", "ñande", "ha'ekuéra"],
     "answer": 3,
-    "explain": "Luis es el que escucha, y Ana lo incluye: «vos y yo» es ñande. Ore dejaría afuera a Luis, peẽ es «ustedes» y ha'ekuéra, «ellos»."
+    "explain": "Vicente es el que escucha, y Ana lo incluye: «vos y yo» es ñande. Ore dejaría afuera a Vicente, peẽ es «ustedes» y ha'ekuéra, «ellos»."
    },
    {
     "id": "a1u01d6.e2", "kind": "choice", "area": "grammar", "label": "Elegí la frase",
-    "q": "(Lucía se va de la casa de doña Ramona.)\nLucía: Aguyjevete, ña Ramona. (   )",
+    "q": "(Sara se va de la casa de doña Ramona.)\nSara: Aguyjevete, ña Ramona. (   )",
     "options": ["Tereg̃uahẽ porãite.", "Ikatúpa aike?", "Mba'éichapa?", "Jajotopáta."],
     "answer": 4,
-    "explain": "Lucía se va: después de dar las gracias, se despide con Jajotopáta, «nos vemos». Tereg̃uahẽ porãite es para recibir a quien llega, Ikatúpa aike? pide permiso para entrar y Mba'éichapa? saluda al llegar."
+    "explain": "Sara se va: después de dar las gracias, se despide con Jajotopáta, «nos vemos». Tereg̃uahẽ porãite es para recibir a quien llega, Ikatúpa aike? pide permiso para entrar y Mba'éichapa? saluda al llegar."
    },
    {
     "id": "a1u01d6.e3", "kind": "build", "area": "grammar", "label": "Armá la palabra", "join": "word",
@@ -158,23 +158,23 @@
  "skill": {
   "kind": "reading",
   "es": "Un chat en la puerta",
-  "ask": "¿Qué le pide Ana a Luis?",
+  "ask": "¿Qué le pide Ana a Vicente?",
   "seconds": 60,
-  "passage": "Ana: Mba'éichapa, Luis?\nLuis: Iporã, ha nde?\nAna: Iporã. ^Ikatúpa aike?^\nLuis: ^Héẽ^, Ana. ^Tereg̃uahẽ porãite.^\nAna: Aguyjevete.",
-  "strategy": "Ana hace dos preguntas: una saluda y la otra pide algo. La respuesta de Luis viene justo después de cada una.",
+  "passage": "Ana: Mba'éichapa, Vicente?\nVicente: Iporã, ha nde?\nAna: Iporã. ^Ikatúpa aike?^\nVicente: ^Héẽ^, Ana. ^Tereg̃uahẽ porãite.^\nAna: Aguyjevete.",
+  "strategy": "Ana hace dos preguntas: una saluda y la otra pide algo. La respuesta de Vicente viene justo después de cada una.",
   "item": {
    "id": "a1u01d6.r1", "kind": "choice", "area": "reading", "label": "Texto corto",
-   "q": "¿Qué le pide Ana a Luis?",
+   "q": "¿Qué le pide Ana a Vicente?",
    "options": ["Que le diga su nombre.", "Que la deje pasar.", "Que se vean otro día.", "Que la perdone."],
    "short": ["Su nombre", "Pasar", "Verse otro día", "Perdón"],
    "answer": 2,
    "why": [
-    "Ana no pregunta el nombre: ya lo sabe y le escribe «Luis». Para eso diría Mba'éichapa nde réra?",
-    "Ana pregunta Ikatúpa aike?, «¿puedo pasar?», y Luis le contesta Héẽ, «sí».",
+    "Ana no pregunta el nombre: ya lo sabe y le escribe «Vicente». Para eso diría Mba'éichapa nde réra?",
+    "Ana pregunta Ikatúpa aike?, «¿puedo pasar?», y Vicente le contesta Héẽ, «sí».",
     "Ana no habla de otro día: recién llega y pide pasar. Jajotopáta, «nos vemos», es para irse.",
     "Para pedir perdón, Ana escribiría Cheñyrõmi, y no lo escribe."
    ],
-   "explain": "Ana pregunta Ikatúpa aike?, «¿puedo pasar?». Luis responde Héẽ, «sí», y le da la bienvenida con Tereg̃uahẽ porãite. Ana le pide que la deje pasar."
+   "explain": "Ana pregunta Ikatúpa aike?, «¿puedo pasar?». Vicente responde Héẽ, «sí», y le da la bienvenida con Tereg̃uahẽ porãite. Ana le pide que la deje pasar."
   }
  }
 }

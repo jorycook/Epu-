@@ -60,7 +60,7 @@
     },
     {
       "id": "pl.6", "level": "B1", "kind": "choice", "area": "reading", "label": "Leer un relato",
-      "q": "Leé lo que cuenta Luis. ¿Qué pasó con el queso?",
+      "q": "Leé lo que cuenta Vicente. ¿Qué pasó con el queso?",
       "passage": "Kuehe ka'aru aha ñemuhápe ajogua hag̃ua kesu. Ag̃uahẽ jave, ndaipóri kesu. Upéi aha che sy rógape, ha che sy ome'ẽ chéve peteĩ kesu.",
       "options": ["Lo compró en el negocio.", "Lo compró otro día.", "Se lo dio su mamá.", "No consiguió queso."],
       "answer": 3,

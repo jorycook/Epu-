@@ -338,10 +338,15 @@
   };
 
   /* ---------- the plan ----------
-     settings: { start: 'YYYY-MM-DD', target: 'YYYY-MM-DD' | null, pace: 'fit' | 'steady', minutes: 15 | 30 | 45 }
+     settings: { start: 'YYYY-MM-DD', target: 'YYYY-MM-DD' | null, pace: 'fit' | 'steady', minutes: 15 | 30 | 45, from? }
      no target:  one session a day, at the learner's own pace
      fit:        every session fits before the target, with the last week kept for review and the level exam; days double up when time is short
-     steady:     one session a day, whatever the target */
+     steady:     one session a day, whatever the target
+     from:       a plan made again part way through the level (the goal screen, reached from the week path's date chip
+                 or from Progreso) starts today at the session the learner had reached: from is how many sessions were
+                 already behind them. Those keep the days just before start, one a day, and only the rest is laid out
+                 from start. A first plan has none (0): every session from start, as before.
+     minutes:    the size of a day; a review sitting is a third of it (C.sitting) */
   function dayNo(iso) {
     var m = /^(\d{4})-(\d\d)-(\d\d)$/.exec(iso || '');
     if (!m) return null;
@@ -358,16 +363,24 @@
   C.daysBetween = function (a, b) { var x = dayNo(a), y = dayNo(b); return x == null || y == null ? 0 : y - x; };
   C.addDays = function (a, n) { var x = dayNo(a); return x == null ? a : iso(x + n); };
   function targetOf(settings) { return settings ? settings.target || settings.exam || null : null; }
+  /* how many sessions a plan made again leaves behind its start (0 for a first plan), never more than there are */
+  function fromOf(settings, n) {
+    var f = settings ? Math.floor(+settings.from || 0) : 0;
+    return f > 0 ? Math.min(n, f) : 0;
+  }
   C.plan = function (settings) {
     var list = C.sessions();
     var n = list.length;
     var start = dayNo(settings && settings.start) || dayNo(C.today(C.now()));
     var target = dayNo(targetOf(settings));
-    var room = target != null ? target - start - EXAM_WEEK : n;
+    var from = fromOf(settings, n);
+    var rest = n - from;
+    var room = target != null ? target - start - EXAM_WEEK : rest;
     if (target != null && room < 1) room = Math.max(1, target - start);
-    var squeeze = target != null && settings && settings.pace !== 'steady' && room < n;
+    var squeeze = target != null && settings && settings.pace !== 'steady' && room < rest;
     return list.map(function (s, k) {
-      var at = squeeze ? start + Math.floor((k * room) / n) : start + k;
+      var j = k - from;
+      var at = j < 0 ? start + j : squeeze ? start + Math.floor((j * room) / rest) : start + j;
       return Object.assign({}, s, { date: iso(at) });
     });
   };
@@ -381,9 +394,11 @@
     }
     var dueToday = plan.filter(function (s) { return s.date <= today && s.ready && !C.complete(state, s); }).length;
     var perDay = 1;
-    if (plan.length > 1) {
-      var span = C.daysBetween(plan[0].date, plan[plan.length - 1].date) + 1;
-      perDay = Math.max(1, Math.round(plan.length / Math.max(1, span)));
+    /* sessions a day, over the part of the plan that is laid out from its start (all of it, for a first plan) */
+    var k0 = Math.min(fromOf(state.plan, plan.length), Math.max(0, plan.length - 1));
+    if (plan.length - k0 > 1) {
+      var span = C.daysBetween(plan[k0].date, plan[plan.length - 1].date) + 1;
+      perDay = Math.max(1, Math.round((plan.length - k0) / Math.max(1, span)));
     }
     var target = targetOf(state.plan);
     var left = target ? C.daysBetween(today, target) : null;
@@ -391,12 +406,23 @@
     var behind = next && next.date < today ? C.daysBetween(next.date, today) : 0;
     return { plan: plan, next: next, dueToday: dueToday, perDay: perDay, daysLeft: left, stamps: stamps, today: today, behind: behind, target: target };
   };
-  /* can the whole level be done one session a day before the target? */
+  /* can the whole level (what is left of it, for a plan made again) be done one session a day before the target? */
   C.fits = function (settings) {
     var target = targetOf(settings);
     if (!target) return true;
     var room = C.daysBetween((settings && settings.start) || C.today(C.now()), target) - EXAM_WEEK;
-    return room >= C.sessions().length;
+    var n = C.sessions().length;
+    return room >= n - fromOf(settings, n);
+  };
+  /* the sessions a learner has behind them at a level: those complete in a row from the first (what a plan made again
+     starts after) */
+  C.reached = function (state, lv) {
+    return C.withLevel(lv || LEVEL, function () {
+      var list = C.sessions();
+      var k = 0;
+      while (k < list.length && C.complete(state || {}, list[k])) k++;
+      return k;
+    });
   };
 
   /* ---------- the mistake notebook ----------
@@ -420,6 +446,33 @@
       if (step >= 3) return Object.assign({}, x, { step: 3, cleared: true, at: now || Date.now(), last: 'right' });
       return Object.assign({}, x, { step: step, due: C.addDays(today, STEPS[step]), at: now || Date.now(), last: 'right' });
     });
+  };
+  /* ---------- a review sitting ----------
+     A day's review has a size: a third of the plan's minutes a day, at the notebook's own rate of 0.6 minutes a question
+     (8, 16 or 25 questions for 15, 30 or 45 minutes; 16 with no plan). A learner back after two weeks is not met by every
+     mistake at once: the oldest due go first and the rest stay due for the next days. What was answered in a review
+     today counts against the day's size (an entry answered in a review carries `last`, and `at` says when).
+     → { due: all that are due, size: the day's size, done: reviewed today, n: how many today's sitting still asks,
+         items: those entries (in the notebook's order), more: one more sitting's entries once the day's is done (for a
+         learner who asks for more), minutes: what the n take } */
+  var REVIEW_RATE = 0.6;
+  C.reviewMinutes = function (n) { return Math.max(1, Math.round((n || 0) * REVIEW_RATE)); };
+  C.sittingSize = function (plan) {
+    var m = plan && +plan.minutes > 0 ? +plan.minutes : 30;
+    return Math.max(1, Math.floor(m / 3 / REVIEW_RATE));
+  };
+  C.sitting = function (list, plan, now) {
+    var today = C.today(now);
+    var due = C.due(list, now);
+    var size = C.sittingSize(plan);
+    var done = (list || []).filter(function (x) { return x && x.last && x.at && C.today(x.at) === today; }).length;
+    var oldest = due.slice().sort(function (a, b) {
+      return (a.due || '') < (b.due || '') ? -1 : (a.due || '') > (b.due || '') ? 1 : (a.at || 0) - (b.at || 0);
+    });
+    /* the oldest n of what is due, asked in the notebook's own order */
+    function take(n) { var pick = oldest.slice(0, Math.max(0, n)); return due.filter(function (x) { return pick.indexOf(x) >= 0; }); }
+    var items = take(size - done);
+    return { due: due.length, size: size, done: done, n: items.length, items: items, more: items.length ? [] : take(size), minutes: C.reviewMinutes(items.length) };
   };
 
   /* ---------- the end-of-level exam ----------
@@ -483,7 +536,49 @@
      the screens: app (what to show), go (change screen), save (record progress), miss (a wrong answer). */
   C.now = function () { return window.__gnNow || Date.now(); };
   C.fresh = function () {
-    return { screen: 'Goal', started: false, level: null, plans: {}, plan: null, cur: null, done: {}, tests: {}, exams: {}, mistakes: [], tp: 0, set: 'day', placement: null, typed: [] };
+    return { screen: 'Goal', started: false, level: null, plans: {}, plan: null, cur: null, done: {}, tests: {}, exams: {}, mistakes: [], tp: 0, set: 'day', placement: null, typed: [], seen: [] };
+  };
+  /* ---------- the days with study ----------
+     seen: the days ('YYYY-MM-DD', oldest first) on which the learner did something the app records (a lesson step, a
+     test, a part of the level exam, a review answer, a mistake, a word typed) or opened one of the practice sections
+     (Leer, Escribir, Hablar). Opening the app is not study: nothing is written for it. One list for all levels, the
+     last SEEN_KEEP days at most. sawDay gives the list with today in it (the same list when it already is). */
+  var SEEN_KEEP = 800;
+  function seenList(seen) {
+    var out = [];
+    (Array.isArray(seen) ? seen : []).forEach(function (d) { if (typeof d === 'string' && dayNo(d) != null && out.indexOf(d) < 0) out.push(d); });
+    return out.sort();
+  }
+  C.sawDay = function (seen, now) {
+    var today = C.today(now);
+    if (Array.isArray(seen) && seen.indexOf(today) >= 0) return seen;
+    return seenList(seen).concat([today]).sort().slice(-SEEN_KEEP);
+  };
+  /* What the days say, for the week path and Progreso. A day of return is a day with study after one or more days
+     without (Opu'ã, se levantó). week: the last seven days, today last, each { date, kind }: 'study', 'back' (a day of
+     return), 'missed', 'today' (today, nothing done yet) or 'none' (before the record began: the app does not know).
+     count: days with study; returns: days of return; gap: days since the last day with study (0 when that is today, or
+     when there is no record yet); away: that gap when it is two days or more, the moment the week path greets the
+     learner back; back: today is a day of return. A day later than today (a clock set back) is left out. */
+  C.days = function (seen, now) {
+    var today = C.today(now);
+    var list = seenList(seen).filter(function (d) { return d <= today; });
+    var has = {};
+    var back = {};
+    var returns = 0;
+    list.forEach(function (d, i) {
+      has[d] = true;
+      if (i > 0 && C.daysBetween(list[i - 1], d) >= 2) { back[d] = true; returns++; }
+    });
+    var first = list[0] || null;
+    var last = list[list.length - 1] || null;
+    var week = [];
+    for (var n = 6; n >= 0; n--) {
+      var d = C.addDays(today, -n);
+      week.push({ date: d, kind: has[d] ? (back[d] ? 'back' : 'study') : n === 0 ? 'today' : !first || d < first ? 'none' : 'missed' });
+    }
+    var gap = last && !has[today] ? C.daysBetween(last, today) : 0;
+    return { week: week, count: list.length, returns: returns, last: last, gap: gap, away: gap >= 2 ? gap : 0, back: !!back[today], today: !!has[today] };
   };
   /* words the learner has spelled right with the Guarani keyboard: kept for all levels at once, only ever growing */
   C.addTyped = function (had, add) {
@@ -548,6 +643,9 @@
       else if (/^pl\./.test(m.src || '') && C.levelOf(m.src) === LEVEL) C.needSoundFile(C.soundExtra('pl'));
     });
     if (EXTRA_SOUND[state.screen]) C.needSoundFile(C.soundExtra(EXTRA_SOUND[state.screen], LEVEL));
+    /* the notebook shows this level's mistakes; the others wait for a return to their level */
+    var mine = (state.mistakes || []).filter(function (m) { return C.levelOf(m.src) === LEVEL; });
+    var sit = C.sitting(mine, state.plan, C.now());
     return {
       status: status,
       plan: state.plan,
@@ -564,8 +662,13 @@
       exam: (state.exams || {})[LEVEL] || null,
       tp: state.tp || 0,
       set: state.set || 'day',
-      /* the notebook shows this level's mistakes; the others wait for a return to their level */
-      mistakes: (state.mistakes || []).filter(function (m) { return C.levelOf(m.src) === LEVEL; }),
+      mistakes: mine,
+      /* the review that waits today (the tab bars' mark on Cuaderno, the week path's and the day's «para repasar»): n is
+         what today's sitting asks, of the `due` that are due; size is a sitting, done what was reviewed today */
+      review: { n: sit.n, due: sit.due, size: sit.size, done: sit.done, minutes: sit.minutes },
+      /* the days with study: the last seven, the counts, and whether the learner is back after days away (C.days) */
+      seen: state.seen || [],
+      days: C.days(state.seen, C.now()),
       typed: state.typed || [],
       placement: state.placement || null,
       /* what the goal screen asked (why, where, the two self-ratings) and the weekly "lo usé" log, kept as given */
@@ -577,9 +680,23 @@
       progress: C.progress(state, LEVEL)
     };
   };
+  /* the practice sections outside the plan of days: they record nothing of their own, so opening one is what marks the
+     day as a day with study */
+  var PRACTICE = { Leer: 1, Escribir: 1, Hablar: 1 };
+  /* today added to the days with study, as a change to merge into the state (nothing when today is there already) */
+  function sawToday(st, out) {
+    var seen = C.sawDay(st.seen, C.now());
+    if (seen !== st.seen) out.seen = seen;
+    return out;
+  }
   C.handlers = function (get, set) {
     return {
-      go: function (to) { set(function (st) { return { screen: to, started: st.started || to !== 'Goal' }; }); },
+      go: function (to) {
+        set(function (st) {
+          var out = { screen: to, started: st.started || to !== 'Goal' };
+          return PRACTICE[to] ? sawToday(st, out) : out;
+        });
+      },
       /* change level: this level's plan is put aside and the other level's comes back (or its goal screen, the first time) */
       level: function (lv) {
         set(function (st) {
@@ -637,11 +754,15 @@
             if (!had2 || !had2.apto || patch.exam.apto) exams[lv] = patch.exam;
             out.exams = exams;
           }
+          /* a lesson step, a test, words typed or a part of the level exam handed in (not the tab's «Otra vez», which
+             only marks the result it already has): today is a day with study */
+          var handedIn = !!patch.exam && (!(st.exams || {})[patch.exam.level || st.level || 'A1'] || (st.exams || {})[patch.exam.level || st.level || 'A1'].at !== patch.exam.at);
+          if ((patch.prog && sid) || patch.result || patch.typed || handedIn) sawToday(st, out);
           return out;
         });
       },
-      miss: function (m) { set(function (st) { return { mistakes: C.miss(st.mistakes, m, C.now()) }; }); },
-      reviewed: function (src, right) { set(function (st) { return { mistakes: C.reviewed(st.mistakes, src, right, C.now()) }; }); }
+      miss: function (m) { set(function (st) { return sawToday(st, { mistakes: C.miss(st.mistakes, m, C.now()) }); }); },
+      reviewed: function (src, right) { set(function (st) { return sawToday(st, { mistakes: C.reviewed(st.mistakes, src, right, C.now()) }); }); }
     };
   };
 
@@ -660,6 +781,57 @@
   };
   C.area = function (key) { return AREAS[key] || AREAS.grammar; };
   C.AREAS = ['vocab', 'grammar', 'reading', 'listening', 'mediation'];
+
+  /* ---------- the mini exams ----------
+     Each level has two (the Examen tab): the first after the first half of its units, the second after the second half.
+     A mini exam needs no writing of its own: it is 20 of its units' week-test questions, by area as a week test (6
+     Palabras, 8 Gramática, 3 Lectura, 3 Escucha), dealt in turn from each unit so that every unit gives as many (5 each
+     for 4 units), and from each unit's questions of an area the ones spread evenly through its list. Always the same
+     20: a result can be compared with the one before. It is ready once every one of its units has its week test
+     written; the Examen tab opens it when the last of those tests is done, the exam-style runner asks it (set 'mini1',
+     'mini2') and its result is kept with the tests, at tests[id] (a1m1, a1m2).
+     → [{ n, id, units: [unit numbers], after: the last of them, ready, items: [item ids], seconds }] */
+  var MINI_SHAPE = [['vocab', 6], ['grammar', 8], ['reading', 3], ['listening', 3]];
+  var MINI_SECONDS = 1200;
+  C.minis = function (lv) {
+    return C.withLevel(lv || LEVEL, function () {
+      var us = C.units();
+      var mid = Math.max(1, Math.ceil(us.length / 2));
+      return [1, 2].map(function (n) {
+        var units = us.filter(function (u, k) { return n === 1 ? k < mid : k >= mid; });
+        var ready = units.length > 0 && units.every(function (u) { return !!(u.test && u.test.length); });
+        var items = [];
+        if (ready) {
+          var pools = units.map(function (u) {
+            var by = {};
+            u.test.forEach(function (id) { var it = C.item(id); if (it) { var a = C.area(it.area).key; (by[a] = by[a] || []).push(id); } });
+            return by;
+          });
+          var turn = 0;
+          MINI_SHAPE.forEach(function (shape) {
+            var area = shape[0];
+            var give = units.map(function () { return 0; });
+            for (var c = 0, tries = 0; c < shape[1] && tries < shape[1] * units.length * 2; tries++) {
+              var k = turn++ % units.length;
+              if ((pools[k][area] || []).length > give[k]) { give[k]++; c++; }
+            }
+            units.forEach(function (u, k2) {
+              var pool = pools[k2][area] || [];
+              for (var i = 0; i < give[k2]; i++) items.push(pool[Math.min(pool.length - 1, Math.floor(((i + 0.5) * pool.length) / give[k2]))]);
+            });
+          });
+        }
+        return { n: n, id: prefix(LEVEL) + 'm' + n, units: units.map(function (u) { return u.n; }), after: units.length ? units[units.length - 1].n : 0, ready: ready && items.length > 0, items: items, seconds: MINI_SECONDS };
+      });
+    });
+  };
+  /* a mini exam by its id (a1m1) or by the runner's set name (mini1, at the current level), or null */
+  C.mini = function (key) {
+    var m = /^([abc][12])m([12])$/i.exec(key || '');
+    var s = m ? null : /^mini([12])$/.exec(key || '');
+    if (!m && !s) return null;
+    return C.minis(m ? m[1].toUpperCase() : LEVEL)[+(m ? m[2] : s[1]) - 1] || null;
+  };
 
   /* ---------- the level's ñandutí ----------
      Each level is a ñandutí (the lace rosette of Itauguá) that Kaguare, the southern tamandua, wears pinned to his

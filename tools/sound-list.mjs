@@ -43,8 +43,8 @@ const plain = (s) => norm(s).replace(/\[([^|\]]*)\|[^\]]*\]/g, '$1').replace(/[{
 /* the same text said the same way: case and spacing aside, but punctuation kept (a question is said differently) */
 const sameText = (s) => plain(s).toLowerCase();
 /* who says a line written "Name: text" (the speakers the A1 content names; an unknown name is the woman's voice) */
-const MEN = /^(juan|luis|carlos|pedro|josé|jose|hombre|vendedor|ñandejára|don\b|profesor|señor|tío|abuelo|papá|hermano|hijo)/i;
-const WOMEN = /^(rosa|ana|marta|lucía|lucia|nilda|sofía|sofia|ramona|mujer|ña\b|profesora|señora|tía|abuela|mamá|hermana|hija|vecina)/i;
+const MEN = /^(juan|vicente|moisés|moises|santiago|casimiro|tito|jacinto|genaro|tomás|tomas|josé|jose|hombre|vendedor|ñandejára|don\b|profesor|señor|tío|abuelo|papá|hermano|hijo)/i;
+const WOMEN = /^(rosa|ana|maría|maria|sara|teresa|karina|susana|tania|samanta|ramona|mujer|ña\b|profesora|señora|tía|abuela|mamá|hermana|hija|vecina)/i;
 const voiceOfName = (name) => (/^narrador|^narradora/i.test(name) ? 'N' : MEN.test(name) ? 'M' : WOMEN.test(name) ? 'F' : 'F');
 const CODE = { N: 'N', F: 'F', M: 'M', NARRADOR: 'N', MUJER: 'F', HOMBRE: 'M' };
 /* a script line as the content writes it: [code, text, es] or "Who: text" */

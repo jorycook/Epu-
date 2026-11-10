@@ -60,13 +60,13 @@
             "parts": [["re-", "vos"], ["ju", "venir"], ["-pa", "pregunta"], ["ko pyhare", "esta noche"]]
           },
           {
-            "gn": "Luis {oho} ko ka'aru, ha che {aha} ko pyhare.",
-            "es": "Luis va esta tarde, y yo voy esta noche.",
+            "gn": "Vicente {oho} ko ka'aru, ha che {aha} ko pyhare.",
+            "es": "Vicente va esta tarde, y yo voy esta noche.",
             "parts": [["oho", "va"], ["ko ka'aru", "esta tarde"], ["ha", "y"], ["aha", "voy"], ["ko pyhare", "esta noche"]]
           },
           {
-            "gn": "Luis: Mávapa {ou}?\nAna: {Ou} che sy.",
-            "es": "Luis: ¿Quién viene?\nAna: Viene mi mamá.",
+            "gn": "Vicente: Mávapa {ou}?\nAna: {Ou} che sy.",
+            "es": "Vicente: ¿Quién viene?\nAna: Viene mi mamá.",
             "parts": [["mávapa", "¿quién?"], ["ou", "viene"], ["che sy", "mi mamá"]]
           }
         ],
@@ -120,12 +120,12 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "Ana: (   ) ^remba'apo^ [heta|mucho], Luis.",
+        "q": "Ana: (   ) ^remba'apo^ [heta|mucho], Vicente.",
         "options": ["Che", "Nde", "Ha'e", "Mávapa"],
         "answer": 2,
         "why": [
           "Che es «yo» y va con a-: che amba'apo. Acá el verbo lleva re-.",
-          "re- es «vos»: nde remba'apo, «vos trabajás». Ana le habla a Luis.",
+          "re- es «vos»: nde remba'apo, «vos trabajás». Ana le habla a Vicente.",
           "Ha'e es «él» o «ella» y va con o-: ha'e omba'apo.",
           "Mávapa, «¿quién?», pregunta por otra persona y va con o-: Mávapa omba'apo? Con re- no cuadra."
         ]
@@ -135,13 +135,13 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "Luis: Ana, ^rehópa^ ko ka'aru?\nAna: Héẽ, (   ) ko ka'aru.",
+        "q": "Vicente: Ana, ^rehópa^ ko ka'aru?\nAna: Héẽ, (   ) ko ka'aru.",
         "options": ["aha", "aho", "reho", "oho"],
         "answer": 1,
         "why": [
-          "Luis pregunta con re-, «vos», y Ana responde por ella misma, con a-. Con a-, la raíz de «ir» es ha: aha, «voy».",
+          "Vicente pregunta con re-, «vos», y Ana responde por ella misma, con a-. Con a-, la raíz de «ir» es ha: aha, «voy».",
           "aho no existe: ho es la raíz de «ir» con re- y con o-, nunca con a-.",
-          "reho es «vas», con re-: es lo que pregunta Luis. Ana responde por ella misma.",
+          "reho es «vas», con re-: es lo que pregunta Vicente. Ana responde por ella misma.",
           "oho es «va», con o-: sería otra persona, no Ana."
         ]
       },
@@ -166,13 +166,13 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "Luis, ",
+        "before": "Vicente, ",
         "after": " ko pyhare?",
         "tiles": ["re", "ju", "pa"],
         "bank": [2, 0, 1],
         "hint": "re- es «vos» y va primero; -pa cierra la pregunta. Después fijate dónde queda el acento.",
-        "full": "Luis, {re}jú{pa} ko pyhare?",
-        "es": "Luis, ¿venís esta noche?",
+        "full": "Vicente, {re}jú{pa} ko pyhare?",
+        "es": "Vicente, ¿venís esta noche?",
         "explain": "re- (vos) + ju (venir) + -pa (pregunta) = rejúpa, «¿venís?». La -pa no se lleva el acento: queda en la u de ju, que ya no es la última vocal, y se escribe ú."
       },
       {
@@ -266,24 +266,24 @@
   "skill": {
     "kind": "listening",
     "es": "Respuesta rápida",
-    "situation": "En el patio, Ana le pregunta a Luis qué hace.",
-    "ask": "¿Qué responde Luis?",
+    "situation": "En el patio, Ana le pregunta a Vicente qué hace.",
+    "ask": "¿Qué responde Vicente?",
     "item": {
       "id": "a1u02d1.r1",
       "kind": "choice",
       "area": "listening",
       "label": "Respuesta rápida",
-      "q": "¿Qué responde Luis?",
+      "q": "¿Qué responde Vicente?",
       "options": ["Amba'apo.", "Remba'apo.", "Omba'apo."],
       "answer": 1,
       "why": [
-        "Ana pregunta con re-, «vos»: rejapo, «hacés». Luis responde por él, con a-: amba'apo, «trabajo».",
-        "Remba'apo es «trabajás», con re-: Luis hablaría de Ana, no de él.",
-        "Omba'apo es «trabaja», con o-: sería otra persona, no Luis."
+        "Ana pregunta con re-, «vos»: rejapo, «hacés». Vicente responde por él, con a-: amba'apo, «trabajo».",
+        "Remba'apo es «trabajás», con re-: Vicente hablaría de Ana, no de él.",
+        "Omba'apo es «trabaja», con o-: sería otra persona, no Vicente."
       ],
       "script": [
-        "Narrador: En el patio. ¿Qué responde Luis?",
-        "Mujer: Mba'épa rejapo, Luis?",
+        "Narrador: En el patio. ¿Qué responde Vicente?",
+        "Mujer: Mba'épa rejapo, Vicente?",
         "Narrador: 1",
         "Hombre: Amba'apo.",
         "Narrador: 2",
@@ -293,8 +293,8 @@
       ]
     },
     "audio": [
-      ["N", "En el patio. ¿Qué responde Luis?", "En el patio. ¿Qué responde Luis?"],
-      ["F", "Mba'épa rejapo, Luis?", "¿Qué hacés, Luis?"],
+      ["N", "En el patio. ¿Qué responde Vicente?", "En el patio. ¿Qué responde Vicente?"],
+      ["F", "Mba'épa rejapo, Vicente?", "¿Qué hacés, Vicente?"],
       ["N", "1", "1"],
       ["M", "Amba'apo.", "Trabajo."],
       ["N", "2", "2"],

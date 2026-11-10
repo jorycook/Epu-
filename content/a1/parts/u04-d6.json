@@ -55,14 +55,14 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "Luis le pregunta a Juan cómo se llama ^la esposa de él^.\nLuis: Mba'éichapa héra (   ) rembireko, Juan?",
+        "q": "Vicente le pregunta a Juan cómo se llama ^la esposa de él^.\nVicente: Mba'éichapa héra (   ) rembireko, Juan?",
         "options": ["nde", "che", "ne", "ñande"],
         "answer": 3,
         "why": [
           "Nde es «tu», pero rembireko es una palabra nasal: tiene mb (re-mbi-re-ko). Delante de una palabra nasal, nde pierde la d: ne rembireko.",
-          "Che es «mi»: Luis preguntaría por su propia esposa, y pregunta por la de Juan.",
-          "Luis le pregunta a Juan por la esposa de él, «tu esposa». Rembireko tiene mb, una letra nasal, así que nde se vuelve ne: ne rembireko.",
-          "Ñande es «nuestro» con vos: sumaría a Luis. Y delante de una palabra nasal sería ñane."
+          "Che es «mi»: Vicente preguntaría por su propia esposa, y pregunta por la de Juan.",
+          "Vicente le pregunta a Juan por la esposa de él, «tu esposa». Rembireko tiene mb, una letra nasal, así que nde se vuelve ne: ne rembireko.",
+          "Ñande es «nuestro» con vos: sumaría a Vicente. Y delante de una palabra nasal sería ñane."
         ]
       },
       {
@@ -100,7 +100,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "Luis cuenta ^a los chicos^ del patio: son ^cuatro^.\nLuis: Oĩ irundy (   ).",
+        "q": "Vicente cuenta ^a los chicos^ del patio: son ^cuatro^.\nVicente: Oĩ irundy (   ).",
         "options": ["mitãnguéra", "mitã", "mitãkuéra", "mitakuéra"],
         "answer": 2,
         "why": [
@@ -157,10 +157,10 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Luis tiene un chipá en la mano. Ana, desde la puerta, se lo señala.)\nAna: (   ) chipa iporã.",
+        "q": "(Vicente tiene un chipá en la mano. Ana, desde la puerta, se lo señala.)\nAna: (   ) chipa iporã.",
         "options": ["Umi", "Ko", "Pe", "Ko'ã"],
         "answer": 3,
-        "explain": "El chipá es uno solo y lo tiene Luis, el que escucha: pe chipa, «ese chipá». Ko sería para algo que tiene Ana, la que habla; ko'ã y umi son para varios."
+        "explain": "El chipá es uno solo y lo tiene Vicente, el que escucha: pe chipa, «ese chipá». Ko sería para algo que tiene Ana, la que habla; ko'ã y umi son para varios."
       },
       {
         "id": "a1u04d6.e3",
@@ -264,7 +264,7 @@
     "es": "Un mensaje con foto",
     "ask": "¿Cuántos hijos de Rosa hay en la foto?",
     "seconds": 75,
-    "passage": "Maitei, Juan.\n^Ko'ã mitã che membykuéra: Elena ha Tomás.^\nPe karai che ramói, héra José. Oguereko 80 ary.\n^Umi mokõi mitãkuña che angirũ memby.^\nJajotopáta ko ka'aru.\nRosa",
+    "passage": "Maitei, Juan.\n^Ko'ã mitã che membykuéra: Samanta ha Tomás.^\nPe karai che ramói, héra José. Oguereko 80 ary.\n^Umi mokõi mitãkuña che angirũ memby.^\nJajotopáta ko ka'aru.\nRosa",
     "strategy": "Buscá de quién es cada grupo: después de ko'ã mitã y de umi mokõi mitãkuña viene el dueño, che membykuéra o che angirũ memby. Ha, «y», une dos nombres.",
     "item": {
       "id": "a1u04d6.r1",
@@ -277,11 +277,11 @@
       "answer": 2,
       "why": [
         "Un solo hijo sería che memby. Rosa escribe che membykuéra, con -kuéra: más de uno, y da dos nombres.",
-        "Ko'ã mitã che membykuéra: Elena ha Tomás, «estos chicos son mis hijos: Elena y Tomás». En la foto hay dos hijos de Rosa.",
+        "Ko'ã mitã che membykuéra: Samanta ha Tomás, «estos chicos son mis hijos: Samanta y Tomás». En la foto hay dos hijos de Rosa.",
         "En la foto hay cuatro chicos, pero las dos nenas, umi mokõi mitãkuña, son che angirũ memby: las hijas de la amiga de Rosa, no de Rosa.",
-        "Sí lo dice: después de che membykuéra, «mis hijos», vienen los nombres, Elena ha Tomás."
+        "Sí lo dice: después de che membykuéra, «mis hijos», vienen los nombres, Samanta ha Tomás."
       ],
-      "explain": "Rosa escribe Ko'ã mitã che membykuéra: Elena ha Tomás, «estos chicos son mis hijos: Elena y Tomás»: en la foto hay dos hijos de Rosa. Las otras dos, umi mokõi mitãkuña, son che angirũ memby: las hijas de su amiga."
+      "explain": "Rosa escribe Ko'ã mitã che membykuéra: Samanta ha Tomás, «estos chicos son mis hijos: Samanta y Tomás»: en la foto hay dos hijos de Rosa. Las otras dos, umi mokõi mitãkuña, son che angirũ memby: las hijas de su amiga."
     }
   }
 }

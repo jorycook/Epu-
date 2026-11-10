@@ -64,12 +64,12 @@ and is on no screen.
 - [a1u01-d1] The sound pairs ka'a/ka'i, pira/pire, pire/piru and po/py are checked in the dictionary but not in G1 §10. Record them with a native speaker; the y in py especially.
 - [a1u01-d1] Drill d6 and exam e3 now build the same word (ja + jo + topáta) in different sentences. Day 1 has no third safe build: a 4-tile split allows taja-jo-topa, and the obvious sentence builds allow two orders.
 - [a1u01-d2] peñe'ẽ (new p2 example «Peẽ peñe'ẽ guaraníme.» and d4 option «Peẽ peñe'ẽ»): 0 tokens in ANLP, CV and Jojajovai. It rests on Wiktionary's conjugation table and on pe- keeping its shape before nasal roots.
-- [a1u01-d2] d6 «Iporã, ha peẽ?»: «ha nde» swapped for «ha peẽ»; no hit in the corpora or on the web. Also «Luis ha Marta:» as one speaker label, with two people asking «Mba'éichapa reiko?» together.
+- [a1u01-d2] d6 «Iporã, ha peẽ?»: «ha nde» swapped for «ha peẽ»; no hit in the corpora or on the web. Also «Vicente ha Teresa:» as one speaker label, with two people asking «Mba'éichapa reiko?» together.
 - [a1u01-d2] Reading «Ore roñe'ẽ guaraníme: che, che sy ha che ru.»: a list after a colon following the verb has no parallel in the corpora.
 - [a1u01-d2] pyta «talón; quedarse» (4th sound pair): only Apertium gives the noun sense; the corpora have the verb. A native should confirm «talón», or drop the pair.
 - [a1u01-d2] New ja-/ña- connect row: «verbo nasal» is not defined on day 2 (nasal harmony is A2). Please check that it reads clearly.
 - [a1u01-d3] -gua stress: Paraguaigua follows SPL and Apertium, but ABC writes paraguáigua, távagua and tendágua. A native speaker or the Academy text should confirm that -gua is tonic.
-- [a1u01-d3] Mbo'ehára héra Rosa / Temimbo'e pyahu héra Sofía: the noun + héra + name pattern is attested in usage, but teachers may prefer the textbook noun-possessor form (mbo'ehára réra Rosa).
+- [a1u01-d3] Mbo'ehára héra Rosa / Temimbo'e pyahu héra Karina: the noun + héra + name pattern is attested in usage, but teachers may prefer the textbook noun-possessor form (mbo'ehára réra Rosa).
 - [a1u01-d3] 'Ha mbo'ehára?' (c1) is a composed follow-up and is not attested as such.
 - [a1u01-d3] Argentina-gua with a hyphen is usage, not a confirmed Academy rule. Argentina-ygua is also attested; accept both if an item is ever typed.
 - [a1u01-d3] d5 and e3 accept only 'Mba'éichapa nde réra?'. Would a native speaker also accept 'Nde réra mba'éichapa?'
@@ -98,7 +98,7 @@ and is on no screen.
 - [a1u01-d6-test] Ha'ekuéra Paraguaigua (d6.d1) is composed. The pattern pronoun + place-gua is attested (Che Paraguaigua, Ore Alemaniagua), but not with ha'ekuéra. Also confirm that bare ha'e is safely wrong for a plural.
 - [a1u01-d6-test] peñe'ẽpa (t.13) and oñe'ẽpa (d6.d5, t.11) are regular but not in the corpora. pe- does stay pe- before nasal stems (peñeha'ã, pemoñe'ẽ are attested).
 - [a1u01-d6-test] «Che sy.» as Ana's bare answer when showing a photo (t.5, replacing Ha'e che sy): is it natural?
-- [a1u01-d6-test] «Héẽ, che Luis» for 'Sí, soy Luis' (compare form): confirm it sounds natural.
+- [a1u01-d6-test] «Héẽ, che Vicente» for 'Sí, soy Vicente' (compare form): confirm it sounds natural.
 - [a1u01-d6-test] karai Juan rendered as «don Juan» (t.2).
 - [extras-exam-placement] pl.5 'Ko árape ndahái amba'apo, che sy hasýgui.' is composed. Causal -gui after a clause with its subject first follows 'ára ivaígui' (ABC), and hasýgui is attested only in ABC. Is it natural, or would a speaker say 'che sy hasy rupi'? ndahái itself has only 2 hits (jj:anlp).
 - [extras-exam-placement] P3 'Ko'ẽrõ ka'aru oĩta y.' is composed: 'ko'ẽrõ ka'aru' has no hits, though its twin 'ko'ẽrõ pyhareve' is in SPL.
@@ -120,7 +120,7 @@ and is on no screen.
 - [crosscheck] Some sound pairs are not in G1's verified list: oke/okẽ (days 2 and 5), and day 1's ka'a/ka'i, pira/pire, pire/piru and po/py.
 - [crosscheck] Most of the solver's flags come from /tmp/claude-0/-home-user/430b6c9f-00ab-547a-bf2b-cc44a7533d75/scratchpad/build/tools/blind-export.mjs, not from the items. It leaves out `full` (all the build spelling and capitalization reports), its plain() strips the `_…_` underline (e1, k1), and the extras visitor drops task-level passages (a1x.1-3 cannot be answered). I left the tool alone because it is outside this step. A repeat blind check needs the export to keep the underscores, attach t.passage and show `full`, or the same false flags will come back.
 - [crosscheck] --check writes nothing, so /tmp/claude-0/-home-user/430b6c9f-00ab-547a-bf2b-cc44a7533d75/scratchpad/canvas/project/gn-course-a1.js still has the old d1.e1 explain and the unsigned d2 passage. They reach the screens after a full `node tools/build-course.mjs`.
-- [crosscheck] In the d2 reading, the new last line 'Ana' sits right after 'Ha nde?'. A reader could take it as a vocative ('¿y vos, Ana?'), though a message start addressed to Marta and a name alone on the last line read as a signature, as in the exam's 'Jajotopáta.\nRosa'. If a reviewer prefers, add the taught farewell first: 'Ha nde? Jajotopáta.\nAna'.
+- [crosscheck] In the d2 reading, the new last line 'Ana' sits right after 'Ha nde?'. A reader could take it as a vocative ('¿y vos, Ana?'), though a message start addressed to Teresa and a name alone on the last line read as a signature, as in the exam's 'Jajotopáta.\nRosa'. If a reviewer prefers, add the taught farewell first: 'Ha nde? Jajotopáta.\nAna'.
 - [crosscheck] Two doubts stay open in doubts.json: Argentina-gua with a hyphen rests on usage, not a confirmed Academy rule, and the d4.d5 split rei- + kuaa follows the school analysis of aireal verbs.
 
 ## Units 2 to 4: settle first (they touch more than one unit)
@@ -263,27 +263,27 @@ authors'. A native reader should go through them once. First those where the pat
 
 The others the reviewers named, day by day:
 
-- Day 1: Nde remba'apo heta; Mávapa okaru? Che akaru (a1u02d1.p1); Rosa ou ko pyhareve; Luis oho ko ka'aru, ha che
+- Day 1: Nde remba'apo heta; Mávapa okaru? Che akaru (a1u02d1.p1); Rosa ou ko pyhareve; Vicente oho ko ka'aru, ha che
   aha ko pyhare (a1u02d1.p2); Ana, rehópa ko ka'aru? Héẽ, aha ko ka'aru (.d3); Che ru oho ko ka'aru, ha che sy ou ko
-  pyhare (.d4); Luis, rejúpa ko pyhare? (.d5); Nde sy ohópa ko ka'aru? (.d6); Rejúpa ko ka'aru, Luis? (.e3); Mba'épa
-  rejapo, Luis? (.r1, a1u02t.18).
+  pyhare (.d4); Vicente, rejúpa ko pyhare? (.d5); Nde sy ohópa ko ka'aru? (.d6); Rejúpa ko ka'aru, Vicente? (.e3); Mba'épa
+  rejapo, Vicente? (.r1, a1u02t.18).
 - Day 2: Ñande jakaru ko ka'aru; Ore romba'apo ko pyhareve; Ore roju ko ka'aru ha roho ko pyhare (a1u02d2.p1); Peẽ
   pejeroky ko pyhare; Ha'ekuéra omba'apo heta (a1u02d2.p2); Peẽ pekaru ko ka'aru (.d5); and the message, «Ko ka'aru
   jakaru ha jajeroky. Oĩ chipa ha so'o. Peju!» (a1u02d2.r1).
-- Day 3: Che ru oĩ kotýpe (a1u02d3.p1); Ha'ekuéra omba'apo ñúme; Luis oho Ñembýpe, ha Rosa oho ñúme; Che sy omba'apo
+- Day 3: Che ru oĩ kotýpe (a1u02d3.p1); Ha'ekuéra omba'apo ñúme; Vicente oho Ñembýpe, ha Rosa oho ñúme; Che sy omba'apo
   ko tetãme, Paraguáipe (a1u02d3.p2); Che ru omba'apo ñúme (.e1).
-- Day 4: Chipa osẽ tatakuágui; Rosa ou Paraguaýgui; Luis osẽ mbo'ehaógui ko ka'aru (a1u02d4.p1); Moõguipa osẽ ko
-  chipa? Tatakuágui (a1u02d4.p2, .d4); Moõguipa peju? Roju mbo'ehaógui (a1u02d4.p2); Moõguipa reju, Luis? (.d6,
+- Day 4: Chipa osẽ tatakuágui; Rosa ou Paraguaýgui; Vicente osẽ mbo'ehaógui ko ka'aru (a1u02d4.p1); Moõguipa osẽ ko
+  chipa? Tatakuágui (a1u02d4.p2, .d4); Moõguipa peju? Roju mbo'ehaógui (a1u02d4.p2); Moõguipa reju, Vicente? (.d6,
   a1u02t.11); and the chat of the reading (a1u02d4.r1).
-- Day 5: Ko pyhareve ndahái; Che sy ndohói mbo'ehaópe; Ndajapói mba'eve; Luis ndoúi ko ka'aru: oky (a1u02d5.p1);
+- Day 5: Ko pyhareve ndahái; Che sy ndohói mbo'ehaópe; Ndajapói mba'eve; Vicente ndoúi ko ka'aru: oky (a1u02d5.p1);
   Namba'apói ko pyhare; Che ru nosẽi ógagui: oky (a1u02d5.p2); Rehópa kokuépe ko pyhareve, Juan? (.d1); Juan
-  nomba'apói kokuépe ko pyhareve (.e3); Rehópa mbo'ehaópe ko ka'aru, Luis? Nahániri, ndahái. Oky. (.r1).
+  nomba'apói kokuépe ko pyhareve (.e3); Rehópa mbo'ehaópe ko ka'aru, Vicente? Nahániri, ndahái. Oky. (.r1).
 - Day 6: in exam-style items, Che sy ndohói Itauguápe ko ka'aru (a1u02d6.e1), Ñande jajapo chipa ko ka'aru (.e2) and
   Che ru nomba'apói kokuépe ko pyhareve (.e3); also Aju kokuégui (.c1); Ha'ekuéra oho Paraguaýpe ko pyhareve (.d1);
-  Ñande ñañe'ẽ guaraníme, Luis (.d2); Che ru oĩ tetãme (.d3); Moõpa reho, Luis? (.d4); Che sy ndoúi ko pyhare (.d5);
+  Ñande ñañe'ẽ guaraníme, Vicente (.d2); Che ru oĩ tetãme (.d3); Moõpa reho, Vicente? (.d4); Che sy ndoúi ko pyhare (.d5);
   Che sy oĩ kotýpe (.d6); Ndaipóri chipa (the note of Ndaipóri); and in the chat of a1u02d6.r1, Moõpa reho, Ana?,
   Akaru ha añe'ẽ guaraníme and Ha'e ndohói: omba'apo Paraguaýpe.
-- Week test: Moõpa peho ko pyhareve? (a1u02t.9); Che ru oĩ ñúme (t.10); Luis ndohói mbo'ehaópe ko ka'aru (t.14); and
+- Week test: Moõpa peho ko pyhareve? (a1u02t.9); Che ru oĩ ñúme (t.10); Vicente ndohói mbo'ehaópe ko ka'aru (t.14); and
   the chat of t.15 to t.17 (Aha mbo'ehaópe; Aju Itauguágui, che jarýi rógagui; Ha'e ndoúi ko pyhareve).
 
 ### Pedagogy and keys
@@ -291,8 +291,8 @@ The others the reviewers named, day by day:
 - **ro- is also «yo a vos»** before a transitive root (rohayhu). The unit keeps it on roju, roho, rokaru, romba'apo
   and roñe'ẽ (a1u02d2.p1, .d1, .d2, .e1, .e2, the scene of u02-d2, a1u02t.8): confirm that they read only as
   «nosotros, sin vos».
-- **a1u02d2.e2** (key Roju): Ana calls her grandmother about herself and Luis. A strict reader could have her announce
-  only Luis, which would make Ou right.
+- **a1u02d2.e2** (key Roju): Ana calls her grandmother about herself and Vicente. A strict reader could have her announce
+  only Vicente, which would make Ou right.
 - **«Moõpagui no existe»** (a1u02d4.p2, .d3, .d6, .e2) rests on 0 corpus hits against moõguipa 16.
 - **Wrong options that do turn up in the corpora**: ndomba'apói (a1u02d5.d2; 1 hit against nomba'apói 11), Naikuaái (a1u02d5.k1;
   1 against ndaikuaái 63) and ndoú (a1u02d5.d4; 4 loose hits, probably «ndou mo'ãi» written apart). Tatakuáme
@@ -386,11 +386,11 @@ pattern is the doubt:
   u03-d6), «Ndépa chokokue, Juan?» (a1u03t.19), after «¿Ndépa jagua térã ava?» (a blog story) and «Ndépa moõgua»
   (Common Voice).
 - **Nde piko + noun**: «Nde piko mbo'ehára?» (a1u03d4.p2), «Nde piko pohanohára?» (a1u03d4.d3), «Nde piko chokokue,
-  Marta?» (a1u03t.10). It is attested only with ha'e («nde piko ha'e che sy?»).
+  Teresa?» (a1u03t.10). It is attested only with ha'e («nde piko ha'e che sy?»).
 - **«Ha'épa nde ru?»** (a1u03t.20): ha'épa is attested only in indirect questions. A teacher may prefer «Nde rúpa
   ha'e?».
 - **«Revy'ápa, Ana?»** (a1u03d6.d5): Revy'ápa is attested only with an object after it.
-- **ndaha'éi after a subject**: «Che ndaha'éi mbo'ehára» (a1u03d3.p2), «Luis ndaha'éi mbo'ehára, ha'e pohanohára»
+- **ndaha'éi after a subject**: «Che ndaha'éi mbo'ehára» (a1u03d3.p2), «Vicente ndaha'éi mbo'ehára, ha'e pohanohára»
   (a1u03d3.p2, a1u03d3.d5), «Rosa ndaha'éi che sy» (the compare of u03-d6), after ABC's «che ndaha'éi abogado». A
   proper name before ndaha'éi has no hit.
 - **«Mba'éichapa, kuñakarai.»** (a1u03d3.r1): kuñakarai used to address someone.
@@ -400,23 +400,23 @@ pattern is the doubt:
 
 The others the reviewers named, day by day:
 
-- Day 1: Chevare'a ha chey'uhéi; Nekane'õ, Luis. Héẽ, chekane'õ ha chero'y (a1u03d1.p1); Che sy ikane'õ; Ana ipochy;
+- Day 1: Chevare'a ha chey'uhéi; Nekane'õ, Vicente. Héẽ, chekane'õ ha chero'y (a1u03d1.p1); Che sy ikane'õ; Ana ipochy;
   Ha'e ivare'a; Mitã ivare'a; Che ru hasy (a1u03d1.p2); Chero'y ha chevare'a (.e1); Chekane'õ ha chey'uhéi; Jaha, oĩ
   terere (.r1).
 - Day 2: Apu'ã ha ajahu; Akaru ha ake; Che sy opurahéi ha che ru ojeroky; Ko'ág̃a amba'apo (a1u03d2.p1); Chevare'a ha
   akaru (.d5); Chepochy ha aha (.e2); Apu'ã ha amba'apo (.e3); and the message, «Ko'ág̃a ajahu ha akaru.
   Chekane'õiterei.» (a1u03d2.r1).
 - Day 3: Ndaha'éi che sy, ha'e che jarýi (a1u03d3.p2); Ndaha'éi che irũ (.e1); Ndaha'éi che ru, ha'e che angirũ
-  (.e3); and the listening: Ha'e che sy, Luis. Ha'e mbo'ehára. Ha Lucas ha'e che irũ. Ha'e pohanohára (.r1).
+  (.e3); and the listening: Ha'e che sy, Vicente. Ha'e mbo'ehára. Ha Moisés ha'e che irũ. Ha'e pohanohára (.r1).
 - Day 4: Rejúpa ko pyhare? (a1u03d4.p1); Og̃uahẽ pohanohára; Og̃uahẽ piko Ana?; Ndépiko mbo'ehára? (a1u03d4.p2);
   Hasýpa nde ru? (.d1); Reipotápa chipa? (.d4); Che ndaha'éi pohanohára (the note of ndaha'éi); and the chat: Nde
   jarýi hasy. Ha nde? Nekane'õpa? Nahániri. Chevare'a (.r1).
 - Day 5: Jagua okaru; Che róga ituicha; Purahéi iporã (a1u03d5.p1); Aha Itauguápe; Aju Paraguáigui; Reikuaápa
-  Ypakarai?; Aike mbo'ehaópe (a1u03d5.p2); Aha Ypakaraípe (.d5); Reikuaápa Ka'akupe? (.d6); Luis oho Ka'akupépe
+  Ypakarai?; Aike mbo'ehaópe (a1u03d5.p2); Aha Ypakaraípe (.d5); Reikuaápa Ka'akupe? (.d6); Vicente oho Ka'akupépe
   (.e3); Aju Itauguágui. Ko'ág̃a aha Ka'akupépe. Ha che aha Ypakaraípe (.r1).
 - Day 6: Ndaha'éi che jarýi, ha'e che sy (a1u03d6.e3); Ko'ág̃a akaru (the compare); and the chat: Che sy ikane'õ ha
   che jarýi hasy. Chey'uhéi. Oĩpa terere? (a1u03d6.r1).
-- Week test: Che sy pohanohára (a1u03t.3); Marta ha'e che sy (t.9); che ñemuhára (t.10); che chokokue (t.19); and the
+- Week test: Che sy pohanohára (a1u03t.3); Teresa ha'e che sy (t.9); che ñemuhára (t.10); che chokokue (t.19); and the
   note of t.15 to t.17: Aha mbo'ehaópe. Nde ru og̃uahẽ ko'ág̃a: ikane'õ ha ivare'a. Oĩ chipa ha terere.
 
 ### Pedagogy and keys
@@ -449,7 +449,7 @@ The others the reviewers named, day by day:
   «chamán». The Academia's dictionary was not reached. Since the sound round the word carries more: the focus of
   u04-d1 is «La tilde en dos vocales juntas: jarýi, ramói», and ramói is the key of the rewritten a1u04d1.k1.
 - **memby, ra'y, rajy by who speaks.** The unit says the mother says memby and the father ra'y and rajy (the intro and
-  the scene of u04-d1, a1u04d5.e1, a1u04t.1), and the cast follows it (Rosa says che memby, Luis and Juan che rajy:
+  the scene of u04-d1, a1u04d5.e1, a1u04t.1), and the cast follows it (Rosa says che memby, Vicente and Juan che rajy:
   a1u04d4.p1, a1u04d4.r1, a1u04d3.r1). The forms are attested; the rule comes from Wiktionary, a kinship article and
   question-and-answer pages, later backed by corpus lines (ABC: «…Raúl Cubas Grau rajy ha senadora Mirtha Gusinky
   membykuña»), not by a school grammar. Can a mother say «che rajy» today? If she can, rajy leaves the options of
@@ -502,8 +502,9 @@ As in unit 2, every sentence is original. Those where the pattern is the doubt:
 - **«Maitei, sy ha tuvakuéra.»** (the notice of a1u04d2.r1): «sy ha tuvakuéra» for «padres» is attested; Maitei
   before a common noun has no parallel. Is a notice to parents headed this way, and is one -kuéra at the end of «sy
   ha túva» clear to an A1 reader?
-- **A name after héra**: «Ha'e che sy, héra Marta.», «Che ramói, héra Pedro.» (a1u04d1.r1), «Che memby, héra Sofía.»
-  (a1u04d4.r1), «Pe karai che ramói, héra Pedro.» (a1u04d6.r1), «Che ru, héra Carlos.» (a1u04t.15 to t.17).
+- **A name after héra**: «Ha'e che ru, héra Santiago.», «Che ramói, héra Casimiro.», «Héra Genaro.» (a1u04d1.r1), «Che
+  memby, héra Samanta.» (a1u04d4.r1), «Pe karai che ramói, héra José.» (a1u04d6.r1), «Che ru, héra Santiago.»
+  (a1u04t.15 to t.17): the lines as they stand since the people were renamed.
 - **Owner chains**: «che angirũ memby» (a1u04d6.r1; no hit), «Che rajy mbarakaja» (a1u04d3.r1), «Moõpa ne ramói
   róga?» (a1u04d1.d6), «Moõpa nde ru róga?» (a1u04d1.e3), «Aha che ru rógape» (a1u04d1.d5).
 - **-pe for the person spoken to**: «Mbo'ehára oñe'ẽ mitãnguérape» (a1u04d2.d5), «Che sy oñe'ẽ kuñanguérape»
@@ -616,27 +617,27 @@ changes leave for a native teacher. The words in which the learner is told a rul
 As everywhere in the course, the word forms are attested and the sentences are the authors'. A native reader should
 go through these once:
 
-- Unit 1: Héra Lucas. Ha'e Argentina-gua (a1u01d3.d4); Mboýpa ovale ko mandi'o? (a1u01d4.d6; «Ko mandi'o» is Common
+- Unit 1: Héra Moisés. Ha'e Argentina-gua (a1u01d3.d4); Mboýpa ovale ko mandi'o? (a1u01d4.d6; «Ko mandi'o» is Common
   Voice's).
 - Unit 2: Rehópa ko pyhare, Rosa? (a1u02d1.e3); Roju ko ka'aru, che jarýi (a1u02d2.e2: «che jarýi» said to the
   grandmother, where it was «ña Ramona»); Ore romba'apo ko ka'aru (a1u02d2.e3); Moõpa remba'apo? with no name
   (a1u02d3.r1); Aju Itakuruvígui (a1u02d4.d5; a textbook line); Moõguipa peju? (a1u02d4.d6); Moõpa reho, Juan?
   (a1u02d4.e2); Aju kokuégui (a1u02d4.e3, as in a1u02d6.c1); Ko ka'aru ndahái távape (a1u02d6.e3; ndahái has two
   corpus lines).
-- Unit 3: Luis pohanohára (a1u03d3.p1); Ndaha'éi che angirũ (a1u03d3.e1); Ha'e mbo'ehára (a1u03d3.e3, a build of
+- Unit 3: Vicente pohanohára (a1u03d3.p1); Ndaha'éi che angirũ (a1u03d3.e1); Ha'e mbo'ehára (a1u03d3.e3, a build of
   mbo'e + hára); Mba'éichapa, kuñakarai? (a1u03d3.r1); Ndépa ñemuhára? Nahániri, che chokokue (a1u03d4.c1); Nahániri,
   ndahái (a1u03d4.p2); Che ru hasy (a1u03d6.d1); Ikane'õpa nde sy, Juan? (a1u03d6.d6; Ikane'õpa has no token as a
   whole word); Ikatúpa aike? Nahániri, ndaikatúi (a1u03t.14: ndaikatúi has 96 corpus lines and «Ndaikatúi.» alone
   three, the pair of lines none); and «Ndépa chokokue, Juan?» said by «Vecina» (a1u03t.19).
-- Unit 4: Ha'e che sy. Ha'e che ru, héra Carlos. Héra Mateo (a1u04d1.r1); Peju! Tapeg̃uahẽ porãite (the notice of
+- Unit 4: Ha'e che sy. Ha'e che ru, héra Santiago. Héra Genaro (a1u04d1.r1); Peju! Tapeg̃uahẽ porãite (the notice of
   a1u04d2.r1; Peju! alone has no corpus line); Ko vaka ivare'a (a1u04d3.p1, the compare and the note of vaka);
   Umi ryguasu ituicha (the key of a1u04d3.e2, hens far from both); Mávapa ha'e? Ha'e che rembireko; Mávapa amo
   kuñataĩ? Ha'e che rajy, now asked by Rosa and answered by Juan (a1u04d4.p1); Mba'épa jajapo ko ka'aru?; Mba'épa
-  rejapo ko pyhare? Aha che jarýi rógape (a1u04d4.p2); Mávapa pe mitãkuña? Che memby, héra Elena. Ha pe karai?
+  rejapo ko pyhare? Aha che jarýi rógape (a1u04d4.p2); Mávapa pe mitãkuña? Che memby, héra Samanta. Ha pe karai?
   Ndaha'éi che ru, ha'e che ramói (the chat of a1u04d4.r1); Mboy arýpa rereko? Treinta (a1u04d5.p2); Areko mbohapy
   memby, now said by Ramona (a1u04d5.p1, a1u04d5.e1); Itauguápe ogakuéra iporã (a1u04d6.d5); Pe chipa iporã (the key
-  of a1u04d6.e2); Pe karai che ramói, héra José (a1u04d6.r1); Mávapa pe karia'y? Che angirũ (a1u04t.11); Clara ha
-  Mateo (a1u04t.15 to t.17).
+  of a1u04d6.e2); Pe karai che ramói, héra José (a1u04d6.r1); Mávapa pe karia'y? Che angirũ (a1u04t.11); Tania ha
+  Genaro (a1u04t.15 to t.17).
 
 ### Pedagogy and keys
 
@@ -649,12 +650,20 @@ go through these once:
   topáta), a1u01d3 (the sentence Mba'éichapa nde réra?), a1u03d1 (che + akã + rasy) and a1u04d5 (ary + pa, built
   four times with a1u04d6.e3 and a1u04t.14): those days have no other build that is safe. A teacher who confirms one
   longer build for any of them gives the day a second one.
-- **The cast**, for whoever reads the lines for sense: Ana is a teacher in Itauguá with two small children, Clara and
-  Mateo; her father is Carlos, her grandfather Pedro, her grandmother doña Ramona, her mother has no name. Luis is
-  her friend, a doctor of thirty, the son of Marta. Rosa is a teacher with two children, Elena and Tomás, and a
-  grandfather José. Juan is a farmer with a wife, a daughter and a son. Lucas is a young doctor from Argentina who
-  is learning Guarani. Luis still goes to «la escuela» and has a teacher in six places of units 2 and 3 (a1u02d4.p1,
-  a1u02d4.d2, a1u02d5.r1, a1u02t.11, a1u02t.14, a1u03d6.c1).
+- **The cast**, for whoever reads the lines for sense: Ana is a teacher in Itauguá with two small children, Tania and
+  Genaro; her father is Santiago, her grandfather Casimiro, her grandmother doña Ramona, her mother has no name.
+  Vicente is her friend, a doctor of thirty, the son of Teresa. Rosa is a teacher with two children, Samanta and
+  Tomás, and a grandfather José. Juan is a farmer with a wife, a daughter and a son. Moisés is a young doctor from
+  Argentina who is learning Guarani. Vicente still goes to «la escuela» and has a teacher in six places of units 2 and
+  3 (a1u02d4.p1, a1u02d4.d2, a1u02d5.r1, a1u02t.11, a1u02t.14, a1u03d6.c1).
+- **Names changed on 10 November, for the synthetic voice**: Luis → Vicente, Lucas → Moisés, Carlos → Santiago (the
+  exam's sample speaker → Jacinto), Pedro → Casimiro, Mateo → Genaro, Diego → Tito, Lucía → Sara, Nilda → Susana, Sofía
+  → Karina, Elena → Samanta, Clara → Tania, Mirta → María, Marta → Teresa. The voice has no l, f or d and no rt, rl,
+  ld or dr, and neither recogniser heard the old names right in most takes (`sound/VOICE.md`, «The names of the
+  people»); the lines above quote the new names. Only names changed, in 157 items and in 21 examples, 4 compare forms,
+  a rule row and the exam's sample answers: no key, no order of options and no other word moved, and no reviewer or
+  blind solver has read the items since. For a native reader: are Casimiro for a grandfather, Genaro for a small boy and Tito for a young man names you
+  would expect, and does a visitor called Sara or a pupil called Karina sound right in Caacupé and in a Guarani class?
 
 ### Lines above that are out of date
 
@@ -668,8 +677,8 @@ go through these once:
   a1u03d3.e3 builds mbo'ehára; a1u03d6.d6 builds Ikane'õpa, not Og̃uahẽpa; a1u03t.14 builds ndaikatúi, not
   nachemandu'ái; in a1u03t.19 a new neighbour asks, not Rosa.
 - Unit 4: only Juan says che rajy (a1u04d4.p1); «Mávapa pe mitãkuña?», not «pe kuñataĩ», in the chat of a1u04d4.r1;
-  the names after héra are Carlos, Pedro, Mateo, Elena and José, and Ana's mother has none; «Treinta.», not
-  «Veinte.», as Luis's age; tapicha is glossed; «Ko vaka iky'a» is «Ko vaka ivare'a»; a1u04d4.e3 builds mba'e + icha
+  the names after héra are Santiago, Casimiro, Genaro, Samanta and José, and Ana's mother has none; «Treinta.», not
+  «Veinte.», as Vicente's age; tapicha is glossed; «Ko vaka iky'a» is «Ko vaka ivare'a»; a1u04d4.e3 builds mba'e + icha
   + pa and a1u04d6.d5 builds ogakuéra («Che sy oñe'ẽ mitãnguérape» is gone; a1u04d2.d5 keeps «Mbo'ehára oñe'ẽ
   mitãnguérape»);
   a1u04d6.e2 is «Pe chipa iporã».

@@ -90,7 +90,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Cuál está bien escrita",
-        "q": "Luis escribe en la pizarra: jaguá, óga, ikatupa. Se dicen ^ja-GUA, Ó-ga, i-ka-TÚ-pa^. ¿Cuál de las tres está _bien escrita_?",
+        "q": "Vicente escribe en la pizarra: jaguá, óga, ikatupa. Se dicen ^ja-GUA, Ó-ga, i-ka-TÚ-pa^. ¿Cuál de las tres está _bien escrita_?",
         "options": ["jaguá", "óga", "ikatupa"],
         "answer": 2,
         "why": [
@@ -121,7 +121,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Cuál está bien escrita",
-        "q": "Luis escribe cuatro palabras que se dicen ^con el acento antes de la última vocal^: na-HÁ-ni-ri, mbo-'e-HÁ-ra, TÉ-ra, pu-ra-HÉI. Solo una está _bien escrita_. ¿Cuál?",
+        "q": "Vicente escribe cuatro palabras que se dicen ^con el acento antes de la última vocal^: na-HÁ-ni-ri, mbo-'e-HÁ-ra, TÉ-ra, pu-ra-HÉI. Solo una está _bien escrita_. ¿Cuál?",
         "options": ["nahaniri", "mbo'éhara", "terá", "purahéi"],
         "answer": 4,
         "why": [
@@ -136,7 +136,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Cuál está bien escrita",
-        "q": "Luis escribe cuatro lugares con -pe, «en». ^-pe no se lleva el acento^. Solo uno está _bien escrito_. ¿Cuál?",
+        "q": "Vicente escribe cuatro lugares con -pe, «en». ^-pe no se lleva el acento^. Solo uno está _bien escrito_. ¿Cuál?",
         "options": ["kotype", "ogápe", "Itauguápe", "mbo'ehaope"],
         "answer": 3,
         "why": [
@@ -167,13 +167,13 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "(Luis va a Ypacaraí.)\nLuis: Aha ",
+        "before": "(Vicente va a Ypacaraí.)\nVicente: Aha ",
         "after": ".",
         "tiles": ["Ypakarai", "pe"],
         "bank": [1, 0],
         "hint": "-pe va después del lugar, pegado. Después fijate dónde queda el acento: ¿sigue en la última vocal?",
-        "full": "(Luis va a Ypacaraí.)\nLuis: Aha {Ypakaraípe}.",
-        "es": "Luis: Voy a Ypacaraí.",
+        "full": "(Vicente va a Ypacaraí.)\nVicente: Aha {Ypakaraípe}.",
+        "es": "Vicente: Voy a Ypacaraí.",
         "explain": "Ypakarai («Ypacaraí») + -pe («a») = Ypakaraípe. Ypakarai es aguda, y-pa-ka-ra-I, y sola va sin tilde. -pe no se lleva el acento: queda en esa i, que ya no es la última vocal, y por eso ahora se escribe í."
       },
       {
@@ -182,12 +182,12 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "(Ana le pregunta a Luis si conoce Caacupé.)\nAna: ",
+        "before": "(Ana le pregunta a Vicente si conoce Caacupé.)\nAna: ",
         "after": " Ka'akupe?",
         "tiles": ["reikuaa", "pa"],
         "bank": [1, 0],
         "hint": "-pa cierra la palabra que pregunta y no se lleva el acento. ¿En qué vocal queda?",
-        "full": "(Ana le pregunta a Luis si conoce Caacupé.)\nAna: {Reikuaápa} Ka'akupe?",
+        "full": "(Ana le pregunta a Vicente si conoce Caacupé.)\nAna: {Reikuaápa} Ka'akupe?",
         "es": "Ana: ¿Conocés Caacupé?",
         "explain": "reikuaa («conocés, sabés») + -pa (pregunta) = Reikuaápa. Reikuaa termina en a tónica, rei-kua-A. -pa no se lleva el acento: queda en esa a, que ya no es la última vocal, y se escribe á. Ka'akupe, sola, sigue sin tilde: es aguda."
       }
@@ -219,12 +219,12 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "(Luis va a Caacupé.)\nAna: Luis oho ",
+        "before": "(Vicente va a Caacupé.)\nAna: Vicente oho ",
         "after": ".",
         "tiles": ["Ka'akupe", "pe"],
         "bank": [1, 0],
-        "full": "(Luis va a Caacupé.)\nAna: Luis oho Ka'akupépe.",
-        "es": "Ana: Luis va a Caacupé.",
+        "full": "(Vicente va a Caacupé.)\nAna: Vicente oho Ka'akupépe.",
+        "es": "Ana: Vicente va a Caacupé.",
         "explain": "Ka'akupe («Caacupé») + -pe («a») = Ka'akupépe. Ka'akupe es aguda, ka-'a-ku-PE, y sola va sin tilde. -pe no se lleva el acento: queda en la e final de Ka'akupe, que ya no es la última vocal, y por eso se escribe é."
       }
     ]

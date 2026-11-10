@@ -34,7 +34,8 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 
 <div style="flex-grow: 1; min-height: 0; overflow-y: auto; padding: 6px 16px 8px; display: flex; flex-direction: column; gap: 6px">
 
-<div style="flex-shrink: 0; padding: 10px 14px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; display: flex; align-items: center; gap: 14px">
+<div style="flex-shrink: 0; padding: 10px 14px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; gap: 14px">
 <svg viewBox="-24 -24 48 48" width="96" height="96" role="img" aria-label="{{ ro.label }}" style="flex-shrink: 0"><circle r="19.5" fill="none" stroke="#C9D0E3" stroke-width="1" stroke-dasharray="1.6 2.2" opacity="{{ ro.frameOpacity }}"/><path d="{{ ro.rimD }}" fill="#FCE4EE" stroke="#C2336F" stroke-width="1.4" stroke-linejoin="round" opacity="{{ ro.rimOpacity }}"/><path d="{{ ro.off }}" fill="#FFFFFF" stroke="#DDE1EC" stroke-width="0.9"/><path d="{{ ro.on }}" fill="#F8D3E2" stroke="#C2336F" stroke-width="1.1"/><path d="{{ ro.spokes }}" stroke="#C2336F" stroke-width="0.8" stroke-linecap="round"/><circle r="4" fill="{{ ro.hubFill }}" stroke="#C2336F" stroke-width="1.2"/></svg>
 <div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px">
 <div style="font-size: 12px; font-weight: 700; color: #5A6382">{{ kicker }}</div>
@@ -44,7 +45,15 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="padding: 3px 10px; border-radius: 10px; font-size: 12px; font-weight: 800; white-space: nowrap; background: {{ pace.bg }}; color: {{ pace.ink }}">{{ pace.text }}</div>
 <sc-if value="{{ hasLeft }}" hint-placeholder-val="{{ true }}"><div style="font-size: 12px; font-weight: 700; color: #5A6382; white-space: nowrap">{{ left }}</div></sc-if>
 </div>
+<sc-if value="{{ days.show }}" hint-placeholder-val="{{ true }}"><div style="margin-top: 1px; font-size: 12px; font-weight: 700; color: #5A6382; line-height: 1.35">{{ days.line }}</div></sc-if>
 </div>
+</div>
+<sc-if value="{{ replan.show }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; align-items: center; gap: 10px; padding: 6px 6px 6px 12px; border-radius: 14px; background: #FCE4EE">
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.3"><span lang="gn" style="font-size: 13px; font-weight: 800">Epu'ã ha eñepyrũjey</span><span style="font-size: 11px; font-weight: 700; color: #5A6382">Levantate y empezá de nuevo.</span></div>
+<a href="GoalPlan.dc.html" onClick="{{ toPlan }}" style="flex-shrink: 0; height: 44px; box-sizing: border-box; padding: 0 12px; border-radius: 12px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; color: #1B2440; font-size: 13px; font-weight: 800; display: flex; align-items: center; white-space: nowrap">Rearmar mi plan</a>
+</div>
+</sc-if>
 </div>
 
 <div style="flex-shrink: 0; padding: 10px 16px 10px; border-radius: 20px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 8px">
@@ -121,7 +130,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 
 <nav aria-label="Principal" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 6px 8px 30px; background: #FFFFFF; border-top: 2px solid #DDE1EC; flex-shrink: 0">
 <a href="Main.dc.html" onClick="{{ toMain }}" style="height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #5A6382; font-size: 11px; font-weight: 700"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="19" r="2.5"/><path d="M8.5 19h9a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15.5"/><circle cx="18" cy="5" r="2.5"/></svg>Camino</a>
-<a href="Notebook.dc.html" onClick="{{ toNotebook }}" style="height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #5A6382; font-size: 11px; font-weight: 700"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H6z"/><path d="M6 3v18M3 7h3M3 12h3M3 17h3M10 8h5"/></svg>Cuaderno</a>
+<a href="Notebook.dc.html" onClick="{{ toNotebook }}" aria-label="{{ nb.aria }}" style="height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #5A6382; font-size: 11px; font-weight: 700"><span style="position: relative; display: flex"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H6z"/><path d="M6 3v18M3 7h3M3 12h3M3 17h3M10 8h5"/></svg><sc-if value="{{ nb.has }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="position: absolute; top: -5px; left: 14px; min-width: 16px; height: 16px; box-sizing: border-box; padding: 0 4px; border-radius: 8px; background: #B02A63; box-shadow: 0 0 0 2px #FFFFFF; color: #FFFFFF; font-size: 10px; font-weight: 800; line-height: 16px; text-align: center">{{ nb.n }}</span></sc-if></span>Cuaderno</a>
 <a href="ExamTab.dc.html" onClick="{{ toExamTab }}" style="height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #5A6382; font-size: 11px; font-weight: 700"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>Examen</a>
 <a href="Progress.dc.html" onClick="{{ toProgress }}" aria-current="page" style="height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #2F4FD0; font-size: 11px; font-weight: 800"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>Progreso</a>
 </nav>
@@ -191,11 +200,12 @@ this.state = { used: null, move: '', code: '', paste: '', bad: false };
 renderVals() {
 const C = window.gnCourse;
 const nav = (to) => (e) => { const go = this.props.go; if (go) { e.preventDefault(); go(to); } };
-/* on its own this artboard shows the designed moment, dated from today: unit 1 with days 1 to 3 stamped, and the
-   week test taken early (15 of 20) so the areas show, listening under the line */
+/* on its own this artboard shows the designed moment, dated from today: unit 1 with days 1 to 3 stamped (three days
+   with study), the week test taken early (15 of 20) so the areas show, listening under the line, and one mistake of
+   day 3 due for review today */
 const T = C.today(C.now());
 const full = { g: 3, k: 1, r: 1 };
-const SAMPLE = { level: 'A1', started: true, plan: { start: C.addDays(T, -3), target: C.addDays(T, 60), pace: 'fit', minutes: 30 }, done: { a1u01d1: full, a1u01d2: full, a1u01d3: full, a1u01d4: { g: 1 } }, tests: { a1u01t: { id: 'a1u01t', score: 15, of: 20, used: 1010, areas: { vocab: { right: 5, of: 6 }, grammar: { right: 6, of: 8 }, reading: { right: 3, of: 3 }, listening: { right: 1, of: 3 } }, at: C.now() - 86400000 } }, exams: {}, mistakes: [], cur: 'a1u01d4', placement: { comp: 'A2', prod: 'A1', start: 'A1' }, typed: [] };
+const SAMPLE = { level: 'A1', started: true, plan: { start: C.addDays(T, -3), target: C.addDays(T, 60), pace: 'fit', minutes: 30 }, done: { a1u01d1: full, a1u01d2: full, a1u01d3: full, a1u01d4: { g: 1 } }, tests: { a1u01t: { id: 'a1u01t', score: 15, of: 20, used: 1010, areas: { vocab: { right: 5, of: 6 }, grammar: { right: 6, of: 8 }, reading: { right: 3, of: 3 }, listening: { right: 1, of: 3 } }, at: C.now() - 86400000 } }, exams: {}, mistakes: [{ src: 'a1u01d3.d1', wrong: '', at: C.now() - 86400000, step: 0, due: T }], cur: 'a1u01d4', placement: { comp: 'A2', prod: 'A1', start: 'A1' }, typed: [], seen: [C.addDays(T, -3), C.addDays(T, -2), C.addDays(T, -1)] };
 const alone = !this.props.app;
 const app = this.props.app || C.view(SAMPLE);
 const lv = app.level || C.level();
@@ -225,7 +235,8 @@ const sum = {};
 AREAS.forEach((k) => { sum[k] = { right: 0, of: 0 }; });
 Object.keys(state.tests).forEach((id) => {
 const t = state.tests[id];
-if (C.levelOf(id) !== lv || !t || !t.areas) return;
+/* the week tests only: a mini exam (a1m1, kept with the tests) asks their questions again and would count them twice */
+if (C.levelOf(id) !== lv || !t || !t.areas || !C.session(id)) return;
 AREAS.forEach((k) => { const x = t.areas[k]; if (x && +x.of > 0) { sum[k].right += Math.max(0, +x.right || 0); sum[k].of += +x.of; } });
 });
 const areas = AREAS.filter((k) => sum[k].of > 0).map((k) => {
@@ -325,7 +336,23 @@ type: (e) => this.setState({ paste: e && e.target ? e.target.value : '', bad: fa
 use: () => { if (kit && pasted.trim() && !kit.importProgress(pasted)) this.setState({ bad: true }); },
 close: () => this.setState({ move: '', bad: false }),
 };
+/* the days with study (gnCourse.days): how many, and how many times the learner came back after days away */
+const dy = app.days || { count: 0, returns: 0 };
+const rv = app.review || { n: 0 };
+/* behind the plan, or past its date: the goal screen makes the plan again from today (its third step) */
+const toPlan = (e) => {
+const go = this.props.go;
+if (!go) return;
+e.preventDefault();
+try { window.__gnGoalDraft = { step: 'plan', owner: go }; } catch (x) { /* the goal opens where it would */ }
+go('Goal');
+};
 return {
+days: { show: dy.count > 0, line: (dy.count === 1 ? '1 día con estudio' : dy.count + ' días con estudio') + (dy.returns > 0 ? ' · volviste ' + (dy.returns === 1 ? 'una vez' : dy.returns + ' veces') : '') },
+replan: { show: !passed && goalSet && (paceKey === 'late' || (left != null && left < 0)) },
+toPlan,
+/* the Cuaderno tab says what today's review asks */
+nb: { has: rv.n > 0, n: rv.n > 9 ? '9+' : String(rv.n), aria: rv.n > 0 ? 'Cuaderno, ' + rv.n + ' para repasar hoy' : 'Cuaderno' },
 heading: 'Progreso · ' + lv,
 ro,
 kicker: 'Ñandutí del nivel ' + lv,

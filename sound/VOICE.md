@@ -5,7 +5,8 @@ Epu'ã has no recordings yet. `tools/make-tts.py` makes stand-in clips with a vo
 licence, how the text is prepared, how a clip is said, the voices, every number that was measured, what each sound the
 course teaches scored, what must stay without audio, what a native speaker should listen to first, and how to make the
 clips again. The measurements are of 2026-11-10, in three rounds: a first probe, an independent verification that
-refuted part of it, and a fix round. What the verification refuted is corrected here, not kept.
+refuted part of it, and a fix round. What the verification refuted is corrected here, not kept. A trial of the people's
+names followed the same day, after which thirteen people were renamed: «The names of the people».
 
 **Nobody listened to any of this.** Every judgement below was made by machine: two speech recognisers, distances between
 clips, measures on the model's own alignment, and pictures of the waveform and the spectrogram. A machine can tell that
@@ -36,7 +37,11 @@ the machine could not tell, this file says so.
   stress (the acute moves length only; the final stress of an unmarked word shows in nothing measured); the j before u
   (a stop: *aju* as «adu»); the k before e (*okẽ*, *aike*).
 - **Not rendered:** the r that opens a word said alone (a hum, not a tap); rr (one long tap, never a trill); *ñúme*. And
-  outside what the course teaches: f («Sofía» as «sosía»), l («Luis» as «ndúi», «mil» as «mi»), ld, rl, tr, a bare d.
+  outside what the course teaches: f («Sofía» as «sosía»), l («Luis» as «ndúi», «mil» as «mi»), ld, rl, tr, rt, dr, a
+  bare d, a last r.
+- **The people's names:** thirteen people whose names had one of those sounds (Luis, Lucas, Lucía, Nilda, Carlos, Sofía,
+  Pedro, Marta, Mateo and four more) were given names the voice can say, on 10 November, and Ana and Ramona another
+  spelling for the voice («The names of the people»). 45 takes of the verified folder are to be said again for that.
 - **Cannot tell:** nasal harmony, beyond the spelling; whether the ch is «sh» or the Spanish ch.
 - **The voice is one man.** F is the model as it is; M is the same voice two to three semitones lower. F is not a
   woman's voice. In a dialogue a longer line is moved towards its voice's pitch; even so the man's line is no lower than
@@ -135,27 +140,111 @@ word is in the course today.
 «k», a word without a mark with the stress on its last vowel. So a Spanish word is written for the voice as a Guarani
 speaker would spell what is said: h for the jota, s for c and z, k for c and qu, the acute on the Spanish stress. The
 spellings are sound; what the voice then says is another matter. Each word was said three times or more inside «che réra
-…» and heard by both recognisers (the first round, and three more seeds each in the verification):
+…» and heard by both recognisers (the first round, and three more seeds each in the verification). The people's names
+were then tried more widely, and thirteen people were given other names: «The names of the people», after this table.
 
 | In the course | Said as | What came back |
 |---|---|---|
-| Juan, José | huan, hose | Right: the large recogniser hears the name 3 times of 3. After «mba'éichapa», *Juan* as written came back «joan»; with h it is the same every time. |
-| Mateo, Tomás | matéo, tomás | Right, 3 of 3. Without the acute *Mateo* came back «mate'o». |
-| Rosa, Ramona, Ana | rósa, ramóna, ána | Right, 3 of 3. With the acute the recognisers write the accent (ána: 12 hearings of 12; rósa: 8 of 12); without it, in none. |
-| Marta, Pedro | márta, pédro | Right in 2 or 3 of 3. |
-| Lucas, Lucía, Luis, Luque, Elena | lúkas, lusía, luis, lúke, eléna | **Not rendered: the l.** Luis «ndúi» from the independent recogniser 3 of 3; Lucía «ndusía», «nusía» in 4 hearings of 6; Lucas «ndúka», «nucas» in 4 of 6; Luque «ndúke», «núke» in 6 of 6; Elena «evéna», «edéna», «ndéna» (an l in 4 hearings of 12, the fix round). The rest of each name is right. |
-| Nilda, Carlos, Clara | nílda, kárlos, clara | **Not rendered: ld and rl**; cl by half. Nilda garbled in 6 hearings of 6, Carlos «cálos» in 5 of 6. Clara as written is «clára» for the large recogniser 3 times of 3 and «kyára» for the independent one in 2 of 3; as «klára» it was worse. |
-| Sofía | sofía | **Not rendered: f.** «sosía» in 5 hearings of 6. |
+| The people | | «The names of the people», below. |
+| Luque | lúke | **Not rendered: the l** («ndúke», «núke» in 6 hearings of 6). It stands in one sample answer of the level exam, which is read, not said. |
 | Argentina-gua | arhentinagua | h for the g before e, one word, no acute: -gua takes the stress. The r is lost: «ahentinagua» from both. |
 | veinte, cuarenta, noventa | véinte, kuarénta, novénta | Right (the fix round, three seeds, alone in F and in M and inside «oguereko … ary»): véinte in 12 hearings of 12 alone; kuarénta in 5 takes of 6 (independent) and 6 of 6 (large, written «cuarenta»); novénta in 6 of 6 each. |
 | ochenta | ochénta | Alone, right in 6 hearings of 6 by F; in M's voice the large recogniser heard «osénta» twice in 3. After a word that ends in o the first o is swallowed («oguereko chénta»). |
 | treinta, cincuenta, sesenta, setenta, cien, doce | the Spanish voice when the line is only the number; inside a sentence tréinta, sinkuénta, sesénta, seténta, sien, dóse | **Not rendered:** tr («téinta» from the independent recogniser 6 times of 6), the n before k («cikenta»), a bare d («ndose» in 15 hearings of 18), *sien* («csien», «cén»); *sesenta* and *setenta* lose their first s for the large recogniser when F says them alone («esen a», «etenta»). |
 | diez, mil | the Spanish voice | **«Diez mil» fails in each of the eight spellings tried** («riesmi», «ndiehmi»): no d without n, and a last l is dropped. |
 
-No respelling repairs l, f or d. Today's manifest has Luis in 14 recorded rows, Lucas in 5, and Lucía, Nilda, Carlos and
-Sofía in 2 each: those lines are said, marked «voz sintética», and flawed in the name. The names the voice can say are
-Ana, Rosa, Ramona, Juan, José, Mateo, Tomás, Pedro and Marta; where the content can use one of them, it should (the
-change of Luis to Carlos in `a1u04d1.r1.l2` made that line worse: «herakalios»).
+**The names of the people.** No respelling repairs l, f or d. Until 10 November the manifest had Luis in 14 recorded
+rows, Lucas in 5, Pedro in 3, and Lucía, Nilda, Carlos, Sofía and Mateo in 2 each, and Marta, Mirta, Diego, Elena and
+Clara stood in text that is read. That day every name of the cast was tried the way the first rounds had tried names,
+and more widely: inside «che réra …» (A), opening a sentence, «… oho ko ka'aru» (B), closing one, «mba'éichapa reiko …»
+(C), and in a line of two words, «héra …» (D); three seeds each, the clip made by the tool's own code (the first take: a
+carrier, a pause, the cut) and heard by both recognisers. A name counts as right when the stretch heard in its place has
+its letters, marks aside, in the respelling or in the Spanish spelling («juan» for *huan*); a puso between the name and
+the word before it is not counted. Thirteen names were not heard right by both recognisers in most takes, among them
+three the first rounds had found right inside «che réra …», by the large recogniser (Pedro, Marta, Mateo):
+
+| Until 10 November | Said as | Independent: A B C D | Large: A B C D | What came back | Now |
+|---|---|---|---|---|---|
+| Luis | luis | 0/3 0/3 0/3 0/3 = **0/12** | 2/3 1/3 0/3 0/3 = **3/12** | «nuis» ×6, «nui» ×2, «ndui» ×2, «nduis» ×2: the l that opens the word | Vicente |
+| Lucas | lúkas | 0/3 0/3 0/3 0/3 = **0/12** | 0/3 2/3 3/3 0/3 = **5/12** | «nukas» ×4, «ndukas» ×3, «nduka» ×3, «joukas» ×2: the l | Moisés |
+| Carlos | kárlos | 0/3 0/3 0/3 0/3 = **0/12** | 2/3 0/3 2/3 3/3 = **7/12** | «karios» ×4, «kalo» ×2, «kalos» ×2, «kallo»: rl | Santiago; the exam's sample speaker, Jacinto |
+| Pedro | pédro | 0/3 0/3 0/3 0/3 = **0/12** | 2/3 3/3 3/3 3/3 = **11/12** | «petro» ×4, «peru» ×2, «peveru», «peteru»: the d, and dr | Casimiro |
+| Mateo | matéo | 3/6 2/6 3/6 0/6 = **8/24** | 5/6 4/6 4/6 6/6 = **19/24** | «matevo» ×10, «mateva» ×2, «matero», «matiio»: e and o run together with a v between them | Genaro |
+| Diego | diégo | 0/3 0/3 1/3 0/3 = **1/12** | 2/3 0/3 1/3 1/3 = **4/12** | «ndiego» ×4, «ndieg» ×2, «nliivo», «ndiigo»: the d | Tito |
+| Lucía | lusía | 0/3 1/3 0/3 0/3 = **1/12** | 1/3 2/3 0/3 0/3 = **3/12** | «nusia» ×5, «nusi'a» ×4, «ndusia» ×2, «dusia» ×2: the l | Sara |
+| Nilda | nílda | 0/3 0/3 0/3 0/3 = **0/12** | 1/3 0/3 0/3 0/3 = **1/12** | «ñivyva» ×2, «ñiva» ×2, «nigda» ×2, «niveha»: ld | Susana |
+| Sofía | sofía | 0/3 0/3 0/3 0/3 = **0/12** | 0/3 1/3 1/3 0/3 = **2/12** | «sosia» ×9, «sosie» ×7, «sosive», «soviae»: the f | Karina |
+| Elena | eléna | 0/3 1/3 1/3 0/3 = **2/12** | 0/3 1/3 0/3 0/3 = **1/12** | «relena» ×7, «evena» ×4, «erena» ×2, «rendema»: the l between vowels | Samanta |
+| Clara | clara | 1/3 0/3 0/3 0/3 = **1/12** | 3/3 0/3 1/3 3/3 = **7/12** | «chara» ×5, «kyara» ×4, «kara» ×3, «kjara»: cl | Tania (first Jimena) |
+| Mirta | mírta | 0/3 0/3 0/3 0/3 = **0/12** | 1/3 0/3 0/3 0/3 = **1/12** | «mita» ×11, «mikta» ×4, «milta» ×3, «milkta» ×2: rt | María |
+| Marta | márta | 0/3 0/3 0/3 0/3 = **0/12** | 3/3 2/3 1/3 1/3 = **7/12** | «alta» ×4, «malta» ×3, «mata» ×3, «arta»: rt | Teresa |
+
+So these thirteen people have other names now, in the whole course, written and spoken alike; the level exam's sample
+speaker, who was a Carlos too, is Jacinto. The new names were chosen among 139 other first names tried the same way:
+frame A first, and 36 of those that both recognisers heard right there in two takes of three or more went on to B, C and
+D. The names now in use were then said with three more seeds. In all: 158 names in 178 spellings, 1,575 takes (1,410 in
+F's voice, 135 in M's, 30 by the Spanish voice).
+
+| Name | Said as | Independent: A B C D | Large: A B C D | When not right |
+|---|---|---|---|---|
+| Ana (kept) | ãna | 4/6 6/6 6/6 6/6 = **22/24** | 5/6 6/6 6/6 6/6 = **23/24** | «aga», «agna», «anaa» |
+| Rosa (kept) | rósa | 6/6 3/6 6/6 6/6 = **21/24** | 6/6 5/6 6/6 6/6 = **23/24** | «ndosa» ×2, «oosa», «dosa» |
+| Ramona (kept) | ramõna | 6/6 1/6 6/6 6/6 = **19/24** | 5/6 5/6 6/6 6/6 = **22/24** | «amona» ×2, «pamona», «ñamona», «yamorna» |
+| Juan (kept) | huan | 5/6 0/6 3/6 5/6 = **13/24** | 6/6 0/6 6/6 6/6 = **18/24** | «voan» ×5, «po'an» ×2, «huam», «koan» |
+| José (kept) | hose | 6/6 6/6 4/6 6/6 = **22/24** | 6/6 6/6 4/6 6/6 = **22/24** | «hosee», «hoseve», «joseae», «josea» |
+| Tomás (kept) | tomás | 6/6 6/6 6/6 6/6 = **24/24** | 6/6 6/6 6/6 6/6 = **24/24** | — |
+| Vicente (was Luis) | visénte | 5/6 4/6 6/6 5/6 = **20/24** | 6/6 4/6 6/6 6/6 = **22/24** | «misente» ×2, «guisente», «vyisente», «risente» |
+| Moisés (was Lucas) | moisés | 3/6 2/6 5/6 6/6 = **16/24** | 6/6 6/6 6/6 6/6 = **24/24** | «moise» ×3, «moikseiks», «moiseks», «mboiseks» |
+| Santiago (was Carlos) | santiágo | 6/6 2/6 5/6 6/6 = **19/24** | 6/6 6/6 6/6 6/6 = **24/24** | «sanqiago» ×2, «santiagvo», «satiago», «santiaago» |
+| Casimiro (was Pedro) | kasimíro | 4/6 5/6 4/6 6/6 = **19/24** | 5/6 5/6 4/6 6/6 = **20/24** | «kasimivo», «kasimbiro», «kasimire», «kasimbro» |
+| Genaro (was Mateo) | henáro | 4/6 3/6 4/6 6/6 = **17/24** | 4/6 3/6 6/6 6/6 = **19/24** | «henar» ×5, «henalo» ×2, «henalva», «heraro» |
+| Tito (was Diego) | títo | 5/6 6/6 3/6 5/6 = **19/24** | 5/6 6/6 4/6 6/6 = **21/24** | «tita» ×7, «tiko» |
+| Jacinto (the exam's sample speaker) | hasínto | 6/6 5/6 6/6 6/6 = **23/24** | 6/6 6/6 6/6 6/6 = **24/24** | «hasindo» |
+| Sara (was Lucía) | sára | 6/6 0/6 5/6 6/6 = **17/24** | 6/6 6/6 6/6 6/6 = **24/24** | «ssara» ×6, «chara» |
+| Susana (was Nilda) | susána | 5/6 6/6 5/6 6/6 = **22/24** | 6/6 6/6 6/6 6/6 = **24/24** | «susna», «susaga» |
+| Karina (was Sofía) | karína | 5/6 3/6 6/6 6/6 = **20/24** | 6/6 3/6 6/6 6/6 = **21/24** | «kaina» ×4, «harina» ×2, «kar'ina» |
+| Samanta (was Elena) | samánta | 6/6 5/6 6/6 6/6 = **23/24** | 6/6 6/6 6/6 6/6 = **24/24** | «ssamanta» |
+| Tania (was Clara) | tánia | **10/12** (three seeds a frame) | **11/12** | The first choice was Jimena (hiména: 17/24 and 23/24), dropped by the lead because it is one sound from *iména*, «su marido»; Tamara (12/12, 12/12) was passed over as too like Tomás and Samanta, the other children of unit 4 |
+| María (was Mirta) | maría | 3/6 6/6 0/6 4/6 = **13/24** | 5/6 6/6 2/6 4/6 = **17/24** | «marie» ×10, «mariae» ×4, «marive» ×2, «arive» |
+| Teresa (was Marta) | terésa | 6/6 6/6 6/6 3/6 = **21/24** | 6/6 6/6 6/6 6/6 = **24/24** | «tersa» ×3 |
+
+- **Ana and Ramona are written for the voice with a nasal vowel, not an acute: ãna, ramõna.** With the acute the n came
+  back m or was lost: *ána* was right in 15 takes of 24 and 20 of 24 («ama» in 8 hearings of 48, «aga», «anda»), and
+  *ramóna* in 8 of 24 and 12 of 24 («ramoma» in 23 hearings of 48; right in none of 6 takes after «héra»). The voice says a nasal vowel higher («The nasal vowels»,
+  below), which marks the stress, and a vowel before n is nasal in speech anyway. Without any mark, *ramona* is heard
+  right in 9 and 10 takes of 12, the stress unmarked; *ramónna*, *ramó na* and *ánna* were no better than the acute.
+  Whether ãna and ramõna sound like the names is for a native ear (the list below).
+- **Juan** is right inside and at the end of a sentence (13 takes of 18 and 18 of 18) and in none of 6 where it opens
+  one («voan», «po'an», «koan»: the h that opens an utterance is lost). No recorded line opens with Juan, and none
+  should. Sara opens a sentence badly for the independent recogniser alone («ssara», a long s).
+- **María** is the weakest name in use (13 and 17 takes of 24: «marie» for the last two vowels). No clip says it today.
+- **In M's voice** («maitei …», A and C, three seeds: 9 takes): Jacinto 9 and 9; Sara 8 and 9; Tito 7 and 8; Teresa 7
+  and 9; Ana, as ãna, 7 and 8 (as ána, 4 and 7); Vicente 6 and 9; Moisés 6 and 9; Genaro 6 and 7; Casimiro 5 and 5
+  («kasimio»); Ramona, as ramõna, 5 and 7; Susana 4 and 9 («chusana»); Santiago 0 and 9 («santiavo» for the independent
+  recogniser in every take). Today M says Ana in two lines and Moisés in one. The Spanish voice, after «qué responde»:
+  Vicente, Moisés, Santiago, Genaro and Tito in 3 takes of 3, Casimiro in 2, Jacinto in 1 («rasinto»).
+- **What a name needs**, for the people of later units: syllables of one consonant and one vowel, with m, n, p, t, k, s,
+  an r inside the word, the jota (given as h), v, nt or ns; the stress one before the end, marked with an acute, or at
+  the end (José, Tomás, Moisés). What failed: l, f, d and b; every other cluster (rt: Marta «alta», Arturo «anturo»; dr;
+  rm and rn: Norma, Carmen; st and kt: Néstor, Víctor; gn); a last r (César «sesa», Omar, Óscar, Javier) and most last n
+  (Iván «iva», Simón «simom»; Juan is the exception); two vowels in a row in most names (Mateo «matevo», Mauro «maoro»,
+  Noemí «no'emi», Ireneo, María «marie»; Mario and Sonia by half), though Santiago and Tania are heard right. A vowel at
+  the start is a risk after a word that ends in a vowel (Andrés «randres», Atanasio «ratanasiva»), and a name that ends
+  in o loses it before a verb in o- («henar oho»).
+- **Heard right and not in use:** Tamara (12 and 12 takes of 12), Santino (11, 12), Josué (11, 11), Samira (10, 12),
+  Jonás (10, 11), Vanesa (10, 9), Renata (16 and 20 of 24), Ciro (8, 9), Atanasio (7, 8), and Jimena (17 and 23 of 24), which was
+  in use for a day. Each was left
+  out because it looks or sounds like a name in use (Tamara and Tomás, Santino and Santiago, Josué and José, Jonás and
+  Juan, Renata and Ramona, Vanesa and Vicente, Ciro and Casimiro; Jimena, said «hiména», is one sound from *iména*, «su marido»; Tania, now Ana's daughter, rhymes with her mother's name, which the lead accepted as the least of three flaws) or is rare (Samira, Atanasio); a new
+  person may take one where that does not matter, and any other name goes through the same trial first. Heard right and
+  unfit for another reason: Maite (next to *maitei*), Roque (*roke* is «dormimos»), Nery and Nancy (their y is not the
+  sixth vowel), Aramí and Anahí (Guarani words; Anahí also looks like Ana).
+- The scripts, the list of every name with what came back and the takes are in the scratch folder of that session,
+  `…/scratchpad/voice-ship/names` (`try_names.py`, `judge.py`, `table.py`, `all-tried.txt`, `try/main.jsonl`,
+  `try/wav/`).
+
+**The renaming changes 35 recorded rows, and the new spellings of Ana and Ramona 10 more.** Their takes in the verified
+folder are out of date: `--verify` on that folder says those 45 again and nothing else («How to make the clips again»).
 
 **A line that is nothing but a Spanish number goes to the Spanish voice when the Guarani voice cannot say it**: one of
 its words is marked "voice": "es" in `respell.json` (diez, mil, treinta, cincuenta, sesenta, setenta, cien, doce) or has
@@ -171,8 +260,8 @@ Names that are Guarani spelling are said as written and listed under "as_written
 Paraguay, Ypakarai, Ñemby, Tovatĩ, Itakuruvi), with any suffix. A word the tool does not find in the table stops the run
 when it has letters outside Guarani spelling (c without h, q, z, x, w, f, b without m, d without n, two consonants in a
 row, a consonant at the end) or is a capitalised word in the middle of a sentence. It cannot catch a Spanish name that
-opens a sentence and happens to be Guarani spelling («Elena oho»): Elena is in the table for that reason, and any other
-such name has to be put there by hand.
+opens a sentence and happens to be Guarani spelling («Sara oho», «Tito oho»): every name of the cast is in the table for
+that reason, and a new one has to be put there by hand, once it has been tried («The names of the people»).
 
 ## How a clip is said
 
@@ -590,8 +679,9 @@ are nasal: the first round's measure went one way in three comparisons and the o
 
 **Sounds the course does not teach, and the voice does not have:** f («Sofía» as «sosía»); l, written l in 31 % and 55 %
 of its 29 places in the clips that stay (n, nd, d otherwise), at the start of a word («Luis» as «ndúi»), between vowels
-(«Elena» as «edéna») and at the end («mil» as «mi»); ld, rl, tr and a bare d. They are in names and Spanish numbers only
-(«How the text is prepared»).
+(«Elena» as «edéna») and at the end («mil» as «mi»); ld, rl, tr and a bare d; and, by the names trial, rt, dr, rm, rn,
+st, kt and a last r. They were in the names the people had until 10 November, which is why those were changed, and are
+in the Spanish numbers («How the text is prepared»); the l figures are of the verified run, before the change.
 
 ## What must stay without audio
 
@@ -675,12 +765,13 @@ are said, and all 49 dialogues and listening items are put together: none is dro
 A word that is silent as half of a pair is still said where it is a word of a scene (*mitã*, *téra*, *óga*), unless its
 text is named: there it is a word said imperfectly and marked «voz sintética», not a lesson in telling two sounds apart.
 
-**Not silenced, and flawed:** the lines with a name the voice cannot say (Luis, Lucas, Lucía, Luque: the l; Nilda,
-Carlos: ld, rl; Sofía: the f), «Diez mil.» in another man's voice, and the short lines of dialogues listed above. The
+**Not silenced, and flawed:** «Diez mil.» in another man's voice, and the short lines of dialogues listed above. Until
+10 November the lines with a name the voice cannot say were here too (Luis, Lucas, Lucía: the l; Nilda, Carlos: ld, rl;
+Sofía: the f): those people have other names now («The names of the people»), and their lines are to be said again. The
 verification checked the 16 listening items of the manifest: each stays answerable, the words that carry the answer
 being heard by at least one recogniser; 25 of the 130 listening lines (normal and slow) had wrong letters for both
-recognisers, most of them in a name. To silence a line, name its key in `silent.json`: the listening item it belongs to
-then goes silent as a whole.
+recognisers, most of them in a name (that count is of the run before the names changed). To silence a line, name its
+key in `silent.json`: the listening item it belongs to then goes silent as a whole.
 
 **What the screens say.** `make-sound.mjs` marks every one of these clips `synthetic`, with the model and the licence in
 each file's header and in the index. Of the screens, only the Words sound step, Spell and Hablar ask for a clip's kind
@@ -699,9 +790,9 @@ The clips that stay silent are in the folder's `left-out/`, by key; the rest in 
 2. **The puso:** *ka'i* and *sevo'i*, where the gap is clean, against *mbo'y*, *ro'y*, *chero'y*, *avy'a* and
    *chemandu'a*, where the voice creaks through and the recognisers hear an h.
 3. **The y:** *yta*, *yvyty*, *sa'y*, *py*. The formants say it is the right vowel; an ear must agree.
-4. **The stress:** *óga* against *ogakuéra*, *koty* against *kotýpe*, *kái*, and the names (Ana, Rosa, Ramona). The
-   acute makes its vowel longer, no louder and no higher. Is that where you hear the stress? And do *terere*, *ajahu*
-   and *akyhyje* sound stressed at the end?
+4. **The stress:** *óga* against *ogakuéra*, *koty* against *kotýpe*, *kái*, and the names with an acute (Rosa, Vicente,
+   Teresa). The acute makes its vowel longer, no louder and no higher. Is that where you hear the stress? And do
+   *terere*, *ajahu* and *akyhyje* sound stressed at the end?
 5. **g̃:** *ko'ág̃a*, *ag̃aite*, *og̃uahẽ*, Tereg̃uahẽ: a nasal g, an ng, or a plain g?
 6. **The j:** *jagua* and *Jaha!* (run in: a voiced start), *aju* and *peju* (before u the recognisers hear a d). Does
    it sound like the «y de yo»?
@@ -712,7 +803,9 @@ The clips that stay silent are in the folder's `left-out/`, by key; the rest in 
 10. ***Héẽ*:** one short vowel, or two?
 11. **Everything in `left-out/` that was left out by ear:** the recognisers are wrong about one short clip in ten of
     real speech. What sounds right to you goes into `silent.json`'s "keep".
-12. **The names and the Spanish:** Juan, Lucía, Sofía, Nilda, Luis, Carlos; «Diez mil.» in the seller's line; «ochenta».
+12. **The names and the Spanish:** Ana and Ramona, which the voice is given as ãna and ramõna (a nasal vowel where the
+    stress is: does it sound like the name, or like a nasal a and o?); Juan; the new names, Vicente, Moisés, Santiago,
+    Casimiro, Genaro, Sara, Susana and Karina, in their lines; «Diez mil.» in the seller's line; «ochenta».
 13. **The two voices of a dialogue:** is M different enough from F?
 14. **ch:** «sh», or the Spanish ch?
 
@@ -750,6 +843,11 @@ node tools/make-sound.mjs /tmp/voz --manifest /tmp/voz/manifest.json --kind synt
   it says nothing anew, moves the clips that are now silent to `left-out/`, passes a recording a dialogue still needs to
   the dialogue's own key, and writes the manifest again. After a change of the content, `--verify` on the same folder
   says only the lines that are new or whose text changed.
+- **Owed since 10 November:** the people's new names and the new spellings of Ana and Ramona («The names of the people»)
+  leave 45 takes of the verified folder out of date: 38 of F, 4 of M and 3 of the narrator, 11 of them slow takes (35
+  whose text has a new name, and 10 with Ana or Ramona whose text is the same). Make the clip list again
+  (`node tools/build-course.mjs`, then `node tools/sound-list.mjs A1`) and run `--verify` on that folder: it says those
+  45 and keeps the other 423.
 - `--only 'a1u01d1.*' p3.0` for a part; `--redo` to say again what is there; `--silent none` with a new folder to say
   the silent pairs too, for a listener.
 - A new name, a Spanish word or a new character in the content stops the run until `sound/respell.json` has it.

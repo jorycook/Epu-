@@ -165,7 +165,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "Luis habla de ^sus amigos^: «Che (   ) oĩ [ko'ápe|aquí].»",
+        "q": "Vicente habla de ^sus amigos^: «Che (   ) oĩ [ko'ápe|aquí].»",
         "options": ["angirũkuéra", "angirũnguéra", "angirunguéra", "ãngirũnguéra"],
         "answer": 2,
         "why": ["-kuéra va tras una sílaba oral, y angirũ termina en ũ, nasal.", "Angirũ termina en ũ, nasal: va -nguéra. Che angirũnguéra oĩ ko'ápe: mis amigos están aquí.", "Angirunguéra pierde la ~ de la ũ. La raíz es angirũ, y la ~ se queda.", "En ãngirũnguéra sobra la ~ de la a: junto a ng ya suena nasal, y no se marca."]

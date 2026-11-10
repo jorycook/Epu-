@@ -13,8 +13,8 @@
         ],
         "examples": [
           {
-            "gn": "Luis: {Che}kane'õ.",
-            "es": "Luis: Estoy cansado.",
+            "gn": "Vicente: {Che}kane'õ.",
+            "es": "Vicente: Estoy cansado.",
             "parts": [["che-", "yo (me pasa)"], ["kane'õ", "cansancio, cansado"]]
           },
           {
@@ -28,8 +28,8 @@
             "parts": [["nde-", "vos (te pasa)"], ["pochy", "enojo, enojado"]]
           },
           {
-            "gn": "Rosa: {Ne}kane'õ, Luis.\nLuis: Héẽ, {che}kane'õ ha {che}ro'y.",
-            "es": "Rosa: Estás cansado, Luis.\nLuis: Sí, estoy cansado y tengo frío.",
+            "gn": "Rosa: {Ne}kane'õ, Vicente.\nVicente: Héẽ, {che}kane'õ ha {che}ro'y.",
+            "es": "Rosa: Estás cansado, Vicente.\nVicente: Sí, estoy cansado y tengo frío.",
             "parts": [["ne-", "vos, ante una palabra nasal"], ["kane'õ", "cansancio"], ["héẽ", "sí"], ["ro'y", "frío"]]
           }
         ],
@@ -151,11 +151,11 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "Luis habla de ^su mamá^, que está enferma: «Che sy (   ).»",
+        "q": "Vicente habla de ^su mamá^, que está enferma: «Che sy (   ).»",
         "options": ["cherasy", "irasy", "hasy", "tasy"],
         "answer": 3,
         "why": [
-          "Cherasy es «estoy enfermo»: Luis hablaría de él mismo. Acá habla de su mamá.",
+          "Cherasy es «estoy enfermo»: Vicente hablaría de él mismo. Acá habla de su mamá.",
           "Rasy es de las palabras con tres formas, como téra, che réra, héra: tasy, cherasy, hasy. Para él o ella es hasy: irasy no existe.",
           "Che sy es otra persona, y para él o ella rasy tiene su propia forma, hasy, como réra tiene héra. Che sy hasy, «mi mamá está enferma».",
           "Tasy es la palabra suelta, «dolor, enfermedad», sin marcar a nadie: no dice que la mamá esté enferma."
@@ -183,12 +183,12 @@
         "label": "Armá la palabra",
         "join": "word",
         "before": "Rosa: ",
-        "after": ", Luis.",
+        "after": ", Vicente.",
         "tiles": ["ne", "kane'õ"],
         "bank": [1, 0],
         "hint": "Kane'õ es nasal, lleva ~: el «vos» no es nde- sino ne-, y va primero.",
-        "full": "Rosa: {Ne}kane'õ, Luis.",
-        "es": "Rosa: Estás cansado, Luis.",
+        "full": "Rosa: {Ne}kane'õ, Vicente.",
+        "es": "Rosa: Estás cansado, Vicente.",
         "explain": "ne- (vos) + kane'õ («cansancio») = nekane'õ, «estás cansado». Antes de una palabra nasal, nde- se vuelve ne-: nekane'õ. Con una palabra oral queda nde-: ndepochy."
       }
     ],
@@ -198,7 +198,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Qué significa",
-        "q": "Luis: _Chero'y ha chevare'a_.",
+        "q": "Vicente: _Chero'y ha chevare'a_.",
         "options": ["Tengo frío y hambre.", "Tengo calor y sed.", "Tiene frío y hambre.", "Estoy cansado y enojado."],
         "answer": 1,
         "explain": "Che- marca un estado mío: chero'y es «tengo frío» (ro'y, «frío») y chevare'a, «tengo hambre» (vare'a, «hambre»). «Tiene» sería otra persona, con i-: iro'y ha ivare'a. Calor y sed son otras palabras: «tengo sed» es chey'uhéi. Cansado es chekane'õ y enojado, chepochy."
@@ -284,14 +284,14 @@
       ],
       "script": [
         "Narrador: Termina el partido. ¿Qué le pasa al hombre?",
-        "Mujer: Mba'éichapa reiko, Luis?",
+        "Mujer: Mba'éichapa reiko, Vicente?",
         "Hombre: Chekane'õ ha chey'uhéi.",
         "Mujer: Jaha, oĩ terere."
       ]
     },
     "audio": [
       ["N", "Termina el partido. ¿Qué le pasa al hombre?", "Termina el partido. ¿Qué le pasa al hombre?"],
-      ["F", "Mba'éichapa reiko, Luis?", "¿Cómo andás, Luis?"],
+      ["F", "Mba'éichapa reiko, Vicente?", "¿Cómo andás, Vicente?"],
       ["M", "Chekane'õ ha chey'uhéi.", "Estoy cansado y tengo sed."],
       ["F", "Jaha, oĩ terere.", "Vamos, hay tereré."]
     ]

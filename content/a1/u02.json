@@ -177,8 +177,8 @@
         ]
        },
        {
-        "gn": "Luis {oho} ko ka'aru, ha che {aha} ko pyhare.",
-        "es": "Luis va esta tarde, y yo voy esta noche.",
+        "gn": "Vicente {oho} ko ka'aru, ha che {aha} ko pyhare.",
+        "es": "Vicente va esta tarde, y yo voy esta noche.",
         "parts": [
          [
           "oho",
@@ -203,8 +203,8 @@
         ]
        },
        {
-        "gn": "Luis: Mávapa {ou}?\nAna: {Ou} che sy.",
-        "es": "Luis: ¿Quién viene?\nAna: Viene mi mamá.",
+        "gn": "Vicente: Mávapa {ou}?\nAna: {Ou} che sy.",
+        "es": "Vicente: ¿Quién viene?\nAna: Viene mi mamá.",
         "parts": [
          [
           "mávapa",
@@ -298,7 +298,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "Ana: (   ) ^remba'apo^ [heta|mucho], Luis.",
+      "q": "Ana: (   ) ^remba'apo^ [heta|mucho], Vicente.",
       "options": [
        "Che",
        "Nde",
@@ -308,7 +308,7 @@
       "answer": 2,
       "why": [
        "Che es «yo» y va con a-: che amba'apo. Acá el verbo lleva re-.",
-       "re- es «vos»: nde remba'apo, «vos trabajás». Ana le habla a Luis.",
+       "re- es «vos»: nde remba'apo, «vos trabajás». Ana le habla a Vicente.",
        "Ha'e es «él» o «ella» y va con o-: ha'e omba'apo.",
        "Mávapa, «¿quién?», pregunta por otra persona y va con o-: Mávapa omba'apo? Con re- no cuadra."
       ]
@@ -318,7 +318,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "Luis: Ana, ^rehópa^ ko ka'aru?\nAna: Héẽ, (   ) ko ka'aru.",
+      "q": "Vicente: Ana, ^rehópa^ ko ka'aru?\nAna: Héẽ, (   ) ko ka'aru.",
       "options": [
        "aha",
        "aho",
@@ -327,9 +327,9 @@
       ],
       "answer": 1,
       "why": [
-       "Luis pregunta con re-, «vos», y Ana responde por ella misma, con a-. Con a-, la raíz de «ir» es ha: aha, «voy».",
+       "Vicente pregunta con re-, «vos», y Ana responde por ella misma, con a-. Con a-, la raíz de «ir» es ha: aha, «voy».",
        "aho no existe: ho es la raíz de «ir» con re- y con o-, nunca con a-.",
-       "reho es «vas», con re-: es lo que pregunta Luis. Ana responde por ella misma.",
+       "reho es «vas», con re-: es lo que pregunta Vicente. Ana responde por ella misma.",
        "oho es «va», con o-: sería otra persona, no Ana."
       ]
      },
@@ -359,7 +359,7 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "Luis, ",
+      "before": "Vicente, ",
       "after": " ko pyhare?",
       "tiles": [
        "re",
@@ -372,8 +372,8 @@
        1
       ],
       "hint": "re- es «vos» y va primero; -pa cierra la pregunta. Después fijate dónde queda el acento.",
-      "full": "Luis, {re}jú{pa} ko pyhare?",
-      "es": "Luis, ¿venís esta noche?",
+      "full": "Vicente, {re}jú{pa} ko pyhare?",
+      "es": "Vicente, ¿venís esta noche?",
       "explain": "re- (vos) + ju (venir) + -pa (pregunta) = rejúpa, «¿venís?». La -pa no se lleva el acento: queda en la u de ju, que ya no es la última vocal, y se escribe ú."
      },
      {
@@ -641,14 +641,14 @@
    "skill": {
     "kind": "listening",
     "es": "Respuesta rápida",
-    "situation": "En el patio, Ana le pregunta a Luis qué hace.",
-    "ask": "¿Qué responde Luis?",
+    "situation": "En el patio, Ana le pregunta a Vicente qué hace.",
+    "ask": "¿Qué responde Vicente?",
     "item": {
      "id": "a1u02d1.r1",
      "kind": "choice",
      "area": "listening",
      "label": "Respuesta rápida",
-     "q": "¿Qué responde Luis?",
+     "q": "¿Qué responde Vicente?",
      "options": [
       "Amba'apo.",
       "Remba'apo.",
@@ -656,13 +656,13 @@
      ],
      "answer": 1,
      "why": [
-      "Ana pregunta con re-, «vos»: rejapo, «hacés». Luis responde por él, con a-: amba'apo, «trabajo».",
-      "Remba'apo es «trabajás», con re-: Luis hablaría de Ana, no de él.",
-      "Omba'apo es «trabaja», con o-: sería otra persona, no Luis."
+      "Ana pregunta con re-, «vos»: rejapo, «hacés». Vicente responde por él, con a-: amba'apo, «trabajo».",
+      "Remba'apo es «trabajás», con re-: Vicente hablaría de Ana, no de él.",
+      "Omba'apo es «trabaja», con o-: sería otra persona, no Vicente."
      ],
      "script": [
-      "Narrador: En el patio. ¿Qué responde Luis?",
-      "Mujer: Mba'épa rejapo, Luis?",
+      "Narrador: En el patio. ¿Qué responde Vicente?",
+      "Mujer: Mba'épa rejapo, Vicente?",
       "Narrador: 1",
       "Hombre: Amba'apo.",
       "Narrador: 2",
@@ -674,13 +674,13 @@
     "audio": [
      [
       "N",
-      "En el patio. ¿Qué responde Luis?",
-      "En el patio. ¿Qué responde Luis?"
+      "En el patio. ¿Qué responde Vicente?",
+      "En el patio. ¿Qué responde Vicente?"
      ],
      [
       "F",
-      "Mba'épa rejapo, Luis?",
-      "¿Qué hacés, Luis?"
+      "Mba'épa rejapo, Vicente?",
+      "¿Qué hacés, Vicente?"
      ],
      [
       "N",
@@ -982,7 +982,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Ana les pregunta a Luis y a Rosa ^adónde van^.)\nAna: Moõpa (   )?",
+      "q": "(Ana les pregunta a Vicente y a Rosa ^adónde van^.)\nAna: Moõpa (   )?",
       "options": [
        "jaha",
        "roho",
@@ -990,9 +990,9 @@
       ],
       "answer": 3,
       "why": [
-       "Jaha es «vamos», con ja-: incluiría a Ana, y ella pregunta por Luis y Rosa.",
+       "Jaha es «vamos», con ja-: incluiría a Ana, y ella pregunta por Vicente y Rosa.",
        "Roho es «vamos, sin vos»: Ana hablaría de ella y de otros. Pero pregunta por los dos que la escuchan.",
-       "Ana les pregunta a Luis y a Rosa, los que escuchan: «ustedes», peẽ, lleva pe-. Moõpa peho?: ¿adónde van?"
+       "Ana les pregunta a Vicente y a Rosa, los que escuchan: «ustedes», peẽ, lleva pe-. Moõpa peho?: ¿adónde van?"
       ]
      }
     },
@@ -1002,7 +1002,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Ana le habla ^a Luis^.)\nAna: Ñande (   ) ko ka'aru.",
+      "q": "(Ana le habla ^a Vicente^.)\nAna: Ñande (   ) ko ka'aru.",
       "options": [
        "jakaru",
        "rokaru",
@@ -1011,8 +1011,8 @@
       ],
       "answer": 1,
       "why": [
-       "Ana le habla a Luis y lo incluye: ñande, «nosotros con vos», lleva ja-. Ñande jakaru: comemos, Ana y Luis.",
-       "Ro- es el prefijo de ore, «nosotros sin vos». Con ñande no va: Luis está incluido.",
+       "Ana le habla a Vicente y lo incluye: ñande, «nosotros con vos», lleva ja-. Ñande jakaru: comemos, Ana y Vicente.",
+       "Ro- es el prefijo de ore, «nosotros sin vos». Con ñande no va: Vicente está incluido.",
        "Pe- es el prefijo de peẽ, «ustedes». Ana se incluye, por eso dice ñande.",
        "O- es «él, ella» o «ellos, ellas». Ñande pide ja-."
       ]
@@ -1022,7 +1022,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Luis y Ana trabajan esta mañana. Luis se lo dice ^a Ana^.)\nLuis: Ñande (   ) ko pyhareve.",
+      "q": "(Vicente y Ana trabajan esta mañana. Vicente se lo dice ^a Ana^.)\nVicente: Ñande (   ) ko pyhareve.",
       "options": [
        "jamba'apo",
        "ñamba'apo",
@@ -1033,8 +1033,8 @@
       "why": [
        "Mba'apo empieza con mb, una letra nasal: ja- se vuelve ña-. Jamba'apo no existe.",
        "Ñande pide ja-, y como mba'apo es nasal (mb), ja- se vuelve ña-: ñamba'apo, «trabajamos, vos y yo».",
-       "Ro- es el prefijo de ore, «nosotros sin vos». Luis incluye a Ana, que lo escucha: ñande.",
-       "O- es «él, ella» o «ellos». Luis habla de él y de Ana: ñande."
+       "Ro- es el prefijo de ore, «nosotros sin vos». Vicente incluye a Ana, que lo escucha: ñande.",
+       "O- es «él, ella» o «ellos». Vicente habla de él y de Ana: ñande."
       ]
      },
      {
@@ -1042,7 +1042,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Ana les habla a Luis y a Rosa.)\nAna: ^Peẽ^ (   ) ko pyhare.",
+      "q": "(Ana les habla a Vicente y a Rosa.)\nAna: ^Peẽ^ (   ) ko pyhare.",
       "options": [
        "rejeroky",
        "pejeroky",
@@ -1053,7 +1053,7 @@
       "why": [
        "Re- es «vos», una sola persona. Ana les habla a dos: peẽ, con pe-.",
        "Peẽ, «ustedes», lleva pe-: pejeroky, «ustedes bailan».",
-       "Ja- es el «nosotros» de ñande e incluiría a Ana. Ella habla de Luis y de Rosa, los que escuchan: peẽ.",
+       "Ja- es el «nosotros» de ñande e incluiría a Ana. Ella habla de Vicente y de Rosa, los que escuchan: peẽ.",
        "O- es «él, ella» o «ellos»: así Ana hablaría de otras personas, no de los dos que la escuchan."
       ]
      },
@@ -1062,7 +1062,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "Luis habla de ^sus abuelos^: «Ha'ekuéra (   ) heta.»",
+      "q": "Vicente habla de ^sus abuelos^: «Ha'ekuéra (   ) heta.»",
       "options": [
        "amba'apo",
        "remba'apo",
@@ -1071,9 +1071,9 @@
       ],
       "answer": 4,
       "why": [
-       "A- es «yo». Luis habla de sus abuelos, no de él.",
-       "Re- es «vos», el que escucha. Luis habla de otras personas.",
-       "Ro- es «nosotros sin vos» y sumaría a Luis. Él habla solo de sus abuelos.",
+       "A- es «yo». Vicente habla de sus abuelos, no de él.",
+       "Re- es «vos», el que escucha. Vicente habla de otras personas.",
+       "Ro- es «nosotros sin vos» y sumaría a Vicente. Él habla solo de sus abuelos.",
        "Ha'ekuéra, «ellos», lleva o-, igual que ha'e: omba'apo heta, «trabajan mucho»."
       ]
      },
@@ -1083,7 +1083,7 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Ana les habla a Luis y a Rosa.)\nAna: Peẽ ",
+      "before": "(Ana les habla a Vicente y a Rosa.)\nAna: Peẽ ",
       "after": " ko ka'aru.",
       "tiles": [
        "pe",
@@ -1094,8 +1094,8 @@
        0
       ],
       "hint": "Pe- es el prefijo de peẽ, «ustedes»: va primero, pegado a la raíz.",
-      "full": "(Ana les habla a Luis y a Rosa.)\nAna: Peẽ {pe}karu ko ka'aru.",
-      "es": "(Ana les habla a Luis y a Rosa.)\nAna: Ustedes comen esta tarde.",
+      "full": "(Ana les habla a Vicente y a Rosa.)\nAna: Peẽ {pe}karu ko ka'aru.",
+      "es": "(Ana les habla a Vicente y a Rosa.)\nAna: Ustedes comen esta tarde.",
       "explain": "pe- («ustedes») + karu («comer») = pekaru: el prefijo va primero, pegado a la raíz. Peẽ pekaru ko ka'aru: ustedes comen esta tarde. El acento queda en la u final, así que no se escribe tilde."
      },
      {
@@ -1104,7 +1104,7 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Ana invita a Luis.)\nAna: ",
+      "before": "(Ana invita a Vicente.)\nAna: ",
       "after": " guaraníme!",
       "tiles": [
        "ña",
@@ -1115,8 +1115,8 @@
        0
       ],
       "hint": "ñe'ẽ es nasal: ¿qué prefijo lleva el «nosotros con vos»? Va primero, pegado a la raíz.",
-      "full": "(Ana invita a Luis.)\nAna: {Ña}ñe'ẽ guaraníme!",
-      "es": "(Ana invita a Luis.)\nAna: ¡Hablemos en guaraní!",
+      "full": "(Ana invita a Vicente.)\nAna: {Ña}ñe'ẽ guaraníme!",
+      "es": "(Ana invita a Vicente.)\nAna: ¡Hablemos en guaraní!",
       "explain": "ña- («nosotros, con vos») + ñe'ẽ («hablar») = ñañe'ẽ: como ñe'ẽ es nasal, no va ja-. Ñañe'ẽ es «hablamos» y también, como invitación, «¡hablemos!», igual que Jaha! o Jakaru!. El acento está en la ẽ, y la tilde nasal ya lo marca: no se escribe otro acento."
      }
     ],
@@ -1141,7 +1141,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Ana y Luis van esta tarde a la casa de la abuela Ramona. Ana la llama y le avisa.)\nAna: (   ) ko ka'aru, che jarýi.",
+      "q": "(Ana y Vicente van esta tarde a la casa de la abuela Ramona. Ana la llama y le avisa.)\nAna: (   ) ko ka'aru, che jarýi.",
       "options": [
        "Aju",
        "Roju",
@@ -1149,7 +1149,7 @@
        "Ou"
       ],
       "answer": 2,
-      "explain": "Ana habla de ella y de Luis, los que van, y la abuela, que la escucha, no está en el grupo: ore, con ro-. Roju ko ka'aru: venimos esta tarde. Aju sería «vengo», Ana sola, y Luis también va; peju, «ustedes vienen», como si la abuela viniera; ou, «viene», otra persona sola, sin Ana."
+      "explain": "Ana habla de ella y de Vicente, los que van, y la abuela, que la escucha, no está en el grupo: ore, con ro-. Roju ko ka'aru: venimos esta tarde. Aju sería «vengo», Ana sola, y Vicente también va; peju, «ustedes vienen», como si la abuela viniera; ou, «viene», otra persona sola, sin Ana."
      },
      {
       "id": "a1u02d2.e3",
@@ -1157,7 +1157,7 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Luis le habla a Rosa de él y de Ana.)\nLuis: Ore ",
+      "before": "(Vicente le habla a Rosa de él y de Ana.)\nVicente: Ore ",
       "after": " ko ka'aru.",
       "tiles": [
        "ro",
@@ -1167,8 +1167,8 @@
        1,
        0
       ],
-      "full": "(Luis le habla a Rosa de él y de Ana.)\nLuis: Ore romba'apo ko ka'aru.",
-      "es": "Luis: Nosotros (sin vos) trabajamos esta tarde.",
+      "full": "(Vicente le habla a Rosa de él y de Ana.)\nVicente: Ore romba'apo ko ka'aru.",
+      "es": "Vicente: Nosotros (sin vos) trabajamos esta tarde.",
       "explain": "Ro- va primero: es el prefijo de ore, «nosotros sin vos». Mba'apo es nasal por el mb, pero ro- no cambia: romba'apo, «trabajamos». De los prefijos de persona, solo ja- se vuelve ña-."
      }
     ]
@@ -1583,8 +1583,8 @@
         ]
        },
        {
-        "gn": "Luis oho Ñembý{pe}, ha Rosa oho ñú{me}.",
-        "es": "Luis va a Ñemby, y Rosa va al campo.",
+        "gn": "Vicente oho Ñembý{pe}, ha Rosa oho ñú{me}.",
+        "es": "Vicente va a Ñemby, y Rosa va al campo.",
         "parts": [
          [
           "oho",
@@ -1684,7 +1684,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Mirta trabaja ^en el campo^.)\nMirta: Amba'apo (   ).",
+      "q": "(María trabaja ^en el campo^.)\nMaría: Amba'apo (   ).",
       "options": [
        "ñúpe",
        "ñúme",
@@ -1694,7 +1694,7 @@
       "why": [
        "Ñu termina en sílaba nasal, por la ñ: ahí no va -pe.",
        "La ñ hace nasal la u de ñu: -pe se vuelve -me. Amba'apo ñúme, «trabajo en el campo».",
-       "-gua es el «de» de origen, como en Paraguaigua: diría de dónde es Mirta. Ella dice dónde trabaja: ñúme."
+       "-gua es el «de» de origen, como en Paraguaigua: diría de dónde es María. Ella dice dónde trabaja: ñúme."
       ]
      }
     },
@@ -1704,7 +1704,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Luis contesta que su mamá está ^en casa^.)\nAna: Moõpa oĩ nde sy, Luis?\nLuis: Oĩ (   ).",
+      "q": "(Vicente contesta que su mamá está ^en casa^.)\nAna: Moõpa oĩ nde sy, Vicente?\nVicente: Oĩ (   ).",
       "options": [
        "ógape",
        "ógame",
@@ -1713,10 +1713,10 @@
       ],
       "answer": 1,
       "why": [
-       "Moõpa pregunta dónde, y Luis responde con un lugar: óga, «casa», con -pe pegado atrás. Óga termina en sílaba oral y guarda su tilde: ógape, «en casa».",
+       "Moõpa pregunta dónde, y Vicente responde con un lugar: óga, «casa», con -pe pegado atrás. Óga termina en sílaba oral y guarda su tilde: ógape, «en casa».",
        "-me va solo tras sílaba nasal, y ga es oral: ógape.",
        "Óga solo es «casa», el nombre de la cosa. Para decir «en casa» hay que pegarle -pe.",
-       "Kotýpe es «en la pieza», y Luis dice que su mamá está en casa: óga."
+       "Kotýpe es «en la pieza», y Vicente dice que su mamá está en casa: óga."
       ]
      },
      {
@@ -1744,7 +1744,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Ana cuenta adónde va Luis: ^a Ñemby^.)\nAna: Luis oho (   ).",
+      "q": "(Ana cuenta adónde va Vicente: ^a Ñemby^.)\nAna: Vicente oho (   ).",
       "options": [
        "Ñembýme",
        "Ñembýpe",
@@ -1756,7 +1756,7 @@
        "Ñemby tiene ñ y mb, pero la última sílaba es mby: mb es una letra distinta de m, y la y que la sigue es oral. Tras sílaba oral va -pe. El día 2, con ja-/ña-, una mb en la raíz ya pedía ña- (ñamba'apo): los prefijos miran toda la raíz; -pe/-me, solo la última sílaba.",
        "Mirá la última sílaba: mby. Su vocal es oral, así que va -pe, y la y, que ya no es la última vocal, lleva tilde: Ñembýpe, «a Ñemby».",
        "Ñemby solo es el nombre de la ciudad. Para «a Ñemby» se le pega -pe.",
-       "Ka'akupépe es «a Caacupé», y Luis va a Ñemby."
+       "Ka'akupépe es «a Caacupé», y Vicente va a Ñemby."
       ]
      },
      {
@@ -2212,8 +2212,8 @@
         ]
        },
        {
-        "gn": "Luis osẽ mbo'ehaó{gui} ko ka'aru.",
-        "es": "Luis sale de la escuela esta tarde.",
+        "gn": "Vicente osẽ mbo'ehaó{gui} ko ka'aru.",
+        "es": "Vicente sale de la escuela esta tarde.",
         "parts": [
          [
           "o-",
@@ -2286,8 +2286,8 @@
         ]
        },
        {
-        "gn": "Luis: {Moõguipa} reju, Ana?\nAna: Aju Itauguá{gui}.",
-        "es": "Luis: ¿De dónde venís, Ana?\nAna: Vengo de Itauguá.",
+        "gn": "Vicente: {Moõguipa} reju, Ana?\nAna: Aju Itauguá{gui}.",
+        "es": "Vicente: ¿De dónde venís, Ana?\nAna: Vengo de Itauguá.",
         "parts": [
          [
           "moõguipa",
@@ -2334,8 +2334,8 @@
         ]
        },
        {
-        "gn": "Ana: {Moõguipa} peju?\nLuis: Roju mbo'ehaó{gui}.",
-        "es": "Ana: ¿De dónde vienen ustedes?\nLuis: Venimos (sin vos) de la escuela.",
+        "gn": "Ana: {Moõguipa} peju?\nVicente: Roju mbo'ehaó{gui}.",
+        "es": "Ana: ¿De dónde vienen ustedes?\nVicente: Venimos (sin vos) de la escuela.",
         "parts": [
          [
           "peju",
@@ -2433,7 +2433,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Luis ^sale de la escuela^ esta tarde.)\nAna: Luis osẽ (   ) ko ka'aru.",
+      "q": "(Vicente ^sale de la escuela^ esta tarde.)\nAna: Vicente osẽ (   ) ko ka'aru.",
       "options": [
        "mbo'ehaógui",
        "mbo'ehaópe",
@@ -2442,9 +2442,9 @@
       ],
       "answer": 1,
       "why": [
-       "Luis sale de la escuela: el lugar lleva -gui, pegado atrás. Mbo'ehao lleva el acento en la o final; con -gui esa o ya no es la última vocal, y se escribe ó: mbo'ehaógui.",
-       "-pe es «a» o «en»: Oho mbo'ehaópe, «va a la escuela». Luis sale de ahí: -gui.",
-       "-me es la forma de -pe tras una sílaba nasal, y la última sílaba de mbo'ehao es oral, la o: el mb del principio no cuenta. Además diría «en»; Luis sale de ahí: -gui, que no cambia nunca.",
+       "Vicente sale de la escuela: el lugar lleva -gui, pegado atrás. Mbo'ehao lleva el acento en la o final; con -gui esa o ya no es la última vocal, y se escribe ó: mbo'ehaógui.",
+       "-pe es «a» o «en»: Oho mbo'ehaópe, «va a la escuela». Vicente sale de ahí: -gui.",
+       "-me es la forma de -pe tras una sílaba nasal, y la última sílaba de mbo'ehao es oral, la o: el mb del principio no cuenta. Además diría «en»; Vicente sale de ahí: -gui, que no cambia nunca.",
        "La ~ es la tilde nasal: haría nasal la o y cambiaría el sonido, y mbo'ehao no tiene vocal nasal. El acento se marca con la tilde aguda: mbo'ehaógui."
       ]
      },
@@ -2453,7 +2453,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la palabra",
-      "q": "Ana: (   ) reju, Luis?\nLuis: ^Aju Paraguaýgui^.",
+      "q": "Ana: (   ) reju, Vicente?\nVicente: ^Aju Paraguaýgui^.",
       "options": [
        "Moõpa",
        "Mávapa",
@@ -2462,9 +2462,9 @@
       ],
       "answer": 3,
       "why": [
-       "Moõpa pregunta «dónde» o «adónde»: Moõpa reiko?, Moõpa reho? Luis responde de dónde viene, con -gui, y la pregunta también lo lleva.",
-       "Mávapa pregunta «¿quién?». Luis responde con un lugar, no con una persona.",
-       "Luis responde Aju Paraguaýgui, «vengo de Asunción»: la pregunta es Moõguipa reju?, «¿de dónde venís?», con moõ + -gui + -pa.",
+       "Moõpa pregunta «dónde» o «adónde»: Moõpa reiko?, Moõpa reho? Vicente responde de dónde viene, con -gui, y la pregunta también lo lleva.",
+       "Mávapa pregunta «¿quién?». Vicente responde con un lugar, no con una persona.",
+       "Vicente responde Aju Paraguaýgui, «vengo de Asunción»: la pregunta es Moõguipa reju?, «¿de dónde venís?», con moõ + -gui + -pa.",
        "-pa cierra la palabra que pregunta, como en Mba'éichapa: moõ + gui + pa. Moõpagui no existe."
       ]
      },
@@ -2473,7 +2473,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "Luis: ^Moõguipa^ osẽ ko chipa?\nAna: (   )",
+      "q": "Vicente: ^Moõguipa^ osẽ ko chipa?\nAna: (   )",
       "options": [
        "Tatakuápe.",
        "Tatakuágui.",
@@ -2483,7 +2483,7 @@
       "answer": 2,
       "why": [
        "Tatakuápe es «en el horno», con -pe: dice dónde está, no de dónde sale.",
-       "Luis pregunta de dónde sale el chipá, con -gui, y Ana responde con -gui: Tatakuágui, «del horno de barro».",
+       "Vicente pregunta de dónde sale el chipá, con -gui, y Ana responde con -gui: Tatakuágui, «del horno de barro».",
        "-me es la forma de -pe tras una sílaba nasal, y kua, la última sílaba de tatakua, es oral. Además diría «en»; el chipá sale de ahí: -gui, que no cambia nunca.",
        "A diferencia del «de» castellano, -gui no va delante ni separado: se pega al final del lugar, tatakuágui."
       ]
@@ -2494,7 +2494,7 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Mirta llega a la terminal de Asunción.)\nMirta: Aju ",
+      "before": "(María llega a la terminal de Asunción.)\nMaría: Aju ",
       "after": ".",
       "tiles": [
        "Itakuruvi",
@@ -2505,8 +2505,8 @@
        0
       ],
       "hint": "Itakuruvi es el lugar y -gui es el sufijo: va después, pegado. Después fijate dónde queda el acento.",
-      "full": "(Mirta llega a la terminal de Asunción.)\nMirta: Aju Itakuruví{gui}.",
-      "es": "Mirta: Vengo de Itacurubí.",
+      "full": "(María llega a la terminal de Asunción.)\nMaría: Aju Itakuruví{gui}.",
+      "es": "María: Vengo de Itacurubí.",
       "explain": "Itakuruvi («Itacurubí») + -gui («de») = Itakuruvígui, «de Itacurubí». -gui no se lleva el acento: queda en la i final de Itakuruvi, que ya no es la última vocal, y se escribe í."
      },
      {
@@ -2515,7 +2515,7 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Luis y Rosa llegan a la casa de Ana.)\nAna: ",
+      "before": "(Vicente y Rosa llegan a la casa de Ana.)\nAna: ",
       "after": " peju?",
       "tiles": [
        "moõ",
@@ -2528,7 +2528,7 @@
        1
       ],
       "hint": "moõ, «dónde», va primero. -pa cierra la pregunta, como en Mba'éichapa.",
-      "full": "(Luis y Rosa llegan a la casa de Ana.)\nAna: {Moõguipa} peju?",
+      "full": "(Vicente y Rosa llegan a la casa de Ana.)\nAna: {Moõguipa} peju?",
       "es": "Ana: ¿De dónde vienen ustedes?",
       "explain": "moõ («dónde») + -gui («de») + -pa (pregunta) = Moõguipa, «¿de dónde?». -pa va al final, como en Mba'éichapa: moõpagui no existe. Ni -gui ni -pa se llevan el acento: queda en la õ, y la tilde nasal ya lo marca."
      }
@@ -2539,7 +2539,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Qué significa",
-      "q": "Luis: Moõguipa reju?\nAna: _Aju Itauguágui_.",
+      "q": "Vicente: Moõguipa reju?\nAna: _Aju Itauguágui_.",
       "options": [
        "Voy a Itauguá.",
        "Soy de Itauguá.",
@@ -2919,8 +2919,8 @@
         ]
        },
        {
-        "gn": "Luis {nd}oú{i} ko ka'aru: oky.",
-        "es": "Luis no viene esta tarde: llueve.",
+        "gn": "Vicente {nd}oú{i} ko ka'aru: oky.",
+        "es": "Vicente no viene esta tarde: llueve.",
         "parts": [
          [
           "nd-",
@@ -3124,7 +3124,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "Rosa: Reñe'ẽpa guaraníme, Lucas?\nLucas: ^Nahániri^, (   ).",
+      "q": "Rosa: Reñe'ẽpa guaraníme, Moisés?\nMoisés: ^Nahániri^, (   ).",
       "options": [
        "ndañe'ẽi",
        "nañe'ẽi",
@@ -3133,8 +3133,8 @@
       "answer": 2,
       "why": [
        "ñe'ẽ es una raíz nasal, por la ñ y la ẽ: delante no va nd-, sino n-. Ndañe'ẽi no existe.",
-       "Lucas dice que no y lo niega en el verbo: n- + añe'ẽ + -i = nañe'ẽi, «no hablo». Sobre la ẽ no se agrega tilde: la ~ ya marca el acento.",
-       "Añe'ẽ es «hablo», sin negación: Lucas diría que sí habla. Pero empieza con Nahániri, «no»."
+       "Moisés dice que no y lo niega en el verbo: n- + añe'ẽ + -i = nañe'ẽi, «no hablo». Sobre la ẽ no se agrega tilde: la ~ ya marca el acento.",
+       "Añe'ẽ es «hablo», sin negación: Moisés diría que sí habla. Pero empieza con Nahániri, «no»."
       ]
      }
     },
@@ -3144,7 +3144,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "Luis: ^Rehópa^ kokuépe ko pyhareve, Juan?\nJuan: Nahániri, (   ): [oky|llueve].",
+      "q": "Vicente: ^Rehópa^ kokuépe ko pyhareve, Juan?\nJuan: Nahániri, (   ): [oky|llueve].",
       "options": [
        "ndaha",
        "nahái",
@@ -3155,7 +3155,7 @@
       "why": [
        "A ndaha le falta la -i del final. El «no» guaraní tiene dos partes, nd- y -i, y con una sola la palabra queda a medias.",
        "ha, la raíz de «ir» con a-, es oral: delante va nd-, no n-. Nahái no existe.",
-       "Luis pregunta con re-, «vos», y Juan responde por él, con a-: aha, «voy». El «no» lo rodea: nd- + aha + -i = ndahái, «no voy». La -i no se lleva el acento, y la a de ha se escribe á.",
+       "Vicente pregunta con re-, «vos», y Juan responde por él, con a-: aha, «voy». El «no» lo rodea: nd- + aha + -i = ndahái, «no voy». La -i no se lleva el acento, y la a de ha se escribe á.",
        "Ndohói es «no va», con o-: sería otra persona. Juan habla de él mismo, con a-."
       ]
      },
@@ -3184,7 +3184,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Diego habla guaraní, pero su mamá no.)\nDiego: Che añe'ẽ guaraníme, ha ^che sy^ (   ).",
+      "q": "(Tito habla guaraní, pero su mamá no.)\nTito: Che añe'ẽ guaraníme, ha ^che sy^ (   ).",
       "options": [
        "nañe'ẽi",
        "ndoñe'ẽi",
@@ -3193,7 +3193,7 @@
       ],
       "answer": 4,
       "why": [
-       "Nañe'ẽi es «no hablo», con a-: Diego hablaría de él mismo, y él sí habla: añe'ẽ.",
+       "Nañe'ẽi es «no hablo», con a-: Tito hablaría de él mismo, y él sí habla: añe'ẽ.",
        "ñe'ẽ es una raíz nasal: delante va n-, no nd-. Ndoñe'ẽi no existe.",
        "Oñe'ẽ es «habla», sin negación: diría que su mamá sí habla guaraní, y no es así.",
        "Che sy es otra persona: o-. ñe'ẽ es nasal: n- + oñe'ẽ + -i = noñe'ẽi, «no habla». La ẽ ya lleva la tilde nasal: no se agrega otra."
@@ -3204,7 +3204,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Rosa pregunta si Luis viene esta tarde.)\nAna: Nahániri, ^Luis^ (   ) ko ka'aru.",
+      "q": "(Rosa pregunta si Vicente viene esta tarde.)\nAna: Nahániri, ^Vicente^ (   ) ko ka'aru.",
       "options": [
        "ndoú",
        "ndoúi",
@@ -3214,9 +3214,9 @@
       "answer": 2,
       "why": [
        "A ndoú le falta la -i del final: el «no» tiene dos partes, y con una sola la palabra queda a medias.",
-       "Luis es otra persona, y «viene» es ou. El «no» lo rodea: nd- + ou + -i = ndoúi, «no viene». La -i no se lleva el acento: queda en la u, que se escribe ú.",
+       "Vicente es otra persona, y «viene» es ou. El «no» lo rodea: nd- + ou + -i = ndoúi, «no viene». La -i no se lleva el acento: queda en la u, que se escribe ú.",
        "ou es una raíz oral: delante va nd-, no n-. Noúi no existe.",
-       "Ou es «viene», sin negación: diría que Luis sí viene, y Ana acaba de decir Nahániri, «no»."
+       "Ou es «viene», sin negación: diría que Vicente sí viene, y Ana acaba de decir Nahániri, «no»."
       ]
      },
      {
@@ -3225,7 +3225,7 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "Luis: Ko pyhareve ",
+      "before": "Vicente: Ko pyhareve ",
       "after": " mba'eve.",
       "tiles": [
        "nd",
@@ -3240,8 +3240,8 @@
        1
       ],
       "hint": "El «no» rodea al verbo: nd- va primero y -i al final. En el medio, a- («yo») y la raíz japo, «hacer».",
-      "full": "Luis: Ko pyhareve {nd}ajapó{i} mba'eve.",
-      "es": "Luis: Esta mañana no hago nada.",
+      "full": "Vicente: Ko pyhareve {nd}ajapó{i} mba'eve.",
+      "es": "Vicente: Esta mañana no hago nada.",
       "explain": "nd- + a- («yo») + japo («hacer») + -i = ndajapói, «no hago». Las dos partes del «no» rodean al verbo. La -i no se lleva el acento: queda en la o de japo, que ya no es la última vocal, y se escribe ó. Con mba'eve, «nada»: «no hago nada»."
      },
      {
@@ -3250,7 +3250,7 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Lucas recién empieza a estudiar guaraní.)\nLucas: Che ",
+      "before": "(Moisés recién empieza a estudiar guaraní.)\nMoisés: Che ",
       "after": " guaraníme.",
       "tiles": [
        "n",
@@ -3265,8 +3265,8 @@
        1
       ],
       "hint": "ñe'ẽ es nasal: la primera parte del «no» es n-, sin d. Después a- («yo»), la raíz y, al final, -i.",
-      "full": "(Lucas recién empieza a estudiar guaraní.)\nLucas: Che {n}añe'ẽ{i} guaraníme.",
-      "es": "Lucas: Yo no hablo guaraní.",
+      "full": "(Moisés recién empieza a estudiar guaraní.)\nMoisés: Che {n}añe'ẽ{i} guaraníme.",
+      "es": "Moisés: Yo no hablo guaraní.",
       "explain": "n- + a- («yo») + ñe'ẽ («hablar») + -i = nañe'ẽi, «no hablo». Como ñe'ẽ es una raíz nasal, la primera parte del «no» es n-, no nd-. El acento queda en la ẽ, y la tilde nasal ya lo marca: no se agrega otra."
      }
     ],
@@ -3276,7 +3276,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Qué significa",
-      "q": "(Llueve.)\nLuis: Che ru _nosẽi_ ko pyhareve.",
+      "q": "(Llueve.)\nVicente: Che ru _nosẽi_ ko pyhareve.",
       "options": [
        "Mi papá sale esta mañana.",
        "Yo no salgo esta mañana.",
@@ -3477,7 +3477,7 @@
      "kind": "choice",
      "area": "vocab",
      "label": "Cómo se escribe",
-     "q": "Rosa pregunta algo y Luis no sabe: Luis dice «_No sé_». ¿Cómo se escribe en guaraní?",
+     "q": "Rosa pregunta algo y Vicente no sabe: Vicente dice «_No sé_». ¿Cómo se escribe en guaraní?",
      "options": [
       "Ndakuaái",
       "Naikuaái",
@@ -3491,14 +3491,14 @@
    "skill": {
     "kind": "listening",
     "es": "Respuesta rápida",
-    "situation": "Llueve. Ana le pregunta a Luis si va a la escuela esta tarde.",
-    "ask": "¿Qué responde Luis?",
+    "situation": "Llueve. Ana le pregunta a Vicente si va a la escuela esta tarde.",
+    "ask": "¿Qué responde Vicente?",
     "item": {
      "id": "a1u02d5.r1",
      "kind": "choice",
      "area": "listening",
      "label": "Respuesta rápida",
-     "q": "¿Qué responde Luis?",
+     "q": "¿Qué responde Vicente?",
      "options": [
       "Nahániri, ndahái. Oky.",
       "Nahániri, aha.",
@@ -3506,13 +3506,13 @@
      ],
      "answer": 1,
      "why": [
-      "Luis dice que no, Nahániri, y lo niega en el verbo: ndahái, «no voy». Después da la razón: oky, «llueve».",
+      "Vicente dice que no, Nahániri, y lo niega en el verbo: ndahái, «no voy». Después da la razón: oky, «llueve».",
       "Nahániri, aha se contradice: «no, voy». Aha es «voy», sin negación.",
       "Héẽ, ndahái se contradice al revés: «sí, no voy». Ndahái es «no voy», y pide un Nahániri delante."
      ],
      "script": [
-      "Narrador: Llueve. ¿Qué responde Luis?",
-      "Mujer: Rehópa mbo'ehaópe ko ka'aru, Luis?",
+      "Narrador: Llueve. ¿Qué responde Vicente?",
+      "Mujer: Rehópa mbo'ehaópe ko ka'aru, Vicente?",
       "Narrador: 1",
       "Hombre: Nahániri, ndahái. Oky.",
       "Narrador: 2",
@@ -3524,13 +3524,13 @@
     "audio": [
      [
       "N",
-      "Llueve. ¿Qué responde Luis?",
-      "Llueve. ¿Qué responde Luis?"
+      "Llueve. ¿Qué responde Vicente?",
+      "Llueve. ¿Qué responde Vicente?"
      ],
      [
       "F",
-      "Rehópa mbo'ehaópe ko ka'aru, Luis?",
-      "¿Vas a la escuela esta tarde, Luis?"
+      "Rehópa mbo'ehaópe ko ka'aru, Vicente?",
+      "¿Vas a la escuela esta tarde, Vicente?"
      ],
      [
       "N",
@@ -3646,7 +3646,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Ana le habla a Luis.)\nAna: ^Ñande^ (   ) guaraníme, Luis.",
+      "q": "(Ana le habla a Vicente.)\nAna: ^Ñande^ (   ) guaraníme, Vicente.",
       "options": [
        "jañe'ẽ",
        "ñañe'ẽ",
@@ -3657,7 +3657,7 @@
       "why": [
        "Ñe'ẽ es nasal, por la ñ y la ẽ, y delante de una raíz nasal ja- se vuelve ña-. Jañe'ẽ no se dice.",
        "Ñande pide ja-, el «nosotros con vos». Como ñe'ẽ es nasal, ja- se vuelve ña-: ñañe'ẽ, «hablamos, vos y yo».",
-       "Ro- es el prefijo de ore, «nosotros sin vos». Ñande incluye a Luis, que escucha.",
+       "Ro- es el prefijo de ore, «nosotros sin vos». Ñande incluye a Vicente, que escucha.",
        "O- es «él, ella» o «ellos»: oñe'ẽ, «habla». Ñande pide el «nosotros con vos»."
       ]
      },
@@ -3686,7 +3686,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la palabra",
-      "q": "Ana: (   ) reho, Luis?\nLuis: ^Aha Ka'akupépe^.",
+      "q": "Ana: (   ) reho, Vicente?\nVicente: ^Aha Ka'akupépe^.",
       "options": [
        "Moõpa",
        "Moõguipa",
@@ -3695,10 +3695,10 @@
       ],
       "answer": 1,
       "why": [
-       "Luis responde adónde va, con -pe: Aha Ka'akupépe. La pregunta es Moõpa reho?, «¿adónde vas?».",
-       "Moõguipa pregunta «¿de dónde?» y se responde con -gui, como Aju Itauguágui. Luis responde con -pe: adónde va.",
-       "Mávapa pregunta «¿quién?», y Luis responde con un lugar, no con una persona.",
-       "Mba'épa pregunta «¿qué?», como en Mba'épa rejapo? Luis responde con un lugar, no con una acción."
+       "Vicente responde adónde va, con -pe: Aha Ka'akupépe. La pregunta es Moõpa reho?, «¿adónde vas?».",
+       "Moõguipa pregunta «¿de dónde?» y se responde con -gui, como Aju Itauguágui. Vicente responde con -pe: adónde va.",
+       "Mávapa pregunta «¿quién?», y Vicente responde con un lugar, no con una persona.",
+       "Mba'épa pregunta «¿qué?», como en Mba'épa rejapo? Vicente responde con un lugar, no con una acción."
       ]
      },
      {
@@ -3767,7 +3767,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Ana le habla a Luis: hacen chipá los dos.)\nAna: Ñande (   ) chipa ko ka'aru.",
+      "q": "(Ana le habla a Vicente: hacen chipá los dos.)\nAna: Ñande (   ) chipa ko ka'aru.",
       "options": [
        "ñajapo",
        "ajapo",
@@ -3990,7 +3990,7 @@
      "kind": "choice",
      "area": "vocab",
      "label": "Cómo se escribe",
-     "q": "Ana le pregunta a Luis si oye la música. Luis: «_Escucho_.» ¿Cómo se escribe en guaraní?",
+     "q": "Ana le pregunta a Vicente si oye la música. Vicente: «_Escucho_.» ¿Cómo se escribe en guaraní?",
      "options": [
       "ajendu",
       "ahendu",
@@ -4006,8 +4006,8 @@
     "es": "Un chat del domingo",
     "ask": "¿Qué hace Ana en Caacupé?",
     "seconds": 75,
-    "passage": "Luis: Moõpa reho, Ana?\nAna: Aha Ka'akupépe, che jarýi rógape.\nLuis: Mba'épa rejapo Ka'akupépe?\nAna: ^Akaru ha añe'ẽ guaraníme.^ ^Namba'apói.^\nLuis: Ha nde ru?\nAna: Ha'e ndohói: omba'apo Paraguaýpe.",
-    "strategy": "Las respuestas de Ana vienen justo después de cada pregunta de Luis. Buscá la segunda, y fijate qué verbo lleva n-…-i: eso es lo que no hace.",
+    "passage": "Vicente: Moõpa reho, Ana?\nAna: Aha Ka'akupépe, che jarýi rógape.\nVicente: Mba'épa rejapo Ka'akupépe?\nAna: ^Akaru ha añe'ẽ guaraníme.^ ^Namba'apói.^\nVicente: Ha nde ru?\nAna: Ha'e ndohói: omba'apo Paraguaýpe.",
+    "strategy": "Las respuestas de Ana vienen justo después de cada pregunta de Vicente. Buscá la segunda, y fijate qué verbo lleva n-…-i: eso es lo que no hace.",
     "item": {
      "id": "a1u02d6.r1",
      "kind": "choice",
@@ -4033,7 +4033,7 @@
       "A Mba'épa rejapo Ka'akupépe? Ana responde Akaru ha añe'ẽ guaraníme: come y habla en guaraní.",
       "El que trabaja en Asunción es su papá: omba'apo Paraguaýpe, con o-."
      ],
-     "explain": "Luis pregunta Mba'épa rejapo Ka'akupépe?, «¿qué hacés en Caacupé?», y Ana responde Akaru ha añe'ẽ guaraníme: come y habla en guaraní. Namba'apói niega el trabajo, y Paraguaýpe, Asunción, es donde trabaja su papá."
+     "explain": "Vicente pregunta Mba'épa rejapo Ka'akupépe?, «¿qué hacés en Caacupé?», y Ana responde Akaru ha añe'ẽ guaraníme: come y habla en guaraní. Namba'apói niega el trabajo, y Paraguaýpe, Asunción, es donde trabaja su papá."
     }
    }
   }
@@ -4044,7 +4044,7 @@
    "kind": "choice",
    "area": "vocab",
    "label": "Qué significa",
-   "q": "(En la fiesta.)\nLuis: _Ajeroky_ ko pyhare.",
+   "q": "(En la fiesta.)\nVicente: _Ajeroky_ ko pyhare.",
    "options": [
     "Canto esta noche.",
     "Bailo esta noche.",
@@ -4074,7 +4074,7 @@
    "kind": "choice",
    "area": "vocab",
    "label": "Cómo se escribe",
-   "q": "Luis habla de su papá: «Che ru omba'apo _en el monte_.» ¿Cómo se escribe en guaraní?",
+   "q": "Vicente habla de su papá: «Che ru omba'apo _en el monte_.» ¿Cómo se escribe en guaraní?",
    "options": [
     "ka'aguýpe",
     "ka'aguípe",
@@ -4149,7 +4149,7 @@
    "kind": "choice",
    "area": "grammar",
    "label": "Elegí la forma",
-   "q": "(Luis y Ana le hablan a la profesora.)\nLuis: Ore (   ) guaraníme.",
+   "q": "(Vicente y Ana le hablan a la profesora.)\nVicente: Ore (   ) guaraníme.",
    "options": [
     "roñe'ẽ",
     "ñañe'ẽ",
@@ -4157,7 +4157,7 @@
     "oñe'ẽ"
    ],
    "answer": 1,
-   "explain": "Luis habla de él y de Ana, y la profesora, que escucha, no está en el grupo: ore, y su prefijo es ro-. Ore roñe'ẽ guaraníme: hablamos guaraní, sin vos. Ñañe'ẽ es el «nosotros» de ñande e incluiría a la profesora; peñe'ẽ es «ustedes hablan»; y oñe'ẽ, «habla» o «hablan», otras personas."
+   "explain": "Vicente habla de él y de Ana, y la profesora, que escucha, no está en el grupo: ore, y su prefijo es ro-. Ore roñe'ẽ guaraníme: hablamos guaraní, sin vos. Ñañe'ẽ es el «nosotros» de ñande e incluiría a la profesora; peñe'ẽ es «ustedes hablan»; y oñe'ẽ, «habla» o «hablan», otras personas."
   },
   {
    "id": "a1u02t.9",
@@ -4194,7 +4194,7 @@
    "kind": "choice",
    "area": "grammar",
    "label": "Elegí la forma",
-   "q": "(Luis llega de la escuela.)\nAna: Moõguipa reju, Luis?\nLuis: Aju (   ).",
+   "q": "(Vicente llega de la escuela.)\nAna: Moõguipa reju, Vicente?\nVicente: Aju (   ).",
    "options": [
     "mbo'ehaópe",
     "mbo'ehao",
@@ -4224,7 +4224,7 @@
    "kind": "choice",
    "area": "grammar",
    "label": "Elegí la forma",
-   "q": "(La abuela de Luis no habla guaraní.)\nLuis: Che jarýi (   ) guaraníme.",
+   "q": "(La abuela de Vicente no habla guaraní.)\nVicente: Che jarýi (   ) guaraníme.",
    "options": [
     "ndoñe'ẽi",
     "oñe'ẽi",
@@ -4240,7 +4240,7 @@
    "area": "grammar",
    "label": "Armá la palabra",
    "join": "word",
-   "before": "(Llueve.)\nRosa: Luis ",
+   "before": "(Llueve.)\nRosa: Vicente ",
    "after": " mbo'ehaópe ko ka'aru.",
    "tiles": [
     "nd",
@@ -4254,9 +4254,9 @@
     3,
     1
    ],
-   "full": "(Llueve.)\nRosa: Luis ndohói mbo'ehaópe ko ka'aru.",
-   "es": "(Llueve.)\nRosa: Luis no va a la escuela esta tarde.",
-   "explain": "nd- va primero: es la primera parte del «no». Después o-, porque Luis es otra persona, y con o- la raíz de «ir» es ho. Al final, -i, la segunda parte del «no»: ndohói, «no va». La -i no se lleva el acento: queda en la o de ho, que ya no es la última vocal, y se escribe ó."
+   "full": "(Llueve.)\nRosa: Vicente ndohói mbo'ehaópe ko ka'aru.",
+   "es": "(Llueve.)\nRosa: Vicente no va a la escuela esta tarde.",
+   "explain": "nd- va primero: es la primera parte del «no». Después o-, porque Vicente es otra persona, y con o- la raíz de «ir» es ho. Al final, -i, la segunda parte del «no»: ndohói, «no va». La -i no se lleva el acento: queda en la o de ho, que ya no es la última vocal, y se escribe ó."
   },
   {
    "id": "a1u02t.15",
@@ -4329,14 +4329,14 @@
    "kind": "choice",
    "area": "listening",
    "label": "Respuesta rápida",
-   "q": "(En la fiesta.)\nAna: Mba'épa rejapo, Luis?\n¿Qué responde Luis?",
+   "q": "(En la fiesta.)\nAna: Mba'épa rejapo, Vicente?\n¿Qué responde Vicente?",
    "options": [
     "Apurahéi.",
     "Repurahéi.",
     "Purahéi."
    ],
    "answer": 1,
-   "explain": "Ana pregunta con re-, «vos»: rejapo, «hacés». Luis responde por él, con a-: apurahéi, «canto». Repurahéi es «cantás», con re-: Luis hablaría de Ana. Y purahéi sin prefijo es «canción», la cosa: le falta la persona."
+   "explain": "Ana pregunta con re-, «vos»: rejapo, «hacés». Vicente responde por él, con a-: apurahéi, «canto». Repurahéi es «cantás», con re-: Vicente hablaría de Ana. Y purahéi sin prefijo es «canción», la cosa: le falta la persona."
   },
   {
    "id": "a1u02t.19",

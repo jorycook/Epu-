@@ -57,8 +57,8 @@
             "parts": [["mboýpa", "¿cuánto?"], ["ovale", "cuesta, vale"], ["ko kesu", "este queso"], ["diez mil", "el precio, en castellano"]]
           },
           {
-            "gn": "Ana: Mboy arýpa rereko?\nLuis: {Treinta}.",
-            "es": "Ana: ¿Cuántos años tenés?\nLuis: Treinta.",
+            "gn": "Ana: Mboy arýpa rereko?\nVicente: {Treinta}.",
+            "es": "Ana: ¿Cuántos años tenés?\nVicente: Treinta.",
             "parts": [["mboy", "cuántos"], ["ary", "año"], ["-pa", "pregunta"], ["rereko", "tenés"], ["treinta", "la edad, en castellano"]]
           },
           {
@@ -91,7 +91,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "Luis cuenta las sillas del patio: ^tres^.\nLuis: Oĩ (   ).",
+        "q": "Vicente cuenta las sillas del patio: ^tres^.\nVicente: Oĩ (   ).",
         "options": ["mbohapy apyka", "mbohapy apykakuéra", "mbohapykuéra apyka"],
         "answer": 1,
         "why": [
@@ -169,12 +169,12 @@
         "label": "Armá la palabra",
         "join": "word",
         "before": "Ana: Mboy ",
-        "after": " rereko, Luis?",
+        "after": " rereko, Vicente?",
         "tiles": ["ary", "pa"],
         "bank": [1, 0],
         "hint": "-pa va pegado a ary y no se lleva el acento: fijate qué pasa con la tilde.",
-        "full": "Ana: Mboy arý{pa} rereko, Luis?",
-        "es": "Ana: ¿Cuántos años tenés, Luis?",
+        "full": "Ana: Mboy arý{pa} rereko, Vicente?",
+        "es": "Ana: ¿Cuántos años tenés, Vicente?",
         "explain": "ary («año») + -pa (pregunta) = arýpa. -pa no se lleva el acento: queda en la y de ary, que ya no es la última vocal, y por eso se escribe la tilde: ý. Mboy arýpa rereko?: ¿cuántos años tenés?"
       },
       {

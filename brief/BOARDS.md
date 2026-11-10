@@ -7,9 +7,11 @@ The sample state for plan boards (designed moment, relative to today, never drif
 const C = window.gnCourse; const T = C.today(C.now());
 const full = { g: 3, k: 1, r: 1 };
 const SAMPLE = { level: 'A1', started: true, plan: { start: C.addDays(T, -3), target: C.addDays(T, 60), pace: 'fit', minutes: 30 },
-  done: { a1u01d1: full, a1u01d2: full, a1u01d3: full, a1u01d4: { g: 1 } }, tests: {}, exams: {}, mistakes: [/* 2-3 entries, see Notebook */],
-  cur: 'a1u01d4', placement: { comp: 'A2', prod: 'A1', start: 'A1' }, typed: [] };
-// unit 1 ("Mba'éichapa · Saludos y sonidos"), days 1-3 stamped, day 4 ("Preguntar con -pa") is today, its grammar teach page read.
+  done: { a1u01d1: full, a1u01d2: full, a1u01d3: full, a1u01d4: { g: 1 } }, tests: {}, exams: {},
+  mistakes: [{ src: 'a1u01d3.d1', wrong: '', at: C.now() - 86400000, step: 0, due: T } /* one due today; Notebook and Review read theirs from the lessons */],
+  cur: 'a1u01d4', placement: { comp: 'A2', prod: 'A1', start: 'A1' }, typed: [], seen: [C.addDays(T, -3), C.addDays(T, -2), C.addDays(T, -1)] };
+// unit 1 ("Mba'éichapa · Saludos y sonidos"), days 1-3 stamped (three days with study), day 4 ("Preguntar con -pa") is today, its
+// grammar teach page read, and one mistake of day 3 is due for review: the Cuaderno tab says 1 on the four tab bars.
 ```
 
 ## Row 1 · y 0 · "Start: why you learn, where you start, your plan"
@@ -45,6 +47,11 @@ const SAMPLE = { level: 'A1', started: true, plan: { start: C.addDays(T, -3), ta
   pair "Meter todo" / "Una por día" with the note). The ritual: Kaguare 104 px with the level's rosette as a frame only;
   CTA (accent text colour) "Tejé el primer hilo" → the first ring appears (300 ms) and the line "Primer hilo tejido.
   Cada unidad suma uno; el examen de nivel lo completa."; then "Empezar" (indigo) → `save({ level, plan: { start: T, target, pace, minutes }, cur: null })` + `go('Main')`.
+  Opened again on a plan that exists (Main's date chip, Progreso's «Rearmar mi plan»: the app only), step 3 is the way
+  to change the plan: the line under the heading reads "El plan se arma de nuevo desde hoy. Lo que ya hiciste queda
+  hecho." (its second sentence only once a session is done), the plan box counts what is left ("Te quedan 48 de 56 sesiones", its note worked out on those), and the
+  buttons are "Heja · Cancelar" (white, back to the week path, nothing saved) and "Ñongatu · Guardar el plan" (indigo):
+  the plan saved starts today at the session the learner had reached (`plan.from`, the engine's `C.reached`).
 - Moment boards: `GoalStart` = step 2 with Entender "sé de qué se habla en casa" and Hablar "frases hechas" picked, the
   placement card showing; `GoalPlan` = step 3, A1 selected, "A mi ritmo", 30 min, rosette frame, ritual CTA not yet tapped.
 - Standalone `Goal` shows step 1 with "hablar con mi familia" and "casa" picked.
@@ -68,13 +75,30 @@ listening item from the second block on (with the 6 items of `placement.json`: p
 | 1410 | `Progress.dc.html` | 9 · How am I doing | `$Y/Readiness.dc.html` ($N/Y1 §5.5, §6.4) |
 
 **Main**: Yaoki's layout and SPOTS exactly. Level chip "A1" (→ `go('Levels')`); stamps chip with the mini ✓ stamp; the
-days-left chip only with a target date. Unit card: kicker "Semana 1 de 8", the unit's Guarani title big (`unit.gn`,
+date chip, an ink-bordered link like the level chip, is the door back to the plan ("faltan 60 días", or "a tu ritmo"
+with no date; on the canvas it shows GoalPlan, in the app the goal screen at step 3). Unit card: kicker "Semana 1 de 8", the unit's Guarani title big (`unit.gn`,
 Andika 700 26px, `lang="gn"`) when it has one, else the Spanish; the Spanish under it 13/500 muted; Kaguare 60 px with the
 level rosette (rings = units done). Stamp card of 7 slots (✓ stamps; test slot with the stopwatch). Path nodes: done ✓
 stamp (accent ring), today (indigo 68 px, day number), locked (padlock), test (stopwatch, gold when ready). Labels:
 "Día 4" + the day title (14px; allow 2 lines, `overflow-wrap: anywhere`); test "Prueba de la semana" + "formato de examen".
 Callout kicker "HOY · 3 LECCIONES" (or "SIGUIENTE"), title, "Empezar". Tabs: Camino (Main) · Cuaderno (Notebook) · Examen
 (ExamTab) · Progreso (Progress). Designed moment: SAMPLE.
+What the callout adds (it grows upward, over the days done, so the labels of the days to come stay in view; the nodes
+sit on top of it where they meet):
+- The review that waits (`app.review.n` > 0): a row above the button, accent tint, 44 px, "Antes de empezar · 2 min" over
+  "3 para repasar", → Review.
+- A day of return (`app.days.away` ≥ 2: two days or more without study and nothing done yet today): the kicker gives way
+  to the comeback mark (the up arrow in a teal ring) and "Opu'ã · Se levantó", the title is "¡Volviste!", the line
+  offers something short ("Empezá con algo corto: 4 para repasar, 2 minutos."), the button is "Jehechajey · Repasar",
+  and quiet buttons follow: "Repasar la semana 1" (after seven days or more: the last review day sealed) and "Seguir
+  con el día 5". With nothing due the button is the review day, or the day itself ("Lo que hiciste sigue acá."). In the
+  unit card Kaguare takes the rising pose that day, before and after the first thing done (`app.days.back`).
+- Where the written path ends (the card with no button: the week whole, the next day or week not written): a kicker
+  "MIENTRAS TANTO" and four tiles, Cuaderno (with "3 para hoy") · Emoñe'ẽ Leer · Ehai Escribir · Eñe'ẽ Hablar. On a day
+  of return this card too opens with the comeback mark and "¡Volviste!".
+"Últimos 7 días", bottom left of the path beside the test node: seven 14-px marks, today last (`app.days.week`): a day
+with study (accent disc), a day of return (teal ring, up arrow), a day missed (grey ring), today still to come (dashed
+indigo), a day before the app kept days (a faint dot: nothing is claimed).
 
 **Today**: Yaoki's layout. Header "Semana 1 · Día 4" (derive from `app.session`, not the id). Kicker "HOY · TRES LECCIONES",
 h1 the day title, sub "Aprendé la regla, practicala con ayuda y después respondé como en el examen." Cards:
@@ -84,7 +108,10 @@ Practicar · Examen (done ✓ teal / now indigo / todo); CTAs "Empezar con la re
 2 Palabras (accent tint tile showing the day's hard letter, e.g. "'" or "ẽ"): "Palabras · 7 · Sonido y letra: el puso";
 title the scene; pills Sonido · Aprender · Escribir · Examen at A1-A2 (Sonido only when `words.sound`).
 3 Lectura or Escucha (gold tint tile with the book or speaker icon). Footer: dashed stamp + "Terminá las tres lecciones para
-sellar el día 4." / done: stamp animated + "¡Día 4 completo!" + "Volver". Designed moment: SAMPLE (grammar at g=1: Practicar now).
+sellar el día 4." / done: stamp animated + "¡Día 4 completo!" + "Volver", and under it "¿Un rato más?" with three tiles
+(Emoñe'ẽ Leer · Ehai Escribir · Eñe'ẽ Hablar). With a review waiting, the line under the title gives way to the same
+row as Main's, 48 px with the notebook icon: "Antes de empezar" (nothing of the day done yet) or "También hoy", over
+"3 para repasar · unos 2 min", → Review. Designed moment: SAMPLE (grammar at g=1: Practicar now; one to review).
 
 **Levels** (the one-app level menu, from the level chip; also reachable from the menu): title "Seis niveles, una app"
 (+ "Niveles de referencia para el guaraní" 12/500 muted), a vertical list of six level cards A1…C2, each: code 22/800,
@@ -97,8 +124,10 @@ A1 current (3 days stamped), A2 to C2 en preparación except the syllabus counts
 
 **Progress** ("¿Cómo voy?", replaces Readiness, computed, never hard-coded): header "Progreso · A1"; hero card: the level's
 rosette 104 px with its rings, "Unidad 1 de 8 · 3 de 56 sesiones", a pace line (with a target: "Vas al día" / "2 días atrás";
-without: "A tu ritmo"); "Por área" card: bars for Palabras, Gramática, Lectura, Escucha (right/of summed from
-`tests[*].areas` + exam-style results), a 60 % target tick on each, an area under the line in red with a chip; empty state
+without: "A tu ritmo"), the days with study ("12 días con estudio · volviste 2 veces", from `app.days`) and, behind the
+plan or past its date, an accent-tint row: "Epu'ã ha eñepyrũjey" over "Levantate y empezá de nuevo." with the button
+"Rearmar mi plan" (→ the goal screen at step 3; GoalPlan on the canvas); "Por área" card: bars for Palabras, Gramática, Lectura, Escucha (right/of summed from
+the week tests' `tests[*].areas`; a mini exam asks their questions again and is left out), a 60 % target tick on each, an area under the line in red with a chip; empty state
 before the first week test ("Después de tu primera prueba de la semana vas a ver acá cómo te va en cada área."); "Próximo
 paso" card linking to the weakest area (red CTA "Practicar"); the exposure log (G6 §6, G3 "Lo usé"): "Esta semana usé el
 guaraní con alguien" toggle chips (familia · trabajo · calle · WhatsApp), self-reported, never checked; footnote "Es una
@@ -141,6 +170,9 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
   `role="timer"`; build items asked as tiles in order (the whole order counts here, not a single starred tile: Guarani words
   are short in tiles); result view: score, "1:48 de 2:30", rows with ✓/✗, the full sentence, explain; "Siguiente" →
   `save({ prog: { g: 3 } })` (day) or `save({ result })` (test). Designed moment: question 2 of 3 with an option pressed, 1:42.
+  A third set, the mini exams (`set: 'mini1'` or `'mini2'`, from the Examen tab): the band reads "MINI EXAMEN 1", the
+  questions are `gnCourse.mini`'s 20 on a 20-minute clock, the result is saved under its own id (`a1m1`) and both ways
+  out of the result page (the cross and "Siguiente") keep it and lead back to the Examen tab.
   A question that comes with a text to read (the week test's reading items) is set tighter (text 14 px, question 17 px,
   answers 48 px), so the text, the question and its four answers open in view together.
 
@@ -201,9 +233,19 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
   taken early, or the test of the last written week, reads "Tapykue · Volver" and leads back to its own week.
 - Notebook: "Cuaderno de errores": "Para repasar hoy" count + "Repasar ahora"; the track (mañana · en 3 días · en 1 semana ·
   ¡aprendido!); rows with the quote (grapheme-safe `C.cut`, ~32 characters), "Elegiste: …" → ✓ "…", the due label; caught-up
-  state. Designed moment: 3 mistakes from a1u01d2-d3 (one due today).
+  state. Designed moment: 3 mistakes from a1u01d2-d3 (one due today). The count is today's sitting (`gnCourse.sitting`:
+  a third of the plan's minutes a day, the oldest due first); with more waiting it says so ("Hay 45 esperando. Hoy van
+  las 16 más viejas; las otras 29 quedan para los próximos días."), those rows read "en espera", and once the day's
+  sitting is done the card says "listo por hoy · Quedan 29 para los próximos días." with a quiet "Repasar 16 más". A row
+  that is due keeps "Elegiste: …" and holds the right answer back ("→ la respuesta, al repasar") until it is reviewed.
 - Review: one due item at a time (choice / build asked in order / spell typed with a small pad), verdict, the track note
-  ("Ahora en 3 días. Si acertás: en 1 semana."), summary. Designed moment: item 1 of 2 answered right.
+  ("Ahora en 3 días. Si acertás: en 1 semana."), summary. Designed moment: item 1 of 2 answered right. It asks today's
+  sitting (or one more, when today's is done). Inside the prototype and the app a choice's options come in another
+  order each day (`gnSpell.shuffle`, seeded by the item and the day; never the lesson's own order; the buttons are
+  numbered as shown), except an item whose audio numbers its replies; the canvas board keeps the lesson's order. The
+  summary's button is "Eku'ejey · Seguir con el día 4" (the next session of the plan; "Seguir con la prueba" for a week
+  test), with "Tapykue · Volver al cuaderno" as a text link under it, and it says what still waits ("Quedan 12 para los
+  próximos días.").
 
 ## Row 6 · y 6420 · "Level exam: five parts, from the briefing to the constancia"
 
@@ -218,8 +260,11 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
 | 2820 | `ExamFull.dc.html` | 31 · Result: Apto and the constancia | moment board: `view="result"` |
 
 - ExamTab: "Examen de nivel · A1" card: "5 partes · unos 80 minutos · podés hacerlo en varios días"; the five parts listed with
-  minutes and how they are scored ("la app corrige" / "te evaluás con una guía" / "o tu docente"); two mini-exams ("Mini examen 1 ·
-  20 min · mejor después de la unidad 4"); last result if any; a line: "Es una constancia de la app, no un certificado oficial.
+  minutes and how they are scored ("la app corrige" / "te evaluás con una guía" / "o tu docente"); two mini-exams, each
+  made of the week tests of its half of the level (`gnCourse.minis`): not written yet, "20 min · mejor después de la
+  unidad 8" and the chip "En preparación"; written but behind a week test still to take, "20 preguntas · 20 min" and the
+  chip "Después de la semana 4"; open, "20 preguntas de las semanas 1 a 4 · 20 min" and the button "Empezar" (→ Exam,
+  `save({ set: 'mini1' })`); taken, "Último resultado: 18 de 20 · martes 10 de noviembre" and "Otra vez"; last result if any; a line: "Es una constancia de la app, no un certificado oficial.
   En Paraguay no hay hoy un examen oficial de guaraní por niveles." Taken state shows "Apto · autoevaluado".
 - LevelExam (one component, every view): briefing (the five pruebas, two groups C and P, the rule: "Apto con 60 % en cada grupo y
   ninguna parte por debajo de 40 %", sittings over up to 7 days, "Empezar la parte 1"); reading paper (one clock for the part,

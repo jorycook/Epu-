@@ -275,7 +275,7 @@ const items = (page, sid, part) => page.evaluate(([sid, part]) => {
     const s1 = await saved(page);
     ok(s1 && s1.done && s1.done.a1u01d1 && s1.done.a1u01d1.g === 3, 'the grammar lesson should be saved as done (g 3), got ' + JSON.stringify(s1 && s1.done));
     ok(s1 && s1.mistakes.length === 1 && s1.mistakes[0].src === 'a1u01d1.d1' && s1.mistakes[0].due === day(1), 'the drill\'s mistake should be saved, due tomorrow, got ' + JSON.stringify(s1 && s1.mistakes));
-    ok(s1 && Object.keys(s1).sort().join() === ['v', 'started', 'level', 'plans', 'plan', 'cur', 'done', 'tests', 'exams', 'mistakes', 'tp', 'set', 'placement', 'typed', 'profile', 'exposure'].sort().join(), 'only the course\'s fields should be saved, got ' + Object.keys(s1 || {}).join());
+    ok(s1 && Object.keys(s1).sort().join() === ['v', 'started', 'level', 'plans', 'plan', 'cur', 'done', 'tests', 'exams', 'mistakes', 'tp', 'set', 'placement', 'typed', 'profile', 'exposure', 'seen'].sort().join(), 'only the course\'s fields should be saved (seen, the days with study, among them), got ' + Object.keys(s1 || {}).join());
     await page.reload();
     await ready(page);
     ok((await screenName(page)) === 'Main', 'opened again, the app should be on the week path, at ' + (await screenName(page)));

@@ -27,8 +27,8 @@
       ],
       "examples": [
        {
-        "gn": "Luis: {Che}kane'õ.",
-        "es": "Luis: Estoy cansado.",
+        "gn": "Vicente: {Che}kane'õ.",
+        "es": "Vicente: Estoy cansado.",
         "parts": [
          [
           "che-",
@@ -77,8 +77,8 @@
         ]
        },
        {
-        "gn": "Rosa: {Ne}kane'õ, Luis.\nLuis: Héẽ, {che}kane'õ ha {che}ro'y.",
-        "es": "Rosa: Estás cansado, Luis.\nLuis: Sí, estoy cansado y tengo frío.",
+        "gn": "Rosa: {Ne}kane'õ, Vicente.\nVicente: Héẽ, {che}kane'õ ha {che}ro'y.",
+        "es": "Rosa: Estás cansado, Vicente.\nVicente: Sí, estoy cansado y tengo frío.",
         "parts": [
          [
           "ne-",
@@ -310,7 +310,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "Luis habla de ^su mamá^, que está enferma: «Che sy (   ).»",
+      "q": "Vicente habla de ^su mamá^, que está enferma: «Che sy (   ).»",
       "options": [
        "cherasy",
        "irasy",
@@ -319,7 +319,7 @@
       ],
       "answer": 3,
       "why": [
-       "Cherasy es «estoy enfermo»: Luis hablaría de él mismo. Acá habla de su mamá.",
+       "Cherasy es «estoy enfermo»: Vicente hablaría de él mismo. Acá habla de su mamá.",
        "Rasy es de las palabras con tres formas, como téra, che réra, héra: tasy, cherasy, hasy. Para él o ella es hasy: irasy no existe.",
        "Che sy es otra persona, y para él o ella rasy tiene su propia forma, hasy, como réra tiene héra. Che sy hasy, «mi mamá está enferma».",
        "Tasy es la palabra suelta, «dolor, enfermedad», sin marcar a nadie: no dice que la mamá esté enferma."
@@ -355,7 +355,7 @@
       "label": "Armá la palabra",
       "join": "word",
       "before": "Rosa: ",
-      "after": ", Luis.",
+      "after": ", Vicente.",
       "tiles": [
        "ne",
        "kane'õ"
@@ -365,8 +365,8 @@
        0
       ],
       "hint": "Kane'õ es nasal, lleva ~: el «vos» no es nde- sino ne-, y va primero.",
-      "full": "Rosa: {Ne}kane'õ, Luis.",
-      "es": "Rosa: Estás cansado, Luis.",
+      "full": "Rosa: {Ne}kane'õ, Vicente.",
+      "es": "Rosa: Estás cansado, Vicente.",
       "explain": "ne- (vos) + kane'õ («cansancio») = nekane'õ, «estás cansado». Antes de una palabra nasal, nde- se vuelve ne-: nekane'õ. Con una palabra oral queda nde-: ndepochy."
      }
     ],
@@ -376,7 +376,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Qué significa",
-      "q": "Luis: _Chero'y ha chevare'a_.",
+      "q": "Vicente: _Chero'y ha chevare'a_.",
       "options": [
        "Tengo frío y hambre.",
        "Tengo calor y sed.",
@@ -625,7 +625,7 @@
      ],
      "script": [
       "Narrador: Termina el partido. ¿Qué le pasa al hombre?",
-      "Mujer: Mba'éichapa reiko, Luis?",
+      "Mujer: Mba'éichapa reiko, Vicente?",
       "Hombre: Chekane'õ ha chey'uhéi.",
       "Mujer: Jaha, oĩ terere."
      ]
@@ -638,8 +638,8 @@
      ],
      [
       "F",
-      "Mba'éichapa reiko, Luis?",
-      "¿Cómo andás, Luis?"
+      "Mba'éichapa reiko, Vicente?",
+      "¿Cómo andás, Vicente?"
      ],
      [
       "M",
@@ -846,8 +846,8 @@
         ]
        },
        {
-        "gn": "{Che}mandu'a, Luis.",
-        "es": "Me acuerdo, Luis.",
+        "gn": "{Che}mandu'a, Vicente.",
+        "es": "Me acuerdo, Vicente.",
         "parts": [
          [
           "che-",
@@ -897,7 +897,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Ana le cuenta a Luis que ^está en su casa^.)\nAna: (   ) ógape.",
+      "q": "(Ana le cuenta a Vicente que ^está en su casa^.)\nAna: (   ) ógape.",
       "options": [
        "Akaru",
        "Chevare'a",
@@ -917,7 +917,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Luis cuenta ^qué hace él^ a la mañana.)\nLuis: (   ) ha ^ajahu^.",
+      "q": "(Vicente cuenta ^qué hace él^ a la mañana.)\nVicente: (   ) ha ^ajahu^.",
       "options": [
        "Chepu'ã",
        "Apu'ã",
@@ -927,8 +927,8 @@
       "answer": 2,
       "why": [
        "Che- es para los estados, como chekane'õ. Levantarse es una acción: lleva a-. Chepu'ã no es «me levanto».",
-       "Levantarse es una acción y Luis habla de él mismo: a- + pu'ã = apu'ã, «me levanto». Después se baña: ajahu, también con a-.",
-       "I- marca el estado de otra persona, como en ikane'õ. Pu'ã es una acción, y además Luis habla de él.",
+       "Levantarse es una acción y Vicente habla de él mismo: a- + pu'ã = apu'ã, «me levanto». Después se baña: ajahu, también con a-.",
+       "I- marca el estado de otra persona, como en ikane'õ. Pu'ã es una acción, y además Vicente habla de él.",
        "Pu'ã sin prefijo no dice quién se levanta: le falta la persona, como guata sin a- en la unidad 2."
       ]
      },
@@ -937,7 +937,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Luis comió bien y ^está contento^.)\nLuis: (   ), Ana.",
+      "q": "(Vicente comió bien y ^está contento^.)\nVicente: (   ), Ana.",
       "options": [
        "Chevy'a",
        "Ivy'a",
@@ -947,8 +947,8 @@
       "answer": 3,
       "why": [
        "Parece un estado, pero vy'a se conjuga como acción, con a-. Chevy'a no es «estoy contento».",
-       "Ivy'a no es «está contento»: vy'a va como acción, y para otra persona es ovy'a, con o-. Además, Luis habla de él.",
-       "Vy'a va como una acción, y Luis habla de él: a- + vy'a = avy'a, «estoy contento».",
+       "Ivy'a no es «está contento»: vy'a va como acción, y para otra persona es ovy'a, con o-. Además, Vicente habla de él.",
+       "Vy'a va como una acción, y Vicente habla de él: a- + vy'a = avy'a, «estoy contento».",
        "Vy'a solo es «la alegría», la cosa. Le falta la persona: a-."
       ]
      },
@@ -977,7 +977,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Ana le habla a Luis de la fiesta, y Luis ^se acuerda^.)\nLuis: (   ), Ana.",
+      "q": "(Ana le habla a Vicente de la fiesta, y Vicente ^se acuerda^.)\nVicente: (   ), Ana.",
       "options": [
        "Chemandu'a",
        "Amandu'a",
@@ -986,9 +986,9 @@
       ],
       "answer": 1,
       "why": [
-       "Acordarse es un estado, de los que van con che-: chemandu'a, «me acuerdo». Luis habla de él.",
+       "Acordarse es un estado, de los que van con che-: chemandu'a, «me acuerdo». Vicente habla de él.",
        "Acordarse no se conjuga como acción: amandu'a no es «me acuerdo». Va con che-, como chekane'õ.",
-       "Imandu'a es «se acuerda», otra persona, con la i- de ikane'õ. Luis habla de él mismo.",
+       "Imandu'a es «se acuerda», otra persona, con la i- de ikane'õ. Vicente habla de él mismo.",
        "Mandu'a solo es «el recuerdo», la cosa: no dice quién se acuerda. Le falta la persona, che-."
       ]
      },
@@ -998,7 +998,7 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Luis vuelve de la cancha al mediodía.)\nLuis: ",
+      "before": "(Vicente vuelve de la cancha al mediodía.)\nVicente: ",
       "after": " ha akaru.",
       "tiles": [
        "che",
@@ -1009,8 +1009,8 @@
        0
       ],
       "hint": "El hambre es un estado, no una acción: el «yo» de los estados va primero, pegado. La acción de al lado, akaru, lleva a-.",
-      "full": "(Luis vuelve de la cancha al mediodía.)\nLuis: {Che}vare'a ha akaru.",
-      "es": "Luis: Tengo hambre y como.",
+      "full": "(Vicente vuelve de la cancha al mediodía.)\nVicente: {Che}vare'a ha akaru.",
+      "es": "Vicente: Tengo hambre y como.",
       "explain": "che- (yo, me pasa) + vare'a («hambre») = chevare'a, «tengo hambre». El hambre es un estado: lleva che-, no a-. Comer es una acción: por eso akaru lleva a-. En una sola oración están los dos «yo» del guaraní: che- para lo que te pasa y a- para lo que hacés."
      },
      {
@@ -1019,7 +1019,7 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Luis ve una víbora.)\nLuis: ",
+      "before": "(Vicente ve una víbora.)\nVicente: ",
       "after": ".",
       "tiles": [
        "a",
@@ -1030,8 +1030,8 @@
        0
       ],
       "hint": "Tener miedo se conjuga como una acción, igual que avy'a: el prefijo de «yo» va primero, pegado a la raíz.",
-      "full": "(Luis ve una víbora.)\nLuis: {A}kyhyje.",
-      "es": "Luis: Tengo miedo.",
+      "full": "(Vicente ve una víbora.)\nVicente: {A}kyhyje.",
+      "es": "Vicente: Tengo miedo.",
       "explain": "a- («yo») + kyhyje («tener miedo») = akyhyje, «tengo miedo». Parece un estado, pero kyhyje va con los prefijos de acción, como vy'a: akyhyje, no chekyhyje. Sin tilde: el acento cae en la última vocal."
      }
     ],
@@ -1041,12 +1041,12 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Qué significa",
-      "q": "Ana: _Avy'a_, Luis.",
+      "q": "Ana: _Avy'a_, Vicente.",
       "options": [
-       "Me baño, Luis.",
-       "Estoy contenta, Luis.",
-       "Tengo miedo, Luis.",
-       "Estoy cansada, Luis."
+       "Me baño, Vicente.",
+       "Estoy contenta, Vicente.",
+       "Tengo miedo, Vicente.",
+       "Estoy cansada, Vicente."
       ],
       "answer": 2,
       "explain": "Vy'a es «alegrarse» y se conjuga como acción: avy'a, «estoy contenta». «Me baño» es ajahu; «tengo miedo», akyhyje; y «estoy cansada», chekane'õ, con che-."
@@ -1056,7 +1056,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Luis está enojado y se va. Lo cuenta él mismo.)\nLuis: (   ) ha aha.",
+      "q": "(Vicente está enojado y se va. Lo cuenta él mismo.)\nVicente: (   ) ha aha.",
       "options": [
        "Apochy",
        "Ipochy",
@@ -1064,7 +1064,7 @@
        "Pochy"
       ],
       "answer": 3,
-      "explain": "Estar enojado es un estado, y Luis habla de él mismo: che- + pochy = chepochy. Chepochy ha aha, «estoy enojado y me voy». Apochy no es «estoy enojado»: a- es para las acciones, como aha. Ipochy es «está enojado», otra persona. Y pochy sin marca es solo «el enojo», la cosa: no dice de quién."
+      "explain": "Estar enojado es un estado, y Vicente habla de él mismo: che- + pochy = chepochy. Chepochy ha aha, «estoy enojado y me voy». Apochy no es «estoy enojado»: a- es para las acciones, como aha. Ipochy es «está enojado», otra persona. Y pochy sin marca es solo «el enojo», la cosa: no dice de quién."
      },
      {
       "id": "a1u03d2.e3",
@@ -1072,7 +1072,7 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Luis cuenta qué hace el lunes a la mañana.)\nLuis: Apu'ã ha ",
+      "before": "(Vicente cuenta qué hace el lunes a la mañana.)\nVicente: Apu'ã ha ",
       "after": ".",
       "tiles": [
        "a",
@@ -1082,8 +1082,8 @@
        1,
        0
       ],
-      "full": "(Luis cuenta qué hace el lunes a la mañana.)\nLuis: Apu'ã ha amba'apo.",
-      "es": "Luis: Me levanto y trabajo.",
+      "full": "(Vicente cuenta qué hace el lunes a la mañana.)\nVicente: Apu'ã ha amba'apo.",
+      "es": "Vicente: Me levanto y trabajo.",
       "explain": "a- («yo») va primero y después la raíz mba'apo, «trabajar»: amba'apo, «trabajo». Trabajar es una acción, como levantarse: las dos llevan a-, no che-."
      }
     ]
@@ -1258,7 +1258,7 @@
     "es": "Un mensaje de Ana",
     "ask": "¿Qué hace Ana ahora?",
     "seconds": 60,
-    "passage": "Mba'éichapa, Luis?\nKo'ág̃a ^ajahu^ ha ^akaru^. Chekane'õiterei.\nJajotopáta ko pyhare.\nAna",
+    "passage": "Mba'éichapa, Vicente?\nKo'ág̃a ^ajahu^ ha ^akaru^. Chekane'õiterei.\nJajotopáta ko pyhare.\nAna",
     "strategy": "Buscá los verbos con a-: son lo que hace Ana. Lo que le pasa va con che-.",
     "item": {
      "id": "a1u03d2.r1",
@@ -1308,7 +1308,7 @@
        },
        {
         "pos": "Para otra persona: ha'e, o directamente su nombre",
-        "rule": "{Ha'e} pohanohára. · Luis pohanohára."
+        "rule": "{Ha'e} pohanohára. · Vicente pohanohára."
        }
       ],
       "examples": [
@@ -1429,8 +1429,8 @@
         ]
        },
        {
-        "gn": "Luis: Mávapa ha'e?\nRosa: {Ha'e} che angirũ.",
-        "es": "Luis: ¿Quién es?\nRosa: Es mi amigo.",
+        "gn": "Vicente: Mávapa ha'e?\nRosa: {Ha'e} che angirũ.",
+        "es": "Vicente: ¿Quién es?\nRosa: Es mi amigo.",
         "parts": [
          [
           "mávapa",
@@ -1469,8 +1469,8 @@
         ]
        },
        {
-        "gn": "Luis {ndaha'éi} mbo'ehára, ha'e pohanohára.",
-        "es": "Luis no es profesor, es médico.",
+        "gn": "Vicente {ndaha'éi} mbo'ehára, ha'e pohanohára.",
+        "es": "Vicente no es profesor, es médico.",
         "parts": [
          [
           "ndaha'éi",
@@ -1524,7 +1524,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "Luis presenta a Rosa, ^su amiga^: «Rosa (   ) che angirũ.»",
+      "q": "Vicente presenta a Rosa, ^su amiga^: «Rosa (   ) che angirũ.»",
       "options": [
        "ha'e",
        "ndaha'éi",
@@ -1532,9 +1532,9 @@
       ],
       "answer": 1,
       "why": [
-       "Luis dice quién es Rosa: entre Rosa y che angirũ, ha'e hace de «es». Rosa ha'e che angirũ, «Rosa es mi amiga».",
-       "Ndaha'éi es «no es», y Rosa sí es su amiga: Luis la presenta como tal.",
-       "Ikatupyry es una cualidad, «es hábil», con la i- del día 1. No dice quién es Rosa, y Luis la presenta como su amiga."
+       "Vicente dice quién es Rosa: entre Rosa y che angirũ, ha'e hace de «es». Rosa ha'e che angirũ, «Rosa es mi amiga».",
+       "Ndaha'éi es «no es», y Rosa sí es su amiga: Vicente la presenta como tal.",
+       "Ikatupyry es una cualidad, «es hábil», con la i- del día 1. No dice quién es Rosa, y Vicente la presenta como su amiga."
       ]
      }
     },
@@ -1584,7 +1584,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Rosa señala a un muchacho, ^el compañero de Luis^.)\nRosa: Mávapa ha'e?\nLuis: (   ) che [irũ|compañero].",
+      "q": "(Rosa señala a un muchacho, ^el compañero de Vicente^.)\nRosa: Mávapa ha'e?\nVicente: (   ) che [irũ|compañero].",
       "options": [
        "Che",
        "Ha'e",
@@ -1594,9 +1594,9 @@
       "answer": 2,
       "why": [
        "Che che irũ sería «yo soy mi compañero»: che es «yo» y che irũ, «mi compañero». Así no se dice quién es el muchacho.",
-       "Rosa pregunta quién es él, y Luis responde con ha'e y quién es: Ha'e che irũ, «es mi compañero».",
-       "Nde che irũ es «vos sos mi compañero», hablándole a Rosa. Luis habla del muchacho.",
-       "Ndaha'éi che irũ es «no es mi compañero», y sí lo es: Rosa señala al compañero de Luis."
+       "Rosa pregunta quién es él, y Vicente responde con ha'e y quién es: Ha'e che irũ, «es mi compañero».",
+       "Nde che irũ es «vos sos mi compañero», hablándole a Rosa. Vicente habla del muchacho.",
+       "Ndaha'éi che irũ es «no es mi compañero», y sí lo es: Rosa señala al compañero de Vicente."
       ]
      },
      {
@@ -1604,7 +1604,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Luis muestra una foto. Rosa cree que es su mamá, pero ^es su abuela^.)\nLuis: (   ) che sy, ha'e che jarýi.",
+      "q": "(Vicente muestra una foto. Rosa cree que es su mamá, pero ^es su abuela^.)\nVicente: (   ) che sy, ha'e che jarýi.",
       "options": [
        "Ndaha'éi",
        "Nahániri",
@@ -1615,8 +1615,8 @@
       "why": [
        "Para negar un «es», ndaha'éi: el «no» de dos partes de la unidad 2, acá nda-…-i, alrededor de ha'e. Ndaha'éi che sy, «no es mi mamá».",
        "Nahániri es «no», la respuesta suelta a una pregunta de sí o no. Para decir «no es» hace falta ndaha'éi, una sola palabra.",
-       "Ha'e che sy es «es mi mamá», y la de la foto no es su mamá: Luis lo niega.",
-       "Che che sy sería «yo soy mi mamá». Luis no habla de él mismo: dice quién es la de la foto."
+       "Ha'e che sy es «es mi mamá», y la de la foto no es su mamá: Vicente lo niega.",
+       "Che che sy sería «yo soy mi mamá». Vicente no habla de él mismo: dice quién es la de la foto."
       ]
      },
      {
@@ -1625,7 +1625,7 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Luis no es profesor.)\nAna: Luis ",
+      "before": "(Vicente no es profesor.)\nAna: Vicente ",
       "after": " mbo'ehára, ha'e pohanohára.",
       "tiles": [
        "nda",
@@ -1638,8 +1638,8 @@
        1
       ],
       "hint": "El «no» de la unidad 2 tiene dos partes que rodean la palabra: la primera, que acá es nda-, va adelante, y -i al final.",
-      "full": "(Luis no es profesor.)\nAna: Luis {nda}ha'é{i} mbo'ehára, ha'e pohanohára.",
-      "es": "Ana: Luis no es profesor, es médico.",
+      "full": "(Vicente no es profesor.)\nAna: Vicente {nda}ha'é{i} mbo'ehára, ha'e pohanohára.",
+      "es": "Ana: Vicente no es profesor, es médico.",
       "explain": "nda- + ha'e + -i = ndaha'éi, «no es»: el «no» de dos partes rodea a ha'e. La -i no se lleva el acento: queda en la e de ha'e, que ya no es la última vocal, y por eso se escribe é: ndaha'éi. Después, sin negación: ha'e pohanohára, «es médico»."
      },
      {
@@ -1648,7 +1648,7 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(En la fiesta, Luis dice qué es.)\nLuis: Che ",
+      "before": "(En la fiesta, Vicente dice qué es.)\nVicente: Che ",
       "after": ".",
       "tiles": [
        "pohano",
@@ -1659,8 +1659,8 @@
        0
       ],
       "hint": "-hára, «el que hace», es un sufijo: va después de la raíz, como en mbo'ehára.",
-      "full": "(En la fiesta, Luis dice qué es.)\nLuis: Che pohano{hára}.",
-      "es": "Luis: Soy médico.",
+      "full": "(En la fiesta, Vicente dice qué es.)\nVicente: Che pohano{hára}.",
+      "es": "Vicente: Soy médico.",
       "explain": "pohano («curar») + -hára («el que») = pohanohára, «el que cura», el médico, como mbo'ehára, «el que enseña». Con che adelante y sin verbo: Che pohanohára, «soy médico». -hára se lleva el acento: por eso la tilde va en hára, y pohano no lleva ninguna."
      }
     ],
@@ -1670,7 +1670,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Qué significa",
-      "q": "(Rosa pregunta por un hombre de la foto.)\nLuis: _Ndaha'éi che angirũ_.",
+      "q": "(Rosa pregunta por un hombre de la foto.)\nVicente: _Ndaha'éi che angirũ_.",
       "options": [
        "Es mi amigo.",
        "No es mi amigo.",
@@ -1701,7 +1701,7 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(En la fiesta, Luis presenta a Rosa.)\nLuis: Ha'e ",
+      "before": "(En la fiesta, Vicente presenta a Rosa.)\nVicente: Ha'e ",
       "after": ".",
       "tiles": [
        "mbo'e",
@@ -1711,8 +1711,8 @@
        1,
        0
       ],
-      "full": "(En la fiesta, Luis presenta a Rosa.)\nLuis: Ha'e mbo'ehára.",
-      "es": "Luis: Ella es profesora.",
+      "full": "(En la fiesta, Vicente presenta a Rosa.)\nVicente: Ha'e mbo'ehára.",
+      "es": "Vicente: Ella es profesora.",
       "explain": "mbo'e («enseñar») + -hára («el que, la que») = mbo'ehára, «la que enseña»: la profesora. -hára va después de la raíz y se lleva el acento: por eso la tilde va en hára. Con ha'e adelante y sin ningún «es»: Ha'e mbo'ehára, «ella es profesora»."
      }
     ]
@@ -1878,7 +1878,7 @@
      "kind": "choice",
      "area": "vocab",
      "label": "Cómo se escribe",
-     "q": "En la fiesta, Ana te presenta a una _señora_, la mamá de Luis. ¿Cómo se escribe en guaraní?",
+     "q": "En la fiesta, Ana te presenta a una _señora_, la mamá de Vicente. ¿Cómo se escribe en guaraní?",
      "options": [
       "kuñacarai",
       "kunakarai",
@@ -1892,14 +1892,14 @@
    "skill": {
     "kind": "listening",
     "es": "Comprensión de puntos clave",
-    "situation": "En la fiesta de San Juan, Ana le presenta dos personas a Luis.",
-    "ask": "¿Qué es Lucas?",
+    "situation": "En la fiesta de San Juan, Ana le presenta dos personas a Vicente.",
+    "ask": "¿Qué es Moisés?",
     "item": {
      "id": "a1u03d3.r1",
      "kind": "choice",
      "area": "listening",
      "label": "Qué escuchaste",
-     "q": "¿Qué es Lucas?",
+     "q": "¿Qué es Moisés?",
      "options": [
       "Médico.",
       "Profesor.",
@@ -1907,28 +1907,28 @@
      ],
      "answer": 1,
      "why": [
-      "Ana dice Lucas ha'e che irũ, «Lucas es mi compañero», y enseguida Ha'e pohanohára: ese ha'e es Lucas, y pohanohára es «médico».",
-      "Mbo'ehára, «profesora», es la mamá de Ana: de ella dice Ha'e mbo'ehára, antes de presentar a Lucas.",
+      "Ana dice Moisés ha'e che irũ, «Moisés es mi compañero», y enseguida Ha'e pohanohára: ese ha'e es Moisés, y pohanohára es «médico».",
+      "Mbo'ehára, «profesora», es la mamá de Ana: de ella dice Ha'e mbo'ehára, antes de presentar a Moisés.",
       "Agricultor es chokokue, y nadie lo dice en la fiesta."
      ],
      "script": [
-      "Narrador: En la fiesta de San Juan. Ana presenta a dos personas. ¿Qué es Lucas?",
-      "Mujer: Ha'e che sy, Luis. Ha'e mbo'ehára.",
+      "Narrador: En la fiesta de San Juan. Ana presenta a dos personas. ¿Qué es Moisés?",
+      "Mujer: Ha'e che sy, Vicente. Ha'e mbo'ehára.",
       "Hombre: Mba'éichapa, kuñakarai?",
-      "Mujer: Ha Lucas ha'e che irũ. Ha'e pohanohára.",
-      "Hombre: Maitei, Lucas."
+      "Mujer: Ha Moisés ha'e che irũ. Ha'e pohanohára.",
+      "Hombre: Maitei, Moisés."
      ]
     },
     "audio": [
      [
       "N",
-      "En la fiesta de San Juan. Ana presenta a dos personas. ¿Qué es Lucas?",
-      "En la fiesta de San Juan. Ana presenta a dos personas. ¿Qué es Lucas?"
+      "En la fiesta de San Juan. Ana presenta a dos personas. ¿Qué es Moisés?",
+      "En la fiesta de San Juan. Ana presenta a dos personas. ¿Qué es Moisés?"
      ],
      [
       "F",
-      "Ha'e che sy, Luis. Ha'e mbo'ehára.",
-      "Ella es mi mamá, Luis. Es profesora."
+      "Ha'e che sy, Vicente. Ha'e mbo'ehára.",
+      "Ella es mi mamá, Vicente. Es profesora."
      ],
      [
       "M",
@@ -1937,13 +1937,13 @@
      ],
      [
       "F",
-      "Ha Lucas ha'e che irũ. Ha'e pohanohára.",
-      "Y Lucas es mi compañero. Es médico."
+      "Ha Moisés ha'e che irũ. Ha'e pohanohára.",
+      "Y Moisés es mi compañero. Es médico."
      ],
      [
       "M",
-      "Maitei, Lucas.",
-      "Hola, Lucas."
+      "Maitei, Moisés.",
+      "Hola, Moisés."
      ]
     ]
    }
@@ -1976,8 +1976,8 @@
       ],
       "examples": [
        {
-        "gn": "Ana: Ndé{pa} pohanohára?\nLuis: Héẽ, che pohanohára.",
-        "es": "Ana: ¿Vos sos médico?\nLuis: Sí, soy médico.",
+        "gn": "Ana: Ndé{pa} pohanohára?\nVicente: Héẽ, che pohanohára.",
+        "es": "Ana: ¿Vos sos médico?\nVicente: Sí, soy médico.",
         "parts": [
          [
           "nde",
@@ -2090,8 +2090,8 @@
       ],
       "examples": [
        {
-        "gn": "Luis: Nde {piko} mbo'ehára?\nAna: {Héẽ}, che mbo'ehára.",
-        "es": "Luis: ¿En serio sos profesora?\nAna: Sí, soy profesora.",
+        "gn": "Vicente: Nde {piko} mbo'ehára?\nAna: {Héẽ}, che mbo'ehára.",
+        "es": "Vicente: ¿En serio sos profesora?\nAna: Sí, soy profesora.",
         "parts": [
          [
           "nde",
@@ -2138,8 +2138,8 @@
         ]
        },
        {
-        "gn": "Ana: Nekane'õ{pa}?\nLuis: {Nahániri}, {na}chekane'õ{i}. Chevare'a.",
-        "es": "Ana: ¿Estás cansado?\nLuis: No, no estoy cansado. Tengo hambre.",
+        "gn": "Ana: Nekane'õ{pa}?\nVicente: {Nahániri}, {na}chekane'õ{i}. Chevare'a.",
+        "es": "Ana: ¿Estás cansado?\nVicente: No, no estoy cansado. Tengo hambre.",
         "parts": [
          [
           "ne-",
@@ -2227,7 +2227,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la respuesta",
-      "q": "(Juan es ^agricultor^.)\nLucas: Ndépa ñemuhára?\nJuan: (   )",
+      "q": "(Juan es ^agricultor^.)\nMoisés: Ndépa ñemuhára?\nJuan: (   )",
       "options": [
        "Mba'éichapa?",
        "Nahániri, che chokokue.",
@@ -2237,7 +2237,7 @@
       "why": [
        "Mba'éichapa? es un saludo y una pregunta abierta: no responde a una pregunta de sí o no.",
        "Ndépa ñemuhára? pregunta sí o no por lo que es Juan. Él responde que no y dice qué es: Nahániri, che chokokue, «no, soy agricultor».",
-       "Héẽ diría que sí es vendedor, y Juan es agricultor. Además, chekane'õ habla de cansancio, y Lucas preguntó qué es Juan, no cómo está."
+       "Héẽ diría que sí es vendedor, y Juan es agricultor. Además, chekane'õ habla de cansancio, y Moisés preguntó qué es Juan, no cómo está."
       ]
      }
     },
@@ -2247,7 +2247,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Luis quiere saber si ^el papá de Ana está enfermo^.)\nLuis: (   ) nde ru?",
+      "q": "(Vicente quiere saber si ^el papá de Ana está enfermo^.)\nVicente: (   ) nde ru?",
       "options": [
        "Rasýpa",
        "Pa hasy",
@@ -2258,8 +2258,8 @@
       "why": [
        "Rasy es la forma que va con che- y nde-, como réra en che réra y nde réra: cherasy. Para otra persona, nde ru, va h-: hasy, como héra.",
        "-pa no va delante ni suelto: es un sufijo y se pega al final de la palabra que preguntás, Hasýpa.",
-       "Luis pregunta por hasy, «está enfermo», y -pa va pegado a esa palabra: Hasýpa nde ru?, «¿está enfermo tu papá?». Hasy termina en y tónica; con -pa esa y ya no es la última vocal y se escribe la tilde: hasýpa.",
-       "Ikane'õpa pregunta si está cansado, y Luis quiere saber si está enfermo: hasy."
+       "Vicente pregunta por hasy, «está enfermo», y -pa va pegado a esa palabra: Hasýpa nde ru?, «¿está enfermo tu papá?». Hasy termina en y tónica; con -pa esa y ya no es la última vocal y se escribe la tilde: hasýpa.",
+       "Ikane'õpa pregunta si está cansado, y Vicente quiere saber si está enfermo: hasy."
       ]
      },
      {
@@ -2267,7 +2267,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Ana quiere saber si Luis es médico. ^Se lo pregunta a él^.)\nAna: (   ) pohanohára?",
+      "q": "(Ana quiere saber si Vicente es médico. ^Se lo pregunta a él^.)\nAna: (   ) pohanohára?",
       "options": [
        "Ndépa",
        "Ha'épa",
@@ -2276,10 +2276,10 @@
       ],
       "answer": 1,
       "why": [
-       "Ana le pregunta a Luis por él mismo: nde + -pa = Ndépa, con tilde porque la e ya no es la última vocal. Ndépa pohanohára?, «¿vos sos médico?».",
-       "Ha'épa pohanohára? pregunta por otra persona: ha'e, «él, ella». Ana le habla a Luis y pregunta por él mismo: nde.",
+       "Ana le pregunta a Vicente por él mismo: nde + -pa = Ndépa, con tilde porque la e ya no es la última vocal. Ndépa pohanohára?, «¿vos sos médico?».",
+       "Ha'épa pohanohára? pregunta por otra persona: ha'e, «él, ella». Ana le habla a Vicente y pregunta por él mismo: nde.",
        "Ndéve es «a vos», como en Aguyje ndéve (unidad 1): lleva -ve, no -pa, y no pregunta nada.",
-       "Mávapa pohanohára? es «¿quién es médico?»: una pregunta abierta, que no se responde con sí o no. Ana quiere saber si Luis lo es: Ndépa."
+       "Mávapa pohanohára? es «¿quién es médico?»: una pregunta abierta, que no se responde con sí o no. Ana quiere saber si Vicente lo es: Ndépa."
       ]
      },
      {
@@ -2377,7 +2377,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Qué significa",
-      "q": "Luis: Og̃uahẽ pohanohára.\nAna: _Añetépa?_",
+      "q": "Vicente: Og̃uahẽ pohanohára.\nAna: _Añetépa?_",
       "options": [
        "¿Ahora?",
        "¿Quién?",
@@ -2392,7 +2392,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la respuesta",
-      "q": "(La mamá de Luis está cansada.)\nAna: Ikane'õpa nde sy?\nLuis: (   )",
+      "q": "(La mamá de Vicente está cansada.)\nAna: Ikane'õpa nde sy?\nVicente: (   )",
       "options": [
        "Héẽ, kane'õ.",
        "Héẽ, nekane'õ.",
@@ -2400,7 +2400,7 @@
        "Héẽ, ikane'õ."
       ],
       "answer": 4,
-      "explain": "Ana pregunta por la mamá de Luis, otra persona, y ella sí está cansada: Héẽ, ikane'õ, «sí, está cansada», con la i- de la tercera persona. Héẽ, kane'õ no dice de quién es el cansancio, le falta la i-; Héẽ, nekane'õ le diría a Ana que ella está cansada; y Nahániri, ikane'õ se contradice: dice «no» y después «está cansada»."
+      "explain": "Ana pregunta por la mamá de Vicente, otra persona, y ella sí está cansada: Héẽ, ikane'õ, «sí, está cansada», con la i- de la tercera persona. Héẽ, kane'õ no dice de quién es el cansancio, le falta la i-; Héẽ, nekane'õ le diría a Ana que ella está cansada; y Nahániri, ikane'õ se contradice: dice «no» y después «está cansada»."
      },
      {
       "id": "a1u03d4.e3",
@@ -2408,7 +2408,7 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Luis comió hace un rato.)\nLuis: ",
+      "before": "(Vicente comió hace un rato.)\nVicente: ",
       "after": ".",
       "tiles": [
        "nda",
@@ -2422,8 +2422,8 @@
        3,
        1
       ],
-      "full": "(Luis comió hace un rato.)\nLuis: Ndachevare'ái.",
-      "es": "Luis: No tengo hambre.",
+      "full": "(Vicente comió hace un rato.)\nVicente: Ndachevare'ái.",
+      "es": "Vicente: No tengo hambre.",
       "explain": "nda- + che- + vare'a («hambre») + -i = Ndachevare'ái, «no tengo hambre». El «no» tiene dos partes que rodean a che- y al estado. Vare'a es oral, sin ~ ni ninguna letra nasal: por eso va nda- y no na-. -i no se lleva el acento: queda en la a final de vare'a y se escribe á."
      }
     ]
@@ -2855,7 +2855,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Cuál está bien escrita",
-      "q": "Luis escribe en la pizarra: jaguá, óga, ikatupa. Se dicen ^ja-GUA, Ó-ga, i-ka-TÚ-pa^. ¿Cuál de las tres está _bien escrita_?",
+      "q": "Vicente escribe en la pizarra: jaguá, óga, ikatupa. Se dicen ^ja-GUA, Ó-ga, i-ka-TÚ-pa^. ¿Cuál de las tres está _bien escrita_?",
       "options": [
        "jaguá",
        "óga",
@@ -2895,7 +2895,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Cuál está bien escrita",
-      "q": "Luis escribe cuatro palabras que se dicen ^con el acento antes de la última vocal^: na-HÁ-ni-ri, mbo-'e-HÁ-ra, TÉ-ra, pu-ra-HÉI. Solo una está _bien escrita_. ¿Cuál?",
+      "q": "Vicente escribe cuatro palabras que se dicen ^con el acento antes de la última vocal^: na-HÁ-ni-ri, mbo-'e-HÁ-ra, TÉ-ra, pu-ra-HÉI. Solo una está _bien escrita_. ¿Cuál?",
       "options": [
        "nahaniri",
        "mbo'éhara",
@@ -2915,7 +2915,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Cuál está bien escrita",
-      "q": "Luis escribe cuatro lugares con -pe, «en». ^-pe no se lleva el acento^. Solo uno está _bien escrito_. ¿Cuál?",
+      "q": "Vicente escribe cuatro lugares con -pe, «en». ^-pe no se lleva el acento^. Solo uno está _bien escrito_. ¿Cuál?",
       "options": [
        "kotype",
        "ogápe",
@@ -2956,7 +2956,7 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Luis va a Ypacaraí.)\nLuis: Aha ",
+      "before": "(Vicente va a Ypacaraí.)\nVicente: Aha ",
       "after": ".",
       "tiles": [
        "Ypakarai",
@@ -2967,8 +2967,8 @@
        0
       ],
       "hint": "-pe va después del lugar, pegado. Después fijate dónde queda el acento: ¿sigue en la última vocal?",
-      "full": "(Luis va a Ypacaraí.)\nLuis: Aha {Ypakaraípe}.",
-      "es": "Luis: Voy a Ypacaraí.",
+      "full": "(Vicente va a Ypacaraí.)\nVicente: Aha {Ypakaraípe}.",
+      "es": "Vicente: Voy a Ypacaraí.",
       "explain": "Ypakarai («Ypacaraí») + -pe («a») = Ypakaraípe. Ypakarai es aguda, y-pa-ka-ra-I, y sola va sin tilde. -pe no se lleva el acento: queda en esa i, que ya no es la última vocal, y por eso ahora se escribe í."
      },
      {
@@ -2977,7 +2977,7 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Ana le pregunta a Luis si conoce Caacupé.)\nAna: ",
+      "before": "(Ana le pregunta a Vicente si conoce Caacupé.)\nAna: ",
       "after": " Ka'akupe?",
       "tiles": [
        "reikuaa",
@@ -2988,7 +2988,7 @@
        0
       ],
       "hint": "-pa cierra la palabra que pregunta y no se lleva el acento. ¿En qué vocal queda?",
-      "full": "(Ana le pregunta a Luis si conoce Caacupé.)\nAna: {Reikuaápa} Ka'akupe?",
+      "full": "(Ana le pregunta a Vicente si conoce Caacupé.)\nAna: {Reikuaápa} Ka'akupe?",
       "es": "Ana: ¿Conocés Caacupé?",
       "explain": "reikuaa («conocés, sabés») + -pa (pregunta) = Reikuaápa. Reikuaa termina en a tónica, rei-kua-A. -pa no se lleva el acento: queda en esa a, que ya no es la última vocal, y se escribe á. Ka'akupe, sola, sigue sin tilde: es aguda."
      }
@@ -3030,7 +3030,7 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Luis va a Caacupé.)\nAna: Luis oho ",
+      "before": "(Vicente va a Caacupé.)\nAna: Vicente oho ",
       "after": ".",
       "tiles": [
        "Ka'akupe",
@@ -3040,8 +3040,8 @@
        1,
        0
       ],
-      "full": "(Luis va a Caacupé.)\nAna: Luis oho Ka'akupépe.",
-      "es": "Ana: Luis va a Caacupé.",
+      "full": "(Vicente va a Caacupé.)\nAna: Vicente oho Ka'akupépe.",
+      "es": "Ana: Vicente va a Caacupé.",
       "explain": "Ka'akupe («Caacupé») + -pe («a») = Ka'akupépe. Ka'akupe es aguda, ka-'a-ku-PE, y sola va sin tilde. -pe no se lleva el acento: queda en la e final de Ka'akupe, que ya no es la última vocal, y por eso se escribe é."
      }
     ]
@@ -3245,7 +3245,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Luis muestra una foto. Rosa cree que es la mamá de Luis, pero ^es su profesora^.)\nLuis: (   ) che sy, ha'e che mbo'ehára.",
+      "q": "(Vicente muestra una foto. Rosa cree que es la mamá de Vicente, pero ^es su profesora^.)\nVicente: (   ) che sy, ha'e che mbo'ehára.",
       "options": [
        "Ha'e",
        "Ndaha'éi",
@@ -3253,8 +3253,8 @@
       ],
       "answer": 2,
       "why": [
-       "Ha'e che sy diría «es mi mamá», y la de la foto es su profesora: Luis lo niega.",
-       "Rosa se equivoca, y Luis niega el «es» con ndaha'éi, una sola palabra: Ndaha'éi che sy, «no es mi mamá». Después, sin negar: ha'e che mbo'ehára, «es mi profesora».",
+       "Ha'e che sy diría «es mi mamá», y la de la foto es su profesora: Vicente lo niega.",
+       "Rosa se equivoca, y Vicente niega el «es» con ndaha'éi, una sola palabra: Ndaha'éi che sy, «no es mi mamá». Después, sin negar: ha'e che mbo'ehára, «es mi profesora».",
        "Ndaikatúi es «no se puede»: el nda-…-i rodea a ikatu, no a ha'e. Ndaikatúi che sy no dice nada. Para negar un «es» va ndaha'éi."
       ]
      }
@@ -3285,7 +3285,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Luis le cuenta a Ana ^qué hace él mismo^: trabaja.)\nLuis: Ko'ág̃a (   ), Ana.",
+      "q": "(Vicente le cuenta a Ana ^qué hace él mismo^: trabaja.)\nVicente: Ko'ág̃a (   ), Ana.",
       "options": [
        "amba'apo",
        "chemba'apo",
@@ -3294,9 +3294,9 @@
       ],
       "answer": 1,
       "why": [
-       "Trabajar es una acción y Luis habla de él mismo: a- + mba'apo = amba'apo, «trabajo». Ko'ág̃a amba'apo, «ahora trabajo».",
+       "Trabajar es una acción y Vicente habla de él mismo: a- + mba'apo = amba'apo, «trabajo». Ko'ág̃a amba'apo, «ahora trabajo».",
        "Che- es para los estados, como chekane'õ. Trabajar es una acción y lleva a-: chemba'apo no es «yo trabajo».",
-       "O- es «él, ella»: omba'apo es «trabaja», de otra persona. Luis habla de él mismo.",
+       "O- es «él, ella»: omba'apo es «trabaja», de otra persona. Vicente habla de él mismo.",
        "Mba'apo sin prefijo es «trabajo», la cosa, o la raíz sin persona: no dice quién trabaja."
       ]
      },
@@ -3325,7 +3325,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(En la fiesta, ^Luis dice qué es él mismo^: médico.)\nLuis: (   ) pohanohára.",
+      "q": "(En la fiesta, ^Vicente dice qué es él mismo^: médico.)\nVicente: (   ) pohanohára.",
       "options": [
        "Aime",
        "Ha'e",
@@ -3335,9 +3335,9 @@
       "answer": 3,
       "why": [
        "Aime es «estoy» en un lugar, como en Aime ógape. Para decir qué sos no va ningún verbo: ni «soy» ni «estoy».",
-       "Ha'e pohanohára es «él es médico», de otra persona. Luis habla de él mismo: che.",
+       "Ha'e pohanohára es «él es médico», de otra persona. Vicente habla de él mismo: che.",
        "Para decir qué sos: che y el sustantivo, nada más. Che pohanohára, «soy médico».",
-       "Ndaha'éi pohanohára niega: «no es médico» o «no soy médico». Luis sí es médico, y eso es lo que dice."
+       "Ndaha'éi pohanohára niega: «no es médico» o «no soy médico». Vicente sí es médico, y eso es lo que dice."
       ]
      },
      {
@@ -3346,7 +3346,7 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(Luis ve que Ana sonríe.)\nLuis: ",
+      "before": "(Vicente ve que Ana sonríe.)\nVicente: ",
       "after": ", Ana?",
       "tiles": [
        "re",
@@ -3359,8 +3359,8 @@
        0
       ],
       "hint": "Vy'a va como una acción: el «vos» es re-, y va primero. -pa va al final.",
-      "full": "(Luis ve que Ana sonríe.)\nLuis: {Re}vy'á{pa}, Ana?",
-      "es": "Luis: ¿Estás contenta, Ana?",
+      "full": "(Vicente ve que Ana sonríe.)\nVicente: {Re}vy'á{pa}, Ana?",
+      "es": "Vicente: ¿Estás contenta, Ana?",
       "explain": "re- («vos») + vy'a («alegrarse») + -pa (pregunta) = Revy'ápa, «¿estás contenta?». Vy'a va como una acción: por eso lleva re-, el «vos» de las acciones, y no nde-. -pa no se lleva el acento: queda en la a de vy'a, que ya no es la última vocal, y se escribe á."
      },
      {
@@ -3408,7 +3408,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Cuál está bien escrita",
-      "q": "Luis repasa cuatro palabras de la semana. Solo una está _bien escrita_. ¿Cuál?",
+      "q": "Vicente repasa cuatro palabras de la semana. Solo una está _bien escrita_. ¿Cuál?",
       "options": [
        "ndaha'ei",
        "Ka'akupé",
@@ -3424,7 +3424,7 @@
       "area": "grammar",
       "label": "Armá la palabra",
       "join": "word",
-      "before": "(En la fiesta, Rosa cree que la señora es la abuela de Luis.)\nLuis: ",
+      "before": "(En la fiesta, Rosa cree que la señora es la abuela de Vicente.)\nVicente: ",
       "after": " che jarýi, ha'e che sy.",
       "tiles": [
        "nda",
@@ -3436,8 +3436,8 @@
        0,
        2
       ],
-      "full": "(En la fiesta, Rosa cree que la señora es la abuela de Luis.)\nLuis: Ndaha'éi che jarýi, ha'e che sy.",
-      "es": "Luis: No es mi abuela, es mi mamá.",
+      "full": "(En la fiesta, Rosa cree que la señora es la abuela de Vicente.)\nVicente: Ndaha'éi che jarýi, ha'e che sy.",
+      "es": "Vicente: No es mi abuela, es mi mamá.",
       "explain": "nda- va primero, después ha'e y al final -i: ndaha'éi, «no es». El «no» del guaraní tiene dos partes que rodean la palabra. La tilde va en la é porque -i no se lleva el acento. Después, sin negar: ha'e che sy, «es mi mamá»."
      }
     ]
@@ -3624,7 +3624,7 @@
     "es": "Un chat al volver",
     "ask": "¿Quién está enfermo?",
     "seconds": 75,
-    "passage": "Luis: Mba'éichapa, Ana? Og̃uahẽpa nde sy?\nAna: Héẽ, og̃uahẽ ko'ág̃a. ^Che sy ikane'õ ha che jarýi hasy.^\nLuis: Añetépa? Ha nde?\nAna: Chey'uhéi. Oĩpa terere?\nLuis: Héẽ. Jaha.",
+    "passage": "Vicente: Mba'éichapa, Ana? Og̃uahẽpa nde sy?\nAna: Héẽ, og̃uahẽ ko'ág̃a. ^Che sy ikane'õ ha che jarýi hasy.^\nVicente: Añetépa? Ha nde?\nAna: Chey'uhéi. Oĩpa terere?\nVicente: Héẽ. Jaha.",
     "strategy": "Dos personas tienen un estado: una con i- y otra con h-. Buscá hasy, «está enfermo», y fijate de quién se dice.",
     "item": {
      "id": "a1u03d6.r1",
@@ -3636,20 +3636,20 @@
       "La mamá de Ana.",
       "La abuela de Ana.",
       "Ana.",
-      "Luis."
+      "Vicente."
      ],
      "short": [
       "La mamá",
       "La abuela",
       "Ana",
-      "Luis"
+      "Vicente"
      ],
      "answer": 2,
      "why": [
       "Che sy ikane'õ: la mamá está cansada, con i- y kane'õ, «cansancio». Cansada, no enferma.",
       "Ana escribe che jarýi hasy: hasy es «está enferma», la forma de rasy para él o ella, como héra. La enferma es su abuela.",
       "De ella misma, Ana dice Chey'uhéi, «tengo sed»: ni cansancio ni enfermedad.",
-      "Luis pregunta, y al final responde Héẽ, «sí», y Jaha, «vamos». Por el tereré pregunta Ana: Oĩpa terere? De cómo está él, Luis no dice nada."
+      "Vicente pregunta, y al final responde Héẽ, «sí», y Jaha, «vamos». Por el tereré pregunta Ana: Oĩpa terere? De cómo está él, Vicente no dice nada."
      ],
      "explain": "Ana escribe Che sy ikane'õ ha che jarýi hasy: su mamá está cansada (ikane'õ) y su abuela está enferma (hasy). Ella misma solo tiene sed, chey'uhéi."
     }
@@ -3662,7 +3662,7 @@
    "kind": "choice",
    "area": "vocab",
    "label": "Qué significa",
-   "q": "(Es domingo a la tarde. Ana invita a Luis a la cancha.)\nLuis: _Chekaigue_, Ana.",
+   "q": "(Es domingo a la tarde. Ana invita a Vicente a la cancha.)\nVicente: _Chekaigue_, Ana.",
    "options": [
     "Estoy enojado, Ana.",
     "Estoy desganado, Ana.",
@@ -3767,7 +3767,7 @@
    "kind": "choice",
    "area": "grammar",
    "label": "Elegí la forma",
-   "q": "(Es mediodía. Luis cuenta qué hace él a esta hora.)\nLuis: (   ) ha ake.",
+   "q": "(Es mediodía. Vicente cuenta qué hace él a esta hora.)\nVicente: (   ) ha ake.",
    "options": [
     "Chekaru",
     "Akaru",
@@ -3775,14 +3775,14 @@
     "Karu"
    ],
    "answer": 2,
-   "explain": "Comer es una acción y Luis habla de él mismo: a- más karu, «comer». Akaru ha ake, «como y duermo». Che- es para los estados y las cualidades, como chekane'õ: chekaru no es «como». Dice una cualidad, «soy comilón», y no lo que Luis hace a esta hora. Ikaru lleva i-: habla de otra persona, y tampoco dice una acción. Y karu sin prefijo no dice quién come."
+   "explain": "Comer es una acción y Vicente habla de él mismo: a- más karu, «comer». Akaru ha ake, «como y duermo». Che- es para los estados y las cualidades, como chekane'õ: chekaru no es «como». Dice una cualidad, «soy comilón», y no lo que Vicente hace a esta hora. Ikaru lleva i-: habla de otra persona, y tampoco dice una acción. Y karu sin prefijo no dice quién come."
   },
   {
    "id": "a1u03t.9",
    "kind": "choice",
    "area": "grammar",
    "label": "Elegí la forma",
-   "q": "(Luis le muestra a Rosa una foto de su mamá, Marta.)\nLuis: Marta (   ) che sy.",
+   "q": "(Vicente le muestra a Rosa una foto de su mamá, Teresa.)\nVicente: Teresa (   ) che sy.",
    "options": [
     "ha'e",
     "che",
@@ -3790,14 +3790,14 @@
     "ndépa"
    ],
    "answer": 1,
-   "explain": "Luis dice quién es Marta: entre Marta y che sy, ha'e hace de «es». Marta ha'e che sy, «Marta es mi mamá». Che es «yo» y no une nada. Ikane'õ es un estado, «está cansada», y acá Luis dice quién es ella, no cómo está. Ndépa, «¿vos…?», pregunta, y Luis afirma."
+   "explain": "Vicente dice quién es Teresa: entre Teresa y che sy, ha'e hace de «es». Teresa ha'e che sy, «Teresa es mi mamá». Che es «yo» y no une nada. Ikane'õ es un estado, «está cansada», y acá Vicente dice quién es ella, no cómo está. Ndépa, «¿vos…?», pregunta, y Vicente afirma."
   },
   {
    "id": "a1u03t.10",
    "kind": "choice",
    "area": "grammar",
    "label": "Elegí la respuesta",
-   "q": "(En el mercado, Juan conoce a Marta.)\nJuan: Nde piko chokokue, Marta?\nMarta: (   ), che ñemuhára.",
+   "q": "(En el mercado, Juan conoce a Teresa.)\nJuan: Nde piko chokokue, Teresa?\nTeresa: (   ), che ñemuhára.",
    "options": [
     "Upéicha",
     "Aguyje",
@@ -3805,14 +3805,14 @@
     "Héẽ"
    ],
    "answer": 3,
-   "explain": "Juan pregunta con piko, que suele sumar sorpresa, si Marta es agricultora, chokokue. Ella dice che ñemuhára, «soy vendedora»: es otra cosa, así que responde que no, Nahániri, y dice lo que sí es. Héẽ y Upéicha dirían que sí es agricultora, y Aguyje, «gracias», no responde ni que sí ni que no."
+   "explain": "Juan pregunta con piko, que suele sumar sorpresa, si Teresa es agricultora, chokokue. Ella dice che ñemuhára, «soy vendedora»: es otra cosa, así que responde que no, Nahániri, y dice lo que sí es. Héẽ y Upéicha dirían que sí es agricultora, y Aguyje, «gracias», no responde ni que sí ni que no."
   },
   {
    "id": "a1u03t.11",
    "kind": "choice",
    "area": "grammar",
    "label": "Elegí la forma",
-   "q": "(Ana llega a la casa de su abuela, y la abuela está contenta. Ana se lo cuenta a Luis.)\nAna: Che jarýi (   ).",
+   "q": "(Ana llega a la casa de su abuela, y la abuela está contenta. Ana se lo cuenta a Vicente.)\nAna: Che jarýi (   ).",
    "options": [
     "ivy'a",
     "chevy'a",
@@ -3827,7 +3827,7 @@
    "kind": "choice",
    "area": "grammar",
    "label": "Elegí la frase",
-   "q": "Luis quiere saber si el papá de Ana _está cansado_. ¿Cómo se lo pregunta a ella?",
+   "q": "Vicente quiere saber si el papá de Ana _está cansado_. ¿Cómo se lo pregunta a ella?",
    "options": [
     "Nde ru ikane'õ.",
     "Ikane'õpa nde ru?",
@@ -3835,7 +3835,7 @@
     "Ikane'õpa che ru?"
    ],
    "answer": 2,
-   "explain": "-pa es un sufijo: va pegado a la palabra que preguntás, acá el estado, y la persona viene después. Ikane'õpa nde ru?, «¿está cansado tu papá?». Nde ru ikane'õ, sin -pa, no pregunta: afirma «tu papá está cansado». Pa ikane'õ pone -pa suelto y adelante, y -pa ni va suelto ni empieza la oración. Ikane'õpa che ru? pregunta por el papá de Luis, che ru, y él quiere saber del papá de Ana: nde ru."
+   "explain": "-pa es un sufijo: va pegado a la palabra que preguntás, acá el estado, y la persona viene después. Ikane'õpa nde ru?, «¿está cansado tu papá?». Nde ru ikane'õ, sin -pa, no pregunta: afirma «tu papá está cansado». Pa ikane'õ pone -pa suelto y adelante, y -pa ni va suelto ni empieza la oración. Ikane'õpa che ru? pregunta por el papá de Vicente, che ru, y él quiere saber del papá de Ana: nde ru."
   },
   {
    "id": "a1u03t.13",
@@ -3973,14 +3973,14 @@
    "kind": "choice",
    "area": "listening",
    "label": "Respuesta rápida",
-   "q": "(En la plaza, Lucas ve a Ana con un señor. No es el papá de Ana.)\nLucas: Ha'épa nde ru?\n¿Qué responde Ana?",
+   "q": "(En la plaza, Moisés ve a Ana con un señor. No es el papá de Ana.)\nMoisés: Ha'épa nde ru?\n¿Qué responde Ana?",
    "options": [
     "Héẽ, ndaha'éi che ru.",
     "Nahániri, ha'e che ru.",
     "Nahániri, ndaha'éi che ru."
    ],
    "answer": 3,
-   "explain": "Lucas pregunta con -pa si el señor es el papá de Ana: Ha'épa nde ru?, «¿es tu papá?». No lo es, así que Ana responde Nahániri, «no», y lo dice entero con ndaha'éi, «no es»: Nahániri, ndaha'éi che ru, «no, no es mi papá». Héẽ, ndaha'éi che ru se contradice: dice «sí» y después «no es mi papá». Nahániri, ha'e che ru también: dice «no» y después «es mi papá»."
+   "explain": "Moisés pregunta con -pa si el señor es el papá de Ana: Ha'épa nde ru?, «¿es tu papá?». No lo es, así que Ana responde Nahániri, «no», y lo dice entero con ndaha'éi, «no es»: Nahániri, ndaha'éi che ru, «no, no es mi papá». Héẽ, ndaha'éi che ru se contradice: dice «sí» y después «no es mi papá». Nahániri, ha'e che ru también: dice «no» y después «es mi papá»."
   }
  ]
 }

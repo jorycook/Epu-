@@ -89,13 +89,13 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Ana les pregunta a Luis y a Rosa ^adónde van^.)\nAna: Moõpa (   )?",
+        "q": "(Ana les pregunta a Vicente y a Rosa ^adónde van^.)\nAna: Moõpa (   )?",
         "options": ["jaha", "roho", "peho"],
         "answer": 3,
         "why": [
-          "Jaha es «vamos», con ja-: incluiría a Ana, y ella pregunta por Luis y Rosa.",
+          "Jaha es «vamos», con ja-: incluiría a Ana, y ella pregunta por Vicente y Rosa.",
           "Roho es «vamos, sin vos»: Ana hablaría de ella y de otros. Pero pregunta por los dos que la escuchan.",
-          "Ana les pregunta a Luis y a Rosa, los que escuchan: «ustedes», peẽ, lleva pe-. Moõpa peho?: ¿adónde van?"
+          "Ana les pregunta a Vicente y a Rosa, los que escuchan: «ustedes», peẽ, lleva pe-. Moõpa peho?: ¿adónde van?"
         ]
       }
     },
@@ -105,12 +105,12 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Ana le habla ^a Luis^.)\nAna: Ñande (   ) ko ka'aru.",
+        "q": "(Ana le habla ^a Vicente^.)\nAna: Ñande (   ) ko ka'aru.",
         "options": ["jakaru", "rokaru", "pekaru", "okaru"],
         "answer": 1,
         "why": [
-          "Ana le habla a Luis y lo incluye: ñande, «nosotros con vos», lleva ja-. Ñande jakaru: comemos, Ana y Luis.",
-          "Ro- es el prefijo de ore, «nosotros sin vos». Con ñande no va: Luis está incluido.",
+          "Ana le habla a Vicente y lo incluye: ñande, «nosotros con vos», lleva ja-. Ñande jakaru: comemos, Ana y Vicente.",
+          "Ro- es el prefijo de ore, «nosotros sin vos». Con ñande no va: Vicente está incluido.",
           "Pe- es el prefijo de peẽ, «ustedes». Ana se incluye, por eso dice ñande.",
           "O- es «él, ella» o «ellos, ellas». Ñande pide ja-."
         ]
@@ -120,14 +120,14 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Luis y Ana trabajan esta mañana. Luis se lo dice ^a Ana^.)\nLuis: Ñande (   ) ko pyhareve.",
+        "q": "(Vicente y Ana trabajan esta mañana. Vicente se lo dice ^a Ana^.)\nVicente: Ñande (   ) ko pyhareve.",
         "options": ["jamba'apo", "ñamba'apo", "romba'apo", "omba'apo"],
         "answer": 2,
         "why": [
           "Mba'apo empieza con mb, una letra nasal: ja- se vuelve ña-. Jamba'apo no existe.",
           "Ñande pide ja-, y como mba'apo es nasal (mb), ja- se vuelve ña-: ñamba'apo, «trabajamos, vos y yo».",
-          "Ro- es el prefijo de ore, «nosotros sin vos». Luis incluye a Ana, que lo escucha: ñande.",
-          "O- es «él, ella» o «ellos». Luis habla de él y de Ana: ñande."
+          "Ro- es el prefijo de ore, «nosotros sin vos». Vicente incluye a Ana, que lo escucha: ñande.",
+          "O- es «él, ella» o «ellos». Vicente habla de él y de Ana: ñande."
         ]
       },
       {
@@ -135,13 +135,13 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Ana les habla a Luis y a Rosa.)\nAna: ^Peẽ^ (   ) ko pyhare.",
+        "q": "(Ana les habla a Vicente y a Rosa.)\nAna: ^Peẽ^ (   ) ko pyhare.",
         "options": ["rejeroky", "pejeroky", "jajeroky", "ojeroky"],
         "answer": 2,
         "why": [
           "Re- es «vos», una sola persona. Ana les habla a dos: peẽ, con pe-.",
           "Peẽ, «ustedes», lleva pe-: pejeroky, «ustedes bailan».",
-          "Ja- es el «nosotros» de ñande e incluiría a Ana. Ella habla de Luis y de Rosa, los que escuchan: peẽ.",
+          "Ja- es el «nosotros» de ñande e incluiría a Ana. Ella habla de Vicente y de Rosa, los que escuchan: peẽ.",
           "O- es «él, ella» o «ellos»: así Ana hablaría de otras personas, no de los dos que la escuchan."
         ]
       },
@@ -150,13 +150,13 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "Luis habla de ^sus abuelos^: «Ha'ekuéra (   ) heta.»",
+        "q": "Vicente habla de ^sus abuelos^: «Ha'ekuéra (   ) heta.»",
         "options": ["amba'apo", "remba'apo", "romba'apo", "omba'apo"],
         "answer": 4,
         "why": [
-          "A- es «yo». Luis habla de sus abuelos, no de él.",
-          "Re- es «vos», el que escucha. Luis habla de otras personas.",
-          "Ro- es «nosotros sin vos» y sumaría a Luis. Él habla solo de sus abuelos.",
+          "A- es «yo». Vicente habla de sus abuelos, no de él.",
+          "Re- es «vos», el que escucha. Vicente habla de otras personas.",
+          "Ro- es «nosotros sin vos» y sumaría a Vicente. Él habla solo de sus abuelos.",
           "Ha'ekuéra, «ellos», lleva o-, igual que ha'e: omba'apo heta, «trabajan mucho»."
         ]
       },
@@ -166,13 +166,13 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "(Ana les habla a Luis y a Rosa.)\nAna: Peẽ ",
+        "before": "(Ana les habla a Vicente y a Rosa.)\nAna: Peẽ ",
         "after": " ko ka'aru.",
         "tiles": ["pe", "karu"],
         "bank": [1, 0],
         "hint": "Pe- es el prefijo de peẽ, «ustedes»: va primero, pegado a la raíz.",
-        "full": "(Ana les habla a Luis y a Rosa.)\nAna: Peẽ {pe}karu ko ka'aru.",
-        "es": "(Ana les habla a Luis y a Rosa.)\nAna: Ustedes comen esta tarde.",
+        "full": "(Ana les habla a Vicente y a Rosa.)\nAna: Peẽ {pe}karu ko ka'aru.",
+        "es": "(Ana les habla a Vicente y a Rosa.)\nAna: Ustedes comen esta tarde.",
         "explain": "pe- («ustedes») + karu («comer») = pekaru: el prefijo va primero, pegado a la raíz. Peẽ pekaru ko ka'aru: ustedes comen esta tarde. El acento queda en la u final, así que no se escribe tilde."
       },
       {
@@ -181,13 +181,13 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "(Ana invita a Luis.)\nAna: ",
+        "before": "(Ana invita a Vicente.)\nAna: ",
         "after": " guaraníme!",
         "tiles": ["ña", "ñe'ẽ"],
         "bank": [1, 0],
         "hint": "ñe'ẽ es nasal: ¿qué prefijo lleva el «nosotros con vos»? Va primero, pegado a la raíz.",
-        "full": "(Ana invita a Luis.)\nAna: {Ña}ñe'ẽ guaraníme!",
-        "es": "(Ana invita a Luis.)\nAna: ¡Hablemos en guaraní!",
+        "full": "(Ana invita a Vicente.)\nAna: {Ña}ñe'ẽ guaraníme!",
+        "es": "(Ana invita a Vicente.)\nAna: ¡Hablemos en guaraní!",
         "explain": "ña- («nosotros, con vos») + ñe'ẽ («hablar») = ñañe'ẽ: como ñe'ẽ es nasal, no va ja-. Ñañe'ẽ es «hablamos» y también, como invitación, «¡hablemos!», igual que Jaha! o Jakaru!. El acento está en la ẽ, y la tilde nasal ya lo marca: no se escribe otro acento."
       }
     ],
@@ -207,10 +207,10 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Ana y Luis van esta tarde a la casa de la abuela Ramona. Ana la llama y le avisa.)\nAna: (   ) ko ka'aru, che jarýi.",
+        "q": "(Ana y Vicente van esta tarde a la casa de la abuela Ramona. Ana la llama y le avisa.)\nAna: (   ) ko ka'aru, che jarýi.",
         "options": ["Aju", "Roju", "Peju", "Ou"],
         "answer": 2,
-        "explain": "Ana habla de ella y de Luis, los que van, y la abuela, que la escucha, no está en el grupo: ore, con ro-. Roju ko ka'aru: venimos esta tarde. Aju sería «vengo», Ana sola, y Luis también va; peju, «ustedes vienen», como si la abuela viniera; ou, «viene», otra persona sola, sin Ana."
+        "explain": "Ana habla de ella y de Vicente, los que van, y la abuela, que la escucha, no está en el grupo: ore, con ro-. Roju ko ka'aru: venimos esta tarde. Aju sería «vengo», Ana sola, y Vicente también va; peju, «ustedes vienen», como si la abuela viniera; ou, «viene», otra persona sola, sin Ana."
       },
       {
         "id": "a1u02d2.e3",
@@ -218,12 +218,12 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "(Luis le habla a Rosa de él y de Ana.)\nLuis: Ore ",
+        "before": "(Vicente le habla a Rosa de él y de Ana.)\nVicente: Ore ",
         "after": " ko ka'aru.",
         "tiles": ["ro", "mba'apo"],
         "bank": [1, 0],
-        "full": "(Luis le habla a Rosa de él y de Ana.)\nLuis: Ore romba'apo ko ka'aru.",
-        "es": "Luis: Nosotros (sin vos) trabajamos esta tarde.",
+        "full": "(Vicente le habla a Rosa de él y de Ana.)\nVicente: Ore romba'apo ko ka'aru.",
+        "es": "Vicente: Nosotros (sin vos) trabajamos esta tarde.",
         "explain": "Ro- va primero: es el prefijo de ore, «nosotros sin vos». Mba'apo es nasal por el mb, pero ro- no cambia: romba'apo, «trabajamos». De los prefijos de persona, solo ja- se vuelve ña-."
       }
     ]

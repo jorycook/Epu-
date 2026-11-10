@@ -121,7 +121,8 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="font-size: 14px; font-weight: 800">{{ m.title }}</div>
 <div style="font-size: 11px; font-weight: 500; color: #5A6382">{{ m.sub }}</div>
 </div>
-<div style="height: 28px; padding: 0 10px; box-sizing: border-box; border-radius: 14px; border: 2px dashed #C9D0E3; background: #F4F5F9; color: #5A6382; font-size: 11px; font-weight: 800; display: flex; align-items: center; flex-shrink: 0; white-space: nowrap">{{ m.chip }}</div>
+<sc-if value="{{ m.shut }}" hint-placeholder-val="{{ true }}"><div style="height: 28px; padding: 0 10px; box-sizing: border-box; border-radius: 14px; border: 2px dashed #C9D0E3; background: #F4F5F9; color: #5A6382; font-size: 11px; font-weight: 800; display: flex; align-items: center; flex-shrink: 0; white-space: nowrap">{{ m.chip }}</div></sc-if>
+<sc-if value="{{ m.open }}" hint-placeholder-val="{{ false }}"><a href="Exam.dc.html" onClick="{{ m.start }}" aria-label="{{ m.aria }}" style="height: 44px; box-sizing: border-box; padding: 0 14px; border-radius: 12px; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; font-size: 14px; font-weight: 800; display: flex; align-items: center; flex-shrink: 0; white-space: nowrap; background: {{ m.bg }}; color: {{ m.ink }}">{{ m.cta }}</a></sc-if>
 </div>
 </sc-for>
 </div>
@@ -130,7 +131,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </div>
 <nav aria-label="Principal" style="flex-shrink: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 6px 8px 30px; background: #FFFFFF; border-top: 2px solid #DDE1EC">
 <a href="Main.dc.html" onClick="{{ toMain }}" style="height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #5A6382; font-size: 11px; font-weight: 700"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="19" r="2.5"/><path d="M8.5 19h9a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15.5"/><circle cx="18" cy="5" r="2.5"/></svg>Camino</a>
-<a href="Notebook.dc.html" onClick="{{ toNotebook }}" style="height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #5A6382; font-size: 11px; font-weight: 700"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H6z"/><path d="M6 3v18M3 7h3M3 12h3M3 17h3M10 8h5"/></svg>Cuaderno</a>
+<a href="Notebook.dc.html" onClick="{{ toNotebook }}" aria-label="{{ nb.aria }}" style="height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #5A6382; font-size: 11px; font-weight: 700"><span style="position: relative; display: flex"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H6z"/><path d="M6 3v18M3 7h3M3 12h3M3 17h3M10 8h5"/></svg><sc-if value="{{ nb.has }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="position: absolute; top: -5px; left: 14px; min-width: 16px; height: 16px; box-sizing: border-box; padding: 0 4px; border-radius: 8px; background: #B02A63; box-shadow: 0 0 0 2px #FFFFFF; color: #FFFFFF; font-size: 10px; font-weight: 800; line-height: 16px; text-align: center">{{ nb.n }}</span></sc-if></span>Cuaderno</a>
 <a href="ExamTab.dc.html" onClick="{{ toExam }}" aria-current="page" style="height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #2F4FD0; font-size: 11px; font-weight: 800"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>Examen</a>
 <a href="Progress.dc.html" onClick="{{ toProgress }}" style="height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; color: #5A6382; font-size: 11px; font-weight: 700"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>Progreso</a>
 </nav>
@@ -139,8 +140,10 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"demo":{"editor":"enum","options":["fresh","taken","partial"],"default":"fresh"},"go":{"editor":null},"app":{"editor":null},"save":{"editor":null},"miss":{"editor":null},"reviewed":{"editor":null},"level":{"editor":null},"$preview":{"width":390,"height":844}}'>
 /* The Examen tab: the level exam of the current level (five parts, about 80 minutes at A1, one or several sittings),
-   its last result, and the two mini exams. The exam's questions are content (gn-extra.js, window.__gnExtra['exam-a1']);
-   the mini exams have no content yet, so they say "En preparación". */
+   its last result, and the two mini exams. The exam's questions are content (gn-extra.js, window.__gnExtra['exam-a1']).
+   A mini exam is made of the week tests of its half of the level (gnCourse.minis: 20 of their questions, 20 minutes):
+   it says "En preparación" until those tests are written, waits behind the last of them, then opens on the exam-style
+   runner (Exam, set 'mini1' or 'mini2') and shows its last result here. */
 const KEYS = ['P1', 'P2', 'P3', 'P4', 'P5'];
 const SHORT = { P1: 'Lectura', P2: 'Escucha', P3: 'Mediación', P4: 'Escritura', P5: 'Oral' };
 /* minutes per part from the A1 specification (notes G6 §4.3), until the exam file gives its own */
@@ -169,7 +172,7 @@ function sample(demo) {
 const C = window.gnCourse;
 const T = C.today(C.now());
 const full = { g: 3, k: 1, r: 1 };
-const S = { level: 'A1', started: true, plan: { start: C.addDays(T, -3), target: C.addDays(T, 60), pace: 'fit', minutes: 30 }, done: { a1u01d1: full, a1u01d2: full, a1u01d3: full, a1u01d4: { g: 1 } }, tests: {}, exams: {}, mistakes: [], cur: 'a1u01d4', placement: { comp: 'A2', prod: 'A1', start: 'A1' }, typed: [] };
+const S = { level: 'A1', started: true, plan: { start: C.addDays(T, -3), target: C.addDays(T, 60), pace: 'fit', minutes: 30 }, done: { a1u01d1: full, a1u01d2: full, a1u01d3: full, a1u01d4: { g: 1 } }, tests: {}, exams: {}, mistakes: [{ src: 'a1u01d3.d1', wrong: '', at: C.now() - 86400000, step: 0, due: T }], cur: 'a1u01d4', placement: { comp: 'A2', prod: 'A1', start: 'A1' }, typed: [], seen: [C.addDays(T, -3), C.addDays(T, -2), C.addDays(T, -1)] };
 /* a result or a run put aside belongs to the exam week (as in LevelExam's moments): every A1 session done, the target in 4 days,
    so the Apto stamp shows the whole ñandutí, its eight petals and the rim the exam wove */
 if (demo === 'taken' || demo === 'partial') {
@@ -211,7 +214,37 @@ const doneN = partial && Array.isArray(ex.done) ? ex.done.length : 0;
 const nextK = partial ? KEYS.filter((k) => (ex.done || []).indexOf(k) < 0)[0] || 'P1' : 'P1';
 const prev = partial ? ex.prev : null;
 const mid = Math.max(1, Math.ceil(units / 2));
+const rv = app.review || { n: 0 };
+/* the mini exams: written or not, behind a week test still to take, open, or taken (its last result) */
+const tests = app.tests || {};
+const minis = (C.minis ? C.minis(lv) : []).map((m) => {
+const res = tests[m.id] || null;
+const waits = m.ready && !tests[C.withLevel(lv, () => C.sid(m.after, 't'))];
+const open = m.ready && !waits;
+const span = m.units.length > 1 ? 'las semanas ' + m.units[0] + ' a ' + m.after : 'la semana ' + m.after;
+const start = (e) => {
+if (this.props.save) this.props.save({ set: 'mini' + m.n, tp: 0 });
+nav('Exam')(e);
+};
 return {
+title: 'Mini examen ' + m.n,
+sub: res && open ? 'Último resultado: ' + res.score + ' de ' + res.of + (res.at ? ' · ' + dayEs(C.today(res.at)) : '')
+: m.ready ? m.items.length + ' preguntas' + (open ? ' de ' + span : '') + ' · ' + Math.round(m.seconds / 60) + ' min'
+: '20 min · mejor después de la unidad ' + (m.after || (m.n === 1 ? mid : units || mid)),
+shut: !open,
+open,
+chip: !m.ready ? 'En preparación' : 'Después de la semana ' + m.after,
+cta: res ? 'Otra vez' : 'Empezar',
+aria: (res ? 'Hacer otra vez el mini examen ' : 'Empezar el mini examen ') + m.n,
+bg: res ? '#FFFFFF' : '#2F4FD0',
+ink: res ? '#1B2440' : '#FFFFFF',
+start: open ? start : (e) => { if (this.props.go) e.preventDefault(); },
+rule: m.n === 1 ? 'none' : '2px solid #EEF0F6',
+};
+});
+return {
+/* the Cuaderno tab says what today's review asks */
+nb: { has: rv.n > 0, n: rv.n > 9 ? '9+' : String(rv.n), aria: rv.n > 0 ? 'Cuaderno, ' + rv.n + ' para repasar hoy' : 'Cuaderno' },
 level: lv,
 /* the same words as Main's chip: faltan N días · falta 1 día · hoy es la fecha · fecha pasada */
 hasDays: typeof left === 'number',
@@ -242,12 +275,7 @@ verdict: verdictOf(ex),
 groups: 'Comprensión ' + pctOf(ex.groupC) + ' · Producción ' + pctOf(ex.groupP),
 } : { apto: false, comp: false, notYet: false, stampAria: '', when: '', verdict: '', groups: '' },
 ro: r,
-minis: [1, 2].map((n) => ({
-title: 'Mini examen ' + n,
-sub: '20 min · mejor después de la unidad ' + (n === 1 ? mid : units || mid),
-chip: 'En preparación',
-rule: n === 1 ? 'none' : '2px solid #EEF0F6',
-})),
+minis,
 /* Ver resultado reopens the last result; Otra vez goes to the briefing, and the last result stays on the card until a new one is handed in */
 toRun: (e) => {
 if (this.props.save && ex && ex.again && !ex.partial) this.props.save({ exam: Object.assign({}, ex, { again: false }) });

@@ -306,7 +306,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí el orden",
-      "q": "Luis habla de ^la casa de su abuela^.\nLuis: (   ) iporã.",
+      "q": "Vicente habla de ^la casa de su abuela^.\nVicente: (   ) iporã.",
       "options": [
        "Róga che jarýi",
        "Che róga jarýi",
@@ -317,7 +317,7 @@
       "why": [
        "Róga che jarýi calca el orden del castellano, con la casa primero. En guaraní el dueño va primero, y róga sola, sin dueño delante, no se dice.",
        "Che róga jarýi es «mi casa» y después «abuela». Jarýi tiene que ir antes de róga, porque es la dueña.",
-       "Jarýi che róga es «abuela» y después «mi casa»: así la casa es de Luis, no de la abuela.",
+       "Jarýi che róga es «abuela» y después «mi casa»: así la casa es de Vicente, no de la abuela.",
        "Primero el dueño, che jarýi, y después la cosa, róga: «la casa de mi abuela», sin «de»."
       ]
      },
@@ -394,7 +394,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Qué significa",
-      "q": "Luis: _Che sy ha che ru_ oñe'ẽ guaraníme.",
+      "q": "Vicente: _Che sy ha che ru_ oñe'ẽ guaraníme.",
       "options": [
        "Tu mamá y tu papá hablan guaraní.",
        "Mi mamá y tu papá hablan guaraní.",
@@ -617,7 +617,7 @@
      "kind": "choice",
      "area": "vocab",
      "label": "Cuál está bien escrita",
-     "q": "Luis anota quién es quién en la foto. Solo una palabra está _bien escrita_. ¿Cuál?",
+     "q": "Vicente anota quién es quién en la foto. Solo una palabra está _bien escrita_. ¿Cuál?",
      "options": [
       "jaryi",
       "rajý",
@@ -640,31 +640,31 @@
      "label": "Qué escuchaste",
      "q": "¿Cómo se llama el abuelo de Ana?",
      "options": [
-      "Carlos.",
-      "Pedro.",
-      "Mateo."
+      "Santiago.",
+      "Casimiro.",
+      "Genaro."
      ],
      "short": [
-      "Carlos",
-      "Pedro",
-      "Mateo"
+      "Santiago",
+      "Casimiro",
+      "Genaro"
      ],
      "printed": true,
      "answer": 2,
      "why": [
-      "Carlos es el papá de Ana: Ha'e che ru, héra Carlos, «él es mi papá, se llama Carlos».",
-      "Cuando Juan pregunta Mávapa ha'e?, Ana responde Che ramói, héra Pedro: «mi abuelo, se llama Pedro».",
-      "Mateo es el hijo de Ana: Juan pregunta Mba'éichapa héra ne memby?, y ella responde Héra Mateo, «se llama Mateo»."
+      "Santiago es el papá de Ana: Ha'e che ru, héra Santiago, «él es mi papá, se llama Santiago».",
+      "Cuando Juan pregunta Mávapa ha'e?, Ana responde Che ramói, héra Casimiro: «mi abuelo, se llama Casimiro».",
+      "Genaro es el hijo de Ana: Juan pregunta Mba'éichapa héra ne memby?, y ella responde Héra Genaro, «se llama Genaro»."
      ],
      "script": [
       "Narrador: Ana le muestra a Juan la foto de su familia. ¿Cómo se llama el abuelo de Ana?",
       "Mujer: Ha'e che sy.",
-      "Mujer: Ha'e che ru, héra Carlos.",
+      "Mujer: Ha'e che ru, héra Santiago.",
       "Narrador: Juan señala a un señor de la foto.",
       "Hombre: Mávapa ha'e?",
-      "Mujer: Che ramói, héra Pedro.",
+      "Mujer: Che ramói, héra Casimiro.",
       "Hombre: Mba'éichapa héra ne memby?",
-      "Mujer: Héra Mateo.",
+      "Mujer: Héra Genaro.",
       "Narrador: ¿Cómo se llama el abuelo de Ana?"
      ]
     },
@@ -681,8 +681,8 @@
      ],
      [
       "F",
-      "Ha'e che ru, héra Carlos.",
-      "Él es mi papá, se llama Carlos."
+      "Ha'e che ru, héra Santiago.",
+      "Él es mi papá, se llama Santiago."
      ],
      [
       "N",
@@ -696,8 +696,8 @@
      ],
      [
       "F",
-      "Che ramói, héra Pedro.",
-      "Mi abuelo, se llama Pedro."
+      "Che ramói, héra Casimiro.",
+      "Mi abuelo, se llama Casimiro."
      ],
      [
       "M",
@@ -706,8 +706,8 @@
      ],
      [
       "F",
-      "Héra Mateo.",
-      "Se llama Mateo."
+      "Héra Genaro.",
+      "Se llama Genaro."
      ],
      [
       "N",
@@ -1056,7 +1056,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "Luis habla de ^sus amigos^: «Che (   ) oĩ [ko'ápe|aquí].»",
+      "q": "Vicente habla de ^sus amigos^: «Che (   ) oĩ [ko'ápe|aquí].»",
       "options": [
        "angirũkuéra",
        "angirũnguéra",
@@ -1702,7 +1702,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Luis señala ^una casa lejos, al final de la calle^.)\nLuis: (   ) óga ituicha.",
+      "q": "(Vicente señala ^una casa lejos, al final de la calle^.)\nVicente: (   ) óga ituicha.",
       "options": [
        "Ko",
        "Pe",
@@ -1711,7 +1711,7 @@
       ],
       "answer": 3,
       "why": [
-       "Ko es «esta», para algo cerca de Luis. La casa está al final de la calle.",
+       "Ko es «esta», para algo cerca de Vicente. La casa está al final de la calle.",
        "Pe es «esa», para algo cerca del que escucha. La casa está lejos de los dos.",
        "La casa está lejos de los dos, pero a la vista: amo óga, «aquella casa».",
        "Ko'ã es «estas», para varias cosas cerca de quien habla. Es una sola casa y está lejos."
@@ -2217,8 +2217,8 @@
         ]
        },
        {
-        "gn": "Luis: {Mba'épa} rejapo ko pyhare?\nAna: Aha che jarýi rógape.",
-        "es": "Luis: ¿Qué hacés esta noche?\nAna: Voy a la casa de mi abuela.",
+        "gn": "Vicente: {Mba'épa} rejapo ko pyhare?\nAna: Aha che jarýi rógape.",
+        "es": "Vicente: ¿Qué hacés esta noche?\nAna: Voy a la casa de mi abuela.",
         "parts": [
          [
           "mba'épa",
@@ -2346,7 +2346,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "Ana: (   ) reipota?\nLuis: ^Mandi'o.^",
+      "q": "Ana: (   ) reipota?\nVicente: ^Mandi'o.^",
       "options": [
        "Mávapa",
        "Moõpa",
@@ -2357,8 +2357,8 @@
       "why": [
        "Mávapa pregunta «¿quién?», por una persona, y mandi'o es una cosa.",
        "Moõpa pregunta «¿dónde?». Mandi'o no es un lugar.",
-       "Mba'éichapa pregunta «¿cómo?», como en Mba'éichapa reiko? Luis no dice cómo: dice qué quiere.",
-       "Luis responde con una cosa, mandi'o: Ana preguntó qué quiere. Mba'épa reipota?, «¿qué querés?»."
+       "Mba'éichapa pregunta «¿cómo?», como en Mba'éichapa reiko? Vicente no dice cómo: dice qué quiere.",
+       "Vicente responde con una cosa, mandi'o: Ana preguntó qué quiere. Mba'épa reipota?, «¿qué querés?»."
       ]
      },
      {
@@ -2366,7 +2366,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "Luis: (   ) [he'ise|significa] «korapy»?\nAna: ^«Patio».^",
+      "q": "Vicente: (   ) [he'ise|significa] «korapy»?\nAna: ^«Patio».^",
       "options": [
        "Mboýpa",
        "Mba'éichapa",
@@ -2376,8 +2376,8 @@
       "answer": 3,
       "why": [
        "Mboýpa pregunta «¿cuánto?». «Patio» no es una cantidad.",
-       "Mba'éichapa pregunta «¿cómo?». He'ise es «significa», y lo que Luis pide es un significado: un «qué».",
-       "Luis pregunta el significado de una palabra: Mba'épa he'ise «korapy»?, «¿qué significa korapy?». Ana se lo dice: «patio».",
+       "Mba'éichapa pregunta «¿cómo?». He'ise es «significa», y lo que Vicente pide es un significado: un «qué».",
+       "Vicente pregunta el significado de una palabra: Mba'épa he'ise «korapy»?, «¿qué significa korapy?». Ana se lo dice: «patio».",
        "Mávapa pregunta «¿quién?», y una palabra no es una persona."
       ]
      },
@@ -2667,7 +2667,7 @@
     "es": "Un chat con foto",
     "ask": "¿Quién es el señor de la foto?",
     "seconds": 75,
-    "passage": "Rosa: Mba'éichapa, Juan?\nJuan: Iporã. ^Mávapa pe mitãkuña?^\nRosa: Che memby, héra Elena.\nJuan: Ha ^pe karai?^\nRosa: ^Ndaha'éi che ru, ha'e che ramói.^\nJuan: Mba'épa he'ise «ramói»?\nRosa: «Abuelo».",
+    "passage": "Rosa: Mba'éichapa, Juan?\nJuan: Iporã. ^Mávapa pe mitãkuña?^\nRosa: Che memby, héra Samanta.\nJuan: Ha ^pe karai?^\nRosa: ^Ndaha'éi che ru, ha'e che ramói.^\nJuan: Mba'épa he'ise «ramói»?\nRosa: «Abuelo».",
     "strategy": "Juan pregunta dos veces por una persona, y la respuesta de Rosa viene justo después de cada pregunta. Al final Juan pregunta qué significa una palabra: esa respuesta también te sirve.",
     "item": {
      "id": "a1u04d4.r1",
@@ -2691,7 +2691,7 @@
      "why": [
       "Che ru aparece en el chat, pero negado: Ndaha'éi che ru, «no es mi papá».",
       "Juan pregunta Ha pe karai?, «¿y ese señor?», y Rosa responde Ndaha'éi che ru, ha'e che ramói: «no es mi papá, es mi abuelo». Después se lo traduce: ramói es «abuelo».",
-      "Che memby es Elena, la mitãkuña de la foto: la hija de Rosa, no el señor.",
+      "Che memby es Samanta, la mitãkuña de la foto: la hija de Rosa, no el señor.",
       "Un amigo sería che angirũ, y esa palabra no aparece en el chat."
      ],
      "explain": "Juan pregunta por el señor con Ha pe karai?, y Rosa contesta Ndaha'éi che ru, ha'e che ramói: «no es mi papá, es mi abuelo». Cuando Juan pregunta Mba'épa he'ise «ramói»?, Rosa lo traduce: «abuelo»."
@@ -2862,8 +2862,8 @@
         ]
        },
        {
-        "gn": "Ana: Mboy arýpa rereko?\nLuis: {Treinta}.",
-        "es": "Ana: ¿Cuántos años tenés?\nLuis: Treinta.",
+        "gn": "Ana: Mboy arýpa rereko?\nVicente: {Treinta}.",
+        "es": "Ana: ¿Cuántos años tenés?\nVicente: Treinta.",
         "parts": [
          [
           "mboy",
@@ -2965,7 +2965,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "Luis cuenta las sillas del patio: ^tres^.\nLuis: Oĩ (   ).",
+      "q": "Vicente cuenta las sillas del patio: ^tres^.\nVicente: Oĩ (   ).",
       "options": [
        "mbohapy apyka",
        "mbohapy apykakuéra",
@@ -3067,7 +3067,7 @@
       "label": "Armá la palabra",
       "join": "word",
       "before": "Ana: Mboy ",
-      "after": " rereko, Luis?",
+      "after": " rereko, Vicente?",
       "tiles": [
        "ary",
        "pa"
@@ -3077,8 +3077,8 @@
        0
       ],
       "hint": "-pa va pegado a ary y no se lleva el acento: fijate qué pasa con la tilde.",
-      "full": "Ana: Mboy arý{pa} rereko, Luis?",
-      "es": "Ana: ¿Cuántos años tenés, Luis?",
+      "full": "Ana: Mboy arý{pa} rereko, Vicente?",
+      "es": "Ana: ¿Cuántos años tenés, Vicente?",
       "explain": "ary («año») + -pa (pregunta) = arýpa. -pa no se lleva el acento: queda en la y de ary, que ya no es la última vocal, y por eso se escribe la tilde: ý. Mboy arýpa rereko?: ¿cuántos años tenés?"
      },
      {
@@ -3398,7 +3398,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "Luis le pregunta a Juan cómo se llama ^la esposa de él^.\nLuis: Mba'éichapa héra (   ) rembireko, Juan?",
+      "q": "Vicente le pregunta a Juan cómo se llama ^la esposa de él^.\nVicente: Mba'éichapa héra (   ) rembireko, Juan?",
       "options": [
        "nde",
        "che",
@@ -3408,9 +3408,9 @@
       "answer": 3,
       "why": [
        "Nde es «tu», pero rembireko es una palabra nasal: tiene mb (re-mbi-re-ko). Delante de una palabra nasal, nde pierde la d: ne rembireko.",
-       "Che es «mi»: Luis preguntaría por su propia esposa, y pregunta por la de Juan.",
-       "Luis le pregunta a Juan por la esposa de él, «tu esposa». Rembireko tiene mb, una letra nasal, así que nde se vuelve ne: ne rembireko.",
-       "Ñande es «nuestro» con vos: sumaría a Luis. Y delante de una palabra nasal sería ñane."
+       "Che es «mi»: Vicente preguntaría por su propia esposa, y pregunta por la de Juan.",
+       "Vicente le pregunta a Juan por la esposa de él, «tu esposa». Rembireko tiene mb, una letra nasal, así que nde se vuelve ne: ne rembireko.",
+       "Ñande es «nuestro» con vos: sumaría a Vicente. Y delante de una palabra nasal sería ñane."
       ]
      },
      {
@@ -3458,7 +3458,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "Luis cuenta ^a los chicos^ del patio: son ^cuatro^.\nLuis: Oĩ irundy (   ).",
+      "q": "Vicente cuenta ^a los chicos^ del patio: son ^cuatro^.\nVicente: Oĩ irundy (   ).",
       "options": [
        "mitãnguéra",
        "mitã",
@@ -3537,7 +3537,7 @@
       "kind": "choice",
       "area": "grammar",
       "label": "Elegí la forma",
-      "q": "(Luis tiene un chipá en la mano. Ana, desde la puerta, se lo señala.)\nAna: (   ) chipa iporã.",
+      "q": "(Vicente tiene un chipá en la mano. Ana, desde la puerta, se lo señala.)\nAna: (   ) chipa iporã.",
       "options": [
        "Umi",
        "Ko",
@@ -3545,7 +3545,7 @@
        "Ko'ã"
       ],
       "answer": 3,
-      "explain": "El chipá es uno solo y lo tiene Luis, el que escucha: pe chipa, «ese chipá». Ko sería para algo que tiene Ana, la que habla; ko'ã y umi son para varios."
+      "explain": "El chipá es uno solo y lo tiene Vicente, el que escucha: pe chipa, «ese chipá». Ko sería para algo que tiene Ana, la que habla; ko'ã y umi son para varios."
      },
      {
       "id": "a1u04d6.e3",
@@ -3736,7 +3736,7 @@
     "es": "Un mensaje con foto",
     "ask": "¿Cuántos hijos de Rosa hay en la foto?",
     "seconds": 75,
-    "passage": "Maitei, Juan.\n^Ko'ã mitã che membykuéra: Elena ha Tomás.^\nPe karai che ramói, héra José. Oguereko 80 ary.\n^Umi mokõi mitãkuña che angirũ memby.^\nJajotopáta ko ka'aru.\nRosa",
+    "passage": "Maitei, Juan.\n^Ko'ã mitã che membykuéra: Samanta ha Tomás.^\nPe karai che ramói, héra José. Oguereko 80 ary.\n^Umi mokõi mitãkuña che angirũ memby.^\nJajotopáta ko ka'aru.\nRosa",
     "strategy": "Buscá de quién es cada grupo: después de ko'ã mitã y de umi mokõi mitãkuña viene el dueño, che membykuéra o che angirũ memby. Ha, «y», une dos nombres.",
     "item": {
      "id": "a1u04d6.r1",
@@ -3759,11 +3759,11 @@
      "answer": 2,
      "why": [
       "Un solo hijo sería che memby. Rosa escribe che membykuéra, con -kuéra: más de uno, y da dos nombres.",
-      "Ko'ã mitã che membykuéra: Elena ha Tomás, «estos chicos son mis hijos: Elena y Tomás». En la foto hay dos hijos de Rosa.",
+      "Ko'ã mitã che membykuéra: Samanta ha Tomás, «estos chicos son mis hijos: Samanta y Tomás». En la foto hay dos hijos de Rosa.",
       "En la foto hay cuatro chicos, pero las dos nenas, umi mokõi mitãkuña, son che angirũ memby: las hijas de la amiga de Rosa, no de Rosa.",
-      "Sí lo dice: después de che membykuéra, «mis hijos», vienen los nombres, Elena ha Tomás."
+      "Sí lo dice: después de che membykuéra, «mis hijos», vienen los nombres, Samanta ha Tomás."
      ],
-     "explain": "Rosa escribe Ko'ã mitã che membykuéra: Elena ha Tomás, «estos chicos son mis hijos: Elena y Tomás»: en la foto hay dos hijos de Rosa. Las otras dos, umi mokõi mitãkuña, son che angirũ memby: las hijas de su amiga."
+     "explain": "Rosa escribe Ko'ã mitã che membykuéra: Samanta ha Tomás, «estos chicos son mis hijos: Samanta y Tomás»: en la foto hay dos hijos de Rosa. Las otras dos, umi mokõi mitãkuña, son che angirũ memby: las hijas de su amiga."
     }
    }
   }
@@ -3834,7 +3834,7 @@
    "kind": "choice",
    "area": "vocab",
    "label": "Cómo se escribe",
-   "q": "Luis pregunta qué significa una palabra: (   ) he'ise «mymba»? ¿Cómo se escribe «qué»?",
+   "q": "Vicente pregunta qué significa una palabra: (   ) he'ise «mymba»? ¿Cómo se escribe «qué»?",
    "options": [
     "Mba'ẽpa",
     "Mba'épa",
@@ -3849,7 +3849,7 @@
    "kind": "choice",
    "area": "vocab",
    "label": "Qué significa",
-   "q": "(Luis cuenta las sillas del patio.)\nLuis: Oĩ _irundy_ apyka.",
+   "q": "(Vicente cuenta las sillas del patio.)\nVicente: Oĩ _irundy_ apyka.",
    "options": [
     "tres",
     "cinco",
@@ -3909,7 +3909,7 @@
    "kind": "choice",
    "area": "grammar",
    "label": "Elegí la forma",
-   "q": "(Luis toca dos sillas que tiene al lado. Al fondo del patio hay otras.)\nLuis: (   ) apyka iporã.",
+   "q": "(Vicente toca dos sillas que tiene al lado. Al fondo del patio hay otras.)\nVicente: (   ) apyka iporã.",
    "options": [
     "Ko",
     "Umi",
@@ -3917,14 +3917,14 @@
     "Ko'ã"
    ],
    "answer": 4,
-   "explain": "Son dos sillas y Luis las toca: están al lado del que habla. Por eso va ko'ã apyka, «estas sillas». Ko y pe son para una sola cosa. Umi es para varias, pero lejos de quien habla: «esas» o «aquellas», como las del fondo. El sustantivo puede quedar como está: ko'ã ya dice que son varias."
+   "explain": "Son dos sillas y Vicente las toca: están al lado del que habla. Por eso va ko'ã apyka, «estas sillas». Ko y pe son para una sola cosa. Umi es para varias, pero lejos de quien habla: «esas» o «aquellas», como las del fondo. El sustantivo puede quedar como está: ko'ã ya dice que son varias."
   },
   {
    "id": "a1u04t.11",
    "kind": "choice",
    "area": "grammar",
    "label": "Elegí la forma",
-   "q": "Luis: (   ) pe karia'y?\nAna: Che angirũ.",
+   "q": "Vicente: (   ) pe karia'y?\nAna: Che angirũ.",
    "options": [
     "Mávapa",
     "Mba'épa",
@@ -3932,7 +3932,7 @@
     "Mboýpa"
    ],
    "answer": 1,
-   "explain": "Ana responde con una persona, che angirũ, «mi amigo»: Luis preguntó quién es ese muchacho, Mávapa pe karia'y? Mba'épa pregunta por una cosa, moõpa por un lugar y mboýpa por una cantidad."
+   "explain": "Ana responde con una persona, che angirũ, «mi amigo»: Vicente preguntó quién es ese muchacho, Mávapa pe karia'y? Mba'épa pregunta por una cosa, moõpa por un lugar y mboýpa por una cantidad."
   },
   {
    "id": "a1u04t.12",
@@ -3977,7 +3977,7 @@
    "area": "grammar",
    "label": "Armá la palabra",
    "join": "word",
-   "before": "(Luis le pregunta a Ana por el papá de ella.)\nLuis: Mboy ",
+   "before": "(Vicente le pregunta a Ana por el papá de ella.)\nVicente: Mboy ",
    "after": " oguereko nde ru?",
    "tiles": [
     "ary",
@@ -3987,8 +3987,8 @@
     1,
     0
    ],
-   "full": "(Luis le pregunta a Ana por el papá de ella.)\nLuis: Mboy arýpa oguereko nde ru?",
-   "es": "Luis: ¿Cuántos años tiene tu papá?",
+   "full": "(Vicente le pregunta a Ana por el papá de ella.)\nVicente: Mboy arýpa oguereko nde ru?",
+   "es": "Vicente: ¿Cuántos años tiene tu papá?",
    "explain": "ary, pa. Ary («año») + -pa (pregunta) = arýpa. -pa no se lleva el acento: queda en la y de ary, que ya no es la última vocal, y por eso se escribe la tilde, ý. Oguereko es «tiene», y nde ru, «tu papá»: ru es oral, así que nde no cambia."
   },
   {
@@ -3996,22 +3996,22 @@
    "kind": "choice",
    "area": "reading",
    "label": "Buscar el dato",
-   "q": "¿Quiénes son Clara y Mateo?",
-   "passage": "Ana: Mba'éichapa, Luis? Ko'ã mitã che membykuéra, Clara ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko 60 ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
+   "q": "¿Quiénes son Tania y Genaro?",
+   "passage": "Ana: Mba'éichapa, Vicente? Ko'ã mitã che membykuéra, Tania ha Genaro.\nVicente: Iporã. Ha pe karai?\nAna: Che ru, héra Santiago. Oguereko 60 ary.\nVicente: Mboýpa ne memby?\nAna: Mokõi.",
    "options": [
     "Los papás de Ana.",
     "Los hijos de Ana.",
-    "Los hijos de Luis.",
+    "Los hijos de Vicente.",
     "Los abuelos de Ana."
    ],
    "short": [
     "Sus papás",
     "Sus hijos",
-    "Hijos de Luis",
+    "Hijos de Vicente",
     "Sus abuelos"
    ],
    "answer": 2,
-   "explain": "Ana escribe Ko'ã mitã che membykuéra, Clara ha Mateo: «estos chicos son mis hijos, Clara y Mateo». Che es «mi» y membykuéra, «hijos», en plural. Lo dice Ana, no Luis. El papá de Ana es Carlos, y de abuelos no habla."
+   "explain": "Ana escribe Ko'ã mitã che membykuéra, Tania ha Genaro: «estos chicos son mis hijos, Tania y Genaro». Che es «mi» y membykuéra, «hijos», en plural. Lo dice Ana, no Vicente. El papá de Ana es Santiago, y de abuelos no habla."
   },
   {
    "id": "a1u04t.16",
@@ -4019,7 +4019,7 @@
    "area": "reading",
    "label": "Buscar el dato",
    "q": "¿Cuántos años tiene el papá de Ana?",
-   "passage": "Ana: Mba'éichapa, Luis? Ko'ã mitã che membykuéra, Clara ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko 60 ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
+   "passage": "Ana: Mba'éichapa, Vicente? Ko'ã mitã che membykuéra, Tania ha Genaro.\nVicente: Iporã. Ha pe karai?\nAna: Che ru, héra Santiago. Oguereko 60 ary.\nVicente: Mboýpa ne memby?\nAna: Mokõi.",
    "options": [
     "Veinte.",
     "Dos.",
@@ -4033,15 +4033,15 @@
     "Sesenta"
    ],
    "answer": 4,
-   "explain": "Luis pregunta Ha pe karai?, «¿y ese señor?», y Ana responde Che ru, héra Carlos. Oguereko 60 ary: «mi papá, se llama Carlos. Tiene 60 años». Oguereko es «tiene» y ary, «año»; la edad está escrita en cifras: 60, sesenta. Mokõi, «dos», es la cantidad de hijos de Ana, no una edad. Y en el chat no hay ningún seis ni ningún veinte."
+   "explain": "Vicente pregunta Ha pe karai?, «¿y ese señor?», y Ana responde Che ru, héra Santiago. Oguereko 60 ary: «mi papá, se llama Santiago. Tiene 60 años». Oguereko es «tiene» y ary, «año»; la edad está escrita en cifras: 60, sesenta. Mokõi, «dos», es la cantidad de hijos de Ana, no una edad. Y en el chat no hay ningún seis ni ningún veinte."
   },
   {
    "id": "a1u04t.17",
    "kind": "choice",
    "area": "reading",
    "label": "Texto corto",
-   "q": "¿Qué le pregunta Luis a Ana al final?",
-   "passage": "Ana: Mba'éichapa, Luis? Ko'ã mitã che membykuéra, Clara ha Mateo.\nLuis: Iporã. Ha pe karai?\nAna: Che ru, héra Carlos. Oguereko 60 ary.\nLuis: Mboýpa ne memby?\nAna: Mokõi.",
+   "q": "¿Qué le pregunta Vicente a Ana al final?",
+   "passage": "Ana: Mba'éichapa, Vicente? Ko'ã mitã che membykuéra, Tania ha Genaro.\nVicente: Iporã. Ha pe karai?\nAna: Che ru, héra Santiago. Oguereko 60 ary.\nVicente: Mboýpa ne memby?\nAna: Mokõi.",
    "options": [
     "Cuántos hijos tiene.",
     "Cómo se llama su papá.",
@@ -4055,7 +4055,7 @@
     "Cuántos años"
    ],
    "answer": 1,
-   "explain": "Al final Luis pregunta Mboýpa ne memby?, «¿cuántos hijos tenés?», y Ana responde Mokõi, «dos». El nombre del papá y su edad los dice Ana sin que Luis los pregunte, y nadie pregunta dónde vive."
+   "explain": "Al final Vicente pregunta Mboýpa ne memby?, «¿cuántos hijos tenés?», y Ana responde Mokõi, «dos». El nombre del papá y su edad los dice Ana sin que Vicente los pregunte, y nadie pregunta dónde vive."
   },
   {
    "id": "a1u04t.18",
@@ -4090,14 +4090,14 @@
    "kind": "choice",
    "area": "listening",
    "label": "Respuesta rápida",
-   "q": "Luis: Mba'éichapa héra ne memby?\n¿Qué le responde Rosa?",
+   "q": "Vicente: Mba'éichapa héra ne memby?\n¿Qué le responde Rosa?",
    "options": [
     "Che réra Rosa.",
     "Héra Tomás.",
     "Mokõi memby."
    ],
    "answer": 2,
-   "explain": "Luis pregunta el nombre del hijo de Rosa, ne memby, y ella dice el nombre de él: Héra Tomás, «se llama Tomás». Che réra Rosa sería el nombre de ella misma, y Mokõi memby, «dos hijos», responde cuántos son, no cómo se llama."
+   "explain": "Vicente pregunta el nombre del hijo de Rosa, ne memby, y ella dice el nombre de él: Héra Tomás, «se llama Tomás». Che réra Rosa sería el nombre de ella misma, y Mokõi memby, «dos hijos», responde cuántos son, no cómo se llama."
   }
  ]
 }

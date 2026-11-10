@@ -15,9 +15,15 @@
 //      taps, every lesson (the drill's answer sheet with its button in view, the week's words written again, the
 //      reading); its week test; then the learner stays on that week, on the path, on Progreso and on Niveles, across
 //      a reload, and no week that is written is said to be waiting to be written.
+//   I  home and motivation: the review that waits put in front of the day (the tab bars' count, the row on the week
+//      path and on the day, the review's options in another order, its way on to the day); a sitting's size and the
+//      notebook holding a due answer back; the door back to the plan (the date chip, Progreso's «Rearmar mi plan»,
+//      «Guardar el plan» and «Cancelar»); the days with study and the greeting after days away; practice where the
+//      written path ends; the first mini exam, from the tab to its result.
 //   E  every one of the 21 screens reached, with no page error, no console error and nothing blank.
 // usage: node check/flows-test.js [site folder]      (default: ../docs, the built site as it is; about 7 minutes)
 //   ONLY=A,B,C,D,F,G,H runs some parts (E reports on what ran); PORT=8795 picks the port (default: any free one).
+//   (ONLY=I runs part I alone; with it the whole suite takes about two minutes more.)
 // Screenshots (device scale 1) go to check/out/flows/. Exit code 1 when a check fails.
 // Chromium stands in for Safari (WebKit cannot run here): the user agent, the screen and touch are an iPhone's.
 'use strict';
@@ -33,7 +39,7 @@ const ONLY = (process.env.ONLY || '').split(',').map((x) => x.trim()).filter(Boo
 const want = (part) => !ONLY.length || ONLY.includes(part);
 /* saved progress is kept under the folder the app is served from */
 const KEY = 'epua.v1:/';
-const FIELDS = ['started', 'level', 'plans', 'plan', 'cur', 'done', 'tests', 'exams', 'mistakes', 'tp', 'set', 'placement', 'typed', 'profile', 'exposure'];
+const FIELDS = ['started', 'level', 'plans', 'plan', 'cur', 'done', 'tests', 'exams', 'mistakes', 'tp', 'set', 'placement', 'typed', 'profile', 'exposure', 'seen'];
 const SCREENS = ['Goal', 'Placement', 'Main', 'Today', 'Levels', 'Progress', 'Teach', 'Compare', 'Drill', 'Exam', 'Words', 'Reading', 'Listening', 'WeekTest', 'Notebook', 'Review', 'ExamTab', 'LevelExam', 'Leer', 'Escribir', 'Hablar'];
 const IPHONE = 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1';
 const DAY = 864e5;
@@ -194,11 +200,12 @@ const itemsOf = (page, ids) => page.evaluate((ids) => {
     return it && { id: it.id, kind: it.kind, answer: it.answer, options: (it.options || []).map((o) => C.plain(o)), tiles: (it.tiles || []).map((t) => C.plain(t)) };
   });
 }, ids);
-/* a choice by its number and text (the option buttons read "1Iporã"), a build by its tiles in order (or reversed, wrong) */
-async function answerOne(page, it, right) {
+/* a choice by its number and text (the option buttons read "1Iporã"), a build by its tiles in order (or reversed, wrong).
+   anyPlace: by its text alone, whatever number it carries (the notebook's review shows the options in another order) */
+async function answerOne(page, it, right, anyPlace) {
   if (it.kind === 'choice') {
     const k = right ? it.answer : (it.answer % it.options.length) + 1;
-    await tap(page, new RegExp('^\\s*' + k + '\\s*' + esc(it.options[k - 1]) + '\\s*$'), 250);
+    await tap(page, new RegExp('^\\s*' + (anyPlace ? '\\d+' : k) + '\\s*' + esc(it.options[k - 1]) + '\\s*$'), 250);
     return k;
   }
   if (it.kind === 'build') {
@@ -259,7 +266,7 @@ async function partA(browser) {
   await tap(page, exact('salud'), 250);
   await tap(page, exact('casa'), 250);
   await tap(page, exact('WhatsApp'), 250);
-  check((await storageKeys(page)).length === 0, 'step 1: nothing is saved while the goal is being set', await storageKeys(page));
+  check((await storageKeys(page)).join() === KEY + '.browser', 'step 1: nothing is saved while the goal is being set (only the choice to stay in the browser, with its date)', await storageKeys(page));
   await tap(page, 'Siguiente', 500);
   h = await look(page, 'goal step 2', { expect: 'Goal' });
   check(await has(page, '¿Desde dónde empezás?'), 'step 1 leads to step 2', h.head);
@@ -313,7 +320,7 @@ async function partA(browser) {
   check(s && s.v === 1 && s.started === true && s.level === 'A1', 'Empezar saves a started learner at A1', s);
   check(s && s.plan && s.plan.start === today && s.plan.target === in3 && s.plan.pace === 'fit' && s.plan.minutes === 45, 'the plan is saved as chosen: from today, a target in 3 months, 45 minutes', s && s.plan);
   check(s && s.profile && s.profile.why.join() === 'familia,trabajo' && s.profile.work === 'salud' && s.profile.where.join() === 'casa,whatsapp' && s.profile.understand === 3 && s.profile.speak === 1, 'the goal screen\'s answers are saved as the profile', s && s.profile);
-  check(s && Object.keys(s).sort().join() === ['v'].concat(FIELDS).sort().join(), 'only the 15 fields (and v) are saved', s && Object.keys(s));
+  check(s && Object.keys(s).sort().join() === ['v'].concat(FIELDS).sort().join(), 'only the 16 fields (and v) are saved', s && Object.keys(s));
   check(await has(page, 'Semana 1 de 8') && await has(page, "Mba'éichapa") && await has(page, 'faltan ' + left + ' días'), 'Main shows week 1 of 8 and the days left to the target', h.head);
 
   part = 'A3 tabs and levels';
@@ -434,7 +441,8 @@ async function partA7(page) {
   for (let i = 0; i < list.length; i++) {
     const it = list[i];
     right[it.id] = i !== 1;
-    await answerOne(page, it, right[it.id]);
+    /* the review shows a choice's options in another order every day: they are tapped by their text */
+    await answerOne(page, it, right[it.id], true);
     if (it.kind === 'build') await tap(page, 'Comprobar', 400);
     await page.waitForTimeout(300);
     if (i === 1) await shot(page, 'A41-review-wrong');
@@ -537,10 +545,14 @@ async function partA9(ctx, page) {
   check(await has(page, 'Ya escribiste todas las palabras de esta escena'), 'a stamped day opened again: the words typed before are remembered', (await text(page)).slice(0, 500));
   check(JSON.stringify((await saved(page)).done.a1u01d1) === JSON.stringify(s.done.a1u01d1), 'going over a stamped day again never undoes it', (await saved(page)).done.a1u01d1);
 
-  /* a new Safari tab: the install page again, then the app with everything kept */
+  /* a new Safari tab in the same week: «Seguir en el navegador» is remembered, so the app opens at once, everything kept */
   const tab = await newPage(ctx, 'learner A, new tab');
   await go(tab, '');
-  check((await screenOf(tab)) === 'Install', 'a new Safari tab shows the install page again', await screenOf(tab));
+  check((await screenOf(tab)) === 'Main' && (await tab.locator('#gn-stage a[aria-label="Día 1, sellado. Abrilo de nuevo"]').count()) === 1, 'a new Safari tab within a week of «Seguir en el navegador» opens the app at once, on the week path with day 1 stamped', await screenOf(tab));
+  /* eight days later the install page is offered again, and from it the learner is back on the week path */
+  await setDay(tab, 8);
+  await reload(tab);
+  check((await screenOf(tab)) === 'Install', 'a visit more than a week later shows the install page again', await screenOf(tab));
   await tap(tab, 'Seguir en el navegador', 700);
   check((await screenOf(tab)) === 'Main' && (await tab.locator('#gn-stage a[aria-label="Día 1, sellado. Abrilo de nuevo"]').count()) === 1, 'from the install page, a learner with a plan lands on the week path with day 1 stamped', await screenOf(tab));
   await tab.close();
@@ -1058,6 +1070,7 @@ async function partD(browser) {
     mistakes: [{ src: 'a1u01d1.d1', due: '2026-13-45', at: 'x', step: 99, wrong: ['x'] }, { src: 'a1x.1', wrong: 'A la escuela', due: iso(0) }, { src: 'pl.1' }, 5, 'x', { src: {} }, { src: 'a1u01d1.d1', wrong: 'again' }],
     typed: ['ñande', 5, null, 'x'.repeat(200)], placement: { comp: 'A2', prod: 'C9' }, profile: { why: ['a', 'b', 'c'], where: 'casa', understand: '3', speak: 9, work: {} },
     exposure: { week: iso(0), with: 'familia' }, cur: 'a1u01t', tp: 3.7, set: 'test',
+    seen: [iso(-2), '2026-13-45', 5, null, iso(-2), 'ayer', iso(-9), { d: 1 }],
   };
   const many = { v: 1, started: true, level: 'A1', plan, typed: Array.from({ length: 20000 }, (_, i) => 'w' + i), mistakes: Array.from({ length: 3000 }, (_, i) => ({ src: 'a1u01d' + (1 + (i % 6)) + '.d' + (1 + (i % 6)), wrong: 'x', at: Date.now(), step: 0, due: iso(0) })), done: {} };
   const CASES = [
@@ -1069,7 +1082,7 @@ async function partD(browser) {
     ['a string', '"hola"', 'Goal'],
     ['true', 'true', 'Goal'],
     ['an empty object', '{}', 'Goal'],
-    ['every field the wrong type', JSON.stringify({ v: 1, started: 'yes', level: 5, plan: [], plans: 'x', cur: 7, done: [], tests: 'x', exams: 9, mistakes: {}, tp: 'x', set: [], placement: [], typed: 'abc', profile: 'x', exposure: [] }), 'Goal'],
+    ['every field the wrong type', JSON.stringify({ v: 1, started: 'yes', level: 5, plan: [], plans: 'x', cur: 7, done: [], tests: 'x', exams: 9, mistakes: {}, tp: 'x', set: [], placement: [], typed: 'abc', profile: 'x', exposure: [], seen: 'ayer' }), 'Goal'],
     ['a plan, the rest odd deep down', JSON.stringify(deep), 'Main'],
     ['__proto__ keys', '{"__proto__":{"started":true,"plan":{"start":"2026-01-01"}},"done":{"__proto__":{"g":3}},"constructor":{"prototype":{"x":1}},"mistakes":[{"src":"__proto__"}]}', 'Goal'],
     ['a very large save', JSON.stringify(many), 'Main'],
@@ -1351,6 +1364,287 @@ async function partH(browser) {
   await ctx.close();
 }
 
+/* ---------- I: home and motivation ----------
+   The review that waits is put in front of the day (the tab bars' count, the week path's and the day's row, the review's
+   way on to the day); a sitting has a size and the notebook holds a due answer back; the door back to the plan (the date
+   chip, Progreso's «Rearmar mi plan», the goal screen's «Guardar el plan»); the days with study and the return after
+   days away; practice where the written path ends, and the first mini exam. Learners are seeded as saved progress and
+   opened from the Home Screen. */
+async function partI(browser) {
+  const iso = (n) => { const d = new Date(Date.now() + n * DAY); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+  const full = { g: 3, ks: 1, kw: 1, k: 1, r: 1 };
+  const days = (unit, upTo) => { const d = {}; for (let k = 1; k <= upTo; k++) d['a1u0' + unit + 'd' + k] = full; return d; };
+  const m = (src, o) => Object.assign({ src, wrong: 'x', at: Date.now() - DAY, step: 0, due: iso(0) }, o || {});
+  const result = (id) => ({ id, score: 18, of: 20, used: 640, areas: { vocab: { right: 5, of: 6 }, grammar: { right: 7, of: 8 }, reading: { right: 3, of: 3 }, listening: { right: 3, of: 3 } }, at: Date.now() - 2 * DAY });
+  const learner = async (label, state) => {
+    const ctx = await phone(browser);
+    const page = await newPage(ctx, label);
+    await page.addInitScript(([k, v]) => {
+      Object.defineProperty(navigator, 'standalone', { get: () => true });
+      if (!sessionStorage.getItem('seeded')) { localStorage.setItem(k, v); sessionStorage.setItem('seeded', '1'); }
+    }, [KEY, JSON.stringify(Object.assign({ v: 1, started: true, level: 'A1' }, state))]);
+    await go(page, '');
+    return { ctx, page };
+  };
+  const tabLabel = (page) => page.locator('#gn-stage nav a[href="Notebook.dc.html"]').getAttribute('aria-label');
+  const toTab = (page, name) => tap(page, { sel: `#gn-stage nav a:has-text("${name}")` }, 500);
+  /* every item of a review sitting answered right, to its summary */
+  const reviewAll = async (page, ids) => {
+    const list = await itemsOf(page, ids);
+    for (let i = 0; i < list.length; i++) {
+      await answerOne(page, list[i], true, true);
+      if (list[i].kind === 'build') await tap(page, 'Comprobar', 400);
+      await page.waitForTimeout(250);
+      await tap(page, i < list.length - 1 ? 'Siguiente' : 'Listo', 450);
+    }
+  };
+
+  part = 'I1 the review in front of the day';
+  {
+    const due = ['a1u01d3.d1', 'a1u01d2.d1', 'a1u01d1.d1'];
+    const { ctx, page } = await learner('review first', { plan: { start: iso(-3), target: iso(60), pace: 'fit', minutes: 30 }, done: days(1, 3), mistakes: due.map((id) => m(id)), seen: [iso(-3), iso(-2), iso(-1)] });
+    let h = await look(page, 'Main with a review due', { expect: 'Main', shot: 'I01-main-due' });
+    const marks = [];
+    for (const t of ['Camino', 'Examen', 'Progreso', 'Cuaderno']) { await toTab(page, t); marks.push(await tabLabel(page)); await look(page, 'tab ' + t + ' with a review due', { wait: 0 }); }
+    check(marks.every((x) => x === 'Cuaderno, 3 para repasar hoy'), 'the Cuaderno tab says «3 para repasar hoy» on the four tab bars', marks);
+    check(await has(page, 'Para repasar hoy') && (await page.locator('#gn-stage svg[aria-label="Respuesta correcta"]').count()) === 0 && (await text(page)).split('la respuesta, al repasar').length - 1 === 3, 'Notebook: an entry due today keeps what was answered and holds its right answer back', (await text(page)).slice(0, 400));
+    await toTab(page, 'Camino');
+    check(await has(page, 'Antes de empezar · 2 min') && await has(page, '3 para repasar'), 'Main: the callout puts the review in front of the day, with what it takes', (await text(page)).slice(0, 400));
+    await tap(page, { sel: '#gn-stage a[href="Today.dc.html"]:has-text("Empezar")' }, 600);
+    h = await look(page, 'Today with a review due', { expect: 'Today', shot: 'I02-today-due' });
+    check(await has(page, 'Antes de empezar') && await has(page, '3 para repasar · unos 2 min'), 'Today: the same row stands above the three lessons', (await text(page)).slice(0, 300));
+    await tap(page, { sel: '#gn-stage a[href="Review.dc.html"]' }, 700);
+    h = await look(page, 'Today → Review', { expect: 'Review', shot: 'I03-review' });
+    const list = await itemsOf(page, due);
+    const shown = await page.evaluate(() => [...document.querySelectorAll('#gn-stage button[aria-pressed]')].map((b) => (b.textContent || '').trim().replace(/^\d+\s*/, '')));
+    check(await has(page, '1 / 3') && shown.slice().sort().join('|') === list[0].options.slice().sort().join('|') && shown.join('|') !== list[0].options.join('|'), 'Review: the question has its options in another order than the lesson had them', { lesson: list[0].options, shown });
+    const numbers = await page.evaluate(() => [...document.querySelectorAll('#gn-stage button[aria-pressed]')].map((b) => (b.textContent || '').trim().match(/^\d+/)[0]).join(''));
+    check(numbers === list[0].options.map((_, k) => k + 1).join(''), 'Review: the buttons are numbered in the order shown', numbers);
+    await reviewAll(page, due);
+    h = await look(page, 'review summary', { expect: 'Review', shot: 'I04-review-done' });
+    check(await has(page, 'Repaso terminado') && await has(page, 'Seguir con el día 4') && await has(page, 'Volver al cuaderno'), 'the review ends with the way on to the day, and the way back to the notebook', (await text(page)).slice(0, 300));
+    await tap(page, 'Seguir con el día 4', 700);
+    h = await look(page, 'Review → Today', { expect: 'Today' });
+    check(await has(page, 'Semana 1 · Día 4') && !(await has(page, 'para repasar')) && await has(page, 'Aprendé la regla'), '«Seguir con el día 4» opens day 4, with nothing left to review', h.head);
+    const s = await saved(page);
+    check(s.mistakes.every((x) => x.step === 1 && x.due === iso(3)) && s.cur === 'a1u01d4' && s.seen.join() === [iso(-3), iso(-2), iso(-1), iso(0)].join(), 'saved: the three answers moved on, day 4 is the day in use, and today is a day with study', { m: s.mistakes.map((x) => [x.step, x.due]), cur: s.cur, seen: s.seen });
+    await tap(page, { aria: 'Volver al camino de la semana' }, 600);
+    check((await tabLabel(page)) === 'Cuaderno' && !(await has(page, 'Antes de empezar')), 'Main after the review: no count on the tab, no row on the callout', (await text(page)).slice(0, 300));
+    await ctx.close();
+  }
+
+  part = 'I2 a sitting has a size';
+  {
+    /* 20 mistakes due for days, the plan at 15 minutes a day: a sitting is 8 (a third of the day at 0.6 min a question) */
+    const ids = [];
+    for (let d = 1; d <= 5; d++) for (let k = 1; k <= 4; k++) ids.push('a1u01d' + d + '.d' + k);
+    const { ctx, page } = await learner('sitting', { plan: { start: iso(-12), target: null, pace: 'fit', minutes: 15 }, done: days(1, 5), mistakes: ids.map((id, k) => m(id, { at: Date.now() - (10 + k) * DAY, due: iso(-9) })), seen: [iso(-1)] });
+    let h = await look(page, 'Main with 20 due', { expect: 'Main' });
+    check((await tabLabel(page)) === 'Cuaderno, 8 para repasar hoy' && await has(page, '8 para repasar') && await has(page, 'Antes de empezar · 5 min'), 'with 20 due and 15 minutes a day, the week path asks for 8 (about 5 minutes)', (await text(page)).slice(0, 400));
+    await toTab(page, 'Cuaderno');
+    h = await look(page, 'Notebook with 20 due', { expect: 'Notebook', shot: 'I05-notebook-sitting' });
+    check(await has(page, '8 preguntas · unos 5 min') && await has(page, 'Hay 20 esperando. Hoy van las 8 más viejas; las otras 12 quedan para los próximos días.') && await has(page, 'En el cuaderno · 20'), 'Notebook: 8 for today of the 20 that wait, and it says so', (await text(page)).slice(0, 400));
+    await tap(page, 'Repasar ahora', 700);
+    h = await look(page, 'Notebook → Review', { expect: 'Review' });
+    check(await has(page, '1 / 8'), 'Review: the sitting is 8 questions', (await text(page)).slice(0, 120));
+    /* the oldest go first: the eight made longest ago, asked in the notebook's own order */
+    await reviewAll(page, ids.slice(12));
+    h = await look(page, 'sitting summary', { expect: 'Review', shot: 'I06-review-sitting-done' });
+    check(await has(page, 'Repasaste las 8 preguntas de hoy. Quedan 12 para los próximos días.'), 'the summary says what was reviewed and what waits', (await text(page)).slice(0, 300));
+    const s = await saved(page);
+    const moved = s.mistakes.filter((x) => x.step === 1).map((x) => x.src).sort().join();
+    check(moved === ids.slice(12).sort().join() && s.mistakes.filter((x) => x.due <= iso(0)).length === 12, 'saved: the 8 oldest moved on, the other 12 stay due', { moved, due: s.mistakes.filter((x) => x.due <= iso(0)).length });
+    await tap(page, 'Volver al cuaderno', 600);
+    h = await look(page, 'Notebook after the sitting', { expect: 'Notebook', shot: 'I07-notebook-sitting-done' });
+    check(await has(page, 'listo por hoy') && await has(page, 'Quedan 12 para los próximos días.') && await has(page, 'Repasar 8 más') && (await tabLabel(page)) === 'Cuaderno', 'Notebook: the day\'s sitting is done, 12 wait, and more is on offer, not asked for', (await text(page)).slice(0, 300));
+    check((await page.locator('#gn-stage svg[aria-label="Respuesta correcta"]').count()) === 8, 'Notebook: the 8 reviewed show their right answers again', await page.locator('#gn-stage svg[aria-label="Respuesta correcta"]').count());
+    await toTab(page, 'Camino');
+    check(!(await has(page, 'para repasar')), 'Main: nothing more is asked today', (await text(page)).slice(0, 300));
+    await toTab(page, 'Cuaderno');
+    await tap(page, 'Repasar 8 más', 700);
+    check((await screenOf(page)) === 'Review' && await has(page, '1 / 8'), '«Repasar 8 más» opens one more sitting', (await text(page)).slice(0, 120));
+    await ctx.close();
+  }
+
+  part = 'I3 the door back to the plan';
+  {
+    /* 20 days into a 60-day plan with 8 sessions done: behind */
+    const state = { plan: { start: iso(-20), target: iso(40), pace: 'fit', minutes: 30 }, done: Object.assign(days(1, 6), { a1u02d1: full }), tests: { a1u01t: result('a1u01t') }, seen: [iso(-1)] };
+    const { ctx, page } = await learner('replan', state);
+    let h = await look(page, 'Main behind the plan', { expect: 'Main', shot: 'I08-main-behind' });
+    const chip = page.locator('#gn-stage a[href="GoalPlan.dc.html"]');
+    check((await chip.count()) === 1 && (await chip.getAttribute('aria-label')) === 'Faltan 40 días para tu fecha meta. Cambiar el plan', 'Main: the date chip is a link back to the plan', await chip.count());
+    const before = await saved(page);
+    await chip.tap();
+    await page.waitForTimeout(600);
+    h = await look(page, 'chip → Goal', { expect: 'Goal', shot: 'I09-goal-replan' });
+    check(await has(page, 'Te quedan 48 de 56 sesiones') && await has(page, 'Guardar el plan') && await has(page, 'Cancelar') && await has(page, 'El plan se arma de nuevo desde hoy') && !(await has(page, 'Tejé el primer hilo')) && !(await has(page, 'Ñepyrũ · Empezar')), 'the goal screen opens at its third step on the plan that exists: what is left, «Guardar el plan», «Cancelar»', (await text(page)).slice(0, 500));
+    await tap(page, 'Cancelar', 600);
+    check((await screenOf(page)) === 'Main' && JSON.stringify((await saved(page)).plan) === JSON.stringify(before.plan), '«Cancelar» goes back to the week path and leaves the plan as it was', (await saved(page)).plan);
+    await toTab(page, 'Progreso');
+    h = await look(page, 'Progress behind the plan', { expect: 'Progress', shot: 'I10-progress-behind' });
+    check(await has(page, 'días atrás') && await has(page, 'Rearmar mi plan') && await has(page, "Epu'ã ha eñepyrũjey"), 'Progreso: behind the plan, it offers to make the plan again', (await text(page)).slice(0, 300));
+    await tap(page, 'Rearmar mi plan', 600);
+    check((await screenOf(page)) === 'Goal' && await has(page, 'Guardar el plan'), '«Rearmar mi plan» opens the goal screen at the plan', await screenOf(page));
+    await tap(page, 'Guardar el plan', 700);
+    h = await look(page, 'plan made again', { expect: 'Main', shot: 'I11-main-replanned' });
+    let s = await saved(page);
+    check(s.plan.start === iso(0) && s.plan.from === 8 && s.plan.target === iso(40) && s.plan.minutes === 30 && JSON.stringify(s.done) === JSON.stringify(before.done) && JSON.stringify(s.tests) === JSON.stringify(before.tests), 'saved: the plan starts today at the ninth session (from 8), the date and the progress as they were', s.plan);
+    check(await has(page, 'HOY · 3 LECCIONES') && (await page.locator('#gn-stage a[aria-label="Día 2, hoy. Abrí el día"]').count()) === 1, 'Main: the next day is today\'s again', (await text(page)).slice(0, 300));
+    await toTab(page, 'Progreso');
+    check(await has(page, 'Vas al día') && !(await has(page, 'Rearmar mi plan')), 'Progreso: on time again, and the offer is gone', (await text(page)).slice(0, 200));
+    await reload(page);
+    s = await saved(page);
+    check(s.plan.from === 8 && await has(page, 'HOY · 3 LECCIONES'), 'reopened: the plan made again is kept', s.plan);
+    await ctx.close();
+  }
+  {
+    const { ctx, page } = await learner('no date', { plan: { start: iso(-2), target: null, pace: 'fit', minutes: 30 }, done: days(1, 2), seen: [iso(-2), iso(-1)] });
+    const chip = page.locator('#gn-stage a[href="GoalPlan.dc.html"]');
+    check((await chip.textContent()).trim() === 'a tu ritmo' && (await chip.getAttribute('aria-label')) === 'Vas a tu ritmo, sin fecha meta. Cambiar el plan', 'Main: with no date the chip says «a tu ritmo», and is the same door', await chip.textContent());
+    await chip.tap();
+    await page.waitForTimeout(600);
+    check((await screenOf(page)) === 'Goal' && await has(page, 'Te quedan 54 de 56 sesiones') && await has(page, 'Guardar el plan'), 'it opens the goal screen at the plan', (await text(page)).slice(0, 300));
+    await ctx.close();
+  }
+
+  part = 'I4 the days with study and the return';
+  {
+    /* four days with study, the last one five days ago, two mistakes due */
+    const state = { plan: { start: iso(-9), target: null, pace: 'fit', minutes: 30 }, done: days(1, 4), mistakes: [m('a1u01d3.d1'), m('a1u01d2.d1')], seen: [iso(-9), iso(-8), iso(-6), iso(-5)] };
+    const { ctx, page } = await learner('back after days', state);
+    let h = await look(page, 'Main after five days away', { expect: 'Main', shot: 'I12-main-back' });
+    const strip = () => page.locator('#gn-stage [aria-label^="Tus últimos 7 días"]').getAttribute('aria-label');
+    const risen = () => page.locator('#gn-stage svg[aria-label^="Kaguare se levantó"]').count();
+    check(await has(page, '¡Volviste!') && await has(page, "Opu'ã · Se levantó") && await has(page, 'Empezá con algo corto: 2 para repasar, un minuto.') && await has(page, 'Seguir con el día 5') && (await risen()) === 1, 'Main greets the learner back: Opu\'ã, Kaguare up on his hind legs, something short first, then the day', (await text(page)).slice(0, 400));
+    check((await strip()) === 'Tus últimos 7 días: 2 días con estudio. Hoy todavía no.', 'Main: the last seven days say what they were', await strip());
+    const before = await saved(page);
+    await toTab(page, 'Progreso');
+    check(await has(page, '4 días con estudio · volviste una vez'), 'Progreso counts the days with study and the returns', (await text(page)).slice(0, 200));
+    await toTab(page, 'Camino');
+    check(JSON.stringify((await saved(page)).seen) === JSON.stringify(before.seen), 'looking around is not study: no day is added for it', (await saved(page)).seen);
+    await tap(page, { sel: '#gn-stage a[href="Review.dc.html"]:has-text("Repasar")' }, 700);
+    h = await look(page, 'the greeting → Review', { expect: 'Review' });
+    const one = (await itemsOf(page, ['a1u01d3.d1']))[0];
+    await answerOne(page, one, true, true);
+    await page.waitForTimeout(300);
+    let s = await saved(page);
+    check(s.seen.join() === state.seen.concat([iso(0)]).join(), 'saved: the first answer makes today a day with study', s.seen);
+    await tap(page, { aria: 'Salir del repaso' }, 600);
+    await toTab(page, 'Camino');
+    h = await look(page, 'Main on the day of return', { expect: 'Main', shot: 'I13-main-returned' });
+    check(!(await has(page, '¡Volviste!')) && (await risen()) === 1 && (await strip()) === 'Tus últimos 7 días: 3 días con estudio. Hoy volviste.', 'Main, once something is done: the day is back, today carries the mark of the return, Kaguare stays up', await strip());
+    await toTab(page, 'Progreso');
+    check(await has(page, '5 días con estudio · volviste 2 veces'), 'Progreso: one more day, one more return', (await text(page)).slice(0, 200));
+    await reload(page);
+    check((await saved(page)).seen.length === 5 && (await risen()) === 1, 'reopened: the days are kept', (await saved(page)).seen);
+    await ctx.close();
+  }
+  {
+    /* more than a week away, with a week sealed: its review day is the short thing on offer */
+    const { ctx, page } = await learner('back after a week', { plan: { start: iso(-20), target: null, pace: 'fit', minutes: 30 }, done: Object.assign(days(1, 6), { a1u02d1: full }), tests: { a1u01t: result('a1u01t') }, seen: [iso(-12), iso(-11), iso(-10)] });
+    let h = await look(page, 'Main after ten days away', { expect: 'Main', shot: 'I14-main-back-week' });
+    check(await has(page, '¡Volviste!') && await has(page, 'Repasar la semana 1') && await has(page, 'Seguir con el día 2'), 'after a week or more away, the last review day sealed is offered before the next new day', (await text(page)).slice(0, 400));
+    await tap(page, 'Repasar la semana 1', 700);
+    h = await look(page, 'the greeting → week 1\'s review day', { expect: 'Today' });
+    check(await has(page, 'Semana 1 · Día 6') && await has(page, 'DÍA SELLADO'), '«Repasar la semana 1» opens that week\'s review day, sealed as it was', h.head);
+    await ctx.close();
+  }
+  {
+    /* a save from before the app kept the days: nothing is claimed, nobody is greeted back, and the record starts */
+    const { ctx, page } = await learner('no days kept', { plan: { start: iso(-30), target: null, pace: 'fit', minutes: 30 }, done: days(1, 3) });
+    const strip = await page.locator('#gn-stage [aria-label^="Tus últimos 7 días"]').getAttribute('aria-label');
+    check(!(await has(page, '¡Volviste!')) && strip === 'Tus últimos 7 días: 0 días con estudio. Hoy todavía no.' && (await page.locator('#gn-stage svg[aria-label^="Kaguare con el ñandutí"]').count()) === 1, 'a save with no days kept loads as before: the usual callout, Kaguare standing', strip);
+    await ctx.close();
+  }
+
+  part = 'I5 where the written path ends';
+  {
+    const ctx = await phone(browser);
+    const page = await newPage(ctx, 'end of the path');
+    await page.addInitScript(() => { Object.defineProperty(navigator, 'standalone', { get: () => true }); });
+    await go(page, '');
+    /* every written session done, as the course has them today */
+    const W = await page.evaluate((fullJ) => {
+      const C = window.gnCourse;
+      C.setLevel('A1');
+      const done = {};
+      const tests = [];
+      C.sessions().forEach((s) => { if (!s.ready) return; if (s.kind === 'test') tests.push(s.id); else done[s.id] = JSON.parse(fullJ); });
+      const minis = C.minis('A1').map((x) => ({ id: x.id, n: x.n, after: x.after, ready: x.ready, items: x.items }));
+      return { done, tests, minis, last: C.sessions().filter((s) => s.ready).reduce((n, s) => Math.max(n, s.unit), 0), units: C.units().length };
+    }, JSON.stringify(full));
+    const tests = {};
+    W.tests.forEach((id) => { tests[id] = result(id); });
+    await page.evaluate(([k, v]) => localStorage.setItem(k, v), [KEY, JSON.stringify({ v: 1, started: true, level: 'A1', plan: { start: iso(-7 * W.last), target: null, pace: 'fit', minutes: 30 }, done: W.done, tests, seen: [iso(-6)] })]);
+    await go(page, '');
+    let h = await look(page, 'Main at the end of the written path', { expect: 'Main', shot: 'I15-main-end' });
+    const links = await page.evaluate(() => [...document.querySelectorAll('#gn-stage [aria-labelledby="mientras-tanto"] a')].map((a) => a.getAttribute('href')));
+    check(await has(page, 'MIENTRAS TANTO') && links.join() === 'Notebook.dc.html,Leer.dc.html,Escribir.dc.html,Hablar.dc.html', 'Main, with every written session done: the card leads to the notebook and to Leer, Escribir and Hablar', links);
+    check(await has(page, '¡Volviste!') && await has(page, "Opu'ã · Se levantó") && (await page.locator('#gn-stage svg[aria-label^="Kaguare se levantó"]').count()) === 1, 'back after six days with no day left to do: the same greeting stands over those links', (await text(page)).slice(0, 400));
+    await tap(page, { sel: '#gn-stage [aria-labelledby="mientras-tanto"] a[href="Leer.dc.html"]' }, 700);
+    h = await look(page, 'Main → Leer', { expect: 'Leer' });
+    check((await saved(page)).seen.join() === [iso(-6), iso(0)].join(), 'opening a practice section makes today a day with study', (await saved(page)).seen);
+    await go(page, '');
+    await tap(page, { sel: '#gn-stage a[aria-label="Día 6, sellado. Abrilo de nuevo"]' }, 600);
+    h = await look(page, 'a sealed day', { expect: 'Today', shot: 'I16-today-sealed' });
+    const more = await page.evaluate(() => [...document.querySelectorAll('#gn-stage [aria-labelledby="un-rato-mas"] a')].map((a) => a.getAttribute('href')));
+    check(await has(page, '¿Un rato más?') && more.join() === 'Leer.dc.html,Escribir.dc.html,Hablar.dc.html', 'a sealed day offers a little more: Leer, Escribir, Hablar', more);
+    await tap(page, { sel: '#gn-stage [aria-labelledby="un-rato-mas"] a[href="Hablar.dc.html"]' }, 700);
+    h = await look(page, 'Today → Hablar', { expect: 'Hablar' });
+
+    part = 'I6 the first mini exam';
+    const mini = W.minis[0];
+    await go(page, '');
+    await toTab(page, 'Examen');
+    h = await look(page, 'ExamTab with the mini exam open', { expect: 'ExamTab', shot: 'I17-examtab-mini' });
+    check(mini.ready && mini.items.length === 20 && await has(page, 'Mini examen 1') && await has(page, '20 preguntas de las semanas 1 a ' + mini.after + ' · 20 min') && (await page.locator('#gn-stage a[aria-label="Empezar el mini examen 1"]').count()) === 1, 'the Examen tab opens the first mini exam once its last week test is done', (await text(page)).slice(-500));
+    await tap(page, { aria: 'Empezar el mini examen 1' }, 800);
+    h = await look(page, 'ExamTab → the mini exam', { expect: 'Exam', shot: 'I18-mini-exam' });
+    const clock = ((await page.locator('#gn-stage [role="timer"]').textContent()) || '').trim();
+    check(await has(page, 'MINI EXAMEN 1') && /^(20:00|19:5\d)$/.test(clock), 'the mini exam runs on the exam-style screen with a 20-minute clock', clock);
+    const items = await itemsOf(page, mini.items);
+    const byArea = await page.evaluate((ids) => { const C = window.gnCourse; const n = {}; ids.forEach((id) => { const a = C.item(id).area; n[a] = (n[a] || 0) + 1; }); return n; }, mini.items);
+    check(byArea.vocab === 6 && byArea.grammar === 8 && byArea.reading === 3 && byArea.listening === 3, 'its 20 questions are a week test\'s mix: 6 Palabras, 8 Gramática, 3 Lectura, 3 Escucha', byArea);
+    for (let i = 0; i < items.length; i++) {
+      await answerOne(page, items[i], i !== 2 && i !== 9);
+      await tap(page, i < items.length - 1 ? 'Siguiente' : exact('Terminar'), 300);
+    }
+    h = await look(page, 'mini exam result', { expect: 'Exam', shot: 'I19-mini-result' });
+    check(await has(page, 'Mini examen 1 terminado') && (await page.locator('#gn-stage h1').first().textContent()).trim() === '18', 'the mini exam ends 18 of 20', (await text(page)).slice(0, 200));
+    await tap(page, { sel: '#gn-stage a[href="ExamTab.dc.html"]:has-text("Siguiente")' }, 800);
+    h = await look(page, 'the mini exam → ExamTab', { expect: 'ExamTab', shot: 'I20-examtab-mini-done' });
+    let s = await saved(page);
+    const r = s.tests && s.tests[mini.id];
+    check(r && r.score === 18 && r.of === 20 && r.areas && r.areas.vocab && r.areas.vocab.of === 6 && s.mistakes.length === 2 && s.mistakes.map((x) => x.src).sort().join() === [mini.items[2], mini.items[9]].sort().join(), 'saved: the result under ' + mini.id + ', by area, and its two errors in the notebook', { r, m: s.mistakes.map((x) => x.src) });
+    check(await has(page, 'Último resultado: 18 de 20') && (await page.locator('#gn-stage a[aria-label="Hacer otra vez el mini examen 1"]').count()) === 1, 'the Examen tab shows the last result, and «Otra vez»', (await text(page)).slice(-500));
+    /* taken again and left by the cross on its result page: that result is kept too (17 of 20 this time) */
+    await tap(page, { aria: 'Hacer otra vez el mini examen 1' }, 800);
+    for (let i = 0; i < items.length; i++) {
+      await answerOne(page, items[i], i > 2);
+      await tap(page, i < items.length - 1 ? 'Siguiente' : exact('Terminar'), 300);
+    }
+    await tap(page, { aria: 'Salir del mini examen 1' }, 800);
+    s = await saved(page);
+    check((await screenOf(page)) === 'ExamTab' && s.tests[mini.id].score === 17 && await has(page, 'Último resultado: 17 de 20'), 'the cross on the result page keeps the result too', s.tests[mini.id]);
+    await reload(page);
+    s = await saved(page);
+    check(s.tests[mini.id] && s.tests[mini.id].score === 17 && Object.keys(s.tests).length === W.tests.length + 1, 'reopened: the mini exam\'s result is kept with the week tests', Object.keys(s.tests));
+    check((await page.locator('#gn-stage a[aria-label^="Día 7, prueba de la semana, hecha"]').count()) === 1, 'reopened: the week path is as it was', await controls(page));
+    await toTab(page, 'Progreso');
+    check(await has(page, 'Palabras') && (await page.locator('#gn-stage [aria-label^="Palabras: ' + 5 * W.tests.length + ' de ' + 6 * W.tests.length + '"]').count()) === 1, 'Progreso counts the week tests by area, not the mini exam (its questions are theirs)', await page.evaluate(() => [...document.querySelectorAll('#gn-stage [role="img"][aria-label^="Palabras"]')].map((e) => e.getAttribute('aria-label'))));
+    await ctx.close();
+  }
+  {
+    /* before the last week test of its half, the mini exam waits and says after what */
+    const { ctx, page } = await learner('mini waits', { plan: { start: iso(-3), target: null, pace: 'fit', minutes: 30 }, done: days(1, 3), seen: [iso(-1)] });
+    await toTab(page, 'Examen');
+    const after = await page.evaluate(() => window.gnCourse.minis('A1')[0].after);
+    check(await has(page, 'Después de la semana ' + after) && (await page.locator('#gn-stage a[href="Exam.dc.html"]').count()) === 0, 'the mini exam waits behind the week test of week ' + after + ', and says so', (await text(page)).slice(-400));
+    await ctx.close();
+  }
+}
+
 (async () => {
   if (!fs.existsSync(path.join(DIR, 'index.html'))) throw new Error('no app in ' + DIR);
   fs.mkdirSync(OUT, { recursive: true });
@@ -1359,6 +1653,7 @@ async function partH(browser) {
   console.log('serving ' + DIR + ' at ' + BASE);
   const browser = await chromium.launch();
   const parts = [['A', partA], ['B', partB], ['C', partC], ['D', partD], ['F', partF], ['G', partG], ['H', partH]];
+  parts.push(['I', partI]);
   for (const [name, fn] of parts) {
     if (!want(name)) continue;
     try {

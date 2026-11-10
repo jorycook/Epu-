@@ -1120,7 +1120,8 @@ async function fontsUsed(page, cdp, facts) {
         route.push(tab + '→' + (await screenName(page)));
         ok((await screenName(page)) === scr && !(await logicErrors(page)).length, `offline cold start: the ${tab} tab should open ${scr}`, await screenName(page));
       }
-      await page.locator('#gn-stage button, #gn-stage a').filter({ hasText: 'Empezar' }).first().tap({ timeout: 5000 });
+      /* the day's own button: with a mistake due, the callout also has a row «Antes de empezar: 1 para repasar» */
+      await page.locator('#gn-stage a[href="Today.dc.html"], #gn-stage a[href="WeekTest.dc.html"]').filter({ hasText: 'Empezar' }).first().tap({ timeout: 5000 });
       await page.waitForTimeout(600);
       const day1 = await screenName(page);
       /* the saved learner is part way through the day: the day's main action goes on with its lesson */
@@ -1521,6 +1522,48 @@ async function fontsUsed(page, cdp, facts) {
         await look(scr, `${scr} (${label})`);
         if (label !== 'fresh') ok(lg.gn > 0 || (await page.evaluate((s) => !/[ãẽĩõũỹ]|g̃/i.test(document.querySelector('#gn-stage .sc-host[data-sc-name="' + s + '"]').textContent), scr)), `${scr}: a screen that shows Guarani should mark it lang="gn"`, JSON.stringify(lg));
       }
+    }
+    /* the states of the week path and the screens round it that the three learners above never reach, looked at like the
+       others (frame, taps, cut text, fonts, languages): a learner back after ten days, behind the plan, with more to
+       review than a day's sitting holds (the greeting on the week path, the notebook's sitting, Progreso's way to make
+       the plan again, the goal screen on a plan that exists), and a learner at the end of the written path (the practice
+       links on the week path and on a sealed day, the first mini exam on the tab, and under way). Each must be a state
+       not seen before, and say what makes it one */
+    {
+      const more = await page.evaluate(() => {
+        const C = window.gnCourse;
+        C.setLevel('A1');
+        const ready = C.sessions().filter((s) => s.ready);
+        const drills = [];
+        ready.filter((s) => s.unit === 1 && s.kind !== 'test').forEach((s) => (C.day(s.id).grammar.drill || []).forEach((x) => { const it = typeof x === 'string' ? C.item(x) : x; if (it && it.kind === 'choice' && drills.length < 12) drills.push({ src: it.id, wrong: C.plain(it.options[it.answer % it.options.length]) }); }));
+        const reviews = ready.filter((s) => s.kind === 'review');
+        return { drills, week1: ready.filter((s) => s.unit === 1 && s.kind !== 'test').map((s) => s.id), all: ready.filter((s) => s.kind !== 'test').map((s) => s.id), tests: ready.filter((s) => s.kind === 'test').map((s) => s.id), last: ready.reduce((m, s) => Math.max(m, s.unit), 0), lastReview: reviews.length ? reviews[reviews.length - 1].id : '', mini: (C.minis('A1')[0] || {}).ready === true };
+      });
+      const result = (id) => ({ id, score: 18, of: 20, used: 700, areas: { vocab: { right: 5, of: 6 }, grammar: { right: 7, of: 8 }, reading: { right: 3, of: 3 }, listening: { right: 3, of: 3 } }, at: Date.now() - 864e5 });
+      const fill = (ids) => { const d = {}; ids.forEach((id) => { d[id] = FULL; }); return d; };
+      const BACK = { level: 'A1', plan: { start: day(-20), target: day(40), pace: 'fit', minutes: 15 }, done: fill(more.week1), tests: { a1u01t: result('a1u01t') }, m: more.drills.map((x, k) => ({ src: x.src, wrong: x.wrong, at: Date.now() - (11 + k) * 864e5, step: 0, due: day(-9) })), seen: [day(-12), day(-11), day(-10)] };
+      const tests = {};
+      more.tests.forEach((id) => { tests[id] = result(id); });
+      const END = { level: 'A1', plan: { start: day(-7 * more.last), target: null, pace: 'fit', minutes: 30 }, done: fill(more.all), tests, seen: [day(-2), day(-1)] };
+      const cases = [
+        ['Main', 'back after days', BACK, '¡Volviste!'],
+        ['Notebook', 'back after days', BACK, 'Hay 12 esperando'],
+        ['Review', 'back after days', BACK, '1 / 8'],
+        ['Progress', 'back after days', BACK, 'Rearmar mi plan'],
+        ['Goal', 'a plan that exists', BACK, 'Guardar el plan'],
+        ['Main', 'the end of the written path', END, 'MIENTRAS TANTO'],
+        ['Today', 'a sealed day', Object.assign({}, END, { cur: more.lastReview }), '¿Un rato más?'],
+      ].concat(more.mini ? [['ExamTab', 'the mini exam open', END, 'Mini examen 1'], ['Exam', 'the mini exam under way', Object.assign({}, END, { set: 'mini1' }), 'MINI EXAMEN 1']] : []);
+      let seenNew = 0;
+      for (const [scr, label, sample, says] of cases) {
+        await page.goto(L.base + '?gntest&screen=' + scr + address(sample));
+        await ready(page, 250);
+        const said = (await stageText(page)).includes(says);
+        const fresh = await look(scr, `${scr} (${label})`);
+        ok(said && fresh, `${scr} (${label}): the screen should be in that state (it says «${says}»)`, (await stageText(page)).slice(0, 200));
+        if (said && fresh) seenNew += 1;
+      }
+      note(`${seenNew} more states looked at: a learner back after days and behind the plan, and one at the end of the written path`);
     }
     /* one tap deeper: each control of each screen (part way, then in the later week), once, and what it leads to */
     let crawled = 0;

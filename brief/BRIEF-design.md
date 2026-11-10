@@ -56,7 +56,8 @@ paper as in Yaoki (the school notebook). Never emoji, never flags, no tourist cl
   done (with ✓), `#E6E9F3` when not written; its mark is the stopwatch icon (exam), never a letter.
 - Clean answer and stage ring (replaces はなまる): the ñandutí rosette — see `RosetteSVG` in §5.
 - Comeback (replaces 起: a card missed and later answered clean): an up-arrow badge (`M12 19V5M6 11l6-6 6 6`, stroke 3) in a
-  teal ring, label "Se levantó".
+  teal ring, label "Se levantó". It is also the learner's own mark: a day with study after one or more days without is
+  a day of return (the week path's greeting "Opu'ã · Se levantó", and that day's mark in its "Últimos 7 días").
 - "En preparación" (replaces 準備中) for unwritten days and levels; "faltan N días" (replaces あとN日).
 
 ### The ritual (replaces the daruma's painted eyes)
@@ -129,7 +130,7 @@ board). Use them as they are; do not redraw the animal.
 |---|---|---|
 | standing | Goal 104 px (ritual), Main and Progress 60, hints 48, results 72, Escribir at 90 %, Hablar at 75 % | feet on y 83, centre near x 50; the brooch at (43, 61.2); eight switchable face parts as `data-part` (eye-open, eye-closed, eye-happy, mouth-normal, mouth-o, mouth-happy, sweat, sparks): show one eye and one mouth at a time |
 | fallen ("Ho'a", se cayó) | the games, when a card reaches him | on his back, dazed (a spiral eye, never X eyes), on the same ground line; 49.6 units tall so the stars fit above him; brooch at (36.4, 65) |
-| rising ("Opu'ã · Se levantó") | the brand board; the middle step of every fall in the games | the tripod stance made friendly: arms up and open, palms out, tail planted; brooch at (48.8, 59.6) |
+| rising ("Opu'ã · Se levantó") | the brand board; the middle step of every fall in the games; Main's unit card (60 px, with the level's rosette) on a day of return | the tripod stance made friendly: arms up and open, palms out, tail planted; brooch at (48.8, 59.6) |
 | cheering ("¡Vy'apavẽ!") | level passed, results, clean runs | arms up, happy eyes, open smile, three gold sparks; brooch at (48.8, 59.6) |
 | studying ("Mbo'epy · Lección") | the brand board | head lowered over an open notebook; brooch at (43, 61.2) |
 | oops ("Eha'ã jey · Intentá de nuevo") | a wrong answer in a lesson (72 px) | sitting back, paw at the cheek, closed happy eyes, a sweat drop; brooch at (47, 61) |

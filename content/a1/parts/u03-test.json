@@ -1,7 +1,7 @@
 [
  {
   "id": "a1u03t.1", "kind": "choice", "area": "vocab", "label": "Qué significa",
-  "q": "(Es domingo a la tarde. Ana invita a Luis a la cancha.)\nLuis: _Chekaigue_, Ana.",
+  "q": "(Es domingo a la tarde. Ana invita a Vicente a la cancha.)\nVicente: _Chekaigue_, Ana.",
   "options": ["Estoy enojado, Ana.", "Estoy desganado, Ana.", "Tengo frío, Ana.", "Tengo sed, Ana."],
   "answer": 2,
   "explain": "Chekaigue es che-, «yo, me pasa», más kaigue, «desgano»: «estoy desganado, sin ganas». Es muy paraguayo: en castellano también se dice «ando kaigue». Enojado sería chepochy; frío, chero'y; y sed, chey'uhéi."
@@ -50,38 +50,38 @@
  },
  {
   "id": "a1u03t.8", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-  "q": "(Es mediodía. Luis cuenta qué hace él a esta hora.)\nLuis: (   ) ha ake.",
+  "q": "(Es mediodía. Vicente cuenta qué hace él a esta hora.)\nVicente: (   ) ha ake.",
   "options": ["Chekaru", "Akaru", "Ikaru", "Karu"],
   "answer": 2,
-  "explain": "Comer es una acción y Luis habla de él mismo: a- más karu, «comer». Akaru ha ake, «como y duermo». Che- es para los estados y las cualidades, como chekane'õ: chekaru no es «como». Dice una cualidad, «soy comilón», y no lo que Luis hace a esta hora. Ikaru lleva i-: habla de otra persona, y tampoco dice una acción. Y karu sin prefijo no dice quién come."
+  "explain": "Comer es una acción y Vicente habla de él mismo: a- más karu, «comer». Akaru ha ake, «como y duermo». Che- es para los estados y las cualidades, como chekane'õ: chekaru no es «como». Dice una cualidad, «soy comilón», y no lo que Vicente hace a esta hora. Ikaru lleva i-: habla de otra persona, y tampoco dice una acción. Y karu sin prefijo no dice quién come."
  },
  {
   "id": "a1u03t.9", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-  "q": "(Luis le muestra a Rosa una foto de su mamá, Marta.)\nLuis: Marta (   ) che sy.",
+  "q": "(Vicente le muestra a Rosa una foto de su mamá, Teresa.)\nVicente: Teresa (   ) che sy.",
   "options": ["ha'e", "che", "ikane'õ", "ndépa"],
   "answer": 1,
-  "explain": "Luis dice quién es Marta: entre Marta y che sy, ha'e hace de «es». Marta ha'e che sy, «Marta es mi mamá». Che es «yo» y no une nada. Ikane'õ es un estado, «está cansada», y acá Luis dice quién es ella, no cómo está. Ndépa, «¿vos…?», pregunta, y Luis afirma."
+  "explain": "Vicente dice quién es Teresa: entre Teresa y che sy, ha'e hace de «es». Teresa ha'e che sy, «Teresa es mi mamá». Che es «yo» y no une nada. Ikane'õ es un estado, «está cansada», y acá Vicente dice quién es ella, no cómo está. Ndépa, «¿vos…?», pregunta, y Vicente afirma."
  },
  {
   "id": "a1u03t.10", "kind": "choice", "area": "grammar", "label": "Elegí la respuesta",
-  "q": "(En el mercado, Juan conoce a Marta.)\nJuan: Nde piko chokokue, Marta?\nMarta: (   ), che ñemuhára.",
+  "q": "(En el mercado, Juan conoce a Teresa.)\nJuan: Nde piko chokokue, Teresa?\nTeresa: (   ), che ñemuhára.",
   "options": ["Upéicha", "Aguyje", "Nahániri", "Héẽ"],
   "answer": 3,
-  "explain": "Juan pregunta con piko, que suele sumar sorpresa, si Marta es agricultora, chokokue. Ella dice che ñemuhára, «soy vendedora»: es otra cosa, así que responde que no, Nahániri, y dice lo que sí es. Héẽ y Upéicha dirían que sí es agricultora, y Aguyje, «gracias», no responde ni que sí ni que no."
+  "explain": "Juan pregunta con piko, que suele sumar sorpresa, si Teresa es agricultora, chokokue. Ella dice che ñemuhára, «soy vendedora»: es otra cosa, así que responde que no, Nahániri, y dice lo que sí es. Héẽ y Upéicha dirían que sí es agricultora, y Aguyje, «gracias», no responde ni que sí ni que no."
  },
  {
   "id": "a1u03t.11", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-  "q": "(Ana llega a la casa de su abuela, y la abuela está contenta. Ana se lo cuenta a Luis.)\nAna: Che jarýi (   ).",
+  "q": "(Ana llega a la casa de su abuela, y la abuela está contenta. Ana se lo cuenta a Vicente.)\nAna: Che jarýi (   ).",
   "options": ["ivy'a", "chevy'a", "avy'a", "ovy'a"],
   "answer": 4,
   "explain": "Vy'a, «alegrarse», se conjuga como una acción: para otra persona lleva o-, como okaru. Che jarýi ovy'a, «mi abuela está contenta». Ivy'a le pone la i- de los estados, como en ikane'õ, y vy'a no va así. Chevy'a tampoco va: vy'a no lleva che-, y además Ana habla de su abuela. Y avy'a es «estoy contenta», de Ana misma."
  },
  {
   "id": "a1u03t.12", "kind": "choice", "area": "grammar", "label": "Elegí la frase",
-  "q": "Luis quiere saber si el papá de Ana _está cansado_. ¿Cómo se lo pregunta a ella?",
+  "q": "Vicente quiere saber si el papá de Ana _está cansado_. ¿Cómo se lo pregunta a ella?",
   "options": ["Nde ru ikane'õ.", "Ikane'õpa nde ru?", "Pa ikane'õ nde ru?", "Ikane'õpa che ru?"],
   "answer": 2,
-  "explain": "-pa es un sufijo: va pegado a la palabra que preguntás, acá el estado, y la persona viene después. Ikane'õpa nde ru?, «¿está cansado tu papá?». Nde ru ikane'õ, sin -pa, no pregunta: afirma «tu papá está cansado». Pa ikane'õ pone -pa suelto y adelante, y -pa ni va suelto ni empieza la oración. Ikane'õpa che ru? pregunta por el papá de Luis, che ru, y él quiere saber del papá de Ana: nde ru."
+  "explain": "-pa es un sufijo: va pegado a la palabra que preguntás, acá el estado, y la persona viene después. Ikane'õpa nde ru?, «¿está cansado tu papá?». Nde ru ikane'õ, sin -pa, no pregunta: afirma «tu papá está cansado». Pa ikane'õ pone -pa suelto y adelante, y -pa ni va suelto ni empieza la oración. Ikane'õpa che ru? pregunta por el papá de Vicente, che ru, y él quiere saber del papá de Ana: nde ru."
  },
  {
   "id": "a1u03t.13", "kind": "choice", "area": "grammar", "label": "Cuál está bien escrita",
@@ -141,9 +141,9 @@
  },
  {
   "id": "a1u03t.20", "kind": "choice", "area": "listening", "label": "Respuesta rápida",
-  "q": "(En la plaza, Lucas ve a Ana con un señor. No es el papá de Ana.)\nLucas: Ha'épa nde ru?\n¿Qué responde Ana?",
+  "q": "(En la plaza, Moisés ve a Ana con un señor. No es el papá de Ana.)\nMoisés: Ha'épa nde ru?\n¿Qué responde Ana?",
   "options": ["Héẽ, ndaha'éi che ru.", "Nahániri, ha'e che ru.", "Nahániri, ndaha'éi che ru."],
   "answer": 3,
-  "explain": "Lucas pregunta con -pa si el señor es el papá de Ana: Ha'épa nde ru?, «¿es tu papá?». No lo es, así que Ana responde Nahániri, «no», y lo dice entero con ndaha'éi, «no es»: Nahániri, ndaha'éi che ru, «no, no es mi papá». Héẽ, ndaha'éi che ru se contradice: dice «sí» y después «no es mi papá». Nahániri, ha'e che ru también: dice «no» y después «es mi papá»."
+  "explain": "Moisés pregunta con -pa si el señor es el papá de Ana: Ha'épa nde ru?, «¿es tu papá?». No lo es, así que Ana responde Nahániri, «no», y lo dice entero con ndaha'éi, «no es»: Nahániri, ndaha'éi che ru, «no, no es mi papá». Héẽ, ndaha'éi che ru se contradice: dice «sí» y después «no es mi papá». Nahániri, ha'e che ru también: dice «no» y después «es mi papá»."
  }
 ]

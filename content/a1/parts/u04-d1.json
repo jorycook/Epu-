@@ -137,13 +137,13 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí el orden",
-        "q": "Luis habla de ^la casa de su abuela^.\nLuis: (   ) iporã.",
+        "q": "Vicente habla de ^la casa de su abuela^.\nVicente: (   ) iporã.",
         "options": ["Róga che jarýi", "Che róga jarýi", "Jarýi che róga", "Che jarýi róga"],
         "answer": 4,
         "why": [
           "Róga che jarýi calca el orden del castellano, con la casa primero. En guaraní el dueño va primero, y róga sola, sin dueño delante, no se dice.",
           "Che róga jarýi es «mi casa» y después «abuela». Jarýi tiene que ir antes de róga, porque es la dueña.",
-          "Jarýi che róga es «abuela» y después «mi casa»: así la casa es de Luis, no de la abuela.",
+          "Jarýi che róga es «abuela» y después «mi casa»: así la casa es de Vicente, no de la abuela.",
           "Primero el dueño, che jarýi, y después la cosa, róga: «la casa de mi abuela», sin «de»."
         ]
       },
@@ -199,7 +199,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Qué significa",
-        "q": "Luis: _Che sy ha che ru_ oñe'ẽ guaraníme.",
+        "q": "Vicente: _Che sy ha che ru_ oñe'ẽ guaraníme.",
         "options": ["Tu mamá y tu papá hablan guaraní.", "Mi mamá y tu papá hablan guaraní.", "Mi mamá y mi papá hablan guaraní.", "Mi abuela y mi abuelo hablan guaraní."],
         "answer": 3,
         "explain": "Che es «mi» y va delante de cada sustantivo: che sy, «mi mamá», ha, «y», che ru, «mi papá». «Tu» sería nde: nde sy, nde ru. Y abuela y abuelo son che jarýi y che ramói."
@@ -259,7 +259,7 @@
       "kind": "choice",
       "area": "vocab",
       "label": "Cuál está bien escrita",
-      "q": "Luis anota quién es quién en la foto. Solo una palabra está _bien escrita_. ¿Cuál?",
+      "q": "Vicente anota quién es quién en la foto. Solo una palabra está _bien escrita_. ¿Cuál?",
       "options": ["jaryi", "rajý", "ramói", "membý"],
       "answer": 3,
       "explain": "Ramói está bien: termina en dos vocales y el acento va en la primera, la o, que no es la última de la palabra, y por eso lleva tilde. A jaryi le falta la suya, por lo mismo: se escribe jarýi. Rajy y memby llevan el acento en la última vocal, y en guaraní eso no se marca: en rajý y en membý la tilde sobra."
@@ -276,36 +276,36 @@
       "area": "listening",
       "label": "Qué escuchaste",
       "q": "¿Cómo se llama el abuelo de Ana?",
-      "options": ["Carlos.", "Pedro.", "Mateo."],
-      "short": ["Carlos", "Pedro", "Mateo"],
+      "options": ["Santiago.", "Casimiro.", "Genaro."],
+      "short": ["Santiago", "Casimiro", "Genaro"],
       "printed": true,
       "answer": 2,
       "why": [
-        "Carlos es el papá de Ana: Ha'e che ru, héra Carlos, «él es mi papá, se llama Carlos».",
-        "Cuando Juan pregunta Mávapa ha'e?, Ana responde Che ramói, héra Pedro: «mi abuelo, se llama Pedro».",
-        "Mateo es el hijo de Ana: Juan pregunta Mba'éichapa héra ne memby?, y ella responde Héra Mateo, «se llama Mateo»."
+        "Santiago es el papá de Ana: Ha'e che ru, héra Santiago, «él es mi papá, se llama Santiago».",
+        "Cuando Juan pregunta Mávapa ha'e?, Ana responde Che ramói, héra Casimiro: «mi abuelo, se llama Casimiro».",
+        "Genaro es el hijo de Ana: Juan pregunta Mba'éichapa héra ne memby?, y ella responde Héra Genaro, «se llama Genaro»."
       ],
       "script": [
         "Narrador: Ana le muestra a Juan la foto de su familia. ¿Cómo se llama el abuelo de Ana?",
         "Mujer: Ha'e che sy.",
-        "Mujer: Ha'e che ru, héra Carlos.",
+        "Mujer: Ha'e che ru, héra Santiago.",
         "Narrador: Juan señala a un señor de la foto.",
         "Hombre: Mávapa ha'e?",
-        "Mujer: Che ramói, héra Pedro.",
+        "Mujer: Che ramói, héra Casimiro.",
         "Hombre: Mba'éichapa héra ne memby?",
-        "Mujer: Héra Mateo.",
+        "Mujer: Héra Genaro.",
         "Narrador: ¿Cómo se llama el abuelo de Ana?"
       ]
     },
     "audio": [
       ["N", "Ana le muestra a Juan la foto de su familia. ¿Cómo se llama el abuelo de Ana?", "Ana le muestra a Juan la foto de su familia. ¿Cómo se llama el abuelo de Ana?"],
       ["F", "Ha'e che sy.", "Ella es mi mamá."],
-      ["F", "Ha'e che ru, héra Carlos.", "Él es mi papá, se llama Carlos."],
+      ["F", "Ha'e che ru, héra Santiago.", "Él es mi papá, se llama Santiago."],
       ["N", "Juan señala a un señor de la foto.", "Juan señala a un señor de la foto."],
       ["M", "Mávapa ha'e?", "¿Quién es?"],
-      ["F", "Che ramói, héra Pedro.", "Mi abuelo, se llama Pedro."],
+      ["F", "Che ramói, héra Casimiro.", "Mi abuelo, se llama Casimiro."],
       ["M", "Mba'éichapa héra ne memby?", "¿Cómo se llama tu hijo?"],
-      ["F", "Héra Mateo.", "Se llama Mateo."],
+      ["F", "Héra Genaro.", "Se llama Genaro."],
       ["N", "¿Cómo se llama el abuelo de Ana?", "¿Cómo se llama el abuelo de Ana?"]
     ]
   }

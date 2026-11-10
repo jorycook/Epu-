@@ -12,7 +12,7 @@
           { "pos": "A vos (una persona) o a ustedes (varias)", "rule": "Aguyje {ndéve}. · Aguyjevete {peẽme}." }
         ],
         "examples": [
-          { "gn": "{Aguyje} ndéve, Lucía.", "es": "Gracias a vos, Lucía.", "parts": [["aguyje", "gracias"], ["nde", "vos"], ["-ve", "a"]] },
+          { "gn": "{Aguyje} ndéve, Sara.", "es": "Gracias a vos, Sara.", "parts": [["aguyje", "gracias"], ["nde", "vos"], ["-ve", "a"]] },
           { "gn": "Nahániri, {aguyje}.", "es": "No, gracias.", "parts": [["nahániri", "no"], ["aguyje", "gracias"]] },
           { "gn": "{Aguyjevete} peẽme.", "es": "Muchas gracias a ustedes.", "parts": [["aguyjevete", "muchas gracias"], ["peẽ", "ustedes"], ["-me", "a"]] }
         ],
@@ -30,7 +30,7 @@
         "examples": [
           { "gn": "{Ikatúpa} aporandumi ndéve peteĩ mba'e?", "es": "¿Te puedo preguntar una cosa?", "parts": [["ikatu", "se puede"], ["-pa", "(pregunta)"], ["a-", "yo"], ["porandu", "preguntar"], ["-mi", "más suave"], ["ndéve", "a vos"], ["peteĩ", "una"], ["mba'e", "cosa"]] },
           { "gn": "{Cheñyrõmi}, ña Ramona.", "es": "Perdón, doña Ramona.", "parts": [["che-", "me"], ["ñyrõ", "perdonar"], ["-mi", "más suave"], ["ña", "doña"]] },
-          { "gn": "Eike, Lucía. {Tereg̃uahẽ porãite}.", "es": "Pasá, Lucía. Bienvenida.", "parts": [["eike", "pasá, entrá"], ["tere-", "que (vos)"], ["g̃uahẽ", "llegar"], ["porã", "bien"], ["-ite", "muy"]] }
+          { "gn": "Eike, Sara. {Tereg̃uahẽ porãite}.", "es": "Pasá, Sara. Bienvenida.", "parts": [["eike", "pasá, entrá"], ["tere-", "que (vos)"], ["g̃uahẽ", "llegar"], ["porã", "bien"], ["-ite", "muy"]] }
         ],
         "watch": { "note": "Sin tilde, ikatupa sonaría ikatupá. -pa no se lleva el acento: queda en la u de ikatu. Como esa u ya no es la última vocal, se escribe: Ikatúpa.", "bad": "Ikatupa aike?", "good": "Ikatúpa aike?" }
       }
@@ -47,13 +47,13 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la fórmula",
-        "q": "(Doña Ramona ^le regala un chipá^ a Lucía.)\nLucía: (   )",
+        "q": "(Doña Ramona ^le regala un chipá^ a Sara.)\nSara: (   )",
         "options": ["Aguyje.", "Cheñyrõmi.", "Ikatúpa aike?"],
         "answer": 1,
         "why": [
-          "Doña Ramona le hace un regalo a Lucía: Lucía da las gracias con Aguyje.",
+          "Doña Ramona le hace un regalo a Sara: Sara da las gracias con Aguyje.",
           "Cheñyrõmi pide perdón, y no pasó nada malo: doña Ramona le hace un regalo.",
-          "Ikatúpa aike? pide permiso para entrar. Acá doña Ramona le da algo, y Lucía le contesta."
+          "Ikatúpa aike? pide permiso para entrar. Acá doña Ramona le da algo, y Sara le contesta."
         ]
       }
     },
@@ -63,13 +63,13 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "Lucía: Aguyjevete (   ), ^Ana ha Luis^.",
+        "q": "Sara: Aguyjevete (   ), ^Ana ha Vicente^.",
         "options": ["ndéve", "peẽme", "chéve", "nde"],
         "answer": 2,
         "why": [
-          "Ndéve es «a vos», para una sola persona. Lucía les habla a dos: Ana y Luis.",
-          "Lucía les da las gracias a dos personas, Ana y Luis. «A ustedes» es peẽme.",
-          "Chéve es «a mí». Lucía no se da las gracias a sí misma.",
+          "Ndéve es «a vos», para una sola persona. Sara les habla a dos: Ana y Vicente.",
+          "Sara les da las gracias a dos personas, Ana y Vicente. «A ustedes» es peẽme.",
+          "Chéve es «a mí». Sara no se da las gracias a sí misma.",
           "Nde es «vos». Para decir «a vos» hace falta ndéve, y además acá son dos personas."
         ]
       },
@@ -78,14 +78,14 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la respuesta",
-        "q": "Ramona: [Reipotápa|¿querés?] terere?\nLucía: ^[Nahániri|no]^, (   ).",
+        "q": "Ramona: [Reipotápa|¿querés?] terere?\nSara: ^[Nahániri|no]^, (   ).",
         "options": ["tereg̃uahẽ porãite", "mba'éichapa", "aguyje", "ikatúpa aike"],
         "answer": 3,
         "why": [
           "Tereg̃uahẽ porãite da la bienvenida a quien llega. No contesta a «¿querés tereré?».",
-          "Mba'éichapa? pregunta cómo está alguien. Acá Lucía contesta, no pregunta.",
-          "Lucía no quiere tereré y lo dice con cortesía: Nahániri, aguyje («No, gracias»).",
-          "Ikatúpa aike? pide permiso para entrar. Ramona le ofrece tereré, y Lucía tiene que contestar."
+          "Mba'éichapa? pregunta cómo está alguien. Acá Sara contesta, no pregunta.",
+          "Sara no quiere tereré y lo dice con cortesía: Nahániri, aguyje («No, gracias»).",
+          "Ikatúpa aike? pide permiso para entrar. Ramona le ofrece tereré, y Sara tiene que contestar."
         ]
       },
       {
@@ -93,14 +93,14 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la frase",
-        "q": "Lucía: (   )\nRamona: ^[Eike|pasá]^, Lucía. Tereg̃uahẽ porãite.",
+        "q": "Sara: (   )\nRamona: ^[Eike|pasá]^, Sara. Tereg̃uahẽ porãite.",
         "options": ["Ikatúpa aike?", "Jajotopáta.", "Tereg̃uahẽ porãite.", "Iporã, ha nde?"],
         "answer": 1,
         "why": [
-          "Ramona le contesta Eike, «pasá». Entonces Lucía pidió permiso para entrar: Ikatúpa aike?",
-          "Jajotopáta es para despedirse, y Lucía recién llega: Ramona le dice «pasá».",
-          "Tereg̃uahẽ porãite lo dice quien recibe, y la que recibe es Ramona. Lucía es la que llega.",
-          "Iporã, ha nde? contesta a Mba'éichapa?, y nadie le preguntó a Lucía cómo está."
+          "Ramona le contesta Eike, «pasá». Entonces Sara pidió permiso para entrar: Ikatúpa aike?",
+          "Jajotopáta es para despedirse, y Sara recién llega: Ramona le dice «pasá».",
+          "Tereg̃uahẽ porãite lo dice quien recibe, y la que recibe es Ramona. Sara es la que llega.",
+          "Iporã, ha nde? contesta a Mba'éichapa?, y nadie le preguntó a Sara cómo está."
         ]
       },
       {
@@ -108,14 +108,14 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la fórmula",
-        "q": "(Ana y Luis llegan a la casa de doña Ramona.)\nRamona: (   ), ^Ana ha Luis^.",
+        "q": "(Ana y Vicente llegan a la casa de doña Ramona.)\nRamona: (   ), ^Ana ha Vicente^.",
         "options": ["Ikatúpa aike", "Jajotopáta", "Tereg̃uahẽ porãite", "Tapeg̃uahẽ porãite"],
         "answer": 4,
         "why": [
           "Ikatúpa aike pide permiso para entrar. Ramona está en su casa: ella es la que recibe.",
-          "Jajotopáta es para despedirse, y Ana y Luis recién llegan.",
-          "Tereg̃uahẽ porãite es para una sola persona, y Ramona recibe a dos: Ana y Luis.",
-          "Ramona recibe a dos personas, Ana y Luis. A varias se les dice Tapeg̃uahẽ porãite."
+          "Jajotopáta es para despedirse, y Ana y Vicente recién llegan.",
+          "Tereg̃uahẽ porãite es para una sola persona, y Ramona recibe a dos: Ana y Vicente.",
+          "Ramona recibe a dos personas, Ana y Vicente. A varias se les dice Tapeg̃uahẽ porãite."
         ]
       },
       {
@@ -124,13 +124,13 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "(Luis le abre la puerta a Ana.)\nAna: Aguyje ",
-        "after": ", Luis.",
+        "before": "(Vicente le abre la puerta a Ana.)\nAna: Aguyje ",
+        "after": ", Vicente.",
         "tiles": ["nde", "ve"],
         "bank": [1, 0],
-        "hint": "Ana le da las gracias a una sola persona, Luis: «a vos». Fijate después dónde queda el acento.",
-        "full": "(Luis le abre la puerta a Ana.)\nAna: Aguyje {ndéve}, Luis.",
-        "es": "Ana: Gracias a vos, Luis.",
+        "hint": "Ana le da las gracias a una sola persona, Vicente: «a vos». Fijate después dónde queda el acento.",
+        "full": "(Vicente le abre la puerta a Ana.)\nAna: Aguyje {ndéve}, Vicente.",
+        "es": "Ana: Gracias a vos, Vicente.",
         "explain": "nde, ve. Nde es «vos» y -ve, «a»: ndéve es «a vos». -ve no se lleva el acento: queda en la e de nde. Como esa e ya no es la última vocal, se escribe: ndéve."
       },
       {
@@ -139,13 +139,13 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "Lucía: ",
+        "before": "Sara: ",
         "after": ", ña Ramona.",
         "tiles": ["che", "ñyrõ", "mi"],
         "bank": [1, 2, 0],
         "hint": "Como en Jajotopáta, la persona va adelante. Lo que suaviza el pedido va al final.",
-        "full": "Lucía: {Cheñyrõmi}, ña Ramona.",
-        "es": "Lucía: Perdón, doña Ramona.",
+        "full": "Sara: {Cheñyrõmi}, ña Ramona.",
+        "es": "Sara: Perdón, doña Ramona.",
         "explain": "che, ñyrõ, mi. Acá che- es «me», ñyrõ es «perdonar» y -mi lo hace más suave. Van juntos, en una sola palabra: Cheñyrõmi, «perdoname»."
       }
     ],
@@ -155,20 +155,20 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Ana le da un chipá a Luis.)\nLuis: Aguyje (   ), Ana.",
+        "q": "(Ana le da un chipá a Vicente.)\nVicente: Aguyje (   ), Ana.",
         "options": ["peẽme", "chéve", "ndéve", "nde"],
         "answer": 3,
-        "explain": "Luis le da las gracias a una sola persona, Ana: «a vos» es ndéve. Peẽme es «a ustedes», para varias personas; chéve es «a mí»; y nde solo, sin -ve, no quiere decir «a vos»."
+        "explain": "Vicente le da las gracias a una sola persona, Ana: «a vos» es ndéve. Peẽme es «a ustedes», para varias personas; chéve es «a mí»; y nde solo, sin -ve, no quiere decir «a vos»."
       },
       {
         "id": "a1u01d5.e2",
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la fórmula",
-        "q": "(Ana pisa sin querer a Luis.)\nAna: (   ), Luis.",
+        "q": "(Ana pisa sin querer a Vicente.)\nAna: (   ), Vicente.",
         "options": ["Aguyje", "Tereg̃uahẽ porãite", "Jajotopáta", "Cheñyrõmi"],
         "answer": 4,
-        "explain": "Ana pisó a Luis sin querer: pide perdón con Cheñyrõmi. Aguyje da las gracias, Tereg̃uahẽ porãite da la bienvenida y Jajotopáta es para despedirse. Ninguna de esas tres pide perdón."
+        "explain": "Ana pisó a Vicente sin querer: pide perdón con Cheñyrõmi. Aguyje da las gracias, Tereg̃uahẽ porãite da la bienvenida y Jajotopáta es para despedirse. Ninguna de esas tres pide perdón."
       },
       {
         "id": "a1u01d5.e3",
@@ -176,12 +176,12 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "(Lucía llega a la casa de doña Ramona.)\nLucía: ",
+        "before": "(Sara llega a la casa de doña Ramona.)\nSara: ",
         "after": " aike, ña Ramona?",
         "tiles": ["ikatu", "pa"],
         "bank": [1, 0],
-        "full": "(Lucía llega a la casa de doña Ramona.)\nLucía: Ikatúpa aike, ña Ramona?",
-        "es": "Lucía: ¿Puedo pasar, doña Ramona?",
+        "full": "(Sara llega a la casa de doña Ramona.)\nSara: Ikatúpa aike, ña Ramona?",
+        "es": "Sara: ¿Puedo pasar, doña Ramona?",
         "explain": "ikatu, pa. -pa va al final y no se lleva el acento: queda en la u de ikatu. Como esa u ya no es la última vocal, se escribe: Ikatúpa."
       }
     ]
@@ -215,7 +215,7 @@
       "kind": "choice",
       "area": "vocab",
       "label": "Cómo se escribe",
-      "q": "Doña Ramona recibe a Lucía en la puerta: «_Bienvenida_».",
+      "q": "Doña Ramona recibe a Sara en la puerta: «_Bienvenida_».",
       "options": ["Tereg̃uahe poraite", "Tereg̃uahẽ porãite", "Tereg̃uahẽ poraite", "Tereg̃uahe porãite"],
       "answer": 2,
       "explain": "Se escribe con tres tildes nasales (~): la de g̃, la de ẽ y la de ã. Las otras opciones pierden la ~ de ẽ, la de ã o las dos. La ~ de la g a veces no se escribe (Tereguahẽ), pero la de ẽ y la de ã no pueden faltar."
@@ -224,16 +224,16 @@
   "skill": {
     "kind": "reading",
     "es": "Un mensaje de gracias",
-    "ask": "Un WhatsApp después de la visita: ¿para qué escribe Lucía?",
+    "ask": "Un WhatsApp después de la visita: ¿para qué escribe Sara?",
     "seconds": 60,
-    "passage": "Maitei, ña Ramona ha Ana!\n^Aguyjevete peẽme^.\n^Jajotopáta^!\nLucía",
+    "passage": "Maitei, ña Ramona ha Ana!\n^Aguyjevete peẽme^.\n^Jajotopáta^!\nSara",
     "strategy": "Buscá las fórmulas que ya conocés: cada una dice qué hace quien escribe.",
     "item": {
       "id": "a1u01d5.r1",
       "kind": "choice",
       "area": "reading",
       "label": "Texto corto",
-      "q": "¿Qué hace Lucía en su mensaje?",
+      "q": "¿Qué hace Sara en su mensaje?",
       "options": ["Pide perdón y se despide.", "Da la bienvenida y pregunta cómo están.", "Da las gracias y se despide."],
       "short": ["Pide perdón", "Da la bienvenida", "Da las gracias"],
       "answer": 3,
@@ -242,7 +242,7 @@
         "No escribe Tereg̃uahẽ porãite (bienvenida) ni Mba'éichapa? (¿cómo están?).",
         "Aguyjevete peẽme es «muchas gracias a ustedes», y Jajotopáta, «nos vemos»."
       ],
-      "explain": "Lucía les escribe Aguyjevete peẽme («muchas gracias a ustedes») a doña Ramona y a Ana, y se despide con Jajotopáta («nos vemos»). No pide perdón (Cheñyrõmi), no da la bienvenida (Tereg̃uahẽ porãite) ni pregunta cómo están (Mba'éichapa?)."
+      "explain": "Sara les escribe Aguyjevete peẽme («muchas gracias a ustedes») a doña Ramona y a Ana, y se despide con Jajotopáta («nos vemos»). No pide perdón (Cheñyrõmi), no da la bienvenida (Tereg̃uahẽ porãite) ni pregunta cómo están (Mba'éichapa?)."
     }
   }
 }

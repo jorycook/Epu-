@@ -14,8 +14,8 @@
         ],
         "examples": [
           {
-            "gn": "Ana: Ndé{pa} pohanohára?\nLuis: Héẽ, che pohanohára.",
-            "es": "Ana: ¿Vos sos médico?\nLuis: Sí, soy médico.",
+            "gn": "Ana: Ndé{pa} pohanohára?\nVicente: Héẽ, che pohanohára.",
+            "es": "Ana: ¿Vos sos médico?\nVicente: Sí, soy médico.",
             "parts": [["nde", "vos"], ["-pa", "pregunta"], ["pohanohára", "médico, médica; también se ve pohãnohára"], ["héẽ", "sí"]]
           },
           {
@@ -52,8 +52,8 @@
         ],
         "examples": [
           {
-            "gn": "Luis: Nde {piko} mbo'ehára?\nAna: {Héẽ}, che mbo'ehára.",
-            "es": "Luis: ¿En serio sos profesora?\nAna: Sí, soy profesora.",
+            "gn": "Vicente: Nde {piko} mbo'ehára?\nAna: {Héẽ}, che mbo'ehára.",
+            "es": "Vicente: ¿En serio sos profesora?\nAna: Sí, soy profesora.",
             "parts": [["nde", "vos"], ["piko", "¿en serio? (sorpresa, duda)"], ["mbo'ehára", "profesora"], ["héẽ", "sí"]]
           },
           {
@@ -62,8 +62,8 @@
             "parts": [["og̃uahẽ", "llega, llegó"], ["añete", "verdad, cierto"], ["-pa", "pregunta"], ["héẽ", "sí"], ["upéicha", "así"]]
           },
           {
-            "gn": "Ana: Nekane'õ{pa}?\nLuis: {Nahániri}, {na}chekane'õ{i}. Chevare'a.",
-            "es": "Ana: ¿Estás cansado?\nLuis: No, no estoy cansado. Tengo hambre.",
+            "gn": "Ana: Nekane'õ{pa}?\nVicente: {Nahániri}, {na}chekane'õ{i}. Chevare'a.",
+            "es": "Ana: ¿Estás cansado?\nVicente: No, no estoy cansado. Tengo hambre.",
             "parts": [["ne-", "vos, ante una palabra nasal"], ["kane'õ", "cansancio"], ["-pa", "pregunta"], ["nahániri", "no"], ["na-…-i", "no, en dos partes"], ["chevare'a", "tengo hambre"]]
           },
           {
@@ -91,13 +91,13 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la respuesta",
-        "q": "(Juan es ^agricultor^.)\nLucas: Ndépa ñemuhára?\nJuan: (   )",
+        "q": "(Juan es ^agricultor^.)\nMoisés: Ndépa ñemuhára?\nJuan: (   )",
         "options": ["Mba'éichapa?", "Nahániri, che chokokue.", "Héẽ, chekane'õ."],
         "answer": 2,
         "why": [
           "Mba'éichapa? es un saludo y una pregunta abierta: no responde a una pregunta de sí o no.",
           "Ndépa ñemuhára? pregunta sí o no por lo que es Juan. Él responde que no y dice qué es: Nahániri, che chokokue, «no, soy agricultor».",
-          "Héẽ diría que sí es vendedor, y Juan es agricultor. Además, chekane'õ habla de cansancio, y Lucas preguntó qué es Juan, no cómo está."
+          "Héẽ diría que sí es vendedor, y Juan es agricultor. Además, chekane'õ habla de cansancio, y Moisés preguntó qué es Juan, no cómo está."
         ]
       }
     },
@@ -107,14 +107,14 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Luis quiere saber si ^el papá de Ana está enfermo^.)\nLuis: (   ) nde ru?",
+        "q": "(Vicente quiere saber si ^el papá de Ana está enfermo^.)\nVicente: (   ) nde ru?",
         "options": ["Rasýpa", "Pa hasy", "Hasýpa", "Ikane'õpa"],
         "answer": 3,
         "why": [
           "Rasy es la forma que va con che- y nde-, como réra en che réra y nde réra: cherasy. Para otra persona, nde ru, va h-: hasy, como héra.",
           "-pa no va delante ni suelto: es un sufijo y se pega al final de la palabra que preguntás, Hasýpa.",
-          "Luis pregunta por hasy, «está enfermo», y -pa va pegado a esa palabra: Hasýpa nde ru?, «¿está enfermo tu papá?». Hasy termina en y tónica; con -pa esa y ya no es la última vocal y se escribe la tilde: hasýpa.",
-          "Ikane'õpa pregunta si está cansado, y Luis quiere saber si está enfermo: hasy."
+          "Vicente pregunta por hasy, «está enfermo», y -pa va pegado a esa palabra: Hasýpa nde ru?, «¿está enfermo tu papá?». Hasy termina en y tónica; con -pa esa y ya no es la última vocal y se escribe la tilde: hasýpa.",
+          "Ikane'õpa pregunta si está cansado, y Vicente quiere saber si está enfermo: hasy."
         ]
       },
       {
@@ -122,14 +122,14 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Ana quiere saber si Luis es médico. ^Se lo pregunta a él^.)\nAna: (   ) pohanohára?",
+        "q": "(Ana quiere saber si Vicente es médico. ^Se lo pregunta a él^.)\nAna: (   ) pohanohára?",
         "options": ["Ndépa", "Ha'épa", "Ndéve", "Mávapa"],
         "answer": 1,
         "why": [
-          "Ana le pregunta a Luis por él mismo: nde + -pa = Ndépa, con tilde porque la e ya no es la última vocal. Ndépa pohanohára?, «¿vos sos médico?».",
-          "Ha'épa pohanohára? pregunta por otra persona: ha'e, «él, ella». Ana le habla a Luis y pregunta por él mismo: nde.",
+          "Ana le pregunta a Vicente por él mismo: nde + -pa = Ndépa, con tilde porque la e ya no es la última vocal. Ndépa pohanohára?, «¿vos sos médico?».",
+          "Ha'épa pohanohára? pregunta por otra persona: ha'e, «él, ella». Ana le habla a Vicente y pregunta por él mismo: nde.",
           "Ndéve es «a vos», como en Aguyje ndéve (unidad 1): lleva -ve, no -pa, y no pregunta nada.",
-          "Mávapa pohanohára? es «¿quién es médico?»: una pregunta abierta, que no se responde con sí o no. Ana quiere saber si Luis lo es: Ndépa."
+          "Mávapa pohanohára? es «¿quién es médico?»: una pregunta abierta, que no se responde con sí o no. Ana quiere saber si Vicente lo es: Ndépa."
         ]
       },
       {
@@ -199,7 +199,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Qué significa",
-        "q": "Luis: Og̃uahẽ pohanohára.\nAna: _Añetépa?_",
+        "q": "Vicente: Og̃uahẽ pohanohára.\nAna: _Añetépa?_",
         "options": ["¿Ahora?", "¿Quién?", "¿De verdad?", "¿Dónde está?"],
         "answer": 3,
         "explain": "Añete es «verdad, cierto», y -pa lo vuelve pregunta: Añetépa?, «¿de verdad?». Ahora es ko'ág̃a, ¿quién? es Mávapa y ¿dónde? es Moõpa: ninguna de esas palabras está en lo subrayado."
@@ -209,10 +209,10 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la respuesta",
-        "q": "(La mamá de Luis está cansada.)\nAna: Ikane'õpa nde sy?\nLuis: (   )",
+        "q": "(La mamá de Vicente está cansada.)\nAna: Ikane'õpa nde sy?\nVicente: (   )",
         "options": ["Héẽ, kane'õ.", "Héẽ, nekane'õ.", "Nahániri, ikane'õ.", "Héẽ, ikane'õ."],
         "answer": 4,
-        "explain": "Ana pregunta por la mamá de Luis, otra persona, y ella sí está cansada: Héẽ, ikane'õ, «sí, está cansada», con la i- de la tercera persona. Héẽ, kane'õ no dice de quién es el cansancio, le falta la i-; Héẽ, nekane'õ le diría a Ana que ella está cansada; y Nahániri, ikane'õ se contradice: dice «no» y después «está cansada»."
+        "explain": "Ana pregunta por la mamá de Vicente, otra persona, y ella sí está cansada: Héẽ, ikane'õ, «sí, está cansada», con la i- de la tercera persona. Héẽ, kane'õ no dice de quién es el cansancio, le falta la i-; Héẽ, nekane'õ le diría a Ana que ella está cansada; y Nahániri, ikane'õ se contradice: dice «no» y después «está cansada»."
       },
       {
         "id": "a1u03d4.e3",
@@ -220,12 +220,12 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "(Luis comió hace un rato.)\nLuis: ",
+        "before": "(Vicente comió hace un rato.)\nVicente: ",
         "after": ".",
         "tiles": ["nda", "che", "vare'a", "i"],
         "bank": [2, 0, 3, 1],
-        "full": "(Luis comió hace un rato.)\nLuis: Ndachevare'ái.",
-        "es": "Luis: No tengo hambre.",
+        "full": "(Vicente comió hace un rato.)\nVicente: Ndachevare'ái.",
+        "es": "Vicente: No tengo hambre.",
         "explain": "nda- + che- + vare'a («hambre») + -i = Ndachevare'ái, «no tengo hambre». El «no» tiene dos partes que rodean a che- y al estado. Vare'a es oral, sin ~ ni ninguna letra nasal: por eso va nda- y no na-. -i no se lleva el acento: queda en la a final de vare'a y se escribe á."
       }
     ]

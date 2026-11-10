@@ -185,16 +185,25 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </div>
 </sc-if>
 <div style="flex-grow: 2"></div>
+<sc-if value="{{ onward.show }}" hint-placeholder-val="{{ true }}">
+<a href="{{ onward.href }}" onClick="{{ onward.go }}" style="flex-shrink: 0; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center"><span><span lang="gn">Eku'ejey</span> · {{ onward.label }}</span></a>
+<a href="Notebook.dc.html" onClick="{{ toNotebook }}" style="flex-shrink: 0; margin-top: 6px; height: 44px; color: #1B2440; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center"><span><span lang="gn">Tapykue</span> · Volver al cuaderno</span></a>
+</sc-if>
+<sc-if value="{{ onward.none }}" hint-placeholder-val="{{ false }}">
 <a href="Notebook.dc.html" onClick="{{ toNotebook }}" style="flex-shrink: 0; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center"><span><span lang="gn">Tapykue</span> · Volver al cuaderno</span></a>
+</sc-if>
 </sc-if>
 
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"go":{"editor":null},"app":{"editor":null},"save":{"editor":null},"miss":{"editor":null},"reviewed":{"editor":null},"level":{"editor":null},"$preview":{"width":390,"height":844}}'>
-/* The notebook review: every mistake due today, one at a time, asked as it was first asked (a choice is one tap, a
-   build is its tiles put in order and then checked, a spell is typed with the phone's keyboard and the Guarani keys),
-   then where it moves on the track of C.STEPS (1, 3, 7 days; three right in a row clears it), and a summary.
-   The session is the list due when it opens; each answer is recorded at once with reviewed(src, right). */
+/* The notebook review: the mistakes today's sitting asks (C.sitting: a third of the plan's minutes a day, the oldest
+   due first; once the day's sitting is done, one more for a learner who asks), one at a time, asked as it was first
+   asked (a choice is one tap, a build is its tiles put in order and then checked, a spell is typed with the phone's
+   keyboard and the Guarani keys), then where it moves on the track of C.STEPS (1, 3, 7 days; three right in a row
+   clears it), and a summary that leads on to the day. A choice's options come in another order each day, so what is
+   remembered is the answer and not its place. The session is the sitting as it stood when it opened; each answer is
+   recorded at once with reviewed(src, right). */
 const TRACK = ['mañana', 'en 3 días', 'en 1 semana', '¡aprendido!'];
 const SPAN = ['1 día', '3 días', '1 semana'];
 const DAY = 864e5;
@@ -249,7 +258,7 @@ function quoted(segs, base) {
   out.forEach((g) => { if (g.q >= 0) words[g.q] = (words[g.q] || '') + (g.text || g.ruby ? g.t : ' '); });
   return out.map((g) => Object.assign(g, { lang: g.q < 0 ? g.base || base : ES_MARK.test(window.gnCourse.norm(words[g.q] || '')) ? 'es' : 'gn' }));
 }
-/* a question can open with a stage direction in Spanish and go on in Guarani («(Ana le habla a Luis.)», then
+/* a question can open with a stage direction in Spanish and go on in Guarani («(Ana le habla a Vicente.)», then
    «Ana: Ñande ___ ko ka'aru.»): its pieces are cut at the line ends, and each line takes its own language (`base`) by
    the same rule, so the Guarani lines are not marked Spanish for the sake of the first one */
 function lined(segs, it) {
@@ -404,6 +413,18 @@ function bring(box, el) {
   try { calm = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); } catch (e) { calm = false; }
   try { box.scrollTo({ top, behavior: calm ? 'auto' : 'smooth' }); } catch (e) { box.scrollTop = top; }
 }
+/* A choice's options in the order the review shows them today: another order each day (seeded by the item and the
+   day, gnSpell.shuffle), and never the lesson's own when there are two or more, so the position is not what gets
+   remembered. The numbers on the buttons follow the order shown. Kept as written (fixed): an item whose audio numbers
+   its replies, and the designed moment on the canvas. → the options' own indexes, in shown order */
+function orderOf(q, seed, fixed) {
+  const n = Array.isArray(q.options) ? q.options.length : 0;
+  const same = Array.from({ length: n }, (_, k) => k);
+  const S = window.gnSpell;
+  if (fixed || n < 2 || !S || !S.shuffle) return same;
+  const order = S.shuffle(same, seed);
+  return order.every((x, k) => x === k) ? same.slice(1).concat([0]) : order;
+}
 /* one answer per item: a choice's option number, a build's tile in each slot, a spell's typed text */
 function fresh(it) {
   return { pick: null, slots: it && it.kind === 'build' ? (it.tiles || []).map(() => null) : [], typed: '', done: false, right: false, notes: [] };
@@ -420,9 +441,14 @@ class Component extends DCLogic {
     super(props);
     const C = window.gnCourse;
     const now = C.now();
-    const app = (props && props.app) || C.view(sample(C));
-    /* the session is the items due when it opens; answering moves them on, but the list stays as it was */
-    this.items = C.due(app.mistakes, now).filter((m) => m && itemOf(C, m.src)).map((m) => Object.assign({}, m));
+    this.sampleApp = props && props.app ? null : C.view(sample(C));
+    const app = (props && props.app) || this.sampleApp;
+    /* the session is today's sitting as it stands when it opens (or one more, when today's is done); answering moves
+       its items on, but the list stays as it was */
+    const sit = C.sitting((Array.isArray(app.mistakes) ? app.mistakes : []).filter((m) => m && itemOf(C, m.src)), app.plan, now);
+    this.items = (sit.items.length ? sit.items : sit.more).map((m) => Object.assign({}, m));
+    /* the day the options' order is drawn for */
+    this.day = C.today(now);
     const demo = !(props && props.go);
     this.state = {
       i: 0,
@@ -553,8 +579,12 @@ class Component extends DCLogic {
        half-width button once the tick or the cross is in (108 px are left at 16 px), so no word is broken in two */
     const options = kind === 'choice' && Array.isArray(q.options) ? q.options : [];
     const wide = options.some((o) => C.chars(C.plain(o)).length > 14 || C.wordEms(o) * 16 > 108);
-    const opts = options.map((label, j) => {
-      const n = j + 1;
+    /* today's order of the options; an answer is kept by the option's own number (n), the button shows its place (at) */
+    const shown = orderOf({ options }, entry.src + '|' + this.day, hasPlay || !this.props.go);
+    const shownAnswer = shown.indexOf((q.answer || 1) - 1) + 1;
+    const opts = shown.map((own, j) => {
+      const label = options[own];
+      const n = own + 1;
       const on = a.pick === n;
       let look = { border: '2px solid #1B2440', bg: '#FFFFFF', shadow: '0 3px 0 #1B2440', color: '#1B2440' };
       if (answered) {
@@ -563,7 +593,7 @@ class Component extends DCLogic {
         else look = { border: '2px solid #DDE1EC', bg: '#FFFFFF', shadow: 'none', color: '#5A6382' };
       } else if (locked) look = { border: '2px solid #DDE1EC', bg: '#FFFFFF', shadow: 'none', color: '#5A6382' };
       return Object.assign({
-        n,
+        n: j + 1,
         label: C.plain(label),
         lang: langOf(q, C.plain(label)),
         on,
@@ -669,7 +699,23 @@ class Component extends DCLogic {
     const count = (x) => results.filter((r) => r === x).length;
     const stat = (n, label, sub, first) => ({ n, es: label, sub, rule: first ? 'none' : '2px solid #EEF0F6' });
     const playText = ctx ? ctx.text : '';
+    /* after the review, the day: the next session of the plan (the week test opens on its own page) */
+    const app = this.props.app || this.sampleApp || {};
+    const nextS = (app.status && app.status.next) || null;
+    const onward = nextS ? {
+      show: true,
+      none: false,
+      label: nextS.kind === 'test' ? 'Seguir con la prueba' : 'Seguir con el día ' + nextS.day,
+      href: nextS.kind === 'test' ? 'WeekTest.dc.html' : 'Today.dc.html',
+      go: (e) => {
+        if (this.props.save) this.props.save({ cur: nextS.id, tp: 0, set: nextS.kind === 'test' ? 'test' : 'day' });
+        nav(nextS.kind === 'test' ? 'WeekTest' : 'Today')(e);
+      },
+    } : { show: false, none: true, label: '', href: 'Notebook.dc.html', go: nav('Notebook') };
+    /* what is still due once this sitting is over: it waits for the next days */
+    const waiting = total > 0 ? C.due((Array.isArray(app.mistakes) ? app.mistakes : []).filter((m) => m && itemOf(C, m.src)), C.now()).length : 0;
     return {
+      onward,
       it: {
         tag: area.es,
         tagBg: area.tagBg,
@@ -704,7 +750,7 @@ class Component extends DCLogic {
         afterPull: /^[.,;:!?…»)]/.test(afterText) ? '-6px' : '0',
         postLines: post.slice(1).filter((t) => t.trim()).map((t) => ({ t })),
         prompt: kind === 'spell' ? '«' + C.plain(q.prompt || '').trim() + '»' : '',
-        rightHead: kind === 'choice' ? 'Respuesta ' + q.answer + ':' : 'Respuesta:',
+        rightHead: kind === 'choice' ? 'Respuesta ' + shownAnswer + ':' : 'Respuesta:',
         rightLabel,
         rightLang: langOf(q, rightLabel),
         hasNotes: wrong && notes.length > 0,
@@ -767,7 +813,7 @@ class Component extends DCLogic {
       /* the verdict, said once it is shown (the track note below announces itself) */
       live: !answered || s.summary ? { gn: '', es: '', lang: 'es', answer: '', end: '' } : {
         gn: correct ? '¡Iporã!' : '',
-        es: (correct ? ' ¡Correcto! ' : 'Casi. ') + (kind === 'choice' ? 'Respuesta ' + q.answer + ': ' : 'Respuesta: '),
+        es: (correct ? ' ¡Correcto! ' : 'Casi. ') + (kind === 'choice' ? 'Respuesta ' + shownAnswer + ': ' : 'Respuesta: '),
         lang: langOf(q, rightLabel),
         answer: rightLabel,
         end: /[.!?…»]$/.test(rightLabel) ? '' : '.',
@@ -806,7 +852,7 @@ class Component extends DCLogic {
         else this.setState({ i: s.i + 1, playing: false, played: false, line: -1 });
       },
       doneHead: total === 0 ? 'Estás al día' : 'Repaso terminado',
-      doneLine: total === 0 ? 'No hay nada para repasar hoy. Cada error vuelve el día que le toca.' : total === 1 ? 'Repasaste la pregunta de hoy.' : 'Repasaste las ' + total + ' preguntas de hoy.',
+      doneLine: (total === 0 ? 'No hay nada para repasar hoy. Cada error vuelve el día que le toca.' : total === 1 ? 'Repasaste la pregunta de hoy.' : 'Repasaste las ' + total + ' preguntas de hoy.') + (s.summary && waiting > 0 ? (waiting === 1 ? ' Queda 1 para los próximos días.' : ' Quedan ' + waiting + ' para los próximos días.') : ''),
       hasStats: total > 0,
       stats: [
         /* the verbs agree with the count: one question «avanzó», two «avanzaron» */

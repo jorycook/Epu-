@@ -43,10 +43,10 @@
  },
  {
   "id": "a1u01t.7", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-  "q": "(Ana y Luis son de Paraguay. Se lo cuentan a Lucas, un chico de Argentina.)\nAna: (   ) Paraguaigua.",
+  "q": "(Ana y Vicente son de Paraguay. Se lo cuentan a Moisés, un chico de Argentina.)\nAna: (   ) Paraguaigua.",
   "options": ["Ñande", "Ore", "Peẽ", "Ha'ekuéra"],
   "answer": 2,
-  "explain": "Ana habla de ella y de Luis, y Lucas, el que escucha, no está en el grupo: Ore Paraguaigua, «somos de Paraguay». Ñande incluiría a Lucas, que es de Argentina; peẽ es «ustedes» y ha'ekuéra, «ellos»."
+  "explain": "Ana habla de ella y de Vicente, y Moisés, el que escucha, no está en el grupo: Ore Paraguaigua, «somos de Paraguay». Ñande incluiría a Moisés, que es de Argentina; peẽ es «ustedes» y ha'ekuéra, «ellos»."
  },
  {
   "id": "a1u01t.8", "kind": "choice", "area": "grammar", "label": "Qué significa",
@@ -64,10 +64,10 @@
  },
  {
   "id": "a1u01t.10", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-  "q": "(Luis y Marta le sirven tereré a Ana.)\nAna: Aguyjevete (   ).",
+  "q": "(Vicente y Teresa le sirven tereré a Ana.)\nAna: Aguyjevete (   ).",
   "options": ["peẽme", "ndéve", "chéve", "nde"],
   "answer": 1,
-  "explain": "Ana les da las gracias a dos personas, Luis y Marta: «a ustedes» es peẽme. Ndéve es «a vos», para una sola persona; chéve es «a mí», y nde solo, sin -ve, no quiere decir «a vos»."
+  "explain": "Ana les da las gracias a dos personas, Vicente y Teresa: «a ustedes» es peẽme. Ndéve es «a vos», para una sola persona; chéve es «a mí», y nde solo, sin -ve, no quiere decir «a vos»."
  },
  {
   "id": "a1u01t.11", "kind": "choice", "area": "grammar", "label": "Elegí la respuesta",
@@ -85,24 +85,24 @@
  },
  {
   "id": "a1u01t.13", "kind": "build", "area": "grammar", "label": "Armá la palabra", "join": "word",
-  "before": "(Rosa les habla a Juan y a Lucas.)\nRosa: ", "after": " guaraníme?",
+  "before": "(Rosa les habla a Juan y a Moisés.)\nRosa: ", "after": " guaraníme?",
   "tiles": ["pe", "ñe'ẽ", "pa"], "bank": [2, 0, 1],
-  "full": "(Rosa les habla a Juan y a Lucas.)\nRosa: Peñe'ẽpa guaraníme?",
-  "es": "(Rosa les habla a Juan y a Lucas.)\nRosa: ¿Ustedes hablan guaraní?",
-  "explain": "pe, ñe'ẽ, pa. Rosa les habla a dos personas, Juan y Lucas, así que el verbo lleva pe-, el de peẽ («ustedes»): pe- + ñe'ẽ = peñe'ẽ, «hablan». -pa va al final y hace la pregunta: peñe'ẽpa. El acento sigue en la ẽ, y la tilde nasal ya lo marca."
+  "full": "(Rosa les habla a Juan y a Moisés.)\nRosa: Peñe'ẽpa guaraníme?",
+  "es": "(Rosa les habla a Juan y a Moisés.)\nRosa: ¿Ustedes hablan guaraní?",
+  "explain": "pe, ñe'ẽ, pa. Rosa les habla a dos personas, Juan y Moisés, así que el verbo lleva pe-, el de peẽ («ustedes»): pe- + ñe'ẽ = peñe'ẽ, «hablan». -pa va al final y hace la pregunta: peñe'ẽpa. El acento sigue en la ẽ, y la tilde nasal ya lo marca."
  },
  {
   "id": "a1u01t.14", "kind": "build", "area": "grammar", "label": "Armá la oración", "join": "sentence",
-  "before": "Luis: Mba'éichapa, Ana?\nAna:", "after": "?",
+  "before": "Vicente: Mba'éichapa, Ana?\nAna:", "after": "?",
   "tiles": ["iporã", "ha", "nde"], "bank": [2, 0, 1],
-  "full": "Luis: Mba'éichapa, Ana?\nAna: Iporã, ha nde?",
-  "es": "Luis: Hola, Ana, ¿cómo estás?\nAna: Bien, ¿y vos?",
-  "explain": "Iporã, ha, nde. Ana primero responde cómo está: iporã, «bien». Después le devuelve la pregunta a Luis con ha nde, «¿y vos?»: ha, «y», va antes de nde."
+  "full": "Vicente: Mba'éichapa, Ana?\nAna: Iporã, ha nde?",
+  "es": "Vicente: Hola, Ana, ¿cómo estás?\nAna: Bien, ¿y vos?",
+  "explain": "Iporã, ha, nde. Ana primero responde cómo está: iporã, «bien». Después le devuelve la pregunta a Vicente con ha nde, «¿y vos?»: ha, «y», va antes de nde."
  },
  {
   "id": "a1u01t.15", "kind": "choice", "area": "reading", "label": "Buscar el dato",
-  "q": "¿En qué momento del día llega Lucas?",
-  "passage": "Mbo'ehára: Mba'éichapa nde pyhareve?\nLucas: Iporã. Ikatúpa aike?\nMbo'ehára: Tereg̃uahẽ porãite. Mba'éichapa nde réra?\nLucas: Che réra Lucas.\nMbo'ehára: Che réra Nilda.",
+  "q": "¿En qué momento del día llega Moisés?",
+  "passage": "Mbo'ehára: Mba'éichapa nde pyhareve?\nMoisés: Iporã. Ikatúpa aike?\nMbo'ehára: Tereg̃uahẽ porãite. Mba'éichapa nde réra?\nMoisés: Che réra Moisés.\nMbo'ehára: Che réra Susana.",
   "options": ["A la mañana.", "A la tarde.", "A la noche.", "No se sabe."],
   "short": ["Mañana", "Tarde", "Noche", "No se sabe"],
   "answer": 1,
@@ -110,21 +110,21 @@
  },
  {
   "id": "a1u01t.16", "kind": "choice", "area": "reading", "label": "Texto corto",
-  "q": "¿Qué le pregunta Lucas a la profesora?",
-  "passage": "Mbo'ehára: Mba'éichapa nde pyhareve?\nLucas: Iporã. Ikatúpa aike?\nMbo'ehára: Tereg̃uahẽ porãite. Mba'éichapa nde réra?\nLucas: Che réra Lucas.\nMbo'ehára: Che réra Nilda.",
+  "q": "¿Qué le pregunta Moisés a la profesora?",
+  "passage": "Mbo'ehára: Mba'éichapa nde pyhareve?\nMoisés: Iporã. Ikatúpa aike?\nMbo'ehára: Tereg̃uahẽ porãite. Mba'éichapa nde réra?\nMoisés: Che réra Moisés.\nMbo'ehára: Che réra Susana.",
   "options": ["Cómo se llama.", "Si puede pasar.", "Dónde vive.", "Si habla guaraní."],
   "short": ["Su nombre", "Pasar", "Dónde vive", "Si habla guaraní"],
   "answer": 2,
-  "explain": "Lucas pregunta Ikatúpa aike?, «¿puedo pasar?», y la profesora le da la bienvenida. El nombre no lo pregunta Lucas: la profesora se lo pregunta a él y después dice el suyo. Lucas no pregunta dónde vive ella ni si habla guaraní."
+  "explain": "Moisés pregunta Ikatúpa aike?, «¿puedo pasar?», y la profesora le da la bienvenida. El nombre no lo pregunta Moisés: la profesora se lo pregunta a él y después dice el suyo. Moisés no pregunta dónde vive ella ni si habla guaraní."
  },
  {
   "id": "a1u01t.17", "kind": "choice", "area": "reading", "label": "Buscar el dato",
   "q": "¿Cómo se llama la profesora?",
-  "passage": "Mbo'ehára: Mba'éichapa nde pyhareve?\nLucas: Iporã. Ikatúpa aike?\nMbo'ehára: Tereg̃uahẽ porãite. Mba'éichapa nde réra?\nLucas: Che réra Lucas.\nMbo'ehára: Che réra Nilda.",
-  "options": ["Lucas.", "Rosa.", "No lo dice.", "Nilda."],
-  "short": ["Lucas", "Rosa", "No lo dice", "Nilda"],
+  "passage": "Mbo'ehára: Mba'éichapa nde pyhareve?\nMoisés: Iporã. Ikatúpa aike?\nMbo'ehára: Tereg̃uahẽ porãite. Mba'éichapa nde réra?\nMoisés: Che réra Moisés.\nMbo'ehára: Che réra Susana.",
+  "options": ["Moisés.", "Rosa.", "No lo dice.", "Susana."],
+  "short": ["Moisés", "Rosa", "No lo dice", "Susana"],
   "answer": 4,
-  "explain": "Al final la profesora dice Che réra Nilda, «me llamo Nilda». Lucas es el alumno que llega, y en el diálogo no hay ninguna Rosa."
+  "explain": "Al final la profesora dice Che réra Susana, «me llamo Susana». Moisés es el alumno que llega, y en el diálogo no hay ninguna Rosa."
  },
  {
   "id": "a1u01t.18", "kind": "choice", "area": "listening", "label": "Respuesta rápida",

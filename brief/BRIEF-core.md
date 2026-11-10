@@ -71,7 +71,9 @@ board named in your spec and do what it does.
   A control that does nothing in both worlds: `(e) => { if (this.props.go) e.preventDefault(); }`.
 - Designed moment: opened alone, every board shows its most telling state:
   `const app = this.props.app || C.view(SAMPLE)` where SAMPLE is built RELATIVE TO TODAY so it never drifts:
-  `const T = C.today(C.now());` and dates from `C.addDays(T, n)`. The shared sample for the plan boards is in part 2.
+  `const T = C.today(C.now());` and dates from `C.addDays(T, n)`. The shared sample for the plan boards is in part 2
+  (with one mistake due today and three days with study, so the tab bars' count, the review row and the last seven
+  days are designed).
 - Moment boards: a small board that imports a screen with a `view` prop to show another state (as Yaoki's ExamResult
   imports Exam with `view="result"`). Its head loads the same scripts as the imported board.
 - `save(patch)` merges; progress (`prog`) only moves forward. See the engine below.
@@ -135,6 +137,9 @@ keyboard `<rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M6 10h.01M
 
 Tab bar (Main, Notebook, Exam tab, Progress): `<nav aria-label="Principal">`, `display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 6px 8px 30px; background: #FFFFFF; border-top: 2px solid #DDE1EC`;
 each tab an `<a>` 50 px tall, column, gap 2px, 11px/700 `#5A6382`, icon 24 stroke 2.2; current tab `aria-current="page"`, `#2F4FD0`, 800, stroke 2.4.
+The Cuaderno tab carries what today's review asks (`app.review.n`; "9+" above nine): a 16-px disc `#B02A63` with a white 2-px
+ring and a white 10px/800 number at the icon's top right (the icon in a `position: relative` span, the disc in an `sc-if`),
+and the link's `aria-label` says it ("Cuaderno, 3 para repasar hoy"; "Cuaderno" when nothing is due).
 
 Graph paper (path regions, as in Yaoki): `background-image: linear-gradient(#E6E9F3 1px, transparent 1px), linear-gradient(90deg, #E6E9F3 1px, transparent 1px); background-size: 26px 26px`.
 
@@ -148,11 +153,30 @@ Same names and meanings as Yaoki's `ykCourse` unless noted. `const C = window.gn
 - Course: `C.units()`, `C.unit(n)` → `{ n, gn, es, days[6], test[ids] }`, `C.sessions()` → `[{ id, unit, day, kind: 'study'|'review'|'test', ready, title }]`,
   `C.session(id)`, `C.day(id)`, `C.item(id)`.
 - Progress: `done[sid] = { g: 0..3, ks, kw, k, r }`; `C.complete(state, s)`; `C.progress(state, lv)` → `{ units: [{ n, es, gn, of, done, full }], unitsDone, stamps, exam, passed }`.
-- Plan: `plan = { start, target: 'YYYY-MM-DD' | null, pace: 'fit'|'steady', minutes: 15|30|45 }`. No target = one session a day.
+- Plan: `plan = { start, target: 'YYYY-MM-DD' | null, pace: 'fit'|'steady', minutes: 15|30|45, from? }`. No target = one session a day.
+  `from` (a plan made again part way through a level: the goal screen reached from Main's date chip or from Progreso)
+  is how many sessions were already behind the learner: they keep the days just before `start`, and only the rest is
+  laid out from `start` (`C.reached(state, lv)` counts them; a first plan has none). `minutes` is the size of a day:
+  a review sitting is a third of it (below).
   With a target, the last 7 days are kept for review and the level exam. `C.plan(settings)`, `C.status(state, now)` →
   `{ plan, next, dueToday, perDay, daysLeft (null without target), stamps, today, behind, target }`, `C.fits(settings)`, `C.today(now)`,
   `C.now()`, `C.addDays(iso, n)`, `C.daysBetween(a, b)`, `C.dateEs(iso, withYear)` ("domingo, 6 de diciembre de 2026"), `C.dateGn(iso)` (Guarani, or '' until verified).
 - Notebook: `C.miss(list, m, now)`, `C.due(list, now)`, `C.reviewed(list, src, right, now)`; spacing `C.STEPS` = [1, 3, 7]; three rights clear an entry.
+  A day's review has a size: `C.sittingSize(plan)` = a third of `plan.minutes` at 0.6 min a question (8, 16 or 25; 16 with
+  no plan). `C.sitting(list, plan, now)` → `{ due, size, done, n, items, more, minutes }`: `due` all that are due, `done`
+  what was answered in a review today (an entry carries `last` and `at`), `items` the `n` that today's sitting still asks
+  (the oldest due first, in the notebook's order), `more` one more sitting's entries once today's is done, `minutes` what
+  the `n` take (`C.reviewMinutes(n)`). Notebook and Review read it; Main, Today and the tab bars read `app.review`.
+- Days with study: `seen` in the state is the list of days ('YYYY-MM-DD', oldest first) on which the learner did something
+  the app records, or opened Leer, Escribir or Hablar (`handlers` add today through `C.sawDay(seen, now)`; opening the app
+  writes nothing). `C.days(seen, now)` → `{ week: [{ date, kind: 'study'|'back'|'missed'|'today'|'none' } ×7, today last],
+  count, returns, last, gap, away, back, today }`: a day of return (`back`) is a day with study after one or more without;
+  `away` is the days since the last day with study when that is two or more and nothing is done yet today (Main greets the
+  learner back); 'none' is a day before the record began (nothing is claimed about it).
+- Mini exams: `C.minis(lv)` → the level's two, `[{ n, id: 'a1m1', units, after, ready, items: [20 item ids], seconds }]`:
+  20 of the week-test questions of its half of the level (6 vocab, 8 grammar, 3 reading, 3 listening, as many from each
+  unit), ready once those week tests are written. `C.mini('a1m1' | 'mini1')`. Exam runs it with `set: 'mini1'` and saves
+  `{ result }` under its id, with the week tests.
 - Level exam: `C.PARTS` (P1 Lectura, P2 Escucha, P3 Mediación, P4 Escritura, P5 Oral, with `group` and `how`), `C.examResult(parts, mode)` →
   `{ groupC, groupP, apto, comprension, mode }` (Apto: ≥60 % in each group, no part under 40 %; group C alone → Constancia de comprensión).
 - Placement: `C.placed(comp, prod)` → `{ comp, prod, start }` (the plan starts at the production level).
@@ -167,11 +191,13 @@ Same names and meanings as Yaoki's `ykCourse` unless noted. `const C = window.gn
   line that quotes Guarani (a day's title, a sound focus), the words that can only be Guarani marked, for `lang="gn"`.
 - Areas: `C.area(key)` → `{ key, es, tagBg, tagColor }` for `vocab` Palabras, `grammar` Gramática, `reading` Lectura, `listening` Escucha,
   `mediation` Mediación, `sound` Sonido y letra. Week test results store `areas: { vocab: { right, of }, … }`.
-- State: `C.fresh()` → `{ screen: 'Goal', started, level, plans, plan, cur, done, tests, exams, mistakes, tp, set, placement, typed }`;
-  `save` keys: plain keys are copied (`cur`, `tp`, `set`, `level`, `plan`, `placement`, `screen`); `prog` merges into the current session
-  with Math.max; `result` stores a week test at `tests[result.id]`; `exam` stores a level exam result at `exams[level]` (a pass is never replaced
-  by a fail); `typed` adds words spelled with the Guarani keyboard.
-- `C.view(state)` → `{ status, plan, plans, sid, session, unit, day, prog, done, tests, exams, exam, tp, set, mistakes, typed, placement, profile, exposure, level, meta, levels, progress }` (`plans`: the other levels' plans; `profile`: the goal's answers; `exposure`: the «lo usé» marks).
+- State: `C.fresh()` → `{ screen: 'Goal', started, level, plans, plan, cur, done, tests, exams, mistakes, tp, set, placement, typed, seen }`;
+  `save` keys: plain keys are copied (`cur`, `tp`, `set` ('day', 'test', 'mini1', 'mini2'), `level`, `plan`, `placement`, `screen`); `prog` merges into the current session
+  with Math.max; `result` stores a week test (or a mini exam) at `tests[result.id]`; `exam` stores a level exam result at `exams[level]` (a pass is never replaced
+  by a fail); `typed` adds words spelled with the Guarani keyboard. A `prog`, a `result`, `typed`, a part of the level exam handed in,
+  `miss` and `reviewed` also put today in `seen`, and so does `go` to Leer, Escribir or Hablar.
+- `C.view(state)` → `{ status, plan, plans, sid, session, unit, day, prog, done, tests, exams, exam, tp, set, mistakes, review, seen, days, typed, placement, profile, exposure, level, meta, levels, progress }` (`plans`: the other levels' plans; `profile`: the goal's answers; `exposure`: the «lo usé» marks;
+  `review`: `{ n, due, size, done, minutes }` of today's sitting for this level; `days`: `C.days(seen)`).
   `sid` is the session picked on the week path (`cur`), else the next one due; with every written session done it is the last
   day written, so the path stays on the last week done.
 - Sound: `window.gnSound` — `has(key)`, `ms(key)`, `kind(key)` ('human' | 'synthetic' | ''), `unlock()`, `play(key)`, `stop()`, `on()`, `at()`. No clips exist: a sound control

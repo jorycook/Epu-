@@ -113,17 +113,17 @@
           "samples": [
             {
               "level": "below",
-              "gn": "Hola. Che téra Carlos. Che… de Luque. Gracias.",
-              "es": "Por debajo de A1: solo dice su nombre, y con un error; lo demás, en castellano. Con che adelante, téra pasa a réra: Che réra Carlos."
+              "gn": "Hola. Che téra Jacinto. Che… de Luque. Gracias.",
+              "es": "Por debajo de A1: solo dice su nombre, y con un error; lo demás, en castellano. Con che adelante, téra pasa a réra: Che réra Jacinto."
             },
             {
               "level": "at",
-              "gn": "Mba'éichapa? Che réra Carlos. Che Paraguaigua. Aiko távape, che sy ha che ru ndive. Amba'apo mbo'ehaópe. Aguyje.",
+              "gn": "Mba'éichapa? Che réra Jacinto. Che Paraguaigua. Aiko távape, che sy ha che ru ndive. Amba'apo mbo'ehaópe. Aguyje.",
               "es": "A1: cumple la tarea con frases aprendidas. Saluda y dice su nombre, de dónde es, dónde y con quién vive y dónde trabaja."
             },
             {
               "level": "above",
-              "gn": "Maitei, mba'éichapa? Che réra Carlos ha che Paraguaigua. Ko'ág̃a aiko távape, che sy ha che ru ndive. Che mbo'ehára: amba'apo mbo'ehaópe pyhareve, ha ka'aru apurahéi. Ko'ẽrõ aháta che jarýi rógape ajapo hag̃ua chipa hendive. Aguyje.",
+              "gn": "Maitei, mba'éichapa? Che réra Jacinto ha che Paraguaigua. Ko'ág̃a aiko távape, che sy ha che ru ndive. Che mbo'ehára: amba'apo mbo'ehaópe pyhareve, ha ka'aru apurahéi. Ko'ẽrõ aháta che jarýi rógape ajapo hag̃ua chipa hendive. Aguyje.",
               "es": "Por encima de A1: hace más de lo que pide la tarea. Describe su día (pyhareve, ka'aru), cuenta un plan (ko'ẽrõ) y dice para qué va con hag̃ua, una forma de los niveles siguientes. Todo seguido y sin errores."
             }
           ]

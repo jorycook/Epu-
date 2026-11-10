@@ -65,8 +65,8 @@
             "parts": [["a-", "yo"], ["kyhyje", "tener miedo"]]
           },
           {
-            "gn": "{Che}mandu'a, Luis.",
-            "es": "Me acuerdo, Luis.",
+            "gn": "{Che}mandu'a, Vicente.",
+            "es": "Me acuerdo, Vicente.",
             "parts": [["che-", "yo: me pasa"], ["mandu'a", "acordarse"]]
           }
         ],
@@ -89,7 +89,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Ana le cuenta a Luis que ^está en su casa^.)\nAna: (   ) ógape.",
+        "q": "(Ana le cuenta a Vicente que ^está en su casa^.)\nAna: (   ) ógape.",
         "options": ["Akaru", "Chevare'a", "Aime"],
         "answer": 3,
         "why": [
@@ -105,13 +105,13 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Luis cuenta ^qué hace él^ a la mañana.)\nLuis: (   ) ha ^ajahu^.",
+        "q": "(Vicente cuenta ^qué hace él^ a la mañana.)\nVicente: (   ) ha ^ajahu^.",
         "options": ["Chepu'ã", "Apu'ã", "Ipu'ã", "Pu'ã"],
         "answer": 2,
         "why": [
           "Che- es para los estados, como chekane'õ. Levantarse es una acción: lleva a-. Chepu'ã no es «me levanto».",
-          "Levantarse es una acción y Luis habla de él mismo: a- + pu'ã = apu'ã, «me levanto». Después se baña: ajahu, también con a-.",
-          "I- marca el estado de otra persona, como en ikane'õ. Pu'ã es una acción, y además Luis habla de él.",
+          "Levantarse es una acción y Vicente habla de él mismo: a- + pu'ã = apu'ã, «me levanto». Después se baña: ajahu, también con a-.",
+          "I- marca el estado de otra persona, como en ikane'õ. Pu'ã es una acción, y además Vicente habla de él.",
           "Pu'ã sin prefijo no dice quién se levanta: le falta la persona, como guata sin a- en la unidad 2."
         ]
       },
@@ -120,13 +120,13 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Luis comió bien y ^está contento^.)\nLuis: (   ), Ana.",
+        "q": "(Vicente comió bien y ^está contento^.)\nVicente: (   ), Ana.",
         "options": ["Chevy'a", "Ivy'a", "Avy'a", "Vy'a"],
         "answer": 3,
         "why": [
           "Parece un estado, pero vy'a se conjuga como acción, con a-. Chevy'a no es «estoy contento».",
-          "Ivy'a no es «está contento»: vy'a va como acción, y para otra persona es ovy'a, con o-. Además, Luis habla de él.",
-          "Vy'a va como una acción, y Luis habla de él: a- + vy'a = avy'a, «estoy contento».",
+          "Ivy'a no es «está contento»: vy'a va como acción, y para otra persona es ovy'a, con o-. Además, Vicente habla de él.",
+          "Vy'a va como una acción, y Vicente habla de él: a- + vy'a = avy'a, «estoy contento».",
           "Vy'a solo es «la alegría», la cosa. Le falta la persona: a-."
         ]
       },
@@ -150,13 +150,13 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Ana le habla a Luis de la fiesta, y Luis ^se acuerda^.)\nLuis: (   ), Ana.",
+        "q": "(Ana le habla a Vicente de la fiesta, y Vicente ^se acuerda^.)\nVicente: (   ), Ana.",
         "options": ["Chemandu'a", "Amandu'a", "Imandu'a", "Mandu'a"],
         "answer": 1,
         "why": [
-          "Acordarse es un estado, de los que van con che-: chemandu'a, «me acuerdo». Luis habla de él.",
+          "Acordarse es un estado, de los que van con che-: chemandu'a, «me acuerdo». Vicente habla de él.",
           "Acordarse no se conjuga como acción: amandu'a no es «me acuerdo». Va con che-, como chekane'õ.",
-          "Imandu'a es «se acuerda», otra persona, con la i- de ikane'õ. Luis habla de él mismo.",
+          "Imandu'a es «se acuerda», otra persona, con la i- de ikane'õ. Vicente habla de él mismo.",
           "Mandu'a solo es «el recuerdo», la cosa: no dice quién se acuerda. Le falta la persona, che-."
         ]
       },
@@ -166,13 +166,13 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "(Luis vuelve de la cancha al mediodía.)\nLuis: ",
+        "before": "(Vicente vuelve de la cancha al mediodía.)\nVicente: ",
         "after": " ha akaru.",
         "tiles": ["che", "vare'a"],
         "bank": [1, 0],
         "hint": "El hambre es un estado, no una acción: el «yo» de los estados va primero, pegado. La acción de al lado, akaru, lleva a-.",
-        "full": "(Luis vuelve de la cancha al mediodía.)\nLuis: {Che}vare'a ha akaru.",
-        "es": "Luis: Tengo hambre y como.",
+        "full": "(Vicente vuelve de la cancha al mediodía.)\nVicente: {Che}vare'a ha akaru.",
+        "es": "Vicente: Tengo hambre y como.",
         "explain": "che- (yo, me pasa) + vare'a («hambre») = chevare'a, «tengo hambre». El hambre es un estado: lleva che-, no a-. Comer es una acción: por eso akaru lleva a-. En una sola oración están los dos «yo» del guaraní: che- para lo que te pasa y a- para lo que hacés."
       },
       {
@@ -181,13 +181,13 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "(Luis ve una víbora.)\nLuis: ",
+        "before": "(Vicente ve una víbora.)\nVicente: ",
         "after": ".",
         "tiles": ["a", "kyhyje"],
         "bank": [1, 0],
         "hint": "Tener miedo se conjuga como una acción, igual que avy'a: el prefijo de «yo» va primero, pegado a la raíz.",
-        "full": "(Luis ve una víbora.)\nLuis: {A}kyhyje.",
-        "es": "Luis: Tengo miedo.",
+        "full": "(Vicente ve una víbora.)\nVicente: {A}kyhyje.",
+        "es": "Vicente: Tengo miedo.",
         "explain": "a- («yo») + kyhyje («tener miedo») = akyhyje, «tengo miedo». Parece un estado, pero kyhyje va con los prefijos de acción, como vy'a: akyhyje, no chekyhyje. Sin tilde: el acento cae en la última vocal."
       }
     ],
@@ -197,8 +197,8 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Qué significa",
-        "q": "Ana: _Avy'a_, Luis.",
-        "options": ["Me baño, Luis.", "Estoy contenta, Luis.", "Tengo miedo, Luis.", "Estoy cansada, Luis."],
+        "q": "Ana: _Avy'a_, Vicente.",
+        "options": ["Me baño, Vicente.", "Estoy contenta, Vicente.", "Tengo miedo, Vicente.", "Estoy cansada, Vicente."],
         "answer": 2,
         "explain": "Vy'a es «alegrarse» y se conjuga como acción: avy'a, «estoy contenta». «Me baño» es ajahu; «tengo miedo», akyhyje; y «estoy cansada», chekane'õ, con che-."
       },
@@ -207,10 +207,10 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Luis está enojado y se va. Lo cuenta él mismo.)\nLuis: (   ) ha aha.",
+        "q": "(Vicente está enojado y se va. Lo cuenta él mismo.)\nVicente: (   ) ha aha.",
         "options": ["Apochy", "Ipochy", "Chepochy", "Pochy"],
         "answer": 3,
-        "explain": "Estar enojado es un estado, y Luis habla de él mismo: che- + pochy = chepochy. Chepochy ha aha, «estoy enojado y me voy». Apochy no es «estoy enojado»: a- es para las acciones, como aha. Ipochy es «está enojado», otra persona. Y pochy sin marca es solo «el enojo», la cosa: no dice de quién."
+        "explain": "Estar enojado es un estado, y Vicente habla de él mismo: che- + pochy = chepochy. Chepochy ha aha, «estoy enojado y me voy». Apochy no es «estoy enojado»: a- es para las acciones, como aha. Ipochy es «está enojado», otra persona. Y pochy sin marca es solo «el enojo», la cosa: no dice de quién."
       },
       {
         "id": "a1u03d2.e3",
@@ -218,12 +218,12 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "(Luis cuenta qué hace el lunes a la mañana.)\nLuis: Apu'ã ha ",
+        "before": "(Vicente cuenta qué hace el lunes a la mañana.)\nVicente: Apu'ã ha ",
         "after": ".",
         "tiles": ["a", "mba'apo"],
         "bank": [1, 0],
-        "full": "(Luis cuenta qué hace el lunes a la mañana.)\nLuis: Apu'ã ha amba'apo.",
-        "es": "Luis: Me levanto y trabajo.",
+        "full": "(Vicente cuenta qué hace el lunes a la mañana.)\nVicente: Apu'ã ha amba'apo.",
+        "es": "Vicente: Me levanto y trabajo.",
         "explain": "a- («yo») va primero y después la raíz mba'apo, «trabajar»: amba'apo, «trabajo». Trabajar es una acción, como levantarse: las dos llevan a-, no che-."
       }
     ]
@@ -268,7 +268,7 @@
     "es": "Un mensaje de Ana",
     "ask": "¿Qué hace Ana ahora?",
     "seconds": 60,
-    "passage": "Mba'éichapa, Luis?\nKo'ág̃a ^ajahu^ ha ^akaru^. Chekane'õiterei.\nJajotopáta ko pyhare.\nAna",
+    "passage": "Mba'éichapa, Vicente?\nKo'ág̃a ^ajahu^ ha ^akaru^. Chekane'õiterei.\nJajotopáta ko pyhare.\nAna",
     "strategy": "Buscá los verbos con a-: son lo que hace Ana. Lo que le pasa va con che-.",
     "item": {
       "id": "a1u03d2.r1",

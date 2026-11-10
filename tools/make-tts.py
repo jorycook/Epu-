@@ -42,7 +42,7 @@ and compared with the models' own when they load):
     ko'ágã) or left to the nasal vowel that follows (og̃uahẽ → oguahẽ); the independent recogniser then writes g̃
     for it in 14 takes of 15, and in none for a plain g;
   - Spanish names, numbers and loans inside Guarani lines are respelled from sound/respell.json, for the synthesis text
-    only (Juan → huan, Lucía → lusía, Marta → márta): the screens keep the course's spelling;
+    only (Juan → huan, Vicente → visénte, Teresa → terésa, Ana → ãna): the screens keep the course's spelling;
   - . ? ! … ; : end a sentence (a pause of 0.42 s); a comma makes no pause; ¿ ¡ « » and double quotes are left out.
     The models have no punctuation at all: a question is not said differently from a statement;
   - a digit is said in words in a Spanish line and stops the run in a Guarani one (the model says «1» as noise);

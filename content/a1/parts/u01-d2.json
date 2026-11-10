@@ -88,37 +88,37 @@
       },
       {
         "id": "a1u01d2.d2", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-        "q": "Luis habla de ^su mamá^: «(   ) oñe'ẽ guaraníme.»",
+        "q": "Vicente habla de ^su mamá^: «(   ) oñe'ẽ guaraníme.»",
         "options": ["Che", "Nde", "Ha'ekuéra", "Ha'e"],
         "answer": 4,
         "why": [
-          "Che es «yo», Luis mismo, pero él habla de su mamá. Con che, además, el verbo sería añe'ẽ.",
-          "Nde es «vos», la persona a la que Luis le habla. Él habla de su mamá.",
+          "Che es «yo», Vicente mismo, pero él habla de su mamá. Con che, además, el verbo sería añe'ẽ.",
+          "Nde es «vos», la persona a la que Vicente le habla. Él habla de su mamá.",
           "Ha'ekuéra es «ellos», varias personas. La mamá es una sola.",
-          "Luis habla de otra persona, su mamá: ha'e, «ella». Oñe'ẽ es la forma de ha'e."
+          "Vicente habla de otra persona, su mamá: ha'e, «ella». Oñe'ẽ es la forma de ha'e."
         ]
       },
       {
         "id": "a1u01d2.d3", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-        "q": "Ana y Luis hablan guaraní. Ana se lo dice ^a Luis^: «(   ) guaraníme.»",
+        "q": "Ana y Vicente hablan guaraní. Ana se lo dice ^a Vicente^: «(   ) guaraníme.»",
         "options": ["Ñande ñañe'ẽ", "Ore roñe'ẽ", "Che añe'ẽ", "Ha'ekuéra oñe'ẽ"],
         "answer": 1,
         "why": [
-          "Ana habla de ella y de Luis, que es el que escucha: ñande lo incluye.",
-          "Ore deja afuera al que escucha, y Luis está en el grupo.",
+          "Ana habla de ella y de Vicente, que es el que escucha: ñande lo incluye.",
+          "Ore deja afuera al que escucha, y Vicente está en el grupo.",
           "Che añe'ẽ habla solo de Ana. Ella habla de los dos.",
-          "Ha'ekuéra es «ellos», otras personas: dejaría afuera a Ana y a Luis."
+          "Ha'ekuéra es «ellos», otras personas: dejaría afuera a Ana y a Vicente."
         ]
       },
       {
         "id": "a1u01d2.d4", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-        "q": "Un señor les pregunta a Ana y a Luis qué idioma hablan. Ana le contesta ^al señor^: «(   ) guaraníme.»",
+        "q": "Un señor les pregunta a Ana y a Vicente qué idioma hablan. Ana le contesta ^al señor^: «(   ) guaraníme.»",
         "options": ["Ñande ñañe'ẽ", "Ore roñe'ẽ", "Peẽ peñe'ẽ", "Ha'ekuéra oñe'ẽ"],
         "answer": 2,
         "why": [
           "Ñande sumaría al señor, que es el que escucha, y él no está en el grupo.",
-          "Ana habla de ella y de Luis, y el señor que escucha queda afuera: ore.",
-          "Peẽ es «ustedes»: nunca incluye al que habla, y Ana habla de ella y de Luis.",
+          "Ana habla de ella y de Vicente, y el señor que escucha queda afuera: ore.",
+          "Peẽ es «ustedes»: nunca incluye al que habla, y Ana habla de ella y de Vicente.",
           "Ha'ekuéra es «ellos»: dejaría afuera a Ana, que también habla guaraní."
         ]
       },
@@ -137,23 +137,23 @@
       {
         "id": "a1u01d2.d6", "kind": "build", "area": "grammar", "label": "Armá la oración",
         "join": "sentence",
-        "before": "Luis ha Marta: Mba'éichapa reiko?\nAna:",
+        "before": "Vicente ha Teresa: Mba'éichapa reiko?\nAna:",
         "after": "?",
         "tiles": ["iporã", "ha", "peẽ"],
         "bank": [2, 0, 1],
         "hint": "Ana contesta primero. Después les devuelve la pregunta a los dos.",
-        "full": "Luis ha Marta: Mba'éichapa reiko?\nAna: Iporã, ha {peẽ}?",
-        "es": "Luis y Marta: ¿Cómo andás? Ana: Bien, ¿y ustedes?",
-        "explain": "Ana dice primero cómo está: iporã, «bien». Después les devuelve la pregunta a Luis y a Marta, que la escuchan: ha peẽ, «¿y ustedes?». Ha, «y», va antes de peẽ."
+        "full": "Vicente ha Teresa: Mba'éichapa reiko?\nAna: Iporã, ha {peẽ}?",
+        "es": "Vicente y Teresa: ¿Cómo andás? Ana: Bien, ¿y ustedes?",
+        "explain": "Ana dice primero cómo está: iporã, «bien». Después les devuelve la pregunta a Vicente y a Teresa, que la escuchan: ha peẽ, «¿y ustedes?». Ha, «y», va antes de peẽ."
       }
     ],
     "exam": [
       {
         "id": "a1u01d2.e1", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-        "q": "Luis le pregunta a Ana si ella también habla guaraní: «Che añe'ẽ guaraníme, ha (   )?»",
+        "q": "Vicente le pregunta a Ana si ella también habla guaraní: «Che añe'ẽ guaraníme, ha (   )?»",
         "options": ["nde", "ha'e", "che", "ore"],
         "answer": 1,
-        "explain": "Luis le habla a Ana, así que para él ella es nde, «vos»: ha nde, «¿y vos?». Ha'e sirve para hablar de otra persona, no para hablarle a Ana; che sería Luis otra vez, y ore, «nosotros sin vos», dejaría afuera a Ana."
+        "explain": "Vicente le habla a Ana, así que para él ella es nde, «vos»: ha nde, «¿y vos?». Ha'e sirve para hablar de otra persona, no para hablarle a Ana; che sería Vicente otra vez, y ore, «nosotros sin vos», dejaría afuera a Ana."
       },
       {
         "id": "a1u01d2.e2", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
@@ -212,20 +212,20 @@
     "es": "Un mensaje de Ana",
     "ask": "¿Quiénes hablan guaraní, según el mensaje?",
     "seconds": 60,
-    "passage": "Mba'éichapa, Marta?\n^Ore roñe'ẽ guaraníme: che, che sy ha che ru.^\nHa nde?\nAna",
+    "passage": "Mba'éichapa, Teresa?\n^Ore roñe'ẽ guaraníme: che, che sy ha che ru.^\nHa nde?\nAna",
     "strategy": "Leé primero la pregunta. Después de los dos puntos, Ana dice quiénes son ore.",
     "item": {
       "id": "a1u01d2.r1", "kind": "choice", "area": "reading", "label": "Buscar el dato",
       "q": "¿Quiénes hablan guaraní, según el mensaje?",
-      "options": ["Ana y Marta", "Solo la mamá y el papá de Ana", "Ana, su mamá y su papá"],
-      "short": ["Ana y Marta", "Los papás", "Ana y sus papás"],
+      "options": ["Ana y Teresa", "Solo la mamá y el papá de Ana", "Ana, su mamá y su papá"],
+      "short": ["Ana y Teresa", "Los papás", "Ana y sus papás"],
       "answer": 3,
       "why": [
-        "Marta es la que lee el mensaje, y ore deja afuera al que escucha o lee.",
+        "Teresa es la que lee el mensaje, y ore deja afuera al que escucha o lee.",
         "Después de los dos puntos, Ana se nombra primero: che, «yo». Ella también habla.",
         "Ore roñe'ẽ guaraníme: che, che sy ha che ru. Son Ana, su mamá y su papá."
       ],
-      "explain": "Ana escribe ore roñe'ẽ guaraníme y después nombra a los de ore: che, che sy ha che ru. Ore deja afuera a Marta, la que lee."
+      "explain": "Ana escribe ore roñe'ẽ guaraníme y después nombra a los de ore: che, che sy ha che ru. Ore deja afuera a Teresa, la que lee."
     }
   }
 }

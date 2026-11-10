@@ -156,14 +156,17 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"view":{"editor":"enum","options":["question","result"],"default":"question"},"go":{"editor":null},"app":{"editor":null},"save":{"editor":null},"miss":{"editor":null},"reviewed":{"editor":null},"level":{"editor":null},"$preview":{"width":390,"height":844}}'>
-/* The exam-style step at the end of a day's grammar (its 3 questions, 2:30) and the week test (every item of the
-   unit, 20 minutes): one runner, one clock, no hints, no glosses, no highlights, answers only at the end.
+/* The exam-style step at the end of a day's grammar (its 3 questions, 2:30), the week test (every item of the
+   unit, 20 minutes) and the mini exams of the Examen tab (20 questions of the week tests already taken, 20 minutes:
+   gnCourse.mini; set 'mini1' or 'mini2', the result kept with the tests at a1m1 or a1m2, and back to the tab):
+   one runner, one clock, no hints, no glosses, no highlights, answers only at the end.
    A choice item is picked; a build item is asked as tiles in order (here the whole order counts: Guarani words are
    short in tiles); a spell item is typed with the phone's keyboard and a small row of Guarani keys. Every wrong or
    unanswered item goes to the notebook when the clock stops. */
 const SETS = {
 day: { seconds: 150, title: 'EXAMEN · SIN AYUDAS', note: 'Sin pistas ni glosas. Las respuestas, al final.', leave: 'Salir del examen', done: 'Examen terminado', empty: 'El examen de este día todavía no está escrito.' },
 test: { seconds: 1200, title: 'PRUEBA DE LA SEMANA', note: 'Formato de examen, un solo reloj para toda la prueba. Las respuestas, al final.', leave: 'Salir de la prueba de la semana', done: 'Prueba de la semana terminada', empty: 'La prueba de esta semana todavía no está escrita.' },
+mini: { seconds: 1200, title: 'MINI EXAMEN', note: 'Preguntas de las semanas que ya hiciste, con un solo reloj. Las respuestas, al final.', leave: 'Salir del mini examen', done: 'Mini examen terminado', empty: 'Este mini examen todavía no está escrito.' },
 };
 /* the designed moment's learner, relative to today so it never drifts: unit 1, days 1-3 stamped, day 4's drill done */
 function sample() {
@@ -240,7 +243,15 @@ if (props && props.app) return props.app;
 if (!this.sampleApp && window.gnCourse) this.sampleApp = window.gnCourse.view(sample());
 return this.sampleApp || {};
 }
+/* the mini exam the runner was asked for (the Examen tab saves set 'mini1' or 'mini2'), or null */
+miniOf(props) {
+const C = window.gnCourse;
+const key = this.appOf(props).set;
+return C && C.mini && /^mini[12]$/.test(key || '') ? C.mini(key) : null;
+}
 setOf(props) {
+const mini = this.miniOf(props);
+if (mini) return Object.assign({}, SETS.mini, { seconds: mini.seconds || SETS.mini.seconds, title: 'MINI EXAMEN ' + mini.n, leave: 'Salir del mini examen ' + mini.n, done: 'Mini examen ' + mini.n + ' terminado' });
 return SETS[this.appOf(props).set] || SETS.day;
 }
 list(props) {
@@ -248,7 +259,8 @@ const C = window.gnCourse;
 if (!C) return [];
 const app = this.appOf(props);
 /* the day's exam items are written into the day; the week test lists the ids of its items */
-const raw = app.set === 'test' ? app.unit && app.unit.test : app.day && app.day.grammar && app.day.grammar.exam;
+const mini = this.miniOf(props);
+const raw = mini ? mini.items : app.set === 'test' ? app.unit && app.unit.test : app.day && app.day.grammar && app.day.grammar.exam;
 return (Array.isArray(raw) ? raw : []).map((x) => (typeof x === 'string' ? C.item(x) : x)).filter(usable);
 }
 demo(props) {
@@ -379,6 +391,7 @@ const s = this.state;
 const set = this.setOf(this.props);
 const app = this.appOf(this.props);
 const test = app.set === 'test';
+const mini = this.miniOf(this.props);
 const list = this.list(this.props);
 const n = list.length;
 const nav = (to) => (e) => { const go = this.props.go; if (go) { e.preventDefault(); go(to); } };
@@ -531,7 +544,7 @@ const low = !done && s.t <= 30;
 const many = n > 6;
 const timeUp = done && s.t === 0;
 const doneLabel = timeUp ? 'Se acabó el tiempo' : set.done;
-return {
+const out = {
 empty: n === 0,
 emptyNote: set.empty,
 asking: n > 0 && !done,
@@ -577,22 +590,27 @@ anyWrong: wrongCount > 0,
 savedLine: wrongCount === 1 ? '1 error guardado en tu cuaderno. Vuelve mañana.' : wrongCount + ' errores guardados en tu cuaderno. Vuelven mañana.',
 live: done ? doneLabel + ': ' + (rows.length - wrongCount) + ' de ' + rows.length : '',
 leaveLabel: set.leave,
-leaveHref: test ? 'Main.dc.html' : 'Today.dc.html',
-toLeave: nav(test ? 'Main' : 'Today'),
-doneHref: test ? 'WeekTest.dc.html' : 'Today.dc.html',
+leaveHref: mini ? 'ExamTab.dc.html' : test ? 'Main.dc.html' : 'Today.dc.html',
+toLeave: nav(mini ? 'ExamTab' : test ? 'Main' : 'Today'),
+doneHref: mini ? 'ExamTab.dc.html' : test ? 'WeekTest.dc.html' : 'Today.dc.html',
 toDone: (e) => {
 if (this.props.save) {
-const patch = test
-? { result: { id: app.sid, score: rows.length - wrongCount, of: rows.length, used: Math.max(0, set.seconds - s.t), areas: this.areas(list, answers), at: C.now() } }
+/* a week test's result is kept under its session, a mini exam's under its own id; a day's exam moves the day on */
+const patch = test || mini
+? { result: { id: mini ? mini.id : app.sid, score: rows.length - wrongCount, of: rows.length, used: Math.max(0, set.seconds - s.t), areas: this.areas(list, answers), at: C.now() } }
 : { prog: { g: 3 } };
 /* a word spelled right with the Guarani keys is kept with the others the learner has typed */
 const spelled = list.filter((item, k) => item.kind === 'spell' && this.right(item, answers[k])).map((item) => C.norm(item.answer));
 if (spelled.length) patch.typed = spelled;
 this.props.save(patch);
 }
-nav(test ? 'WeekTest' : 'Today')(e);
+nav(mini ? 'ExamTab' : test ? 'WeekTest' : 'Today')(e);
 },
 };
+/* a mini exam's result page leads back to the tab by both its ways out (the cross and the button go to the same place):
+   either one keeps the result */
+if (mini && done) out.toLeave = out.toDone;
+return out;
 }
 }
 </script>

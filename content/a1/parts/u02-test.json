@@ -1,7 +1,7 @@
 [
  {
   "id": "a1u02t.1", "kind": "choice", "area": "vocab", "label": "Qué significa",
-  "q": "(En la fiesta.)\nLuis: _Ajeroky_ ko pyhare.",
+  "q": "(En la fiesta.)\nVicente: _Ajeroky_ ko pyhare.",
   "options": ["Canto esta noche.", "Bailo esta noche.", "Trabajo esta noche.", "Como esta noche."],
   "answer": 2,
   "explain": "Ajeroky es a-, «yo», más jeroky, «bailar»: «bailo». Canto es apurahéi, trabajo es amba'apo y como es akaru. Ko pyhare es «esta noche»."
@@ -15,7 +15,7 @@
  },
  {
   "id": "a1u02t.3", "kind": "choice", "area": "vocab", "label": "Cómo se escribe",
-  "q": "Luis habla de su papá: «Che ru omba'apo _en el monte_.» ¿Cómo se escribe en guaraní?",
+  "q": "Vicente habla de su papá: «Che ru omba'apo _en el monte_.» ¿Cómo se escribe en guaraní?",
   "options": ["ka'aguýpe", "ka'aguípe", "kaaguýpe", "ka'aguýme"],
   "answer": 1,
   "explain": "En el monte es ka'aguýpe: ka'aguy, «monte», con -pe. La -pe no se lleva el acento: queda en la y, que ya no es la última vocal, y se escribe ý. Ka'aguípe cambia la y por i, que en guaraní es otra vocal; kaaguýpe perdió el puso de ka'aguy; y ka'aguýme lleva -me, que va solo tras una sílaba nasal."
@@ -50,10 +50,10 @@
  },
  {
   "id": "a1u02t.8", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-  "q": "(Luis y Ana le hablan a la profesora.)\nLuis: Ore (   ) guaraníme.",
+  "q": "(Vicente y Ana le hablan a la profesora.)\nVicente: Ore (   ) guaraníme.",
   "options": ["roñe'ẽ", "ñañe'ẽ", "peñe'ẽ", "oñe'ẽ"],
   "answer": 1,
-  "explain": "Luis habla de él y de Ana, y la profesora, que escucha, no está en el grupo: ore, y su prefijo es ro-. Ore roñe'ẽ guaraníme: hablamos guaraní, sin vos. Ñañe'ẽ es el «nosotros» de ñande e incluiría a la profesora; peñe'ẽ es «ustedes hablan»; y oñe'ẽ, «habla» o «hablan», otras personas."
+  "explain": "Vicente habla de él y de Ana, y la profesora, que escucha, no está en el grupo: ore, y su prefijo es ro-. Ore roñe'ẽ guaraníme: hablamos guaraní, sin vos. Ñañe'ẽ es el «nosotros» de ñande e incluiría a la profesora; peñe'ẽ es «ustedes hablan»; y oñe'ẽ, «habla» o «hablan», otras personas."
  },
  {
   "id": "a1u02t.9", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
@@ -71,7 +71,7 @@
  },
  {
   "id": "a1u02t.11", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-  "q": "(Luis llega de la escuela.)\nAna: Moõguipa reju, Luis?\nLuis: Aju (   ).",
+  "q": "(Vicente llega de la escuela.)\nAna: Moõguipa reju, Vicente?\nVicente: Aju (   ).",
   "options": ["mbo'ehaópe", "mbo'ehao", "mbo'ehaóme", "mbo'ehaógui"],
   "answer": 4,
   "explain": "Moõguipa pregunta «¿de dónde?», y se responde con el lugar y -gui: Aju mbo'ehaógui, «vengo de la escuela». -gui no se lleva el acento: queda en la o de mbo'ehao, que se escribe ó. Mbo'ehaópe es «a la escuela» o «en la escuela», con -pe; mbo'ehao solo es «escuela», sin el «de»; y mbo'ehaóme lleva -me, que va solo tras una sílaba nasal, y además diría «en»."
@@ -85,18 +85,18 @@
  },
  {
   "id": "a1u02t.13", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-  "q": "(La abuela de Luis no habla guaraní.)\nLuis: Che jarýi (   ) guaraníme.",
+  "q": "(La abuela de Vicente no habla guaraní.)\nVicente: Che jarýi (   ) guaraníme.",
   "options": ["ndoñe'ẽi", "oñe'ẽi", "noñe'ẽi", "noñe'ẽ"],
   "answer": 3,
   "explain": "Che jarýi, «mi abuela», es otra persona: o-. Y ñe'ẽ es una raíz nasal, así que la primera parte del «no» es n-, no nd-: n- + oñe'ẽ + -i = noñe'ẽi, «no habla». Ndoñe'ẽi no existe, porque delante de una raíz nasal no va nd-. A oñe'ẽi le falta la n- del principio, y a noñe'ẽ le falta la -i del final: el «no» necesita las dos partes."
  },
  {
   "id": "a1u02t.14", "kind": "build", "area": "grammar", "label": "Armá la palabra", "join": "word",
-  "before": "(Llueve.)\nRosa: Luis ", "after": " mbo'ehaópe ko ka'aru.",
+  "before": "(Llueve.)\nRosa: Vicente ", "after": " mbo'ehaópe ko ka'aru.",
   "tiles": ["nd", "o", "ho", "i"], "bank": [2, 0, 3, 1],
-  "full": "(Llueve.)\nRosa: Luis ndohói mbo'ehaópe ko ka'aru.",
-  "es": "(Llueve.)\nRosa: Luis no va a la escuela esta tarde.",
-  "explain": "nd- va primero: es la primera parte del «no». Después o-, porque Luis es otra persona, y con o- la raíz de «ir» es ho. Al final, -i, la segunda parte del «no»: ndohói, «no va». La -i no se lleva el acento: queda en la o de ho, que ya no es la última vocal, y se escribe ó."
+  "full": "(Llueve.)\nRosa: Vicente ndohói mbo'ehaópe ko ka'aru.",
+  "es": "(Llueve.)\nRosa: Vicente no va a la escuela esta tarde.",
+  "explain": "nd- va primero: es la primera parte del «no». Después o-, porque Vicente es otra persona, y con o- la raíz de «ir» es ho. Al final, -i, la segunda parte del «no»: ndohói, «no va». La -i no se lleva el acento: queda en la o de ho, que ya no es la última vocal, y se escribe ó."
  },
  {
   "id": "a1u02t.15", "kind": "choice", "area": "reading", "label": "Buscar el dato",
@@ -127,10 +127,10 @@
  },
  {
   "id": "a1u02t.18", "kind": "choice", "area": "listening", "label": "Respuesta rápida",
-  "q": "(En la fiesta.)\nAna: Mba'épa rejapo, Luis?\n¿Qué responde Luis?",
+  "q": "(En la fiesta.)\nAna: Mba'épa rejapo, Vicente?\n¿Qué responde Vicente?",
   "options": ["Apurahéi.", "Repurahéi.", "Purahéi."],
   "answer": 1,
-  "explain": "Ana pregunta con re-, «vos»: rejapo, «hacés». Luis responde por él, con a-: apurahéi, «canto». Repurahéi es «cantás», con re-: Luis hablaría de Ana. Y purahéi sin prefijo es «canción», la cosa: le falta la persona."
+  "explain": "Ana pregunta con re-, «vos»: rejapo, «hacés». Vicente responde por él, con a-: apurahéi, «canto». Repurahéi es «cantás», con re-: Vicente hablaría de Ana. Y purahéi sin prefijo es «canción», la cosa: le falta la persona."
  },
  {
   "id": "a1u02t.19", "kind": "choice", "area": "listening", "label": "Respuesta rápida",

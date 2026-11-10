@@ -125,8 +125,11 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <sc-if value="{{ blank }}" hint-placeholder-val="{{ true }}">
 <div style="font-size: 14px; font-weight: 500; color: #5A6382; line-height: 1.45">Poné tu meta y tejé el primer hilo del ñandutí de <span lang="gn">Kaguare</span>.</div>
 </sc-if>
-<sc-if value="{{ woven }}" hint-placeholder-val="{{ false }}">
+<sc-if value="{{ first }}" hint-placeholder-val="{{ false }}">
 <div style="font-size: 14px; font-weight: 700; color: #B02A63; line-height: 1.45">Primer hilo tejido. Cada unidad suma uno; el examen de nivel lo completa.</div>
+</sc-if>
+<sc-if value="{{ replan }}" hint-placeholder-val="{{ false }}">
+<div style="font-size: 14px; font-weight: 700; color: #B02A63; line-height: 1.45">{{ replanLine }}</div>
 </sc-if>
 </div>
 </div>
@@ -192,8 +195,14 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <sc-if value="{{ blank }}" hint-placeholder-val="{{ true }}">
 <button onClick="{{ weave }}" style="flex-shrink: 0; margin-top: 10px; height: 54px; border-radius: 16px; background: #B02A63; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px">Tejé el primer hilo</button>
 </sc-if>
-<sc-if value="{{ woven }}" hint-placeholder-val="{{ false }}">
+<sc-if value="{{ first }}" hint-placeholder-val="{{ false }}">
 <a href="Main.dc.html" onClick="{{ toMain }}" style="flex-shrink: 0; margin-top: 10px; height: 54px; box-sizing: border-box; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center"><span><span lang="gn">Ñepyrũ</span> · Empezar</span></a>
+</sc-if>
+<sc-if value="{{ replan }}" hint-placeholder-val="{{ false }}">
+<div style="flex-shrink: 0; margin-top: 10px; display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 10px">
+<a href="Main.dc.html" onClick="{{ toPath }}" style="height: 54px; box-sizing: border-box; border-radius: 16px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #1B2440; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; white-space: nowrap"><span><span lang="gn">Heja</span> · Cancelar</span></a>
+<a href="Main.dc.html" onClick="{{ toMain }}" style="height: 54px; box-sizing: border-box; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; white-space: nowrap"><span><span lang="gn">Ñongatu</span> · Guardar el plan</span></a>
+</div>
 </sc-if>
 </div>
 </sc-if>
@@ -405,13 +414,28 @@ return { why: s.why.slice(), work: s.work, where: s.where.slice(), understand: s
 keep() {
 if (this.props.save && this.answered()) this.props.save({ profile: this.profile() });
 }
+/* how many sessions of a level the learner has behind them (those complete in a row from the first): a plan made
+   now starts today at the next one, and lays out only what is left (the engine's plan.from) */
+reached(lv) {
+const C = window.gnCourse;
+const app = this.props.app || {};
+return C.reached ? C.reached({ done: app.done || {}, tests: app.tests || {} }, lv) : 0;
+}
+/* the plan's settings as they are saved: from today, with the sessions behind it when there are any */
+settings(s) {
+const C = window.gnCourse;
+const out = { start: C.today(C.now()), target: this.target(s), pace: s.pace, minutes: s.minutes };
+const from = this.reached(s.level);
+if (from > 0) out.from = from;
+return out;
+}
 /* the plan as this screen stands on it, saved: when the thread is woven (the goal is set from then on, and the app
    reopens on the week path), and again for any change made to it afterwards */
 plan(change) {
 const C = window.gnCourse;
 const s = Object.assign({}, this.state, change || {});
 const T = C.today(C.now());
-const patch = { level: s.level, plan: { start: T, target: this.target(s), pace: s.pace, minutes: s.minutes }, cur: null, started: true };
+const patch = { level: s.level, plan: this.settings(s), cur: null, started: true };
 if (this.answered(s)) patch.profile = this.profile(s);
 return patch;
 }
@@ -525,26 +549,30 @@ return Object.assign({ big: p.min + ' min', small: p.small, on, pick: () => this
 /* the plan is worked out for the level picked here, which may not be the one the learner is on yet */
 const units = C.withLevel(lv, () => C.units().length);
 const sessions = C.withLevel(lv, () => C.sessions().length);
-const settings = { start: T, target, pace: s.pace };
+/* what the learner has behind them at this level: the plan is for the rest (all of it, the first time) */
+const from = Math.min(sessions, this.reached(lv));
+const rest = sessions - from;
+const settings = { start: T, target, pace: s.pace, from };
 const fitsOneADay = C.withLevel(lv, () => C.fits(settings));
 const days = target ? C.daysBetween(T, target) : 0;
 /* as the engine does: the last week before the date is kept for review and the level exam */
 let room = days - C.EXAM_WEEK;
 if (room < 1) room = Math.max(1, days);
-const reach = Math.min(units, Math.floor(room / C.DAYS_PER_UNIT));
-const most = Math.ceil(sessions / room);
+const reach = Math.min(units, Math.floor((from + room) / C.DAYS_PER_UNIT));
+const most = Math.ceil(rest / room);
 const fits = [
 { id: 'fit', label: 'Meter todo' },
 { id: 'steady', label: 'Una por día' },
 ].map((f) => Object.assign({}, f, look(s.pace === f.id), { on: s.pace === f.id, pick: () => this.setPlan({ pace: f.id }) }));
 let planNote;
-const weeks = Math.max(1, Math.ceil(sessions / 7));
+const weeks = Math.max(1, Math.ceil(rest / 7));
 if (!units) planNote = 'Las unidades de ' + lv + ' todavía no están cargadas.';
+else if (!rest) planNote = 'Ya hiciste todas las sesiones de ' + lv + '. Queda el examen de nivel, en la pestaña Examen.';
 else if (!target) planNote = 'Una sesión por día, a tu ritmo: ' + (weeks === 1 ? 'una semana.' : 'unas ' + weeks + ' semanas.');
 else if (fitsOneADay) planNote = 'Entra todo, una sesión por día, y queda la última semana para repasar y rendir el examen de nivel.';
 else if (s.pace === 'fit') planNote = most > 2
-? sessions + ' sesiones en ' + dayWord(room) + ': hasta ' + most + ' por día. Es mucho: probá una fecha más lejana.'
-: sessions + ' sesiones en ' + dayWord(room) + ': algunos días tienen dos. La última semana queda para repasar y rendir el examen de nivel.';
+? rest + ' sesiones en ' + dayWord(room) + ': hasta ' + most + ' por día. Es mucho: probá una fecha más lejana.'
+: rest + ' sesiones en ' + dayWord(room) + ': algunos días tienen dos. La última semana queda para repasar y rendir el examen de nivel.';
 else planNote = reach > 0
 ? 'Una sesión por día: para la fecha terminás ' + reach + ' de ' + units + ' unidades, y lo demás sigue después.'
 : 'Una sesión por día: para la fecha no llegás a terminar una unidad, y el plan sigue después.';
@@ -638,7 +666,11 @@ const v = e && e.target ? e.target.value : '';
 if (/^\d{4}-\d\d-\d\d$/.test(v) && v > T) this.setPlan({ kind: 'custom', custom: v });
 },
 paces,
-planTitle: units ? units + ' unidades · ' + sessions + ' sesiones' : 'Plan en preparación',
+planTitle: !units ? 'Plan en preparación' : from > 0 ? (rest === 1 ? 'Te queda 1 de ' : 'Te quedan ' + rest + ' de ') + sessions + ' sesiones' : units + ' unidades · ' + sessions + ' sesiones',
+/* a plan opened again (the week path's date chip, Progreso's «Rearmar mi plan»): it is saved, or left as it was */
+first: s.woven && !(hasPlan && !s.wovenNow),
+replan: s.woven && hasPlan && !s.wovenNow,
+replanLine: from > 0 ? 'El plan se arma de nuevo desde hoy. Lo que ya hiciste queda hecho.' : 'El plan se arma de nuevo desde hoy.',
 short: !!target && !fitsOneADay,
 fits,
 planNote,
@@ -661,7 +693,7 @@ mv,
 toMain: (e) => {
 if (this.props.go) draft(null);
 if (this.props.save) {
-const patch = { level: lv, plan: { start: T, target, pace: s.pace, minutes: s.minutes }, cur: null };
+const patch = { level: lv, plan: this.settings(s), cur: null };
 if (this.answered()) patch.profile = this.profile();
 this.props.save(patch);
 }

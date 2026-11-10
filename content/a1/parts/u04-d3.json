@@ -122,11 +122,11 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Luis señala ^una casa lejos, al final de la calle^.)\nLuis: (   ) óga ituicha.",
+        "q": "(Vicente señala ^una casa lejos, al final de la calle^.)\nVicente: (   ) óga ituicha.",
         "options": ["Ko", "Pe", "Amo", "Ko'ã"],
         "answer": 3,
         "why": [
-          "Ko es «esta», para algo cerca de Luis. La casa está al final de la calle.",
+          "Ko es «esta», para algo cerca de Vicente. La casa está al final de la calle.",
           "Pe es «esa», para algo cerca del que escucha. La casa está lejos de los dos.",
           "La casa está lejos de los dos, pero a la vista: amo óga, «aquella casa».",
           "Ko'ã es «estas», para varias cosas cerca de quien habla. Es una sola casa y está lejos."

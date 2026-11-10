@@ -51,8 +51,9 @@
 
   /* What is read back is checked field by field against the course before a screen sees it: a level, a session or a
      question the course does not have, a broken entry or the data of some other version is left out, never thrown over.
-     The fields are the state gnCourse.fresh() starts from, and the two the screens add to it: profile (the goal
-     screen's answers) and exposure (the progress screen's "lo usé" of the week). */
+     The fields are the state gnCourse.fresh() starts from (seen, the days with study, among them), and the two the
+     screens add to it: profile (the goal screen's answers) and exposure (the progress screen's "lo usé" of the week).
+     A save from before a field existed loads as before: the field starts empty. */
   function obj(x) { return x && typeof x === 'object' && !Array.isArray(x) ? x : null; }
   function dateOk(d) { return typeof d === 'string' && /^\d{4}-\d\d-\d\d$/.test(d) && C.addDays(d, 0) === d; }
   function whole(n, lo, hi) { return typeof n === 'number' && Math.floor(n) === n && n >= lo && n <= hi ? n : null; }
@@ -85,7 +86,10 @@
     if (!p || !dateOk(p.start)) return null;
     /* the engine also takes the target under its Yaoki name, exam */
     var target = p.target !== undefined ? p.target : p.exam;
-    return { start: p.start, target: dateOk(target) ? target : null, pace: p.pace === 'steady' ? 'steady' : 'fit', minutes: MINUTES.indexOf(p.minutes) >= 0 ? p.minutes : 30 };
+    var out = { start: p.start, target: dateOk(target) ? target : null, pace: p.pace === 'steady' ? 'steady' : 'fit', minutes: MINUTES.indexOf(p.minutes) >= 0 ? p.minutes : 30 };
+    /* a plan made again part way through the level: how many sessions were behind it (a first plan has none) */
+    if (whole(p.from, 1, 2000) != null) out.from = p.from;
+    return out;
   }
   /* a study session's progress: g the grammar steps (0 to 3), ks kw k the words lesson, r the reading or listening */
   var PROG = { g: 3, ks: 1, kw: 1, k: 1, r: 1 };
@@ -99,10 +103,10 @@
     });
     return out;
   }
-  /* a week test's result: the score, the time it took and the score by area */
+  /* a week test's result, or a mini exam's (a1m1: kept with the tests): the score, the time it took and the score by area */
   function testOk(t, id) {
     t = obj(t);
-    if (!t || !sessionOk(id, true)) return null;
+    if (!t || !(sessionOk(id, true) || (typeof id === 'string' && C.mini && (C.mini(id) || {}).ready))) return null;
     var of = whole(t.of, 1, 1000);
     var score = whole(t.score, 0, 1000);
     if (of == null || score == null || score > of) return null;
@@ -215,6 +219,12 @@
     x = obj(x);
     return x && dateOk(x.week) ? { week: x.week, with: words(x.with, 8) } : null;
   }
+  /* the days with study ('YYYY-MM-DD'): real dates, each once, oldest first, the last 800 at most (as the engine keeps them) */
+  function seenOk(list) {
+    var out = [];
+    (Array.isArray(list) ? list : []).forEach(function (d) { if (dateOk(d) && out.indexOf(d) < 0) out.push(d); });
+    return out.sort().slice(-800);
+  }
 
   function checked(from) {
     var s = C.fresh();
@@ -229,12 +239,15 @@
     s.exams = each(from.exams, function (e, lv) { return levelOk(lv) ? examOk(e, lv, false) : null; });
     s.mistakes = mistakesOk(from.mistakes);
     s.tp = whole(from.tp, 0, 50) || 0;
-    s.set = from.set === 'test' ? 'test' : 'day';
+    /* what the exam-style runner asks: a day's three questions, a week test, or a mini exam */
+    s.set = from.set === 'test' || from.set === 'mini1' || from.set === 'mini2' ? from.set : 'day';
     s.placement = placementOk(from.placement);
     /* the words spelled with the Guarani keys, at every level: only ever more */
     s.typed = C.addTyped([], words(from.typed, 20000, 80));
     s.profile = profileOk(from.profile);
     s.exposure = exposureOk(from.exposure);
+    /* the days with study (a save from before the app kept them has none: the record starts today) */
+    s.seen = seenOk(from.seen);
     return s;
   }
 
@@ -249,12 +262,12 @@
         restored = null;
       } else if (TEST) {
         /* ?gntest&screen=Main&level=A1&plan={…}&done={…}&m=[…] (and cur, tp, set, tests, exams, placement, typed,
-           profile, exposure, now): any screen in any state, from the address. A screen other than Goal gets a plan
+           profile, exposure, seen, now): any screen in any state, from the address. A screen other than Goal gets a plan
            starting today when the address gives none */
         var json = function (name, fallback) { try { var v = JSON.parse(query.get(name) || 'null'); return v == null ? fallback : v; } catch (e) { return fallback; } };
         if (query.get('now')) window.__gnNow = +query.get('now');
         screen = query.get('screen') || 'Goal';
-        from = { started: screen !== 'Goal', level: query.get('level') || null, plan: json('plan', null), plans: json('plans', {}), cur: query.get('cur') || null, done: json('done', {}), tests: json('tests', {}), exams: json('exams', {}), mistakes: json('m', []), tp: +(query.get('tp') || 0), set: query.get('set') || 'day', placement: json('placement', null), typed: json('typed', []), profile: json('profile', null), exposure: json('exposure', null) };
+        from = { started: screen !== 'Goal', level: query.get('level') || null, plan: json('plan', null), plans: json('plans', {}), cur: query.get('cur') || null, done: json('done', {}), tests: json('tests', {}), exams: json('exams', {}), mistakes: json('m', []), tp: +(query.get('tp') || 0), set: query.get('set') || 'day', placement: json('placement', null), typed: json('typed', []), profile: json('profile', null), exposure: json('exposure', null), seen: json('seen', []) };
         if (from.started && !from.plan) from.plan = { start: C.today(C.now()), target: null, pace: 'fit', minutes: 30 };
       } else {
         var text = stored();
@@ -273,7 +286,7 @@
     if (!begun) { begun = true; sent = fieldTexts(s); held = sent; }
     return s;
   }
-  var FIELDS = ['started', 'level', 'plans', 'plan', 'cur', 'done', 'tests', 'exams', 'mistakes', 'tp', 'set', 'placement', 'typed', 'profile', 'exposure'];
+  var FIELDS = ['started', 'level', 'plans', 'plan', 'cur', 'done', 'tests', 'exams', 'mistakes', 'tp', 'set', 'placement', 'typed', 'profile', 'exposure', 'seen'];
   /* each field as it is saved, in JSON (undefined: not saved) */
   function fieldTexts(s) {
     var out = {};
@@ -342,6 +355,9 @@
         out.mistakes = fresh.concat(list);
       } else if (k === 'typed') {
         out.typed = C.addTyped(base.typed, mine);
+      } else if (k === 'seen') {
+        /* the days with study of both tabs */
+        out.seen = seenOk((Array.isArray(base.seen) ? base.seen : []).concat(Array.isArray(mine) ? mine : []));
       } else out[k] = mine;
     });
     return out;
@@ -638,7 +654,16 @@
   /* the browser the page is open in, by the name the learner knows it (on an iPhone or an iPad, Safari unless it says otherwise) */
   var browser = /CriOS/.test(ua) ? 'Chrome' : /FxiOS/.test(ua) ? 'Firefox' : /EdgiOS/.test(ua) ? 'Edge' : iPhone || iPad ? 'Safari' : 'el navegador';
   var skipInstall = TEST || (LOCAL && query.has('browser'));
-  try { if (sessionStorage.getItem(KEY + '.browser')) skipInstall = true; } catch (e) {}
+  /* «Seguir en el navegador» is remembered for the visit (this tab) and, with its date, for a week: a learner who stays
+     in the browser is not met by the install page at every visit, and is offered the Home Screen again a week later
+     (a browser may empty what it keeps for a site left alone for a week: the icon is the safer home for progress) */
+  var BROWSER_KEY = KEY + '.browser';
+  var BROWSER_DAYS = 7;
+  try { if (sessionStorage.getItem(BROWSER_KEY)) skipInstall = true; } catch (e) {}
+  try {
+    var chose = +localStorage.getItem(BROWSER_KEY);
+    if (chose > 0 && Math.abs(C.now() - chose) < BROWSER_DAYS * 864e5) skipInstall = true;
+  } catch (e) {}
   var wantInstall = ((iPhone || iPad) && !standalone && !skipInstall) || (LOCAL && query.has('install'));
 
   function show(name) {
@@ -684,7 +709,8 @@
     offline: function () { return offline; },
     onScreen: onScreen,
     useBrowser: function () {
-      try { sessionStorage.setItem(KEY + '.browser', '1'); } catch (e) {}
+      try { sessionStorage.setItem(BROWSER_KEY, '1'); } catch (e) {}
+      try { localStorage.setItem(BROWSER_KEY, String(C.now())); } catch (e) {}
       show('Shell');
     },
   };

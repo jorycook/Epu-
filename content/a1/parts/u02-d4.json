@@ -28,8 +28,8 @@
             "parts": [["ou", "viene"], ["Paraguay", "Asunción: así se llama en guaraní"], ["-gui", "de, desde"]]
           },
           {
-            "gn": "Luis osẽ mbo'ehaó{gui} ko ka'aru.",
-            "es": "Luis sale de la escuela esta tarde.",
+            "gn": "Vicente osẽ mbo'ehaó{gui} ko ka'aru.",
+            "es": "Vicente sale de la escuela esta tarde.",
             "parts": [["o-", "él"], ["sẽ", "salir"], ["mbo'ehao", "escuela"], ["-gui", "de"], ["ko ka'aru", "esta tarde"]]
           }
         ],
@@ -55,8 +55,8 @@
             "parts": [["moõ", "dónde"], ["-gui", "de"], ["-pa", "pregunta"], ["ou", "viene"]]
           },
           {
-            "gn": "Luis: {Moõguipa} reju, Ana?\nAna: Aju Itauguá{gui}.",
-            "es": "Luis: ¿De dónde venís, Ana?\nAna: Vengo de Itauguá.",
+            "gn": "Vicente: {Moõguipa} reju, Ana?\nAna: Aju Itauguá{gui}.",
+            "es": "Vicente: ¿De dónde venís, Ana?\nAna: Vengo de Itauguá.",
             "parts": [["moõguipa", "¿de dónde?"], ["reju", "venís"], ["aju", "vengo"], ["Itauguágui", "de Itauguá"]]
           },
           {
@@ -65,8 +65,8 @@
             "parts": [["osẽ", "sale"], ["ko", "este"], ["chipa", "chipá"], ["tatakua", "horno de barro"], ["-gui", "de"]]
           },
           {
-            "gn": "Ana: {Moõguipa} peju?\nLuis: Roju mbo'ehaó{gui}.",
-            "es": "Ana: ¿De dónde vienen ustedes?\nLuis: Venimos (sin vos) de la escuela.",
+            "gn": "Ana: {Moõguipa} peju?\nVicente: Roju mbo'ehaó{gui}.",
+            "es": "Ana: ¿De dónde vienen ustedes?\nVicente: Venimos (sin vos) de la escuela.",
             "parts": [["peju", "ustedes vienen"], ["roju", "venimos (sin vos)"], ["mbo'ehao", "escuela"], ["-gui", "de"]]
           }
         ],
@@ -120,13 +120,13 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Luis ^sale de la escuela^ esta tarde.)\nAna: Luis osẽ (   ) ko ka'aru.",
+        "q": "(Vicente ^sale de la escuela^ esta tarde.)\nAna: Vicente osẽ (   ) ko ka'aru.",
         "options": ["mbo'ehaógui", "mbo'ehaópe", "mbo'ehaóme", "mbo'ehaõgui"],
         "answer": 1,
         "why": [
-          "Luis sale de la escuela: el lugar lleva -gui, pegado atrás. Mbo'ehao lleva el acento en la o final; con -gui esa o ya no es la última vocal, y se escribe ó: mbo'ehaógui.",
-          "-pe es «a» o «en»: Oho mbo'ehaópe, «va a la escuela». Luis sale de ahí: -gui.",
-          "-me es la forma de -pe tras una sílaba nasal, y la última sílaba de mbo'ehao es oral, la o: el mb del principio no cuenta. Además diría «en»; Luis sale de ahí: -gui, que no cambia nunca.",
+          "Vicente sale de la escuela: el lugar lleva -gui, pegado atrás. Mbo'ehao lleva el acento en la o final; con -gui esa o ya no es la última vocal, y se escribe ó: mbo'ehaógui.",
+          "-pe es «a» o «en»: Oho mbo'ehaópe, «va a la escuela». Vicente sale de ahí: -gui.",
+          "-me es la forma de -pe tras una sílaba nasal, y la última sílaba de mbo'ehao es oral, la o: el mb del principio no cuenta. Además diría «en»; Vicente sale de ahí: -gui, que no cambia nunca.",
           "La ~ es la tilde nasal: haría nasal la o y cambiaría el sonido, y mbo'ehao no tiene vocal nasal. El acento se marca con la tilde aguda: mbo'ehaógui."
         ]
       },
@@ -135,13 +135,13 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la palabra",
-        "q": "Ana: (   ) reju, Luis?\nLuis: ^Aju Paraguaýgui^.",
+        "q": "Ana: (   ) reju, Vicente?\nVicente: ^Aju Paraguaýgui^.",
         "options": ["Moõpa", "Mávapa", "Moõguipa", "Moõpagui"],
         "answer": 3,
         "why": [
-          "Moõpa pregunta «dónde» o «adónde»: Moõpa reiko?, Moõpa reho? Luis responde de dónde viene, con -gui, y la pregunta también lo lleva.",
-          "Mávapa pregunta «¿quién?». Luis responde con un lugar, no con una persona.",
-          "Luis responde Aju Paraguaýgui, «vengo de Asunción»: la pregunta es Moõguipa reju?, «¿de dónde venís?», con moõ + -gui + -pa.",
+          "Moõpa pregunta «dónde» o «adónde»: Moõpa reiko?, Moõpa reho? Vicente responde de dónde viene, con -gui, y la pregunta también lo lleva.",
+          "Mávapa pregunta «¿quién?». Vicente responde con un lugar, no con una persona.",
+          "Vicente responde Aju Paraguaýgui, «vengo de Asunción»: la pregunta es Moõguipa reju?, «¿de dónde venís?», con moõ + -gui + -pa.",
           "-pa cierra la palabra que pregunta, como en Mba'éichapa: moõ + gui + pa. Moõpagui no existe."
         ]
       },
@@ -150,12 +150,12 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "Luis: ^Moõguipa^ osẽ ko chipa?\nAna: (   )",
+        "q": "Vicente: ^Moõguipa^ osẽ ko chipa?\nAna: (   )",
         "options": ["Tatakuápe.", "Tatakuágui.", "Tatakuáme.", "Gui tatakua."],
         "answer": 2,
         "why": [
           "Tatakuápe es «en el horno», con -pe: dice dónde está, no de dónde sale.",
-          "Luis pregunta de dónde sale el chipá, con -gui, y Ana responde con -gui: Tatakuágui, «del horno de barro».",
+          "Vicente pregunta de dónde sale el chipá, con -gui, y Ana responde con -gui: Tatakuágui, «del horno de barro».",
           "-me es la forma de -pe tras una sílaba nasal, y kua, la última sílaba de tatakua, es oral. Además diría «en»; el chipá sale de ahí: -gui, que no cambia nunca.",
           "A diferencia del «de» castellano, -gui no va delante ni separado: se pega al final del lugar, tatakuágui."
         ]
@@ -166,13 +166,13 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "(Mirta llega a la terminal de Asunción.)\nMirta: Aju ",
+        "before": "(María llega a la terminal de Asunción.)\nMaría: Aju ",
         "after": ".",
         "tiles": ["Itakuruvi", "gui"],
         "bank": [1, 0],
         "hint": "Itakuruvi es el lugar y -gui es el sufijo: va después, pegado. Después fijate dónde queda el acento.",
-        "full": "(Mirta llega a la terminal de Asunción.)\nMirta: Aju Itakuruví{gui}.",
-        "es": "Mirta: Vengo de Itacurubí.",
+        "full": "(María llega a la terminal de Asunción.)\nMaría: Aju Itakuruví{gui}.",
+        "es": "María: Vengo de Itacurubí.",
         "explain": "Itakuruvi («Itacurubí») + -gui («de») = Itakuruvígui, «de Itacurubí». -gui no se lleva el acento: queda en la i final de Itakuruvi, que ya no es la última vocal, y se escribe í."
       },
       {
@@ -181,12 +181,12 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "(Luis y Rosa llegan a la casa de Ana.)\nAna: ",
+        "before": "(Vicente y Rosa llegan a la casa de Ana.)\nAna: ",
         "after": " peju?",
         "tiles": ["moõ", "gui", "pa"],
         "bank": [2, 0, 1],
         "hint": "moõ, «dónde», va primero. -pa cierra la pregunta, como en Mba'éichapa.",
-        "full": "(Luis y Rosa llegan a la casa de Ana.)\nAna: {Moõguipa} peju?",
+        "full": "(Vicente y Rosa llegan a la casa de Ana.)\nAna: {Moõguipa} peju?",
         "es": "Ana: ¿De dónde vienen ustedes?",
         "explain": "moõ («dónde») + -gui («de») + -pa (pregunta) = Moõguipa, «¿de dónde?». -pa va al final, como en Mba'éichapa: moõpagui no existe. Ni -gui ni -pa se llevan el acento: queda en la õ, y la tilde nasal ya lo marca."
       }
@@ -197,7 +197,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Qué significa",
-        "q": "Luis: Moõguipa reju?\nAna: _Aju Itauguágui_.",
+        "q": "Vicente: Moõguipa reju?\nAna: _Aju Itauguágui_.",
         "options": ["Voy a Itauguá.", "Soy de Itauguá.", "Vengo de Itauguá.", "Vengo de Asunción."],
         "answer": 3,
         "explain": "Aju es «vengo» (a-, «yo», + ju, «venir»), y -gui, pegado a Itaugua, es «de»: «vengo de Itauguá». «Voy a Itauguá» sería Aha Itauguápe, con -pe; «soy de Itauguá», Che Itauguagua, con -gua; y Asunción en guaraní es Paraguay, no Itaugua."

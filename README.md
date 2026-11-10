@@ -81,7 +81,9 @@ never in a lesson.
 
 On the iPhone: open the address in Safari, tap Share (Compartir), then Add to Home Screen (Agregar a pantalla de
 inicio), then open Epu'ã from its icon once while online. After that it works offline. In Safari the app first shows a
-page that says the same, with a button to go on in the browser. Progress is kept on the phone only, by each copy of
+page that says the same, with a button to go on in the browser; that choice is remembered for a week, and then the
+page is offered once more (a browser may empty what it keeps for a site left alone for a week, so the icon is the
+safer home). Progress is kept on the phone only, by each copy of
 the app (the folder's address is part of its name). Two tabs of the app share it: what one tab saves is added to what
 the other saved, never written over it, and each tab takes the other's changes at its next quiet moment (the week path,
 the goal, a tab). A browser that keeps nothing gets a notice on the goal screen and the week path.
@@ -101,6 +103,22 @@ the goal, a tab). A browser that keeps nothing gets a notice on the goal screen 
   is not asked again, except on the review day, which asks for the week's hard words once more. A mistake comes back
   after 1, 3 and 7 days; three right answers in a row clear it. The week path shows one week: the week of the session in
   use, else of the next one due, and once every written week is whole, the last of them.
+- **The review that waits is put in front of the day.** The Cuaderno tab carries the number due today on the four tab
+  bars, and the week path's callout and the day's page a row, «Antes de empezar: 3 para repasar · unos 2 min», that
+  opens the review; the review ends with «Seguir con el día 4». A day's review has a size: a third of the minutes a day
+  chosen with the goal, at 0.6 minutes a question (8, 16 or 25 questions for 15, 30 or 45 minutes), the oldest first;
+  what is left waits for the next days, and the notebook says so («Hay 45 esperando. Hoy van las 16 más viejas…»). In
+  the notebook an entry that is due keeps what was answered and holds its right answer back until it is reviewed, and
+  the review shows a choice's options in another order each day.
+- **The plan can be made again.** The date chip on the week path («faltan 40 días», or «a tu ritmo») opens the goal
+  screen at its third step, with «Guardar el plan» and «Cancelar»; behind the plan or past its date, Progreso offers
+  the same door («Epu'ã ha eñepyrũjey», «Rearmar mi plan»). A plan made again starts today at the session the learner
+  had reached, and lays out only what is left (`plan.from`).
+- **Days with study, and the return.** The app keeps the days on which something was done (a lesson step, a test, a
+  review answer, a practice section opened); opening the app is not study. The week path shows the last seven days,
+  Progreso counts them («12 días con estudio · volviste 2 veces»), and after two days or more away the week path
+  greets the learner back: Kaguare up on his hind legs, «Opu'ã · Se levantó», and something short first (the review
+  that waits, or, after a week or more, the last review day sealed) before the next new day.
 - **Six levels:** A1 Acceso 8 units, A2 Plataforma 10, B1 Umbral 10, B2 Avanzado 10, C1 Dominio operativo eficaz 8,
   C2 Maestría 6: 52 units, 260 study days. A1 and A2 hold the core morphology; B1 and B2 clauses, word formation,
   evidentials and Jopara as grammar; C1 register and the State's Guarani (the Constitution, Ley 4251, legal and
@@ -110,9 +128,12 @@ the goal, a tab). A browser that keeps nothing gets a notice on the goal screen 
   Apto needs 60 % in each group and no part under 40 %. Reading, listening and Guarani-to-Spanish mediation are scored by
   the app; writing, speaking and Spanish-to-Guarani mediation are rated against a rubric and sample answers, by the learner
   (rated again after 48 hours, the lower score kept) or by a teacher. No CEFR framework or certificate exists for Guarani
-  anywhere (notes G6), so the app calls its result a constancia, never a certificate.
+  anywhere (notes G6), so the app calls its result a constancia, never a certificate. Before it, each half of a level
+  has a mini exam: 20 of that half's week-test questions (6 words, 8 grammar, 3 reading, 3 listening, as many from each
+  unit) on a 20-minute clock, open once the last of those week tests is done. A1's first one exists (units 1 to 4).
 - **Read, type, speak** are sections of the same app, not separate installs, reached from Progreso ("Más práctica":
-  Emoñe'ẽ · Leer, Ehai · Escribir, Eñe'ẽ · Hablá). Leer shows a text and, while a phrase is
+  Emoñe'ẽ · Leer, Ehai · Escribir, Eñe'ẽ · Hablá), from a sealed day («¿Un rato más?») and, where the written path
+  ends, from the week path's card («Mientras tanto», with the notebook). Leer shows a text and, while a phrase is
   held, its parts (prefix, root, suffix) with Spanish glosses, the word's meaning and the grammar pattern; never the
   translation of the whole sentence. Escribir is the typing game, on the phone, with the app's own keyboard (the Guarani
   row ã ẽ ĩ õ ũ ỹ g̃ ' first). Hablar has no speech recognition, because no phone or browser recognises Guarani: the learner

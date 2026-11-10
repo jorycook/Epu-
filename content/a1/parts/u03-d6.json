@@ -20,12 +20,12 @@
       ],
       "check": {
         "id": "a1u03d6.c1", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-        "q": "(Luis muestra una foto. Rosa cree que es la mamá de Luis, pero ^es su profesora^.)\nLuis: (   ) che sy, ha'e che mbo'ehára.",
+        "q": "(Vicente muestra una foto. Rosa cree que es la mamá de Vicente, pero ^es su profesora^.)\nVicente: (   ) che sy, ha'e che mbo'ehára.",
         "options": ["Ha'e", "Ndaha'éi", "Ndaikatúi"],
         "answer": 2,
         "why": [
-          "Ha'e che sy diría «es mi mamá», y la de la foto es su profesora: Luis lo niega.",
-          "Rosa se equivoca, y Luis niega el «es» con ndaha'éi, una sola palabra: Ndaha'éi che sy, «no es mi mamá». Después, sin negar: ha'e che mbo'ehára, «es mi profesora».",
+          "Ha'e che sy diría «es mi mamá», y la de la foto es su profesora: Vicente lo niega.",
+          "Rosa se equivoca, y Vicente niega el «es» con ndaha'éi, una sola palabra: Ndaha'éi che sy, «no es mi mamá». Después, sin negar: ha'e che mbo'ehára, «es mi profesora».",
           "Ndaikatúi es «no se puede»: el nda-…-i rodea a ikatu, no a ha'e. Ndaikatúi che sy no dice nada. Para negar un «es» va ndaha'éi."
         ]
       }
@@ -45,13 +45,13 @@
       },
       {
         "id": "a1u03d6.d2", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-        "q": "(Luis le cuenta a Ana ^qué hace él mismo^: trabaja.)\nLuis: Ko'ág̃a (   ), Ana.",
+        "q": "(Vicente le cuenta a Ana ^qué hace él mismo^: trabaja.)\nVicente: Ko'ág̃a (   ), Ana.",
         "options": ["amba'apo", "chemba'apo", "omba'apo", "mba'apo"],
         "answer": 1,
         "why": [
-          "Trabajar es una acción y Luis habla de él mismo: a- + mba'apo = amba'apo, «trabajo». Ko'ág̃a amba'apo, «ahora trabajo».",
+          "Trabajar es una acción y Vicente habla de él mismo: a- + mba'apo = amba'apo, «trabajo». Ko'ág̃a amba'apo, «ahora trabajo».",
           "Che- es para los estados, como chekane'õ. Trabajar es una acción y lleva a-: chemba'apo no es «yo trabajo».",
-          "O- es «él, ella»: omba'apo es «trabaja», de otra persona. Luis habla de él mismo.",
+          "O- es «él, ella»: omba'apo es «trabaja», de otra persona. Vicente habla de él mismo.",
           "Mba'apo sin prefijo es «trabajo», la cosa, o la raíz sin persona: no dice quién trabaja."
         ]
       },
@@ -69,23 +69,23 @@
       },
       {
         "id": "a1u03d6.d4", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-        "q": "(En la fiesta, ^Luis dice qué es él mismo^: médico.)\nLuis: (   ) pohanohára.",
+        "q": "(En la fiesta, ^Vicente dice qué es él mismo^: médico.)\nVicente: (   ) pohanohára.",
         "options": ["Aime", "Ha'e", "Che", "Ndaha'éi"],
         "answer": 3,
         "why": [
           "Aime es «estoy» en un lugar, como en Aime ógape. Para decir qué sos no va ningún verbo: ni «soy» ni «estoy».",
-          "Ha'e pohanohára es «él es médico», de otra persona. Luis habla de él mismo: che.",
+          "Ha'e pohanohára es «él es médico», de otra persona. Vicente habla de él mismo: che.",
           "Para decir qué sos: che y el sustantivo, nada más. Che pohanohára, «soy médico».",
-          "Ndaha'éi pohanohára niega: «no es médico» o «no soy médico». Luis sí es médico, y eso es lo que dice."
+          "Ndaha'éi pohanohára niega: «no es médico» o «no soy médico». Vicente sí es médico, y eso es lo que dice."
         ]
       },
       {
         "id": "a1u03d6.d5", "kind": "build", "area": "grammar", "label": "Armá la palabra", "join": "word",
-        "before": "(Luis ve que Ana sonríe.)\nLuis: ", "after": ", Ana?",
+        "before": "(Vicente ve que Ana sonríe.)\nVicente: ", "after": ", Ana?",
         "tiles": ["re", "vy'a", "pa"], "bank": [1, 2, 0],
         "hint": "Vy'a va como una acción: el «vos» es re-, y va primero. -pa va al final.",
-        "full": "(Luis ve que Ana sonríe.)\nLuis: {Re}vy'á{pa}, Ana?",
-        "es": "Luis: ¿Estás contenta, Ana?",
+        "full": "(Vicente ve que Ana sonríe.)\nVicente: {Re}vy'á{pa}, Ana?",
+        "es": "Vicente: ¿Estás contenta, Ana?",
         "explain": "re- («vos») + vy'a («alegrarse») + -pa (pregunta) = Revy'ápa, «¿estás contenta?». Vy'a va como una acción: por eso lleva re-, el «vos» de las acciones, y no nde-. -pa no se lleva el acento: queda en la a de vy'a, que ya no es la última vocal, y se escribe á."
       },
       {
@@ -108,17 +108,17 @@
       },
       {
         "id": "a1u03d6.e2", "kind": "choice", "area": "grammar", "label": "Cuál está bien escrita",
-        "q": "Luis repasa cuatro palabras de la semana. Solo una está _bien escrita_. ¿Cuál?",
+        "q": "Vicente repasa cuatro palabras de la semana. Solo una está _bien escrita_. ¿Cuál?",
         "options": ["ndaha'ei", "Ka'akupé", "añetepa", "hasýpa"],
         "answer": 4,
         "explain": "Hasýpa está bien: hasy es aguda, ha-SY, y sola va sin tilde, pero -pa no se lleva el acento, así que la y tónica ya no es la última vocal y se escribe ý. Por lo mismo les falta la tilde a añetepa y a ndaha'ei: son añetépa, con -pa, y ndaha'éi, con -i. Ka'akupé lleva la tilde del castellano: en guaraní es aguda y va sin tilde, Ka'akupe."
       },
       {
         "id": "a1u03d6.e3", "kind": "build", "area": "grammar", "label": "Armá la palabra", "join": "word",
-        "before": "(En la fiesta, Rosa cree que la señora es la abuela de Luis.)\nLuis: ", "after": " che jarýi, ha'e che sy.",
+        "before": "(En la fiesta, Rosa cree que la señora es la abuela de Vicente.)\nVicente: ", "after": " che jarýi, ha'e che sy.",
         "tiles": ["nda", "ha'e", "i"], "bank": [1, 0, 2],
-        "full": "(En la fiesta, Rosa cree que la señora es la abuela de Luis.)\nLuis: Ndaha'éi che jarýi, ha'e che sy.",
-        "es": "Luis: No es mi abuela, es mi mamá.",
+        "full": "(En la fiesta, Rosa cree que la señora es la abuela de Vicente.)\nVicente: Ndaha'éi che jarýi, ha'e che sy.",
+        "es": "Vicente: No es mi abuela, es mi mamá.",
         "explain": "nda- va primero, después ha'e y al final -i: ndaha'éi, «no es». El «no» del guaraní tiene dos partes que rodean la palabra. La tilde va en la é porque -i no se lleva el acento. Después, sin negar: ha'e che sy, «es mi mamá»."
       }
     ]
@@ -161,19 +161,19 @@
     "es": "Un chat al volver",
     "ask": "¿Quién está enfermo?",
     "seconds": 75,
-    "passage": "Luis: Mba'éichapa, Ana? Og̃uahẽpa nde sy?\nAna: Héẽ, og̃uahẽ ko'ág̃a. ^Che sy ikane'õ ha che jarýi hasy.^\nLuis: Añetépa? Ha nde?\nAna: Chey'uhéi. Oĩpa terere?\nLuis: Héẽ. Jaha.",
+    "passage": "Vicente: Mba'éichapa, Ana? Og̃uahẽpa nde sy?\nAna: Héẽ, og̃uahẽ ko'ág̃a. ^Che sy ikane'õ ha che jarýi hasy.^\nVicente: Añetépa? Ha nde?\nAna: Chey'uhéi. Oĩpa terere?\nVicente: Héẽ. Jaha.",
     "strategy": "Dos personas tienen un estado: una con i- y otra con h-. Buscá hasy, «está enfermo», y fijate de quién se dice.",
     "item": {
       "id": "a1u03d6.r1", "kind": "choice", "area": "reading", "label": "Buscar el dato",
       "q": "¿Quién está enfermo?",
-      "options": ["La mamá de Ana.", "La abuela de Ana.", "Ana.", "Luis."],
-      "short": ["La mamá", "La abuela", "Ana", "Luis"],
+      "options": ["La mamá de Ana.", "La abuela de Ana.", "Ana.", "Vicente."],
+      "short": ["La mamá", "La abuela", "Ana", "Vicente"],
       "answer": 2,
       "why": [
         "Che sy ikane'õ: la mamá está cansada, con i- y kane'õ, «cansancio». Cansada, no enferma.",
         "Ana escribe che jarýi hasy: hasy es «está enferma», la forma de rasy para él o ella, como héra. La enferma es su abuela.",
         "De ella misma, Ana dice Chey'uhéi, «tengo sed»: ni cansancio ni enfermedad.",
-        "Luis pregunta, y al final responde Héẽ, «sí», y Jaha, «vamos». Por el tereré pregunta Ana: Oĩpa terere? De cómo está él, Luis no dice nada."
+        "Vicente pregunta, y al final responde Héẽ, «sí», y Jaha, «vamos». Por el tereré pregunta Ana: Oĩpa terere? De cómo está él, Vicente no dice nada."
       ],
       "explain": "Ana escribe Che sy ikane'õ ha che jarýi hasy: su mamá está cansada (ikane'õ) y su abuela está enferma (hasy). Ella misma solo tiene sed, chey'uhéi."
     }

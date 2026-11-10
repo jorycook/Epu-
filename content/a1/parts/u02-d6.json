@@ -45,13 +45,13 @@
    },
    {
     "id": "a1u02d6.d2", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-    "q": "(Ana le habla a Luis.)\nAna: ^Ñande^ (   ) guaraníme, Luis.",
+    "q": "(Ana le habla a Vicente.)\nAna: ^Ñande^ (   ) guaraníme, Vicente.",
     "options": ["jañe'ẽ", "ñañe'ẽ", "roñe'ẽ", "oñe'ẽ"],
     "answer": 2,
     "why": [
      "Ñe'ẽ es nasal, por la ñ y la ẽ, y delante de una raíz nasal ja- se vuelve ña-. Jañe'ẽ no se dice.",
      "Ñande pide ja-, el «nosotros con vos». Como ñe'ẽ es nasal, ja- se vuelve ña-: ñañe'ẽ, «hablamos, vos y yo».",
-     "Ro- es el prefijo de ore, «nosotros sin vos». Ñande incluye a Luis, que escucha.",
+     "Ro- es el prefijo de ore, «nosotros sin vos». Ñande incluye a Vicente, que escucha.",
      "O- es «él, ella» o «ellos»: oñe'ẽ, «habla». Ñande pide el «nosotros con vos»."
     ]
    },
@@ -69,14 +69,14 @@
    },
    {
     "id": "a1u02d6.d4", "kind": "choice", "area": "grammar", "label": "Elegí la palabra",
-    "q": "Ana: (   ) reho, Luis?\nLuis: ^Aha Ka'akupépe^.",
+    "q": "Ana: (   ) reho, Vicente?\nVicente: ^Aha Ka'akupépe^.",
     "options": ["Moõpa", "Moõguipa", "Mávapa", "Mba'épa"],
     "answer": 1,
     "why": [
-     "Luis responde adónde va, con -pe: Aha Ka'akupépe. La pregunta es Moõpa reho?, «¿adónde vas?».",
-     "Moõguipa pregunta «¿de dónde?» y se responde con -gui, como Aju Itauguágui. Luis responde con -pe: adónde va.",
-     "Mávapa pregunta «¿quién?», y Luis responde con un lugar, no con una persona.",
-     "Mba'épa pregunta «¿qué?», como en Mba'épa rejapo? Luis responde con un lugar, no con una acción."
+     "Vicente responde adónde va, con -pe: Aha Ka'akupépe. La pregunta es Moõpa reho?, «¿adónde vas?».",
+     "Moõguipa pregunta «¿de dónde?» y se responde con -gui, como Aju Itauguágui. Vicente responde con -pe: adónde va.",
+     "Mávapa pregunta «¿quién?», y Vicente responde con un lugar, no con una persona.",
+     "Mba'épa pregunta «¿qué?», como en Mba'épa rejapo? Vicente responde con un lugar, no con una acción."
     ]
    },
    {
@@ -108,7 +108,7 @@
    },
    {
     "id": "a1u02d6.e2", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
-    "q": "(Ana le habla a Luis: hacen chipá los dos.)\nAna: Ñande (   ) chipa ko ka'aru.",
+    "q": "(Ana le habla a Vicente: hacen chipá los dos.)\nAna: Ñande (   ) chipa ko ka'aru.",
     "options": ["ñajapo", "ajapo", "jajapo", "ojapo"],
     "answer": 3,
     "explain": "Ñande, «nosotros con vos», pide ja-, y japo no tiene ninguna letra nasal, así que ja- se queda: jajapo, «hacemos, vos y yo». Ña- va solo delante de una raíz nasal, como en ñañe'ẽ; ajapo es «hago», Ana sola; y ojapo, «hace», otra persona."
@@ -151,7 +151,7 @@
   "spell": ["nanee", "kotype", "itauguagui", "ndaikuaai"],
   "check": {
    "id": "a1u02d6.k1", "kind": "choice", "area": "vocab", "label": "Cómo se escribe",
-   "q": "Ana le pregunta a Luis si oye la música. Luis: «_Escucho_.» ¿Cómo se escribe en guaraní?",
+   "q": "Ana le pregunta a Vicente si oye la música. Vicente: «_Escucho_.» ¿Cómo se escribe en guaraní?",
    "options": ["ajendu", "ahendu", "aendu", "ahendy"],
    "answer": 2,
    "explain": "Escucho es ahendu: a-, «yo», y hendu, «oír». La h suena como la jota suave paraguaya, pero se escribe h: con j sería otra letra, la y fuerte de «yo». Aendu se come la h, que nunca es muda. Y ahendy cambia la u por la y, la sexta vocal: hendy es otra palabra, «arder»."
@@ -162,8 +162,8 @@
   "es": "Un chat del domingo",
   "ask": "¿Qué hace Ana en Caacupé?",
   "seconds": 75,
-  "passage": "Luis: Moõpa reho, Ana?\nAna: Aha Ka'akupépe, che jarýi rógape.\nLuis: Mba'épa rejapo Ka'akupépe?\nAna: ^Akaru ha añe'ẽ guaraníme.^ ^Namba'apói.^\nLuis: Ha nde ru?\nAna: Ha'e ndohói: omba'apo Paraguaýpe.",
-  "strategy": "Las respuestas de Ana vienen justo después de cada pregunta de Luis. Buscá la segunda, y fijate qué verbo lleva n-…-i: eso es lo que no hace.",
+  "passage": "Vicente: Moõpa reho, Ana?\nAna: Aha Ka'akupépe, che jarýi rógape.\nVicente: Mba'épa rejapo Ka'akupépe?\nAna: ^Akaru ha añe'ẽ guaraníme.^ ^Namba'apói.^\nVicente: Ha nde ru?\nAna: Ha'e ndohói: omba'apo Paraguaýpe.",
+  "strategy": "Las respuestas de Ana vienen justo después de cada pregunta de Vicente. Buscá la segunda, y fijate qué verbo lleva n-…-i: eso es lo que no hace.",
   "item": {
    "id": "a1u02d6.r1", "kind": "choice", "area": "reading", "label": "Texto corto",
    "q": "¿Qué hace Ana en Caacupé?",
@@ -176,7 +176,7 @@
     "A Mba'épa rejapo Ka'akupépe? Ana responde Akaru ha añe'ẽ guaraníme: come y habla en guaraní.",
     "El que trabaja en Asunción es su papá: omba'apo Paraguaýpe, con o-."
    ],
-   "explain": "Luis pregunta Mba'épa rejapo Ka'akupépe?, «¿qué hacés en Caacupé?», y Ana responde Akaru ha añe'ẽ guaraníme: come y habla en guaraní. Namba'apói niega el trabajo, y Paraguaýpe, Asunción, es donde trabaja su papá."
+   "explain": "Vicente pregunta Mba'épa rejapo Ka'akupépe?, «¿qué hacés en Caacupé?», y Ana responde Akaru ha añe'ẽ guaraníme: come y habla en guaraní. Namba'apói niega el trabajo, y Paraguaýpe, Asunción, es donde trabaja su papá."
   }
  }
 }

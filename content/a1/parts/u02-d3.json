@@ -60,8 +60,8 @@
             "parts": [["ha'ekuéra", "ellos, ellas"], ["o-", "ellos, ellas"], ["mba'apo", "trabajar"], ["ñu", "campo"], ["-me", "en (tras sílaba nasal)"]]
           },
           {
-            "gn": "Luis oho Ñembý{pe}, ha Rosa oho ñú{me}.",
-            "es": "Luis va a Ñemby, y Rosa va al campo.",
+            "gn": "Vicente oho Ñembý{pe}, ha Rosa oho ñú{me}.",
+            "es": "Vicente va a Ñemby, y Rosa va al campo.",
             "parts": [["oho", "va"], ["Ñemby", "Ñemby (una ciudad cerca de Asunción)"], ["-pe", "a (tras sílaba oral)"], ["ha", "y"], ["ñu", "campo"], ["-me", "a (tras sílaba nasal)"]]
           },
           {
@@ -89,13 +89,13 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Mirta trabaja ^en el campo^.)\nMirta: Amba'apo (   ).",
+        "q": "(María trabaja ^en el campo^.)\nMaría: Amba'apo (   ).",
         "options": ["ñúpe", "ñúme", "ñugua"],
         "answer": 2,
         "why": [
           "Ñu termina en sílaba nasal, por la ñ: ahí no va -pe.",
           "La ñ hace nasal la u de ñu: -pe se vuelve -me. Amba'apo ñúme, «trabajo en el campo».",
-          "-gua es el «de» de origen, como en Paraguaigua: diría de dónde es Mirta. Ella dice dónde trabaja: ñúme."
+          "-gua es el «de» de origen, como en Paraguaigua: diría de dónde es María. Ella dice dónde trabaja: ñúme."
         ]
       }
     },
@@ -105,14 +105,14 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Luis contesta que su mamá está ^en casa^.)\nAna: Moõpa oĩ nde sy, Luis?\nLuis: Oĩ (   ).",
+        "q": "(Vicente contesta que su mamá está ^en casa^.)\nAna: Moõpa oĩ nde sy, Vicente?\nVicente: Oĩ (   ).",
         "options": ["ógape", "ógame", "óga", "kotýpe"],
         "answer": 1,
         "why": [
-          "Moõpa pregunta dónde, y Luis responde con un lugar: óga, «casa», con -pe pegado atrás. Óga termina en sílaba oral y guarda su tilde: ógape, «en casa».",
+          "Moõpa pregunta dónde, y Vicente responde con un lugar: óga, «casa», con -pe pegado atrás. Óga termina en sílaba oral y guarda su tilde: ógape, «en casa».",
           "-me va solo tras sílaba nasal, y ga es oral: ógape.",
           "Óga solo es «casa», el nombre de la cosa. Para decir «en casa» hay que pegarle -pe.",
-          "Kotýpe es «en la pieza», y Luis dice que su mamá está en casa: óga."
+          "Kotýpe es «en la pieza», y Vicente dice que su mamá está en casa: óga."
         ]
       },
       {
@@ -135,14 +135,14 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Ana cuenta adónde va Luis: ^a Ñemby^.)\nAna: Luis oho (   ).",
+        "q": "(Ana cuenta adónde va Vicente: ^a Ñemby^.)\nAna: Vicente oho (   ).",
         "options": ["Ñembýme", "Ñembýpe", "Ñemby", "Ka'akupépe"],
         "answer": 2,
         "why": [
           "Ñemby tiene ñ y mb, pero la última sílaba es mby: mb es una letra distinta de m, y la y que la sigue es oral. Tras sílaba oral va -pe. El día 2, con ja-/ña-, una mb en la raíz ya pedía ña- (ñamba'apo): los prefijos miran toda la raíz; -pe/-me, solo la última sílaba.",
           "Mirá la última sílaba: mby. Su vocal es oral, así que va -pe, y la y, que ya no es la última vocal, lleva tilde: Ñembýpe, «a Ñemby».",
           "Ñemby solo es el nombre de la ciudad. Para «a Ñemby» se le pega -pe.",
-          "Ka'akupépe es «a Caacupé», y Luis va a Ñemby."
+          "Ka'akupépe es «a Caacupé», y Vicente va a Ñemby."
         ]
       },
       {

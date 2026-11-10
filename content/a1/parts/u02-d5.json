@@ -28,8 +28,8 @@
             "parts": [["nd-", "no"], ["a-", "yo"], ["japo", "hacer"], ["-i", "no"], ["mba'eve", "nada"]]
           },
           {
-            "gn": "Luis {nd}oú{i} ko ka'aru: oky.",
-            "es": "Luis no viene esta tarde: llueve.",
+            "gn": "Vicente {nd}oú{i} ko ka'aru: oky.",
+            "es": "Vicente no viene esta tarde: llueve.",
             "parts": [["nd-", "no"], ["ou", "viene"], ["-i", "no"], ["ko ka'aru", "esta tarde"], ["oky", "llueve"]]
           }
         ],
@@ -89,13 +89,13 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "Rosa: Reñe'ẽpa guaraníme, Lucas?\nLucas: ^Nahániri^, (   ).",
+        "q": "Rosa: Reñe'ẽpa guaraníme, Moisés?\nMoisés: ^Nahániri^, (   ).",
         "options": ["ndañe'ẽi", "nañe'ẽi", "añe'ẽ"],
         "answer": 2,
         "why": [
           "ñe'ẽ es una raíz nasal, por la ñ y la ẽ: delante no va nd-, sino n-. Ndañe'ẽi no existe.",
-          "Lucas dice que no y lo niega en el verbo: n- + añe'ẽ + -i = nañe'ẽi, «no hablo». Sobre la ẽ no se agrega tilde: la ~ ya marca el acento.",
-          "Añe'ẽ es «hablo», sin negación: Lucas diría que sí habla. Pero empieza con Nahániri, «no»."
+          "Moisés dice que no y lo niega en el verbo: n- + añe'ẽ + -i = nañe'ẽi, «no hablo». Sobre la ẽ no se agrega tilde: la ~ ya marca el acento.",
+          "Añe'ẽ es «hablo», sin negación: Moisés diría que sí habla. Pero empieza con Nahániri, «no»."
         ]
       }
     },
@@ -105,13 +105,13 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "Luis: ^Rehópa^ kokuépe ko pyhareve, Juan?\nJuan: Nahániri, (   ): [oky|llueve].",
+        "q": "Vicente: ^Rehópa^ kokuépe ko pyhareve, Juan?\nJuan: Nahániri, (   ): [oky|llueve].",
         "options": ["ndaha", "nahái", "ndahái", "ndohói"],
         "answer": 3,
         "why": [
           "A ndaha le falta la -i del final. El «no» guaraní tiene dos partes, nd- y -i, y con una sola la palabra queda a medias.",
           "ha, la raíz de «ir» con a-, es oral: delante va nd-, no n-. Nahái no existe.",
-          "Luis pregunta con re-, «vos», y Juan responde por él, con a-: aha, «voy». El «no» lo rodea: nd- + aha + -i = ndahái, «no voy». La -i no se lleva el acento, y la a de ha se escribe á.",
+          "Vicente pregunta con re-, «vos», y Juan responde por él, con a-: aha, «voy». El «no» lo rodea: nd- + aha + -i = ndahái, «no voy». La -i no se lleva el acento, y la a de ha se escribe á.",
           "Ndohói es «no va», con o-: sería otra persona. Juan habla de él mismo, con a-."
         ]
       },
@@ -135,11 +135,11 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Diego habla guaraní, pero su mamá no.)\nDiego: Che añe'ẽ guaraníme, ha ^che sy^ (   ).",
+        "q": "(Tito habla guaraní, pero su mamá no.)\nTito: Che añe'ẽ guaraníme, ha ^che sy^ (   ).",
         "options": ["nañe'ẽi", "ndoñe'ẽi", "oñe'ẽ", "noñe'ẽi"],
         "answer": 4,
         "why": [
-          "Nañe'ẽi es «no hablo», con a-: Diego hablaría de él mismo, y él sí habla: añe'ẽ.",
+          "Nañe'ẽi es «no hablo», con a-: Tito hablaría de él mismo, y él sí habla: añe'ẽ.",
           "ñe'ẽ es una raíz nasal: delante va n-, no nd-. Ndoñe'ẽi no existe.",
           "Oñe'ẽ es «habla», sin negación: diría que su mamá sí habla guaraní, y no es así.",
           "Che sy es otra persona: o-. ñe'ẽ es nasal: n- + oñe'ẽ + -i = noñe'ẽi, «no habla». La ẽ ya lleva la tilde nasal: no se agrega otra."
@@ -150,14 +150,14 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Elegí la forma",
-        "q": "(Rosa pregunta si Luis viene esta tarde.)\nAna: Nahániri, ^Luis^ (   ) ko ka'aru.",
+        "q": "(Rosa pregunta si Vicente viene esta tarde.)\nAna: Nahániri, ^Vicente^ (   ) ko ka'aru.",
         "options": ["ndoú", "ndoúi", "noúi", "ou"],
         "answer": 2,
         "why": [
           "A ndoú le falta la -i del final: el «no» tiene dos partes, y con una sola la palabra queda a medias.",
-          "Luis es otra persona, y «viene» es ou. El «no» lo rodea: nd- + ou + -i = ndoúi, «no viene». La -i no se lleva el acento: queda en la u, que se escribe ú.",
+          "Vicente es otra persona, y «viene» es ou. El «no» lo rodea: nd- + ou + -i = ndoúi, «no viene». La -i no se lleva el acento: queda en la u, que se escribe ú.",
           "ou es una raíz oral: delante va nd-, no n-. Noúi no existe.",
-          "Ou es «viene», sin negación: diría que Luis sí viene, y Ana acaba de decir Nahániri, «no»."
+          "Ou es «viene», sin negación: diría que Vicente sí viene, y Ana acaba de decir Nahániri, «no»."
         ]
       },
       {
@@ -166,13 +166,13 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "Luis: Ko pyhareve ",
+        "before": "Vicente: Ko pyhareve ",
         "after": " mba'eve.",
         "tiles": ["nd", "a", "japo", "i"],
         "bank": [2, 0, 3, 1],
         "hint": "El «no» rodea al verbo: nd- va primero y -i al final. En el medio, a- («yo») y la raíz japo, «hacer».",
-        "full": "Luis: Ko pyhareve {nd}ajapó{i} mba'eve.",
-        "es": "Luis: Esta mañana no hago nada.",
+        "full": "Vicente: Ko pyhareve {nd}ajapó{i} mba'eve.",
+        "es": "Vicente: Esta mañana no hago nada.",
         "explain": "nd- + a- («yo») + japo («hacer») + -i = ndajapói, «no hago». Las dos partes del «no» rodean al verbo. La -i no se lleva el acento: queda en la o de japo, que ya no es la última vocal, y se escribe ó. Con mba'eve, «nada»: «no hago nada»."
       },
       {
@@ -181,13 +181,13 @@
         "area": "grammar",
         "label": "Armá la palabra",
         "join": "word",
-        "before": "(Lucas recién empieza a estudiar guaraní.)\nLucas: Che ",
+        "before": "(Moisés recién empieza a estudiar guaraní.)\nMoisés: Che ",
         "after": " guaraníme.",
         "tiles": ["n", "a", "ñe'ẽ", "i"],
         "bank": [3, 2, 0, 1],
         "hint": "ñe'ẽ es nasal: la primera parte del «no» es n-, sin d. Después a- («yo»), la raíz y, al final, -i.",
-        "full": "(Lucas recién empieza a estudiar guaraní.)\nLucas: Che {n}añe'ẽ{i} guaraníme.",
-        "es": "Lucas: Yo no hablo guaraní.",
+        "full": "(Moisés recién empieza a estudiar guaraní.)\nMoisés: Che {n}añe'ẽ{i} guaraníme.",
+        "es": "Moisés: Yo no hablo guaraní.",
         "explain": "n- + a- («yo») + ñe'ẽ («hablar») + -i = nañe'ẽi, «no hablo». Como ñe'ẽ es una raíz nasal, la primera parte del «no» es n-, no nd-. El acento queda en la ẽ, y la tilde nasal ya lo marca: no se agrega otra."
       }
     ],
@@ -197,7 +197,7 @@
         "kind": "choice",
         "area": "grammar",
         "label": "Qué significa",
-        "q": "(Llueve.)\nLuis: Che ru _nosẽi_ ko pyhareve.",
+        "q": "(Llueve.)\nVicente: Che ru _nosẽi_ ko pyhareve.",
         "options": ["Mi papá sale esta mañana.", "Yo no salgo esta mañana.", "Mi papá no viene esta mañana.", "Mi papá no sale esta mañana."],
         "answer": 4,
         "explain": "Lo subrayado es sẽ, «salir», con o-, otra persona, mi papá, y con el «no» en dos partes: n- al principio, porque sẽ es una raíz nasal, y -i al final: nosẽi, «no sale». «Sale» sería osẽ, sin negación; «yo no salgo» llevaría a-, «yo»; y «no viene» sería ndoúi."
@@ -257,7 +257,7 @@
       "kind": "choice",
       "area": "vocab",
       "label": "Cómo se escribe",
-      "q": "Rosa pregunta algo y Luis no sabe: Luis dice «_No sé_». ¿Cómo se escribe en guaraní?",
+      "q": "Rosa pregunta algo y Vicente no sabe: Vicente dice «_No sé_». ¿Cómo se escribe en guaraní?",
       "options": ["Ndakuaái", "Naikuaái", "Ndaikuaái", "Ndaikuái"],
       "answer": 3,
       "explain": "No sé es Ndaikuaái: nd- al principio, porque kuaa es una raíz oral; ai-, el «yo» de kuaa, con su i; la raíz kuaa, con dos aes; y -i al final, que no se lleva el acento: la última a de kuaa ya no es la última vocal, y se escribe á. Ndakuaái pierde la i de ai-, como reikuaa, que no es rekuaa. Naikuaái pone n-, que va solo delante de una raíz nasal. Ndaikuái se come una a de kuaa."
@@ -266,24 +266,24 @@
   "skill": {
     "kind": "listening",
     "es": "Respuesta rápida",
-    "situation": "Llueve. Ana le pregunta a Luis si va a la escuela esta tarde.",
-    "ask": "¿Qué responde Luis?",
+    "situation": "Llueve. Ana le pregunta a Vicente si va a la escuela esta tarde.",
+    "ask": "¿Qué responde Vicente?",
     "item": {
       "id": "a1u02d5.r1",
       "kind": "choice",
       "area": "listening",
       "label": "Respuesta rápida",
-      "q": "¿Qué responde Luis?",
+      "q": "¿Qué responde Vicente?",
       "options": ["Nahániri, ndahái. Oky.", "Nahániri, aha.", "Héẽ, ndahái."],
       "answer": 1,
       "why": [
-        "Luis dice que no, Nahániri, y lo niega en el verbo: ndahái, «no voy». Después da la razón: oky, «llueve».",
+        "Vicente dice que no, Nahániri, y lo niega en el verbo: ndahái, «no voy». Después da la razón: oky, «llueve».",
         "Nahániri, aha se contradice: «no, voy». Aha es «voy», sin negación.",
         "Héẽ, ndahái se contradice al revés: «sí, no voy». Ndahái es «no voy», y pide un Nahániri delante."
       ],
       "script": [
-        "Narrador: Llueve. ¿Qué responde Luis?",
-        "Mujer: Rehópa mbo'ehaópe ko ka'aru, Luis?",
+        "Narrador: Llueve. ¿Qué responde Vicente?",
+        "Mujer: Rehópa mbo'ehaópe ko ka'aru, Vicente?",
         "Narrador: 1",
         "Hombre: Nahániri, ndahái. Oky.",
         "Narrador: 2",
@@ -293,8 +293,8 @@
       ]
     },
     "audio": [
-      ["N", "Llueve. ¿Qué responde Luis?", "Llueve. ¿Qué responde Luis?"],
-      ["F", "Rehópa mbo'ehaópe ko ka'aru, Luis?", "¿Vas a la escuela esta tarde, Luis?"],
+      ["N", "Llueve. ¿Qué responde Vicente?", "Llueve. ¿Qué responde Vicente?"],
+      ["F", "Rehópa mbo'ehaópe ko ka'aru, Vicente?", "¿Vas a la escuela esta tarde, Vicente?"],
       ["N", "1", "1"],
       ["M", "Nahániri, ndahái. Oky.", "No, no voy. Llueve."],
       ["N", "2", "2"],
