@@ -11,9 +11,13 @@
 //   D  saved data that does not fit: garbage, wrong types, odd values, storage that throws, another copy's save.
 //   F  a lesson left part way (two of four words written) and reopened after a reload.
 //   G  two tabs of the app open at once.
+//   H  the last written week (whichever it is: A1 unit 4 today): the week before it leads on to it; its review day by
+//      taps, every lesson (the drill's answer sheet with its button in view, the week's words written again, the
+//      reading); its week test; then the learner stays on that week, on the path, on Progreso and on Niveles, across
+//      a reload, and no week that is written is said to be waiting to be written.
 //   E  every one of the 21 screens reached, with no page error, no console error and nothing blank.
-// usage: node check/flows-test.js [site folder]      (default: ../docs, the built site as it is; about 6 minutes)
-//   ONLY=A,B,C,D,F,G runs some parts (E reports on what ran); PORT=8795 picks the port (default: any free one).
+// usage: node check/flows-test.js [site folder]      (default: ../docs, the built site as it is; about 8 minutes)
+//   ONLY=A,B,C,D,F,G,H runs some parts (E reports on what ran); PORT=8795 picks the port (default: any free one).
 // Screenshots (device scale 1) go to check/out/flows/. Exit code 1 when a check fails.
 // Chromium stands in for Safari (WebKit cannot run here): the user agent, the screen and touch are an iPhone's.
 'use strict';
@@ -522,7 +526,9 @@ async function partA9(ctx, page) {
   const onward = ((await page.locator('#gn-stage a[href="Main.dc.html"]').last().textContent()) || '').trim();
   await tap(page, { sel: '#gn-stage a[href="Main.dc.html"]' }, 600);
   const week = ((await text(page)).match(/Semana \d+ de \d+/) || [''])[0];
-  check(!/A la semana 2/.test(onward) || /Semana 2 /.test(week), `the week test's "${onward}" button leads to that week (it leads to Main at "${week}", week 1 not finished and week 2 not written)`, { button: onward, landedOn: week });
+  /* week 2 is written now: the button offers it only once week 1 is whole. Here days 3 to 6 are not done, so it reads
+     Volver and stays on week 1 */
+  check(/Volver/.test(onward) && !/A la semana/.test(onward) && /Semana 1 /.test(week), `the week test's "${onward}" button leads back to its own week while that week is not whole (Main at "${week}"; week 2 opens once week 1 is done)`, { button: onward, landedOn: week });
   /* day 1 opened again: its words were typed before, so the writing step says so */
   await tap(page, { sel: '#gn-stage nav a:has-text("Camino")' }, 500);
   await tap(page, { sel: '#gn-stage a[aria-label="Día 1, sellado. Abrilo de nuevo"]' }, 600);
@@ -1164,6 +1170,187 @@ async function partD(browser) {
   }
 }
 
+/* ---------- H: the last written week, to its end ---------- */
+async function partH(browser) {
+  part = 'H1 the week before the last written one';
+  const ctx = await phone(browser);
+  const page = await newPage(ctx, 'learner H');
+  await page.addInitScript(() => { Object.defineProperty(navigator, 'standalone', { get: () => true }); });
+  await go(page, '');
+  /* the written weeks, as the course has them today (the suite is not tied to four) */
+  const W = await page.evaluate(() => { const C = window.gnCourse; C.setLevel('A1'); return { units: C.units().length, last: C.sessions().filter((s) => s.ready).reduce((n, s) => Math.max(n, s.unit), 0) }; });
+  if (W.last < 2) { pass('only one week is written: nothing more to check here'); await ctx.close(); return; }
+  const n = W.last;
+  const sid = (u, d) => 'a1u' + String(u).padStart(2, '0') + (d === 't' ? 't' : 'd' + d);
+  const full = { g: 3, ks: 1, kw: 1, k: 1, r: 1 };
+  const result = (u) => ({ id: sid(u, 't'), score: 18, of: 20, used: 640, areas: { vocab: { right: 5, of: 6 }, grammar: { right: 7, of: 8 }, reading: { right: 3, of: 3 }, listening: { right: 3, of: 3 } }, at: Date.now() - 2 * DAY });
+  /* a learner with every week before the last whole, and the last week's five study days done: its review day and its
+     test are still to do. Every word the weeks asked to write is in `typed`, as after doing them */
+  const seed = await page.evaluate(([n, fullJ]) => {
+    const C = window.gnCourse;
+    const full = JSON.parse(fullJ);
+    const done = {};
+    const typed = [];
+    C.sessions().forEach((s) => {
+      if (!s.ready || s.kind === 'test' || s.unit > n || (s.unit === n && s.day === 6)) return;
+      done[s.id] = full;
+      const w = C.day(s.id).words;
+      (w.spell || []).forEach((id) => { const x = w.words.filter((y) => y.id === id)[0]; if (x && typed.indexOf(x.gn) < 0) typed.push(x.gn); });
+    });
+    return { done, typed, start: C.addDays(C.today(C.now()), -7 * n) };
+  }, [n, JSON.stringify(full)]);
+  const tests = {};
+  for (let u = 1; u < n; u++) tests[sid(u, 't')] = result(u);
+  const plan = { start: seed.start, target: null, pace: 'fit', minutes: 30 };
+  /* the week before, opened as its test's result (the ?gntest hook: the path shows one week, and this one is behind):
+     that week is whole and the next is written, so the button leads on to it */
+  const hook = (screen, cur) => '?gntest&screen=' + screen + '&level=A1&plan=' + encodeURIComponent(JSON.stringify(plan)) + '&done=' + encodeURIComponent(JSON.stringify(seed.done)) + '&tests=' + encodeURIComponent(JSON.stringify(tests)) + (cur ? '&cur=' + cur : '');
+  await go(page, hook('WeekTest', sid(n - 1, 't')));
+  let h = await look(page, 'week ' + (n - 1) + "'s test result", { expect: 'WeekTest', how: 'hook' });
+  const before = ((await page.locator('#gn-stage a[href="Main.dc.html"]').last().textContent()) || '').trim();
+  check(before === 'A la semana ' + n, `with week ${n - 1} whole and week ${n} written, its test's button reads «A la semana ${n}»`, before);
+  await tap(page, { sel: '#gn-stage a[href="Main.dc.html"]:has-text("A la semana")' }, 600);
+  check(await has(page, 'Semana ' + n + ' de ' + W.units), `«A la semana ${n}» lands on week ${n}'s path`, (await text(page)).slice(0, 120));
+
+  part = 'H2 the last written week: its review day';
+  /* the same learner as saved progress, opened from the Home Screen */
+  await page.evaluate(([k, v]) => localStorage.setItem(k, v), [KEY, JSON.stringify({ v: 1, started: true, level: 'A1', plan, plans: {}, cur: null, done: seed.done, tests, exams: {}, mistakes: [], tp: 0, set: 'day', placement: null, typed: seed.typed, profile: null, exposure: null })]);
+  await go(page, '');
+  h = await look(page, 'the last written week', { expect: 'Main', shot: 'H01-main-last-week' });
+  const D6 = sid(n, 6);
+  check(await has(page, 'Semana ' + n + ' de ' + W.units) && (await page.locator('#gn-stage a[aria-label^="Día 6"]').count()) === 1 && await has(page, 'Repaso de la semana'), `the app opens on week ${n}, its review day next`, h.head);
+  await tap(page, { sel: '#gn-stage a[href="Today.dc.html"]:has-text("Empezar")' }, 700);
+  h = await look(page, 'Main → day 6', { expect: 'Today' });
+  check(await has(page, 'Semana ' + n + ' · Día 6'), 'the card opens the review day', h.head);
+  await tap(page, 'Empezar con el repaso', 700);
+  h = await look(page, 'Today → Compare', { expect: 'Compare', shot: 'H02-compare' });
+  const cmp = await page.evaluate((id) => { const C = window.gnCourse; const it = C.day(id).grammar.compare.check; return { answer: it.answer, options: it.options.map((o) => C.plain(o)) }; }, D6);
+  await tap(page, exact(cmp.options[cmp.answer % cmp.options.length]), 350);
+  await tap(page, exact(cmp.options[cmp.answer - 1]), 350);
+  await tap(page, 'A la práctica', 700);
+  h = await look(page, 'Compare → Drill', { expect: 'Drill' });
+  /* the drill: after every answer the sheet's button is whole and above the strip kept for the home indicator, however
+     long the reasons are (they scroll inside the sheet) */
+  const drill = await itemsOf(page, await page.evaluate((id) => window.gnCourse.day(id).grammar.drill, D6));
+  const low = [];
+  for (let i = 0; i < drill.length; i++) {
+    await answerOne(page, drill[i], i % 2 === 1);
+    await tap(page, 'Respondé', 500);
+    const b = await page.evaluate(() => { const a = [...document.querySelectorAll('#gn-stage a[href="Today.dc.html"]')].filter((x) => /Siguiente|Terminar la práctica/.test(x.textContent)).pop(); const r = a && a.getBoundingClientRect(); return r ? { top: Math.round(r.top), bottom: Math.round(r.bottom), label: a.textContent.trim() } : null; });
+    if (!b || b.bottom > 844 - 34 + 1 || b.top < 0) low.push({ item: drill[i].id, button: b });
+    if (i === 0) await shot(page, 'H03-drill-wrong');
+    await tap(page, i < drill.length - 1 ? 'Siguiente' : 'Terminar la práctica', 550);
+  }
+  check(low.length === 0, `drill of ${D6}: after each of the ${drill.length} answers the button to go on is in view, above the bottom 34 px`, low);
+  h = await look(page, 'end of drill', { expect: 'Today' });
+  await tap(page, exact('Al examen'), 700);
+  const exam = await itemsOf(page, await page.evaluate((id) => window.gnCourse.day(id).grammar.exam, D6));
+  for (let i = 0; i < exam.length; i++) {
+    await answerOne(page, exam[i], true);
+    await tap(page, i < exam.length - 1 ? 'Siguiente' : exact('Terminar'), 500);
+  }
+  await tap(page, { sel: '#gn-stage a[href="Today.dc.html"]:has-text("Siguiente")' }, 700);
+  let s = await saved(page);
+  check(s.done[D6] && s.done[D6].g === 3, 'the review day\'s grammar lesson is saved done (g 3)', s.done[D6]);
+  /* the words: the sound step, the scene, then the week's words written again (they were typed on their own days) */
+  await tap(page, { sel: '#gn-stage a[href="Words.dc.html"]' }, 700);
+  h = await look(page, 'Today → Words', { expect: 'Words', shot: 'H04-words-sound' });
+  const pairs = await page.evaluate((id) => ((window.gnCourse.day(id).words.sound || {}).pairs || []).length, D6);
+  for (let i = 0; i < pairs; i++) {
+    await tap(page, { sel: `#gn-stage button[aria-label="Escuchar la palabra del par ${i + 1}"]` }, 300);
+    await tap(page, { sel: `xpath=//*[@id="gn-stage"]//button[@aria-label="Escuchar la palabra del par ${i + 1}"]/following-sibling::div[1]//button[1]` }, 350);
+  }
+  await tap(page, 'Siguiente: las palabras', 600);
+  const list = await spellList(page, D6);
+  const again = list.filter((w) => seed.typed.includes(w.gn)).length;
+  check(again > 0 && await has(page, 'Después vas a escribir de nuevo ' + (list.length === 1 ? '1 palabra' : list.length + ' palabras') + ' de la semana'), `the review day asks for its ${list.length} words again (${again} of them were written on their own days)`, (await text(page)).slice(-260));
+  await shot(page, 'H05-words-scene');
+  await tap(page, 'Siguiente: escribir', 700);
+  for (let k = 0; k < list.length; k++) {
+    if (k === 0) check(await has(page, '1 / ' + list.length) && await has(page, list[0].gn), 'the writing step opens on the first of them', (await text(page)).slice(0, 200));
+    await spellOne(page, list[k]);
+    await tap(page, k < list.length - 1 ? 'Siguiente:' : 'Siguiente: la pregunta', 600);
+  }
+  s = await saved(page);
+  check(s.done[D6].kw === 1 && s.typed.length === seed.typed.length + list.length - again, 'the words written again save the writing step (kw 1); no word is kept twice', { done: s.done[D6], typed: s.typed.length });
+  const kc = await page.evaluate((id) => { const C = window.gnCourse; const it = C.day(id).words.check; return { answer: it.answer, options: it.options.map((o) => C.plain(o)) }; }, D6);
+  await tap(page, exact(kc.answer + ' ' + kc.options[kc.answer - 1]), 500);
+  await tap(page, { sel: '#gn-stage a[href="Today.dc.html"]:has-text("Siguiente")' }, 700);
+  /* opened again, the review's words are not asked a third time */
+  await tap(page, { sel: '#gn-stage a[href="Words.dc.html"]' }, 700);
+  await tap(page, 'Siguiente: las palabras', 500);
+  check(await has(page, 'Ya escribiste todas las palabras de esta escena'), 'the review day\'s words lesson opened again asks for none', (await text(page)).slice(-220));
+  await tap(page, { aria: 'Cerrar la lección' }, 600);
+  /* the reading or listening */
+  const skill = await page.evaluate((id) => { const C = window.gnCourse; const k = C.day(id).skill; return { kind: k.kind, id: k.item.id, answer: k.item.answer, options: k.item.options.map((o) => C.plain(o)) }; }, D6);
+  if (skill.kind === 'listening') {
+    await tap(page, { sel: '#gn-stage a[href="Listening.dc.html"]' }, 700);
+    await tap(page, { aria: 'Reproducir el audio' }, 300);
+    await page.waitForFunction(() => { const b = document.querySelector('#gn-stage button[aria-label^="Respuesta 1"]'); return b && !/escuchá primero/.test(b.getAttribute('aria-label')); }, null, { timeout: 90000 });
+    await tap(page, { sel: `#gn-stage button[aria-label^="Respuesta ${skill.answer}"]` }, 600);
+  } else {
+    await tap(page, { sel: '#gn-stage a[href="Reading.dc.html"]' }, 700);
+    h = await look(page, 'Today → Reading', { expect: 'Reading', shot: 'H06-reading' });
+    await answerOne(page, { kind: 'choice', answer: skill.answer, options: skill.options }, true);
+    await tap(page, 'Respondé', 500);
+  }
+  await tap(page, { sel: '#gn-stage a[href="Today.dc.html"]:has-text("Siguiente")' }, 700);
+  h = await look(page, 'skill → Today', { expect: 'Today', shot: 'H07-today-sealed' });
+  check(await has(page, '¡Día 6 completo!'), 'with its three lessons done the review day is sealed', (await text(page)).slice(-200));
+  await tap(page, { sel: '#gn-stage a[href="Main.dc.html"]:has-text("Volver")' }, 700);
+
+  part = 'H3 the last written week: its test, and after it';
+  h = await look(page, 'Today → Main', { expect: 'Main' });
+  check(await has(page, 'PRUEBA'), 'with the six days stamped the path offers the week test', h.head);
+  await tap(page, { sel: '#gn-stage a[href="WeekTest.dc.html"]:has-text("Empezar")' }, 700);
+  await tap(page, 'Empezar la prueba', 800);
+  const items = await itemsOf(page, await page.evaluate((u) => window.gnCourse.unit(u).test, n));
+  const hidden = [];
+  for (let i = 0; i < items.length; i++) {
+    /* a question opens with its answers in view: none under the button (the clock is running) */
+    const under = await page.evaluate(() => { const sc = [...document.querySelectorAll('#gn-stage div')].filter((d) => /auto/.test(getComputedStyle(d).overflowY))[0]; return sc ? sc.scrollHeight - sc.clientHeight : 0; });
+    if (items[i].kind === 'choice' && under > 1) hidden.push(items[i].id + ': ' + under + ' px');
+    await answerOne(page, items[i], i !== 3 && i !== 11);
+    await tap(page, i < items.length - 1 ? 'Siguiente' : exact('Terminar'), 350);
+  }
+  check(hidden.length === 0, `week ${n}'s test: each of its choice questions opens with every answer in view`, hidden);
+  await tap(page, { sel: '#gn-stage a[href="WeekTest.dc.html"]' }, 800);
+  h = await look(page, 'the last week\'s test result', { expect: 'WeekTest', shot: 'H08-weektest-result' });
+  s = await saved(page);
+  check(s.tests[sid(n, 't')] && s.tests[sid(n, 't')].score === items.length - 2 && await has(page, '¡Semana ' + n + ' completa!'), `week ${n}'s test is saved (${items.length - 2} of ${items.length}) and the week is whole`, s.tests[sid(n, 't')]);
+  const onward = ((await page.locator('#gn-stage a[href="Main.dc.html"]').last().textContent()) || '').trim();
+  check(/Volver/.test(onward) && !/A la semana/.test(onward), `after the last written week the button offers no week that is not written (it reads «${onward}»)`, onward);
+  await tap(page, { sel: '#gn-stage a[href="Main.dc.html"]:has-text("Volver")' }, 700);
+  /* the learner stays on the last week done; the callout names the week after it, the only one not written */
+  const waits = (t) => (t.match(/La semana (\d+) se abre cuando esté escrita/) || [])[1];
+  const atEnd = async (label) => {
+    const t = await text(page);
+    const here = (t.match(/Semana (\d+) de \d+/) || [])[1];
+    check(here === String(n) && t.includes('SEMANA ' + n + ' · COMPLETA'), `${label}: the path shows week ${n}, the last one done, complete`, t.slice(0, 200));
+    if (n < W.units) check(waits(t) === String(n + 1), `${label}: the only week said to be waiting to be written is week ${n + 1}`, t.slice(0, 260));
+    else check(!waits(t), `${label}: no week is said to be waiting to be written`, t.slice(0, 260));
+  };
+  h = await look(page, 'after the last written week', { expect: 'Main', shot: 'H09-main-after' });
+  await atEnd('after the test');
+  s = await saved(page);
+  check(s.cur === null && Object.keys(s.tests).length === n, 'saved: no session in use, and the ' + n + ' week tests', { cur: s.cur, tests: Object.keys(s.tests) });
+  await reload(page);
+  await atEnd('reopened');
+  check((await page.locator('#gn-stage a[aria-label$="sellado. Abrilo de nuevo"]').count()) === 6 && (await page.locator('#gn-stage a[aria-label^="Día 7, prueba de la semana, hecha"]').count()) === 1, 'reopened: the six days and the test of that week can be opened again from the path');
+  await tap(page, { sel: '#gn-stage nav a:has-text("Progreso")' }, 600);
+  check(await has(page, 'Unidad ' + n + ' de ' + W.units), `Progreso says «Unidad ${n} de ${W.units}»`, (await text(page)).slice(0, 160));
+  await shot(page, 'H10-progress-after');
+  await tap(page, { sel: '#gn-stage nav a:has-text("Camino")' }, 500);
+  await tap(page, { aria: 'Nivel A1, cambiar de nivel' }, 600);
+  check(await has(page, 'Tu nivel · ' + 7 * n + ' de ' + 7 * W.units + ' sesiones · Semana ' + n), `Niveles says «Tu nivel · ${7 * n} de ${7 * W.units} sesiones · Semana ${n}»`, (await text(page)).match(/Tu nivel[^A-Z]*/));
+  await tap(page, { aria: 'Volver al camino de la semana' }, 600);
+  /* a lesson screen opened from Progreso (no day picked on the path) still has a day to show: the last one written */
+  await go(page, '');
+  await tap(page, { sel: '#gn-stage a[aria-label="Día 6, sellado. Abrilo de nuevo"]' }, 600);
+  check(await has(page, 'Semana ' + n + ' · Día 6'), 'a stamped day of the last week opens again from the path', (await text(page)).slice(0, 80));
+  await ctx.close();
+}
+
 (async () => {
   if (!fs.existsSync(path.join(DIR, 'index.html'))) throw new Error('no app in ' + DIR);
   fs.mkdirSync(OUT, { recursive: true });
@@ -1171,7 +1358,7 @@ async function partD(browser) {
   BASE = 'http://localhost:' + server.address().port + '/';
   console.log('serving ' + DIR + ' at ' + BASE);
   const browser = await chromium.launch();
-  const parts = [['A', partA], ['B', partB], ['C', partC], ['D', partD], ['F', partF], ['G', partG]];
+  const parts = [['A', partA], ['B', partB], ['C', partC], ['D', partD], ['F', partF], ['G', partG], ['H', partH]];
   for (const [name, fn] of parts) {
     if (!want(name)) continue;
     try {

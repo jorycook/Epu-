@@ -128,7 +128,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </div>
 
 <sc-if value="{{ showNext }}" hint-placeholder-val="{{ true }}">
-<a href="Compare.dc.html" onClick="{{ next }}" style="flex-shrink: 0; margin-top: 10px; height: 54px; box-sizing: border-box; padding: 0 14px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; overflow: hidden"><span>{{ nextLabel }}</span><sc-if value="{{ hasNextForm }}" hint-placeholder-val="{{ true }}"><span lang="gn" style="min-width: 0; overflow: hidden; text-overflow: ellipsis; font-family: 'Andika', 'Nunito', sans-serif; font-weight: 700">{{ nextForm }}</span></sc-if></a>
+<a href="Compare.dc.html" onClick="{{ next }}" style="flex-shrink: 0; margin-top: 10px; height: 54px; box-sizing: border-box; padding: 0 14px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; overflow: hidden"><span>{{ nextLabel }}</span><sc-if value="{{ hasNextForm }}" hint-placeholder-val="{{ true }}"><span lang="gn" style="min-width: 0; overflow: hidden; text-overflow: ellipsis; font-family: 'Andika', 'Nunito', sans-serif; font-weight: 700; font-size: {{ nextSize }}">{{ nextForm }}</span></sc-if></a>
 </sc-if>
 <sc-if value="{{ none }}" hint-placeholder-val="{{ false }}">
 <a href="Today.dc.html" onClick="{{ toToday }}" style="flex-shrink: 0; margin-top: 10px; height: 54px; box-sizing: border-box; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center"><span><span lang="gn">Tapykue</span> · Volver</span></a>
@@ -284,7 +284,12 @@ const dayKicker = where.unit ? ('Semana ' + where.unit + (where.day && where.day
 const has = points.length > 0;
 const review = !!grammar && !has;
 const none = !grammar;
-const nextForm = !last && points[tp + 1] ? C.plain(text(points[tp + 1].form)) : '';
+/* the button names the next form when the name fits beside «Siguiente:» (239 px of the button are left for it): at
+   17 px, or at 15 for a longer one; a form too long for that is left out and the button says «Siguiente» alone,
+   so a name is never cut short */
+const nextName = !last && points[tp + 1] ? C.plain(text(points[tp + 1].form)) : '';
+const nextSize = [17, 15].filter((px) => C.ems(nextName) * px <= 237)[0] || 0;
+const nextForm = nextSize ? nextName : '';
 return {
 has,
 none,
@@ -309,6 +314,7 @@ hasDayKicker: !!dayKicker,
 noneText: title ? '«' + title + '»: todavía estamos escribiendo esta lección.' : 'Todavía estamos escribiendo esta lección.',
 nextLabel: has && !last ? (nextForm ? 'Siguiente:' : 'Siguiente') : 'Comparar',
 nextForm,
+nextSize: (nextSize || 17) + 'px',
 hasNextForm: !!nextForm,
 scrollRef: this.scrollRef,
 next: (e) => {

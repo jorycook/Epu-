@@ -161,6 +161,10 @@ Same names and meanings as Yaoki's `ykCourse` unless noted. `const C = window.gn
   `_underline_`, `^clue^`; opt `ruby:false` drops glosses, `hl:false`, `clue:'line'|'mark'`); `C.plain(src)`; `C.norm(s)` (NFC, one puso);
   `C.fold(s)` (for matching); `C.chars(s)` (graphemes); `C.cut(s, n)`; `C.spell(typed, answer)` → `{ ok, near, issues: [{ k: 'puso'|'nasal'|'acento'|'letras', more }], at }`
   and `C.spellNote(issue)` → "Falta el puso (')", "Falta la tilde nasal (~)", "Falta el acento (´)", "Revisá las letras" (or the "Sobra…" forms).
+  `C.ems(text, ui)` → how wide a text sets, in ems, from the faces' own advance widths (Andika 700; Nunito 800 with `ui`),
+  and `C.wordEms(text, ui)` → its widest word: a screen asks before it draws whether a word fits its button, and steps the
+  size down or stacks the options instead of breaking the word. `C.mixed(text)` → the pieces `{ t, gn, es }` of a Spanish
+  line that quotes Guarani (a day's title, a sound focus), the words that can only be Guarani marked, for `lang="gn"`.
 - Areas: `C.area(key)` → `{ key, es, tagBg, tagColor }` for `vocab` Palabras, `grammar` Gramática, `reading` Lectura, `listening` Escucha,
   `mediation` Mediación, `sound` Sonido y letra. Week test results store `areas: { vocab: { right, of }, … }`.
 - State: `C.fresh()` → `{ screen: 'Goal', started, level, plans, plan, cur, done, tests, exams, mistakes, tp, set, placement, typed }`;
@@ -168,6 +172,8 @@ Same names and meanings as Yaoki's `ykCourse` unless noted. `const C = window.gn
   with Math.max; `result` stores a week test at `tests[result.id]`; `exam` stores a level exam result at `exams[level]` (a pass is never replaced
   by a fail); `typed` adds words spelled with the Guarani keyboard.
 - `C.view(state)` → `{ status, plan, plans, sid, session, unit, day, prog, done, tests, exams, exam, tp, set, mistakes, typed, placement, profile, exposure, level, meta, levels, progress }` (`plans`: the other levels' plans; `profile`: the goal's answers; `exposure`: the «lo usé» marks).
+  `sid` is the session picked on the week path (`cur`), else the next one due; with every written session done it is the last
+  day written, so the path stays on the last week done.
 - Sound: `window.gnSound` — `has(key)`, `ms(key)`, `kind(key)` ('human' | 'synthetic' | ''), `unlock()`, `play(key)`, `stop()`, `on()`, `at()`. No clips exist: a sound control
   checks `has()` and otherwise lights up as "playing" for `600 + C.plain(text).length * 120` ms (Yaoki's silent stand-in), showing the
   words being said. Clip keys: `<item or example id>` (e.g. `a1u01d1.p1.x0` = point 1, example 0; `a1u01d1.r1` = listening item);

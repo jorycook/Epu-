@@ -9,7 +9,7 @@
         "connect": [
           { "pos": "Delante del sustantivo, que queda en singular: el número ya dice cuántos", "rule": "{mokõi} kuña · {mbohapy} memby" },
           { "pos": "Para contar lo que hay, con oĩ, y para preguntar cuántos, con mboýpa (unidad 1)", "rule": "Oĩ {mbohapy} apyka. · Mboýpa ne memby?" },
-          { "pos": "La edad: ary, «año», con tener: areko, rereko, oguereko. -pa se pega a la última palabra de lo que preguntás: mboy ary → Mboy arýpa", "rule": "Oguereko {mokõi} ary. · Mboy arýpa rereko?" },
+          { "pos": "La edad: ary, «año», con tener: areko, rereko, oguereko. -pa se pega a la última palabra de lo que preguntás: mboy ary pasa a Mboy arýpa", "rule": "Oguereko {mokõi} ary. · Mboy arýpa rereko?" },
           { "pos": "Po es «cinco» y también «mano»", "rule": "{po} mitã · {po} ary" }
         ],
         "examples": [

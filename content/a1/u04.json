@@ -853,7 +853,7 @@
         "rule": "kuña → kuña{nguéra} · mitãkuña → mitãkuña{nguéra}"
        },
        {
-        "pos": "Solo la última sílaba: memby termina en mby, y mb es otra letra, no una m: esa sílaba es oral. Para nde → ne cuenta toda la palabra",
+        "pos": "Solo la última sílaba: memby termina en mby, y mb es otra letra, no una m: esa sílaba es oral. Para el cambio de nde a ne cuenta toda la palabra",
         "rule": "ne memby → ne memby{kuéra}"
        },
        {
@@ -1047,7 +1047,7 @@
       "why": [
        "-nguéra va tras una sílaba nasal, y la última sílaba de memby, mby, es oral: mb es otra letra, no una m. Para el plural se mira solo la última sílaba.",
        "Mẽmbykuéra agrega una ~ a la e: junto a la m ya suena nasal, y no se marca.",
-       "La última sílaba de memby es mby, y es oral: mb es otra letra, no una m. Va -kuéra. Para nde → ne cuenta toda la palabra (ne memby); para el plural, solo la última sílaba (membykuéra). Ne membykuéra moõpa oĩ?: ¿dónde están tus hijos?",
+       "La última sílaba de memby es mby, y es oral: mb es otra letra, no una m. Va -kuéra. Para el cambio de nde a ne cuenta toda la palabra (ne memby); para el plural, solo la última sílaba (membykuéra). Ne membykuéra moõpa oĩ?: ¿dónde están tus hijos?",
        "Membikuéra cambia la y por i. Memby termina en y, la sexta vocal."
       ]
      },
@@ -1199,7 +1199,7 @@
      "letters": [
       "é"
      ],
-     "note": "Una palabra lleva una sola tilde de acento, y -kuéra se queda con él: la de la raíz desaparece (óga → ogakuéra, túva → tuvakuéra). La ~ es otra marca: dice que la vocal es nasal, y por eso se queda aunque el acento pase a la é: mitã → mitãnguéra. No hay pares mínimos seguros de acento: son palabras para contrastar, en singular y en plural.",
+     "note": "Una palabra lleva una sola tilde de acento, y -kuéra se queda con él: la de la raíz desaparece (óga pasa a ogakuéra y túva pasa a tuvakuéra). La ~ es otra marca: dice que la vocal es nasal, y por eso se queda aunque el acento vaya a la é: mitã pasa a mitãnguéra. No hay pares mínimos seguros de acento: son palabras para contrastar, en singular y en plural.",
      "pairs": [
       [
        "óga",
@@ -2716,7 +2716,7 @@
         "rule": "Oĩ {mbohapy} apyka. · Mboýpa ne memby?"
        },
        {
-        "pos": "La edad: ary, «año», con tener: areko, rereko, oguereko. -pa se pega a la última palabra de lo que preguntás: mboy ary → Mboy arýpa",
+        "pos": "La edad: ary, «año», con tener: areko, rereko, oguereko. -pa se pega a la última palabra de lo que preguntás: mboy ary pasa a Mboy arýpa",
         "rule": "Oguereko {mokõi} ary. · Mboy arýpa rereko?"
        },
        {

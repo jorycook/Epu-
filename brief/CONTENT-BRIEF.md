@@ -51,6 +51,9 @@ every unit; a line that names unit 1 gives an example.
   in praise. Use the voseo of Paraguay and the River Plate (vos sabés, elegí, escuchá, tocá) for instructions to the learner.
 - Explanations work with the sentence in front of the learner ("Acá habla de dos personas y el que escucha está incluido: ñande").
 - Translations: natural Spanish, faithful to the Guarani (not word for word, but never adding meaning).
+- No arrows in Spanish text. The arrow → belongs to the rules of «Cómo se forma» alone (`connect[].rule`), which the
+  screens set in the Guarani typeface; titles, labels, notes and reasons are set in the interface typeface, which has
+  none. Say it in words: «koty pasa a kotýpe», «para el cambio de nde a ne». The build stops on an arrow anywhere else.
 
 ## The rules of a good item (from Yaoki, keep them all)
 
@@ -129,7 +132,9 @@ words instead and say so in the note; never invent a word to make a pair. Where 
 - Day 6 "Repaso de la semana": `points: []`; `compare.forms` holds the week's look-alikes (3-4 forms); drill 6 items mixing the
   week; exam 3; words and skill as on any day (a reading: a short chat or sign using the week's forms; in unit 1, its
   greetings). The syllabus gives day 6 no sound focus: its sound step looks back, with a `focus` that begins "Repaso:"
-  and names the week's foci.
+  and names the week's foci. Its `spell` names the week's hard words again (up to 4): the writing step asks for them
+  once more, though they were typed on their own days, because writing them again is the review. On days 1 to 5 the
+  screen leaves out a word typed on an earlier day, so list there words that are new to the learner's keyboard.
 - Week test: 20 items, ids `a1u<NN>t.1` … `a1u<NN>t.20`, each with `explain` (no `why`): 6 vocab, 8 grammar, 3 reading (with `passage`
   repeated on each item that reads it, and `short` labels), 3 listening-as-text (a written "respuesta rápida": which reply fits),
   build items allowed. Answers spread over positions 1-4.

@@ -37,6 +37,9 @@ function checkText(where, s) {
   const open = (s.match(/\[/g) || []).length, close = (s.match(/\]/g) || []).length;
   if (open !== close) err(where, `unbalanced [base|gloss]: ${JSON.stringify(s)}`);
   if (/\s{2,}/.test(s.replace(/\n/g, ' ').replace(/\( +\)/g, '()'))) warn(where, `double space: ${JSON.stringify(s)}`);
+  // an arrow belongs to the rules of «Cómo se forma» alone (connect[].rule), which the screens set in the Guarani face.
+  // Titles, notes, labels and reasons are set in the interface face, which has no arrows: there a system font would draw it
+  if (/[→←↑↓]/.test(s) && !/\.rule$/.test(where)) err(where, `an arrow outside a rule (the interface typeface has none: say it in words, as in «koty pasa a kotýpe»): ${JSON.stringify(s)}`);
 }
 function walkText(where, v) {
   if (typeof v === 'string') checkText(where, v);

@@ -121,20 +121,28 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
   characters); "Ejemplos" with play buttons (stand-in) and, per example, an optional "Partes" line: the morphemes as small
   columns (Andika 15/700 over the Spanish gloss 11/700 muted) when the example has `parts`; "¡Atención!" box (gold tint) with
   the watch note and bad ✗ / good ✓ lines. Progress segments sized from the data (2 points + compare = 3). Designed moment:
-  a1u01d4 point 1. Next "Siguiente: <next form>" / "Comparar".
+  a1u01d4 point 1. Next "Siguiente: <next form>" / "Comparar"; the next form is named only when it fits the button
+  whole (at 17 px, or 15 for a longer one: `gnCourse.ems`), else the button says "Siguiente" alone.
 - Compare: canvas title says "ñande and ore": its designed moment is a1u01d2 (pronouns: ñande includes the listener, ore
   excludes them) with the check unanswered. Kicker "COMPARAR" (red as in Yaoki); forms with dot/down/up tags; "Pregunta
-  rápida" check (re-pickable, records nothing); "A la práctica" → Drill, `save({ prog: { g: 1 } })`.
+  rápida" check (re-pickable, records nothing); "A la práctica" → Drill, `save({ prog: { g: 1 } })`. No word is broken
+  in two: the check's options share a row only while each fits its button whole (`gnCourse.ems`), else each gets a row,
+  and the tick or cross sits on the button's corner (as in Words) and takes no room; a form stays whole beside its tag
+  (one line up to 190 px, the tag wrapping in what is left).
 - Drill: choice and build items; build items render as morpheme or word tiles (bank 2 columns; slots; for `join: 'word'` the
   slots sit tight with a hairline between, the joined spelling `full` shown in the answer sheet); verdicts "¡Correcto!" /
   "Casi" (+ Guarani from the glossary if verified); sheet head "Por qué cada opción" / "La palabra" / "La oración"; wrong →
   `miss({ src, wrong })` and "Guardado en tu cuaderno de errores. Vuelve mañana."; last → "Terminar la práctica" +
-  `save({ prog: { g: 2 } })`. Designed moment: a1u01d4 item 1 answered wrong and explained.
+  `save({ prog: { g: 2 } })`. Designed moment: a1u01d4 item 1 answered wrong and explained. The sheet is at most 522 px
+  tall: longer reasons scroll inside their white box and the button to go on stays in view under them. Options sit two
+  by two only while every option's longest word fits its half-width button with the mark in (`gnCourse.wordEms`).
 - Build: the build item showcase, data-driven (first build item of a1u01d4's drill), two tiles placed and the hint open.
 - Exam: day set 150 s "EXAMEN · SIN AYUDAS", "Sin pistas ni glosas. Las respuestas, al final."; week test set 1200 s; clock pill
   `role="timer"`; build items asked as tiles in order (the whole order counts here, not a single starred tile: Guarani words
   are short in tiles); result view: score, "1:48 de 2:30", rows with ✓/✗, the full sentence, explain; "Siguiente" →
   `save({ prog: { g: 3 } })` (day) or `save({ result })` (test). Designed moment: question 2 of 3 with an option pressed, 1:42.
+  A question that comes with a text to read (the week test's reading items) is set tighter (text 14 px, question 17 px,
+  answers 48 px), so the text, the question and its four answers open in view together.
 
 ## Row 4 · y 3852 · "Words: sound and letter, the scene, spelling with the Guarani keyboard"
 
@@ -149,13 +157,18 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
   ("SONIDO", "APRENDER", …); progress `ks` (learnt), `kw` (written), `k` (done).
 - Sonido: the focus title (e.g. "El puso (')"), the letters big (Andika 700 40px tiles), the note, and the pairs as
   listen-and-choose cards: two words side by side with their Spanish, a big play button that plays one of them (stand-in), the
-  learner taps which one they heard (✓/✗, no notebook); "Seguir" → Aprender.
+  learner taps which one they heard (✓/✗, no notebook); "Seguir" → Aprender. The two words of a pair are set at one
+  size, 22 px or as much less as the longer one needs to stay whole in its tile (never under 15).
 - Aprender: Yaoki's navy sign board (`#1B2440`, 2 columns of chips, M PLUS 17/800, `lang="gn"`, min-height 46 so two-word
   phrases fit); tap a chip → the word card: the word (Andika 700, 40/34/28 px by length), syllables with the stressed one in
   `#C7361E` (from `gnSpell` helpers if present, else omit), the Spanish 13/500, play button, "Partes" tiles (2 columns: piece
   in Andika 22/700, meaning 12/500). Found badge ✓. "Después vas a escribir 3 palabras con letras nuevas: ', ẽ."
 - Escribir: imports `Spell` with a task per `words.spell` word; Next stays shut until written ("Escribí la palabra primero").
-- Examen: the words check (`words.check`), one exam-format question; then `save({ prog: { k: 1 } })` → Today.
+  A word typed before is not asked again, except on the review day (día 6): its list is the week's hard words, and it
+  asks for them once more ("Después vas a escribir de nuevo 4 palabras de la semana."); once its writing step is done
+  it asks for none.
+- Examen: the words check (`words.check`), one exam-format question; then `save({ prog: { k: 1 } })` → Today. Its options
+  take as many columns (all in a row, two, or one) as let every label, number and word, stay on one line.
 - Spell (the pad; $N/Y3 §8.3 for every detail): props `task` (`{ kind: 'word', w, es }`), `tkey`, `finished({ misses, helped })`,
   `size`. Cells from `gnSpell.cells(w)` (Andika 700); only the hard letters are typed (`gnSpell.hard`), plain letters given;
   passes Copiar / Con pistas / De memoria; keyboard of real buttons from `gnSpell.keys(w, tkey)` (46×44, radius 12, Andika 22/700,
@@ -183,7 +196,9 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
 - WeekTest: intro ("Prueba de la semana", 20 preguntas, one 20-minute clock, "Por área" counts, "Empezar la prueba" → Exam set
   'test') and result (score 56px, the praise stamp by share ≥ 0.8 / ≥ 0.6 / else with Spanish "¡Excelente!" / "¡Muy bien!" /
   "Seguí practicando" and the Guarani accent from the glossary, bars per area with "Punto débil", "6 errores fueron a tu
-  cuaderno", "Ver errores", "A la semana 2"). Designed moment: the result of a1u01t, 16/20 with Escucha weak.
+  cuaderno", "Ver errores", "A la semana 2"). Designed moment: the result of a1u01t, 16/20 with Escucha weak. The
+  onward button names the next week only when this week is whole and the next session due is in another week; a test
+  taken early, or the test of the last written week, reads "Tapykue · Volver" and leads back to its own week.
 - Notebook: "Cuaderno de errores": "Para repasar hoy" count + "Repasar ahora"; the track (mañana · en 3 días · en 1 semana ·
   ¡aprendido!); rows with the quote (grapheme-safe `C.cut`, ~32 characters), "Elegiste: …" → ✓ "…", the due label; caught-up
   state. Designed moment: 3 mistakes from a1u01d2-d3 (one due today).

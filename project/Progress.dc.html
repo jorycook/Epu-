@@ -82,8 +82,8 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="flex-shrink: 0; padding: 10px 14px; border-radius: 18px; background: #FFFFFF; border: 2px solid #1B2440; display: flex; align-items: center; gap: 12px">
 <div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
 <div style="font-size: 11px; font-weight: 800; color: {{ step.kickerInk }}">PRÓXIMO PASO</div>
-<div style="font-size: 14px; font-weight: 800; line-height: 1.35">{{ step.title }}</div>
-<sc-if value="{{ step.hasSub }}" hint-placeholder-val="{{ true }}"><div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.4">{{ step.sub }}</div></sc-if>
+<div style="font-size: 14px; font-weight: 800; line-height: 1.35"><sc-for list="{{ step.titleSegs }}" as="f" hint-placeholder-count="1"><sc-if value="{{ f.gn }}" hint-placeholder-val="{{ false }}"><span lang="gn">{{ f.t }}</span></sc-if><sc-if value="{{ f.es }}" hint-placeholder-val="{{ true }}">{{ f.t }}</sc-if></sc-for></div>
+<sc-if value="{{ step.hasSub }}" hint-placeholder-val="{{ true }}"><div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.4"><sc-for list="{{ step.subSegs }}" as="f" hint-placeholder-count="1"><sc-if value="{{ f.gn }}" hint-placeholder-val="{{ false }}"><span lang="gn">{{ f.t }}</span></sc-if><sc-if value="{{ f.es }}" hint-placeholder-val="{{ true }}">{{ f.t }}</sc-if></sc-for></div></sc-if>
 </div>
 <sc-if value="{{ step.hasCta }}" hint-placeholder-val="{{ true }}">
 <a href="{{ step.href }}" onClick="{{ step.go }}" style="height: 46px; box-sizing: border-box; padding: 0 16px; border-radius: 14px; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: {{ step.ctaBg }}">{{ step.cta }}</a>
@@ -260,6 +260,10 @@ step = { kickerInk: '#2F4FD0', title: areas.length ? 'Todas las áreas pasan la 
 } else {
 step = { kickerInk: '#2F4FD0', title: areas.length ? 'Todas las áreas pasan la línea' : 'El próximo día se abre cuando esté escrito', sub: areas.length ? 'El próximo día se abre cuando esté escrito.' : '', hasSub: !!areas.length, hasCta: false, cta: '', ctaBg: '#2F4FD0', href: 'Main.dc.html', go: nav('Main') };
 }
+/* a day's title is Spanish that may quote Guarani (Plural -kuéra, -nguéra tras nasal (mitãnguéra)): the two lines as
+   pieces, so the words that can only be Guarani carry lang="gn" */
+step.titleSegs = C.mixed(step.title);
+step.subSegs = C.mixed(step.sub || '');
 /* the exposure log: this week's answers ("Lo usé"), kept on this screen; the app's memory gets a copy */
 const wd = new Date(C.now()).getDay();
 const week = C.addDays(T, -((wd + 6) % 7));

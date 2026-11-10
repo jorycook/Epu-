@@ -85,7 +85,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <button onClick="{{ p.play }}" aria-pressed="{{ p.playing }}" aria-label="{{ p.playAria }}" style="width: 56px; height: 56px; border-radius: 50%; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 150ms; background: {{ p.playBg }}"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 9a4 4 0 0 1 0 6"/></svg></button>
 <div style="flex-grow: 1; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
 <sc-for list="{{ p.opts }}" as="o" hint-placeholder-count="2">
-<button onClick="{{ o.pick }}" aria-disabled="{{ o.off }}" aria-pressed="{{ o.on }}" aria-label="{{ o.aria }}" style="position: relative; min-height: 64px; padding: 8px 10px; box-sizing: border-box; border-radius: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; transition: transform 120ms; border: {{ o.border }}; background: {{ o.bg }}; box-shadow: {{ o.shadow }}; transform: {{ o.lift }}; cursor: {{ o.cursor }}"><span lang="gn" style="font-family: 'Andika', 'Nunito', sans-serif; font-size: 22px; font-weight: 700; line-height: 1.15; overflow-wrap: anywhere">{{ o.gn }}</span><span style="font-size: 12px; font-weight: 700; color: #5A6382">{{ o.es }}</span><sc-if value="{{ o.tick }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="position: absolute; top: -8px; right: -8px; width: 22px; height: 22px; box-sizing: border-box; border-radius: 50%; background: #FFFFFF; border: 2px solid #0B7A6B; display: flex; align-items: center; justify-content: center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></sc-if><sc-if value="{{ o.cross }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="position: absolute; top: -8px; right: -8px; width: 22px; height: 22px; box-sizing: border-box; border-radius: 50%; background: #FFFFFF; border: 2px solid #C7361E; display: flex; align-items: center; justify-content: center"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#C7361E" stroke-width="3.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></sc-if></button>
+<button onClick="{{ o.pick }}" aria-disabled="{{ o.off }}" aria-pressed="{{ o.on }}" aria-label="{{ o.aria }}" style="position: relative; min-height: 64px; padding: 8px 10px; box-sizing: border-box; border-radius: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; transition: transform 120ms; border: {{ o.border }}; background: {{ o.bg }}; box-shadow: {{ o.shadow }}; transform: {{ o.lift }}; cursor: {{ o.cursor }}"><span lang="gn" style="font-family: 'Andika', 'Nunito', sans-serif; font-weight: 700; line-height: 1.15; overflow-wrap: anywhere; font-size: {{ o.size }}">{{ o.gn }}</span><span style="font-size: 12px; font-weight: 700; color: #5A6382">{{ o.es }}</span><sc-if value="{{ o.tick }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="position: absolute; top: -8px; right: -8px; width: 22px; height: 22px; box-sizing: border-box; border-radius: 50%; background: #FFFFFF; border: 2px solid #0B7A6B; display: flex; align-items: center; justify-content: center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></sc-if><sc-if value="{{ o.cross }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="position: absolute; top: -8px; right: -8px; width: 22px; height: 22px; box-sizing: border-box; border-radius: 50%; background: #FFFFFF; border: 2px solid #C7361E; display: flex; align-items: center; justify-content: center"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#C7361E" stroke-width="3.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></sc-if></button>
 </sc-for>
 </div>
 </div>
@@ -232,7 +232,8 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
      Aprender the scene: tap each word on the navy sign board to see it, its Spanish, its parts, and hear it;
      Escribir each word of words.spell typed three times with the Guarani keyboard (Spell.dc.html), one word after
              the other; Next stays shut until the word is typed. What was typed is kept (save: typed), so a word
-             is never asked twice, here or in the typing game;
+             is never asked twice, here or in the typing game. The review day (día 6) is the exception: its list is
+             the week's hard words, and it asks for them again, because writing them once more is the review;
      Examen  the words check, one question as the exam asks it; once answered, its options stay with their marks
              and its blank holds the right answer, as in Drill and Exam.
    Progress: ks 1 once the scene is read, kw 1 once everything is typed, k 1 when the lesson is done (Today).
@@ -251,8 +252,10 @@ const p = app.prog || {};
 const view = props && props.view;
 const alone = !(props && props.go);
 const steps = L.sound || view === 'sound' ? ['sound', 'learn', 'spell', 'check'] : ['learn', 'spell', 'check'];
-/* the words to type, worked out once: those typed before this lesson opened are left out */
-const queue = this.queue(L, app.typed || []);
+/* the words to type, worked out once: those typed before this lesson opened are left out. On the review day the
+   week's words are asked again, whatever was typed on their own days; what counts as written there is only what
+   this review itself has written (all of it once its writing step is done, as on any day opened again) */
+const queue = this.queue(L, !L.review ? app.typed || [] : p.kw || p.k ? L.list.map((w) => w.gn) : this.again(L.sid));
 /* a moment board opens its step; on its own the artboard opens the scene; in the app a lesson part-way through
    opens where it was left, a finished one from the start */
 let at = 0;
@@ -331,7 +334,16 @@ const spell = w && Array.isArray(w.spell) ? w.spell : [];
 /* the check is asked only when it can be marked: options, and an answer that names one of them */
 const opts = w && w.check && Array.isArray(w.check.options) ? w.check.options : [];
 const check = opts.length && +w.check.answer >= 1 && +w.check.answer <= opts.length ? w.check : null;
-return { sid, day, w, list, sound, pairs, spell, check };
+/* the review day (día 6): its words to write are the week's, asked once more */
+const at = C && sid ? C.parse(sid) : null;
+return { sid, day, w, list, sound, pairs, spell, check, review: !!at && at.day === 6 };
+}
+/* the words a review day has written in this visit, by day: a review left part way goes on with those still to write
+   for as long as the app stays open (they are in `typed` already, from their own days, so `typed` cannot tell) */
+again(sid) {
+const bag = window.__gnAgain = window.__gnAgain || {};
+bag[sid] = bag[sid] || [];
+return bag[sid];
 }
 queue(L, typed) {
 const C = window.gnCourse;
@@ -440,6 +452,10 @@ const done = pick === 0 || pick === 1;
 const playing = s.pairOn === i;
 const said = pair[tgt * 2];
 const saidEs = pair[tgt * 2 + 1] || '';
+/* the two words of a pair are set at one size: 22 px, or as much less as the longer one needs to stay whole in its
+   tile (100 px wide inside: mitãnguéra goes to 17 px), never under 15 */
+const pairEms = C ? Math.max(C.wordEms(pair[0]), C.wordEms(pair[2])) : 0;
+const pairSize = Math.max(15, Math.min(22, pairEms ? Math.floor(100 / pairEms) : 22)) + 'px';
 const opts = [0, 1].map((k) => {
 const right = k === tgt;
 const mine = pick === k;
@@ -454,6 +470,7 @@ other: ['2px solid #DDE1EC', '#FFFFFF', 'none'],
 return {
 gn: pair[k * 2],
 es: pair[k * 2 + 1] || '',
+size: pairSize,
 aria: pair[k * 2] + (pair[k * 2 + 1] ? ', ' + pair[k * 2 + 1] : '') + (look === 'right' ? (mute ? ': era esta' : ': la que sonó') : look === 'wrong' ? ': no era esta' : ''),
 off: !heard || done,
 on: mine,
@@ -553,9 +570,12 @@ const newLetters = [];
 s.queue.forEach((q) => { (S ? S.cells(q.w.gn).filter(S.hard) : []).forEach((g) => { const k = S.norm(g).toLowerCase(); if (newLetters.indexOf(k) < 0) newLetters.push(k); }); });
 /* the line in three parts, so the Guarani letters carry lang="gn" */
 const writeLine = Q
-? 'Después vas a escribir ' + (Q === 1 ? '1 palabra' : Q + ' palabras') + (newLetters.length ? (newLetters.length === 1 ? ' con una letra nueva: ' : ' con letras nuevas: ') : '')
+? L.review
+? 'Después vas a escribir de nuevo ' + (Q === 1 ? '1 palabra' : Q + ' palabras') + ' de la semana'
+: 'Después vas a escribir ' + (Q === 1 ? '1 palabra' : Q + ' palabras') + (newLetters.length ? (newLetters.length === 1 ? ' con una letra nueva: ' : ' con letras nuevas: ') : '')
 : L.spell.length ? 'Ya escribiste todas las palabras de esta escena. Ahora, la pregunta de examen.' : 'Hoy no hay palabras para escribir. Después, la pregunta de examen.';
-const writeLetters = Q ? newLetters.join(', ') : '';
+/* on the review day the letters are the week's, none of them new: the line names no letters */
+const writeLetters = Q && !L.review ? newLetters.join(', ') : '';
 const writeEnd = Q ? '.' : '';
 Object.assign(base, {
 titleLang: L.w && L.w.gn ? 'gn' : 'es',
@@ -641,6 +661,7 @@ wSize: 358,
 wFinished: () => {
 if (!item) return;
 save({ typed: [item.w.gn] });
+if (L.review) this.again(L.sid).push(item.w.gn);
 this.setState({ qDone: true });
 },
 /* the pad says which time is on: from memory, the word above it is hidden */
@@ -667,9 +688,12 @@ const answered = s.quiz !== null;
 const right = answered && s.quiz === ans;
 const answer = it.options[ans - 1] || '';
 const segs = C && it.q ? C.rich(it.q, { ruby: false, hl: false }) : [];
-/* short options sit in one row, middle ones in two columns, sentences in one */
-const widest = Math.max(0, ...it.options.map((o) => chars(plain(o)).length));
-const cols = widest <= 6 ? it.options.length : widest <= 14 ? 2 : 1;
+/* short options sit in one row, middle ones in two columns, sentences in one: as many columns as let every label
+   (the number and its word, at 15 px) stay on one line in its button. Of the box's 330 px, four buttons leave 57 px
+   for each label, two leave 141; «1 kotýme» needs 66, so it goes two by two and its number stays beside its word */
+const labelPx = Math.max(0, ...it.options.map((o, k) => (C ? C.ems((k + 1) + ' ' + plain(o)) * 15 : chars(plain(o)).length * 9 + 12)));
+const fitsIn = (n) => labelPx <= (330 - 6 * (n - 1)) / n - 21;
+const cols = it.options.length > 2 && fitsIn(it.options.length) ? it.options.length : fitsIn(2) ? 2 : 1;
 Object.assign(base, {
 checkLine: 'Una pregunta sobre las palabras de ' + (titleEs ? '«' + titleEs + '»' : 'hoy') + ', como en el examen.',
 cNone: !L.check,

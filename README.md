@@ -26,7 +26,7 @@ native speaker's check.
 | `notes/` | The research the design rests on. Y1 to Y5 map the Yaoki suite (plan and engine, the lesson loop, skills and tests, the satellites, platform and brand). G1 to G8 are the Guarani research, with a source and a confidence mark on every claim: sounds, spelling, fonts and keyboards; a verified grammar reference; learners and prior art; data, audio and licences; culture, naming and UI words; the CEFR and the level exam; the six-level syllabus; and G8, the second mascot (Kaguare: which anteater, its names, three slang screens). |
 | `epua-app/` | The installable app around the screens: `src/` (Yaoki's runtime, the shell, the first-visit page, the offline worker, the page and the manifest), `studio/` (the recording studio page), `build.mjs`, `fonts.py`, `fetch-fonts.sh` and `check/app-check.js`. |
 | `docs/` | The built app, for GitHub Pages. This is all a phone needs. `docs/estudio/` is the recording studio, next to the app and not part of it. |
-| `check/` | Two checks of the built app in Chromium, as GitHub Pages serves it: `flows-test.js` (a learner's flows by taps, saved progress, two tabs, saved data that does not fit) and `platform-test.js` (phone sizes, the Home Screen, offline, updates, the manifest and icons, the typefaces, every screen's frame, tap targets, languages). Their screenshots go to `check/out/`, which is not kept. |
+| `check/` | Two checks of the built app in Chromium, as GitHub Pages serves it: `flows-test.js` (a learner's flows by taps, saved progress, two tabs, saved data that does not fit, and the last written week to its end) and `platform-test.js` (phone sizes, the Home Screen, offline, updates, the manifest and icons, the typefaces, every screen's frame, tap targets, languages; the screens with a learner in unit 1 and with one in the last written week). Their screenshots go to `check/out/`, which is not kept. |
 
 ## Build and check
 
@@ -42,8 +42,9 @@ node tools/smoke-boards.mjs            # every board, alone, inside the prototyp
 
 The build stops a file that is not in Unicode NFC, writes the puso as anything but the apostrophe U+0027, carries a
 combining tilde outside g̃, has unbalanced markup, an answer out of range, options that repeat once their marks are
-removed, a build item whose `full` does not match its tiles, a day without its parts, or a title that differs from the
-syllabus. Ids carry the level (`a1u01d4.d5`, `a1u01t.12`), so items never clash across levels.
+removed, a build item whose `full` does not match its tiles, a day without its parts, a title that differs from the
+syllabus, or an arrow outside a «Cómo se forma» rule (the interface typeface has none). Ids carry the level
+(`a1u01d4.d5`, `a1u01t.12`), so items never clash across levels.
 
 ## The app
 
@@ -96,8 +97,10 @@ the goal, a tab). A browser that keeps nothing gets a notice on the goal screen 
   such as Comprensión B1 · Producción A2, and the plan starts at the production level.
 - **The week and the day are Yaoki's:** five study days, a review day and a week test. A study day is three lessons:
   grammar (teach, compare, drill, exam-style), words (at A1 and A2 a short "Sonido y letra" step, then the scene, then
-  spelling with the Guarani keyboard, then one exam-format question) and a reading or listening item. A mistake comes back
-  after 1, 3 and 7 days; three right answers in a row clear it.
+  spelling with the Guarani keyboard, then one exam-format question) and a reading or listening item. A word typed once
+  is not asked again, except on the review day, which asks for the week's hard words once more. A mistake comes back
+  after 1, 3 and 7 days; three right answers in a row clear it. The week path shows one week: the week of the session in
+  use, else of the next one due, and once every written week is whole, the last of them.
 - **Six levels:** A1 Acceso 8 units, A2 Plataforma 10, B1 Umbral 10, B2 Avanzado 10, C1 Dominio operativo eficaz 8,
   C2 Maestría 6: 52 units, 260 study days. A1 and A2 hold the core morphology; B1 and B2 clauses, word formation,
   evidentials and Jopara as grammar; C1 register and the State's Guarani (the Constitution, Ley 4251, legal and
@@ -206,7 +209,7 @@ node check/sound-test.js                           # the whole path in Chromium,
   same every time): the other word's row carries `"unused": true`. It stays in the list, and is recorded, because a pair
   needs both voices if its words, and with them the word that plays, ever change; the recordings no screen plays today
   come last in the recording order, after the slower takes, and say so in their place of use («hoy no suena»).
-  A1 units 1 to 4 and the extras come to 497 recordings for 732 keys; 82 of the keys are unused, and 25 of the
+  A1 units 1 to 4 and the extras come to 502 recordings for 736 keys; 82 of the keys are unused, and 25 of the
   recordings serve only those.
 - **The studio.** `docs/estudio/` (source `epua-app/studio/index.html`) is a page in Spanish for a native speaker: it loads
   the list, shows one line at a time (the Guarani big, in the Guarani face; the Spanish small; the voice and the key),

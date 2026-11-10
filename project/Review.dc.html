@@ -247,7 +247,29 @@ function quoted(segs, base) {
   });
   const words = {};
   out.forEach((g) => { if (g.q >= 0) words[g.q] = (words[g.q] || '') + (g.text || g.ruby ? g.t : ' '); });
-  return out.map((g) => Object.assign(g, { lang: g.q < 0 ? base : ES_MARK.test(window.gnCourse.norm(words[g.q] || '')) ? 'es' : 'gn' }));
+  return out.map((g) => Object.assign(g, { lang: g.q < 0 ? g.base || base : ES_MARK.test(window.gnCourse.norm(words[g.q] || '')) ? 'es' : 'gn' }));
+}
+/* a question can open with a stage direction in Spanish and go on in Guarani («(Ana le habla a Luis.)», then
+   «Ana: Ñande ___ ko ka'aru.»): its pieces are cut at the line ends, and each line takes its own language (`base`) by
+   the same rule, so the Guarani lines are not marked Spanish for the sake of the first one */
+function lined(segs, it) {
+  const rows = [[]];
+  segs.forEach((g) => {
+    if (!g.text) { rows[rows.length - 1].push(g); return; }
+    String(g.t || '').split('\n').forEach((part, i) => {
+      if (i) rows.push([]);
+      if (part) rows[rows.length - 1].push(Object.assign({}, g, { t: part }));
+    });
+  });
+  const out = [];
+  rows.forEach((row, n) => {
+    const said = row.map((g) => (g.blank ? ' ' : g.t || '')).join('');
+    /* a line that is all in brackets is a stage direction, and those are written in Spanish */
+    const base = /^\s*\([^()]*\)\s*$/.test(said) ? 'es' : langOf(it, said);
+    row.forEach((g) => out.push(Object.assign({}, g, { base })));
+    if (n < rows.length - 1) out.push({ t: '\n', r: '', ruby: false, text: true, blank: false, line: 'none', base });
+  });
+  return out;
 }
 /* a tile in the right place: its own slot, or a slot whose tile reads the same (two equal tiles can swap), as in Drill and Exam */
 function inPlace(tiles, t, k) {
@@ -527,9 +549,10 @@ class Component extends DCLogic {
     /* the options open once the clip has played; with no clip, as soon as the transcript shows */
     const locked = answered || (hasPlay && !s.played && !reading);
 
-    /* a choice: one tap answers; two columns only when every option is short */
+    /* a choice: one tap answers; two columns only when every option is short, and its longest word still fits its
+       half-width button once the tick or the cross is in (108 px are left at 16 px), so no word is broken in two */
     const options = kind === 'choice' && Array.isArray(q.options) ? q.options : [];
-    const wide = options.some((o) => C.chars(C.plain(o)).length > 14);
+    const wide = options.some((o) => C.chars(C.plain(o)).length > 14 || C.wordEms(o) * 16 > 108);
     const opts = options.map((label, j) => {
       const n = j + 1;
       const on = a.pick === n;
@@ -552,7 +575,7 @@ class Component extends DCLogic {
     });
     const qPlain = C.plain(q.q || '');
     /* glosses stay as in the lesson, highlights do not; once answered, the clue is underlined in gold */
-    const segs = kind === 'choice' ? quoted(C.rich(q.q || '', answered ? { hl: false, clue: 'line' } : { hl: false }).map((g) => ({ t: g.t, r: g.r, ruby: !!g.ruby, text: !g.ruby && !g.blank, blank: !!g.blank, line: g.line })), langOf(q, qPlain)) : [];
+    const segs = kind === 'choice' ? quoted(lined(C.rich(q.q || '', answered ? { hl: false, clue: 'line' } : { hl: false }).map((g) => ({ t: g.t, r: g.r, ruby: !!g.ruby, text: !g.ruby && !g.blank, blank: !!g.blank, line: g.line })), q), langOf(q, qPlain)) : [];
 
     /* a build: the tiles go in order into the slots (tap a placed tile to take it back), then Comprobar; the whole order counts */
     const tiles = kind === 'build' && Array.isArray(q.tiles) ? q.tiles : [];

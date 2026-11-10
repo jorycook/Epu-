@@ -56,14 +56,14 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 
 <sc-if value="{{ asking }}" hint-placeholder-val="{{ true }}">
 <div style="flex-grow: 1; min-height: 0; overflow-y: auto; margin: 0 -16px; padding: 0 16px 12px; display: flex; flex-direction: column">
-<div style="margin-top: 16px; flex-shrink: 0; font-size: 12px; font-weight: 800; color: #5A6382">{{ q.kind }}</div>
-<sc-if value="{{ q.hasPassage }}" hint-placeholder-val="{{ false }}"><div lang="gn" style="margin-top: 8px; max-height: 260px; overflow-y: auto; flex-shrink: 0; padding: 12px 14px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; font-family: 'Andika', 'Nunito', sans-serif; font-size: 15px; font-weight: 400; line-height: 1.85; white-space: pre-line; overflow-wrap: anywhere">{{ q.passageText }}</div></sc-if>
+<div style="flex-shrink: 0; font-size: 12px; font-weight: 800; color: #5A6382; margin-top: {{ q.kindTop }}">{{ q.kind }}</div>
+<sc-if value="{{ q.hasPassage }}" hint-placeholder-val="{{ false }}"><div lang="gn" style="margin-top: 8px; max-height: 260px; overflow-y: auto; flex-shrink: 0; padding: 12px 14px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; font-family: 'Andika', 'Nunito', sans-serif; font-weight: 400; white-space: pre-line; overflow-wrap: anywhere; font-size: {{ q.passSize }}; line-height: {{ q.passLead }}">{{ q.passageText }}</div></sc-if>
 
 <sc-if value="{{ q.isChoice }}" hint-placeholder-val="{{ true }}">
-<div lang="gn" style="margin-top: 8px; flex-shrink: 0; padding: 14px 16px; border-radius: 18px; background: #FFFFFF; border: 2px solid #1B2440; font-family: 'Andika', 'Nunito', sans-serif; font-size: 18px; font-weight: 400; line-height: 1.9; overflow-wrap: anywhere"><sc-for list="{{ q.segs }}" as="g" hint-placeholder-count="3"><sc-if value="{{ g.text }}" hint-placeholder-val="{{ true }}"><span style="white-space: pre-line; border-bottom: {{ g.line }}">{{ g.t }}</span></sc-if><sc-if value="{{ g.blank }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="espacio en blanco" style="display: inline-block; width: 40px; height: 22px; margin: 0 3px; border-bottom: 2px solid #1B2440; vertical-align: text-bottom"></span></sc-if></sc-for></div>
-<div lang="gn" style="margin-top: 14px; flex-shrink: 0; display: flex; flex-direction: column; gap: 10px">
+<div lang="gn" style="margin-top: 8px; flex-shrink: 0; border-radius: 18px; background: #FFFFFF; border: 2px solid #1B2440; font-family: 'Andika', 'Nunito', sans-serif; font-weight: 400; overflow-wrap: anywhere; padding: {{ q.qPad }}; font-size: {{ q.qSize }}; line-height: {{ q.qLead }}"><sc-for list="{{ q.segs }}" as="g" hint-placeholder-count="3"><sc-if value="{{ g.text }}" hint-placeholder-val="{{ true }}"><span style="white-space: pre-line; border-bottom: {{ g.line }}">{{ g.t }}</span></sc-if><sc-if value="{{ g.blank }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="espacio en blanco" style="display: inline-block; width: 40px; height: 22px; margin: 0 3px; border-bottom: 2px solid #1B2440; vertical-align: text-bottom"></span></sc-if></sc-for></div>
+<div lang="gn" style="flex-shrink: 0; display: flex; flex-direction: column; margin-top: {{ q.optTop }}; gap: {{ q.optGap }}">
 <sc-for list="{{ opts }}" as="o" hint-placeholder-count="4">
-<button onClick="{{ o.pick }}" aria-pressed="{{ o.on }}" style="min-height: 50px; padding: 6px 14px; border-radius: 14px; display: flex; align-items: center; gap: 10px; font-family: 'Andika', 'Nunito', sans-serif; font-size: 16px; font-weight: 700; text-align: left; overflow-wrap: anywhere; border: {{ o.border }}; background: {{ o.bg }}; box-shadow: {{ o.shadow }}; transform: {{ o.press }}"><span style="flex-shrink: 0; font-family: 'Nunito', 'Avenir Next', sans-serif; font-size: 12px; font-weight: 800; color: {{ o.numColor }}">{{ o.n }}</span><span style="min-width: 0">{{ o.label }}</span></button>
+<button onClick="{{ o.pick }}" aria-pressed="{{ o.on }}" style="min-height: {{ o.minH }}; padding: 6px 14px; border-radius: 14px; display: flex; align-items: center; gap: 10px; font-family: 'Andika', 'Nunito', sans-serif; font-size: 16px; font-weight: 700; text-align: left; overflow-wrap: anywhere; border: {{ o.border }}; background: {{ o.bg }}; box-shadow: {{ o.shadow }}; transform: {{ o.press }}"><span style="flex-shrink: 0; font-family: 'Nunito', 'Avenir Next', sans-serif; font-size: 12px; font-weight: 800; color: {{ o.numColor }}">{{ o.n }}</span><span style="min-width: 0">{{ o.label }}</span></button>
 </sc-for>
 </div>
 </sc-if>
@@ -405,6 +405,7 @@ const on = a === num;
 return {
 n: num,
 label: C.plain(label),
+minH: it.passage ? '48px' : '50px',
 on,
 pick: () => this.setAnswer(num),
 border: on ? '2.5px solid #2F4FD0' : '2px solid #1B2440',
@@ -463,7 +464,18 @@ const pre = kind === 'build' ? C.plain(it.before || '').split('\n') : [''];
 const post = kind === 'build' ? C.plain(it.after || '').split('\n') : [''];
 const beforeText = pre[pre.length - 1];
 const afterText = post[0];
+/* a question that comes with a text to read (the week test's reading items) is set a little tighter, so the text, the
+   question and its four answers open in view together: the clock is running, and nothing says the page can scroll */
+const tight = kind === 'choice' && !!it.passage;
 const q = {
+kindTop: tight ? '10px' : '16px',
+passSize: tight ? '14px' : '15px',
+passLead: tight ? '1.7' : '1.85',
+qPad: tight ? '12px 16px' : '14px 16px',
+qSize: tight ? '17px' : '18px',
+qLead: tight ? '1.7' : '1.9',
+optTop: tight ? '10px' : '14px',
+optGap: tight ? '8px' : '10px',
 kind: it ? [C.area(it.area).es, C.plain(it.label || '')].filter(Boolean).join(' · ') : '',
 isChoice: kind === 'choice',
 isBuild: kind === 'build',

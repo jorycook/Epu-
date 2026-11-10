@@ -1,55 +1,71 @@
 # The synthetic voice: what it says, how well, and what must stay silent
 
-Epu'ã has no recordings yet. `tools/make-tts.py` makes stand-in clips with a voice model, for the screens to play
-marked «voz sintética» until the studio's recordings replace them. This file is the record of that voice: the model
-and its licence, how the text is prepared, the voices, every number that was measured, what each sound the course
-teaches scored, what must stay without audio, what a native speaker should listen to first, and how to make the clips
-again. The measurements are of 2026-11-10.
+Epu'ã has no recordings yet. `tools/make-tts.py` makes stand-in clips with a voice model, for the screens to play marked
+«voz sintética» until the studio's recordings replace them. This file is the record of that voice: the model and its
+licence, how the text is prepared, how a clip is said, the voices, every number that was measured, what each sound the
+course teaches scored, what must stay without audio, what a native speaker should listen to first, and how to make the
+clips again. The measurements are of 2026-11-10, in three rounds: a first probe, an independent verification that
+refuted part of it, and a fix round. What the verification refuted is corrected here, not kept.
 
-**Nobody listened to any of this.** Every judgement below was made by machine: two speech recognisers, distances
-between clips, measures on the model's own alignment, and pictures of the waveform and the spectrogram. A machine can
-tell that two clips differ, that a gap of silence sits between two vowels, where a vowel's formants are, whether a
-consonant is voiced. It cannot tell whether a vowel sounds nasal to a Guarani ear, whether the stress falls where a
-speaker puts it, or whether the voice is pleasant. Where the machine could not tell, this file says so.
+**Nobody listened to any of this.** Every judgement below was made by machine: two speech recognisers, distances between
+clips, measures on the model's own alignment, and pictures of the waveform and the spectrogram. A machine can tell that
+two clips differ, that a gap of silence sits between two vowels, where a vowel's formants are, whether a consonant is
+voiced, whether a closure and a burst are there. It cannot tell whether a vowel sounds nasal to a Guarani ear, whether
+the stress falls where a speaker puts it, whether a j sounds like the «y de yo», or whether the voice is pleasant. Where
+the machine could not tell, this file says so.
 
 ## In one screen
 
-- **Verdict: ship with exclusions.** Sentences come back from the independent recogniser at 15.3 % CER (real Guarani
-  speech scores 8.6 % on the same recogniser) and single words at 17.2 %; from the large one at 6.5 % and 13.4 %.
-- **Silent:** the sound pairs that differ only by a nasal vowel (pyta / pytã, pytu / pytũ, oke / okẽ, tupa / Tupã,
-  téra / térã, porã / póra), in «Sonido y letra» and in Hablar. The voice makes the two words different, but by pitch,
-  not by anything a machine can call nasal, and the recognisers hear pyta / pytã as one word. `sound/silent.json` holds
-  the rule; today it silences 26 of the A1 manifest's 732 rows.
-- **Rendered, by every measure:** the puso, the y, the soft r, mb and nd as one sound, the ch as «sh», the h.
-- **Rendered in part:** the nasal vowels (above); the g̃ (the model has no such letter); the stress (the acute works;
-  the final stress of a word without a mark cannot be shown); the j (never the Spanish jota in the course's words, but
-  *jasy* came back as «hasy»); the v (a soft voiced sound, not a b: lip or teeth cannot be told); rr.
-- **Cannot tell:** nasal harmony, beyond the spelling.
-- **Not rendered:** f («Sofía» comes back «sosía»), a last l («mil» as «mi»), and often an l at the start of a word
-  («Lucas» as «nukas»). None is a sound the course teaches.
-- **The voice is one man.** F is the model as it is; M is the same voice two semitones lower. F is not a woman's voice.
+- **Verdict: ship with exclusions**, as a stand-in marked «voz sintética», in a free app without ads.
+- **How well.** Of the clips that stay, single words come back from the independent recogniser at 6.0 % CER and from the
+  large one at 4.6 %, lines of two words or more at 10.2 % and 3.6 %, their slow takes at 18.1 % and 8.3 % (the best of
+  up to three takes; one take alone scores 10.8 % and 9.7 % on words, 13.9 % and 6.0 % on lines). Real Guarani speech
+  scores 11.0 % and 6.5 % on the same recognisers.
+- **Silent, by rule** (`sound/silent.json`): the pairs that differ only by a nasal vowel (pyta / pytã, pytu / pytũ, oke
+  / okẽ, tupa / Tupã, téra / térã, porã / póra); mbo'y / mboy; the pairs of «La r, siempre suave»; tetã / tetãme; óga /
+  ogakuéra; the words okẽ, ñúme, angirũ, roju, roho, chero'y, chemandu'a and ñemuhára wherever they are a clip; and four
+  short clips (Héẽ, «Ikatúpa aike?», «che irũ», «Aike mbo'ehaópe.»): 61 rows.
+- **Silent, by ear:** `--verify` leaves out by itself every short clip a learner hears on its own that both recognisers
+  hear with wrong letters. In the run of 2026-11-10 that was 31 rows; all of them but 4, which no screen plays today,
+  are now named in the rule. In all, 65 of the manifest's 736 rows are silent, 43 of them played by a screen today; 468
+  of the 502 recordings are said, and no dialogue is dropped.
+- **Rendered:** the y; the h; mb, nd, ng, nt as one sound; the ch; the v; the r inside a word; the ñ; the u that always
+  sounds; the puso after a, e and i; the j between vowels and, run in, at the start of a word; the k, run in.
+- **Rendered in part, or not shown:** the nasal vowels (the voice makes them different by pitch; ĩ is heard, ã and õ are
+  not); the puso after o, u and y in some words (a creak heard as h: *mbo'y*); the g̃ (no such letter in the model); the
+  stress (the acute moves length only; the final stress of an unmarked word shows in nothing measured); the j before u
+  (a stop: *aju* as «adu»); the k before e (*okẽ*, *aike*).
+- **Not rendered:** the r that opens a word said alone (a hum, not a tap); rr (one long tap, never a trill); *ñúme*. And
+  outside what the course teaches: f («Sofía» as «sosía»), l («Luis» as «ndúi», «mil» as «mi»), ld, rl, tr, a bare d.
+- **Cannot tell:** nasal harmony, beyond the spelling; whether the ch is «sh» or the Spanish ch.
+- **The voice is one man.** F is the model as it is; M is the same voice two to three semitones lower. F is not a
+  woman's voice. In a dialogue a longer line is moved towards its voice's pitch; even so the man's line is no lower than
+  the woman's next to it in 7 exchanges of 47 (it was 11 of 44).
 - **The licence is non-commercial** (CC BY-NC 4.0). These clips may not ship in an app that is sold or carries ads.
+- **Ship the folder that was verified** (or one made with `--takes` from it on the same machine), not a fresh run
+  without the recognisers.
 
 ## The models and the licence
 
 | | Guarani | Spanish (the narrator) |
 |---|---|---|
 | Model | `facebook/mms-tts-grn` | `facebook/mms-tts-spa` |
+| Where | https://huggingface.co/facebook/mms-tts-grn | https://huggingface.co/facebook/mms-tts-spa |
 | What it is | VITS, one speaker, 16 kHz, 36.3 M weights, 145 MB | the same architecture |
 | Made by | Meta AI, Massively Multilingual Speech (MMS) | the same |
 | Licence | CC BY-NC 4.0 | CC BY-NC 4.0 |
 
 The model cards name no speaker and no training text. The vocabulary (lower-case letters, no punctuation, an em dash)
 and the MMS paper point to recordings of read Bible text, and what the recognisers hear agrees: *kesu* comes back as
-«Jesús», and the model says «Juan» and «Pedro» the Spanish way without being told.
+«Jesús» from the large recogniser, and the model says «Juan» and «Pedro» the Spanish way without being told.
 
 **Attribution the licence requires** (CC BY-NC 4.0, section 3(a)): the creator, a notice of the licence with its
 address, a link to the material, and a note that it was changed. The line for the app's licences page:
 
-> Voz sintética: MMS-TTS guaraní y castellano (`facebook/mms-tts-grn`, `facebook/mms-tts-spa`), de Meta AI: Pratap et
-> al., «Scaling Speech Technology to 1,000+ Languages», 2023. Licencia CC BY-NC 4.0, solo para uso no comercial:
-> https://creativecommons.org/licenses/by-nc/4.0/. Audio generado con esos modelos y modificado (recortes, tono) por
-> `tools/make-tts.py`. Sin garantías.
+> Voz sintética: MMS-TTS guaraní y castellano, de Meta AI (https://huggingface.co/facebook/mms-tts-grn y
+> https://huggingface.co/facebook/mms-tts-spa): Pratap et al., «Scaling Speech Technology to 1,000+ Languages», 2023.
+> Licencia CC BY-NC 4.0, solo para uso no comercial: https://creativecommons.org/licenses/by-nc/4.0/. Audio generado
+> con esos modelos y modificado (recortes, tono) por `tools/make-tts.py`. Sin garantías.
 
 `make-tts.py` writes the model and the licence into `voices.json`; `make-sound.mjs` copies them into the header of every
 sound file and into `gn-sound-index.js` (`window.__gnSoundVoices`). The app's `licenses.txt` does not carry the line
@@ -58,10 +74,10 @@ yet: that file is made by the app build.
 **What «non-commercial» means for this app.** The licence allows use that is "not primarily intended for or directed
 towards commercial advantage or monetary compensation". A free app without ads, as Epu'ã is today, fits. The clips may
 not ship once the app is sold, sits behind a subscription, carries advertising, or is given to a company as part of a
-paid service: the studio's recordings (CC BY 4.0) must replace them first. Anyone who copies the clips takes them
-under the same terms, so the repository and the app must say that these clips are CC BY-NC 4.0, not CC BY 4.0 like
-the recordings the plan foresees. This is the tool's reading of the licence, not legal advice. The recognisers were
-used to measure only: nothing of them ships.
+paid service: the studio's recordings (CC BY 4.0) must replace them first. Anyone who copies the clips takes them under
+the same terms, so the repository and the app must say that these clips are CC BY-NC 4.0, not CC BY 4.0 like the
+recordings the plan foresees. This is the tool's reading of the licence, not legal advice. The recognisers were used to
+measure only: nothing of them ships.
 
 ## How the text is prepared
 
@@ -73,14 +89,16 @@ space ' - — _ 0-9 a b c d e f g h i j k l m n o p q r s t u v x y z á é í �
 
 There is no w, no g̃, no punctuation. The Spanish model has 45: the same without the apostrophe, the hyphen, the nasal
 vowels and ý, plus ü. The models' tokenizer lower-cases the text and **drops every character it does not know without a
-word**. What that does to the course's text, tried one by one:
+word**. What that does to the course's text, tried one by one (the verification tried 38 more inputs made to break it:
+decomposed vowels, five other apostrophes, G̃, ĝ, î, a no-break space, a tab, parentheses, a slash, digits, hyphenated
+loans, unknown names; all behave as this table says):
 
 | In the course's text | What the tokenizer does | What `make-tts.py` does |
 |---|---|---|
 | Capitals (also Ñ, Á, Ã) | lower-cases them | the same |
 | The puso as `'` U+0027 | keeps it: it is a symbol | keeps it |
 | The puso as `’` U+2019 or `ʼ` U+02BC | drops it: *mba’éichapa* becomes «mbaéichapa» | turns every puso-like mark into U+0027 first |
-| g̃ and G̃ (g + U+0303) | drops the tilde: *hag̃ua* becomes «hagua» | writes the word as the model's training text did (below) |
+| g̃ and G̃ (g + U+0303) | drops the tilde: *hag̃ua* becomes «hagua» | writes the tilde on the vowel after it (below) |
 | ã ẽ ĩ õ ũ ỹ, precomposed | keeps them | keeps them |
 | The same vowels decomposed (a + U+0303) | drops the tilde: *porã* becomes «pora» | normalises to NFC first |
 | á é í ó ú ý | keeps them: the model uses them for the stress (measured below) | keeps them |
@@ -92,57 +110,75 @@ word**. What that does to the course's text, tried one by one:
 | No-break space, tab, line break | drops them: the two words are glued | every space becomes one space |
 | w, ç, ü and anything else | drops it | the run stops and names the key and the character |
 
-In the A1 manifest (497 recorded rows) the characters the Guarani model does not know are `.` `?` `,` `!` `«` `»` and
-the combining tilde of g̃ (Tereg̃uahẽ, ko'ág̃a, og̃uahẽ, ag̃aite, Ag̃uahẽma); in the narrator's lines `¿` `?` `.` and the
-digits 1, 2, 3. Every other Guarani string of `content/a1/parts` and `content/extra` was read too: they add `·` `→`
-`+` `…` `/` `:` `=` and digits, in rules and forms that are not clips. If one becomes a clip, the tool stops on it.
+In the A1 manifest of 2026-11-10 (736 rows, 502 of them recordings) the characters the Guarani model does not know are
+`.` `?` `,` `!` `«` `»` and the combining tilde of g̃ (15 words in 14 rows: Tereg̃uahẽ, ko'ág̃a, og̃uahẽ, ag̃aite,
+Ag̃uahẽma); in the narrator's lines `¿` `?` `.` and the digits 1, 2, 3. Every other Guarani string of `content/a1/parts`
+and `content/extra` was read too (2,229 strings in 33 files): they add `·` `→` `+` `…` `/` `:` `=` and digits, in rules
+and forms that are not clips. If one becomes a clip, the tool stops on it. A manifest with seven bad rows stopped with
+exit 2, nothing written, each key and character named.
 
 **A question is not said differently.** Neither model has a question mark. Guarani marks most questions with -pa or
 piko, so little is lost there; «Iporã, ha nde?» and the narrator's «¿Qué responde el hombre?» come out as statements.
 
-**g̃.** The model's training text wrote these words the other way the notes describe (G1 §5): the tilde on a vowel.
-The corpora agree (*haguã* 6,846 against *hag̃ua* 3,219; *ko'ágã* 1,609 against *ko'ág̃a* 408; *oguahẽ* 1,557 against
-*og̃uahẽ* 138). So for the voice, and only for the voice: the tilde goes to the first vowel after the g̃ (*hag̃ua* →
-haguã, *ko'ág̃a* → ko'ágã, *ag̃aite* → agãite), unless a nasal vowel already follows (*og̃uahẽ* → oguahẽ,
-*Tereg̃uahẽ* → tereguahẽ). A g̃ before a vowel with an acute (*hag̃uáicha*) would lose its nasality: no such word is
-in the course today.
+**g̃.** The model has no such letter and no combining tilde, so its training text cannot have given it one. For the
+voice, and only for the voice, the tilde goes to the first vowel after the g̃ (*hag̃ua* → haguã, *ko'ág̃a* → ko'ágã,
+*ag̃aite* → agãite), unless a nasal vowel already follows (*og̃uahẽ* → oguahẽ, *Tereg̃uahẽ* → tereguahẽ). That this is
+how the model's training text wrote these words is an inference, not a fact: in the corpora on disk, which are not that
+text, the spelling with the tilde on the vowel is the commoner one for two of the words (*haguã* 6,642 against *hag̃ua*
+and *haĝua* 3,219; *ko'ágã* 1,587 against 406) and the rarer one for the other two (*oguahẽ* 5 against 87; *agãite* 6
+against 66). What counts is what comes out: said this way, the independent recogniser, which has g̃ among its letters,
+writes g̃ in 14 takes of 15 of *ag̃aite*, *ko'ág̃a* and *hag̃ua*, and in none of 15 takes of the same words given with a
+plain g (the verification's measure). A g̃ before a vowel with an acute (*hag̃uáicha*) would lose its nasality: no such
+word is in the course today.
 
 **Spanish inside Guarani lines: `sound/respell.json`.** The voice reads letters the Guarani way: c before i as «ch» or
-«k», a word without a mark with the stress on its last vowel. Each word below was said three times or more inside «che
-réra …» and heard by both recognisers; the measure of the stress is under «Stress».
+«k», a word without a mark with the stress on its last vowel. So a Spanish word is written for the voice as a Guarani
+speaker would spell what is said: h for the jota, s for c and z, k for c and qu, the acute on the Spanish stress. The
+spellings are sound; what the voice then says is another matter. Each word was said three times or more inside «che réra
+…» and heard by both recognisers (the first round, and three more seeds each in the verification):
 
-| In the course | Said as | Why, and what came back |
+| In the course | Said as | What came back |
 |---|---|---|
-| Juan | huan | The jota. After «che réra» the model says the name with an h by itself, but after «mba'éichapa» it came back «joan». With h it is the same every time. |
-| José | hose | The same. Heard «josé» either way. |
-| Lucas | lúkas | k for c, and the acute keeps the stress on the u: with it the independent recogniser writes «…úkas» in 6 takes of 6, without it in 1 of 6. |
-| Lucía | lusía | As «lucía» it came back «luchía», «lukía»; as «lusía», «lusía». |
-| Luis | luis | As written. Came back «nuis», «luis», «ndúi». |
-| Marta, Mateo, Nilda, Pedro, Ramona, Rosa, Ana, Carlos | márta, matéo, nílda, pédro, ramóna, rósa, ána, kárlos | The acute keeps the Spanish stress. With it the recognisers write the accent (ána: 12 hearings of 12; rósa: 8 of 12; ramóna: 6 of 6 by the large one); without it, in none. Nilda and Carlos stay poor: ld and rl are not Guarani clusters. |
-| Sofía, Tomás | sofía, tomás | As written. **Sofía comes back «sosía» every time**: the voice has no f. |
-| Luque | lúke | Came back «núke», «lúke»; as «luque», «nupie». |
-| Argentina-gua | arhentinagua | h for the g before e, one word, no acute: -gua takes the stress. Came back «ahentinagua». |
-| ochenta, veinte, doce (inside a Guarani sentence, or alone) | ochénta, véinte, dóse | véinte comes back right 6 times of 6, ochénta as «…chénta», dóse as «ndose». |
-| diez, mil | the Spanish voice | **«Diez mil» fails in each of the eight spellings tried** («riesmi», «ndiehmi»): the Guarani voice has no d without n and drops a last l. |
+| Juan, José | huan, hose | Right: the large recogniser hears the name 3 times of 3. After «mba'éichapa», *Juan* as written came back «joan»; with h it is the same every time. |
+| Mateo, Tomás | matéo, tomás | Right, 3 of 3. Without the acute *Mateo* came back «mate'o». |
+| Rosa, Ramona, Ana | rósa, ramóna, ána | Right, 3 of 3. With the acute the recognisers write the accent (ána: 12 hearings of 12; rósa: 8 of 12); without it, in none. |
+| Marta, Pedro | márta, pédro | Right in 2 or 3 of 3. |
+| Lucas, Lucía, Luis, Luque, Elena | lúkas, lusía, luis, lúke, eléna | **Not rendered: the l.** Luis «ndúi» from the independent recogniser 3 of 3; Lucía «ndusía», «nusía» in 4 hearings of 6; Lucas «ndúka», «nucas» in 4 of 6; Luque «ndúke», «núke» in 6 of 6; Elena «evéna», «edéna», «ndéna» (an l in 4 hearings of 12, the fix round). The rest of each name is right. |
+| Nilda, Carlos, Clara | nílda, kárlos, clara | **Not rendered: ld and rl**; cl by half. Nilda garbled in 6 hearings of 6, Carlos «cálos» in 5 of 6. Clara as written is «clára» for the large recogniser 3 times of 3 and «kyára» for the independent one in 2 of 3; as «klára» it was worse. |
+| Sofía | sofía | **Not rendered: f.** «sosía» in 5 hearings of 6. |
+| Argentina-gua | arhentinagua | h for the g before e, one word, no acute: -gua takes the stress. The r is lost: «ahentinagua» from both. |
+| veinte, cuarenta, noventa | véinte, kuarénta, novénta | Right (the fix round, three seeds, alone in F and in M and inside «oguereko … ary»): véinte in 12 hearings of 12 alone; kuarénta in 5 takes of 6 (independent) and 6 of 6 (large, written «cuarenta»); novénta in 6 of 6 each. |
+| ochenta | ochénta | Alone, right in 6 hearings of 6 by F; in M's voice the large recogniser heard «osénta» twice in 3. After a word that ends in o the first o is swallowed («oguereko chénta»). |
+| treinta, cincuenta, sesenta, setenta, cien, doce | the Spanish voice when the line is only the number; inside a sentence tréinta, sinkuénta, sesénta, seténta, sien, dóse | **Not rendered:** tr («téinta» from the independent recogniser 6 times of 6), the n before k («cikenta»), a bare d («ndose» in 15 hearings of 18), *sien* («csien», «cén»); *sesenta* and *setenta* lose their first s for the large recogniser when F says them alone («esen a», «etenta»). |
+| diez, mil | the Spanish voice | **«Diez mil» fails in each of the eight spellings tried** («riesmi», «ndiehmi»): no d without n, and a last l is dropped. |
 
-So **a line that is nothing but a Spanish number with diez or mil in it («Diez mil.») is said by the Spanish voice**,
-at that voice's own pitch. The price is the answer of a listening question in unit 4 (a1u04d5.r1), and the Spanish
-model says it right («diez mil» in 11 takes of 12; with its pitch moved two semitones down for the seller's voice, in
-none of 10). The
-cost: for that one line the seller has another man's voice. «Veinte.», which the Guarani voice says right, stays with
-it. The rule is in `respell.json`: "spanish" lists the number words, and "voice": "es" marks the ones the Guarani voice
-cannot say; a number word with no entry at all goes to the Spanish voice too when the line is only a number, and stops
-the run when it sits inside a Guarani sentence.
+No respelling repairs l, f or d. Today's manifest has Luis in 14 recorded rows, Lucas in 5, and Lucía, Nilda, Carlos and
+Sofía in 2 each: those lines are said, marked «voz sintética», and flawed in the name. The names the voice can say are
+Ana, Rosa, Ramona, Juan, José, Mateo, Tomás, Pedro and Marta; where the content can use one of them, it should (the
+change of Luis to Carlos in `a1u04d1.r1.l2` made that line worse: «herakalios»).
+
+**A line that is nothing but a Spanish number goes to the Spanish voice when the Guarani voice cannot say it**: one of
+its words is marked "voice": "es" in `respell.json` (diez, mil, treinta, cincuenta, sesenta, setenta, cien, doce) or has
+no entry there at all. Prices and ages are said in Spanish in Paraguay, so the words are Spanish in either voice; what
+changes is the speaker. «Diez mil.» is one recording, `a1u01d4.r1.l5` (and its slow take), used by the listening items
+of unit 1 day 4 and unit 4 day 5 and by a Teach example of unit 4 day 5. The Spanish model says it right («diez mil» in
+11 takes of 12; with its pitch moved two semitones down for the seller's voice, in none of 10), so it is not shifted:
+for that one line the seller has another man's voice. «Treinta.», the answer in a Teach dialogue of unit 4 day 5
+(`a1u04d5.p2.x1.l1`), goes the same way: the Guarani voice says «téinta», the Spanish one «treinta» in 2 takes of 3. A
+number word with no entry stops the run when it sits inside a Guarani sentence.
 
 Names that are Guarani spelling are said as written and listed under "as_written" (Itaugua, Ka'akupe, Paraguái,
-Paraguay, Ypakarai, Ñemby, Tovatĩ, Itakuruvi), with any suffix. A word the tool does not find in the table stops the
-run when it has letters outside Guarani spelling (c without h, q, z, x, w, f, b without m, d without n, two consonants
-in a row, a consonant at the end) or is a capitalised word in the middle of a sentence. It cannot catch a Spanish name
-that opens a sentence and happens to be Guarani spelling («Elena oho»).
+Paraguay, Ypakarai, Ñemby, Tovatĩ, Itakuruvi), with any suffix. A word the tool does not find in the table stops the run
+when it has letters outside Guarani spelling (c without h, q, z, x, w, f, b without m, d without n, two consonants in a
+row, a consonant at the end) or is a capitalised word in the middle of a sentence. It cannot catch a Spanish name that
+opens a sentence and happens to be Guarani spelling («Elena oho»): Elena is in the table for that reason, and any other
+such name has to be put there by hand.
 
 ## How a clip is said
 
-**A carrier, cut off.** Both models garble a short utterance said on its own. 42 words of the course, two seeds each:
+**A carrier, cut off.** Both models garble a short utterance said on its own. 42 words of the course, two seeds each
+(the first round; the verification repeated it on 39 words: 32.2 % and 35.6 % alone, 19.1 % and 16.6 % after the
+carrier):
 
 | How the word is said | Independent recogniser: CER, heard exactly | Large recogniser |
 |---|---|---|
@@ -153,12 +189,55 @@ that opens a sentence and happens to be Guarani spelling («Elena oho»).
 
 Alone, *ka'a* comes back as «haha», *pira* as «tira», *po* as «ho», *vaka* as «va'a»: the first consonant is lost. The
 Spanish model does the same («uno» alone: «uono», «gorlo», «gono»; after «y entonces dijo —»: «uno» 3 times of 3). So
-every sentence is said after a carrier, "and then he said:", in one utterance, and the carrier is cut off in the middle
-of the pause the model makes for the dash. Where the pause is comes from the model's own alignment: a hook on its
-duration predictor gives the place of every letter, to 16 ms. When the model makes no clear pause (it does not before
-*kuéra*, which it knows as an ending), the next carrier is tried: «upéi he'i chupe —», then «ko ñe'ẽ —». The clip
-starts 10 ms inside the place of its first letter: the model often hums before it, and with the hum *che* and *chipa*
-came back «iche», «ichipa» (44 takes: heard exactly 17 → 21 by the independent recogniser, 27 → 28 by the large one).
+every sentence is said after a carrier, "and then he said", in one utterance, and the carrier is cut off. There are two
+cuts.
+
+*After a pause.* «ha upéi he'i — …»: the cut is in the middle of the pause the model makes for the dash. Where the pause
+is comes from the model's own alignment: a hook on its duration predictor gives the place of every letter, to 16 ms.
+When the model makes no clear pause (it does not before *kuéra*, which it knows as an ending), the next carrier is
+tried: «upéi he'i chupe —», then «ko ñe'ẽ —». The clip starts 10 ms inside the place of its first letter: the model
+often hums before it, and with the hum *che* and *chipa* came back «iche», «ichipa» (44 takes: heard exactly 17 → 21 by
+the independent recogniser, 27 → 28 by the large one). Where the clip is cut does not cause the bad first consonants
+that remain: the tool's cut, no cut, 30 ms earlier and 30 ms later give the same hearings (the verification, 117 clips a
+cut). The model itself opens a word badly after a pause.
+
+*Run in.* So a line of one or two words that opens with p, t, k or j is said without the dash, «ha upéi he'i …», in
+running speech, and cut in the closure of its first consonant, 25 ms before the burst (40 ms before the release of a j).
+The closure is found on the level between the carrier's last vowel and the end of the consonant: its lowest point, at
+least 15 dB under the vowel, then the first rise of 12 dB. Measured in the fix round on the 78 such clips of the
+manifest, two seeds each, the same seeds cut both ways:
+
+| Opens with | Takes | Independent: after a pause → run in | Large: after a pause → run in |
+|---|---|---|---|
+| p | 48 | 15.6 % → 13.3 % | 9.3 % → 4.8 % |
+| t | 30 | 12.4 % → 13.9 % | 8.9 % → 6.4 % |
+| k | 58 | 10.3 % → 7.4 % | 13.6 % → 12.3 % |
+| j | 20 | 8.3 % → 6.1 % | 9.4 % → 6.7 % |
+| all | 156 | 11.7 % → 10.0 % | 10.8 % → 8.3 % |
+
+Takes heard with the right letters: 95 → 110 (independent) and 110 → 127 (large); takes both recognisers hear with wrong
+letters: 31 → 13. *ka'aru* went from «kaalo» / «haarou» to «ka'aru» in every hearing, *kamby* from «amby» / «hamby» to
+«kamby», *peju* from «peiru» / «peitu» to «peju», *kesu* from «hechu» / «kechu» to «kesu» for the independent recogniser
+(the large one writes «Jesú» whatever is said). The pictures show why: after a pause the k of *kesu* is a stretch of
+noise with no closure and no burst; run in, it is a closure and a sharp burst, and the j of *jagua* is a voiced closure
+with a release where the pause gave 80 to 110 ms of weak noise. Two other cuts were tried and dropped: where the
+carrier's vowel ends, which left the vowel in the clip («ipira», «iporã»); and at the closure's quietest point, which
+took the voiced closure off the j (*jagua* came back «iagua»). With the cut as it is, one recogniser or the other writes
+a vowel before a run-in word in about one take in eight (18 and 20 of 140 takes of 28 words, five seeds each; the two
+agree on 1), and in 2 and 1 of the 54 short run-in takes that were kept: if a trace of the carrier's last vowel is
+there, it is faint. A line of three words or more keeps the cut after a pause for its first take, as measured before,
+and has the run-in cut for its second. Words that open with r, v, ñ, a nasal or a vowel have no closure to cut in: they
+keep the pause, and their flaws (below).
+
+**What the run-in cut costs.** The word comes at the end of the carrier's phrase, not after a fresh start, and that is
+audible: on 16 words, two seeds each, the median pitch of the word is 99 Hz run in against 136 Hz after a pause, and the
+clip is 0.43 s long against 0.52 s. Over the manifest, the single words that stay: 138 Hz (median) and 0.66 s for the
+122 cut after a pause, 105 Hz and 0.49 s for the 50 run in, which are heard no worse (5.0 % and 3.6 % against 6.2 % and
+5.0 %). Shorter carriers raise the pitch a little («he'i» alone: 118 Hz) and lose what the cut gains (both recognisers
+hear wrong letters in 4 takes of 29 with «he'i», in 1 of 32 with «ha upéi he'i», in 7 of 32 after a pause), and a shift
+upward costs single words most, so the carrier stays and nothing is shifted. Whether a lower, shorter word sounds right
+as a word said alone is for a native ear (the list below); what the measures say is that its first consonant is there.
+
 For sentences the carrier neither helps nor hurts (20 sentences, two seeds: 12.8 % alone and 11.4 % with it on the
 independent recogniser; 4.8 % and 5.8 % on the large one).
 
@@ -176,250 +255,466 @@ The voice starts badly after each pause it makes («ha nde» after a pause comes
 **Noise.** The model has two noise settings; the defaults are 0.667 (`noise_scale`) and 0.8 (`noise_scale_duration`).
 For a line of one or two words the first is set to 0.33: on the 145 single words of the probe the CER falls from 19.7 %
 to 17.8 % (independent) and from 17.2 % to 14.1 % (large). For sentences no setting beat the default by more than the
-seed-to-seed noise, so they keep it. The duration noise keeps its default everywhere (0.4 gave 27.8 % against 26.4 %
-on 56 words).
+seed-to-seed noise, so they keep it. The duration noise keeps its default everywhere (0.4 gave 27.8 % against 26.4 % on
+56 words).
 
-**Slow takes** (keys ending in `.slow`) are said at 0.8 of the speaking rate: 5.0 vowels a second against 5.9. Single
-words are not slowed: at 0.8 their CER rose from 26.4 % to 37.0 % (56 takes).
+**Slow takes** (keys ending in `.slow`) are the normal take of the same line said again, **with its seed, its cut and
+its pitch**, at a lower speaking rate. The model draws the length of every sound from noise, and that noise is larger
+than a rate of 0.8: when each slow take had a seed of its own, 7 of 46 came out less than 10 % longer than the normal
+take and 3 of them shorter (the verification). The same seed draws the same lengths, so every sound of the slow take is
+as long as in the normal take or longer. How much longer depends on rounding: the model rounds each length up to whole
+frames of 16 ms, so 0.8 of the rate gives 1.1 to 1.25 times the length. The rate therefore goes from 0.8 to 0.74 to 0.68
+until what is said, from the first sound to the last by the model's alignment, takes 1.15 times as long as in the normal
+take. The length of the clip is a poor measure of that: the trim cuts the silence before a first p, t or k and the dying
+away of the last sound as it finds them, and a slow take whose sounds were 16 % longer came out 4 % longer as a clip. In
+the fix round's run the 47 slow takes take 1.15 to 1.34 times as long as their normal takes in what is said (median
+1.21): 36 at a rate of 0.8, 10 at 0.74, 1 at 0.68. They are heard less well than the normal takes of the same lines,
+18.1 % and 8.3 % against 14.3 % and 4.7 %: slowed speech is harder for the recognisers, and a slow take is no longer
+chosen among seeds as a normal take is (chosen among three seeds, the same lines' slow takes scored 15.8 % and 5.8 %,
+and were not all slower). Single words are not slowed: at 0.8 their CER rose from 26.4 % to 37.0 % (56 takes).
 
-**Seeds.** Each clip's seed is the CRC-32 of its key, so a rebuild gives the same audio: 568 word clips of the probe
-were said twice, an hour apart, and came out the same (no sample further apart than 0.0002 of full scale). With
-`--verify`, a clip that is not heard as written is said again with the next seed (three in all) and the best take is
-kept; a take heard as the other word of its sound pair counts as the worst. The seed used is in `tts-report.json`, and
-`--takes` says the same takes again without the recognisers (six clips made that way were the same files, byte for
-byte).
+**Takes and seeds.** Each clip's first seed is the CRC-32 of its key. With `--verify` a clip that is not heard as
+written is said again, up to three takes in all (for a line that opens with p, t, k or j: the other cut with the same
+seed, then the next seed), and the best take is kept; a take heard as the other word of its sound pair counts as the
+worst. Every take that was heard is in `tts-report.json`, and the seed and the cut of the one that was kept are in
+`takes.json`, also for a clip that a later run finds in the folder and does not say again. `--takes` says the same takes
+again without the recognisers: 131 clips of the final folder made again that way (every slow take, 26 run-in takes, the
+man's lines with their own pitch) came out the same files, byte for byte. On another machine, or with another thread
+count, the samples differ («How to make the clips again»).
 
 ## The voices
 
-The Guarani model is one man: median pitch 143 Hz (autocorrelation over the voiced frames of 164 probe clips; 104 to
-181 Hz between the 10th and the 90th percentile).
+The Guarani model is one man: median pitch 143 Hz on single words and 150 Hz on sentences (104 to 181 Hz between the
+10th and the 90th percentile of the voiced frames); the Spanish model 138 Hz.
 
 | Voice of the manifest | What it is | Median pitch |
 |---|---|---|
-| F, «mujer, voz principal» | the Guarani model as it is | 143 Hz (149 Hz on the sentences) |
-| M, «hombre» | the same, 2 semitones lower (ffmpeg's rubberband, formants kept) | 134 Hz: 1.9 semitones under F on the same sentences |
-| N, «narrador» | the Spanish model as it is | 139 Hz |
+| F, «mujer, voz principal» | the Guarani model as it is; in a dialogue with both voices, moved up by at most 2 semitones | 138 Hz on words cut after a pause, 105 Hz on words run in, 151 Hz on lines |
+| M, «hombre» | the same, 2 to 3 semitones lower (ffmpeg's rubberband, formants held) | 128 Hz on lines |
+| N, «narrador» | the Spanish model as it is | 138 Hz |
 
-**F is not a woman's voice**, and the two speakers of a dialogue are two semitones apart, no more. That is what the
-measurements leave. The same 73 words and 19 sentences, shifted with rubberband ("moved": the formants move with the
-pitch, a smaller or a larger speaker; "kept": rubberband holds them):
+**F is not a woman's voice.** That is what the measurements leave. The same 73 words and 19 sentences, shifted with
+rubberband ("moved": the formants move with the pitch, a smaller or a larger speaker; "held": rubberband is asked to
+hold them):
 
 | Shift | Words: independent, large | Sentences: independent, large |
 |---|---|---|
 | none | 16.8 %, 13.9 % | 15.4 %, 6.4 % |
 | +3 semitones, moved | 19.9 %, 22.4 % | 15.8 %, 7.0 % |
-| +3, kept | 22.7 %, 31.2 % | 17.7 %, 6.4 % |
+| +3, held | 22.7 %, 31.2 % | 17.7 %, 6.4 % |
 | +2, moved | 19.6 %, 21.6 % | 14.6 %, 7.2 % |
-| +2, kept | 20.2 %, 22.4 % | 15.0 %, 6.8 % |
+| +2, held | 20.2 %, 22.4 % | 15.0 %, 6.8 % |
 | −2, moved | | 16.8 %, 6.8 % |
-| −2, kept (M) | | 15.8 %, 6.6 % |
+| −2, held (M) | | 15.8 %, 6.6 % |
 | −3, moved | | 20.7 %, 7.6 % |
-| −3, kept | | 19.7 %, 7.0 % |
+| −3, held | | 19.7 %, 7.0 % |
 
-Any shift upward costs single words 3 to 8 points: with the formants moved up, u comes back as o and y as e (*yvytu* →
-«yvyto», *ku'a* → «ko'a»). F says every word and every pair of the course, so F is not shifted. M says lines of
-dialogue only. Sentences bear 2 semitones down but not 3, and short lines bear them less well than long ones: on 16
-lines of one to four words, three seeds each, M's shift took the CER from 15.6 % to 18.4 % (independent) and from 7.8 %
-to 9.9 % (large). That is the price of telling the two speakers apart at all. A line the Spanish voice says for F or M
-is not shifted. A woman's voice needs another model, or a person.
+Any shift upward costs single words 3 to 8 points (the verification, on 90 words: none 12.0 % and 11.6 %; +3 held 18.6 %
+and 19.5 %; +3 moved 15.1 % and 16.0 %): with the formants moved up, u comes back as o and y as e (*yvytu* → «yvyto»,
+*ku'a* → «ko'a»). F says every word and every pair of the course, so no word of F is shifted. Sentences bear 2 semitones
+either way, and 3 down less well. "Formants held" is half true: with M's shift the pitch falls by 1.7 semitones (1.5 to
+2.4) and the spectral envelope still by 0.9, about half (the verification, six sentences). Nothing sounds like a sped-up
+tape: no word is shifted upward, and no line by more than 2 semitones.
+
+**Two speakers in a dialogue.** A fixed shift does not make two speakers. The model's own pitch wanders from line to
+line: in the verification's run the woman's lines had medians from 113 to 178 Hz and the man's, already shifted, from 98
+to 168 Hz, so in the 28 dialogues the app plays with both speakers the man's line was *higher* than the woman's line
+next to it in 6 of 41 neighbouring pairs and less than a semitone lower in 4 more: one exchange in four did not sound
+like two people. So a line of three words or more in a dialogue that has both voices is now placed: its median pitch is
+measured and the line is moved towards its voice's own pitch, F towards 150 Hz by 0 to 2 semitones upward, M towards 126
+Hz by 2 to 3 semitones downward; shorter lines keep the fixed shift (0 and −2), because a shift upward costs short lines
+most. In the fix round's run 11 of the woman's lines were moved up (6 of them by the full 2 semitones) and 14 of the
+man's 43 down by more than 2 (8 of them by the full 3). In the dialogues the woman's lines then have medians from 123 to
+198 Hz (median 154), the man's from 98 to 160 Hz (median 132), and in the 47 neighbouring pairs of a woman's and a man's
+line the woman's is 2.7 semitones higher (median): the man's is the higher one in 4 pairs, less than a semitone lower in
+3 more, 2 semitones or more lower in 31. Counted the same way on the clips of the verification's run, with the fixed
+shift (this count finds 44 pairs there, the verification's own found 41): higher in 6, less than a semitone lower in 5,
+2 semitones or more lower in 25. So one exchange in seven still does not sound like two people; it was one in four. The
+seven that remain are lines of two words, which are not placed, a line the Spanish voice says, and lines the model says
+very high: its questions with -pa («Mávapa ko mitã?» at 190 Hz) would need more than 3 semitones. Moving a line up costs
+nothing that shows: the 9 lines moved up that the verification's run also has, unmoved, score 16.7 % and 4.7 % here and
+16.3 % and 4.7 % there. They are hard lines either way (a name, «ha'e che sy»). A line the Spanish voice says for F or M
+is not shifted. A woman's voice, and a second speaker that is more than a pitch apart, need another model, or a person.
 
 ## What was measured, and with what
+
+Three rounds, all on 2026-11-10: the **first round** probed the voice and wrote the tool; an independent
+**verification** ran the tool on the whole manifest, measured each sound again with code of its own, confirmed part of
+the first round and refuted part (the puso, the r, the slow takes, the list of what must stay silent); the **fix round**
+changed the tool and this file accordingly and measured what the changes touch. Where a number below was refuted, it is
+gone; where two rounds measured the same thing, the larger sample is given.
 
 **The two recognisers.**
 
 - `ivangtorre/wav2vec2-xlsr-300m-guarani`, "independent" above: XLS-R 300M fine-tuned on the 293 Guarani training clips
-  of the AmericasNLP 2022 speech set (its card: short read sentences). Nothing of MMS is in it. On 40 held-out clips
-  of real speech from the same set it scores **8.6 % CER** here (0.2 % on clips it was trained on; its card gives
-  17.6 % on the competition's test set). It writes capitals and full stops, is weak on single words, and has habits of
-  its own: *tupa* is «supa» or «kupa», *porã* «morã», *po* «yo».
-- `facebook/mms-1b-all` with the Guarani adapter, "large" above: from the same project and the same kind of data as
-  the voice, so it flatters it. **6.1 % CER** on the same 40 clips of real speech. It prefers a word of its Bible to
-  what was said: *kesu* is «Jesús» in every take. The narrator's Spanish is judged by its Spanish adapter alone.
+  of the AmericasNLP 2022 speech set (its card: short read sentences). Nothing of MMS is in it. On the 93 held-out clips
+  of real speech of the same set it scores **11.0 % CER** here (9.0 % on the first 40 of them; 0.2 % on clips it was
+  trained on; its card gives 17.6 % on the competition's test set). It writes capitals and full stops, has g̃ among its
+  letters, is weak on single words, and has habits of its own: *tupa* is «supa» or «kupa», *porã* «morã», *po* «yo».
+- `facebook/mms-1b-all` with the Guarani adapter, "large" above: from the same project and the same kind of data as the
+  voice, so it flatters it. **6.5 % CER** on the same 93 clips of real speech. It prefers a word of its Bible to what
+  was said: *kesu* is «Jesús» or «Jesú» in every take. The narrator's Spanish is judged by its Spanish adapter alone.
 
-Both sides of every comparison are put in lower case, without punctuation, with one apostrophe, in NFC, g̃ as g. The
-CER is the edit distance over the length of the text that was said (the respelled text: «huan», not «Juan»).
+Both sides of every comparison are put in lower case, without punctuation, with one apostrophe, in NFC, and a g̃ that
+was heard is written the way the voice is given it (ag̃aite → agãite), so that it counts as right. Before the fix round
+the tilde of a heard g̃ was dropped, and for *ag̃aite* the tool kept the one take both recognisers heard as «agaite»
+over the take heard «ag̃aite». The CER is the edit distance over the length of the text that was said (the respelled
+text: «huan», not «Juan»). "With the right letters" means the same letters once acutes, tildes and spaces are set aside:
+the recognisers leave marks out of real speech too (the independent one writes the ó of real speech in 42 % of its 12
+places and the õ in 46 % of 13; the large one in 92 % and 62 %), so a missing mark is not a wrong letter. The puso is a
+letter, and a c that is not ch counts as the k the recognisers sometimes write the Spanish way («jacaru», «carai»).
 
-**The probe**: 189 clips, made by the tool's own code, in the scratch folder of the measuring session (not in the
-repository): the 145 words of every sound pair of A1 units 1 to 4 and of Hablar (64 pairs) and of each taught sound,
-15 sentences of the lessons, 4 slow takes, and the narrator's 25 Spanish lines. Each word was said with two seeds.
+What the recognisers do with real speech bounds what they can say about the voice: they write the puso in 83 % and 89 %
+of its 63 places in the 93 real clips, the h in 93 % and 98 % of 99, the r in 96 % and 98 % of 132, the ã in 82 % and 96
+% of 28. And a clip of one or two words of real speech is heard with wrong letters by both of them in 2 cases of 20: the
+rule that leaves short clips out by ear (below) would silence one real clip in ten.
 
-| Clips, as the tool writes them | Independent: CER, heard exactly | Large |
+**The whole manifest, with the tool as it is now** (the fix round; the manifest of 2026-11-10, 12:33: 736 rows, 502
+recordings, 492 of them said, the rest silent by rule; `--verify`, both recognisers):
+
+| Clips | Independent: CER, with the right letters | Large |
 |---|---|---|
-| 145 single words (F) | 17.2 %, 66 | 13.4 %, 80 |
-| the same words, another seed | 15.8 %, 68 | 14.4 %, 72 |
-| 15 sentences in F | 15.3 %, 2 | 6.5 %, 6 |
-| the same sentences in M | 17.4 %, 0 | 7.0 %, 6 |
-| 4 slow takes in F (in M) | 19.5 % (14.6 %) | 7.3 % (8.5 %) |
-| 25 narrator lines, Spanish adapter | | 2.3 %, 15 |
-| for comparison: 40 clips of real Guarani speech | 8.6 % | 6.1 % |
+| **The clips that stay, the take that was kept (best of up to three)** | | |
+| 179 single words | 6.0 %, 149 | 4.6 %, 168 |
+| 215 lines of two words or more | 10.2 %, 129 | 3.6 %, 168 |
+| of them the woman's 179 | 9.8 %, 118 | 3.2 %, 145 |
+| of them the man's 36, pitch 2 to 3 semitones down | 12.3 %, 11 | 5.5 %, 23 |
+| 46 slow takes | 18.1 %, 9 | 8.3 %, 22 |
+| 28 Spanish lines (the narrator, «Diez mil.», «Treinta.»), Spanish adapter | | 0.9 %, 23 |
+| **Everything the run said, the first take alone** | | |
+| 200 single words | 10.8 %, 130 | 9.7 %, 155 |
+| 219 lines of two words or more | 13.9 %, 98 | 6.0 %, 137 |
+| of them the woman's 183 | 13.7 %, 89 | 5.7 %, 117 |
+| of them the man's 36 | 14.6 %, 9 | 7.6 %, 20 |
+| 28 Spanish lines | | 2.9 %, 15 |
+| **Everything the run said, the take that was kept** | | |
+| 200 single words | 7.8 %, 154 | 6.1 %, 174 |
+| 219 lines of two words or more | 10.3 %, 130 | 3.7 %, 169 |
+| for comparison: 93 clips of real Guarani speech | 11.0 % | 6.5 % |
 
-Against the spelling on the screen instead of the text that was said (Juan, not huan), the 15 sentences score 17.2 %
-and 6.5 %.
+Of the clips said at the normal rate, 255 kept their first take, 127 the second and 64 the third. 56 of the 72 short
+lines that open with p, t, k or j kept a run-in take, and 10 longer lines kept one as their second take. The first take
+alone scores better on words than before the fixes (10.8 % and 9.7 %, against 12.0 % and 11.4 %): that is the run-in
+cut. The man's lines score 2.5 and 2.3 points worse than the woman's when the best take is kept, and 0.9 and 1.9 points
+worse when one take is: other lines, and a pitch moved 2 to 3 semitones down; the two cannot be told apart here (the
+same 15 sentences said by both voices in the first round: 15.3 % and 6.5 % in F, 17.4 % and 7.0 % in M). The clips that
+stay score better than everything that was said because the worst 24 were taken out: that is what the list of silent
+rows is for, and why the figures to quote for the voice itself are those of the first take.
 
-**Lengths, peaks, silences** of the same clips: single words 0.24 to 0.89 s (median 0.53), 4.5 vowels a second;
-sentences 1.43 to 3.75 s (median 2.54), 5.9 vowels a second, 9 pauses between sentences in 8 clips; the narrator's
-lines 0.41 to 6.42 s, 6.3 vowels a second. Peaks: median 0.82 of full scale for words, 0.91 for sentences, never over
-0.97. Silence before the first sound at most 90 ms and after the last at most 105 ms (measured 40 dB under the loudest
-part: a soft first consonant counts as silence here). `make-sound.mjs` then trims, levels and pads every clip.
+**The same, before the fixes** (the verification, on the manifest of 03:51 and its 487 clips): one take a clip, 212
+single words 12.0 % and 11.4 %, 258 lines 14.9 % and 6.6 %, the man's lines 14.2 % and 7.6 %, 27 Spanish lines 2.7 %;
+best of three takes, words 8.5 % and 6.7 %, lines 11.1 % and 4.2 %, Spanish 0.8 %. The verification's own CER function
+gave the same figures as the tool's on every set.
 
-**Distances.** For every pair, the two words were compared by MFCC with DTW (13 coefficients, 25 ms windows, the mean
-taken out), against the distance between two seeds of the same word:
+**The first round's probe**: 189 clips made by the tool's own code as it then was: the 145 words of every sound pair of
+A1 units 1 to 4 and of Hablar (64 pairs) and of each taught sound, 15 sentences of the lessons, 4 slow takes, and the
+narrator's 25 Spanish lines. 145 single words: 17.2 % and 13.4 % (another seed: 15.8 % and 14.4 %); 15 sentences in F:
+15.3 % and 6.5 %, in M: 17.4 % and 7.0 %; 25 narrator lines, Spanish adapter: 2.3 %.
 
-| What sets the pair apart | Pairs | Told apart by independent, large | Heard as one word by both | Distance against the seed distance: median (lowest) |
-|---|---|---|---|---|
-| a nasal vowel | 6 | 5, 2 | 1 (pyta / pytã) | ×1.57 (×1.33, téra / térã) |
-| the puso | 4 | 4, 4 | 0 | ×1.80 (×1.51, mbo'y / mboy) |
-| y against i | 2 | 2, 2 | 0 | ×2.08 (×1.78) |
-| y against u | 4 | 4, 4 | 0 | ×2.56 (×2.30) |
-| two different words, to compare | 48 | 48, 48 | 0 | ×3.17 (×2.15) |
+**Distances.** For every pair of the probe the two words were compared by MFCC with DTW (13 coefficients, 25 ms windows,
+the mean taken out), against the distance between two seeds of the same word:
 
-"Told apart" means the two transcriptions differ, not that each is right: both words of a pair are heard exactly in 13
-(independent) and 14 (large) of the 48 pairs of different words.
+| What sets the pair apart | Pairs | Distance against the seed distance: median (lowest) |
+|---|---|---|
+| a nasal vowel | 6 | ×1.57 (×1.33, téra / térã) |
+| the puso | 4 | ×1.80 (×1.51, mbo'y / mboy) |
+| y against i | 2 | ×2.08 (×1.78) |
+| y against u | 4 | ×2.56 (×2.30) |
+| two different words, to compare | 48 | ×3.17 (×2.15) |
 
-**The acoustic study**: measures on the stretch of each letter, from the model's alignment, six or ten seeds a word
-(about 2,500 utterances; no recogniser). Its numbers are under each sound below.
+A distance says that two clips differ, not that they differ in the right way: the nasal pairs differ by pitch, and mbo'y
+/ mboy, the closest puso pair, is the one the recognisers do not tell apart (below).
 
-**Pictures**: waveform and spectrogram, with the letters where the model puts them, were drawn for 24 pairs; 12 of
-them (the six kinds of pair above, the nasal ones first) and some twenty single words were looked at one by one. What
-they show is said under each sound.
+**The acoustic measures**: on the stretch of each letter, from the model's alignment, five to thirty seeds a word, no
+recogniser: the level and its falls, the share of the stretch that is voiced, the noise above 2.5 kHz, formants,
+harmonics (A1−P0 for nasality), the number of closures (taps against trills), lengths. The first round made about 2,500
+utterances; the verification measured again with code of its own. Their numbers are under each sound below.
 
-**The whole path.** `make-tts.py` was run on 40 keys of the manifest with `--verify` (3 minutes on four shared CPUs)
-and `make-sound.mjs` on its folder: 7 sound files and the index, 80 keys registered (40 recordings, 35 that share one,
-4 dialogues put together with their cues, the test tone), none of the silent keys among them, every clip marked
-synthetic with the model and the licence in the file's header. The 35 Guarani clips, taken back out of the files as
-the MP3s the app plays, score 8.2 % and 6.2 %, as the WAVs did (7.9 % and 6.2 %). With three seeds to choose from, the
-40 clips score 6.8 % (words) and 8.2 % (sentences) on the independent recogniser, 10.2 % and 4.9 % on the large one;
-15 of the 40 clips took a second or third take.
+**Pictures**: waveform and spectrogram, with the letters where the model puts them: 24 pairs in the first round, the
+verification's own of each sound it doubted (ita / yta, yvytu / yvyty, pyta / pytã, tupa / Tupã, pytu / pytũ, mbo'y,
+ka'i, ru, jagua, kesu, a slow take), and in the fix round the two cuts of *kesu*, *kamby*, *jagua* and *pira* and, from
+the final folder, *ka'i*, *kái*, *mbo'y* and *mboy*, the kept takes of *kesu*, *kamby*, *jagua* and *aju*, and a line
+with its slow take. What they show is said under each sound.
+
+**The whole path.** `make-sound.mjs` was run on the final folder with `--out` in the scratch folder, so nothing was
+written to `project/` or `docs/`: 7 sound files and the index; 518 clips made (468 recordings, 49 dialogues and
+listening items put together with their cues, the test tone) and every other key of the folder's manifest registered as
+a clip that shares one (671 keys in all, none missing, none that the manifest does not have, no silent key); every voice
+clip marked `synthetic`, with the model and CC BY-NC 4.0 in each file's header and in the index; 5.2 MB of MP3. Taken
+back out of the files: 24 kHz mono; 90 ms of air before the first sound (75 to 130) and 160 ms after; loudness median
+−17.2 LUFS, from −24.2 to −16.2, 72 % within 2 LU of the −16 target, the shortest words the quietest (*py*, *po*, *jaha*
+at −22 to −24); 9 clips over −1.5 dBTP, the highest −0.7; the stated `ms` is 61 ms longer than the decoded clip. The
+last three are for the owner of `make-sound.mjs`. The verification measured the MP3s against the WAVs on its own run: 34
+Guarani clips taken back out of the files scored 12.4 % and 4.9 %, and 12.2 % and 4.9 % as WAVs.
 
 ## Each sound the course teaches
 
+The numbers are the verification's unless a line says otherwise: its own measures on the model's alignment, five to
+thirty seeds a word, and what the two recognisers wrote for each letter over the whole manifest ("places": every
+occurrence of the letter in the 460 Guarani clips of its run, independent recogniser first), with the same count on 93
+clips of real speech beside it where it matters. The fix round's own figures are marked.
+
 | Sound | Rendered? | In short |
 |---|---|---|
-| The six oral vowels, with the y | **yes** | y has its own place between i and u, and every y pair is told apart |
-| The nasal vowels ã ẽ ĩ õ ũ ỹ | **partly** | different from the oral vowel, but by pitch; not shown to be nasal; ã is never heard as nasal in pytã and térã |
-| The puso | **yes** | a fall of 17 dB between the vowels in single words, 48 dB in a sentence; none without the puso |
-| g̃ | **partly** | no such letter; written the old way, the g and its vowel differ from a plain g's in every take |
-| j | **yes**, one word to watch | voiced, never the jota in the course's 27 words; *jasy* came back «hasy» |
-| h | **yes** | 72 ms of breath between vowels; heta, ha, hendu heard right |
-| The soft r, also at the start; rr | **yes** for r, **partly** for rr | one tap in 35 takes of 36; rr is longer, a trill in under half the takes |
+| The six oral vowels, with the y | **yes** | y has its own place between i and u, and every y pair is told apart both ways |
+| The nasal vowels ã ẽ ĩ õ ũ ỹ | **partly** | different from the oral vowel, but by pitch; ĩ is heard, ũ often, ã and õ are not |
+| The puso | **partly** | a clean gap after a, e and i; after o, u and y a creak that both recognisers take for an h in some words |
+| g̃ | **partly** | no such letter in the model; given as a nasal vowel after g, the independent recogniser writes g̃ for it |
+| j | **partly** | voiced between vowels and, run in, at the start of a word; before u it is a stop (*aju* «adu»); *jasy* starts like an h |
+| h | **yes** | 75 ms of breath; heard as h in 92 % and 96 % of 252 places |
+| The soft r | **yes** inside a word, **no** opening a word said alone | a tap inside (95 % and 97 % of 328 places); a hum before the vowel at the start (*ru* heard with r in 1 hearing of 18) |
+| rr (loans) | **no** | one long tap, never a trill: two closures in 0 takes of 15, where the Spanish voice has two or more in 25 of 25 |
 | mb, nd, ng, nt as one sound | **yes** | a nasal hum and a stop in one syllable, no vowel before it |
-| ch | **yes**, as «sh» | noise without a closure, lower than s |
-| v | **partly** | voiced and soft, not a b; lip or teeth cannot be told |
-| Stress: the last vowel unless an acute says otherwise | **partly** | the acute lengthens its vowel and the recognisers write it; the final stress of an unmarked word shows in nothing measured |
+| ch | **yes**, as «sh» or ch | noise lower than s; whether it is «sh» or the Spanish ch a machine cannot tell, and the lesson accepts both |
+| v | **yes**, with a reserve | voiced and soft, not a b; lip or teeth cannot be told; a hum before it when it opens a word |
+| k | **partly** | a closure and a burst when run in; before e it is weak (*okẽ*, *aike*) |
+| ñ | **yes**, one word aside | heard in 91 % and 96 % of 46 places; *ñúme* comes back «ndume», «nume» |
+| The u that always sounds (ku, gu before a vowel) | **yes** | four pairs told apart both ways |
+| Stress: the last vowel unless an acute says otherwise | **partly** | the acute moves length only, and not in every word (*óga*); the final stress of an unmarked word shows in nothing measured |
 | Nasal harmony | **cannot tell** | the spelling carries it and the voice says what is written |
 
-**The y.** F1 and F2 of y are 358 and 1,428 Hz: as high in the mouth as i (316, 2,320) and u (402, 684), and halfway
-between them from front to back, where the sixth vowel belongs (24 takes a vowel; a 731 and 1,290, e 446 and 1,957,
-o 517 and 771). All 6 pairs that differ by y against i or u are told apart by both recognisers; both words are heard
-exactly in the 2 y / i pairs by the large one and in 3 of the 4 y / u pairs by the independent one. On the pictures of
-ita / yta and yvytu / yvyty the second formant of y sits at 1,500 to 1,700 Hz, that of i at 2,400, that of u at 800. A
-last y sometimes comes back as e (*ky'a* → «kéi a»).
+**The y.** F1 and F2 of the last vowel, 30 takes a vowel in the same frames (pi, py, pu; hendi, hendy, hendu): i 318 and
+2,295 Hz, y 360 and 1,472, u 334 and 711. The y is as high in the mouth as i and u and halfway between them from front
+to back, where the sixth vowel belongs. With six seeds a word, ita / yta, sa'i / sa'y, yvytu / yvyty and hendu / hendy
+are told apart both ways by both recognisers, with no swap in 96 hearings; seven more y pairs likewise. The pictures of
+ita / yta and yvytu / yvyty show the second formant of y near 1,600 Hz, of i near 2,300, of u under 1,000.
 
-**The nasal vowels.** In single words the last vowel of the nasal word is apart from its oral twin's in every take of
-21 pairs out of 22 (40 mel bands, ten seeds a word; median 2.7 times the distance between seeds; hu / hũ in 85 % of
-takes). But what differs is the pitch: in the six pairs of the course the nasal vowel is 1.4 to 3.9 semitones higher.
-The formants do not move (pyta 792 and 1,250 Hz; pytã 787 and 1,287), and the pictures of pyta / pytã, tupa / Tupã and
-téra / térã show no nasal hum and no weakened first formant; téra and térã look alike. Inside a sentence the
-difference shrinks to 1.1 to 1.4 times the seed distance. The recognisers hear pytũ, okẽ, peteĩ and ñe'ẽ with their
-nasal vowel, porã and mokõi in half the hearings; pytã came back «pyta» from both in every take and setting tried, térã
-as «téra», akã as «haka», michĩ as «miche», tapỹi as «tapýi», Tupã as «tupa» from the large one. A learner asked to hear «el aire por la nariz» would be listening to pitch. So the pairs stay
-silent, and a native ear decides (first item of the list below).
+**The nasal vowels.** The nasal word differs from its oral twin, but what moves is the pitch: the nasal word's last
+vowel is 1.4 to 4.4 semitones higher in all nine twins measured. A1−P0, a standard sign of nasality (the first
+harmonic's peak against the nasal peak), falls 0 to 4.5 dB for a written ã and rises in *tupã* and *mitã*, where an a
+after m or n in the same voice falls 8 to 10 dB: the voice can make a nasal vowel, next to a nasal consonant, and does
+not make one for the tilde. The pictures of pyta / pytã, tupa / Tupã and pytu / pytũ show no nasal difference. By vowel:
+ĩ is heard (*petĩ* 17 hearings of 18, never for *peti*; *oĩ* 12 of 18), ũ often (*pytũ* 17 of 22), ã and õ are not:
+*pytã* 0 of 22, *tetã* 0 of 18, *akã* 1 of 18, *mokõ* 0 of 10; *Tupã*, *mitã* and *porã* are written nasal by the
+independent recogniser only, which also writes «mitã» for *mita*. *okẽ* is heard right in 0 hearings of 22 («otẽ»,
+«opẽ», «vote»): its k fails too. In words they know, the recognisers do write the tilde: over the clips that stay (the
+fix round's run), ã in 95 % and 92 % of its 39 places (real speech: 82 % and 96 % of 28), ẽ in 69 % and 85 % of 48, ĩ in
+77 % and 85 % of 26, õ in 32 % and 87 % of 31. It is in the pairs, where only the tilde tells two words apart, that they
+do not. A learner asked to hear «el aire por la nariz» would be listening to pitch. So the pairs that differ only by a
+nasal vowel stay silent, with *tetã* / *tetãme* and the word *okẽ*; a native ear decides (first item of the list below).
 
-**The puso.** The level falls between the two vowels by a median of 17 dB in single words (72 takes of 12 words; 10 dB
-or more in 92 % of them) and of 48 dB inside a sentence (every take); in the same words written without the puso it
-falls 1.5 dB, never 10. All 4 puso pairs are told apart by both recognisers. The pictures: in *ka'i* a silent gap of
-90 ms; in *mbo'y* 120 ms of creak, 15 to 20 dB down, which both recognisers write as h («mbohy»); *kái* and *mboy* run
-through without a break. The large recogniser writes the puso-less *mboy* as «mbo'y».
+**The puso.** Over 15 words, five seeds each, the level falls by a median of 20.5 dB at the puso, and by 10 dB or more
+in 91 % of takes; in the same words written without it, it falls 1.6 dB, never 10. *ka'i*, *sevo'i*, *po'i* and
+*mandi'o* have a silent gap of 30 to 50 ms, on the measure and on the pictures. Over the manifest the recognisers write
+the puso as often as for real speech (80 % and 91 % of 221 places, against 83 % and 89 % of 63). **After o, u and y
+there is no gap in some words**: *mbo'y* has 0 ms of silence, is voiced through three quarters of the stretch, looks
+like «mbohy» on the picture and is written «mbohy» in 9 and 8 takes of 11 (with its puso in 1 and 2). Its twin *mboy*
+comes back «mbovy» from the independent recogniser in 10 takes of 11 and «mbo'y» from the large one in 3: that pair is
+not told apart. The same h for the puso: *ro'y* and *avy'a* in 4 hearings of 10 each, *chero'y* and *chemandu'a* in the
+takes that were kept. *po'i* was heard «poi» twice in 11 by the large recogniser. So of the four puso pairs of the
+course three are told apart (ka'i / kái, sevo'i / sevói, po'i / poi), and mbo'y / mboy stays silent. In the fix round's
+run the recognisers write the puso in 85 % and 96 % of its 221 places in the clips that stay; *mbo'y* was «mbohy» for
+both again, *chero'y* «cherohy», *chemandu'a* «che manduha»; *avy'a* and *apu'ã* were heard with their puso by both.
 
-**g̃.** Written as the model's training text did, the g and the vowel after it are apart from those of the same word
-with a plain g and an oral vowel in every take of 6 words (the g: 1.9 to 3.3 times the seed distance), also where the
-nasal vowel comes two syllables later (oguahẽ): the nasality reaches back. The large recogniser writes a nasal
-consonant there («angãite», «ko'ana»); the independent one writes *hag̃ua* with its g̃ and wrote «ko'ág̃a» once. Whether that g is the nasal g the
-course describes or an ng, a machine cannot say.
+**g̃.** Given as a nasal vowel after a plain g (above), the g and its vowel are apart from those of the same word with a
+plain g and an oral vowel in every take of 6 words (the g: 1.9 to 3.3 times the distance between two seeds; the first
+round), also where the nasal vowel comes two syllables later (oguahẽ). The independent recogniser writes g̃ there in 14
+takes of 15 and in none of 15 for a plain g; the large one writes ng, n or gã in 9 of 15. Whether what it hears is the
+nasal g the course describes or an ng, a machine cannot say. In the fix round's run the independent recogniser writes g̃
+in 12 of the 14 recorded lines that have one («Ag̃aite», «Tereg̃uahẽ», «Ko'ág̃a», «Og̃uahẽpa»), and the large one hears
+«angaite» and «ko'ána».
 
-**j.** Between vowels it is voiced all through, without noise above 2.5 kHz (24 dB under the low band), with a fall of
-20 dB as for a stop in half the takes: a voiced sound of the palate, never the voiceless jota. The 27 words with j in
-the course's clips, said alone twice: the j is heard as j in 87 hearings of 108, as d, t or y in 20 (*aju* → «adu»,
-*roju* → «royu»), as h in 1. One word that is not a clip today, *jasy*, came back «hasy» from both recognisers in every
-take, and its picture shows a noisy, h-like start: the model knows the jota from the Bible's names, and *jasy* looks
-like one. `--verify` would flag it («heard as the other word of its pair») if the pair jasy / hasy returns.
+**j.** Between vowels it is voiced (80 to 88 % of the stretch) and without noise (the band above 2.5 kHz 24 dB under the
+low band): a voiced sound of the palate, never the Spanish jota. **Before u it comes out as a stop**: *aju* is «adu»
+from the large recogniser in 9 takes of 9 and «aju» from the independent one in 2 of 9; the j of *roju* is written j in
+2 hearings of 20. **At the start of a word said after a pause it is voiceless and noisy** (6 to 8 dB of noise under the
+low band, as for h; the picture of *jagua* shows 80 to 110 ms of weak noise before the vowel), though the recognisers
+still write j for *jagua* (8 of 10), *jaha* and *jakaru* (10 of 10). The run-in cut repairs that for the words that open
+a short clip (the fix round, five seeds a word): the j is voiced in 58 % of its stretch in *jagua* (12 % after a pause),
+67 % in *jakaru* (10 %), 100 % in *jaha* (50 %), 83 % in *jarýi* (21 %), 73 % in *jajotopáta* (12 %), and the picture of
+*jagua* shows a voiced closure and a release. Run in, five seeds: *jagua* is «jagua» 5 times of 5 for the independent
+recogniser and «yagua» 4 times of 5 for the large one, which is the lesson's «y de yo» in other letters; *jaha* 5 and 3
+of 5; *jarýi* 5 and 2 (the large one writes a vowel before it). Over the clips that stay the j is written j in 98 % and
+94 % of its 83 places, and in all 17 clips that open with it (88 % by each recogniser before the fix). *jasy* is
+voiceless either way (0 % and 0 %): after a pause it is heard «hasy» in 24 hearings of 24, run in «kasy» and «casy». The
+model knows the jota from the Bible's names, and *jasy* looks like one. It is not in the course's clips; it must stay
+out while this voice is in use. Whether a word-initial j sounds like the «y de yo» the lesson promises, a machine cannot
+say: *aju*, *jagua* and *Jaha!* are on the native speaker's list.
 
-**h.** Between vowels a stretch of 72 ms, 9 dB under the vowel, with breath noise (high band 14 dB under the low,
-against 25 for j and r): it sounds. *heta*, *ha*, *hasy*, *aha*, *hendu* are heard right by both recognisers; on the
-picture of *heta* the h is 100 ms of noise before the e. After a pause inside a line the independent recogniser loses
-it («ha nde» → «a nde»), one reason the tool makes no pause at a comma.
+**h.** About 75 ms, voiced in 18 % of the stretch, with breath noise 8 dB under the low band (24 dB for j): it sounds.
+Heard as h in 92 % and 96 % of 252 places (real speech: 93 % and 98 %) and in 46 of 46 clips that begin with it; *aha*,
+*ahendu*, *heta*, *hasy*, *ha*, *hendu*, *pyhare* 10 hearings of 10 each. *Héẽ* is the exception: the two vowels come
+out as one short «he» or «hé» in 9 of its 14 rows.
 
-**r and rr.** One fall of the level, 56 ms long, in 35 takes of 36, at the start of the word too (*ru*, *réra*, *roju*:
-44 to 60 ms): a tap, never a trill. rr is 2.7 times as long (152 ms) with two falls in 8 takes of 18: a short trill at
-times, a long tap at others. At the start of a single word the tap comes after a short voiced hum, which the
-recognisers write as a vowel or take for an l («yru», «lu»).
+**r and rr.** Inside a word the r is a tap, heard right in 95 % and 97 % of 328 places. **At the start of a word said
+alone it is a hum of about 50 ms before the vowel, not a tap** (the picture of *ru*; no fall of the level in *roju*,
+*roho* and 3 takes of 5 of *réra*): *ru* is heard with r in 1 hearing of 18 (nd, d or l otherwise), *roho* in 0 of 16,
+*réra* in 3 of 16; over the manifest the r that opens a clip is right in 62 % and 88 % of 16 clips. An r has no closure
+to cut in, so the run-in cut does not apply. **rr is never a trill**: by the verification's measure two closures in 0
+takes of 15 of *karréta*, *arro* and *vúrro*, where the Spanish voice's rr has two or more in 25 of 25; it is one tap,
+longer (128 to 184 ms). *arro* comes back «aro» from both recognisers. So in «La r, siempre suave» the words that play
+show neither of the lesson's two points, and its pairs stay silent.
 
-**mb, nd, ng, nt.** mb is twice as long as m (132 ms against 64) with a deeper fall (19 dB against 9), voiced all
-through; nt ends in a voiceless stop (a fall of 51 dB). At the start of a single word, mb and nd begin with 20 to 60 ms
-of nasal hum (the band from 1 to 4 kHz is 25 to 32 dB under the band below 500 Hz, as for a plain m or n; a written e
-before them gives 12 to 18) and then open: no vowel before them, one syllable. *mba'eve*, *ndaipóri*, *mbarakaja*,
-*ndaikuaái*, *mba'éichapa* are heard right by both recognisers. The model says a bare b or d the same way: «doce»
-comes back «ndose».
+**mb, nd, ng, nt.** The first 60 ms of *mba'e*, *mba'eve*, *mboy*, *ndahái* and *ndaipóri* are a nasal hum (the band
+from 1 to 4 kHz 25 to 31 dB under the band below 500 Hz), where *emba'e* and *endahái*, with a written e, give 14 to 18:
+no vowel before the stop, one syllable. mb is heard in 96 % and 99 % of 118 places, nd in 92 % and 94 % of 52, nt in 7
+of 7, ng in 5 and 6 of 8. A plain m before *a'e* is also heard mb (*ma'e* as «mba'e» in 7 hearings of 10): the
+recognisers' vocabulary, most likely. The model says a bare b or d the same way: «doce» comes back «ndose».
 
-**ch.** Noise without any closure before it (no near-silence in 24 takes; t, k and p have 52 to 80 ms of it), centred
-at 4.0 kHz against 5.0 kHz for s, 120 ms long: «sh», not the Spanish ch. *che* and *chipa* are heard right. Notes G1
-leave open which of the two the course wants; the voice has decided for «sh».
+**ch.** Voiceless noise of 94 to 184 ms centred at 3.7 to 4.5 kHz, against 4.4 to 5.7 kHz for s; heard as ch in 95 % and
+99 % of 144 places. The measure of a closure does not separate it from the Spanish voice's ch (neither shows one), so
+«sh rather than ch» can be neither confirmed nor refuted; notes G1 and the lesson accept both.
 
-**v.** Voiced all through, without noise (the high band 35 dB under the low), with a shallow fall (13 dB; p, t and k
-fall 47 to 54): a soft continuing sound, not a b. *vaka* is heard right by both. Whether the lip touches the teeth, as
-the course describes, a machine cannot tell.
+**v.** Voiced in 86 % of the stretch, without noise, as loud as the next vowel: a soft continuing sound, not a b. Heard
+as v in 96 % and 98 % of 54 places. At the start of a word said alone a hum comes before it, which other seeds write y,
+u, m or b (*vaka* clean in 2 hearings of 10; the take that was kept is heard right by both). Whether the lip touches the
+teeth, as the course describes, a machine cannot tell.
 
-**Stress.** The acute works. Inside a sentence the vowel with the acute is longer than the same vowel without it, by a
-median of 34 ms against the word's last vowel (13 words of 14; in a second frame 36 ms, 10 words of 10), and the
-recognisers write the accent where it is written and nowhere else (ána: 12 hearings of 12, none without). Its pitch is
-lower than the next vowel's, not higher (3.4 semitones lower than in the unmarked form): the rise comes after it. For a
-word without a mark, nothing measured shows the last vowel as the stressed one: in a sentence it is the longer one in
-4 words of 18, the louder in 7, the higher in 6. Alone, the last vowel of every word is long anyway.
+**k.** The lesson («La k», unit 4 day 5) plays *kesu*. After a pause the model opens neither *kesu* nor *kamby* with a
+k: written k in 1 hearing of 16 for *kesu* («hesu», «hechu», «Jesús») and in 2 of 16 for *kamby* («amby», «hamby»),
+noise on the picture where the closure and the burst should be. Run in (the fix round), the closure and the burst are
+there. Five seeds a word: *kesu* is «kesu» 5 times of 5 for the independent recogniser (the large one writes «Jesú»
+every time, its Bible again), *kamby* «kamby» 4 times of 5 for each, *ka'aru* 4 of 5, *karai*, *koty* and *kuña* 5 of 5
+(independent). Over the clips that stay the k is written k, or c, in 95 % and 95 % of its 224 places, and in 100 % and
+94 % of the 35 clips that open with it (89 % and 77 % before the fix). Before e the k stays weak inside a word too: in
+the verification's kept takes it is written k in 82 % and 71 % of 17 places (p, h, t, j otherwise: *aike* «aite», *okẽ*
+«otẽ»), against 90 to 100 % before a, o, u and y.
+
+**ñ.** Heard as ñ in 91 % and 96 % of 46 places. Before ú it fails: *ñúme* is «ndume» and «nume» in 6 hearings of 6.
+
+**The u that always sounds.** Four pairs of the verification's own (ku and gu before a vowel against k and g alone) are
+told apart both ways; *kuimba'e*, *ógagui* and *mitãnguéra* are heard with their u.
+
+**Stress.** Single words, five seeds: the acute moves length only. The last vowel loses 50 to 110 ms against the one
+before it in 13 twins of 15 (*koty* +230 ms, *kóty* +138), while level and pitch do not follow (1 dB or less; the
+Spanish voice moves the level by 4 to 14 dB in canto / cantó). Without a mark the last vowel is the longer one, but 1 to
+6 dB weaker and lower. The recognisers write the acute for *kotýpe* (10 hearings of 10; 0 for *kotype*), *akyhýje*,
+*túva* and *téra*, and never for *óga* (0 of 16 hearings, and «ora» from the large one in 6 takes of 8), *áke*, *kóty*,
+*jágua*, *karái*. The independent recogniser leaves an ó out of real speech in more than half of its places too (the
+large one in 1 of 12), so this is weak evidence; but nothing measured shows the accent of *óga*, and the pairs whose
+point it is stay silent.
 
 **Nasal harmony.** The course writes it (ña-, -me, n-) and the voice says what is written: *ñañe'ẽ*, *ógape* and
 *tetãme* are heard right by the large recogniser, *jakaru* as «jacaru». Whether the unmarked vowels beside ñ, m and n
-are nasal: the measure used went one way in three comparisons and the other way in two. No answer.
+are nasal: the first round's measure went one way in three comparisons and the other way in two. No answer.
+
+**Sounds the course does not teach, and the voice does not have:** f («Sofía» as «sosía»); l, written l in 31 % and 55 %
+of its 29 places in the clips that stay (n, nd, d otherwise), at the start of a word («Luis» as «ndúi»), between vowels
+(«Elena» as «edéna») and at the end («mil» as «mi»); ld, rl, tr and a bare d. They are in names and Spanish numbers only
+(«How the text is prepared»).
 
 ## What must stay without audio
 
-`sound/silent.json` holds the rule and `make-tts.py` obeys it: the rows are not said, and the manifest the tool writes
-next to its WAVs leaves them out, so `make-sound.mjs` registers no clip for them and the screens keep their written
-stand-in.
+A voice that says a taught sound wrong is worse than silence, so three things keep a clip out. The rows that stay silent
+are not in the manifest the tool writes next to its WAVs, `make-sound.mjs` registers no clip for them, and the screens
+keep their written stand-in there, as they do today for everything.
 
-The rule today: **the two words of a sound pair that differ only by a nasal vowel.** In the manifest of 2026-11-10 that
-is 26 keys:
+**1. By rule: `sound/silent.json`.** These rows are never said, whatever a recogniser hears, because the measures above
+say the voice does not render what they teach. The file is read by `make-tts.py`; it holds contrasts, keys and texts,
+and the reason for each.
 
-- «Sonido y letra», unit 1 day 2, «Las vocales nasales», all four pairs: `a1u01d2.s0a` to `a1u01d2.s3b` (pytu / pytũ,
-  oke / okẽ, tupa / Tupã, pyta / pytã);
-- unit 1 day 5, all three pairs: `a1u01d5.s0a` to `a1u01d5.s2b` (okẽ / oke, porã / póra, téra / térã);
-- unit 1 day 6, the first pair: `a1u01d6.s0a`, `a1u01d6.s0b` (pyta / pytã);
-- unit 2 day 4, the first two pairs: `a1u02d4.s0a` to `a1u02d4.s1b` (tupa / Tupã, pytu / pytũ);
-- Hablar, the three pairs marked «nasal»: `p0.0`, `p0.1`, `p1.0`, `p1.1`, `p2.0`, `p2.1`.
+- **The two words of a sound pair that differ only by a nasal vowel** (`"contrasts": ["nasal"]`; decided from the two
+  texts, so it holds when the manifest is made again). Today 26 rows: «Las vocales nasales», unit 1 day 2, all four
+  pairs, `a1u01d2.s0a` to `a1u01d2.s3b` (pytu / pytũ, oke / okẽ, tupa / Tupã, pyta / pytã); unit 1 day 5, all three,
+  `a1u01d5.s0a` to `a1u01d5.s2b` (okẽ / oke, porã / póra, téra / térã); unit 1 day 6, the first, `a1u01d6.s0a`,
+  `a1u01d6.s0b`; unit 2 day 4, the first two, `a1u02d4.s0a` to `a1u02d4.s1b`; Hablar `p0.0` to `p2.1`.
+- ***mbo'y* / *mboy***, the first pair of «El puso» and a pair of Hablar: `a1u01d4.s0a`, `a1u01d4.s0b`, `p4.0`, `p4.1`.
+  The puso of *mbo'y* is a creak that both recognisers hear as h.
+- **«La r, siempre suave»**, unit 2 day 2, all three pairs, `a1u02d2.s0a` to `a1u02d2.s2b` (ru / vúrro, nde réra /
+  karréta, roju / arro), and its review pair in unit 2 day 6, `a1u02d6.s1a`, `a1u02d6.s1b`: the r that opens *ru* is a
+  hum, and rr is one long tap.
+- ***tetã* / *tetãme***, the fourth pair of «La tilde con sufijo», unit 2 day 3: `a1u02d3.s3a`, `a1u02d3.s3b`. The word
+  that plays, *tetã*, is heard «teta».
+- ***óga* / *ogakuéra***, the first pair of «El acento se mueve», unit 4 day 2, and its review pair in unit 4 day 6:
+  `a1u04d2.s0a`, `a1u04d2.s0b`, `a1u04d6.s1a`, `a1u04d6.s1b`. The accent of *óga* shows in nothing measured.
+- **Eight words, wherever they are a clip of their own** (`"texts"`): *okẽ* (`a1u01d5.w.oke`, and the two pair rows the
+  nasal rule holds already), *ñúme* (`a1u02d3.w.nume`, `a1u02d3.s2b`), *angirũ* (`a1u01d2.w.angiru`, `a1u01d5.w.angiru`,
+  `a1u04d4.w.angiru`, `a1u02d5.s1a`), *roju* (`a1u02d2.w.roju`), *roho* (`a1u02d2.w.roho`), *chero'y* (`a1u03d1.w.roy`,
+  `a1u03d1.s1b`), *chemandu'a* (`a1u03d2.w.chemandua`), *ñemuhára* (`a1u03d3.w.nemuhara`). Both recognisers hear each
+  with wrong letters in the best of three takes, in the verification's run and again in the fix round's, with other
+  takes.
+- **Four short clips, by key:** *Héẽ* as a scene word (`a1u01d6.w.hee`: one short vowel, «he»), «Ikatúpa aike?»
+  (`a1u01d6.w.ikatupa`: «aite»), «che irũ» (`a1u03d3.w.cheiru`: «chairũ»), «Aike mbo'ehaópe.» (`a1u03d5.p2.x3`:
+  «mbo'ehaúpe»). The same in both runs.
 
-The rule is by what the pair teaches, not by key, so it holds when the manifest is made again. A word that is silent
-as half of a pair is still said where it is a word of a scene (*mitã*, *okẽ*, *téra*): there it is a word said
-imperfectly and marked «voz sintética», not a lesson in telling two sounds apart.
+*kesu*, *kamby* and *peju* were on the verification's list. Run in, they are heard right (above) and are said again.
 
-Not silenced, and flawed: the lines with Sofía (heard «sosía»), with Nilda, Lucas and Luis (the l), and «Diez mil.»,
-said by the Spanish voice. To silence one, add its key or its text to `silent.json`.
+**2. By ear: what `--verify` leaves out by itself.** A Guarani clip of one or two words that a learner hears on its own
+(a scene word, a word of a pair, a short example, a word to write from dictation in Escribir) and whose best take both
+recognisers hear with wrong letters is left out, with the other word of its pair (a pair is one lesson; if the word left
+out is the one no screen plays, the other stays). The first round's tool had no such test: it only checked whether a
+pair word was heard as its partner, raised no flag in the verification's run, and 14 clips with wrong letters went
+through. The test errs towards silence: it would silence about one short clip in ten of real speech. In the run of
+2026-11-10 it left out:
+
+- the words the rule now names (*angirũ*, *okẽ*, *ñúme*, *roju*, *roho*, *chero'y*, *chemandu'a*, *ñemuhára*, *Héẽ*,
+  «Ikatúpa aike?», «che irũ», «Aike mbo'ehaópe.»), and *mbo'y*, *ru*, *vúrro* and *arro* of the pairs it names: 27 rows
+  with the other words of their pairs;
+- four rows no screen plays today, which only the run's own list holds: *irũ* (`a1u03d3.s1b`, heard «iiru», «iro») and
+  the unused words of three pairs whose other word is silent (`a1u02d3.s2a` ñu, `a1u02d5.s1b` mante, `a1u03d1.s1a`
+  ro'y).
+
+Not left out this time, though both recognisers heard them wrong in the verification's run: *kesu*, *kamby* and *peju*
+(run in), and «Mboýpa ovale?» (another take, which one recogniser hears right).
+
+The clips are in the folder's `left-out/` for a listener; `"keep"` in `silent.json` frees a key or a text once a person
+has heard it and found it right. A line of a dialogue is never left out this way: the dialogue needs it. The short lines
+both recognisers hear with wrong letters, which stay:
+
+- «Ha'e Argentina-gua.» (`a1u01d3.r1.l5` and its slow take: «ha'e ahentinagua»);
+- «Remba'apo.» and «Omba'apo.» (`a1u02d1.r1.l5`, `a1u02d1.r1.l7`: «reimba'apo», «ombaapo»);
+- «Nahániri, aha.» (`a1u02d5.r1.l5`: «nahániri'aha»);
+- «Héẽ, ndahái.» (`a1u02d5.r1.l7` and its slow take), «Héẽ, upéicha.» (`a1u03d4.p2.x1.l2`) and the slow take of «Héẽ,
+  oĩ.» (`a1u04d5.r1.l2.slow`): the *Héẽ* again;
+- the slow take of «Mboýpa ovale?» (`a1u04d5.r1.l3.slow`: «ovaye»).
+
+**3. Flagged, for a person to decide.** `--verify` lists the words of a sound pair with a mark (the puso, a nasal tilde,
+an acute) that no recogniser writes at all. The recognisers leave marks out of real speech too, so these are not left
+out by the tool: the ones whose lesson is that very mark are in `silent.json` (the pairs of *óga* / *ogakuéra* and
+*tetã* / *tetãme*), the others stay and are on the list below:
+
+- *kái*, which plays in `a1u01d4.s1b` and `a1u01d6.s2b` and in Hablar's `p5.1`: «kai» from both. The pair ka'i / kái is
+  told apart by its puso; what is not shown is the accent of *kái*.
+- *óga*, in three pairs where no screen plays it and in `a1u04d4.s2a` («La u siempre suena», óga / jagua), where it
+  plays but its accent is not the point: «oga» from both.
+
+**In all:** 65 of the manifest's 736 rows are silent: 26 by the nasal rule, 22 by key, 13 more by text and 4 by ear
+alone. 43 of the 65 are played by a screen today; the other 22 are the unused words of pairs. 468 of the 502 recordings
+are said, and all 49 dialogues and listening items are put together: none is dropped.
+
+A word that is silent as half of a pair is still said where it is a word of a scene (*mitã*, *téra*, *óga*), unless its
+text is named: there it is a word said imperfectly and marked «voz sintética», not a lesson in telling two sounds apart.
+
+**Not silenced, and flawed:** the lines with a name the voice cannot say (Luis, Lucas, Lucía, Luque: the l; Nilda,
+Carlos: ld, rl; Sofía: the f), «Diez mil.» in another man's voice, and the short lines of dialogues listed above. The
+verification checked the 16 listening items of the manifest: each stays answerable, the words that carry the answer
+being heard by at least one recogniser; 25 of the 130 listening lines (normal and slow) had wrong letters for both
+recognisers, most of them in a name. To silence a line, name its key in `silent.json`: the listening item it belongs to
+then goes silent as a whole.
+
+**What the screens say.** `make-sound.mjs` marks every one of these clips `synthetic`, with the model and the licence in
+each file's header and in the index. Of the screens, only the Words sound step, Spell and Hablar ask for a clip's kind
+and say «voz sintética»; Teach, Listening, Review, Placement and LevelExam play the same clips without the note, among
+them the placement's and the exam's listening items (`pl.1`, `pl.3`, `pl.5`, `a1x.4`, `a1x.5`). That is for the owner of
+the screens to decide: say it there too, or keep `pl.*` and `a1x.*` silent until recordings exist (two patterns in
+`silent.json`'s "keys" do it).
 
 ## What a native speaker should listen to first
 
-1. **Two nasal pairs, before anything else:** *pyta* / *pytã* and *oke* / *okẽ*. If the second word of each sounds
-   nasal to you, the rule in `silent.json` can go (run the tool with `--silent none` to hear them) and the nasal steps
-   get their audio. If it only sounds higher, the rule stays.
-2. **The puso words:** *ka'a*, *mbo'y*, *so'o*, *mba'e*. In *ka'i* the gap is clean; in *mbo'y* the voice creaks
-   through it, and the recognisers hear an h.
+The clips that stay silent are in the folder's `left-out/`, by key; the rest in the folder itself.
+
+1. **Two nasal pairs, before anything else:** *pyta* / *pytã* and *pytu* / *pytũ* (run the tool with `--silent none` and
+   a new folder to hear them). If the second word of each sounds nasal to you, the rule in `silent.json` can go and the
+   nasal steps get their audio. If it only sounds higher, the rule stays.
+2. **The puso:** *ka'i* and *sevo'i*, where the gap is clean, against *mbo'y*, *ro'y*, *chero'y*, *avy'a* and
+   *chemandu'a*, where the voice creaks through and the recognisers hear an h.
 3. **The y:** *yta*, *yvyty*, *sa'y*, *py*. The formants say it is the right vowel; an ear must agree.
-4. **The stress:** *óga* against *ogakuéra*, *koty* against *kotýpe*, and the names (Ana, Rosa, Ramona). The acute
-   makes its vowel longer and lower, with the rise after it. Is that where you hear the stress? And do *terere* and
-   *aguyje* sound stressed at the end?
-5. **g̃:** *ko'ág̃a*, *ag̃aite*, *og̃uahẽ*, Tereg̃uahẽ.
-6. **The start of single words:** *ru*, *réra*, *vaka*, *jagua*, *aju*, *ñu*, *po*, *kesu*. The voice starts with a
-   short hum before r, v and ñ, and the recognisers disagree on the first consonant of *po* and *kesu*.
-7. **The names and the Spanish:** Juan, Lucía, Sofía, Nilda, Luis; «Diez mil.» in the seller's line; «ochenta».
-8. **The two voices of a dialogue:** is M different enough from F?
-9. **ch:** is «sh» what the course wants?
+4. **The stress:** *óga* against *ogakuéra*, *koty* against *kotýpe*, *kái*, and the names (Ana, Rosa, Ramona). The
+   acute makes its vowel longer, no louder and no higher. Is that where you hear the stress? And do *terere*, *ajahu*
+   and *akyhyje* sound stressed at the end?
+5. **g̃:** *ko'ág̃a*, *ag̃aite*, *og̃uahẽ*, Tereg̃uahẽ: a nasal g, an ng, or a plain g?
+6. **The j:** *jagua* and *Jaha!* (run in: a voiced start), *aju* and *peju* (before u the recognisers hear a d). Does
+   it sound like the «y de yo»?
+7. **The k:** *kesu* and *kamby* (run in), *okẽ*, «Ikatúpa aike?»: is the k before e a k?
+8. **The r:** *ru*, *réra*, *roho*, *roju* at the start of a word; *karréta*, *arro*.
+9. **The start of other single words:** *vaka*, *ñu*, *ñúme*, *po*: a hum before v and ñ, and the independent recogniser
+   hears «yo» for *po*.
+10. ***Héẽ*:** one short vowel, or two?
+11. **Everything in `left-out/` that was left out by ear:** the recognisers are wrong about one short clip in ten of
+    real speech. What sounds right to you goes into `silent.json`'s "keep".
+12. **The names and the Spanish:** Juan, Lucía, Sofía, Nilda, Luis, Carlos; «Diez mil.» in the seller's line; «ochenta».
+13. **The two voices of a dialogue:** is M different enough from F?
+14. **ch:** «sh», or the Spanish ch?
 
 ## How to make the clips again
 
@@ -429,23 +724,37 @@ export HF_HUB_DISABLE_XET=1        # hosts: huggingface.co and us.aws.cdn.hf.co
 
 node tools/sound-list.mjs A1                             # the clip list
 python3 tools/make-tts.py --dry-run                      # what would be said; stops on anything it cannot say
-python3 tools/make-tts.py --out /tmp/voz --verify        # the clips, each heard back
+python3 tools/make-tts.py --out /tmp/voz --verify        # the clips, each heard back; leaves out what both recognisers hear wrong
 node tools/make-sound.mjs /tmp/voz --manifest /tmp/voz/manifest.json --kind synthetic
 ```
 
 - The two voices are 145 MB each. `--verify` needs the recognisers in the Hugging Face cache as well
   (`ivangtorre/wav2vec2-xlsr-300m-guarani`, 1.2 GB; `facebook/mms-1b-all` with `adapter.grn.safetensors` and
-  `adapter.spa.safetensors`, 3.9 GB, about 6 GB of memory with both loaded). Without it the tool says each clip once,
-  with its own seed, and writes no report.
-- Time: 40 clips took 3 minutes with `--verify` on four shared CPUs, so the 487 clips of A1 take about 40 minutes;
-  without it, about a second a clip.
-- `--takes /tmp/voz/tts-report.json` makes the same takes again without the recognisers.
-- `--only 'a1u01d1.*' p3.0` for a part; `--redo` to say again what is there; `--silent none` to say the silent pairs
-  too, for a listener.
-- The manifest to give `make-sound.mjs` is the one in the output folder, not `sound/A1/manifest.json`: it is the same
-  list without the silent rows.
+  `adapter.spa.safetensors`, 3.9 GB, about 6 GB of memory with both loaded).
+- **Ship only a folder made with `--verify`**, or with `--takes` from one. Without the recognisers the tool says each
+  clip once, leaves nothing out by ear, and says so.
+- Time: the 492 clips of A1 took 46 minutes with `--verify` on four shared CPUs (three takes at most a clip, two
+  recognisers); without the recognisers, about a second a clip.
+- The folder holds one WAV per key, `voices.json`, `manifest.json` (the list without the silent rows: the one to give
+  `make-sound.mjs`, not `sound/A1/manifest.json`), `takes.json` (the seed and the cut of every clip, and what was left
+  out), `tts-report.csv` and `tts-report.json` (what each recogniser heard, of every take), and `left-out/`, the clips
+  that stay silent, kept for a listener.
+- `--takes /tmp/voz/takes.json --out /tmp/voz2` says the same takes again without the recognisers and leaves the same
+  rows out (131 clips made that way from the final folder, every slow take among them, were the same files, byte for
+  byte). It stops, before the first clip, if a clip of the manifest has no take in the file. **The samples depend on the
+  machine**: with another thread count (1 instead of the tool's 3) the model's output differs in the sixth decimal, F
+  and N clips by one or two units of 32,768, and rubberband turns that into another waveform for M (the verification: 4
+  of 6 M clips differed, 3 of them transcribed differently). So ship the WAVs that were verified, or verify again;
+  `takes.json` records the library versions and the thread count.
+- After a change of `sound/silent.json`, run the tool again on the same folder without `--verify` and without `--redo`:
+  it says nothing anew, moves the clips that are now silent to `left-out/`, passes a recording a dialogue still needs to
+  the dialogue's own key, and writes the manifest again. After a change of the content, `--verify` on the same folder
+  says only the lines that are new or whose text changed.
+- `--only 'a1u01d1.*' p3.0` for a part; `--redo` to say again what is there; `--silent none` with a new folder to say
+  the silent pairs too, for a listener.
 - A new name, a Spanish word or a new character in the content stops the run until `sound/respell.json` has it.
 
-The scripts, logs, pictures and clips of the measurements are in the scratch folder of the session that made them
-(`…/scratchpad/voice`: `SETUP.md`, `scripts/`, `work/*.log`, `probe/`, `pics/`, `sample/`, `sample-out/`), not in the
-repository.
+The scripts, logs, pictures and clips of the three rounds are in the scratch folder of the session that made them, not
+in the repository: `…/scratchpad/voice` (`SETUP.md`, `scripts/`, `work/`, `probe/`, `pics/`: the first round),
+`…/scratchpad/voice/verify` (the verification) and `…/scratchpad/voice/fix` (the fix round: `scripts/`, `logs/`,
+`pics/`, `out/full` the verified folder, `out/sound` what `make-sound.mjs` made of it).

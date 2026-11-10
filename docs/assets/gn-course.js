@@ -184,6 +184,80 @@
   C.plain = function (src) {
     return C.norm(src).replace(/\[([^|\]]*)\|[^\]]*\]/g, '$1').replace(/[{}_^]/g, '');
   };
+  /* A Spanish line that quotes Guarani (a day's title, a sound focus): its pieces in order, [{ t, gn, es }], so a screen
+     that builds a line of its own around it can wrap the Guarani in lang="gn". Only what is surely Guarani is marked: a
+     word with a letter Spanish never writes (ã ẽ ĩ õ ũ ỹ, ý, g̃) or with a puso between two letters. A word that could
+     be either (óga, che) stays with the Spanish around it. */
+  var TILDE = String.fromCharCode(0x303), ACCENT = String.fromCharCode(0x301); /* the combining tilde (of g̃) and acute */
+  var LETTER = '[A-Za-záéíóúýüñÁÉÍÓÚÝÜÑãẽĩõũỹÃẼĨÕŨỸ' + TILDE + ACCENT + ']';
+  var WORD = new RegExp(LETTER + '+(?:\'' + LETTER + '+)*', 'g');
+  var GN_ONLY = new RegExp('[ãẽĩõũỹÃẼĨÕŨỸýÝ]|[gG]' + TILDE + '|\'');
+  C.mixed = function (src) {
+    var t = C.plain(src);
+    var out = [];
+    var at = 0;
+    function push(text, gn) {
+      if (!text) return;
+      var last = out[out.length - 1];
+      var before = out[out.length - 2];
+      /* two Guarani words with only a space between them are one piece (ã ẽ ĩ) */
+      if (gn && last && before && before.gn && /^\s+$/.test(last.t)) { out.pop(); before.t += last.t + text; }
+      else if (last && last.gn === gn) last.t += text;
+      else out.push({ t: text, gn: gn, es: !gn });
+    }
+    t.replace(WORD, function (w, k) {
+      if (!GN_ONLY.test(w)) return w;
+      push(t.slice(at, k), false);
+      push(w, true);
+      at = k + w.length;
+      return w;
+    });
+    push(t.slice(at), false);
+    return out;
+  };
+
+  /* ---------- how wide a text sets ----------
+     The width of a text in ems, from the two typefaces' own advance widths at their heavy weights (in hundredths of an
+     em: Andika 700 for Guarani, Nunito 800 for the interface when ui is true). A screen asks before it draws: does this
+     word fit its button, at this size? If not it steps the size down or stacks the options, and the word stays whole
+     (Compare's and Drill's options, the sound pairs, the words question, the week path's labels, Teach's button). A mark
+     over a letter adds no width (ã as a, g̃ as g); kerning is left out; the lighter weights set a little narrower, so for
+     them the figure errs on the safe side. */
+  var EMS = [{
+    a: [61, 59, 50, 62, 54, 39, 58, 60, 31, 33, 56, 31, 86, 61, 57, 60, 59, 49, 51, 43, 61, 54, 77, 58, 54, 52],
+    A: [73, 68, 68, 73, 59, 59, 72, 74, 51, 50, 70, 55, 91, 75, 73, 62, 75, 67, 61, 62, 73, 72, 104, 67, 67, 61],
+    n: 61,
+    o: { ' ': 27, "'": 31, '-': 44, '.': 35, ',': 32, ':': 35, ';': 35, '!': 38, '¡': 38, '?': 53, '¿': 53, '(': 42, ')': 42, '«': 64, '»': 64, '·': 37, '…': 81, '/': 53, '–': 54, '—': 87, '"': 53, '+': 59, '=': 59, '~': 54, '→': 100 }
+  }, {
+    a: [56, 61, 48, 61, 55, 38, 62, 60, 27, 27, 56, 33, 89, 60, 59, 61, 61, 41, 49, 40, 59, 53, 86, 56, 53, 48],
+    A: [75, 70, 68, 77, 60, 57, 74, 78, 30, 37, 69, 57, 88, 75, 80, 66, 80, 70, 64, 63, 74, 73, 112, 68, 63, 62],
+    n: 60,
+    o: { ' ': 28, "'": 26, '-': 44, '.': 26, ',': 26, ':': 26, ';': 26, '!': 26, '¡': 26, '?': 47, '¿': 47, '(': 38, ')': 38, '«': 52, '»': 52, '·': 26, '…': 78, '/': 33, '–': 50, '—': 100, '"': 48, '+': 60, '=': 60, '~': 60 }
+  }];
+  C.ems = function (s, ui) {
+    var T = EMS[ui ? 1 : 0];
+    var t = C.norm(s);
+    if (t.normalize) t = t.normalize('NFD');
+    var w = 0;
+    for (var i = 0; i < t.length; i++) {
+      var c = t.charCodeAt(i);
+      if (c >= 0x300 && c <= 0x36f) continue;
+      if (c >= 97 && c <= 122) w += T.a[c - 97];
+      else if (c >= 65 && c <= 90) w += T.A[c - 65];
+      else if (c >= 48 && c <= 57) w += T.n;
+      else w += T.o[t[i]] != null ? T.o[t[i]] : 60;
+    }
+    return w / 100;
+  };
+  /* the widest word of a text, in ems: what must fit on one line for no word to be broken. A hyphen inside a word is a
+     place a line may turn (Argentina-gua); one that leads a suffix (-kuéra) stays with it */
+  C.wordEms = function (s, ui) {
+    var m = 0;
+    C.plain(s).split(/\s+/).forEach(function (w) {
+      w.replace(/([^-])-(?=[^-])/g, '$1- ').split(' ').forEach(function (p) { m = Math.max(m, C.ems(p, ui)); });
+    });
+    return m;
+  };
 
   /* ---------- the course ---------- */
   C.units = function () { return data().units || []; };
@@ -417,13 +491,16 @@
     (Array.isArray(add) ? add : [add]).forEach(function (w) { var t = C.norm(w); if (t && out.indexOf(t) < 0) out.push(t); });
     return out;
   };
-  /* the session a screen works on: the one picked on the week path, else the next one due */
+  /* the session a screen works on: the one picked on the week path, else the next one due. With nothing written left to
+     do (every written week whole), it is the last day written, never the first: the path then stays on the last week
+     done, and a lesson screen opened from Progreso still has a day to show (a week test has none) */
   C.current = function (state, status) {
     var s = state.cur ? C.session(state.cur) : null;
     if (s && s.ready && C.levelOf(s.id) === LEVEL) return s.id;
     if (status.next) return status.next.id;
     var list = C.sessions().filter(function (x) { return x.ready; });
-    return list.length ? list[0].id : null;
+    var days = list.filter(function (x) { return x.kind !== 'test'; });
+    return days.length ? days[days.length - 1].id : list.length ? list[list.length - 1].id : null;
   };
   /* ---------- sound by unit ----------
      Each unit's clips are one file (gn-sound-a1-u03.js, made by tools/make-sound.mjs), fetched next to gn-course.js when

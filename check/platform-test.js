@@ -4,6 +4,8 @@
 // the typefaces (served by the app itself, every Guarani letter in the app's own faces, never a fallback), each
 // screen's frame (390x844, nothing out of it, taps of 44x44 or more), no request leaving the app's address, the
 // licences, and the page's languages (lang="es", lang="gn" on the Guarani).
+// The screens are looked at fresh, with a learner part way through unit 1, and with a second learner in the last
+// written week (found from the course itself), whose longer words, titles and explanations unit 1 does not have.
 // Two kinds of small target are reported as warnings, not failures: words in running text that are as tall as their
 // line (44) and reached by a tap in the gap beside them (checked), and the keys of a keyboard's ten-key rows. The
 // course's own Spanish strings that quote Guarani (the content format has no markup for it yet) are reported apart
@@ -430,7 +432,8 @@ const LANG = (name) => {
   const C = window.gnCourse;
   if (!window.__contentStrings) {
     const all = [];
-    const visit = (v, d) => { if (typeof v === 'string') { all.push(v); if (C && C.plain) all.push(C.plain(v)); } else if (v && typeof v === 'object' && d < 12) Object.keys(v).forEach((k) => visit(v[k], d + 1)); };
+    /* down to an example's parts ([level].units[].days[].grammar.points[].examples[].parts[][], thirteen steps) */
+    const visit = (v, d) => { if (typeof v === 'string') { all.push(v); if (C && C.plain) all.push(C.plain(v)); } else if (v && typeof v === 'object' && d < 16) Object.keys(v).forEach((k) => visit(v[k], d + 1)); };
     visit(window.__gnCourses || {}, 0);
     visit(window.__gnExtra || {}, 0);
     window.__contentStrings = all;
@@ -1450,6 +1453,29 @@ async function fontsUsed(page, cdp, facts) {
     const usedAll = {};
     let rootBad = 0;
     const stateKey = async (scr) => scr + '|' + crypto.createHash('sha1').update((await stageText(page)) + (await page.evaluate(() => document.querySelectorAll('#gn-stage *').length))).digest('hex').slice(0, 12);
+    /* a second learner, further on: in the last written week (A1 unit 4 today), its first day done and its second open,
+       with a mistake of that week in the notebook. The first sample stands in unit 1, and unit 1 alone hid what the later
+       weeks' longer words, titles and explanations do to the screens */
+    const far = await page.evaluate(() => {
+      const C = window.gnCourse;
+      C.setLevel('A1');
+      const ready = C.sessions().filter((s) => s.ready);
+      const n = ready.reduce((m, s) => Math.max(m, s.unit), 0);
+      const it = n > 1 ? C.day(C.sid(n, 1)).grammar.drill.map((x) => (typeof x === 'string' ? C.item(x) : x)).filter((x) => x && x.kind === 'choice')[0] : null;
+      return { n, days: ready.filter((s) => s.kind !== 'test' && s.unit < n).map((s) => s.id), tests: ready.filter((s) => s.kind === 'test' && s.unit < n).map((s) => s.id), d1: C.sid(n, 1), d2: C.sid(n, 2), src: it ? it.id : '', wrong: it ? C.plain(it.options[it.answer % it.options.length]) : '' };
+    });
+    let SAMPLE2 = null;
+    if (far.n > 1 && far.src) {
+      const done = {};
+      far.days.forEach((id) => { done[id] = FULL; });
+      done[far.d1] = FULL;
+      done[far.d2] = { g: 1 };
+      const tests = {};
+      far.tests.forEach((id) => { tests[id] = { id, score: 18, of: 20, used: 700, areas: { vocab: { right: 5, of: 5 }, grammar: { right: 8, of: 10 }, reading: { right: 3, of: 3 }, listening: { right: 2, of: 2 } }, at: Date.now() - 864e5 }; });
+      SAMPLE2 = { level: 'A1', plan: { start: day(-7 * (far.n - 1) - 1), target: day(60), pace: 'fit', minutes: 30 }, done, tests, m: [{ src: far.src, wrong: far.wrong, at: Date.now() - 864e5, step: 0, due: day(0) }], cur: far.d2, placement: SAMPLE.placement };
+      note(`a second learner for the screens: in week ${far.n} (${far.d2} open, a mistake at ${far.src})`);
+    }
+    const FAR = SAMPLE2 ? 'in week ' + far.n : '';
     const look = async (scr, label) => {
       const key = await stateKey(scr);
       if (states.has(key)) return false;
@@ -1488,31 +1514,33 @@ async function fontsUsed(page, cdp, facts) {
     ok((await screenName(page)) === 'Install', 'the install page should open with ?install', await screenName(page));
     await look('Install', 'Install (Safari)');
     for (const scr of SCREENS) {
-      for (const [label, extra] of [['fresh', ''], ['part way', address(SAMPLE)]]) {
+      for (const [label, extra] of [['fresh', ''], ['part way', address(SAMPLE)]].concat(SAMPLE2 ? [[FAR, address(SAMPLE2)]] : [])) {
         await page.goto(L.base + '?gntest&screen=' + scr + extra);
         await ready(page, 250);
         const lg = await page.evaluate(LANG, scr);
         await look(scr, `${scr} (${label})`);
-        if (label === 'part way') ok(lg.gn > 0 || (await page.evaluate((s) => !/[ãẽĩõũỹ]|g̃/i.test(document.querySelector('#gn-stage .sc-host[data-sc-name="' + s + '"]').textContent), scr)), `${scr}: a screen that shows Guarani should mark it lang="gn"`, JSON.stringify(lg));
+        if (label !== 'fresh') ok(lg.gn > 0 || (await page.evaluate((s) => !/[ãẽĩõũỹ]|g̃/i.test(document.querySelector('#gn-stage .sc-host[data-sc-name="' + s + '"]').textContent), scr)), `${scr}: a screen that shows Guarani should mark it lang="gn"`, JSON.stringify(lg));
       }
     }
-    /* one tap deeper: each control of each screen (part way), once, and what it leads to */
+    /* one tap deeper: each control of each screen (part way, then in the later week), once, and what it leads to */
     let crawled = 0;
     if (CRAWL > 0) {
       const t0 = Date.now();
-      for (const scr of SCREENS) {
-        const url = L.base + '?gntest&screen=' + scr + address(SAMPLE);
-        await page.goto(url);
-        await ready(page, 200);
-        const controls = await page.evaluate(CONTROLS, CRAWL);
-        for (const c of controls) {
+      for (const [tag, sample] of [['', SAMPLE]].concat(SAMPLE2 ? [[' (' + FAR + ')', SAMPLE2]] : [])) {
+        for (const scr of SCREENS) {
+          const url = L.base + '?gntest&screen=' + scr + address(sample);
           await page.goto(url);
-          await ready(page, 150);
-          try { await page.locator('#gn-stage button, #gn-stage a').nth(c.i).click({ timeout: 2500 }); } catch (e) { continue; }
-          await page.waitForTimeout(450);
-          const now = await screenName(page);
-          if (!now) continue;
-          if (await look(now, `${scr} → "${c.label}"${now !== scr ? ' (now ' + now + ')' : ''}`)) crawled += 1;
+          await ready(page, 200);
+          const controls = await page.evaluate(CONTROLS, CRAWL);
+          for (const c of controls) {
+            await page.goto(url);
+            await ready(page, 150);
+            try { await page.locator('#gn-stage button, #gn-stage a').nth(c.i).click({ timeout: 2500 }); } catch (e) { continue; }
+            await page.waitForTimeout(450);
+            const now = await screenName(page);
+            if (!now) continue;
+            if (await look(now, `${scr}${tag} → "${c.label}"${now !== scr ? ' (now ' + now + ')' : ''}`)) crawled += 1;
+          }
         }
       }
       note(`crawl: ${crawled} more states in ${((Date.now() - t0) / 1000).toFixed(0)} s`);
@@ -1545,29 +1573,38 @@ async function fontsUsed(page, cdp, facts) {
     /* words in running text: the narrowest word to tap (Reading) or phrase to hold (Leer), reached by a finger put in
        the gap beside it, off any other word */
     {
+      /* the point is 4 px off the word (3 or 2 where the gap is tight), and nearer to it than to any other word: in a
+         gap of a few pixels between two words the app opens the nearer one, as it should, so such a gap proves nothing */
       const beside = (sel) => page.evaluate((sel) => {
         const all = [...document.querySelectorAll('#gn-stage ' + sel)].filter((b) => b.getBoundingClientRect().width > 0);
         all.sort((a, b) => a.getBoundingClientRect().width - b.getBoundingClientRect().width);
+        const far = (x, y, q) => Math.hypot(Math.max(q.left - x, 0, x - q.right), Math.max(q.top - y, 0, y - q.bottom));
         for (const b of all) {
           const r = b.getBoundingClientRect();
-          for (const x of [r.right + 4, r.left - 4]) {
-            const y = r.top + r.height / 2;
-            const at = document.elementFromPoint(x, y);
-            if (at && !at.closest(sel) && at.closest('[lang="gn"]')) return { x, y, i: all.indexOf(b), text: b.textContent.trim(), w: Math.round(r.width * 10) / 10, at: at.tagName.toLowerCase() };
+          const y = r.top + r.height / 2;
+          for (const d of [4, 3, 2]) {
+            for (const x of [r.right + d, r.left - d]) {
+              const at = document.elementFromPoint(x, y);
+              if (!at || at.closest(sel) || !at.closest('[lang="gn"]')) continue;
+              if (all.some((o) => o !== b && far(x, y, o.getBoundingClientRect()) <= d + 1)) continue;
+              return { x, y, i: all.indexOf(b), text: b.textContent.trim(), w: Math.round(r.width * 10) / 10, at: at.tagName.toLowerCase(), off: d };
+            }
           }
         }
         return null;
       }, sel);
-      await page.goto(L.base + '?gntest&screen=Reading' + address(SAMPLE));
-      await ready(page, 250);
-      const rd = await beside('button[data-w]');
-      if (!rd) ok(false, 'Reading: a short word with a gap beside it should be found for the gap check');
-      else {
-        await page.touchscreen.tap(rd.x, rd.y);
-        await page.waitForTimeout(400);
-        const open = await page.evaluate((i) => { const b = [...document.querySelectorAll('#gn-stage button[data-w]')].filter((x) => x.getBoundingClientRect().width > 0); b.sort((p, q) => p.getBoundingClientRect().width - q.getBoundingClientRect().width); return b[i] && b[i].getAttribute('aria-pressed'); }, rd.i);
-        ok(open === 'true', `Reading: a tap in the gap beside "${rd.text}" (${rd.w} px wide) should open it`, JSON.stringify(rd));
-        if (open === 'true') pass(`Reading: a tap in the gap beside "${rd.text}" (${rd.w} px wide) opens its meaning`);
+      for (const [tag, sample] of [['', SAMPLE]].concat(SAMPLE2 ? [[' (' + FAR + ')', SAMPLE2]] : [])) {
+        await page.goto(L.base + '?gntest&screen=Reading' + address(sample));
+        await ready(page, 250);
+        const rd = await beside('button[data-w]');
+        if (!rd) ok(false, `Reading${tag}: a short word with a gap beside it should be found for the gap check`);
+        else {
+          await page.touchscreen.tap(rd.x, rd.y);
+          await page.waitForTimeout(400);
+          const open = await page.evaluate((i) => { const b = [...document.querySelectorAll('#gn-stage button[data-w]')].filter((x) => x.getBoundingClientRect().width > 0); b.sort((p, q) => p.getBoundingClientRect().width - q.getBoundingClientRect().width); return b[i] && b[i].getAttribute('aria-pressed'); }, rd.i);
+          ok(open === 'true', `Reading${tag}: a tap in the gap beside "${rd.text}" (${rd.w} px wide) should open it`, JSON.stringify(rd));
+          if (open === 'true') pass(`Reading${tag}: a tap in the gap beside "${rd.text}" (${rd.w} px wide) opens its meaning`);
+        }
       }
       await page.goto(L.base + '?gntest&screen=Leer');
       await ready(page, 250);

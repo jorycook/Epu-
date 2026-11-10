@@ -80,7 +80,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <sc-if value="{{ c2.noTile }}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B02A63" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></sc-if>
 </div>
 <div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; padding-right: {{ c2.room }}">
-<div style="font-size: 12px; font-weight: 700; color: #5A6382; line-height: 1.4">{{ c2.line }}</div>
+<div style="font-size: 12px; font-weight: 700; color: #5A6382; line-height: 1.4">{{ c2.line }}<sc-for list="{{ c2.focus }}" as="f" hint-placeholder-count="1"><sc-if value="{{ f.gn }}" hint-placeholder-val="{{ false }}"><span lang="gn">{{ f.t }}</span></sc-if><sc-if value="{{ f.es }}" hint-placeholder-val="{{ true }}">{{ f.t }}</sc-if></sc-for></div>
 <div style="font-size: 16px; font-weight: 800; overflow-wrap: anywhere; color: {{ c2.titleInk }}"><sc-if value="{{ c2.hasGn }}" hint-placeholder-val="{{ false }}"><span lang="gn">{{ c2.gn }}</span> · </sc-if>{{ c2.title }}</div>
 </div>
 <sc-if value="{{ c2.done }}" hint-placeholder-val="{{ false }}">
@@ -248,7 +248,10 @@ room: words && k >= 1 ? '30px' : '0px',
 hasTile: !!words,
 noTile: !words,
 tile: hard || "'",
-line: words ? 'Palabras · ' + words.words.length + (focus ? ' · Sonido y letra: ' + focus.charAt(0).toLowerCase() + focus.slice(1) : '') : 'Palabras',
+line: words ? 'Palabras · ' + words.words.length + (focus ? ' · Sonido y letra: ' : '') : 'Palabras',
+/* the day's sound focus is Spanish that often quotes Guarani (la tilde con sufijo: ógape, kotýpe): its pieces, so the
+   words that can only be Guarani carry lang="gn" */
+focus: words && focus ? C.mixed(focus.charAt(0).toLowerCase() + focus.slice(1)) : [],
 hasGn: !!(words && words.gn),
 gn: words && words.gn ? C.plain(words.gn) : '',
 title: words ? C.plain(words.es || '') : 'En preparación',

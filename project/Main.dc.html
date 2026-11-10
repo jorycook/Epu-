@@ -119,8 +119,11 @@ const SPOTS = [
 { x: 150, y: 408, lx: 224, ly: 412, tilt: '0deg' },
 ];
 const POINTS = ['64,34', '104,98', '132,162', '104,250', '64,326', '110,386', '180,438'];
-/* a day's title may take two lines where the path leaves room under it; nodes 5 and 6 have the next node right below */
-const LINES = [2, 2, 2, 2, 1, 1, 2];
+/* a day's title may take two lines where the path leaves room under it. Node 6 has the test node right below: one
+   line. Node 5 has node 6 below it: a title of one line stays where Yaoki's table puts it, and one that needs two
+   is lifted 18 px (LIFT), to stand beside its own node and end above node 6, so it is never cut short */
+const LINES = [2, 2, 2, 2, 2, 1, 2];
+const LIFT = [0, 0, 0, 0, 18, 0, 0];
 /* the callout sits at x 150 and must end above the week-test node (x 150 to 210, from y 408) */
 const CARD_FLOOR = 404;
 /* rough text widths (Nunito 800): enough to size the callout and the labels it would cover */
@@ -162,7 +165,9 @@ const big = isNow && s.kind !== 'test';
 const test = s.kind === 'test';
 const title = test ? 'Prueba de la semana' : C.plain(s.title || '');
 const lw = 366 - spot.lx;
-const lines = fits(title, 8, lw, LINES[k]);
+/* how many lines the title takes at 14 px (the engine knows how wide the interface face sets it) */
+const lines = Math.max(1, Math.min(LINES[k], Math.ceil((C.ems(title, true) * 14) / (lw - 2))));
+const ly = spot.ly - (lines > 1 ? LIFT[k] : 0);
 const due = s.date && s.date <= today;
 return {
 isDone: done && !test,
@@ -179,7 +184,8 @@ x: (big ? spot.x - 8 : spot.x) + 'px',
 y: (big ? spot.y - 8 : spot.y) + 'px',
 tilt: spot.tilt,
 lx: spot.lx + 'px',
-ly: spot.ly + 'px',
+ly: ly + 'px',
+labelTop: ly,
 lw: lw + 'px',
 lines,
 labelH: 15 + 18 * lines + (test && s.ready ? 15 : 0),
@@ -248,7 +254,7 @@ const top = Math.max(0, Math.min(CARD_FLOOR - card.h, SPOTS[at].y - 26));
 card.top = top + 'px';
 /* labels the callout would cover are left out, and so is the label of the node it speaks for */
 nodes.forEach((n, k) => {
-const ly = SPOTS[k].ly;
+const ly = n.labelTop;
 if (k === cardAt || (ly + n.labelH > top && ly < top + card.h)) n.showLabel = false;
 });
 const slots = sessions.map((s, k) => {

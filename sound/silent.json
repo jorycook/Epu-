@@ -1,9 +1,29 @@
 {
- "about": "Which clips the synthetic voice must not say (tools/make-tts.py reads this; the measurements are in sound/VOICE.md). The rows named here are not synthesised and are left out of the manifest the tool writes next to its WAVs, so tools/make-sound.mjs registers no clip for them and the screens keep their written stand-in there. 'contrasts': the two words of a sound pair (keys …s<n>a and …s<n>b of «Sonido y letra», p<n>.0 and p<n>.1 of Hablar) when the only thing that sets them apart is this: 'nasal' (a tilde on a vowel), 'puso', 'y-i', 'y-u', 'stress'. 'keys': clip keys or patterns (a1u01d2.s*). 'texts': a text that is never said, in any place. A word that is silent as half of a pair is still said where it is a word of a scene. Delete an entry once a native speaker has heard the clips and found them right.",
+ "about": "Which clips the synthetic voice must not say (tools/make-tts.py reads this; the measurements are in sound/VOICE.md, «What must stay without audio»). The rows named here are not synthesised and are left out of the manifest the tool writes next to its WAVs, so tools/make-sound.mjs registers no clip for them and the screens keep their written stand-in there. 'contrasts': the two words of a sound pair (keys …s<n>a and …s<n>b of «Sonido y letra», p<n>.0 and p<n>.1 of Hablar) when the only thing that sets them apart is this: 'nasal' (a tilde on a vowel), 'puso', 'y-i', 'y-u', 'stress'. 'keys': clip keys or patterns (a1u01d2.s*). 'texts': a text that is never said, in any place. 'keep': keys, patterns or texts that --verify must not leave out by itself, once a person has heard the clip and found it right. Besides these rules, --verify leaves out by itself every clip of one or two words that a learner hears on its own and that both recognisers hear with wrong letters: the list of a run is in its takes.json and tts-report.json, and the clips are in its folder left-out/. What is named here failed in two runs with different takes, or by a measure no take can pass. A word that is silent as half of a pair is still said where it is a word of a scene, unless its text is named. Delete an entry once a native speaker has heard the clips and found them right.",
  "contrasts": ["nasal"],
+ "keys": [
+  "a1u01d4.s0?", "p4.?",
+  "a1u02d2.s*", "a1u02d6.s1?",
+  "a1u02d3.s3?",
+  "a1u04d2.s0?", "a1u04d6.s1?",
+  "a1u01d6.w.hee",
+  "a1u01d6.w.ikatupa",
+  "a1u03d3.w.cheiru",
+  "a1u03d5.p2.x3"
+ ],
+ "texts": ["okẽ", "ñúme", "angirũ", "roju", "roho", "chero'y", "chemandu'a", "ñemuhára"],
+ "keep": [],
  "why": {
-  "nasal": "The voice says ã ẽ ĩ õ ũ ỹ differently from a e i o u y (the vowel's spectrum is apart from its oral twin's in every take of 21 pairs out of 22), but what the pictures show is a higher pitch and brighter upper formants, not a nasal murmur or a weakened first formant, and neither recogniser ever hears the ã of pytã or térã as nasal (pyta/pytã and téra/térã come back as one word). A pair whose point is «el aire sale también por la nariz» would teach the learner to listen for the wrong thing."
- },
- "keys": [],
- "texts": []
+  "nasal": "The voice says ã ẽ ĩ õ ũ ỹ differently from a e i o u y, but by pitch: the nasal word's last vowel is 1.4 to 4.4 semitones higher in all nine twins measured, while A1−P0, a standard sign of nasality, falls 0 to 4.5 dB for a written ã, where an a after m or n in the same voice falls 8 to 10 dB. The recognisers hear ĩ (petĩ 17 hearings of 18) and often ũ (pytũ 17 of 22), not ã or õ (pytã 0 of 22, tetã 0 of 18, mokõ 0 of 10). A pair whose point is «el aire sale también por la nariz» would teach the learner to listen for the wrong thing. Today: unit 1 day 2 (four pairs), day 5 (three), day 6 (the first), unit 2 day 4 (the first two), Hablar p0 to p2: 26 rows.",
+  "a1u01d4.s0?, p4.?": "mbo'y / mboy, the first pair of «El puso» and a pair of Hablar: after o the puso of mbo'y has no gap (0 ms of silence, voiced through three quarters of the stretch) and both recognisers write «mbohy» (9 and 8 takes of 11 in the verification, and again in the fix round's run); mboy comes back «mbovy» or «mbo'y». The other puso pairs (ka'i / kái, sevo'i / sevói, po'i / poi) are told apart and stay.",
+  "a1u02d2.s*, a1u02d6.s1?": "«La r, siempre suave» (ru / vúrro, nde réra / karréta, roju / arro) and its review pair: the r that opens ru is a hum of about 50 ms before the vowel, not a tap (heard with r in 1 hearing of 18; «ndu», «du» again in the fix round), and rr is one long tap, never a trill (two closures in 0 takes of 15, where the Spanish voice has two or more in 25 of 25; arro is heard «aro»). The words that play show neither of the lesson's two points.",
+  "a1u02d3.s3?": "tetã / tetãme, the fourth pair of «La tilde con sufijo»: the word that plays, tetã, is heard «teta» by both recognisers in 9 takes of 9 in the verification (by one of the two in the fix round's run): the pair differs by more than a nasal vowel, so the 'nasal' rule does not reach it, but its point is the ã.",
+  "a1u04d2.s0?, a1u04d6.s1?": "óga / ogakuéra, the first pair of «El acento se mueve» and its review pair: the accent of óga, the word that plays, shows in nothing measured and is never written by a recogniser (0 of 16 hearings in the verification, «oga» from both again in the fix round; the large one wrote «ora» in 6 takes of 8).",
+  "a1u01d6.w.hee": "Héẽ as a scene word: the two vowels come out as one short one, «he» and «hé», in both runs (and in 9 of the 14 rows that hold the word). In the lines of dialogues it stays.",
+  "a1u01d6.w.ikatupa": "«Ikatúpa aike?» as a scene word: the k before e is heard t, «aite», by both recognisers in both runs.",
+  "a1u03d3.w.cheiru": "«che irũ» as a scene word: heard «chairũ» by both recognisers in both runs.",
+  "a1u03d5.p2.x3": "«Aike mbo'ehaópe.», a Teach example of two words: heard «mbo'eha upe» and «mbo'ehaúpe» in both runs.",
+  "texts": "Words that are a clip of their own (a scene word, a word written from dictation in Escribir, a word of a pair) and that both recognisers hear with wrong letters in the best of three takes, in two runs with different takes: okẽ («otẽ», «opẽ», «mopẽ»: right in 0 hearings of 22), ñúme («ndume», «nume»: 6 of 6), angirũ («angiro»: 0 of 10 with its ũ), roju («loi'u», «roiu»), roho («joho»: the r that opens it, 0 of 16), chero'y («cherohy»: the puso after o as h), chemandu'a («che manduha»: the puso after u as h), ñemuhára («ñemohára»). kesu, kamby and peju were on this list after the verification; said run in (tools/make-tts.py, «How a clip is said»), they are heard right by the independent recogniser in 5, 4 and 5 takes of 5 and are said again.",
+  "by": "the verification of 2026-11-10 and the fix round that followed it (sound/VOICE.md); the 'nasal' rule is the first round's."
+ }
 }
