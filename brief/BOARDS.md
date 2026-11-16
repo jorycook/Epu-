@@ -91,10 +91,14 @@ sit on top of it where they meet):
   to the comeback mark (the up arrow in a teal ring) and "Opu'ã · Se levantó", the title is "¡Volviste!", the line
   offers something short ("Empezá con algo corto: 4 para repasar, 2 minutos."), the button is "Jehechajey · Repasar",
   and quiet buttons follow: "Repasar la semana 1" (after seven days or more: the last review day sealed) and "Seguir
-  con el día 5". With nothing due the button is the review day, or the day itself ("Lo que hiciste sigue acá."). In the
+  con el día 5" ("Seguir: semana 2, día 1" when the week on show is whole and the day is in the next one). With nothing
+  due the button is the review day, or the day itself ("Lo que hiciste sigue acá."). In the
   unit card Kaguare takes the rising pose that day, before and after the first thing done (`app.days.back`).
 - Where the written path ends (the card with no button: the week whole, the next day or week not written): a kicker
-  "MIENTRAS TANTO" and four tiles, Cuaderno (with "3 para hoy") · Emoñe'ẽ Leer · Ehai Escribir · Eñe'ẽ Hablar. On a day
+  "MIENTRAS TANTO" and four tiles, Cuaderno (with "3 para hoy") · Emoñe'ẽ Leer · Ehai Escribir · Eñe'ẽ Hablar. A mini
+  exam that is open and not taken yet (`gnCourse.minis`: the week test it waits for is done, no result at its id) is
+  named first, above the kicker: a gold tile, 44 px, the stopwatch, "Mini examen 1" over "20 preguntas · 20 min", →
+  the Examen tab. On a day
   of return this card too opens with the comeback mark and "¡Volviste!". A practice section opened here, or from a
   sealed day's "¿Un rato más?", closes to the screen that opened it (the engine's `go` keeps the door; the three boards
   still ask for Progreso, which is where the canvas alone takes them).
@@ -131,7 +135,9 @@ plan or past its date, an accent-tint row: "Epu'ã ha eñepyrũjey" over "Levant
 "Rearmar mi plan" (→ the goal screen at step 3; GoalPlan on the canvas); "Por área" card: bars for Palabras, Gramática, Lectura, Escucha (right/of summed from
 the week tests' `tests[*].areas`; a mini exam asks their questions again and is left out), a 60 % target tick on each, an area under the line in red with a chip; empty state
 before the first week test ("Después de tu primera prueba de la semana vas a ver acá cómo te va en cada área."); "Próximo
-paso" card linking to the weakest area (red CTA "Practicar"); the exposure log (G6 §6, G3 "Lo usé"): "Esta semana usé el
+paso" card linking to the weakest area (red CTA "Practicar"), else to the next session, else, with no day left to do,
+to a mini exam that is open and not taken yet ("Sigue: Mini examen 1 · 20 preguntas, 20 min", "Abrir" → the Examen
+tab); the exposure log (G6 §6, G3 "Lo usé"): "Esta semana usé el
 guaraní con alguien" toggle chips (familia · trabajo · calle · WhatsApp), self-reported, never checked; footnote "Es una
 guía, calculada con tus pruebas de la semana." Designed moment: show the empty state? No: show a sample with week-test
 areas from a1u01t (vocab 5/6, grammar 6/8, reading 3/3, listening 1/3 under the line) so the bars and the red chip are designed.
@@ -308,7 +314,8 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
 - Hablar: no speech recognition (phones do not recognise Guarani): judge 1 "Escuchá y elegí" (a clip plays, two or three
   falling things carry the word and its minimal-pair partners, tap the right one) and judge 3 "Repetí y compará" (record, then
   Modelo / Vos strips and "¿Sonó igual?" Igual · Casi · Otra vez). The canvas grants no microphone: a "Simular toma" button
-  cycles the states. Pairs: only verified ones (`window.__gnExtra.speaking.pairs`).
+  cycles the states. Pairs: only verified ones (`window.__gnExtra.speaking.pairs`). The status line is drawn in pieces
+  (`C.mixed`): a hint that names a Guarani letter («la tilde nasal (ã)») carries it in `lang="gn"`.
 
 ## Row 8 · y 8988 · "Kaguare: mascot, icon and the ñandutí rule"
 

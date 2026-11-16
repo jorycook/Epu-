@@ -22,8 +22,9 @@
 //      written path ends; the first mini exam, from the tab to its result.
 //   S  the app around the screens: an Android phone's way in (the install page, the browser's own question); the system's
 //      back (it does what the screen's own X or arrow does, and leaves from the week path); the page's title, the focus
-//      on a new screen's heading, a sheet that keeps the focus, zoom; a paste taken back, Safari's week; the screens
-//      that load after the first ones, slow or missing.
+//      on a new screen's heading, a sheet that keeps the focus, zoom; a paste taken back, Safari's week (and its
+//      «Qué hacer», the install page again); the screens that load after the first ones, slow or missing, and the
+//      unit's sound waiting for them.
 //   E  every one of the 21 screens reached, with no page error, no console error and nothing blank.
 // usage: node check/flows-test.js [site folder]      (default: ../docs, the built site as it is; about 7 minutes)
 //   ONLY=A,B,C,D,F,G,H runs some parts (E reports on what ran); PORT=8795 picks the port (default: any free one).
@@ -1573,6 +1574,15 @@ async function partI(browser) {
     await ctx.close();
   }
   {
+    /* back with the week on show whole (its test was the last thing done) and the next day in the week after: the
+       button to go on says which week, since «el día 1» would read as a day of the week on show */
+    const { ctx, page } = await learner('back, the week whole', { plan: { start: iso(-20), target: null, pace: 'fit', minutes: 30 }, done: days(1, 6), tests: { a1u01t: result('a1u01t') }, cur: 'a1u01t', seen: [iso(-12), iso(-11), iso(-10)] });
+    check(await has(page, '¡Volviste!') && await has(page, 'Semana 1 de') && await has(page, 'Seguir: semana 2, día 1') && !(await has(page, 'Seguir con el día 1')), 'back on a week that is whole: the way on names the next week and its day', (await text(page)).slice(0, 400));
+    await tap(page, 'Seguir: semana 2, día 1', 700);
+    check((await screenOf(page)) === 'Today' && await has(page, 'Semana 2 · Día 1'), 'and it opens that day', (await text(page)).slice(0, 120));
+    await ctx.close();
+  }
+  {
     /* a save from before the app kept the days: nothing is claimed, nobody is greeted back, and the record starts */
     const { ctx, page } = await learner('no days kept', { plan: { start: iso(-30), target: null, pace: 'fit', minutes: 30 }, done: days(1, 3) });
     const strip = await page.locator('#gn-stage [aria-label^="Tus últimos 7 días"]').getAttribute('aria-label');
@@ -1604,6 +1614,9 @@ async function partI(browser) {
     const links = await page.evaluate(() => [...document.querySelectorAll('#gn-stage [aria-labelledby="mientras-tanto"] a')].map((a) => a.getAttribute('href')));
     check(await has(page, 'MIENTRAS TANTO') && links.join() === 'Notebook.dc.html,Leer.dc.html,Escribir.dc.html,Hablar.dc.html', 'Main, with every written session done: the card leads to the notebook and to Leer, Escribir and Hablar', links);
     check(await has(page, '¡Volviste!') && await has(page, "Opu'ã · Se levantó") && (await page.locator('#gn-stage svg[aria-label^="Kaguare se levantó"]').count()) === 1, 'back after six days with no day left to do: the same greeting stands over those links', (await text(page)).slice(0, 400));
+    /* the mini exam of the weeks done is open and not taken: the card names it, above what there is to do meanwhile */
+    const miniRow = page.locator('#gn-stage a[href="ExamTab.dc.html"][aria-label^="Mini examen"]');
+    check(W.minis[0].ready && (await miniRow.count()) === 1 && (await miniRow.getAttribute('aria-label')) === 'Mini examen 1: 20 preguntas, 20 minutos. Abrir la pestaña Examen' && await has(page, '20 preguntas · 20 min'), 'Main, where the written path ends: the card names the mini exam that is open', await miniRow.count());
     await tap(page, { sel: '#gn-stage [aria-labelledby="mientras-tanto"] a[href="Leer.dc.html"]' }, 700);
     h = await look(page, 'Main → Leer', { expect: 'Leer' });
     check((await saved(page)).seen.join() === [iso(-6), iso(0)].join(), 'opening a practice section makes today a day with study', (await saved(page)).seen);
@@ -1631,7 +1644,11 @@ async function partI(browser) {
     part = 'I6 the first mini exam';
     const mini = W.minis[0];
     await go(page, '');
-    await toTab(page, 'Examen');
+    /* with no day left to do the mini exam is the next step: Progreso says so, and the week path's card leads to it */
+    await toTab(page, 'Progreso');
+    check(await has(page, 'Sigue: Mini examen 1 · 20 preguntas, 20 min') && (await page.locator('#gn-stage a[href="ExamTab.dc.html"]:has-text("Abrir")').count()) === 1, 'Progreso: with no day left to do, the next step is the mini exam', (await text(page)).slice(0, 500));
+    await toTab(page, 'Camino');
+    await tap(page, { sel: '#gn-stage a[href="ExamTab.dc.html"][aria-label^="Mini examen"]' }, 700);
     h = await look(page, 'ExamTab with the mini exam open', { expect: 'ExamTab', shot: 'I17-examtab-mini' });
     check(mini.ready && mini.items.length === 20 && await has(page, 'Mini examen 1') && await has(page, '20 preguntas de las semanas 1 a ' + mini.after + ' · 20 min') && (await page.locator('#gn-stage a[aria-label="Empezar el mini examen 1"]').count()) === 1, 'the Examen tab opens the first mini exam once its last week test is done', (await text(page)).slice(-500));
     await tap(page, { aria: 'Empezar el mini examen 1' }, 800);
@@ -1666,7 +1683,9 @@ async function partI(browser) {
     s = await saved(page);
     check(s.tests[mini.id] && s.tests[mini.id].score === 17 && Object.keys(s.tests).length === W.tests.length + 1, 'reopened: the mini exam\'s result is kept with the week tests', Object.keys(s.tests));
     check((await page.locator('#gn-stage a[aria-label^="Día 7, prueba de la semana, hecha"]').count()) === 1, 'reopened: the week path is as it was', await controls(page));
+    check((await page.locator('#gn-stage a[aria-label^="Mini examen"]').count()) === 0 && await has(page, 'MIENTRAS TANTO'), 'Main: once the mini exam is taken its row is gone, and the links stay', await controls(page));
     await toTab(page, 'Progreso');
+    check(!(await has(page, 'Sigue: Mini examen')) && await has(page, 'El próximo día se abre cuando esté escrito.'), 'Progreso: the mini exam taken, the next step waits for the next day to be written', (await text(page)).slice(0, 500));
     check(await has(page, 'Palabras') && (await page.locator('#gn-stage [aria-label^="Palabras: ' + 5 * W.tests.length + ' de ' + 6 * W.tests.length + '"]').count()) === 1, 'Progreso counts the week tests by area, not the mini exam (its questions are theirs)', await page.evaluate(() => [...document.querySelectorAll('#gn-stage [role="img"][aria-label^="Palabras"]')].map((e) => e.getAttribute('aria-label'))));
     await ctx.close();
   }
@@ -1872,8 +1891,20 @@ async function partS(browser) {
     /* a tab kept open: it chose the browser nine days ago and was last told eight days ago */
     await page.evaluate(([k, v]) => { localStorage.setItem(k, v); sessionStorage.setItem(k + '.browser', '1'); sessionStorage.setItem(k + '.told', String(Date.now() - 8 * 864e5)); }, [KEY, save]);
     await reload(page);
-    check((await screenOf(page)) === 'Main' && /Safari puede borrar tu progreso/.test(await noticeOf(page)) && /una semana sin abrir la página/.test(await noticeOf(page)), 'in a tab kept for more than a week, the week path says what Safari does and what to do about it', await noticeOf(page));
+    check((await screenOf(page)) === 'Main' && /Safari puede borrar tu progreso/.test(await noticeOf(page)) && /una semana sin abrir la página/.test(await noticeOf(page)) && /Qué hacer/.test(await noticeOf(page)), 'in a tab kept for more than a week, the week path says what Safari does and offers what to do about it', await noticeOf(page));
     await shot(page, 'S04-safari-week');
+    /* «Qué hacer» is the install page again: the steps to the Home Screen, and the code that takes this progress there */
+    await tap(page, 'Qué hacer', 600);
+    check((await screenOf(page)) === 'Install' && await has(page, 'Tocá Compartir') && await has(page, 'Copiar mi progreso') && (await page.title()) === "Epu'ã" && /^h1:Agregá/.test(await focusOf(page)), '«Qué hacer» opens the install page: its steps, the code to copy, its heading in focus', { on: await screenOf(page), title: await page.title(), focus: await focusOf(page), text: (await text(page)).slice(-260) });
+    await shot(page, 'S04b-safari-week-install');
+    await tap(page, 'Seguir en el navegador', 700);
+    check((await screenOf(page)) === 'Main' && !(await noticeOf(page)) && (await page.title()) === "Epu'ã · Camino de la semana" && (await saved(page)).done.a1u01d1.g === 3, 'Seguir en el navegador leads back to the week path, the progress as it was, and it is not said again', { on: await screenOf(page), notice: await noticeOf(page), title: await page.title() });
+    await reload(page);
+    check((await screenOf(page)) === 'Main' && !(await noticeOf(page)), 'nor after a reload, for a week', await noticeOf(page));
+    /* another week later it is said again; closed, it keeps quiet for a week too */
+    await page.evaluate((k) => sessionStorage.setItem(k + '.told', String(Date.now() - 8 * 864e5)), KEY);
+    await reload(page);
+    check(/Safari puede borrar tu progreso/.test(await noticeOf(page)), 'a week later it is said again', await noticeOf(page));
     await tap(page, { aria: 'Cerrar el aviso' }, 400);
     await reload(page);
     check((await screenOf(page)) === 'Main' && !(await noticeOf(page)), 'closed, it is not said again for a week', await noticeOf(page));
@@ -1898,10 +1929,16 @@ async function partS(browser) {
     let release = () => {};
     let asked = 0;
     await page.route('**/assets/screens-more.js', async (route) => { asked += 1; if (fail) return route.abort(); if (hold) await new Promise((r) => { release = r; }); return route.continue().catch(() => {}); });
+    /* the sound files the page asks for (a unit's is larger than all the later screens together) */
+    const sound = [];
+    page.on('request', (r) => { const m = /\/assets\/(gn-sound-[a-z0-9-]+\.js)/.exec(r.url()); if (m && !/gn-sound-index/.test(m[1])) sound.push(m[1]); });
     const start = JSON.stringify({ v: 1, started: true, level: 'A1', plan: { start: iso(-1), target: null, pace: 'fit', minutes: 30 } });
     await page.addInitScript(([k, v]) => { localStorage.setItem(k, v); }, [KEY, start]);
     await go(page, '');
     check((await screenOf(page)) === 'Main' && (await page.evaluate(() => window.gnApp.screens())) === 'coming', 'the week path is up and usable while the other screens are still on their way', await page.evaluate(() => window.gnApp.screens()));
+    /* where there is sound, the unit's file waits for the screens that play it */
+    const hasSound = await page.evaluate(() => (window.__gnSoundFiles || []).length > 0);
+    if (hasSound) check(sound.length === 0, 'the unit\'s sound waits for the screens that play it: no sound file is asked for before they are in', sound);
     await tap(page, { sel: '#gn-stage a[href="Today.dc.html"]:has-text("Empezar")' }, 500);
     check((await screenOf(page)) === 'Today', 'the day it leads to is in the first file: it opens at once', await screenOf(page));
     await tap(page, { aria: 'Volver al camino de la semana' }, 400);
@@ -1912,6 +1949,10 @@ async function partS(browser) {
     await page.waitForFunction(() => { const el = document.querySelector('#gn-stage .sc-host .sc-host'); return !!el && el.getAttribute('data-sc-name') === 'Progress'; }, null, { timeout: 8000 }).catch(() => {});
     await page.waitForTimeout(200);
     check((await screenOf(page)) === 'Progress' && /^h1:/.test(await focusOf(page)) && asked === 1, 'once the file is in, the screen shows, its heading in focus; the file was asked for once', { on: await screenOf(page), focus: await focusOf(page), asked });
+    if (hasSound) {
+      await page.waitForFunction(() => !!window.__gnClips && Object.keys(window.__gnClips).length > 0, null, { timeout: 8000 }).catch(() => {});
+      check(sound.length === 1 && /^gn-sound-a1-u01\.js$/.test(sound[0]), 'then the unit\'s sound file is asked for, once', sound);
+    }
     /* a visit on which the file cannot be fetched */
     fail = true;
     asked = 0;

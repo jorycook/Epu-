@@ -151,7 +151,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 220px; box-sizing: border-box; padding: 6px 12px 34px; background: rgba(255, 255, 255, 0.86); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-top: 2px solid #1B2440; border-radius: 24px 24px 0 0; box-shadow: 0 -6px 20px rgba(27, 36, 64, 0.14); display: flex; flex-direction: column">
 <p style="margin: 0; padding: 0 2px; height: 20px; display: flex; align-items: center; gap: 0 8px; overflow: hidden; font-size: 14px; font-weight: 700; line-height: 20px; color: #5A6382"><sc-if value="{{ dock.hasTag }}" hint-placeholder-val="{{ true }}"><span style="flex-shrink: 0; padding: 0 8px; border-radius: 10px; background: #FCE4EE; color: #B02A63; font-size: 11px; font-weight: 800; line-height: 18px; white-space: nowrap">{{ dock.tag }}</span></sc-if><span style="min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{ dock.say }}</span></p>
 <p style="margin: 0; padding: 0 2px; height: 22px; display: flex; align-items: center; gap: 6px; overflow: hidden; font-size: 14px; font-weight: 700; line-height: 22px; white-space: nowrap; color: {{ dock.heardColor }}"><sc-if value="{{ dock.heardOn }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0">{{ dock.heardLabel }}</span><span lang="gn" style="flex-shrink: 0; font-family: 'Andika', 'Nunito', sans-serif; font-size: 17px; font-weight: 700; color: {{ dock.heardGnColor }}">{{ dock.heardGn }}</span><span style="min-width: 0; overflow: hidden; text-overflow: ellipsis">{{ dock.heardEs }}</span></sc-if></p>
-<p role="status" aria-live="polite" style="margin: 0; padding: 0 2px; min-height: 16px; max-height: 32px; overflow: hidden; font-size: 13px; font-weight: 800; line-height: 16px; color: {{ dock.statusColor }}">{{ dock.status }}</p>
+<p role="status" aria-live="polite" style="margin: 0; padding: 0 2px; min-height: 16px; max-height: 32px; overflow: hidden; font-size: 13px; font-weight: 800; line-height: 16px; color: {{ dock.statusColor }}"><sc-for list="{{ dock.statusSegs }}" as="x" hint-placeholder-count="1"><span lang="{{ x.lang }}">{{ x.t }}</span></sc-for></p>
 <div style="margin-top: 2px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 10px">
 <button onClick="{{ sideL }}" aria-label="{{ dock.leftAria }}" aria-disabled="{{ dock.leftOff }}" style="justify-self: center; min-width: 64px; min-height: 56px; padding: 4px 8px; box-sizing: border-box; border-radius: 16px; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 11px; font-weight: 800; line-height: 1.15; border: {{ dock.leftBorder }}; background: {{ dock.leftBg }}; color: {{ dock.leftColor }}; box-shadow: {{ dock.leftShadow }}">
 <sc-if value="{{ dock.leftSlow }}" hint-placeholder-val="{{ true }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 15.5a7.5 6 0 0 1 15 0z"/><path d="M6 15.5v2.5M10 15.5v2.5M13 15.5v2.5M16.5 15.5v2.5"/><path d="M18.5 13.5h1.6a1.6 1.6 0 0 0 0-3.2h-1.2"/></svg></sc-if>
@@ -391,7 +391,9 @@ const outline = (inner, outer) => {
 const norm = (s) => { const C = window.gnCourse; if (C && C.norm) return C.norm(s); const t = String(s == null ? '' : s); return t.normalize ? t.normalize('NFC') : t; };
 const chars = (s) => { const C = window.gnCourse; return C && C.chars ? C.chars(s) : Array.from(norm(s)); };
 const plain = (s) => { const C = window.gnCourse; return C && C.plain ? C.plain(s) : norm(s); };
-const backText = (n) => (n <= 0 ? 'Vuelve en la próxima' : 'Vuelve después de ' + n + (n === 1 ? ' tarjeta' : ' tarjetas'));
+/* a Spanish line that names a Guarani letter (a pair's hint: «la tilde nasal (ã)»), in pieces, the Guarani marked for lang="gn" */
+const pieces = (s) => { const C = window.gnCourse; const list = s && C && C.mixed ? C.mixed(s) : []; return list.length ? list.map((m) => ({ t: m.t, lang: m.gn ? 'gn' : 'es' })) : [{ t: s || '', lang: 'es' }]; };
+const backText =(n) => (n <= 0 ? 'Vuelve en la próxima' : 'Vuelve después de ' + n + (n === 1 ? ' tarjeta' : ' tarjetas'));
 const secs = (ms) => (Math.round(ms / 100) / 10).toFixed(1).replace('.', ',') + ' s';
 /* a line shown on screen that names Kaguare, cut round the name: the template sets the name in a lang="gn" span (a
    Guarani name, as Goal writes it) between the Spanish before and after. The lines only a screen reader hears (say)
@@ -1689,7 +1691,7 @@ const stateLine = !r ? '' : pick
 const dock = {
 hasTag: !!tagC, tag: tagC ? tagC.tag : '', say,
 heardOn, heardLabel, heardGn, heardEs, heardColor, heardGnColor,
-status: s0 ? s0.es : '', statusColor: s0 ? s0.color : '#1B2440',
+status: s0 ? s0.es : '', statusSegs: pieces(s0 ? s0.es : ''), statusColor: s0 ? s0.color : '#1B2440',
 leftSlow: pick, leftModel: !pick,
 leftLines: pick ? [{ t: 'Más', lang: 'es' }, { t: 'despacio', lang: 'es' }] : [{ t: 'Ehendu', lang: 'gn' }, { t: 'Escuchar', lang: 'es' }],
 leftAria: pick ? 'Más despacio: todavía no está grabado' : mute ? 'Escuchar el modelo: todavía no está grabado, se muestra escrito (no cuenta como ayuda)' : 'Escuchar el modelo (cuenta como ayuda)',

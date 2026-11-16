@@ -105,6 +105,9 @@
    Android: when the browser has offered to install the app (gnApp.installState() is 'ready'), one button puts the
    browser's own question (gnApp.askInstall); until then, or when the offer never comes or was turned down, the steps of
    the browser's menu. There the installed app and the browser share what is saved, and the page says so.
+   A page opened inside another app (gnApp.inApp: a link tapped in Instagram, Facebook, TikTok): it cannot be installed
+   from there, and what it saves stays inside that app. On Android the steps start with «Abrí esta página en Chrome»;
+   on both systems the page says where the progress stays, and offers the code when there is progress to take along.
    On a short screen (an iPhone SE in Safari, with its bars) Kaguare and the gaps shrink so the page fits without
    scrolling: the page's height is the browser's (gn-app.js fits it), and it is measured again when that changes. */
 /* the page's height (in the design's pixels) from which the full layout fits, and the middle one, without and with
@@ -153,10 +156,12 @@ const device = kit.device;
 const browser = kit.browser || 'Safari';
 const refused = kit.refused();
 const droid = !!kit.android;
+/* opened inside another app: what is saved here stays there, and the page cannot be installed from it */
+const inApp = !!kit.inApp;
 /* Android: 'ready' (the browser's offer is in hand), 'done' (installed) or 'steps' (the browser's menu) */
 const offer = droid && kit.installState ? kit.installState() : 'steps';
 /* progress this browser already holds, to take to the app before it is installed (where the app keeps its own) */
-const has = !droid && !refused && !!(kit.hasProgress && kit.hasProgress());
+const has = (!droid || inApp) && !refused && !!(kit.hasProgress && kit.hasProgress());
 /* the full layout where it fits; a little tighter below that; on a short screen Kaguare at a little over half, tight
    gaps, the title on one line and a smaller button */
 const need = has ? FITS.move : FITS.plain;
@@ -172,18 +177,26 @@ else manual();
 manual();
 }
 };
-/* a small screen in the browser (an iPhone SE in Safari): the screens come out much smaller here than from the Home
-   Screen (gn-app.js fits them by Yaoki's rules), so the page says so, in lines no longer than the usual ones */
-const small = !!(kit.appScale && kit.appScale() < 0.8);
+/* a screen that the browser's bars make short (an iPhone SE or an iPhone 14 in Safari, a Galaxy A15 in Chrome): the
+   screens come out smaller here than from the Home Screen, at 0.69 to 0.83 of the design's size where the installed
+   app has it all (gn-app.js fits them by Yaoki's rules), so the page says so, in lines no longer than the usual ones */
+const small = !!(kit.appScale && kit.appScale() < 0.85);
 const moveText = s.copied === 'yes' ? 'Copiado. En la app, tocá «Pegá tu progreso».'
 : s.copied === 'manual' ? 'No se pudo copiar solo: mantené apretado el código y copialo.'
+: inApp ? '¿Ya avanzaste acá? Llevá tu progreso a la app.'
 : '¿Ya avanzaste en ' + browser + '? Llevá tu progreso a la app.';
-/* Android's rows: the app opened from its icon holds the same progress as this browser */
+/* Android's rows: the app opened from its icon holds the same progress as this browser (not so for a page opened
+   inside another app, which is told to start in the app) */
 const here = device === 'celular' ? 'en este celular' : 'en este dispositivo';
 const open = { a: 'Abrí ', app: true, b: ' desde su ícono', isIcon: true, text: refused
 ? 'Abrila una vez con internet. Después funciona también sin conexión.'
+: inApp ? 'Empezá ahí: lo que hagas acá no pasa a la app. Abrila una vez con internet; después funciona sin conexión.'
 : 'Tu progreso es el mismo de acá: se guarda ' + here + '. Abrila una vez con internet; después funciona sin conexión.' };
-const rows = offer === 'ready' ? [
+const rows = inApp && offer === 'steps' ? [
+{ a: 'Abrí esta página en Chrome', text: 'Ahora estás dentro de otra app. En su menú, tocá «Abrir en Chrome» o «Abrir en el navegador».', isMenu: true },
+{ a: 'Tocá «Instalar app»', text: 'Está en el menú de Chrome. También puede decir «Agregar a la pantalla principal».', isGet: true },
+open,
+] : offer === 'ready' ? [
 { a: 'Tocá Instalar, acá abajo', text: (device === 'celular' ? 'Tu celular' : 'Tu dispositivo') + ' te pide confirmar.', isDown: true },
 open,
 ] : offer === 'done' ? [
@@ -196,6 +209,7 @@ open,
 rows.forEach((r, i) => { r.n = i + 1; r.num = !r.ok; r.rule = i ? '2px solid #E9ECF4' : 'none'; });
 /* where the progress stays for whoever goes on in the browser */
 const stay = refused ? 'También podés seguir acá, en el navegador, pero sin guardar tu progreso.'
+: inApp ? (small ? 'También podés seguir acá, pero se ve más chica y tu progreso queda dentro de esta app.' : 'También podés seguir acá, pero tu progreso queda dentro de esta app: la app del ícono no lo ve.')
 : droid ? (small ? 'También podés seguir acá, pero se ve más chica. Tu progreso es el mismo.' : 'También podés seguir acá, en ' + browser + ': tu progreso es el mismo.')
 : browser === 'Safari' ? (small ? 'También podés seguir acá, pero se ve más chica, y Safari borra lo guardado de las páginas que no abrís por una semana.' : 'También podés seguir acá, pero Safari borra lo guardado de las páginas que no abrís por una semana, y la app del ícono no ve el progreso de acá.')
 : small ? 'También podés seguir acá, pero se ve más chica y tu progreso queda en ' + browser + ': la app del ícono no lo ve.' : 'También podés seguir acá, en el navegador, pero tu progreso queda en ' + browser + ': la app del ícono no lo ve.';

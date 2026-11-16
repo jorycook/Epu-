@@ -105,6 +105,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div lang="{{ card.lang }}" style="font-size: 16px; font-weight: 800; line-height: 1.25; overflow-wrap: anywhere; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden">{{ card.title }}</div>
 <div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.45">{{ card.note }}</div>
 <sc-if value="{{ card.hasFirst }}" hint-placeholder-val="{{ false }}"><a href="Levels.dc.html" onClick="{{ card.toFirst }}" style="margin-top: 6px; height: 44px; box-sizing: border-box; border-radius: 14px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; white-space: nowrap">{{ card.firstLabel }}</a></sc-if>
+<sc-if value="{{ card.hasMini }}" hint-placeholder-val="{{ false }}"><a href="ExamTab.dc.html" onClick="{{ toExamTab }}" aria-label="{{ card.miniAria }}" style="margin: 6px 0 3px; height: 44px; box-sizing: border-box; padding: 0 6px 0 9px; border-radius: 12px; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; background: #F2B43A; color: #1B2440; display: flex; align-items: center; gap: 7px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg><span style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.15"><span style="font-size: 13px; font-weight: 800; white-space: nowrap">{{ card.miniTitle }}</span><span style="font-size: 11px; font-weight: 700; white-space: nowrap">{{ card.miniLine }}</span></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M9 5l7 7-7 7"/></svg></a></sc-if>
 <sc-if value="{{ card.hasMeanwhile }}" hint-placeholder-val="{{ false }}">
 <div id="mientras-tanto" style="margin-top: 6px; font-size: 11px; font-weight: 800; color: #5A6382">MIENTRAS TANTO</div>
 <div role="group" aria-labelledby="mientras-tanto" style="margin-bottom: 3px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px 6px">
@@ -283,6 +284,11 @@ else go('Levels');
 };
 card = { open: false, shut: true, h: 53 + 20 * fits(title, 9, 192, 3) + 17 * fits(note, 6.4, 192, 3) + (elsewhere ? 50 : 0), title, lang: 'es', note, kicker: 'EN PREPARACIÓN', kickerInk: '#5A6382', href: 'Today.dc.html', go: later, sub: '', hasSub: false, hasFirst: elsewhere, firstLabel: 'Empezar en ' + (first || 'A1'), toFirst };
 }
+/* a mini exam that is open (the week test it waits for is done) and not taken yet: the Examen tab has it, and where
+   the written path ends it is the thing to do next */
+const taken = app.tests || {};
+const mini = card.shut && !card.hasFirst && C.minis ? C.minis(lv).filter((x) => x.ready && taken[C.withLevel(lv, () => C.sid(x.after, 't'))] && !taken[x.id])[0] || null : null;
+const miniMin = mini ? Math.round(mini.seconds / 60) : 0;
 /* what waits in the notebook goes in front of the day: a row above the button says how many and how long */
 const plainH = card.h;
 Object.assign(card, {
@@ -295,9 +301,14 @@ dueAria: 'Antes de empezar: ' + rv.n + ' para repasar, ' + (reviewMin === 1 ? 'u
 hasMeanwhile: card.shut && !card.hasFirst,
 nbLine: rv.n > 0 ? rv.n + ' para hoy' : 'repaso',
 nbInk: rv.n > 0 ? '#B02A63' : '#5A6382',
+hasMini: !!mini,
+miniTitle: mini ? 'Mini examen ' + mini.n : '',
+miniLine: mini ? mini.items.length + ' preguntas · ' + miniMin + ' min' : '',
+miniAria: mini ? 'Mini examen ' + mini.n + ': ' + mini.items.length + ' preguntas, ' + miniMin + ' minutos. Abrir la pestaña Examen' : '',
 });
 if (card.hasDue) card.h += 54;
 if (card.hasMeanwhile) card.h += 129;
+if (card.hasMini) card.h += 57;
 /* a day of return: two days or more without study, and nothing done yet today. The callout greets the learner back
    (Opu'ã, se levantó) and offers something short first: the review that waits, or, after a week or more away, the
    last review day sealed; the next new day comes after */
@@ -305,7 +316,8 @@ const target = cur || away;
 const returned = (dy.away || 0) >= 2;
 if (card.open && returned && target) {
 const lastReview = dy.away >= 7 ? (st.plan || []).filter((p) => p.kind === 'review' && p.ready && C.complete(state, p)).pop() || null : null;
-const dayGo = { href: card.href, go: card.go, label: target.kind === 'test' ? 'Seguir con la prueba' : 'Seguir con el día ' + target.day };
+/* the day to go on with; when it is in another week than the one on show (this one is whole), the button says which */
+const dayGo = { href: card.href, go: card.go, label: target.kind === 'test' ? 'Seguir con la prueba' : away ? 'Seguir: semana ' + away.unit + ', día ' + away.day : 'Seguir con el día ' + target.day };
 const weekGo = lastReview ? { href: 'Today.dc.html', go: open(lastReview), label: 'Repasar la semana ' + lastReview.unit } : null;
 const more = [];
 let sub;
@@ -324,7 +336,7 @@ sub = 'Lo que hiciste sigue acá. ' + (target.kind === 'test' ? 'Sigue la prueba
 Object.assign(card, { back: true, plain: false, hasDue: false, title: '¡Volviste!', sub, hasSub: true, more, h: 110 + 20 + 4 + 17 * fits(sub, 6.4, 192, 4) + 52 * more.length });
 }
 /* where the written path has ended, the same greeting stands over what there is to do meanwhile */
-if (card.hasMeanwhile && returned) Object.assign(card, { back: true, plain: false, title: '¡Volviste!', lang: 'es', h: 60 + 20 + 17 * fits(card.note, 6.4, 192, 3) + 129 });
+if (card.hasMeanwhile && returned) Object.assign(card, { back: true, plain: false, title: '¡Volviste!', lang: 'es', h: 60 + 20 + 17 * fits(card.note, 6.4, 192, 3) + 129 + (card.hasMini ? 57 : 0) });
 const at = cardAt >= 0 ? cardAt : 2;
 /* what the callout gained (the review row, the greeting's buttons, the links) it gains upward, over the days already
    done: the labels of the days to come stay in view under it */

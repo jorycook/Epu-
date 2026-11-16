@@ -56,6 +56,10 @@
     var list = moreWaits;
     moreWaits = [];
     list.forEach(function (fn) { try { fn(); } catch (e) {} });
+    /* the sound files that waited for the screens (see below) */
+    var files = soundWaits;
+    soundWaits = [];
+    files.forEach(function (f) { try { needSound.call(C, f); } catch (e) {} });
     if (focusLater && more === 'in') { focusLater = false; setTimeout(function () { focusScreen(); syncHistory(); }, 60); }
   }
   function getMore() {
@@ -71,6 +75,19 @@
   function whenMore(fn) { if (more === 'in' || more === 'failed') fn(); else moreWaits.push(fn); }
   window.addEventListener('load', getMore);
   window.addEventListener('online', function () { if (more === 'failed') getMore(); });
+  /* The screens first, then the sound they play. The engine asks for a unit's sound file as soon as a screen reads the
+     course (gn-course.js, needSoundFile): with the very first screen, before the page has loaded. No screen of the
+     first file plays a clip, and one unit's sound is larger than all the later screens together: on a first visit it
+     kept the page loading, and the later screens waiting behind it, for seconds on a slow connection. So a sound file
+     asked for before the later screens are in waits for them, or for word that they cannot be fetched. */
+  var needSound = C.needSoundFile;
+  var soundWaits = [];
+  if (typeof needSound === 'function') {
+    C.needSoundFile = function (f) {
+      if (more === 'in' || more === 'failed') needSound.call(C, f);
+      else if (soundWaits.indexOf(f) < 0) soundWaits.push(f);
+    };
+  }
 
   /* ---------- saved progress ---------- */
   var canSave = false;
@@ -1021,10 +1038,15 @@
   var iPad = /iPad/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
   var iPhone = /iPhone|iPod/.test(ua);
   var android = /Android/.test(ua);
+  /* A page opened inside another app (a link tapped in Instagram, Facebook or TikTok opens in that app's own
+     browser): Android says so itself ("wv"); on an iPhone or an iPad such a page, unlike every browser there, does
+     not name Safari. What it saves stays inside that app: neither the phone's browser nor the app on the Home Screen
+     sees it, and the page cannot be installed from there. The install page says so. */
+  var inApp = !standalone && (android ? /; wv\)/.test(ua) : (iPhone || iPad) && !/Safari\/|CriOS|FxiOS|EdgiOS/.test(ua));
   /* the browser the page is open in, by the name the learner knows it: on an iPhone or an iPad, Safari unless it says
-     otherwise; on Android, Chrome unless it says otherwise (a page opened inside another app, "wv", has no name) */
-  var browser = /CriOS/.test(ua) ? 'Chrome' : /FxiOS/.test(ua) ? 'Firefox' : /EdgiOS/.test(ua) ? 'Edge' : iPhone || iPad ? 'Safari'
-    : !android || /; wv\)/.test(ua) ? 'el navegador' : /SamsungBrowser/.test(ua) ? 'Samsung Internet' : /Firefox\//.test(ua) ? 'Firefox' : /EdgA\//.test(ua) ? 'Edge' : /OPR\//.test(ua) ? 'Opera' : /Chrome\//.test(ua) ? 'Chrome' : 'el navegador';
+     otherwise; on Android, Chrome unless it says otherwise (a page opened inside another app has no name) */
+  var browser = inApp ? 'el navegador' : /CriOS/.test(ua) ? 'Chrome' : /FxiOS/.test(ua) ? 'Firefox' : /EdgiOS/.test(ua) ? 'Edge' : iPhone || iPad ? 'Safari'
+    : !android ? 'el navegador' : /SamsungBrowser/.test(ua) ? 'Samsung Internet' : /Firefox\//.test(ua) ? 'Firefox' : /EdgA\//.test(ua) ? 'Edge' : /OPR\//.test(ua) ? 'Opera' : /Chrome\//.test(ua) ? 'Chrome' : 'el navegador';
   var skipInstall = TEST || (LOCAL && query.has('browser'));
   /* «Seguir en el navegador» is remembered for the visit (this tab) and, with its date, for a week: a learner who stays
      in the browser is not met by the install page at every visit, and is offered the Home Screen again a week later
@@ -1078,6 +1100,9 @@
     fluid = name === 'Install';
     root.classList.toggle('gn-fluid', fluid);
     preact.render(null, stage);
+    /* the install page is no screen of the shell's: while it is up the page's title is the app's alone, and the shell
+       names its screen afresh when it comes back */
+    if (fluid) { screenNow = ''; document.title = APP_TITLE; root.classList.remove('gn-nozoom'); }
     fit();
     window.YK.mount(name, {}, stage);
   }
@@ -1091,9 +1116,11 @@
     device: iPad ? 'iPad' : iPhone ? 'iPhone' : android && /Mobile/.test(ua) ? 'celular' : 'dispositivo',
     browser: browser,
     android: android,
-    /* the copy on the Home Screen keeps its progress apart from the browser's: so it is on an iPhone and an iPad; an
-       Android phone's installed app and its browser share what is saved */
-    apart: iPhone || iPad,
+    /* the copy on the Home Screen keeps its progress apart from this page's: so it is on an iPhone and an iPad, and
+       for a page opened inside another app (inApp); an Android phone's installed app and its browser share what is
+       saved */
+    apart: iPhone || iPad || inApp,
+    inApp: inApp,
     /* Android's install: 'ready' while the browser's offer is in hand (askInstall puts its question), 'done' once the
        app is installed, else 'steps' (the browser's own menu); the document hears gninstall when that changes */
     installState: function () { return installed ? 'done' : installOffer ? 'ready' : 'steps'; },
@@ -1131,9 +1158,15 @@
     /* what is saved was written by a newer build of the app: this one shows what it understands and saves nothing */
     later: function () { return later; },
     /* an iPhone's browser deletes what a page saved when the page is not opened for a week: true when it is time to
-       say so again on the week path; told() once it was said */
+       say so again on the week path; told() once it was said. showInstall opens the install page again, which says
+       what to do about it (the steps to the Home Screen, and the code that takes the progress there): its heading takes
+       the focus, and «Seguir en el navegador» leads back to the week path */
     clearsSoon: clearsSoon,
     told: told,
+    showInstall: function () {
+      /* the notice that asks is still in its tap */
+      setTimeout(function () { show('Install'); focusOn(stage.querySelector('h1')); }, 0);
+    },
     /* 'yes' once every file of the app is stored on the device, 'no' until then, 'never' where that cannot happen */
     offline: function () { return offline; },
     /* the screens of the later file: 'in', 'coming', 'no' (not asked for yet) or 'failed'; getScreens asks for them

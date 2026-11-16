@@ -28,7 +28,9 @@
 // made here, at about the level of the voices (-20 LUFS). A row with "same" is the recording of another key,
 // registered under both names. Only the keys a screen can ask for get a clip (asked): a line makes none of its own
 // (it is heard inside the clip put together from it), nor does the word of a sound pair that does not play. Whatever
-// recording is missing is reported at the end, and a file is written only for a group that has clips.
+// recording is missing is reported at the end, and a file is written only for a group that has clips. A file that
+// would change in nothing but the day in its first line is left as it is: the app stores each file on the phone under
+// a hash of its content, so a run that changes one unit's clips leaves the other units' files, and their hashes, alone.
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -101,7 +103,7 @@ function samples(a) {
    it. ffmpeg's loudnorm, which the tool measured with before, gives no loudness at all for a clip under about half a
    second; the mean level stood in, and those words came out 4 LU quieter than the rest (po at -22 LUFS where the
    words of half a second and more were at -18; the 13 clips under half a second of the synthetic voice rose by 3.7
-   LU). Measured on the 440 takes of sound/A1/voz: looped, a take sits 3.1 to 3.3 LU under its loud tenths of a
+   LU). Measured on the 440 takes of sound/A1/voz: looped, a take sits 3.1 to 3.4 LU under its loud tenths of a
    second (the 90th percentile of its 100 ms blocks) whether it lasts 0.3 s or 5 s, and for the 38 takes of 2.5 s or
    more the looped measure and the standard differ by 0.0 LU at the median, 0.24 at most. */
 const KFS = 48000;        /* the rate the K weighting's coefficients are given for */
@@ -245,7 +247,7 @@ const wanted = (r) => !ONLY || ONLY.has(r.key);
    <key>.l<n>.slow), which is only ever heard inside its clip, and the word of a sound pair that does not play (a row
    with "unused"). A recording that no such key holds, neither its own nor one that shares it ("same"), makes no clip
    of its own: its sound is inside the put-together clip already, or nothing plays it. Shipped all the same, as they
-   were, those recordings made the files of A1 a third larger (1.55 of 5.05 MB of MP3). */
+   were, those recordings took a third of the files of A1 (1.32 of 4.08 MB of MP3). */
 const LINE = /\.l\d+(?:\.slow)?$/;
 const asked = (r) => !!(r.parts || r.tone) || (!r.unused && !LINE.test(r.key));
 const direct = new Set();   /* the recordings a key the screens ask for holds */
@@ -263,7 +265,7 @@ let n = 0;
 for (const r of rows) {
   if (r.same || r.parts || !wanted(r)) continue;
   if (r.tone) {
-    if (DRY) { console.log(`  tone  ${r.key}`); continue; }
+    if (DRY) { console.log(`  tone  ${r.key}`); made[r.key] = { kind: 'human', voice: '-' }; continue; }
     tone(tmp(r.key, 'wav'));
     wavs[r.key] = tmp(r.key, 'wav');
     made[r.key] = Object.assign({ kind: 'human', voice: '-' }, mp3(wavs[r.key], tmp(r.key, 'mp3')));
@@ -271,7 +273,13 @@ for (const r of rows) {
   }
   if (!have[r.key]) { missing.push(r); continue; }
   n++;
-  if (DRY) { console.log(`  ${String(n).padStart(4)}  ${r.key}  [${r.voice}, ${kindOf(r.voice)}]  ${path.basename(have[r.key])}`); continue; }
+  if (DRY) {
+    /* a dry run reads no recording: it takes each one that is there as good (a silent take shows only in a real run) */
+    console.log(`  ${String(n).padStart(4)}  ${r.key}  [${r.voice}, ${kindOf(r.voice)}]  ${path.basename(have[r.key])}${direct.has(r.key) ? '' : '  (no clip of its own: no screen asks for this key)'}`);
+    wavs[r.key] = have[r.key];
+    if (direct.has(r.key)) made[r.key] = { kind: kindOf(r.voice), voice: r.voice };
+    continue;
+  }
   try {
     const p = prepare(have[r.key], tmp(r.key, 'wav'));
     const left = Math.max(0, Math.round(p.s * 1000) - HEAD - TAIL);   /* what the trim left of the take, without the air put round it */
@@ -303,7 +311,7 @@ for (const r of rows) {
   const parts = r.parts.map((k) => { const c = byKey[k]; return c && c.same ? c.same : k; });
   const lacking = parts.filter((k) => !wavs[k]);
   if (lacking.length) { incomplete.push({ row: r, lacking }); continue; }
-  if (DRY) { console.log(`  join  ${r.key}  (${parts.length} lines)`); continue; }
+  if (DRY) { console.log(`  join  ${r.key}  (${parts.length} lines)`); made[r.key] = { kind: 'human', voice: r.voice, cues: [] }; continue; }
   const wav = tmp(r.key, 'wav');
   const cues = join(parts.map((k) => wavs[k]), wav);
   wavs[r.key] = wav;
@@ -318,6 +326,8 @@ const written = [];
 const wrote = {};
 const esc = (s) => String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 const today = new Date().toISOString().slice(0, 10);
+const asItWas = [];     /* the files that are byte for byte what they were: nothing in them changed, so they keep their date */
+const undated = (s) => s.replace(/ on \d{4}-\d{2}-\d{2} — do not edit by hand\./, ' on (a day) — do not edit by hand.');   /* a file's text without the day in its first line */
 for (const file of Object.keys(groups).sort()) {
   const list = groups[file];
   /* what the file registers: for each clip that was made, the keys of this file that the screens ask for and that hold
@@ -349,9 +359,16 @@ for (const file of Object.keys(groups).sort()) {
   alias.sort((a, b) => (a.r.key < b.r.key ? -1 : 1)).forEach((x) => { lines.push(`c['${esc(x.r.key)}'] = c['${esc(x.of)}'];`); });
   lines.push('})();');
   fs.mkdirSync(OUT, { recursive: true });
-  fs.writeFileSync(path.join(OUT, file), lines.join('\n') + '\n');
+  /* A file whose clips are what they were keeps the day it was made, and with it every byte. The app stores a sound file
+     on the phone under a hash of its content (epua-app/build.mjs, sw.js): written again with nothing new but the day's
+     date, every file would be fetched again by every phone after a rebuild that changed one clip, or none */
+  const text = lines.join('\n') + '\n';
+  const target = path.join(OUT, file);
+  const same = fs.existsSync(target) && undated(fs.readFileSync(target, 'utf8')) === undated(text);
+  if (same) asItWas.push(file);
+  else fs.writeFileSync(target, text);
   wrote[file] = true;
-  written.push(`${file} (${own.length} clips${alias.length ? ' + ' + alias.length + ' shared' : ''}, ${Math.round(fs.statSync(path.join(OUT, file)).size / 1024)} KB)`);
+  written.push(`${file} (${own.length} clips${alias.length ? ' + ' + alias.length + ' shared' : ''}, ${Math.round(fs.statSync(target).size / 1024)} KB${same ? ', as it was' : ''})`);
 }
 /* a whole run leaves no file behind that it did not write: a group whose clips are all gone (silent now) has no file */
 if (!DRY && !ONLY) {
@@ -380,7 +397,8 @@ if (!DRY) {
 /* ---------- the report ---------- */
 const count = Object.keys(made).length;
 const outName = path.relative(ROOT, OUT).startsWith('..') ? OUT : path.relative(ROOT, OUT);
-console.log(`\n${DRY ? 'would make' : 'made'} ${DRY ? n : count} clips from ${FOLDER}${written.length ? '; written to ' + outName + '/: ' + written.join(', ') : ''}${ONLY ? ' (--only: the files hold these clips alone)' : ''}`);
+console.log(`\n${DRY ? 'would make' : 'made'} ${count} clips from ${DRY ? `the ${n} recordings of ` : ''}${FOLDER}${written.length ? '; written to ' + outName + '/: ' + written.join(', ') : ''}${ONLY ? ' (--only: the files hold these clips alone)' : ''}`);
+if (!DRY && Object.keys(wrote).length) console.log(`${asItWas.length} of the ${Object.keys(wrote).length} sound files are byte for byte what they were, their date too${asItWas.length ? ' (no clip in them changed: a phone that has them keeps them)' : ''}${asItWas.length < Object.keys(wrote).length ? `; written anew: ${Object.keys(wrote).filter((f) => !asItWas.includes(f)).sort().join(', ')}` : ''}`);
 if (!DRY && count) {
   held.sort((a, b) => b.under - a.under);
   /* one gain cannot bring a take to the target when its peaks stand more than the target's distance from the ceiling over

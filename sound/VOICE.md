@@ -9,7 +9,12 @@ what a native speaker should listen to first, and how to make the clips again. T
 three rounds: a first probe, an independent verification that refuted part of it, and a fix round. What the
 verification refuted is corrected here, not kept. A trial of the people's names followed the same day, after which
 thirteen people were renamed («The names of the people»); then the lines that had changed were said, what the rounds
-had left open was settled, and the sound files were built («The run of 10 November, after the names»).
+had left open was settled, and the sound files were built («The run of 10 November, after the names»). That run was
+cut off before its end. On 16 November its work was checked and finished («16 November», under «What was measured»):
+every count, size and score of the folder and of the sound files below was measured again that day, from the files as
+they are; the words of the nasal pairs were said once, so that every recording that stays silent waits as a clip for a
+listener; and the tools learnt to bring such a clip back when a person frees it, and to leave a sound file alone when
+none of its clips changed.
 
 **Nobody listened to any of this.** Every judgement below was made by machine: two speech recognisers, distances between
 clips, measures on the model's own alignment, and pictures of the waveform and the spectrogram. A machine can tell that
@@ -37,7 +42,11 @@ the machine could not tell, this file says so.
 - **In all,** 107 of the manifest's 736 rows have no clip for one of these reasons, 14 of them clips that are put
   together from a line that is silent; 57 of the 107 are keys a screen asks for today. Ten of the twelve listening
   lessons play (one of them has its slower version), two of the placement's three listening items, both of the level
-  exam's, and every dialogue of Teach. 440 clips are in the folder and 53 more in its `left-out/`, for a listener.
+  exam's, and every dialogue of Teach. 440 clips are in the folder and 63 more in its `left-out/`, for a listener:
+  every recording that stays silent waits there as a clip.
+- **A person's verdict goes into `sound/silent.json`**, and one command applies it: a clip that is freed there comes
+  back from `left-out/` as it is, the very file that was heard, without the voice being run («How to make the clips
+  again»).
 - **In the app:** seven sound files, 3.71 MB as they are and 2.27 MB as a server sends them gzipped: 358 clips, 10.8
   minutes. 418 of the 475 keys a screen can ask for have a clip.
 - **Rendered:** the y; the h; mb, nd, ng, nt as one sound; the ch; the v; the r inside a word; the ñ; the u that always
@@ -58,9 +67,10 @@ the machine could not tell, this file says so.
   woman's voice. In a dialogue a longer line is moved towards its voice's pitch; even so the man's line is the higher
   one, or less than a semitone lower, in 7 exchanges of 46 (before the lines were placed: 11 of 44).
 - **The licence is non-commercial** (CC BY-NC 4.0). These clips may not ship in an app that is sold or carries ads.
-- **The takes are `sound/A1/voz`** (FLAC, lossless, 11.6 MB with what was left out). A fresh run on another machine
+- **The takes are `sound/A1/voz`** (FLAC, lossless, 11.7 MB with what was left out). A fresh run on another machine
   gives other samples, so that folder is kept and added to: after a change of the content, `--verify --changed` says
-  only the lines that are new or changed («How to make the clips again»).
+  only the lines that are new or changed («How to make the clips again»). Run with nothing changed, six days after the
+  files were made, the whole line said nothing and left every file as it was, byte for byte.
 
 ## The models and the licence
 
@@ -414,14 +424,37 @@ man's lines with their own pitch) came out the same files, byte for byte. On ano
 count, the samples differ («How to make the clips again»). The same held on 10 November: the 45 clips of the run came
 out the same files in three runs that day (a trial of the names check and two runs here), and 13 clips of
 `sound/A1/voz` said again from its `takes.json` (words, run-in words, the man's lines, slow takes, the narrator, the
-Spanish number, the two lines with their own seeds) were the same FLAC files, byte for byte.
+Spanish number, the two lines with their own seeds) were the same FLAC files, byte for byte. And six days later, on 16
+November, after the machine had been restarted: the same 13 keys said again from `takes.json` were the same files once
+more, and the ten words of the nasal pairs came out the same files in two runs.
 
 **A take belongs to a text, not to a key.** When the content changes, a row can move without its text changing (a line
 more in a dialogue, an example renumbered). A clip of the folder whose own row is silent now, is gone, or says another
 text passes to the row that says its text with its voice today; nothing is said again for it, and the report keeps
 what the recognisers heard of it. `--changed` then says only the rows that still lack a take. Tried on a copy of the
-folder: a key renamed, two rows that swap their texts and a row taken away gave three clips that passed, none said,
-one clip whose key was gone (it is named, and `--prune` deletes it), and no model loaded.
+folder (10 November, and again on 16 November): a key renamed, two rows that swap their texts and a row taken away
+gave three clips that passed, none said, one clip whose key was gone (it is named, and `--prune` deletes it), and no
+model loaded.
+
+**A clip that a person frees comes back as it is.** Every recording that stays silent waits as a clip in the folder's
+`left-out/`. When its row is silent no longer (its entry is gone from `sound/silent.json`, or "keep" names it there),
+the tool moves that very file back into the folder, with the take the report has of it, and does not say the line
+again: it is the clip the person heard, and on another machine the line said again would be another clip. This needs
+neither the voice nor the recognisers. A rule comes before the ear, and "keep" overrides the ear only. So a clip that
+`--verify` left out by itself (a slow take, a short clip) needs "keep" alone; a clip that a rule names needs its entry
+taken out, and is then put to the ear's test from what the recognisers heard of it when it was made (the report): a
+line of a dialogue comes back, and a clip of one or two words that both heard with wrong letters stays out, the run
+saying so, until "keep" names it too. The other word of a pair comes back with its partner. Tried on copies of the
+folder, 16 November: «Ha'e Argentina-gua.» taken out of
+"keys" brought the line and its slow take back, the very files, and put the listening lesson of unit 1 day 3 together
+again; named once more, both went back to `left-out/` and the folder was byte for byte what it had been. "keep" with a
+slow take, a pair word and the one slow line that kept unit 3 day 1 without its slower version brought the three back,
+and that slower version was put together. *Héẽ*, the scene word, taken out of "keys" stayed out by ear («he», «hé»)
+with the advice to name it under "keep", and came back once it was. *mbo'y* and *mboy* taken out of "keys" stayed out
+the same way («mbohy» from both), with the other word of each pair. *ñúme* taken out of "texts" and named under
+"keep" came back with *ñu*, the other word of its pair. No model was loaded in any of these, and each took a third of
+a second. In a run that also had one changed text to say, the freed clips came back while the recognisers heard the
+new clip only.
 
 ## The voices
 
@@ -618,35 +651,75 @@ ffmpeg decodes each of the 493 to the very samples of the WAV it came from.
 | 179 single words | 8.8 %, 126 | 8.4 %, 149 |
 | 212 lines of two words or more | 12.8 %, 105 | 5.4 %, 142 |
 
-Of the 418 clips said at the normal rate, 245 kept their first take, 114 the second and 59 the third; 65 kept a run-in
-take, 54 of them lines of one or two words. Median pitch: F words cut after a pause 138 Hz (122 words), F words run in
+Of the 418 clips said at the normal rate, 245 kept their first take, 114 the second and 59 the third (the two lines
+that were given further seeds count among the first takes: each is the first take of the seed it was given); 65 kept
+a run-in take, 54 of them lines of one or two words. Median pitch: F words cut after a pause 138 Hz (122 words), F words run in
 105 Hz (50), F lines 151 Hz, M lines 128 Hz, the narrator 138 Hz. In the fix round's folder the lines scored 10.2 % and
 3.6 % (215 lines); since then the renamed lines were said again and three lines that both recognisers heard with wrong
 letters went out.
 
+**16 November.** The run above was cut off while its tools were still being changed; what it had written was checked
+six days later, from the files. The clip list made again from the course is the list of 10 November (736 rows, 502
+recordings: F 410, M 67, N 25), and the dry run of the whole list stops on nothing. Each of the 493 FLAC files decodes
+to the very samples of the WAV it was made from; against the folder as it stood before the run of 10 November, 448
+clips have the samples they had and 45 have others: the 45 that run said, and no other. The table above, the counts of
+«What must stay without audio» and every figure of «The sound files» were computed again from `sound/A1/voz` and from
+`project/gn-sound-*.js`; where a figure of 10 November had been measured on the folder before its last changes, it is
+corrected below. Then three things were done.
+
+- *The words of the nasal pairs were said, for a listener.* The rule that keeps them silent is older than the first
+  whole run, so ten of them had never been said and the first thing a native speaker is asked to hear was not in the
+  folder. They were said once, with `--verify`: *pytu*, *pytũ*, *oke*, *tupa*, *Tupã*, *pyta*, *pytã*, *porã*, *póra*,
+  *térã* (one minute for the ten, both recognisers hearing each take). What came back is what the measures above
+  say: *pytũ* as «pytũ» and «petũ», *pytã* as «pyta» and «pytá», *Tupã* as «kupã» and «tupa», *térã* as «tera» and
+  «térã», *porã* as «morã» and «porã». Under the rule they went to `left-out/` at once: no screen plays them, and the
+  440 clips of the folder did not change. `left-out/` holds 63 clips now (1.44 MB), the folder with it 503 clips and
+  624.9 seconds: 20.02 MB as WAV, 11.65 MB as FLAC. Every recording that stays silent has its clip there, but *okẽ* as
+  a pair word, which waits under the scene word's key (`a1u01d5.w.oke`).
+- *A clip that a person frees comes back from `left-out/`* («How a clip is said»). Before, taking an entry out of
+  `sound/silent.json` had the line said again, and "keep" did nothing in a run with `--changed`.
+- *A rebuild with no clip changed changes no file* («The sound files», below, and «How to make the clips again»).
+
 **The sound files.** `node tools/make-sound.mjs sound/A1/voz --manifest sound/A1/voz/manifest.json --kind synthetic`
-wrote the app's files into `project/`. Three flaws the verification had measured in that tool were mended first, and
-one waste the run found:
+wrote the app's files into `project/`. Three flaws the verification had measured in that tool were mended first, with
+one waste the run of 10 November found and one that showed six days later. The figures are of 16 November: the files
+as they are, and the same 440 takes put through the tool as it was before (commit 206ec5f), both decoded with ffmpeg.
 
 - *The loudness of a short word.* The tool measured with ffmpeg's `loudnorm`, which gives no loudness for a clip under
-  about half a second; the mean level stood in, and those clips came out 4 LU under the rest. The measure is now that
-  of BS.1770 (K weighting, blocks of 400 ms, the two gates) taken on the trimmed take as if it played in a loop until
+  about half a second; the mean level stood in, and those clips came out 4.7 LU under the rest (−22.3 LUFS at the
+  median, the quietest −23.2, where the clips of half a second and more were at −17.6). The measure is now that of
+  BS.1770 (K weighting, blocks of 400 ms, the two gates) taken on the trimmed take as if it played in a loop until
   three seconds had passed, which is the standard itself for a take of three seconds or more. On the 440 takes it puts
-  a take 3.1 to 3.3 LU under its loud tenths of a second whether the take lasts 0.3 s or 5 s, and for the 38 takes of
+  a take 3.1 to 3.4 LU under its loud tenths of a second whether the take lasts 0.3 s or 5 s, and for the 38 takes of
   2.5 s or more it differs from the standard by 0.0 LU at the median, 0.24 at most. The 13 clips under half a second
   rose by 3.7 LU at the median (*po* from −22.2 to −18.5 LUFS, *kái* from −22.3 to −17.7, *ñu* from −22.5 to −17.8, as
-  decoded from the files); the others did not move.
+  decoded from the files); the others moved by 0.01 LU at the median, 1.3 at most.
 - *The peak ceiling.* The ceiling was kept on the take; the MP3, at 32 kb/s, peaks up to a decibel higher. The true
   peak is now taken on each clip's MP3 decoded again (four times oversampled), and a clip that passes −1.5 dBTP is
   lowered and encoded again until it holds. Decoded from the files, the highest of the 358 clips is at −1.51 dBTP;
-  made from the same takes with the tool as it was, 12 clips passed the ceiling, the highest at −0.74. Nine clips were
+  made from the same takes with the tool as it was, 9 clips passed the ceiling, the highest at −0.74. Nine clips were
   lowered, by 0.4 dB at most.
-- *The length.* `ms` was the MP3 file's own duration, which counts the encoder's padding: 61 ms too long. It is the
-  length of the decoded clip now: 0 or 1 ms from it in all 358.
-- *What no screen asks for.* The tool gave a clip to every recording, and 31 % of the audio (1.55 of 5.05 MB of MP3)
-  sat under keys no screen can ask for: the lines of dialogues and listening items, which are heard inside the clip
-  put together from them, and the word of each sound pair that does not play. A recording now makes a clip of its own
-  only when a key the screens ask for holds it: 293 of the 440 do, 130 lines and 17 unplayed pair words do not.
+- *The length.* `ms` was the MP3 file's own duration, which counts the encoder's padding: 61 ms too long at the median
+  (48 to 70). It is the length of the decoded clip now: the same in 357 clips, 1 ms more in one.
+- *What no screen asks for.* The tool gave a clip to every recording: 543 clips in files of 5.49 MB, a third of it
+  (1.32 of 4.08 MB of MP3) under keys no screen can ask for: the lines of dialogues and listening items, which are
+  heard inside the clip put together from them, and the word of each sound pair that does not play. A recording now
+  makes a clip of its own only when a key the screens ask for holds it: 293 of the 440 do, 130 lines and 17 unplayed
+  pair words do not.
+- *The day in the first line.* Every file says in its first line when it was made, and the app stores a sound file on
+  the phone under a hash of its content. Run on 16 November with no clip changed, the tool wrote all seven files anew:
+  the same clips, byte for byte, under a new date and so under seven new hashes, 3.71 MB for every phone to fetch
+  again. A file whose clips are what they were is now left as it is, its date too. The same run now leaves all seven
+  alone; with one take replaced, the file of that take's unit is written anew and the others are not (`check/sound-test.js`
+  has both cases). The clip list keeps its date the same way while nothing in it changes (`tools/sound-list.mjs`).
+
+`check/sound-test.js` holds a check for each of these, on fixture takes made for them (a fifth of a second of the note
+that another take holds for a second; a take that peaks like a voice; a dialogue). Put to the tool as it was, the
+first part of that test fails thirteen checks, among them each of the three flaws; and with the tool changed back in
+one point at a time (the file's own duration for `ms`; no second encoding for the peak; no loudness for a short take;
+every file written whatever it holds), the check of that point fails each time. One of the thirteen is the tool's dry
+run, which reported every dialogue as lacking all its lines and named no file: `--dry-run` now reads no recording,
+writes nothing and names what a real run would make (329 clips in seven files for `sound/A1/voz`, as the run made).
 
 | File | Size | Clips | Keys that point at a clip of the file | Audio |
 |---|---|---|---|---|
@@ -676,7 +749,7 @@ at −17.3 LUFS (median), −19.6 to −16.6 between the 5th and the 95th percen
 are within 2 LU of the target of −16. By length: −18.5 under 0.4 s (2 clips), −18.2 from 0.4 to 0.7 s (81), −17.2 from
 0.7 to 1.5 s (175), −16.7 above (64). The 35 clips put together are at −17.6 (−19.2 to −16.7). What keeps a clip under
 −16 now is the ceiling, not the measure: one gain can bring a take to −16 LUFS under −1.5 dBTP only if its peaks stand
-no more than 14.5 dB over its loudness, and this voice's stand 15.0 dB over at the median (13.1 to 17.4 between the
+no more than 14.5 dB over its loudness, and this voice's stand 15.0 dB over at the median (13.1 to 17.5 between the
 5th and the 95th percentile). 279 of the 440 takes stop at the ceiling, 1.1 LU under the target at the median, 68 by
 more than 2 LU, *ko'ág̃a* by 5.4. Nothing is compressed, as the tool was designed. A target of −19 LUFS would be out of
 reach for 17 takes only, and a limiter would bring every clip to −16: either is a change for the owner of the app's
@@ -844,9 +917,10 @@ tool flags, and what was settled when the whole course was said. The rows that s
 tool writes next to its clips (`sound/A1/voz/manifest.json`), `make-sound.mjs` registers no clip for them, and the
 screens keep their written stand-in there and say that the audio is not recorded yet.
 
-**1. By rule: `sound/silent.json`.** These rows are never said, whatever a recogniser hears, because the measures above
-say the voice does not render what they teach. The file is read by `make-tts.py`; it holds contrasts, keys and texts,
-and the reason for each.
+**1. By rule: `sound/silent.json`.** These rows never play, whatever a recogniser hears, because the measures above
+say the voice does not render what they teach. Each has been said once all the same, and its clip waits in
+`left-out/`, for a listener. The file is read by `make-tts.py`; it holds contrasts, keys and texts, and the reason for
+each.
 
 - **The two words of a sound pair that differ only by a nasal vowel** (`"contrasts": ["nasal"]`; decided from the two
   texts, so it holds when the manifest is made again). Today 26 rows: «Las vocales nasales», unit 1 day 2, all four
@@ -898,7 +972,8 @@ Not left out this time, though both recognisers heard them wrong in the verifica
 (run in), and «Mboýpa ovale?» (another take, which one recogniser hears right).
 
 The clips are in the folder's `left-out/` for a listener; `"keep"` in `silent.json` frees a key or a text once a person
-has heard it and found it right. A line of a dialogue is never left out this way: the dialogue needs it. The tool lists
+has heard it and found it right, and the clip then comes back from `left-out/` as it is («How a clip is said», «How to
+make the clips again»). A line of a dialogue is never left out this way: the dialogue needs it. The tool lists
 the short lines that both recognisers hear with wrong letters and that stay. The fix round's run listed ten; what
 became of each is under 4(c) and 4(d), and three are left: «Remba'apo.» and «Omba'apo.» (`a1u02d1.r1.l5`,
 `a1u02d1.r1.l7`) and «Héẽ, upéicha.» (`a1u03d4.p2.x1.l2`).
@@ -934,8 +1009,9 @@ of them a wrong option is true of the other speaker:
   Ypakaraípe.». «A Ypacaraí» is his.
 
 **Both stay**, for three reasons that agree with one another. The lesson's status line names the right speaker during
-79 % to 100 % of each of their Guarani lines (it keeps time by the lines' lengths in letters, not by the clip's cues,
-and changes 0.1 to 0.8 s early here). The man's line is the lower one in both clips: 133 Hz against 160 and 150 Hz in
+84 % to 100 % of each of their Guarani lines (it keeps time by the lines' lengths in letters, not by the clip's cues,
+and changes 0.2 to 0.8 s early here; measured on 16 November from the cues of the two clips, a line counted from where
+its own sound starts to where it ends). The man's line is the lower one in both clips: 133 Hz against 160 and 150 Hz in
 the first (3.2 and 2.1 semitones), 105 Hz against 148 Hz in the second (5.9). And the order of the turns gives the same
 answer as the voices: the narrator says «Rosa habla con un vecino» and she asks first; the sentence above the player
 says «una mujer le cuenta a un hombre de dónde viene y adónde va», and only the first speaker says where she comes
@@ -992,7 +1068,8 @@ the flawed word is one a question turns on.
   day 5 («Héẽ, oĩ.») whether there is cheese is not what is asked.
 
 *(d) The slow takes.* A slow take stays only where it is heard at least as well as the normal take of its line («How
-a clip is said»): 24 do, 23 do not, and all but one of the listening lessons have one of the 23 among their lines.
+a clip is said»): 24 do (two of them belong to the items that are silent as a whole, so 22 are in the folder), 23 do
+not, and all but one of the listening lessons have one of the 23 among their lines.
 Without its slower version a lesson's screen draws the button «Más despacio 0.8×» as off, with «Todavía no está
 grabado» under it; the clip plays and repeats at its own speed, and nothing else changes. So the 23 are left out, and
 of the ten lessons that play one has a slower version (unit 2 day 1). Putting a slower version together with normal
@@ -1002,8 +1079,10 @@ takes in the place of the slow ones would have the button promise a speed that t
 text, among them *okẽ* in two nasal pairs, and 27 by key), 27 left out by `--verify` (4 short clips by ear, 23 slow
 takes) and 14 clips that cannot be put together because a line of theirs is out (eleven slower versions, two listening
 lessons, one placement item). 57 of the 107 are keys a screen asks for today; the other 50 are lines (28) and the
-words of sound pairs that do not play (22). 440 clips are in `sound/A1/voz` and 53 in its `left-out/`; 11 recordings
-of the list were never said (ten words of nasal pairs, and *okẽ* as a pair word).
+words of sound pairs that do not play (22). 440 clips are in `sound/A1/voz` and 63 in its `left-out/`: of the 63
+recordings of the list that stay silent, 62 wait there under their own key (23 slow takes, 18 named by key, 10 words
+of nasal pairs, 7 named by their text, 4 left out by ear) and one, *okẽ* as a pair word, under the key of the scene
+word (`a1u01d5.w.oke`), which is the 63rd file.
 
 A word that is silent as half of a pair is still said where it is a word of a scene (*mitã*, *téra*, *óga*), unless its
 text is named: there it is a word said imperfectly and marked «voz sintética», not a lesson in telling two sounds apart.
@@ -1025,25 +1104,33 @@ least one recogniser. To silence a line, name its key in `silent.json`: the item
 whole.
 
 **What the screens say.** `make-sound.mjs` marks every one of these clips `synthetic`, with the model and the licence in
-each file's header and in the index. Of the screens, only the Words sound step, Spell and Hablar ask for a clip's kind
-and say «voz sintética»; Teach, Listening, Review, Placement and LevelExam play the same clips without the note, among
+each file's header and in the index. Of the screens, only Words (the pairs of its sound step and the words of its
+scene) and Hablar ask for a clip's kind and say «Voz sintética: este audio lo hizo un programa, no una persona.»;
+Spell, Teach, Listening, Review, Placement and LevelExam play the same clips without the note (read on 16 November:
+`gnSound.kind` is asked in `Words.dc.html` and `Hablar.dc.html` alone), among
 them the placement's and the exam's listening items that stay (`pl.1`, `pl.5`, `a1x.4`, `a1x.5`). That is for the owner
 of the screens to decide: say it there too, or keep `pl.*` and `a1x.*` silent until recordings exist (two patterns in
 `silent.json`'s "keys" do it). Two more things the run saw in the screens are theirs as well. Listening's status
 line, which names the speaker, keeps time by the lines' lengths in letters although every put-together clip carries
-its `cues`: over the ten lessons that play it shows a Guarani line's own row during 80 % or more of the line for 26
-of the 40 lines and during less than half for 4, and comes up to 0.9 s early or 1.1 s late. And where a clip is
+its `cues`: over the ten lessons that play it shows a Guarani line's own row during 80 % or more of the line for 28
+of the 40 lines and during less than half for 2 (the woman's greeting of unit 1 day 1, 10 %; «Diez mil.» in unit 4
+day 5, 32 %), and comes up to 1.0 s early or 1.1 s late. And where a clip is
 silent the screens say «todavía no está grabado», which is true of a person's recording and reads oddly next to clips
 that play: a clip that is silent by decision could say so.
 
 ## What a native speaker should listen to first
 
 The clips are FLAC files named by their key: the ones that stay silent in `sound/A1/voz/left-out/`, the rest in
-`sound/A1/voz` itself and, as the app plays them, in the app.
+`sound/A1/voz` itself and, as the app plays them, in the app. `tts-report.csv`, in the same folder, lists every clip
+with its key and its text, and its last column says why a clip is in `left-out/`. What you find right goes into
+`sound/silent.json` (its first entry says how), and the line of «How to make the clips again» then brings the clip
+back as you heard it.
 
-1. **Two nasal pairs, before anything else:** *pyta* / *pytã* and *pytu* / *pytũ* (run the tool with `--silent none` and
-   a new folder to hear them). If the second word of each sounds nasal to you, the rule in `silent.json` can go and the
-   nasal steps get their audio. If it only sounds higher, the rule stays.
+1. **Two nasal pairs, before anything else:** *pyta* / *pytã* (`left-out/a1u01d2.s3a.flac`, `a1u01d2.s3b.flac`) and
+   *pytu* / *pytũ* (`a1u01d2.s0a.flac`, `a1u01d2.s0b.flac`); the other nasal words are next to them (*tupa*, *Tupã*,
+   *oke*, *okẽ* as `a1u01d5.w.oke`, *porã*, *póra*, *térã*). If the second word of each pair sounds nasal to you, the
+   rule can go ("nasal" out of `silent.json`'s "contrasts") and the nasal steps get their audio. If it only sounds
+   higher, the rule stays.
 2. **The puso:** *ka'i* and *sevo'i*, where the gap is clean, against *mbo'y*, *ro'y*, *chero'y*, *avy'a* and
    *chemandu'a*, where the voice creaks through and the recognisers hear an h.
 3. **The y:** *yta*, *yvyty*, *sa'y*, *py*. The formants say it is the right vowel; an ear must agree.
@@ -1064,7 +1151,8 @@ The clips are FLAC files named by their key: the ones that stay silent in `sound
     (`pl.3.l1`: is *ka'aru* there?). A line that is right comes out of `silent.json`'s "keys", and its item plays.
 12. **Everything in `left-out/` that was left out by ear:** four short clips (the recognisers are wrong about one short
     clip in ten of real speech) and 23 slow takes, each with its normal take in the folder under the same key without
-    `.slow`: is the slow one harder to follow? What sounds right to you goes into `silent.json`'s "keep".
+    `.slow`: is the slow one harder to follow? What sounds right to you goes into `silent.json`'s "keep". A listening
+    lesson gets its slower version back once every slow line of it is in the folder.
 13. **The names and the Spanish:** Ana and Ramona, which the voice is given as ãna and ramõna (a nasal vowel where the
     stress is: does it sound like the name, or like a nasal a and o?); Juan in «Ndépa Juan? Nahániri, che Casimiro.»;
     the new names, Vicente, Moisés, Santiago, Casimiro, Genaro, Sara, Susana and Karina, in their lines, and the two
@@ -1084,28 +1172,40 @@ The clips are FLAC files named by their key: the ones that stay silent in `sound
 # once: Python 3.10 or later with torch, transformers, soundfile and numpy; ffmpeg with rubberband; Node 22. A CPU is enough.
 export HF_HUB_DISABLE_XET=1        # hosts: huggingface.co and us.aws.cdn.hf.co
 
-# after any change in content/, one line: it says only the clips whose text, voice or respelling changed, keeps the
-# take of every other clip, and makes the app's sound files again
+# after any change in content/, in sound/respell.json or in sound/silent.json, one line: it says only the clips whose
+# text, voice or respelling changed, keeps the take of every other clip, moves what is silent now to left-out/ and
+# what a person freed back from it, and makes the app's sound files again (a file with no changed clip stays as it is)
 node tools/build-course.mjs && node tools/sound-list.mjs A1 && python3 tools/make-tts.py --out sound/A1/voz --verify --changed && node tools/make-sound.mjs sound/A1/voz --manifest sound/A1/voz/manifest.json --kind synthetic
 
 python3 tools/make-tts.py --dry-run                                # the whole list as it would be said; stops on anything it cannot say
-python3 tools/make-tts.py --dry-run --out sound/A1/voz --changed   # what the line above would say, without saying it
+python3 tools/make-tts.py --dry-run --out sound/A1/voz --changed   # what the line above would say, move or bring back, without doing it
 ```
 
 - **The takes are `sound/A1/voz`, and that folder is added to, never made again from nothing.** The samples depend on
   the machine: with another thread count (1 instead of the tool's 3) the model's output differs in the sixth decimal,
   F and N clips by one or two units of 32,768, and rubberband turns that into another waveform for M (the
   verification: 4 of 6 M clips differed, 3 of them transcribed differently). `takes.json` records the library versions
-  and the thread count. On the machine of 10 November the same seed gave the same file every time it was tried.
+  and the thread count. On the machine of 10 November the same seed gave the same file every time it was tried, and
+  again on 16 November, after a restart («How a clip is said», «Takes and seeds»).
 - **`--changed`** compares the list with the folder. A row keeps its clip when the clip was made from the text the
   voice is given for that row today (the respelled text) and for its voice; a clip whose row moved passes to the row
   that says its text now («How a clip is said»); the rows that then lack a take are said, each heard back, and the
   slow take of a line that is said again is said again with it. Nothing else is said or heard, and what an earlier
-  `--verify` left out stays out for as long as its row is the row that was judged. Tried on 10 November: with nothing
-  changed the line said nothing, loaded no model, took 0.4 s, and left every file of the folder byte for byte as it
-  was; with one text changed in a copy of the list (and a copy of the folder), it said that one clip in 13 seconds,
-  three takes of it heard, kept the other 439, and changed five files (the clip, `manifest.json`, `takes.json`, the
-  two reports).
+  `--verify` left out stays out for as long as its row is the row that was judged and "keep" does not name it.
+- **Tried on 16 November, six days after the files were made.** *Nothing changed*, the line as it stands above, in the
+  repository: no clip said, no model loaded (the voice tool's part takes a third of a second), all seven sound files
+  «as they were», and not one file of `sound/` or `project/` different afterwards, by checksum and by `git status`.
+  The whole line took 2 minutes 41 seconds, nearly all of it `make-sound.mjs` encoding every clip again to find that
+  nothing had changed. *One text changed* (an example of unit 1 day 1, in a copy of the repository's `content/`,
+  `tools/`, `sound/` and `project/`): one clip said, three takes of it heard by both recognisers in 15 seconds, the
+  other 439 kept; in `sound/` the clip, the two clip lists, `takes.json` and the two reports changed, and of the sound
+  files only `gn-sound-a1-u01.js` was written anew, the other six left byte for byte as they were. That line took 2
+  minutes 58 seconds. (With the recognisers not yet in the machine's memory, the first such run of the day took 3
+  minutes 39 seconds for its one clip.)
+- **After a change of `sound/silent.json`** the same line does what is needed, and so does the voice tool alone, with
+  or without `--verify`: a clip that is silent now goes to `left-out/` (a recording that a dialogue still needs passes
+  to the dialogue's own key), and a clip that a person freed comes back from `left-out/` as it is («How a clip is
+  said»). Nothing is said for either, and no model is loaded.
 - The order of the line matters: the clip list is read from the built course, so `build-course.mjs` comes first.
 - The two voices are 145 MB each. `--verify` needs the recognisers in the Hugging Face cache as well
   (`ivangtorre/wav2vec2-xlsr-300m-guarani`, 1.2 GB; `facebook/mms-1b-all` with `adapter.grn.safetensors` and
@@ -1114,8 +1214,10 @@ python3 tools/make-tts.py --dry-run --out sound/A1/voz --changed   # what the li
 - **Ship only what `--verify` heard**, or what `--takes` made from it. Without the recognisers the tool says each clip
   once, leaves nothing out by ear, and says so.
 - Time, on four shared CPUs with both recognisers: the 45 clips of 10 November took 5 minutes 36 seconds (three takes
-  at most a clip); the 492 clips of the fix round, 46 minutes. Without the recognisers, about a second a clip.
-  `make-sound.mjs` takes 2 minutes 19 seconds for the 440 clips.
+  at most a clip); the 492 clips of the fix round, 46 minutes; the ten words of 16 November, one minute. Without the
+  recognisers, 13 clips said again from `takes.json` took 1 minute 52 seconds on 16 November, most of it loading the
+  two voices. `make-sound.mjs` took 2 minutes 19 seconds for the 440 clips on 10 November and 2 minutes 40 on 16
+  November, with other work on the machine.
 - The folder holds one FLAC per key (16 kHz, mono, 16 bit; lossless, 58 % of the WAV), `voices.json`, `manifest.json`
   (the list without the silent rows: the one to give `make-sound.mjs`, not `sound/A1/manifest.json`), `takes.json`
   (the seed, the cut, the rate and the pitch of every clip, and what was left out), `tts-report.csv` and
@@ -1123,18 +1225,15 @@ python3 tools/make-tts.py --dry-run --out sound/A1/voz --changed   # what the li
   a listener. A new folder is FLAC too (`--format wav` for WAV); `--format flac` or `--format wav` on a folder that
   holds the other format converts its clips, each read back and compared, and does nothing else. `make-sound.mjs`
   reads either.
-- After a change of `sound/silent.json`, run the tool on the folder without `--verify` and without `--redo`: it says
-  nothing anew, moves the clips that are now silent to `left-out/`, passes a recording a dialogue still needs to the
-  dialogue's own key, and writes the manifest again. Then `make-sound.mjs`.
 - `--verify` without `--changed` hears every clip of the folder again and judges all of it afresh: what was left out
   by ear before is said and judged again too. That is for a change of the recognisers or of the rules of the ear, not
-  for a change of the content.
+  for a change of the content or of `sound/silent.json`.
 - `--takes sound/A1/voz/takes.json --out /tmp/voz2` says the same takes again without the recognisers and leaves the
   same rows out. It stops, before the first clip, if a clip of the manifest has no take in the file.
 - `--only 'a1u01d1.*' p3.0` for a part; `--redo` to say again what is there; `--seed N --tries 1` with `--only` and
   `--redo` to keep one particular take of a line (the seeds a clip tries are its key's CRC-32 plus 7919 for each
-  further take); `--silent none` with a new folder to say the silent pairs too, for a listener; `--prune` to delete
-  the clips whose key the list no longer has.
+  further take); `--silent none` with a new folder to say everything as if no rule kept a row out (the clips of the
+  silent rows are in `left-out/` already); `--prune` to delete the clips whose key the list no longer has.
 - A new name, a Spanish word or a new character in the content stops the run until `sound/respell.json` has it, and a
   new name goes through the trial of «The names of the people» first.
 - Another level: `node tools/sound-list.mjs A2`, then `--manifest sound/A2/manifest.json --out sound/A2/voz --verify`.
@@ -1143,5 +1242,7 @@ The scripts, logs, pictures and clips of the rounds are in the scratch folder of
 repository: `…/scratchpad/voice` (`SETUP.md`, `scripts/`, `work/`, `probe/`, `pics/`: the first round),
 `…/scratchpad/voice/verify` (the verification), `…/scratchpad/voice/fix` (the fix round: `scripts/`, `logs/`, `pics/`;
 `out/full` is the folder the run of 10 November was made on, as WAV), `…/scratchpad/voice-ship/names` (the names
-trial) and `…/scratchpad/voice-ship/say` (the run of 10 November: its logs, the folder before it, the scripts that
-measured the sound files and the numbers above).
+trial), `…/scratchpad/voice-ship/say` (the run of 10 November: its logs, the folder before it, the scripts that
+measured the sound files and the numbers above) and `…/scratchpad/voice-ship/finish` (16 November: `PROGRESS.md`,
+`scripts/` with what measured the figures of that day, the logs of every trial named above under `sc/`, the tool as
+it was under `old-tool/` and the four changed-back copies under `mut/`).

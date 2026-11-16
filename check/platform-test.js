@@ -1,11 +1,12 @@
 // Platform checks for the built Epu'ã app (docs/), the way an iPhone meets it, and an Android phone: fitting the
 // 390x844 design to each phone (and the note for a phone held sideways), the install page in each browser and the
 // Home Screen app skipping it, the page's own first paint, the offline copy (every file stored under its own hash,
-// each downloaded once, a cold start and every screen offline), picking up a new build (only the files that changed
+// each downloaded once, the level's sound kept once there is a plan and each of its files downloaded once too, a cold
+// start and every screen offline), picking up a new build (only the files that changed
 // are downloaded), the manifest and the icons (the maskable pair an Android launcher cuts to its shape),
 // the typefaces (served by the app itself, every Guarani letter in the app's own faces, never a fallback), each
-// screen's frame (390x844, nothing out of it, taps of 44x44 or more), no request leaving the app's address, the
-// licences, and the page's languages (lang="es", lang="gn" on the Guarani).
+// screen's frame (390x844, nothing out of it, taps of 44x44 or more), its headings (a screen opens on an <h1>), no
+// request leaving the app's address, the licences, and the page's languages (lang="es", lang="gn" on the Guarani).
 // The screens are looked at fresh, with a learner part way through unit 1, and with a second learner in the last
 // written week (found from the course itself), whose longer words, titles and explanations unit 1 does not have.
 // Two kinds of small target are reported as warnings, not failures: words in running text that are as tall as their
@@ -53,6 +54,10 @@ const MAC_IPAD = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/60
 /* an Android phone in Chrome (a Galaxy A15), and in Firefox, which never offers to install through the page */
 const ANDROID = 'Mozilla/5.0 (Linux; Android 14; SM-A155M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36';
 const ANDROID_FIREFOX = 'Mozilla/5.0 (Android 14; Mobile; rv:131.0) Gecko/131.0 Firefox/131.0';
+/* a page opened inside another app: a link tapped in Instagram, on Android (a WebView says "wv") and on an iPhone (such
+   a page does not name Safari) */
+const ANDROID_INAPP = 'Mozilla/5.0 (Linux; Android 14; SM-A155M Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/130.0.6723.58 Mobile Safari/537.36 Instagram 331.0.0.37.90 Android (34/14; 450dpi; 1080x2340; samsung; SM-A155M; a15; mt6789; es_US; 598808576)';
+const IPHONE_INAPP = 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Instagram 331.0.2.26.86 (iPhone15,2; iOS 18_5; es_LA; es; scale=3.00; 1179x2556; 599297333)';
 /* Android phones: from the Home Screen (the screen less the status bar; less the three-button bar too on the second),
    and in Chrome with its bars */
 const DROIDS = [['Galaxy A15 from the Home Screen', 360, 776], ['Galaxy A15, three-button bar', 360, 728], ['Pixel 8 from the Home Screen', 412, 867]];
@@ -315,8 +320,12 @@ const INSPECT = (name) => {
     if ((!sx && (rr > 390.5 || l < -0.5)) || (!sy && (b > 844.5 || t < -0.5))) {
       const own = [...el.childNodes].some((n) => n.nodeType === 3 && n.nodeValue.trim());
       const line = `${tag} "${label(el).slice(0, 30)}" l=${Math.round(l)} r=${Math.round(rr)} t=${Math.round(t)} b=${Math.round(b)}`;
-      /* a game's window (aria-hidden, clipping what moves in and out of it) is animation, not content */
-      const game = !!el.closest('[aria-hidden="true"]') && [...ancestorsOf(el)].some((p) => getComputedStyle(p).overflow === 'hidden' && p !== rootEl);
+      /* a game's window (aria-hidden, clipping what moves in and out of it) is animation, not content; and so is a
+         game's world, a box drawn through a camera (scaled as a whole) inside one that clips it: what comes next
+         waits above the frame's edge and comes in over it (the pairs that fall in Hablar, which are buttons) */
+      const clipped = [...ancestorsOf(el)].some((p) => getComputedStyle(p).overflow === 'hidden' && p !== rootEl);
+      const world = clipped && [...ancestorsOf(el)].some((p) => { if (p === rootEl) return false; const m = /^matrix\(([-\d.e]+), [-\d.e]+, [-\d.e]+, ([-\d.e]+),/.exec(getComputedStyle(p).transform || ''); return !!m && (Math.abs(+m[1] - 1) > 0.01 || Math.abs(+m[2] - 1) > 0.01); });
+      const game = (!!el.closest('[aria-hidden="true"]') && clipped) || world;
       (!game && (own || NATIVE.test(tag) || handlers(el).length || tag === 'img') ? res.out : res.deco).push(line + (game ? ' (in a game window)' : ''));
     }
     const target = NATIVE.test(tag) || el.getAttribute('role') === 'button' || handlers(el).length > 0;
@@ -501,7 +510,7 @@ function answerFields() {
 const walk = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(dir, e.name)) : [path.join(dir, e.name)]));
 const swInfo = (dir) => {
   const sw = fs.readFileSync(path.join(dir, 'sw.js'), 'utf8');
-  return { files: JSON.parse(sw.match(/const FILES = (\[[\s\S]*?\]);/)[1]), version: sw.match(/const VERSION = '([0-9a-f]+)'/)[1], hashes: JSON.parse((sw.match(/const HASH = (\{[\s\S]*?\});/) || [, '{}'])[1]) };
+  return { files: JSON.parse(sw.match(/const FILES = (\[[\s\S]*?\]);/)[1]), version: sw.match(/const VERSION = '([0-9a-f]+)'/)[1], hashes: JSON.parse((sw.match(/const HASH = (\{[\s\S]*?\});/) || [, '{}'])[1]), lazy: JSON.parse((sw.match(/const LAZY = (\{[\s\S]*?\});/) || [, '{}'])[1]) };
 };
 /* the hash the build gives a file: the first ten hex digits of the SHA-256 of its content (./ is the page) */
 const hashOfFile = (dir, f) => sha(fs.readFileSync(path.join(dir, f === './' ? 'index.html' : f))).slice(0, 10);
@@ -600,7 +609,20 @@ async function fontsUsed(page, cdp, facts) {
   ORIGINS = [L.origin, P && P.origin].filter(Boolean);
   const browser = await chromium.launch({ args: ['--ignore-certificate-errors'] });
   const build = (fs.readFileSync(path.join(SITE, 'assets/build.js'), 'utf8').match(/__gnBuild = "([^"]*)"/) || [])[1];
-  const { files: FILES, version: VERSION, hashes: HASHES } = swInfo(SITE);
+  const { files: FILES, version: VERSION, hashes: HASHES, lazy: LAZY } = swInfo(SITE);
+  /* the sound of the sample learner's level (A1: its units' files, its exam's, and the placement check's and the
+     speaking game's, which belong to no level): shipped but not installed; the worker stores a file when it is first
+     used, and the whole level's once there is a plan (sw.js). kept(page) waits until they are all in the store */
+  const SOUND = Object.keys(LAZY).filter((f) => /\/gn-sound-(?:a1-[a-z0-9]+|pl|sp)\.js$/.test(f)).sort();
+  const soundKept = async (page, ms = 60000) => {
+    const t0 = Date.now();
+    let got = [];
+    for (;;) {
+      got = await page.evaluate(async () => { const out = []; for (const k of await caches.keys()) for (const r of await (await caches.open(k)).keys()) if (/[?&]h=/.test(r.url)) out.push(r.url); return out; }).catch(() => []);
+      if (got.length >= SOUND.length || Date.now() - t0 > ms) return got.sort();
+      await page.waitForTimeout(300);
+    }
+  };
   console.log(`platform checks: ${SITE} (${build}), sw version ${VERSION}, ${FILES.length} files listed`);
   console.log(`served at ${L.base} (test hooks) and ${P ? P.base + ' (production path)' : '(no https: openssl missing)'}; screenshots in ${OUT}`);
   if (!P) warn('openssl is missing, so the production-path checks (https, no test hooks) are skipped');
@@ -957,6 +979,10 @@ async function fontsUsed(page, cdp, facts) {
       let t = await stageText(page);
       ok((await screenName(page)) === 'Install' && /Instalá Epu'ã en tu celular/.test(t) && /Abrí el menú del navegador/.test(t) && /«Instalar app»/.test(t) && !/Compartir|Safari/.test(t), `${name} ${w}x${h}: Chrome on Android should get the install page, with its menu's steps`, t.slice(0, 200));
       ok(/tu progreso es el mismo|Tu progreso es el mismo/.test(t) && !/no lo ve|no ve el progreso/.test(t), `${name}: the page should say the installed app and the browser share the progress`, t.slice(-200));
+      /* where Chrome's bars leave the screens under 0.85 of the design's size (0.81 on a Galaxy A15, against 0.92 from
+         its icon), the page says the app looks smaller in the browser; on a taller phone it does not */
+      const scale = await page.evaluate(() => window.gnApp.appScale());
+      ok((scale < 0.85) === /se ve más chica/.test(t) && (scale < 0.85) === /más grande/.test(t), `${name}: the page should say the app looks smaller in the browser exactly where it does (drawn at ${scale.toFixed(2)} of its size)`, t.slice(-220));
       const how = [await fits(page, `${name} ${w}x${h} (menu steps)`, w, h)];
       if (w === 360 && h === 648) await shot(page, `install-android-${w}x${h}-steps`);
       const kept = await page.evaluate(offer);
@@ -984,9 +1010,10 @@ async function fontsUsed(page, cdp, facts) {
       await ctx.close();
     }
     /* a browser that never makes the offer (Firefox): the menu's steps, and where to go if the menu has no such entry;
-       an offer turned down leaves the steps too */
+       an offer turned down leaves the steps too. (On a Pixel 8's screen: on a shorter one the line that names the
+       browser says instead that the app looks smaller there, which is checked above) */
     {
-      const ctx = await phone(browser, 360, 648, { label: 'install android firefox', ua: ANDROID_FIREFOX, reducedMotion: 'reduce' });
+      const ctx = await phone(browser, 412, 784, { label: 'install android firefox', ua: ANDROID_FIREFOX, reducedMotion: 'reduce' });
       const page = await ctx.newPage();
       await page.goto(P.base);
       await ready(page);
@@ -998,6 +1025,35 @@ async function fontsUsed(page, cdp, facts) {
       await page.evaluate(() => window.__choose({ outcome: 'dismissed' }));
       await page.waitForTimeout(300);
       ok(/Abrí el menú del navegador/.test(await stageText(page)) && !(await page.locator('#gn-stage button').filter({ hasText: 'Instalar Epu' }).count()), 'an offer turned down should leave the menu\'s steps, with no button that does nothing', (await stageText(page)).slice(0, 200));
+      await ctx.close();
+    }
+    /* a page opened inside another app (a link tapped in Instagram): it cannot be installed from there, and what it
+       saves stays inside that app. On Android the steps start with Chrome and nothing says the progress is the same;
+       on an iPhone nothing is said of Safari (it is not Safari). With progress made there, the code is offered */
+    for (const [name, ua, w, h] of [['an Android phone, inside another app', ANDROID_INAPP, 360, 648], ['an iPhone, inside another app', IPHONE_INAPP, 390, 664]]) {
+      const ctx = await phone(browser, w, h, { label: 'install in-app ' + w + 'x' + h, ua, reducedMotion: 'reduce' });
+      const page = await ctx.newPage();
+      const logs = [];
+      watch(page, logs);
+      await page.goto(P.base);
+      await ready(page);
+      let t = await stageText(page);
+      const flags = await page.evaluate(() => ({ inApp: window.gnApp.inApp, apart: window.gnApp.apart, browser: window.gnApp.browser }));
+      ok((await screenName(page)) === 'Install' && flags.inApp === true && flags.apart === true && flags.browser === 'el navegador', `${name}: the app should know the page is inside another app, which keeps what it saves to itself`, JSON.stringify(flags));
+      ok(/queda dentro de esta app/.test(t) && !/es el mismo|Safari borra|Copiar mi progreso/.test(t), `${name}: the page should say the progress stays inside that app (and nothing of a shared progress, or of Safari)`, t.slice(-260));
+      if (/Android/.test(ua)) ok(/Abrí esta página en Chrome/.test(t) && /«Instalar app»/.test(t) && /lo que hagas acá no pasa a la app/.test(t), `${name}: the steps should start with opening the page in Chrome`, t.slice(0, 300));
+      else ok(/Tocá Compartir/.test(t) && /Abrí primero esta página en Safari/.test(t), `${name}: the steps should be the Share menu's, with the way to Safari`, t.slice(0, 300));
+      const how = [await fits(page, `${name} ${w}x${h}`, w, h)];
+      await shot(page, `install-inapp-${/Android/.test(ua) ? 'android' : 'iphone'}-${w}x${h}`);
+      /* with progress made inside that app, the code to take it along */
+      await page.evaluate(([k, v]) => localStorage.setItem(k, v), [KEY, JSON.stringify(SAVED)]);
+      await page.reload();
+      await ready(page);
+      t = await stageText(page);
+      ok(/¿Ya avanzaste acá\? Llevá tu progreso a la app/.test(t) && /Copiar mi progreso/.test(t), `${name}: with progress made there, the page should offer its code`, t.slice(-300));
+      how.push(await fits(page, `${name} ${w}x${h} (with progress)`, w, h));
+      note(`${w}x${h} ${name}: install page ${how.join(', ')}`);
+      ok(logs.length === 0, `${name}: console problems on the install page`, logs.slice(0, 3).join(' ; '));
       await ctx.close();
     }
   }
@@ -1202,6 +1258,22 @@ async function fontsUsed(page, cdp, facts) {
       ok(reg.scope === L.base && reg.script === L.base + 'sw.js', 'the worker\'s scope should be the app folder', JSON.stringify(reg));
       note(`stored ${n} files under epua:${PREFIX}:${VERSION}; worker scope ${reg.scope}, updateViaCache ${reg.via}`);
       await page.evaluate(([k, v]) => localStorage.setItem(k, v), [KEY, JSON.stringify(SAVED)]);
+      /* A learner with a plan: the app has the worker keep the level's sound, in the background. «Abrila una vez con
+         internet; después funciona sin conexión» holds once those files are stored, so the phone goes offline after
+         that. Each sound file is downloaded once: the first unit's, which the page fetched before the worker was in
+         charge, is taken from the browser's own copy (as the files of the install are), not fetched a second time */
+      if (SOUND.length) {
+        await page.reload();
+        await ready(page);
+        const kept = await soundKept(page);
+        const wantKept = SOUND.map((f) => new URL(f + '?h=' + LAZY[f], L.base).href).sort();
+        ok(JSON.stringify(kept) === JSON.stringify(wantKept), `with a plan, the worker should store the level's ${SOUND.length} sound files, each under the hash of its content`, JSON.stringify({ missing: wantKept.filter((u) => !kept.includes(u)), extra: kept.filter((u) => !wantKept.includes(u)) }));
+        const count = {};
+        for (const h of L.hits.slice(firstHit)) if (/\/assets\/gn-sound-(?!index)/.test(h.path)) count[h.path.slice(PREFIX.length) + h.search] = (count[h.path.slice(PREFIX.length) + h.search] || 0) + 1;
+        const asked = Object.keys(count);
+        ok(asked.length === SOUND.length && asked.every((k) => count[k] === 1 && !/[?&]h=/.test(k)), 'each sound file should be downloaded once, at the address the page uses (the first unit\'s not again for the offline copy)', JSON.stringify(count));
+        note(`with a plan: ${SOUND.length} sound files stored, ${Math.round(SOUND.reduce((s, f) => s + fs.statSync(path.join(SITE, f)).size, 0) / 1024)} kB as they are on disk, each asked for once`);
+      }
       const hitsBefore = L.hits.length;
       ctx.__offline = true;
       await ctx.setOffline(true);
@@ -1270,6 +1342,11 @@ async function fontsUsed(page, cdp, facts) {
       await ready(page);
       const fromSw = await page.evaluate(() => performance.getEntriesByType('resource').filter((e) => /\.woff2/.test(e.name)).map((e) => ({ url: e.name, sw: e.workerStart > 0 || e.deliveryType === 'cache' || e.transferSize === 0 })));
       ok(fontHits() === fh0 && fromSw.every((e) => e.sw), 'once stored, the typefaces should come from the stored copy, not the network', JSON.stringify({ newHits: fontHits() - fh0, fromSw }));
+      /* the learner has a plan: the level's sound is kept before the phone loses its connection (see a) */
+      if (SOUND.length) {
+        const kept = await soundKept(page);
+        ok(kept.length === SOUND.length, `production path: with a plan, the worker should store the level's ${SOUND.length} sound files`, JSON.stringify(kept.map((u) => u.split('/').pop())));
+      }
       await ctx.close();
 
       ctx = await launch(true);
@@ -1695,8 +1772,17 @@ async function fontsUsed(page, cdp, facts) {
     const fromContent = new Set();
     const labels = new Map();
     const wordBreaks = new Map();
+    const noH1 = new Map();
     const usedAll = {};
     let rootBad = 0;
+    /* the headings a screen shows, in order: the app gives a new screen's first heading the focus, and a screen reader
+       lists them, so a screen starts on an <h1> */
+    const HEADS = (name) => {
+      const host = document.querySelector('#gn-stage .sc-host[data-sc-name="' + name + '"]');
+      if (!host) return null;
+      const shown = (el) => { for (let p = el; p && p !== host.parentElement; p = p.parentElement) { const cs = getComputedStyle(p); if (cs.display === 'none' || cs.visibility === 'hidden') return false; } return true; };
+      return [...host.querySelectorAll('h1,h2,h3,h4,h5,h6')].filter(shown).map((h) => h.tagName.toLowerCase());
+    };
     const stateKey = async (scr) => scr + '|' + crypto.createHash('sha1').update((await stageText(page)) + (await page.evaluate(() => document.querySelectorAll('#gn-stage *').length))).digest('hex').slice(0, 12);
     /* a second learner, further on: in the last written week (A1 unit 4 today), its first day done and its second open,
        with a mistake of that week in the notebook. The first sample stands in unit 1, and unit 1 alone hid what the later
@@ -1750,6 +1836,8 @@ async function fontsUsed(page, cdp, facts) {
       const lg = await page.evaluate(LANG, scr);
       for (const u of lg.untagged) { const k = `${scr} | "${u}"`; if (!untagged.has(k)) untagged.set(k, where); if (lg.content.includes(u)) fromContent.add(k); }
       for (const u of lg.labels) { const k = `${scr} | aria-label "${u}"`; if (!labels.has(k)) labels.set(k, where); }
+      const heads = await page.evaluate(HEADS, scr);
+      if (heads && heads[0] !== 'h1') { const k = `${scr} | ${heads.length ? 'its first heading is an ' + heads[0] : 'no heading'}`; if (!noH1.has(k)) noH1.set(k, where); }
       if (res.out.length || res.clip.length || res.trunc.length) await shot(page, 'issue-' + label.replace(/[^\w]+/g, '_').slice(0, 60));
       return true;
     };
@@ -1872,7 +1960,7 @@ async function fontsUsed(page, cdp, facts) {
         ['Goal', 'a plan that exists', BACK, 'Guardar el plan'],
         ['Main', 'the end of the written path', END, 'MIENTRAS TANTO'],
         ['Today', 'a sealed day', Object.assign({}, END, { cur: more.lastReview }), '¿Un rato más?'],
-      ].concat(more.mini ? [['ExamTab', 'the mini exam open', END, '20 preguntas de las semanas'], ['Exam', 'the mini exam under way', Object.assign({}, END, { set: 'mini1' }), 'MINI EXAMEN 1']] : []);
+      ].concat(more.mini ? [['Progress', 'the mini exam as the next step', END, 'Sigue: Mini examen 1'], ['ExamTab', 'the mini exam open', END, '20 preguntas de las semanas'], ['Exam', 'the mini exam under way', Object.assign({}, END, { set: 'mini1' }), 'MINI EXAMEN 1']] : []);
       let seenNew = 0;
       for (const [scr, label, sample, says] of cases) {
         await page.goto(L.base + '?gntest&screen=' + scr + address(sample));
@@ -2023,6 +2111,16 @@ async function fontsUsed(page, cdp, facts) {
       warn(`${wordBreaks.size} Guarani words are broken across two lines (overflow-wrap: anywhere; never at the puso, which is checked above)`);
       for (const k of [...wordBreaks.keys()].slice(0, 20)) console.log('       ' + k + '   [' + wordBreaks.get(k) + ']');
     }
+    /* a screen as it opens (the state its heading takes the focus in) starts on an <h1>; a state reached inside a
+       screen that does not is reported */
+    const opens = (where) => /^\w+( \([^)]*\))?$/.test(where);
+    const noH1Open = [...noH1.keys()].filter((k) => opens(noH1.get(k)));
+    const noH1In = [...noH1.keys()].filter((k) => !opens(noH1.get(k)));
+    ok(noH1Open.length === 0, `every screen should open on an <h1> before any other heading: ${noH1Open.length} do not`, noH1Open.map((k) => k + ' [' + noH1.get(k) + ']').join(' ; '));
+    if (noH1In.length) {
+      warn(`${noH1In.length} states reached inside a screen do not start on an <h1>`);
+      for (const k of noH1In.slice(0, 20)) console.log('       ' + k + '   [' + noH1.get(k) + ']');
+    } else pass(`headings: all ${states.size} states start on an <h1>`);
     ok(logs.length === 0, 'screens: console problems', logs.slice(0, 5).join(' ; '));
     await ctx.close();
   }

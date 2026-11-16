@@ -254,9 +254,12 @@ fill: weak ? '#C7361E' : '#2F4FD0',
 aria: name + ': ' + right + ' de ' + x.of + (weak ? ', por debajo de la línea de 60 %. Te falta ' + need + (need === 1 ? ' respuesta' : ' respuestas') : ', sobre la línea de 60 %'),
 };
 });
-/* the next step: the weakest area under the line; else the next session on the path */
+/* the next step: the weakest area under the line; else the next session on the path; else, with no day left to do, a
+   mini exam that is open */
 const weakest = areas.filter((a) => a.weak).sort((a, b) => a.share - b.share || b.need - a.need)[0] || null;
 const next = st.next || null;
+/* a mini exam that is open (the week test it waits for is done) and not taken yet */
+const mini = !next && C.minis ? C.minis(lv).filter((x) => x.ready && state.tests[C.withLevel(lv, () => C.sid(x.after, 't'))] && !state.tests[x.id])[0] || null : null;
 const open = (s) => (e) => {
 if (this.props.save) this.props.save({ cur: s.id, tp: 0, set: s.kind === 'test' ? 'test' : 'day' });
 nav(s.kind === 'test' ? 'WeekTest' : 'Today')(e);
@@ -268,6 +271,11 @@ step = { kickerInk: '#C7361E', title: weakest.name + ': con ' + weakest.need + (
 } else if (next) {
 const what = next.kind === 'test' ? 'Prueba de la semana' : 'Día ' + next.day + ' · ' + C.plain(next.title || '');
 step = { kickerInk: '#2F4FD0', title: areas.length ? 'Todas las áreas pasan la línea' : what, sub: areas.length ? 'Sigue: ' + what : next.kind === 'test' ? 'Formato de examen, con reloj' : 'Tres lecciones', hasSub: true, hasCta: true, cta: 'Empezar', ctaBg: '#2F4FD0', href: next.kind === 'test' ? 'WeekTest.dc.html' : 'Today.dc.html', go: open(next) };
+} else if (mini) {
+/* where the written path ends: a mini exam that is open and not taken yet is the next step (the Examen tab has it) */
+const what = 'Mini examen ' + mini.n;
+const size = mini.items.length + ' preguntas, ' + Math.round(mini.seconds / 60) + ' min';
+step = { kickerInk: '#2F4FD0', title: areas.length ? 'Todas las áreas pasan la línea' : what, sub: areas.length ? 'Sigue: ' + what + ' · ' + size : size, hasSub: true, hasCta: true, cta: 'Abrir', ctaBg: '#2F4FD0', href: 'ExamTab.dc.html', go: nav('ExamTab') };
 } else {
 step = { kickerInk: '#2F4FD0', title: areas.length ? 'Todas las áreas pasan la línea' : 'El próximo día se abre cuando esté escrito', sub: areas.length ? 'El próximo día se abre cuando esté escrito.' : '', hasSub: !!areas.length, hasCta: false, cta: '', ctaBg: '#2F4FD0', href: 'Main.dc.html', go: nav('Main') };
 }

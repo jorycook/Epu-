@@ -202,7 +202,9 @@ const items = (page, sid, part) => page.evaluate(([sid, part]) => {
     await page5.goto(BASE);
     await ready(page5);
     const t5 = await text(page5);
-    ok(t5.includes("Instalá Epu'ã en tu celular") && t5.includes('Abrí el menú del navegador') && t5.includes('«Instalar app»') && t5.includes('tu progreso es el mismo'), 'Chrome on an Android phone should get the install page with its menu\'s steps, got ' + t5.slice(0, 160));
+    ok(t5.includes("Instalá Epu'ã en tu celular") && t5.includes('Abrí el menú del navegador') && t5.includes('«Instalar app»') && /tu progreso es el mismo/i.test(t5), 'Chrome on an Android phone should get the install page with its menu\'s steps, got ' + t5.slice(0, 160));
+    /* with Chrome's bars the screens are drawn at 0.81 of the design's size on this phone (0.92 from its icon): the page says so */
+    ok(t5.includes('más grande') && t5.includes('se ve más chica'), 'on a Galaxy A15 in Chrome the install page should say the app looks smaller in the browser, got ' + t5.slice(-200));
     await shot(page5, 'install-android');
     await click(page5, 'Seguir en el navegador', 600);
     ok((await screenName(page5)) === 'Goal', 'Seguir en el navegador should open the app on Android, at ' + (await screenName(page5)));

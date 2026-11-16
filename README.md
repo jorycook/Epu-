@@ -21,12 +21,12 @@ native speaker's check.
 | `project/` | The canvas's files: 42 boards (`*.dc.html`), the index (`canvas.json`) and the shared scripts. `gn-course.js` is the course engine (the counterpart of Yaoki's `course.js`, as `window.gnCourse`); `gn-course-a1.js` … `gn-course-c2.js` are the six levels' data, made from `content/`; `gn-extra.js` holds the placement check, the A1 level exam, the reader's text and the typing and speaking lists; `gn-spell.js` is the spelling helper (the letters of the alphabet, the keys a word needs, why a typed letter is off); `gn-sound.js` is Yaoki's sound player under new names. |
 | `content/` | The course as data. `levels.json` is the syllabus of all six levels (52 units, the title of every study day and, for the units written, each day's sound focus). `a1/parts/` holds A1 units 1 to 4 day by day, each with its week test (`u01-d1.json` … `u04-test.json`); `a1/u01.json` … `a1/u04.json` are the units assembled from them; `extra/` holds the extras. |
 | `tools/` | `build-course.mjs` checks the content and writes the level files; `assemble-unit.mjs` merges a unit's day files; `lint-board.mjs` checks a board for the format rules that fail silently; `smoke-boards.mjs` runs each board's logic against the engine and the data, the way the canvas and the prototype call it, without rendering; `blind-export.mjs` exports every question without its answer for a blind solver; `sound-list.mjs`, `make-sound.mjs` and `make-tts.py` are the sound path (see Sound). |
-| `sound/` | The clip lists: `A1/manifest.json` (every clip the course needs, by key, with its text, voice, place and recording order; read by the tools and the studio) and `A1/lista.csv` (the same, for a spreadsheet). `A1/voz/` holds the synthetic voice's takes for A1 units 1 to 4: 440 clips as FLAC, the seed of each and what two speech recognisers heard of it, and in `left-out/` the 53 clips that stay silent (CC BY-NC 4.0, non-commercial; see Sound). `VOICE.md` is the record of that voice, `respell.json` how it is given Spanish names and numbers, `silent.json` what it must not say. A person's recordings will not live in the repository: `make-sound.mjs` turns either kind into `project/gn-sound-*.js`. |
+| `sound/` | The clip lists: `A1/manifest.json` (every clip the course needs, by key, with its text, voice, place and recording order; read by the tools and the studio) and `A1/lista.csv` (the same, for a spreadsheet). `A1/voz/` holds the synthetic voice's takes for A1 units 1 to 4: 440 clips as FLAC, the seed of each and what two speech recognisers heard of it, and in `left-out/` the 63 clips that stay silent, kept for a native listener (CC BY-NC 4.0, non-commercial; see Sound). `VOICE.md` is the record of that voice, `respell.json` how it is given Spanish names and numbers, `silent.json` what it must not say. A person's recordings will not live in the repository: `make-sound.mjs` turns either kind into `project/gn-sound-*.js`. |
 | `brief/` | The design brief the boards were built from: `BRIEF-core.md` (format, wiring, typefaces, tokens, engine, content shape), `BRIEF-design.md` (language, look, mascot, the verified Guarani glossary), `BOARDS.md` (every board's spec), `CONTENT-BRIEF.md` (how the lessons are written), the font link, and `mascot/` (Kaguare's final art: `SPEC.md`, `spec.json` with every SVG, and `sheet.png`). |
 | `notes/` | The research the design rests on. Y1 to Y5 map the Yaoki suite (plan and engine, the lesson loop, skills and tests, the satellites, platform and brand). G1 to G8 are the Guarani research, with a source and a confidence mark on every claim: sounds, spelling, fonts and keyboards; a verified grammar reference; learners and prior art; data, audio and licences; culture, naming and UI words; the CEFR and the level exam; the six-level syllabus; and G8, the second mascot (Kaguare: which anteater, its names, three slang screens). |
 | `epua-app/` | The installable app around the screens: `src/` (Yaoki's runtime, the shell, the first-visit page, the offline worker, the page and the manifest), `studio/` (the recording studio page), `build.mjs`, `fonts.py`, `fetch-fonts.sh` and `check/app-check.js`. |
 | `docs/` | The built app, for GitHub Pages. This is all a phone needs. `docs/estudio/` is the recording studio, next to the app and not part of it. |
-| `check/` | Two checks of the built app in Chromium, as GitHub Pages serves it: `flows-test.js` (a learner's flows by taps, saved progress, two tabs, saved data that does not fit, the last written week to its end, and the app around the screens: an Android phone's way in, the system's back, focus and zoom, a paste taken back, the screens that load later) and `platform-test.js` (phone sizes, iPhone and Android, the install page in each browser, the Home Screen, the page's first paint, offline, updates, the manifest and icons, the typefaces, every screen's frame, tap targets, languages; the screens with a learner in unit 1 and with one in the last written week, and the shell's own notices). Their screenshots go to `check/out/`, which is not kept. |
+| `check/` | Two checks of the built app in Chromium, as GitHub Pages serves it: `flows-test.js` (a learner's flows by taps, saved progress, two tabs, saved data that does not fit, the last written week to its end, the review put in front of the day and its size, the plan made again, the days with study and the return after days away, the end of the written path with the first mini exam, and the app around the screens: an Android phone's way in, the system's back, focus and zoom, a paste taken back, the screens that load later) and `platform-test.js` (phone sizes, iPhone and Android, the install page in each browser, the Home Screen, the page's first paint, offline (with the level's sound, each file downloaded once), updates, the manifest and icons, the typefaces, every screen's frame, tap targets, headings, languages; the screens with a learner in unit 1, with one in the last written week, with one back after days and behind the plan and with one at the end of the written path, and the shell's own notices). Their screenshots go to `check/out/`, which is not kept. |
 
 ## Build and check
 
@@ -92,9 +92,15 @@ the goal, a tab). A browser that keeps nothing gets a notice on the goal screen 
 On an Android phone: open the address in Chrome. The install page is shown there too, with Android's own steps (the
 browser's menu, «Instalar app»); as soon as Chrome offers to install the app, the page shows one button, «Instalar
 Epu'ã», which puts Chrome's own question. On Android the installed app and the browser share what is saved, so the
-page says so and offers no code to copy. The manifest carries a second pair of icons for Android's launchers
-(`"purpose": "maskable"`): the same art at 80 %, standing on the tile's bottom edge, so the whole face lies inside the
-circle every launcher keeps (at full size a launcher's mask cut the ear and the tip of the snout).
+page says so and offers no code to copy. A page opened inside another app (a link tapped in Instagram, Facebook or
+TikTok opens in that app's own browser) cannot be installed from there, and what it saves stays inside that app: on
+Android the steps then start with «Abrí esta página en Chrome», and on both systems the page says where the progress
+stays and offers its code when there is some to take along. Where a browser's bars leave the screens under 0.85 of
+the design's size (a Galaxy A15 in Chrome draws them at 0.81, against 0.92 from its icon; an iPhone 14 in Safari at
+0.83, an iPhone SE at 0.69), the page says the app looks smaller there and larger from the Home Screen. The manifest
+carries a second pair of icons for Android's launchers (`"purpose": "maskable"`): the same art at 80 %, standing on
+the tile's bottom edge, so the whole face lies inside the circle every launcher keeps (at full size a launcher's mask
+cut the ear and the tip of the snout).
 
 The system's back (Android's gesture or key, a browser's back button) does what the screen's own X or back arrow
 does: it closes an open sheet, steps back in the goal screen, leaves a lesson for the day and the day for the week
@@ -106,24 +112,30 @@ a phone.)
 A first visit shows something at once and downloads the app once. The page carries its own first paint (the icon, the
 name, «Cargando…») and asks for the four faces of the first screen straight away. Only the screens a visit starts on
 are loaded with the page (`assets/screens.js`: the shell, the install page, the goal screen, the week path and the
-day, about 45 kB as the web host sends them); the other eighteen and the spelling pad (`assets/screens-more.js`, about
+day, about 55 kB as the web host sends them); the other eighteen and the spelling pad (`assets/screens-more.js`, about
 300 kB) come in once the page is up, and a screen asked for sooner gets a waiting note, or, if the file cannot be
-fetched, a note that says so with a way to try again.
+fetched, a note that says so with a way to try again. The first unit's sound comes after them: the engine asks for it
+with the first screen, but no screen of the first file plays a clip and one unit's sound (about 450 kB) is larger
+than all the later screens together, so the app holds that request back until the screens are in.
 The offline worker stores every file under a hash of its content: on a first visit it takes what the browser has just
 downloaded for the page instead of downloading it again, a new build downloads only the files that changed, and a file
 that is not this build's is never stored (it is asked for again, past every copy; if that fails the install waits).
+A sound file is stored the same way when it is first used or kept for the level: once, however many ask for it at the
+same moment, and from the browser's own copy when the page fetched it before the worker was in charge.
 
 Saved progress is looked after. Once there is a plan the app asks the browser to keep what is saved
 (`navigator.storage.persist`). In Safari on an iPhone the install page, and once a week the week path of a tab kept
-open, say that Safari deletes what a page saved when the page is not opened for a week. A pasted progress code can be
-taken back («Deshacer», on the week path, until the app is opened again). A save written by a newer build is read as
-far as this build understands it and never written over (the week path asks to open the app again), and fields a
-newer build added to the save are kept as they are.
+open, say that Safari deletes what a page saved when the page is not opened for a week; the week path's notice has a
+button, «Qué hacer», that opens the install page again (the steps to the Home Screen, and the code that takes the
+progress there). A pasted progress code can be taken back («Deshacer», on the week path, until the app is opened
+again). A save written by a newer build is read as far as this build understands it and never written over (the week
+path asks to open the app again), and fields a newer build added to the save are kept as they are.
 
 For a screen reader and a keyboard: the page's title names the screen («Epu'ã · Camino de la semana»), a new screen's
-heading takes the focus (every screen has an `<h1>`, and the stage is the page's `<main>`), an open sheet takes the
-focus and puts what is behind it out of reach until it closes, and the focus then returns to the control that opened
-it. The page can be pinched larger; only the two games played with both thumbs (Escribir, Hablar) keep two fingers
+heading takes the focus (every screen opens on an `<h1>`, and the stage is the page's `<main>`), an open sheet takes
+the focus and puts what is behind it out of reach until it closes, and the focus then returns to the control that
+opened it. (Three states inside a screen still start without an `<h1>`: the questions of the placement check and of
+the level exam, and Hablar's round; `platform-test.js` lists them.) The page can be pinched larger; only the two games played with both thumbs (Escribir, Hablar) keep two fingers
 from zooming.
 
 ## How the app works
@@ -168,7 +180,8 @@ from zooming.
   (rated again after 48 hours, the lower score kept) or by a teacher. No CEFR framework or certificate exists for Guarani
   anywhere (notes G6), so the app calls its result a constancia, never a certificate. Before it, each half of a level
   has a mini exam: 20 of that half's week-test questions (6 words, 8 grammar, 3 reading, 3 listening, as many from each
-  unit) on a 20-minute clock, open once the last of those week tests is done. A1's first one exists (units 1 to 4).
+  unit) on a 20-minute clock, open once the last of those week tests is done. A1's first one exists (units 1 to 4);
+  where the written path ends, the week path's card and Progreso's next step name it while it is open and not taken.
 - **Read, type, speak** are sections of the same app, not separate installs, reached from Progreso ("Más práctica":
   Emoñe'ẽ · Leer, Ehai · Escribir, Eñe'ẽ · Hablá), from a sealed day («¿Un rato más?») and, where the written path
   ends, from the week path's card («Mientras tanto», with the notebook); each closes to the screen it was opened
@@ -266,7 +279,7 @@ person's recordings:
 ```
 node tools/sound-list.mjs A1                       # every clip A1 needs → sound/A1/manifest.json and lista.csv, with the count
 python3 tools/make-tts.py --dry-run                # the whole list as the synthetic voice would say it; stops on anything it cannot say
-# after any change in content/: say only the clips whose text, voice or respelling changed, keep every other take, make the files again
+# after any change in content/, sound/respell.json or sound/silent.json: say only the clips whose text, voice or respelling changed, keep every other take, make the files again
 node tools/build-course.mjs && node tools/sound-list.mjs A1 && python3 tools/make-tts.py --out sound/A1/voz --verify --changed && node tools/make-sound.mjs sound/A1/voz --manifest sound/A1/voz/manifest.json --kind synthetic
 node tools/make-sound.mjs <folder of recordings>   # a person's recordings → project/gn-sound-a1-u01.js … and gn-sound-index.js; reports what is still missing
 node tools/make-sound.mjs check/fixtures/sound --out /tmp/x --dry-run   # a trial with the test fixtures (short tones)
@@ -285,7 +298,8 @@ node check/sound-test.js                           # the whole path in Chromium,
   needs both voices if its words, and with them the word that plays, ever change; the recordings no screen plays today
   come last in the recording order, after the slower takes, and say so in their place of use («hoy no suena»).
   A1 units 1 to 4 and the extras come to 502 recordings for 736 keys; 82 of the keys are unused, and 25 of the
-  recordings serve only those.
+  recordings serve only those. The list keeps the day it was made while nothing in it changes, so making it again
+  from the same course gives the same file.
 - **The studio.** `docs/estudio/` (source `epua-app/studio/index.html`) is a page in Spanish for a native speaker: it loads
   the list, shows one line at a time (the Guarani big, in the Guarani face; the Spanish small; the voice and the key),
   records it with the browser's recorder (Safari on the iPhone gives `audio/mp4`, Chrome `audio/webm`), plays it back,
@@ -305,7 +319,8 @@ node check/sound-test.js                           # the whole path in Chromium,
   clip; `b` the MP3 as base64, the field Yaoki's player reads; `cues` on a dialogue, where each line ends), and the
   index `project/gn-sound-index.js` (`window.__gnSoundFiles`, `window.__gnSoundVoices`). Only a key a screen can ask
   for gets a clip: a line of a dialogue is heard inside the clip put together from it, and of the two words of a sound
-  pair one plays. It reports the keys still
+  pair one plays. A file whose clips did not change is left as it is, the day in its first line too, so the hash under
+  which a phone stores it stays the same. It reports the keys still
   missing; a take that is silence all along (under 100 ms left after the trim) makes no clip and is listed with them. The
   exam's test tone (`c.check`) is made by the tool, at −20 LUFS, about the level of the voices, so the volume set on it
   suits the listening part. `App.dc.html` loads the index with the course; the engine (`gnCourse.needSound`) fetches a
@@ -316,17 +331,22 @@ node check/sound-test.js                           # the whole path in Chromium,
   under a hash of its content, so a new build keeps the unchanged ones. The canvas's other boards keep their stand-ins.
 - **The screens** change nothing when a clip exists (`has()` was always the test): they play it and keep time with it,
   and a key without a clip keeps its stand-in. One honest signal is new: when the clip's kind is `synthetic`
-  (`gnSound.kind(key)`), the Words sound step, Spell and Hablar say «voz sintética»; Teach, Listening, Review, Placement
-  and LevelExam do not say it yet.
+  (`gnSound.kind(key)`), Words (the pairs of its sound step and the words of its scene) and Hablar say «voz
+  sintética»; Spell, Teach, Listening, Review, Placement and LevelExam do not say it yet.
 - **The synthetic voice.** `tools/make-tts.py` says every recorded row of the list with Meta's MMS-TTS
   (`facebook/mms-tts-grn` for Guarani, `facebook/mms-tts-spa` for the narrator; a CPU is enough): each line after a
   carrier phrase that is cut off, every take heard back by two speech recognisers, the best of three kept, and what
   both hear wrong left out. The takes live in `sound/A1/voz` (440 clips as FLAC, 10.2 MB, with the seed of each and
-  what was heard; 53 more in `left-out/`, the clips that stay silent, kept for a native listener). They cannot be made
-  again sample for sample on another machine, so that folder is kept and added to: `--verify --changed` says only what
-  a change of the content touches (tried: nothing changed, nothing said; one text changed, one clip said).
+  what was heard; 63 more in `left-out/`, every recording that stays silent, kept for a native listener). They cannot
+  be made again sample for sample on another machine, so that folder is kept and added to: `--verify --changed` says
+  only what a change of the content touches. Tried on 16 November, six days after the files were made: with nothing
+  changed the line above said nothing, loaded no model and left every file of `sound/` and `project/` byte for byte as
+  it was (2 minutes 41 seconds, nearly all of it `make-sound.mjs` encoding again); with one text changed, one clip was
+  said in 15 seconds and one of the seven sound files was written anew.
   `sound/respell.json` is how the voice is given Spanish names and numbers, `sound/silent.json` what it must not say
-  and why. The voice has no f, no dependable l and no bare d, which is why the people of the course have the names
+  and why. A listener's verdict goes into `silent.json`, and the same line applies it: a clip that is freed there comes
+  back from `left-out/` as it is, the very file that was heard, without the voice being run.
+  The voice has no f, no dependable l and no bare d, which is why the people of the course have the names
   they have. A synthetic voice teaches the very sounds the course corrects, so the app marks it, a native speaker's
   list of what to hear first is in `sound/VOICE.md`, and the studio's recordings replace it. The licence's notice is
   in `sound/A1/voz/README.md`, in every sound file's header and in the app's `licenses.txt`.

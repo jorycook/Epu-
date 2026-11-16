@@ -216,7 +216,9 @@ Same names and meanings as Yaoki's `ykCourse` unless noted. `const C = window.gn
   words being said. Clip keys: `<item or example id>` (e.g. `a1u01d1.p1.x0` = point 1, example 0; `a1u01d1.r1` = listening item);
   the full list is `sound/A1/manifest.json` (tools/sound-list.mjs). The clips arrive by unit (`gn-sound-a1-u01.js`, made by
   tools/make-sound.mjs; `gn-sound-index.js` names the files that exist): the engine fetches a unit's file when the unit is in use
-  (`C.needSound`), and fires `gnsound` on `document` when it has loaded, so the prototype draws the screen again. A screen that
+  (`C.needSound`), and fires `gnsound` on `document` when it has loaded, so the prototype draws the screen again (the
+  installed app holds such a request back until its later screens are in, since no screen of its first file plays a
+  clip: gn-app.js wraps `C.needSoundFile`). A screen that
   plays a synthetic clip says «voz sintética» (Words' sound step, Hablar).
 
 ## 7. Content: the shape the screens read

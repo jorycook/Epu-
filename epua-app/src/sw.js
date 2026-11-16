@@ -45,7 +45,15 @@ async function fresh(olds, f) {
 const LAZY = __LAZY__;
 const lazyKey = (f) => f + '?h=' + LAZY[f];
 const lazyOf = (url) => { const p = './' + new URL(url).pathname.slice(HOME.length); return LAZY[p] ? p : null; };
-async function keepLazy(cache, f) {
+const isLazy = async (res, f) => !!res && res.ok && (await hashOf(res)) === LAZY[f];
+/* A sound file is fetched and stored once, however many ask for it at the same moment (the screen that needs it, and the
+   app keeping the level's sound). Like the files of the install, it is asked for at the address the page uses, in the
+   browser's usual way: the file the page fetched before this worker was in charge (the first unit's, on a first visit)
+   comes from the browser's own copy and is not downloaded a second time. What comes back must be this build's file;
+   else it is asked for again past every copy, under its own hash, and a file of another build is not stored. */
+const keeping = {};
+const keepLazy = (cache, f) => keeping[f] || (keeping[f] = storeLazy(cache, f).finally(() => { delete keeping[f]; }));
+async function storeLazy(cache, f) {
   if (await cache.match(lazyKey(f))) return;
   /* a copy already stored by an earlier build, if its content is the same */
   for (const k of await caches.keys()) {
@@ -53,8 +61,9 @@ async function keepLazy(cache, f) {
     const old = await (await caches.open(k)).match(lazyKey(f));
     if (old) { await cache.put(lazyKey(f), old); return; }
   }
-  const res = await fetch(new Request(lazyKey(f), { cache: 'reload' }));
-  if (res.ok) await cache.put(lazyKey(f), res);
+  let res = await fetch(f).catch(() => null);
+  if (!(await isLazy(res, f))) res = await fetch(new Request(lazyKey(f), { cache: 'reload' }));
+  if (await isLazy(res, f)) await cache.put(lazyKey(f), res);
 }
 
 self.addEventListener('install', (event) => {

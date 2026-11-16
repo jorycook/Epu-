@@ -2,7 +2,9 @@
 // key) are turned into sound files by tools/make-sound.mjs, marked synthetic (a stereo take must come out as loud as a
 // mono one, a silent take must make no clip, the exam's test tone must be at about the level of the voices, a take of a
 // fifth of a second must come out as loud as a second of the same note, a take kept as FLAC must be read, the stated
-// length must be the decoded clip's, and no clip may pass the peak ceiling once its MP3 is decoded), the app is
+// length must be the decoded clip's, no clip may pass the peak ceiling once its MP3 is decoded, a dry run must name
+// what a real run would make, and a file whose clips did not change must keep every byte, its date too, when the
+// tool runs again), the app is
 // built with them into epua-app/dist-sound (never into docs/), and the built app is checked for: the Words sound step
 // playing a clip (has() true, its wording in the recorded state, and the «voz sintética» note), Hablar's note, a dialogue
 // put together for Listening, the unit file fetched when its unit is in use and not at install, stored by the offline
@@ -45,8 +47,8 @@ ok(/c\['a1u01d1\.s0b'\] = \{ ms: \d+, kind: 'synthetic', voice: 'F', b: '[A-Za-z
 ok(/c\['a1u01d1\.r1'\] = \{ ms: \d+, kind: 'synthetic', voice: 'N\+F\+M', cues: \[[\d, ]+\], b: /.test(unitJs), 'a dialogue is put together from its lines, with cues');
 ok(/c\['a1u01d6\.w\.mbaeichapa'\] = c\['a1u01d1\.w\.mbaeichapa'\];/.test(unitJs), 'a text said already is registered under its other key by reference');
 /* only what a screen can ask for is shipped: a line of a dialogue is heard inside the dialogue's clip, and of the two words
-   of a sound pair one plays (its row in the list says which does not: "unused"). Their recordings made the files a third
-   larger. A word that plays and shares the recording of one that does not carries the clip itself */
+   of a sound pair one plays (its row in the list says which does not: "unused"). Their recordings took a third of the
+   files. A word that plays and shares the recording of one that does not carries the clip itself */
 ok(!/c\['a1u01d1\.r1\.l\d(?:\.slow)?'\]/.test(unitJs) && !/c\['a1u01d1\.p1\.x0\.l\d'\]/.test(unitJs), 'a line of a dialogue makes no clip of its own');
 ok(!/c\['a1u01d1\.s0a'\]/.test(unitJs) && !/c\['a1u01d1\.s3b'\]/.test(unitJs) && !/c\['a1u01d1\.s2a'\]/.test(unitJs), 'the word of a sound pair that does not play makes no clip');
 ok(/c\['a1u01d4\.w\.kaa'\] = \{ ms: \d+, kind: 'synthetic', voice: 'F', b: /.test(unitJs), 'a scene word that shares the recording of a pair\'s unplayed word carries the clip itself');
@@ -128,6 +130,32 @@ const examJs = fs.readFileSync(path.join(PROJECT, 'gn-sound-a1-x.js'), 'utf8');
 const tone = lufs(examJs, 'c.check');
 ok(tone > -22 && tone < -18 && Math.abs(tone - level.mono) < 6, 'the exam\'s test tone is at about the level of the voices (−20 LUFS; it was 18 dB under them)', { tone, voice: level.mono });
 ok(/c\['a1x\.4'\] = \{ ms: \d+, kind: 'synthetic', voice: 'N\+F\+M', cues: \[[\d, ]+\], b: /.test(examJs), 'the exam\'s first listening item is put together, one of its lines from a lesson\'s recording');
+/* a dry run reads no recording and writes nothing, and names what a real run would make: the dialogues it would put
+   together and the files it would write (it used to report every dialogue as lacking all its lines, and no file) */
+const DRYOUT = path.join(os.tmpdir(), 'epua-sound-dry-' + process.pid);
+const dry = execFileSync(process.execPath, [path.join(ROOT, 'tools/make-sound.mjs'), path.join(ROOT, 'check/fixtures/sound'), '--out', DRYOUT, '--dry-run'], { encoding: 'utf8' });
+ok(/\n {2}join {2}a1u01d1\.r1 {2}\(8 lines\)/.test(dry) && /\n {2}would write gn-sound-a1-u01\.js: \d+ clips, \d+ shared/.test(dry) && /\nwould make \d+ clips from the \d+ recordings of /.test(dry) && !/not put together[^\n]*[:;] a1u01d1\.r1 \(/.test(dry) && !fs.existsSync(DRYOUT), 'a dry run names the dialogues it would put together and the files it would write, and writes nothing', dry.split('\n').filter((l) => /^would make|would write|not put together/.test(l.trim())).join(' | ').slice(0, 280));
+/* made again on another day: a file whose clips did not change keeps every byte, the day in its first line too. The app
+   stores each sound file on the phone under a hash of its content, so a file written again with nothing new but the date
+   would be fetched again by every phone (the seven files of A1 all were, 3.7 MB, when the tool was run on a later day
+   with no clip changed). The files of the first run stand in for older ones here: a copy of them dated 2001 */
+const AGAIN = fs.mkdtempSync(path.join(os.tmpdir(), 'epua-sound-again-'));
+const TAKES = fs.mkdtempSync(path.join(os.tmpdir(), 'epua-sound-takes-'));
+process.on('exit', () => { fs.rmSync(AGAIN, { recursive: true, force: true }); fs.rmSync(TAKES, { recursive: true, force: true }); });
+const DAY = / on (\d{4}-\d{2}-\d{2}) — do not edit by hand\./;
+const old = {};
+listed.forEach((f) => { old[f] = fs.readFileSync(path.join(PROJECT, f), 'utf8').replace(DAY, ' on 2001-01-01 — do not edit by hand.'); fs.writeFileSync(path.join(AGAIN, f), old[f]); });
+const now = (f) => fs.readFileSync(path.join(AGAIN, f), 'utf8');
+const again = execFileSync(process.execPath, [path.join(ROOT, 'tools/make-sound.mjs'), path.join(ROOT, 'check/fixtures/sound'), '--out', AGAIN, '--kind', 'synthetic'], { encoding: 'utf8' });
+ok(listed.every((f) => DAY.test(old[f]) && now(f) === old[f]) && new RegExp('\\n' + listed.length + ' of the ' + listed.length + ' sound files are byte for byte what they were').test(again), 'made again with no take changed, every sound file keeps every byte, the day in its first line too', again.split('\n').find((l) => /sound files are/.test(l)) || listed.filter((f) => now(f) !== old[f]));
+/* one take replaced by another (in a copy of the fixtures): its unit's file is written anew, with the day it is made
+   on, and every other file is left alone */
+fs.cpSync(path.join(ROOT, 'check/fixtures/sound'), TAKES, { recursive: true });
+fs.copyFileSync(path.join(TAKES, 'a1u01d1.p2.x1.wav'), path.join(TAKES, 'a1u01d1.p2.x0.wav'));
+const anew = execFileSync(process.execPath, [path.join(ROOT, 'tools/make-sound.mjs'), TAKES, '--out', AGAIN, '--kind', 'synthetic'], { encoding: 'utf8' });
+const others = listed.filter((f) => f !== 'gn-sound-a1-u01.js');
+const unitDay = (DAY.exec(now('gn-sound-a1-u01.js')) || [])[1];
+ok(now('gn-sound-a1-u01.js') !== old['gn-sound-a1-u01.js'] && !!unitDay && unitDay !== '2001-01-01' && others.length >= 2 && others.every((f) => now(f) === old[f]) && /written anew: gn-sound-a1-u01\.js\n/.test(anew), 'with one take replaced, its unit\'s file is written anew with the day\'s date, and the other files keep every byte', { unitDay, changed: listed.filter((f) => now(f) !== old[f]), said: anew.split('\n').find((l) => /sound files are/.test(l)) });
 execFileSync(process.execPath, ['build.mjs'], { cwd: APPDIR, env: { ...process.env, EPUA_OUT: 'dist-sound', EPUA_DOCS: '', EPUA_PROJECT: PROJECT, EPUA_BUILD_DATE: 'sound test' }, stdio: 'ignore' });
 const sw = fs.readFileSync(path.join(DIST, 'sw.js'), 'utf8');
 const FILES = JSON.parse(sw.match(/const FILES = (\[[\s\S]*?\]);/)[1]);

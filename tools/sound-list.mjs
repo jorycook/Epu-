@@ -186,10 +186,20 @@ const manifest = {
   count: { rows: rows.length, toRecord: recorded.length, slow: slowN, byVoice, composed: rows.filter((r) => r.parts).length, same: rows.filter((r) => r.same).length, unused: rows.filter((r) => r.unused).length, toRecordUnused: idle.length },
   clips: rows,
 };
-fs.writeFileSync(path.join(OUT, 'manifest.json'), JSON.stringify(manifest, null, 1) + '\n');
+/* the list keeps its date while nothing else in it changes: made again from the same course it is the same file, byte for
+   byte, and so are the files made from it (sound/A1/voz/manifest.json, which tools/make-tts.py copies it into) */
+const listFile = path.join(OUT, 'manifest.json');
+let unchanged = false;
+if (fs.existsSync(listFile)) {
+  try {
+    const old = JSON.parse(fs.readFileSync(listFile, 'utf8'));
+    if (old.made && JSON.stringify({ ...old, made: '' }) === JSON.stringify({ ...manifest, made: '' })) { manifest.made = old.made; unchanged = true; }
+  } catch (e) { unchanged = false; }
+}
+fs.writeFileSync(listFile, JSON.stringify(manifest, null, 1) + '\n');
 const cell = (v) => { const s = String(v == null ? '' : v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
 const csv = [['orden', 'clave', 'voz', 'texto', 'castellano', 'idioma', 'uso', 'archivo', 'igual_que', 'partes', 'sin_uso'].join(',')];
 rows.forEach((r) => csv.push([r.order || '', r.key, r.voice, r.text, r.es, r.lang || '', r.where, r.file, r.same || '', r.parts ? r.parts.join(' ') : '', r.unused ? 'sí' : ''].map(cell).join(',')));
 fs.writeFileSync(path.join(OUT, 'lista.csv'), '﻿' + csv.join('\n') + '\n');
 console.log(`${LEVEL}: ${rows.length} rows; ${recorded.length} clips to record (${Object.entries(byVoice).map(([v, n]) => `${v} ${n}`).join(', ')}; ${slowN} of them slower takes; ${idle.length} of them, last in the order, for the ${manifest.count.unused} keys no screen plays today), ${manifest.count.same} said already, ${manifest.count.composed} put together from lines, 1 tone; files: ${files.join(', ')}`);
-console.log(`written: ${path.relative(ROOT, path.join(OUT, 'manifest.json'))}, ${path.relative(ROOT, path.join(OUT, 'lista.csv'))}`);
+console.log(`written: ${path.relative(ROOT, listFile)}, ${path.relative(ROOT, path.join(OUT, 'lista.csv'))}${unchanged ? ` (the list is what it was on ${manifest.made}: nothing in it changed)` : ''}`);

@@ -68,7 +68,8 @@
    - the system's back goes through gnApp, which is told the screen on show and handed go();
    - one notice at a time above the tab bar, on the goal screen and the week path: the browser keeps nothing; what is
      saved belongs to a newer build of the app; a progress code has just replaced the progress (with a way back); and,
-     on the week path in Safari on an iPhone, the browser deletes what a page saved when it is not opened for a week. */
+     on the week path in Safari on an iPhone, the browser deletes what a page saved when it is not opened for a week
+     («Qué hacer» opens the install page again: the steps to the Home Screen and the code that takes the progress there). */
 /* the screens that show a notice */
 const NOTICE = { Goal: 1, Main: 1 };
 const SCREENS = ['Goal', 'Placement', 'Main', 'Today', 'Levels', 'Progress', 'Teach', 'Compare', 'Drill', 'Exam', 'Words', 'Reading', 'Listening', 'WeekTest', 'Notebook', 'Review', 'ExamTab', 'LevelExam', 'Leer', 'Escribir', 'Hablar'];
@@ -139,7 +140,7 @@ let note = { show: false };
 if (quiet && !closed.refused && kit.refused()) note = { show: true, title: 'No se puede guardar tu progreso', text: 'Este navegador no deja guardar nada: lo que hagas se pierde al cerrar la app.', close: close('refused') };
 else if (quiet && !closed.later && kit.later()) note = { show: true, title: 'Hay una versión más nueva de la app', text: 'Tu progreso lo guardó esa versión. Cerrá la app y abrila de nuevo: lo que hagas ahora no se guarda.', close: close('later') };
 else if (quiet && kit.pasted()) note = { show: true, title: 'Progreso reemplazado', text: 'Si no era el que querías, todavía podés volver al de antes.', hasAction: true, action: 'Deshacer', act: () => kit.undoPaste(), close: close('pasted', () => kit.keepPaste()) };
-else if (here && s.screen === 'Main' && !closed.week && kit.clearsSoon()) note = { show: true, title: kit.browser + ' puede borrar tu progreso', text: 'Lo hace si pasás una semana sin abrir la página. Agregala a la pantalla de inicio o copiá tu progreso.', close: close('week', () => kit.told()) };
+else if (here && s.screen === 'Main' && !closed.week && kit.clearsSoon()) note = { show: true, title: kit.browser + ' puede borrar tu progreso', text: 'Lo hace si pasás una semana sin abrir la página.', hasAction: true, action: 'Qué hacer', act: () => kit.showInstall(), close: close('week', () => kit.told()) };
 return {
 at,
 note,

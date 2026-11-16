@@ -492,3 +492,13 @@ a1u04d5.r1.l1.slow,F,gn,True,Mba'éichapa? Oĩpa kesu?,mba'éichapa oĩpa kesu,2
 a1u04d5.r1.l2.slow,M,gn,True,"Héẽ, oĩ.",héẽ oĩ,0.96,0.75,743693851,1,pause,0.8,-2.0,136,1.17,He'e romi.,1.0,he'e uĩ,0.667,"ivan, mms",,,,"left out by --verify: the slow take is heard worse than the normal take of the same line: «he'e romi» / «he'e uĩ», 3 + 2 letters off, against «he'eromi» / «hee oi», 3 + 0"
 a1u04d5.r1.l3.slow,F,gn,True,Mboýpa ovale?,mboýpa ovale,1.47,0.919,1622263146,1,pause,0.8,0.0,147,1.24,Mboyy pa ovaye.,0.333,mboýpa ovayẽ,0.167,"ivan, mms",,,,"left out by --verify: the slow take is heard worse than the normal take of the same line: «mboyy pa ovaye» / «mboýpa ovayẽ», 2 + 1 letters off, against «mboypa ova le» / «mboýpa ovaye», 0 + 1"
 a1u04d5.r1.l5.slow,F,gn,True,"Mokõi kesu, aguyje.",mokõi kesu aguyje,1.79,0.931,842494844,1,pause,0.8,0.0,158,1.21,Mokói ke su 'aguje.,0.235,mokõi jesús águy jee,0.353,"ivan, mms",,,,"left out by --verify: the slow take is heard worse than the normal take of the same line: «mokói ke su 'aguje» / «mokõi jesús águy jee», 2 + 3 letters off, against «mokõi kesu aguyje» / «mokõi jesús aguyje», 0 + 2"
+a1u01d2.s0a,F,gn,False,pytu,pytu,0.42,0.461,1999414656,1,closure,1.0,0.0,91,,Pytu.,0.0,pytu,0.0,,pytũ,,,a pair of the contrast «nasal»
+a1u01d2.s0b,F,gn,False,pytũ,pytũ,0.49,0.802,1847981114,2,pause,1.0,0.0,161,,Pytũ,0.0,petũ,0.25,mms,pytu,,,a pair of the contrast «nasal»
+a1u01d2.s1a,F,gn,False,oke,oke,0.42,0.688,1849136321,1,pause,1.0,0.0,138,,Oke.,0.0,oke,0.0,,,,,a pair of the contrast «nasal»
+a1u01d2.s2b,F,gn,False,Tupã,tupã,0.48,0.827,1544795559,3,closure,1.0,0.0,88,,Kupã.,0.25,tupa,0.25,ivan,tupa,mms,,a pair of the contrast «nasal»
+a1u01d2.s3a,F,gn,False,pyta,pyta,0.35,0.836,1543632451,1,closure,1.0,0.0,101,,Pyta.,0.0,pyta,0.0,,pytã,,,a pair of the contrast «nasal»
+a1u01d2.s3b,F,gn,False,pytã,pytã,0.51,0.71,1158195193,2,pause,1.0,0.0,148,,Pyta.,0.25,pytá,0.25,,pyta,ivan,,a pair of the contrast «nasal»
+a1u01d5.s1a,F,gn,False,porã,porã,0.35,0.597,1545029841,1,closure,1.0,0.0,105,,Morã.,0.25,porã,0.0,ivan,póra,,,a pair of the contrast «nasal»
+a1u01d5.s2b,F,gn,False,térã,térã,0.41,0.765,1848855208,2,pause,1.0,0.0,168,,Tera.,0.5,térã,0.0,,téra,,,a pair of the contrast «nasal»
+a1u01d2.s2a,F,gn,False,tupa,tupa,0.41,0.767,1159382786,1,closure,1.0,0.0,94,,Kupa.,0.25,tupa,0.0,ivan,Tupã,,,a pair of the contrast «nasal»
+a1u01d5.s1b,F,gn,False,póra,póra,0.36,0.763,1159600491,1,closure,1.0,0.0,119,,Yora.,0.5,póra,0.0,ivan,porã,,,a pair of the contrast «nasal»
