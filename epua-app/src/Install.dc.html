@@ -16,7 +16,7 @@
 
 <div style="flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: {{ k.headGap }}; text-align: center">
 <div style="width: {{ k.art }}; height: {{ k.art }}; margin: {{ k.artMargin }}"><div style="width: 96px; height: 96px; transform: scale({{ k.artScale }}); transform-origin: 0 0">%KAGUARE%</div></div>
-<h1 style="margin: 0; font-size: {{ k.h1 }}; font-weight: 800; line-height: 1.25; text-wrap: balance">Agregá <span lang="gn">%APP_NAME%</span> a tu pantalla de inicio</h1>
+<h1 style="margin: 0; font-size: {{ k.h1 }}; font-weight: 800; line-height: 1.25; text-wrap: balance">{{ head.a }}<span lang="gn">%APP_NAME%</span>{{ head.b }}</h1>
 <div style="font-size: {{ k.about }}; font-weight: 700; color: #5A6382; line-height: 1.4; text-wrap: balance">%APP_ABOUT%</div>
 </div>
 
@@ -24,6 +24,7 @@
 
 <div style="flex-shrink: 0; margin-top: {{ k.gapM }}; padding: 2px 16px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; display: flex; flex-direction: column">
 
+<sc-if value="{{ ios }}" hint-placeholder-val="{{ true }}">
 <div style="padding: {{ k.row }}; display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #E9ECF4">
 <div style="width: 30px; height: 30px; border-radius: 50%; background: #1B2440; color: #FFFFFF; font-size: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0">1</div>
 <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 1px">
@@ -50,10 +51,32 @@
 </div>
 <div style="width: 30px; height: 30px; border-radius: 7px; overflow: hidden; flex-shrink: 0">%ICON%</div>
 </div>
+</sc-if>
+
+<sc-if value="{{ droid.show }}" hint-placeholder-val="{{ false }}">
+<sc-for list="{{ droid.rows }}" as="r" hint-placeholder-count="3">
+<div style="padding: {{ k.row }}; display: flex; align-items: center; gap: 12px; border-top: {{ r.rule }}">
+<sc-if value="{{ r.num }}" hint-placeholder-val="{{ true }}"><div style="width: 30px; height: 30px; border-radius: 50%; background: #1B2440; color: #FFFFFF; font-size: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0">{{ r.n }}</div></sc-if>
+<sc-if value="{{ r.ok }}" hint-placeholder-val="{{ false }}"><div style="width: 30px; height: 30px; border-radius: 50%; background: #E0F3EF; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div></sc-if>
+<div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px">
+<div style="font-size: 15px; font-weight: 800; text-wrap: balance">{{ r.a }}<sc-if value="{{ r.app }}" hint-placeholder-val="{{ false }}"><span lang="gn">%APP_NAME%</span></sc-if>{{ r.b }}</div>
+<div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: {{ k.lh }}">{{ r.text }}</div>
+</div>
+<sc-if value="{{ r.isMenu }}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="#2F4FD0" aria-hidden="true" style="flex-shrink: 0"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg></sc-if>
+<sc-if value="{{ r.isGet }}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M12 4v11M8 11l4 4 4-4"/><path d="M5 20h14"/></svg></sc-if>
+<sc-if value="{{ r.isDown }}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M12 4v15M6 13l6 6 6-6"/></svg></sc-if>
+<sc-if value="{{ r.isIcon }}" hint-placeholder-val="{{ false }}"><div style="width: 30px; height: 30px; border-radius: 7px; overflow: hidden; flex-shrink: 0">%ICON%</div></sc-if>
+</div>
+</sc-for>
+</sc-if>
 
 </div>
 
 <div style="flex-grow: 1; flex-shrink: 0; min-height: {{ k.gapS }}"></div>
+
+<sc-if value="{{ droid.ask }}" hint-placeholder-val="{{ false }}">
+<button onClick="{{ droid.install }}" style="flex-shrink: 0; margin-bottom: {{ k.gapS }}; height: {{ k.cta }}; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px; white-space: nowrap">Instalar <span lang="gn">%APP_NAME%</span></button>
+</sc-if>
 
 <sc-if value="{{ move.show }}" hint-placeholder-val="{{ false }}">
 <div style="flex-shrink: 0; margin-bottom: {{ k.gapS }}; padding: 6px 6px 6px 14px; border-radius: 16px; background: #FFF4D6; border: 2px solid #F2B43A; display: flex; align-items: center; gap: 10px">
@@ -71,21 +94,27 @@
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{}'>
-/* The first-visit page: shown in Safari on an iPhone or an iPad before the app is on the Home Screen, once per visit
-   and, after «Seguir en el navegador», not again for a week (see gn-app.js). Kaguare and the little icon are the mascot's own art, put in by the build from brief/mascot/spec.json:
-   the standing pose, and the Home Screen icon as the phone shows it.
-   The app on the Home Screen keeps its progress apart from the browser's, so the page says where progress stays: in the
-   app when the learner starts there, in the browser when they go on here. When this browser already holds progress,
+/* The first-visit page: shown in the browser of an iPhone, an iPad or an Android phone before the app is on the Home
+   Screen, once per visit and, after «Seguir en el navegador», not again for a week (see gn-app.js). Kaguare and the
+   little icon are the mascot's own art, put in by the build from brief/mascot/spec.json: the standing pose, and the
+   Home Screen icon as the phone shows it.
+   iPhone and iPad: the three steps of Safari's Share menu. The app on the Home Screen keeps its progress apart from the
+   browser's, so the page says where progress stays: in the app when the learner starts there, in the browser when they
+   go on here, where Safari deletes it if the page is not opened for a week. When this browser already holds progress,
    a row offers to copy it (gnApp.exportProgress) for the app's «Pegá tu progreso».
+   Android: when the browser has offered to install the app (gnApp.installState() is 'ready'), one button puts the
+   browser's own question (gnApp.askInstall); until then, or when the offer never comes or was turned down, the steps of
+   the browser's menu. There the installed app and the browser share what is saved, and the page says so.
    On a short screen (an iPhone SE in Safari, with its bars) Kaguare and the gaps shrink so the page fits without
    scrolling: the page's height is the browser's (gn-app.js fits it), and it is measured again when that changes. */
 /* the page's height (in the design's pixels) from which the full layout fits, and the middle one, without and with
-   the copy row; below that, the short one (it fits the 575 of an iPhone SE in Safari, copy row and all) */
+   the copy row; below that, the short one (it fits the 575 of an iPhone SE in Safari, copy row and all). Android's
+   page is never taller than the iPhone's without the copy row: three rows, or two and the install button */
 const FITS = { plain: [680, 630], move: [760, 710] };
 const LOOK = {
-full: { pad: '18px 20px 18px', headGap: '4px', art: '96px', artScale: 1, artMargin: '-22px 0 -14px', h1: '24px', about: '15px', gapS: '10px', gapM: '12px', row: '10px 0', lh: 1.45, button: '52px' },
-mid: { pad: '12px 20px 12px', headGap: '3px', art: '80px', artScale: 0.8333, artMargin: '-18px 0 -12px', h1: '22px', about: '14px', gapS: '8px', gapM: '10px', row: '8px 0', lh: 1.4, button: '50px' },
-short: { pad: '8px 20px 8px', headGap: '2px', art: '52px', artScale: 0.5417, artMargin: '-6px 0 -5px', h1: '20px', about: '13px', gapS: '6px', gapM: '8px', row: '5px 0', lh: 1.35, button: '46px' },
+full: { pad: '18px 20px 18px', headGap: '4px', art: '96px', artScale: 1, artMargin: '-22px 0 -14px', h1: '24px', about: '15px', gapS: '10px', gapM: '12px', row: '10px 0', lh: 1.45, button: '52px', cta: '54px' },
+mid: { pad: '12px 20px 12px', headGap: '3px', art: '80px', artScale: 0.8333, artMargin: '-18px 0 -12px', h1: '22px', about: '14px', gapS: '8px', gapM: '10px', row: '8px 0', lh: 1.4, button: '50px', cta: '52px' },
+short: { pad: '8px 20px 8px', headGap: '2px', art: '52px', artScale: 0.5417, artMargin: '-6px 0 -5px', h1: '20px', about: '13px', gapS: '6px', gapM: '8px', row: '5px 0', lh: 1.35, button: '46px', cta: '48px' },
 };
 class Component extends DCLogic {
 constructor(props) {
@@ -108,10 +137,14 @@ this.watch.observe(this.root);
 this.onResize = measure;
 window.addEventListener('resize', measure);
 }
+/* Android: the browser's offer to install arrived, was answered, or the app is installed */
+this.onInstall = () => this.forceUpdate();
+document.addEventListener('gninstall', this.onInstall);
 }
 componentWillUnmount() {
 if (this.watch) this.watch.disconnect();
 if (this.onResize) window.removeEventListener('resize', this.onResize);
+document.removeEventListener('gninstall', this.onInstall);
 }
 renderVals() {
 const kit = window.gnApp;
@@ -119,8 +152,11 @@ const s = this.state;
 const device = kit.device;
 const browser = kit.browser || 'Safari';
 const refused = kit.refused();
-/* progress this browser already holds, to take to the app before it is installed */
-const has = !refused && !!(kit.hasProgress && kit.hasProgress());
+const droid = !!kit.android;
+/* Android: 'ready' (the browser's offer is in hand), 'done' (installed) or 'steps' (the browser's menu) */
+const offer = droid && kit.installState ? kit.installState() : 'steps';
+/* progress this browser already holds, to take to the app before it is installed (where the app keeps its own) */
+const has = !droid && !refused && !!(kit.hasProgress && kit.hasProgress());
 /* the full layout where it fits; a little tighter below that; on a short screen Kaguare at a little over half, tight
    gaps, the title on one line and a smaller button */
 const need = has ? FITS.move : FITS.plain;
@@ -142,11 +178,35 @@ const small = !!(kit.appScale && kit.appScale() < 0.8);
 const moveText = s.copied === 'yes' ? 'Copiado. En la app, tocá «Pegá tu progreso».'
 : s.copied === 'manual' ? 'No se pudo copiar solo: mantené apretado el código y copialo.'
 : '¿Ya avanzaste en ' + browser + '? Llevá tu progreso a la app.';
+/* Android's rows: the app opened from its icon holds the same progress as this browser */
+const here = device === 'celular' ? 'en este celular' : 'en este dispositivo';
+const open = { a: 'Abrí ', app: true, b: ' desde su ícono', isIcon: true, text: refused
+? 'Abrila una vez con internet. Después funciona también sin conexión.'
+: 'Tu progreso es el mismo de acá: se guarda ' + here + '. Abrila una vez con internet; después funciona sin conexión.' };
+const rows = offer === 'ready' ? [
+{ a: 'Tocá Instalar, acá abajo', text: (device === 'celular' ? 'Tu celular' : 'Tu dispositivo') + ' te pide confirmar.', isDown: true },
+open,
+] : offer === 'done' ? [
+{ ok: true, a: '', app: true, b: ' ya está instalada', isIcon: true, text: refused ? 'Buscá su ícono en la pantalla de inicio y abrila desde ahí.' : 'Buscá su ícono en la pantalla de inicio y abrila desde ahí. Tu progreso es el mismo de acá.' },
+] : [
+{ a: 'Abrí el menú del navegador', text: browser === 'Chrome' ? 'Los tres puntos de arriba, a la derecha.' : 'El botón de los tres puntos o de las tres rayas.', isMenu: true },
+{ a: 'Tocá «Instalar app»', text: 'También puede decir «Agregar a la pantalla principal».' + (browser === 'Chrome' ? '' : ' ¿No aparece? Abrí primero esta página en Chrome.'), isGet: true },
+open,
+];
+rows.forEach((r, i) => { r.n = i + 1; r.num = !r.ok; r.rule = i ? '2px solid #E9ECF4' : 'none'; });
+/* where the progress stays for whoever goes on in the browser */
+const stay = refused ? 'También podés seguir acá, en el navegador, pero sin guardar tu progreso.'
+: droid ? (small ? 'También podés seguir acá, pero se ve más chica. Tu progreso es el mismo.' : 'También podés seguir acá, en ' + browser + ': tu progreso es el mismo.')
+: browser === 'Safari' ? (small ? 'También podés seguir acá, pero se ve más chica, y Safari borra lo guardado de las páginas que no abrís por una semana.' : 'También podés seguir acá, pero Safari borra lo guardado de las páginas que no abrís por una semana, y la app del ícono no ve el progreso de acá.')
+: small ? 'También podés seguir acá, pero se ve más chica y tu progreso queda en ' + browser + ': la app del ícono no lo ve.' : 'También podés seguir acá, en el navegador, pero tu progreso queda en ' + browser + ': la app del ícono no lo ve.';
 return {
 rootRef: this.rootRef,
 k,
 useBrowser: () => kit.useBrowser(),
 device,
+ios: !droid,
+head: droid ? { a: 'Instalá ', b: device === 'celular' ? ' en tu celular' : ' en este dispositivo' } : { a: 'Agregá ', b: ' a tu pantalla de inicio' },
+droid: { show: droid, rows, ask: offer === 'ready', install: () => { kit.askInstall(); } },
 /* what the Home Screen gives; where the progress stays */
 promise: refused
 ? 'Así se abre a pantalla completa, como una app, y funciona sin conexión. Este navegador no deja guardar tu progreso.'
@@ -154,9 +214,7 @@ promise: refused
 step3: refused
 ? 'Abrilo una vez con internet. Después funciona también sin conexión.'
 : 'Empezá ahí: tu progreso se guarda en la app, en este ' + device + '. Abrila una vez con internet; después funciona sin conexión.',
-stay: refused
-? 'También podés seguir acá, en el navegador, pero sin guardar tu progreso.'
-: small ? 'También podés seguir acá, pero se ve más chica y tu progreso queda en ' + browser + ': la app del ícono no lo ve.' : 'También podés seguir acá, en el navegador, pero tu progreso queda en ' + browser + ': la app del ícono no lo ve.',
+stay,
 move: {
 show: has,
 text: moveText,

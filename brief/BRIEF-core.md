@@ -55,6 +55,14 @@ board named in your spec and do what it does.
 - Accessibility as drawn: real `<button>`, `<a href>`, `<input>` with a `<label>`; `aria-label` on icon-only buttons;
   `aria-pressed` on toggles; `role="dialog" aria-modal="true"` on sheets; touch targets at least 44 px; text contrast 4.5:1
   (3:1 from 24 px). `lang="es"` on the root document; wrap Guarani in `<span lang="gn">` (Guarani text blocks: `lang="gn"` on the container).
+- One `<h1>` in every state of a screen, before any other heading: the screen's title as it is drawn (Main's unit title,
+  Drill's "PRÁCTICA", the Exam band's title) with `margin: 0` and its own size and weight, or, where the screen draws
+  no title (Escribir's round), one kept for screen readers with the 1-px clip recipe of the live regions. The app gives
+  it the focus when the screen opens, and names the screen in the page's title.
+- Three marks the app relies on for the system's back and for an open sheet (gn-app.js), so keep them: the screen's own
+  way back is the 44×44 control with the negative left margin (§5), and nothing else on a screen has one; a sheet's
+  scrim is a `<button>` placed just before the `role="dialog" aria-modal="true"` element, and closes it (a sheet with
+  no scrim asks for an answer: back leaves it open); the goal screen's step bar is named "Paso N de 3".
 - Never use `{{ … }}` inside `<title>` or `<style>`.
 
 ## 3. Wiring (copy Yaoki exactly)
@@ -196,6 +204,9 @@ Same names and meanings as Yaoki's `ykCourse` unless noted. `const C = window.gn
   with Math.max; `result` stores a week test (or a mini exam) at `tests[result.id]`; `exam` stores a level exam result at `exams[level]` (a pass is never replaced
   by a fail); `typed` adds words spelled with the Guarani keyboard. A `prog`, a `result`, `typed`, a part of the level exam handed in,
   `miss` and `reviewed` also put today in `seen`, and so does `go` to Leer, Escribir or Hablar.
+  `go` also remembers the screen a practice section (Leer, Escribir, Hablar) was opened from (`opener`, in the host's
+  state while the app is open; it is not a saved field): the section's own ways out call `go('Progress')`, and from a
+  practice section that leads to the opener (Main's closed card, a sealed Today, or Progreso itself).
 - `C.view(state)` → `{ status, plan, plans, sid, session, unit, day, prog, done, tests, exams, exam, tp, set, mistakes, review, seen, days, typed, placement, profile, exposure, level, meta, levels, progress }` (`plans`: the other levels' plans; `profile`: the goal's answers; `exposure`: the «lo usé» marks;
   `review`: `{ n, due, size, done, minutes }` of today's sitting for this level; `days`: `C.days(seen)`).
   `sid` is the session picked on the week path (`cur`), else the next one due; with every written session done it is the last

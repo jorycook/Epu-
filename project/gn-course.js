@@ -693,7 +693,13 @@
     return {
       go: function (to) {
         set(function (st) {
+          var from = st.screen;
+          /* A practice section closes to the screen that opened it. Its own ways out ask for Progreso, whose «Más
+             práctica» was once its only door; the week path's closed card and a sealed day open it too, so the engine
+             remembers the door (opener: kept while the app is open, never saved) and leads back through it. */
+          if (PRACTICE[from] && to === 'Progress' && st.opener && !PRACTICE[st.opener]) to = st.opener;
           var out = { screen: to, started: st.started || to !== 'Goal' };
+          if (PRACTICE[to] && from && !PRACTICE[from]) out.opener = from;
           return PRACTICE[to] ? sawToday(st, out) : out;
         });
       },

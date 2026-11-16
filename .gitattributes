@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+# The takes of the voice (sound/A1/voz) and the fixture takes: never touched by line-ending normalisation
+*.flac binary
+*.wav binary

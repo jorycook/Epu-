@@ -3,17 +3,29 @@
 What it says well, what it does not, and every number measured are in sound/VOICE.md. Read that before shipping a clip.
 
 Reads sound/<level>/manifest.json (tools/sound-list.mjs), says every row that is recorded (not put together from lines,
-not the tone, not said already under another key) and writes into a folder: one WAV per key (16 kHz, mono, 16 bit),
-voices.json (the credits, marked synthetic, with the licence), manifest.json (the manifest it was given without the rows
-that stay silent), takes.json (the seed and the cut of every clip, and what was left out) and, with --verify,
-tts-report.csv and tts-report.json. Then tools/make-sound.mjs turns the folder into the app's sound files.
+not the tone, not said already under another key) and writes into a folder: one clip per key (16 kHz, mono, 16 bit; FLAC,
+which is lossless and a little over half the size, or WAV: a folder keeps the format it has), voices.json (the credits,
+marked synthetic, with the licence), manifest.json (the manifest it was given without the rows that stay silent),
+takes.json (the seed and the cut of every clip, and what was left out) and, with --verify, tts-report.csv and
+tts-report.json. Then tools/make-sound.mjs turns the folder into the app's sound files. The takes of A1 live in
+sound/A1/voz: they cannot be made again sample for sample on another machine, so that folder is the voice.
 
-usage:  python3 tools/make-tts.py --out <folder> --verify [both|ivan|mms] [--manifest sound/A1/manifest.json]
+usage:  python3 tools/make-tts.py --out <folder> --verify --changed       after a change of the content: only what is new or changed
+        python3 tools/make-tts.py --out <folder> --verify [both|ivan|mms] [--manifest sound/A1/manifest.json]
                                   [--only <key or pattern> ...] [--voices F,M,N] [--tries N] [--redo] [--seed N] [--pitch F=0,M=-2]
         python3 tools/make-tts.py --out <folder> --takes <takes.json>     the same clips again, without the recognisers
-        python3 tools/make-tts.py --dry-run [--only ...]                  what would be said, and every check: no model, no --out
+        python3 tools/make-tts.py --out <folder> --format flac|wav        the folder's clips in the other format, sample for sample
+        python3 tools/make-tts.py --dry-run [--only ...] [--out <folder> --changed]   what would be said, and every check: no model
         then:   node tools/make-sound.mjs <folder> --manifest <folder>/manifest.json --kind synthetic
 Ship only a folder made with --verify, or with --takes from one: without the recognisers nothing is left out by ear.
+
+A take belongs to a text, not to a key. A clip of the folder whose row has moved (a line more in a dialogue, an example
+renumbered: the same text and voice under another key) passes to the key that says its text now and is not said again;
+so does the recording of a row that has gone silent when another row still needs it. --changed narrows a run to the rows
+that then still lack a take: the new ones and those whose text, voice or respelling changed, with the slow take of each.
+Nothing else is said or heard again, what an earlier --verify left out stays out, and with nothing to say no model is
+loaded. Without --changed, --verify hears every clip of the folder again and judges it afresh. A clip whose key the list
+no longer has stays in the folder, is named at the end and is ignored by make-sound.mjs; --prune deletes those.
 
 The voices: Meta's MMS-TTS, one VITS model a language (36 M weights, 145 MB each; a CPU is enough).
   facebook/mms-tts-grn   Guarani, one male speaker (median pitch 143 Hz on words, 150 Hz on sentences, measured). The
@@ -86,6 +98,10 @@ seed) and the best take is kept, a take heard as the other word of its sound pai
 leaves out by itself (left_out_by_ear) every Guarani clip of one or two words that a learner hears on its own and that
 both recognisers hear with wrong letters, with the other word of its pair; the clips go to <out>/left-out/ for a
 listener, the rows leave <out>/manifest.json, and sound/silent.json's "keep" frees one once a person has heard it. It
+leaves out as well every slow take that is heard worse than the normal take of the same line (slow_takes_heard_worse:
+the letters each recogniser writes, spaces and marks aside, are further from the line, the two added up): a slow take
+is there to make a line easier to catch, and the slow clip of its listening item is then not put together (the
+screen says so on its «Más despacio» button). It
 flags, without leaving them out, the words of a sound pair with a mark (puso, tilde, acute) that no recogniser writes.
 --takes <takes.json> says the same takes again without the recognisers and leaves the same rows out; it stops if a clip
 has no take in the file. A recogniser cannot tell whether a vowel is nasal, a puso is a glottal stop or a stress is
@@ -512,6 +528,42 @@ def left_out_by_ear(manifest, report, names, rules):
     return out, stays, flags
 
 
+def slow_takes_heard_worse(manifest, rows, names, rules, judged=None):
+    """The slow takes that are heard worse than the normal take of the same line → {key: why}. `rows`: the report's rows
+    by key (this run's and the folder's earlier ones); `judged`: the keys to rule on (all slow rows when None). Worse:
+    what the recognisers write is further from the line, counted in letters (`letters`: the edits it takes to turn
+    what was heard into what was said, spaces, acutes and tildes aside, the recognisers added up). Spaces are left
+    aside because slowed speech has a recogniser cut words apart («ypaka raípe»), which is no fault of the take. A slow
+    take is there to make a line easier to catch; one that is harder to catch than the line itself is left out, with
+    the rows that share its recording, and the slow clip of its listening item is then not put together
+    (apply_silence), so the screen offers no slower version. sound/silent.json's "keep" frees a slow take once a
+    person has heard it."""
+    by_key = {r['key']: r for r in manifest.get('clips', [])}
+    sharers = {}
+    for r in manifest.get('clips', []):
+        if r.get('same'):
+            sharers.setdefault(r['same'], []).append(r['key'])
+    out = {}
+    for key, row in rows.items():
+        if not key.endswith('.slow') or key not in by_key or (judged is not None and key not in judged):
+            continue
+        base = by_key.get(key[:-len('.slow')])
+        normal_row = rows.get((base.get('same') or base['key']) if base else '')
+        heard = [n for n in names if f'heard_{n}' in row and normal_row and f'heard_{n}' in normal_row]
+        if len(heard) < (1 if row.get('lang') == 'es' else 2):          # two must have judged a Guarani line; only one can judge a Spanish one
+            continue
+        off = [edits(letters(row['said']), letters(row[f'heard_{n}'])) for n in heard]
+        usual = [edits(letters(normal_row['said']), letters(normal_row[f'heard_{n}'])) for n in heard]
+        if sum(off) > sum(usual):
+            why = ('the slow take is heard worse than the normal take of the same line: '
+                   + ' / '.join(f'«{normal(row[f"heard_{n}"])}»' for n in heard) + f', {" + ".join(map(str, off))} letters off, against '
+                   + ' / '.join(f'«{normal(normal_row[f"heard_{n}"])}»' for n in heard) + f', {" + ".join(map(str, usual))}')
+            for k in [key] + sharers.get(key, []):
+                if not kept_by_hand(by_key[k], rules):
+                    out[k] = why
+    return out
+
+
 # ---------- sound ----------
 def np_():
     import numpy
@@ -753,9 +805,58 @@ def finish(x, semitones):
     return x
 
 
-def write_wav(path, x):
+FORMATS = ('flac', 'wav')          # a clip of the folder: <key>.flac (lossless, a little over half the size) or <key>.wav
+
+
+def write_clip(path, x):
+    """16 kHz, mono, 16 bit, as FLAC or WAV by the file's ending, the same samples either way. libsndfile rounds a float
+    to 16 bits one way for a WAV and another for a FLAC (the two differ by one unit of 32,768 in most clips), so a FLAC
+    is written from the 16-bit samples of the WAV: a take said again from takes.json then is the clip it was."""
+    import io
     import soundfile as sf
-    sf.write(path, np_().clip(x, -1, 1), RATE, subtype='PCM_16')
+    x = np_().clip(x, -1, 1)
+    if not path.endswith('.flac'):
+        sf.write(path, x, RATE, subtype='PCM_16')
+        return
+    wav = io.BytesIO()
+    sf.write(wav, x, RATE, subtype='PCM_16', format='WAV')
+    wav.seek(0)
+    samples, _ = sf.read(wav, dtype='int16')
+    sf.write(path, samples, RATE, subtype='PCM_16', format='FLAC', compression_level=1.0)
+
+
+def folder_format(folder):
+    """the format of the clips a folder holds, 'flac' or 'wav' ('' for a folder without clips; FLAC wins over stray WAVs)"""
+    found = set()
+    for d in (folder, os.path.join(folder, 'left-out')):
+        if os.path.isdir(d):
+            found.update(f.rsplit('.', 1)[1] for f in os.listdir(d) if '.' in f and f.rsplit('.', 1)[1] in FORMATS)
+    return next((f for f in FORMATS if f in found), '')
+
+
+def convert(folder, to):
+    """Every clip of the folder and of its left-out/ in the other format, sample for sample: each new file is read back and
+    compared before the old one is deleted → (files, bytes before, bytes after)."""
+    import soundfile as sf
+    np = np_()
+    n = before = after = 0
+    for d in (folder, os.path.join(folder, 'left-out')):
+        for f in sorted(os.listdir(d)) if os.path.isdir(d) else []:
+            stem, _, ending = f.rpartition('.')
+            if ending not in FORMATS or ending == to:
+                continue
+            old, new = os.path.join(d, f), os.path.join(d, f'{stem}.{to}')
+            x, rate = sf.read(old, dtype='int16')
+            if rate != RATE or x.ndim != 1:
+                raise SystemExit(f'{old}: {rate} Hz, {x.ndim} channel(s): not a clip of this tool, nothing more was converted')
+            sf.write(new, x, RATE, subtype='PCM_16', **({'format': 'FLAC', 'compression_level': 1.0} if to == 'flac' else {}))
+            y, _ = sf.read(new, dtype='int16')
+            if not np.array_equal(x, y):
+                os.remove(new)
+                raise SystemExit(f'{new} did not come back sample for sample: {old} is kept, nothing more was converted')
+            n, before, after = n + 1, before + os.path.getsize(old), after + os.path.getsize(new)
+            os.remove(old)
+    return n, before, after
 
 
 # ---------- the round trip ----------
@@ -855,12 +956,17 @@ def load_recognisers(which):
 def parse_args(argv=None):
     p = argparse.ArgumentParser(description='synthetic voice for the course clips (a stand-in: the screens mark it «voz sintética»)')
     p.add_argument('--manifest', default=os.path.join('sound', 'A1', 'manifest.json'), help='the clip list (tools/sound-list.mjs)')
-    p.add_argument('--out', default='', help='the folder for the WAVs, voices.json, manifest.json, takes.json and the report (not needed with --dry-run)')
+    p.add_argument('--out', default='', help='the folder for the clips, voices.json, manifest.json, takes.json and the report (not needed with --dry-run); sound/A1/voz for A1')
     p.add_argument('--respell', default=os.path.join('sound', 'respell.json'), help='names, numbers and loans as the Guarani voice must read them')
     p.add_argument('--silent', default=os.path.join('sound', 'silent.json'), help='which clips stay without audio (pairs of a contrast the voice does not render); "none" for no rule')
     p.add_argument('--voices', default='F,M,N', help='which voices of the manifest to say')
     p.add_argument('--only', nargs='*', default=None, help='only these keys (shell patterns allowed: "a1u01d1.*")')
-    p.add_argument('--redo', action='store_true', help='say again the keys whose WAV exists')
+    p.add_argument('--redo', action='store_true', help='say again the keys whose clip exists')
+    p.add_argument('--changed', action='store_true', help='only the rows that lack a take: new ones and those whose text, voice or respelling changed since the '
+                                                          'folder was made. Nothing else is said or heard again, and what an earlier --verify left out stays out')
+    p.add_argument('--format', default='', choices=FORMATS, help='flac (the default for a new folder) or wav; given for a folder that holds clips in the other format, '
+                                                                 'it converts them, sample for sample, and does nothing else')
+    p.add_argument('--prune', action='store_true', help='delete the clips of the folder whose key the list no longer has (they are only named otherwise)')
     p.add_argument('--dry-run', action='store_true', help='list what would be said and run every check; load no model, write nothing')
     p.add_argument('--verify', nargs='?', const='auto', default='', choices=['auto', 'both', 'ivan', 'mms'],
                    help='send every clip back through the recognisers in the cache (both by default), keep the best of --tries takes, leave out '
@@ -873,6 +979,10 @@ def parse_args(argv=None):
     a = p.parse_args(argv)
     if not a.dry_run and not a.out:
         p.error('--out is needed (or --dry-run)')
+    if a.changed and not a.out:
+        p.error('--changed needs --out: the folder whose takes are compared with the list')
+    if a.changed and (a.redo or a.takes):
+        p.error('--changed says only what lacks a take: it goes with neither --redo nor --takes')
     return a
 
 
@@ -888,11 +998,11 @@ def load_takes(path):
     """takes.json or tts-report.json of a run → {'clips': {key: its row}, 'left_out': {key: why}, 'with': what it was made
     with, 'verified': whether recognisers heard it}; empty when there is no file"""
     if not path or not os.path.exists(path):
-        return {'clips': {}, 'left_out': {}, 'with': {}, 'verified': False}
+        return {'clips': {}, 'left_out': {}, 'with': {}, 'verified': False, 'made': ''}
     with open(path, encoding='utf-8') as f:
         data = json.load(f)
     return {'clips': {c['key']: c for c in data.get('clips', []) if 'left_out' not in c}, 'left_out': dict(data.get('left_out') or {}),
-            'with': data.get('with') or {}, 'verified': bool(data.get('verified', 'recognisers' in data))}
+            'with': data.get('with') or {}, 'verified': bool(data.get('verified', 'recognisers' in data)), 'made': data.get('made') or ''}
 
 
 def made_with():
@@ -904,20 +1014,57 @@ def made_with():
 
 def main(argv=None):
     a = parse_args(argv)
+    held_in = folder_format(a.out) if a.out else ''
+    if a.format and held_in and held_in != a.format and not a.dry_run:
+        # the folder's clips in the other format, sample for sample: that, and nothing else
+        if a.verify or a.takes or a.redo or a.changed or a.prune or a.only is not None:
+            print(f'{a.out} holds {held_in.upper()} clips. --format {a.format} converts them and does nothing else: run it alone first.', file=sys.stderr)
+            return 2
+        n, was, now = convert(a.out, a.format)
+        print(f'{n} clips of {a.out} and its left-out/ are {a.format.upper()} now, sample for sample (each read back and compared): '
+              f'{was / 1e6:.2f} MB → {now / 1e6:.2f} MB')
+        return 0
+    ext = '.' + (held_in or a.format or FORMATS[0])
     with open(in_root(a.manifest), encoding='utf-8') as f:
         source = json.load(f)
     respell_path = in_root(a.respell)
     respell = load_respell(respell_path)
     rules = dict(NO_RULES) if a.silent == 'none' else load_silent(in_root(a.silent))
     # what an earlier --verify run left out stays out: the run named by --takes, or else this folder's own last one
-    # (a run with --verify judges afresh what it says or finds: everything, or the keys of --only)
+    # (a run with --verify judges afresh what it says or finds: everything, or the keys of --only; with --changed, what
+    # lacks a take)
     before = load_takes(os.path.join(a.out, 'takes.json') if a.out else '')
     given = load_takes(a.takes) if a.takes else None
     if a.takes and not given['clips']:
         print(f'{a.takes}: no takes in it', file=sys.stderr)
         return 2
+    earlier_report = {}          # the folder's last report: what each recogniser heard of every clip
+    if a.out and os.path.exists(os.path.join(a.out, 'tts-report.json')):
+        with open(os.path.join(a.out, 'tts-report.json'), encoding='utf-8') as f:
+            earlier_report = json.load(f)
+    rows_before = {row['key']: row for row in earlier_report.get('clips', [])}
+    cache = {}
+
+    def prep(r):
+        """a row → (which voice model says it, its sentences, what was respelled, what cannot be said)"""
+        if r['key'] not in cache:
+            lang = lang_of(r, respell)
+            sentences, notes, problems = prepare(r['text'], lang, respell)
+            if lang == 'es' and VOICES.get(r.get('voice'), {}).get('lang') != 'es':
+                notes.append('a Spanish number: said by the Spanish voice, unshifted')
+            cache[r['key']] = (lang, sentences, notes, problems)
+        return cache[r['key']]
+
     earlier = dict(given['left_out']) if given else dict(before['left_out'])
-    if a.verify and not given:
+    if a.changed:
+        # a row that was left out stays out for as long as it is the row that was judged: the same text for the same voice
+        listed = {r['key']: r for r in source.get('clips', []) if not r.get('parts') and not r.get('tone')}
+
+        def judged_as_it_is(k):
+            r, old = listed.get(k), rows_before.get(k)
+            return r is not None and (old is None or (old.get('said'), old.get('voice')) == (spoken(prep(r)[1]), r.get('voice')))
+        earlier = {k: v for k, v in earlier.items() if judged_as_it_is(k)}
+    elif a.verify and not given:
         earlier = {k: v for k, v in earlier.items() if a.only is not None and not matches(k, a.only)}
     earlier = {k: v if v.startswith('left out') else f'left out by --verify: {v}' for k, v in earlier.items()}
     manifest, silent = apply_silence(source, rules, earlier)
@@ -937,20 +1084,60 @@ def main(argv=None):
     # every check first: the run stops before a single clip if any row cannot be said
     plan, bad = [], []
     for r in rows:
-        lang = lang_of(r, respell)
-        sentences, notes, problems = prepare(r['text'], lang, respell)
-        if lang == 'es' and VOICES[r['voice']]['lang'] != 'es':
-            notes.append('a Spanish number: said by the Spanish voice, unshifted')
+        lang, sentences, notes, problems = prep(r)
         plan.append((r, lang, sentences, notes))
         for pr in problems:
             bad.append((r['key'], r['text'], pr))
-    count = {v: sum(1 for r in rows if r['voice'] == v) for v in voices}
-    print(f'{manifest.get("level", "?")}: {len(rows)} clips to say ({", ".join(f"{v} {n}" for v, n in count.items())}; {sum(1 for r in rows if is_slow(r))} slow takes), '
-          f'{len(quiet)} rows left silent ({sum(1 for r in quiet if silent[r["key"]].startswith("left out"))} of them by an earlier --verify, the rest by '
+
+    # The folder as it is. A take belongs to a text, not to a key: a clip whose own row is silent now, is gone from the
+    # list or says another text (a line more in a dialogue, an example renumbered) is free, and passes to the row that
+    # says its text with its voice today and has no take of its own. Nothing is said again for a row that only moved.
+    said_now = {r['key']: (spoken(prep(r)[1]), r['voice']) for r in select(manifest, list(VOICES), None)}          # every row that is to have a clip today
+
+    def clip(key):
+        return os.path.join(a.out, key + ext)
+
+    def has(key):
+        return bool(a.out) and os.path.exists(clip(key))
+
+    def as_before(key):
+        """True when the clip in the folder was made from the text and for the voice the row has now"""
+        old = before['clips'].get(key)
+        return old is None or (old.get('said'), old.get('voice')) == said_now[key]
+
+    free = {}
+    for c in before['clips'].values():
+        if has(c['key']) and (c['key'] not in said_now or (c.get('said'), c.get('voice')) != said_now[c['key']]):
+            free.setdefault((c.get('text'), c.get('voice'), bool(c.get('slow'))), c)
+    passed = {}          # key → the clip of the folder whose take it takes over
+    for r, _, _, _ in plan:
+        donor = free.get((r['text'], r['voice'], is_slow(r)))
+        if donor and not a.redo and not (has(r['key']) and as_before(r['key'])) and donor['key'] != r['key'] and donor.get('said') == said_now[r['key']][0]:
+            passed[r['key']] = donor
+    to_say = [r['key'] for r, _, _, _ in plan if a.redo or not ((has(r['key']) and as_before(r['key'])) or r['key'] in passed)]
+    # a slow take is its line's normal take said again more slowly: when the line is said again, so is its slow take
+    in_manifest = {r['key']: r for r in manifest.get('clips', [])}
+
+    def line_of(key):
+        base = in_manifest.get(key[:-len('.slow')]) if key.endswith('.slow') else None
+        return (base.get('same') or base['key']) if base else None
+    again = set(to_say)
+    to_say += [r['key'] for r, _, _, _ in plan if r['key'] not in again and line_of(r['key']) in again]
+    kept_as_they_are = len(plan) - len(to_say) - len(passed)
+    if a.changed:
+        plan = [p for p in plan if p[0]['key'] in set(to_say) | set(passed)]
+        rows = [p[0] for p in plan]
+
+    count = {v: sum(1 for r in rows if r['voice'] == v and r['key'] in to_say) for v in voices} if a.changed else {v: sum(1 for r in rows if r['voice'] == v) for v in voices}
+    saying = [r for r in rows if r['key'] in to_say] if a.changed else rows
+    print(f'{manifest.get("level", "?")}: {len(saying)} clips to say ({", ".join(f"{v} {n}" for v, n in count.items())}; {sum(1 for r in saying if is_slow(r))} slow takes), '
+          + (f'{kept_as_they_are} keep the take they have, {len(passed)} take over a clip that was under another key; ' if a.changed else '')
+          + f'{len(quiet)} rows left silent ({sum(1 for r in quiet if silent[r["key"]].startswith("left out"))} of them by an earlier --verify, the rest by '
           f'{os.path.basename(a.silent)}); Guarani {MODELS["gn"]}, Spanish {MODELS["es"]}; {LICENCE}')
     if a.dry_run:
         for r, lang, sentences, notes in plan:
-            print(f'  {r["order"]:4d}  {r["key"]:26s} [{r["voice"]}{" slow" if is_slow(r) else ""}] {r["text"]}\n        says: {synthesis_text(sentences)}' + (f'      ({"; ".join(notes)})' if notes else ''))
+            print(f'  {r["order"]:4d}  {r["key"]:26s} [{r["voice"]}{" slow" if is_slow(r) else ""}] {r["text"]}\n        says: {synthesis_text(sentences)}' + (f'      ({"; ".join(notes)})' if notes else '')
+                  + (f'      (not said: the take of {passed[r["key"]]["key"]} passes to it)' if r['key'] in passed else ''))
         for r in quiet:
             print(f'  silent {r["key"]:26s} {r.get("text", "")}  ({silent[r["key"]]})')
     if bad:
@@ -966,29 +1153,26 @@ def main(argv=None):
     import soundfile as sf
     os.makedirs(a.out, exist_ok=True)
     said_of = {r['key']: spoken(sentences) for r, _, sentences, _ in plan}
-
-    def as_before(r, key):
-        """True when the clip in the folder was made from the text and for the voice the row has now"""
-        old = before['clips'].get(key)
-        return old is None or (old.get('said') == said_of[key] and old.get('voice') == r['voice'])
-
-    # A recording whose row has gone silent since the folder was made (sound/silent.json changed) passes to the row that
-    # holds it now, a line of a dialogue with the same words: the take is the same, under its new key.
-    held = {(c.get('text'), c.get('voice'), bool(c.get('slow'))): c for c in before['clips'].values()
-            if c['key'] in silent and os.path.exists(os.path.join(a.out, c['key'] + '.wav'))}
-    for r, _, _, _ in plan:
-        path, donor = os.path.join(a.out, r['key'] + '.wav'), held.get((r['text'], r['voice'], is_slow(r)))
-        if donor and not os.path.exists(path) and donor.get('said') == said_of[r['key']]:
-            with open(os.path.join(a.out, donor['key'] + '.wav'), 'rb') as f, open(path, 'wb') as g:
-                g.write(f.read())
-            before['clips'][r['key']] = dict(donor, key=r['key'], recorded_as=donor['key'])
-    to_say = [r['key'] for r, _, _, _ in plan if a.redo or not os.path.exists(os.path.join(a.out, r['key'] + '.wav')) or not as_before(r, r['key'])]
+    if passed:
+        data = {}
+        for key, donor in passed.items():          # all read before any is written: a clip can give its take away and take another one over
+            with open(clip(donor['key']), 'rb') as f:
+                data[key] = f.read()
+        for key, donor in passed.items():
+            with open(clip(key), 'wb') as g:
+                g.write(data[key])
+            before['clips'][key] = dict(donor, key=key, recorded_as=donor.get('recorded_as') or donor['key'])
+            print(f'  {key}: not said, the take of {donor["key"]} («{donor.get("text", "")}») is its take now')
     if given:
         unknown = [k for k in to_say if given['clips'].get(k, {}).get('seed') is None or given['clips'][k].get('said') != said_of[k]]
         if unknown:
             print(f'--takes {a.takes} has no take of {len(unknown)} clip{"s" if len(unknown) != 1 else ""} (not in it, found without a seed, or the text changed since): '
                   f'{", ".join(unknown[:12])}{" …" if len(unknown) > 12 else ""}. Nothing was written. Say them with --verify (no --takes), or name the others with --only.', file=sys.stderr)
             return 2
+    if a.changed and not to_say and a.verify:
+        print(('No clip is to be said: the rows that moved have their takes. ' if passed else 'Nothing is new and nothing changed: every row has the take that was made from its text for its voice. ')
+              + 'No model is loaded.')
+        a.verify = ''
     engines = {}
     recognisers = load_recognisers(a.verify) if a.verify else {}
     tries = max(1, a.tries or (3 if recognisers else 1))
@@ -1023,7 +1207,7 @@ def main(argv=None):
         if base is None:
             return None, None
         k = base.get('same') or base['key']
-        old = done.get(k) or (before['clips'].get(k) if os.path.exists(os.path.join(a.out, k + '.wav')) else None)
+        old = done.get(k) or (before['clips'].get(k) if has(k) else None)
         if old is None or old.get('seed') is None or old.get('said') != said_of.get(key, old.get('said')):
             return k, None
         return k, old
@@ -1037,7 +1221,7 @@ def main(argv=None):
     report, made, failed, skipped = [], 0, [], 0
     for r, lang, sentences, notes in plan:
         key = r['key']
-        path = os.path.join(a.out, key + '.wav')
+        path = clip(key)
         slow = is_slow(r)
         said = said_of[key]
         short = lang == 'gn' and len(sentences) == 1 and len(said.split()) <= 2
@@ -1117,7 +1301,7 @@ def main(argv=None):
                 failed.append((key, last))
                 print(f'  x {key}: {last}', flush=True)
                 continue
-            write_wav(path, best['x'])
+            write_clip(path, best['x'])
             made += 1
         x = best['x']
         row = {'key': key, 'voice': r['voice'], 'lang': lang, 'slow': slow, 'text': r['text'], 'said': said, 'sentences': len(sentences), 'seconds': round(len(x) / RATE, 2),
@@ -1132,6 +1316,8 @@ def main(argv=None):
             row['recorded_as'] = old['recorded_as']
         if key in to_say and recognisers:
             row['tried'] = tried_takes          # every take that was heard, the kept one among them: what one take alone scores
+        elif key not in to_say and (rows_before.get(key, {}).get('said'), rows_before.get(key, {}).get('seed')) == (said, row['seed']) and rows_before[key].get('tried'):
+            row['tried'] = rows_before[key]['tried']          # the clip was found, not said: the takes heard when it was made stay on record
         for name, h in best['heard'].items():
             row[f'heard_{name}'] = h
             row[f'cer_{name}'] = round(best['cer'][name], 3)
@@ -1147,16 +1333,23 @@ def main(argv=None):
               + ('  (run in)' if row['cut'] == 'closure' else '') + (f'  ({row["semitones"]:+g} st)' if row['semitones'] else '')
               + (f'  (×{row["slow_ratio"]:.2f} the normal take)' if 'slow_ratio' in row else ''), flush=True)
 
-    # what the recognisers leave out: short clips heard wrong by both, pair words whose taught mark neither writes
+    # what the recognisers leave out: short clips heard wrong by both, slow takes heard worse than the line itself; and
+    # what they flag: pair words whose taught mark neither writes
     names = list(recognisers)
     left, stays, flags = left_out_by_ear(manifest, report, names, rules) if recognisers else ({}, [], [])
+    if recognisers:
+        known = dict(rows_before)
+        known.update({row['key']: row for row in report})
+        slower = slow_takes_heard_worse(manifest, known, names, rules, {row['key'] for row in report})
+        left.update({k: v for k, v in slower.items() if k not in left})
+        stays = [line for line in stays if line.split(' ')[0] not in left]
     if left:
         manifest, silent = apply_silence(source, rules, {**earlier, **{k: 'left out by --verify: ' + v for k, v in left.items()}})
         mine = {(row['text'], row['voice'], row['slow']): row for row in report}
         for r in select(manifest, [v for v in voices if v in VOICES], a.only):          # a line of a dialogue that shared a recording now left out: the take is its own
-            path, donor = os.path.join(a.out, r['key'] + '.wav'), mine.get((r['text'], r['voice'], is_slow(r)))
+            path, donor = clip(r['key']), mine.get((r['text'], r['voice'], is_slow(r)))
             if donor and not os.path.exists(path):
-                with open(os.path.join(a.out, donor['key'] + '.wav'), 'rb') as f, open(path, 'wb') as g:
+                with open(clip(donor['key']), 'rb') as f, open(path, 'wb') as g:
                     g.write(f.read())
                 report.append(dict(donor, key=r['key'], recorded_as=donor['key']))
         for row in report:
@@ -1164,9 +1357,24 @@ def main(argv=None):
                 row['left_out'] = silent[row['key']]
     left_out = {k: v for k, v in silent.items() if v.startswith('left out')}
     for key in silent:                                     # what stays silent is kept for a listener, outside the folder make-sound.mjs reads
-        if os.path.exists(os.path.join(a.out, key + '.wav')):
+        if has(key):
             os.makedirs(os.path.join(a.out, 'left-out'), exist_ok=True)
-            os.replace(os.path.join(a.out, key + '.wav'), os.path.join(a.out, 'left-out', key + '.wav'))
+            os.replace(clip(key), os.path.join(a.out, 'left-out', key + ext))
+    if os.path.isdir(os.path.join(a.out, 'left-out')):     # and a clip that is back in the folder (its row is said again) leaves no old copy there
+        for f in os.listdir(os.path.join(a.out, 'left-out')):
+            if f.endswith(ext) and f[:-len(ext)] not in silent and has(f[:-len(ext)]):
+                os.remove(os.path.join(a.out, 'left-out', f))
+    # the clips whose key is no recording of the list any more: one whose take passed to another key is that key's clip now
+    # and goes; the others stay (their text may come back), are named, and --prune deletes them
+    wanted = {r['key'] for r in manifest.get('clips', []) if r.get('order') and not r.get('same') and not r.get('parts') and not r.get('tone')}
+    given_away = {d['key'] for d in passed.values()}
+    stray = []
+    for f in sorted(os.listdir(a.out)):
+        if f.endswith(ext) and f[:-len(ext)] not in wanted:
+            if a.prune or f[:-len(ext)] in given_away:
+                os.remove(os.path.join(a.out, f))
+            else:
+                stray.append(f[:-len(ext)])
 
     used = sorted({r['voice'] for r in select(manifest, [v for v in voices if v in VOICES], None)})          # every voice of the folder, not only this run's keys
 
@@ -1187,50 +1395,83 @@ def main(argv=None):
         'voices': {v: {'name': f'MMS-TTS {"guaraní" if VOICES[v]["lang"] == "gn" else "castellano"} (Meta AI)' + tone(v),
                        'kind': 'synthetic', 'model': MODELS[VOICES[v]['lang']], 'licence': LICENCE} for v in used},
     }
+    if os.path.exists(os.path.join(a.out, 'voices.json')) and not made:          # nothing was said: the credits keep the day the voice was last made
+        with open(os.path.join(a.out, 'voices.json'), encoding='utf-8') as f:
+            credits['made'] = json.load(f).get('made') or credits['made']
     with open(os.path.join(a.out, 'voices.json'), 'w', encoding='utf-8') as f:
         json.dump(credits, f, ensure_ascii=False, indent=1)
     with open(os.path.join(a.out, 'manifest.json'), 'w', encoding='utf-8') as f:
         json.dump(manifest, f, ensure_ascii=False, indent=1)
     # takes.json: what every clip of the folder was made with (this run's, and the earlier ones' that are still there)
     fields = ('key', 'voice', 'lang', 'slow', 'text', 'said', 'seconds', 'seed', 'take', 'cut', 'rate', 'semitones', 'hz', 'slow_ratio', 'recorded_as')
-    takes = {k: c for k, c in before['clips'].items() if os.path.exists(os.path.join(a.out, k + '.wav'))}
+    takes = {k: c for k, c in before['clips'].items() if has(k)}
     takes.update({row['key']: {f: row[f] for f in fields if row.get(f) is not None} for row in report if 'left_out' not in row})
     with open(os.path.join(a.out, 'takes.json'), 'w', encoding='utf-8') as f:
-        json.dump({'made': datetime.date.today().isoformat(), 'with': made_with() if engines or recognisers else before['with'],
+        json.dump({'made': datetime.date.today().isoformat() if made or not before.get('made') else before['made'], 'with': made_with() if engines or recognisers else before['with'],
                    'verified': bool(recognisers) or bool(given) or (before['verified'] and not made),
                    'about': 'the seed and the cut of every clip in this folder, for --takes; left_out: what --verify left out by itself (those clips, and the ones sound/silent.json names, are in left-out/)',
                    'left_out': left_out, 'clips': sorted(takes.values(), key=lambda c: c['key'])}, f, ensure_ascii=False, indent=1)
-    print(f'{made} clips written to {a.out} ({skipped} were there already, {len(failed)} failed); voices.json marks them synthetic; '
+    print(f'{made} clips written to {a.out} ({skipped} were there already, {len(failed)} failed' + (f', {len(passed)} took over a take that was under another key' if passed else '') + '); voices.json marks them synthetic; '
           f'manifest.json is the manifest without its {len(silent)} silent rows ({len(left_out)} of them left out by --verify); takes.json has every seed.')
-    earlier_report = {}
-    if os.path.exists(os.path.join(a.out, 'tts-report.json')):
-        with open(os.path.join(a.out, 'tts-report.json'), encoding='utf-8') as f:
-            earlier_report = json.load(f)
+    if stray:
+        print(f'{len(stray)} clip{"s" if len(stray) != 1 else ""} of the folder {"have" if len(stray) != 1 else "has"} a key that is no recording of the list any more (make-sound.mjs ignores them; --prune deletes them): '
+              f'{", ".join(stray[:12])}{" …" if len(stray) > 12 else ""}')
+
+    def of_this_folder(rows, fresh):
+        """the rows of a report for the folder as it is now: one row a clip of the folder or of left-out/. A clip that took
+        over the take of another key, and was not heard again in this run (`fresh`: the keys that were), has that take's
+        row; a row whose clip is gone is dropped; a clip whose key the list no longer has is marked `stray` and counts
+        in no total"""
+        old = {row['key']: row for row in earlier_report.get('clips', [])}
+        out = []
+        for row in rows:
+            k = row['key']
+            if k in passed and k not in fresh:          # heard under the key it had then
+                src = old.get(passed[k].get('recorded_as') or '') or old.get(passed[k]['key'])
+                if src is None or src.get('said') != passed[k].get('said'):
+                    src = passed[k]
+                row = dict(src, key=k, recorded_as=passed[k].get('recorded_as') or passed[k]['key'])
+            row = dict(row)
+            row.pop('left_out', None)
+            row.pop('stray', None)
+            if k in silent:
+                row['left_out'] = silent[k]
+            elif k not in wanted:
+                row['stray'] = True
+            if has(k) or (k in silent and os.path.exists(os.path.join(a.out, 'left-out', k + ext))):
+                out.append(row)
+        seen = {row['key'] for row in out}
+        for k, donor in passed.items():          # a key the last report did not have at all
+            if k not in seen and has(k):
+                src = old.get(donor.get('recorded_as') or '') or old.get(donor['key']) or donor
+                out.append(dict(src if src.get('said') == donor.get('said') else donor, key=k, recorded_as=donor.get('recorded_as') or donor['key']))
+        return out
+
+    heard_now = {row['key'] for row in report}
+    # the keys that have a clip today, their own or one they share: what the report's lists may name. A line counts only
+    # while a clip is put together from it (a line whose dialogue went silent is in the folder and plays nowhere)
+    joined = {k for r in manifest.get('clips', []) for k in r.get('parts') or []}
+    live = {r['key'] for r in manifest.get('clips', []) if not LINE.search(r['key']) or (r.get('same') or r['key']) in joined}
     if recognisers and report:
-        if a.only is not None and earlier_report:          # a part was verified: the rest of the folder's report stays
+        if (a.only is not None or a.changed) and earlier_report:          # a part was verified: the rest of the folder's report stays
             mine = {row['key'] for row in report} | {row.get('recorded_as') for row in report}
             report = [row for row in earlier_report.get('clips', []) if row['key'] not in mine] + report
             stays = [line for line in earlier_report.get('stays_as_a_line', []) if line.split(' ')[0] not in mine] + stays
             flags = [line for line in earlier_report.get('pair_marks_unheard', []) if line.split(' ')[0] not in mine] + flags
-            for row in report:
-                if row['key'] in silent:
-                    row['left_out'] = silent[row['key']]
-        write_report(a.out, report, names, left_out, stays, flags)
+        report = of_this_folder(report, heard_now)
+        write_report(a.out, report, names, left_out, [line for line in stays if line.split(' ')[0] in live], [line for line in flags if line.split(' ')[0] in live])
     elif not recognisers and earlier_report and (not made or given):          # nothing new was said, or the same takes again: the folder's report follows its manifest
-        rows_before = earlier_report.get('clips', [])
-        have = {row['key'] for row in rows_before}
-        same_take = {(row['text'], row['voice'], row['slow']): row for row in rows_before}
+        rows_then = list(earlier_report.get('clips', []))
+        have = {row['key'] for row in rows_then}
+        same_take = {(row['text'], row['voice'], row['slow']): row for row in rows_then}
         for c in takes.values():                           # a line that holds a recording now: its row is the row of the take it inherited
             donor = same_take.get((c.get('text'), c.get('voice'), c.get('slow')))
-            if c['key'] not in have and donor:
-                rows_before.append(dict(donor, key=c['key'], recorded_as=donor['key']))
-        for row in rows_before:
-            row.pop('left_out', None)
-            if row['key'] in silent:
-                row['left_out'] = silent[row['key']]
-        write_report(a.out, rows_before, list(earlier_report.get('recognisers', {})), left_out,
-                     [line for line in earlier_report.get('stays_as_a_line', []) if line.split(' ')[0] not in silent],
-                     [line for line in earlier_report.get('pair_marks_unheard', []) if line.split(' ')[0] not in silent], earlier_report)
+            if c['key'] not in have and c['key'] not in passed and donor:
+                rows_then.append(dict(donor, key=c['key'], recorded_as=donor['key']))
+        rows_then = of_this_folder(rows_then, set())
+        write_report(a.out, rows_then, list(earlier_report.get('recognisers', {})), left_out,
+                     [line for line in earlier_report.get('stays_as_a_line', []) if line.split(' ')[0] in live],
+                     [line for line in earlier_report.get('pair_marks_unheard', []) if line.split(' ')[0] in live], earlier_report)
     elif not given and (made or not before['verified']):
         print('Not verified: no recogniser heard ' + ('the clips made now' if before['verified'] else 'these clips') + ', so nothing was left out by ear. Ship a folder made with --verify, or with --takes from one.')
     print(f'Next: node tools/make-sound.mjs {a.out} --manifest {os.path.join(a.out, "manifest.json")} --kind synthetic')
@@ -1246,7 +1487,7 @@ def write_report(out, report, names, left_out, stays, flags, made=None):
         w = csv.DictWriter(f, fieldnames=fields, extrasaction='ignore')
         w.writeheader()
         w.writerows(report)
-    kept = [r for r in report if 'left_out' not in r]
+    kept = [r for r in report if 'left_out' not in r and not r.get('stray')]
     totals = {}
     for n in names:
         for label, pick in (('words', lambda r: ' ' not in r['said']), ('sentences', lambda r: ' ' in r['said'])):

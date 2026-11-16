@@ -81,7 +81,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="flex-grow: 1; font-size: 11px; font-weight: 700; color: #5A6382">{{ r.due }}</div>
 <div role="img" aria-label="{{ r.pipLabel }}" style="display: flex; gap: 4px"><sc-for list="{{ r.pipList }}" as="p" hint-placeholder-count="3"><div style="width: 10px; height: 10px; box-sizing: border-box; border-radius: 50%; border: {{ p.border }}; background: {{ p.bg }}"></div></sc-for></div>
 </div>
-<div lang="{{ r.qLang }}" style="font-family: 'Andika', 'Nunito', sans-serif; font-size: 15px; font-weight: 400; line-height: 1.5; overflow-wrap: anywhere"><sc-for list="{{ r.segs }}" as="g" hint-placeholder-count="1"><sc-if value="{{ g.text }}" hint-placeholder-val="{{ true }}"><span style="border-bottom: {{ g.line }}">{{ g.t }}</span></sc-if><sc-if value="{{ g.blank }}" hint-placeholder-val="{{ false }}"><span role="img" aria-label="espacio en blanco" style="display: inline-block; width: 28px; height: 16px; margin: 0 3px; border-bottom: 2px solid #1B2440; vertical-align: text-bottom"></span></sc-if></sc-for></div>
+<div lang="{{ r.qLang }}" style="font-family: 'Andika', 'Nunito', sans-serif; font-size: 15px; font-weight: 400; line-height: 1.5; overflow-wrap: anywhere"><sc-for list="{{ r.segs }}" as="g" hint-placeholder-count="1"><sc-if value="{{ g.text }}" hint-placeholder-val="{{ true }}"><span lang="{{ g.lang }}" style="border-bottom: {{ g.line }}">{{ g.t }}</span></sc-if><sc-if value="{{ g.blank }}" hint-placeholder-val="{{ false }}"><span lang="es" role="img" aria-label="espacio en blanco" style="display: inline-block; width: 28px; height: 16px; margin: 0 3px; border-bottom: 2px solid #1B2440; vertical-align: text-bottom"></span></sc-if></sc-for></div>
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 3px 6px; font-size: 13px; font-weight: 800">
 <span style="display: inline-flex; align-items: center; gap: 6px; max-width: 100%"><svg viewBox="0 0 100 100" width="36" height="36" aria-hidden="true" style="flex-shrink: 0; margin: -9px -4px -9px -6px"><g transform="translate(4.4 4.6) scale(0.9)"><path d="M20.18 68.37C18.65 69.75 16.7 71.49 15.6 72.51C14.5 73.53 14.05 74.11 13.58 74.48C13.12 74.85 13.08 74.69 12.8 74.72C12.52 74.75 12.12 74.79 11.92 74.66C11.73 74.53 11.73 74.3 11.64 73.96C11.55 73.62 11.47 72.74 11.38 72.6C11.29 72.46 10.66 73.36 11.09 73.13C11.53 72.9 13.46 72.48 13.97 71.25C14.48 70.02 15.01 66.89 14.16 65.74C13.3 64.6 10.09 64.4 8.83 64.35C7.57 64.3 7.64 64.54 6.61 65.44C5.57 66.35 3.36 68.14 2.62 69.8C1.88 71.46 1.85 73.49 2.16 75.42C2.47 77.34 3.27 79.76 4.48 81.34C5.69 82.91 7.44 84.18 9.43 84.88C11.42 85.57 14.13 85.92 16.42 85.52C18.7 85.12 21.23 83.47 23.13 82.49C25.03 81.51 26.25 80.58 27.82 79.63Z" fill="#EDC27C" stroke="#1B2440" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><path d="M33.4 51.6 C30.6 47.4 27.4 44.6 23.6 43.4 C19.6 42.2 17.8 38.6 19.8 35.4 C21.8 32.2 26.4 32 29.6 34.2 C34.4 37.6 38 43.2 40.6 48.6 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><path d="M18 71C17.8 67.17 18.23 60.67 20.4 56.6C22.57 52.53 27.07 48.77 31 46.6C34.93 44.43 39.83 43.67 44 43.6C48.17 43.53 52.73 44.4 56 46.2C59.27 48 62.03 51.17 63.6 54.4C65.17 57.63 65.77 61.7 65.4 65.6C65.03 69.5 64.13 74.67 61.4 77.8C58.67 80.93 53.83 83.33 49 84.4C44.17 85.47 36.97 85 32.4 84.2C27.83 83.4 24 81.8 21.6 79.6C19.2 77.4 18.2 74.83 18 71Z" fill="#EDC27C"/><path d="M60.55 49.89C61.57 52.13 62.78 54.58 63.6 56.6C64.42 58.62 64.84 60.19 65.46 61.98C65.53 63.19 65.51 64.4 65.4 65.6C65.03 69.5 64.13 74.67 61.4 77.8C58.67 80.93 53.83 83.33 49 84.4C44.17 85.47 36.97 85 32.4 84.2C30.19 83.81 28.14 83.24 26.35 82.49C26.57 78.66 27.03 74.75 27 71C26.97 67.25 25.79 63.91 26.2 60C26.61 56.09 28.36 51.68 29.44 47.52C29.97 47.19 30.49 46.88 31 46.6C34.93 44.43 39.83 43.67 44 43.6C48.17 43.53 52.73 44.4 56 46.2C57.68 47.13 59.23 48.42 60.55 49.89Z" fill="#2A2120"/><path d="M18 71C17.8 67.17 18.23 60.67 20.4 56.6C22.57 52.53 27.07 48.77 31 46.6C34.93 44.43 39.83 43.67 44 43.6C48.17 43.53 52.73 44.4 56 46.2C59.27 48 62.03 51.17 63.6 54.4C65.17 57.63 65.77 61.7 65.4 65.6C65.03 69.5 64.13 74.67 61.4 77.8C58.67 80.93 53.83 83.33 49 84.4C44.17 85.47 36.97 85 32.4 84.2C27.83 83.4 24 81.8 21.6 79.6C19.2 77.4 18.2 74.83 18 71Z" fill="none" stroke="#1B2440" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><path d="M51.97 55.43C53.42 55.77 55.5 55.42 56.74 54.65C57.98 53.88 58.88 52.48 59.43 50.83C59.98 49.18 59.65 46.73 60.05 44.75C60.45 42.77 61.65 40.63 61.84 38.94C62.03 37.25 61.92 35.77 61.2 34.61C60.48 33.45 58.9 32.28 57.54 31.96C56.19 31.64 54.23 31.97 53.07 32.69C51.91 33.41 51.34 34.71 50.56 36.26C49.78 37.81 48.91 40.03 48.38 41.98C47.85 43.93 47.43 46.2 47.37 47.97C47.32 49.74 47.28 51.35 48.05 52.59C48.82 53.83 50.52 55.09 51.97 55.43Z" fill="#EDC27C" stroke="#1B2440" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><path d="M61.63 36.24C61.31 34.94 60.16 33.42 59.03 32.74C57.9 32.06 56.15 32.16 54.84 32.17C53.53 32.18 52.35 32.42 51.17 32.78C49.99 33.15 48.84 33.72 47.74 34.36C46.64 35 45.19 35.6 44.56 36.65C43.93 37.7 43.66 39.45 43.96 40.66C44.26 41.87 45.33 43.29 46.38 43.92C47.43 44.55 49.03 44.55 50.26 44.44C51.5 44.33 52.57 43.49 53.79 43.25C55.01 43.02 56.36 43.48 57.56 43.03C58.76 42.58 60.3 41.69 60.98 40.56C61.66 39.43 61.96 37.54 61.63 36.24Z" fill="#EDC27C" stroke="#1B2440" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(70.6 70.2) rotate(-6) scale(1.12)"><path d="M-9.8 -6.6 C-16.2 -9.4 -17.0 -16.8 -11.6 -18.4 C-6.4 -19.8 -3.2 -14.0 -4.8 -9.2 Z" fill="#EDC27C" stroke="#1B2440" stroke-width="4.02" stroke-linejoin="round" stroke-linecap="round"/><path d="M-9.4 -7.2 C-13.6 -9.6 -13.8 -14.8 -11.0 -15.4 C-8.2 -16.0 -5.8 -12.2 -6.8 -8.6 Z" fill="#D49A55"/><path d="M-12.4 2C-12.4 -0.13 -12.4 -3.83 -11.4 -6C-10.4 -8.17 -8.4 -9.9 -6.4 -11C-4.4 -12.1 -1.57 -12.7 0.6 -12.6C2.77 -12.5 4.93 -11.5 6.6 -10.4C8.27 -9.3 9.67 -7.57 10.6 -6C11.53 -4.43 11.2 -2.1 12.2 -1C13.2 0.1 15.13 0.03 16.6 0.6C18.07 1.17 19.8 1.68 21 2.4C22.2 3.12 24.03 4.32 24.6 5.4C25.17 6.48 25.25 8.55 24.8 9.6C24.35 10.65 22.86 11.98 21.6 12.4C20.34 12.82 18.23 12.37 16.4 12.4C14.57 12.43 12.5 12.4 10.6 12.6C8.7 12.8 7.1 13.5 5 13.6C2.9 13.7 0.1 13.7 -2 13.2C-4.1 12.7 -6.03 11.67 -7.6 10.6C-9.17 9.53 -10.6 8.23 -11.4 6.8C-12.2 5.37 -12.4 4.13 -12.4 2Z" fill="#EDC27C" stroke="#1B2440" stroke-width="4.46" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="3.4" cy="-1.2" rx="4.5" ry="4.4" fill="#C98E4E"/><path d="M3.97 -1.36C4.01 -1.33 4.06 -1.31 4.1 -1.27C4.14 -1.23 4.18 -1.18 4.2 -1.13C4.23 -1.07 4.25 -1.01 4.26 -0.94C4.27 -0.87 4.27 -0.79 4.26 -0.72C4.24 -0.64 4.22 -0.56 4.18 -0.49C4.14 -0.41 4.08 -0.33 4.02 -0.27C3.95 -0.2 3.87 -0.14 3.78 -0.09C3.7 -0.04 3.59 0 3.49 0.02C3.38 0.05 3.26 0.06 3.14 0.05C3.02 0.04 2.9 0.02 2.78 -0.02C2.66 -0.07 2.54 -0.13 2.43 -0.2C2.32 -0.28 2.21 -0.38 2.12 -0.49C2.03 -0.6 1.94 -0.74 1.88 -0.88C1.82 -1.02 1.78 -1.17 1.75 -1.33C1.73 -1.49 1.73 -1.66 1.75 -1.83C1.77 -2 1.82 -2.18 1.89 -2.34C1.96 -2.5 2.05 -2.67 2.17 -2.82C2.28 -2.96 2.42 -3.1 2.58 -3.22C2.74 -3.34 2.92 -3.44 3.11 -3.52C3.3 -3.59 3.51 -3.65 3.72 -3.67C3.93 -3.69 4.16 -3.69 4.38 -3.65C4.6 -3.62 4.82 -3.56 5.03 -3.46C5.24 -3.37 5.45 -3.24 5.64 -3.09C5.83 -2.94 6 -2.76 6.15 -2.56C6.29 -2.36 6.42 -2.13 6.51 -1.89C6.6 -1.65 6.67 -1.38 6.69 -1.12C6.72 -0.85 6.71 -0.57 6.67 -0.3C6.62 -0.03 6.51 0.23 6.43 0.5" fill="none" stroke="#1B2440" stroke-width="2.32" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="4.6" cy="5.4" rx="3" ry="1.9" fill="#F08CA5"/><ellipse cx="21.2" cy="7.4" rx="1.7" ry="2" transform="rotate(15 21.2 7.4)" fill="#1B2440"/></g><circle cx="41.4" cy="64.6" r="11.6" fill="#FFFFFF" stroke="#1B2440" stroke-width="4.2"/><path d="M41.4 55.32V73.88M32.12 64.6H50.68M34.79 57.99L48.01 71.21M48.01 57.99L34.79 71.21" fill="none" stroke="#C2336F" stroke-width="2.6" stroke-linecap="round"/><circle cx="41.4" cy="64.6" r="3.6" fill="#C2336F"/></g></svg><span style="min-width: 0; color: #5A6382; overflow-wrap: anywhere">{{ r.youLabel }} <span lang="{{ r.wrongLang }}" style="font-family: 'Andika', 'Nunito', sans-serif; font-weight: 700">{{ r.wrong }}</span></span></span>
 <sc-if value="{{ r.shown }}" hint-placeholder-val="{{ true }}"><span style="display: inline-flex; align-items: center; gap: 6px; max-width: 100%"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5A6382" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M5 12h14M13 6l6 6-6 6"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Respuesta correcta" style="flex-shrink: 0"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span lang="{{ r.rightLang }}" style="min-width: 0; font-family: 'Andika', 'Nunito', sans-serif; font-weight: 700; overflow-wrap: anywhere">{{ r.right }}</span></span></sc-if><sc-if value="{{ r.held }}" hint-placeholder-val="{{ false }}"><span style="display: inline-flex; align-items: center; gap: 6px; max-width: 100%; font-size: 12px; font-weight: 700; color: #5A6382"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5A6382" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M5 12h14M13 6l6 6-6 6"/></svg>la respuesta, al repasar</span></sc-if>
@@ -138,6 +138,52 @@ const BLANK = ['', 'Sin respuesta', 'Sin responder'];
    Spanish; a line that opens with ¿ or ¡ or has small words Guarani never uses is Spanish, even when it quotes Guarani */
 const ES_MARK = /[¿¡]|(^|[^\p{L}\p{M}'])(el|la|las|los|lo|le|les|una?|del?|al|en|es|son|soy|sos|se|que|qué|cómo|cuál|quién|quiénes|dónde|cuándo|cuánto|y|con|por|para|su|sus|no|sí|si|me|te|tu|vos|yo|nos|esta|este|ellos|ellas|hola|bien|buen|buenas|gracias|perdón|mañana|tarde|noche|hasta|señor|doña|otro|otra|otras)(?![\p{L}\p{M}'])/iu;
 function langOf(it, s) { return (it && it.area === 'mediation') || ES_MARK.test(window.gnCourse.norm(s)) ? 'es' : 'gn'; }
+/* The language of each piece of a question, worked out on the whole question before the row cuts it (as Review does):
+   a question can open with a stage direction in Spanish and go on in Guarani, so each line takes its own language
+   (a line that is all in brackets is a stage direction, and those are written in Spanish); and a Spanish line quotes
+   Guarani between « », so what is inside a quote is Guarani unless it reads as Spanish by the same rule; and inside
+   what is Spanish, a word that can only be Guarani is told apart. Without this a row cut to «…ella misma: «___ añe'ẽ…»
+   would be read whole in one voice. → the pieces, each with lang */
+function tongues(segs, it) {
+  const C = window.gnCourse;
+  const rows = [[]];
+  segs.forEach((g) => {
+    if (g.blank) { rows[rows.length - 1].push(g); return; }
+    String(g.t || '').split('\n').forEach((part, i) => {
+      if (i) rows.push([]);
+      if (part) rows[rows.length - 1].push(Object.assign({}, g, { t: part }));
+    });
+  });
+  const out = [];
+  let q = -1;
+  let n = 0;
+  rows.forEach((row, k) => {
+    const said = row.map((g) => (g.blank ? ' ' : g.t || '')).join('');
+    const base = /^\s*\([^()]*\)\s*$/.test(said) ? 'es' : langOf(it, said);
+    row.forEach((g) => {
+      if (g.blank) { out.push(Object.assign({}, g, { base, q })); return; }
+      let piece = '';
+      Array.from(g.t || '').forEach((ch) => {
+        if (ch === '«' && q < 0) { piece += ch; out.push(Object.assign({}, g, { t: piece, base, q: -1 })); piece = ''; q = n++; return; }
+        if (ch === '»' && q >= 0) { if (piece) out.push(Object.assign({}, g, { t: piece, base, q })); piece = ch; q = -1; return; }
+        piece += ch;
+      });
+      if (piece) out.push(Object.assign({}, g, { t: piece, base, q }));
+    });
+    if (k < rows.length - 1) out.push({ t: '\n', blank: false, line: 'none', base, q });
+  });
+  const inside = {};
+  out.forEach((g) => { if (g.q >= 0) inside[g.q] = (inside[g.q] || '') + (g.blank ? ' ' : g.t); });
+  const done = [];
+  out.forEach((g) => {
+    const lang = g.q < 0 ? g.base : ES_MARK.test(C.norm(inside[g.q] || '')) ? 'es' : 'gn';
+    if (g.blank || lang !== 'es' || !C.mixed) { done.push(Object.assign(g, { lang })); return; }
+    /* a Spanish piece can still hold Guarani with no quote marks round it («…saludás: Mba'éichapa nde ___?»): the words
+       that can only be Guarani (a nasal vowel, ý, g̃, a puso between two letters: gnCourse.mixed) are told apart */
+    C.mixed(g.t).forEach((m) => done.push(Object.assign({}, g, { t: m.t, lang: m.gn ? 'gn' : 'es' })));
+  });
+  return done;
+}
 /* the question as the notebook quotes it: one line of about 36 letters at Andika 15 px, cut word by word and never
    inside a letter (C.chars and C.cut count graphemes: g̃ and ẽ are one each). A choice item quotes its sentence with
    the blank and the underlined word kept (no glosses); when the blank comes late, the quote starts a little before
@@ -149,13 +195,13 @@ function quoteOf(C, it) {
   let lang = 'gn';
   if (it.kind === 'build') {
     const es = C.plain(it.es || '').trim();
-    segs = [{ t: es ? '«' + es + '»' : C.plain(it.label || 'Armá la palabra'), line: 'none' }];
+    segs = [{ t: es ? '«' + es + '»' : C.plain(it.label || 'Armá la palabra'), line: 'none', lang: 'es' }];
     lang = 'es';
   } else if (it.kind === 'spell') {
-    segs = [{ t: '«' + C.plain(it.prompt || '').trim() + '»', line: 'none' }];
+    segs = [{ t: '«' + C.plain(it.prompt || '').trim() + '»', line: 'none', lang: 'es' }];
     lang = 'es';
   } else {
-    segs = C.rich(it.q || '', { ruby: false, hl: false });
+    segs = tongues(C.rich(it.q || '', { ruby: false, hl: false }), it);
     lang = '';
   }
   /* the words as a reader sees them (a word may hold pieces with and without the underline), the spaces between
@@ -167,9 +213,9 @@ function quoteOf(C, it) {
     if (g.blank) { flush(); words.push({ blank: true, n: 3, pieces: [] }); return; }
     String(g.t || '').replace(/\s+/g, ' ').split(/( )/).forEach((w) => {
       if (!w) return;
-      if (w === ' ') { flush(); if (words.length && !words[words.length - 1].space) words.push({ space: true, n: 1, pieces: [{ t: ' ', line: g.line }] }); return; }
+      if (w === ' ') { flush(); if (words.length && !words[words.length - 1].space) words.push({ space: true, n: 1, pieces: [{ t: ' ', line: g.line, lang: g.lang }] }); return; }
       if (!cur) cur = { n: 0, pieces: [], focus: false };
-      cur.pieces.push({ t: w, line: g.line });
+      cur.pieces.push({ t: w, line: g.line, lang: g.lang });
       cur.n += C.chars(w).length;
       if (g.line !== 'none') cur.focus = true;
     });
@@ -189,7 +235,9 @@ function quoteOf(C, it) {
   }
   const out = [];
   let room = ROOM;
-  if (start > 0) { out.push({ t: '…', line: 'none' }); room -= 1; }
+  /* the language of the first piece shown, for the marks the row adds (…) and for the row itself */
+  const firstLang = (words.slice(start).filter((x) => x.pieces.length)[0] || { pieces: [{}] }).pieces[0].lang || lang || 'es';
+  if (start > 0) { out.push({ t: '…', line: 'none', lang: firstLang }); room -= 1; }
   let i = start;
   for (; i < words.length && room > 0; i++) {
     const w = words[i];
@@ -199,31 +247,32 @@ function quoteOf(C, it) {
         let left = room;
         for (const p of w.pieces) {
           const n = C.chars(p.t).length;
-          if (n < left) { out.push({ t: p.t, line: p.line }); left -= n; }
-          else { out.push({ t: C.cut(p.t, left), line: p.line, cut: true }); break; }
+          if (n < left) { out.push({ t: p.t, line: p.line, lang: p.lang }); left -= n; }
+          else { out.push({ t: C.cut(p.t, left), line: p.line, lang: p.lang, cut: true }); break; }
         }
       }
       break;
     }
     if (w.blank) out.push({ blank: true });
-    else w.pieces.forEach((p) => out.push({ t: p.t, line: p.line }));
+    else w.pieces.forEach((p) => out.push({ t: p.t, line: p.line, lang: p.lang }));
     room -= w.n;
   }
   if (i < words.length) {
     while (out.length && out[out.length - 1].t === ' ') out.pop();
     const tail = out[out.length - 1];
-    if (!tail || !tail.cut || !/…$/.test(tail.t)) out.push({ t: '…', line: 'none' });
+    if (!tail || !tail.cut || !/…$/.test(tail.t)) out.push({ t: '…', line: 'none', lang: (tail && tail.lang) || firstLang });
   }
-  /* neighbours with the same underline are one span */
+  /* neighbours with the same underline and the same language are one span */
   const merged = [];
   out.forEach((x) => {
     const prev = merged[merged.length - 1];
-    if (x.blank) merged.push({ t: '', text: false, blank: true, line: 'none' });
-    else if (prev && !prev.blank && prev.line === x.line) prev.t += x.t;
-    else merged.push({ t: x.t, text: true, blank: false, line: x.line });
+    if (x.blank) merged.push({ t: '', text: false, blank: true, line: 'none', lang: 'es' });
+    else if (prev && !prev.blank && prev.line === x.line && prev.lang === (x.lang || firstLang)) prev.t += x.t;
+    else merged.push({ t: x.t, text: true, blank: false, line: x.line, lang: x.lang || firstLang });
   });
-  /* a question's language is that of the part the row shows (a Spanish scene note may be cut away) */
-  return { segs: merged, lang: lang || langOf(it, merged.map((x) => x.t).join(' ')) };
+  /* the row's own language is that of the first piece it shows (a Spanish scene note may be cut away); every piece
+     carries its own */
+  return { segs: merged, lang: lang || firstLang };
 }
 /* an answer in a row: two lines at most */
 function short(C, s) { return C.cut(String(s || '').replace(/\s+/g, ' ').trim(), 64); }

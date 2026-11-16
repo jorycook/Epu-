@@ -1,6 +1,8 @@
 // Checks the sound path end to end in Chromium: the fixture recordings (check/fixtures/sound, short tones named by clip
 // key) are turned into sound files by tools/make-sound.mjs, marked synthetic (a stereo take must come out as loud as a
-// mono one, a silent take must make no clip, the exam's test tone must be at about the level of the voices), the app is
+// mono one, a silent take must make no clip, the exam's test tone must be at about the level of the voices, a take of a
+// fifth of a second must come out as loud as a second of the same note, a take kept as FLAC must be read, the stated
+// length must be the decoded clip's, and no clip may pass the peak ceiling once its MP3 is decoded), the app is
 // built with them into epua-app/dist-sound (never into docs/), and the built app is checked for: the Words sound step
 // playing a clip (has() true, its wording in the recorded state, and the «voz sintética» note), Hablar's note, a dialogue
 // put together for Listening, the unit file fetched when its unit is in use and not at install, stored by the offline
@@ -39,9 +41,16 @@ const index = fs.readFileSync(path.join(PROJECT, 'gn-sound-index.js'), 'utf8');
 const listed = JSON.parse(/__gnSoundFiles = (\[[^\]]*\])/.exec(index)[1]);
 ok(listed.includes('gn-sound-a1-u01.js') && listed.includes('gn-sound-sp.js'), 'the index lists the files written', listed);
 const unitJs = fs.readFileSync(path.join(PROJECT, 'gn-sound-a1-u01.js'), 'utf8');
-ok(/c\['a1u01d1\.s0a'\] = \{ ms: \d+, kind: 'synthetic', voice: 'F', b: '[A-Za-z0-9+/=]+' \};/.test(unitJs), 'a clip registers as { ms, kind, voice, b } under its key');
+ok(/c\['a1u01d1\.s0b'\] = \{ ms: \d+, kind: 'synthetic', voice: 'F', b: '[A-Za-z0-9+/=]+' \};/.test(unitJs), 'a clip registers as { ms, kind, voice, b } under its key');
 ok(/c\['a1u01d1\.r1'\] = \{ ms: \d+, kind: 'synthetic', voice: 'N\+F\+M', cues: \[[\d, ]+\], b: /.test(unitJs), 'a dialogue is put together from its lines, with cues');
-ok(/c\['a1u01d1\.s2a'\] = c\['a1u01d1\.s1b'\];/.test(unitJs), 'a text said already is registered under its other key by reference');
+ok(/c\['a1u01d6\.w\.mbaeichapa'\] = c\['a1u01d1\.w\.mbaeichapa'\];/.test(unitJs), 'a text said already is registered under its other key by reference');
+/* only what a screen can ask for is shipped: a line of a dialogue is heard inside the dialogue's clip, and of the two words
+   of a sound pair one plays (its row in the list says which does not: "unused"). Their recordings made the files a third
+   larger. A word that plays and shares the recording of one that does not carries the clip itself */
+ok(!/c\['a1u01d1\.r1\.l\d(?:\.slow)?'\]/.test(unitJs) && !/c\['a1u01d1\.p1\.x0\.l\d'\]/.test(unitJs), 'a line of a dialogue makes no clip of its own');
+ok(!/c\['a1u01d1\.s0a'\]/.test(unitJs) && !/c\['a1u01d1\.s3b'\]/.test(unitJs) && !/c\['a1u01d1\.s2a'\]/.test(unitJs), 'the word of a sound pair that does not play makes no clip');
+ok(/c\['a1u01d4\.w\.kaa'\] = \{ ms: \d+, kind: 'synthetic', voice: 'F', b: /.test(unitJs), 'a scene word that shares the recording of a pair\'s unplayed word carries the clip itself');
+ok(/\n\d+ of the \d+ recordings make no clip of their own, because no screen asks for their key: \d+ lines[^\n]*and \d+ words of sound pairs that do not play/.test(made), 'make-sound.mjs says how many recordings make no clip of their own', made.split('\n').find((l) => /make no clip of their own/.test(l)));
 /* the level of a clip as it ships: its MP3, decoded, and its integrated loudness in LUFS (ffmpeg's ebur128) */
 const PROBE = fs.mkdtempSync(path.join(os.tmpdir(), 'epua-sound-probe-'));
 process.on('exit', () => fs.rmSync(PROBE, { recursive: true, force: true }));
@@ -62,6 +71,58 @@ ok(Math.abs(level.stereo - level.mono) <= 0.5 && Math.abs(level.oneSide - level.
 /* a take that is silence all along (a hum under the trim threshold) */
 ok(/\n1 recording is silent[^\n]*a1u01d1\.w\.ipora \(a1u01d1\.w\.ipora\.wav\)/.test(made) && /still missing \([^)\n]*; 1 of them recorded but silent\)/.test(made), 'a silent take is named in the summary and counted with the recordings still missing', made.split('\n').filter((l) => /silent/.test(l)).join(' | '));
 ok(!/c\['a1u01d1\.w\.ipora'\]/.test(unitJs), 'and it makes no clip');
+/* a clip as it ships, decoded: its samples at its own rate (24 kHz) and at four times that, for the peak between the samples */
+const allJs = listed.map((f) => fs.readFileSync(path.join(PROJECT, f), 'utf8'));
+const clipOf = (key) => {
+  for (const js of allJs) {
+    const m = new RegExp("c\\['" + key.replace(/\./g, '\\.') + "'\\] = \\{ ms: (\\d+), [^}]*?(?:cues: \\[([\\d, ]+)\\], )?b: '([A-Za-z0-9+/=]+)' \\};").exec(js);
+    if (m) return { ms: +m[1], cues: m[2] ? m[2].split(',').map((n) => +n) : null, b: m[3] };
+  }
+  return null;
+};
+const pcm = (b64, rate) => {
+  const mp3 = path.join(PROBE, 'clip.mp3');
+  fs.writeFileSync(mp3, Buffer.from(b64, 'base64'));
+  const out = spawnSync('ffmpeg', ['-v', 'error', '-i', mp3, '-ac', '1', '-ar', String(rate), '-f', 'f32le', '-'], { maxBuffer: 256 * 1024 * 1024 }).stdout;
+  return new Float32Array(out.buffer.slice(out.byteOffset, out.byteOffset + out.length - (out.length % 4)));
+};
+const dB = (v) => (v > 0 ? 20 * Math.log10(v) : -Infinity);
+const peak = (x) => { let m = 0; for (let i = 0; i < x.length; i++) { const v = Math.abs(x[i]); if (v > m) m = v; } return m; };
+const truePeak = (b64) => dB(Math.max(peak(pcm(b64, 24000)), peak(pcm(b64, 96000))));
+/* the level of the loudest tenth of a second of a clip, in dBFS (RMS): what a steady note sounds at, whatever its length */
+const steady = (b64) => {
+  const x = pcm(b64, 24000);
+  const n = 2400;
+  let sum = 0;
+  let best = 0;
+  for (let i = 0; i < x.length; i++) { sum += x[i] * x[i]; if (i >= n) sum -= x[i - n] * x[i - n]; if (i >= n - 1 && sum > best) best = sum; }
+  return dB(Math.sqrt(best / n));
+};
+/* a take kept as FLAC (the synthetic voice's takes in sound/A1/voz are) */
+ok(!!clipOf('a1u01d1.w.jajotopata') && fs.existsSync(path.join(ROOT, 'check/fixtures/sound/a1u01d1.w.jajotopata.flac')), 'a take kept as FLAC makes its clip like a WAV');
+/* the same note for a fifth of a second and for a second: a word of 300 ms must not come out quieter than a sentence
+   (levelled by ffmpeg's loudnorm, the short take came out 3.6 dB under the long one, and the shortest words of the
+   synthetic voice up to 8 LU under the target) */
+const long = clipOf('a1u01d1.w.maitei');
+const short = clipOf('a1u01d1.w.jaryi');
+const levels = { long: long ? steady(long.b) : NaN, short: short ? steady(short.b) : NaN };
+ok(Math.abs(levels.short - levels.long) <= 1.5, 'a take of a fifth of a second comes out as loud as a second of the same note (within 1.5 dB)', levels);
+/* the stated length is the decoded clip's (it was the MP3 file's own duration, 61 ms longer: the encoder's padding), and
+   a dialogue's last cue, where its last line ends, is the end of the clip */
+const lengths = ['a1u01d1.s0b', 'a1u01d1.w.maitei', 'a1u01d1.w.karai', 'a1u01d1.r1', 'c.check'].map((key) => { const c = clipOf(key); return { key, ms: c ? c.ms : NaN, decoded: c ? Math.round(pcm(c.b, 24000).length / 24) : NaN }; });
+ok(lengths.every((l) => Math.abs(l.ms - l.decoded) <= 2), 'ms is the length of the clip once decoded, to 2 ms', lengths);
+const dialogue = clipOf('a1u01d1.r1');
+ok(!!dialogue && dialogue.cues.every((c, i) => c > (i ? dialogue.cues[i - 1] : 0)) && Math.abs(dialogue.cues[dialogue.cues.length - 1] - dialogue.ms) <= 30, 'a dialogue\'s cues rise to the end of the clip', dialogue && { ms: dialogue.ms, cues: dialogue.cues });
+/* the peak ceiling, taken on the decoded MP3 of every clip: the take that peaks like a voice (make-fixtures.mjs) is set
+   by the ceiling, not by the loudness target, and its MP3 peaks higher than its WAV (it came out at -0.8 dBTP) */
+const keysOf = (js) => { const out = []; const re = /c\['([^']+)'\] = \{ ms: \d+/g; let m; while ((m = re.exec(js))) out.push(m[1]); return out; };
+const peaks = [];
+allJs.forEach((js) => keysOf(js).forEach((key) => peaks.push({ key, tp: +truePeak(clipOf(key).b).toFixed(2) })));
+const over = peaks.filter((p) => !(p.tp <= -1.5));
+ok(peaks.length >= 40 && over.length === 0, `no clip passes the ceiling of −1.5 dBTP once decoded (${peaks.length} clips, the highest at ${Math.max(...peaks.map((p) => p.tp))} dBTP)`, over);
+const pulses = peaks.find((p) => p.key === 'a1u01d1.w.karai');
+ok(!!pulses && pulses.tp <= -1.5 && pulses.tp > -4 && /a1u01d1\.w\.karai[^\n]*the peak ceiling keeps it/.test(made), 'the take that peaks like a voice stops at the ceiling, and the tool says the ceiling keeps it under the loudness target', pulses);
+ok(/\nlevels: \d+ of the \d+ recordings are at -16 LUFS[^\n]*the peak ceiling keeps 1 under it[^\n]*ms is the length of each decoded MP3/.test(made), 'make-sound.mjs sums up the levels: how many recordings reach the target, how many the ceiling keeps under it', made.split('\n').find((l) => /^levels/.test(l)));
 /* the level exam's file: its test tone, and its first listening item, put together from two lines of its own and one a lesson says */
 const examJs = fs.readFileSync(path.join(PROJECT, 'gn-sound-a1-x.js'), 'utf8');
 const tone = lufs(examJs, 'c.check');
@@ -121,9 +182,9 @@ const clipsLoaded = (page, key) => page.waitForFunction((k) => !!(window.__gnCli
     hits.length = 0;
     await page.goto(BASE + '?gntest&screen=Words&level=A1&cur=a1u01d1');
     await ready(page);
-    ok(await clipsLoaded(page, 'a1u01d1.s0a'), 'the unit\'s sound file is fetched when the unit is in use (the clips register in window.__gnClips)');
+    ok(await clipsLoaded(page, 'a1u01d1.s0b'), 'the unit\'s sound file is fetched when the unit is in use (the clips register in window.__gnClips)');
     ok(hits.some((u) => /gn-sound-a1-u01\.js/.test(u)), 'the unit file came from the server after the page opened', hits.filter((u) => /gn-sound/.test(u)));
-    const snd = await page.evaluate(() => ({ has: window.gnSound.has('a1u01d1.s0a'), kind: window.gnSound.kind('a1u01d1.s0a'), ms: window.gnSound.ms('a1u01d1.s0a'), none: window.gnSound.kind('nothing.here'), listening: window.gnSound.has('a1u01d1.r1'), lms: window.gnSound.ms('a1u01d1.r1') }));
+    const snd = await page.evaluate(() => ({ has: window.gnSound.has('a1u01d1.s0b'), kind: window.gnSound.kind('a1u01d1.s0b'), ms: window.gnSound.ms('a1u01d1.s0b'), none: window.gnSound.kind('nothing.here'), listening: window.gnSound.has('a1u01d1.r1'), lms: window.gnSound.ms('a1u01d1.r1') }));
     ok(snd.has && snd.ms > 300, 'gnSound.has() is true for a pair\'s word and knows its length', snd);
     ok(snd.kind === 'synthetic' && snd.none === '', 'gnSound.kind() says synthetic for the fixture clip and nothing for a missing key', snd);
     ok(snd.listening && snd.lms > 4000, 'the listening item\'s dialogue is one clip the screens can ask for', snd);
@@ -169,14 +230,14 @@ const clipsLoaded = (page, key) => page.waitForFunction((k) => !!(window.__gnCli
     await page.evaluate(() => navigator.serviceWorker.ready);
     await page.waitForFunction(() => !!navigator.serviceWorker.controller, null, { timeout: 15000 });
     ok(!hits.some((u) => /gn-sound-a1-u01\.js\?v=/.test(u)), 'the install does not ask for the unit file', hits.filter((u) => /gn-sound/.test(u)));
-    ok(await clipsLoaded(page, 'a1u01d1.s0a'), 'on the goal screen the engine fetches the first unit\'s file (the lesson will need it)');
+    ok(await clipsLoaded(page, 'a1u01d1.s0b'), 'on the goal screen the engine fetches the first unit\'s file (the lesson will need it)');
     const stored = async () => page.evaluate(async () => { const keys = await caches.keys(); const c = await caches.open(keys[0]); return (await c.keys()).map((r) => r.url).filter((u) => /h=/.test(u)); });
     /* the very first page is not under the worker's control yet (its own fetch went straight to the network); from the
        next opening on, a file the engine fetches goes through the worker and is stored */
     ok((await stored()).length === 0, 'the first opening, not yet controlled by the worker, stored no sound file');
     await page.reload();
     await ready(page);
-    ok(await clipsLoaded(page, 'a1u01d1.s0a'), 'opened again, the engine fetches the unit file through the worker');
+    ok(await clipsLoaded(page, 'a1u01d1.s0b'), 'opened again, the engine fetches the unit file through the worker');
     let lazy = await stored();
     for (let i = 0; i < 20 && !lazy.some((u) => /gn-sound-a1-u01\.js\?h=/.test(u)); i++) { await page.waitForTimeout(250); lazy = await stored(); }
     ok(lazy.length === 1 && /gn-sound-a1-u01\.js\?h=/.test(lazy[0]), 'the worker stored the unit file under its hash after that first use, and nothing else yet', lazy);
@@ -193,7 +254,7 @@ const clipsLoaded = (page, key) => page.waitForFunction((k) => !!(window.__gnCli
     hits.length = 0;
     await page.reload();
     await ready(page);
-    ok(await clipsLoaded(page, 'a1u01d1.s0a'), 'offline, the unit file is served from the store and the clips register again');
+    ok(await clipsLoaded(page, 'a1u01d1.s0b'), 'offline, the unit file is served from the store and the clips register again');
     const spOffline = await page.evaluate(() => fetch('./assets/gn-sound-sp.js').then((r) => r.ok, () => false));
     ok(spOffline, 'offline, a sound file stored in the background is served too');
     ok(hits.length === 0, 'offline, nothing reached the server', hits);

@@ -1,6 +1,8 @@
-// Platform checks for the built Epu'ã app (docs/), the way an iPhone meets it: fitting the 390x844 design to each
-// phone (and the note for a phone held sideways), the Home Screen app skipping the install page, the offline copy
-// (every file stored, a cold start and every screen offline), picking up a new build, the manifest and the icons,
+// Platform checks for the built Epu'ã app (docs/), the way an iPhone meets it, and an Android phone: fitting the
+// 390x844 design to each phone (and the note for a phone held sideways), the install page in each browser and the
+// Home Screen app skipping it, the page's own first paint, the offline copy (every file stored under its own hash,
+// each downloaded once, a cold start and every screen offline), picking up a new build (only the files that changed
+// are downloaded), the manifest and the icons (the maskable pair an Android launcher cuts to its shape),
 // the typefaces (served by the app itself, every Guarani letter in the app's own faces, never a fallback), each
 // screen's frame (390x844, nothing out of it, taps of 44x44 or more), no request leaving the app's address, the
 // licences, and the page's languages (lang="es", lang="gn" on the Guarani).
@@ -48,6 +50,13 @@ const SCREENS = ['Goal', 'Placement', 'Main', 'Today', 'Levels', 'Progress', 'Te
 const IPHONE = 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1';
 const IPAD = 'Mozilla/5.0 (iPad; CPU OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1';
 const MAC_IPAD = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Safari/605.1.15';
+/* an Android phone in Chrome (a Galaxy A15), and in Firefox, which never offers to install through the page */
+const ANDROID = 'Mozilla/5.0 (Linux; Android 14; SM-A155M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36';
+const ANDROID_FIREFOX = 'Mozilla/5.0 (Android 14; Mobile; rv:131.0) Gecko/131.0 Firefox/131.0';
+/* Android phones: from the Home Screen (the screen less the status bar; less the three-button bar too on the second),
+   and in Chrome with its bars */
+const DROIDS = [['Galaxy A15 from the Home Screen', 360, 776], ['Galaxy A15, three-button bar', 360, 728], ['Pixel 8 from the Home Screen', 412, 867]];
+const DROID_TABS = [['Galaxy A15 in Chrome', 360, 648], ['Pixel 8 in Chrome', 412, 784], ['a small Android phone in Chrome', 360, 560]];
 /* the phones, full screen in CSS pixels */
 const PHONES = [['iPhone SE', 375, 667], ['iPhone 13 mini', 375, 812], ['iPhone 14', 390, 844], ['iPhone 15/16', 393, 852], ['iPhone 16 Pro', 402, 874], ['iPhone 11', 414, 896], ['iPhone 14 Plus', 428, 926], ['iPhone 15 Pro Max', 430, 932], ['iPhone 16 Pro Max', 440, 956]];
 /* from the Home Screen, with apple-mobile-web-app-status-bar-style "default", the system keeps the status bar's strip */
@@ -471,9 +480,13 @@ function pngInfo(file) {
   return { png: true, w: ihdr.readUInt32BE(0), h: ihdr.readUInt32BE(4), depth: ihdr[8], colorType: ihdr[9], interlace: ihdr[12], trns: chunks.some((c) => c.type === 'tRNS'), size: b.length };
 }
 const sha = (buf) => crypto.createHash('sha256').update(buf).digest('hex');
-/* the answer fields as the screens' templates in screens.js write them */
+/* the screens' code: the first file (the shell, the install page, the screens a visit starts on) and the later one */
+const SCREEN_FILES = ['assets/screens.js', 'assets/screens-more.js'];
+const screensJs = () => SCREEN_FILES.map((f) => fs.readFileSync(path.join(SITE, f), 'utf8')).join('\n');
+const definedIn = (file) => [...fs.readFileSync(path.join(SITE, file), 'utf8').matchAll(/YK\.define\(("(?:[^"\\]|\\.)*"), /g)].map((m) => JSON.parse(m[1]));
+/* the answer fields as the screens' templates in screens.js and screens-more.js write them */
 function answerFields() {
-  const js = fs.readFileSync(path.join(SITE, 'assets/screens.js'), 'utf8');
+  const js = screensJs();
   const fields = [];
   for (const m of js.matchAll(/YK\.define\(("(?:[^"\\]|\\.)*"), ("(?:[^"\\]|\\.)*"), function/g)) {
     const name = JSON.parse(m[1]);
@@ -488,8 +501,10 @@ function answerFields() {
 const walk = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(dir, e.name)) : [path.join(dir, e.name)]));
 const swInfo = (dir) => {
   const sw = fs.readFileSync(path.join(dir, 'sw.js'), 'utf8');
-  return { files: JSON.parse(sw.match(/const FILES = (\[[\s\S]*?\]);/)[1]), version: sw.match(/const VERSION = '([0-9a-f]+)'/)[1] };
+  return { files: JSON.parse(sw.match(/const FILES = (\[[\s\S]*?\]);/)[1]), version: sw.match(/const VERSION = '([0-9a-f]+)'/)[1], hashes: JSON.parse((sw.match(/const HASH = (\{[\s\S]*?\});/) || [, '{}'])[1]) };
 };
+/* the hash the build gives a file: the first ten hex digits of the SHA-256 of its content (./ is the page) */
+const hashOfFile = (dir, f) => sha(fs.readFileSync(path.join(dir, f === './' ? 'index.html' : f))).slice(0, 10);
 /* the font files' character maps, names and layout features (fontTools) */
 const FONT_PY = `
 import sys, json
@@ -585,7 +600,7 @@ async function fontsUsed(page, cdp, facts) {
   ORIGINS = [L.origin, P && P.origin].filter(Boolean);
   const browser = await chromium.launch({ args: ['--ignore-certificate-errors'] });
   const build = (fs.readFileSync(path.join(SITE, 'assets/build.js'), 'utf8').match(/__gnBuild = "([^"]*)"/) || [])[1];
-  const { files: FILES, version: VERSION } = swInfo(SITE);
+  const { files: FILES, version: VERSION, hashes: HASHES } = swInfo(SITE);
   console.log(`platform checks: ${SITE} (${build}), sw version ${VERSION}, ${FILES.length} files listed`);
   console.log(`served at ${L.base} (test hooks) and ${P ? P.base + ' (production path)' : '(no https: openssl missing)'}; screenshots in ${OUT}`);
   if (!P) warn('openssl is missing, so the production-path checks (https, no test hooks) are skipped');
@@ -600,6 +615,14 @@ async function fontsUsed(page, cdp, facts) {
     ok(/<html[^>]*\blang="es"/.test(html), 'index.html should have <html lang="es">', html.match(/<html[^>]*>/)[0]);
     const metas = { viewport: /<meta name="viewport" content="([^"]*)"/.exec(html), theme: /<meta name="theme-color" content="([^"]*)"/.exec(html), capable: /<meta name="apple-mobile-web-app-capable" content="yes"/.test(html), title: /<meta name="apple-mobile-web-app-title" content="([^"]*)"/.exec(html), bar: /<meta name="apple-mobile-web-app-status-bar-style" content="([^"]*)"/.exec(html), touch: /<link rel="apple-touch-icon" href="([^"]*)"/.exec(html), man: /<link rel="manifest" href="([^"]*)"/.exec(html) };
     ok(metas.viewport && /width=device-width/.test(metas.viewport[1]) && /viewport-fit=cover/.test(metas.viewport[1]), 'the viewport should be device-width with viewport-fit=cover', metas.viewport && metas.viewport[1]);
+    ok(metas.viewport && !/user-scalable|maximum-scale/.test(metas.viewport[1]), 'the viewport should not forbid zoom: a learner who needs larger text pinches the screen', metas.viewport && metas.viewport[1]);
+    /* the page's own first paint, there before any script: the icon, the name and a word, inside the page itself */
+    const splash = /<div id="gn-splash">([\s\S]*?)<\/noscript><\/div>/.exec(html);
+    ok(splash && /<svg\b/.test(splash[1]) && /lang="gn">Epu'ã</.test(splash[1]) && /Cargando…/.test(splash[1]) && html.indexOf('id="gn-splash"') < html.indexOf('<script'), 'index.html should carry its own first paint (the icon drawn in the page, the name, a word) before any script', splash ? splash[1].replace(/<svg[\s\S]*?<\/svg>/, '<svg…>').slice(0, 200) : 'no #gn-splash');
+    ok(/<main id="gn-stage">/.test(html), 'the stage should be the page\'s main landmark (<main id="gn-stage">)');
+    /* the four faces the first screen waits for are asked for at once, not after every script */
+    const preloads = [...html.matchAll(/<link rel="preload" href="([^"]+)" as="font" type="font\/woff2" crossorigin>/g)].map((m) => m[1]);
+    ok(['nunito-800', 'nunito-500', 'epuatext-700', 'epuatext-400'].every((f) => preloads.includes('./assets/fonts/' + f + '.woff2')) && html.indexOf('rel="preload"') < html.indexOf('rel="stylesheet"'), 'index.html should preload the four faces the first screen is drawn with, ahead of the style sheets', preloads.join(', '));
     ok(metas.capable && metas.title && metas.title[1] === "Epu'ã" && metas.bar && metas.touch && metas.man, 'index.html should carry the Home Screen tags (capable, title, status bar, apple-touch-icon, manifest)', JSON.stringify({ capable: metas.capable, title: metas.title && metas.title[1], bar: metas.bar && metas.bar[1], touch: metas.touch && metas.touch[1], manifest: metas.man && metas.man[1] }));
     const refs = [...html.matchAll(/(?:src|href)="([^"]+)"/g)].map((m) => m[1]);
     const absolute = refs.filter((u) => /^(\/|[a-z]+:)/i.test(u));
@@ -619,18 +642,21 @@ async function fontsUsed(page, cdp, facts) {
       ok(/^#[0-9A-Fa-f]{6}$/.test(manifest.theme_color || '') && /^#[0-9A-Fa-f]{6}$/.test(manifest.background_color || '') && metas.theme && manifest.theme_color.toUpperCase() === metas.theme[1].toUpperCase(), 'theme_color and background_color should be colours, theme_color the page\'s theme-color', JSON.stringify([manifest.theme_color, manifest.background_color, metas.theme && metas.theme[1]]));
       const icons = Array.isArray(manifest.icons) ? manifest.icons : [];
       const sizes = [];
+      const masked = [];
       for (const ic of icons) {
         const file = path.join(SITE, decodeURIComponent(new URL(ic.src, 'https://x/epu-/manifest.webmanifest').pathname.slice('/epu-/'.length)));
         const info = fs.existsSync(file) ? pngInfo(file) : null;
         ok(info && info.png, `manifest icon ${ic.src} should exist and be a PNG`, info ? JSON.stringify(info) : 'missing');
         if (!info || !info.png) continue;
         ok(ic.type === 'image/png' && ic.sizes === `${info.w}x${info.h}`, `manifest icon ${ic.src} should be what it says: ${ic.sizes} ${ic.type}`, `${info.w}x${info.h}`);
-        ok(!ic.purpose || ic.purpose.split(/\s+/).includes('any'), `manifest icon ${ic.src} should be for any use`, ic.purpose);
-        sizes.push(info.w);
+        /* one use each: an icon drawn for a launcher's mask (its art smaller, inside the safe zone) is not the icon for any use */
+        const use = (ic.purpose || 'any').split(/\s+/);
+        ok(use.length === 1 && ['any', 'maskable'].includes(use[0]), `manifest icon ${ic.src} should be for one use, any or maskable`, ic.purpose);
+        (use[0] === 'maskable' ? masked : sizes).push(info.w);
         if (info.colorType === 4 || info.colorType === 6 || info.trns) note(`${ic.src} has an alpha channel (colour type ${info.colorType}); its pixels are checked below`);
       }
-      ok(sizes.includes(192) && sizes.includes(512), 'the manifest should list a 192 and a 512 icon', sizes.join(', '));
-      if (!icons.some((ic) => /maskable/.test(ic.purpose || ''))) warn('the manifest has no maskable icon: Android would put the 192/512 icon on a white disc (not an iPhone matter)');
+      ok(sizes.includes(192) && sizes.includes(512), 'the manifest should list a 192 and a 512 icon for any use', sizes.join(', '));
+      ok(masked.includes(192) && masked.includes(512), 'the manifest should list a 192 and a 512 maskable icon: without one Android puts the icon on a white disc, or cuts its ear and snout', masked.join(', '));
       pass(`manifest: ${icons.length} icons, start ${start}`);
     }
     const touch = metas.touch ? pngInfo(path.join(SITE, metas.touch[1])) : null;
@@ -646,11 +672,25 @@ async function fontsUsed(page, cdp, facts) {
     const unlisted = onDisk.filter((f) => !FILES.includes(f) && !lazyFiles.includes(f));
     const ghost = FILES.filter((f) => f !== './' && !onDisk.includes(f)).concat(lazyFiles.filter((f) => !onDisk.includes(f)));
     ok(FILES[0] === './' && unlisted.length === 0 && ghost.length === 0, 'sw.js should list exactly the files of the build (plus ./; the sound files apart)', JSON.stringify({ unlisted, ghost }));
+    /* each listed file with the hash of its content: the worker stores a file under it and checks what it downloads against it */
+    const wrongHash = FILES.filter((f) => HASHES[f] !== hashOfFile(SITE, f));
+    ok(Object.keys(HASHES).length === FILES.length && wrongHash.length === 0, 'sw.js should give every listed file the hash of its content (the first ten hex digits of its SHA-256)', JSON.stringify(wrongHash.slice(0, 5)));
+    /* the screens are two files: the first holds the shell, the install page and the screens a visit starts on */
+    {
+      const first = definedIn(SCREEN_FILES[0]);
+      const more = definedIn(SCREEN_FILES[1]);
+      const sizes2 = SCREEN_FILES.map((f) => fs.statSync(path.join(SITE, f)).size);
+      ok(['Shell', 'Install', 'Goal', 'Main', 'Today'].every((n) => first.includes(n)) && first.length === 5, 'screens.js should hold the shell, the install page and the three screens a visit starts on', first.join(', '));
+      ok(SCREENS.every((n) => first.includes(n) || more.includes(n)) && more.includes('Spell') && !more.some((n) => first.includes(n)), 'screens-more.js should hold every other screen, each defined once', more.join(', '));
+      ok(/<script src="\.\/assets\/screens\.js"><\/script>/.test(html) && !/screens-more/.test(html) && sizes2[0] * 3 < sizes2[1], 'the page should load the first file only (the later one, several times its size, is fetched once the page is up)', JSON.stringify(sizes2));
+      note(`screens.js ${first.length} screens, ${Math.round(sizes2[0] / 1024)} kB; screens-more.js ${more.length} screens, ${Math.round(sizes2[1] / 1024)} kB`);
+    }
     ok(fs.existsSync(path.join(SITE, '.nojekyll')), 'the site should have .nojekyll (GitHub Pages serves the files as they are)');
 
     const fontsCss = fs.readFileSync(path.join(SITE, 'assets/fonts.css'), 'utf8');
     const srcs = [...fontsCss.matchAll(/url\(([^)]+)\)/g)].map((m) => m[1].replace(/['"]/g, ''));
     ok(srcs.length === 5 && srcs.every((u) => /^\.\/fonts\/[\w-]+\.woff2$/.test(u) && fs.existsSync(path.join(SITE, 'assets', u))), 'fonts.css should load five woff2 files of the app\'s own, by relative address', srcs.join(', '));
+    ok(preloads.every((u) => srcs.includes(u.replace('./assets/', './'))), 'each preloaded face should be asked for at the very address fonts.css uses (or the browser fetches it twice)', preloads.join(', '));
     ok(!/local\(|@import|googleapis|gstatic/.test(fontsCss), 'fonts.css should not use local(), @import or a font service');
     /* every absolute address in what the app ships: only XML namespaces (not requests) and the licence texts may hold one */
     const external = [];
@@ -659,7 +699,7 @@ async function fontsUsed(page, cdp, facts) {
       for (const m of t.matchAll(/(?:https?:)?\/\/[a-z0-9.-]+\.[a-z]{2,}[^\s"'`)<>\\]*/gi)) if (!/^https?:\/\/www\.w3\.org\//.test(m[0]) && !/^\/\/[a-z0-9.-]*\.(js|css|html)$/i.test(m[0])) external.push(path.relative(SITE, f) + ': ' + m[0].slice(0, 80));
     }
     ok(external.length === 0, 'the app\'s files should hold no address of another site (no font service, no CDN)', [...new Set(external)].slice(0, 12).join(' ; '));
-    ok(!/fonts\.googleapis|fonts\.gstatic|cdn\.|unpkg|jsdelivr/i.test(fs.readFileSync(path.join(SITE, 'assets/screens.js'), 'utf8')), 'screens.js should not mention a font service or a CDN');
+    ok(!/fonts\.googleapis|fonts\.gstatic|cdn\.|unpkg|jsdelivr/i.test(screensJs()), 'screens.js and screens-more.js should not mention a font service or a CDN');
 
     /* the answer fields as the screens write them: an input does not take the page's typeface, so each must name the
        app's own; 16 px or more (iOS zooms into a smaller field on focus); no autocorrect or spell check on Guarani */
@@ -808,6 +848,29 @@ async function fontsUsed(page, cdp, facts) {
       await ctx.close();
     }
 
+    /* an Android phone from the Home Screen: the same rules place the design; every screen at the commonest size (a
+       Galaxy A15 with gesture navigation), the week path at the others */
+    for (const [name, w, h] of DROIDS) {
+      const ctx = await phone(browser, w, h, { label: 'android ' + w + 'x' + h, ua: ANDROID, displayMode: true, reducedMotion: 'reduce' });
+      const page = await ctx.newPage();
+      const e = rule(w, h);
+      const all = w === 360 && h === 776;
+      const cuts = [];
+      let first = null;
+      for (const scr of all ? SCREENS : ['Main']) {
+        await page.goto(L.base + '?gntest&screen=' + scr + address(SAMPLE));
+        await ready(page, 200);
+        const r = await page.evaluate(PLACE);
+        if (!first) first = placeOk(`${name} (${w}x${h})`, r, e, w, h);
+        const cut = await page.evaluate(CUT, [w, h]);
+        if (cut.length) cuts.push(scr + ': ' + cut.slice(0, 3).join(' ; '));
+        if (scr === 'Main') await shot(page, `android-${w}x${h}-Main`);
+      }
+      ok(cuts.length === 0, `${name} ${w}x${h}: nothing may be cut off`, cuts.slice(0, 6).join(' | '));
+      note(`${w}x${h} (${name}): ${e.kind}, stretch ${(first.stretch * 100).toFixed(2)}%${e.kind === 'shrink' ? `, scale ${e.sx.toFixed(4)}, ${e.tx.toFixed(1)} px each side` : ''}${all ? ', all 21 screens' : ''}`);
+      await ctx.close();
+    }
+
     /* a phone held sideways: the note, in the app's own face, and the app back once it is upright */
     const sideways = [['iPhone SE', 667, 375], ['iPhone 14', 844, 390], ['iPhone 16 Pro', 874, 402], ['iPhone 16 Pro Max', 956, 440]];
     for (const [name, w, h] of sideways) {
@@ -840,7 +903,7 @@ async function fontsUsed(page, cdp, facts) {
       ok(r.boxed && !r.sideways && Math.abs(r.h - 390) < 0.6, 'a wide window with no touch screen should show the whole design in a frame, not the sideways note', JSON.stringify(r));
       await ctx.close();
     }
-    pass('fit: ' + PHONES.length + ' phones x ' + SCREENS.length + ' screens, ' + STRIPS.length + ' status-bar strips, ' + sideways.length + ' sideways');
+    pass('fit: ' + PHONES.length + ' phones x ' + SCREENS.length + ' screens, ' + STRIPS.length + ' status-bar strips, ' + DROIDS.length + ' Android phones, ' + sideways.length + ' sideways');
   }
 
   // ---------- 3. the first-visit page on each phone (Safari, production path) ----------
@@ -872,6 +935,71 @@ async function fontsUsed(page, cdp, facts) {
       if ((w === 375 && h === 553) || (w === 390 && h === 664) || (w === 440 && h === 956)) await shot(page, `install-${w}x${h}`);
       await ctx.close();
     }
+    /* an Android phone in its browser: the page says how to install there. With the browser's offer in hand
+       (beforeinstallprompt, here made by the check: headless Chromium offers nothing) one button puts its question;
+       accepted, the page says the app is installed; and going on in the browser stays possible throughout */
+    const offer = () => { window.__asked = 0; const e = new Event('beforeinstallprompt', { cancelable: true }); e.prompt = () => { window.__asked += 1; }; e.userChoice = new Promise((r) => { window.__choose = r; }); window.dispatchEvent(e); return e.defaultPrevented; };
+    const fits = async (page, label, w, h) => {
+      const r = await page.evaluate(() => { const root = document.querySelector('#gn-stage .sc-host[data-sc-name="Install"] > div'); const b = [...document.querySelectorAll('#gn-stage button')].map((x) => x.getBoundingClientRect()); return root ? { sh: root.scrollHeight, ch: root.clientHeight, sw: root.scrollWidth, cw: root.clientWidth, low: Math.max(...b.map((x) => x.bottom)), vh: innerHeight } : null; });
+      const scrolls = r && r.sh > r.ch + 1;
+      ok(r && r.sw <= r.cw + 1, `${label}: the install page should not run past the screen's sides`, JSON.stringify(r));
+      const cut = await page.evaluate(CUT, [w, h]);
+      ok(scrolls || cut.length === 0, `${label}: nothing on the install page may be cut off`, cut.slice(0, 4).join(' ; '));
+      return scrolls ? 'scrolls (' + r.sh + ' in ' + r.ch + ')' : 'fits';
+    };
+    for (const [name, w, h] of DROID_TABS) {
+      const ctx = await phone(browser, w, h, { label: 'install android ' + w + 'x' + h, ua: ANDROID, reducedMotion: 'reduce' });
+      const page = await ctx.newPage();
+      const logs = [];
+      watch(page, logs);
+      await page.goto(P.base);
+      await ready(page);
+      let t = await stageText(page);
+      ok((await screenName(page)) === 'Install' && /Instalá Epu'ã en tu celular/.test(t) && /Abrí el menú del navegador/.test(t) && /«Instalar app»/.test(t) && !/Compartir|Safari/.test(t), `${name} ${w}x${h}: Chrome on Android should get the install page, with its menu's steps`, t.slice(0, 200));
+      ok(/tu progreso es el mismo|Tu progreso es el mismo/.test(t) && !/no lo ve|no ve el progreso/.test(t), `${name}: the page should say the installed app and the browser share the progress`, t.slice(-200));
+      const how = [await fits(page, `${name} ${w}x${h} (menu steps)`, w, h)];
+      if (w === 360 && h === 648) await shot(page, `install-android-${w}x${h}-steps`);
+      const kept = await page.evaluate(offer);
+      await page.waitForTimeout(300);
+      t = await stageText(page);
+      const btn = page.locator('#gn-stage button').filter({ hasText: 'Instalar Epu' }).first();
+      const box = await btn.boundingBox().catch(() => null);
+      ok(kept && /Tocá Instalar, acá abajo/.test(t) && box && box.height >= 43.5 && box.y + box.height <= h + 0.5, `${name}: with the browser's offer in hand the page should show one button, Instalar, in view (and keep the browser's own strip away)`, JSON.stringify({ kept, box, text: t.slice(0, 160) }));
+      how.push(await fits(page, `${name} ${w}x${h} (the offer in hand)`, w, h));
+      if (w === 360 && h === 648) await shot(page, `install-android-${w}x${h}-offer`);
+      await btn.tap();
+      await page.waitForTimeout(150);
+      ok((await page.evaluate(() => window.__asked)) === 1, `${name}: the button should put the browser's own question, once`);
+      await page.evaluate(() => window.__choose({ outcome: 'accepted' }));
+      await page.waitForTimeout(300);
+      t = await stageText(page);
+      ok(/ya está instalada/.test(t) && /Buscá su ícono/.test(t) && !(await btn.count()), `${name}: once accepted, the page should say the app is installed and where to find it`, t.slice(0, 220));
+      how.push(await fits(page, `${name} ${w}x${h} (installed)`, w, h));
+      if (w === 360 && h === 648) await shot(page, `install-android-${w}x${h}-done`);
+      await page.locator('#gn-stage button').filter({ hasText: 'Seguir en el navegador' }).first().tap();
+      await page.waitForTimeout(600);
+      ok((await screenName(page)) === 'Goal', `${name}: Seguir en el navegador should open the app`, await screenName(page));
+      note(`${w}x${h} ${name}: install page ${how.join(', ')}`);
+      ok(logs.length === 0, `${name} ${w}x${h}: console problems on the install page`, logs.slice(0, 3).join(' ; '));
+      await ctx.close();
+    }
+    /* a browser that never makes the offer (Firefox): the menu's steps, and where to go if the menu has no such entry;
+       an offer turned down leaves the steps too */
+    {
+      const ctx = await phone(browser, 360, 648, { label: 'install android firefox', ua: ANDROID_FIREFOX, reducedMotion: 'reduce' });
+      const page = await ctx.newPage();
+      await page.goto(P.base);
+      await ready(page);
+      const t = await stageText(page);
+      ok((await screenName(page)) === 'Install' && /Abrí el menú del navegador/.test(t) && /Abrí primero esta página en Chrome/.test(t) && /en Firefox: tu progreso es el mismo/.test(t), 'Firefox on Android should get the menu\'s steps, a way out if the entry is missing, and its own name', t.slice(0, 300));
+      await page.evaluate(offer);
+      await page.waitForTimeout(250);
+      await page.locator('#gn-stage button').filter({ hasText: 'Instalar Epu' }).first().tap();
+      await page.evaluate(() => window.__choose({ outcome: 'dismissed' }));
+      await page.waitForTimeout(300);
+      ok(/Abrí el menú del navegador/.test(await stageText(page)) && !(await page.locator('#gn-stage button').filter({ hasText: 'Instalar Epu' }).count()), 'an offer turned down should leave the menu\'s steps, with no button that does nothing', (await stageText(page)).slice(0, 200));
+      await ctx.close();
+    }
   }
 
   // ---------- 4. the Home Screen app skips the install page ----------
@@ -885,6 +1013,8 @@ async function fontsUsed(page, cdp, facts) {
       ['iPad, navigator.standalone', { ua: IPAD, standalone: true }, 'Goal'],
       ['iPad with a desktop address (Macintosh, touch)', { ua: MAC_IPAD, touchPoints: 5 }, 'Install'],
       ['iPad with a desktop address, display-mode standalone', { ua: MAC_IPAD, touchPoints: 5, displayMode: true }, 'Goal'],
+      ['Chrome on an Android phone (control)', { ua: ANDROID }, 'Install'],
+      ['Android phone, display-mode standalone', { ua: ANDROID, displayMode: true }, 'Goal'],
     ];
     for (const [label, o, want2] of cases) {
       const ctx = await phone(browser, 390, 844, { label, ...o });
@@ -895,7 +1025,8 @@ async function fontsUsed(page, cdp, facts) {
       await ready(page);
       const scr = await screenName(page);
       const t = await stageText(page);
-      const flags = await page.evaluate(() => ({ standalone: navigator.standalone === true, mode: matchMedia('(display-mode: standalone)').matches, device: window.gnApp && window.gnApp.device }));
+      const flags = await page.evaluate(() => ({ standalone: navigator.standalone === true, mode: matchMedia('(display-mode: standalone)').matches, device: window.gnApp && window.gnApp.device, apart: window.gnApp && window.gnApp.apart }));
+      if (/Android/.test(label)) ok(flags.device === 'celular' && flags.apart === false, `${label}: the app should know an Android phone, whose installed app and browser share what is saved`, JSON.stringify(flags));
       ok(scr === want2, `${label}: should open ${want2}`, `opened ${scr} (${JSON.stringify(flags)})`);
       if (want2 !== 'Install') ok(!/Seguir en el navegador|pantalla de inicio/.test(t), `${label}: no word of the install page`);
       if (want2 === 'Install' && /iPad/.test(label)) ok(/en este iPad/.test(t), `${label}: the install page should say iPad`, t.slice(0, 160));
@@ -903,6 +1034,32 @@ async function fontsUsed(page, cdp, facts) {
       if (label.startsWith('iPhone, navigator')) await shot(page, 'standalone-navigator');
       if (label.startsWith('iPhone, display-mode')) await shot(page, 'standalone-display-mode');
       if (label.startsWith('Safari on an iPhone')) await shot(page, 'install-browser');
+      await ctx.close();
+    }
+    /* the page's own first paint: with every script held back, the icon, the name and a word are on the screen, in the
+       app's face; once the app is up it is gone */
+    {
+      const ctx = await phone(browser, 390, 844, { label: 'first paint, scripts held', standalone: true });
+      const page = await ctx.newPage();
+      let release;
+      const held = new Promise((r) => { release = r; });
+      await page.route('**/assets/*.js', async (route) => { await held; route.continue().catch(() => {}); });
+      await page.goto(P.base, { waitUntil: 'commit' });
+      await page.waitForSelector('#gn-splash svg', { state: 'visible', timeout: 8000 }).catch(() => {});
+      await page.evaluate(() => document.fonts.ready);
+      await page.waitForTimeout(300);
+      const before = await page.evaluate(() => {
+        const s = document.querySelector('#gn-splash');
+        const art = s && s.querySelector('svg') ? s.querySelector('svg').getBoundingClientRect() : null;
+        return { shown: !!s && getComputedStyle(s).display !== 'none', text: s ? s.innerText.replace(/\s+/g, ' ').trim() : '', art: art ? [Math.round(art.width), Math.round(art.height), art.left >= 0 && art.right <= innerWidth && art.top >= 0 && art.bottom <= innerHeight] : null, app: typeof window.gnApp, ground: getComputedStyle(s).backgroundColor, faces: [...document.fonts].filter((f) => f.status === 'loaded').map((f) => f.family.replace(/['"]/g, '') + ' ' + f.weight) };
+      });
+      ok(before.shown && before.app === 'undefined' && before.text === "Epu'ã Cargando…" && before.art && before.art[0] === 96 && before.art[1] === 96 && before.art[2] && before.ground === 'rgb(244, 245, 249)', 'before any script has run the page should show its own first paint: the icon, the name and «Cargando…» on the ground colour', JSON.stringify(before));
+      ok(before.faces.includes('Nunito 800'), 'the first paint should be in the app\'s face (Nunito 800 is preloaded)', before.faces.join(', '));
+      await shot(page, 'first-paint-splash');
+      release();
+      await ready(page);
+      const after = await page.evaluate(() => getComputedStyle(document.querySelector('#gn-splash')).display);
+      ok(after === 'none' && (await screenName(page)) === 'Goal', 'once the app is up its first paint should be gone', after + ' ' + (await screenName(page)));
       await ctx.close();
     }
     /* the phone in dark mode: the app keeps its light design (color-scheme light), native controls included */
@@ -999,9 +1156,9 @@ async function fontsUsed(page, cdp, facts) {
       ok(keys.length === 1 && keys[0] === 'epua:' + PREFIX + ':' + version, `${label}: one store, named after the folder and the version`, JSON.stringify(keys));
       /* the sound files, stored when first used under their own hash (?h=), are not part of the install */
       const list = (stored[keys[0]] || []).filter((e) => !/[?&]h=/.test(e.url));
-      const wantUrls = files.map((f) => new URL(f + '?v=' + version, base).href).sort();
+      const wantUrls = files.map((f) => new URL(f + '?v=' + hashOfFile(dir, f), base).href).sort();
       const got = list.map((e) => e.url).sort();
-      ok(JSON.stringify(got) === JSON.stringify(wantUrls), `${label}: the store should hold exactly sw.js's ${files.length} files, each under this version`, JSON.stringify({ missing: wantUrls.filter((u) => !got.includes(u)), extra: got.filter((u) => !wantUrls.includes(u)) }));
+      ok(JSON.stringify(got) === JSON.stringify(wantUrls), `${label}: the store should hold exactly sw.js's ${files.length} files, each under the hash of its content`, JSON.stringify({ missing: wantUrls.filter((u) => !got.includes(u)), extra: got.filter((u) => !wantUrls.includes(u)) }));
       const wrong = [];
       for (const e of list) {
         const rel = new URL(e.url).pathname.slice(PREFIX.length) || 'index.html';
@@ -1021,11 +1178,26 @@ async function fontsUsed(page, cdp, facts) {
       const page = await ctx.newPage();
       const logs = [];
       watch(page, logs);
+      const firstHit = L.hits.length;
       await page.goto(L.base + '?sw');
       await ready(page);
       await page.evaluate(() => navigator.serviceWorker.ready);
       await page.waitForFunction(() => !!navigator.serviceWorker.controller, null, { timeout: 20000 });
       const n = checkStore('test address', await page.evaluate(STORED), L.base, SITE, VERSION, FILES);
+      /* a first visit downloads the app once: the worker stores what the browser has just fetched for the page (the
+         web host lets the browser keep a file for ten minutes, as GitHub Pages does) and downloads only the rest. (On
+         this address the page is opened as ./?sw, so the page itself is fetched once more as ./; and this is checked
+         here, not on the production path, because Chromium keeps nothing from a host whose certificate it was told
+         to overlook.) */
+      {
+        const count = {};
+        for (const h of L.hits.slice(firstHit)) if (h.path !== PREFIX + 'sw.js') count[h.path + h.search] = (count[h.path + h.search] || 0) + 1;
+        const asked = Object.keys(count);
+        const twice = asked.filter((k) => count[k] > 1);
+        const size = (k) => { const f = path.join(SITE, k.split('?')[0].slice(PREFIX.length) || 'index.html'); return fs.existsSync(f) ? fs.statSync(f).size : 0; };
+        ok(twice.length === 0 && asked.filter((k) => /[?&]v=/.test(k)).length === 0, 'on a first visit every file of the app should be downloaded once, at the address the page uses, not once for the page and again for the offline copy', JSON.stringify({ twice: twice.map((k) => k + ' ×' + count[k]), again: asked.filter((k) => /[?&]v=/.test(k)) }));
+        note(`a first visit: ${asked.length} requests to the web host for ${Math.round(asked.reduce((s, k) => s + size(k), 0) / 1024)} kB of files as they are on disk; none asked for twice`);
+      }
       const reg = await page.evaluate(async () => { const r = await navigator.serviceWorker.getRegistration(); return { scope: r.scope, script: r.active && r.active.scriptURL, via: r.updateViaCache }; });
       ok(reg.scope === L.base && reg.script === L.base + 'sw.js', 'the worker\'s scope should be the app folder', JSON.stringify(reg));
       note(`stored ${n} files under epua:${PREFIX}:${VERSION}; worker scope ${reg.scope}, updateViaCache ${reg.via}`);
@@ -1146,15 +1318,20 @@ async function fontsUsed(page, cdp, facts) {
     section('update: a new build replaces the stored copy');
     const copy = fs.mkdtempSync(path.join(TMP, 'site-'));
     fs.cpSync(SITE, copy, { recursive: true });
-    /* a slow network for one build: its files are answered no sooner than 6.5 s after the first of them was asked for */
-    let slowVersion = null;
+    /* a slow network for one build: its new file is answered no sooner than 6.5 s after it was first asked for */
+    let slowOn = false;
     let slowFrom = 0;
-    const U = await serve(copy, { tls, slow: (p, search) => { if (!slowVersion || !search.includes('v=' + slowVersion)) return 0; if (!slowFrom) slowFrom = Date.now(); return Math.max(0, slowFrom + 6500 - Date.now()); } });
+    const U = await serve(copy, { tls, slow: (p) => { if (!slowOn || !/\/assets\/build\.js$/.test(p)) return 0; if (!slowFrom) slowFrom = Date.now(); return Math.max(0, slowFrom + 6500 - Date.now()); } });
     ORIGINS.push(U.origin);
+    /* a new build in which one file changed, as most builds are: the build's stamp (assets/build.js). sw.js gets the
+       new version and that file's new hash, as build.mjs would write them; the hash is returned */
     const bump = (version, label) => {
+      const stamp = `/* Generated by build.mjs. */\nwindow.__gnBuild = ${JSON.stringify(`Epu'ã ${label} · test · ${version.slice(0, 6)}`)};\n`;
+      fs.writeFileSync(path.join(copy, 'assets/build.js'), stamp);
+      const hash = sha(Buffer.from(stamp)).slice(0, 10);
       const swf = path.join(copy, 'sw.js');
-      fs.writeFileSync(swf, fs.readFileSync(swf, 'utf8').replace(/const VERSION = '[0-9a-f]+';/, `const VERSION = '${version}';`));
-      fs.writeFileSync(path.join(copy, 'assets/build.js'), `/* Generated by build.mjs. */\nwindow.__gnBuild = ${JSON.stringify(`Epu'ã ${label} · test · ${version.slice(0, 6)}`)};\n`);
+      fs.writeFileSync(swf, fs.readFileSync(swf, 'utf8').replace(/const VERSION = '[0-9a-f]+';/, `const VERSION = '${version}';`).replace(/("\.\/assets\/build\.js": ")[0-9a-f]+(")/, `$1${hash}$2`));
+      return hash;
     };
     const ctx = await phone(browser, 390, 797, { label: 'update', standalone: true });
     const page = await ctx.newPage();
@@ -1172,7 +1349,8 @@ async function fontsUsed(page, cdp, facts) {
     const countOf = (k) => page.evaluate(async (k) => (await (await caches.open(k)).keys()).map((r) => r.url), k);
 
     /* a: a new build is on the site; the app is opened again (a reload): it should switch at once, before any tap */
-    bump('a1a1a1a1a1', '0.1-platform-A');
+    const hitsA = U.hits.length;
+    const hashA = bump('a1a1a1a1a1', '0.1-platform-A');
     const t0 = Date.now();
     await page.reload();
     const gotA = await page.waitForFunction(() => /platform-A/.test(window.__gnBuild || ''), null, { timeout: 20000 }).then(() => true, () => false);
@@ -1182,13 +1360,21 @@ async function fontsUsed(page, cdp, facts) {
     note(`new build A up ${((Date.now() - t0) / 1000).toFixed(1)} s after reopening: ${vA}`);
     const kA = await keysOf();
     ok(kA.length === 1 && kA[0] === 'epua:' + PREFIX + ':a1a1a1a1a1', 'after the update, only the new store should be left', JSON.stringify(kA));
-    if (kA.length) { const urls = await countOf(kA[0]); ok(urls.length === FILES.length && urls.every((u) => /v=a1a1a1a1a1/.test(u)), 'the new store should hold every file under the new version', urls.length); }
+    if (kA.length) {
+      /* the sound files, stored when first used under their own hash (?h=), are not part of the install */
+      const urls = (await countOf(kA[0])).filter((u) => !/[?&]h=/.test(u)).sort();
+      const wantA = FILES.map((f) => new URL(f + '?v=' + (f === './assets/build.js' ? hashA : hashOfFile(SITE, f)), U.base).href).sort();
+      ok(JSON.stringify(urls) === JSON.stringify(wantA), 'the new store should hold every file under the hash of its content, the changed file under its new one', JSON.stringify({ missing: wantA.filter((u) => !urls.includes(u)).slice(0, 4), extra: urls.filter((u) => !wantA.includes(u)).slice(0, 4) }));
+      /* what the update cost: the worker's script and the one file that changed; every other file came from the store of the build before */
+      const fetched = [...new Set(U.hits.slice(hitsA).map((h) => h.path.slice(PREFIX.length)))].filter((f) => f !== 'sw.js' && !/^assets\/gn-sound-(?!index)/.test(f));
+      ok(fetched.join() === 'assets/build.js', 'a new build should download only the files that changed', fetched.join(', ') || '(nothing)');
+    }
     ok((await screenName(page)) === 'Main' && JSON.parse((await page.evaluate((k) => localStorage.getItem(k), KEY)) || '{}').plan, 'after the update the progress should be kept and the app on the week path', await screenName(page));
     await shot(page, 'update-after-A');
 
     /* b: a slow network: the new build is only stored after the first five seconds; the app waits for a quiet moment
        (back to the week path from another tab), never switching under the learner */
-    slowVersion = 'b2b2b2b2b2';
+    slowOn = true;
     bump('b2b2b2b2b2', '0.1-platform-B');
     const tB = Date.now();
     await page.reload();
@@ -1212,6 +1398,35 @@ async function fontsUsed(page, cdp, facts) {
     ok(logs.filter((l) => !/Failed to load resource/.test(l)).length === 0, 'updates: console problems', logs.slice(0, 4).join(' ; '));
     await ctx.close();
     U.server.close();
+
+    /* c: the browser still holds the file of the build before (the web host lets it keep a file for ten minutes): the
+       worker sees that what it is handed is not this build's file and asks again, past every copy, under the file's own
+       hash; a file of another build is never stored. Served without https here (as the test address is), because
+       Chromium keeps no copy of a file from a host whose certificate it was told to overlook. */
+    {
+      slowOn = false;
+      const V = await serve(copy);
+      ORIGINS.push(V.origin);
+      const ctx2 = await phone(browser, 390, 797, { label: 'update over a held copy', standalone: true });
+      const page2 = await ctx2.newPage();
+      const logs2 = [];
+      watch(page2, logs2);
+      await page2.goto(V.base + '?sw');
+      await ready(page2);
+      await page2.waitForFunction(() => !!navigator.serviceWorker.controller, null, { timeout: 20000 });
+      const hitsC = V.hits.length;
+      const hashC = bump('c3c3c3c3c3', '0.1-platform-C');
+      await page2.reload();
+      const gotC = await page2.waitForFunction(() => /platform-C/.test(window.__gnBuild || ''), null, { timeout: 20000 }).then(() => true, () => false);
+      await ready(page2);
+      const asked = V.hits.slice(hitsC).filter((h) => /assets\/build\.js$/.test(h.path)).map((h) => h.search);
+      const storedC = await page2.evaluate(async () => { const keys = await caches.keys(); const c = await caches.open(keys[0]); const res = await c.match('./assets/build.js', { ignoreSearch: true }); return { keys, text: res ? await res.text() : '' }; });
+      ok(gotC && storedC.keys.length === 1 && /platform-C/.test(storedC.text), 'with the old file still held by the browser, the new build should be stored with its own file and taken up', JSON.stringify({ gotC, keys: storedC.keys, stored: storedC.text.slice(40, 110) }));
+      ok(asked.length === 1 && asked[0] === '?v=' + hashC, 'the held copy should be seen for what it is, and the file asked for once more, past it, under its own hash', JSON.stringify(asked));
+      ok(logs2.filter((l) => !/Failed to load resource/.test(l)).length === 0, 'update over a held copy: console problems', logs2.slice(0, 4).join(' ; '));
+      await ctx2.close();
+      V.server.close();
+    }
   }
 
   // ---------- 7. the manifest and the icons as the browser reads them ----------
@@ -1247,7 +1462,19 @@ async function fontsUsed(page, cdp, facts) {
         let clear = 0;
         for (let i = 3; i < d.length; i += 4) if (d[i] < 255) clear += 1;
         const at = (x, y) => { const i = (y * c.width + x) * 4; return '#' + [d[i], d[i + 1], d[i + 2]].map((v) => v.toString(16).padStart(2, '0')).join('').toUpperCase(); };
-        out[u] = { w: c.width, h: c.height, clear, corners: [at(0, 0), at(c.width - 1, 0), at(0, c.height - 1), at(c.width - 1, c.height - 1)] };
+        /* how far the face reaches from the centre, as a share of the icon's width: its fur (#EDC27C) and, above the
+           centre line, anything that is not tile (the ear's outline) */
+        let fur = 0;
+        let top = 0;
+        for (let y = 0; y < c.height; y++) {
+          for (let x = 0; x < c.width; x++) {
+            const i = (y * c.width + x) * 4;
+            const far = Math.hypot(x + 0.5 - c.width / 2, y + 0.5 - c.height / 2) / c.width;
+            if (Math.abs(d[i] - 0xED) < 12 && Math.abs(d[i + 1] - 0xC2) < 12 && Math.abs(d[i + 2] - 0x7C) < 12) fur = Math.max(fur, far);
+            if (y < c.height / 2 && !(Math.abs(d[i] - 0xC2) < 12 && Math.abs(d[i + 1] - 0x33) < 12 && Math.abs(d[i + 2] - 0x6F) < 12)) top = Math.max(top, far);
+          }
+        }
+        out[u] = { w: c.width, h: c.height, clear, corners: [at(0, 0), at(c.width - 1, 0), at(0, c.height - 1), at(c.width - 1, c.height - 1)], fur: Math.round(fur * 1000) / 10, top: Math.round(top * 1000) / 10, low: at(Math.floor(c.width * 0.36), c.height - 2) };
       }
       return out;
     }, urls);
@@ -1258,8 +1485,25 @@ async function fontsUsed(page, cdp, facts) {
     }
     const at = px[P.base + 'icons/apple-touch-icon.png'];
     ok(at && at.w === 180 && at.h === 180, 'apple-touch-icon should decode at 180x180', JSON.stringify(at));
+    /* the maskable pair: an Android launcher cuts the icon to its own shape and promises only the circle of radius 40 %
+       round the centre. The face must lie inside it (in the icon for any use the ear's outline does not), and the bust
+       must still run off the bottom edge, as it does at full size, so no launcher shows it cut off in mid-air */
+    const maskable = urls.filter((u) => /maskable/.test(u));
+    ok(maskable.length === 2, 'Chromium should read two maskable icons from the manifest', maskable.join(', '));
+    for (const u of maskable) {
+      const p2 = px[u] || {};
+      ok(p2.fur > 0 && p2.fur <= 40 && p2.top <= 40, `${u.slice(P.base.length)}: the face should lie inside the safe circle (40 % of the width from the centre)`, JSON.stringify({ fur: p2.fur, top: p2.top }));
+      ok(p2.low && p2.low !== '#C2336F', `${u.slice(P.base.length)}: the bust should run off the bottom edge of the tile`, p2.low);
+    }
+    const anyIcon = px[P.base + 'icons/icon-512.png'];
+    if (anyIcon) note(`the face reaches ${anyIcon.top} % of the width from the centre in icon-512.png (the ear) and ${(px[P.base + 'icons/icon-512-maskable.png'] || {}).top} % in its maskable twin; the safe circle is 40 %`);
     /* the icons side by side, to look at */
-    await page.setContent(`<body style="margin:0;padding:16px;background:#ddd;display:flex;gap:16px;align-items:flex-end">${urls.map((u) => `<figure style="margin:0;text-align:center;font:12px sans-serif"><img src="${u}" style="display:block;border-radius:22%"><figcaption>${u.split('/').pop()} (iOS mask)</figcaption></figure>`).join('')}</body>`);
+    /* the icons for any use under the iPhone's rounded square; the maskable ones as a launcher that shows the inner
+       seven eighths of the icon cut to a circle (a Pixel), the tightest shape in use */
+    const figure = (u) => (/maskable/.test(u)
+      ? `<figure style="margin:0;text-align:center;font:12px sans-serif"><div style="width:192px;height:192px;border-radius:50%;overflow:hidden"><img src="${u}" style="display:block;width:220px;height:220px;margin:-14px"></div><figcaption>${u.split('/').pop()} (a launcher's circle)</figcaption></figure>`
+      : `<figure style="margin:0;text-align:center;font:12px sans-serif"><img src="${u}" style="display:block;border-radius:22%"><figcaption>${u.split('/').pop()} (iOS mask)</figcaption></figure>`);
+    await page.setContent(`<body style="margin:0;padding:16px;background:#ddd;display:flex;gap:16px;align-items:flex-end">${urls.map(figure).join('')}</body>`);
     await page.waitForTimeout(300);
     await page.screenshot({ path: path.join(OUT, 'icons.png'), fullPage: true });
     pass('manifest and icons read by Chromium');
@@ -1514,6 +1758,81 @@ async function fontsUsed(page, cdp, facts) {
     await ready(page, 250);
     ok((await screenName(page)) === 'Install', 'the install page should open with ?install', await screenName(page));
     await look('Install', 'Install (Safari)');
+    /* the install page as Chrome on an Android phone gets it, in its three states (this page is told it is that phone
+       through the browser's user agent; the browser's offer is made here, since headless Chromium makes none) */
+    {
+      await cdp.send('Emulation.setUserAgentOverride', { userAgent: ANDROID });
+      await page.goto(L.base + '?install&android');
+      await ready(page, 250);
+      ok((await screenName(page)) === 'Install' && /Instalá Epu'ã en tu celular/.test(await stageText(page)), 'the install page should open as Android\'s with ?install on an Android phone', (await stageText(page)).slice(0, 80));
+      await look('Install', 'Install (Android, the browser\'s menu)');
+      await page.evaluate(() => { const e = new Event('beforeinstallprompt', { cancelable: true }); e.prompt = () => {}; e.userChoice = new Promise((r) => { window.__choose = r; }); window.dispatchEvent(e); });
+      await page.waitForTimeout(250);
+      await look('Install', 'Install (Android, the offer in hand)');
+      await page.locator('#gn-stage button').filter({ hasText: 'Instalar Epu' }).first().click();
+      await page.evaluate(() => window.__choose({ outcome: 'accepted' }));
+      await page.waitForTimeout(250);
+      await look('Install', 'Install (Android, installed)');
+      await cdp.send('Emulation.setUserAgentOverride', { userAgent: IPHONE });
+    }
+    /* the shell's own states, none of them a screen of the canvas: its notices above the tab bar (what is saved is a
+       newer build's; a progress code has just replaced the progress; Safari clears a page left alone for a week), and
+       the note that stands in for a screen of the later file while it is on its way, or when it could not be fetched */
+    {
+      const seed = (save, told) => page.evaluate(([k, s, t]) => { localStorage.clear(); sessionStorage.clear(); localStorage.setItem(k, JSON.stringify(s)); sessionStorage.setItem(k + '.browser', '1'); if (t) sessionStorage.setItem(k + '.told', String(t)); }, [KEY, save, told || 0]);
+      const noteNow = () => page.evaluate(() => [...document.querySelectorAll('#gn-stage > .sc-host > div > [role="status"]')].map((e) => e.innerText.replace(/\s+/g, ' ').trim()).join(' | '));
+      await page.goto(L.base + '?browser');
+      await ready(page, 200);
+      await seed({ ...SAVED, v: 2, later: { x: 1 } });
+      await page.goto(L.base + '?browser&state=later');
+      await ready(page, 250);
+      ok(/Hay una versión más nueva de la app/.test(await noteNow()), 'a save of a newer build should be said on the week path', await noteNow());
+      await look('Shell', 'Shell (a newer build\'s save)');
+      await seed(SAVED);
+      await page.goto(L.base + '?browser&state=pasted');
+      await ready(page, 250);
+      const code = 'EPUA1:' + Buffer.from(JSON.stringify({ v: 1, started: true, level: 'A1', plan: SAMPLE.plan, done: { a1u01d1: FULL } })).toString('base64');
+      ok(await page.evaluate((c) => window.gnApp.importProgress(c), code), 'a progress code should be taken');
+      await page.waitForTimeout(500);
+      ok(/Progreso reemplazado/.test(await noteNow()) && /Deshacer/.test(await noteNow()), 'a paste should leave a way back on the week path', await noteNow());
+      await look('Shell', 'Shell (a progress code just used)');
+      await seed(SAVED, Date.now() - 8 * 864e5);
+      await page.goto(L.base + '?state=week');
+      await ready(page, 250);
+      ok(/Safari puede borrar tu progreso/.test(await noteNow()), 'a tab kept for more than a week in Safari should say what Safari does', await noteNow());
+      await look('Shell', 'Shell (Safari, a week on)');
+      await page.evaluate(() => { localStorage.clear(); sessionStorage.clear(); });
+      /* the later screens held back: the note after a moment; then refused: the note that says so, with its two ways on */
+      let hold = true;
+      let fail = false;
+      let release = () => {};
+      await page.route('**/assets/screens-more.js', async (route) => { if (fail) return route.abort(); if (hold) await new Promise((r) => { release = r; }); return route.continue().catch(() => {}); });
+      await page.goto(L.base + '?gntest&screen=Main&state=wait' + address(SAMPLE));
+      await ready(page, 200);
+      await page.locator('#gn-stage nav a').filter({ hasText: 'Progreso' }).first().click();
+      await page.waitForTimeout(700);
+      ok(/Cargando…/.test(await noteNow()), 'a screen of the later file asked for before it is in should get the waiting note', await noteNow());
+      await look('Shell', 'Shell (a later screen on its way)');
+      hold = false;
+      release();
+      await page.waitForFunction(() => { const el = document.querySelector('#gn-stage .sc-host .sc-host'); return !!el && el.getAttribute('data-sc-name') === 'Progress'; }, null, { timeout: 8000 }).catch(() => {});
+      ok((await screenName(page)) === 'Progress', 'once the later file is in, the screen that was asked for should show', await screenName(page));
+      fail = true;
+      ctx.__offline = true;
+      await page.goto(L.base + '?gntest&screen=Main&state=fail' + address(SAMPLE));
+      await ready(page, 400);
+      await page.locator('#gn-stage nav a').filter({ hasText: 'Progreso' }).first().click();
+      await page.waitForTimeout(500);
+      ok(/No llegó esta parte de la app/.test(await noteNow()) && (await page.locator('#gn-stage button').filter({ hasText: 'Intentá de nuevo' }).count()) === 1, 'when the later file cannot be fetched the shell should say so and offer to try again', await noteNow());
+      await look('Shell', 'Shell (the later screens could not be fetched)');
+      fail = false;
+      await page.locator('#gn-stage button').filter({ hasText: 'Intentá de nuevo' }).first().click();
+      await page.waitForFunction(() => { const el = document.querySelector('#gn-stage .sc-host .sc-host'); return !!el && el.getAttribute('data-sc-name') === 'Progress'; }, null, { timeout: 8000 }).catch(() => {});
+      ok((await screenName(page)) === 'Progress', 'trying again should bring the screen', await screenName(page));
+      ctx.__offline = false;
+      await page.unroute('**/assets/screens-more.js');
+      logs.splice(0, logs.length, ...logs.filter((l) => !/Failed to load resource/.test(l)));
+    }
     for (const scr of SCREENS) {
       for (const [label, extra] of [['fresh', ''], ['part way', address(SAMPLE)]].concat(SAMPLE2 ? [[FAR, address(SAMPLE2)]] : [])) {
         await page.goto(L.base + '?gntest&screen=' + scr + extra);
@@ -1553,7 +1872,7 @@ async function fontsUsed(page, cdp, facts) {
         ['Goal', 'a plan that exists', BACK, 'Guardar el plan'],
         ['Main', 'the end of the written path', END, 'MIENTRAS TANTO'],
         ['Today', 'a sealed day', Object.assign({}, END, { cur: more.lastReview }), '¿Un rato más?'],
-      ].concat(more.mini ? [['ExamTab', 'the mini exam open', END, 'Mini examen 1'], ['Exam', 'the mini exam under way', Object.assign({}, END, { set: 'mini1' }), 'MINI EXAMEN 1']] : []);
+      ].concat(more.mini ? [['ExamTab', 'the mini exam open', END, '20 preguntas de las semanas'], ['Exam', 'the mini exam under way', Object.assign({}, END, { set: 'mini1' }), 'MINI EXAMEN 1']] : []);
       let seenNew = 0;
       for (const [scr, label, sample, says] of cases) {
         await page.goto(L.base + '?gntest&screen=' + scr + address(sample));

@@ -47,6 +47,8 @@ const serve = () => new Promise((done) => {
 
 async function ready(page) {
   await page.waitForSelector('#gn-stage > .sc-host', { timeout: 10000 });
+  /* the app is shown once its first screen is in (a screen of the later file is fetched first) and its faces are */
+  await page.waitForFunction(() => document.documentElement.classList.contains('gn-ready'), null, { timeout: 8000 }).catch(() => {});
   await page.evaluate(() => document.fonts.ready);
   await page.waitForTimeout(400);
 }
@@ -193,6 +195,25 @@ const items = (page, sid, part) => page.evaluate(([sid, part]) => {
     await ready(page4);
     ok((await text(page4)).includes('en este iPad'), 'the install page on an iPad should say iPad');
     await ctx4.close();
+    // an Android phone in Chrome gets the page too, with its own steps; from its icon (display-mode standalone) the app starts at once
+    const ANDROID = 'Mozilla/5.0 (Linux; Android 14; SM-A155M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36';
+    const ctx5 = await browser.newContext({ viewport: { width: 360, height: 648 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, userAgent: ANDROID });
+    const page5 = await ctx5.newPage();
+    await page5.goto(BASE);
+    await ready(page5);
+    const t5 = await text(page5);
+    ok(t5.includes("Instalá Epu'ã en tu celular") && t5.includes('Abrí el menú del navegador') && t5.includes('«Instalar app»') && t5.includes('tu progreso es el mismo'), 'Chrome on an Android phone should get the install page with its menu\'s steps, got ' + t5.slice(0, 160));
+    await shot(page5, 'install-android');
+    await click(page5, 'Seguir en el navegador', 600);
+    ok((await screenName(page5)) === 'Goal', 'Seguir en el navegador should open the app on Android, at ' + (await screenName(page5)));
+    await ctx5.close();
+    const ctx6 = await browser.newContext({ viewport: { width: 360, height: 776 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, userAgent: ANDROID });
+    const page6 = await ctx6.newPage();
+    await page6.addInitScript(() => { const real = window.matchMedia.bind(window); window.matchMedia = (q) => (/display-mode\s*:\s*standalone/.test(q) ? { matches: true, media: q, addListener() {}, removeListener() {}, addEventListener() {}, removeEventListener() {} } : real(q)); });
+    await page6.goto(BASE);
+    await ready(page6);
+    ok((await screenName(page6)) === 'Goal', 'opened from its icon on Android, the app should start at once, at ' + (await screenName(page6)));
+    await ctx6.close();
     note('first-visit page: checked');
   }
 
@@ -295,6 +316,10 @@ const items = (page, sid, part) => page.evaluate(([sid, part]) => {
     await click(page, '#gn-stage a[href="ExamTab.dc.html"]', 600);
     ok((await tint()) === '#F4F5F9', 'outside the level exam the strip should be the ground colour, got ' + (await tint()));
     ok(page.url() === BASE, 'the app should never leave its address, at ' + page.url());
+    // the system's back from the tab leads to the week path, not out of the app
+    await page.goBack().catch(() => {});
+    await page.waitForTimeout(500);
+    ok((await screenName(page)) === 'Main' && page.url() === BASE, 'the system\'s back from a tab should lead to the week path, at ' + (await screenName(page)) + ' ' + page.url());
     ok(logs.length === 0, 'console problems in the first day: ' + JSON.stringify(logs.slice(0, 5)));
     await ctx.close();
     note('a first study day, saved progress, wake lock: checked');
@@ -438,7 +463,11 @@ const items = (page, sid, part) => page.evaluate(([sid, part]) => {
     const version = sw.match(/const VERSION = '([0-9a-f]+)'/)[1];
     ok(stored.keys.length === 1 && stored.keys[0] === 'epua:/:' + version, 'the offline copy should be one store named after the folder and the version, got ' + JSON.stringify(stored.keys));
     const installed = stored.urls.filter((u) => !/[?&]h=/.test(u));
-    ok(installed.length === listed.length && installed.every((u) => u.includes('v=' + version)), `the offline copy should hold all ${listed.length} files, each asked for under this version, got ${installed.length}`);
+    /* each file is stored under the hash of its own content (the first ten hex digits of its SHA-256), as sw.js lists it */
+    const hashes = JSON.parse(sw.match(/const HASH = (\{[\s\S]*?\});/)[1]);
+    const hashOf = (f) => require('crypto').createHash('sha256').update(fs.readFileSync(path.join(DIR, f === './' ? 'index.html' : f))).digest('hex').slice(0, 10);
+    const want = listed.map((f) => new URL(f + '?v=' + hashOf(f), BASE).href).sort();
+    ok(listed.every((f) => hashes[f] === hashOf(f)) && JSON.stringify(installed.slice().sort()) === JSON.stringify(want), `the offline copy should hold all ${listed.length} files, each under the hash of its content, got ${installed.length}: ${JSON.stringify(installed.filter((u) => !want.includes(u)).slice(0, 3))}`);
     ok(stored.urls.every((u) => !/[?&]h=/.test(u) || lazy.some((f) => u.includes(f.slice(1)))), 'whatever else the store holds should be a sound file stored under its hash');
     const onDisk = [];
     const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).forEach((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : onDisk.push('./' + path.relative(DIR, path.join(d, e.name)).split(path.sep).join('/'))));

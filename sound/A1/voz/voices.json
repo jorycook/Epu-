@@ -1,0 +1,27 @@
+{
+ "kind": "synthetic",
+ "model": "facebook/mms-tts-grn + facebook/mms-tts-spa",
+ "licence": "CC BY-NC 4.0 (Meta MMS-TTS: non-commercial use only; Pratap et al. 2023)",
+ "made": "2026-11-10",
+ "note": "synthetic stand-ins made by tools/make-tts.py (see sound/VOICE.md): the screens say «voz sintética»; the studio's recordings (CC BY 4.0) replace them",
+ "voices": {
+  "F": {
+   "name": "MMS-TTS guaraní (Meta AI); en los diálogos, hasta 2 semitonos más agudo",
+   "kind": "synthetic",
+   "model": "facebook/mms-tts-grn",
+   "licence": "CC BY-NC 4.0 (Meta MMS-TTS: non-commercial use only; Pratap et al. 2023)"
+  },
+  "M": {
+   "name": "MMS-TTS guaraní (Meta AI), tono 2 a 3 semitonos más grave",
+   "kind": "synthetic",
+   "model": "facebook/mms-tts-grn",
+   "licence": "CC BY-NC 4.0 (Meta MMS-TTS: non-commercial use only; Pratap et al. 2023)"
+  },
+  "N": {
+   "name": "MMS-TTS castellano (Meta AI)",
+   "kind": "synthetic",
+   "model": "facebook/mms-tts-spa",
+   "licence": "CC BY-NC 4.0 (Meta MMS-TTS: non-commercial use only; Pratap et al. 2023)"
+  }
+ }
+}

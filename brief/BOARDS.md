@@ -74,7 +74,7 @@ listening item from the second block on (with the 6 items of `placement.json`: p
 | 940 | `Levels.dc.html` | 8 · Six levels in one app | the Shell menu's level box ($N/Y1 §5.6) grown into a full screen |
 | 1410 | `Progress.dc.html` | 9 · How am I doing | `$Y/Readiness.dc.html` ($N/Y1 §5.5, §6.4) |
 
-**Main**: Yaoki's layout and SPOTS exactly. Level chip "A1" (→ `go('Levels')`); stamps chip with the mini ✓ stamp; the
+**Main**: Yaoki's layout and SPOTS exactly. The unit's title on the card is the screen's `<h1>`. Level chip "A1" (→ `go('Levels')`); stamps chip with the mini ✓ stamp; the
 date chip, an ink-bordered link like the level chip, is the door back to the plan ("faltan 60 días", or "a tu ritmo"
 with no date; on the canvas it shows GoalPlan, in the app the goal screen at step 3). Unit card: kicker "Semana 1 de 8", the unit's Guarani title big (`unit.gn`,
 Andika 700 26px, `lang="gn"`) when it has one, else the Spanish; the Spanish under it 13/500 muted; Kaguare 60 px with the
@@ -95,7 +95,9 @@ sit on top of it where they meet):
   unit card Kaguare takes the rising pose that day, before and after the first thing done (`app.days.back`).
 - Where the written path ends (the card with no button: the week whole, the next day or week not written): a kicker
   "MIENTRAS TANTO" and four tiles, Cuaderno (with "3 para hoy") · Emoñe'ẽ Leer · Ehai Escribir · Eñe'ẽ Hablar. On a day
-  of return this card too opens with the comeback mark and "¡Volviste!".
+  of return this card too opens with the comeback mark and "¡Volviste!". A practice section opened here, or from a
+  sealed day's "¿Un rato más?", closes to the screen that opened it (the engine's `go` keeps the door; the three boards
+  still ask for Progreso, which is where the canvas alone takes them).
 "Últimos 7 días", bottom left of the path beside the test node: seven 14-px marks, today last (`app.days.week`): a day
 with study (accent disc), a day of return (teal ring, up arrow), a day missed (grey ring), today still to come (dashed
 indigo), a day before the app kept days (a faint dot: nothing is claimed).
@@ -158,7 +160,7 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
   in two: the check's options share a row only while each fits its button whole (`gnCourse.ems`), else each gets a row,
   and the tick or cross sits on the button's corner (as in Words) and takes no room; a form stays whole beside its tag
   (one line up to 190 px, the tag wrapping in what is left).
-- Drill: choice and build items; build items render as morpheme or word tiles (bank 2 columns; slots; for `join: 'word'` the
+- Drill: the header's "PRÁCTICA" is the screen's `<h1>` (a build item's title is a second one, under it). Choice and build items; build items render as morpheme or word tiles (bank 2 columns; slots; for `join: 'word'` the
   slots sit tight with a hairline between, the joined spelling `full` shown in the answer sheet); verdicts "¡Correcto!" /
   "Casi" (+ Guarani from the glossary if verified); sheet head "Por qué cada opción" / "La palabra" / "La oración"; wrong →
   `miss({ src, wrong })` and "Guardado en tu cuaderno de errores. Vuelve mañana."; last → "Terminar la práctica" +
@@ -166,7 +168,7 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
   tall: longer reasons scroll inside their white box and the button to go on stays in view under them. Options sit two
   by two only while every option's longest word fits its half-width button with the mark in (`gnCourse.wordEms`).
 - Build: the build item showcase, data-driven (first build item of a1u01d4's drill), two tiles placed and the hint open.
-- Exam: day set 150 s "EXAMEN · SIN AYUDAS", "Sin pistas ni glosas. Las respuestas, al final."; week test set 1200 s; clock pill
+- Exam: day set 150 s "EXAMEN · SIN AYUDAS" (the ink band's title, the screen's `<h1>`; the result's score is a second heading under it), "Sin pistas ni glosas. Las respuestas, al final."; week test set 1200 s; clock pill
   `role="timer"`; build items asked as tiles in order (the whole order counts here, not a single starred tile: Guarani words
   are short in tiles); result view: score, "1:48 de 2:30", rows with ✓/✗, the full sentence, explain; "Siguiente" →
   `save({ prog: { g: 3 } })` (day) or `save({ result })` (test). Designed moment: question 2 of 3 with an option pressed, 1:42.
@@ -238,7 +240,9 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
   las 16 más viejas; las otras 29 quedan para los próximos días."), those rows read "en espera", and once the day's
   sitting is done the card says "listo por hoy · Quedan 29 para los próximos días." with a quiet "Repasar 16 más". A row
   that is due keeps "Elegiste: …" and holds the right answer back ("→ la respuesta, al repasar") until it is reviewed.
-- Review: one due item at a time (choice / build asked in order / spell typed with a small pad), verdict, the track note
+  Each piece of a row's quote carries its own `lang`, worked out on the whole question before it is cut: a line's own
+  language, Guarani inside « » on a Spanish line, and the words that can only be Guarani (`gnCourse.mixed`).
+- Review: the header's "REPASO" is the screen's `<h1>`. One due item at a time (choice / build asked in order / spell typed with a small pad), verdict, the track note
   ("Ahora en 3 días. Si acertás: en 1 semana."), summary. Designed moment: item 1 of 2 answered right. It asks today's
   sitting (or one more, when today's is done). Inside the prototype and the app a choice's options come in another
   order each day (`gnSpell.shuffle`, seeded by the item and the day; never the lesson's own order; the buttons are
@@ -297,7 +301,7 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
   "Gramática" pattern row (`#E8ECFB`, tag "Gramática"), "Nota". Settings sheet with the four switches (Partes de la palabra,
   Significado, Gramática, Pronunciación) and the promise box "No se muestra la traducción de la oración entera. Ves las piezas
   y armás la oración vos." Text from `window.__gnExtra.reader` (`gn-extra.js`).
-- Escribir: the phone typing game ($N/Y4 §6.4 for every detail): HUD, the route stage with Kaguare at the left and word cards
+- Escribir: the phone typing game ($N/Y4 §6.4 for every detail): an `<h1>` for screen readers only ("Ehai · Escribir", not drawn: the round has no title), HUD, the route stage with Kaguare at the left and word cards
   coming from the right, the info line (Guarani + Spanish), the in-app keyboard ("Teclado común" with the Guarani row
   ã ẽ ĩ õ ũ ỹ g̃ '), named near misses via `gnSpell`, the fall (Kaguare is knocked over, the stars, "Vuelve después de 2
   tarjetas") and the rise (he gets up on his hind legs: "¡Opu'ã! · ¡Se levantó!"), the clean-run chip with the rosette. Words: the A1 unit 1 words.

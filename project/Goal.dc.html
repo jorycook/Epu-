@@ -328,7 +328,8 @@ lvs.sort((a, b) => (app.plans[b].start > app.plans[a].start ? 1 : app.plans[b].s
 return lvs[0] || null;
 }
 /* the installed app's way to move progress (gn-app.js; see Progress): on an iPhone the app on the Home Screen and Safari
-   keep theirs apart, so a learner who started in Safari pastes its code here. The canvas has no window.gnApp: no link */
+   keep theirs apart, so a learner who started in Safari pastes its code here (on Android the two share it, kit.apart is
+   false, and the link names no browser). The canvas has no window.gnApp: no link */
 function appKit() {
 const kit = typeof window !== 'undefined' ? window.gnApp : null;
 return kit && typeof kit.exportProgress === 'function' && typeof kit.importProgress === 'function' ? kit : null;
@@ -586,7 +587,7 @@ const begun = !!(app.plan || some(app.plans) || some(app.done) || some(app.tests
 const pasted = s.paste || '';
 const mv = {
 link: keeps && s.step === 'why' && !begun,
-linkText: kit && kit.standalone ? '¿Ya empezaste en ' + (kit.browser || 'Safari') + '? Pegá tu progreso' : '¿Ya empezaste en otro lado? Pegá tu progreso',
+linkText: kit && kit.standalone && kit.apart !== false ? '¿Ya empezaste en ' + (kit.browser || 'Safari') + '? Pegá tu progreso' : '¿Ya empezaste en otro lado? Pegá tu progreso',
 sheet: !!kit && s.move,
 device: (kit && kit.device) || 'teléfono',
 text: pasted,

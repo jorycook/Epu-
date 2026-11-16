@@ -20,10 +20,14 @@
 //      notebook holding a due answer back; the door back to the plan (the date chip, Progreso's «Rearmar mi plan»,
 //      «Guardar el plan» and «Cancelar»); the days with study and the greeting after days away; practice where the
 //      written path ends; the first mini exam, from the tab to its result.
+//   S  the app around the screens: an Android phone's way in (the install page, the browser's own question); the system's
+//      back (it does what the screen's own X or arrow does, and leaves from the week path); the page's title, the focus
+//      on a new screen's heading, a sheet that keeps the focus, zoom; a paste taken back, Safari's week; the screens
+//      that load after the first ones, slow or missing.
 //   E  every one of the 21 screens reached, with no page error, no console error and nothing blank.
 // usage: node check/flows-test.js [site folder]      (default: ../docs, the built site as it is; about 7 minutes)
 //   ONLY=A,B,C,D,F,G,H runs some parts (E reports on what ran); PORT=8795 picks the port (default: any free one).
-//   (ONLY=I runs part I alone; with it the whole suite takes about two minutes more.)
+//   (ONLY=I runs part I alone, ONLY=S part S; with them the whole suite takes about four minutes more.)
 // Screenshots (device scale 1) go to check/out/flows/. Exit code 1 when a check fails.
 // Chromium stands in for Safari (WebKit cannot run here): the user agent, the screen and touch are an iPhone's.
 'use strict';
@@ -150,6 +154,9 @@ async function look(page, label, opts) {
   if (opts.shot) await shot(page, opts.shot);
   return h;
 }
+
+/* the score on the exam-style result page: the screen's last heading (its first is the band's title, the screen's own) */
+const scoreOf = (page) => page.locator('#gn-stage h1').last().textContent();
 
 /* ---------- taps ---------- */
 const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -405,7 +412,7 @@ async function partA6(page) {
     await tap(page, i < list.length - 1 ? 'Siguiente' : exact('Terminar'), 350);
   }
   h = await look(page, 'week test result', { expect: 'Exam', shot: 'A35-weektest-result' });
-  check(await has(page, 'Prueba de la semana terminada') && (await page.locator('#gn-stage h1').first().textContent()).trim() === '18', 'the week test ends 18 of 20', (await text(page)).slice(0, 200));
+  check(await has(page, 'Prueba de la semana terminada') && (await scoreOf(page)).trim() === '18', 'the week test ends 18 of 20', (await text(page)).slice(0, 200));
   await tap(page, { sel: '#gn-stage a[href="WeekTest.dc.html"]' }, 800);
   h = await look(page, 'Exam → WeekTest result', { expect: 'WeekTest', shot: 'A36-weektest-stamp' });
   const s = await saved(page);
@@ -618,7 +625,7 @@ async function partA4(page) {
   }
   h = await look(page, 'exam result', { expect: 'Exam', shot: 'A17-exam-result' });
   check(await has(page, 'Examen terminado') && await has(page, '1 error guardado en tu cuaderno. Vuelve mañana.'), 'the exam-style result: done, one error to the notebook', (await text(page)).slice(0, 400));
-  check((await page.locator('#gn-stage h1').first().textContent()).trim() === String(exam.length - 1), 'the exam-style score is ' + (exam.length - 1) + ' of ' + exam.length, await page.locator('#gn-stage h1').first().textContent());
+  check((await scoreOf(page)).trim() === String(exam.length - 1), 'the exam-style score is ' + (exam.length - 1) + ' of ' + exam.length, await scoreOf(page));
   await tap(page, { sel: '#gn-stage a[href="Today.dc.html"]:has-text("Siguiente")' }, 700);
   h = await look(page, 'exam → Today', { expect: 'Today', shot: 'A18-today-grammar-done' });
   let s = await saved(page);
@@ -869,8 +876,8 @@ async function partC(browser) {
   const links = [...hrefsSeen].sort();
   const to = links.filter((x) => /^(Leer|Escribir|Hablar)\.dc\.html/.test(x));
   check(to.length > 0, 'some screen of the app links to Leer, Escribir or Hablar', 'links seen on every screen the flows reached: ' + links.join(' '));
-  /* and in the screens' own code (assets/screens.js): no screen navigates there */
-  const code = fs.readFileSync(path.join(DIR, 'assets', 'screens.js'), 'utf8');
+  /* and in the screens' own code (assets/screens.js and screens-more.js): no screen navigates there */
+  const code = ['screens.js', 'screens-more.js'].map((f) => fs.readFileSync(path.join(DIR, 'assets', f), 'utf8')).join('\n');
   const calls = {};
   for (const name of ['Leer', 'Escribir', 'Hablar']) {
     const re = new RegExp("(?:nav|go)\\(\\s*'" + name + "'\\s*\\)", 'g');
@@ -947,7 +954,7 @@ async function partC(browser) {
   const after = await text(page);
   await shot(page, 'C05-escribir-typed');
   check(word.w && mid !== before && !/Esa no/.test(mid), `Escribir: the on-screen keys type the first word, "${word.w}" (${word.keys.join(' · ')})`, { word, mid: mid.slice(0, 160) });
-  check(/^\s*1 sin error seguidas/.test(after), `Escribir: "${word.w}" typed without a slip counts 1 in a row`, after.slice(0, 160));
+  check(/^\s*(Ehai · Escribir\s*)?1 sin error seguidas/.test(after), `Escribir: "${word.w}" typed without a slip counts 1 in a row`, after.slice(0, 160));
   await tap(page, { aria: 'Pausa o salir de la ronda' }, 500);
   await tap(page, 'Salir de la ronda', 600);
   check((await screenOf(page)) === 'Progress', 'Escribir: the pause menu leaves to Progreso, where it was opened', await screenOf(page));
@@ -1090,9 +1097,10 @@ async function partD(browser) {
     ['a plan that starts in a month', JSON.stringify({ v: 1, started: true, level: 'A1', plan: { start: iso(30), target: null, pace: 'fit', minutes: 15 } }), 'Main'],
     ['a target before the start', JSON.stringify({ v: 1, started: true, level: 'A1', plan: { start: iso(0), target: iso(-10), pace: 'fit', minutes: 30 } }), 'Main'],
     ['started, its plan broken, progress kept', JSON.stringify({ v: 1, started: true, level: 'A1', plan: { start: 'x' }, done: { a1u01d1: { g: 3, k: 1, r: 1 } } }), 'Goal'],
-    ['a later version (v 2)', JSON.stringify({ v: 2, started: true, level: 'A1', plan, future: { x: 1 } }), 'Main'],
+    ['a later version (v 2)', JSON.stringify({ v: 2, started: true, level: 'A1', plan, future: { x: 1 } }), 'Main', 'later'],
+    ['fields of a newer build, in the same form', JSON.stringify({ v: 1, started: true, level: 'A1', plan, streak: { days: 3, best: 9 }, theme: 'x' }), 'Main', 'extra'],
   ];
-  for (const [label, value, expect] of CASES) {
+  for (const [label, value, expect, kind] of CASES) {
     const ctx = await phone(browser);
     const page = await newPage(ctx, 'saved: ' + label);
     await page.addInitScript(([k, v]) => {
@@ -1131,7 +1139,18 @@ async function partD(browser) {
         await look(page, `saved ${label}: goal set again`, { expect: 'Main', wait: 0 });
       }
     } catch (e) { used = false; ok(false, `saved ${label}: the app should stay usable`, String(e.message).split('\n')[0]); }
-    /* what is saved now is clean: only the course's fields, already in the form the app reads back */
+    if (kind === 'later') {
+      /* a newer build's save: read as far as this build understands it, never written over, and said on the week path */
+      const kept = (await page.evaluate((k) => localStorage.getItem(k), KEY)) === value;
+      await go(page, '');
+      const said = await has(page, 'Hay una versión más nueva de la app');
+      ok(used && kept && said && !mine().length, `saved ${label}: the save should be left exactly as it was, and the week path should say a newer version wrote it`, { kept, said, problems: mine() });
+      if (used && kept && said && !mine().length) pass(`saved ${label}: starts on ${expect}, stays usable, the save untouched, the learner told`);
+      await ctx.close();
+      continue;
+    }
+    /* what is saved now is clean: only the course's fields, already in the form the app reads back (and, as they were,
+       the fields this build does not know: a newer build's, in the same form) */
     const clean = await page.evaluate((FIELDS) => {
       let s = null;
       try { s = JSON.parse(localStorage.getItem('epua.v1:/')); } catch (e) { return { err: 'not JSON' }; }
@@ -1139,10 +1158,13 @@ async function partD(browser) {
       const back = window.gnApp.start();
       const odd = Object.keys(s).filter((k) => k !== 'v' && FIELDS.indexOf(k) < 0);
       const differ = FIELDS.filter((f) => JSON.stringify(s[f] === undefined ? null : s[f]) !== JSON.stringify(back[f] === undefined ? null : back[f]));
-      return { odd, differ, proto: ({}).started !== undefined || ({}).x !== undefined };
+      return { odd, kept: JSON.stringify(odd.map((k) => s[k])), differ, proto: ({}).started !== undefined || ({}).x !== undefined };
     }, FIELDS);
-    ok(used && !clean.err && !clean.odd.length && !clean.differ.length && !clean.proto, `saved ${label}: after a tap the save is rewritten clean`, clean);
-    if (used && !mine().length && !clean.err && !clean.odd.length && !clean.differ.length) pass(`saved ${label}: starts on ${expect} in ${ms} ms, stays usable, saved clean`);
+    const given = kind === 'extra' ? JSON.parse(value) : {};
+    const carried = Object.keys(given).filter((k) => k !== 'v' && FIELDS.indexOf(k) < 0);
+    const oddOk = !clean.err && JSON.stringify(clean.odd) === JSON.stringify(carried) && clean.kept === JSON.stringify(carried.map((k) => given[k]));
+    ok(used && !clean.err && oddOk && !clean.differ.length && !clean.proto, `saved ${label}: after a tap the save is rewritten clean${carried.length ? ', with the fields of a newer build as they were' : ''}`, clean);
+    if (used && !mine().length && !clean.err && oddOk && !clean.differ.length) pass(`saved ${label}: starts on ${expect} in ${ms} ms, stays usable, saved clean${carried.length ? ' (' + carried.join(', ') + ' carried along)' : ''}`);
     await ctx.close();
   }
 
@@ -1585,6 +1607,17 @@ async function partI(browser) {
     await tap(page, { sel: '#gn-stage [aria-labelledby="mientras-tanto"] a[href="Leer.dc.html"]' }, 700);
     h = await look(page, 'Main → Leer', { expect: 'Leer' });
     check((await saved(page)).seen.join() === [iso(-6), iso(0)].join(), 'opening a practice section makes today a day with study', (await saved(page)).seen);
+    /* a practice section closes to the door it was opened through: its own way out asks for Progreso, once its only
+       door, and the engine leads back to the screen that opened it (by its X, and by the system's back) */
+    const level = () => page.waitForFunction(() => !((history.state && history.state.gn) || 0), null, { timeout: 3000 }).catch(() => {});
+    await tap(page, { aria: 'Cerrar la lectura' }, 600);
+    await level();
+    check((await screenOf(page)) === 'Main' && await has(page, 'MIENTRAS TANTO') && (await depthOf(page)) === 0, 'Leer, opened from the week path, closes to the week path (not to Progreso), and leaves nothing in the history', [await screenOf(page), await depthOf(page)]);
+    await tap(page, { sel: '#gn-stage [aria-labelledby="mientras-tanto"] a[href="Leer.dc.html"]' }, 700);
+    const inLeer = [await screenOf(page), await depthOf(page)];
+    await sysBack(page);
+    await level();
+    check(inLeer.join() === 'Leer,2' && (await screenOf(page)) === 'Main' && (await depthOf(page)) === 0, 'the system\'s back from Leer opened on the week path leads there too', { inLeer, now: [await screenOf(page), await depthOf(page)] });
     await go(page, '');
     await tap(page, { sel: '#gn-stage a[aria-label="Día 6, sellado. Abrilo de nuevo"]' }, 600);
     h = await look(page, 'a sealed day', { expect: 'Today', shot: 'I16-today-sealed' });
@@ -1592,6 +1625,8 @@ async function partI(browser) {
     check(await has(page, '¿Un rato más?') && more.join() === 'Leer.dc.html,Escribir.dc.html,Hablar.dc.html', 'a sealed day offers a little more: Leer, Escribir, Hablar', more);
     await tap(page, { sel: '#gn-stage [aria-labelledby="un-rato-mas"] a[href="Hablar.dc.html"]' }, 700);
     h = await look(page, 'Today → Hablar', { expect: 'Hablar' });
+    await tap(page, { aria: 'Cerrar' }, 600);
+    check((await screenOf(page)) === 'Today' && await has(page, '¿Un rato más?') && (await depthOf(page)) === 1, 'Hablar, opened from a sealed day, closes to that day', [await screenOf(page), await depthOf(page)]);
 
     part = 'I6 the first mini exam';
     const mini = W.minis[0];
@@ -1611,7 +1646,7 @@ async function partI(browser) {
       await tap(page, i < items.length - 1 ? 'Siguiente' : exact('Terminar'), 300);
     }
     h = await look(page, 'mini exam result', { expect: 'Exam', shot: 'I19-mini-result' });
-    check(await has(page, 'Mini examen 1 terminado') && (await page.locator('#gn-stage h1').first().textContent()).trim() === '18', 'the mini exam ends 18 of 20', (await text(page)).slice(0, 200));
+    check(await has(page, 'Mini examen 1 terminado') && (await scoreOf(page)).trim() === '18', 'the mini exam ends 18 of 20', (await text(page)).slice(0, 200));
     await tap(page, { sel: '#gn-stage a[href="ExamTab.dc.html"]:has-text("Siguiente")' }, 800);
     h = await look(page, 'the mini exam → ExamTab', { expect: 'ExamTab', shot: 'I20-examtab-mini-done' });
     let s = await saved(page);
@@ -1645,6 +1680,258 @@ async function partI(browser) {
   }
 }
 
+
+/* ---------- S: the app around the screens ----------
+   An Android phone's way in; the system's back; what a screen reader and a keyboard are given; saved progress that is
+   not lost to a paste or to Safari's week; the screens that load after the first ones. (The system's back is played
+   through the browser's history, as its back button plays it: a phone's gesture cannot be made here.) */
+const ANDROID = 'Mozilla/5.0 (Linux; Android 14; SM-A155M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36';
+const depthOf = (page) => page.evaluate(() => (history.state && history.state.gn) || 0);
+const focusOf = (page) => page.evaluate(() => { const el = document.activeElement; return !el || el === document.body ? '' : el.tagName.toLowerCase() + ':' + (el.getAttribute('aria-label') || el.innerText || '').replace(/\s+/g, ' ').trim().slice(0, 48); });
+const noticeOf = (page) => page.evaluate(() => [...document.querySelectorAll('#gn-stage > .sc-host > div > [role="status"]')].map((e) => e.innerText.replace(/\s+/g, ' ').trim()).join(' | '));
+const sheetOf = (page) => page.evaluate(() => { const d = document.querySelector('#gn-stage [role="dialog"]'); const a = document.activeElement; return { open: !!d, inert: document.querySelectorAll('#gn-stage [inert]').length, focusIn: !!(d && a && d.contains(a)), behind: !!(a && a.closest && a.closest('[inert]')) }; });
+async function sysBack(page) { await page.goBack().catch(() => {}); await page.waitForTimeout(450); }
+async function partS(browser) {
+  const iso = (n) => { const d = new Date(Date.now() + n * DAY); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+  const FULL = { g: 3, ks: 1, kw: 1, k: 1, r: 1 };
+
+  part = 'S1 an Android phone';
+  let ctx = await phone(browser, { userAgent: ANDROID });
+  let page = await newPage(ctx, 'android');
+  /* how often the browser is asked to keep what is saved */
+  await page.addInitScript(() => { window.__keep = 0; try { const st = navigator.storage; if (st && st.persist) { const real = st.persist.bind(st); st.persist = () => { window.__keep += 1; return real(); }; } } catch (e) {} });
+  await page.goto('about:blank');
+  await go(page, '');
+  let h = await look(page, 'Android first visit', { expect: 'Install', shot: 'S01-install-android' });
+  check(await has(page, "Instalá Epu'ã en tu celular") && await has(page, 'Abrí el menú del navegador') && await has(page, '«Instalar app»') && !(await has(page, 'Compartir')), 'a first visit in Chrome on an Android phone shows the install page, with its menu\'s steps', h.head);
+  check(await page.evaluate(() => window.gnApp.device === 'celular' && window.gnApp.browser === 'Chrome' && window.gnApp.apart === false), 'the app knows the phone and its browser, and that there the installed app shares the browser\'s progress', await page.evaluate(() => [window.gnApp.device, window.gnApp.browser, window.gnApp.apart]));
+  check(await has(page, 'en Chrome: tu progreso es el mismo') && !(await has(page, 'Copiar mi progreso')), 'the page says progress is the same in the browser and the app (no code to copy)', (await text(page)).slice(-160));
+  /* the browser's offer (made here: headless Chromium makes none), turned down, then accepted */
+  const offer = (answer) => page.evaluate((answer) => { window.__asked = window.__asked || 0; const e = new Event('beforeinstallprompt', { cancelable: true }); e.prompt = () => { window.__asked += 1; }; e.userChoice = Promise.resolve({ outcome: answer }); window.dispatchEvent(e); return e.defaultPrevented; }, answer);
+  const held = await offer('dismissed');
+  await page.waitForTimeout(250);
+  check(held && await has(page, 'Tocá Instalar, acá abajo') && (await control(page, "Instalar Epu'ã").count()) === 1, 'with the browser\'s offer in hand the page shows one button, Instalar', (await text(page)).slice(0, 200));
+  await shot(page, 'S02-install-android-offer');
+  await tap(page, "Instalar Epu'ã", 400);
+  check((await page.evaluate(() => window.__asked)) === 1 && await has(page, 'Abrí el menú del navegador') && (await control(page, "Instalar Epu'ã").count()) === 0, 'the button puts the browser\'s question once; turned down, the menu\'s steps are back', (await text(page)).slice(0, 200));
+  await offer('accepted');
+  await page.waitForTimeout(250);
+  await tap(page, "Instalar Epu'ã", 400);
+  check(await has(page, 'ya está instalada') && await has(page, 'Buscá su ícono'), 'accepted, the page says the app is installed and where to find it', (await text(page)).slice(0, 220));
+  await tap(page, 'Seguir en el navegador', 700);
+  h = await look(page, 'Android: Seguir en el navegador', { expect: 'Goal' });
+  await reload(page);
+  check((await screenOf(page)) === 'Goal', 'a reload in the same visit does not bring the install page back on Android either', await screenOf(page));
+
+  part = 'S2 the system\'s back';
+  check((await depthOf(page)) === 0, 'on the screen the app opens with, the history holds nothing of the app\'s', await depthOf(page));
+  await tap(page, exact('hablar con mi familia'), 250);
+  await tap(page, 'Siguiente', 500);
+  check(await has(page, '¿Desde dónde empezás?') && (await depthOf(page)) === 1 && /^h1:/.test(await focusOf(page)), 'the goal screen\'s second step is one step deep, its heading in focus', { depth: await depthOf(page), focus: await focusOf(page) });
+  await sysBack(page);
+  check(await has(page, '¿Para qué querés aprender guaraní?') && await pressed(page, exact('hablar con mi familia')) && (await depthOf(page)) === 0, 'back from step 2 is the goal screen\'s own back arrow: step 1, its answers kept', (await text(page)).slice(0, 80));
+  await tap(page, 'Siguiente', 400);
+  await tap(page, exact('Empezar en A1'), 400);
+  check((await depthOf(page)) === 2, 'step 3 is two steps deep', await depthOf(page));
+  await tap(page, 'A mi ritmo', 500);
+  let sh = await sheetOf(page);
+  check(sh.open && sh.inert > 0 && sh.focusIn && (await depthOf(page)) === 3, 'an open sheet takes the focus, puts what is behind it out of reach, and is one step deeper', { sh, depth: await depthOf(page), focus: await focusOf(page) });
+  const tabbed = [];
+  for (let i = 0; i < 9; i++) { await page.keyboard.press('Tab'); tabbed.push(await sheetOf(page)); }
+  check(tabbed.every((t) => !t.behind) && tabbed.some((t) => t.focusIn), 'with the sheet open, Tab never lands on anything behind it', tabbed.map((t) => (t.focusIn ? 'sheet' : t.behind ? 'BEHIND' : 'out')).join(' '));
+  await sysBack(page);
+  sh = await sheetOf(page);
+  check(!sh.open && sh.inert === 0 && (await depthOf(page)) === 2 && /^button:A mi ritmo/.test(await focusOf(page)), 'back closes the sheet; the focus returns to the control that opened it, and nothing stays out of reach', { sh, focus: await focusOf(page) });
+  check((await page.evaluate(() => window.__keep)) === 0, 'the browser is not asked to keep anything before there is a plan', await page.evaluate(() => window.__keep));
+  await tap(page, 'Tejé el primer hilo', 600);
+  await tap(page, { sel: '#gn-stage a[href="Main.dc.html"]:has-text("Empezar")' }, 700);
+  h = await look(page, 'the week path', { expect: 'Main' });
+  check((await depthOf(page)) === 0 && (await page.title()) === "Epu'ã · Camino de la semana" && /^h1:/.test(await focusOf(page)), 'the week path is where the app now opens: nothing in the history, its name in the page\'s title, its heading in focus', { depth: await depthOf(page), title: await page.title(), focus: await focusOf(page) });
+  check((await page.evaluate(() => window.__keep)) === 1, 'once there is a plan the browser is asked, once, to keep what is saved', await page.evaluate(() => window.__keep));
+  await tap(page, { sel: '#gn-stage a[href="Today.dc.html"]:has-text("Empezar")' }, 600);
+  check((await screenOf(page)) === 'Today' && (await depthOf(page)) === 1 && (await page.title()) === "Epu'ã · Lecciones del día" && /^h1:/.test(await focusOf(page)), 'the day is one step deep, named in the title, its heading in focus', { depth: await depthOf(page), title: await page.title(), focus: await focusOf(page) });
+  await tap(page, 'Empezar con la regla', 600);
+  await tap(page, 'Siguiente:', 500);
+  check((await screenOf(page)) === 'Teach' && (await depthOf(page)) === 2, 'a lesson is two steps deep, whatever its page', await depthOf(page));
+  await sysBack(page);
+  check((await screenOf(page)) === 'Today' && (await depthOf(page)) === 1, 'back from a lesson leads to the day, as its X does (it used to leave the app)', await screenOf(page));
+  await sysBack(page);
+  check((await screenOf(page)) === 'Main' && (await depthOf(page)) === 0, 'back from the day leads to the week path', await screenOf(page));
+  await tap(page, { sel: '#gn-stage nav a:has-text("Progreso")' }, 500);
+  await tap(page, { sel: '#gn-stage nav a:has-text("Cuaderno")' }, 500);
+  check((await screenOf(page)) === 'Notebook' && (await depthOf(page)) === 1, 'the tabs are one step deep, however many are visited', await depthOf(page));
+  await sysBack(page);
+  check((await screenOf(page)) === 'Main' && (await depthOf(page)) === 0, 'back from a tab leads to the week path', await screenOf(page));
+  /* down by taps and up again by the screens' own controls: the history is level each time, so back never lands on a lesson left behind */
+  await tap(page, { sel: '#gn-stage a[href="Today.dc.html"]:has-text("con la regla"), #gn-stage a[href="Today.dc.html"]:has-text("Empezar"), #gn-stage a[href="Today.dc.html"]:has-text("Seguir")' }, 600);
+  await tap(page, { sel: '#gn-stage a[href^="Teach"], #gn-stage a:has-text("con la regla")' }, 600);
+  const deep = [await screenOf(page), await depthOf(page)];
+  await tap(page, { aria: 'Cerrar la lección' }, 600);
+  const mid = [await screenOf(page), await depthOf(page)];
+  await tap(page, { aria: 'Volver al camino de la semana' }, 600);
+  check(deep.join() === 'Teach,2' && mid.join() === 'Today,1' && (await screenOf(page)) === 'Main' && (await depthOf(page)) === 0, 'leaving by the screens\' own X and arrow takes the history back up with them', { deep, mid, now: [await screenOf(page), await depthOf(page)] });
+  check(page.url() === BASE, 'the address never changes', page.url());
+  /* the page loaded again while two steps deep (a reload in a lesson): the app is back on the week path and counts
+     its depth afresh. It takes no step back of its own at the start: under a slow phone that step could be taken
+     twice, and the second would leave the app */
+  await tap(page, { sel: '#gn-stage a[href="Today.dc.html"]:has-text("con la regla"), #gn-stage a[href="Today.dc.html"]:has-text("Empezar"), #gn-stage a[href="Today.dc.html"]:has-text("Seguir")' }, 600);
+  await tap(page, { sel: '#gn-stage a[href^="Teach"], #gn-stage a:has-text("con la regla")' }, 600);
+  const steps = await page.evaluate(() => history.length);
+  await reload(page);
+  check((await screenOf(page)) === 'Main' && (await depthOf(page)) === 0 && page.url() === BASE && (await page.evaluate(() => history.length)) === steps, 'reloaded in a lesson, the app opens on the week path, level, without a step in the history of its own', { on: await screenOf(page), depth: await depthOf(page), url: page.url() });
+  await tap(page, { sel: '#gn-stage nav a:has-text("Cuaderno")' }, 500);
+  await sysBack(page);
+  check((await screenOf(page)) === 'Main' && (await depthOf(page)) === 0, 'and back works from there as before', await screenOf(page));
+  /* the entries the reload left under the page: one press passes them all (the app takes the rest of the steps down
+     itself, each onto an entry that is its own), and the next press leaves */
+  await sysBack(page);
+  check((await screenOf(page)) === 'Main' && page.url() === BASE && (await depthOf(page)) === 0, 'back passes the entries a reload left behind and stays on the week path', { url: page.url(), depth: await depthOf(page) });
+  await sysBack(page);
+  check(page.url() === 'about:blank', 'back from the week path leaves the app', page.url());
+
+  part = 'S3 zoom';
+  await go(page, '');
+  check((await screenOf(page)) === 'Main' && !/user-scalable|maximum-scale/.test(await page.evaluate(() => document.querySelector('meta[name="viewport"]').content)), 'the page does not forbid zoom', await page.evaluate(() => document.querySelector('meta[name="viewport"]').content));
+  {
+    const cdp = await ctx.newCDPSession(page);
+    const placed = () => page.evaluate(() => ({ t: document.querySelector('#gn-stage').style.transform, scale: window.visualViewport ? Math.round(window.visualViewport.scale * 100) / 100 : 1 }));
+    const before = await placed();
+    await cdp.send('Emulation.setPageScaleFactor', { pageScaleFactor: 2 });
+    await page.waitForTimeout(500);
+    const zoomed = await placed();
+    await cdp.send('Emulation.setPageScaleFactor', { pageScaleFactor: 1 });
+    await page.waitForTimeout(500);
+    const after = await placed();
+    check(zoomed.scale === 2 && zoomed.t === before.t && after.t === before.t && after.scale === 1, 'pinched to twice its size, the design keeps its place and is twice as large; back at its own size it sits as before', { before, zoomed, after });
+    await cdp.detach();
+  }
+  const noZoom = () => page.evaluate(() => ({ cls: document.documentElement.classList.contains('gn-nozoom'), touch: getComputedStyle(document.body).touchAction }));
+  const free = await noZoom();
+  await tap(page, { sel: '#gn-stage nav a:has-text("Progreso")' }, 500);
+  await tap(page, { sel: '#gn-stage a[aria-label="Escribir"]' }, 800);
+  const game = [await screenOf(page), await noZoom(), await page.title(), await focusOf(page)];
+  check(free.touch === 'manipulation' && !free.cls && game[0] === 'Escribir' && game[1].cls && game[1].touch === 'pan-x pan-y', 'only the game played with both thumbs keeps two fingers from zooming', { free, game });
+  check(game[2] === "Epu'ã · Escribir" && /^h1:Ehai · Escribir/.test(game[3]), 'the typing game has a heading of its own for a screen reader, in focus when the game opens', game.slice(2));
+  await sysBack(page);
+  check(await has(page, 'Pausa') && (await sheetOf(page)).open && (await screenOf(page)) === 'Escribir', 'back in the game is its own pause button: the round waits', (await text(page)).slice(-200));
+  await sysBack(page);
+  check((await sheetOf(page)).open && (await screenOf(page)) === 'Escribir', 'the pause asks for an answer (Continuar or Salir): back leaves it open', await screenOf(page));
+  await tap(page, 'Salir de la ronda', 600);
+  check((await screenOf(page)) === 'Progress' && !(await noZoom()).cls && (await depthOf(page)) === 1, 'out of the game, zoom is free again and the history is level', { on: await screenOf(page), depth: await depthOf(page) });
+  await ctx.close();
+
+  part = 'S4 a paste taken back';
+  {
+    const week = {};
+    for (let d = 1; d <= 6; d++) week['a1u01d' + d] = FULL;
+    const big = JSON.stringify({ v: 1, started: true, level: 'A1', plan: { start: iso(-10), target: null, pace: 'fit', minutes: 30 }, done: week, typed: ['maitei'] });
+    const small = 'EPUA1:' + Buffer.from(JSON.stringify({ v: 1, started: true, level: 'A1', plan: { start: iso(0), target: null, pace: 'fit', minutes: 30 }, done: { a1u01d1: FULL } })).toString('base64');
+    ctx = await phone(browser);
+    page = await newPage(ctx, 'paste');
+    await page.addInitScript(([k, v]) => { Object.defineProperty(navigator, 'standalone', { get: () => true }); if (!sessionStorage.getItem('seeded')) { localStorage.setItem(k, v); sessionStorage.setItem('seeded', '1'); } }, [KEY, big]);
+    await go(page, '');
+    const paste = async () => {
+      await tap(page, { sel: '#gn-stage nav a:has-text("Progreso")' }, 500);
+      await tap(page, 'Pegar un progreso', 500);
+      await page.locator('#gn-stage textarea').first().fill(small);
+      const was = await page.evaluate((k) => localStorage.getItem(k), KEY);
+      await tap(page, 'Usar este progreso', 900);
+      return was;
+    };
+    const was = await paste();
+    let s = await saved(page);
+    check((await screenOf(page)) === 'Main' && Object.keys(s.done).length === 1 && /Progreso reemplazado/.test(await noticeOf(page)) && /Deshacer/.test(await noticeOf(page)), 'a pasted code replaces the progress, and the week path offers to take it back', { on: await screenOf(page), days: Object.keys(s.done).length, notice: await noticeOf(page) });
+    await shot(page, 'S03-pasted');
+    await tap(page, { sel: '#gn-stage nav a:has-text("Cuaderno")' }, 400);
+    await tap(page, { sel: '#gn-stage nav a:has-text("Camino")' }, 400);
+    check(/Deshacer/.test(await noticeOf(page)), 'the offer is still there after a look round', await noticeOf(page));
+    await tap(page, 'Deshacer', 900);
+    s = await saved(page);
+    check((await screenOf(page)) === 'Main' && (await page.evaluate((k) => localStorage.getItem(k), KEY)) === was && Object.keys(s.done).length === 6 && !(await noticeOf(page)), 'Deshacer stores the progress the code replaced again, as it was, and opens the app on it', { days: Object.keys(s.done).length, notice: await noticeOf(page) });
+    await tap(page, { sel: '#gn-stage nav a:has-text("Progreso")' }, 400);
+    await tap(page, exact('familia'), 400);
+    s = await saved(page);
+    check(Object.keys(s.done).length === 6 && s.typed.join() === 'maitei' && s.exposure && s.exposure.with.join() === 'familia', 'after the way back the app saves on from the old progress', { days: Object.keys(s.done).length, typed: s.typed, exposure: s.exposure });
+    await tap(page, { sel: '#gn-stage nav a:has-text("Camino")' }, 400);
+    await paste();
+    await tap(page, { aria: 'Cerrar el aviso' }, 400);
+    check(!(await noticeOf(page)) && !(await page.evaluate(() => window.gnApp.pasted())), 'closing the notice keeps the pasted progress: no way back is offered after that', await noticeOf(page));
+    await reload(page);
+    s = await saved(page);
+    check(Object.keys(s.done).length === 1 && !(await noticeOf(page)), 'opened again, the pasted progress is the progress, and nothing is offered', { days: Object.keys(s.done).length, notice: await noticeOf(page) });
+    await ctx.close();
+  }
+
+  part = 'S5 Safari and a page left for a week';
+  {
+    const save = JSON.stringify({ v: 1, started: true, level: 'A1', plan: { start: iso(-10), target: null, pace: 'fit', minutes: 30 }, done: { a1u01d1: FULL } });
+    ctx = await phone(browser);
+    page = await newPage(ctx, 'safari week');
+    await go(page, '');
+    check((await screenOf(page)) === 'Install' && await has(page, 'Safari borra lo guardado de las páginas que no abrís por una semana'), 'the install page tells whoever stays in Safari that it deletes what a page saved after a week away', (await text(page)).slice(-220));
+    /* a tab kept open: it chose the browser nine days ago and was last told eight days ago */
+    await page.evaluate(([k, v]) => { localStorage.setItem(k, v); sessionStorage.setItem(k + '.browser', '1'); sessionStorage.setItem(k + '.told', String(Date.now() - 8 * 864e5)); }, [KEY, save]);
+    await reload(page);
+    check((await screenOf(page)) === 'Main' && /Safari puede borrar tu progreso/.test(await noticeOf(page)) && /una semana sin abrir la página/.test(await noticeOf(page)), 'in a tab kept for more than a week, the week path says what Safari does and what to do about it', await noticeOf(page));
+    await shot(page, 'S04-safari-week');
+    await tap(page, { aria: 'Cerrar el aviso' }, 400);
+    await reload(page);
+    check((await screenOf(page)) === 'Main' && !(await noticeOf(page)), 'closed, it is not said again for a week', await noticeOf(page));
+    await ctx.close();
+    /* from the Home Screen there is nothing to say: Safari's rule does not reach the installed app */
+    ctx = await phone(browser);
+    page = await newPage(ctx, 'home screen week');
+    await page.addInitScript(([k, v]) => { Object.defineProperty(navigator, 'standalone', { get: () => true }); localStorage.setItem(k, v); sessionStorage.setItem(k + '.told', String(Date.now() - 30 * 864e5)); }, [KEY, save]);
+    await go(page, '');
+    check((await screenOf(page)) === 'Main' && !(await noticeOf(page)), 'the app on the Home Screen says nothing of the kind', await noticeOf(page));
+    await ctx.close();
+  }
+
+  part = 'S6 the screens that load later';
+  {
+    ctx = await phone(browser);
+    /* this page's failed request is the test's own doing: it is not written down with the others */
+    page = await ctx.newPage();
+    await page.addInitScript(() => { Object.defineProperty(navigator, 'standalone', { get: () => true }); });
+    let hold = true;
+    let fail = false;
+    let release = () => {};
+    let asked = 0;
+    await page.route('**/assets/screens-more.js', async (route) => { asked += 1; if (fail) return route.abort(); if (hold) await new Promise((r) => { release = r; }); return route.continue().catch(() => {}); });
+    const start = JSON.stringify({ v: 1, started: true, level: 'A1', plan: { start: iso(-1), target: null, pace: 'fit', minutes: 30 } });
+    await page.addInitScript(([k, v]) => { localStorage.setItem(k, v); }, [KEY, start]);
+    await go(page, '');
+    check((await screenOf(page)) === 'Main' && (await page.evaluate(() => window.gnApp.screens())) === 'coming', 'the week path is up and usable while the other screens are still on their way', await page.evaluate(() => window.gnApp.screens()));
+    await tap(page, { sel: '#gn-stage a[href="Today.dc.html"]:has-text("Empezar")' }, 500);
+    check((await screenOf(page)) === 'Today', 'the day it leads to is in the first file: it opens at once', await screenOf(page));
+    await tap(page, { aria: 'Volver al camino de la semana' }, 400);
+    await tap(page, { sel: '#gn-stage nav a:has-text("Progreso")' }, 800);
+    check(/Cargando…/.test(await noticeOf(page)), 'a screen asked for before it is in gets a waiting note in its place', await noticeOf(page));
+    hold = false;
+    release();
+    await page.waitForFunction(() => { const el = document.querySelector('#gn-stage .sc-host .sc-host'); return !!el && el.getAttribute('data-sc-name') === 'Progress'; }, null, { timeout: 8000 }).catch(() => {});
+    await page.waitForTimeout(200);
+    check((await screenOf(page)) === 'Progress' && /^h1:/.test(await focusOf(page)) && asked === 1, 'once the file is in, the screen shows, its heading in focus; the file was asked for once', { on: await screenOf(page), focus: await focusOf(page), asked });
+    /* a visit on which the file cannot be fetched */
+    fail = true;
+    asked = 0;
+    await page.reload();
+    await ready(page);
+    await page.waitForTimeout(400);
+    await tap(page, { sel: '#gn-stage nav a:has-text("Progreso")' }, 500);
+    check(/No llegó esta parte de la app/.test(await noticeOf(page)) && (await control(page, 'Intentá de nuevo').count()) === 1 && asked === 1, 'when the file cannot be fetched the app says so, once, and does not ask again and again by itself', { notice: await noticeOf(page), asked });
+    await shot(page, 'S05-screens-missing');
+    await tap(page, exact('Tapykue · Volver'), 500);
+    check((await screenOf(page)) === 'Main', 'Volver leads back to the week path, which is there', await screenOf(page));
+    await tap(page, { sel: '#gn-stage nav a:has-text("Progreso")' }, 500);
+    fail = false;
+    await tap(page, 'Intentá de nuevo', 300);
+    await page.waitForFunction(() => { const el = document.querySelector('#gn-stage .sc-host .sc-host'); return !!el && el.getAttribute('data-sc-name') === 'Progress'; }, null, { timeout: 8000 }).catch(() => {});
+    check((await screenOf(page)) === 'Progress', 'Intentá de nuevo fetches it and shows the screen', await screenOf(page));
+    await ctx.close();
+  }
+}
+
 (async () => {
   if (!fs.existsSync(path.join(DIR, 'index.html'))) throw new Error('no app in ' + DIR);
   fs.mkdirSync(OUT, { recursive: true });
@@ -1654,6 +1941,7 @@ async function partI(browser) {
   const browser = await chromium.launch();
   const parts = [['A', partA], ['B', partB], ['C', partC], ['D', partD], ['F', partF], ['G', partG], ['H', partH]];
   parts.push(['I', partI]);
+  parts.push(['S', partS]);
   for (const [name, fn] of parts) {
     if (!want(name)) continue;
     try {

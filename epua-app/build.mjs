@@ -6,16 +6,20 @@
 //   0. checks the course content (node ../tools/build-course.mjs --check: a content error stops the build), and that the
 //      screens and scripts are the ones the canvas's prototype board, App.dc.html, plays and loads;
 //   1. takes those 21 screens and the spelling pad shown inside Words (Spell), plus the app's own shell and install page
-//      (src/*.dc.html), and turns each into one YK.define(...) call in assets/screens.js (template text + logic class);
+//      (src/*.dc.html), and turns each into one YK.define(...) call (template text + logic class), in two files:
+//      assets/screens.js holds the shell, the install page and the screens a visit starts on (FIRST), and
+//      assets/screens-more.js the others, which the page fetches once it has loaded (gn-app.js);
 //      every routed screen must have a way in from another screen (a link to it, or go / nav to it);
 //   2. gathers the small style rules the screens declare into assets/screens.css;
 //   3. cuts the two typefaces down to the characters used (fonts.py), names the Andika subsets EpuaText in the app's
-//      copies of the screens (the canvas's files keep 'Andika'), and draws the icons;
+//      copies of the screens (the canvas's files keep 'Andika'), and draws the icons (the Home Screen's, and a second
+//      192/512 pair with the art inside the zone an Android launcher's mask always keeps);
 //   4. copies the runtime, the sound player and the course's scripts, the page and the manifest, and writes the licences;
 //      with them the sound files that exist (project/gn-sound-*.js, by unit) and, in estudio/, the recording studio
 //      (studio/) with the clip lists it reads (../sound/<level>/manifest.json);
-//   5. writes sw.js with the exact list of files and a hash of their content, so the whole app is stored on the phone
-//      for offline use, and a new build replaces it; the sound files are listed apart, stored when first used;
+//   5. writes sw.js with the exact list of files, a hash of each file's content and a hash of them all (the version),
+//      so the whole app is stored on the phone for offline use, a new build replaces it, and a phone that has an
+//      earlier build downloads only the files that changed; the sound files are listed apart, stored when first used;
 //   6. replaces ../docs with the build.
 // Settings, all optional: EPUA_OUT (the output folder, relative to epua-app/, default dist), EPUA_DOCS (where the copy
 // for the web goes, default ../docs when EPUA_OUT is not set; empty: no copy), EPUA_APP_VERSION (default 0.1),
@@ -44,6 +48,10 @@ const APP = { name: "Epu'ã", about: 'Guaraní paraguayo para hispanohablantes, 
 const SCREENS = ['Goal', 'Placement', 'Main', 'Today', 'Levels', 'Progress', 'Teach', 'Compare', 'Drill', 'Exam', 'Words', 'Reading', 'Listening', 'WeekTest', 'Notebook', 'Review', 'ExamTab', 'LevelExam', 'Leer', 'Escribir', 'Hablar'];
 const INSIDE = ['Spell'];
 const OWN = ['Shell', 'Install'];
+/* the screens of the first file: the app's own two and the screens a visit starts on (the goal screen, or the week path
+   and the day it opens): about 45 kB as the web server sends it. The others (about 300 kB) are fetched once the page
+   is up, so the first screen does not wait for them */
+const FIRST = ['Shell', 'Install', 'Goal', 'Main', 'Today'];
 /* the sound player, loaded first (Yaoki's, under new names; no clips exist, so every sound control uses its silent
    stand-in), then the course: the six levels' data, the engine, the spelling helper and the extras (placement, level
    exam, the reader's text, the typing and speaking lists). The same scripts, in the same order, as App.dc.html */
@@ -166,9 +174,9 @@ ART = {
   icon: sized(iconSquare.replace(/ role="img" aria-label="[^"]*"/, ' aria-hidden="true"'), 30, ' style="display: block"'),
 };
 
-/* 1 and 2: screens.js and screens.css */
+/* 1 and 2: screens.js, screens-more.js and screens.css */
 const rules = new Set();
-const defs = [];
+const defs = { first: [], more: [] };
 const textSources = [];
 const screenTexts = {};
 const known = new Set([...SCREENS, ...INSIDE, ...OWN]);
@@ -181,8 +189,9 @@ for (const name of [...SCREENS, ...INSIDE, ...OWN]) {
   if (!own) for (const f of headScripts(p.text)) if (f !== SOUND && !SCRIPTS.includes(f)) fail(`${name}.dc.html loads ${f}, which the app does not load`);
   p.rules.forEach((r) => rules.add(r));
   textSources.push(own ? ownText(file) : file);
-  defs.push(`YK.define(${JSON.stringify(name)}, ${JSON.stringify(p.template)}, function (DCLogic) {\n${p.logic}\n;return (typeof Component !== "undefined" && Component) || undefined;\n});`);
+  defs[FIRST.includes(name) ? 'first' : 'more'].push(`YK.define(${JSON.stringify(name)}, ${JSON.stringify(p.template)}, function (DCLogic) {\n${p.logic}\n;return (typeof Component !== "undefined" && Component) || undefined;\n});`);
 }
+for (const name of FIRST) if (!known.has(name)) fail(`FIRST names ${name}, which is no screen of the app`);
 /* every screen the app routes has a way in from another screen (its file named as a link, or go / nav to it): a screen
    that only the test hooks can open is one a learner never finds */
 for (const name of SCREENS) {
@@ -190,7 +199,9 @@ for (const name of SCREENS) {
   const from = Object.keys(screenTexts).filter((n) => n !== name && way.test(screenTexts[n]));
   if (!from.length) fail(`no screen leads to ${name}: give another screen a link to ${name}.dc.html (or a go('${name}')), or take ${name} out of the routes`);
 }
-write('assets/screens.js', `/* Generated by build.mjs from the design canvas's screen files and src/*.dc.html. Do not edit: change the screen file and rebuild. */\n(function () {\nvar YK = window.YK;\n${defs.join('\n')}\n})();\n`);
+const screensFile = (list) => `/* Generated by build.mjs from the design canvas's screen files and src/*.dc.html. Do not edit: change the screen file and rebuild. */\n(function () {\nvar YK = window.YK;\n${list.join('\n')}\n})();\n`;
+write('assets/screens.js', screensFile(defs.first));
+write('assets/screens-more.js', screensFile(defs.more));
 /* hover colours only where there is a pointer that hovers: after a tap, a phone would leave the link tinted */
 const css = [...rules].map((r) => r.replace(/(a:hover\{[^}]*\})/g, '@media (hover:hover){$1}'));
 write('assets/screens.css', `/* Generated by build.mjs: the style rules the screens declare. */\n${css.join('\n')}\n`);
@@ -221,6 +232,15 @@ const png = async (rel, svg, size, opaque) => {
 await png('icons/apple-touch-icon.png', iconSquare, 180, true);
 await png('icons/icon-192.png', iconSquare, 192, true);
 await png('icons/icon-512.png', iconSquare, 512, true);
+/* Android cuts an icon to its launcher's shape (a circle, a squircle, a drop) and promises to keep only the circle of
+   radius 40 % round the centre. The Home Screen art fills its tile (the ear and the tip of the snout lie outside that
+   circle), so a second pair, marked "maskable" in the manifest, draws the same art at 80 %, standing on the tile's
+   bottom edge as it does at full size (the bust still runs off the tile there): the whole face is inside the circle */
+const iconInner = iconSquare.replace(/^<svg[^>]*>/, '').replace(/<\/svg>\s*$/, '');
+if (!TILE.test(iconArt) || !iconInner.startsWith(`<rect width="100" height="100" fill="${tile[1]}"/>`)) fail('the icon-pink pose no longer starts with its tile: look at the maskable icons here');
+const iconMaskable = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="${tile[1]}"/><g transform="translate(10 20) scale(0.8)">${iconInner.replace(`<rect width="100" height="100" fill="${tile[1]}"/>`, '')}</g></svg>`;
+await png('icons/icon-192-maskable.png', iconMaskable, 192, true);
+await png('icons/icon-512-maskable.png', iconMaskable, 512, true);
 /* the favicon: the 32 px rosette drawn on the icon board (project/Icon.dc.html), a white disc with pink threads on pink */
 const favicons = [...read(path.join(PROJECT, 'Icon.dc.html')).matchAll(/<svg viewBox="0 0 100 100" width="32" height="32"[^>]*>[\s\S]*?<\/svg>/g)].map((m) => m[0]);
 if (favicons.length !== 1) fail(`project/Icon.dc.html should draw one 32 px favicon, found ${favicons.length}`);
@@ -310,9 +330,15 @@ const digest = hash.digest('hex').slice(0, 10);
 write('assets/build.js', `/* Generated by build.mjs. */\nwindow.__gnBuild = ${JSON.stringify(`${APP.name} ${APP_VERSION} · ${day} · ${digest.slice(0, 6)}`)};\n`);
 const files = walk(OUT).map(rel).filter((f) => f !== './sw.js' && !isStudio(f)).sort();
 /* the sound that is stored when used, not at install (sw.js); each file's own hash lets a new build keep the unchanged ones */
+const hashOf = (f) => crypto.createHash('sha256').update(fs.readFileSync(path.join(OUT, f === './' ? 'index.html' : f))).digest('hex').slice(0, 10);
 const lazy = {};
-files.filter(isLazy).forEach((f) => { lazy[f] = crypto.createHash('sha256').update(fs.readFileSync(path.join(OUT, f))).digest('hex').slice(0, 10); });
-write('sw.js', fill(read(path.join(SRC, 'sw.js'))).replace('__VERSION__', digest).replace('__FILES__', JSON.stringify(['./', ...files.filter((f) => !isLazy(f))], null, 1)).replace('__LAZY__', JSON.stringify(lazy, null, 1)));
+files.filter(isLazy).forEach((f) => { lazy[f] = hashOf(f); });
+/* the files stored at install (./ is the page), each with the hash of its content: the worker stores a file under its
+   hash, takes it from an earlier build's store when the hash is the same, and checks what it downloads against it */
+const installed = ['./', ...files.filter((f) => !isLazy(f))];
+const hashes = {};
+installed.forEach((f) => { hashes[f] = hashOf(f); });
+write('sw.js', fill(read(path.join(SRC, 'sw.js'))).replace('__VERSION__', digest).replace('__FILES__', JSON.stringify(installed, null, 1)).replace('__HASH__', JSON.stringify(hashes, null, 1)).replace('__LAZY__', JSON.stringify(lazy, null, 1)));
 /* GitHub Pages: serve the files as they are */
 write('.nojekyll', '');
 
