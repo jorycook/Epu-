@@ -464,7 +464,7 @@
       "j",
       "h"
      ],
-     "note": "La j guaraní suena como la y de «yo» en boca de un paraguayo, o la j inglesa de «John»: nunca la jota castellana. La jota suave paraguaya, un soplo, se escribe h y siempre suena: aha, ahendu, heta. Acá no usamos pares mínimos: comparamos palabras.",
+     "note": "La j guaraní suena como la y de «yo» en boca de un paraguayo, o la j inglesa de «John»: nunca la jota castellana. La jota suave paraguaya, un soplo, se escribe h y siempre suena: aha, ahendu, heta. Los pares de hoy son palabras para contrastar.",
      "pairs": [
       [
        "ajapo",
@@ -1183,7 +1183,7 @@
       "r",
       "rr"
      ],
-     "note": "La r guaraní es siempre la r suave de «caro», también al principio de la palabra: ru, réra, roju, nunca «rroju». La rr fuerte solo aparece en préstamos del castellano, como karréta y vúrro. No hay pares mínimos r/rr en palabras guaraníes: comparamos palabras.",
+     "note": "La r guaraní es siempre la r suave de «caro», también al principio de la palabra: ru, réra, roju, nunca «rroju». La rr fuerte solo aparece en préstamos del castellano, como karréta y vúrro. Los pares de hoy contrastan palabras: una con r, otra con rr.",
      "pairs": [
       [
        "ru",
@@ -1889,7 +1889,7 @@
       "ú",
       "ý"
      ],
-     "note": "-pe y -me no se llevan el acento: la raíz lo guarda y, si esa vocal ya no es la última, se escribe la tilde: koty pasa a kotýpe y ka'aguy pasa a ka'aguýpe. Sobre una vocal con ~ no se agrega tilde (tetã pasa a tetãme); si la vocal es nasal solo por la ñ, la m o la n de al lado, no lleva ~ y sí puede llevar tilde: ñu pasa a ñúme. Los pares mínimos de acento son raros en guaraní: acá comparamos cada palabra sola y con su sufijo.",
+     "note": "-pe y -me no se llevan el acento: la raíz lo guarda y, si esa vocal ya no es la última, se escribe la tilde: koty pasa a kotýpe y ka'aguy pasa a ka'aguýpe. Sobre una vocal con ~ no se agrega tilde (tetã pasa a tetãme); si la vocal es nasal solo por la ñ, la m o la n de al lado, no lleva ~ y sí puede llevar tilde: ñu pasa a ñúme. Acá comparamos cada palabra sola y con su sufijo.",
      "pairs": [
       [
        "óga",
@@ -2445,7 +2445,7 @@
        "Vicente sale de la escuela: el lugar lleva -gui, pegado atrás. Mbo'ehao lleva el acento en la o final; con -gui esa o ya no es la última vocal, y se escribe ó: mbo'ehaógui.",
        "-pe es «a» o «en»: Oho mbo'ehaópe, «va a la escuela». Vicente sale de ahí: -gui.",
        "-me es la forma de -pe tras una sílaba nasal, y la última sílaba de mbo'ehao es oral, la o: el mb del principio no cuenta. Además diría «en»; Vicente sale de ahí: -gui, que no cambia nunca.",
-       "La ~ es la tilde nasal: haría nasal la o y cambiaría el sonido, y mbo'ehao no tiene vocal nasal. El acento se marca con la tilde aguda: mbo'ehaógui."
+       "La ~ es la tilde nasal: haría nasal la o y cambiaría el sonido, y mbo'ehao no tiene vocal nasal. El acento se marca con la tilde (ó): mbo'ehaógui."
       ]
      },
      {
@@ -2599,7 +2599,7 @@
       "m",
       "n"
      ],
-     "note": "Una raíz nasal (vocal con ~, o m, n, ñ, mb, nd, ng, nt) contagia el prefijo: ja- se vuelve ña- (ñañe'ẽ) y, mañana, nd- se vuelve n- (nañe'ẽi, «no hablo»). Los sufijos miran solo la última sílaba: tetãme, pero Ñembýpe; -gui no cambia: tetãgui. Los dos primeros pares son mínimos, oral contra nasal; los otros dos muestran el contagio.",
+     "note": "Una raíz nasal (vocal con ~, o m, n, ñ, mb, nd, ng, nt) contagia el prefijo: ja- se vuelve ña- (ñañe'ẽ) y, mañana, nd- se vuelve n- (nañe'ẽi, «no hablo»). Los sufijos miran solo la última sílaba: tetãme, pero Ñembýpe; -gui no cambia: tetãgui. Los dos primeros pares contrastan oral y nasal; los otros dos muestran el contagio.",
      "pairs": [
       [
        "tupa",
@@ -2736,7 +2736,7 @@
       "id": "nanduti",
       "gn": "ñanduti",
       "es": "ñandutí (encaje)",
-      "note": "Quiere decir «telaraña». Es el encaje de Itauguá, redondo como un sol. Como terere, no lleva tilde aguda: el acento va en la última vocal."
+      "note": "Quiere decir «telaraña». Es el encaje de Itauguá, redondo como un sol. Como terere, no lleva tilde: el acento va en la última vocal."
      },
      {
       "id": "kokuegui",
@@ -3338,7 +3338,7 @@
       "ng",
       "nt"
      ],
-     "note": "mb, nd, ng y nt son letras del alfabeto: un solo sonido, en una sola sílaba. Empezá con un zumbido, «mmm» o «nnn», y soltalo en la b o la d, sin poner una e delante: mba'e, no «embae». No hay pares mínimos seguros: comparamos palabras, con mb y nd al principio y con ng y nt adentro, donde van casi siempre.",
+     "note": "mb, nd, ng y nt son letras del alfabeto: un solo sonido, en una sola sílaba. Empezá con un zumbido, «mmm» o «nnn», y soltalo en la b o la d, sin poner una e delante: mba'e, no «embae». Los pares de hoy son palabras para contrastar, con mb y nd al principio y con ng y nt adentro, donde van casi siempre.",
      "pairs": [
       [
        "mba'eve",
@@ -3817,7 +3817,7 @@
       "mb",
       "nd"
      ],
-     "note": "Lo de la semana, en cinco pares de palabras para contrastar: no son pares mínimos. La j suena como la y fuerte de «yo», la h siempre suena, como la jota suave paraguaya, y la r es siempre suave, también al principio. -pe no se lleva el acento, y por eso koty se vuelve kotýpe; con una raíz nasal, ja- se vuelve ña-, como en ñañe'ẽ; y mb y nd son una sola letra, en una sola sílaba.",
+     "note": "Lo de la semana, en cinco pares de palabras para contrastar. La j suena como la y fuerte de «yo», la h siempre suena, como la jota suave paraguaya, y la r es siempre suave, también al principio. -pe no se lleva el acento, y por eso koty se vuelve kotýpe; con una raíz nasal, ja- se vuelve ña-, como en ñañe'ẽ; y mb y nd son una sola letra, en una sola sílaba.",
      "pairs": [
       [
        "aha",

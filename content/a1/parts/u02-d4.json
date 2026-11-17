@@ -127,7 +127,7 @@
           "Vicente sale de la escuela: el lugar lleva -gui, pegado atrás. Mbo'ehao lleva el acento en la o final; con -gui esa o ya no es la última vocal, y se escribe ó: mbo'ehaógui.",
           "-pe es «a» o «en»: Oho mbo'ehaópe, «va a la escuela». Vicente sale de ahí: -gui.",
           "-me es la forma de -pe tras una sílaba nasal, y la última sílaba de mbo'ehao es oral, la o: el mb del principio no cuenta. Además diría «en»; Vicente sale de ahí: -gui, que no cambia nunca.",
-          "La ~ es la tilde nasal: haría nasal la o y cambiaría el sonido, y mbo'ehao no tiene vocal nasal. El acento se marca con la tilde aguda: mbo'ehaógui."
+          "La ~ es la tilde nasal: haría nasal la o y cambiaría el sonido, y mbo'ehao no tiene vocal nasal. El acento se marca con la tilde (ó): mbo'ehaógui."
         ]
       },
       {
@@ -235,7 +235,7 @@
     "sound": {
       "focus": "La armonía nasal: ña-, -me, n-",
       "letters": ["ã", "ẽ", "ñ", "m", "n"],
-      "note": "Una raíz nasal (vocal con ~, o m, n, ñ, mb, nd, ng, nt) contagia el prefijo: ja- se vuelve ña- (ñañe'ẽ) y, mañana, nd- se vuelve n- (nañe'ẽi, «no hablo»). Los sufijos miran solo la última sílaba: tetãme, pero Ñembýpe; -gui no cambia: tetãgui. Los dos primeros pares son mínimos, oral contra nasal; los otros dos muestran el contagio.",
+      "note": "Una raíz nasal (vocal con ~, o m, n, ñ, mb, nd, ng, nt) contagia el prefijo: ja- se vuelve ña- (ñañe'ẽ) y, mañana, nd- se vuelve n- (nañe'ẽi, «no hablo»). Los sufijos miran solo la última sílaba: tetãme, pero Ñembýpe; -gui no cambia: tetãgui. Los dos primeros pares contrastan oral y nasal; los otros dos muestran el contagio.",
       "pairs": [
         ["tupa", "cama", "Tupã", "Dios"],
         ["pytu", "aliento", "pytũ", "oscuro"],
@@ -250,7 +250,7 @@
       { "id": "itauguagui", "gn": "Itauguágui", "es": "desde Itauguá", "parts": [["Itaugua", "Itauguá"], ["-gui", "de, desde"]], "note": "La capital del ñandutí. Itaugua termina en a: con -gui se escribe á." },
       { "id": "itakuruvigui", "gn": "Itakuruvígui", "es": "desde Itacurubí", "parts": [["Itakuruvi", "Itacurubí"], ["-gui", "de, desde"]], "note": "En castellano se escribe Itacurubí; en guaraní, con k y v. Con -gui, la i final se escribe í." },
       { "id": "tatakuagui", "gn": "tatakuágui", "es": "del horno de barro", "parts": [["tatakua", "horno de barro"], ["-gui", "de"]], "note": "tata, «fuego», y kua, «hueco». De ahí sale el chipá." },
-      { "id": "nanduti", "gn": "ñanduti", "es": "ñandutí (encaje)", "note": "Quiere decir «telaraña». Es el encaje de Itauguá, redondo como un sol. Como terere, no lleva tilde aguda: el acento va en la última vocal." },
+      { "id": "nanduti", "gn": "ñanduti", "es": "ñandutí (encaje)", "note": "Quiere decir «telaraña». Es el encaje de Itauguá, redondo como un sol. Como terere, no lleva tilde: el acento va en la última vocal." },
       { "id": "kokuegui", "gn": "kokuégui", "es": "de la chacra", "parts": [["kokue", "chacra"], ["-gui", "de"]], "note": "En la chacra es kokuépe, del día 3. De la chacra, kokuégui: la é queda igual." }
     ],
     "spell": ["paraguaygui", "itauguagui", "itakuruvigui", "tatakuagui"],

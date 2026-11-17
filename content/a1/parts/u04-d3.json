@@ -73,7 +73,7 @@
           }
         ],
         "watch": {
-          "note": "El plural del demostrativo no se hace con -kuéra: es otra palabra. Y el sustantivo puede quedar como está: ko'ã mitã, «estos chicos».",
+          "note": "El plural de ko, pe y amo no se hace con -kuéra: son otras palabras. Y el sustantivo puede quedar como está: ko'ã mitã, «estos chicos».",
           "bad": "kokuéra mitã",
           "good": "ko'ã mitã"
         }
@@ -190,7 +190,7 @@
         "hint": "Ko'ã va delante del sustantivo, como ko. Ha, «y», une las dos partes.",
         "full": "{Ko'ã} jagua ha umi mbarakaja iporã.",
         "es": "Estos perros y esos gatos son lindos.",
-        "explain": "Ko'ã, «estos», va delante de jagua: ko'ã jagua, «estos perros». Después ha, «y», une con umi mbarakaja, «esos gatos». El demostrativo va siempre primero, y el sustantivo queda sin -kuéra: ko'ã y umi ya dicen que son varios."
+        "explain": "Ko'ã, «estos», va delante de jagua: ko'ã jagua, «estos perros». Después ha, «y», une con umi mbarakaja, «esos gatos». Ko'ã y umi van siempre primero, y el sustantivo queda sin -kuéra: ya dicen que son varios."
       }
     ],
     "exam": [
@@ -226,7 +226,7 @@
         "bank": [1, 2, 0],
         "full": "Umi kavaju ha ko'ã vaka oĩ korapýpe.",
         "es": "Esos caballos y estas vacas están en el patio.",
-        "explain": "Umi, «esos», va delante de kavaju: umi kavaju, «esos caballos». Después ha, «y», une con ko'ã vaka, «estas vacas». El demostrativo va siempre primero, y el sustantivo queda sin -kuéra: umi y ko'ã ya dicen que son varios. Oĩ korapýpe: están en el patio."
+        "explain": "Umi, «esos», va delante de kavaju: umi kavaju, «esos caballos». Después ha, «y», une con ko'ã vaka, «estas vacas». Umi y ko'ã van siempre primero, y el sustantivo queda sin -kuéra: ya dicen que son varios. Oĩ korapýpe: están en el patio."
       }
     ]
   },
@@ -237,7 +237,7 @@
     "sound": {
       "focus": "La v: vaka, kavaju",
       "letters": ["v"],
-      "note": "La v del guaraní no es la b ni la v del castellano: el labio de abajo roza los dientes, sin fuerza, como en yvyra y túva. Vaka y kavaju vienen del castellano y se escriben a la guaraní, con v donde «caballo» lleva b; como no llevan tilde, el acento va al final: va-KA, ka-va-JU. No hay pares mínimos seguros con v: son palabras para contrastar.",
+      "note": "La v del guaraní no es la b ni la v del castellano: el labio de abajo roza los dientes, sin fuerza, como en yvyra y túva. Vaka y kavaju vienen del castellano y se escriben a la guaraní, con v donde «caballo» lleva b; como no llevan tilde, el acento va al final: va-KA, ka-va-JU. Los pares de hoy son palabras para contrastar.",
       "pairs": [
         ["vaka", "vaca", "kavaju", "caballo"],
         ["yvyra", "árbol", "túva", "padre"]

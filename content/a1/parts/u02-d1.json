@@ -234,7 +234,7 @@
     "sound": {
       "focus": "La j y la h",
       "letters": ["j", "h"],
-      "note": "La j guaraní suena como la y de «yo» en boca de un paraguayo, o la j inglesa de «John»: nunca la jota castellana. La jota suave paraguaya, un soplo, se escribe h y siempre suena: aha, ahendu, heta. Acá no usamos pares mínimos: comparamos palabras.",
+      "note": "La j guaraní suena como la y de «yo» en boca de un paraguayo, o la j inglesa de «John»: nunca la jota castellana. La jota suave paraguaya, un soplo, se escribe h y siempre suena: aha, ahendu, heta. Los pares de hoy son palabras para contrastar.",
       "pairs": [
         ["ajapo", "hago", "aha", "voy"],
         ["ajeroky", "bailo", "ahendu", "escucho"],

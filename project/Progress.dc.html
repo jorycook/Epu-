@@ -308,8 +308,8 @@ step = { kickerInk: '#2F4FD0', title: areas.length ? 'Todas las áreas pasan la 
 } else {
 step = { kickerInk: '#2F4FD0', title: areas.length ? 'Todas las áreas pasan la línea' : 'El próximo día se abre cuando esté escrito', sub: areas.length ? 'El próximo día se abre cuando esté escrito.' : '', hasSub: !!areas.length, hasCta: false, cta: '', ctaBg: '#2F4FD0', href: 'Main.dc.html', go: nav('Main') };
 }
-/* a day's title is Spanish that may quote Guarani (Plural -kuéra, -nguéra tras nasal (mitãnguéra)): the two lines as
-   pieces, so the words that can only be Guarani carry lang="gn" */
+/* a day's title is Spanish that may quote Guarani (Más de uno: ogakuéra, mitãnguéra): the two lines as pieces, so the
+   words that can only be Guarani carry lang="gn" */
 step.titleSegs = C.mixed(step.title);
 step.subSegs = C.mixed(step.sub || '');
 /* the exposure log: this week's answers ("Lo usé"), kept on this screen; the app's memory gets a copy */

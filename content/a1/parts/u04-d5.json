@@ -236,7 +236,7 @@
     "sound": {
       "focus": "La k: kesu, kamby",
       "letters": ["k"],
-      "note": "La k escribe siempre el mismo sonido, el de la c de «casa» y la qu de «queso»: kesu, kamby, mokõi. La c sola y la q no son letras del guaraní, y por eso queso se escribe kesu. No hay pares mínimos seguros: son palabras para contrastar, con la k delante de vocales distintas.",
+      "note": "La k escribe siempre el mismo sonido, el de la c de «casa» y la qu de «queso»: kesu, kamby, mokõi. La c sola y la q no son letras del guaraní, y por eso queso se escribe kesu. Los pares de hoy son palabras para contrastar, con la k delante de vocales distintas.",
       "pairs": [
         ["kesu", "queso", "kamby", "leche"],
         ["mokõi", "dos", "kuña", "mujer"],

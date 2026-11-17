@@ -1,5 +1,5 @@
 {
-  "title": "Pronombres: ñande y ore",
+  "title": "Decir quién: che, nde, ñande, ore",
   "grammar": {
     "points": [
       {
@@ -10,7 +10,7 @@
           { "pos": "Yo, el que habla", "rule": "{che} añe'ẽ" },
           { "pos": "Vos, el que escucha", "rule": "{nde} reñe'ẽ" },
           { "pos": "Él o ella, otra persona", "rule": "{ha'e} oñe'ẽ" },
-          { "pos": "Sin pronombre, como en castellano: el verbo ya dice quién", "rule": "{a}ñe'ẽ guaraníme" }
+          { "pos": "Sin pronombre (che, nde…), como en castellano: el verbo ya dice quién", "rule": "{a}ñe'ẽ guaraníme" }
         ],
         "examples": [
           { "gn": "{Che} añe'ẽ guaraníme.", "es": "Yo hablo guaraní.",

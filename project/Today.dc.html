@@ -36,7 +36,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="flex-grow: 1; min-height: 0; overflow-y: auto; margin: 0 -16px; padding: 0 16px 6px; display: flex; flex-direction: column">
 <div style="margin-top: 8px; display: flex; flex-direction: column; gap: 4px; flex-shrink: 0">
 <div style="font-size: 12px; font-weight: 800; color: {{ kickerInk }}">{{ kicker }}</div>
-<h1 style="margin: 0; font-weight: 800; line-height: 1.25; overflow-wrap: anywhere; font-size: {{ titleSize }}">{{ title }}</h1>
+<h1 style="margin: 0; font-weight: 800; line-height: 1.25; overflow-wrap: anywhere; font-size: {{ titleSize }}"><sc-for list="{{ titleSegs }}" as="f" hint-placeholder-count="1"><sc-if value="{{ f.gn }}" hint-placeholder-val="{{ false }}"><span lang="gn">{{ f.t }}</span></sc-if><sc-if value="{{ f.es }}" hint-placeholder-val="{{ true }}">{{ f.t }}</sc-if></sc-for></h1>
 <sc-if value="{{ noDue }}" hint-placeholder-val="{{ false }}"><div style="font-size: 13px; font-weight: 500; color: #5A6382; line-height: 1.5">Aprendé la regla, practicala con ayuda y después respondé como en el examen.</div></sc-if>
 <sc-if value="{{ hasDue }}" hint-placeholder-val="{{ true }}"><a href="Review.dc.html" onClick="{{ toReview }}" aria-label="{{ dueAria }}" style="margin-top: 4px; min-height: 48px; box-sizing: border-box; padding: 6px 10px 6px 12px; border-radius: 14px; background: #FCE4EE; color: #1B2440; display: flex; align-items: center; gap: 10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B02A63" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M6 3h12a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H6z"/><path d="M6 3v18M3 7h3M3 12h3M3 17h3M10 8h5"/></svg><span style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.25"><span style="font-size: 12px; font-weight: 800; color: #B02A63">{{ dueHead }}</span><span style="font-size: 14px; font-weight: 800">{{ dueLine }}</span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B02A63" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M9 5l7 7-7 7"/></svg></a></sc-if>
 </div>
@@ -319,6 +319,9 @@ kicker: written ? (allDone && session && session.date && session.date !== today 
 waitText: testDay ? 'La prueba de la semana se abre desde el camino de la semana.' : 'Este día está en preparación. Se abre cuando esté escrito.',
 kickerInk: written ? '#2F4FD0' : '#5A6382',
 title: dayTitle || (dayN ? 'Día ' + dayN : 'En preparación'),
+/* the day's title is Spanish that may quote Guarani (Más de uno: ogakuéra, mitãnguéra): its pieces, so the words that
+   can only be Guarani carry lang="gn" */
+titleSegs: C.mixed(dayTitle || (dayN ? 'Día ' + dayN : 'En preparación')),
 titleSize: (dayTitleN <= 24 ? 26 : dayTitleN <= 36 ? 22 : 20) + 'px',
 c1,
 c2,

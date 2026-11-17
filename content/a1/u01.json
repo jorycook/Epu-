@@ -594,7 +594,7 @@
    }
   },
   "2": {
-   "title": "Pronombres: ñande y ore",
+   "title": "Decir quién: che, nde, ñande, ore",
    "grammar": {
     "points": [
      {
@@ -615,7 +615,7 @@
         "rule": "{ha'e} oñe'ẽ"
        },
        {
-        "pos": "Sin pronombre, como en castellano: el verbo ya dice quién",
+        "pos": "Sin pronombre (che, nde…), como en castellano: el verbo ya dice quién",
         "rule": "{a}ñe'ẽ guaraníme"
        }
       ],

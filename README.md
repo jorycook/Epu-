@@ -280,8 +280,8 @@ people speak today, Spanish loans included.
 - **A1 units 1 to 4, in full:** half of the level. Each unit is five study days, the review day and a 20-question week
   test, 92 items; `node tools/build-course.mjs --check` counts 24 days written (the four review days among them) and
   368 items.
-  - Unit 1, "Mba'éichapa · Saludos y sonidos": greetings and farewells; ñande and ore; che réra; questions with -pa;
-    Aguyje and courtesy.
+  - Unit 1, "Mba'éichapa · Saludos y sonidos": greetings and farewells; saying who (che, nde, and the two "nosotros",
+    ñande and ore); che réra; questions with -pa; Aguyje and courtesy.
   - Unit 2, "¿Quién hace qué?": the person prefixes a-, re-, o-; ja-/ña-, ro- and pe- for the plural; -pe/-me, "en, a";
     -gui, "de, desde"; the negation nd-…-i.
   - Unit 3, "¿Cómo estás?": che-/nde- for states and qualities, with no "estar"; areal "yo hago" against chendal "a mí

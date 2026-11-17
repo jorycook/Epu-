@@ -129,7 +129,7 @@
     "sound": {
       "focus": "Repaso: la ch, el acento, la ñ, la g̃ y la ~",
       "letters": ["ch", "a", "á", "ñ", "g̃", "ẽ"],
-      "note": "Lo de la semana, en cuatro pares de palabras para contrastar: no son pares mínimos. La ch de chey'uhéi suena más bien como «sh»; avy'a, sin ninguna marca, lleva el acento al final, y ko'ág̃a lo lleva donde está la tilde. Junto a la ñ la vocal va sin ~ (kuña), y og̃uahẽ lleva la g̃, la g con nariz, y una ẽ cuya ~ marca también el acento.",
+      "note": "Lo de la semana, en cuatro pares de palabras para contrastar. La ch de chey'uhéi suena más bien como «sh»; avy'a, sin ninguna marca, lleva el acento al final, y ko'ág̃a lo lleva donde está la tilde. Junto a la ñ la vocal va sin ~ (kuña), y og̃uahẽ lleva la g̃, la g con nariz, y una ẽ cuya ~ marca también el acento.",
       "pairs": [
         ["y'uhéi", "sed", "chey'uhéi", "tengo sed"],
         ["avy'a", "estoy contento, contenta", "ko'ág̃a", "ahora"],

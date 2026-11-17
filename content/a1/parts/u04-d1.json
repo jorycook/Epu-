@@ -236,7 +236,7 @@
     "sound": {
       "focus": "La tilde en dos vocales juntas: jarýi, ramói",
       "letters": ["ýi", "ói", "éi", "ái"],
-      "note": "Jarýi, ramói y Paraguái terminan en dos vocales, y el acento va en la primera: como no es la última vocal de la palabra, lleva tilde. Sin tilde, el acento cae en la i del final, como en karai y en Ypakarai. No hay pares mínimos seguros: los dos primeros pares contrastan una palabra sin tilde con una que la lleva, y el tercero trae las dos de hoy.",
+      "note": "Jarýi, ramói y Paraguái terminan en dos vocales, y el acento va en la primera: como no es la última vocal de la palabra, lleva tilde. Sin tilde, el acento cae en la i del final, como en karai y en Ypakarai. Los dos primeros pares contrastan una palabra sin tilde con una que la lleva, y el tercero trae las dos de hoy.",
       "pairs": [
         ["Ypakarai", "Ypacaraí", "Paraguái", "Paraguay"],
         ["ahai", "escribo", "apurahéi", "canto"],

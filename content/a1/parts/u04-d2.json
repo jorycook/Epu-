@@ -254,7 +254,7 @@
     "sound": {
       "focus": "El acento se mueve: ogakuéra",
       "letters": ["é"],
-      "note": "Una palabra lleva una sola tilde de acento, y -kuéra se queda con él: la de la raíz desaparece (óga pasa a ogakuéra y túva pasa a tuvakuéra). La ~ es otra marca: dice que la vocal es nasal, y por eso se queda aunque el acento vaya a la é: mitã pasa a mitãnguéra. No hay pares mínimos seguros de acento: son palabras para contrastar, en singular y en plural.",
+      "note": "Una palabra lleva una sola tilde de acento, y -kuéra se queda con él: la de la raíz desaparece (óga pasa a ogakuéra y túva pasa a tuvakuéra). La ~ es otra marca: dice que la vocal es nasal, y por eso se queda aunque el acento vaya a la é: mitã pasa a mitãnguéra. Los pares de hoy son palabras para contrastar, en singular y en plural.",
       "pairs": [
         ["óga", "casa", "ogakuéra", "casas"],
         ["túva", "padre", "tuvakuéra", "padres"],

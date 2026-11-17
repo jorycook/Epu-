@@ -8,7 +8,7 @@
         "gloss": "¿quién?",
         "connect": [
           { "pos": "Ya la conocés de la unidad 1. Para preguntar por una persona: máva, «quién», con -pa pegado", "rule": "{Mávapa} ha'e?" },
-          { "pos": "Con los demostrativos del día 3: ko, pe, amo", "rule": "{Mávapa} pe karai? · {Mávapa} ko mitã?" },
+          { "pos": "Con ko, pe y amo, del día 3", "rule": "{Mávapa} pe karai? · {Mávapa} ko mitã?" },
           { "pos": "En la charla también se oye con piko. Pegado a la palabra que pregunta se escribe junto: Mávapiko. Con nde lo viste suelto, Nde piko, y también se escribe pegado: Ndépiko (unidad 3)", "rule": "{Mávapiko} pe karai?" },
           { "pos": "Se responde con la persona, con o sin ha'e", "rule": "{Che ru}. · Ha'e {che ru}." }
         ],
@@ -236,7 +236,7 @@
     "sound": {
       "focus": "La u siempre suena: kuimba'e, -gui",
       "letters": ["ku", "gu"],
-      "note": "En castellano la u de «que», «qui», «gue» y «gui» no suena; en guaraní la u suena siempre. Kuimba'e empieza como «cuidar», y -gui y -nguéra se dicen como con diéresis: «güi», «ngüéra». No hay pares mínimos seguros: son palabras para contrastar, y la segunda de cada par lleva ku o gu antes de otra vocal.",
+      "note": "En castellano la u de «que», «qui», «gue» y «gui» no suena; en guaraní la u suena siempre. Kuimba'e empieza como «cuidar», y -gui y -nguéra se dicen como con diéresis: «güi», «ngüéra». Los pares de hoy son palabras para contrastar, y la segunda de cada par lleva ku o gu antes de otra vocal.",
       "pairs": [
         ["kuña", "mujer", "kuimba'e", "hombre"],
         ["ake", "duermo", "kokue", "chacra"],

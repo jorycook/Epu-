@@ -7,7 +7,7 @@
         "form": "a- · re- · o- + acción",
         "gloss": "yo hago, vos hacés, él o ella hace",
         "connect": [
-          { "pos": "Las acciones llevan los prefijos areales de la unidad 2: a- yo, re- vos, o- él o ella, y ja-, ro-, pe- para varios", "rule": "{A}karu · {Re}karu · {O}karu · {Ja}karu · {Ro}karu · {Pe}karu" },
+          { "pos": "Las acciones llevan los prefijos de la unidad 2: a- yo, re- vos, o- él o ella, y ja-, ro-, pe- para varios", "rule": "{A}karu · {Re}karu · {O}karu · {Ja}karu · {Ro}karu · {Pe}karu" },
           { "pos": "También las acciones del cuerpo: levantarse, bañarse, dormir", "rule": "{A}pu'ã · {a}jahu · {a}ke" },
           { "pos": "El castellano pone la persona al final (com-o); el guaraní, al principio", "rule": "{A}karu" }
         ],
@@ -80,8 +80,8 @@
     "compare": {
       "intro": "Tres frases de un domingo: una acción con a-, un estado con che- y estar en un lugar, con aime.",
       "forms": [
-        { "form": "akaru", "tag": "areal · yo hago", "mark": "dot", "gn": "{Akaru}.", "es": "Como." },
-        { "form": "chevare'a", "tag": "chendal · a mí me pasa", "mark": "dot", "gn": "{Chevare'a}.", "es": "Tengo hambre." },
+        { "form": "akaru", "tag": "acción · yo hago", "mark": "dot", "gn": "{Akaru}.", "es": "Como." },
+        { "form": "chevare'a", "tag": "estado · a mí me pasa", "mark": "dot", "gn": "{Chevare'a}.", "es": "Tengo hambre." },
         { "form": "aime", "tag": "lugar · estoy en", "mark": "dot", "gn": "{Aime} ógape.", "es": "Estoy en casa." }
       ],
       "check": {
@@ -234,7 +234,7 @@
     "sound": {
       "focus": "Sin marca, el acento va al final: ajahu, akyhyje",
       "letters": ["u", "e", "ó", "á"],
-      "note": "Una palabra sin ninguna marca, ni tilde ni ~, lleva el acento en la última vocal: la u de ajahu, la e de akyhyje. Es al revés del castellano, que pondría el acento antes: a-JA-hu. Cuando una palabra lleva tilde, el acento va ahí, como en óga y ko'ág̃a: no son pares mínimos, cada par trae una palabra sin tilde y otra con tilde.",
+      "note": "Una palabra sin ninguna marca, ni tilde ni ~, lleva el acento en la última vocal: la u de ajahu, la e de akyhyje. Es al revés del castellano, que pondría el acento antes: a-JA-hu. Cuando una palabra lleva tilde, el acento va ahí, como en óga y ko'ág̃a: cada par trae una palabra sin tilde y otra con tilde.",
       "pairs": [
         ["ake", "duermo", "óga", "casa"],
         ["ajahu", "me baño", "ko'ág̃a", "ahora"],

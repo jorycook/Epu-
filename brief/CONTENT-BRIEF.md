@@ -50,6 +50,11 @@ every unit; a line that names unit 1 gives an example.
   beyond what a learner needs (prefijo, sufijo, nasal, acento, puso are fine), no em dashes, no exclamation marks except
   in praise. Use the voseo of Paraguay and the River Plate (vos sabés, elegí, escuchá, tocá) for instructions to the learner.
 - Explanations work with the sentence in front of the learner ("Acá habla de dos personas y el que escucha está incluido: ñande").
+- A name the grammar gives a point (areal, chendal, aireal, demostrativo, oración nominal) or a term of phonetics (par
+  mínimo, tónica, diptongo) goes in a lesson only where that lesson, or an earlier one, explains it; a day's title never
+  carries one (it says what the day lets you do or say). Otherwise say the thing itself, as the lessons do: «los prefijos
+  de la unidad 2», «acción · yo hago», «la vocal del acento», «dos vocales juntas», «ko, pe y amo», «Los pares de hoy son
+  palabras para contrastar».
 - Translations: natural Spanish, faithful to the Guarani (not word for word, but never adding meaning).
 - No arrows in Spanish text. The arrow → belongs to the rules of «Cómo se forma» alone (`connect[].rule`), which the
   screens set in the Guarani typeface; titles, labels, notes and reasons are set in the interface typeface, which has
@@ -124,7 +129,8 @@ every unit; a line that names unit 1 gives an example.
 (a reading skill instead: `{ "kind": "reading", "es", "ask", "seconds": 60-90, "passage": "<Guarani, short, with ^clue^>", "strategy": "<Spanish tip>", "item": {…} }`)
 
 Sound pairs: only REAL minimal pairs you have verified (G1 lists them with sources). If a focus has no safe pair, give contrasting
-words instead and say so in the note; never invent a word to make a pair. Where a day's focus is typing (unit 1, day 5), its
+words instead and say so in the note, in plain words («Los pares de hoy son palabras para contrastar», not «pares
+mínimos»); never invent a word to make a pair. Where a day's focus is typing (unit 1, day 5), its
 `letters` are the keys ã ẽ ĩ õ ũ ỹ g̃ and ', and its words are chosen to need them.
 
 ## The review day and the week test (`u<NN>-d6.json`, `u<NN>-test.json`)

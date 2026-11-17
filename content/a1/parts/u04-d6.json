@@ -184,7 +184,7 @@
     "sound": {
       "focus": "Repaso: la tilde, el acento, la v, la u y la k",
       "letters": ["ói", "é", "v", "gu", "k"],
-      "note": "La tilde va en la vocal del acento cuando no es la última (ramói). -kuéra y -nguéra se llevan el acento y la tilde de la raíz desaparece (ogakuéra); con -pa, -pe o -gui el acento se queda en la raíz (Mba'épa, ógape, ógagui). La u siempre suena, también en -gui y -kuéra; vaka va con v y con k, y kesu con k, sin c ni qu: son palabras para contrastar, no pares mínimos.",
+      "note": "La tilde va en la vocal del acento cuando no es la última (ramói). -kuéra y -nguéra se llevan el acento y la tilde de la raíz desaparece (ogakuéra); con -pa, -pe o -gui el acento se queda en la raíz (Mba'épa, ógape, ógagui). La u siempre suena, también en -gui y -kuéra; vaka va con v y con k, y kesu con k, sin c ni qu: son palabras para contrastar.",
       "pairs": [
         ["karai", "señor", "ramói", "abuelo (con che)"],
         ["óga", "casa", "ogakuéra", "casas"],

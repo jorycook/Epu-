@@ -8,7 +8,7 @@
         "gloss": "sin marca: aguda · con tilde: el acento va antes · vocal con ~: nunca tilde",
         "connect": [
           { "pos": "Sin ninguna marca, el acento cae en la última vocal: al revés del castellano", "rule": "jagu{a} · kara{i} · terer{e} · Ypakara{i}" },
-          { "pos": "Si cae antes, se escribe la tilde en esa vocal, también en los diptongos", "rule": "{ó}ga · jar{ý}i · purah{é}i · Paragu{á}i · mba'{é}ichapa" },
+          { "pos": "Si cae antes, se escribe la tilde en esa vocal, también si hay dos vocales juntas", "rule": "{ó}ga · jar{ý}i · purah{é}i · Paragu{á}i · mba'{é}ichapa" },
           { "pos": "Una vocal con ~ nunca lleva tilde, ni cuando es la tónica: si el acento cae en ella, la ~ basta", "rule": "mit{ã} · kane'{õ} · pete{ĩ}" }
         ],
         "examples": [
@@ -30,7 +30,7 @@
           {
             "gn": "{Purahéi} iporã.",
             "es": "La canción es linda.",
-            "parts": [["purahéi", "canción: pu-ra-HÉI, la tilde va en la e del diptongo"], ["iporã", "es linda: i-po-RÃ, la ~ marca la nasal y el acento"]]
+            "parts": [["purahéi", "canción: pu-ra-HÉI, la tilde va en la e, no en la i"], ["iporã", "es linda: i-po-RÃ, la ~ marca la nasal y el acento"]]
           }
         ],
         "watch": {
@@ -128,7 +128,7 @@
           "Sin tilde, nahaniri se leería na-ha-ni-RI, como una aguda. El acento va en la segunda a, y por eso lleva tilde: nahániri.",
           "La tilde está, pero en otra vocal: mbo'éhara se leería mbo-'É-ha-ra. El acento va en la a de hára: mbo'ehára.",
           "Terá lleva la tilde en la última vocal, donde el guaraní no la escribe nunca, y así se leería te-RA. El acento va en la e: téra.",
-          "Purahéi se dice pu-ra-HÉI: el acento cae antes de la última vocal y se escribe la tilde, en la e del diptongo. Está bien."
+          "Purahéi se dice pu-ra-HÉI: el acento cae antes de la última vocal y se escribe la tilde, en la e. Está bien."
         ]
       },
       {
@@ -235,7 +235,7 @@
     "sound": {
       "focus": "La tilde nasal (~) también es tilde",
       "letters": ["ã", "õ", "ĩ"],
-      "note": "Una vocal con ~ nunca lleva tilde, ni cuando es la tónica: ahí la ~ marca también el acento, como en mitã, kane'õ y peteĩ. Con un sufijo que no se lleva el acento, la vocal oral recibe la tilde (ikatúpa) y la nasal queda como estaba (oĩpa, Tovatĩme). No son pares mínimos: cada par trae una palabra sola y la misma con sufijo.",
+      "note": "Una vocal con ~ nunca lleva tilde, ni cuando es la tónica: ahí la ~ marca también el acento, como en mitã, kane'õ y peteĩ. Con un sufijo que no se lleva el acento, la vocal oral recibe la tilde (ikatúpa) y la nasal queda como estaba (oĩpa, Tovatĩme). Cada par trae una palabra sola y la misma con sufijo.",
       "pairs": [
         ["ikatu", "se puede", "ikatúpa", "¿se puede?"],
         ["oĩ", "hay", "oĩpa", "¿hay?"],

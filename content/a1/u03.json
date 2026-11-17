@@ -433,7 +433,7 @@
      "letters": [
       "ch"
      ],
-     "note": "La ch suena más bien como «sh», aunque también vas a oír la ch castellana. Es una sola letra, y hoy abre casi todas las palabras: che-, «yo», como en chepochy y chero'y. No hay pares mínimos seguros: cada par trae una palabra sola y la misma con che-.",
+     "note": "La ch suena más bien como «sh», aunque también vas a oír la ch castellana. Es una sola letra, y hoy abre casi todas las palabras: che-, «yo», como en chepochy y chero'y. Cada par trae una palabra sola y la misma con che-.",
      "pairs": [
       [
        "pochy",
@@ -664,7 +664,7 @@
       "gloss": "yo hago, vos hacés, él o ella hace",
       "connect": [
        {
-        "pos": "Las acciones llevan los prefijos areales de la unidad 2: a- yo, re- vos, o- él o ella, y ja-, ro-, pe- para varios",
+        "pos": "Las acciones llevan los prefijos de la unidad 2: a- yo, re- vos, o- él o ella, y ja-, ro-, pe- para varios",
         "rule": "{A}karu · {Re}karu · {O}karu · {Ja}karu · {Ro}karu · {Pe}karu"
        },
        {
@@ -872,14 +872,14 @@
      "forms": [
       {
        "form": "akaru",
-       "tag": "areal · yo hago",
+       "tag": "acción · yo hago",
        "mark": "dot",
        "gn": "{Akaru}.",
        "es": "Como."
       },
       {
        "form": "chevare'a",
-       "tag": "chendal · a mí me pasa",
+       "tag": "estado · a mí me pasa",
        "mark": "dot",
        "gn": "{Chevare'a}.",
        "es": "Tengo hambre."
@@ -1099,7 +1099,7 @@
       "ó",
       "á"
      ],
-     "note": "Una palabra sin ninguna marca, ni tilde ni ~, lleva el acento en la última vocal: la u de ajahu, la e de akyhyje. Es al revés del castellano, que pondría el acento antes: a-JA-hu. Cuando una palabra lleva tilde, el acento va ahí, como en óga y ko'ág̃a: no son pares mínimos, cada par trae una palabra sin tilde y otra con tilde.",
+     "note": "Una palabra sin ninguna marca, ni tilde ni ~, lleva el acento en la última vocal: la u de ajahu, la e de akyhyje. Es al revés del castellano, que pondría el acento antes: a-JA-hu. Cuando una palabra lleva tilde, el acento va ahí, como en óga y ko'ág̃a: cada par trae una palabra sin tilde y otra con tilde.",
      "pairs": [
       [
        "ake",
@@ -1725,7 +1725,7 @@
      "letters": [
       "ñ"
      ],
-     "note": "La ñ suena como en castellano, y en guaraní también empieza muchas palabras: ñemuhára, ñande, ñu. La vocal que la toca ya suena nasal por ella, y por eso se escribe sin ~: kuña, no «kuñã». No hay pares mínimos seguros: son palabras para contrastar, unas con ~ y otras sin ~.",
+     "note": "La ñ suena como en castellano, y en guaraní también empieza muchas palabras: ñemuhára, ñande, ñu. La vocal que la toca ya suena nasal por ella, y por eso se escribe sin ~: kuña, no «kuñã». Los pares de hoy son palabras para contrastar, unas con ~ y otras sin ~.",
      "pairs": [
       [
        "kuña",
@@ -1970,7 +1970,7 @@
         "rule": "Og̃uahẽ{pa} Ana? · Rejú{pa} ko pyhare?"
        },
        {
-        "pos": "-pa no se lleva el acento. Si la vocal tónica deja de ser la última, se escribe la tilde; sobre una vocal con ~ no se agrega nada",
+        "pos": "-pa no se lleva el acento. Si la vocal del acento deja de ser la última, se escribe la tilde; sobre una vocal con ~ no se agrega nada",
         "rule": "nde → ndé{pa} · reju → rejú{pa} · og̃uahẽ → og̃uahẽ{pa}"
        }
       ],
@@ -2258,7 +2258,7 @@
       "why": [
        "Rasy es la forma que va con che- y nde-, como réra en che réra y nde réra: cherasy. Para otra persona, nde ru, va h-: hasy, como héra.",
        "-pa no va delante ni suelto: es un sufijo y se pega al final de la palabra que preguntás, Hasýpa.",
-       "Vicente pregunta por hasy, «está enfermo», y -pa va pegado a esa palabra: Hasýpa nde ru?, «¿está enfermo tu papá?». Hasy termina en y tónica; con -pa esa y ya no es la última vocal y se escribe la tilde: hasýpa.",
+       "Vicente pregunta por hasy, «está enfermo», y -pa va pegado a esa palabra: Hasýpa nde ru?, «¿está enfermo tu papá?». Hasy lleva el acento en la y final; con -pa esa y ya no es la última vocal y se escribe la tilde: hasýpa.",
        "Ikane'õpa pregunta si está cansado, y Vicente quiere saber si está enfermo: hasy."
       ]
      },
@@ -2436,7 +2436,7 @@
      "letters": [
       "g̃"
      ],
-     "note": "La g̃ es la g suave de «agua» con el aire saliendo también por la nariz: og̃uahẽ, ko'ág̃a, ag̃aite. Los diarios escriben la g sin la ~ (oguahẽ) o pasan la ~ a la vocal (ko'ágã): son las mismas palabras, y acá las escribimos con g̃. No hay pares mínimos: compará la g sin nariz con la g̃ con nariz.",
+     "note": "La g̃ es la g suave de «agua» con el aire saliendo también por la nariz: og̃uahẽ, ko'ág̃a, ag̃aite. Los diarios escriben la g sin la ~ (oguahẽ) o pasan la ~ a la vocal (ko'ágã): son las mismas palabras, y acá las escribimos con g̃. Compará palabras con la g sin nariz y con la g̃ con nariz.",
      "pairs": [
       [
        "aguyje",
@@ -2646,7 +2646,7 @@
         "rule": "jagu{a} · kara{i} · terer{e} · Ypakara{i}"
        },
        {
-        "pos": "Si cae antes, se escribe la tilde en esa vocal, también en los diptongos",
+        "pos": "Si cae antes, se escribe la tilde en esa vocal, también si hay dos vocales juntas",
         "rule": "{ó}ga · jar{ý}i · purah{é}i · Paragu{á}i · mba'{é}ichapa"
        },
        {
@@ -2707,7 +2707,7 @@
         "parts": [
          [
           "purahéi",
-          "canción: pu-ra-HÉI, la tilde va en la e del diptongo"
+          "canción: pu-ra-HÉI, la tilde va en la e, no en la i"
          ],
          [
           "iporã",
@@ -2907,7 +2907,7 @@
        "Sin tilde, nahaniri se leería na-ha-ni-RI, como una aguda. El acento va en la segunda a, y por eso lleva tilde: nahániri.",
        "La tilde está, pero en otra vocal: mbo'éhara se leería mbo-'É-ha-ra. El acento va en la a de hára: mbo'ehára.",
        "Terá lleva la tilde en la última vocal, donde el guaraní no la escribe nunca, y así se leería te-RA. El acento va en la e: téra.",
-       "Purahéi se dice pu-ra-HÉI: el acento cae antes de la última vocal y se escribe la tilde, en la e del diptongo. Está bien."
+       "Purahéi se dice pu-ra-HÉI: el acento cae antes de la última vocal y se escribe la tilde, en la e. Está bien."
       ]
      },
      {
@@ -3056,7 +3056,7 @@
       "õ",
       "ĩ"
      ],
-     "note": "Una vocal con ~ nunca lleva tilde, ni cuando es la tónica: ahí la ~ marca también el acento, como en mitã, kane'õ y peteĩ. Con un sufijo que no se lleva el acento, la vocal oral recibe la tilde (ikatúpa) y la nasal queda como estaba (oĩpa, Tovatĩme). No son pares mínimos: cada par trae una palabra sola y la misma con sufijo.",
+     "note": "Una vocal con ~ nunca lleva tilde, ni cuando es la tónica: ahí la ~ marca también el acento, como en mitã, kane'õ y peteĩ. Con un sufijo que no se lleva el acento, la vocal oral recibe la tilde (ikatúpa) y la nasal queda como estaba (oĩpa, Tovatĩme). Cada par trae una palabra sola y la misma con sufijo.",
      "pairs": [
       [
        "ikatu",
@@ -3455,7 +3455,7 @@
       "g̃",
       "ẽ"
      ],
-     "note": "Lo de la semana, en cuatro pares de palabras para contrastar: no son pares mínimos. La ch de chey'uhéi suena más bien como «sh»; avy'a, sin ninguna marca, lleva el acento al final, y ko'ág̃a lo lleva donde está la tilde. Junto a la ñ la vocal va sin ~ (kuña), y og̃uahẽ lleva la g̃, la g con nariz, y una ẽ cuya ~ marca también el acento.",
+     "note": "Lo de la semana, en cuatro pares de palabras para contrastar. La ch de chey'uhéi suena más bien como «sh»; avy'a, sin ninguna marca, lleva el acento al final, y ko'ág̃a lo lleva donde está la tilde. Junto a la ñ la vocal va sin ~ (kuña), y og̃uahẽ lleva la g̃, la g con nariz, y una ẽ cuya ~ marca también el acento.",
      "pairs": [
       [
        "y'uhéi",

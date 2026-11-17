@@ -10,7 +10,7 @@
           { "pos": "-pa va pegado a la palabra que preguntás, que suele ir primera. Con nde queda Ndépa, como en la unidad 1", "rule": "Ndé{pa} pohanohára?" },
           { "pos": "Con un estado, va en el estado. La persona puede ir después, como acá, o primero, como en Nde sy oñe'ẽpa guaraníme? (unidad 1)", "rule": "Ikane'õ{pa} nde ru?" },
           { "pos": "Con una acción, en el verbo, como en la unidad 1", "rule": "Og̃uahẽ{pa} Ana? · Rejú{pa} ko pyhare?" },
-          { "pos": "-pa no se lleva el acento. Si la vocal tónica deja de ser la última, se escribe la tilde; sobre una vocal con ~ no se agrega nada", "rule": "nde → ndé{pa} · reju → rejú{pa} · og̃uahẽ → og̃uahẽ{pa}" }
+          { "pos": "-pa no se lleva el acento. Si la vocal del acento deja de ser la última, se escribe la tilde; sobre una vocal con ~ no se agrega nada", "rule": "nde → ndé{pa} · reju → rejú{pa} · og̃uahẽ → og̃uahẽ{pa}" }
         ],
         "examples": [
           {
@@ -113,7 +113,7 @@
         "why": [
           "Rasy es la forma que va con che- y nde-, como réra en che réra y nde réra: cherasy. Para otra persona, nde ru, va h-: hasy, como héra.",
           "-pa no va delante ni suelto: es un sufijo y se pega al final de la palabra que preguntás, Hasýpa.",
-          "Vicente pregunta por hasy, «está enfermo», y -pa va pegado a esa palabra: Hasýpa nde ru?, «¿está enfermo tu papá?». Hasy termina en y tónica; con -pa esa y ya no es la última vocal y se escribe la tilde: hasýpa.",
+          "Vicente pregunta por hasy, «está enfermo», y -pa va pegado a esa palabra: Hasýpa nde ru?, «¿está enfermo tu papá?». Hasy lleva el acento en la y final; con -pa esa y ya no es la última vocal y se escribe la tilde: hasýpa.",
           "Ikane'õpa pregunta si está cansado, y Vicente quiere saber si está enfermo: hasy."
         ]
       },
@@ -236,7 +236,7 @@
     "sound": {
       "focus": "La g̃: una g con nariz",
       "letters": ["g̃"],
-      "note": "La g̃ es la g suave de «agua» con el aire saliendo también por la nariz: og̃uahẽ, ko'ág̃a, ag̃aite. Los diarios escriben la g sin la ~ (oguahẽ) o pasan la ~ a la vocal (ko'ágã): son las mismas palabras, y acá las escribimos con g̃. No hay pares mínimos: compará la g sin nariz con la g̃ con nariz.",
+      "note": "La g̃ es la g suave de «agua» con el aire saliendo también por la nariz: og̃uahẽ, ko'ág̃a, ag̃aite. Los diarios escriben la g sin la ~ (oguahẽ) o pasan la ~ a la vocal (ko'ágã): son las mismas palabras, y acá las escribimos con g̃. Compará palabras con la g sin nariz y con la g̃ con nariz.",
       "pairs": [
         ["aguyje", "gracias", "ag̃aite", "enseguida"],
         ["jagua", "perro", "og̃uahẽ", "llega"],

@@ -742,7 +742,7 @@ async function partA4(page) {
   h = await look(page, 'Today → Main', { expect: 'Main', shot: 'A28-main-day1-stamped' });
   check((await page.locator('#gn-stage a[aria-label="Día 1, sellado. Abrilo de nuevo"]').count()) === 1, 'Main: day 1 is stamped', await controls(page));
   /* one session a day: day 2 is dated tomorrow, and opens now as "el próximo" */
-  check((await page.locator('#gn-stage a[aria-label="Día 2, el próximo. Abrí el día"]').count()) === 1 && await has(page, 'Pronombres: ñande y ore') && await has(page, 'SIGUIENTE'), 'Main: day 2 (dated tomorrow) is the next one, and its card leads there', await controls(page));
+  check((await page.locator('#gn-stage a[aria-label="Día 2, el próximo. Abrí el día"]').count()) === 1 && await has(page, 'Decir quién: che, nde, ñande, ore') && await has(page, 'SIGUIENTE'), 'Main: day 2 (dated tomorrow) is the next one, and its card leads there', await controls(page));
   check((await page.locator('#gn-stage a[aria-label="Nivel A1, cambiar de nivel"]').textContent()).trim() === 'A1' && (await text(page)).includes(' 1 '), 'Main: the stamp count shows 1', (await text(page)).slice(0, 80));
 }
 

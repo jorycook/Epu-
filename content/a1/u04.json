@@ -454,7 +454,7 @@
       "éi",
       "ái"
      ],
-     "note": "Jarýi, ramói y Paraguái terminan en dos vocales, y el acento va en la primera: como no es la última vocal de la palabra, lleva tilde. Sin tilde, el acento cae en la i del final, como en karai y en Ypakarai. No hay pares mínimos seguros: los dos primeros pares contrastan una palabra sin tilde con una que la lleva, y el tercero trae las dos de hoy.",
+     "note": "Jarýi, ramói y Paraguái terminan en dos vocales, y el acento va en la primera: como no es la última vocal de la palabra, lleva tilde. Sin tilde, el acento cae en la i del final, como en karai y en Ypakarai. Los dos primeros pares contrastan una palabra sin tilde con una que la lleva, y el tercero trae las dos de hoy.",
      "pairs": [
       [
        "Ypakarai",
@@ -1199,7 +1199,7 @@
      "letters": [
       "é"
      ],
-     "note": "Una palabra lleva una sola tilde de acento, y -kuéra se queda con él: la de la raíz desaparece (óga pasa a ogakuéra y túva pasa a tuvakuéra). La ~ es otra marca: dice que la vocal es nasal, y por eso se queda aunque el acento vaya a la é: mitã pasa a mitãnguéra. No hay pares mínimos seguros de acento: son palabras para contrastar, en singular y en plural.",
+     "note": "Una palabra lleva una sola tilde de acento, y -kuéra se queda con él: la de la raíz desaparece (óga pasa a ogakuéra y túva pasa a tuvakuéra). La ~ es otra marca: dice que la vocal es nasal, y por eso se queda aunque el acento vaya a la é: mitã pasa a mitãnguéra. Los pares de hoy son palabras para contrastar, en singular y en plural.",
      "pairs": [
       [
        "óga",
@@ -1626,7 +1626,7 @@
        }
       ],
       "watch": {
-       "note": "El plural del demostrativo no se hace con -kuéra: es otra palabra. Y el sustantivo puede quedar como está: ko'ã mitã, «estos chicos».",
+       "note": "El plural de ko, pe y amo no se hace con -kuéra: son otras palabras. Y el sustantivo puede quedar como está: ko'ã mitã, «estos chicos».",
        "bad": "kokuéra mitã",
        "good": "ko'ã mitã"
       }
@@ -1799,7 +1799,7 @@
       "hint": "Ko'ã va delante del sustantivo, como ko. Ha, «y», une las dos partes.",
       "full": "{Ko'ã} jagua ha umi mbarakaja iporã.",
       "es": "Estos perros y esos gatos son lindos.",
-      "explain": "Ko'ã, «estos», va delante de jagua: ko'ã jagua, «estos perros». Después ha, «y», une con umi mbarakaja, «esos gatos». El demostrativo va siempre primero, y el sustantivo queda sin -kuéra: ko'ã y umi ya dicen que son varios."
+      "explain": "Ko'ã, «estos», va delante de jagua: ko'ã jagua, «estos perros». Después ha, «y», une con umi mbarakaja, «esos gatos». Ko'ã y umi van siempre primero, y el sustantivo queda sin -kuéra: ya dicen que son varios."
      }
     ],
     "exam": [
@@ -1853,7 +1853,7 @@
       ],
       "full": "Umi kavaju ha ko'ã vaka oĩ korapýpe.",
       "es": "Esos caballos y estas vacas están en el patio.",
-      "explain": "Umi, «esos», va delante de kavaju: umi kavaju, «esos caballos». Después ha, «y», une con ko'ã vaka, «estas vacas». El demostrativo va siempre primero, y el sustantivo queda sin -kuéra: umi y ko'ã ya dicen que son varios. Oĩ korapýpe: están en el patio."
+      "explain": "Umi, «esos», va delante de kavaju: umi kavaju, «esos caballos». Después ha, «y», une con ko'ã vaka, «estas vacas». Umi y ko'ã van siempre primero, y el sustantivo queda sin -kuéra: ya dicen que son varios. Oĩ korapýpe: están en el patio."
      }
     ]
    },
@@ -1866,7 +1866,7 @@
      "letters": [
       "v"
      ],
-     "note": "La v del guaraní no es la b ni la v del castellano: el labio de abajo roza los dientes, sin fuerza, como en yvyra y túva. Vaka y kavaju vienen del castellano y se escriben a la guaraní, con v donde «caballo» lleva b; como no llevan tilde, el acento va al final: va-KA, ka-va-JU. No hay pares mínimos seguros con v: son palabras para contrastar.",
+     "note": "La v del guaraní no es la b ni la v del castellano: el labio de abajo roza los dientes, sin fuerza, como en yvyra y túva. Vaka y kavaju vienen del castellano y se escriben a la guaraní, con v donde «caballo» lleva b; como no llevan tilde, el acento va al final: va-KA, ka-va-JU. Los pares de hoy son palabras para contrastar.",
      "pairs": [
       [
        "vaka",
@@ -2049,7 +2049,7 @@
         "rule": "{Mávapa} ha'e?"
        },
        {
-        "pos": "Con los demostrativos del día 3: ko, pe, amo",
+        "pos": "Con ko, pe y amo, del día 3",
         "rule": "{Mávapa} pe karai? · {Mávapa} ko mitã?"
        },
        {
@@ -2508,7 +2508,7 @@
       "ku",
       "gu"
      ],
-     "note": "En castellano la u de «que», «qui», «gue» y «gui» no suena; en guaraní la u suena siempre. Kuimba'e empieza como «cuidar», y -gui y -nguéra se dicen como con diéresis: «güi», «ngüéra». No hay pares mínimos seguros: son palabras para contrastar, y la segunda de cada par lleva ku o gu antes de otra vocal.",
+     "note": "En castellano la u de «que», «qui», «gue» y «gui» no suena; en guaraní la u suena siempre. Kuimba'e empieza como «cuidar», y -gui y -nguéra se dicen como con diéresis: «güi», «ngüéra». Los pares de hoy son palabras para contrastar, y la segunda de cada par lleva ku o gu antes de otra vocal.",
      "pairs": [
       [
        "kuña",
@@ -3166,7 +3166,7 @@
      "letters": [
       "k"
      ],
-     "note": "La k escribe siempre el mismo sonido, el de la c de «casa» y la qu de «queso»: kesu, kamby, mokõi. La c sola y la q no son letras del guaraní, y por eso queso se escribe kesu. No hay pares mínimos seguros: son palabras para contrastar, con la k delante de vocales distintas.",
+     "note": "La k escribe siempre el mismo sonido, el de la c de «casa» y la qu de «queso»: kesu, kamby, mokõi. La c sola y la q no son letras del guaraní, y por eso queso se escribe kesu. Los pares de hoy son palabras para contrastar, con la k delante de vocales distintas.",
      "pairs": [
       [
        "kesu",
@@ -3581,7 +3581,7 @@
       "gu",
       "k"
      ],
-     "note": "La tilde va en la vocal del acento cuando no es la última (ramói). -kuéra y -nguéra se llevan el acento y la tilde de la raíz desaparece (ogakuéra); con -pa, -pe o -gui el acento se queda en la raíz (Mba'épa, ógape, ógagui). La u siempre suena, también en -gui y -kuéra; vaka va con v y con k, y kesu con k, sin c ni qu: son palabras para contrastar, no pares mínimos.",
+     "note": "La tilde va en la vocal del acento cuando no es la última (ramói). -kuéra y -nguéra se llevan el acento y la tilde de la raíz desaparece (ogakuéra); con -pa, -pe o -gui el acento se queda en la raíz (Mba'épa, ógape, ógagui). La u siempre suena, también en -gui y -kuéra; vaka va con v y con k, y kesu con k, sin c ni qu: son palabras para contrastar.",
      "pairs": [
       [
        "karai",

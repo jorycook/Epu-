@@ -235,7 +235,7 @@
     "sound": {
       "focus": "La ñ, sin ~ al lado: kuña, ñemuhára",
       "letters": ["ñ"],
-      "note": "La ñ suena como en castellano, y en guaraní también empieza muchas palabras: ñemuhára, ñande, ñu. La vocal que la toca ya suena nasal por ella, y por eso se escribe sin ~: kuña, no «kuñã». No hay pares mínimos seguros: son palabras para contrastar, unas con ~ y otras sin ~.",
+      "note": "La ñ suena como en castellano, y en guaraní también empieza muchas palabras: ñemuhára, ñande, ñu. La vocal que la toca ya suena nasal por ella, y por eso se escribe sin ~: kuña, no «kuñã». Los pares de hoy son palabras para contrastar, unas con ~ y otras sin ~.",
       "pairs": [
         ["kuña", "mujer", "mitã", "niño, niña"],
         ["ñu", "campo", "irũ", "compañero, compañera"],

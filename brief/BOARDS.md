@@ -100,7 +100,11 @@ level rosette (rings = units done). Stamp card of 7 slots (✓ stamps; test slot
 is full to its last node). Path nodes: done ✓
 stamp (accent ring), today (indigo 68 px, day number), locked (padlock), test (stopwatch, gold when ready). Labels:
 "Día 4" + the day title (14px; allow 2 lines, `overflow-wrap: anywhere`); test "Prueba de la semana" + "formato de examen".
-Callout kicker "HOY · 3 LECCIONES" (or "SIGUIENTE"), title, "Empezar". Tabs: Camino (Main) · Cuaderno (Notebook) · Examen
+Callout kicker "HOY · 3 LECCIONES" (or "SIGUIENTE"), title, "Empezar". A day's title is Spanish that may quote Guarani
+("Más de uno: ogakuéra, mitãnguéra"): in the labels and in the callout it is drawn in the pieces of `C.mixed(title)`, the
+words that can only be Guarani in `<span lang="gn">`, and all the pieces inside one `<span>`, so the clamped box
+(`display: -webkit-box`) keeps a single child; the label's line count and the callout's height are still reckoned from the
+whole title (`C.ems`), which the pieces spell letter for letter. Tabs: Camino (Main) · Cuaderno (Notebook) · Examen
 (ExamTab) · Progreso (Progress). Designed moment: SAMPLE.
 What the callout adds (it grows upward, over the days done, so the labels of the days to come stay in view; the nodes
 sit on top of it where they meet):
@@ -128,7 +132,7 @@ with study (accent disc), a day of return (teal ring, up arrow), a day missed (g
 indigo), a day before the app kept days (a faint dot: nothing is claimed).
 
 **Today**: Yaoki's layout. Header "Semana 1 · Día 4" (derive from `app.session`, not the id). Kicker "HOY · TRES LECCIONES",
-h1 the day title, sub "Aprendé la regla, practicala con ayuda y después respondé como en el examen." Cards:
+h1 the day title (in the pieces of `C.mixed`, its Guarani words in `<span lang="gn">`, as on the week path), sub "Aprendé la regla, practicala con ayuda y después respondé como en el examen." Cards:
 1 Gramática (tile 46×46 indigo tint with "-pa" in Andika 700? no: a short glyph-free icon is clearer: the grammar tile shows
 the day's first form, e.g. "-pa", in Andika 700 18px), "Gramática · 2 formas", the points' forms as title; pills Aprender ·
 Practicar · Examen (done ✓ teal / now indigo / todo); CTAs "Empezar con la regla" / "Seguir con la práctica" / "Al examen".
