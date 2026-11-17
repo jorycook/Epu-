@@ -28,8 +28,13 @@
 //      the tap, outside every live region; what it means said once a visit), a clip really playing and its control
 //      back at rest, Listening's status line and the notebook's play card naming the speaker by the clip's cues, the
 //      clips the voice must not say and their written stand-ins, Progreso's page that explains the voice and its
-//      switch (saved with the progress, off: every screen shows its stand-in). A build without sound files runs the
-//      silent half.
+//      switch (saved with the progress, off: every screen shows its stand-in and says the voice is off). Then what a
+//      review of the voice found: the words lesson's note belongs to the word it is true of (a silent word, a word
+//      with a clip, the silent one again); a sound file held back by this test's own server, on each of the eight
+//      screens that play clips (while it is on its way the control waits, gives nothing away and no clock runs; when
+//      it arrives; when it could not be fetched, or was too long in coming); what the offline worker has stored once
+//      there is a plan and once the learner moves on to the next unit (never the whole level); what every screen says
+//      when the learner has turned the voice off. A build without sound files runs the silent half.
 //   S  the app around the screens: an Android phone's way in (the install page, the browser's own question); the system's
 //      back (it does what the screen's own X or arrow does, and leaves from the week path; on every routed screen and
 //      in a round or an exam under way it is compared with a tap on that control; pressed three times in a row where
@@ -81,6 +86,11 @@ const check = (cond, what, evidence) => { if (ok(cond, what, evidence)) pass(wha
 
 /* ---------- the site, served as GitHub Pages serves it: every file as it is, 404 for anything else ---------- */
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.woff2': 'font/woff2', '.png': 'image/png', '.webmanifest': 'application/manifest+json', '.txt': 'text/plain; charset=utf-8', '.json': 'application/json' };
+/* what the server does to chosen files, for part V: hold (a pattern) keeps every answer to a matching file back until
+   release() is called (a sound file «on its way», for as long as a check needs: no timing to hope for); fail (a
+   pattern) answers 503 (a file that cannot be fetched); hits is every path asked for */
+const net = { hold: null, fail: null, waiting: [], hits: [] };
+const release = () => { net.hold = null; net.waiting.splice(0).forEach((send) => send()); };
 function serve() {
   return new Promise((done, fail) => {
     const server = http.createServer((req, res) => {
@@ -88,8 +98,15 @@ function serve() {
       if (p.endsWith('/')) p += 'index.html';
       const f = path.join(DIR, p);
       if (!f.startsWith(DIR) || !fs.existsSync(f) || !fs.statSync(f).isFile()) { res.writeHead(404, { 'Content-Type': 'text/plain' }); res.end('not found'); return; }
-      res.writeHead(200, { 'Content-Type': TYPES[path.extname(f)] || 'application/octet-stream', 'Cache-Control': 'no-cache' });
-      fs.createReadStream(f).pipe(res);
+      net.hits.push(p);
+      if (net.fail && net.fail.test(p)) { res.writeHead(503, { 'Content-Type': 'text/plain', 'Cache-Control': 'no-store' }); res.end('unavailable'); return; }
+      const send = () => {
+        if (res.destroyed) return;
+        res.writeHead(200, { 'Content-Type': TYPES[path.extname(f)] || 'application/octet-stream', 'Cache-Control': 'no-cache' });
+        fs.createReadStream(f).pipe(res);
+      };
+      if (net.hold && net.hold.test(p)) net.waiting.push(send);
+      else send();
     });
     server.on('error', fail);
     server.listen(+(process.env.PORT || 0), '127.0.0.1', () => done(server));
@@ -104,10 +121,13 @@ const problems = [];
 async function newPage(ctx, label) {
   const page = await ctx.newPage();
   page.__label = label;
-  page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') problems.push({ part, page: label, what: m.type() + ': ' + m.text().slice(0, 300) }); });
-  page.on('pageerror', (e) => problems.push({ part, page: label, what: 'pageerror: ' + String(e).slice(0, 300) }));
-  page.on('response', (r) => { if (r.status() >= 400) problems.push({ part, page: label, what: 'HTTP ' + r.status() + ' ' + r.url() }); });
-  page.on('requestfailed', (r) => problems.push({ part, page: label, what: 'request failed ' + r.url() + ' ' + ((r.failure() && r.failure().errorText) || '') }));
+  /* page.__expect (a pattern): what a check has arranged itself and is not a problem (part V refuses a sound file on
+     purpose: the 503, and the browser's line about it) */
+  const noted = (what) => { if (!(page.__expect && page.__expect.test(what))) problems.push({ part, page: label, what }); };
+  page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') noted(m.type() + ': ' + m.text().slice(0, 300)); });
+  page.on('pageerror', (e) => noted('pageerror: ' + String(e).slice(0, 300)));
+  page.on('response', (r) => { if (r.status() >= 400) noted('HTTP ' + r.status() + ' ' + r.url()); });
+  page.on('requestfailed', (r) => noted('request failed ' + r.url() + ' ' + ((r.failure() && r.failure().errorText) || '')));
   /* a day other than today, kept for the tab across reloads (the course reads window.__gnNow, see gn-course.js C.now) */
   await page.addInitScript(() => { try { const t = sessionStorage.getItem('flows.now'); if (t) window.__gnNow = +t; } catch (e) {} });
   return page;
@@ -2189,6 +2209,9 @@ async function partS(browser) {
     await tap(page, { aria: 'Volver al camino de la semana' }, 400);
     await tap(page, { sel: '#gn-stage nav a:has-text("Progreso")' }, 800);
     check(/Cargando…/.test(await noticeOf(page)) && (await control(page, 'Tapykue · Volver').count()) === 0, 'a screen asked for before it is in gets a waiting note in its place', await noticeOf(page));
+    /* …and lets the sound go: the learner is on the way to a screen of the later file, and the sound of the lesson
+       should not set out only when that file is in (a tester met a lesson up for seconds before its sound was asked for) */
+    if (hasSound) check(sound.length === 1 && /^gn-sound-a1-u01\.js$/.test(sound[0]), 'a screen of the later file asked for sooner lets the unit\'s sound go at once: its file is asked for now, without waiting for the later screens', sound);
     /* on a connection that stalls the note offers the way back after a few seconds (an app from the Home Screen has no
        back of its own); the file is not asked for again */
     await page.waitForTimeout(5000);
@@ -2204,7 +2227,7 @@ async function partS(browser) {
     check((await screenOf(page)) === 'Progress' && /^h1:/.test(await focusOf(page)) && asked === 1, 'once the file is in, the screen shows, its heading in focus; the file was asked for once', { on: await screenOf(page), focus: await focusOf(page), asked });
     if (hasSound) {
       await page.waitForFunction(() => !!window.__gnClips && Object.keys(window.__gnClips).length > 0, null, { timeout: 8000 }).catch(() => {});
-      check(sound.length === 1 && /^gn-sound-a1-u01\.js$/.test(sound[0]), 'then the unit\'s sound file is asked for, once', sound);
+      check(sound.length === 1 && /^gn-sound-a1-u01\.js$/.test(sound[0]), 'the unit\'s sound file was asked for once in all, and its clips are in', sound);
     }
     /* a visit on which the file cannot be fetched */
     fail = true;
@@ -2477,8 +2500,17 @@ async function partV(browser) {
     const r = el.getBoundingClientRect();
     return { x: Math.round(r.x), y: Math.round(r.y), w: Math.round(r.width), h: Math.round(r.height), live: !!el.closest('[aria-live], [role="status"], [role="alert"]'), px: getComputedStyle(el).fontSize, near: (el.parentElement.parentElement.textContent || '').replace(/\s+/g, ' ').slice(0, 60) };
   }));
-  /* what the live regions say of the voice (the note, once a visit) */
-  const notes = (page) => page.evaluate(() => [...document.querySelectorAll('#gn-stage [aria-live]')].map((el) => (el.textContent || '').trim()).filter((t) => /Voz sintética:/.test(t)));
+  /* what the live regions say of the voice (the note, once a visit). The shell empties its region a few seconds after
+     the note, so every change of it is written down from the page's start (VOZ, an init script) and «said once» is
+     counted: notes() is every time the note was put in a live region, vozLog() every change, the emptying too */
+  const VOZ = () => {
+    window.__voz = [];
+    let last = '';
+    const look = () => { const t = [...document.querySelectorAll('[aria-live]')].map((e) => (e.textContent || '').trim()).filter((x) => /^Voz sintética:/.test(x)).join(' | '); if (t !== last) { last = t; window.__voz.push(t); } };
+    new MutationObserver(look).observe(document, { subtree: true, childList: true, characterData: true });
+  };
+  const notes = (page) => page.evaluate(() => (window.__voz || []).filter(Boolean));
+  const vozLog = (page) => page.evaluate(() => (window.__voz || []).slice());
   const clipIn = (page, key) => page.waitForFunction((k) => !!(window.__gnClips && window.__gnClips[k]), key, { timeout: 15000 }).then(() => true, () => false);
   const player = (page, key) => page.evaluate(async (k) => {
     const s = window.gnSound;
@@ -2492,6 +2524,7 @@ async function partV(browser) {
 
   part = 'V1 the tag «voz sintética»';
   let ctx = await phone(browser);
+  await ctx.addInitScript(VOZ);
   let page = await newPage(ctx, 'voice: the screens');
   await go(page, '?gntest&screen=Teach&level=A1&cur=a1u01d1');
   const sound = await page.evaluate(() => (window.__gnSoundFiles || []).length > 0);
@@ -2501,7 +2534,8 @@ async function partV(browser) {
     check(await clipIn(page, 'a1u01d1.p1.x0'), 'Teach: the unit\'s sound arrives (the first example has its clip)');
     let t = await tags(page);
     check(t.length === 1 && !t[0].live && /Ejemplos/.test(t[0].near) && parseFloat(t[0].px) >= 11, 'Teach: the examples card carries the tag «voz sintética» before anything is tapped, outside any live region', t);
-    check((await notes(page)).length === 1, 'the note that says what the tag means is in one live region, the shell\'s', await notes(page));
+    await page.waitForFunction(() => (window.__voz || []).some(Boolean), null, { timeout: 3000 }).catch(() => {});
+    check((await notes(page)).length === 1 && !/\|/.test((await notes(page))[0]), 'the note that says what the tag means is in one live region, the shell\'s', await notes(page));
     const noteWas = (await notes(page))[0];
     await tap(page, { aria: 'Escuchar el ejemplo 1' }, 350);
     let p = await player(page, 'a1u01d1.p1.x0');
@@ -2516,6 +2550,14 @@ async function partV(browser) {
     t = await tags(page);
     const said = await notes(page);
     check(t.length === 1 && said.length === 1 && said[0] === noteWas, 'more taps add no tag and say nothing new: the note is said once, not at every tap', { t, said });
+    /* said, the note does not stay in the page for a screen reader to come upon at the end of every later screen: the
+       region is emptied a few seconds later, and a tap after that does not bring it back */
+    await page.waitForFunction(() => window.__voz.length >= 2 && window.__voz[window.__voz.length - 1] === '', null, { timeout: 12000 }).catch(() => {});
+    await tap(page, { aria: 'Escuchar el ejemplo 1' }, 300);
+    await tap(page, { aria: 'Escuchar el ejemplo 1' }, 200);
+    const log = await vozLog(page);
+    const left = await page.evaluate(() => [...document.querySelectorAll('#gn-stage [aria-live]')].filter((el) => /Voz sintética:/.test(el.textContent || '')).length);
+    check(log.filter(Boolean).length === 1 && log[log.length - 1] === '' && left === 0, 'a few seconds after it was said the shell\'s live region is empty again, and stays so at the next tap', log.map((x) => x.slice(0, 20)));
     await shot(page, 'V01-teach-tag');
 
     /* Words: a tag on each pair that plays, on the scene's word, and under «Escuchar» in the spelling pad */
@@ -2557,6 +2599,11 @@ async function partV(browser) {
     const playBox = await control(page, { aria: 'Reproducir el audio' }).boundingBox();
     check(t.length === 1 && !t[0].live && /Tocá el botón para escuchar/.test(t[0].near) && playBox && Math.abs(t[0].y - playBox.y) < 80, 'Listening: the tag stands at the end of the status line, beside the play button, before the first play', { t, playBox });
     check(Array.isArray(lis.cues) && lis.cues.length === lis.who.length, 'Listening: the clip carries a cue for each of its lines', lis);
+    /* «Más despacio 0.8×» is shut where the clip has no slower take (the voice has one for one lesson only): it must not
+       read as if the lesson's audio were missing */
+    const slowTake = await page.evaluate(() => window.gnSound.has('a1u01d1.r1.slow'));
+    const lisText = await text(page);
+    check(slowTake || (/Más despacio 0\.8×\s*Todavía no hay versión lenta/.test(lisText) && !/no está grabado/.test(lisText)), 'Listening: «Más despacio», shut for a lesson whose clip has no slower take, says exactly that («Todavía no hay versión lenta»), not that something is not recorded', lisText.slice(0, 320));
     await tap(page, { aria: 'Reproducir el audio' }, 0);
     const samples = await page.evaluate(async (ms) => {
       const play = document.querySelector('#gn-stage [aria-label="Reproducir el audio"]');
@@ -2691,6 +2738,19 @@ async function partV(browser) {
   check(/vocales nasales/.test(sheet) && /una sola voz/.test(sheet) && /nombres y los números en castellano/.test(sheet), 'and what it does badly: the nasal vowels (their pairs stay silent), one voice for both speakers of a dialogue, Spanish names and numbers', sheet.slice(200, 560));
   check(/quedan en silencio a propósito/.test(sheet) && /todavía no está grabado/.test(sheet) && /grabaciones de hablantes nativos van a reemplazar/.test(sheet) && /CC BY-NC 4\.0/.test(sheet), 'and that some words wait in silence for a person\'s recording, that recordings will replace the voice, and its licence', sheet.slice(500));
   check(/MB/.test(sheet), 'and what the sound weighs', sheet.slice(600));
+  /* what the review of the voice asked the sheet for: the sounds sound/VOICE.md marks «in part» or «not» besides the
+     nasal vowels, in a learner's words; the sheet still fitting without a scroll; and the whole text of the licences,
+     one step away and one step back */
+  check(/A veces falla en la sílaba fuerte, en el puso \('\) después de o, u, y, y en la r al empezar una palabra\./.test(sheet), 'and what else it does badly: the stressed syllable, the puso after o, u and y, the r that opens a word', sheet.slice(200, 640));
+  const fit = await page.evaluate(() => { const d = document.querySelector('#gn-stage [role="dialog"]'); const r = d.getBoundingClientRect(); return { scroll: d.scrollHeight, client: d.clientHeight, top: Math.round(r.top), bottom: Math.round(r.bottom), vh: innerHeight }; });
+  check(fit.scroll <= fit.client + 1 && fit.top >= 0 && fit.bottom <= fit.vh + 1, 'the sheet shows whole, with nothing to scroll', fit);
+  await tap(page, { aria: 'Ver el texto de las licencias' }, 900);
+  const licText = (await page.locator('#gn-stage [role="dialog"]').textContent()).replace(/\s+/g, ' ');
+  check(/^\s*Licencias/.test(licText) && /MMS-TTS/.test(licText) && /CC BY-NC 4\.0/.test(licText) && /creativecommons\.org\/licenses\/by-nc\/4\.0/.test(licText) && /Open Font License/.test(licText) && /Volver/.test(licText), '«Licencias», beside the credit, shows the whole text of the app\'s licences in the sheet: the voice\'s credit with its addresses, the typefaces\' licence', licText.slice(0, 160));
+  await shot(page, 'V10b-voice-licences');
+  await sysBack(page);
+  const backTo = await page.evaluate(() => { const d = document.querySelector('#gn-stage [role="dialog"]'); return d ? d.querySelector('h2').textContent : null; });
+  check(backTo === 'Voz sintética' && (await screenOf(page)) === 'Progress', 'the system\'s back from the licences leads one step back, to the sheet (not out of it, not out of the app)', backTo);
   const sw = page.locator('#gn-stage [role="dialog"] [role="switch"]');
   check((await sw.getAttribute('aria-checked')) === 'true' && /Usar la voz sintética/.test((await sw.textContent()) || ''), 'the switch «Usar la voz sintética» is on');
   await look(page, 'the voice sheet', { expect: 'Progress', shot: 'V10-voice-sheet' });
@@ -2706,7 +2766,9 @@ async function partV(browser) {
   await tap(page, 'Empezar con la regla', 700);
   check((await tags(page)).length === 0, 'with the voice off, the Teach card carries no tag');
   await tap(page, { aria: 'Escuchar el ejemplo 1' }, 350);
-  check(await pressed(page, { aria: 'Escuchar el ejemplo 1' }) && (await has(page, 'Este audio todavía no está grabado.')), 'with the voice off, an example\'s button lights up in silence (the stand-in) and says the audio is not recorded yet', (await text(page)).slice(-260));
+  /* (this check asked for «Este audio todavía no está grabado.» here: true of a person's recording, but not the reason
+     this learner hears nothing; the review of the voice asked for the sentence to say the voice was turned off) */
+  check(await pressed(page, { aria: 'Escuchar el ejemplo 1' }) && (await has(page, 'Apagaste la voz sintética: la activás de nuevo en Progreso.')) && !(await has(page, 'no está grabado')), 'with the voice off, an example\'s button lights up in silence (the stand-in) and says the learner turned the voice off, and where it is turned on again', (await text(page)).slice(-260));
   await shot(page, 'V11-teach-voice-off');
   await reload(page);
   s = await saved(page);
@@ -2725,6 +2787,470 @@ async function partV(browser) {
   await clipIn(page, 'a1u01d1.p1.x0');
   await page.waitForTimeout(300);
   check((await tags(page)).length === 1, 'and the tag is back on the Teach card', await tags(page));
+  await ctx.close();
+  await partVmore(browser, { iso, tags, notes, VOZ, clipIn, plan, mistake });
+}
+
+/* ---------- V, the rest: what a review of the voice in the app found, each as the check that would have caught it ---------- */
+async function partVmore(browser, h) {
+  const { tags, notes, VOZ, clipIn, plan, mistake } = h;
+  const U1 = /\/gn-sound-a1-u01\.js$/;
+  const stateOf = (page, key) => page.evaluate((k) => window.gnCourse.soundState(k), key);
+  const until = (page, key, st, ms) => page.waitForFunction(([k, s]) => window.gnCourse.soundState(k) === s, [key, st], { timeout: ms || 8000 }).then(() => true, () => false);
+  /* what the live regions of the screen say (the shell's own, the waiting note of the later screens, is not the screen's) */
+  const lives = (page) => page.evaluate(() => [...document.querySelectorAll('#gn-stage [aria-live], #gn-stage [role="status"]')].map((el) => (el.textContent || '').replace(/\s+/g, ' ').trim()).filter(Boolean));
+  /* is sound coming out, and how far into its clip is the player? */
+  const playing = (page) => page.evaluate(async () => { const s = window.gnSound; s.on(); await new Promise((r) => setTimeout(r, 220)); return { at: s.at(), on: s.on() }; });
+  /* a screen opened by the test hook while the server holds a sound file back (mode 'hold': until release()) or
+     refuses it (mode 'fail'). The page is not waited for to finish loading: a file that is held back is part of that */
+  const open = async (url, file, mode, label) => {
+    net.hold = mode === 'hold' ? file : null;
+    net.fail = mode === 'fail' ? file : null;
+    const ctx = await phone(browser);
+    await ctx.addInitScript(VOZ);
+    const page = await newPage(ctx, 'voice: ' + label + (mode === 'fail' ? ', its sound file refused' : mode === 'hold' ? ', its sound file held back' : ''));
+    if (mode === 'fail') page.__expect = /503|Failed to load resource|gn-sound-/;
+    await page.goto(BASE + url, { waitUntil: 'domcontentloaded' });
+    await ready(page);
+    return { ctx, page };
+  };
+  const shutAll = async (ctx) => { release(); net.fail = null; await ctx.close(); };
+  const NOT = /no está grabado|Todavía no está grabado|todavía no tienen? audio/;
+  let ctx;
+  let page;
+  let t;
+
+  part = 'V4 the words lesson\'s note belongs to the word it is true of';
+  ({ ctx, page } = await open('?gntest&screen=Words&level=A1&cur=a1u01d1', null, '', 'the scene\'s words'));
+  await clipIn(page, 'a1u01d1.p1.x0');
+  /* a day of unit 1 whose scene has a word with a clip and a word without (asked of the player: the clips change) */
+  const scene = await page.evaluate(() => {
+    const C = window.gnCourse;
+    const S = window.gnSound;
+    for (const x of C.sessions()) {
+      if (x.unit !== 1 || !x.ready || x.kind === 'test') continue;
+      const w = (C.day(x.id).words || {}).words || [];
+      const loud = w.filter((y) => S.has(x.id + '.w.' + y.id));
+      const mute = w.filter((y) => !S.has(x.id + '.w.' + y.id));
+      if (loud.length && mute.length) return { sid: x.id, loud: loud[0].gn, mute: mute[0].gn, mute2: (mute[1] || mute[0]).gn, sound: !!(C.day(x.id).words.sound && C.day(x.id).words.sound.focus) };
+    }
+    return null;
+  });
+  check(!!scene, 'a day of unit 1 has, in one scene, a word with a clip and a word the voice does not say', scene);
+  if (scene) {
+    await go(page, '?gntest&screen=Words&level=A1&cur=' + scene.sid);
+    await clipIn(page, 'a1u01d1.p1.x0');
+    /* a silent pair first, where the day has one: its note used to be the lesson's only one */
+    if (scene.sound) {
+      const quiet = await page.evaluate(() => [...document.querySelectorAll('#gn-stage [aria-label^="Escuchar la palabra del par"]')].map((b) => b.getAttribute('aria-label')).filter((a, i) => { const card = document.querySelectorAll('#gn-stage [aria-label^="Escuchar la palabra del par"]')[i].parentElement.parentElement; return !/voz sintética/.test(card.textContent); }));
+      if (quiet.length) { await tap(page, { aria: quiet[0] }, 500); check(/Este audio todavía no está grabado\./.test(await text(page)), 'a pair without a clip, tapped first, says its audio is not recorded yet', quiet[0]); }
+      await tap(page, 'Siguiente: las palabras', 600);
+    }
+    const word = (gn) => ({ sel: `xpath=//*[@id="gn-stage"]//button[normalize-space(.)="${gn}"]` });
+    const card = async () => { const all = await text(page); return { note: /Este audio todavía no está grabado\./.test(all), tag: (await tags(page)).length, live: (await lives(page)).filter((l) => /grabado|Cargando|cargar/.test(l)) }; };
+    await tap(page, word(scene.mute), 350);
+    await tap(page, { aria: 'Escuchar la palabra' }, 350);
+    let c = await card();
+    check(c.note && c.tag === 0 && c.live.length === 1 && (await pressed(page, { aria: 'Escuchar la palabra' })), 'the scene: a word without a clip lights its speaker in silence and its card says the audio is not recorded yet, whatever was tapped before', c);
+    await tap(page, word(scene.loud), 350);
+    c = await card();
+    check(!c.note && c.tag === 1, 'another word is picked: the note goes with the word it was true of, and the word with a clip carries the tag', c);
+    await tap(page, { aria: 'Escuchar la palabra' }, 450);
+    c = await card();
+    const p = await playing(page);
+    check(!c.note && c.tag === 1 && p.at > 0, 'the word with a clip plays under its tag with no word about a missing recording on its card', { c, p });
+    await shot(page, 'V12-scene-word-with-clip');
+    await tap(page, word(scene.mute2), 350);
+    c = await card();
+    check(!c.note && c.tag === 0, 'a silent word picked again: its card says nothing until its speaker is tapped', c);
+    await tap(page, { aria: 'Escuchar la palabra' }, 350);
+    c = await card();
+    check(c.note && c.tag === 0, 'and says it again when it is: every silent word, not once a lesson', c);
+    await shot(page, 'V13-scene-silent-word');
+  }
+  await ctx.close();
+
+  part = 'V5 a sound file on its way, and one that could not be fetched';
+  /* Teach */
+  const EX = { aria: 'Escuchar el ejemplo 1' };
+  ({ ctx, page } = await open('?gntest&screen=Teach&level=A1&cur=a1u01d1', U1, 'hold', 'Teach'));
+  t = await text(page);
+  check((await stateOf(page, 'a1u01d1.p1.x0')) === 'coming' && /cargando el audio…/.test(t) && !NOT.test(t) && (await tags(page)).length === 0, 'Teach, the unit\'s sound still on its way: the card says «cargando el audio…» where the tag goes, and nothing says the audio is not recorded', t.slice(-220));
+  await tap(page, EX, 350);
+  t = await text(page);
+  check(!(await pressed(page, EX)) && (await lives(page)).includes('Cargando el audio…') && !NOT.test(t), 'Teach: a tapped example waits: nothing lights up, no stand-in runs, and its line says «Cargando el audio…», once, in a polite live region', await lives(page));
+  await shot(page, 'V14-teach-waiting');
+  release();
+  await clipIn(page, 'a1u01d1.p1.x0');
+  await page.waitForTimeout(500);
+  let pl = await playing(page);
+  t = await text(page);
+  check(pl.at > 0 && (await pressed(page, EX)) && (await tags(page)).length === 1 && !/[Cc]argando el audio/.test(t) && !NOT.test(t), 'Teach: when the file arrives the example that waited plays by itself, the tag stands where «cargando…» was, and no note is left', { pl, t: t.slice(-160) });
+  await shutAll(ctx);
+  ({ ctx, page } = await open('?gntest&screen=Teach&level=A1&cur=a1u01d1', U1, 'fail', 'Teach'));
+  await until(page, 'a1u01d1.p1.x0', 'failed');
+  await tap(page, EX, 350);
+  t = await text(page);
+  check((await pressed(page, EX)) && /No se pudo cargar el audio\./.test(t) && !NOT.test(t), 'Teach, the file could not be fetched: the example lights up in silence and says the audio could not be loaded, not that it is not recorded', t.slice(-200));
+  await shutAll(ctx);
+
+  /* Words: a sound pair, then the scene's word */
+  const PAIR = { aria: 'Escuchar la palabra del par 1' };
+  const pairOpts = (page) => page.evaluate(() => [...document.querySelector('#gn-stage [aria-label="Escuchar la palabra del par 1"]').parentElement.querySelectorAll('button[aria-disabled]')].map((b) => b.getAttribute('aria-disabled')));
+  const pairKey = (page) => page.evaluate(() => { const p = window.gnCourse.day('a1u01d1').words.sound.pairs[0]; return 'a1u01d1.s0' + (window.gnSpell.shuffle([0, 1], p[0] + '|' + p[2])[0] ? 'b' : 'a'); });
+  ({ ctx, page } = await open('?gntest&screen=Words&level=A1&cur=a1u01d1', U1, 'hold', 'Words'));
+  const PK = await pairKey(page);
+  t = await text(page);
+  check((await stateOf(page, PK)) === 'coming' && /cargando el audio…/.test(t) && /escuchá la diferencia en cada par/.test(t) && !NOT.test(t) && !/te mostramos la palabra/.test(t), 'Words, the sound still on its way: the pairs wait («cargando el audio…»), and the step does not say they have no audio', t.slice(0, 260));
+  await tap(page, PAIR, 400);
+  t = await text(page);
+  check(!(await pressed(page, PAIR)) && (await lives(page)).includes('Cargando el audio…') && !/La palabra: /.test(t) && (await pairOpts(page)).every((x) => x === 'true'), 'Words: a tapped pair waits: its word is not shown (that would be the answer), its two options stay shut, its line says «Cargando el audio…»', { lives: await lives(page), opts: await pairOpts(page) });
+  await shot(page, 'V15-words-pair-waiting');
+  release();
+  await clipIn(page, PK);
+  await page.waitForTimeout(500);
+  pl = await playing(page);
+  t = await text(page);
+  check(pl.at > 0 && /¿Cuál escuchaste\?/.test(t) && (await pairOpts(page)).every((x) => x === 'false') && (await tags(page)).length >= 1 && !/[Cc]argando el audio/.test(t), 'Words: when the file arrives the pair that waited plays by itself and asks which word was heard; no «cargando» is left', { pl, t: t.slice(0, 200) });
+  await shutAll(ctx);
+  ({ ctx, page } = await open('?gntest&screen=Words&level=A1&cur=a1u01d1', U1, 'fail', 'Words'));
+  await until(page, PK, 'failed');
+  t = await text(page);
+  check(/no se pudo cargar el audio de estos pares/.test(t) && /MIRÁ Y ELEGÍ/.test(t) && !NOT.test(t), 'Words, the file could not be fetched: the step is read, and says the audio of its pairs could not be loaded', t.slice(0, 260));
+  await tap(page, PAIR, 500);
+  t = await text(page);
+  check(/La palabra: /.test(t) && /No se pudo cargar el audio\./.test(t) && !NOT.test(t), 'Words: a pair then shows the word its speaker stands for, and says the audio could not be loaded', t.slice(0, 420));
+  /* the connection comes back and the file with it: the pair that was read stays read, nothing flips under the learner */
+  net.fail = null;
+  await page.evaluate(() => window.dispatchEvent(new Event('online')));
+  await clipIn(page, PK);
+  await page.waitForTimeout(1500);
+  t = await text(page);
+  const head1 = await page.evaluate(() => document.querySelector('#gn-stage [aria-label="Escuchar la palabra del par 1"]').parentElement.parentElement.textContent.replace(/\s+/g, ' '));
+  check(/¿Cuál era\?/.test(head1) && /No se pudo cargar el audio\./.test(head1) && !/voz sintética/.test(head1) && (await tags(page)).length >= 1, 'Words: the file arrives late: the pair that was read stays read with its note, the pairs not yet tapped get their clips and their tag', head1.slice(0, 200));
+  await shutAll(ctx);
+  ({ ctx, page } = await open('?gntest&screen=Words&level=A1&cur=a1u01d1', U1, 'hold', 'Words, the scene'));
+  await tap(page, 'Siguiente: las palabras', 500);
+  const HEAR = { aria: 'Escuchar la palabra' };
+  await tap(page, HEAR, 350);
+  t = await text(page);
+  check(!(await pressed(page, HEAR)) && (await lives(page)).includes('Cargando el audio…') && !NOT.test(t), 'Words, the scene: a word tapped while its clip is on its way waits and says «Cargando el audio…»', await lives(page));
+  release();
+  await clipIn(page, 'a1u01d1.p1.x0');
+  await page.waitForTimeout(500);
+  pl = await playing(page);
+  t = await text(page);
+  const firstWord = await page.evaluate(() => { const w = window.gnCourse.day('a1u01d1').words.words[0]; return window.gnSound.has('a1u01d1.w.' + w.id); });
+  check(firstWord ? pl.at > 0 && (await tags(page)).length === 1 && !/[Cc]argando el audio/.test(t) && !NOT.test(t) : !/[Cc]argando el audio/.test(t), 'Words, the scene: when the file arrives the word that waited plays by itself under its tag, with no note left', { pl, firstWord });
+  await shutAll(ctx);
+
+  /* Spell: «Escuchar» in the spelling pad */
+  const spellUrl = '?gntest&screen=Words&level=A1&cur=a1u01d1&done=' + encodeURIComponent(JSON.stringify({ a1u01d1: { g: 3, ks: 1 } }));
+  ({ ctx, page } = await open(spellUrl, U1, 'hold', 'Spell'));
+  t = await text(page);
+  check(/cargando el audio…/.test(t) && !NOT.test(t) && (await tags(page)).length === 0, 'Spell, the sound still on its way: «cargando el audio…» stands under «Escuchar»', t.slice(-200));
+  await tap(page, HEAR, 350);
+  check(!(await pressed(page, HEAR)) && (await lives(page)).includes('Cargando el audio…'), 'Spell: «Escuchar», tapped, waits: the line says «Cargando el audio…» and the button does not light up', await lives(page));
+  release();
+  await clipIn(page, 'a1u01d1.p1.x0');
+  await page.waitForTimeout(500);
+  const spellClip = await page.evaluate(() => { const w = window.gnCourse.day('a1u01d1').words; return window.gnSound.has('a1u01d1.w.' + w.spell[0]); });
+  pl = await playing(page);
+  t = await text(page);
+  check(spellClip ? pl.at > 0 && (await tags(page)).length === 1 && !/[Cc]argando el audio/.test(t) : !/[Cc]argando el audio/.test(t), 'Spell: when the file arrives the word plays by itself and the tag stands under «Escuchar»', { pl, spellClip });
+  await shutAll(ctx);
+  ({ ctx, page } = await open(spellUrl, U1, 'fail', 'Spell'));
+  await until(page, 'a1u01d1.p1.x0', 'failed');
+  await tap(page, HEAR, 300);
+  t = await text(page);
+  check(/No se pudo cargar el audio\./.test(t) && !NOT.test(t), 'Spell, the file could not be fetched: the line says the audio could not be loaded', t.slice(-260));
+  await shutAll(ctx);
+
+  /* Listening: its «Escuchá primero» rule holds while the clip is on its way; then the limit of the wait, and a
+     transcript that stays open when the file arrives after all */
+  const PLAY = { aria: 'Reproducir el audio' };
+  const A1 = { sel: '#gn-stage button[aria-label^="Respuesta 1"]' };
+  ({ ctx, page } = await open('?gntest&screen=Listening&level=A1&cur=a1u01d1', U1, 'hold', 'Listening'));
+  t = await text(page);
+  check((await stateOf(page, 'a1u01d1.r1')) === 'coming' && /Cargando el audio…/.test(t) && !NOT.test(t) && !/Transcripción/.test(t) && (await shut(page, A1)) && /Escuchá primero/.test(t), 'Listening, the sound still on its way: the status line says «Cargando el audio…», not that it is not recorded; no transcript, the answers shut', t.slice(0, 320));
+  await tap(page, PLAY, 500);
+  t = await text(page);
+  check((await lives(page)).includes('Cargando el audio…') && !/Transcripción/.test(t) && (await shut(page, A1)), 'Listening: play, tapped, waits: «Cargando el audio…» is said politely, the transcript stays shut and so do the answers (nothing is given away)', await lives(page));
+  await shot(page, 'V16-listening-waiting');
+  release();
+  await clipIn(page, 'a1u01d1.r1');
+  await page.waitForTimeout(600);
+  pl = await playing(page);
+  t = await text(page);
+  check(pl.at > 0 && !/Transcripción/.test(t) && (await shut(page, A1)) && (await tags(page)).length === 1 && !/Cargando el audio/.test(t), 'Listening: when the file arrives the clip plays by itself; no transcript, the answers still wait for the end of the listening, the tag is there', { pl, t: t.slice(0, 260) });
+  await shutAll(ctx);
+  ({ ctx, page } = await open('?gntest&screen=Listening&level=A1&cur=a1u01d1', U1, 'hold', 'Listening, too long in coming'));
+  const t0 = Date.now();
+  const late = await until(page, 'a1u01d1.r1', 'failed', 30000);
+  const waited = Date.now() - t0;
+  await page.waitForTimeout(300);
+  t = await text(page);
+  check(late && waited > 17000 && waited < 26000 && /No se pudo cargar el audio: se reproduce en silencio\./.test(t) && !NOT.test(t) && !/Transcripción/.test(t), `Listening, the file too long in coming (the wait ended after ${(waited / 1000).toFixed(1)} s; the engine's limit is 20 s): the status line says the audio could not be loaded, by itself`, t.slice(0, 300));
+  await tap(page, PLAY, 700);
+  t = await text(page);
+  check(/Transcripción/.test(t) && /No se pudo cargar el audio: leé lo que se dice\./.test(t) && !(await shut(page, A1)) && !NOT.test(t), 'Listening: the first tap then opens the transcript and the answers, under «No se pudo cargar el audio: leé lo que se dice.»', t.slice(0, 380));
+  release();
+  await clipIn(page, 'a1u01d1.r1');
+  await page.waitForTimeout(700);
+  pl = await playing(page);
+  t = await text(page);
+  check(/Transcripción/.test(t) && !(await shut(page, A1)) && (await tags(page)).length === 0 && !(pl.at > 0 && pl.on), 'Listening: the file arrives after all: the transcript stays open and the answers too, no tag appears and nothing starts to play (nothing flips under the learner)', { pl, t: t.slice(0, 200) });
+  await shot(page, 'V17-listening-late-file');
+  await shutAll(ctx);
+
+  /* Review: the notebook's play card */
+  const HEARQ = { aria: 'Escuchar el audio' };
+  const revUrl = '?gntest&screen=Review&level=A1&m=' + mistake('a1u01d1.r1');
+  const optsShut = (page) => page.evaluate(() => [...document.querySelectorAll('#gn-stage button[aria-pressed]')].filter((b) => !b.getAttribute('aria-label')).map((b) => b.disabled));
+  ({ ctx, page } = await open(revUrl, U1, 'hold', 'Review'));
+  t = await text(page);
+  check((await stateOf(page, 'a1u01d1.r1')) === 'coming' && /Cargando el audio…/.test(t) && !NOT.test(t) && !/Transcripción/.test(t) && (await optsShut(page)).every(Boolean), 'Review, the sound still on its way: the play card says «Cargando el audio…», the options stay shut and no transcript shows', t.slice(0, 300));
+  await tap(page, HEARQ, 400);
+  t = await text(page);
+  check((await lives(page)).includes('Cargando el audio…') && !/Transcripción/.test(t) && (await optsShut(page)).every(Boolean), 'Review: «Escuchar», tapped, waits: said politely, nothing opened', await lives(page));
+  release();
+  await clipIn(page, 'a1u01d1.r1');
+  await page.waitForTimeout(600);
+  pl = await playing(page);
+  t = await text(page);
+  check(pl.at > 0 && /Sonando…/.test(t) && !/Transcripción/.test(t) && (await tags(page)).length === 1, 'Review: when the file arrives the clip plays by itself («Sonando…»), with its tag and no transcript', { pl, t: t.slice(0, 240) });
+  await shutAll(ctx);
+  ({ ctx, page } = await open(revUrl, U1, 'fail', 'Review'));
+  await until(page, 'a1u01d1.r1', 'failed');
+  await page.waitForTimeout(300);
+  t = await text(page);
+  check(/No se pudo cargar el audio: tocá y leé lo que se dice\./.test(t) && !NOT.test(t), 'Review, the file could not be fetched: the card says so before the tap', t.slice(0, 300));
+  await tap(page, { sel: '#gn-stage [aria-label="Escuchar el audio"], #gn-stage [aria-label="Se reproduce en silencio"]' }, 500);
+  t = await text(page);
+  check(/Transcripción/.test(t) && /No se pudo cargar el audio: leé lo que se dice\./.test(t) && !NOT.test(t), 'Review: the tap opens the transcript under «No se pudo cargar el audio: leé lo que se dice.»', t.slice(0, 380));
+  await shutAll(ctx);
+
+  /* the placement check: a listening question; its two plays are counted, so nothing starts by itself */
+  const PL = /\/gn-sound-pl\.js$/;
+  const HEARP = { aria: 'Escuchar el audio' };
+  const toListening = async (page) => {
+    await tap(page, 'Saltear esta parte', 500);
+    for (let i = 0; i < 20 && !(await page.locator('#gn-stage [aria-label="Escuchar el audio"]').count()); i++) {
+      await page.locator('#gn-stage button[aria-pressed]').first().tap({ timeout: 3000 }).catch(() => {});
+      await page.waitForTimeout(150);
+      await tap(page, 'Siguiente', 350);
+    }
+    return (await page.locator('#gn-stage [aria-label="Escuchar el audio"]').count()) > 0;
+  };
+  /* the listening question on show, found by its options, and whether its clip exists (asked once the file is in) */
+  const itemNow = (page) => page.evaluate(() => {
+    const C = window.gnCourse;
+    const shown = [...document.querySelectorAll('#gn-stage button[aria-pressed]')].map((b) => b.textContent.replace(/^\s*\d+\s*/, '').replace(/\s+/g, ' ').trim());
+    const it = window.__gnExtra.placement.items.find((x) => x.options.map((o) => C.plain(o).replace(/\s+/g, ' ').trim()).join('|') === shown.join('|'));
+    return it ? { id: it.clip || it.id, has: window.gnSound.has(it.clip || it.id) } : null;
+  });
+  const plOpts = (page) => page.evaluate(() => [...document.querySelectorAll('#gn-stage button[aria-pressed]')].map((b) => b.disabled));
+  ({ ctx, page } = await open('?gntest&screen=Placement&level=A1', PL, 'hold', 'the placement check'));
+  check(await toListening(page), 'the placement check reaches a listening question');
+  t = await text(page);
+  check((await stateOf(page, 'pl.1')) === 'coming' && /Cargando el audio…/.test(t) && !NOT.test(t) && !/Transcripción/.test(t) && (await plOpts(page)).every(Boolean), 'the placement check, its sound still on its way: the player says «Cargando el audio…», the options stay shut, the exchange is not shown', t.slice(0, 300));
+  await tap(page, HEARP, 500);
+  t = await text(page);
+  check((await lives(page)).includes('Cargando el audio…') && !/Transcripción/.test(t) && (await plOpts(page)).every(Boolean) && !/una vez más/.test(t), 'the placement check: the play button, tapped, waits: said politely, nothing shown, and no play is counted', await lives(page));
+  await shot(page, 'V18-placement-waiting');
+  release();
+  await page.waitForFunction(() => window.gnCourse.soundState('pl.1') !== 'coming', null, { timeout: 8000 }).catch(() => {});
+  await page.waitForTimeout(500);
+  const item = await itemNow(page);
+  pl = await playing(page);
+  t = await text(page);
+  check(!!item && !/Cargando el audio/.test(t) && !(pl.at > 0 && pl.on) && (await plOpts(page)).every(Boolean) && (item.has ? /Podés escucharlo dos veces\./.test(t) && (await tags(page)).length === 1 : /Todavía no está grabado: tocá y leé lo que se dice\./.test(t)), 'the placement check: when the file arrives nothing starts by itself (the two plays are counted): the line says the clip can be heard twice, with its tag (or, for a question the voice does not say, that it is not recorded)', { item, pl, t: t.slice(0, 260) });
+  await shutAll(ctx);
+  ({ ctx, page } = await open('?gntest&screen=Placement&level=A1', PL, 'fail', 'the placement check'));
+  await toListening(page);
+  await until(page, 'pl.1', 'failed');
+  await page.waitForTimeout(300);
+  t = await text(page);
+  check(/No se pudo cargar el audio: tocá y leé lo que se dice\./.test(t) && !NOT.test(t), 'the placement check, the file could not be fetched: the player says so', t.slice(0, 300));
+  await tap(page, HEARP, 500);
+  t = await text(page);
+  check(/Transcripción/.test(t) && /No se pudo cargar el audio: leé lo que se dice\./.test(t) && !(await plOpts(page)).every(Boolean), 'the placement check: the tap opens the exchange and the options under «No se pudo cargar el audio: leé lo que se dice.»', t.slice(0, 380));
+  await shutAll(ctx);
+
+  /* the level exam: the pause before the listening part (its sound check, its start button), and the part's clock */
+  const X = /\/gn-sound-a1-x\.js$/;
+  const exams = encodeURIComponent(JSON.stringify({ A1: { level: 'A1', partial: true, apto: false, done: ['P1'], parts: { P1: { right: 2, of: 3 } }, a: {}, picks: {}, text: {}, take: {}, rate: {}, used: { P1: 600 }, started: h.iso(0), until: h.iso(6) } }));
+  const examUrl = '?gntest&screen=LevelExam&level=A1&exams=' + exams;
+  const START = { sel: '#gn-stage button:has-text("Empezar la parte 2")' };
+  ({ ctx, page } = await open(examUrl, X, 'hold', 'the level exam'));
+  /* the briefing asks the engine about the listening part's clips and draws no tag: nothing is said of the voice there */
+  await page.waitForTimeout(600);
+  await tap(page, 'Seguir con la parte 2', 700);
+  t = await text(page);
+  check((await stateOf(page, 'a1x.4')) === 'coming' && /LA PARTE QUE SIGUE\s*cargando el audio…/.test(t) && (t.match(/Cargando el audio…/g) || []).length === 2 && (await shut(page, START)) && !NOT.test(t) && !/Sin audio/.test(t), 'the level exam\'s pause, the part\'s sound still on its way: «cargando el audio…» in the head of the part that follows, the sound check and the start button both wait', t.slice(0, 420));
+  await tap(page, { aria: 'Reproducir el sonido de prueba' }, 300);
+  await tap(page, START, 500, true);
+  t = await text(page);
+  const clock1 = await page.evaluate(() => (document.querySelector('#gn-stage [role="timer"]') || {}).textContent || '');
+  check(/Te queda de pausa|Es la hora/.test(t) && !/Parte 2 de 5/.test(t) && !/Transcripción/.test(t) && (await lives(page)).filter((l) => l === 'Cargando el audio…').length === 2, 'the level exam: tapped while the sound is on its way, the part does not start (no clock of the part runs, no transcript opens): both lines say «Cargando el audio…», politely', { lives: await lives(page), clock1 });
+  await shot(page, 'V19-exam-pause-waiting');
+  release();
+  await page.waitForFunction(() => window.gnCourse.soundState('a1x.4') !== 'coming', null, { timeout: 8000 }).catch(() => {});
+  await page.waitForTimeout(500);
+  const xIn = (await stateOf(page, 'a1x.4')) === 'in' && (await stateOf(page, 'a1x.5')) === 'in';
+  t = await text(page);
+  pl = await playing(page);
+  check(/Te queda de pausa|Es la hora/.test(t) && !/Cargando el audio|cargando el audio/.test(t) && !(pl.at > 0 && pl.on) && !(await shut(page, START)) && (xIn ? (await tags(page)).length === 1 && /Podés empezar antes/.test(t) : /leés lo que se dice/.test(t)), 'the level exam: when the file arrives the pause is as it should be (the tag, the button open) and nothing has started by itself', { xIn, t: t.slice(0, 300) });
+  await tap(page, START, 900);
+  t = await text(page);
+  check(xIn ? /Parte 2 de 5 · cada audio suena dos veces/.test(t) && (await tags(page)).length === 1 : /Parte 2 de 5 · sin audio/.test(t), 'the level exam: the part then starts at the learner\'s tap, with its audio', t.slice(0, 200));
+  await shutAll(ctx);
+  ({ ctx, page } = await open(examUrl, X, 'fail', 'the level exam'));
+  await until(page, 'a1x.4', 'failed');
+  await tap(page, 'Seguir con la parte 2', 700);
+  t = await text(page);
+  check(/No se pudo cargar el audio/.test(t) && /En la parte 2 leés lo que se dice y elegís tu respuesta\./.test(t) && !/grabaciones están en preparación/.test(t) && !NOT.test(t), 'the level exam\'s pause, the file could not be fetched: it says the audio could not be loaded and that the part will be read (not that the recordings are still being made)', t.slice(0, 420));
+  await tap(page, START, 900);
+  t = await text(page);
+  check(/Parte 2 de 5 · sin audio/.test(t) && /Transcripción/.test(t) && /No se pudo cargar el audio: leé lo que se dice\./.test(t) && !NOT.test(t), 'the level exam: the part is then read from its transcript, under «No se pudo cargar el audio: leé lo que se dice.»', t.slice(0, 380));
+  await shutAll(ctx);
+
+  /* Hablar: the menu, a round of «Escuchá y elegí» (its cards fall on a clock), the model of «Repetí y compará» */
+  const SP = /\/gn-sound-sp\.js$/;
+  const cardY = (page) => page.evaluate(() => { const b = [...document.querySelectorAll('#gn-stage button')].filter((x) => { const r = x.getBoundingClientRect(); return r.width > 110 && r.height > 60 && r.y < 600 && r.y > 60; }); return b.length ? Math.round(b[0].getBoundingClientRect().y) : null; });
+  ({ ctx, page } = await open('?gntest&screen=Hablar&level=A1', SP, 'hold', 'Hablar'));
+  t = await text(page);
+  check((await stateOf(page, 's0')) === 'coming' && /al acabar\. Cargando el audio…/.test(t) && !/no están grabados|no tienen? audio|sin sonar/.test(t), 'Hablar\'s menu, the game\'s sound still on its way: it says «Cargando el audio…», not that the audios are not recorded', t.slice(-260));
+  await tap(page, 'Empezar', 1600);
+  const y1 = await cardY(page);
+  t = await text(page);
+  check((await lives(page)).includes('Cargando el audio…') && /La ronda espera: nada cae mientras tanto/.test(t) && !/La palabra ·/.test(t) && !NOT.test(t), 'Hablar, «Escuchá y elegí»: the round holds: the dock says «Cargando el audio…» and that nothing falls meanwhile; no word is shown in place of the sound', t.slice(-260));
+  /* a tap on a card now would be a guess: it counts for nothing */
+  if (y1 != null) await page.touchscreen.tap(100, y1 + 40);
+  await page.waitForTimeout(1500);
+  const y2 = await cardY(page);
+  t = await text(page);
+  check(y1 != null && y2 === y1 && !/Esa no|Elegiste|Vuelve después/.test(t), `Hablar: while the round holds nothing falls (the first card stays at ${y1} px for 1.5 s) and a tap on a card counts for nothing: no clock runs against the player`, { y1, y2, t: t.slice(-200) });
+  await shot(page, 'V20-hablar-round-held');
+  release();
+  await page.waitForFunction(() => window.gnCourse.soundState('s0') !== 'coming', null, { timeout: 8000 }).catch(() => {});
+  let went = '';
+  for (let i = 0; i < 16 && !went; i++) { await page.waitForTimeout(250); const now = await text(page); const tg = (await tags(page)).length; if (!/La ronda espera/.test(now) && (tg === 1 || /La palabra ·/.test(now))) went = tg === 1 ? 'voiced' : 'written'; }
+  pl = await playing(page);
+  t = await text(page);
+  check(!!went && !/La ronda espera/.test(t) && !(await lives(page)).includes('Cargando el audio…') && (went === 'written' || pl.at >= 0), 'Hablar: when the file arrives the round goes on by itself: the word of the first card plays under its tag (or, for a pair the voice does not say, is shown), and no «Cargando» is left', { went, pl, t: t.slice(-200) });
+  await shutAll(ctx);
+  ({ ctx, page } = await open('?gntest&screen=Hablar&level=A1', SP, 'hold', 'Hablar, the model'));
+  await tap(page, 'Repetí y compará', 300);
+  await tap(page, 'Empezar', 1500);
+  await tap(page, { aria: 'Escuchar el modelo: cargando el audio' }, 500);
+  t = await text(page);
+  check((await lives(page)).includes('Cargando el audio…') && !/Se escribe ·|Modelo ·/.test(t) && !NOT.test(t), 'Hablar, «Repetí y compará»: «Escuchar», tapped while the model is on its way, says «Cargando el audio…» and runs no stand-in', await lives(page));
+  release();
+  await page.waitForFunction(() => window.gnCourse.soundState('s0') !== 'coming', null, { timeout: 8000 }).catch(() => {});
+  await page.waitForTimeout(800);
+  pl = await playing(page);
+  t = await text(page);
+  check(!(await lives(page)).includes('Cargando el audio…') && !(pl.at > 0 && pl.on) && (await page.locator('#gn-stage [aria-label^="Escuchar el modelo"]').count()) === 1, 'Hablar: when the file arrives the line goes and the model does not play by itself (a model heard counts as help: the learner asks for it)', { pl, lives: await lives(page) });
+  await shutAll(ctx);
+  ({ ctx, page } = await open('?gntest&screen=Hablar&level=A1', SP, 'fail', 'Hablar'));
+  await until(page, 's0', 'failed');
+  await page.waitForTimeout(300);
+  t = await text(page);
+  check(/No se pudo cargar el audio: cada botón de sonido se ilumina sin sonar y se muestra la palabra\./.test(t) && !/no están grabados/.test(t), 'Hablar\'s menu, the file could not be fetched: it says the audio could not be loaded', t.slice(-300));
+  await tap(page, 'Empezar', 2200);
+  t = await text(page);
+  check(/La palabra ·/.test(t) && /No se pudo cargar el audio\./.test(t) && (await tags(page)).length === 0 && !NOT.test(t), 'Hablar: the round then shows each word, and its first card says the audio could not be loaded', t.slice(-260));
+  await shutAll(ctx);
+
+  part = 'V6 the sound stored ahead of time';
+  ctx = await phone(browser);
+  await ctx.addInitScript(() => { Object.defineProperty(navigator, 'standalone', { get: () => true }); });
+  page = await newPage(ctx, 'voice: stored ahead');
+  net.hits.length = 0;
+  await go(page, '?sw');
+  await page.waitForFunction(() => !!navigator.serviceWorker.controller, null, { timeout: 15000 });
+  await page.waitForTimeout(1200);
+  const soundHits = () => net.hits.filter((x) => /\/gn-sound-(?!index)/.test(x)).map((x) => x.split('/').pop());
+  const stored = () => page.evaluate(async () => { const out = []; for (const k of await caches.keys()) for (const r of await (await caches.open(k)).keys()) if (/[?&]h=/.test(r.url)) out.push(r.url.split('/').pop().replace(/\?.*$/, '')); return out.sort(); });
+  const settle = async (n) => { let got = await stored(); for (let i = 0; i < 60 && got.length < n; i++) { await page.waitForTimeout(250); got = await stored(); } await page.waitForTimeout(2500); return stored(); };
+  const all = await page.evaluate(() => (window.__gnSoundFiles || []).slice().sort());
+  check((await screenOf(page)) === 'Goal' && soundHits().length === 0 && (await stored()).length === 0, 'a first visit, on the goal screen and with no plan yet: no sound file is asked of the server and none is stored', soundHits());
+  await page.evaluate(([k, v]) => localStorage.setItem(k, v), [KEY, JSON.stringify({ v: 1, started: true, level: 'A1', plan })]);
+  await reload(page);
+  const ahead = (await page.evaluate((k) => window.gnCourse.soundAhead(JSON.parse(localStorage.getItem(k))), KEY)).sort();
+  check(JSON.stringify(ahead) === JSON.stringify(['gn-sound-a1-u01.js', 'gn-sound-a1-u02.js', 'gn-sound-sp.js']), 'with a plan in unit 1, the sound to have ahead is unit 1\'s, unit 2\'s and the speaking game\'s', ahead);
+  let got = await settle(ahead.length);
+  check(JSON.stringify(got) === JSON.stringify(ahead), `once there is a plan the worker stores those three files and no other of the level's ${all.length}: not the whole level in a first session`, got);
+  let asked = soundHits();
+  check(asked.length === ahead.length && ahead.every((f) => asked.filter((x) => x === f).length === 1), 'each of the three went over the line once, and no other sound file was asked for', asked);
+  /* the learner moves on to unit 2: unit 3's file follows, and nothing else */
+  const next = await page.evaluate(() => { const C = window.gnCourse; const done = {}; const tests = {}; C.sessions().filter((x) => x.unit === 1).forEach((x) => { if (x.kind === 'test') tests[x.id] = { id: x.id, score: 18, of: 20, at: Date.now() }; else done[x.id] = { g: 3, ks: 1, kw: 1, k: 1, r: 1 }; }); return { done, tests }; });
+  net.hits.length = 0;
+  await page.evaluate(([k, v]) => localStorage.setItem(k, v), [KEY, JSON.stringify(Object.assign({ v: 1, started: true, level: 'A1', plan }, next))]);
+  await reload(page);
+  const unitNow = await page.evaluate((k) => { const C = window.gnCourse; return C.view(Object.assign(C.fresh(), JSON.parse(localStorage.getItem(k)), { screen: 'Main' })).session.unit; }, KEY);
+  const ahead2 = (await page.evaluate((k) => window.gnCourse.soundAhead(JSON.parse(localStorage.getItem(k))), KEY)).sort();
+  got = await settle(ahead.length + 1);
+  asked = soundHits();
+  /* Progreso's page on the voice says what this phone does with the sound, as it now is */
+  await tap(page, { sel: '#gn-stage nav a:has-text("Progreso")' }, 600);
+  await page.locator('#gn-stage button[aria-haspopup="dialog"]:has-text("Voz sintética")').tap();
+  await page.waitForTimeout(500);
+  const sizeLine = (await page.locator('#gn-stage [role="dialog"]').textContent()).replace(/\s+/g, ' ');
+  check(/guarda el sonido de a poco, para usarlo sin conexión: tu unidad, la siguiente y Hablar \(cerca de \d+,\d MB por unidad\)\. Lo demás se baja cuando lo abrís\./.test(sizeLine) && !/queda guardado en este/.test(sizeLine), 'Progreso\'s page on the voice says what is stored: the unit in use, the next one and Hablar, and that the rest comes when it is opened (not that the whole level is kept)', sizeLine.slice(-460));
+  await tap(page, 'Listo', 400);
+  check(unitNow === 2 && JSON.stringify(ahead2) === JSON.stringify(['gn-sound-a1-u02.js', 'gn-sound-a1-u03.js', 'gn-sound-sp.js']) && JSON.stringify(got) === JSON.stringify([...new Set(ahead.concat(ahead2))].sort()) && JSON.stringify(asked) === JSON.stringify(['gn-sound-a1-u03.js']), 'when the learner moves on to unit 2, the file of unit 3 follows: it alone is fetched, once, and the level exam\'s, the placement check\'s and the later units\' files are still not', { unitNow, ahead2, got, asked });
+  await ctx.close();
+
+  part = 'V7 the voice turned off: what each screen says';
+  const off = async (url, label) => { const r = await open(url + '&voice=off', null, '', label + ', the voice off'); return r; };
+  ({ ctx, page } = await off('?gntest&screen=Listening&level=A1&cur=a1u01d1', 'Listening'));
+  t = await text(page);
+  check(/Apagaste la voz sintética: se reproduce en silencio\./.test(t) && !NOT.test(t), 'Listening, the voice off: the status line says the learner turned the voice off, not that the audio is not recorded', t.slice(0, 300));
+  await tap(page, PLAY, 700);
+  t = await text(page);
+  check(/Transcripción/.test(t) && /Apagaste la voz sintética: leé lo que se dice\. La activás de nuevo en Progreso\./.test(t) && !NOT.test(t), 'Listening: the transcript opens under «Apagaste la voz sintética: leé lo que se dice. La activás de nuevo en Progreso.»', t.slice(0, 380));
+  await ctx.close();
+  ({ ctx, page } = await off('?gntest&screen=Words&level=A1&cur=a1u01d1', 'Words'));
+  t = await text(page);
+  check(/apagaste la voz sintética\. La activás de nuevo en Progreso\./.test(t) && /MIRÁ Y ELEGÍ/.test(t) && !NOT.test(t), 'Words, the voice off: the sound step is read and says why, and where the voice is turned on again', t.slice(0, 260));
+  await tap(page, PAIR, 500);
+  t = await text(page);
+  check(/La palabra: /.test(t) && /Apagaste la voz sintética: la activás de nuevo en Progreso\./.test(t) && !NOT.test(t), 'Words: a pair shows its word and says the voice is turned off', t.slice(0, 420));
+  await ctx.close();
+  ({ ctx, page } = await off('?gntest&screen=Review&level=A1&m=' + mistake('a1u01d1.r1'), 'Review'));
+  t = await text(page);
+  check(/Apagaste la voz sintética: tocá y leé lo que se dice\./.test(t) && !NOT.test(t), 'Review, the voice off: the play card says so', t.slice(0, 300));
+  await ctx.close();
+  ({ ctx, page } = await off('?gntest&screen=Hablar&level=A1', 'Hablar'));
+  t = await text(page);
+  check(/Apagaste la voz sintética: cada botón de sonido se ilumina sin sonar y se muestra la palabra\. La activás de nuevo en Progreso\./.test(t) && !/no están grabados/.test(t), 'Hablar\'s menu, the voice off: it says the learner turned the voice off and where to turn it on again (not «los audios todavía no están grabados»)', t.slice(-320));
+  await tap(page, 'Empezar', 2200);
+  t = await text(page);
+  check(/La palabra ·/.test(t) && /Apagaste la voz sintética: la activás de nuevo en Progreso\./.test(t) && !NOT.test(t), 'Hablar: the round shows each word, and its first card says the voice is turned off', t.slice(-260));
+  await ctx.close();
+  ({ ctx, page } = await off(examUrl, 'the level exam'));
+  await tap(page, 'Seguir con la parte 2', 700);
+  t = await text(page);
+  check(/Apagaste la voz sintética/.test(t) && /En la parte 2 leés lo que se dice y elegís tu respuesta\. La activás de nuevo en Progreso\./.test(t) && !/grabaciones están en preparación/.test(t), 'the level exam\'s pause, the voice off: it says so, and that the part will be read', t.slice(0, 420));
+  await ctx.close();
+  ({ ctx, page } = await off('?gntest&screen=Placement&level=A1', 'the placement check'));
+  await toListening(page);
+  t = await text(page);
+  check(/Apagaste la voz sintética: tocá y leé lo que se dice\./.test(t) && !NOT.test(t), 'the placement check, the voice off: a listening question\'s player says so', t.slice(0, 300));
+  await ctx.close();
+
+  part = 'V8 the note for a screen reader is said when a tag is drawn';
+  ({ ctx, page } = await open(examUrl, null, '', 'the level exam\'s briefing'));
+  await clipIn(page, 'a1x.4');
+  await page.waitForTimeout(900);
+  const said0 = await notes(page);
+  check((await tags(page)).length === 0 && said0.length === 0, 'the level exam\'s briefing asks the engine about the listening part\'s clips and draws no tag: nothing is said of the voice there', said0);
+  await tap(page, 'Seguir con la parte 2', 900);
+  const said1 = await notes(page);
+  const xClips = await page.evaluate(() => window.gnSound.kind('a1x.4') === 'synthetic');
+  check(!xClips || ((await tags(page)).length === 1 && said1.length === 1 && /un programa, no una persona/.test(said1[0])), 'at the pause, where the tag stands in the head of the part that follows, the note is said, once', { tags: (await tags(page)).length, said1 });
   await ctx.close();
 }
 

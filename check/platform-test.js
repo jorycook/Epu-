@@ -2,8 +2,9 @@
 // 390x844 design to each phone (and the note for a phone held sideways), the install page in each browser (Safari,
 // Chrome and Firefox on Android, Samsung Internet with progress to take to Chrome, a page inside another app) and the
 // Home Screen app skipping it, the page's own first paint, the offline copy (every file stored under its own hash,
-// each downloaded once, the level's sound kept once there is a plan and each of its files downloaded once too, a cold
-// start and every screen offline), picking up a new build (only the files that changed
+// each downloaded once; of the sound, once there is a plan, the file of the unit in use, of the unit after it and of
+// the speaking game, each downloaded once and nothing more; a cold start and every screen offline, the two whose
+// sound is fetched only when they open going without it), picking up a new build (only the files that changed
 // are downloaded), the manifest and the icons (the maskable pair an Android launcher cuts to its shape),
 // the typefaces (served by the app itself, every Guarani letter in the app's own faces, never a fallback), each
 // screen's frame (390x844, nothing out of it, taps of 44x44 or more), its headings (a screen opens on an <h1>), no
@@ -614,18 +615,35 @@ async function fontsUsed(page, cdp, facts) {
   const build = (fs.readFileSync(path.join(SITE, 'assets/build.js'), 'utf8').match(/__gnBuild = "([^"]*)"/) || [])[1];
   const { files: FILES, version: VERSION, hashes: HASHES, lazy: LAZY } = swInfo(SITE);
   /* the sound of the sample learner's level (A1: its units' files, its exam's, and the placement check's and the
-     speaking game's, which belong to no level): shipped but not installed; the worker stores a file when it is first
-     used, and the whole level's once there is a plan (sw.js). kept(page) waits until they are all in the store */
+     speaking game's, which belong to no level): shipped but not installed. The worker stores a file when it is first
+     used and, once there is a plan, the few the app names ahead of time: the unit in use, the unit after it and the
+     speaking game (gn-app.js keepSound, gn-course.js soundAhead), never the whole level. soundAhead(page) asks the
+     engine which those are for the learner saved on the page, with the files the screens themselves have asked for;
+     soundKept(page, n) waits until n files are in the store, then a little longer, so that a file fetched behind
+     the learner's back would be seen */
   const SOUND = Object.keys(LAZY).filter((f) => /\/gn-sound-(?:a1-[a-z0-9]+|pl|sp)\.js$/.test(f)).sort();
-  const soundKept = async (page, ms = 60000) => {
+  const soundAhead = (page) => page.evaluate((key) => {
+    const state = JSON.parse(localStorage.getItem(key) || '{}');
+    const ahead = window.gnCourse.soundAhead(state);
+    const asked = [...document.querySelectorAll('script[src*="gn-sound-"]')].map((x) => x.getAttribute('src').split('/').pop()).filter((f) => f !== 'gn-sound-index.js');
+    return [...new Set(ahead.concat(asked))].sort();
+  }, KEY);
+  const soundKept = async (page, n, ms = 60000) => {
     const t0 = Date.now();
+    const read = () => page.evaluate(async () => { const out = []; for (const k of await caches.keys()) for (const r of await (await caches.open(k)).keys()) if (/[?&]h=/.test(r.url)) out.push(r.url); return out; }).catch(() => []);
     let got = [];
     for (;;) {
-      got = await page.evaluate(async () => { const out = []; for (const k of await caches.keys()) for (const r of await (await caches.open(k)).keys()) if (/[?&]h=/.test(r.url)) out.push(r.url); return out; }).catch(() => []);
-      if (got.length >= SOUND.length || Date.now() - t0 > ms) return got.sort();
+      got = await read();
+      if (got.length >= n || Date.now() - t0 > ms) break;
       await page.waitForTimeout(300);
     }
+    await page.waitForTimeout(2500);
+    return (await read()).sort();
   };
+  /* the screens whose sound the offline copy does not hold by design: the placement check's and the level exam's
+     files are fetched the first time their screen opens with a connection. Opened without one, such a screen asks
+     for its file once, goes without it and says so; that one failed request is the browser's to report */
+  const NOT_KEPT = { Placement: /gn-sound-pl\.js/, ExamTab: /gn-sound-a1-x\.js/, LevelExam: /gn-sound-a1-x\.js/ };
   console.log(`platform checks: ${SITE} (${build}), sw version ${VERSION}, ${FILES.length} files listed`);
   console.log(`served at ${L.base} (test hooks) and ${P ? P.base + ' (production path)' : '(no https: openssl missing)'}; screenshots in ${OUT}`);
   if (!P) warn('openssl is missing, so the production-path checks (https, no test hooks) are skipped');
@@ -1303,21 +1321,27 @@ async function fontsUsed(page, cdp, facts) {
       ok(reg.scope === L.base && reg.script === L.base + 'sw.js', 'the worker\'s scope should be the app folder', JSON.stringify(reg));
       note(`stored ${n} files under epua:${PREFIX}:${VERSION}; worker scope ${reg.scope}, updateViaCache ${reg.via}`);
       await page.evaluate(([k, v]) => localStorage.setItem(k, v), [KEY, JSON.stringify(SAVED)]);
-      /* A learner with a plan: the app has the worker keep the level's sound, in the background. «Abrila una vez con
-         internet; después funciona sin conexión» holds once those files are stored, so the phone goes offline after
-         that. Each sound file is downloaded once: the first unit's, which the page fetched before the worker was in
-         charge, is taken from the browser's own copy (as the files of the install are), not fetched a second time */
+      /* A learner with a plan: the app has the worker keep, in the background, the sound of the unit in use, of the
+         unit after it and of the speaking game, and nothing else of the level: the level exam's, the placement
+         check's and the later units' files stay on the web host until their screen opens. «Abrila una vez con
+         internet; después funciona sin conexión» holds for the lessons at hand once those files are stored, so the
+         phone goes offline after that. Each is downloaded once: the first unit's, which the page fetched before the
+         worker was in charge, is taken from the browser's own copy (as the files of the install are) */
+      let notKept = [];
       if (SOUND.length) {
         await page.reload();
         await ready(page);
-        const kept = await soundKept(page);
-        const wantKept = SOUND.map((f) => new URL(f + '?h=' + LAZY[f], L.base).href).sort();
-        ok(JSON.stringify(kept) === JSON.stringify(wantKept), `with a plan, the worker should store the level's ${SOUND.length} sound files, each under the hash of its content`, JSON.stringify({ missing: wantKept.filter((u) => !kept.includes(u)), extra: kept.filter((u) => !wantKept.includes(u)) }));
+        const ahead = await soundAhead(page);
+        const kept = await soundKept(page, ahead.length);
+        const wantKept = SOUND.filter((f) => ahead.includes(f.split('/').pop())).map((f) => new URL(f + '?h=' + LAZY[f], L.base).href).sort();
+        notKept = SOUND.map((f) => f.split('/').pop()).filter((f) => !ahead.includes(f));
+        ok(ahead.length === 3 && ahead.some((f) => /-u01\.js$/.test(f)) && ahead.some((f) => /-u02\.js$/.test(f)) && ahead.includes('gn-sound-sp.js'), 'with a plan in unit 1, the sound to have ahead should be unit 1\'s, unit 2\'s and the speaking game\'s', JSON.stringify(ahead));
+        ok(JSON.stringify(kept) === JSON.stringify(wantKept), `with a plan, the worker should store those ${ahead.length} sound files and no other of the level's ${SOUND.length}, each under the hash of its content`, JSON.stringify({ missing: wantKept.filter((u) => !kept.includes(u)), extra: kept.filter((u) => !wantKept.includes(u)).map((u) => u.split('/').pop()) }));
         const count = {};
         for (const h of L.hits.slice(firstHit)) if (/\/assets\/gn-sound-(?!index)/.test(h.path)) count[h.path.slice(PREFIX.length) + h.search] = (count[h.path.slice(PREFIX.length) + h.search] || 0) + 1;
         const asked = Object.keys(count);
-        ok(asked.length === SOUND.length && asked.every((k) => count[k] === 1 && !/[?&]h=/.test(k)), 'each sound file should be downloaded once, at the address the page uses (the first unit\'s not again for the offline copy)', JSON.stringify(count));
-        note(`with a plan: ${SOUND.length} sound files stored, ${Math.round(SOUND.reduce((s, f) => s + fs.statSync(path.join(SITE, f)).size, 0) / 1024)} kB as they are on disk, each asked for once`);
+        ok(asked.length === ahead.length && asked.every((k) => count[k] === 1 && !/[?&]h=/.test(k)), 'each of those sound files should be downloaded once, at the address the page uses (the first unit\'s not again for the offline copy), and no other sound file at all', JSON.stringify(count));
+        note(`with a plan: ${ahead.length} of ${SOUND.length} sound files stored (${ahead.join(', ')}), ${Math.round(SOUND.filter((f) => ahead.includes(f.split('/').pop())).reduce((s, f) => s + fs.statSync(path.join(SITE, f)).size, 0) / 1024)} kB as they are on disk, each asked for once; not fetched: ${notKept.join(', ')}`);
       }
       const hitsBefore = L.hits.length;
       ctx.__offline = true;
@@ -1344,7 +1368,16 @@ async function fontsUsed(page, cdp, facts) {
         ok(name === scr && errs.length === 0 && chars > 20, `offline: ${scr} should open and work`, JSON.stringify({ name, errs, chars }));
         ok(notSw.length === 0, `offline: ${scr} should get every file from the stored copy`, notSw.slice(0, 4).join(' ; '));
         ok(!faces.some((f) => /error/.test(f)), `offline: ${scr}: no typeface may fail`, faces.join(', '));
-        ok(logs.length === before, `offline: ${scr}: console problems`, logs.slice(before, before + 3).join(' ; '));
+        /* a screen whose sound file is fetched only when it opens (NOT_KEPT) asks for it and fails, once: the browser
+           reports that one request, and nothing else may be reported */
+        const mine = logs.slice(before);
+        const gone = NOT_KEPT[scr] && notKept.length ? mine.filter((l) => /Failed to load resource/.test(l)) : [];
+        const rest = mine.filter((l) => !gone.includes(l));
+        ok(rest.length === 0 && gone.length <= 1, `offline: ${scr}: console problems`, mine.slice(0, 3).join(' ; '));
+        if (NOT_KEPT[scr] && notKept.length) {
+          const st = await page.evaluate(() => ({ pl: window.gnCourse.soundState('pl.1'), x: window.gnCourse.soundState('a1x.4') }));
+          ok((scr === 'Placement' ? st.pl : st.x) === 'failed', `offline: ${scr}: its sound file is not in the stored copy by design, and the engine should say it could not be loaded`, JSON.stringify(st));
+        }
         await shot(page, 'offline-' + scr);
         shots.push([scr + ' (offline)', path.join(OUT, 'offline-' + scr + '.png')]);
       }
@@ -1387,10 +1420,13 @@ async function fontsUsed(page, cdp, facts) {
       await ready(page);
       const fromSw = await page.evaluate(() => performance.getEntriesByType('resource').filter((e) => /\.woff2/.test(e.name)).map((e) => ({ url: e.name, sw: e.workerStart > 0 || e.deliveryType === 'cache' || e.transferSize === 0 })));
       ok(fontHits() === fh0 && fromSw.every((e) => e.sw), 'once stored, the typefaces should come from the stored copy, not the network', JSON.stringify({ newHits: fontHits() - fh0, fromSw }));
-      /* the learner has a plan: the level's sound is kept before the phone loses its connection (see a) */
+      /* the learner has a plan: the sound to have ahead is kept before the phone loses its connection (see a) */
+      let examKept = true;
       if (SOUND.length) {
-        const kept = await soundKept(page);
-        ok(kept.length === SOUND.length, `production path: with a plan, the worker should store the level's ${SOUND.length} sound files`, JSON.stringify(kept.map((u) => u.split('/').pop())));
+        const ahead = await soundAhead(page);
+        examKept = ahead.some((f) => /-x\.js$/.test(f));
+        const kept = (await soundKept(page, ahead.length)).map((u) => u.split('/').pop().replace(/\?.*$/, '')).sort();
+        ok(JSON.stringify(kept) === JSON.stringify(ahead), `production path: with a plan, the worker should store the ${ahead.length} sound files to have ahead (${ahead.join(', ')}) and no other`, JSON.stringify(kept));
       }
       await ctx.close();
 
@@ -1429,7 +1465,10 @@ async function fontsUsed(page, cdp, facts) {
       ok(P.hits.length === hits0, 'offline cold start: nothing should reach the server', P.hits.slice(hits0).map((h) => h.path).join(', '));
       if (P.refused.length) note('offline cold start: the browser tried (and failed) to reach ' + [...new Set(P.refused)].join(', ') + ' (its update check; the app did not need it)');
       P.down = false;
-      ok(logs.length === 0, 'production path, online and offline: console problems', logs.slice(0, 4).join(' ; '));
+      /* the Examen tab, opened with no connection, asks for the level exam's sound file, which is fetched only when
+         that tab or the exam opens: the browser reports that one failed request, and nothing else may be reported */
+      const gone = SOUND.length && !examKept ? logs.filter((l) => /Failed to load resource/.test(l)) : [];
+      ok(logs.length === gone.length && gone.length <= 1, 'production path, online and offline: console problems', logs.slice(0, 4).join(' ; '));
       note('cold start offline: ' + route.join(', ') + ', Today, ' + lesson);
       await ctx.close();
     }

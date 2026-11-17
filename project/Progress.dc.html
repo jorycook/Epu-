@@ -171,7 +171,12 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="position: absolute; left: 0; top: 0; width: 390px; height: 844px; z-index: 5; display: flex; flex-direction: column; background: rgba(27, 36, 64, 0.5); animation: gn-fade 160ms ease-out">
 <button aria-label="Cerrar" onClick="{{ vz.close }}" style="flex-grow: 1; min-height: 60px; border: 0; padding: 0; background: transparent"></button>
 <div role="dialog" aria-modal="true" aria-labelledby="gn-voz" style="min-height: 0; overflow-y: auto; padding: 18px 20px 34px; border-radius: 26px 26px 0 0; border-top: 2px solid #1B2440; background: #F4F5F9; display: flex; flex-direction: column; gap: 10px; animation: gn-up 240ms ease-out">
-<h2 id="gn-voz" style="margin: 0; font-size: 18px; font-weight: 800">Voz sintética</h2>
+<h2 id="gn-voz" style="margin: 0; font-size: 18px; font-weight: 800">{{ vz.title }}</h2>
+<sc-if value="{{ vz.lic }}" hint-placeholder-val="{{ false }}">
+<div lang="en" tabIndex="0" role="document" aria-label="Texto de las licencias" style="min-height: 120px; max-height: 520px; overflow-y: auto; padding: 10px 12px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; font-size: 11px; font-weight: 500; line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere">{{ vz.licText }}</div>
+<button onClick="{{ vz.back }}" style="flex-shrink: 0; margin-top: 2px; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px"><span lang="gn">Tapykue</span> · Volver</button>
+</sc-if>
+<sc-if value="{{ vz.main }}" hint-placeholder-val="{{ true }}">
 <div style="font-size: 13px; font-weight: 500; line-height: 1.5">Los audios de la app los dice un programa (los modelos MMS, de Meta), no una persona. Todavía no los revisó ningún hablante nativo.</div>
 <div style="padding: 10px 14px 12px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 6px">
 <h3 style="margin: 0; font-size: 12px; font-weight: 800; color: #5A6382">Qué hace mal</h3>
@@ -188,8 +193,9 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </span>
 <span aria-hidden="true" style="flex-shrink: 0; width: 52px; height: 30px; box-sizing: border-box; padding: 0 2px; border-radius: 15px; border: 2px solid #1B2440; display: flex; align-items: center; background: {{ vz.track }}; justify-content: {{ vz.side }}"><span style="width: 20px; height: 20px; box-sizing: border-box; border-radius: 50%; background: #FFFFFF; border: 2px solid #1B2440"></span></span>
 </button>
-<div style="font-size: 11px; font-weight: 500; line-height: 1.4; color: #5A6382">Voz: MMS-TTS, de Meta AI. Licencia CC BY-NC 4.0, solo para uso no comercial.</div>
-<button onClick="{{ vz.close }}" style="flex-shrink: 0; margin-top: 2px; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px"><span lang="gn">Oĩma</span> · Listo</button>
+<div style="flex-shrink: 0; display: flex; align-items: center; gap: 10px"><div style="flex: 1 1 auto; min-width: 0; font-size: 11px; font-weight: 500; line-height: 1.4; color: #5A6382">Voz: MMS-TTS, de Meta AI. Licencia CC BY-NC 4.0, solo para uso no comercial.</div><sc-if value="{{ vz.canLic }}" hint-placeholder-val="{{ false }}"><button onClick="{{ vz.openLic }}" aria-label="Ver el texto de las licencias" style="flex-shrink: 0; height: 44px; padding: 0 12px; border-radius: 12px; border: 2px solid #DDE1EC; background: #FFFFFF; color: #1B2440; font-size: 12px; font-weight: 800; white-space: nowrap">Licencias</button></sc-if></div>
+<button onClick="{{ vz.done }}" style="flex-shrink: 0; margin-top: 2px; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px"><span lang="gn">Oĩma</span> · Listo</button>
+</sc-if>
 </div>
 </div>
 </sc-if>
@@ -222,9 +228,10 @@ class Component extends DCLogic {
 constructor(props) {
 super(props);
 /* move: the progress sheet open ('copied', 'manual': the code to copy by hand, 'paste'), code: the code given,
-   paste: what was pasted, bad: the pasted code did not read; voz: the sheet that explains the synthetic voice is open;
-   voiceOff: that voice's switch where nothing is saved (the board on its own) */
-this.state = { used: null, move: '', code: '', paste: '', bad: false, voz: false, voiceOff: null };
+   paste: what was pasted, bad: the pasted code did not read; voz: the sheet that explains the synthetic voice is open
+   (true), or its second page, the text of the licences ('lic'); lic: that text once it has been read from the app's
+   licenses.txt, licBad: it could not be read; voiceOff: that voice's switch where nothing is saved (the board on its own) */
+this.state = { used: null, move: '', code: '', paste: '', bad: false, voz: false, lic: '', licBad: false, voiceOff: null };
 }
 renderVals() {
 const C = window.gnCourse;
@@ -380,14 +387,28 @@ close: () => this.setState({ move: '', bad: false }),
    learner's switch. Its button stands in the header while the sound index says a voice of the course is a voice
    model's (gnCourse.synthVoice): the canvas alone loads no sound, so there it is not drawn. The switch is saved with
    the progress (save({ voice })); off, the player has no clip of that voice and every screen shows its written
-   stand-in. The app adds what the sound weighs (gnApp.sound: the level's files, and whether the browser says the
-   learner saves data, in which case only the unit that is opened is fetched) */
+   stand-in. The app adds what happens to the sound on this phone (gnApp.sound: what a unit's file weighs, whether
+   this copy stores sound for use without a connection, and whether the browser says the learner saves data, in
+   which case only the unit that is opened is fetched), and a way to read the whole text of the licences
+   (gnApp.licences reads the app's licenses.txt, which is stored for use without a connection): the sheet's second
+   page, from which «Volver», a tap outside it and the system's back all lead to the first */
 const voiceOn = this.state.voiceOff == null ? app.voice !== false : !this.state.voiceOff;
 const snd = kit && typeof kit.sound === 'function' ? kit.sound(lv) : null;
 const mb = (n) => (Math.round(n / 1e5) / 10).toFixed(1).replace('.', ',');
 const vz = {
 show: !!(C.synthVoice && C.synthVoice()),
 sheet: !!this.state.voz && !ms,
+main: this.state.voz !== 'lic',
+lic: this.state.voz === 'lic',
+title: this.state.voz === 'lic' ? 'Licencias' : 'Voz sintética',
+canLic: !!(kit && typeof kit.licences === 'function'),
+licText: this.state.lic || (this.state.licBad ? 'No se pudo leer el texto de las licencias. Probá de nuevo cuando tengas conexión.' : 'Cargando…'),
+openLic: () => {
+this.setState({ voz: 'lic', licBad: false });
+/* the file is wrapped at a wide page's width: its paragraphs are joined again, so that the sheet wraps them itself */
+if (!this.state.lic && kit && kit.licences) kit.licences().then((t) => this.setState({ lic: String(t || '').trim().replace(/([^\n])\n(?=[^\n\s=])/g, '$1 ') }), () => this.setState({ licBad: true }));
+},
+back: () => this.setState({ voz: true }),
 on: voiceOn,
 aria: voiceOn ? 'Voz sintética, activada: qué es y cómo apagarla' : 'Voz sintética, apagada: qué es y cómo activarla',
 /* the speaker's mark: its wave while the voice is on, a cross when it is off */
@@ -396,18 +417,23 @@ flaws: [
 { head: 'Las vocales nasales', text: ' (', gn: 'ã, ẽ, ĩ, õ, ũ, ỹ', end: '): los pares que cambian solo por eso quedan sin audio.' },
 { head: 'Los diálogos', text: ': la mujer y el hombre son una sola voz, de hombre; la de él suena un poco más grave.', gn: '', end: '' },
 { head: 'Los nombres y los números en castellano', text: ': a veces le salen raros.', gn: '', end: '' },
+/* what sound/VOICE.md marks «in part» or «not»: the stress, the puso after o, u and y, the r that opens a word */
+{ head: 'A veces falla', text: " en la sílaba fuerte, en el puso (') después de ", gn: 'o, u, y', end: ', y en la r al empezar una palabra.' },
 ],
 hasSize: !!(snd && snd.bytes > 0),
 size: !snd || !(snd.bytes > 0) ? ''
 : !voiceOn ? 'Con la voz apagada no se baja ningún sonido.'
 : snd.saving ? 'Tenés activado el ahorro de datos: el sonido se baja de a una unidad, cuando la abrís (cerca de ' + mb(snd.unit) + ' MB cada una).'
-: snd.kept ? 'El sonido de ' + lv + ' pesa unos ' + mb(snd.bytes) + ' MB y queda guardado en este ' + ((kit && kit.device) || 'teléfono') + ', para usarlo sin conexión.'
+: snd.kept ? 'Este ' + ((kit && kit.device) || 'teléfono') + ' guarda el sonido de a poco, para usarlo sin conexión: tu unidad, la siguiente y Hablar (cerca de ' + mb(snd.unit) + ' MB por unidad). Lo demás se baja cuando lo abrís.'
 : 'El sonido de ' + lv + ' pesa unos ' + mb(snd.bytes) + ' MB: cada unidad se baja cuando la abrís (cerca de ' + mb(snd.unit) + ' MB).',
 state: voiceOn ? 'Si la apagás, cada audio se muestra escrito y no suena.' : 'Apagada: cada audio se muestra escrito y no suena.',
 track: voiceOn ? '#2F4FD0' : '#DDE1EC',
 side: voiceOn ? 'flex-end' : 'flex-start',
 open: () => this.setState({ voz: true }),
-close: () => this.setState({ voz: false }),
+/* a tap outside the sheet, and the system's back (which presses that scrim): one step back, from the licences to the
+   sheet's first page, from there out */
+close: () => this.setState({ voz: this.state.voz === 'lic' }),
+done: () => this.setState({ voz: false }),
 flip: () => {
 if (this.props.save) this.props.save({ voice: !voiceOn });
 else this.setState({ voiceOff: voiceOn });

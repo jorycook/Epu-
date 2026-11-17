@@ -21,8 +21,29 @@ wherever a control's clip is a voice model's, the tag «voz sintética» stands 
 recipe and the two lines a new board needs are in BRIEF-core.md §6 (`gnCourse.synth`); where the tag goes is said
 with each board below. A control without a clip keeps its stand-in and its «todavía no está grabado», which is also
 true of a clip the voice must not say (`sound/silent.json`). The prototype board says what the tag means once, for a
-screen reader, in a 1-px live region of its own (`gnCourse.VOICE_NOTE`, on the document's `gnvoice`), as the app's
-shell does.
+screen reader, in a 1-px live region of its own (`gnCourse.voiceNote()`, on the document's `gnvoice`), as the app's
+shell does: when a tag is really drawn (it carries `data-gn-voice="tag"`), not when a board only asks about a clip,
+and the region is emptied again eight seconds later.
+
+**A clip that is not there, on every board that plays one.** «No clip» is not one thing, and each board asks the
+engine which (`gnCourse.soundState(key)`, BRIEF-core.md §6) instead of `gnSound.has()` alone:
+- *coming*, its sound file is asked for and not in yet. The control waits, with a look of its own
+  (`gnCourse.SOUND_WAIT`: a dashed `#9AA1B5` edge on the ground `#F4F5F9`, its icon and label in `#5A6382`, no hard
+  shadow) and a chip «cargando el audio…» (the tag's recipe) where the tag goes, or «Cargando el audio…» in the
+  line a player has for its status. Tapped, it lights nothing, runs no stand-in, shows no word and no transcript,
+  opens no answer and counts nothing, and says «Cargando el audio…» in its own live line (so that a screen reader
+  hears it once, at the tap); where a play starts by itself later its icon beats slowly (`gn-wait`, 1.4 s). No clock
+  runs meanwhile. When the file arrives (`gnsound`) the control is ready, the tag in the chip's place, no note left.
+- *failed*, the file could not be fetched, or is not in 20 s after a control began to wait. The board's written
+  stand-in, with «No se pudo cargar el audio» where «todavía no está grabado» would stand.
+- *off*, the learner turned the voice off. The stand-in, with «Apagaste la voz sintética: … La activás de nuevo en
+  Progreso.»
+- *none*, as before: «todavía no está grabado».
+A stand-in that has shown something stays for that item while the board is open, whatever arrives later. Whether a
+tapped clip plays by itself when its file arrives is said with each board: it does where a play is free and can be
+repeated, and a second tap, another control or leaving calls it off; it does not where plays are counted or the audio
+sets the pace. The words are the engine's (`gnCourse.soundNote(state, then)`, `gnCourse.soundWhy(state)`). The canvas
+alone has no sound index: every key is *none* there, and the designed wording stays.
 
 ## Row 1 · y 0 · "Start: why you learn, where you start, your plan"
 
@@ -79,6 +100,12 @@ sigue tu nivel de producción. En cada unidad podés rendir primero la prueba de
 de comprensión cuentan como hechos." and "Empezar en A2" (→ Goal step 3 with A2 chosen) + "Elegir otro nivel". Content:
 `window.__gnExtra.placement` (from `gn-extra.js`): `{ self: [...], items: [...] }`; designed moment: the first
 listening item from the second block on (with the 6 items of `placement.json`: pl.1, "Pregunta 5 de 6"), an option picked.
+While a listening question's clip is on its way the player waits («Cargando el audio…», the options shut, the
+exchange not shown, no play counted), and nothing starts by itself when it arrives, because the two plays are counted:
+the line then says «Podés escucharlo dos veces.». A clip that could not be loaded, or a voice turned off, is read from
+the exchange like a clip that is not recorded, and the line says which («No se pudo cargar el audio: leé lo que se
+dice.»); a question that has been read stays read. A clip that will not start (the phone's audio held elsewhere) says
+«No se pudo reproducir el audio: así se dice.»
 A listening question whose clip is a voice model's carries the tag at the end of the player's line («Podés escucharlo
 dos veces.»), outside that line's live region.
 
@@ -177,14 +204,24 @@ areas from a1u01t (vocab 5/6, grammar 6/8, reading 3/3, listening 1/3 under the 
 header carries a quiet button at its right end, the speaker and «Voz sintética» (44 px, `2px solid #DDE1EC`; the
 speaker's wave becomes a cross when the voice is off; its accessible name says which). It opens a sheet: «Voz
 sintética»; what it is («Los audios de la app los dice un programa (los modelos MMS, de Meta), no una persona. Todavía
-no los revisó ningún hablante nativo.»); a white card «Qué hace mal» with three lines (the nasal vowels: the pairs that
+no los revisó ningún hablante nativo.»); a white card «Qué hace mal» with four lines (the nasal vowels: the pairs that
 differ only by one stay without audio; the dialogues: one voice, a man's, for both speakers, his a little lower; the
-names and numbers in Spanish); that some words and phrases stay silent on purpose and wait for a person, where the
-screens say «todavía no está grabado», and that recordings by native speakers will replace the voice; in the app, what
-the sound weighs (`gnApp.sound`: «El sonido de A1 pesa unos 3,7 MB y queda guardado…», or, when the browser says the
-learner saves data, that it comes one unit at a time); the switch «Usar la voz sintética» (Leer's switch recipe,
+names and numbers in Spanish; and «A veces falla en la sílaba fuerte, en el puso (') después de o, u, y, y en la r al
+empezar una palabra.», what `sound/VOICE.md` marks as rendered in part or not); that some words and phrases stay silent
+on purpose and wait for a person, where the screens say «todavía no está grabado», and that recordings by native
+speakers will replace the voice; in the app, what this phone does with the sound (`gnApp.sound`: «Este iPhone guarda
+el sonido de a poco, para usarlo sin conexión: tu unidad, la siguiente y Hablar (cerca de 0,9 MB por unidad). Lo
+demás se baja cuando lo abrís.», or, when the browser says the learner saves data, that it comes one unit at a
+time, or, with the voice off, that none is fetched); the switch «Usar la voz sintética» (Leer's switch recipe,
 `role="switch"`; `save({ voice })`, saved with the progress, on by default: off, the player has no synthetic clip and
-every screen shows its written stand-in); the credit (MMS-TTS, Meta AI, CC BY-NC 4.0); «Oĩma · Listo».
+every screen shows its written stand-in and says that the voice is off); the credit (MMS-TTS, Meta AI, CC BY-NC 4.0)
+with, in the app, a quiet button «Licencias» beside it (44 px); «Oĩma · Listo». The sheet fits both phone sizes
+without scrolling (773 px of the 784 it may take): a line added there must make room for itself. «Licencias» turns
+the sheet to its second page: the heading «Licencias», the whole of the app's `licenses.txt` in a white box that
+scrolls (11 px, `lang="en"`, its paragraphs joined again so that the box wraps them; `gnApp.licences()` reads the
+file, which the offline copy holds), and «Tapykue · Volver». One step back from it is the sheet's first page: by
+«Volver», by a tap on the scrim, and by the system's back, which presses the scrim (so the scrim's handler steps
+back a page before it closes the sheet).
 
 ## Row 3 · y 2568 · "Learn, drill, then exam-style"
 
@@ -201,7 +238,10 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
 - Teach: form h1 in Andika 700 34px with `lang="gn"`; "Cómo se forma" rows (pos stacked above the rule when longer than ~12
   characters); "Ejemplos" with play buttons (the stand-in, or the clip: the card's head then carries the tag «voz sintética»
   at its right end, one tag for the card, while any of its examples has a synthetic clip; an example without one says
-  «Este audio todavía no está grabado.» under itself once tapped) and, per example, an optional "Partes" line: the morphemes as small
+  why under itself once tapped: «Este audio todavía no está grabado.», «No se pudo cargar el audio.» or «Apagaste la
+  voz sintética: la activás de nuevo en Progreso.», the note of that tap, which stays until another example is
+  played. While the unit's sound is on its way the head says «cargando el audio…», the buttons wait, a tapped one
+  says «Cargando el audio…» under its example and plays by itself when the file is in) and, per example, an optional "Partes" line: the morphemes as small
   columns (Andika 15/700 over the Spanish gloss 11/700 muted) when the example has `parts`; "¡Atención!" box (gold tint) with
   the watch note and bad ✗ / good ✓ lines. Progress segments sized from the data (2 points + compare = 3). Designed moment:
   a1u01d4 point 1. Next "Siguiente: <next form>" / "Comparar"; the next form is named only when it fits the button
@@ -256,8 +296,15 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
   size, 22 px or as much less as the longer one needs to stay whole in its tile (never under 15). A pair whose clip is
   a voice model's carries the tag «voz sintética» at the right end of its head («PAR 2 DE 3»). In the prototype and the
   app a pair without a clip shows the word its speaker stands for («Tocá el parlante: te mostramos la palabra.»); with
-  every pair so, the step is read («MIRÁ Y ELEGÍ», «…estos pares todavía no tienen audio.»); with some, it is heard
-  and its first line counts them («Un par todavía no tiene audio: ahí te mostramos la palabra.»).
+  every pair so, the step is read («MIRÁ Y ELEGÍ», «…estos pares todavía no tienen audio.», or «…no se pudo cargar
+  el audio de estos pares.», or «…apagaste la voz sintética. La activás de nuevo en Progreso.»); with some, it is heard
+  and its first line counts them («Un par todavía no tiene audio: ahí te mostramos la palabra.»). While the unit's
+  sound is on its way a pair waits: «cargando el audio…» in its head, its speaker in the waiting look; tapped, its
+  line says «Cargando el audio…», its word is not shown and its two options stay shut, and its clip plays by itself
+  when the file is in. A pair whose word has been shown stays read while the lesson is open. In the scene, a word's
+  note («Este audio todavía no está grabado.», or the other two reasons) belongs to that word: it shows on its card
+  for every word without a clip once its speaker is tapped, and goes when another word is picked or a clip plays; a
+  word tapped while its clip is on its way says «Cargando el audio…» and plays when it is in.
 - Aprender: Yaoki's navy sign board (`#1B2440`, 2 columns of chips, M PLUS 17/800, `lang="gn"`, min-height 46 so two-word
   phrases fit); tap a chip → the word card: the word (Andika 700, 40/34/28 px by length), syllables with the stressed one in
   `#C7361E` (from `gnSpell` helpers if present, else omit), the Spanish 13/500, play button, "Partes" tiles (2 columns: piece
@@ -274,7 +321,9 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
   passes Copiar / Con pistas / De memoria; keyboard of real buttons from `gnSpell.keys(w, tkey)` (46×44, radius 12, Andika 22/700,
   `aria-label` = `gnSpell.name(k)`); the line under the cells (`aria-live="polite"`) with `gnSpell.note(why, want)`; help after
   2 misses (yellow) and 4 (filled in); buttons Escuchar · Pista · Otra vez (the tag «voz sintética» centred under
-  «Escuchar» when the word's clip is a voice model's); the syllable strip if syllables are available.
+  «Escuchar» when the word's clip is a voice model's; «cargando el audio…» in its place, and «Escuchar» in the waiting
+  look, while the clip is on its way: tapped, the line says «Cargando el audio…» and the word plays when it is in;
+  the dictation that opens the third time, which no tap asked for, simply goes without); the syllable strip if syllables are available.
   Load `./gn-spell.js` in its head. Designed moment: "ñe'ẽ" pass 2, the puso cell typed, ẽ current.
 
 ## Row 5 · y 5136 · "Reading, listening, week test, notebook"
@@ -290,8 +339,14 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
 - Reading: passage Andika 16, lh 1.7, `lang="gn"`; tap a word for its Spanish (practice only); advisory stopwatch; strategy
   box "Pista · solo en la práctica"; clue marked after answering; verdict sheet with reasons. Designed moment: a1u01d6's
   reading (the review day), unanswered, clock running.
-- Listening: play → answers unlock; "Repetir"; "Más despacio" (a recorded slow take; disabled with "Todavía no está grabado"
-  when missing); nothing printed until answered ("No hay nada escrito hasta que respondas, como en el examen."); after: the
+- Listening: play → answers unlock; "Repetir"; "Más despacio" (a recorded slow take; disabled when missing, with what
+  is true under it: "Todavía no hay versión lenta" where the lesson's clip plays and has no slower take, "Todavía no
+  está grabado" where the lesson has no clip, "Cargando…", "No se pudo cargar", "La voz está apagada"). The player
+  follows the clip's state: on its way, the play button waits and the status line says «Cargando el audio…», no
+  transcript opens and the answers stay shut («Escuchá primero…»), and a tap is kept: the clip plays by itself when
+  the file is in; not loaded, or the voice off, the status line says so («No se pudo cargar el audio: se reproduce en
+  silencio.») and the first tap opens the transcript under «No se pudo cargar el audio: leé lo que se dice.»; once the
+  transcript has opened the lesson stays read; nothing printed until answered ("No hay nada escrito hasta que respondas, como en el examen."); after: the
   script with speaker tags (Narrador / Mujer / Hombre) and "Ver traducción"; stand-in highlights each line as it "plays".
   Designed moment: a1u01d1's listening, played once, an answer picked. The status line under the waveform names the line
   and its speaker while it plays («Línea 2 de 5 · Mujer», «Respuesta 1 de 3 · Hombre»): with a clip it keeps time by
@@ -325,7 +380,9 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
   on the canvas). The
   summary's button is "Eku'ejey · Seguir con el día 4" (the next session of the plan; "Seguir con la prueba" for a week
   test), with "Tapykue · Volver al cuaderno" as a text link under it, and it says what still waits ("Quedan 12 para los
-  próximos días."). A listening item's play card («Ehendu · Escuchar») carries the tag «voz sintética» at the right
+  próximos días."). A listening item's play card («Ehendu · Escuchar») follows the clip's state as Listening's
+  player does (waiting with «Cargando el audio…» and the options shut, the clip playing by itself when the file is in;
+  «No se pudo cargar el audio: tocá y leé lo que se dice.»; an item read stays read) and carries the tag «voz sintética» at the right
   end of its title when the clip is a voice model's, and while the clip plays its note names who is speaking, by the
   clip's cues («Sonando… Línea 2 de 5 · Hombre»: two items can only be answered by knowing it): the name stands beside
   the note, outside its live region.
@@ -364,7 +421,14 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
   Content: `window.__gnExtra['exam-a1']` from `gn-extra.js`. Save the result with `save({ exam: { level, parts, apto, mode, at } })`
   computed by `C.examResult`. Where the listening part's clips are a voice model's, the tag «voz sintética» stands in
   the pause before it, at the right end of «LA PARTE QUE SIGUE», and in the part itself in the audio's card, between
-  the waveform and the speaker mark.
+  the waveform and the speaker mark. The part's audio is asked of the engine over all its clips (`p2State`): while
+  their sound file is on its way the pause waits: «cargando el audio…» in that head, the sound check and «Empezar la
+  parte 2» in the waiting look (the button `aria-disabled`), «Cargando el audio…» in the line of each, and a tap on
+  either starts nothing, then or later (an exam's part begins at the learner's tap; the pause's own clock is a rest,
+  not a deadline); the part's clock does not run before the part begins. With a clip missing, not loaded, or the
+  voice off, the whole part is read from its transcript (as when nothing is recorded), and the pause, the band and
+  the transcript's note say which («No se pudo cargar el audio», «Apagaste la voz sintética»); the result and the
+  teacher's text say that the recordings are being made only where the sound index has no file for the exam.
 
 ## Row 7 · y 7704 · "Read, type, speak: the suite inside the app"
 
@@ -402,7 +466,17 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
   says what is sounding), and under «Modelo» in the comparison; a card without a clip shows its word («La palabra ·»)
   and no tag. In the prototype and the app the menu's note says what is true of the audio: none at all («…cada botón
   de sonido se ilumina sin sonar.»), or «Los audios los dice una voz sintética. Todavía no tienen audio 4 de los 8
-  pares: ahí se muestra la palabra.»
+  pares: ahí se muestra la palabra.» (a pair with one silent word is counted apart: «…ni una de las dos palabras de
+  otro par…»; that word's card shows the word, the other one sounds), or «Cargando el audio…», or «No se pudo cargar
+  el audio: cada botón de sonido se ilumina sin sonar y se muestra la palabra.», or «Apagaste la voz sintética: … La
+  activás de nuevo en Progreso.» While the game's sound file is on its way «Escuchá y elegí» holds: the first pair
+  stays at the top, nothing falls, no hint is raised, a tap on a card counts for nothing, the dock says «Cargando el
+  audio…» and «La ronda espera: nada cae mientras tanto», its big button in the waiting look; the round goes on by
+  itself when the file is in, since it plays each word itself. In «Repetí y compará» the round goes on (the sign is
+  read) and «Escuchar» waits: tapped, the dock says «Cargando el audio…», nothing stands in and nothing is counted as
+  help, and the model does not play by itself later. A card shown written stays so for the round. The comparison's
+  «Modelo» strip plays the model's clip; where there is none its row says why («Todavía no está grabado», «Cargando
+  el audio…», «No se pudo cargar el audio», «Apagaste la voz sintética»).
 
 ## Row 8 · y 8988 · "Kaguare: mascot, icon and the ñandutí rule"
 

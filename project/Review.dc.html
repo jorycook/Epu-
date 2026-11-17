@@ -25,6 +25,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 a{color:#2F4FD0;text-decoration:none}a:hover{color:#1B2440}
 rt{font-size:9px;font-weight:500;color:#5A6382}
 @keyframes gn-up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes gn-wait{0%,100%{opacity:1}50%{opacity:.3}}
 @keyframes gn-stamp{0%{opacity:0;transform:scale(1.8) rotate(-20deg)}55%{opacity:1;transform:scale(.92) rotate(-9deg)}100%{opacity:1;transform:scale(1) rotate(-9deg)}}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -50,10 +51,10 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 
 <sc-if value="{{ it.hasPlay }}" hint-placeholder-val="{{ false }}">
 <div style="margin-top: 8px; flex-shrink: 0; padding: 10px 14px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; align-items: center; gap: 12px">
-<button onClick="{{ play }}" aria-label="{{ playLabel }}" style="width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%; border: 2px solid #1B2440; display: flex; align-items: center; justify-content: center; box-shadow: {{ playShadow }}; background: {{ playBg }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="#1B2440" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+<button onClick="{{ play }}" aria-label="{{ playLabel }}" style="width: 52px; height: 52px; box-sizing: border-box; flex-shrink: 0; border-radius: 50%; border: {{ playEdge }}; display: flex; align-items: center; justify-content: center; box-shadow: {{ playShadow }}; background: {{ playBg }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="{{ playInk }}" aria-hidden="true" style="animation: {{ playPulse }}"><path d="M7 4.5v15l13-7.5z"/></svg></button>
 <div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px">
 <div style="display: flex; align-items: center; gap: 8px"><div style="flex: 1 1 auto; min-width: 0; font-size: 14px; font-weight: 800"><span lang="gn">{{ playGn }}</span> · {{ playEs }}</div><sc-if value="{{ it.synth }}" hint-placeholder-val="{{ false }}"><span data-gn-voice="tag" style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap">voz sintética</span></sc-if></div>
-<div style="font-size: 12px; font-weight: 500; line-height: 1.4; color: #5A6382"><span aria-live="polite">{{ playNote }}</span><span style="font-weight: 700">{{ playWho }}</span></div>
+<div style="font-size: 12px; font-weight: 500; line-height: 1.4; color: #5A6382"><span aria-live="polite">{{ playNote }}</span><span>{{ playWait }}</span><span style="font-weight: 700">{{ playWho }}</span></div>
 </div>
 </div>
 </sc-if>
@@ -476,11 +477,25 @@ class Component extends DCLogic {
       /* why the item on show is read from its transcript, once it is: 'none' (no clip is recorded), 'failed' (it could
          not be loaded), 'off' (the voice is turned off). It then stays read, whatever arrives; the next item starts afresh */
       read: '',
+      /* «Escuchar» was tapped while the item's clip was on its way: it plays when it is in */
+      asked: false,
+    };
+    /* a sound file came in, failed or is late (the engine's `gnsound`): the card that waits for its clip plays it, as a
+       player does after loading; if the file failed, the wait ends and the card's note says so */
+    this.onSound = () => {
+      if (!this.state.asked || this.state.read || !this.clipKey || !this.playCard) return;
+      const st = window.gnCourse.soundState(this.clipKey);
+      if (st === 'coming') return;
+      if (st === 'in') this.playCard();
+      else this.setState({ asked: false });
     };
     this.boxRef = (el) => { this.boxEl = el; };
     this.linesRef = (el) => { this.linesEl = el; };
     this.optsRef = (el) => { this.optsEl = el; };
     this.verdictRef = (el) => { this.verdictEl = el; };
+  }
+  componentDidMount() {
+    document.addEventListener('gnsound', this.onSound);
   }
   componentDidUpdate() {
     /* an answer has just been given: its verdict comes into view once it has risen into place */
@@ -505,6 +520,7 @@ class Component extends DCLogic {
     }
   }
   componentWillUnmount() {
+    document.removeEventListener('gnsound', this.onSound);
     clearTimeout(this.tm);
     clearTimeout(this.vt);
     clearInterval(this.lt);
@@ -604,14 +620,23 @@ class Component extends DCLogic {
     /* until the clips are recorded a listening item plays in silence: from its first play on, its transcript (who says
        what) is shown, each row lit while it "plays", so it is answered from the text, and still scored */
     const clip = q.clip || entry.src;
-    /* where the clip stands (gnCourse.soundState): while its sound file is on its way the card waits («Cargando el
-       audio…»: nothing stands in, the options stay shut); without a clip, for any other reason, the item is read, and
-       once it is read it stays so (s.read) */
-    const now = hasPlay ? C.soundState(clip) : 'none';
-    const coming = hasPlay && now === 'coming' && !s.read;
-    const silent = hasPlay && !coming && (now !== 'in' || !!s.read);
-    const quietWhy = s.read || (now === 'in' || now === 'coming' ? 'failed' : now);
-    const WHY = { none: 'Todavía no está grabado', failed: 'No se pudo cargar el audio', off: 'La voz sintética está apagada' };
+    /* where the clip stands (gnCourse.soundState, asked afresh at each tap: the file may have come in since the card
+       was drawn): while its sound file is on its way the card waits, with the waiting look («Cargando el audio…»:
+       nothing stands in, the options stay shut), and a tap on «Escuchar» is kept: the clip plays by itself when the
+       file is in (a second tap calls that off). Without a clip, for any other reason, the item is read, and once it
+       is read it stays so (s.read) */
+    const stand = (st) => {
+      const now = hasPlay ? C.soundState(clip) : 'none';
+      const coming = hasPlay && now === 'coming' && !st.read;
+      return { coming, silent: hasPlay && !coming && (now !== 'in' || !!st.read), why: st.read || (now === 'in' || now === 'coming' ? 'failed' : now) };
+    };
+    const here = stand(s);
+    const coming = here.coming;
+    const silent = here.silent;
+    const quietWhy = here.why;
+    const pending = coming && !!s.asked;
+    const WAIT = C.SOUND_WAIT;
+    this.clipKey = hasPlay ? clip : '';
     const reading = silent && (s.playing || !!s.played);
     /* the options open once the clip has played; with no clip, as soon as the transcript shows */
     const locked = answered || (hasPlay && !s.played && !reading);
@@ -825,8 +850,11 @@ class Component extends DCLogic {
       playGn: s.played ? 'Ehendujey' : 'Ehendu',
       playEs: s.played ? 'Escuchar otra vez' : 'Escuchar',
       playLabel: s.playing ? (silent ? 'Se reproduce en silencio' : 'Sonando el audio') : s.played ? 'Escuchar otra vez' : 'Escuchar el audio',
-      playBg: s.playing ? '#F2B43A' : '#E8ECFB',
-      playShadow: s.playing ? 'none' : '0 3px 0 #1B2440',
+      playBg: s.playing ? '#F2B43A' : coming ? WAIT.bg : '#E8ECFB',
+      playShadow: s.playing || coming ? 'none' : '0 3px 0 #1B2440',
+      playEdge: !s.playing && coming ? WAIT.border : '2px solid #1B2440',
+      playInk: !s.playing && coming ? WAIT.ink : '#1B2440',
+      playPulse: pending ? 'gn-wait 1.4s ease-in-out infinite' : 'none',
       /* with no clip it says so before the tap, as Listening does, and what to do instead */
       /* while a clip plays, who is speaking (as the listening lesson's status line says it): the two voices of a
          dialogue are one synthetic voice a little apart, and two questions turn on who says what. It stands beside
@@ -836,16 +864,28 @@ class Component extends DCLogic {
         if (!row) return '';
         return ' ' + (row.num && +row.num <= options.length ? 'Respuesta ' + row.num + ' de ' + options.length : 'Línea ' + (s.line + 1) + ' de ' + ctx.rows.length) + (row.who ? ' · ' + row.who : '');
       })(),
-      playNote: s.playing ? (silent ? 'Se reproduce en silencio…' : 'Sonando…') : !s.played ? (coming ? C.SOUND_COMING : silent ? (WHY[quietWhy] || WHY.none) + ': tocá y leé lo que se dice.' : 'Escuchá primero: después se abren las respuestas.') : answered ? 'La transcripción está abajo.' : silent ? 'Elegí según lo que se dice.' : 'Elegí lo que escuchaste.',
-      play: () => {
-        /* the first play with no clip opens the transcript and the options at once: then the options come into view */
+      /* while the card waits for its clip the note says «Cargando el audio…»: beside the live region until «Escuchar» is
+         tapped, inside it from then on, so that a screen reader hears it once, at the tap */
+      playNote: s.playing ? (silent ? 'Se reproduce en silencio…' : 'Sonando…') : !s.played ? (coming ? (pending ? C.SOUND_COMING : '') : silent ? C.soundWhy(quietWhy) + ': tocá y leé lo que se dice.' : 'Escuchá primero: después se abren las respuestas.') : answered ? 'La transcripción está abajo.' : silent ? 'Elegí según lo que se dice.' : 'Elegí lo que escuchaste.',
+      playWait: !s.playing && !s.played && coming && !pending ? C.SOUND_COMING : '',
+      play: (this.playCard = () => {
         const st = this.state;
-        /* the clip is on its way: the card waits, and its note says so */
-        if (coming) return;
-        if (silent && kind === 'choice' && !st.played && !st.playing && !(st.ans[k] && st.ans[k].done)) this.reveal = true;
-        const real = this.play(silent ? '' : clip, playText, ctx && ctx.rows);
-        if (!real && !st.read) this.setState({ read: quietWhy });
-      },
+        const at = stand(st);
+        /* the clip is on its way: the card waits, and its note says so. The audio output is woken inside this tap, so
+           that the clip may start by itself when it is in */
+        if (at.coming) {
+          if (st.asked) { this.setState({ asked: false }); return; }
+          const snd = window.gnSound;
+          if (snd && snd.unlock) snd.unlock();
+          this.setState({ asked: true });
+          return;
+        }
+        /* the first play with no clip opens the transcript and the options at once: then the options come into view */
+        if (at.silent && kind === 'choice' && !st.played && !st.playing && !(st.ans[k] && st.ans[k].done)) this.reveal = true;
+        const real = this.play(at.silent ? '' : clip, playText, ctx && ctx.rows);
+        if (!real && !st.read) this.setState({ read: at.why, asked: false });
+        else if (st.asked) this.setState({ asked: false });
+      }),
       /* the transcript's rows (a listening item): the speaker, the reply's number, the line, lit while it "plays" */
       script: (ctx && ctx.rows ? ctx.rows : []).map((r, j) => ({
         who: r.who,
@@ -904,8 +944,8 @@ class Component extends DCLogic {
         clearTimeout(this.tm);
         clearInterval(this.lt);
         if (window.gnSound && window.gnSound.stop) window.gnSound.stop();
-        if (last) this.setState({ summary: true, playing: false, line: -1, read: '' });
-        else this.setState({ i: s.i + 1, playing: false, played: false, line: -1, read: '' });
+        if (last) this.setState({ summary: true, playing: false, line: -1, read: '', asked: false });
+        else this.setState({ i: s.i + 1, playing: false, played: false, line: -1, read: '', asked: false });
       },
       doneHead: total === 0 ? 'Estás al día' : 'Repaso terminado',
       doneLine: (total === 0 ? 'No hay nada para repasar hoy. Cada error vuelve el día que le toca.' : total === 1 ? 'Repasaste la pregunta de hoy.' : 'Repasaste las ' + total + ' preguntas de hoy.') + (s.summary && waiting > 0 ? (waiting === 1 ? ' Queda 1 para los próximos días.' : ' Quedan ' + waiting + ' para los próximos días.') : ''),

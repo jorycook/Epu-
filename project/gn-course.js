@@ -625,7 +625,11 @@
      as one that does not exist: C.soundState tells the two apart. */
   var soundAsked = {};    /* file → 'coming', 'in', or the number of the screen it failed on */
   var soundSince = {};    /* file → when a control first waited for it, in ms (C.soundState) */
-  var SOUND_LATE = 20000; /* ms a control waits for a file that is on its way before it falls back to its stand-in */
+  /* how long a control waits for a file that is on its way before it falls back to its stand-in. The largest unit's
+     file is 0.6 MB as a host sends it: 12 s on a line of 400 kbit/s, the slowest one measured (README, «Sound»). 20 s
+     covers a line down to 250 kbit/s; past that the written stand-in serves the learner better than a longer wait
+     (a file that cannot be fetched at all says so at once, without this wait) */
+  var SOUND_LATE = 20000;
   var soundTurn = 0;      /* the screens the learner has moved through so far */
   var soundScreen;        /* the screen C.view was last asked for */
   C.soundFile = function (lv, unit) { return 'gn-sound-' + prefix(lv) + '-u' + pad(unit) + '.js'; };
@@ -690,15 +694,17 @@
      alone, because «not here» has four meanings and each wants other words on the screen:
        'in'      the clip is here and can be played;
        'coming'  its sound file is on its way (a slow line, the first use of a unit, or, in the app, a file that waits
-                 for the later screens): the control waits, shows «cargando el audio…» where the tag «voz sintética»
-                 goes and says «Cargando el audio…» when it is tapped. It runs no stand-in, opens no transcript and no
-                 answers, and shows nothing the clip was to say. The screen is drawn again when the file is in
+                 for the later screens): the control waits, with a look of its own (C.SOUND_WAIT) and «cargando el
+                 audio…» where the tag «voz sintética» goes, and says «Cargando el audio…» in its own line when it
+                 is tapped. It runs no stand-in, opens no transcript and no answers, shows nothing the clip was to
+                 say, and no clock runs against the learner meanwhile. The screen is drawn again when the file is in
                  (`gnsound`), and also when it has failed or is late;
        'failed'  the file could not be fetched, or is not in SOUND_LATE ms after a control began to wait for it (it
                  may still arrive), or the browser cannot play the clip: the written stand-in, with words that say
-                 the audio could not be loaded. A control that has fallen back keeps its stand-in for that item even
-                 if the clip arrives meanwhile (the board keeps that; nothing flips under the learner);
-       'off'     the learner has turned the synthetic voice off (Progreso): the stand-in, and words that say so;
+                 the audio could not be loaded. A stand-in that has been shown stays for that item while the screen
+                 is open, even if the clip arrives meanwhile (the board keeps that; nothing flips under the learner);
+       'off'     the learner has turned the synthetic voice off (Progreso): the stand-in, with words that say so and
+                 where to turn it on again;
        'none'    there is no clip under this key: nothing is recorded (the canvas alone, a level without sound, a
                  key without a recording), or the voice must not say it (sound/silent.json): the stand-in, and
                  «todavía no está grabado», which is true of a person's recording.
@@ -728,20 +734,32 @@
     }
     return now - soundSince[f] >= SOUND_LATE ? 'failed' : 'coming';
   };
-  /* What a control says while it has no clip to play, by the clip's state: the same words on every screen. `then`
-     is what the screen adds after a colon («leé lo que se dice.»); without it the sentence ends there. */
-  var SOUND_WORDS = { none: 'Este audio todavía no está grabado', failed: 'No se pudo cargar el audio', off: 'La voz sintética está apagada' };
+  /* What a control says while it has no clip to play, by the clip's state: the same words on every screen.
+     C.soundNote(state, then) is the sentence; `then` is what the screen adds after a colon, a whole clause with its
+     full stop («leé lo que se dice.»); without it the sentence ends there. A voice the learner turned off also says
+     where it is turned on again. C.soundWhy(state) is the same reason as the opening of a status line the screen
+     ends itself («Todavía no está grabado: se reproduce en silencio.»). */
+  var SOUND_WORDS = { none: 'Este audio todavía no está grabado', failed: 'No se pudo cargar el audio', off: 'Apagaste la voz sintética' };
+  var SOUND_SHORT = { none: 'Todavía no está grabado', failed: 'No se pudo cargar el audio', off: 'Apagaste la voz sintética' };
+  var SOUND_BACK = 'la activás de nuevo en Progreso.';
   C.SOUND_COMING = 'Cargando el audio…';
   C.soundNote = function (state, then) {
     if (state === 'in') return '';
     if (state === 'coming') return C.SOUND_COMING;
     var words = SOUND_WORDS[state] || SOUND_WORDS.none;
-    return words + (then ? ': ' + then : state === 'off' ? ': la activás en Progreso.' : '.');
+    if (state === 'off') return words + ': ' + (then ? then + ' ' + SOUND_BACK.charAt(0).toUpperCase() + SOUND_BACK.slice(1) : SOUND_BACK);
+    return words + (then ? ': ' + then : '.');
   };
+  C.soundWhy = function (state) { return state === 'coming' ? C.SOUND_COMING : SOUND_SHORT[state] || SOUND_SHORT.none; };
+  /* the look of a control that waits for its clip: a dashed grey edge on the screen's ground, its icon and its label
+     in the muted ink (still 5.6:1 on that ground: the control takes a tap, it is not switched off). Quiet, and its
+     own: not the pale indigo of a control at rest, not the gold of one that plays */
+  C.SOUND_WAIT = { border: '2px dashed #9AA1B5', bg: '#F4F5F9', ink: '#5A6382' };
   /* The sound a learner with a plan should have on the phone ahead of time, for use without a connection: the file of
-     the unit in use and of the unit after it, where they exist (the app's offline worker stores them: gn-app.js).
-     Nothing else is fetched before a screen asks for it: the placement check's, the level exam's and the speaking
-     game's files come the first time their screen opens, a later unit's when the learner gets near it. */
+     the unit in use and of the unit after it, where they exist, and the speaking game's, which is small and is the
+     practice a learner opens anywhere (the app's offline worker stores them: gn-app.js). Nothing else is fetched
+     before a screen asks for it: the placement check's and the level exam's files come the first time their screen
+     opens, a later unit's when the learner moves on to the unit before it. */
   C.soundAhead = function (state) {
     if (!state || !state.plan || !C.soundWanted()) return [];
     var listed = window.__gnSoundFiles || [];
@@ -749,8 +767,9 @@
     return C.withLevel(state.level || 'A1', function () {
       var sid = C.current(state, C.status(state, C.now()));
       var at = sid ? C.parse(sid) : null;
-      if (!at) return [];
-      return [at.unit, at.unit + 1].map(function (n) { return C.soundFile(LEVEL, n); }).filter(function (f) { return listed.indexOf(f) >= 0; });
+      var files = at ? [C.soundFile(LEVEL, at.unit), C.soundFile(LEVEL, at.unit + 1)] : [];
+      files.push(C.soundExtra('sp'));
+      return files.filter(function (f) { return listed.indexOf(f) >= 0; });
     });
   };
   /* ---------- the synthetic voice, said so ----------

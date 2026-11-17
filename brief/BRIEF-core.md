@@ -145,6 +145,7 @@ Keyframes (prefix gn-):
 `@keyframes gn-up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}` (sheets, 240ms) ·
 `@keyframes gn-fade{from{opacity:0}to{opacity:1}}` (overlays, 160ms) ·
 `@keyframes gn-stamp{0%{opacity:0;transform:scale(1.8) rotate(-20deg)}55%{opacity:1;transform:scale(.92) rotate(-9deg)}100%{opacity:1;transform:scale(1) rotate(-9deg)}}` (500ms ease-out both) ·
+`@keyframes gn-wait{0%,100%{opacity:1}50%{opacity:.3}}` (the icon of a sound control that was tapped while its clip was on its way and will play by itself, 1.4s ease-in-out infinite: §6) ·
 and always `@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}`.
 
 Icons (24×24 viewBox, `fill="none" stroke-linecap="round" stroke-linejoin="round"`): back `M15 5l-7 7 7 7` (2.6) · next `M9 5l7 7-7 7` ·
@@ -238,16 +239,20 @@ Same names and meanings as Yaoki's `ykCourse` unless noted. `const C = window.gn
 - Sound: `window.gnSound` — `has(key)`, `ms(key)`, `kind(key)` ('human' | 'synthetic' | ''), `cues(key)` (where each line of a clip put
   together from lines ends, in ms; null for one recording), `any()`, `unlock()`, `play(key)`, `stop()`, `on()`, `at()`, `over()`,
   `synthetic(on)` (the learner's switch: off, a voice model's clips count as missing). A sound control
-  checks `has()` and otherwise lights up as "playing" for `600 + C.plain(text).length * 120` ms (Yaoki's silent stand-in), showing the
-  words being said, and says that the audio is not recorded yet (true of a board on its own, of a day without sound, and of a clip the
-  synthetic voice must not say: `sound/silent.json`). Clip keys: `<item or example id>` (e.g. `a1u01d1.p1.x0` = point 1, example 0; `a1u01d1.r1` = listening item);
+  asks the engine where its clip stands (`C.soundState(key)`, the bullet after the tag's) and, without one, lights up as "playing" for
+  `600 + C.plain(text).length * 120` ms (Yaoki's silent stand-in), showing the words being said, and says why there is no sound: that
+  the audio is not recorded yet (true of a board on its own, of a day without sound, and of a clip the synthetic voice must not say:
+  `sound/silent.json`), that it could not be loaded, or that the learner turned the voice off. Clip keys: `<item or example id>` (e.g. `a1u01d1.p1.x0` = point 1, example 0; `a1u01d1.r1` = listening item);
   the full list is `sound/A1/manifest.json` (tools/sound-list.mjs). The clips arrive by unit (`gn-sound-a1-u01.js`, made by
   tools/make-sound.mjs; `gn-sound-index.js` names the files that exist): the engine fetches a unit's file when the unit is in use
-  (`C.needSound`), and fires `gnsound` on `document` when it has loaded, so the prototype draws the screen again (the
-  installed app holds such a request back until its later screens are in, since no screen of its first file plays a
-  clip: gn-app.js wraps `C.needSoundFile`). A file that could not be fetched is asked for again once from the next
-  screen, and at once when the browser says the connection is back; none is fetched while the voice is off and no
-  other exists (`C.soundWanted()`).
+  (`C.needSound`; none before there is a plan), and fires `gnsound` on `document` when it has loaded, when it could not
+  be fetched, and when it is too long in coming, so the prototype draws the screen again (the installed app holds
+  such a request back until its later screens are in or one of them is asked for, since no screen of its first file
+  plays a clip: gn-app.js wraps `C.needSoundFile`). A file that could not be fetched is asked for again once from the
+  next screen, and at once when the browser says the connection is back; none is fetched while the voice is off and
+  no other exists (`C.soundWanted()`). `C.soundAhead(state)` names the files a learner with a plan should have on the
+  phone ahead of time (the unit in use, the unit after it, the speaking game's): the app's offline worker stores
+  those, never a whole level.
 - **The tag «voz sintética»: one signal, every screen that offers a synthetic clip.** Until a person records the course
   its clips are a voice model's (`sound/VOICE.md`), and a screen says so next to the control, before anything is
   tapped: small, grey, never an alarm, never in a live region. A new screen that plays a clip adds two lines:
@@ -264,13 +269,40 @@ Same names and meanings as Yaoki's `ykCourse` unless noted. `const C = window.gn
   placement check; the live text and the tag are siblings in a flex row, the tag outside the `aria-live` element),
   beside the meaning under a word's speaker (Words), under the button when the control is a labelled button in a row
   of buttons (the spelling pad's «Escuchar»), and at the end of the dock's second line in Hablar. A screen reader
-  hears what it means once a visit: the first time `C.synth` is true the document hears `gnvoice`, and the board that
-  holds the screens (App here, the app's Shell) puts `C.VOICE_NOTE` in a 1-px live region of its own (at `top: 50px`:
-  the app leaves out the design's empty top zone on a short phone, and `check/platform-test.js` takes text up there
-  for text cut off by the screen's edge). Never put the words in a control's live line (a tap would say them again). The one place that explains the voice is Progreso
+  hears what it means once a visit: the first time a tag is drawn (the engine looks for `[data-gn-voice]` in the page
+  a moment after `C.synth` was true, so the mark on the span matters: a board may ask about controls it is not
+  showing) the document hears `gnvoice`, and the board that holds the screens (App here, the app's Shell) puts
+  `C.voiceNote()` in a 1-px live region of its own (at `top: 50px`: the app leaves out the design's empty top zone on
+  a short phone, and `check/platform-test.js` takes text up there for text cut off by the screen's edge); eight
+  seconds later `gnvoice` fires once more and `C.voiceNote()` is empty again, so the sentence does not stay in the
+  page. Never put the words in a control's live line (a tap would say them again). The one place that explains the voice is Progreso
   (BOARDS.md): `C.synthVoice()` says whether the sound index names a voice model, `app.voice` whether it is on.
   A screen that names who speaks in a dialogue keeps time by the clip, not by the lines' lengths:
   `C.cueLine(gnSound.cues(key), gnSound.at())` is the line being said.
+- **A clip that is not there: five states, the same words on every screen.** A control that plays a clip asks
+  `C.soundState(key)`, not `gnSound.has(key)` alone, because «no clip» has four meanings and each wants other words:
+  `'in'` (it plays), `'coming'` (its sound file is asked for and not in yet), `'failed'` (the file could not be
+  fetched, or is not in 20 s after a control began to wait for it, or the browser cannot play the clip), `'off'` (the
+  learner turned the voice off) and `'none'` (nothing is recorded, or the voice must not say it; always so on the
+  canvas alone). A new screen adds, beside the tag's two lines:
+  ```js
+  const now = C.soundState(key);                    // in renderVals, per control
+  // coming:  loading: now === 'coming'  → the chip «cargando el audio…» in the tag's place (the tag's span, no mark),
+  //          the control in C.SOUND_WAIT's look ({ border, bg, ink }); tapped, it runs NO stand-in: it says
+  //          C.SOUND_COMING («Cargando el audio…») in its own live line, shows nothing the clip was to say, opens
+  //          nothing, counts nothing, and no clock of the screen runs while it waits
+  // else, without a clip: the stand-in, and why: C.soundNote(state, 'leé lo que se dice.') → «Este audio todavía no
+  //          está grabado: …» | «No se pudo cargar el audio: …» | «Apagaste la voz sintética: … La activás de nuevo en
+  //          Progreso.»; C.soundWhy(state) is the same reason as the opening of a status line the screen ends itself
+  ```
+  The engine fires `gnsound` when the state of a file changes (in, failed, late), and the board that holds the screens
+  draws again: the control is then ready with no note left. Two things the board keeps itself. *What was tapped while
+  the clip was on its way:* where a play is free and can be repeated, the clip plays by itself once it is in (the
+  board listens to `gnsound` in `componentDidMount`, calls `gnSound.unlock()` inside the tap that waits so that
+  sound may start later, and drops the wait at a second tap, another control or `componentWillUnmount`); where plays
+  are counted or the audio sets the pace, nothing starts by itself. *A stand-in that has shown something* (a
+  transcript, a word in place of its sound): it stays for that item while the screen is open, with the reason it was
+  shown for, whatever arrives later; the state is asked afresh at each tap, never taken from the last drawing.
 
 ## 7. Content: the shape the screens read
 

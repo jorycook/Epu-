@@ -40,14 +40,14 @@ async function fresh(olds, f) {
 }
 /* the course's sound, one file per unit (and one each for the placement check, a level's exam and the speaking game), is
    not part of the install (it would make the first download several times larger): a file is stored the first time the
-   engine fetches it, and the app asks for the rest of the chosen level in the background once there is a plan. Each file
-   carries a hash of its content, so a new build keeps the ones that did not change. */
+   engine fetches it, and once there is a plan the app names the few files to have ahead (keepFiles, below): never a
+   whole level. Each file carries a hash of its content, so a new build keeps the ones that did not change. */
 const LAZY = __LAZY__;
 const lazyKey = (f) => f + '?h=' + LAZY[f];
 const lazyOf = (url) => { const p = './' + new URL(url).pathname.slice(HOME.length); return LAZY[p] ? p : null; };
 const isLazy = async (res, f) => !!res && res.ok && (await hashOf(res)) === LAZY[f];
 /* A sound file is fetched and stored once, however many ask for it at the same moment (the screen that needs it, and the
-   app keeping the level's sound). Like the files of the install, it is asked for at the address the page uses, in the
+   app naming the files to keep). Like the files of the install, it is asked for at the address the page uses, in the
    browser's usual way: the file the page fetched before this worker was in charge (the first unit's, on a first visit)
    comes from the browser's own copy and is not downloaded a second time. What comes back must be this build's file;
    else it is asked for again past every copy, under its own hash, and a file of another build is not stored. */
@@ -136,18 +136,19 @@ self.addEventListener('fetch', (event) => {
   );
 });
 
-/* the app names the learner's level once there is a plan: store that level's sound for offline use, in the background
-   (its units' files, its exam's, and the placement check's and the speaking game's, which belong to no level).
-   For a learner whose browser says they save data the app names no level: it names the sound files the page has
-   asked for itself (keepFiles), and only those are stored. That is for the file the page fetched before this worker
-   was in charge (the first unit's, on a first visit): it comes from the browser's own copy, and nothing else is
-   fetched behind the learner's back. A file asked for later passes through this worker and is stored then. */
+/* The app names the sound files to store (keepFiles), in the order it wants them, once there is a plan: those the page
+   has asked for itself (the one it fetched before this worker was in charge, the first unit's on a first visit, comes
+   from the browser's own copy), and the few it wants ahead of time for use without a connection: the unit in use, the
+   one after it, the speaking game (gn-app.js, keepSound; none ahead for a learner whose browser says they save
+   data). Only the files named are stored, one after the other: a whole level is never fetched behind the learner's
+   back (a worker of an earlier build took the level's name, keepLevel, and fetched all of it: that message is no
+   longer understood). A file asked for later passes through this worker and is stored then. */
 self.addEventListener('message', (event) => {
   const data = event.data || {};
-  const lv = data.keepLevel;
-  let mine = [];
-  if (typeof lv === 'string' && /^[abc][12]$/.test(lv)) mine = Object.keys(LAZY).filter((f) => f.indexOf('gn-sound-' + lv + '-') >= 0 || /gn-sound-(pl|sp)\.js$/.test(f));
-  else if (Array.isArray(data.keepFiles)) mine = Object.keys(LAZY).filter((f) => data.keepFiles.indexOf(f.split('/').pop()) >= 0);
+  if (!Array.isArray(data.keepFiles)) return;
+  const all = Object.keys(LAZY);
+  const mine = [];
+  data.keepFiles.forEach((name) => { const f = all.find((x) => x.split('/').pop() === name); if (f && mine.indexOf(f) < 0) mine.push(f); });
   if (!mine.length) return;
   event.waitUntil(caches.open(CACHE).then(async (cache) => { for (const f of mine) { try { await keepLazy(cache, f); } catch (e) { /* offline: try again next time */ } } }));
 });

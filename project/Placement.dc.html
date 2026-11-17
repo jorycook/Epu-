@@ -85,10 +85,10 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <sc-if value="{{ q.listening }}" hint-placeholder-val="{{ true }}">
 <div style="margin-top: 12px; flex-shrink: 0; padding: 14px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; display: flex; flex-direction: column; gap: 12px">
 <div style="display: flex; align-items: center; gap: 14px">
-<button aria-label="Escuchar el audio" disabled="{{ noPlay }}" onClick="{{ play }}" style="width: 60px; height: 60px; border-radius: 50%; border: 2px solid #1B2440; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 150ms; background: {{ playBg }}; box-shadow: {{ playShadow }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="{{ playInk }}" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+<button aria-label="Escuchar el audio" disabled="{{ noPlay }}" onClick="{{ play }}" style="width: 60px; height: 60px; box-sizing: border-box; border-radius: 50%; border: {{ playEdge }}; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 150ms; background: {{ playBg }}; box-shadow: {{ playShadow }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="{{ playInk }}" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></button>
 <div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px">
 <div aria-hidden="true" style="height: 40px; display: flex; align-items: center; justify-content: space-between"><sc-for list="{{ bars }}" as="b" hint-placeholder-count="22"><div style="width: 4px; border-radius: 2px; height: {{ b.h }}; background: {{ b.bg }}"></div></sc-for></div>
-<div style="display: flex; align-items: center; gap: 8px"><div aria-live="polite" style="flex: 1 1 auto; min-width: 0; min-height: 15px; font-size: 11px; font-weight: 700; line-height: 1.35; color: #5A6382">{{ playNote }}</div><sc-if value="{{ synth }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap">voz sintética</span></sc-if></div>
+<div style="display: flex; align-items: center; gap: 8px"><div style="flex: 1 1 auto; min-width: 0; min-height: 15px; font-size: 11px; font-weight: 700; line-height: 1.35; color: #5A6382"><span aria-live="polite">{{ playNote }}</span><span>{{ playWait }}</span></div><sc-if value="{{ synth }}" hint-placeholder-val="{{ false }}"><span data-gn-voice="tag" style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap">voz sintética</span></sc-if></div>
 </div>
 </div>
 <sc-if value="{{ saying }}" hint-placeholder-val="{{ false }}">
@@ -211,7 +211,12 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
    Parte 1 · Autoevaluación: eight can-do statements, one for understanding and one for speaking at each level A1-B2.
    Parte 2 · Comprensión: up to 18 questions, adaptive by blocks of a third: a routing block at A2-B1, then a block one
    level up or down by how the routing went, then a block around the estimate. Listening questions play their clip, or
-   the silent stand-in that shows the words being said, at most twice.
+   the silent stand-in that shows the words being said, at most twice. Where a question's clip stands is asked of the
+   engine (gnCourse.soundState): while its sound file is still on its way the player waits, with the waiting look and
+   «Cargando el audio…» (nothing stands in, the exchange stays shut, the options too, and no play is counted); a tap
+   then starts nothing by itself later, because the two plays are counted: the learner starts the clip once the line
+   says it can be heard. A clip that is not recorded, could not be loaded, or belongs to a voice the learner turned
+   off is read from the exchange, and the line says which; a question that has been read stays read (read).
    Parte 3 · Producción (optional): give the spoken introduction the prompt asks for, then pick the description closest to how it went;
    skipping it puts speaking one level below understanding.
    The result is a profile (Comprensión B1 · Producción A2), shown beside the self-assessment as DIALANG does, and the
@@ -358,7 +363,9 @@ this.timer = null;
 if (window.gnSound) window.gnSound.stop();
 }
 base() {
-return { phase: 'self', yes: {}, seq: [], i: 0, answers: {}, plays: 0, playing: false, progress: 0, silent: true, line: -1, bench: null, result: null, skippedSelf: false };
+/* read: why the question on show is read from its exchange, once it is ('none', 'failed', 'off'); asked: its play
+   button was tapped while its clip was on its way */
+return { phase: 'self', yes: {}, seq: [], i: 0, answers: {}, plays: 0, playing: false, progress: 0, silent: true, line: -1, read: '', asked: false, bench: null, result: null, skippedSelf: false };
 }
 /* inside the app: from part 1 (or part 2 when there are no statements) */
 fresh() {
@@ -402,7 +409,7 @@ toComp(skipped) {
 const list = questions();
 this.stopSound();
 if (!list.length) { this.setState({ phase: 'empty' }); return; }
-this.setState({ phase: 'comp', skippedSelf: !!skipped, seq: [nextItem(list, [], {})], i: 0, answers: {}, plays: 0, playing: false, progress: 0, line: -1 });
+this.setState({ phase: 'comp', skippedSelf: !!skipped, seq: [nextItem(list, [], {})], i: 0, answers: {}, plays: 0, playing: false, progress: 0, line: -1, read: '', asked: false });
 }
 next() {
 const s = this.state;
@@ -410,7 +417,7 @@ const list = questions();
 const k = s.seq[s.i];
 if (k == null || s.answers[k] == null) return;
 this.stopSound();
-const reset = { plays: 0, playing: false, progress: 0, line: -1 };
+const reset = { plays: 0, playing: false, progress: 0, line: -1, read: '', asked: false };
 if (s.i < s.seq.length - 1) { this.setState(Object.assign({ i: s.i + 1 }, reset)); return; }
 const nk = nextItem(list, s.seq, s.answers);
 if (nk < 0) { this.setState(Object.assign({ phase: 'prod' }, reset)); return; }
@@ -435,12 +442,22 @@ const plan = this.props.app && this.props.app.plan;
 if (this.props.save) this.props.save(Object.assign({ placement: { comp: placed.comp, prod: placed.prod, start: placed.start, self, measured, at: C.now() } }, plan ? {} : { level: placed.start }));
 this.setState({ phase: 'result', result: { comp: placed.comp, prod: placed.prod, self, compSkipped: !asked.length, prodSkipped: !!skipProd } });
 }
+/* where a listening question's clip stands at this moment: it can be played (hasClip), it is on its way (coming), or
+   why the question is read instead (why: what it was read for, else the clip's state now) */
+stand(st, it) {
+const C = window.gnCourse;
+const now = heard(it) ? C.soundState(it.clip || it.id) : 'none';
+return { hasClip: now === 'in' && !st.read, coming: now === 'coming' && !st.read, why: st.read || (now === 'in' || now === 'coming' ? 'failed' : now) };
+}
 /* the item's clip, or the silent stand-in: each line "plays" in turn for 600 ms + 120 ms per character and its words show */
 play() {
 const C = window.gnCourse;
 const s = this.state;
 const it = questions()[s.seq[s.i]];
 if (!heard(it) || s.playing || s.plays >= PLAYS) return;
+const at = this.stand(s, it);
+/* its clip is on its way: the player waits and says so; nothing stands in, and no play is counted */
+if (at.coming) { if (!s.asked) this.setState({ asked: true }); return; }
 clearInterval(this.timer);
 const lines = it.audio.filter((l) => Array.isArray(l) && l[1]);
 const ms = lines.map((l) => 600 + C.plain(l[1]).length * 120);
@@ -451,12 +468,13 @@ const lineAt = (f) => { for (let n = 0; n < ends.length; n++) if (f < ends[n]) r
 const snd = window.gnSound;
 const key = it.clip || it.id;
 /* the first play with no clip opens the exchange and the options at once: then the options come into view */
-if (!(snd && key && snd.has(key)) && s.plays === 0) this.reveal = true;
-let sound = !!(snd && key && snd.has(key) && snd.unlock() && snd.play(key));
+if (!at.hasClip && s.plays === 0) this.reveal = true;
+let sound = !!(at.hasClip && snd && key && snd.has(key) && snd.unlock() && snd.play(key));
 let got = false;
 let over = false;
 const started = Date.now();
-this.setState({ playing: true, progress: 0, silent: !sound, line: 0 });
+/* played without a clip, the question is read from here on, for the reason there was none */
+this.setState({ playing: true, progress: 0, silent: !sound, line: 0, asked: false, read: s.read || (at.hasClip ? '' : at.why) });
 this.timer = setInterval(() => {
 /* a tick that comes after the end counts nothing */
 if (over) return;
@@ -539,10 +557,14 @@ const k = s.seq[s.i];
 const it = phase === 'comp' && k != null ? list[k] || null : null;
 const listening = heard(it);
 const lines = listening ? it.audio.filter((l) => Array.isArray(l) && l[1]) : [];
-/* with no clip (none is recorded yet) the speaker still lights up, but the whole exchange shows at its first tap and stays,
-   to be read instead of heard, and the options open with it, as in Listening and Review */
-const hasClip = listening && !!(window.gnSound && window.gnSound.has && window.gnSound.has(it.clip || it.id));
-const reading = listening && !hasClip && (s.playing || s.plays > 0);
+/* with no clip (none is recorded yet, it could not be loaded, or the voice is turned off) the speaker still lights up,
+   but the whole exchange shows at its first tap and stays, to be read instead of heard, and the options open with
+   it, as in Listening and Review. While the clip is on its way nothing of that happens: the player waits */
+const here = listening ? this.stand(s, it) : { hasClip: false, coming: false, why: 'none' };
+const hasClip = here.hasClip;
+const coming = here.coming;
+const WAIT = C.SOUND_WAIT;
+const reading = listening && !hasClip && !coming && (s.playing || s.plays > 0);
 const qText = it ? String(it.q || '') : '';
 const qGn = !!qText && isGn(C.plain(qText));
 const optGn = !!it && it.options.some((o) => isGn(C.plain(o)));
@@ -655,7 +677,7 @@ skipSelf: () => this.toComp(true),
 toComp: () => { if (selfDone) this.toComp(false); },
 
 q: {
-kind: it ? 'Pregunta ' + (s.i + 1) + ' de ' + n + ' · ' + ((this.props.go && listening && !hasClip ? saidLabel(it.label) : it.label) || C.area(it.area).es) : '',
+kind: it ? 'Pregunta ' + (s.i + 1) + ' de ' + n + ' · ' + ((this.props.go && listening && !hasClip && !coming ? saidLabel(it.label) : it.label) || C.area(it.area).es) : '',
 listening,
 hasPassage: !!(it && it.passage),
 passageText: it && it.passage ? C.plain(it.passage) : '',
@@ -668,14 +690,21 @@ opts,
 bars: HEIGHTS.map((h, j) => ({ h: h + 'px', bg: j < Math.round(s.progress * HEIGHTS.length) ? '#2F4FD0' : '#C9D0E3' })),
 play: () => this.play(),
 noPlay: spent,
-playBg: s.playing ? '#F2B43A' : spent ? '#DDE1EC' : '#2F4FD0',
-playInk: s.playing ? '#1B2440' : spent ? '#9AA1B5' : '#FFFFFF',
-playShadow: spent ? 'none' : '0 4px 0 #1B2440',
-playNote: !hasClip
-? (reading ? 'Este audio todavía no está grabado: leé lo que se dice.' : 'Todavía no está grabado: tocá y leé lo que se dice.')
+playBg: s.playing ? '#F2B43A' : spent ? '#DDE1EC' : coming ? WAIT.bg : '#2F4FD0',
+playInk: s.playing ? '#1B2440' : spent ? '#9AA1B5' : coming ? WAIT.ink : '#FFFFFF',
+playEdge: !s.playing && !spent && coming ? WAIT.border : '2px solid #1B2440',
+playShadow: spent || (coming && !s.playing) ? 'none' : '0 4px 0 #1B2440',
+/* the player's line. While the clip is on its way it says «Cargando el audio…»: beside the live region until the
+   button is tapped, inside it from then on, so that a screen reader hears it once, at the tap, and hears the line
+   that follows when the clip is in. A clip that would not start (the phone's audio is held elsewhere) is not one
+   that is not recorded: the line says the audio could not be played */
+playNote: coming ? (s.asked ? C.SOUND_COMING : '')
+: !hasClip
+? (reading ? C.soundNote(here.why, 'leé lo que se dice.') : C.soundWhy(here.why) + ': tocá y leé lo que se dice.')
 : s.playing
-? (s.silent ? 'Todavía sin grabación: así se dice.' : 'Escuchando…')
+? (s.silent ? (this.props.go ? 'No se pudo reproducir el audio: así se dice.' : 'Todavía sin grabación: así se dice.') : 'Escuchando…')
 : s.plays === 0 ? 'Podés escucharlo dos veces.' : s.plays < PLAYS ? 'Podés escucharlo una vez más.' : 'Ya lo escuchaste dos veces.',
+playWait: coming && !s.asked ? C.SOUND_COMING : '',
 canReplay: hasClip && s.plays >= 1 && s.plays < PLAYS && !s.playing,
 /* the question's clip is a voice model's: the tag «voz sintética» stands at the end of the player's line, outside its
    live region, from the start */
@@ -690,12 +719,12 @@ linesRef: this.linesRef,
 optsRef: this.optsRef,
 waiting: listening && s.plays === 0 && !s.playing,
 /* with no clip there is nothing to hear: the exchange is read (Emoñe'ẽ · Leer) */
-waitGn: hasClip ? 'Ehendu' : "Emoñe'ẽ",
-waitNote: hasClip ? 'Escuchá primero; después elegí.' : 'Tocá reproducir y leé lo que se dice; después elegí.',
+waitGn: hasClip || coming ? 'Ehendu' : "Emoñe'ẽ",
+waitNote: hasClip || coming ? 'Escuchá primero; después elegí.' : 'Tocá reproducir y leé lo que se dice; después elegí.',
 noPick: picked == null,
 ck: cta(picked != null),
 next: () => this.next(),
-skipComp: () => { this.stopSound(); this.setState({ phase: 'prod', playing: false, progress: 0, line: -1 }); },
+skipComp: () => { this.stopSound(); this.setState({ phase: 'prod', playing: false, progress: 0, line: -1, read: '', asked: false }); },
 
 prodPrompt: prodData.es || 'Presentate en guaraní: tu nombre, de dónde sos y qué hacés.',
 prodNote: 'Hablá en voz alta, como si alguien te escuchara. No se graba nada: después elegí la frase que más se parece a cómo te salió.',

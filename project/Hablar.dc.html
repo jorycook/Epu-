@@ -150,7 +150,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <sc-if value="{{ dockOn }}" hint-placeholder-val="{{ true }}">
 <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 220px; box-sizing: border-box; padding: 6px 12px 34px; background: rgba(255, 255, 255, 0.86); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-top: 2px solid #1B2440; border-radius: 24px 24px 0 0; box-shadow: 0 -6px 20px rgba(27, 36, 64, 0.14); display: flex; flex-direction: column">
 <p style="margin: 0; padding: 0 2px; height: 20px; display: flex; align-items: center; gap: 0 8px; overflow: hidden; font-size: 14px; font-weight: 700; line-height: 20px; color: #5A6382"><sc-if value="{{ dock.hasTag }}" hint-placeholder-val="{{ true }}"><span style="flex-shrink: 0; padding: 0 8px; border-radius: 10px; background: #FCE4EE; color: #B02A63; font-size: 11px; font-weight: 800; line-height: 18px; white-space: nowrap">{{ dock.tag }}</span></sc-if><span style="min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{ dock.say }}</span></p>
-<p style="margin: 0; padding: 0 2px; height: 22px; display: flex; align-items: center; gap: 6px; overflow: hidden; font-size: 14px; font-weight: 700; line-height: 22px; white-space: nowrap; color: {{ dock.heardColor }}"><sc-if value="{{ dock.heardOn }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0">{{ dock.heardLabel }}</span><span lang="gn" style="flex-shrink: 0; font-family: 'Andika', 'Nunito', sans-serif; font-size: 17px; font-weight: 700; color: {{ dock.heardGnColor }}">{{ dock.heardGn }}</span><span style="min-width: 0; overflow: hidden; text-overflow: ellipsis">{{ dock.heardEs }}</span></sc-if><sc-if value="{{ dock.synth }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap; margin-left: auto">voz sintética</span></sc-if></p>
+<p style="margin: 0; padding: 0 2px; height: 22px; display: flex; align-items: center; gap: 6px; overflow: hidden; font-size: 14px; font-weight: 700; line-height: 22px; white-space: nowrap; color: {{ dock.heardColor }}"><sc-if value="{{ dock.heardOn }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0">{{ dock.heardLabel }}</span><span lang="gn" style="flex-shrink: 0; font-family: 'Andika', 'Nunito', sans-serif; font-size: 17px; font-weight: 700; color: {{ dock.heardGnColor }}">{{ dock.heardGn }}</span><span style="min-width: 0; overflow: hidden; text-overflow: ellipsis">{{ dock.heardEs }}</span></sc-if><sc-if value="{{ dock.synth }}" hint-placeholder-val="{{ false }}"><span data-gn-voice="tag" style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap; margin-left: auto">voz sintética</span></sc-if></p>
 <p role="status" aria-live="polite" style="margin: 0; padding: 0 2px; min-height: 16px; max-height: 32px; overflow: hidden; font-size: 13px; font-weight: 800; line-height: 16px; color: {{ dock.statusColor }}"><sc-for list="{{ dock.statusSegs }}" as="x" hint-placeholder-count="1"><span lang="{{ x.lang }}">{{ x.t }}</span></sc-for></p>
 <div style="margin-top: 2px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 10px">
 <button onClick="{{ sideL }}" aria-label="{{ dock.leftAria }}" aria-disabled="{{ dock.leftOff }}" style="justify-self: center; min-width: 64px; min-height: 56px; padding: 4px 8px; box-sizing: border-box; border-radius: 16px; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 11px; font-weight: 800; line-height: 1.15; border: {{ dock.leftBorder }}; background: {{ dock.leftBg }}; color: {{ dock.leftColor }}; box-shadow: {{ dock.leftShadow }}">
@@ -160,7 +160,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </button>
 <div style="position: relative; width: 84px; height: 84px">
 <div aria-hidden="true" style="position: absolute; left: -9px; top: -9px; width: 102px; height: 102px; box-sizing: border-box; border-radius: 50%; border: 3px solid {{ dock.ringColor }}; opacity: {{ dock.ringO }}; transform: scale({{ dock.ringS }})"></div>
-<button onClick="{{ big }}" aria-label="{{ dock.bigAria }}" aria-pressed="{{ dock.bigPressed }}" style="position: relative; width: 84px; height: 84px; padding: 0; box-sizing: border-box; border-radius: 50%; border: 3px solid #1B2440; box-shadow: {{ dock.bigShadow }}; background: {{ dock.bigBg }}; color: {{ dock.bigColor }}; transform: {{ dock.bigTf }}; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; touch-action: manipulation">
+<button onClick="{{ big }}" aria-label="{{ dock.bigAria }}" aria-pressed="{{ dock.bigPressed }}" style="position: relative; width: 84px; height: 84px; padding: 0; box-sizing: border-box; border-radius: 50%; border: {{ dock.bigBorder }}; box-shadow: {{ dock.bigShadow }}; background: {{ dock.bigBg }}; color: {{ dock.bigColor }}; transform: {{ dock.bigTf }}; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; touch-action: manipulation">
 <sc-if value="{{ dock.bigPlay }}" hint-placeholder-val="{{ true }}"><svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true" style="transform: scale({{ dock.iconS }})"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></sc-if>
 <sc-if value="{{ dock.bigMic }}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></sc-if>
 <sc-for list="{{ dock.bigLines }}" as="x" hint-placeholder-count="2"><span lang="{{ x.lang }}" style="font-size: 10px; font-weight: 800; line-height: 1.15">{{ x.t }}</span></sc-for>
@@ -179,7 +179,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <sc-for list="{{ cmp.strips }}" as="s" hint-placeholder-count="2">
 <div style="margin-top: 8px; height: 52px; box-sizing: border-box; padding: 0 12px 0 4px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; align-items: center; gap: 10px">
 <button onClick="{{ s.play }}" aria-label="{{ s.aria }}" aria-pressed="{{ s.on }}" style="flex-shrink: 0; width: 44px; height: 44px; padding: 0; box-sizing: border-box; border-radius: 12px; border: 2px solid #1B2440; background: {{ s.btnBg }}; color: {{ s.btnColor }}; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></button>
-<span style="flex-shrink: 0; min-width: 52px; display: flex; flex-direction: column; align-items: flex-start; gap: 1px"><span style="font-size: 13px; font-weight: 800; line-height: 1.3">{{ s.label }}</span><sc-if value="{{ s.synth }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap">voz sintética</span></sc-if></span>
+<span style="flex-shrink: 0; min-width: 52px; display: flex; flex-direction: column; align-items: flex-start; gap: 1px"><span style="font-size: 13px; font-weight: 800; line-height: 1.3">{{ s.label }}</span><sc-if value="{{ s.synth }}" hint-placeholder-val="{{ false }}"><span data-gn-voice="tag" style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap">voz sintética</span></sc-if></span>
 <div aria-hidden="true" style="flex: 1; min-width: 0; height: 32px; display: flex; align-items: center; gap: 2px">
 <sc-for list="{{ s.bars }}" as="b" hint-placeholder-count="28"><span style="flex: 1; min-width: 0; border-radius: 2px; height: {{ b.h }}; background: {{ b.bg }}"></span></sc-for>
 </div>
@@ -190,7 +190,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="margin-top: 8px; height: 52px; box-sizing: border-box; padding: 0 12px 0 4px; border-radius: 16px; border: 2px dashed #C9D0E3; display: flex; align-items: center; gap: 10px">
 <span aria-hidden="true" style="flex-shrink: 0; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #9AA1B5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 9a4 4 0 0 1 0 6"/></svg></span>
 <span style="flex-shrink: 0; width: 52px; font-size: 13px; font-weight: 800">Modelo</span>
-<span style="flex: 1; min-width: 0; font-size: 13px; font-weight: 700; color: #5A6382">Todavía no está grabado</span>
+<span style="flex: 1; min-width: 0; font-size: 13px; font-weight: 700; color: #5A6382">{{ cmp.noModelText }}</span>
 </div>
 </sc-if>
 <sc-if value="{{ cmp.unrecorded }}" hint-placeholder-val="{{ false }}">
@@ -288,8 +288,14 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
    The words' sound: a word or a sign without a clip (the canvas alone has none; in the app, the pairs the synthetic
    voice must not say) lights its button up for 600 + 120 ms a letter (Yaoki's stand-in) and shows the word being
    said. A clip made by a voice model carries the tag «voz sintética» (gnCourse.synth): at the end of the dock's
-   second line while its card is the one in play, and under «Modelo» in the comparison. The rewards are Yaoki's: the
-   clean run, Se levantó, the stamp; never speed.
+   second line while its card is the one in play, and under «Modelo» in the comparison. Where a word's clip stands is
+   asked of the engine (gnCourse.soundState, through why()): while the speaking game's sound file is still on its way
+   «Escuchá y elegí» holds (nothing falls, no hint is raised, the dock says «Cargando el audio…» and its button
+   waits), and goes on by itself when the file is in, since the round plays each word itself; in «Repetí y compará»
+   the round goes on (the sign is read), and «Escuchar» only says that the model is loading: it starts nothing by
+   itself later, because a model heard counts as help. A word that could not be loaded, or whose voice the learner
+   turned off, is shown written like one that is not recorded, and the lines say which; a card shown written stays so
+   for the round (r.quiet). The rewards are Yaoki's: the clean run, Se levantó, the stamp; never speed.
    Props: go, app, demo: "pick" (on its own: a pair falling while its word plays) or "compare" (the ¿Sonó igual? panel
    open under Kaguare). Inside the app (no demo) it opens on its menu. A designed moment holds still until the first tap.
    Its way out (the menu's close, the result's Cerrar, the pause sheet's Salir) goes back to Progreso, whose «Más
@@ -368,12 +374,19 @@ const LOOK_TIP = {
   acento: 'Fijate en qué vocal va el acento (´).',
   y: 'Fijate en la y, la sexta vocal: no es i ni u.',
 };
-/* a sign's model with no clip (none is recorded yet), inside the prototype and the app: what the dock says instead of
-   «escuchá el modelo»; a silent model is shown written while its stand-in runs and never counts as help */
+/* a sign's model with no clip (none is recorded yet, it could not be loaded, or the voice is turned off), inside the
+   prototype and the app: what the dock says instead of «escuchá el modelo»; a silent model is shown written while its
+   stand-in runs and never counts as help */
 const SILENT_MODEL = 'Este modelo todavía no está grabado: mirá cómo se escribe y decilo en voz alta.';
+const WHY_SHORT = { failed: 'No se pudo cargar el audio', off: 'Apagaste la voz sintética' };
+const silentModel = (why) => (WHY_SHORT[why] ? WHY_SHORT[why] + ': mirá cómo se escribe y decilo en voz alta.' : SILENT_MODEL);
+/* the note of a word's first stand-in in a round, and the opening of a dock line about a word shown written */
+const silentNote = (why) => { const C = window.gnCourse; return C && C.soundNote ? C.soundNote(why || 'none') : 'Este audio todavía no está grabado.'; };
+const quietLead = (why) => (WHY_SHORT[why] ? (why === 'off' ? 'Voz apagada' : WHY_SHORT[why]) : 'Sin audio todavía');
+const COMING = 'Cargando el audio…';
 const WAYS = {
   pick: { title: 'Escuchá y elegí', desc: 'Suena una palabra y caen dos parecidas. Tocá la que oíste antes de que caiga sobre Kaguare.', kicker: 'ESCUCHÁ Y ELEGÍ' },
-  compare: { title: 'Repetí y compará', desc: 'Decí el cartel, escuchá tu toma junto al modelo y decidí si sonó igual. Sin apuro.', descApp: 'Decí el cartel en voz alta, escuchá el modelo y decidí si sonó igual. Sin apuro.', descSilent: 'Decí el cartel en voz alta y decidí si te salió como se escribe: los modelos todavía no están grabados. Sin apuro.', kicker: 'REPETÍ Y COMPARÁ' },
+  compare: { title: 'Repetí y compará', desc: 'Decí el cartel, escuchá tu toma junto al modelo y decidí si sonó igual. Sin apuro.', descApp: 'Decí el cartel en voz alta, escuchá el modelo y decidí si sonó igual. Sin apuro.', descSilent: 'Decí el cartel en voz alta y decidí si te salió como se escribe: los modelos todavía no están grabados. Sin apuro.', descFailed: 'Decí el cartel en voz alta y decidí si te salió como se escribe: no se pudo cargar el audio de los modelos. Sin apuro.', descOff: 'Decí el cartel en voz alta y decidí si te salió como se escribe: apagaste la voz de los modelos. Sin apuro.', kicker: 'REPETÍ Y COMPARÁ' },
 };
 
 const reduced = () => { try { return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); } catch (e) { return false; } };
@@ -619,7 +632,7 @@ style, queue: deck.map((item) => ({ item, falls: 0 })), total: deck.length, clea
 time: 0, rt: pace.r, p: pace.p, cards: [], fall: null, endIn: null, finale: null, target: null,
 run: 0, bestRun: 0, stepChip: false, comebacks: 0, fellEntries: [], mixed: [], started: false, lastFor: null, said: {},
 yk: { happyT: 0, hopT: 0, hopH: 6, bubble: null, nodT: 0, blinkT: -1, blinkAt: 1.5, fx: null, trail: [], trick: null, x: W / 2 },
-shards: [], nodes: [], drops: [], rings: [], voicing: null, firstClip: false,
+shards: [], nodes: [], drops: [], rings: [], voicing: null, firstClip: false, quiet: {}, held: false,
 head: 0, maxH: 0, speed: 0, T: 0, lastSpawn: null,
 ledges: [], at: -1, camY: 0, jump: null, pending: null, top: 0, atTop: false,
 };
@@ -653,22 +666,48 @@ this.status = { es: this.mute(first) ? 'Tocá la palabra que se muestra antes de
 /* no clip registered at all (none is recorded yet), inside the prototype and the app: the menu, the intro and the
    result say so instead of asking the learner to listen */
 noClips() {
-const Sd = window.gnSound;
-return !!(this.props && this.props.go) && !(Sd && Sd.any ? Sd.any() : Object.keys(window.__gnClips || {}).length);
+const a = this.audio();
+return a === 'none' || a === 'failed' || a === 'off';
 }
+/* the game's audio as a whole, inside the prototype and the app: 'some' there are clips to hear; 'coming' the speaking
+   game's sound file is still on its way; else why nothing sounds: 'off' the learner turned the voice off, 'failed'
+   the audio could not be loaded, 'none' nothing is recorded. The canvas alone: '' (its designed wording) */
+audio() {
+if (!(this.props && this.props.go)) return '';
+const all = this.pairs.concat(this.phrases).map((it) => this.why(it));
+if (all.indexOf('coming') >= 0) return 'coming';
+if (all.some((w) => !w)) return 'some';
+return all.indexOf('off') >= 0 ? 'off' : all.indexOf('failed') >= 0 ? 'failed' : 'none';
+}
+/* where a word's clip stands, inside the prototype and the app: '' it plays; 'coming' its sound file is on its way;
+   else why the word is shown written instead ('none' not recorded, 'failed' it could not be loaded, 'off' the voice
+   is turned off). A card that has been shown written stays so for the round (r.quiet), whatever arrives later */
+why(item) {
+if (!(this.props && this.props.go)) return '';
+if (!item) return 'none';
+const r = this.r;
+if (r && r.quiet && r.quiet[item.id]) return r.quiet[item.id];
+const C = window.gnCourse;
+const st = C && C.soundState ? C.soundState(item.id) : 'none';
+return st === 'in' ? '' : st;
+}
+waits(item) { return !!item && this.why(item) === 'coming'; }
 /* how many of the pairs and of the signs have no clip, inside the prototype and the app (the synthetic voice does not
    say every pair: sound/silent.json): the menu's note says so, in numbers */
 quiet() {
-const Sd = window.gnSound;
-const has = (id) => !!(Sd && Sd.has && Sd.has(id));
+const off = (it) => { const w = this.why(it); return !!w && w !== 'coming'; };
+/* a pair is two cards, one for each of its words: without audio when neither word has a clip; with one word only
+   (halves), that word's card shows the word and the other one sounds */
 const ids = {};
-this.pairs.forEach((it) => { const k = String(it.id).split('.')[0]; ids[k] = (ids[k] || false) || !has(it.id); });
+this.pairs.forEach((it) => { const k = String(it.id).split('.')[0]; ids[k] = ids[k] || { n: 0, off: 0 }; ids[k].n++; if (off(it)) ids[k].off++; });
 const pairs = Object.keys(ids);
-return { pairs: pairs.length, pairsOff: pairs.filter((k) => ids[k]).length, signs: this.phrases.length, signsOff: this.phrases.filter((it) => !has(it.id)).length };
+return { pairs: pairs.length, pairsOff: pairs.filter((k) => ids[k].off === ids[k].n).length, halves: pairs.filter((k) => ids[k].off > 0 && ids[k].off < ids[k].n).length, signs: this.phrases.length, signsOff: this.phrases.filter(off).length };
 }
+/* shown written instead of heard (inside the prototype and the app): no clip, for whatever reason but that it is
+   still on its way */
 mute(item) {
-const Sd = window.gnSound;
-return !!(this.props && this.props.go) && !(item && Sd && Sd.has && Sd.has(item.id));
+const w = this.why(item);
+return !!w && w !== 'coming';
 }
 /* demo "pick": card 3 of 10 half-way down, its word playing (the stand-in), the next pair coming in at the top */
 designPick() {
@@ -728,7 +767,7 @@ readyCompare() {
 const r = this.newCompare(Math.random);
 const first = r && r.ledges[0] ? r.ledges[0].card.item : null;
 /* no clip of the model (inside the prototype and the app): the line says so and what to do instead */
-this.status = this.mute(first) ? { es: SILENT_MODEL, color: '#B02A63' } : { es: 'Decí el cartel de arriba. Si querés, escuchá antes el modelo.', color: '#5A6382' };
+this.status = this.mute(first) ? { es: silentModel(this.why(first)), color: '#B02A63' } : { es: 'Decí el cartel de arriba. Si querés, escuchá antes el modelo.', color: '#5A6382' };
 }
 /* demo "compare": Kaguare on the second ledge, the third sign said once, the ¿Sonó igual? panel open */
 designCompare() {
@@ -802,13 +841,30 @@ playClip(c, kind) {
 const r = this.r;
 const text = r.style === 'pick' ? c.item.word : c.item.gn;
 const Sd = window.gnSound;
+const why = this.why(c.item);
+/* its clip is on its way: nothing plays and nothing stands in; the dock says so (wait: the line goes when the file
+   is in, has failed or is late: see update) */
+if (why === 'coming') { this.status = { es: COMING, color: '#5A6382', wait: true }; return; }
 let ms = clipMs(c.item.id, text);
-if (Sd && Sd.has && Sd.has(c.item.id)) {
+if (!why && Sd && Sd.has && Sd.has(c.item.id)) {
 try { Sd.unlock(); Sd.play(c.item.id); } catch (e) { ms = clipMs('', text); }
+} else {
+/* the stand-in: the word is shown written, and stays so for the round, for the reason it has now */
+if (why && r.quiet) r.quiet[c.item.id] = why;
+if (kind === 'model' && why) this.status = { es: silentModel(why), color: '#B02A63' };
+else if (!r.firstClip) { r.firstClip = true; this.status = { es: why ? silentNote(why) : 'Este audio todavía no está grabado.', color: '#B02A63' }; }
 }
-else if (kind === 'model' && this.mute(c.item)) this.status = { es: SILENT_MODEL, color: '#B02A63' };
-else if (!r.firstClip) { r.firstClip = true; this.status = { es: 'Este audio todavía no está grabado.', color: '#B02A63' }; }
 r.voicing = { card: c, from: r.time, until: r.time + ms / 1000, ms, kind: kind || 'word' };
+}
+/* «Escuchá y elegí» holds while the word that comes next waits for its clip (the speaking game's sound file is still
+   on its way): nothing falls and no hint is raised, so no clock runs against the player; the round goes on by
+   itself when the file is in, or with the word shown written if it could not be loaded */
+holds() {
+const r = this.r;
+if (!r || r.style !== 'pick' || r.finale !== null || !(this.props && this.props.go)) return false;
+const t = this.target();
+const next = t || r.cards.find((x) => x.state === 'live') || (r.queue[0] ? r.queue[0] : null);
+return !!next && this.waits(next.item);
 }
 
 /* ---------- frame by frame ---------- */
@@ -837,6 +893,12 @@ for (const g of r.rings) g.age += dt;
 if (r.rings.length) r.rings = r.rings.filter((g) => g.age < RING_T);
 if (r.voicing && r.time >= r.voicing.until) r.voicing = null;
 if (this.strip && r.time >= this.strip.until) this.strip = null;
+r.held = this.holds();
+/* «Cargando el audio…» was said for a word that no longer waits: the line goes (the file is in), or says why not */
+if (this.status && this.status.wait) {
+const w = this.target();
+if (!r.held && !(w && this.waits(w.item))) this.status = w && r.style === 'compare' ? (this.mute(w.item) ? { es: silentModel(this.why(w.item)), color: '#B02A63' } : { es: 'Decí el cartel de arriba. Si querés, escuchá antes el modelo.', color: '#5A6382' }) : null;
+}
 if (r.endIn !== null) {
 r.endIn -= dt;
 if (r.endIn <= 0) { this.finishRound(); return; }
@@ -846,21 +908,28 @@ else this.updatePick(dt);
 if (!this.r || this.state.view !== 'round') return;
 const t = this.target();
 if (t) {
-if (t.shownAt === null) t.shownAt = r.time;
+/* a card that waits for its clip counts as shown once the wait is over (its pace is measured from there) */
+if (t.shownAt === null && !r.held) t.shownAt = r.time;
 const fresh = t !== r.target;
 r.target = t;
-if (!r.voicing && this.take.state === 'idle' && !this.state.panel) t.idle += dt;
+if (!r.voicing && !r.held && this.take.state === 'idle' && !this.state.panel) t.idle += dt;
 if (t.idle >= 3.5 && !t.nudged) { t.nudged = true; this.cheer('idle', 1.6); }
 /* the climb has no hurry: only the pairs raise their hints with time */
 if (r.style === 'pick') this.raiseHint(t);
 if (r.style === 'compare' && !t.halted && r.time - t.shownAt >= SIGN_WAIT) this.haltSign(t);
 if (fresh) {
 this.heard = null;
-if (r.style === 'pick') { this.say('', this.mute(t.item) ? 'Mirá la palabra: caen dos parecidas.' : 'Escuchá: caen dos palabras parecidas.'); if (!t.played) { t.played = true; this.playClip(t); } }
+if (r.style === 'pick') {
+this.say('', this.mute(t.item) ? 'Mirá la palabra: caen dos parecidas.' : 'Escuchá: caen dos palabras parecidas.');
+/* a word shown written stays so from here on (r.quiet); one whose clip is still on its way is played when it is in */
+if (this.mute(t.item)) r.quiet[t.item.id] = this.why(t.item);
+if (!t.played && !this.waits(t.item)) { t.played = true; this.playClip(t); }
+}
 else this.say(t.item.gn, t.item.es);
 if (!r.started) { r.started = true; this.cheer('start', 1.4); }
 else if (r.cleared + r.skipped === r.total - 1 && r.lastFor !== t) { r.lastFor = t; this.cheer('last', 1.4); }
 }
+if (!fresh && r.style === 'pick' && !t.played && !this.waits(t.item)) { t.played = true; this.playClip(t); }
 } else if (r.target && !r.fall) r.target = null;
 }
 raiseHint(c) {
@@ -890,12 +959,13 @@ const live = r.cards.filter((c) => c.state === 'live');
 const target = this.target();
 const halted = !!(target && target.halted);
 const waiting = !target && (live.length > 0 || r.queue.length > 0) && r.finale === null && r.endIn === null;
-/* nothing falls while the word is said for the player */
+/* nothing falls while the word is said for the player, nor while it waits for its clip (held) */
 let speed = halted || (r.voicing && target) ? 0 : r.speed;
 if (waiting) {
 if (still) this.cutFall(live);
 else speed = Math.max(r.speed * 4, 220);
 }
+if (r.held && target) speed = 0;
 let floor = Infinity;
 for (const c of live) {
 if (c.halted) { floor = c.y - 18; continue; }
@@ -943,6 +1013,8 @@ const r = this.r;
 if (!r || this.state.pause || this.state.view !== 'round') return;
 if (this.frozen) this.unfreeze();
 if (c.state !== 'live' || c !== this.target()) return;
+/* the word has not sounded yet (its clip is still on its way): a tap now would be a guess, and counts for nothing */
+if (r.held) return;
 if (c.firstAt === null) c.firstAt = r.time;
 c.idle = 0;
 r.yk.nodT = NOD_T;
@@ -1292,6 +1364,8 @@ const t = this.target();
 if (!t || this.state.panel || this.take.state !== 'idle') return;
 /* a model heard before saying the sign is help (the sign is then not clean). A silent one (no clip, inside the prototype
    and the app) only shows the sign written, so it is not counted against the learner */
+/* the model's clip is on its way: the dock says so, and nothing is counted (playClip) */
+if (this.waits(t.item)) { this.playClip(t, 'model'); return; }
 const silent = this.mute(t.item);
 if (!silent) {
 if (!t.hinted) { t.hinted = true; r.hints++; }
@@ -1306,6 +1380,11 @@ const t = this.target();
 if (!r || !t) return;
 if (this.frozen) this.unfreeze();
 const ms = which === 'model' ? clipMs(t.item.id, t.item.gn) : this.take.dur;
+/* the model's strip plays the model's clip (the strip is drawn only where there is one) */
+if (which === 'model' && !this.why(t.item)) {
+const Sd = window.gnSound;
+if (Sd && Sd.has && Sd.has(t.item.id)) { try { Sd.unlock(); Sd.play(t.item.id); } catch (e) {} }
+}
 this.strip = { which, from: r.time, until: r.time + ms / 1000, ms };
 }
 skip() {
@@ -1357,7 +1436,7 @@ fallsNote: pick ? (!r.falls ? 'nada le cayó encima a Kaguare en toda la ronda' 
 hasUps: r.comebacks > 0, upsGn: allUp,
 upsText: allUp ? (pick ? 'Todas las que le cayeron encima volvieron y las elegiste bien.' : 'Cada cartel que lo hizo resbalar lo dijiste igual a la segunda.')
 : 'Se levantó ×' + r.comebacks + ': ' + (pick ? (r.comebacks === 1 ? 'una volvió y la elegiste bien a la primera.' : r.comebacks + ' volvieron y las elegiste bien a la primera.') : (r.comebacks === 1 ? 'un cartel dicho igual después de un resbalón.' : r.comebacks + ' carteles dichos igual después de un resbalón.')),
-hintsNote: pick ? 'tarjetas donde apareció una ayuda' : this.noClips() ? 'carteles donde escuchaste el modelo antes de decirlo (todavía no hay modelos grabados)' : 'carteles donde escuchaste el modelo antes de decirlo',
+hintsNote: pick ? 'tarjetas donde apareció una ayuda' : this.noClips() ? 'carteles donde escuchaste el modelo antes de decirlo (' + ({ off: 'la voz de los modelos está apagada', failed: 'el audio de los modelos no se pudo cargar' }[this.audio()] || 'todavía no hay modelos grabados') + ')' : 'carteles donde escuchaste el modelo antes de decirlo',
 mixedTitle: pick ? 'Las que confundiste' : 'Para decir otra vez',
 mixed,
 };
@@ -1622,6 +1701,7 @@ const nav = (to) => (e) => { const go = this.props.go; if (go) { e.preventDefaul
 const pick = st.style === 'pick';
 const inRound = st.view === 'round';
 const still = reduced();
+const wake = () => { const Sd = window.gnSound; if (inApp && Sd && Sd.unlock && (aud === 'some' || aud === 'coming')) { try { Sd.unlock(); } catch (e) {} } };
 const t = r && inRound ? this.target() : null;
 const passed = r ? r.cleared + r.skipped : 0;
 const total = r ? r.total : LEN;
@@ -1668,7 +1748,14 @@ const h0 = this.heard;
    on its way down, else the next of the deck; the sign on the next ledge */
 const ahead = !r ? null : pick ? (r.cards || []).find((x) => x.state === 'live') || (r.queue && r.queue[0]) || null : r.ledges && r.ledges[r.at + 1] ? r.ledges[r.at + 1].card : null;
 const coming = ahead ? ahead.item : null;
-const mute = this.mute(t ? t.item : voicing ? r.voicing.card.item : coming);
+const nowItem = t ? t.item : voicing ? r.voicing.card.item : coming;
+const mute = this.mute(nowItem);
+/* why the word in play is shown written, where it is ('none', 'failed', 'off'); held: «Escuchá y elegí» waits for the
+   clip of the word that comes next; modelWaits: the sign's model is still on its way */
+const whyNow = mute ? this.why(nowItem) : '';
+const held = inApp && !!(r && r.held);
+const modelWaits = inApp && !pick && !!t && this.waits(t.item);
+const WAIT = C.SOUND_WAIT;
 let heardOn = false;
 let heardLabel = '';
 let heardGn = '';
@@ -1694,15 +1781,16 @@ heardGnColor = h0.tone === 'good' ? '#0B7A6B' : h0.tone === 'bad' ? '#C7361E' : 
 }
 const tagC = pick && t && CONTRAST[t.item.contrast] ? CONTRAST[t.item.contrast] : null;
 /* one line: what to do (pick) or what the sign means (compare); the hint of a pair, what to listen for, goes to the status */
-const say = !r ? '' : pick ? (mute ? 'Tocá la palabra que se muestra.' : 'Tocá la palabra que escuchaste.') : t ? t.item.es : '';
+const say = !r ? '' : pick ? (held ? 'En un momento suena la palabra.' : mute ? 'Tocá la palabra que se muestra.' : 'Tocá la palabra que escuchaste.') : t ? t.item.es : '';
 const ringOn = !pick && (tk.state === 'listening' || tk.state === 'speaking');
 const ringPeriod = tk.state === 'speaking' ? 0.7 : 1.6;
 const ringU = r && ringOn && !still ? ((r.time - tk.t0) % ringPeriod) / ringPeriod : 0;
-const s0 = this.status;
+/* while the round holds for a clip the status line says so, politely, in place of whatever it said */
+const s0 = held ? { es: COMING, color: '#5A6382' } : this.status;
 const stateLine = !r ? '' : pick
-? (voicing ? (mute ? 'Sin audio todavía: mirá la palabra' : 'Sonando… escuchá bien') : halted ? 'Con calma: esta espera hasta que la toques' : t ? (mute ? 'Tocá la tarjeta con esa palabra' : 'Tocá «Escuchar» para oírla otra vez') : 'Ya viene la próxima')
+? (held ? 'La ronda espera: nada cae mientras tanto' : voicing ? (mute ? quietLead(whyNow) + ': mirá la palabra' : 'Sonando… escuchá bien') : halted ? 'Con calma: esta espera hasta que la toques' : t ? (mute ? 'Tocá la tarjeta con esa palabra' : 'Tocá «Escuchar» para oírla otra vez') : 'Ya viene la próxima')
 : inApp
-? (voicing ? (mute ? 'Sin audio todavía: leé el cartel' : 'Escuchá: después te toca a vos') : tk.state === 'listening' ? 'Ahora, en voz alta…' : tk.state === 'speaking' ? 'Decila en voz alta · tocá «Terminar»' : halted ? 'Con calma: este cartel espera' : r.jump ? 'Sube al cartel' : 'Tocá «Decir» y decí la frase en voz alta')
+? (voicing ? (mute ? quietLead(whyNow) + ': leé el cartel' : 'Escuchá: después te toca a vos') : tk.state === 'listening' ? 'Ahora, en voz alta…' : tk.state === 'speaking' ? 'Decila en voz alta · tocá «Terminar»' : halted ? 'Con calma: este cartel espera' : r.jump ? 'Sube al cartel' : 'Tocá «Decir» y decí la frase en voz alta')
 : (voicing ? 'Escuchá: el micrófono vuelve después del audio' : tk.state === 'listening' ? 'Escuchando…' : tk.state === 'speaking' ? 'Te escucho · tocá para terminar' : halted ? 'Con calma: este cartel espera' : r.jump ? 'Sube al cartel' : 'Tocá «Simular toma»: en el lienzo no hay micrófono');
 /* the clip of the card in play is a voice model's: the dock says so, at the end of its second line */
 const cardNow = t ? t.item : voicing ? r.voicing.card.item : null;
@@ -1713,16 +1801,17 @@ heardOn, heardLabel, heardGn, heardEs, heardColor, heardGnColor,
 status: s0 ? s0.es : '', statusSegs: pieces(s0 ? s0.es : ''), statusColor: s0 ? s0.color : '#1B2440',
 leftSlow: pick, leftModel: !pick,
 leftLines: pick ? [{ t: 'Más', lang: 'es' }, { t: 'despacio', lang: 'es' }] : [{ t: 'Ehendu', lang: 'gn' }, { t: 'Escuchar', lang: 'es' }],
-leftAria: pick ? 'Más despacio: todavía no está grabado' : mute ? 'Escuchar el modelo: todavía no está grabado, se muestra escrito (no cuenta como ayuda)' : 'Escuchar el modelo (cuenta como ayuda)',
+leftAria: pick ? 'Más despacio: todavía no hay versión lenta' : modelWaits ? 'Escuchar el modelo: cargando el audio' : mute ? 'Escuchar el modelo: ' + ({ failed: 'no se pudo cargar', off: 'la voz está apagada' }[whyNow] || 'todavía no está grabado') + ', se muestra escrito (no cuenta como ayuda)' : 'Escuchar el modelo (cuenta como ayuda)',
 leftOff: pick ? 'true' : t && !st.panel && tk.state === 'idle' ? 'false' : 'true',
-leftBorder: pick ? '2px dashed #DDE1EC' : '2px solid #1B2440', leftBg: !pick && voicing && r.voicing.kind === 'model' ? '#2F4FD0' : '#FFFFFF',
-leftColor: pick ? '#9AA1B5' : !pick && voicing && r.voicing.kind === 'model' ? '#FFFFFF' : '#1B2440', leftShadow: pick ? 'none' : '0 3px 0 #1B2440',
+leftBorder: pick ? '2px dashed #DDE1EC' : modelWaits ? WAIT.border : '2px solid #1B2440', leftBg: !pick && voicing && r.voicing.kind === 'model' ? '#2F4FD0' : modelWaits ? WAIT.bg : '#FFFFFF',
+leftColor: pick ? '#9AA1B5' : !pick && voicing && r.voicing.kind === 'model' ? '#FFFFFF' : modelWaits ? WAIT.ink : '#1B2440', leftShadow: pick || modelWaits ? 'none' : '0 3px 0 #1B2440',
 bigPlay: pick, bigMic: !pick,
 bigLines: pick ? [{ t: 'Ehendu', lang: 'gn' }, { t: 'Escuchar', lang: 'es' }] : ringOn ? (inApp ? [{ t: 'Terminar', lang: 'es' }] : [{ t: 'Terminar', lang: 'es' }, { t: 'toma', lang: 'es' }]) : inApp ? [{ t: 'Decir', lang: 'es' }, { t: 'en voz alta', lang: 'es' }] : [{ t: 'Simular', lang: 'es' }, { t: 'toma', lang: 'es' }],
 bigAria: pick ? 'Escuchar la palabra otra vez' : ringOn ? (inApp ? 'Terminar' : 'Terminar la toma') : inApp ? 'Decir la frase en voz alta: tu voz todavía no se graba' : 'Simular una toma: en el lienzo no hay micrófono',
 bigPressed: pick ? (voicing ? 'true' : 'false') : ringOn ? 'true' : 'false',
-bigBg: (pick && voicing) || ringOn ? '#2F4FD0' : '#FFFFFF', bigColor: (pick && voicing) || ringOn ? '#FFFFFF' : '#1B2440',
-bigShadow: '0 4px 0 #1B2440', bigTf: 'none', iconS: num(pick && voicing && !still ? 1 + 0.09 * (1 + Math.sin(r.time * 7.8)) : 1),
+bigBg: (pick && voicing) || ringOn ? '#2F4FD0' : pick && held ? WAIT.bg : '#FFFFFF', bigColor: (pick && voicing) || ringOn ? '#FFFFFF' : pick && held ? WAIT.ink : '#1B2440',
+bigBorder: pick && held && !voicing ? '3px dashed #9AA1B5' : '3px solid #1B2440',
+bigShadow: pick && held && !voicing ? 'none' : '0 4px 0 #1B2440', bigTf: 'none', iconS: num(pick && voicing && !still ? 1 + 0.09 * (1 + Math.sin(r.time * 7.8)) : 1),
 ringColor: tk.state === 'speaking' ? '#F2B43A' : '#2F4FD0', ringO: num(ringOn ? (still ? 0.5 : 0.7 * (1 - ringU)) : 0), ringS: num(ringOn ? (still ? 1.08 : 0.92 + 0.3 * ringU) : 1),
 skipOff: skipOpen ? 'false' : 'true', skipBorder: skipOpen ? '2px solid #1B2440' : '2px solid #DDE1EC', skipColor: skipOpen ? '#1B2440' : '#9AA1B5', skipShadow: skipOpen ? '0 3px 0 #1B2440' : 'none',
 state: stateLine,
@@ -1735,7 +1824,7 @@ if (panelOn) {
 const modelMs = clipMs(t.item.id, t.item.gn);
 const takeMs = tk.dur || modelMs;
 /* with no clip of the model (none is recorded yet) the app shows no model strip to play either: its row says so */
-const kinds = inApp && mute ? [] : [['model', 'Modelo', modelMs, 1, hashOf(t.item.gn)]];
+const kinds = inApp && (mute || modelWaits) ? [] : [['model', 'Modelo', modelMs, 1, hashOf(t.item.gn)]];
 if (!inApp) kinds.push(['take', 'Vos', takeMs, takeMs / modelMs, hashOf(t.item.gn) + 7 * (tk.n || 1)]);
 kinds.forEach(([which, label, ms, stretch, seed]) => {
 const playing = !!(this.strip && this.strip.which === which && r);
@@ -1744,10 +1833,15 @@ const bars = waveOf(t.item.gn, 28, seed, which === 'model' ? 1 : stretch).map((a
 strips.push({ label, synth: which === 'model' && C.synth(t.item.id), dur: secs(ms), bars, on: playing ? 'true' : 'false', aria: which === 'model' ? 'Escuchar el modelo' : 'Escuchar tu toma', btnBg: playing ? '#2F4FD0' : '#FFFFFF', btnColor: playing ? '#FFFFFF' : '#1B2440', play: () => { this.playStrip(which); this.forceUpdate(); } });
 });
 }
-const cmp = { takeLabel: (inApp ? 'Intento ' : 'Toma ') + (tk.n || 1), strips, unrecorded: panelOn && inApp, noModel: panelOn && inApp && mute };
+/* the model's row where there is none to play: why (it is still loading; it could not be loaded; the voice is off;
+   it is not recorded) */
+const cmp = { takeLabel: (inApp ? 'Intento ' : 'Toma ') + (tk.n || 1), strips, unrecorded: panelOn && inApp, noModel: panelOn && inApp && (mute || modelWaits),
+noModelText: modelWaits ? COMING : { failed: 'No se pudo cargar el audio', off: 'Apagaste la voz sintética' }[whyNow] || 'Todavía no está grabado' };
+/* the game's audio as a whole (audio()): what the menu, the intro and the comparison say of it */
+const aud = this.audio();
 /* the menu's two ways */
 const ways = ['pick', 'compare'].map((k) => {
-const d = cutName(inApp && this.noClips() && WAYS[k].descSilent ? WAYS[k].descSilent : inApp && WAYS[k].descApp ? WAYS[k].descApp : WAYS[k].desc);
+const d = cutName(inApp && this.noClips() && WAYS[k].descSilent ? (aud === 'off' ? WAYS[k].descOff : aud === 'failed' ? WAYS[k].descFailed : WAYS[k].descSilent) : inApp && WAYS[k].descApp ? WAYS[k].descApp : WAYS[k].desc);
 return { title: WAYS[k].title, desc: d.a, descName: d.name, descEnd: d.b, isPick: k === 'pick', isCompare: k === 'compare', on: st.style === k ? 'true' : 'false',
 border: st.style === k ? '2.5px solid #2F4FD0' : '2px solid #DDE1EC', bg: st.style === k ? '#E8ECFB' : '#FFFFFF', shadow: st.style === k ? '0 3px 0 #1B2440' : 'none',
 pick: () => this.setState({ style: k }) };
@@ -1762,20 +1856,26 @@ const empty = inRound && !r;
 const STILL = 'Nada se mueve mientras esto está abierto.';
 /* the menu's note on the audio, inside the prototype and the app: none at all (every sound button lights up in
    silence), or what there is: a voice model's, and how many pairs or signs have none and show the word instead */
-const q = inApp && st.view === 'menu' ? this.quiet() : { pairs: 0, pairsOff: 0, signs: 0, signsOff: 0 };
+const q = inApp && st.view === 'menu' && aud === 'some' ? this.quiet() : { pairs: 0, pairsOff: 0, halves: 0, signs: 0, signsOff: 0 };
 const some = (n, of, one, many) => (n === of && of > 1 ? 'los ' + many : n === 1 ? one : n + ' de los ' + of + ' ' + many);
 const off = [];
 if (q.pairsOff) off.push(some(q.pairsOff, q.pairs, 'un par', 'pares'));
+if (q.halves) off.push('una de las dos palabras de ' + (q.halves === 1 ? (q.pairsOff ? 'otro par' : 'un par') : (q.pairsOff ? 'otros ' : '') + q.halves + ' pares'));
 if (q.signsOff) off.push(some(q.signsOff, q.signs, 'un cartel', 'carteles'));
-const offN = q.pairsOff + q.signsOff;
+const offN = q.pairsOff + q.signsOff + (q.halves > 1 || (q.halves && off.length > 1) ? 2 : q.halves);
 const synthAny = inApp && st.view === 'menu' && C.synth(this.pairs.concat(this.phrases).map((it) => it.id));
-const audioNote = !inApp ? '' : this.noClips()
-? ' Los audios todavía no están grabados, así que cada botón de sonido se ilumina sin sonar.'
+/* by the state of the audio: still loading; turned off by the learner (and where it is turned on again); not
+   loaded; not recorded at all; or a voice model's, with what it leaves out */
+const audioNote = !inApp ? '' : aud === 'coming' ? ' ' + COMING
+: aud === 'off' ? ' Apagaste la voz sintética: cada botón de sonido se ilumina sin sonar y se muestra la palabra. La activás de nuevo en Progreso.'
+: aud === 'failed' ? ' No se pudo cargar el audio: cada botón de sonido se ilumina sin sonar y se muestra la palabra.'
+: aud === 'none' ? ' Los audios todavía no están grabados, así que cada botón de sonido se ilumina sin sonar.'
 : (synthAny ? ' Los audios los dice una voz sintética.' : '') + (offN ? (offN === 1 ? ' Todavía no tiene audio ' : ' Todavía no tienen audio ') + off.join(' ni ') + ': ahí se muestra la palabra.' : '');
+const noAudioWhy = { off: 'apagaste la voz sintética', failed: 'el audio no se pudo cargar' }[aud] || 'los audios todavía no están grabados';
 const mic = inApp
-? { intro: this.noClips() ? 'Los teléfonos todavía no reconocen el guaraní hablado, y los audios todavía no están grabados. Por eso acá no te corrige una máquina: mirás la palabra y elegís, o decís la frase en voz alta y la comparás con el cartel.' : 'Los teléfonos todavía no reconocen el guaraní hablado. Por eso acá no te corrige una máquina: escuchás y elegís, o decís la frase en voz alta y la comparás con el modelo.',
+? { intro: this.noClips() ? 'Los teléfonos todavía no reconocen el guaraní hablado, y ' + noAudioWhy + '. Por eso acá no te corrige una máquina: mirás la palabra y elegís, o decís la frase en voz alta y la comparás con el cartel.' : 'Los teléfonos todavía no reconocen el guaraní hablado. Por eso acá no te corrige una máquina: escuchás y elegís, o decís la frase en voz alta y la comparás con el modelo.',
 noteA: 'Tu voz todavía no se graba: en ', noteB: ', tocá «Decir», decí la frase en voz alta y tocá «Terminar» al acabar.' + audioNote,
-panel: mute ? 'Ni el modelo ni tu voz están grabados: compará lo que dijiste con el cartel. Decidís vos.' : 'Tu voz todavía no se graba: compará de memoria con el modelo. Decidís vos.',
+panel: modelWaits ? 'Tu voz todavía no se graba, y el modelo todavía se está cargando: compará lo que dijiste con el cartel. Decidís vos.' : mute ? (whyNow === 'none' ? 'Ni el modelo ni tu voz están grabados' : 'El modelo no se puede escuchar ahora y tu voz todavía no se graba') + ': compará lo que dijiste con el cartel. Decidís vos.' : 'Tu voz todavía no se graba: compará de memoria con el modelo. Decidís vos.',
 pause: pick ? STILL : STILL + ' Tu voz todavía no se graba.' }
 : { intro: 'Los teléfonos todavía no reconocen el guaraní hablado. Por eso acá no te corrige una máquina: escuchás y elegís, o te grabás y comparás tu voz con el modelo.',
 noteA: 'En el lienzo no hay micrófono: en ', noteB: ', el botón «Simular toma» hace de grabación. Los audios todavía no están grabados, así que cada botón de sonido se ilumina sin sonar.',
@@ -1789,9 +1889,11 @@ wd: this.worldVals(), masc, umb: this.umbrellaVals(masc), bub, bubUnder: !!b && 
 empty, emptyText: pick ? 'Los pares de palabras para escuchar todavía no están cargados.' : 'Las frases para decir todavía no están cargadas.',
 sr: this.sr || { gn: '', es: '' },
 toProgress: nav('Progress'),
-start: () => { this.res = null; this.begin(this.state.style, ''); this.setState({ view: 'round', pause: false, panel: false }); this.startLoop(); },
+/* a round starts inside a tap: the audio output is woken there, because the round plays its words by itself (the
+   first one perhaps only once its sound file is in), and a browser lets sound start only after a tap */
+start: () => { wake(); this.res = null; this.begin(this.state.style, ''); this.setState({ view: 'round', pause: false, panel: false }); this.startLoop(); },
 toMenu: () => { this.r = null; this.setState({ view: 'menu', pause: false, panel: false }); },
-again: () => { this.res = null; this.begin(this.state.style, ''); this.setState({ view: 'round', pause: false, panel: false }); this.startLoop(); },
+again: () => { wake(); this.res = null; this.begin(this.state.style, ''); this.setState({ view: 'round', pause: false, panel: false }); this.startLoop(); },
 /* the sheet opens even with no round (no pairs or phrases loaded): it is the way out */
 openPause: () => this.setState({ pause: true }),
 resume: () => { this.last = now(); this.setState({ pause: false }); },

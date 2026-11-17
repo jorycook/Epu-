@@ -24,6 +24,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 a{color:#2F4FD0;text-decoration:none}a:hover{color:#1B2440}
 rt{font-size:9px;font-weight:500;color:#5A6382}
 @keyframes gn-pop{0%{transform:scale(1)}45%{transform:scale(1.04)}100%{transform:scale(1)}}
+@keyframes gn-wait{0%,100%{opacity:1}50%{opacity:.3}}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 </style>
 </helmet>
@@ -82,7 +83,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="margin-top: 8px; padding: 10px 12px 12px; border-radius: 18px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0">
 <div style="display: flex; align-items: center; gap: 8px"><div style="flex-grow: 1; min-width: 0; font-size: 11px; font-weight: 800; letter-spacing: 0.04em; color: #5A6382">{{ p.kicker }}</div><sc-if value="{{ p.synth }}" hint-placeholder-val="{{ false }}"><span data-gn-voice="tag" style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap">voz sintética</span></sc-if><sc-if value="{{ p.loading }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap">cargando el audio…</span></sc-if></div>
 <div style="display: flex; align-items: center; gap: 10px">
-<button onClick="{{ p.play }}" aria-pressed="{{ p.playing }}" aria-label="{{ p.playAria }}" style="width: 56px; height: 56px; border-radius: 50%; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 150ms; background: {{ p.playBg }}"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 9a4 4 0 0 1 0 6"/></svg></button>
+<button onClick="{{ p.play }}" aria-pressed="{{ p.playing }}" aria-label="{{ p.playAria }}" style="width: 56px; height: 56px; box-sizing: border-box; border-radius: 50%; border: {{ p.playEdge }}; box-shadow: {{ p.playShadow }}; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 150ms; background: {{ p.playBg }}"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ p.playInk }}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="animation: {{ p.pulse }}"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 9a4 4 0 0 1 0 6"/></svg></button>
 <div style="flex-grow: 1; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
 <sc-for list="{{ p.opts }}" as="o" hint-placeholder-count="2">
 <button onClick="{{ o.pick }}" aria-disabled="{{ o.off }}" aria-pressed="{{ o.on }}" aria-label="{{ o.aria }}" style="position: relative; min-height: 64px; padding: 8px 10px; box-sizing: border-box; border-radius: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; transition: transform 120ms; border: {{ o.border }}; background: {{ o.bg }}; box-shadow: {{ o.shadow }}; transform: {{ o.lift }}; cursor: {{ o.cursor }}"><span lang="gn" style="font-family: 'Andika', 'Nunito', sans-serif; font-weight: 700; line-height: 1.15; overflow-wrap: anywhere; font-size: {{ o.size }}">{{ o.gn }}</span><span style="font-size: 12px; font-weight: 700; color: #5A6382">{{ o.es }}</span><sc-if value="{{ o.tick }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="position: absolute; top: -8px; right: -8px; width: 22px; height: 22px; box-sizing: border-box; border-radius: 50%; background: #FFFFFF; border: 2px solid #0B7A6B; display: flex; align-items: center; justify-content: center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></sc-if><sc-if value="{{ o.cross }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="position: absolute; top: -8px; right: -8px; width: 22px; height: 22px; box-sizing: border-box; border-radius: 50%; background: #FFFFFF; border: 2px solid #C7361E; display: flex; align-items: center; justify-content: center"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#C7361E" stroke-width="3.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span></sc-if></button>
@@ -118,7 +119,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div lang="gn" style="font-family: 'Andika', 'Nunito', sans-serif; font-weight: 700; line-height: 1.15; overflow-wrap: anywhere; font-size: {{ d.size }}">{{ d.word }}</div>
 <sc-if value="{{ d.hasSyll }}" hint-placeholder-val="{{ false }}"><div role="img" aria-label="{{ d.syllAria }}" style="font-size: 16px; font-weight: 800"><sc-for list="{{ d.syll }}" as="y" hint-placeholder-count="2"><span lang="gn" aria-hidden="true" style="color: {{ y.color }}">{{ y.t }}</span><span aria-hidden="true" style="color: #9AA1B5">{{ y.dot }}</span></sc-for></div></sc-if>
 </div>
-<button aria-label="Escuchar la palabra" aria-pressed="{{ playing }}" onClick="{{ play }}" style="width: 44px; height: 44px; border-radius: 50%; border: 2px solid #1B2440; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 150ms; background: {{ playBg }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 9a4 4 0 0 1 0 6"/></svg></button>
+<button aria-label="Escuchar la palabra" aria-pressed="{{ playing }}" onClick="{{ play }}" style="width: 44px; height: 44px; box-sizing: border-box; border-radius: 50%; border: {{ playEdge }}; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 150ms; background: {{ playBg }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{ playInk }}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="animation: {{ playPulse }}"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 9a4 4 0 0 1 0 6"/></svg></button>
 </div>
 <div style="margin-top: -6px; display: flex; align-items: flex-start; gap: 8px"><div style="flex: 1 1 auto; min-width: 0; font-size: 13px; font-weight: 500; color: #5A6382">{{ d.gloss }}</div><sc-if value="{{ wordSynth }}" hint-placeholder-val="{{ false }}"><span data-gn-voice="tag" style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap; margin-top: 1px">voz sintética</span></sc-if><sc-if value="{{ wordLoading }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap; margin-top: 1px">cargando el audio…</span></sc-if></div>
 <sc-if value="{{ wordNoted }}" hint-placeholder-val="{{ false }}"><div role="status" style="font-size: 12px; font-weight: 800; line-height: 1.4; color: {{ wordNoteInk }}">{{ wordNote }}</div></sc-if>
@@ -232,10 +233,13 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
              there is no sound (gnCourse.soundNote: «Este audio todavía no está grabado.», or that the audio could
              not be loaded, or that the voice is turned off). A pair or a word whose clip is a voice model's carries
              the tag «voz sintética» (gnCourse.synth) from the start, in the pair's head and on the word's card.
-             While the unit's sound file is still on its way (gnCourse.soundState: 'coming') a pair or a word waits:
-             «cargando el audio…» stands where the tag goes, a tap lights nothing, shows no word and says
-             «Cargando el audio…». The scene's note belongs to the word it was true of: it shows on that word's
-             card alone, for every word without a clip, and goes when another word is picked;
+             While the unit's sound file is still on its way (gnCourse.soundState: 'coming') a pair or a word waits,
+             with the waiting look (gnCourse.SOUND_WAIT): «cargando el audio…» stands where the tag goes, a tap
+             lights nothing, shows no word, opens no option and says «Cargando el audio…»; the clip plays by itself
+             when the file is in (soundCame), unless the speaker is tapped again or something else is. A pair whose
+             word has been shown in place of its clip stays read while the lesson is open, whatever arrives later.
+             The scene's note belongs to the word it was true of: it shows on that word's card alone, for every word
+             without a clip, and goes when another word is picked or a clip plays;
      Aprender the scene: tap each word on the navy sign board to see it, its Spanish, its parts, and hear it;
      Escribir each word of words.spell typed three times with the Guarani keyboard (Spell.dc.html), one word after
              the other; Next stays shut until the word is typed. What was typed is kept (save: typed), so a word
@@ -292,8 +296,27 @@ if (!this.has(this.pairKey(L, 0))) silentAt = 'p0';
 }
 /* shown: the pairs whose word was shown in place of a clip, and why (they stay read, even if their clip comes in
    later); waitAt: the pair tapped while its clip was on its way; quietWord: the scene word whose speaker was tapped
-   without a clip to play (its card says why: wordWhy is what the clip's state was then) */
-this.state = { ...base, quiz: null, playing: false, steps, step: steps[at], reached: at, queue, qi: 0, qDone: false, wPass: 0, heard, picks, pairOn: -1, silentAt, shown: {}, waitAt: -1, quietWord: null, wordWhy: '' };
+   without a clip to play (its card says why: wordWhy is what the clip's state was then); wordWait: the scene word
+   tapped while its clip was on its way */
+this.state = { ...base, quiz: null, playing: false, steps, step: steps[at], reached: at, queue, qi: 0, qDone: false, wPass: 0, heard, picks, pairOn: -1, silentAt, shown: {}, waitAt: -1, quietWord: null, wordWhy: '', wordWait: null };
+/* a sound file came in, failed or is late (the engine's `gnsound`): the pair or the word that waits for it plays */
+this.onSound = () => this.soundCame();
+}
+componentDidMount() {
+document.addEventListener('gnsound', this.onSound);
+}
+/* the speaker that waits for its clip (tapped while the unit's sound file was on its way): the clip plays by itself
+   once it is in, as a player does after loading (this.waiting.run); if the file failed or is too long in coming the
+   wait ends, and the pair or the word shows its stand-in at the next tap */
+soundCame() {
+const w = this.waiting;
+const C = window.gnCourse;
+if (!w || !C) return;
+const st = C.soundState(w.key);
+if (st === 'coming') return;
+this.waiting = null;
+if (st === 'in') w.run();
+else this.setState({ waitAt: -1, wordWait: null });
 }
 /* is there a recorded clip under this name? (gn-sound.js tells a missing clip from a real one) */
 has(key) {
@@ -382,11 +405,13 @@ const out = list.map((x, i) => ({ t: typeof x === 'string' ? x : x ? String(x.t 
 return out.length ? out : null;
 }
 componentWillUnmount() {
+document.removeEventListener('gnsound', this.onSound);
 this.hush();
 }
 hush() {
 clearTimeout(this.timer);
 clearTimeout(this.pairTimer);
+this.waiting = null;
 if (window.gnSound) window.gnSound.stop();
 }
 /* a sound control: the clip when there is one, else the silent stand-in, lit for as long as the words take to say */
@@ -411,7 +436,7 @@ const at = Math.max(0, steps.indexOf(s.step));
 const NAMES = { sound: ['SONIDO', 'Sonido y letra'], learn: ['APRENDER', 'Las palabras'], spell: ['ESCRIBIR', 'Escribir las palabras'], check: ['EXAMEN', 'La pregunta de examen'] };
 const goStep = (n) => {
 this.hush();
-this.setState({ step: steps[n], reached: Math.max(this.state.reached, n), playing: false, pairOn: -1, waitAt: -1, quietWord: null });
+this.setState({ step: steps[n], reached: Math.max(this.state.reached, n), playing: false, pairOn: -1, waitAt: -1, quietWord: null, wordWait: null });
 };
 const bar = steps.map((k, n) => ({
 bg: n <= at ? '#B02A63' : '#DDE1EC',
@@ -450,22 +475,27 @@ const inApp = !!this.props.go;
 /* a clip now: here ('in'), on its way ('coming'), or why not ('none', 'failed', 'off'): gnCourse.soundState */
 const stateOf = (key) => (C && C.soundState ? C.soundState(key) : 'none');
 const noteOf = (st) => (C && C.soundNote ? C.soundNote(st) : 'Este audio todavía no está grabado.');
-/* a pair waits while its clip is on its way; it is mute when it has none, or once its word has been shown instead */
-const waits = (i) => inApp && !s.shown[i] && stateOf(this.pairKey(L, i)) === 'coming';
-const muted = (i) => inApp && !waits(i) && (!!s.shown[i] || stateOf(this.pairKey(L, i)) !== 'in');
+const WAIT = (C && C.SOUND_WAIT) || { border: '2px dashed #9AA1B5', bg: '#F4F5F9', ink: '#5A6382' };
+/* where each pair stands: '' its clip plays; 'coming' it waits for its clip; else why it is read, its word shown in
+   place of the clip ('none' nothing is recorded, 'failed' the audio could not be loaded, 'off' the voice is turned
+   off). A pair that has been read stays read (s.shown keeps why), whatever arrives later */
+const why = L.pairs.map((pair, i) => { if (!inApp) return ''; if (s.shown[i]) return s.shown[i]; const st = stateOf(this.pairKey(L, i)); return st === 'in' ? '' : st; });
+const waits = (i) => why[i] === 'coming';
+const muted = (i) => !!why[i] && why[i] !== 'coming';
 const mutes = L.pairs.filter((pair, i) => muted(i)).length;
-/* why the step has no sound at all, when it is not that nothing is recorded: the file could not be loaded, or the voice is off */
-const muteWhy = mutes ? L.pairs.map((pair, i) => (muted(i) ? s.shown[i] || stateOf(this.pairKey(L, i)) : '')).filter(Boolean)[0] : '';
-/* every pair without a clip: the step is read. Some of them (the synthetic voice does not say every pair): the step
-   is heard, and its first line says how many pairs show their word instead */
+/* every pair without a clip: the step is read, and its first line says why (the voice is off; the audio could not be
+   loaded; nothing is recorded). Some of them without a recording (the synthetic voice does not say every pair): the
+   step is heard, and its first line says how many pairs show their word instead */
 const allMute = mutes > 0 && mutes === L.pairs.length;
-const someMute = mutes > 0 && !allMute;
+const muteWhy = !allMute ? '' : why.indexOf('off') >= 0 ? 'off' : why.indexOf('failed') >= 0 ? 'failed' : 'none';
+const nones = why.filter((w) => w === 'none').length;
+const someMute = !allMute && nones > 0;
 const sPairs = L.pairs.map((pair, i) => {
 const tgt = this.target(pair);
 const key = this.pairKey(L, i);
-const st = stateOf(key);
 const wait = waits(i);
 const mute = muted(i);
+const pending = wait && s.waitAt === i;
 const heard = !!s.heard[i];
 const pick = s.picks[i];
 const done = pick === 0 || pick === 1;
@@ -509,30 +539,46 @@ this.setState({ picks: { ...st.picks, [i]: k } });
 };
 });
 /* one line under the pair: what to do, then the verdict */
-const ask = mute ? (!heard ? 'Tocá el parlante: te mostramos la palabra.' : '¿Cuál era?') : wait && s.waitAt === i ? (C ? C.SOUND_COMING : 'Cargando el audio…') : !heard ? 'Tocá el parlante: suena una de las dos.' : '¿Cuál escuchaste?';
+const ask = mute ? (!heard ? 'Tocá el parlante: te mostramos la palabra.' : '¿Cuál era?') : pending ? C.SOUND_COMING : !heard ? 'Tocá el parlante: suena una de las dos.' : '¿Cuál escuchaste?';
 /* until the clips are recorded the speaker lights up in silence: while it does, the line shows the word it stands
    for (as Hablar's pairs do), and says why there is no sound (on the canvas alone, after the lesson's first silent play) */
 const voicing = playing && !done && (inApp ? mute : !this.has(key));
 return {
 kicker: 'PAR ' + (i + 1) + ' DE ' + L.pairs.length,
 playing,
-playBg: playing ? '#F2B43A' : '#E8ECFB',
+playBg: playing ? '#F2B43A' : wait ? WAIT.bg : '#E8ECFB',
+playEdge: !playing && wait ? WAIT.border : '2px solid #1B2440',
+playShadow: !playing && wait ? 'none' : '0 3px 0 #1B2440',
+playInk: !playing && wait ? WAIT.ink : '#1B2440',
+pulse: pending ? 'gn-wait 1.4s ease-in-out infinite' : 'none',
 playAria: 'Escuchar la palabra del par ' + (i + 1),
 play: () => {
 clearTimeout(this.pairTimer);
 clearTimeout(this.timer);
+this.waiting = null;
+const snd = window.gnSound;
+/* the pair's clip, or its word shown in place of it. A pair read in the app stays read from here on, for the reason
+   it had then (now: the clip's state at this moment, which may have changed since the screen was drawn) */
+const run = () => {
 const was = this.state;
-/* its clip is on its way: the pair waits, and says so (nothing lights up, no word is shown, nothing counts as heard) */
+const now = inApp ? was.shown[i] || stateOf(key) : '';
+const real = inApp ? now === 'in' && this.has(key) : this.has(key);
+const shown = inApp && !real ? { ...was.shown, [i]: was.shown[i] || (now === 'in' || now === 'coming' ? 'failed' : now) } : was.shown;
+this.setState({ pairOn: i, playing: false, waitAt: -1, wordWait: null, quietWord: null, heard: { ...was.heard, [i]: true }, silentAt: was.silentAt || (real ? null : 'p' + i), shown });
+this.pairTimer = this.say(real ? key : '', said, () => this.setState({ pairOn: -1 }));
+};
+/* its clip is on its way: the pair waits, and says so (nothing lights up, no word is shown, nothing counts as heard).
+   The audio output is woken inside this tap, so that the clip may start by itself when it is in; a second tap on
+   the speaker calls the wait off */
 if (wait) {
-if (window.gnSound) window.gnSound.stop();
-this.setState({ pairOn: -1, playing: false, waitAt: i, quietWord: null });
+if (snd) snd.stop();
+if (pending) { this.setState({ waitAt: -1 }); return; }
+if (snd) snd.unlock();
+this.waiting = { key, run };
+this.setState({ pairOn: -1, playing: false, waitAt: i, wordWait: null, quietWord: null });
 return;
 }
-/* the clip plays unless the pair is mute; a mute pair in the app stays read from here on, for the reason it has now */
-const real = !mute && this.has(key);
-const shown = inApp && !real ? { ...was.shown, [i]: was.shown[i] || (st === 'in' || st === 'coming' ? 'failed' : st) } : was.shown;
-this.setState({ pairOn: i, playing: false, waitAt: -1, quietWord: null, heard: { ...was.heard, [i]: true }, silentAt: was.silentAt || (real ? null : 'p' + i), shown });
-this.pairTimer = this.say(real ? key : '', said, () => this.setState({ pairOn: -1 }));
+run();
 },
 opts,
 vGn: done && pick === tgt ? '¡Iporã!' : '',
@@ -548,15 +594,15 @@ wFont: voicing ? "'Andika', 'Nunito', sans-serif" : 'inherit',
 wSize: voicing ? '17px' : 'inherit',
 wColor: voicing ? '#1B2440' : 'inherit',
 noted: mute ? heard : s.silentAt === 'p' + i,
-note: noteOf(mute ? s.shown[i] || (st === 'in' ? 'failed' : st) : 'none'),
+note: noteOf(mute ? why[i] : 'none'),
 synth: !mute && !wait && !!C && C.synth(key),
 loading: wait,
 };
 });
 Object.assign(base, {
 sFocus: snd && snd.focus ? plain(snd.focus) : 'Sonido y letra',
-sIntro: allMute ? 'Mirá cómo se escribe cada par: ' + (muteWhy === 'failed' ? 'no se pudo cargar el audio de estos pares.' : muteWhy === 'off' ? 'la voz sintética está apagada.' : 'estos pares todavía no tienen audio.')
-: someMute ? 'Mirá cómo se escribe y escuchá la diferencia. ' + (mutes === 1 ? 'Un par todavía no tiene audio: ahí' : mutes + ' pares todavía no tienen audio: ahí') + ' te mostramos la palabra.'
+sIntro: allMute ? 'Mirá cómo se escribe cada par: ' + (muteWhy === 'failed' ? 'no se pudo cargar el audio de estos pares.' : muteWhy === 'off' ? 'apagaste la voz sintética. La activás de nuevo en Progreso.' : 'estos pares todavía no tienen audio.')
+: someMute ? 'Mirá cómo se escribe y escuchá la diferencia. ' + (nones === 1 ? 'Un par todavía no tiene audio: ahí' : nones + ' pares todavía no tienen audio: ahí') + ' te mostramos la palabra.'
 : 'Mirá cómo se escribe y escuchá la diferencia en cada par.',
 sPairHead: allMute ? 'MIRÁ Y ELEGÍ' : 'ESCUCHÁ Y ELEGÍ',
 sNone: !snd,
@@ -587,7 +633,7 @@ ring: on ? '3px solid #F2B43A' : 'none',
 glow: on ? '0 0 0 5px #1B2440' : 'none',
 tap: () => {
 this.hush();
-this.setState({ sel: w.id, found: found ? this.state.found : this.state.found.concat(w.id), playing: false, quietWord: null });
+this.setState({ sel: w.id, found: found ? this.state.found : this.state.found.concat(w.id), playing: false, quietWord: null, wordWait: null });
 },
 };
 });
@@ -595,6 +641,8 @@ const cur = L.list.filter((w) => w.id === s.sel)[0] || L.list[0] || { id: '', gn
 /* the open word's clip, and where it stands now (here, on its way, or why not) */
 const wordKey = L.sid && cur.id ? L.sid + '.w.' + cur.id : '';
 const wordNow = stateOf(wordKey);
+const wordComing = wordNow === 'coming';
+const wordPending = wordComing && !!cur.id && s.wordWait === cur.id;
 const len = chars(cur.gn).length;
 const syl = this.syllables(cur.gn);
 const stressed = (syl || []).filter((y) => y.stress)[0];
@@ -633,29 +681,45 @@ hasParts: parts.length > 0,
 parts: parts.map((x) => ({ gn: x[0], es: x[1] || '' })),
 },
 playing: !!s.playing,
-playBg: s.playing ? '#F2B43A' : '#E8ECFB',
+playBg: s.playing ? '#F2B43A' : wordComing ? WAIT.bg : '#E8ECFB',
+playEdge: !s.playing && wordComing ? WAIT.border : '2px solid #1B2440',
+playInk: !s.playing && wordComing ? WAIT.ink : '#1B2440',
+playPulse: wordPending ? 'gn-wait 1.4s ease-in-out infinite' : 'none',
 /* each word is a short clip: the button stays lit while it is said; without a clip it lights up for as long (the
    word is on the card), and the card says why there is no sound: on this word's card, for every word without a clip,
-   until another word is picked. While the clip is on its way nothing lights up: the card says «Cargando el audio…» */
+   until another word is picked or a clip plays. While the clip is on its way nothing lights up: the card says
+   «Cargando el audio…», and the clip plays by itself when it is in (a second tap calls that off) */
 play: () => {
 clearTimeout(this.timer);
 clearTimeout(this.pairTimer);
-if (wordNow === 'coming') {
-if (window.gnSound) window.gnSound.stop();
-this.setState({ playing: false, pairOn: -1, waitAt: -1, quietWord: cur.id, wordWhy: 'coming' });
+this.waiting = null;
+const snd = window.gnSound;
+const id = cur.id;
+const run = () => {
+const now = stateOf(wordKey);
+const real = (!C || now === 'in') && this.has(wordKey);
+this.setState({ playing: true, pairOn: -1, waitAt: -1, wordWait: null, quietWord: real ? null : id, wordWhy: real ? '' : now === 'in' || now === 'coming' ? 'failed' : now });
+this.timer = this.say(real ? wordKey : '', cur.gn, () => this.setState({ playing: false }));
+};
+if (wordComing) {
+if (snd) snd.stop();
+if (wordPending) { this.setState({ wordWait: null }); return; }
+if (snd) snd.unlock();
+/* it plays when it is in, if this word is still the one on the card */
+this.waiting = { key: wordKey, run: () => { if (this.state.sel === id && this.state.step === 'learn') run(); else this.setState({ wordWait: null }); } };
+this.setState({ playing: false, pairOn: -1, waitAt: -1, quietWord: null, wordWait: id });
 return;
 }
-const real = this.has(wordKey);
-this.setState({ playing: true, pairOn: -1, waitAt: -1, quietWord: real ? null : cur.id, wordWhy: real ? '' : wordNow === 'in' ? 'mute' : wordNow });
-this.timer = this.say(wordKey, cur.gn, () => this.setState({ playing: false }));
+run();
 },
-/* the note goes when the clip comes in (unless it was there and would not play) */
-wordNoted: !!cur.id && s.quietWord === cur.id && (wordNow !== 'in' || s.wordWhy === 'mute'),
-wordNote: noteOf(wordNow === 'in' ? 'failed' : wordNow),
-wordNoteInk: wordNow === 'coming' ? '#5A6382' : '#B02A63',
+/* under the meaning: «Cargando el audio…» while the word waits to play; after a stand-in, why its clip did not play
+   (what was true at that tap: it does not change by itself if the clip comes in after all) */
+wordNoted: wordPending || (!!cur.id && s.quietWord === cur.id),
+wordNote: wordPending ? C.SOUND_COMING : noteOf(s.wordWhy || 'none'),
+wordNoteInk: wordPending ? '#5A6382' : '#B02A63',
 /* the open word's clip is a voice model's: its card says so, beside the meaning and under the speaker */
 wordSynth: !!C && C.synth(wordKey),
-wordLoading: wordNow === 'coming',
+wordLoading: wordComing,
 writeLine,
 writeLetters,
 writeEnd,

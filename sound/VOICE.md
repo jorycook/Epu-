@@ -1107,27 +1107,48 @@ checked every listening item the same way: each stays answerable, the words that
 least one recogniser. To silence a line, name its key in `silent.json`: the item it belongs to then goes silent as a
 whole.
 
-**What the screens say** (since 16 November, when the screens were gone through for it). `make-sound.mjs` marks every
+**What the screens say** (since 16 November, when the screens were gone through for it; the states of a clip since
+17 November, after a review of the voice in the app). `make-sound.mjs` marks every
 one of these clips `synthetic`, with the model and the licence in each file's header and in the index, and every
 screen that offers such a clip carries the same small tag, «voz sintética», next to the control and before anything is
 tapped (`gnCourse.synth`): Teach, Words (the pairs of its sound step, the words of its scene, the spelling pad),
 Listening, the notebook's review, the placement check, the level exam (in the pause before its listening part and in
 the part itself) and Hablar. So the placement's and the exam's listening items that stay (`pl.1`, `pl.5`, `a1x.4`,
-`a1x.5`) say it too. A screen reader hears what the tag means once a visit. Progreso has the one page that explains the
+`a1x.5`) say it too. A screen reader hears what the tag means once a visit, when a tag is really drawn (the level
+exam's briefing, which only asks about its listening part, says nothing), and the sentence is taken out of the page
+again eight seconds later. Progreso has the one page that explains the
 voice, in a learner's words: a program's (Meta's MMS), not a person's, not yet checked by a native speaker; what it
 does badly (the nasal vowels, whose pairs stay silent; one man's voice for both speakers of a dialogue; Spanish names
-and numbers); that some words and phrases stay silent on purpose because the program says them badly, wait for a
-person's recording and read «todavía no está grabado» meanwhile; that recordings by native speakers will replace it;
-and a switch, «Usar la voz sintética», saved with the progress: off, the player has no synthetic clip and every
-screen shows its written stand-in. Listening's status line, which names the speaker, keeps time by the clip's `cues`
+and numbers; and, from «In one screen», what is rendered in part or not: «A veces falla en la sílaba fuerte, en el
+puso (') después de o, u, y, y en la r al empezar una palabra.»); that some words and phrases stay silent on purpose
+because the program says them badly, wait for a person's recording and read «todavía no está grabado» meanwhile; that
+recordings by native speakers will replace it; what the phone stores of the sound; the credit, with a second page
+that shows the whole of the app's `licenses.txt`; and a switch, «Usar la voz sintética», saved with the progress: off,
+the player has no synthetic clip and every screen shows its written stand-in. Listening's status line, which names the
+speaker, keeps time by the clip's `cues`
 now: over the ten lessons that play it shows a Guarani line's own row during the whole of the line for all 40 lines
 (by the lines' lengths in letters: during 80 % or more for 28 of the 40, and during less than half for 2, the woman's
 greeting of unit 1 day 1, 10 %, and «Diez mil.» in unit 4 day 5, 32 %), and each change of row comes 8 to 112 ms
 after the middle of the quarter second of silence between two lines, before the next line's sound begins (measured
 twice on 16 November in Chromium, the audio clock and the status line sampled every 40 ms: 14 to 112 ms in the
-first run, 8 to 109 ms over the 47 changes of row of the second). Where a clip is silent the
-screens still say «todavía no está grabado», which is true of a person's recording; why some stay silent is said
-once, on Progreso's page.
+first run, 8 to 109 ms over the 47 changes of row of the second).
+
+A screen says why a clip does not sound, in one of four ways, and no longer one sentence for all of them
+(`gnCourse.soundState`, `soundNote`). Where a clip is silent by the rule of this document the screens still say
+«todavía no está grabado», which is true of a person's recording; why some stay silent is said once, on Progreso's
+page. Where the clip's sound file is still on its way (a slow line, the first lesson of a unit) the control waits and
+says «Cargando el audio…»: it runs no stand-in, shows no transcript and no word, opens no answer, and no clock of a
+game or an exam runs meanwhile; a clip the learner tapped then plays by itself where a play is free (Teach, Words, the
+spelling pad, Listening, the notebook) and waits for a tap where plays are counted or the audio sets the pace (the
+placement check, the level exam, the model in Hablar). Where the file could not be fetched, or is not in 20 seconds
+after a control began to wait, the written stand-in says «No se pudo cargar el audio», and what it has shown stays
+shown if the file arrives after all. Where the learner turned the voice off it says «Apagaste la voz sintética: … La
+activás de nuevo en Progreso.» The limit of 20 seconds is set by the files: the largest unit's is 0.61 MB as a host
+sends it, 12.3 s at 400 kbit/s, the slowest line measured (there unit 1's, 0.45 MB, was in 9.5 s after it was asked
+for, and 2.5 s at 1.6 Mbit/s); 20 s leaves room down to 250 kbit/s. A learner with a plan is sent the file of the
+unit in use, of the unit after it and of the speaking game ahead of time (1.03 MB as sent in a first session, where
+all seven files, 2.26 MB, went before), and the rest when its screen opens; Listening's «Más despacio 0.8×», for the
+nine lessons whose clip has no slower take, says «Todavía no hay versión lenta».
 
 ## What a native speaker should listen to first
 

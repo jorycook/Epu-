@@ -310,8 +310,13 @@ const synthCredit = UNIT_SOUND.length && synthAll.includes('') && !synthModels.l
 ] : [];
 const soundLicence = UNIT_SOUND.length ? [
   '== Sound ==',
-  `Spoken clips: ${UNIT_SOUND.join(', ')} (assets/), each fetched when its unit or screen is in use and stored on the`,
-  'phone from then on. Voices: ' + (Object.keys(soundVoices).map((v) => `${v}: ${soundVoices[v].name || 'not named'} (${soundVoices[v].kind === 'synthetic' ? 'synthetic, ' + (soundVoices[v].model || 'a voice model') : 'a recording'}; ${soundVoices[v].licence || 'licence not stated'})`).join('; ') || 'not stated') + '.',
+  `Spoken clips: ${UNIT_SOUND.join(', ')} (assets/). None is part of the install. A file is`,
+  'fetched the first time a screen plays from it (a unit\'s when the unit is opened, the placement check\'s and the',
+  'level exam\'s when their screen opens) and is stored on the phone from then on. Once the learner has a plan, three',
+  'are stored ahead of time, for use without a connection: the file of the unit in use, of the unit after it (the next',
+  'one follows when the learner moves on), and of the speaking game. Nothing else is fetched ahead; a browser that',
+  'says the learner saves data fetches nothing ahead at all, and no sound is fetched while the synthetic voice is',
+  'turned off. Voices: ' + (Object.keys(soundVoices).map((v) => `${v}: ${soundVoices[v].name || 'not named'} (${soundVoices[v].kind === 'synthetic' ? 'synthetic, ' + (soundVoices[v].model || 'a voice model') : 'a recording'}; ${soundVoices[v].licence || 'licence not stated'})`).join('; ') || 'not stated') + '.',
   'A clip made by a voice model is marked synthetic in the file, and the screens say so (voz sintética). The sound',
   'player (assets/gn-sound.js) is the player of the Yaoki apps, under new names.',
   ...synthCredit,

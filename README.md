@@ -26,7 +26,7 @@ native speaker's check.
 | `notes/` | The research the design rests on. Y1 to Y5 map the Yaoki suite (plan and engine, the lesson loop, skills and tests, the satellites, platform and brand). G1 to G8 are the Guarani research, with a source and a confidence mark on every claim: sounds, spelling, fonts and keyboards; a verified grammar reference; learners and prior art; data, audio and licences; culture, naming and UI words; the CEFR and the level exam; the six-level syllabus; and G8, the second mascot (Kaguare: which anteater, its names, three slang screens). |
 | `epua-app/` | The installable app around the screens: `src/` (Yaoki's runtime, the shell, the first-visit page, the offline worker, the page and the manifest), `studio/` (the recording studio page), `build.mjs`, `fonts.py`, `fetch-fonts.sh` and `check/app-check.js`. |
 | `docs/` | The built app, for GitHub Pages. This is all a phone needs. `docs/estudio/` is the recording studio, next to the app and not part of it. |
-| `check/` | Two checks of the built app in Chromium, as GitHub Pages serves it: `flows-test.js` (a learner's flows by taps, saved progress, two tabs, saved data that does not fit, the last written week to its end, the review put in front of the day and its size, the plan made again, the days with study and the return after days away, the end of the written path with the first mini exam, an exam closed on its result page, the voice of the clips (the tag «voz sintética» wherever a synthetic clip is offered, a clip really playing, the speaker named by the clip's cues, the clips the voice must not say and a build without sound, Progreso's page on the voice and its switch), and the app around the screens: an Android phone's way in, the system's back, focus and zoom, a paste taken back, the screens that load later) and `platform-test.js` (phone sizes, iPhone and Android, the install page in each browser, the Home Screen, the page's first paint, offline (with the level's sound, each file downloaded once), updates, the manifest and icons, the typefaces, every screen's frame, tap targets, headings, languages; the screens with a learner in unit 1, with one in the last written week, with one back after days and behind the plan (Progreso's list measured against its fold) and with one at the end of the written path, and the shell's own notices). Their screenshots go to `check/out/`, which is not kept. |
+| `check/` | Two checks of the built app in Chromium, as GitHub Pages serves it: `flows-test.js` (a learner's flows by taps, saved progress, two tabs, saved data that does not fit, the last written week to its end, the review put in front of the day and its size, the plan made again, the days with study and the return after days away, the end of the written path with the first mini exam, an exam closed on its result page, the voice of the clips (the tag «voz sintética» wherever a synthetic clip is offered, a clip really playing, the speaker named by the clip's cues, the clips the voice must not say and a build without sound, Progreso's page on the voice and its switch; the words lesson's note per word; a sound file held back or refused by the test's own server on each of the eight screens that play clips: waiting, arrived, failed, too long in coming; what the worker has stored once there is a plan and when the learner moves on to the next unit; what each screen says with the voice off), and the app around the screens: an Android phone's way in, the system's back, focus and zoom, a paste taken back, the screens that load later) and `platform-test.js` (phone sizes, iPhone and Android, the install page in each browser, the Home Screen, the page's first paint, offline (with the sound that is stored ahead: the unit in use, the next one and the speaking game's, each downloaded once and no other file of the level; the two screens whose sound comes only when they open going without it), updates, the manifest and icons, the typefaces, every screen's frame, tap targets, headings, languages; the screens with a learner in unit 1, with one in the last written week, with one back after days and behind the plan (Progreso's list measured against its fold) and with one at the end of the written path, and the shell's own notices). Their screenshots go to `check/out/`, which is not kept. |
 
 ## Build and check
 
@@ -131,20 +131,36 @@ day, about 57 kB as the web host sends them); the other eighteen and the spellin
 Volver», after five seconds: on a connection that stalls an app from the Home Screen has no back of its own), or, if
 the file cannot be fetched, a note that says so with a way to try again. A first paint that never ends says so too:
 when one of the page's own scripts cannot be fetched, «Cargando…» gives way to «No se pudo cargar. Revisá tu conexión
-y abrí la página de nuevo.»; when the app is still not up after 20 seconds, to «Está tardando…». The first unit's
-sound comes after the screens: the engine asks for it
-with the first screen, but no screen of the first file plays a clip and one unit's sound (about 450 kB) is larger
-than all the later screens together, so the app holds that request back until the screens are in.
+y abrí la página de nuevo.»; when the app is still not up after 20 seconds, to «Está tardando…». A unit's
+sound comes after the screens, and none before there is a plan: a first visit, still on the goal screen, fetches no
+sound at all. With a plan the engine asks for the unit's file with the first screen, but no screen of the first file
+plays a clip and one unit's sound (about 450 kB as sent) is larger than all the later screens together, so the app
+holds that request back until the screens are in, or until the learner asks for a screen of the later file: then the
+sound sets out at once (`gnApp.soundNow`, called by the shell), and a control that is asked for a clip meanwhile says
+«Cargando el audio…» (see «Sound»). That second rule trades one wait for another, and only matters where the later
+screens are not stored yet and there is a plan already (a new phone after a paste). Measured so on 17 November
+(Chromium, a cold cache, the learner tapping straight through to the first lesson, CPU slowed four times): at
+1.6 Mbit/s the lesson is up at 5.6 s instead of 4.5 s and its clip is in at 6.6 s instead of 6.8 s, so the lesson
+waits for its sound for 1.1 s instead of 2.3 s; at 400 kbit/s the lesson is up at 21.3 s instead of 15.1 s and the
+clip is in at 24.3 s either way, so the wait is 3.1 s instead of 9.3 s. The sound shares the line with the screens:
+it is not in sooner, the lesson is up later. Holding the request until the screens are in (the one call of
+`soundNow` in the shell's `fetchScreen` taken out) gives the first figures back.
 The offline worker stores every file under a hash of its content: on a first visit it takes what the browser has just
 downloaded for the page instead of downloading it again, a new build downloads only the files that changed, and a file
 that is not this build's is never stored (it is asked for again, past every copy; if that fails the install waits).
-A sound file is stored the same way when it is first used or kept for the level: once, however many ask for it at the
-same moment, and from the browser's own copy when the page fetched it before the worker was in charge. The level's
-sound is megabytes (seven files, 3.7 MB as they are, for A1 today), so it is not fetched behind the back of a learner
-who pays for data by the megabyte: when the browser says the learner saves data (`navigator.connection.saveData`),
-only the file of the unit that is opened is fetched and stored (the app names the files its screens asked for to the
-worker, and no level, so the one fetched before the worker was in charge is stored too), and Progreso's «Voz
-sintética» says what the sound weighs. A sound file that could not be fetched is asked for again once from the next screen, and at once when the
+A sound file is stored the same way, the first time it is used or when the app names it to the worker: once, however
+many ask for it at the same moment, and from the browser's own copy when the page fetched it before the worker was in
+charge. The level's sound is megabytes (seven files, 3.7 MB as they are and 2.3 MB as a host sends them, for A1 today),
+so the whole of it is never fetched behind the learner's back. Once there is a plan the app names three files to have
+ahead of time, for use without a connection (`gnCourse.soundAhead`): the unit in use, the unit after it, and the
+speaking game's (47 kB as sent), the practice that should work anywhere; when the learner moves on to a unit, the one
+after it follows. The level exam's and the placement check's files are fetched the first time their screen opens, and
+stored then. Measured on 17 November as a host sends the files: a first session fetches 39 files and 1.79 MB, 1.03 MB
+of it sound (units 1 and 2 and Hablar), and none of the sound before the plan is made; until then it fetched 43 files
+and 3.00 MB, 2.26 MB of it sound, all seven files, the first of them on the goal screen. When the browser says the
+learner saves data (`navigator.connection.saveData`) nothing is named ahead: only the file of the unit that is opened
+is fetched and stored, and Progreso's «Voz sintética» says so; it says what the phone stores in the other case too, and
+what a unit weighs. A sound file that could not be fetched is asked for again once from the next screen, and at once when the
 browser says the connection is back; none is fetched while the learner has the synthetic voice turned off.
 
 Saved progress is looked after. Once there is a plan the app asks the browser to keep what is saved
@@ -240,7 +256,9 @@ from zooming.
 - **The voice is a program's for now, and the app says so.** Until a person records the course, its audio is a
   synthetic voice: every control that plays one carries the small tag «voz sintética», Progreso explains what it is,
   what it does badly and that recordings by native speakers will replace it, and a switch there turns it off. What
-  the voice says badly is not said at all: those words and phrases show written, with «todavía no está grabado».
+  the voice says badly is not said at all: those words and phrases show written, with «todavía no está grabado». A
+  clip that is still on its way says «Cargando el audio…» and waits, one that could not be loaded says so, and with
+  the voice off the screens say that the learner turned it off, and where it is turned on again.
 - **It rewards accuracy, getting up again and showing up, never speed:** no leaderboards, no lives, no timers in practice.
 
 ## The look
@@ -384,22 +402,45 @@ node check/sound-test.js                           # the whole path in Chromium,
   unit's file next to `gn-course.js` when the unit is first in use, and the placement's, the exam's or the speaking game's
   file when that screen opens (the first two also when the notebook holds a mistake made there, for Review to play), so
   the phone never holds every unit's sound at once. The app build ships the files but does not install
-  them: `sw.js` stores each the first time it is fetched and the rest of the level in the background once there is a plan,
-  under a hash of its content, so a new build keeps the unchanged ones. The canvas's other boards keep their stand-ins.
-- **The screens** change nothing when a clip exists (`has()` was always the test): they play it and keep time with it,
-  and a key without a clip keeps its stand-in and says that the audio is not recorded yet, which is also true of a
-  clip the voice must not say. **Every screen that offers a synthetic clip says so**, with one small grey tag, «voz
+  them: `sw.js` stores each the first time it is fetched and, once there is a plan, the three the app names ahead of
+  time (the unit in use, the unit after it, the speaking game's: «The app», above), under a hash of its content, so a
+  new build keeps the unchanged ones. The canvas's other boards keep their stand-ins.
+- **The screens** follow the state of a clip, which the engine says in one word (`gnCourse.soundState(key)`), on all
+  eight boards that play clips (Teach, Words, Spell, Listening, Review, Placement, LevelExam, Hablar). *in*: they play
+  it and keep time with it. *none* (nothing is recorded, or the voice must not say it): the stand-in, with «todavía no
+  está grabado». *coming* (its sound file is asked for and not in yet: a slow line, the first lesson of a unit): the
+  control waits, with a dashed grey look of its own and «cargando el audio…» where the tag goes; tapped, it says
+  «Cargando el audio…» in its own line, politely, and gives nothing away: no stand-in runs, no transcript and no word
+  shows, no answer opens, and no clock runs (the placement check counts no play, the level exam's pause holds its
+  sound check and its start button, «Escuchá y elegí» lets nothing fall). When the file arrives the control is ready
+  with no note left; where a play is free and can be repeated (an example, a word, a pair, «Escuchar» in the spelling
+  pad, the listening lesson, the notebook's play card) the clip that was tapped then plays by itself, as a player
+  does after loading, and a second tap or anything else calls that off; where plays are counted or the audio sets the
+  pace (the placement check, the level exam, the model in Hablar, which counts as help) the learner starts it.
+  *failed* (the file could not be fetched, or is not in 20 s after a control began to wait: the largest unit's file,
+  0.6 MB as sent, takes 12 s at 400 kbit/s, the slowest line measured, where unit 1's took 9.5 s; 20 s covers down to
+  250 kbit/s): the stand-in, with «No se pudo cargar el audio». A stand-in that has shown something (a transcript, a
+  pair's word, a card of Hablar) stays for that item while the screen is open: nothing flips back under the learner
+  when the file arrives late. *off* (the learner turned the voice off): the stand-in, with «Apagaste la voz sintética:
+  … La activás de nuevo en Progreso.», in Hablar's menu too. The words are the engine's (`gnCourse.soundNote`,
+  `soundWhy`), the same on every screen. The words lesson's note belongs to the word it is true of: every silent word
+  says it on its own card, and it goes when another word is picked. Listening's «Más despacio 0.8×», shut for a
+  lesson whose clip has no slower take, says «Todavía no hay versión lenta», not that something is not recorded.
+  **Every screen that offers a synthetic clip says so**, with one small grey tag, «voz
   sintética», next to the control and there before anything is tapped (`gnCourse.synth(key)`, true when
   `gnSound.kind(key)` is `synthetic`): in the head of Teach's examples, of each sound pair and of the notebook's play
   card, beside a scene word's meaning, under «Escuchar» in the spelling pad, at the end of the status line in
   Listening and the placement check, in the level exam's pause and listening part, and in Hablar's dock and
-  comparison. It is never in a live region: a screen reader hears what it means once a visit, from the shell. The
-  pattern for a new screen is two lines (`brief/BRIEF-core.md` §6). Listening's status line and the notebook's play
+  comparison. It is never in a live region: a screen reader hears what it means once a visit, from the shell, when a
+  tag is really drawn (not when a screen merely asks about a clip), and the shell's region is emptied again eight
+  seconds later. The pattern for a new screen, the tag and the states, is a few lines (`brief/BRIEF-core.md` §6). Listening's status line and the notebook's play
   card name who is speaking by the clip's own cues, since the two voices of a dialogue are one voice a little apart.
   **Progreso explains the voice** («Voz sintética», in its header): a program's, not a person's, not yet checked by a
   native speaker; what it does badly (the nasal vowels, whose pairs stay silent; one voice for both speakers of a
-  dialogue; Spanish names and numbers); that some words wait in silence for a person's recording; that recordings
-  will replace it; and a switch, «Usar la voz sintética», saved with the progress (`voice`): off, the player has no
+  dialogue; Spanish names and numbers; and, at times, the stressed syllable, the puso after o, u and y, and the r
+  that opens a word); that some words wait in silence for a person's recording; that recordings will replace it; what
+  this phone stores of the sound; the credit, with «Licencias», a second page of the sheet that shows the whole of
+  `licenses.txt` (one step back from it, by «Volver», a tap outside or the system's back, is the sheet); and a switch, «Usar la voz sintética», saved with the progress (`voice`): off, the player has no
   synthetic clip (`gnSound.synthetic(false)`) and every screen shows its written stand-in.
 - **The synthetic voice.** `tools/make-tts.py` says every recorded row of the list with Meta's MMS-TTS
   (`facebook/mms-tts-grn` for Guarani, `facebook/mms-tts-spa` for the narrator; a CPU is enough): each line after a

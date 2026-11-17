@@ -183,7 +183,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </div>
 
 <div style="margin-top: 14px; padding: 10px 14px 12px; border-radius: 18px; background: #FFFFFF; border: 2px solid #1B2440; display: flex; flex-direction: column; gap: 8px">
-<div style="display: flex; align-items: center; gap: 8px"><div style="flex-grow: 1; min-width: 0; font-size: 11px; font-weight: 800; color: #B02A63">LA PARTE QUE SIGUE</div><sc-if value="{{ synthP2 }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap">voz sintética</span></sc-if></div>
+<div style="display: flex; align-items: center; gap: 8px"><div style="flex-grow: 1; min-width: 0; font-size: 11px; font-weight: 800; color: #B02A63">LA PARTE QUE SIGUE</div><sc-if value="{{ synthP2 }}" hint-placeholder-val="{{ false }}"><span data-gn-voice="tag" style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap">voz sintética</span></sc-if><sc-if value="{{ loadingP2 }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap">cargando el audio…</span></sc-if></div>
 <div style="display: flex; align-items: center; gap: 10px">
 <div style="width: 26px; height: 26px; border-radius: 8px; background: #1B2440; color: #FFFFFF; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0">{{ up.n }}</div>
 <div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column">
@@ -199,7 +199,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 
 <sc-if value="{{ soundCheck }}" hint-placeholder-val="{{ true }}">
 <div style="margin-top: 12px; padding: 12px 14px; border-radius: 18px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; align-items: center; gap: 14px">
-<button aria-label="Reproducir el sonido de prueba" onClick="{{ playCheck }}" style="width: 52px; height: 52px; border-radius: 50%; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 150ms; background: {{ checkBg }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="{{ checkInk }}" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></button>
+<button aria-label="Reproducir el sonido de prueba" onClick="{{ playCheck }}" style="width: 52px; height: 52px; box-sizing: border-box; border-radius: 50%; border: {{ checkEdge }}; box-shadow: {{ checkShadow }}; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 150ms; background: {{ checkBg }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="{{ checkInk }}" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></button>
 <div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
 <div style="font-size: 14px; font-weight: 800">Prueba de sonido</div>
 <div aria-hidden="true" style="height: 22px; display: flex; align-items: center; gap: 4px">
@@ -207,7 +207,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="width: 4px; border-radius: 2px; height: {{ b.h }}; background: {{ b.bg }}"></div>
 </sc-for>
 </div>
-<div aria-live="polite" style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.4">{{ checkNote }}</div>
+<div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.4"><span aria-live="polite">{{ checkNote }}</span><span>{{ checkWait }}</span></div>
 </div>
 </div>
 </sc-if>
@@ -215,15 +215,15 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div role="note" style="margin-top: 12px; padding: 12px 14px; border-radius: 18px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; align-items: center; gap: 14px">
 <div aria-hidden="true" style="width: 52px; height: 52px; border-radius: 16px; background: #FFF4D6; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 9a4 4 0 0 1 0 6"/></svg></div>
 <div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
-<div style="font-size: 14px; font-weight: 800">Sin audio por ahora</div>
-<div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.4">Las grabaciones están en preparación: en la parte 2 leés lo que se dice y elegís tu respuesta.</div>
+<div style="font-size: 14px; font-weight: 800">{{ noAudioHead }}</div>
+<div style="font-size: 12px; font-weight: 500; color: #5A6382; line-height: 1.4">{{ noAudioText }}</div>
 </div>
 </div>
 </sc-if>
 
 <div style="flex-grow: 1"></div>
-<div style="font-size: 12px; font-weight: 500; color: #5A6382; text-align: center; line-height: 1.45">{{ restNote }}</div>
-<button onClick="{{ startListen }}" style="margin-top: 10px; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px"><span lang="gn">Ñepyrũ</span> · Empezar la parte 2</button>
+<div style="font-size: 12px; font-weight: 500; color: #5A6382; text-align: center; line-height: 1.45"><span aria-live="polite">{{ restNote }}</span><span>{{ restWait }}</span></div>
+<button onClick="{{ startListen }}" aria-disabled="{{ startOff }}" style="margin-top: 10px; height: 54px; box-sizing: border-box; border-radius: 16px; background: {{ startBg }}; border: {{ startEdge }}; box-shadow: {{ startShadow }}; color: {{ startInk }}; font-weight: 800; font-size: 17px"><span lang="gn">Ñepyrũ</span> · Empezar la parte 2</button>
 <sc-if value="{{ keeps }}" hint-placeholder-val="{{ true }}">
 <a href="ExamTab.dc.html" onClick="{{ later }}" style="margin-top: 6px; flex-shrink: 0; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800">Seguir otro día</a>
 </sc-if>
@@ -289,7 +289,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="width: 4px; border-radius: 2px; height: {{ b.h }}; background: {{ b.bg }}"></div>
 </sc-for>
 </div>
-<sc-if value="{{ synthP2 }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap">voz sintética</span></sc-if>
+<sc-if value="{{ synthP2 }}" hint-placeholder-val="{{ false }}"><span data-gn-voice="tag" style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap">voz sintética</span></sc-if>
 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{ speakerInk }}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 9a4 4 0 0 1 0 6"/></svg>
 </div>
 <div role="img" aria-label="{{ phaseAria }}" style="display: flex; gap: 5px">
@@ -328,7 +328,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="margin-top: 10px; flex-shrink: 0; padding: 12px 14px; border-radius: 18px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 8px">
 <div style="display: flex; flex-direction: column; gap: 2px">
 <div style="font-size: 12px; font-weight: 800; color: #5A6382">Transcripción</div>
-<div style="font-size: 12px; font-weight: 800; line-height: 1.4; color: #B02A63">Este audio todavía no está grabado: leé lo que se dice.</div>
+<div style="font-size: 12px; font-weight: 800; line-height: 1.4; color: #B02A63">{{ lq.readNote }}</div>
 </div>
 <sc-for list="{{ lq.script }}" as="l" hint-placeholder-count="3"><div style="display: flex; align-items: flex-start; gap: 8px"><sc-if value="{{ l.hasWho }}" hint-placeholder-val="{{ true }}"><span style="flex-shrink: 0; box-sizing: border-box; min-width: 72px; margin-top: 3px; padding: 2px 8px; border-radius: 8px; background: #EEF0F6; font-size: 11px; font-weight: 800; line-height: 1.4; text-align: center">{{ l.who }}</span></sc-if><div lang="{{ l.lang }}" style="flex: 1 1 auto; min-width: 0; line-height: 1.6; overflow-wrap: anywhere; font-family: {{ l.font }}; font-size: {{ l.size }}; font-weight: {{ l.weight }}">{{ l.t }}</div></div></sc-for>
 </div>
@@ -642,7 +642,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <sc-if value="{{ res.p2Read }}" hint-placeholder-val="{{ false }}">
 <div style="margin-top: 10px; flex-shrink: 0; display: flex; align-items: flex-start; gap: 8px; font-size: 12px; font-weight: 700; line-height: 1.45">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 1px"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 9a4 4 0 0 1 0 6"/></svg>
-<div>La escucha fue sin audio: la respondiste leyendo lo que se dice. Las grabaciones están en preparación.</div>
+<div>{{ res.p2Note }}</div>
 </div>
 </sc-if>
 <div style="margin-top: 10px; flex-shrink: 0; padding: 10px 12px; border-radius: 14px; background: #E8ECFB; font-size: 12px; font-weight: 500; line-height: 1.5"><strong style="font-weight: 800">Es una constancia de la app, no un certificado oficial.</strong> En Paraguay no hay hoy un examen oficial de guaraní por niveles.</div>
@@ -960,6 +960,13 @@ return out || all;
    score is what it adds. The exam has no written Spanish-to-Guarani mediation yet (notes G6 §4.3 gives it to the higher
    levels, inside parts 4 and 5); a written one would be a task of part 4 here, and its answer would go with the others */
 const SCALE = ['nada', 'poco', 'bastante', 'todo'];
+/* no recording of this level's exam exists (the sound index names no file for it: the canvas alone, a build without
+   sound). Only then may a result say that the recordings are still being made: a listening part read because its
+   audio could not be loaded, or because the learner turned the voice off, says only that it was read */
+function noRecordings(lv) {
+const C = window.gnCourse;
+return (window.__gnSoundFiles || []).indexOf(C.soundExtra('x', lv)) < 0;
+}
 function packageOf(M, R, st) {
 const C = window.gnCourse;
 const lv = M.level;
@@ -979,7 +986,7 @@ KEYS.forEach((k, n) => {
 const p = parts[k];
 const self = k === 'P4' || k === 'P5';
 const read = k === 'P2' && !!((R && R.p2Read) || st.p2Read);
-const line = !p ? 'sin entregar' : self ? (p.self || 0) + ' de ' + (p.selfOf || 0) + ' (' + pc(p.self || 0, p.selfOf) + ')' + (teacher ? '' : ', autoevaluada') : (p.right || 0) + ' de ' + (p.of || 0) + ' (' + pc(p.right || 0, p.of) + ')' + (k === 'P3' ? ', del guaraní al castellano' : '') + (read ? ', sin audio: la respondí leyendo la transcripción (la app todavía no tiene las grabaciones)' : '');
+const line = !p ? 'sin entregar' : self ? (p.self || 0) + ' de ' + (p.selfOf || 0) + ' (' + pc(p.self || 0, p.selfOf) + ')' + (teacher ? '' : ', autoevaluada') : (p.right || 0) + ' de ' + (p.of || 0) + ' (' + pc(p.right || 0, p.of) + ')' + (k === 'P3' ? ', del guaraní al castellano' : '') + (read ? ', sin audio: la respondí leyendo la transcripción' + (noRecordings(lv) ? ' (la app todavía no tiene las grabaciones)' : '') : '');
 out.push((n + 1) + '. ' + LONG[k] + ': ' + line);
 });
 out.push('Grupo C, comprensión (partes 1 a 3): ' + group(R && R.groupC));
@@ -1123,7 +1130,7 @@ C.withLevel('A1', () => C.sessions().forEach((s) => { if (s.kind === 'test') tes
 return { level: 'A1', started: true, plan: { start: C.addDays(T, -60), target: C.addDays(T, 4), pace: 'fit', minutes: 30 }, done, tests, exams: {}, mistakes: [], cur: null, placement: { comp: 'A2', prod: 'A1', start: 'A1' }, typed: [] };
 }
 
-const BASE = { view: 'briefing', live: false, i: 0, answers: {}, flags: {}, t: 0, used: {}, sheet: false, confirm: '', quit: false, paused: false, noStart: false, timeUp: '', bt: BREAK, checkP: 0, checking: false, checkMs: 2000, checkSound: true, sound: false, li: 0, ph: 0, pt: 0, m: 0, picks: {}, pickNote: false, w: 0, text: {}, stage4: 'write', k5: 0, stage5: 'record', rec: 'idle', recMs: 0, take: {}, playing: false, playMs: 0, sampleTab: 1, rate: { P4: {}, P5: {} }, done: [], parts: {}, result: null, nextKey: 'P3', started: '', until: '', tab: 0, open: null, exportOpen: false, exportDone: false, exportHow: '', expired: false };
+const BASE = { view: 'briefing', live: false, i: 0, answers: {}, flags: {}, t: 0, used: {}, sheet: false, confirm: '', quit: false, paused: false, noStart: false, timeUp: '', bt: BREAK, checkP: 0, checking: false, checkMs: 2000, checkSound: true, readWhy: '', checkAsked: false, startAsked: false, sound: false, li: 0, ph: 0, pt: 0, m: 0, picks: {}, pickNote: false, w: 0, text: {}, stage4: 'write', k5: 0, stage5: 'record', rec: 'idle', recMs: 0, take: {}, playing: false, playMs: 0, sampleTab: 1, rate: { P4: {}, P5: {} }, done: [], parts: {}, result: null, nextKey: 'P3', started: '', until: '', tab: 0, open: null, exportOpen: false, exportDone: false, exportHow: '', expired: false };
 
 class Component extends DCLogic {
 constructor(props) {
@@ -1142,9 +1149,21 @@ return this.memo.m;
    as in part 1; the result and the teacher's text say the part had no sound. The canvas alone keeps the designed run
    paced by the audio's timing */
 readsP2() {
+const st = this.p2State();
+return st !== 'in' && st !== 'coming';
+}
+/* where the listening part's audio stands, inside the prototype and the app (gnCourse.soundState over its clips):
+   'in' every clip can be played; 'coming' their sound file is still on its way: the part does not start, the pause
+   before it waits (its sound check and its start button, with «Cargando el audio…»), and nothing is read meanwhile;
+   else why the part is read from its transcript, as a whole ('off' the learner turned the voice off, 'failed' the
+   audio could not be loaded, 'none' a clip is not recorded). The canvas alone is 'in': the designed run */
+p2State() {
 const M = this.model();
-const snd = window.gnSound;
-return !!(this.props && this.props.go) && M.P2.length > 0 && !(snd && snd.has && snd.has(M.P2[0].id));
+const C = window.gnCourse;
+if (!(this.props && this.props.go) || !M.P2.length) return 'in';
+const all = M.P2.map((x) => C.soundState(x.id));
+if (all.indexOf('coming') >= 0) return 'coming';
+return all.indexOf('off') >= 0 ? 'off' : all.indexOf('failed') >= 0 ? 'failed' : all.indexOf('none') >= 0 ? 'none' : 'in';
 }
 app() {
 if (this.props && this.props.app) return this.props.app;
@@ -1393,12 +1412,16 @@ else snd.halt();
 startListening(li) {
 const snd = window.gnSound;
 const list = this.model().P2;
-if (this.readsP2()) {
-/* no clips: the transcript, a question at a time, under the part's clock */
+const audio = this.p2State();
+/* the part's sound file is still on its way: nothing starts (the pause's button waits, and no clock runs) */
+if (audio === 'coming') return;
+if (audio !== 'in') {
+/* no clips: the transcript, a question at a time, under the part's clock. The part stays read from here on, for
+   the reason it had when it began (readWhy) */
 const t = this.model().min.P2 > 0 ? this.model().min.P2 * 60 : 0;
 this.hush();
 this.changedAt = Date.now();
-this.setState({ view: 'listening', li: li || 0, ph: 0, pt: 0, read: true, t, paused: false, noStart: false, timeUp: '', live: true, sound: false });
+this.setState({ view: 'listening', li: li || 0, ph: 0, pt: 0, read: true, readWhy: audio, t, paused: false, noStart: false, timeUp: '', live: true, sound: false });
 if (t) this.startClock(t);
 return;
 }
@@ -1429,7 +1452,7 @@ const t = M.min.P1 * 60;
 this.setState({ view: 'reading', live: true, i: 0, t, sheet: false, timeUp: '', started, until, expired: false });
 this.startClock(t);
 } else if (k === 'P2') {
-this.setState({ view: 'break', live: true, bt: BREAK, checkP: 0, checking: false, timeUp: '', started, until });
+this.setState({ view: 'break', live: true, bt: BREAK, checkP: 0, checking: false, checkAsked: false, startAsked: false, timeUp: '', started, until });
 this.startBreak(BREAK);
 } else if (k === 'P3') {
 const t = M.min.P3 * 60;
@@ -1455,7 +1478,7 @@ submitReading(timeUp) {
 const s = this.state;
 const M = this.model();
 const used = Object.assign({}, s.used, { P1: M.min.P1 * 60 - (timeUp ? 0 : s.t) });
-const next = { view: 'break', bt: BREAK, checkP: 0, checking: false, used, parts: Object.assign({}, s.parts, { P1: scoreChoice(M.P1, s.answers) }), done: add(s.done, 'P1'), sheet: false, quit: false, timeUp: timeUp ? 'P1' : '' };
+const next = { view: 'break', bt: BREAK, checkP: 0, checking: false, checkAsked: false, startAsked: false, used, parts: Object.assign({}, s.parts, { P1: scoreChoice(M.P1, s.answers) }), done: add(s.done, 'P1'), sheet: false, quit: false, timeUp: timeUp ? 'P1' : '' };
 this.breakEnds = Date.now() + BREAK * 1000;
 this.changedAt = Date.now();
 this.setState(next);
@@ -1575,7 +1598,12 @@ const lv = M.level;
 const inApp = !!this.props.go;
 /* inside the prototype and the app, with no clips yet, the listening part is read from its transcript (see readsP2):
    the briefing, the break and the part say so, and nothing promises audio, headphones or a sound check */
-const readP2 = this.readsP2();
+const audioP2 = this.p2State();
+const readP2 = audioP2 !== 'in' && audioP2 !== 'coming';
+const comingP2 = audioP2 === 'coming';
+/* why the part is read, where it is: the reason it began with, once it has begun */
+const whyP2 = s.read && s.readWhy ? s.readWhy : readP2 ? audioP2 : 'none';
+const WAIT = C.SOUND_WAIT;
 const nav = (to) => (e) => { const go = this.props.go; if (go) { e.preventDefault(); go(to); } };
 const fmt = (sec) => { const x = Math.max(0, Math.round(sec)); return Math.floor(x / 60) + ':' + (x % 60 < 10 ? '0' : '') + (x % 60); };
 const dayEs = (iso) => String(C.dateEs(iso, false) || '').replace(',', '');
@@ -1635,7 +1663,7 @@ briefing: ['Aranduchauka', 'Examen de nivel', lv + ' · ' + C.meta(lv).name + ' 
 reading: ['', SHORT.P1, 'Parte 1 de 5'],
 break: ['', 'Pausa', 'Antes de la parte 2'],
 between: ['', 'Antes de la parte ' + P(s.nextKey), 'Lo entregado quedó guardado'],
-listening: [GN.P2, SHORT.P2, s.read ? 'Parte 2 de 5 · sin audio todavía' : s.sound || !s.live ? 'Parte 2 de 5 · cada audio suena dos veces' : 'Parte 2 de 5 · sin sonido, solo los tiempos'],
+listening: [GN.P2, SHORT.P2, s.read ? (whyP2 === 'none' ? 'Parte 2 de 5 · sin audio todavía' : 'Parte 2 de 5 · sin audio') : s.sound || !s.live ? 'Parte 2 de 5 · cada audio suena dos veces' : 'Parte 2 de 5 · sin sonido, solo los tiempos'],
 mediation: ['', SHORT.P3, 'Parte 3 de 5 · al castellano'],
 writing: [GN.P4, SHORT.P4, s.stage4 === 'rate' ? 'Parte 4 de 5 · te evaluás con la guía' : 'Parte 4 de 5 · Expresión escrita'],
 speaking: ['', LONG.P5, s.stage5 === 'rate' ? 'Parte 5 de 5 · te evaluás con la guía' : inApp ? 'Parte 5 de 5 · en voz alta' : 'Parte 5 de 5 · grabate y escuchate'],
@@ -1673,7 +1701,7 @@ const low = s.t <= 30;
 /* ---------- part 2: listening ---------- */
 const list2 = M.P2;
 const it2 = list2[Math.min(s.li, Math.max(0, list2.length - 1))] || null;
-let lq = { on: false, timed: false, read: false, head: '', pos: '', rubric: '', no: 0, ask: '', askLang: 'es', askFont: 'inherit', script: [], next: () => {}, nextLabel: '' };
+let lq = { on: false, timed: false, read: false, readNote: '', head: '', pos: '', rubric: '', no: 0, ask: '', askLang: 'es', askFont: 'inherit', script: [], next: () => {}, nextLabel: '' };
 let lopts = [];
 let wave = WAVE.map((h) => ({ h: h + 'px', bg: '#C9D0E3' }));
 let phases = [];
@@ -1699,6 +1727,8 @@ lq = {
 on: true,
 timed: !s.read,
 read: !!s.read,
+/* over the transcript: why it is read (not recorded yet, could not be loaded, the voice is off) */
+readNote: C.soundNote(whyP2, 'leé lo que se dice.'),
 head: 'Tarea ' + (it2.task + 1) + (it2.label ? ' · ' + (s.read ? saidLabel(it2.label) : it2.label) : ''),
 pos: 'Pregunta ' + (s.li + 1) + ' de ' + list2.length,
 /* the task's own instruction asks to listen twice: read from the transcript, the screen says what to do instead */
@@ -2023,7 +2053,7 @@ conf = { title: '¿Entregás tu mensaje?', warn: short ? 'Tu mensaje tiene ' + s
 }
 
 /* ---------- the result ---------- */
-let res = { cheer: false, p2Read: false, kicker: '', verdict: '', mode: '', modeInk: '#5A6382', stamp: false, mascot: false, stampBig: '', stampSmall: '', stampAria: '', praiseGn: '', praiseEs: '', line: '', groups: [], hasRecheck: false, recheck: '', hasNote: false, note: '' };
+let res = { cheer: false, p2Read: false, p2Note: '', kicker: '', verdict: '', mode: '', modeInk: '#5A6382', stamp: false, mascot: false, stampBig: '', stampSmall: '', stampAria: '', praiseGn: '', praiseEs: '', line: '', groups: [], hasRecheck: false, recheck: '', hasNote: false, note: '' };
 if (R) {
 const parts = R.parts || {};
 const mode = R.mode === 'teacher' ? 'verificado por docente' : 'autoevaluado';
@@ -2058,6 +2088,7 @@ const modeShort = R.mode === 'teacher' ? 'verificado' : 'autoevaluado';
 res = {
 /* the listening part was read from its transcript (no clips yet): the result says so under the groups */
 p2Read: !!R.p2Read,
+p2Note: 'La escucha fue sin audio: la respondiste leyendo lo que se dice.' + (noRecordings(lv) ? ' Las grabaciones están en preparación.' : ''),
 /* Apto: Kaguare cheers (¡Vy'apavẽ!) beside the stamp, the level's rosette whole on his vest */
 cheer: !!R.apto,
 kicker: 'Examen de nivel ' + lv,
@@ -2212,8 +2243,11 @@ wroteRow,
 };
 
 /* ---------- the next part, at the break and between parts ---------- */
+/* the sound check's test tone: here, or on its way with the listening part's sound file */
+const checkNow = inApp ? C.soundState('c.check') : 'none';
+const checkWaits = !s.checking && (checkNow === 'coming' || comingP2);
 const upKey = v.rest ? 'P2' : s.nextKey;
-const notes = { P2: readP2 ? 'Sin audio por ahora: leés lo que se dice y elegís tu respuesta.' : 'Cada audio suena dos veces. Las opciones se pueden marcar mientras suena.', P3: 'Leés un aviso en guaraní y elegís qué le pasarías a alguien que no lo habla.', P4: 'Escribís un mensaje corto y después lo comparás con tres ejemplos.', P5: inApp ? 'Lo decís en voz alta (tu voz todavía no se graba) y después te evaluás con la misma guía.' : 'Te grabás hablando y después te evaluás con la misma guía.' };
+const notes = { P2: readP2 ? (whyP2 === 'none' ? 'Sin audio por ahora' : C.soundWhy(whyP2)) + ': leés lo que se dice y elegís tu respuesta.' : 'Cada audio suena dos veces. Las opciones se pueden marcar mientras suena.', P3: 'Leés un aviso en guaraní y elegís qué le pasarías a alguien que no lo habla.', P4: 'Escribís un mensaje corto y después lo comparás con tres ejemplos.', P5: inApp ? 'Lo decís en voz alta (tu voz todavía no se graba) y después te evaluás con la misma guía.' : 'Te grabás hablando y después te evaluás con la misma guía.' };
 const up = { n: P(upKey), es: LONG[upKey], how: howOf(upKey), big: bigOf(upKey), small: countOf(upKey), note: notes[upKey] || '' };
 const doneN = s.done.length;
 const betw = {
@@ -2259,7 +2293,17 @@ if (this.props.save && last && last.again && !last.partial) this.props.save({ ex
 nav('ExamTab')(e);
 },
 keeps,
-restNote: keeps ? 'Podés empezar antes si querés. Lo entregado ya quedó guardado.' : 'Podés empezar antes si querés.',
+/* under the pause's clock. While the listening part's sound file is still on its way the line says «Cargando el
+   audio…» and the button below waits (it starts nothing by itself: an exam's part begins at the learner's tap):
+   beside the live region until the button is tapped, inside it from then on, so that a screen reader hears it once,
+   at the tap, and hears the line that follows when the audio is in */
+restNote: comingP2 ? (s.startAsked ? C.SOUND_COMING : '') : keeps ? 'Podés empezar antes si querés. Lo entregado ya quedó guardado.' : 'Podés empezar antes si querés.',
+restWait: comingP2 && !s.startAsked ? C.SOUND_COMING : '',
+startOff: comingP2,
+startBg: comingP2 ? WAIT.bg : '#2F4FD0',
+startEdge: comingP2 ? WAIT.border : '2px solid #1B2440',
+startShadow: comingP2 ? 'none' : '0 4px 0 #1B2440',
+startInk: comingP2 ? WAIT.ink : '#FFFFFF',
 toResult: () => this.setState({ view: 'result', open: null }),
 clock: fmt(s.t),
 clockLabel: 'Tiempo que queda en esta parte: ' + fmt(s.t),
@@ -2344,21 +2388,35 @@ betw,
 /* the sound check, where the listening part has its audio; else a note that it has none yet */
 soundCheck: !readP2,
 noAudio: readP2,
+noAudioHead: whyP2 === 'none' ? 'Sin audio por ahora' : C.soundWhy(whyP2),
+noAudioText: whyP2 === 'none' ? 'Las grabaciones están en preparación: en la parte 2 leés lo que se dice y elegís tu respuesta.' : 'En la parte 2 leés lo que se dice y elegís tu respuesta.' + (whyP2 === 'off' ? ' La activás de nuevo en Progreso.' : ''),
+loadingP2: comingP2,
 /* the listening part's clips are a voice model's: the pause before it says so in the head of «la parte que sigue», and
    the part itself in the audio's card, beside the speaker mark (the tag «voz sintética», gnCourse.synth) */
 synthP2: !readP2 && C.synth(M.P2.map((x) => x.id)),
 playCheck: () => {
 const snd = window.gnSound;
+/* the test sound is in the part's sound file: while that is on its way the check waits, and its note says so */
+if (checkNow === 'coming') { if (!this.state.checkAsked) this.setState({ checkAsked: true }); return; }
 const ok = !!(snd && snd.has('c.check') && snd.unlock());
 if (ok) { snd.ready(M.P2.map((x) => x.id)); snd.play('c.check'); }
 this.setState({ checking: true, checkP: 0, checkMs: ok ? snd.ms('c.check') : 2000, checkSound: ok });
 this.ensureTick();
 },
-checkBg: s.checking ? '#F2B43A' : '#2F4FD0',
-checkInk: s.checking ? '#1B2440' : '#FFFFFF',
+checkBg: s.checking ? '#F2B43A' : checkWaits ? WAIT.bg : '#2F4FD0',
+checkInk: s.checking ? '#1B2440' : checkWaits ? WAIT.ink : '#FFFFFF',
+checkEdge: checkWaits ? WAIT.border : '2px solid #1B2440',
+checkShadow: checkWaits ? 'none' : '0 4px 0 #1B2440',
+checkWait: checkWaits && !s.checkAsked ? C.SOUND_COMING : '',
 checkBars: CHECK.map((h, n) => ({ h: h + 'px', bg: n < Math.round(s.checkP * CHECK.length) ? '#2F4FD0' : '#C9D0E3' })),
-checkNote: s.checking ? 'Suena el sonido de prueba…' : s.checkP < 1 ? 'Ponete los auriculares y ajustá el volumen antes de que empiece el audio.' : s.checkSound ? '¿Se escuchó? Si no, subí el volumen y probá otra vez.' : window.gnSound && window.gnSound.has('c.check') ? 'No se puede reproducir sonido acá: la escucha va a seguir solo con los tiempos.' : 'Las grabaciones están en preparación: la escucha va a seguir solo con los tiempos.',
-startListen: () => { if (!settled()) return; this.hush(); if (M.P2.length) this.startListening(0); },
+checkNote: checkWaits ? (s.checkAsked ? C.SOUND_COMING : '') : s.checking ? 'Suena el sonido de prueba…' : s.checkP < 1 ? 'Ponete los auriculares y ajustá el volumen antes de que empiece el audio.' : s.checkSound ? '¿Se escuchó? Si no, subí el volumen y probá otra vez.' : window.gnSound && window.gnSound.has('c.check') ? 'No se puede reproducir sonido acá: la escucha va a seguir solo con los tiempos.' : 'Las grabaciones están en preparación: la escucha va a seguir solo con los tiempos.',
+startListen: () => {
+if (!settled()) return;
+/* the part's audio is on its way: the button waits (nothing starts later by itself), and the line above it says so */
+if (comingP2) { if (!this.state.startAsked) this.setState({ startAsked: true }); return; }
+this.hush();
+if (M.P2.length) this.startListening(0);
+},
 startUp: () => { if (settled()) this.startPart(s.nextKey); },
 lq,
 lopts,

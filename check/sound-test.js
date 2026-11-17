@@ -9,9 +9,10 @@
 // playing a clip (has() true, its wording in the recorded state, the tag «voz sintética» in the pair's head before the
 // tap and what it means said once in the shell's live region), the player's switch for the synthetic voice (off, its
 // clips count as missing), Hablar's tag, a dialogue put together for Listening, the unit file fetched when its unit is
-// in use and not at install, stored by the offline worker after that first use and served from the store with no
-// connection, the whole level stored once there is a plan (but only the unit that is opened when the browser says the
-// learner saves data), a sound file that could not be fetched asked for again once from the next screen and when the
+// in use and not at install (none before there is a plan), stored by the offline worker after that first use and
+// served from the store with no connection, the few files to have ahead stored once there is a plan and never the
+// whole level (only the unit that is opened when the browser says the learner saves data), the level exam's file
+// stored when its tab opens, a sound file that could not be fetched asked for again once from the next screen and when the
 // connection comes back, the studio page (recording with a fake microphone, the take kept, the zip exported), and the
 // notebook fetching the exam's and the placement's sound for a mistake made there. Screenshots go to check/out/.
 // usage: node check/sound-test.js      (from the repository root; needs ffmpeg, playwright and the fonts in fonts-src/)
@@ -224,6 +225,14 @@ const clipsLoaded = (page, key) => page.waitForFunction((k) => !!(window.__gnCli
   note('2. Words plays a clip');
   {
     const ctx = await phone();
+    /* every change of what the live regions say of the voice is written down (the shell empties its region a few
+       seconds after the note, so «said once» is counted, not read off the page at one moment) */
+    await ctx.addInitScript(() => {
+      window.__voz = [];
+      let last = '';
+      const look = () => { const t = [...document.querySelectorAll('[aria-live]')].map((e) => (e.textContent || '').trim()).filter((x) => /^Voz sintética:/.test(x)).join(' | '); if (t !== last) { last = t; window.__voz.push(t); } };
+      new MutationObserver(look).observe(document, { subtree: true, childList: true, characterData: true });
+    });
     const page = await ctx.newPage();
     const logs = [];
     page.on('pageerror', (e) => logs.push(String(e)));
@@ -240,12 +249,13 @@ const clipsLoaded = (page, key) => page.waitForFunction((k) => !!(window.__gnCli
     ok(/escuchá la diferencia en cada par/.test(t0) && !/todavía no (están grabados|tienen audio)/.test(t0), 'the sound step\'s intro is the recorded one (not «estos pares todavía no tienen audio»)', t0.slice(0, 200));
     /* the tag «voz sintética»: on each pair, before any tap, in no live region; what it means is said once, by the shell */
     const tags = () => page.evaluate(() => [...document.querySelectorAll('#gn-stage span')].filter((el) => !el.children.length && el.textContent.trim() === 'voz sintética' && el.getBoundingClientRect().width > 0).map((el) => ({ live: !!el.closest('[aria-live], [role="status"]'), head: (el.parentElement.textContent || '').trim().slice(0, 14) })));
-    const notes = () => page.evaluate(() => [...document.querySelectorAll('#gn-stage [aria-live]')].map((el) => (el.textContent || '').trim()).filter((t) => /Voz sintética:/.test(t)));
+    const notes = () => page.evaluate(() => window.__voz.filter(Boolean));
     const pairs = await page.evaluate(() => window.gnCourse.day('a1u01d1').words.sound.pairs.length);
     const tg0 = await tags();
     ok(tg0.length === pairs && tg0.every((x) => !x.live && /^PAR \d DE \d/.test(x.head)), `each of the ${pairs} pairs carries the tag «voz sintética» in its head before it is tapped, outside any live region`, tg0);
+    await page.waitForFunction(() => window.__voz.some(Boolean), null, { timeout: 3000 }).catch(() => {});
     const said0 = await notes();
-    ok(said0.length === 1 && /un programa, no una persona/.test(said0[0]) && /Progreso/.test(said0[0]), 'what the tag means is said once, in the shell\'s live region, and names Progreso', said0);
+    ok(said0.length === 1 && /un programa, no una persona/.test(said0[0]) && /Progreso/.test(said0[0]) && !/\|/.test(said0[0]), 'what the tag means is said once, in the shell\'s live region, and names Progreso', said0);
     ok(/Tocá el parlante: suena una de las dos/.test(t0), 'the first pair asks to listen, not to read the word shown', t0.slice(0, 300));
     const played = await page.evaluate(() => { let r = null; const p = window.gnSound.play; window.gnSound.play = function (k, f) { r = p.call(this, k, f); return r; }; return true; });
     await tap(page, { aria: 'Escuchar la palabra del par 1' }, 700);
@@ -258,6 +268,11 @@ const clipsLoaded = (page, key) => page.waitForFunction((k) => !!(window.__gnCli
     const said1 = await notes();
     const pairLines = await page.evaluate(() => [...document.querySelectorAll('#gn-stage [aria-live]')].map((el) => (el.textContent || '').trim()).filter((t) => /Cuál|parlante/.test(t)));
     ok(tg1.length === pairs && said1.length === 1 && said1[0] === said0[0] && pairLines.length >= 2 && !pairLines.some((l) => /sintética|programa/.test(l)), 'three taps later the tags are the same, the note was not said again, and no pair\'s live line speaks of the voice', { tg1: tg1.length, said1, pairLines });
+    /* said, the note does not stay in the page: the region is emptied a few seconds later, and stays empty */
+    await page.waitForFunction(() => window.__voz.length >= 2 && window.__voz[window.__voz.length - 1] === '', null, { timeout: 12000 }).catch(() => {});
+    await tap(page, { aria: 'Escuchar la palabra del par 2' }, 400);
+    const log = await page.evaluate(() => window.__voz.slice());
+    ok(log.filter(Boolean).length === 1 && log[log.length - 1] === '', 'a few seconds after it was said the live region is empty again, and another tap does not bring the note back', log.map((x) => x.slice(0, 24)));
     const state = await page.evaluate(() => ({ at: window.gnSound.at(), over: window.gnSound.over(), ctx: !!(window.AudioContext || window.webkitAudioContext) }));
     ok(played && state.ctx, 'play() went through the player (an AudioContext exists in this browser)', state);
     /* the player's switch (the learner's, in Progreso): off, a synthetic clip counts as missing; on again, it is back */
@@ -297,8 +312,9 @@ const clipsLoaded = (page, key) => page.waitForFunction((k) => !!(window.__gnCli
     await ctx.close();
   }
 
-  /* ---------- 4. lazy and offline: the worker stores a unit file after first use, the level once there is a plan ---------- */
-  note('4. stored after first use, served offline');
+  /* ---------- 4. lazy and offline: nothing before there is a plan; then the unit in use, the files to have ahead, and
+     what a screen asks for when it opens: never the whole level ---------- */
+  note('4. stored after first use and ahead of time, served offline');
   {
     const ctx = await phone();
     const page = await ctx.newPage();
@@ -307,34 +323,52 @@ const clipsLoaded = (page, key) => page.waitForFunction((k) => !!(window.__gnCli
     await ready(page);
     await page.evaluate(() => navigator.serviceWorker.ready);
     await page.waitForFunction(() => !!navigator.serviceWorker.controller, null, { timeout: 15000 });
+    const soundHits = () => hits.filter((u) => /gn-sound-(?!index)/.test(u));
+    const names = (list) => list.map((u) => u.split('/').pop().replace(/\?.*$/, '')).sort();
     ok(!hits.some((u) => /gn-sound-a1-u01\.js\?v=/.test(u)), 'the install does not ask for the unit file', hits.filter((u) => /gn-sound/.test(u)));
-    ok(await clipsLoaded(page, 'a1u01d1.s0b'), 'on the goal screen the engine fetches the first unit\'s file (the lesson will need it)');
     const stored = async () => page.evaluate(async () => { const keys = await caches.keys(); const c = await caches.open(keys[0]); return (await c.keys()).map((r) => r.url).filter((u) => /h=/.test(u)); });
-    /* the very first page is not under the worker's control yet (its own fetch went straight to the network); from the
-       next opening on, a file the engine fetches goes through the worker and is stored */
-    ok((await stored()).length === 0, 'the first opening, not yet controlled by the worker, stored no sound file');
+    /* a first visit stands on the goal screen: there is no plan, so no megabyte of sound is fetched yet (this check
+       asked for the opposite, «on the goal screen the engine fetches the first unit's file», until the review of the
+       voice counted what a first session downloads) */
+    await page.waitForTimeout(1500);
+    ok(soundHits().length === 0 && (await stored()).length === 0 && !(await page.evaluate(() => window.gnSound.any())), 'on the goal screen, before there is a plan, no sound file is asked for and none is stored', soundHits());
     await page.reload();
     await ready(page);
-    ok(await clipsLoaded(page, 'a1u01d1.s0b'), 'opened again, the engine fetches the unit file through the worker');
-    let lazy = await stored();
-    for (let i = 0; i < 20 && !lazy.some((u) => /gn-sound-a1-u01\.js\?h=/.test(u)); i++) { await page.waitForTimeout(250); lazy = await stored(); }
-    ok(lazy.length === 1 && /gn-sound-a1-u01\.js\?h=/.test(lazy[0]), 'the worker stored the unit file under its hash after that first use, and nothing else yet', lazy);
-    /* a plan: the app then asks the worker for the rest of the level's sound */
+    await page.waitForTimeout(800);
+    ok(soundHits().length === 0, 'opened again, still without a plan: still none', soundHits());
+    /* a plan: the unit in use is fetched (through the worker, which stores it), and the app names to the worker what
+       to have ahead of time: that unit, the one after it where it exists, and the speaking game. Nothing else */
     await tap(page, 'hablar con mi familia');
     await tap(page, 'casa');
     await tap(page, 'Siguiente');
     await tap(page, 'Empezar en A1');
     await tap(page, 'Tejé el primer hilo', 900);
     await tap(page, 'Empezar', 700);
-    for (let i = 0; i < 40 && lazy.length < Object.keys(LAZY).length; i++) { await page.waitForTimeout(250); lazy = await stored(); }
-    ok(lazy.length === Object.keys(LAZY).length, `with a plan, every sound file of the level is stored (${Object.keys(LAZY).length})`, lazy);
+    ok(await clipsLoaded(page, 'a1u01d1.s0b'), 'with a plan, the engine fetches the file of the unit in use');
+    const ahead = (await page.evaluate(() => { const st = JSON.parse(localStorage.getItem(Object.keys(localStorage).find((k) => /^epua\.v1:/.test(k) && !/\./.test(k.slice(8)))) || '{}'); return window.gnCourse.soundAhead(st); })).sort();
+    const all = names(Object.keys(LAZY));
+    ok(ahead.includes('gn-sound-a1-u01.js') && ahead.includes('gn-sound-sp.js') && ahead.length < all.length && !ahead.some((f) => /-(x|pl)\.js$/.test(f)), 'the sound to have ahead is the unit in use, the unit after it where there is one, and the speaking game: not the level exam\'s nor the placement check\'s', { ahead, all });
+    let lazy = await stored();
+    for (let i = 0; i < 40 && lazy.length < ahead.length; i++) { await page.waitForTimeout(250); lazy = await stored(); }
+    /* long enough for the worker to have fetched the rest of the level, had it been asked to */
+    await page.waitForTimeout(3000);
+    lazy = await stored();
+    ok(JSON.stringify(names(lazy)) === JSON.stringify(ahead), `with a plan, the worker stores those ${ahead.length} files, each under its hash, and no other of the level's ${all.length}`, names(lazy));
+    const count = {};
+    names(soundHits()).forEach((f) => { count[f] = (count[f] || 0) + 1; });
+    ok(JSON.stringify(Object.keys(count).sort()) === JSON.stringify(ahead) && ahead.every((f) => count[f] === 1), 'each of them went over the line once, and no other sound file was asked of the server', count);
+    /* the level exam's file comes when its tab opens, and the worker stores it then */
+    await tap(page, 'Examen', 700);
+    for (let i = 0; i < 40 && !lazy.some((u) => /gn-sound-a1-x\.js\?h=/.test(u)); i++) { await page.waitForTimeout(250); lazy = await stored(); }
+    ok(lazy.some((u) => /gn-sound-a1-x\.js\?h=/.test(u)) && lazy.length === ahead.length + 1, 'opening the Examen tab fetches the level exam\'s sound file, and the worker stores it then (and only it)', names(lazy));
+    await tap(page, 'Camino', 600);
     await ctx.setOffline(true);
     hits.length = 0;
     await page.reload();
     await ready(page);
     ok(await clipsLoaded(page, 'a1u01d1.s0b'), 'offline, the unit file is served from the store and the clips register again');
     const spOffline = await page.evaluate(() => fetch('./assets/gn-sound-sp.js').then((r) => r.ok, () => false));
-    ok(spOffline, 'offline, a sound file stored in the background is served too');
+    ok(spOffline, 'offline, a sound file stored ahead of time is served too');
     ok(hits.length === 0, 'offline, nothing reached the server', hits);
     await shot(page, 'sound-offline');
     await ctx.setOffline(false);
@@ -353,8 +387,8 @@ const clipsLoaded = (page, key) => page.waitForFunction((k) => !!(window.__gnCli
     await ready(page);
     await page.evaluate(() => navigator.serviceWorker.ready);
     await page.waitForFunction(() => !!navigator.serviceWorker.controller, null, { timeout: 15000 });
-    /* no reload: a first visit, where the page fetched the unit's file before the worker was in charge of it. The app
-       then names that file to the worker (keepFiles), which stores it; it names no level */
+    /* a first visit: the unit's file is fetched once there is a plan. The app names that file to the worker
+       (keepFiles), which stores it; with data saving it names nothing to have ahead */
     ok(await page.evaluate(() => navigator.connection && navigator.connection.saveData === true), 'this phone\'s browser says the learner saves data');
     await tap(page, 'hablar con mi familia');
     await tap(page, 'casa');
@@ -366,7 +400,7 @@ const clipsLoaded = (page, key) => page.waitForFunction((k) => !!(window.__gnCli
     /* long enough for the worker to have fetched the rest of the level, had it been asked to (it takes under 2 s here) */
     await page.waitForTimeout(5000);
     const kept = await page.evaluate(async () => { const keys = await caches.keys(); const c = await caches.open(keys[0]); return (await c.keys()).map((r) => r.url).filter((u) => /h=/.test(u)); });
-    ok(kept.length === 1 && /gn-sound-a1-u01\.js\?h=/.test(kept[0]), 'with a plan, on a first visit, only the file of the unit that is opened is stored (the page fetched it before the worker was in charge): the rest of the level is not fetched behind the learner\'s back', kept);
+    ok(kept.length === 1 && /gn-sound-a1-u01\.js\?h=/.test(kept[0]), 'with a plan, on a first visit, only the file of the unit that is opened is stored: nothing is fetched ahead behind the back of a learner who saves data, not the next unit, not the speaking game', kept);
     const asked = hits.filter((u) => /gn-sound-(?!index)/.test(u));
     ok(asked.length > 0 && asked.every((u) => /gn-sound-a1-u01\.js/.test(u)), 'no other sound file was asked of the server', asked);
     await tap(page, 'Progreso', 600);
