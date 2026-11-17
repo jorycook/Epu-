@@ -338,10 +338,15 @@
   };
 
   /* ---------- the plan ----------
-     settings: { start: 'YYYY-MM-DD', target: 'YYYY-MM-DD' | null, pace: 'fit' | 'steady', minutes: 15 | 30 | 45 }
+     settings: { start: 'YYYY-MM-DD', target: 'YYYY-MM-DD' | null, pace: 'fit' | 'steady', minutes: 15 | 30 | 45, from? }
      no target:  one session a day, at the learner's own pace
      fit:        every session fits before the target, with the last week kept for review and the level exam; days double up when time is short
-     steady:     one session a day, whatever the target */
+     steady:     one session a day, whatever the target
+     from:       a plan made again part way through the level (the goal screen, reached from the week path's date chip
+                 or from Progreso) starts today at the session the learner had reached: from is how many sessions were
+                 already behind them. Those keep the days just before start, one a day, and only the rest is laid out
+                 from start. A first plan has none (0): every session from start, as before.
+     minutes:    the size of a day; a review sitting is a third of it (C.sitting) */
   function dayNo(iso) {
     var m = /^(\d{4})-(\d\d)-(\d\d)$/.exec(iso || '');
     if (!m) return null;
@@ -358,16 +363,24 @@
   C.daysBetween = function (a, b) { var x = dayNo(a), y = dayNo(b); return x == null || y == null ? 0 : y - x; };
   C.addDays = function (a, n) { var x = dayNo(a); return x == null ? a : iso(x + n); };
   function targetOf(settings) { return settings ? settings.target || settings.exam || null : null; }
+  /* how many sessions a plan made again leaves behind its start (0 for a first plan), never more than there are */
+  function fromOf(settings, n) {
+    var f = settings ? Math.floor(+settings.from || 0) : 0;
+    return f > 0 ? Math.min(n, f) : 0;
+  }
   C.plan = function (settings) {
     var list = C.sessions();
     var n = list.length;
     var start = dayNo(settings && settings.start) || dayNo(C.today(C.now()));
     var target = dayNo(targetOf(settings));
-    var room = target != null ? target - start - EXAM_WEEK : n;
+    var from = fromOf(settings, n);
+    var rest = n - from;
+    var room = target != null ? target - start - EXAM_WEEK : rest;
     if (target != null && room < 1) room = Math.max(1, target - start);
-    var squeeze = target != null && settings && settings.pace !== 'steady' && room < n;
+    var squeeze = target != null && settings && settings.pace !== 'steady' && room < rest;
     return list.map(function (s, k) {
-      var at = squeeze ? start + Math.floor((k * room) / n) : start + k;
+      var j = k - from;
+      var at = j < 0 ? start + j : squeeze ? start + Math.floor((j * room) / rest) : start + j;
       return Object.assign({}, s, { date: iso(at) });
     });
   };
@@ -381,9 +394,11 @@
     }
     var dueToday = plan.filter(function (s) { return s.date <= today && s.ready && !C.complete(state, s); }).length;
     var perDay = 1;
-    if (plan.length > 1) {
-      var span = C.daysBetween(plan[0].date, plan[plan.length - 1].date) + 1;
-      perDay = Math.max(1, Math.round(plan.length / Math.max(1, span)));
+    /* sessions a day, over the part of the plan that is laid out from its start (all of it, for a first plan) */
+    var k0 = Math.min(fromOf(state.plan, plan.length), Math.max(0, plan.length - 1));
+    if (plan.length - k0 > 1) {
+      var span = C.daysBetween(plan[k0].date, plan[plan.length - 1].date) + 1;
+      perDay = Math.max(1, Math.round((plan.length - k0) / Math.max(1, span)));
     }
     var target = targetOf(state.plan);
     var left = target ? C.daysBetween(today, target) : null;
@@ -391,12 +406,23 @@
     var behind = next && next.date < today ? C.daysBetween(next.date, today) : 0;
     return { plan: plan, next: next, dueToday: dueToday, perDay: perDay, daysLeft: left, stamps: stamps, today: today, behind: behind, target: target };
   };
-  /* can the whole level be done one session a day before the target? */
+  /* can the whole level (what is left of it, for a plan made again) be done one session a day before the target? */
   C.fits = function (settings) {
     var target = targetOf(settings);
     if (!target) return true;
     var room = C.daysBetween((settings && settings.start) || C.today(C.now()), target) - EXAM_WEEK;
-    return room >= C.sessions().length;
+    var n = C.sessions().length;
+    return room >= n - fromOf(settings, n);
+  };
+  /* the sessions a learner has behind them at a level: those complete in a row from the first (what a plan made again
+     starts after) */
+  C.reached = function (state, lv) {
+    return C.withLevel(lv || LEVEL, function () {
+      var list = C.sessions();
+      var k = 0;
+      while (k < list.length && C.complete(state || {}, list[k])) k++;
+      return k;
+    });
   };
 
   /* ---------- the mistake notebook ----------
@@ -420,6 +446,33 @@
       if (step >= 3) return Object.assign({}, x, { step: 3, cleared: true, at: now || Date.now(), last: 'right' });
       return Object.assign({}, x, { step: step, due: C.addDays(today, STEPS[step]), at: now || Date.now(), last: 'right' });
     });
+  };
+  /* ---------- a review sitting ----------
+     A day's review has a size: a third of the plan's minutes a day, at the notebook's own rate of 0.6 minutes a question
+     (8, 16 or 25 questions for 15, 30 or 45 minutes; 16 with no plan). A learner back after two weeks is not met by every
+     mistake at once: the oldest due go first and the rest stay due for the next days. What was answered in a review
+     today counts against the day's size (an entry answered in a review carries `last`, and `at` says when).
+     → { due: all that are due, size: the day's size, done: reviewed today, n: how many today's sitting still asks,
+         items: those entries (in the notebook's order), more: one more sitting's entries once the day's is done (for a
+         learner who asks for more), minutes: what the n take } */
+  var REVIEW_RATE = 0.6;
+  C.reviewMinutes = function (n) { return Math.max(1, Math.round((n || 0) * REVIEW_RATE)); };
+  C.sittingSize = function (plan) {
+    var m = plan && +plan.minutes > 0 ? +plan.minutes : 30;
+    return Math.max(1, Math.floor(m / 3 / REVIEW_RATE));
+  };
+  C.sitting = function (list, plan, now) {
+    var today = C.today(now);
+    var due = C.due(list, now);
+    var size = C.sittingSize(plan);
+    var done = (list || []).filter(function (x) { return x && x.last && x.at && C.today(x.at) === today; }).length;
+    var oldest = due.slice().sort(function (a, b) {
+      return (a.due || '') < (b.due || '') ? -1 : (a.due || '') > (b.due || '') ? 1 : (a.at || 0) - (b.at || 0);
+    });
+    /* the oldest n of what is due, asked in the notebook's own order */
+    function take(n) { var pick = oldest.slice(0, Math.max(0, n)); return due.filter(function (x) { return pick.indexOf(x) >= 0; }); }
+    var items = take(size - done);
+    return { due: due.length, size: size, done: done, n: items.length, items: items, more: items.length ? [] : take(size), minutes: C.reviewMinutes(items.length) };
   };
 
   /* ---------- the end-of-level exam ----------
@@ -483,7 +536,62 @@
      the screens: app (what to show), go (change screen), save (record progress), miss (a wrong answer). */
   C.now = function () { return window.__gnNow || Date.now(); };
   C.fresh = function () {
-    return { screen: 'Goal', started: false, level: null, plans: {}, plan: null, cur: null, done: {}, tests: {}, exams: {}, mistakes: [], tp: 0, set: 'day', placement: null, typed: [] };
+    return { screen: 'Goal', started: false, level: null, plans: {}, plan: null, cur: null, done: {}, tests: {}, exams: {}, mistakes: [], tp: 0, set: 'day', placement: null, typed: [], seen: [], seenLate: false, voice: true };
+  };
+  /* ---------- the days with study ----------
+     seen: the days ('YYYY-MM-DD', oldest first) on which the learner did something the app records (a lesson step, a
+     test, a part of the level exam, a review answer, a mistake, a word typed) or opened one of the practice sections
+     (Leer, Escribir, Hablar). Opening the app is not study: nothing is written for it. One list for all levels, the
+     last SEEN_KEEP days at most. sawDay gives the list with today in it (the same list when it already is). */
+  var SEEN_KEEP = 800;
+  function seenList(seen) {
+    var out = [];
+    (Array.isArray(seen) ? seen : []).forEach(function (d) { if (typeof d === 'string' && dayNo(d) != null && out.indexOf(d) < 0) out.push(d); });
+    return out.sort();
+  }
+  C.sawDay = function (seen, now) {
+    var today = C.today(now);
+    if (Array.isArray(seen) && seen.indexOf(today) >= 0) return seen;
+    return seenList(seen).concat([today]).sort().slice(-SEEN_KEEP);
+  };
+  /* What the days say, for the week path and Progreso. A day of return is a day with study after one or more days
+     without (Opu'ã, se levantó). week: the last seven days, today last, each { date, kind }: 'study', 'back' (a day of
+     return), 'missed', 'today' (today, nothing done yet) or 'none' (before the record began: the app does not know).
+     count: days with study; returns: days of return; gap: days since the last day with study (0 when that is today, or
+     when there is no record yet); away: that gap when it is two days or more, the moment the week path greets the
+     learner back; back: today is a day of return. A day later than today (a clock set back) is left out. */
+  C.days = function (seen, now) {
+    var today = C.today(now);
+    var list = seenList(seen).filter(function (d) { return d <= today; });
+    var has = {};
+    var back = {};
+    var returns = 0;
+    list.forEach(function (d, i) {
+      has[d] = true;
+      if (i > 0 && C.daysBetween(list[i - 1], d) >= 2) { back[d] = true; returns++; }
+    });
+    var first = list[0] || null;
+    var last = list[list.length - 1] || null;
+    var week = [];
+    for (var n = 6; n >= 0; n--) {
+      var d = C.addDays(today, -n);
+      week.push({ date: d, kind: has[d] ? (back[d] ? 'back' : 'study') : n === 0 ? 'today' : !first || d < first ? 'none' : 'missed' });
+    }
+    var gap = last && !has[today] ? C.daysBetween(last, today) : 0;
+    return { week: week, count: list.length, returns: returns, first: first, last: last, gap: gap, away: gap >= 2 ? gap : 0, back: !!back[today], today: !!has[today] };
+  };
+  /* Has the learner studied anything the state keeps (a lesson step, a test, a part of the level exam, a notebook
+     entry, a word typed)? A state that has, and yet holds no day in `seen`, was saved before the app kept the days (or
+     lost them): the host that reads it marks it `seenLate` (the installed app, where it checks a save: gn-app.js), and
+     the count of days of such a learner begins later than the learner did. C.view then gives `days.since`, the first
+     day on record, and the screen that shows the count says since when it runs (Progreso: «3 días con estudio desde
+     el 16/11»). No earlier day is made up from the moments the state does carry (a notebook entry's `at`, a test's):
+     each proves one day and not the days around it, and days put in from them would make the last seven days and the
+     returns claim gaps nobody saw. */
+  C.studied = function (state) {
+    var s = state || {};
+    function some(bag) { return !!bag && typeof bag === 'object' && Object.keys(bag).length > 0; }
+    return some(s.done) || some(s.tests) || some(s.exams) || (Array.isArray(s.mistakes) && s.mistakes.length > 0) || (Array.isArray(s.typed) && s.typed.length > 0);
   };
   /* words the learner has spelled right with the Guarani keyboard: kept for all levels at once, only ever growing */
   C.addTyped = function (had, add) {
@@ -508,15 +616,38 @@
      the level exam (gn-sound-a1-x.js) and the speaking game (gn-sound-sp.js) have files of their own, fetched when their
      screen opens. A file registers its clips in window.__gnClips, which gn-sound.js plays. Only files the index lists in
      window.__gnSoundFiles (gn-sound-index.js) are asked for: until the recordings exist there are none, and every sound
-     control falls back to its silent stand-in. In the app the offline worker stores a file the first time it is fetched. */
-  var soundAsked = {};
+     control falls back to its silent stand-in. In the app the offline worker stores a file the first time it is fetched.
+     A file that could not be fetched (no connection, and the phone does not hold it yet) is asked for again, once, the
+     next time it is wanted from another screen (C.view counts the screens), and at once when the browser says the
+     connection is back: never again and again from the screen it failed on. A unit's file is megabytes of a learner's
+     data, so nothing is fetched before there is a plan (the goal screen of a first visit asks for none), and nothing
+     ahead of its screen but what C.soundAhead names. While a file is on its way a control must not pass its clip off
+     as one that does not exist: C.soundState tells the two apart. */
+  var soundAsked = {};    /* file → 'coming', 'in', or the number of the screen it failed on */
+  var soundSince = {};    /* file → when a control first waited for it, in ms (C.soundState) */
+  var SOUND_LATE = 20000; /* ms a control waits for a file that is on its way before it falls back to its stand-in */
+  var soundTurn = 0;      /* the screens the learner has moved through so far */
+  var soundScreen;        /* the screen C.view was last asked for */
   C.soundFile = function (lv, unit) { return 'gn-sound-' + prefix(lv) + '-u' + pad(unit) + '.js'; };
   /* the files of the screens outside the units: 'pl' the placement check, 'x' the level's exam, 'sp' the speaking game */
   C.soundExtra = function (what, lv) { return what === 'x' ? 'gn-sound-' + prefix(lv || LEVEL) + '-x.js' : 'gn-sound-' + what + '.js'; };
+  /* is there anything to fetch a sound file for? Not while the learner has turned the synthetic voice off and every
+     voice of the course is one (the sound index says what made each): no clip of the file would play, and megabytes
+     would be downloaded for nothing. Turned on again, the files are asked for as their screens come up */
+  C.soundWanted = function () {
+    var snd = window.gnSound;
+    if (!snd || typeof snd.synthetic !== 'function' || snd.synthetic()) return true;
+    var v = window.__gnSoundVoices || {};
+    var names = Object.keys(v);
+    return !names.length || names.some(function (k) { return !v[k] || v[k].kind !== 'synthetic'; });
+  };
   C.needSoundFile = function (f) {
     var listed = window.__gnSoundFiles || [];
-    if (!f || soundAsked[f] || listed.indexOf(f) < 0 || typeof document === 'undefined') return;
-    soundAsked[f] = true;
+    if (!f || listed.indexOf(f) < 0 || typeof document === 'undefined' || !C.soundWanted()) return;
+    var was = soundAsked[f];
+    if (was === 'coming' || was === 'in' || was === soundTurn) return;
+    soundAsked[f] = 'coming';
+    delete soundSince[f];   /* a new request: a control that waits for it waits from now */
     var base = '';
     var tags = document.getElementsByTagName('script');
     for (var i = 0; i < tags.length; i++) { var src = tags[i].getAttribute('src') || ''; if (/(^|\/)gn-course\.js$/.test(src)) base = src.replace(/gn-course\.js$/, ''); }
@@ -524,10 +655,171 @@
     el.async = true;
     el.src = base + f;
     /* the clips arrived: a screen that is open may want to draw its controls again */
-    el.onload = function () { try { document.dispatchEvent(new CustomEvent('gnsound', { detail: { file: f } })); } catch (e) {} };
+    el.onload = function () { soundAsked[f] = 'in'; try { document.dispatchEvent(new CustomEvent('gnsound', { detail: { file: f } })); } catch (e) {} };
+    /* it did not arrive: its controls fall back to their stand-ins and say that the audio could not be loaded (a
+       screen that waited for it draws again), and the next screen that wants it asks once more */
+    el.onerror = function () {
+      soundAsked[f] = soundTurn;
+      try { if (el.parentNode) el.parentNode.removeChild(el); } catch (e) {}
+      try { document.dispatchEvent(new CustomEvent('gnsound', { detail: { file: f, failed: true } })); } catch (e) {}
+    };
     (document.head || document.body || document.documentElement).appendChild(el);
   };
   C.needSound = function (lv, unit) { C.needSoundFile(C.soundFile(lv, unit)); };
+  /* the connection is back: what could not be fetched is asked for again now, through C.needSoundFile as it then is
+     (the app wraps it), so a screen that is open gets its clips without being left first */
+  if (typeof window.addEventListener === 'function') {
+    window.addEventListener('online', function () {
+      Object.keys(soundAsked).forEach(function (f) { if (typeof soundAsked[f] === 'number') { delete soundAsked[f]; delete soundSince[f]; C.needSoundFile(f); } });
+    });
+  }
+  /* the sound file a clip's key is in, as tools/sound-list.mjs files the keys: a unit's (a1u03d4.p1.x0), a level's exam
+     (a1x.4, and its test tone, c.check), the placement check's (pl.3), the speaking game's (p2.1, s0); '' for no key */
+  C.soundFileOf = function (key) {
+    var k = String(key || '');
+    var m = /^([abc][12])u(\d\d)/i.exec(k);
+    if (m) return 'gn-sound-' + m[1].toLowerCase() + '-u' + m[2] + '.js';
+    m = /^([abc][12])x\./i.exec(k);
+    if (m) return C.soundExtra('x', m[1]);
+    if (k === 'c.check') return C.soundExtra('x', LEVEL);
+    if (/^pl\./.test(k)) return C.soundExtra('pl');
+    if (/^(?:p\d+\.\d+|s\d+)$/.test(k)) return C.soundExtra('sp');
+    return '';
+  };
+  /* What a sound control can count on for the clip under a key, in one word. A control asks this, not gnSound.has()
+     alone, because «not here» has four meanings and each wants other words on the screen:
+       'in'      the clip is here and can be played;
+       'coming'  its sound file is on its way (a slow line, the first use of a unit, or, in the app, a file that waits
+                 for the later screens): the control waits, shows «cargando el audio…» where the tag «voz sintética»
+                 goes and says «Cargando el audio…» when it is tapped. It runs no stand-in, opens no transcript and no
+                 answers, and shows nothing the clip was to say. The screen is drawn again when the file is in
+                 (`gnsound`), and also when it has failed or is late;
+       'failed'  the file could not be fetched, or is not in SOUND_LATE ms after a control began to wait for it (it
+                 may still arrive), or the browser cannot play the clip: the written stand-in, with words that say
+                 the audio could not be loaded. A control that has fallen back keeps its stand-in for that item even
+                 if the clip arrives meanwhile (the board keeps that; nothing flips under the learner);
+       'off'     the learner has turned the synthetic voice off (Progreso): the stand-in, and words that say so;
+       'none'    there is no clip under this key: nothing is recorded (the canvas alone, a level without sound, a
+                 key without a recording), or the voice must not say it (sound/silent.json): the stand-in, and
+                 «todavía no está grabado», which is true of a person's recording.
+     A file nobody has asked for yet (a lesson of another unit, opened from Progreso) is asked for here. */
+  C.soundState = function (key) {
+    var snd = window.gnSound;
+    if (!key || !snd || typeof snd.has !== 'function' || typeof document === 'undefined') return 'none';
+    if (snd.has(key)) return 'in';
+    var f = C.soundFileOf(key);
+    if (!f || (window.__gnSoundFiles || []).indexOf(f) < 0) return 'none';
+    var clip = (window.__gnClips || {})[key];
+    var voiceOff = typeof snd.synthetic === 'function' && !snd.synthetic();
+    /* loaded, and not offered: the voice is off, or the browser cannot play it */
+    if (clip) return voiceOff && (clip.kind || 'human') === 'synthetic' ? 'off' : 'failed';
+    var was = soundAsked[f];
+    if (was === 'in') return 'none';
+    /* nothing is fetched while the voice is off and no other voice exists: every clip of the file is that voice's */
+    if (!C.soundWanted()) return 'off';
+    if (typeof was === 'number') return 'failed';
+    if (was !== 'coming') C.needSoundFile(f);
+    if (typeof soundAsked[f] === 'number') return 'failed';
+    var now = Date.now();
+    if (!soundSince[f]) {
+      soundSince[f] = now;
+      /* when the wait has been too long, the screen is told once, so that it draws its stand-in */
+      try { setTimeout(function () { if (soundAsked[f] !== 'in') { try { document.dispatchEvent(new CustomEvent('gnsound', { detail: { file: f, late: true } })); } catch (e) {} } }, SOUND_LATE + 40); } catch (e) {}
+    }
+    return now - soundSince[f] >= SOUND_LATE ? 'failed' : 'coming';
+  };
+  /* What a control says while it has no clip to play, by the clip's state: the same words on every screen. `then`
+     is what the screen adds after a colon («leé lo que se dice.»); without it the sentence ends there. */
+  var SOUND_WORDS = { none: 'Este audio todavía no está grabado', failed: 'No se pudo cargar el audio', off: 'La voz sintética está apagada' };
+  C.SOUND_COMING = 'Cargando el audio…';
+  C.soundNote = function (state, then) {
+    if (state === 'in') return '';
+    if (state === 'coming') return C.SOUND_COMING;
+    var words = SOUND_WORDS[state] || SOUND_WORDS.none;
+    return words + (then ? ': ' + then : state === 'off' ? ': la activás en Progreso.' : '.');
+  };
+  /* The sound a learner with a plan should have on the phone ahead of time, for use without a connection: the file of
+     the unit in use and of the unit after it, where they exist (the app's offline worker stores them: gn-app.js).
+     Nothing else is fetched before a screen asks for it: the placement check's, the level exam's and the speaking
+     game's files come the first time their screen opens, a later unit's when the learner gets near it. */
+  C.soundAhead = function (state) {
+    if (!state || !state.plan || !C.soundWanted()) return [];
+    var listed = window.__gnSoundFiles || [];
+    if (!listed.length) return [];
+    return C.withLevel(state.level || 'A1', function () {
+      var sid = C.current(state, C.status(state, C.now()));
+      var at = sid ? C.parse(sid) : null;
+      if (!at) return [];
+      return [at.unit, at.unit + 1].map(function (n) { return C.soundFile(LEVEL, n); }).filter(function (f) { return listed.indexOf(f) >= 0; });
+    });
+  };
+  /* ---------- the synthetic voice, said so ----------
+     Until a person records the course its clips are made by a voice model (sound/VOICE.md), and every screen that
+     offers such a clip says so next to the control, with the same small tag: «voz sintética». C.synth(key) is the one
+     question a screen asks for it: true when the clip under that key is a voice model's; a list of keys asks for a
+     card of several controls, which carries one tag (true when any of them is). It is false for a person's recording,
+     for a key that has no clip, on the canvas alone (no sound file is loaded there) and once the learner has turned
+     that voice off (Progreso: gnSound then has no such clip), so the tag never stands beside a control that will stay
+     silent. The pattern, two lines (brief/BRIEF-core.md §6 has the tag's markup):
+       in renderVals      synth: C.synth(key),
+       beside the control <sc-if value="{{ x.synth }}" hint-placeholder-val="{{ false }}"><span style="…">voz sintética</span></sc-if>
+     A screen reader hears what the tag means once a visit, not at every tap: the first time a tag is on a screen, the
+     document hears `gnvoice`, and the board that holds the screens (the prototype board, the app's shell) puts
+     C.voiceNote() in a live region of its own. «On a screen» is taken from the page, not from the question: a board
+     asks C.synth for controls it is not showing (the level exam's briefing asks for its listening part, the words
+     lesson for the scene behind its sound step), so the tag carries the mark data-gn-voice and the note is said when
+     such a mark is drawn. After VOICE_HOLD ms the region is emptied again (`gnvoice` once more): said once, the
+     sentence does not stay in the page for a screen reader to come upon at the end of every later screen. */
+  var voiceSaid = false;
+  var voiceUntil = 0;     /* the note is in the live region until this moment */
+  var voiceLook = 0;      /* a look at the page is due (a timer) */
+  var VOICE_HOLD = 8000;
+  C.VOICE_NOTE = 'Voz sintética: estos audios los hizo un programa, no una persona. Lo explicamos en Progreso.';
+  function voiceTold() { try { document.dispatchEvent(new Event('gnvoice')); } catch (e) {} }
+  function voiceSeen() {
+    voiceLook = 0;
+    if (voiceSaid) return;
+    var drawn = false;
+    try {
+      var tags = document.querySelectorAll('[data-gn-voice]');
+      for (var i = 0; i < tags.length && !drawn; i++) drawn = !tags[i].getClientRects || tags[i].getClientRects().length > 0;
+    } catch (e) { drawn = false; }
+    if (!drawn) return;
+    voiceSaid = true;
+    voiceUntil = Date.now() + VOICE_HOLD;
+    voiceTold();
+    try { setTimeout(function () { voiceUntil = 0; voiceTold(); }, VOICE_HOLD + 20); } catch (e) {}
+  }
+  C.synth = function (key) {
+    var snd = window.gnSound;
+    if (!snd || typeof snd.kind !== 'function') return false;
+    var keys = Array.isArray(key) ? key : [key];
+    for (var i = 0; i < keys.length; i++) {
+      if (!keys[i] || snd.kind(keys[i]) !== 'synthetic') continue;
+      /* a tag may be about to be drawn: look at the page once this drawing is done */
+      if (!voiceSaid && !voiceLook) { try { voiceLook = setTimeout(voiceSeen, 60) || 1; } catch (e) { voiceLook = 0; } }
+      return true;
+    }
+    return false;
+  };
+  /* has a tag been on a screen in this visit? (then the note has been said) */
+  C.voiceSaid = function () { return voiceSaid; };
+  /* what the live region of the board that holds the screens says now: the note for a moment after the first tag, else nothing */
+  C.voiceNote = function () { return voiceSaid && Date.now() < voiceUntil ? C.VOICE_NOTE : ''; };
+  /* is any voice of the course's sound a voice model's? The sound index says what made each (gn-sound-index.js): then
+     Progreso offers the page that explains it, with the learner's switch */
+  C.synthVoice = function () {
+    var v = window.__gnSoundVoices || {};
+    return Object.keys(v).some(function (k) { return !!v[k] && v[k].kind === 'synthetic'; });
+  };
+  /* Which line of a clip put together from lines is being said, `ms` into it. The clip's cues (gnSound.cues) are where
+     each line ends, and the next one starts a quarter of a second later: the turn passes to it half-way through that
+     silence. A screen that names the speaker keeps time by this, not by the lines' lengths in letters. */
+  C.cueLine = function (cues, ms) {
+    if (!Array.isArray(cues) || !cues.length) return -1;
+    for (var k = 0; k < cues.length; k++) if (ms < cues[k] + 125) return k;
+    return cues.length - 1;
+  };
   var EXTRA_SOUND = { Placement: 'pl', PlacementResult: 'pl', LevelExam: 'x', ExamTab: 'x', Hablar: 'sp', HablarCompare: 'sp' };
   C.view = function (state) {
     C.setLevel(state.level || 'A1');
@@ -536,7 +828,15 @@
     var session = null;
     status.plan.forEach(function (p) { if (p.id === sid) session = p; });
     var unitN = session ? session.unit : C.units().length ? C.units()[0].n : 1;
-    C.needSound(LEVEL, unitN);
+    /* another screen than last time: a sound file that could not be fetched may be asked for once more (needSoundFile) */
+    if (state.screen !== soundScreen) { soundScreen = state.screen; soundTurn += 1; }
+    /* the learner's switch for the synthetic voice (Progreso; `voice`, saved with the progress, on unless it says false):
+       off, the player has no clip of that voice, so every screen shows its written stand-in and no tag */
+    var voice = state.voice !== false;
+    if (window.gnSound && typeof window.gnSound.synthetic === 'function') window.gnSound.synthetic(voice);
+    /* the unit's sound, once there is a plan: a first visit that is still on the goal screen downloads none (a
+       control that plays a clip asks for its file itself: C.soundState) */
+    if (state.plan) C.needSound(LEVEL, unitN);
     /* the units the notebook will ask about, and the screens with sound of their own. A mistake of the level exam
        (a1x.4) or of the placement check (pl.3) is no unit's: its clip is in the exam's or the placement's file, which
        the notebook needs as well (pl. ids carry no level and are kept with A1, as levelOf has it) */
@@ -548,6 +848,11 @@
       else if (/^pl\./.test(m.src || '') && C.levelOf(m.src) === LEVEL) C.needSoundFile(C.soundExtra('pl'));
     });
     if (EXTRA_SOUND[state.screen]) C.needSoundFile(C.soundExtra(EXTRA_SOUND[state.screen], LEVEL));
+    /* the notebook shows this level's mistakes; the others wait for a return to their level */
+    var mine = (state.mistakes || []).filter(function (m) { return C.levelOf(m.src) === LEVEL; });
+    var sit = C.sitting(mine, state.plan, C.now());
+    var days = C.days(state.seen, C.now());
+    days.since = state.seenLate === true && days.first ? days.first : null;
     return {
       status: status,
       plan: state.plan,
@@ -564,9 +869,20 @@
       exam: (state.exams || {})[LEVEL] || null,
       tp: state.tp || 0,
       set: state.set || 'day',
-      /* the notebook shows this level's mistakes; the others wait for a return to their level */
-      mistakes: (state.mistakes || []).filter(function (m) { return C.levelOf(m.src) === LEVEL; }),
+      /* the screen that opened the one on show, for the two kinds of screen with more than one door (a practice section,
+         the notebook's review: handlers.go keeps it); null on every other screen */
+      opener: (PRACTICE[state.screen] || state.screen === 'Review') && state.opener ? state.opener : null,
+      mistakes: mine,
+      /* the review that waits today (the tab bars' mark on Cuaderno, the week path's and the day's «para repasar»): n is
+         what today's sitting asks, of the `due` that are due; size is a sitting, done what was reviewed today */
+      review: { n: sit.n, due: sit.due, size: sit.size, done: sit.done, minutes: sit.minutes },
+      /* the days with study: the last seven, the counts, whether the learner is back after days away (C.days), and
+         `since`: the first day on record for a learner whose record began later than they did (seenLate), else null */
+      seen: state.seen || [],
+      days: days,
       typed: state.typed || [],
+      /* the synthetic voice is on (the learner's switch: save({ voice: false }) turns it off) */
+      voice: voice,
       placement: state.placement || null,
       /* what the goal screen asked (why, where, the two self-ratings) and the weekly "lo usé" log, kept as given */
       profile: state.profile || null,
@@ -577,9 +893,33 @@
       progress: C.progress(state, LEVEL)
     };
   };
+  /* the practice sections outside the plan of days: they record nothing of their own, so opening one is what marks the
+     day as a day with study */
+  var PRACTICE = { Leer: 1, Escribir: 1, Hablar: 1 };
+  /* today added to the days with study, as a change to merge into the state (nothing when today is there already) */
+  function sawToday(st, out) {
+    var seen = C.sawDay(st.seen, C.now());
+    if (seen !== st.seen) out.seen = seen;
+    return out;
+  }
   C.handlers = function (get, set) {
     return {
-      go: function (to) { set(function (st) { return { screen: to, started: st.started || to !== 'Goal' }; }); },
+      go: function (to) {
+        set(function (st) {
+          var from = st.screen;
+          /* A practice section closes to the screen that opened it. Its own ways out ask for Progreso, whose «Más
+             práctica» was once its only door; the week path's closed card and a sealed day open it too, so the engine
+             remembers the door (opener: kept while the app is open, never saved) and leads back through it. */
+          if (PRACTICE[from] && to === 'Progress' && st.opener && !PRACTICE[st.opener]) to = st.opener;
+          var out = { screen: to, started: st.started || to !== 'Goal' };
+          if (PRACTICE[to] && from && !PRACTICE[from]) out.opener = from;
+          /* The notebook's review has three doors as well (the notebook, the week path's row, the day's row). Its door
+             is kept the same way, but its two ways out differ: «Volver al cuaderno» asks for the notebook and gets it,
+             and its cross asks for the door by name (C.view gives `opener` while the review is up). */
+          if (to === 'Review' && from && from !== 'Review') out.opener = from;
+          return PRACTICE[to] ? sawToday(st, out) : out;
+        });
+      },
       /* change level: this level's plan is put aside and the other level's comes back (or its goal screen, the first time) */
       level: function (lv) {
         set(function (st) {
@@ -637,11 +977,15 @@
             if (!had2 || !had2.apto || patch.exam.apto) exams[lv] = patch.exam;
             out.exams = exams;
           }
+          /* a lesson step, a test, words typed or a part of the level exam handed in (not the tab's «Otra vez», which
+             only marks the result it already has): today is a day with study */
+          var handedIn = !!patch.exam && (!(st.exams || {})[patch.exam.level || st.level || 'A1'] || (st.exams || {})[patch.exam.level || st.level || 'A1'].at !== patch.exam.at);
+          if ((patch.prog && sid) || patch.result || patch.typed || handedIn) sawToday(st, out);
           return out;
         });
       },
-      miss: function (m) { set(function (st) { return { mistakes: C.miss(st.mistakes, m, C.now()) }; }); },
-      reviewed: function (src, right) { set(function (st) { return { mistakes: C.reviewed(st.mistakes, src, right, C.now()) }; }); }
+      miss: function (m) { set(function (st) { return sawToday(st, { mistakes: C.miss(st.mistakes, m, C.now()) }); }); },
+      reviewed: function (src, right) { set(function (st) { return sawToday(st, { mistakes: C.reviewed(st.mistakes, src, right, C.now()) }); }); }
     };
   };
 
@@ -660,6 +1004,57 @@
   };
   C.area = function (key) { return AREAS[key] || AREAS.grammar; };
   C.AREAS = ['vocab', 'grammar', 'reading', 'listening', 'mediation'];
+
+  /* ---------- the mini exams ----------
+     Each level has two (the Examen tab): the first after the first half of its units, the second after the second half.
+     A mini exam needs no writing of its own: it is 20 of its units' week-test questions, by area as a week test (6
+     Palabras, 8 Gramática, 3 Lectura, 3 Escucha), dealt in turn from each unit so that every unit gives as many (5 each
+     for 4 units), and from each unit's questions of an area the ones spread evenly through its list. Always the same
+     20: a result can be compared with the one before. It is ready once every one of its units has its week test
+     written; the Examen tab opens it when the last of those tests is done, the exam-style runner asks it (set 'mini1',
+     'mini2') and its result is kept with the tests, at tests[id] (a1m1, a1m2).
+     → [{ n, id, units: [unit numbers], after: the last of them, ready, items: [item ids], seconds }] */
+  var MINI_SHAPE = [['vocab', 6], ['grammar', 8], ['reading', 3], ['listening', 3]];
+  var MINI_SECONDS = 1200;
+  C.minis = function (lv) {
+    return C.withLevel(lv || LEVEL, function () {
+      var us = C.units();
+      var mid = Math.max(1, Math.ceil(us.length / 2));
+      return [1, 2].map(function (n) {
+        var units = us.filter(function (u, k) { return n === 1 ? k < mid : k >= mid; });
+        var ready = units.length > 0 && units.every(function (u) { return !!(u.test && u.test.length); });
+        var items = [];
+        if (ready) {
+          var pools = units.map(function (u) {
+            var by = {};
+            u.test.forEach(function (id) { var it = C.item(id); if (it) { var a = C.area(it.area).key; (by[a] = by[a] || []).push(id); } });
+            return by;
+          });
+          var turn = 0;
+          MINI_SHAPE.forEach(function (shape) {
+            var area = shape[0];
+            var give = units.map(function () { return 0; });
+            for (var c = 0, tries = 0; c < shape[1] && tries < shape[1] * units.length * 2; tries++) {
+              var k = turn++ % units.length;
+              if ((pools[k][area] || []).length > give[k]) { give[k]++; c++; }
+            }
+            units.forEach(function (u, k2) {
+              var pool = pools[k2][area] || [];
+              for (var i = 0; i < give[k2]; i++) items.push(pool[Math.min(pool.length - 1, Math.floor(((i + 0.5) * pool.length) / give[k2]))]);
+            });
+          });
+        }
+        return { n: n, id: prefix(LEVEL) + 'm' + n, units: units.map(function (u) { return u.n; }), after: units.length ? units[units.length - 1].n : 0, ready: ready && items.length > 0, items: items, seconds: MINI_SECONDS };
+      });
+    });
+  };
+  /* a mini exam by its id (a1m1) or by the runner's set name (mini1, at the current level), or null */
+  C.mini = function (key) {
+    var m = /^([abc][12])m([12])$/i.exec(key || '');
+    var s = m ? null : /^mini([12])$/.exec(key || '');
+    if (!m && !s) return null;
+    return C.minis(m ? m[1].toUpperCase() : LEVEL)[+(m ? m[2] : s[1]) - 1] || null;
+  };
 
   /* ---------- the level's ñandutí ----------
      Each level is a ñandutí (the lace rosette of Itauguá) that Kaguare, the southern tamandua, wears pinned to his

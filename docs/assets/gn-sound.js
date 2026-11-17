@@ -19,6 +19,13 @@
   var mark = null;      /* the clip play() last started: whose turn it was, the audio clock's reading at the clip's own zero, and when it ended by itself */
   var probe = null;     /* where the audio clock stood when it was last looked at closely: wall clock and audio clock */
   var moved = false;    /* this output's clock has been seen to advance: sound is really coming out */
+  var quiet = false;    /* the learner turned the synthetic voice off (synthetic(false)): a voice model's clips count as missing */
+
+  /* the clip under a name, as far as it may be played: none while it is a voice model's and that voice is turned off */
+  function clipOf(key) {
+    var c = clips[key];
+    return c && !(quiet && (c.kind || 'human') === 'synthetic') ? c : null;
+  }
 
   function seen() {
     if (ctx && ctx.state === 'running') { ran = true; worked = true; }
@@ -78,7 +85,7 @@
   function decode(key) {
     if (decoded[key]) return decoded[key];
     var c = context();
-    var clip = clips[key];
+    var clip = clipOf(key);
     if (!c || !clip) return Promise.reject(new Error('no sound for ' + key));
     var mine = gen;
     var task = decoded[key] = new Promise(function (ok, fail) {
@@ -96,11 +103,29 @@
 
   var api = window.gnSound = {
     /* is there a clip under this name, and a way to play it? An output that failed gets another try once it is due to be replaced */
-    has: function (key) { return !!(AC && clips[key] && (!failed || stale)); },
+    has: function (key) { return !!(AC && clipOf(key) && (!failed || stale)); },
     /* length of a clip in milliseconds, known before it is decoded */
-    ms: function (key) { return clips[key] ? clips[key].ms : 0; },
+    ms: function (key) { var c = clipOf(key); return c ? c.ms : 0; },
     /* what made the clip: 'human' (a recording) or 'synthetic' (a voice model, which the screens say so about); '' when there is no clip */
-    kind: function (key) { return clips[key] ? clips[key].kind || 'human' : ''; },
+    kind: function (key) { var c = clipOf(key); return c ? c.kind || 'human' : ''; },
+    /* where each line of a clip put together from lines ends, in milliseconds from its start (tools/make-sound.mjs
+       writes them; the next line starts a quarter of a second later); null for a clip of one recording */
+    cues: function (key) { var c = clipOf(key); return c && c.cues && c.cues.length ? c.cues : null; },
+    /* is there any clip at all that may be played? None until a sound file has loaded, and none while every clip is a
+       voice model's and that voice is turned off */
+    any: function () { for (var k in clips) if (clipOf(k)) return true; return false; },
+    /* The synthetic voice, on or off: the learner's switch (gn-course.js sets it from the saved progress). Off, a clip
+       made by a voice model counts as missing: has() is false, kind() is '', nothing of it plays, and every screen
+       shows its written stand-in, as it does for a clip that was never made. A person's recordings are not touched.
+       Called with nothing it only answers whether that voice is on. */
+    synthetic: function (on) {
+      if (arguments.length && !on !== quiet) {
+        quiet = !on;
+        /* what was decoded stays (the switch may come back on); a clip of that voice that is playing stops */
+        if (quiet) this.stop();
+      }
+      return !quiet;
+    },
     /* call from inside a tap: browsers only let sound start after one */
     unlock: function () { renew(); return !!context(); },
     /* is sound actually coming out? A browser can hold the audio back even after a tap, or fail to decode a clip.

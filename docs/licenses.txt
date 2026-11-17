@@ -133,5 +133,21 @@ native teacher's review. The level exam's result is the app's own constancia: no
 for Guarani, and the app issues no official certificate.
 
 == Sound ==
-No recordings exist yet: every sound control uses a silent stand-in. The sound player (assets/gn-sound.js) is the
-player of the Yaoki apps, under new names.
+Spoken clips: gn-sound-a1-u01.js, gn-sound-a1-u02.js, gn-sound-a1-u03.js, gn-sound-a1-u04.js, gn-sound-a1-x.js, gn-sound-pl.js, gn-sound-sp.js (assets/), each fetched when its unit or screen is in use and stored on the
+phone from then on. Voices: F: MMS-TTS guaraní (Meta AI); en los diálogos, hasta 2 semitonos más agudo (synthetic, facebook/mms-tts-grn; CC BY-NC 4.0 (Meta MMS-TTS: non-commercial use only; Pratap et al. 2023)); M: MMS-TTS guaraní (Meta AI), tono 2 a 3 semitonos más grave (synthetic, facebook/mms-tts-grn; CC BY-NC 4.0 (Meta MMS-TTS: non-commercial use only; Pratap et al. 2023)); N: MMS-TTS castellano (Meta AI) (synthetic, facebook/mms-tts-spa; CC BY-NC 4.0 (Meta MMS-TTS: non-commercial use only; Pratap et al. 2023)).
+A clip made by a voice model is marked synthetic in the file, and the screens say so (voz sintética). The sound
+player (assets/gn-sound.js) is the player of the Yaoki apps, under new names.
+
+The synthetic voice, and its licence. Until a person records the course, the clips are said by a voice model and
+are marked «voz sintética» wherever they play. The credit its licence asks for:
+
+  Voz sintética: MMS-TTS guaraní y castellano, de Meta AI (https://huggingface.co/facebook/mms-tts-grn y https://huggingface.co/facebook/mms-tts-spa):
+  Pratap et al., «Scaling Speech Technology to 1,000+ Languages», 2023. Licencia CC BY-NC 4.0, solo para uso no
+  comercial: https://creativecommons.org/licenses/by-nc/4.0/. Audio generado con esos modelos y modificado
+  (recortes, tono) por tools/make-tts.py. Sin garantías.
+
+These clips are under CC BY-NC 4.0 (Creative Commons Attribution-NonCommercial 4.0 International), not CC BY 4.0
+like the recordings by a person that are to replace them. What that means for this app: in a free app without
+advertising, as Epu'ã is, they may be used and passed on, with this credit and under the same terms; in an app
+that is sold, sits behind a subscription or carries advertising they may not be: a person's recordings must
+replace them first. Whoever copies the sound files takes them under those terms.

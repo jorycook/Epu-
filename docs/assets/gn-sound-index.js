@@ -1,5 +1,5 @@
 /* Which sound files exist, for the engine (gn-course.js fetches a unit's file, gn-sound-a1-u01.js, when the unit is in
    use) and the app build (which ships them, stored on the phone after first use). Made by tools/make-sound.mjs from the
    files it writes next to this one: do not edit by hand. No file is listed until recordings exist. */
-window.__gnSoundFiles = [];
-window.__gnSoundVoices = {};
+window.__gnSoundFiles = ["gn-sound-a1-u01.js","gn-sound-a1-u02.js","gn-sound-a1-u03.js","gn-sound-a1-u04.js","gn-sound-a1-x.js","gn-sound-pl.js","gn-sound-sp.js"];
+window.__gnSoundVoices = {"F":{"name":"MMS-TTS guaraní (Meta AI); en los diálogos, hasta 2 semitonos más agudo","kind":"synthetic","licence":"CC BY-NC 4.0 (Meta MMS-TTS: non-commercial use only; Pratap et al. 2023)","model":"facebook/mms-tts-grn"},"M":{"name":"MMS-TTS guaraní (Meta AI), tono 2 a 3 semitonos más grave","kind":"synthetic","licence":"CC BY-NC 4.0 (Meta MMS-TTS: non-commercial use only; Pratap et al. 2023)","model":"facebook/mms-tts-grn"},"N":{"name":"MMS-TTS castellano (Meta AI)","kind":"synthetic","licence":"CC BY-NC 4.0 (Meta MMS-TTS: non-commercial use only; Pratap et al. 2023)","model":"facebook/mms-tts-spa"}};
