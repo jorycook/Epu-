@@ -5,7 +5,7 @@
  * which replaces the stored copy. Each file is stored under a hash of its own content: the first install takes what
  * the browser has just downloaded for the page instead of downloading it again, and a new build downloads only the
  * files that changed (see fresh below). The sound files are stored when first used (see LAZY below). */
-const VERSION = '1d792818a7';
+const VERSION = '4825426a30';
 /* the store is named after the folder this copy of the app lives in: a second copy under the same web
    address (a trial version, say) keeps its own store and never touches this one */
 const HOME = new URL('./', self.location.href).pathname;
@@ -52,29 +52,29 @@ const FILES = [
 const HASH = {
  "./": "7675dc12cf",
  "./assets/app.css": "7c9a25ed0e",
- "./assets/build.js": "b107e06400",
+ "./assets/build.js": "8b7b54c447",
  "./assets/fonts.css": "44dc9ffc0f",
  "./assets/fonts/epuatext-400.woff2": "3926394b28",
  "./assets/fonts/epuatext-700.woff2": "14eec5dfbf",
  "./assets/fonts/nunito-500.woff2": "90e2d48816",
  "./assets/fonts/nunito-700.woff2": "622a9100d8",
  "./assets/fonts/nunito-800.woff2": "06145bc4f1",
- "./assets/gn-app.js": "0cbe5fe6de",
- "./assets/gn-course-a1.js": "36fa17c4f1",
+ "./assets/gn-app.js": "1131cf5cc1",
+ "./assets/gn-course-a1.js": "5b7f0ac414",
  "./assets/gn-course-a2.js": "7f2fb81af8",
  "./assets/gn-course-b1.js": "a17ba303f3",
  "./assets/gn-course-b2.js": "b4a16c82b8",
  "./assets/gn-course-c1.js": "83d989ed0a",
  "./assets/gn-course-c2.js": "89e7ec56cd",
- "./assets/gn-course.js": "49e73958c8",
+ "./assets/gn-course.js": "68a4dcb9a6",
  "./assets/gn-extra.js": "d835c95ddb",
  "./assets/gn-sound-index.js": "3a12244961",
  "./assets/gn-sound.js": "09f739bf8c",
  "./assets/gn-spell.js": "522c73fe5a",
  "./assets/preact.min.js": "25aa00978f",
- "./assets/screens-more.js": "e3ac19966f",
- "./assets/screens.css": "94df75346b",
- "./assets/screens.js": "8881641f39",
+ "./assets/screens-more.js": "b52f1a63a1",
+ "./assets/screens.css": "4f3dd4e360",
+ "./assets/screens.js": "b86ce8e066",
  "./assets/yk-runtime.js": "af6c627d76",
  "./icons/apple-touch-icon.png": "94b30db31a",
  "./icons/favicon-32.png": "bba21c3c2d",
@@ -83,7 +83,7 @@ const HASH = {
  "./icons/icon-512-maskable.png": "194a19732e",
  "./icons/icon-512.png": "f2438193ee",
  "./index.html": "7675dc12cf",
- "./licenses.txt": "98a0766c7d",
+ "./licenses.txt": "5f47d0ba9e",
  "./manifest.webmanifest": "5848ca0211"
 };
 const keyOf = (f) => f + '?v=' + HASH[f];
@@ -112,8 +112,8 @@ async function fresh(olds, f) {
 }
 /* the course's sound, one file per unit (and one each for the placement check, a level's exam and the speaking game), is
    not part of the install (it would make the first download several times larger): a file is stored the first time the
-   engine fetches it, and the app asks for the rest of the chosen level in the background once there is a plan. Each file
-   carries a hash of its content, so a new build keeps the ones that did not change. */
+   engine fetches it, and once there is a plan the app names the few files to have ahead (keepFiles, below): never a
+   whole level. Each file carries a hash of its content, so a new build keeps the ones that did not change. */
 const LAZY = {
  "./assets/gn-sound-a1-u01.js": "8f44da4b58",
  "./assets/gn-sound-a1-u02.js": "7a0b7c599c",
@@ -127,7 +127,7 @@ const lazyKey = (f) => f + '?h=' + LAZY[f];
 const lazyOf = (url) => { const p = './' + new URL(url).pathname.slice(HOME.length); return LAZY[p] ? p : null; };
 const isLazy = async (res, f) => !!res && res.ok && (await hashOf(res)) === LAZY[f];
 /* A sound file is fetched and stored once, however many ask for it at the same moment (the screen that needs it, and the
-   app keeping the level's sound). Like the files of the install, it is asked for at the address the page uses, in the
+   app naming the files to keep). Like the files of the install, it is asked for at the address the page uses, in the
    browser's usual way: the file the page fetched before this worker was in charge (the first unit's, on a first visit)
    comes from the browser's own copy and is not downloaded a second time. What comes back must be this build's file;
    else it is asked for again past every copy, under its own hash, and a file of another build is not stored. */
@@ -216,18 +216,19 @@ self.addEventListener('fetch', (event) => {
   );
 });
 
-/* the app names the learner's level once there is a plan: store that level's sound for offline use, in the background
-   (its units' files, its exam's, and the placement check's and the speaking game's, which belong to no level).
-   For a learner whose browser says they save data the app names no level: it names the sound files the page has
-   asked for itself (keepFiles), and only those are stored. That is for the file the page fetched before this worker
-   was in charge (the first unit's, on a first visit): it comes from the browser's own copy, and nothing else is
-   fetched behind the learner's back. A file asked for later passes through this worker and is stored then. */
+/* The app names the sound files to store (keepFiles), in the order it wants them, once there is a plan: those the page
+   has asked for itself (the one it fetched before this worker was in charge, the first unit's on a first visit, comes
+   from the browser's own copy), and the few it wants ahead of time for use without a connection: the unit in use, the
+   one after it, the speaking game (gn-app.js, keepSound; none ahead for a learner whose browser says they save
+   data). Only the files named are stored, one after the other: a whole level is never fetched behind the learner's
+   back (a worker of an earlier build took the level's name, keepLevel, and fetched all of it: that message is no
+   longer understood). A file asked for later passes through this worker and is stored then. */
 self.addEventListener('message', (event) => {
   const data = event.data || {};
-  const lv = data.keepLevel;
-  let mine = [];
-  if (typeof lv === 'string' && /^[abc][12]$/.test(lv)) mine = Object.keys(LAZY).filter((f) => f.indexOf('gn-sound-' + lv + '-') >= 0 || /gn-sound-(pl|sp)\.js$/.test(f));
-  else if (Array.isArray(data.keepFiles)) mine = Object.keys(LAZY).filter((f) => data.keepFiles.indexOf(f.split('/').pop()) >= 0);
+  if (!Array.isArray(data.keepFiles)) return;
+  const all = Object.keys(LAZY);
+  const mine = [];
+  data.keepFiles.forEach((name) => { const f = all.find((x) => x.split('/').pop() === name); if (f && mine.indexOf(f) < 0) mine.push(f); });
   if (!mine.length) return;
   event.waitUntil(caches.open(CACHE).then(async (cache) => { for (const f of mine) { try { await keepLazy(cache, f); } catch (e) { /* offline: try again next time */ } } }));
 });

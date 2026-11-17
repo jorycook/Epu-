@@ -76,23 +76,24 @@
   window.addEventListener('load', getMore);
   window.addEventListener('online', function () { if (more === 'failed') getMore(); });
   /* The screens first, then the sound they play. The engine asks for a unit's sound file as soon as a screen reads the
-     course (gn-course.js, needSoundFile): with the very first screen, before the page has loaded. No screen of the
-     first file plays a clip, and one unit's sound is larger than all the later screens together: on a first visit it
-     kept the page loading, and the later screens waiting behind it, for seconds on a slow connection. So a sound file
-     asked for before the later screens are in waits for them, or for word that they cannot be fetched. */
+     course with a plan (gn-course.js, needSoundFile): with the very first screen, before the page has loaded. No
+     screen of the first file plays a clip, and one unit's sound is larger than all the later screens together: on a
+     first visit it kept the page loading, and the later screens waiting behind it, for seconds on a slow connection.
+     So a sound file asked for before the later screens are in waits for them, or for word that they cannot be
+     fetched, also when the learner asks for a screen of the later file meanwhile: letting the sound go at that
+     moment was tried and measured (17 November, README «The app»): the sound shares the line with the screens, so
+     it was in no sooner and the lesson was up 1 to 6 seconds later. A control asked for a clip of a file that waits
+     here says that its audio is loading (the engine's C.soundState counts a file it has asked for, held here or
+     not, as on its way). */
   var needSound = C.needSoundFile;
   var soundWaits = [];
-  var soundSeen = [];   /* the sound files the screens have asked for in this visit (keepLevelSound, below) */
+  var soundSeen = [];   /* the sound files the screens have asked for in this visit (keepSound, below) */
   if (typeof needSound === 'function') {
     C.needSoundFile = function (f) {
       if (f && soundSeen.indexOf(f) < 0) soundSeen.push(f);
       if (more === 'in' || more === 'failed') needSound.call(C, f);
       else if (soundWaits.indexOf(f) < 0) soundWaits.push(f);
     };
-    /* The wait is not cut short when a later screen is asked for sooner: on a slow connection the sound would then
-       share the line with the screen the learner is waiting for, which would come later, and the sound no sooner. A
-       control that is asked for a clip of a file that waits here says that its audio is loading (the engine's
-       C.soundState counts a file it has asked for, held here or not, as on its way). */
   }
 
   /* ---------- saved progress ---------- */
@@ -383,9 +384,9 @@
     if (!begun) { begun = true; sent = fieldTexts(s); held = sent; }
     /* the player hears of the learner's switch before anything asks for sound (the engine says it again at every view) */
     try { if (window.gnSound && window.gnSound.synthetic) window.gnSound.synthetic(s.voice !== false); } catch (e) {}
-    /* a learner with a plan: the level's sound is stored for offline use from the start of the visit (remember asks
-       again at each change, for a first visit, where the worker is not in charge yet) */
-    keepLevelSound(s);
+    /* a learner with a plan: the sound to have ahead is stored for offline use from the start of the visit (remember
+       asks again at each change: for a first visit, where the worker is not in charge yet, and for the next unit) */
+    keepSound(s);
     return s;
   }
   var FIELDS = ['started', 'level', 'plans', 'plan', 'cur', 'done', 'tests', 'exams', 'mistakes', 'tp', 'set', 'placement', 'typed', 'profile', 'exposure', 'seen', 'seenLate', 'voice'];
@@ -464,35 +465,43 @@
     });
     return out;
   }
-  /* the offline copy stores the level's sound in the background once the learner has a plan (see sw.js): a file the
-     engine fetched already is kept as it is, the others come in while the app is open. Megabytes, so not behind the
-     back of a learner who pays for data by the megabyte: when the browser says the learner saves data
-     (navigator.connection.saveData), nothing is asked for ahead: only the file of the unit that is opened is fetched
-     (the engine asks for it, and the worker stores it then). The worker is told the files the screens have asked
-     for, and no level: the one the page fetched before the worker was in charge (the first unit's, on a first
-     visit) is stored from the browser's own copy, so that unit plays offline too. Nor is anything fetched while the
+  /* What the offline copy stores of the course's sound, in the background, once the learner has a plan (see sw.js).
+     Megabytes, so never the whole level behind the learner's back (a first session used to download all of it: 2.3 MB
+     as sent, three quarters of everything fetched). The worker is told files, by name:
+     - the files the screens have asked for in this visit (the engine fetched them, or is about to): the one the page
+       fetched before the worker was in charge (the first unit's, on a first visit) is stored from the browser's own
+       copy, so that unit plays offline too;
+     - and, ahead of time, what gnCourse.soundAhead names: the file of the unit in use, of the unit after it, and of
+       the speaking game, which is small and is the practice that should work anywhere. When the learner moves on to
+       the next unit, the one after that follows. The level exam's and the placement check's files are fetched when
+       their screen opens, and stored then.
+     A browser that says the learner saves data (navigator.connection.saveData) is told only the first kind: nothing
+     is fetched ahead, the file of a unit comes when the unit is opened. And nothing at all is fetched while the
      synthetic voice is turned off and no other voice exists (gnCourse.soundWanted). Progreso's «Voz sintética» says
-     what the sound weighs (sound, below). */
-  var soundKept = '';
-  var filesKept = '';   /* the files last named to the worker for a learner who saves data */
+     this in a learner's words, with what a unit's sound weighs (sound, below). */
+  var filesKept = '';   /* the files last named to the worker */
   function savesData() {
     try { var c = navigator.connection || navigator.mozConnection || navigator.webkitConnection; return !!(c && c.saveData); } catch (e) { return false; }
   }
   /* the bytes of each sound file, as the build found them (build.mjs fills this in) */
   var SOUND_BYTES = {};
   try { SOUND_BYTES = JSON.parse('{"gn-sound-a1-u01.js":750549,"gn-sound-a1-u02.js":871994,"gn-sound-a1-u03.js":864556,"gn-sound-a1-u04.js":1002378,"gn-sound-a1-x.js":93912,"gn-sound-pl.js":46137,"gn-sound-sp.js":80647}') || {}; } catch (e) { SOUND_BYTES = {}; }
-  function keepLevelSound(s) {
-    var lv = String((s && s.plan && s.level) || '').toLowerCase();
-    if (!/^[abc][12]$/.test(lv)) return;
+  function keepSound(s) {
+    if (!(s && s.plan && /^[abc][12]$/i.test(String(s.level || '')))) return;
     if (C.soundWanted && !C.soundWanted()) return;
-    var saving = savesData();
-    var named = soundSeen.join(' ');
-    if (saving ? !named || named === filesKept : lv === soundKept) return;
+    var files = soundSeen.slice();
+    if (!savesData() && typeof C.soundAhead === 'function') {
+      var ahead = [];
+      try { ahead = C.soundAhead(s) || []; } catch (e) { ahead = []; }
+      ahead.forEach(function (f) { if (files.indexOf(f) < 0) files.push(f); });
+    }
+    var named = files.join(' ');
+    if (!named || named === filesKept) return;
     try {
       var sw = navigator.serviceWorker && navigator.serviceWorker.controller;
       if (!sw) return;
-      if (saving) { sw.postMessage({ keepFiles: soundSeen.slice() }); filesKept = named; }
-      else { sw.postMessage({ keepLevel: lv }); soundKept = lv; }
+      sw.postMessage({ keepFiles: files });
+      filesKept = named;
     } catch (e) {}
   }
   /* Ask the browser to keep what is saved: without that it may clear a site's data when the phone runs short of room.
@@ -515,7 +524,7 @@
   }
   function remember(s) {
     if (!s) return;
-    keepLevelSound(s);
+    keepSound(s);
     keepForGood(s);
     var now = fieldTexts(s);
     /* what the screens hold, for a progress code where nothing is saved (the test hooks, a browser that keeps nothing) */
@@ -1279,10 +1288,11 @@
     start: start,
     remember: remember,
     forget: forget,
-    /* the sound of a level, for the page that explains the voice (Progreso): bytes, of the files a learner at that
-       level ends up with (its units', its exam's, and the placement check's and the speaking game's, which belong to
-       no level); unit, of one unit's file on average; saving, the browser says the learner saves data, so only the
-       unit that is opened is fetched; kept, this copy stores the level's sound for use without a connection */
+    /* the sound of a level, for the page that explains the voice (Progreso): bytes, of every file a learner at that
+       level can come to fetch (its units', its exam's, and the placement check's and the speaking game's, which
+       belong to no level); unit, of one unit's file on average; saving, the browser says the learner saves data, so
+       only the unit that is opened is fetched; kept, this copy stores sound for use without a connection: what was
+       opened, and ahead of time the unit in use, the one after it and the speaking game (keepSound, above) */
     sound: function (lv) {
       var p = String(lv || '').toLowerCase();
       var bytes = 0;
@@ -1294,6 +1304,11 @@
       });
       var sum = units.reduce(function (a, b) { return a + b; }, 0);
       return { bytes: bytes, unit: units.length ? Math.round(sum / units.length) : 0, saving: savesData(), kept: offline !== 'never' && !savesData() };
+    },
+    /* the text of the app's licences (licenses.txt, which the build writes and the offline copy stores), for the page
+       that explains the voice: a promise of the text */
+    licences: function () {
+      return fetch('./licenses.txt').then(function (r) { if (!r.ok) throw new Error('licenses.txt: ' + r.status); return r.text(); });
     },
     saving: function () { return canSave && !TEST; },
     /* the browser refuses to keep anything (outside the test hooks, which save nothing on purpose) */
@@ -1335,6 +1350,8 @@
        now (again, after a failure); the document hears gnscreens when that changes */
     screens: function () { return more; },
     getScreens: getMore,
+    /* the learner asked for a screen of the later file before it was in: the sound that waited for that file is
+       asked for now (see "the screens first, then the sound they play") */
     /* the shell says which screen is on show (about.home: the screen the app opens on; about.set: whose questions
        the exam-style screen is asking), and hands over its go(screen) for the system's back */
     onScreen: onScreen,
