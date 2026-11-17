@@ -80,27 +80,20 @@
      screen of the first file plays a clip, and one unit's sound is larger than all the later screens together: on a
      first visit it kept the page loading, and the later screens waiting behind it, for seconds on a slow connection.
      So a sound file asked for before the later screens are in waits for them, or for word that they cannot be
-     fetched. The wait ends sooner when the learner asks for a screen of the later file before it is in (the shell
-     says so: soundNow): they are on their way to a lesson, and its sound should not start out only when the lesson
-     is up. Either way a control asked for a clip of a file that waits here says that its audio is loading (the
-     engine's C.soundState counts a file it has asked for, held here or not, as on its way). */
+     fetched, also when the learner asks for a screen of the later file meanwhile: letting the sound go at that
+     moment was tried and measured (17 November, README «The app»): the sound shares the line with the screens, so
+     it was in no sooner and the lesson was up 1 to 6 seconds later. A control asked for a clip of a file that waits
+     here says that its audio is loading (the engine's C.soundState counts a file it has asked for, held here or
+     not, as on its way). */
   var needSound = C.needSoundFile;
   var soundWaits = [];
-  var soundFree = false;   /* a screen of the later file has been asked for: sound is held back no longer */
   var soundSeen = [];   /* the sound files the screens have asked for in this visit (keepSound, below) */
   if (typeof needSound === 'function') {
     C.needSoundFile = function (f) {
       if (f && soundSeen.indexOf(f) < 0) soundSeen.push(f);
-      if (more === 'in' || more === 'failed' || soundFree) needSound.call(C, f);
+      if (more === 'in' || more === 'failed') needSound.call(C, f);
       else if (soundWaits.indexOf(f) < 0) soundWaits.push(f);
     };
-  }
-  function soundNow() {
-    if (soundFree) return;
-    soundFree = true;
-    var files = soundWaits;
-    soundWaits = [];
-    files.forEach(function (f) { try { needSound.call(C, f); } catch (e) {} });
   }
 
   /* ---------- saved progress ---------- */
@@ -1359,7 +1352,6 @@
     getScreens: getMore,
     /* the learner asked for a screen of the later file before it was in: the sound that waited for that file is
        asked for now (see "the screens first, then the sound they play") */
-    soundNow: soundNow,
     /* the shell says which screen is on show (about.home: the screen the app opens on; about.set: whose questions
        the exam-style screen is asking), and hands over its go(screen) for the system's back */
     onScreen: onScreen,

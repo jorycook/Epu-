@@ -2209,9 +2209,9 @@ async function partS(browser) {
     await tap(page, { aria: 'Volver al camino de la semana' }, 400);
     await tap(page, { sel: '#gn-stage nav a:has-text("Progreso")' }, 800);
     check(/Cargando…/.test(await noticeOf(page)) && (await control(page, 'Tapykue · Volver').count()) === 0, 'a screen asked for before it is in gets a waiting note in its place', await noticeOf(page));
-    /* …and lets the sound go: the learner is on the way to a screen of the later file, and the sound of the lesson
-       should not set out only when that file is in (a tester met a lesson up for seconds before its sound was asked for) */
-    if (hasSound) check(sound.length === 1 && /^gn-sound-a1-u01\.js$/.test(sound[0]), 'a screen of the later file asked for sooner lets the unit\'s sound go at once: its file is asked for now, without waiting for the later screens', sound);
+    /* …and the sound still waits: it shares the line with the screens, so letting it go here brought the lesson up
+       later and the sound no sooner (measured on 17 November); the lesson's controls say «Cargando el audio…» meanwhile */
+    if (hasSound) check(sound.length === 0, 'a screen of the later file asked for sooner does not let the unit\'s sound go: the screens come first', sound);
     /* on a connection that stalls the note offers the way back after a few seconds (an app from the Home Screen has no
        back of its own); the file is not asked for again */
     await page.waitForTimeout(5000);

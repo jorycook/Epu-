@@ -162,12 +162,10 @@ const next = window.gnApp.catchUp(this.state.screen);
 if (next) this.setState(next);
 }
 /* a screen that is not in yet: ask for the later file if nobody has, say so if it takes more than a moment, and after
-   a few seconds offer the way back (on a connection that stalls, an app with no back of its own would be stuck).
-   The sound that waited for the later file is let go at once: the learner is on their way to a lesson */
+   a few seconds offer the way back (on a connection that stalls, an app with no back of its own would be stuck) */
 fetchScreen() {
 const missing = !window.YK.has(this.state.screen);
 if (missing && window.gnApp.screens() === 'no') window.gnApp.getScreens();
-if (missing && window.gnApp.soundNow) window.gnApp.soundNow();
 if (missing && !this.state.slow && !this.slowTimer) this.slowTimer = setTimeout(() => { this.slowTimer = null; if (!window.YK.has(this.state.screen)) this.setState({ slow: true }); }, 400);
 if (missing && !this.state.stuck && !this.stuckTimer) this.stuckTimer = setTimeout(() => { this.stuckTimer = null; if (!window.YK.has(this.state.screen)) this.setState({ stuck: true }); }, 5000);
 if (!missing && this.slowTimer) { clearTimeout(this.slowTimer); this.slowTimer = null; }

@@ -135,16 +135,14 @@ y abrí la página de nuevo.»; when the app is still not up after 20 seconds, t
 sound comes after the screens, and none before there is a plan: a first visit, still on the goal screen, fetches no
 sound at all. With a plan the engine asks for the unit's file with the first screen, but no screen of the first file
 plays a clip and one unit's sound (about 450 kB as sent) is larger than all the later screens together, so the app
-holds that request back until the screens are in, or until the learner asks for a screen of the later file: then the
-sound sets out at once (`gnApp.soundNow`, called by the shell), and a control that is asked for a clip meanwhile says
-«Cargando el audio…» (see «Sound»). That second rule trades one wait for another, and only matters where the later
-screens are not stored yet and there is a plan already (a new phone after a paste). Measured so on 17 November
-(Chromium, a cold cache, the learner tapping straight through to the first lesson, CPU slowed four times): at
-1.6 Mbit/s the lesson is up at 5.6 s instead of 4.5 s and its clip is in at 6.6 s instead of 6.8 s, so the lesson
-waits for its sound for 1.1 s instead of 2.3 s; at 400 kbit/s the lesson is up at 21.3 s instead of 15.1 s and the
-clip is in at 24.3 s either way, so the wait is 3.1 s instead of 9.3 s. The sound shares the line with the screens:
-it is not in sooner, the lesson is up later. Holding the request until the screens are in (the one call of
-`soundNow` in the shell's `fetchScreen` taken out) gives the first figures back.
+holds that request back until the screens are in, and a control that is asked for a clip meanwhile says «Cargando el
+audio…» (see «Sound»). Letting the sound go as soon as the learner asks for a screen of the later file was tried and
+taken out again. It only matters where the later screens are not stored yet and there is a plan already (a new phone
+after a paste), and there it traded a longer wait for a shorter one. Measured on 17 November (Chromium, a cold cache,
+the learner tapping straight through to the first lesson, CPU slowed four times): with the request held, at 1.6 Mbit/s
+the lesson is up at 4.5 s and its clip is in at 6.8 s; at 400 kbit/s the lesson is up at 15.1 s and the clip at 24.4 s.
+With the sound let go early the lesson was up at 5.6 s and 21.3 s and the clip in at 6.6 s and 24.3 s: the sound
+shares the line with the screens, so it was in no sooner and the lesson was up later.
 The offline worker stores every file under a hash of its content: on a first visit it takes what the browser has just
 downloaded for the page instead of downloading it again, a new build downloads only the files that changed, and a file
 that is not this build's is never stored (it is asked for again, past every copy; if that fails the install waits).
