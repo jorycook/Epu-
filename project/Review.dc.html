@@ -33,7 +33,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div aria-live="polite" style="position: absolute; top: 0; left: 0; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap"><span lang="gn">{{ live.gn }}</span>{{ live.es }}<span lang="{{ live.lang }}">{{ live.answer }}</span>{{ live.end }}</div>
 
 <div style="display: flex; align-items: center; gap: 10px; height: 44px; flex-shrink: 0">
-<a href="Notebook.dc.html" onClick="{{ toNotebook }}" aria-label="Salir del repaso" style="width: 44px; height: 44px; margin-left: -10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+<a href="{{ leaveHref }}" onClick="{{ toLeave }}" aria-label="Salir del repaso" data-gn-back="screen" style="width: 44px; height: 44px; margin-left: -10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
 <div role="img" aria-label="{{ barLabel }}" style="flex-grow: 1; height: 12px; border-radius: 6px; background: #DDE1EC; overflow: hidden"><div style="height: 12px; border-radius: 0 6px 6px 0; background: #2F4FD0; transition: width 250ms ease-out; width: {{ barW }}"></div></div>
 <h1 style="margin: 0; font-size: 12px; font-weight: 800; color: #2F4FD0">REPASO</h1>
 </div>
@@ -51,9 +51,9 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <sc-if value="{{ it.hasPlay }}" hint-placeholder-val="{{ false }}">
 <div style="margin-top: 8px; flex-shrink: 0; padding: 10px 14px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; align-items: center; gap: 12px">
 <button onClick="{{ play }}" aria-label="{{ playLabel }}" style="width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%; border: 2px solid #1B2440; display: flex; align-items: center; justify-content: center; box-shadow: {{ playShadow }}; background: {{ playBg }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="#1B2440" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></button>
-<div style="min-width: 0; display: flex; flex-direction: column; gap: 2px">
-<div style="font-size: 14px; font-weight: 800"><span lang="gn">{{ playGn }}</span> · {{ playEs }}</div>
-<div aria-live="polite" style="font-size: 12px; font-weight: 500; line-height: 1.4; color: #5A6382">{{ playNote }}</div>
+<div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<div style="display: flex; align-items: center; gap: 8px"><div style="flex: 1 1 auto; min-width: 0; font-size: 14px; font-weight: 800"><span lang="gn">{{ playGn }}</span> · {{ playEs }}</div><sc-if value="{{ it.synth }}" hint-placeholder-val="{{ false }}"><span data-gn-voice="tag" style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap">voz sintética</span></sc-if></div>
+<div style="font-size: 12px; font-weight: 500; line-height: 1.4; color: #5A6382"><span aria-live="polite">{{ playNote }}</span><span style="font-weight: 700">{{ playWho }}</span></div>
 </div>
 </div>
 </sc-if>
@@ -61,7 +61,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <sc-if value="{{ it.hasContext }}" hint-placeholder-val="{{ false }}">
 <div style="margin-top: 8px; flex-shrink: 0; padding: 10px 14px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 4px">
 <div style="font-size: 11px; font-weight: 800; color: #5A6382"><sc-if value="{{ it.contextGn }}" hint-placeholder-val="{{ false }}"><span lang="gn">Moñe'ẽrã</span> · </sc-if>{{ it.contextHead }}</div>
-<sc-if value="{{ it.silentNote }}" hint-placeholder-val="{{ false }}"><div style="font-size: 12px; font-weight: 800; line-height: 1.4; color: #B02A63">Este audio todavía no está grabado: leé lo que se dice.</div></sc-if>
+<sc-if value="{{ it.silentNote }}" hint-placeholder-val="{{ false }}"><div style="font-size: 12px; font-weight: 800; line-height: 1.4; color: #B02A63">{{ it.readNote }}</div></sc-if>
 <sc-if value="{{ it.isPassage }}" hint-placeholder-val="{{ true }}"><div lang="gn" style="max-height: 220px; overflow-y: auto; font-family: 'Andika', 'Nunito', sans-serif; font-size: 14px; font-weight: 400; line-height: 1.75; white-space: pre-line; overflow-wrap: anywhere">{{ it.context }}</div></sc-if>
 <sc-if value="{{ it.isScript }}" hint-placeholder-val="{{ false }}"><div ref="{{ linesRef }}" style="display: flex; flex-direction: column; gap: 2px"><sc-for list="{{ script }}" as="l" hint-placeholder-count="3"><div style="margin: 0 -6px; padding: 2px 6px; border-radius: 10px; display: flex; align-items: flex-start; gap: 8px; transition: background 200ms; background: {{ l.bg }}"><sc-if value="{{ l.hasWho }}" hint-placeholder-val="{{ true }}"><span style="flex-shrink: 0; box-sizing: border-box; min-width: 68px; margin-top: 3px; padding: 2px 6px; border-radius: 8px; background: #EEF0F6; font-size: 11px; font-weight: 800; line-height: 1.4; text-align: center">{{ l.who }}</span></sc-if><sc-if value="{{ l.hasNum }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0; width: 20px; height: 20px; margin-top: 3px; border-radius: 10px; background: #E8ECFB; color: #2F4FD0; font-size: 11px; font-weight: 800; line-height: 20px; text-align: center">{{ l.num }}</span></sc-if><div lang="{{ l.lang }}" style="flex: 1 1 auto; min-width: 0; line-height: 1.6; overflow-wrap: anywhere; font-family: {{ l.font }}; font-size: {{ l.size }}; font-weight: {{ l.weight }}; color: {{ l.color }}">{{ l.t }}</div></div></sc-for></div></sc-if>
 </div>
@@ -201,14 +201,17 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
    due first; once the day's sitting is done, one more for a learner who asks), one at a time, asked as it was first
    asked (a choice is one tap, a build is its tiles put in order and then checked, a spell is typed with the phone's
    keyboard and the Guarani keys), then where it moves on the track of C.STEPS (1, 3, 7 days; three right in a row
-   clears it), and a summary that leads on to the day. A choice's options come in another order each day, so what is
-   remembered is the answer and not its place. The session is the sitting as it stood when it opened; each answer is
-   recorded at once with reviewed(src, right). */
+   clears it), and a summary that leads on to the day. A choice's options come in another order than the lesson's, the
+   right answer never where the lesson had it nor where it stood the day before (orderOf), so what is remembered is
+   the answer and not its place. The session is the sitting as it stood when it opened; each answer is recorded at
+   once with reviewed(src, right). Its cross leaves for the screen it was opened from (app.opener). */
 const TRACK = ['mañana', 'en 3 días', 'en 1 semana', '¡aprendido!'];
 const SPAN = ['1 día', '3 días', '1 semana'];
 const DAY = 864e5;
 const LAST = { choice: 'La vez pasada elegiste:', build: 'La vez pasada armaste:', spell: 'La vez pasada escribiste:' };
 const SPEAKER = { N: 'Narrador', F: 'Mujer', M: 'Hombre' };
+/* the screens the review is opened from, and so the screens its cross leads back to */
+const LEAVE = { Notebook: 'Notebook', Main: 'Main', Today: 'Today' };
 const ANDIKA = "'Andika', 'Nunito', sans-serif";
 const NUNITO = "'Nunito', 'Avenir Next', sans-serif";
 /* a mistake's question, from the lesson data or, for a level-exam or placement item, from the extras when loaded;
@@ -309,11 +312,13 @@ function contextOf(C, it) {
 }
 /* a transcript as rows, the way the listening lesson shows it: who speaks ("Mujer: …" or [code, Guarani]) and what; a
    narrator line that only says a reply's number ("1") goes on the reply it introduces. Each row "plays" for 600 ms
-   + 120 ms per character of its lines when there is no clip; the narrator's Spanish (A1) is told apart */
+   + 120 ms per character of its lines when there is no clip; the narrator's Spanish (A1) is told apart. `n` is how many
+   of the clip's lines the row holds (a reply and the number said before it are two), for keeping time with a clip */
 function rowsOf(C, it, lines) {
   const rows = [];
   let num = '';
   let ms = 0;
+  let held = 0;
   lines.forEach((l, k) => {
     let code = '';
     let who = '';
@@ -331,10 +336,11 @@ function rowsOf(C, it, lines) {
     if (!t) return;
     const narr = code === 'N' || /^narrador/i.test(who);
     const len = 600 + t.length * 120;
-    if (narr && /^\d{1,2}\.?$/.test(t) && k < lines.length - 1) { num = t.replace('.', ''); ms += len; return; }
-    rows.push({ who, num, t, es: narr && langOf(it, t) === 'es', ms: ms + len });
+    if (narr && /^\d{1,2}\.?$/.test(t) && k < lines.length - 1) { num = t.replace('.', ''); ms += len; held += 1; return; }
+    rows.push({ who, num, t, es: narr && langOf(it, t) === 'es', ms: ms + len, n: held + 1 });
     num = '';
     ms = 0;
+    held = 0;
   });
   return rows;
 }
@@ -413,17 +419,27 @@ function bring(box, el) {
   try { calm = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); } catch (e) { calm = false; }
   try { box.scrollTo({ top, behavior: calm ? 'auto' : 'smooth' }); } catch (e) { box.scrollTop = top; }
 }
-/* A choice's options in the order the review shows them today: another order each day (seeded by the item and the
-   day, gnSpell.shuffle), and never the lesson's own when there are two or more, so the position is not what gets
-   remembered. The numbers on the buttons follow the order shown. Kept as written (fixed): an item whose audio numbers
+/* A choice's options in the order the review shows them today, so that what is remembered is the answer and not its
+   place. The right answer's place is set by rule: never the place the lesson gave it, and, with three options or
+   more, never the place it had the day before either (it takes the places that are not the lesson's in turn, a day
+   each, starting from one that depends on the item). The other options are dealt into the places left by a shuffle
+   seeded with the item and the day (gnSpell.shuffle). With two options there is one other place, and the answer
+   keeps it. The numbers on the buttons follow the order shown. Kept as written (fixed): an item whose audio numbers
    its replies, and the designed moment on the canvas. → the options' own indexes, in shown order */
-function orderOf(q, seed, fixed) {
+function orderOf(q, src, day, fixed) {
+  const C = window.gnCourse;
   const n = Array.isArray(q.options) ? q.options.length : 0;
   const same = Array.from({ length: n }, (_, k) => k);
   const S = window.gnSpell;
   if (fixed || n < 2 || !S || !S.shuffle) return same;
-  const order = S.shuffle(same, seed);
-  return order.every((x, k) => x === k) ? same.slice(1).concat([0]) : order;
+  const own = Number.isInteger(q.answer) && q.answer >= 1 && q.answer <= n ? q.answer - 1 : 0;
+  let h = 0;
+  for (const ch of String(src || '')) h = (h * 31 + ch.codePointAt(0)) % 9973;
+  const turn = (((C.daysBetween('2000-01-01', day) + h) % (n - 1)) + (n - 1)) % (n - 1);
+  const place = (own + 1 + turn) % n;
+  const order = S.shuffle(same.filter((k) => k !== own), src + '|' + day);
+  order.splice(place, 0, own);
+  return order;
 }
 /* one answer per item: a choice's option number, a build's tile in each slot, a spell's typed text */
 function fresh(it) {
@@ -457,6 +473,9 @@ class Component extends DCLogic {
       playing: false,
       played: demo,
       line: -1,
+      /* why the item on show is read from its transcript, once it is: 'none' (no clip is recorded), 'failed' (it could
+         not be loaded), 'off' (the voice is turned off). It then stays read, whatever arrives; the next item starts afresh */
+      read: '',
     };
     this.boxRef = (el) => { this.boxEl = el; };
     this.linesRef = (el) => { this.linesEl = el; };
@@ -527,7 +546,9 @@ class Component extends DCLogic {
     this.setAns(k, { typed: v.slice(0, a) + key + v.slice(b) });
   }
   /* the stand-in when there is no clip: the button stays lit as long as the lines would take to say; a transcript's
-     rows are lit in turn while they "play", as in the listening lesson */
+     rows are lit in turn while they "play", as in the listening lesson. With a clip put together from lines, the row
+     that is being said is told by the clip's own cues (gnSound.cues, gnCourse.cueLine), so the card can name who
+     speaks while nothing is written yet. → whether a clip is playing (false: the stand-in runs) */
   play(src, text, rows) {
     const C = window.gnCourse;
     const snd = window.gnSound;
@@ -536,9 +557,21 @@ class Component extends DCLogic {
     const parts = !real && Array.isArray(rows) && rows.length ? rows.map((r) => r.ms) : null;
     let ms = parts ? parts.reduce((a, b) => a + b, 0) : 600 + C.plain(text).length * 120;
     if (real && snd.ms && snd.ms(src)) ms = snd.ms(src);
+    /* each line of the clip, and the row it belongs to */
+    const rowOf = [];
+    (Array.isArray(rows) ? rows : []).forEach((r, j) => { for (let n = 0; n < (r.n || 1); n++) rowOf.push(j); });
+    const cues = real && snd.cues ? snd.cues(src) : null;
+    const timed = !!cues && rowOf.length > 0 && cues.length === rowOf.length;
     clearTimeout(this.tm);
     clearInterval(this.lt);
-    this.setState({ playing: true, line: parts ? 0 : -1 });
+    this.setState({ playing: true, line: parts || timed ? 0 : -1 });
+    if (timed) {
+      this.lt = setInterval(() => {
+        const at = snd.at ? snd.at() : -1;
+        const k = at >= 0 ? rowOf[C.cueLine(cues, at)] : 0;
+        if (k !== this.state.line) this.setState({ line: k });
+      }, 100);
+    }
     if (parts) {
       const t0 = Date.now();
       this.lt = setInterval(() => {
@@ -549,6 +582,7 @@ class Component extends DCLogic {
       }, 100);
     }
     this.tm = setTimeout(() => { clearInterval(this.lt); this.setState({ playing: false, played: true, line: -1 }); }, ms);
+    return real;
   }
   renderVals() {
     const C = window.gnCourse;
@@ -570,7 +604,14 @@ class Component extends DCLogic {
     /* until the clips are recorded a listening item plays in silence: from its first play on, its transcript (who says
        what) is shown, each row lit while it "plays", so it is answered from the text, and still scored */
     const clip = q.clip || entry.src;
-    const silent = hasPlay && !(window.gnSound && window.gnSound.has && window.gnSound.has(clip));
+    /* where the clip stands (gnCourse.soundState): while its sound file is on its way the card waits («Cargando el
+       audio…»: nothing stands in, the options stay shut); without a clip, for any other reason, the item is read, and
+       once it is read it stays so (s.read) */
+    const now = hasPlay ? C.soundState(clip) : 'none';
+    const coming = hasPlay && now === 'coming' && !s.read;
+    const silent = hasPlay && !coming && (now !== 'in' || !!s.read);
+    const quietWhy = s.read || (now === 'in' || now === 'coming' ? 'failed' : now);
+    const WHY = { none: 'Todavía no está grabado', failed: 'No se pudo cargar el audio', off: 'La voz sintética está apagada' };
     const reading = silent && (s.playing || !!s.played);
     /* the options open once the clip has played; with no clip, as soon as the transcript shows */
     const locked = answered || (hasPlay && !s.played && !reading);
@@ -580,7 +621,7 @@ class Component extends DCLogic {
     const options = kind === 'choice' && Array.isArray(q.options) ? q.options : [];
     const wide = options.some((o) => C.chars(C.plain(o)).length > 14 || C.wordEms(o) * 16 > 108);
     /* today's order of the options; an answer is kept by the option's own number (n), the button shows its place (at) */
-    const shown = orderOf({ options }, entry.src + '|' + this.day, hasPlay || !this.props.go);
+    const shown = orderOf({ options, answer: q.answer }, entry.src, this.day, hasPlay || !this.props.go);
     const shownAnswer = shown.indexOf((q.answer || 1) - 1) + 1;
     const opts = shown.map((own, j) => {
       const label = options[own];
@@ -701,6 +742,7 @@ class Component extends DCLogic {
     const playText = ctx ? ctx.text : '';
     /* after the review, the day: the next session of the plan (the week test opens on its own page) */
     const app = this.props.app || this.sampleApp || {};
+    const opener = this.props.go && LEAVE[app.opener] ? app.opener : 'Notebook';
     const nextS = (app.status && app.status.next) || null;
     const onward = nextS ? {
       show: true,
@@ -731,6 +773,9 @@ class Component extends DCLogic {
         contextHead: ctx ? ctx.head : '',
         context: ctx ? ctx.text : '',
         silentNote: reading,
+        readNote: C.soundNote(quietWhy, 'leé lo que se dice.'),
+        /* the item's clip is a voice model's: the play card says so, at the end of its title line */
+        synth: hasPlay && !silent && C.synth(clip),
         isPassage: !!ctx && !(ctx.rows && ctx.rows.length),
         isScript: !!(ctx && ctx.rows && ctx.rows.length),
         segs,
@@ -783,12 +828,23 @@ class Component extends DCLogic {
       playBg: s.playing ? '#F2B43A' : '#E8ECFB',
       playShadow: s.playing ? 'none' : '0 3px 0 #1B2440',
       /* with no clip it says so before the tap, as Listening does, and what to do instead */
-      playNote: s.playing ? (silent ? 'Se reproduce en silencio…' : 'Sonando…') : !s.played ? (silent ? 'Todavía no está grabado: tocá y leé lo que se dice.' : 'Escuchá primero: después se abren las respuestas.') : answered ? 'La transcripción está abajo.' : silent ? 'Elegí según lo que se dice.' : 'Elegí lo que escuchaste.',
+      /* while a clip plays, who is speaking (as the listening lesson's status line says it): the two voices of a
+         dialogue are one synthetic voice a little apart, and two questions turn on who says what. It stands beside
+         the note, not in its live region: a screen reader does not speak over the clip at every line */
+      playWho: (() => {
+        const row = s.playing && !silent && ctx && ctx.rows && s.line >= 0 ? ctx.rows[s.line] : null;
+        if (!row) return '';
+        return ' ' + (row.num && +row.num <= options.length ? 'Respuesta ' + row.num + ' de ' + options.length : 'Línea ' + (s.line + 1) + ' de ' + ctx.rows.length) + (row.who ? ' · ' + row.who : '');
+      })(),
+      playNote: s.playing ? (silent ? 'Se reproduce en silencio…' : 'Sonando…') : !s.played ? (coming ? C.SOUND_COMING : silent ? (WHY[quietWhy] || WHY.none) + ': tocá y leé lo que se dice.' : 'Escuchá primero: después se abren las respuestas.') : answered ? 'La transcripción está abajo.' : silent ? 'Elegí según lo que se dice.' : 'Elegí lo que escuchaste.',
       play: () => {
         /* the first play with no clip opens the transcript and the options at once: then the options come into view */
         const st = this.state;
+        /* the clip is on its way: the card waits, and its note says so */
+        if (coming) return;
         if (silent && kind === 'choice' && !st.played && !st.playing && !(st.ans[k] && st.ans[k].done)) this.reveal = true;
-        this.play(clip, playText, ctx && ctx.rows);
+        const real = this.play(silent ? '' : clip, playText, ctx && ctx.rows);
+        if (!real && !st.read) this.setState({ read: quietWhy });
       },
       /* the transcript's rows (a listening item): the speaker, the reply's number, the line, lit while it "plays" */
       script: (ctx && ctx.rows ? ctx.rows : []).map((r, j) => ({
@@ -848,8 +904,8 @@ class Component extends DCLogic {
         clearTimeout(this.tm);
         clearInterval(this.lt);
         if (window.gnSound && window.gnSound.stop) window.gnSound.stop();
-        if (last) this.setState({ summary: true, playing: false, line: -1 });
-        else this.setState({ i: s.i + 1, playing: false, played: false, line: -1 });
+        if (last) this.setState({ summary: true, playing: false, line: -1, read: '' });
+        else this.setState({ i: s.i + 1, playing: false, played: false, line: -1, read: '' });
       },
       doneHead: total === 0 ? 'Estás al día' : 'Repaso terminado',
       doneLine: (total === 0 ? 'No hay nada para repasar hoy. Cada error vuelve el día que le toca.' : total === 1 ? 'Repasaste la pregunta de hoy.' : 'Repasaste las ' + total + ' preguntas de hoy.') + (s.summary && waiting > 0 ? (waiting === 1 ? ' Queda 1 para los próximos días.' : ' Quedan ' + waiting + ' para los próximos días.') : ''),
@@ -861,6 +917,11 @@ class Component extends DCLogic {
         stat(count('back'), count('back') === 1 ? 'Vuelve mañana' : 'Vuelven mañana', count('back') === 1 ? 'empieza otra vez desde el principio' : 'empiezan otra vez desde el principio'),
       ],
       toNotebook: nav('Notebook'),
+      /* the cross leaves for the screen the review was opened from (the engine keeps the door: app.opener): the week
+         path's row, the day's row, or the notebook. «Volver al cuaderno» stays the notebook's, and the canvas alone,
+         which has no door, shows the notebook */
+      leaveHref: LEAVE[opener] + '.dc.html',
+      toLeave: nav(LEAVE[opener]),
     };
   }
 }

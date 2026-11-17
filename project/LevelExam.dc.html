@@ -34,13 +34,13 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 
 <div style="flex-shrink: 0; padding: 50px 16px 10px; background: #1B2440; color: #FFFFFF; display: flex; align-items: center; gap: 8px">
 <sc-if value="{{ band.quit }}" hint-placeholder-val="{{ false }}">
-<button aria-label="Salir del examen" onClick="{{ askQuit }}" style="width: 44px; height: 44px; margin-left: -10px; border: 0; background: none; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+<button aria-label="Salir del examen" onClick="{{ askQuit }}" data-gn-back="screen" style="width: 44px; height: 44px; margin-left: -10px; border: 0; background: none; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
 </sc-if>
 <sc-if value="{{ band.home }}" hint-placeholder-val="{{ true }}">
-<a href="ExamTab.dc.html" onClick="{{ toTab }}" aria-label="Volver a la pestaña Examen" style="width: 44px; height: 44px; margin-left: -10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+<a href="ExamTab.dc.html" onClick="{{ toTab }}" aria-label="Volver a la pestaña Examen" data-gn-back="screen" style="width: 44px; height: 44px; margin-left: -10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
 </sc-if>
 <sc-if value="{{ band.back }}" hint-placeholder-val="{{ false }}">
-<button aria-label="Volver al resultado" onClick="{{ toResult }}" style="width: 44px; height: 44px; margin-left: -10px; border: 0; background: none; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+<button aria-label="Volver al resultado" onClick="{{ toResult }}" data-gn-back="screen" style="width: 44px; height: 44px; margin-left: -10px; border: 0; background: none; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
 </sc-if>
 <div style="flex-grow: 1; min-width: 0; height: 44px; display: flex; flex-direction: column; justify-content: center">
 <div style="font-size: 16px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis"><span lang="gn">{{ band.gn }}</span>{{ band.sep }}{{ band.title }}</div>
@@ -183,7 +183,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </div>
 
 <div style="margin-top: 14px; padding: 10px 14px 12px; border-radius: 18px; background: #FFFFFF; border: 2px solid #1B2440; display: flex; flex-direction: column; gap: 8px">
-<div style="font-size: 11px; font-weight: 800; color: #B02A63">LA PARTE QUE SIGUE</div>
+<div style="display: flex; align-items: center; gap: 8px"><div style="flex-grow: 1; min-width: 0; font-size: 11px; font-weight: 800; color: #B02A63">LA PARTE QUE SIGUE</div><sc-if value="{{ synthP2 }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap">voz sintética</span></sc-if></div>
 <div style="display: flex; align-items: center; gap: 10px">
 <div style="width: 26px; height: 26px; border-radius: 8px; background: #1B2440; color: #FFFFFF; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0">{{ up.n }}</div>
 <div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column">
@@ -284,11 +284,12 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="margin-top: 10px; padding: 12px 14px; border-radius: 18px; background: #FFFFFF; border: 2px solid #1B2440; display: flex; flex-direction: column; gap: 10px">
 <div style="display: flex; align-items: center; gap: 12px">
 <div style="width: 24px; height: 24px; border-radius: 7px; background: #1B2440; color: #FFFFFF; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0">{{ lq.no }}</div>
-<div aria-hidden="true" style="flex-grow: 1; height: 40px; display: flex; align-items: center; justify-content: space-between">
+<div aria-hidden="true" style="flex-grow: 1; min-width: 0; height: 40px; display: flex; align-items: center; justify-content: space-between">
 <sc-for list="{{ wave }}" as="b" hint-placeholder-count="24">
 <div style="width: 4px; border-radius: 2px; height: {{ b.h }}; background: {{ b.bg }}"></div>
 </sc-for>
 </div>
+<sc-if value="{{ synthP2 }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap">voz sintética</span></sc-if>
 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{ speakerInk }}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 9a4 4 0 0 1 0 6"/></svg>
 </div>
 <div role="img" aria-label="{{ phaseAria }}" style="display: flex; gap: 5px">
@@ -2343,6 +2344,9 @@ betw,
 /* the sound check, where the listening part has its audio; else a note that it has none yet */
 soundCheck: !readP2,
 noAudio: readP2,
+/* the listening part's clips are a voice model's: the pause before it says so in the head of «la parte que sigue», and
+   the part itself in the audio's card, beside the speaker mark (the tag «voz sintética», gnCourse.synth) */
+synthP2: !readP2 && C.synth(M.P2.map((x) => x.id)),
 playCheck: () => {
 const snd = window.gnSound;
 const ok = !!(snd && snd.has('c.check') && snd.unlock());

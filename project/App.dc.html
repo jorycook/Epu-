@@ -51,6 +51,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <sc-if value="{{ at.Leer }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Leer" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
 <sc-if value="{{ at.Escribir }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Escribir" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
 <sc-if value="{{ at.Hablar }}" hint-placeholder-val="{{ false }}"><div style="animation: gn-in 220ms ease-out"><dc-import name="Hablar" go="{{ go }}" app="{{ app }}" save="{{ save }}" miss="{{ miss }}" reviewed="{{ reviewed }}" level="{{ level }}" hint-size="390px,844px"></dc-import></div></sc-if>
+<div aria-live="polite" style="position: absolute; left: 0; top: 50px; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap">{{ voiceNote }}</div>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
@@ -64,13 +65,18 @@ super(props);
 this.state = window.gnCourse.fresh();
 this.h = window.gnCourse.handlers(() => this.state, (fn) => this.setState(fn));
 }
-/* a unit's sound file arrived (the engine fetches it when the unit is in use): the screen draws its controls again */
+/* a unit's sound file arrived, or could not be fetched (the engine fetches it when the unit is in use, and says so
+   with `gnsound`): the screen draws its controls again. And the first tag «voz sintética» of the visit is on a screen
+   (the engine says so with `gnvoice`): what it means is said once, for a screen reader, in this board's own live
+   region, which is emptied again a moment later (`gnvoice` once more); a tap on a sound control never says it again */
 componentDidMount() {
 this.onSound = () => this.forceUpdate();
 document.addEventListener('gnsound', this.onSound);
+document.addEventListener('gnvoice', this.onSound);
 }
 componentWillUnmount() {
 document.removeEventListener('gnsound', this.onSound);
+document.removeEventListener('gnvoice', this.onSound);
 }
 renderVals() {
 const s = this.state;
@@ -78,6 +84,7 @@ const at = {};
 SCREENS.forEach((n) => { at[n] = s.screen === n; });
 return {
 at,
+voiceNote: window.gnCourse.voiceNote(),
 app: window.gnCourse.view(s),
 go: this.h.go,
 save: this.h.save,

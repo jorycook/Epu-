@@ -1,5 +1,6 @@
 // Platform checks for the built Epu'ã app (docs/), the way an iPhone meets it, and an Android phone: fitting the
-// 390x844 design to each phone (and the note for a phone held sideways), the install page in each browser and the
+// 390x844 design to each phone (and the note for a phone held sideways), the install page in each browser (Safari,
+// Chrome and Firefox on Android, Samsung Internet with progress to take to Chrome, a page inside another app) and the
 // Home Screen app skipping it, the page's own first paint, the offline copy (every file stored under its own hash,
 // each downloaded once, the level's sound kept once there is a plan and each of its files downloaded once too, a cold
 // start and every screen offline), picking up a new build (only the files that changed
@@ -54,6 +55,8 @@ const MAC_IPAD = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/60
 /* an Android phone in Chrome (a Galaxy A15), and in Firefox, which never offers to install through the page */
 const ANDROID = 'Mozilla/5.0 (Linux; Android 14; SM-A155M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36';
 const ANDROID_FIREFOX = 'Mozilla/5.0 (Android 14; Mobile; rv:131.0) Gecko/131.0 Firefox/131.0';
+/* and in Samsung Internet, the browser most Android phones in Paraguay open a link with */
+const ANDROID_SAMSUNG = 'Mozilla/5.0 (Linux; Android 14; SAMSUNG SM-A155M) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/26.0 Chrome/122.0.0.0 Mobile Safari/537.36';
 /* a page opened inside another app: a link tapped in Instagram, on Android (a WebView says "wv") and on an iPhone (such
    a page does not name Safari) */
 const ANDROID_INAPP = 'Mozilla/5.0 (Linux; Android 14; SM-A155M Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/130.0.6723.58 Mobile Safari/537.36 Instagram 331.0.0.37.90 Android (34/14; 450dpi; 1080x2340; samsung; SM-A155M; a15; mt6789; es_US; 598808576)';
@@ -780,6 +783,22 @@ async function fontsUsed(page, cdp, facts) {
       ok(lic.replace(/\s+/g, ' ').includes(body), `licenses.txt should hold ${dir}'s OFL.txt word for word`);
     }
     if (facts) for (const [fam, w, , file] of FACES) { const c = (facts[fam + '|' + w].names['0'] || [])[0]; ok(c && lic.includes(c.replace(/\s+/g, ' ').trim()), `licenses.txt should carry ${file}'s copyright line as the font has it`, c); }
+    /* the synthetic voice's credit: where the build ships clips of a voice model, licenses.txt carries the attribution
+       its licence asks for (CC BY-NC 4.0: the maker, the licence and its address, where the models are, that the audio
+       was changed) and says what non-commercial means for the app; a build without sound says that no recording exists */
+    {
+      const idx = fs.existsSync(path.join(SITE, 'assets/gn-sound-index.js')) ? fs.readFileSync(path.join(SITE, 'assets/gn-sound-index.js'), 'utf8') : '';
+      let voices = {};
+      try { voices = JSON.parse((/__gnSoundVoices = (\{[\s\S]*?\});/.exec(idx) || [, '{}'])[1]); } catch (e) { voices = {}; }
+      const models = [...new Set(Object.values(voices).filter((v) => v && v.kind === 'synthetic' && v.model).map((v) => v.model))].sort();
+      const shipsSound = fs.readdirSync(path.join(SITE, 'assets')).some((f) => /^gn-sound-(?!index)[a-z0-9-]+\.js$/.test(f));
+      const flat = lic.replace(/\s+/g, ' ');
+      if (shipsSound && models.length) {
+        ok(models.every((m) => flat.includes('https://huggingface.co/' + m)) && /Voz sintética: MMS-TTS/.test(flat) && /de Meta AI/.test(flat) && /Pratap et al\./.test(flat) && /Licencia CC BY-NC 4\.0, solo para uso no comercial: https:\/\/creativecommons\.org\/licenses\/by-nc\/4\.0\//.test(flat) && /modificado \(recortes, tono\)/.test(flat), 'licenses.txt should carry the synthetic voice\'s attribution: the models and where they are, the licence and its address, and that the audio was changed', models.join(', '));
+        ok(/not CC BY 4\.0/.test(flat) && /free app without advertising/.test(flat) && /sold, sits behind a subscription or carries advertising/.test(flat) && /must replace them first/.test(flat), 'licenses.txt should say the clips are CC BY-NC 4.0, not CC BY 4.0, and what that means: a free app without ads may use them, one that is sold or carries ads must replace them first');
+        pass('licenses.txt: the synthetic voice (' + models.join(', ') + ') is credited, under CC BY-NC 4.0, non-commercial');
+      } else if (!shipsSound) ok(/No recordings exist yet/.test(flat), 'licenses.txt of a build without sound should say that no recordings exist yet');
+    }
     pass('licenses.txt: ' + lic.length + ' characters');
   }
 
@@ -1027,9 +1046,35 @@ async function fontsUsed(page, cdp, facts) {
       ok(/Abrí el menú del navegador/.test(await stageText(page)) && !(await page.locator('#gn-stage button').filter({ hasText: 'Instalar Epu' }).count()), 'an offer turned down should leave the menu\'s steps, with no button that does nothing', (await stageText(page)).slice(0, 200));
       await ctx.close();
     }
+    /* An Android browser other than Chrome that already holds progress (Samsung Internet, the default on most phones
+       in Paraguay): the page still says «¿No aparece? Abrí primero esta página en Chrome», but Chrome keeps its own
+       storage, so the app installed from there starts empty. The promise that the progress is the same is made for an
+       install from this browser, and the code is offered for the other way */
+    {
+      const ctx = await phone(browser, 360, 648, { label: 'install android samsung', ua: ANDROID_SAMSUNG, reducedMotion: 'reduce' });
+      const page = await ctx.newPage();
+      const logs = [];
+      watch(page, logs);
+      await page.goto(P.base);
+      await ready(page);
+      let t = await stageText(page);
+      ok((await screenName(page)) === 'Install' && (await page.evaluate(() => window.gnApp.browser)) === 'Samsung Internet' && /Abrí primero esta página en Chrome/.test(t) && /Tu progreso es el mismo de acá/.test(t) && !/Copiar mi progreso/.test(t), 'Samsung Internet with no progress yet should get the menu\'s steps and the way to Chrome, and no code to copy', t.slice(0, 300));
+      await page.evaluate(([k, v]) => localStorage.setItem(k, v), [KEY, JSON.stringify(SAVED)]);
+      await page.reload();
+      await ready(page);
+      t = await stageText(page);
+      ok(/Abrí primero esta página en Chrome/.test(t) && /Instalada desde Samsung Internet, tu progreso es el mismo/.test(t) && !/Tu progreso es el mismo de acá/.test(t), 'with progress in Samsung Internet, the page should promise the same progress only for an install made from that browser', t.slice(0, 400));
+      ok(/Desde Chrome la app empieza vacía: llevá tu progreso con este código/.test(t) && /Copiar mi progreso/.test(t), 'and it should say that the app installed from Chrome starts empty, and offer the code that takes the progress there', t.slice(-300));
+      note(`360x648 Samsung Internet with progress: install page ${await fits(page, 'Samsung Internet 360x648 (with progress)', 360, 648)}`);
+      await shot(page, 'install-android-samsung-progress-360x648');
+      ok(logs.length === 0, 'Samsung Internet: console problems on the install page', logs.slice(0, 3).join(' ; '));
+      await ctx.close();
+    }
     /* a page opened inside another app (a link tapped in Instagram): it cannot be installed from there, and what it
-       saves stays inside that app. On Android the steps start with Chrome and nothing says the progress is the same;
-       on an iPhone nothing is said of Safari (it is not Safari). With progress made there, the code is offered */
+       saves stays inside that app. The steps start with the way out of that app: Chrome on Android (and nothing says
+       the progress is the same), Safari on an iPhone (such a page has no Share menu of Safari's, so the three steps
+       of Safari alone would lead nowhere; nothing is said of what Safari deletes). With progress made there, the
+       code is offered */
     for (const [name, ua, w, h] of [['an Android phone, inside another app', ANDROID_INAPP, 360, 648], ['an iPhone, inside another app', IPHONE_INAPP, 390, 664]]) {
       const ctx = await phone(browser, w, h, { label: 'install in-app ' + w + 'x' + h, ua, reducedMotion: 'reduce' });
       const page = await ctx.newPage();
@@ -1042,7 +1087,7 @@ async function fontsUsed(page, cdp, facts) {
       ok((await screenName(page)) === 'Install' && flags.inApp === true && flags.apart === true && flags.browser === 'el navegador', `${name}: the app should know the page is inside another app, which keeps what it saves to itself`, JSON.stringify(flags));
       ok(/queda dentro de esta app/.test(t) && !/es el mismo|Safari borra|Copiar mi progreso/.test(t), `${name}: the page should say the progress stays inside that app (and nothing of a shared progress, or of Safari)`, t.slice(-260));
       if (/Android/.test(ua)) ok(/Abrí esta página en Chrome/.test(t) && /«Instalar app»/.test(t) && /lo que hagas acá no pasa a la app/.test(t), `${name}: the steps should start with opening the page in Chrome`, t.slice(0, 300));
-      else ok(/Tocá Compartir/.test(t) && /Abrí primero esta página en Safari/.test(t), `${name}: the steps should be the Share menu's, with the way to Safari`, t.slice(0, 300));
+      else ok(/1\s*Abrí esta página en Safari/.test(t) && /«Abrir en Safari»/.test(t) && /2\s*En Safari, tocá Compartir/.test(t) && /3\s*Abrí Epu'ã desde su ícono/.test(t) && !/Abrí primero esta página en Safari|Tocá Compartir/.test(t), `${name}: the steps should start with opening the page in Safari, then Safari's Share menu`, t.slice(0, 400));
       const how = [await fits(page, `${name} ${w}x${h}`, w, h)];
       await shot(page, `install-inapp-${/Android/.test(ua) ? 'android' : 'iphone'}-${w}x${h}`);
       /* with progress made inside that app, the code to take it along */
@@ -1863,6 +1908,25 @@ async function fontsUsed(page, cdp, facts) {
       await look('Install', 'Install (Android, installed)');
       await cdp.send('Emulation.setUserAgentOverride', { userAgent: IPHONE });
     }
+    /* the install page inside another app on an iPhone (its steps are a list of their own, starting with the way out to
+       Safari), and in an Android browser other than Chrome that holds progress (the row with the code) */
+    {
+      await cdp.send('Emulation.setUserAgentOverride', { userAgent: IPHONE_INAPP });
+      await page.goto(L.base + '?install&inapp');
+      await ready(page, 250);
+      ok((await screenName(page)) === 'Install' && /Abrí esta página en Safari/.test(await stageText(page)), 'the install page inside another app on an iPhone should start with the way to Safari', (await stageText(page)).slice(0, 200));
+      await look('Install', 'Install (an iPhone, inside another app)');
+      await cdp.send('Emulation.setUserAgentOverride', { userAgent: ANDROID_SAMSUNG });
+      await page.goto(L.base + '?install&samsung');
+      await ready(page, 200);
+      await page.evaluate(([k, v]) => localStorage.setItem(k, v), [KEY, JSON.stringify(SAVED)]);
+      await page.goto(L.base + '?install&samsung&progress');
+      await ready(page, 250);
+      ok(/Desde Chrome la app empieza vacía/.test(await stageText(page)), 'the install page in Samsung Internet with progress should carry the row with the code', (await stageText(page)).slice(-200));
+      await look('Install', 'Install (Samsung Internet, with progress)');
+      await page.evaluate(() => { localStorage.clear(); sessionStorage.clear(); });
+      await cdp.send('Emulation.setUserAgentOverride', { userAgent: IPHONE });
+    }
     /* the shell's own states, none of them a screen of the canvas: its notices above the tab bar (what is saved is a
        newer build's; a progress code has just replaced the progress; Safari clears a page left alone for a week), and
        the note that stands in for a screen of the later file while it is on its way, or when it could not be fetched */
@@ -1901,6 +1965,10 @@ async function fontsUsed(page, cdp, facts) {
       await page.waitForTimeout(700);
       ok(/Cargando…/.test(await noteNow()), 'a screen of the later file asked for before it is in should get the waiting note', await noteNow());
       await look('Shell', 'Shell (a later screen on its way)');
+      /* still on its way a few seconds later: the note offers the way back */
+      await page.waitForTimeout(4700);
+      ok((await page.locator('#gn-stage button').filter({ hasText: 'Volver' }).count()) === 1 && (await page.locator('#gn-stage button').filter({ hasText: 'Intentá de nuevo' }).count()) === 0, 'after a few seconds of waiting the note should offer the way back', await noteNow());
+      await look('Shell', 'Shell (a later screen on its way, the way back offered)');
       hold = false;
       release();
       await page.waitForFunction(() => { const el = document.querySelector('#gn-stage .sc-host .sc-host'); return !!el && el.getAttribute('data-sc-name') === 'Progress'; }, null, { timeout: 8000 }).catch(() => {});
@@ -1952,25 +2020,67 @@ async function fontsUsed(page, cdp, facts) {
       const tests = {};
       more.tests.forEach((id) => { tests[id] = result(id); });
       const END = { level: 'A1', plan: { start: day(-7 * more.last), target: null, pace: 'fit', minutes: 30 }, done: fill(more.all), tests, seen: [day(-2), day(-1)] };
+      /* Two states a re-test found cut or broken, each with its own measure (the fifth entry: what is wrong, or '').
+         Progreso behind the plan, where the offer to make the plan again is one more row in a list that had no room for
+         one: nothing of the list may lie below its fold (the «lo usé» chips used to end up under the «Tu progreso» row,
+         with nothing to say the list scrolled); worst with a weak area, whose next step takes two lines. And the week
+         path's closed card with a review of two figures: the Cuaderno tile's text stays on two lines («12 hoy»; «12
+         para hoy» broke into three, pressed against the tile's border) */
+      const listFits = () => {
+        const host = document.querySelector('#gn-stage .sc-host[data-sc-name="Progress"]');
+        const list = host && [...host.querySelectorAll('div')].filter((d) => /auto|scroll/.test(getComputedStyle(d).overflowY))[0];
+        if (!list) return 'no scrolling list found';
+        const box = list.getBoundingClientRect();
+        const pad = parseFloat(getComputedStyle(list).paddingBottom) || 0;
+        const under = [...list.querySelectorAll('a, button')].filter((c) => c.getBoundingClientRect().bottom > box.bottom + 0.5).map((c) => (c.getAttribute('aria-label') || c.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 24));
+        const over = list.scrollHeight - list.clientHeight;
+        return under.length || over > pad ? `the list is ${over} px longer than its ${list.clientHeight} px` + (under.length ? ', below the fold: ' + under.join(', ') : '') : '';
+      };
+      const tileFits = () => {
+        const tile = document.querySelector('#gn-stage [aria-labelledby="mientras-tanto"] a[href="Notebook.dc.html"]');
+        const words = tile && tile.querySelector('span');
+        if (!words) return 'no Cuaderno tile found';
+        const k = tile.getBoundingClientRect().height / 44;
+        const h = words.getBoundingClientRect().height / k;
+        return h > 28.5 ? `the tile's text is ${h.toFixed(1)} px tall in its 44-px tile: three lines («${words.innerText.replace(/\s+/g, ' / ')}»)` : '';
+      };
+      const WEAK = Object.assign({}, BACK, { tests: { a1u01t: Object.assign(result('a1u01t'), { score: 14, areas: { vocab: { right: 3, of: 6 }, grammar: { right: 7, of: 8 }, reading: { right: 3, of: 3 }, listening: { right: 1, of: 3 } } }) } });
+      const LATE = Object.assign({}, WEAK, { plan: { start: day(-80), target: day(-3), pace: 'fit', minutes: 15 } });
+      const LONG = Object.assign({}, END, { m: more.drills.map((x, k) => ({ src: x.src, wrong: x.wrong, at: Date.now() - (20 + k) * 864e5, step: 0, due: day(-14) })), seen: [day(-16), day(-15)] });
       const cases = [
         ['Main', 'back after days', BACK, '¡Volviste!'],
         ['Notebook', 'back after days', BACK, 'Hay 12 esperando'],
         ['Review', 'back after days', BACK, '1 / 8'],
-        ['Progress', 'back after days', BACK, 'Rearmar mi plan'],
+        ['Progress', 'back after days', BACK, 'Rearmar mi plan', listFits],
+        ['Progress', 'behind the plan, a weak area', WEAK, 'más pasás la línea', listFits],
+        ['Progress', 'past the date, a weak area', LATE, 'fecha pasada', listFits],
         ['Goal', 'a plan that exists', BACK, 'Guardar el plan'],
         ['Main', 'the end of the written path', END, 'MIENTRAS TANTO'],
+        ['Main', 'the end of the written path, a review of two figures', LONG, more.drills.length + ' hoy', tileFits],
         ['Today', 'a sealed day', Object.assign({}, END, { cur: more.lastReview }), '¿Un rato más?'],
       ].concat(more.mini ? [['Progress', 'the mini exam as the next step', END, 'Sigue: Mini examen 1'], ['ExamTab', 'the mini exam open', END, '20 preguntas de las semanas'], ['Exam', 'the mini exam under way', Object.assign({}, END, { set: 'mini1' }), 'MINI EXAMEN 1']] : []);
       let seenNew = 0;
-      for (const [scr, label, sample, says] of cases) {
+      for (const [scr, label, sample, says, fits] of cases) {
         await page.goto(L.base + '?gntest&screen=' + scr + address(sample));
         await ready(page, 250);
         const said = (await stageText(page)).includes(says);
         const fresh = await look(scr, `${scr} (${label})`);
         ok(said && fresh, `${scr} (${label}): the screen should be in that state (it says «${says}»)`, (await stageText(page)).slice(0, 200));
+        if (fits) { const wrong = await page.evaluate(fits); ok(!wrong, `${scr} (${label}): what it shows should fit`, wrong); }
         if (said && fresh) seenNew += 1;
       }
-      note(`${seenNew} more states looked at: a learner back after days and behind the plan, and one at the end of the written path`);
+      note(`${seenNew} more states looked at: a learner back after days and behind the plan (with a weak area, and past the date), and one at the end of the written path (with a long review)`);
+    }
+    /* a week test left part way: its cross asks first (a sheet), and the system's back, which presses it, does too */
+    {
+      await page.goto(L.base + '?gntest&screen=Exam&set=test' + address(SAMPLE));
+      await ready(page, 250);
+      await page.locator('#gn-stage button[aria-pressed]').first().click();
+      await page.locator('#gn-stage a[aria-label="Salir de la prueba de la semana"]').click();
+      await page.waitForTimeout(450);
+      const asks = await page.evaluate(() => { const d = document.querySelector('#gn-stage [role="dialog"]'); return d ? d.innerText.replace(/\s+/g, ' ').trim() : ''; });
+      const fresh = await look('Exam', 'Exam (a week test left part way)');
+      ok(/¿Salir de la prueba\?/.test(asks) && /Seguir con la prueba/.test(asks) && /Salir sin guardar/.test(asks) && fresh, 'a week test left part way should ask first, in a sheet of its own', asks.slice(0, 200));
     }
     /* one tap deeper: each control of each screen (part way, then in the later week), once, and what it leads to */
     let crawled = 0;

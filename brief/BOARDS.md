@@ -14,6 +14,16 @@ const SAMPLE = { level: 'A1', started: true, plan: { start: C.addDays(T, -3), ta
 // grammar teach page read, and one mistake of day 3 is due for review: the Cuaderno tab says 1 on the four tab bars.
 ```
 
+**The voice's tag, on every board that plays a clip.** The clips of A1 units 1 to 4 are a synthetic voice's
+(`sound/VOICE.md`). A board on its own loads no sound file and shows its silent stand-ins; in the prototype and the app,
+wherever a control's clip is a voice model's, the tag «voz sintética» stands next to it from the start: a grey chip
+(`#5A6382` on `#EEF0F6`, 11 px/800, radius 8), never in a live region, hidden by its `sc-if` on the canvas. The
+recipe and the two lines a new board needs are in BRIEF-core.md §6 (`gnCourse.synth`); where the tag goes is said
+with each board below. A control without a clip keeps its stand-in and its «todavía no está grabado», which is also
+true of a clip the voice must not say (`sound/silent.json`). The prototype board says what the tag means once, for a
+screen reader, in a 1-px live region of its own (`gnCourse.VOICE_NOTE`, on the document's `gnvoice`), as the app's
+shell does.
+
 ## Row 1 · y 0 · "Start: why you learn, where you start, your plan"
 
 | x | File | Canvas title | Model |
@@ -50,8 +60,13 @@ const SAMPLE = { level: 'A1', started: true, plan: { start: C.addDays(T, -3), ta
   Opened again on a plan that exists (Main's date chip, Progreso's «Rearmar mi plan»: the app only), step 3 is the way
   to change the plan: the line under the heading reads "El plan se arma de nuevo desde hoy. Lo que ya hiciste queda
   hecho." (its second sentence only once a session is done), the plan box counts what is left ("Te quedan 48 de 56 sesiones", its note worked out on those), and the
-  buttons are "Heja · Cancelar" (white, back to the week path, nothing saved) and "Ñongatu · Guardar el plan" (indigo):
-  the plan saved starts today at the session the learner had reached (`plan.from`, the engine's `C.reached`).
+  buttons are "Heja · Cancelar" (white, back to the screen that opened it, nothing saved) and "Ñongatu · Guardar el
+  plan" (indigo, then the week path): the plan saved starts today at the session the learner had reached (`plan.from`,
+  the engine's `C.reached`). This state is a door, not the last of three steps: the header's arrow is then a link that
+  does what "Cancelar" does ("Volver al camino sin cambiar el plan", or "Volver a Progreso…": the screen that opened
+  the door writes its name in the draft, `from`), where steps 2 and 3 of a first run have the button that steps
+  back; so nobody who came to change a date is walked back through "¿Desde dónde empezás?", and the app counts the
+  door one step under the screen it leads back to (gn-app.js reads the link's `href`).
 - Moment boards: `GoalStart` = step 2 with Entender "sé de qué se habla en casa" and Hablar "frases hechas" picked, the
   placement card showing; `GoalPlan` = step 3, A1 selected, "A mi ritmo", 30 min, rosette frame, ritual CTA not yet tapped.
 - Standalone `Goal` shows step 1 with "hablar con mi familia" and "casa" picked.
@@ -64,6 +79,8 @@ sigue tu nivel de producción. En cada unidad podés rendir primero la prueba de
 de comprensión cuentan como hechos." and "Empezar en A2" (→ Goal step 3 with A2 chosen) + "Elegir otro nivel". Content:
 `window.__gnExtra.placement` (from `gn-extra.js`): `{ self: [...], items: [...] }`; designed moment: the first
 listening item from the second block on (with the 6 items of `placement.json`: pl.1, "Pregunta 5 de 6"), an option picked.
+A listening question whose clip is a voice model's carries the tag at the end of the player's line («Podés escucharlo
+dos veces.»), outside that line's live region.
 
 ## Row 2 · y 1284 · "Every day: a week, a day, six levels, how you are doing"
 
@@ -78,7 +95,9 @@ listening item from the second block on (with the 6 items of `placement.json`: p
 date chip, an ink-bordered link like the level chip, is the door back to the plan ("faltan 60 días", or "a tu ritmo"
 with no date; on the canvas it shows GoalPlan, in the app the goal screen at step 3). Unit card: kicker "Semana 1 de 8", the unit's Guarani title big (`unit.gn`,
 Andika 700 26px, `lang="gn"`) when it has one, else the Spanish; the Spanish under it 13/500 muted; Kaguare 60 px with the
-level rosette (rings = units done). Stamp card of 7 slots (✓ stamps; test slot with the stopwatch). Path nodes: done ✓
+level rosette (rings = units done). Stamp card of 7 slots (✓ stamps; test slot with the stopwatch). The card carries
+`data-gn-note="place"`: it holds no control, so the app lays its notice exactly over it (BRIEF-core §2; the path below
+is full to its last node). Path nodes: done ✓
 stamp (accent ring), today (indigo 68 px, day number), locked (padlock), test (stopwatch, gold when ready). Labels:
 "Día 4" + the day title (14px; allow 2 lines, `overflow-wrap: anywhere`); test "Prueba de la semana" + "formato de examen".
 Callout kicker "HOY · 3 LECCIONES" (or "SIGUIENTE"), title, "Empezar". Tabs: Camino (Main) · Cuaderno (Notebook) · Examen
@@ -89,13 +108,15 @@ sit on top of it where they meet):
   "3 para repasar", → Review.
 - A day of return (`app.days.away` ≥ 2: two days or more without study and nothing done yet today): the kicker gives way
   to the comeback mark (the up arrow in a teal ring) and "Opu'ã · Se levantó", the title is "¡Volviste!", the line
-  offers something short ("Empezá con algo corto: 4 para repasar, 2 minutos."), the button is "Jehechajey · Repasar",
+  offers something short ("Empezá con algo corto: 4 para repasar, 2 minutos."; a sitting of more than five minutes is
+  not called short: "Empezá por el repaso: 25 para repasar, 15 minutos."), the button is "Jehechajey · Repasar",
   and quiet buttons follow: "Repasar la semana 1" (after seven days or more: the last review day sealed) and "Seguir
   con el día 5" ("Seguir: semana 2, día 1" when the week on show is whole and the day is in the next one). With nothing
   due the button is the review day, or the day itself ("Lo que hiciste sigue acá."). In the
   unit card Kaguare takes the rising pose that day, before and after the first thing done (`app.days.back`).
 - Where the written path ends (the card with no button: the week whole, the next day or week not written): a kicker
-  "MIENTRAS TANTO" and four tiles, Cuaderno (with "3 para hoy") · Emoñe'ẽ Leer · Ehai Escribir · Eñe'ẽ Hablar. A mini
+  "MIENTRAS TANTO" and four tiles, Cuaderno (with "3 para hoy"; "16 hoy" from ten on, so the tile's second line
+  stays one line) · Emoñe'ẽ Leer · Ehai Escribir · Eñe'ẽ Hablar. A mini
   exam that is open and not taken yet (`gnCourse.minis`: the week test it waits for is done, no result at its id) is
   named first, above the kicker: a gold tile, 44 px, the stopwatch, "Mini examen 1" over "20 preguntas · 20 min", →
   the Examen tab. On a day
@@ -130,9 +151,15 @@ A1 current (3 days stamped), A2 to C2 en preparación except the syllabus counts
 
 **Progress** ("¿Cómo voy?", replaces Readiness, computed, never hard-coded): header "Progreso · A1"; hero card: the level's
 rosette 104 px with its rings, "Unidad 1 de 8 · 3 de 56 sesiones", a pace line (with a target: "Vas al día" / "2 días atrás";
-without: "A tu ritmo"), the days with study ("12 días con estudio · volviste 2 veces", from `app.days`) and, behind the
-plan or past its date, an accent-tint row: "Epu'ã ha eñepyrũjey" over "Levantate y empezá de nuevo." with the button
-"Rearmar mi plan" (→ the goal screen at step 3; GoalPlan on the canvas); "Por área" card: bars for Palabras, Gramática, Lectura, Escucha (right/of summed from
+without: "A tu ritmo"; beside it "faltan 40 días", "hoy es la fecha" or "fecha pasada", as the week path's chip says
+it), the days with study on one line ("12 días con estudio · volviste 2 veces", from `app.days`; the returns only
+while they fit beside the count; for a save from before the app kept the days, since when the count runs: "3 días
+con estudio desde el 16/11", `app.days.since`) and, behind the plan or past its date, an accent-tint row: "Epu'ã ha
+eñepyrũjey" over "Levantate y empezá de nuevo." with the button "Rearmar mi plan" (→ the goal screen at step 3, which
+closes back to Progreso; GoalPlan on the canvas). On time the five cards fill the screen to the pixel, so while that
+row shows the screen makes room for it and nothing is cut at the fold: the hero card draws in (no kicker, the
+rosette 88 px, padding 8 px) and the two lines of small print ("Es una guía…" under the bars, "Lo marcás vos…" over
+the chips) are left out; every control and number stays. "Por área" card: bars for Palabras, Gramática, Lectura, Escucha (right/of summed from
 the week tests' `tests[*].areas`; a mini exam asks their questions again and is left out), a 60 % target tick on each, an area under the line in red with a chip; empty state
 before the first week test ("Después de tu primera prueba de la semana vas a ver acá cómo te va en cada área."); "Próximo
 paso" card linking to the weakest area (red CTA "Practicar"), else to the next session, else, with no day left to do,
@@ -141,6 +168,19 @@ tab); the exposure log (G6 §6, G3 "Lo usé"): "Esta semana usé el
 guaraní con alguien" toggle chips (familia · trabajo · calle · WhatsApp), self-reported, never checked; footnote "Es una
 guía, calculada con tus pruebas de la semana." Designed moment: show the empty state? No: show a sample with week-test
 areas from a1u01t (vocab 5/6, grammar 6/8, reading 3/3, listening 1/3 under the line) so the bars and the red chip are designed.
+**Voz sintética, the one place that explains the voice.** While the sound index names a voice model
+(`gnCourse.synthVoice()`: the prototype and the app; a board on its own loads no index and draws none of this), the
+header carries a quiet button at its right end, the speaker and «Voz sintética» (44 px, `2px solid #DDE1EC`; the
+speaker's wave becomes a cross when the voice is off; its accessible name says which). It opens a sheet: «Voz
+sintética»; what it is («Los audios de la app los dice un programa (los modelos MMS, de Meta), no una persona. Todavía
+no los revisó ningún hablante nativo.»); a white card «Qué hace mal» with three lines (the nasal vowels: the pairs that
+differ only by one stay without audio; the dialogues: one voice, a man's, for both speakers, his a little lower; the
+names and numbers in Spanish); that some words and phrases stay silent on purpose and wait for a person, where the
+screens say «todavía no está grabado», and that recordings by native speakers will replace the voice; in the app, what
+the sound weighs (`gnApp.sound`: «El sonido de A1 pesa unos 3,7 MB y queda guardado…», or, when the browser says the
+learner saves data, that it comes one unit at a time); the switch «Usar la voz sintética» (Leer's switch recipe,
+`role="switch"`; `save({ voice })`, saved with the progress, on by default: off, the player has no synthetic clip and
+every screen shows its written stand-in); the credit (MMS-TTS, Meta AI, CC BY-NC 4.0); «Oĩma · Listo».
 
 ## Row 3 · y 2568 · "Learn, drill, then exam-style"
 
@@ -155,7 +195,9 @@ areas from a1u01t (vocab 5/6, grammar 6/8, reading 3/3, listening 1/3 under the 
 
 Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, §9.3 (all of it, incl. the fix list l).
 - Teach: form h1 in Andika 700 34px with `lang="gn"`; "Cómo se forma" rows (pos stacked above the rule when longer than ~12
-  characters); "Ejemplos" with play buttons (stand-in) and, per example, an optional "Partes" line: the morphemes as small
+  characters); "Ejemplos" with play buttons (the stand-in, or the clip: the card's head then carries the tag «voz sintética»
+  at its right end, one tag for the card, while any of its examples has a synthetic clip; an example without one says
+  «Este audio todavía no está grabado.» under itself once tapped) and, per example, an optional "Partes" line: the morphemes as small
   columns (Andika 15/700 over the Spanish gloss 11/700 muted) when the example has `parts`; "¡Atención!" box (gold tint) with
   the watch note and bad ✗ / good ✓ lines. Progress segments sized from the data (2 points + compare = 3). Designed moment:
   a1u01d4 point 1. Next "Siguiente: <next form>" / "Comparar"; the next form is named only when it fits the button
@@ -176,11 +218,20 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
 - Build: the build item showcase, data-driven (first build item of a1u01d4's drill), two tiles placed and the hint open.
 - Exam: day set 150 s "EXAMEN · SIN AYUDAS" (the ink band's title, the screen's `<h1>`; the result's score is a second heading under it), "Sin pistas ni glosas. Las respuestas, al final."; week test set 1200 s; clock pill
   `role="timer"`; build items asked as tiles in order (the whole order counts here, not a single starred tile: Guarani words
-  are short in tiles); result view: score, "1:48 de 2:30", rows with ✓/✗, the full sentence, explain; "Siguiente" →
-  `save({ prog: { g: 3 } })` (day) or `save({ result })` (test). Designed moment: question 2 of 3 with an option pressed, 1:42.
+  are short in tiles); result view: score, "1:48 de 2:30", rows with ✓/✗, the full sentence, explain; "Siguiente"
+  leads on. Everything is saved when the exam ends ("Terminar", or the clock at 0), in one moment: the misses to the
+  notebook and `save({ prog: { g: 3 } })` (day) or `save({ result })` (test, mini exam). The result page only shows
+  it, and goes on showing the exam that was taken while the app's memory moves on: left by its button, by its cross,
+  by the system's back, or with the app closed on it, the exam stays taken. Leaving part way is another matter: a
+  day's three questions are left at once, but a week test or a mini exam with something answered is twenty questions
+  on one clock, and its cross asks first, as the level exam's does: a sheet, "¿Salir de la prueba?" ("¿Salir del
+  mini examen?"), "Si salís ahora se pierden tus respuestas: la prueba empieza de nuevo, desde la primera pregunta.
+  El reloj sigue mientras decidís.", "Eku'ejey · Seguir con la prueba" and "Salir sin guardar"; its scrim goes on
+  with the test. The system's back presses the cross, so it asks too. (On the canvas alone the cross is a link, and
+  the sheet shows in the prototype.) Designed moment: question 2 of 3 with an option pressed, 1:42.
   A third set, the mini exams (`set: 'mini1'` or `'mini2'`, from the Examen tab): the band reads "MINI EXAMEN 1", the
-  questions are `gnCourse.mini`'s 20 on a 20-minute clock, the result is saved under its own id (`a1m1`) and both ways
-  out of the result page (the cross and "Siguiente") keep it and lead back to the Examen tab.
+  questions are `gnCourse.mini`'s 20 on a 20-minute clock, the result is saved under its own id (`a1m1`) when the
+  exam ends, and both ways out of the result page (the cross and "Siguiente") lead back to the Examen tab.
   A question that comes with a text to read (the week test's reading items) is set tighter (text 14 px, question 17 px,
   answers 48 px), so the text, the question and its four answers open in view together.
 
@@ -198,11 +249,16 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
 - Sonido: the focus title (e.g. "El puso (')"), the letters big (Andika 700 40px tiles), the note, and the pairs as
   listen-and-choose cards: two words side by side with their Spanish, a big play button that plays one of them (stand-in), the
   learner taps which one they heard (✓/✗, no notebook); "Seguir" → Aprender. The two words of a pair are set at one
-  size, 22 px or as much less as the longer one needs to stay whole in its tile (never under 15).
+  size, 22 px or as much less as the longer one needs to stay whole in its tile (never under 15). A pair whose clip is
+  a voice model's carries the tag «voz sintética» at the right end of its head («PAR 2 DE 3»). In the prototype and the
+  app a pair without a clip shows the word its speaker stands for («Tocá el parlante: te mostramos la palabra.»); with
+  every pair so, the step is read («MIRÁ Y ELEGÍ», «…estos pares todavía no tienen audio.»); with some, it is heard
+  and its first line counts them («Un par todavía no tiene audio: ahí te mostramos la palabra.»).
 - Aprender: Yaoki's navy sign board (`#1B2440`, 2 columns of chips, M PLUS 17/800, `lang="gn"`, min-height 46 so two-word
   phrases fit); tap a chip → the word card: the word (Andika 700, 40/34/28 px by length), syllables with the stressed one in
   `#C7361E` (from `gnSpell` helpers if present, else omit), the Spanish 13/500, play button, "Partes" tiles (2 columns: piece
-  in Andika 22/700, meaning 12/500). Found badge ✓. "Después vas a escribir 3 palabras con letras nuevas: ', ẽ."
+  in Andika 22/700, meaning 12/500). The Spanish has a line of its own under the word and the speaker; the tag «voz
+  sintética» stands at that line's right end, under the speaker, when the word's clip is a voice model's. Found badge ✓. "Después vas a escribir 3 palabras con letras nuevas: ', ẽ."
 - Escribir: imports `Spell` with a task per `words.spell` word; Next stays shut until written ("Escribí la palabra primero").
   A word typed before is not asked again, except on the review day (día 6): its list is the week's hard words, and it
   asks for them once more ("Después vas a escribir de nuevo 4 palabras de la semana."); once its writing step is done
@@ -213,7 +269,8 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
   `size`. Cells from `gnSpell.cells(w)` (Andika 700); only the hard letters are typed (`gnSpell.hard`), plain letters given;
   passes Copiar / Con pistas / De memoria; keyboard of real buttons from `gnSpell.keys(w, tkey)` (46×44, radius 12, Andika 22/700,
   `aria-label` = `gnSpell.name(k)`); the line under the cells (`aria-live="polite"`) with `gnSpell.note(why, want)`; help after
-  2 misses (yellow) and 4 (filled in); buttons Escuchar · Pista · Otra vez; the syllable strip if syllables are available.
+  2 misses (yellow) and 4 (filled in); buttons Escuchar · Pista · Otra vez (the tag «voz sintética» centred under
+  «Escuchar» when the word's clip is a voice model's); the syllable strip if syllables are available.
   Load `./gn-spell.js` in its head. Designed moment: "ñe'ẽ" pass 2, the puso cell typed, ẽ current.
 
 ## Row 5 · y 5136 · "Reading, listening, week test, notebook"
@@ -232,9 +289,13 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
 - Listening: play → answers unlock; "Repetir"; "Más despacio" (a recorded slow take; disabled with "Todavía no está grabado"
   when missing); nothing printed until answered ("No hay nada escrito hasta que respondas, como en el examen."); after: the
   script with speaker tags (Narrador / Mujer / Hombre) and "Ver traducción"; stand-in highlights each line as it "plays".
-  Designed moment: a1u01d1's listening, played once, an answer picked.
+  Designed moment: a1u01d1's listening, played once, an answer picked. The status line under the waveform names the line
+  and its speaker while it plays («Línea 2 de 5 · Mujer», «Respuesta 1 de 3 · Hombre»): with a clip it keeps time by
+  the clip's own cues (`gnSound.cues`, `gnCourse.cueLine`), with the stand-in by the lines' lengths. The tag «voz
+  sintética» stands at that line's right end when the clip is a voice model's.
 - WeekTest: intro ("Prueba de la semana", 20 preguntas, one 20-minute clock, "Por área" counts, "Empezar la prueba" → Exam set
-  'test') and result (score 56px, the praise stamp by share ≥ 0.8 / ≥ 0.6 / else with Spanish "¡Excelente!" / "¡Muy bien!" /
+  'test') and result (score 56px, the result's `<h1>`: for a screen reader it says what it is, "Prueba de la semana: 16 de 20",
+  the words clipped to 1 px and the drawn "/ 20" hidden from it; the praise stamp by share ≥ 0.8 / ≥ 0.6 / else with Spanish "¡Excelente!" / "¡Muy bien!" /
   "Seguí practicando" and the Guarani accent from the glossary, bars per area with "Punto débil", "6 errores fueron a tu
   cuaderno", "Ver errores", "A la semana 2"). Designed moment: the result of a1u01t, 16/20 with Escucha weak. The
   onward button names the next week only when this week is whole and the next session due is in another week; a test
@@ -243,7 +304,8 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
   ¡aprendido!); rows with the quote (grapheme-safe `C.cut`, ~32 characters), "Elegiste: …" → ✓ "…", the due label; caught-up
   state. Designed moment: 3 mistakes from a1u01d2-d3 (one due today). The count is today's sitting (`gnCourse.sitting`:
   a third of the plan's minutes a day, the oldest due first); with more waiting it says so ("Hay 45 esperando. Hoy van
-  las 16 más viejas; las otras 29 quedan para los próximos días."), those rows read "en espera", and once the day's
+  las 16 más viejas; las otras 29 quedan para los próximos días."; with one left of the sitting, "Hoy va la más
+  vieja"), those rows read "en espera", and once the day's
   sitting is done the card says "listo por hoy · Quedan 29 para los próximos días." with a quiet "Repasar 16 más". A row
   that is due keeps "Elegiste: …" and holds the right answer back ("→ la respuesta, al repasar") until it is reviewed.
   Each piece of a row's quote carries its own `lang`, worked out on the whole question before it is cut: a line's own
@@ -251,11 +313,18 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
 - Review: the header's "REPASO" is the screen's `<h1>`. One due item at a time (choice / build asked in order / spell typed with a small pad), verdict, the track note
   ("Ahora en 3 días. Si acertás: en 1 semana."), summary. Designed moment: item 1 of 2 answered right. It asks today's
   sitting (or one more, when today's is done). Inside the prototype and the app a choice's options come in another
-  order each day (`gnSpell.shuffle`, seeded by the item and the day; never the lesson's own order; the buttons are
-  numbered as shown), except an item whose audio numbers its replies; the canvas board keeps the lesson's order. The
+  order than the lesson's, and the right answer's place is set by rule: never the place the lesson gave it and, with
+  three options or more, never the place it had the day before (it takes the other places in turn, a day each; the
+  rest are dealt by `gnSpell.shuffle`, seeded by the item and the day; the buttons are numbered as shown), except an
+  item whose audio numbers its replies; the canvas board keeps the lesson's order. The header's cross leaves for the
+  screen the review was opened from (`app.opener`: the notebook, the week path's row or the day's row; the notebook
+  on the canvas). The
   summary's button is "Eku'ejey · Seguir con el día 4" (the next session of the plan; "Seguir con la prueba" for a week
   test), with "Tapykue · Volver al cuaderno" as a text link under it, and it says what still waits ("Quedan 12 para los
-  próximos días.").
+  próximos días."). A listening item's play card («Ehendu · Escuchar») carries the tag «voz sintética» at the right
+  end of its title when the clip is a voice model's, and while the clip plays its note names who is speaking, by the
+  clip's cues («Sonando… Línea 2 de 5 · Hombre»: two items can only be answered by knowing it): the name stands beside
+  the note, outside its live region.
 
 ## Row 6 · y 6420 · "Level exam: five parts, from the briefing to the constancia"
 
@@ -269,7 +338,9 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
 | 2350 | `ExamSpeaking.dc.html` | 30 · Part 5: speak, then rate yourself | moment board: `view="speaking"` |
 | 2820 | `ExamFull.dc.html` | 31 · Result: Apto and the constancia | moment board: `view="result"` |
 
-- ExamTab: "Examen de nivel · A1" card: "5 partes · unos 80 minutos · podés hacerlo en varios días"; the five parts listed with
+- ExamTab: under the title, "Cada nivel termina con un examen de cinco partes. Antes, dos mini exámenes repasan con
+  reloj lo que ya hiciste." (a mini exam is week-test questions on a clock: it does not show the level exam's format,
+  and the line does not say so); "Examen de nivel · A1" card: "5 partes · unos 80 minutos · podés hacerlo en varios días"; the five parts listed with
   minutes and how they are scored ("la app corrige" / "te evaluás con una guía" / "o tu docente"); two mini-exams, each
   made of the week tests of its half of the level (`gnCourse.minis`): not written yet, "20 min · mejor después de la
   unidad 8" and the chip "En preparación"; written but behind a week test still to take, "20 preguntas · 20 min" and the
@@ -287,7 +358,9 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
   result (two group bars C and P with the 60 % line, each part's percentage, "Apto · autoevaluado" in the accent rosette stamp,
   or "Constancia de comprensión" when only group C passes; "Pedir corrección a un docente" (export) and "Ver respuestas").
   Content: `window.__gnExtra['exam-a1']` from `gn-extra.js`. Save the result with `save({ exam: { level, parts, apto, mode, at } })`
-  computed by `C.examResult`.
+  computed by `C.examResult`. Where the listening part's clips are a voice model's, the tag «voz sintética» stands in
+  the pause before it, at the right end of «LA PARTE QUE SIGUE», and in the part itself in the audio's card, between
+  the waveform and the speaker mark.
 
 ## Row 7 · y 7704 · "Read, type, speak: the suite inside the app"
 
@@ -311,11 +384,21 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
   coming from the right, the info line (Guarani + Spanish), the in-app keyboard ("Teclado común" with the Guarani row
   ã ẽ ĩ õ ũ ỹ g̃ '), named near misses via `gnSpell`, the fall (Kaguare is knocked over, the stars, "Vuelve después de 2
   tarjetas") and the rise (he gets up on his hind legs: "¡Opu'ã! · ¡Se levantó!"), the clean-run chip with the rosette. Words: the A1 unit 1 words.
+  The round's X opens the pause ("Pausa": "Eku'ejey · Continuar", "Salir de la ronda"), a sheet with no scrim; its
+  "Continuar" carries `data-gn-back="sheet"`, so in the app the system's back pauses the round and, pressed again,
+  goes on with it (BRIEF-core §2). Hablar's pause is the same.
 - Hablar: no speech recognition (phones do not recognise Guarani): judge 1 "Escuchá y elegí" (a clip plays, two or three
   falling things carry the word and its minimal-pair partners, tap the right one) and judge 3 "Repetí y compará" (record, then
   Modelo / Vos strips and "¿Sonó igual?" Igual · Casi · Otra vez). The canvas grants no microphone: a "Simular toma" button
-  cycles the states. Pairs: only verified ones (`window.__gnExtra.speaking.pairs`). The status line is drawn in pieces
-  (`C.mixed`): a hint that names a Guarani letter («la tilde nasal (ã)») carries it in `lang="gn"`.
+  cycles the states. Pairs: only verified ones (`window.__gnExtra.speaking.pairs`). The round's X is a round floating
+  button over the game (no header recipe, no negative margin): it carries `data-gn-back="screen"`, which is how the
+  app's back finds it and opens the pause, as a tap does. The status line is drawn in pieces
+  (`C.mixed`): a hint that names a Guarani letter («la tilde nasal (ã)») carries it in `lang="gn"`. While the card in
+  play has a synthetic clip, the tag «voz sintética» stands at the right end of the dock's second line (the line that
+  says what is sounding), and under «Modelo» in the comparison; a card without a clip shows its word («La palabra ·»)
+  and no tag. In the prototype and the app the menu's note says what is true of the audio: none at all («…cada botón
+  de sonido se ilumina sin sonar.»), or «Los audios los dice una voz sintética. Todavía no tienen audio 4 de los 8
+  pares: ahí se muestra la palabra.»
 
 ## Row 8 · y 8988 · "Kaguare: mascot, icon and the ñandutí rule"
 

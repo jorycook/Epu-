@@ -26,7 +26,7 @@ native speaker's check.
 | `notes/` | The research the design rests on. Y1 to Y5 map the Yaoki suite (plan and engine, the lesson loop, skills and tests, the satellites, platform and brand). G1 to G8 are the Guarani research, with a source and a confidence mark on every claim: sounds, spelling, fonts and keyboards; a verified grammar reference; learners and prior art; data, audio and licences; culture, naming and UI words; the CEFR and the level exam; the six-level syllabus; and G8, the second mascot (Kaguare: which anteater, its names, three slang screens). |
 | `epua-app/` | The installable app around the screens: `src/` (Yaoki's runtime, the shell, the first-visit page, the offline worker, the page and the manifest), `studio/` (the recording studio page), `build.mjs`, `fonts.py`, `fetch-fonts.sh` and `check/app-check.js`. |
 | `docs/` | The built app, for GitHub Pages. This is all a phone needs. `docs/estudio/` is the recording studio, next to the app and not part of it. |
-| `check/` | Two checks of the built app in Chromium, as GitHub Pages serves it: `flows-test.js` (a learner's flows by taps, saved progress, two tabs, saved data that does not fit, the last written week to its end, the review put in front of the day and its size, the plan made again, the days with study and the return after days away, the end of the written path with the first mini exam, and the app around the screens: an Android phone's way in, the system's back, focus and zoom, a paste taken back, the screens that load later) and `platform-test.js` (phone sizes, iPhone and Android, the install page in each browser, the Home Screen, the page's first paint, offline (with the level's sound, each file downloaded once), updates, the manifest and icons, the typefaces, every screen's frame, tap targets, headings, languages; the screens with a learner in unit 1, with one in the last written week, with one back after days and behind the plan and with one at the end of the written path, and the shell's own notices). Their screenshots go to `check/out/`, which is not kept. |
+| `check/` | Two checks of the built app in Chromium, as GitHub Pages serves it: `flows-test.js` (a learner's flows by taps, saved progress, two tabs, saved data that does not fit, the last written week to its end, the review put in front of the day and its size, the plan made again, the days with study and the return after days away, the end of the written path with the first mini exam, an exam closed on its result page, the voice of the clips (the tag «voz sintética» wherever a synthetic clip is offered, a clip really playing, the speaker named by the clip's cues, the clips the voice must not say and a build without sound, Progreso's page on the voice and its switch), and the app around the screens: an Android phone's way in, the system's back, focus and zoom, a paste taken back, the screens that load later) and `platform-test.js` (phone sizes, iPhone and Android, the install page in each browser, the Home Screen, the page's first paint, offline (with the level's sound, each file downloaded once), updates, the manifest and icons, the typefaces, every screen's frame, tap targets, headings, languages; the screens with a learner in unit 1, with one in the last written week, with one back after days and behind the plan (Progreso's list measured against its fold) and with one at the end of the written path, and the shell's own notices). Their screenshots go to `check/out/`, which is not kept. |
 
 ## Build and check
 
@@ -92,10 +92,16 @@ the goal, a tab). A browser that keeps nothing gets a notice on the goal screen 
 On an Android phone: open the address in Chrome. The install page is shown there too, with Android's own steps (the
 browser's menu, «Instalar app»); as soon as Chrome offers to install the app, the page shows one button, «Instalar
 Epu'ã», which puts Chrome's own question. On Android the installed app and the browser share what is saved, so the
-page says so and offers no code to copy. A page opened inside another app (a link tapped in Instagram, Facebook or
-TikTok opens in that app's own browser) cannot be installed from there, and what it saves stays inside that app: on
-Android the steps then start with «Abrí esta página en Chrome», and on both systems the page says where the progress
-stays and offers its code when there is some to take along. Where a browser's bars leave the screens under 0.85 of
+page says so and offers no code to copy. A browser other than Chrome (Samsung Internet, Firefox) is sent to Chrome
+when its menu has no «Instalar app»; Chrome keeps its own storage, so the app installed from there starts empty: when
+that browser already holds progress, the page promises the same progress only for an install made from it («Instalada
+desde Samsung Internet, tu progreso es el mismo…»), and a row offers the code for the other way («Desde Chrome la app
+empieza vacía: llevá tu progreso con este código»). A page opened inside another app (a link tapped in Instagram,
+Facebook or TikTok opens in that app's own browser) cannot be installed from there, and what it saves stays inside
+that app: the steps then start with the way out of it («Abrí esta página en Chrome» on Android; on an iPhone, where
+such a page has no Share menu of Safari's, «Abrí esta página en Safari», then «En Safari, tocá Compartir»), and on
+both systems the page says where the progress stays and offers its code when there is some to take along. Where a
+browser's bars leave the screens under 0.85 of
 the design's size (a Galaxy A15 in Chrome draws them at 0.81, against 0.92 from its icon; an iPhone 14 in Safari at
 0.83, an iPhone SE at 0.69), the page says the app looks smaller there and larger from the Home Screen. The manifest
 carries a second pair of icons for Android's launchers (`"purpose": "maskable"`): the same art at 80 %, standing on
@@ -104,38 +110,67 @@ cut the ear and the tip of the snout).
 
 The system's back (Android's gesture or key, a browser's back button) does what the screen's own X or back arrow
 does: it closes an open sheet, steps back in the goal screen, leaves a lesson for the day and the day for the week
-path, and from the week path it leaves the app. For that the tab's history holds one entry for each step the app is
-away from the screen it opens on: added when a tap leads deeper, taken off, one at a time, when a tap leads back up.
-The address never changes. (It is checked through Chromium's history; a phone's own gesture is still to be tried on
-a phone.)
+path, and from the week path it leaves the app. Each screen marks its own way back for the app (`data-gn-back`, on
+the X or the arrow of its header and on the round's X of the two games; BRIEF-core §2), and the system's back
+presses it: where that control asks first (the pause of Escribir and Hablar, «¿Salir del examen?», «¿Salir de la
+prueba?» in a week test or a mini exam part way), the system's back asks first too. A sheet closes by its scrim; a
+sheet with no scrim stays open, unless it marks the button back should mean (the pause's «Continuar»). For all that
+the tab's history holds one entry for each step the app is away from the screen it opens on: added when a tap leads
+deeper, taken off, one at a time, when a tap leads back up. When a back is answered without a step up (a sheet that
+opens, or stays), the app steps forward again onto the entry the back has just left, so back pressed again and again
+with no touch in between never falls out of the app from inside a screen. The address never changes.
+`check/flows-test.js` compares the system's back with a tap on the screen's own control on every routed screen and
+in a round or an exam under way. (It is checked through Chromium's history; a phone's own gesture is still to be
+tried on a phone.)
 
 A first visit shows something at once and downloads the app once. The page carries its own first paint (the icon, the
 name, «Cargando…») and asks for the four faces of the first screen straight away. Only the screens a visit starts on
 are loaded with the page (`assets/screens.js`: the shell, the install page, the goal screen, the week path and the
-day, about 55 kB as the web host sends them); the other eighteen and the spelling pad (`assets/screens-more.js`, about
-300 kB) come in once the page is up, and a screen asked for sooner gets a waiting note, or, if the file cannot be
-fetched, a note that says so with a way to try again. The first unit's sound comes after them: the engine asks for it
+day, about 57 kB as the web host sends them); the other eighteen and the spelling pad (`assets/screens-more.js`, about
+310 kB) come in once the page is up, and a screen asked for sooner gets a waiting note (with the way back, «Tapykue ·
+Volver», after five seconds: on a connection that stalls an app from the Home Screen has no back of its own), or, if
+the file cannot be fetched, a note that says so with a way to try again. A first paint that never ends says so too:
+when one of the page's own scripts cannot be fetched, «Cargando…» gives way to «No se pudo cargar. Revisá tu conexión
+y abrí la página de nuevo.»; when the app is still not up after 20 seconds, to «Está tardando…». The first unit's
+sound comes after the screens: the engine asks for it
 with the first screen, but no screen of the first file plays a clip and one unit's sound (about 450 kB) is larger
 than all the later screens together, so the app holds that request back until the screens are in.
 The offline worker stores every file under a hash of its content: on a first visit it takes what the browser has just
 downloaded for the page instead of downloading it again, a new build downloads only the files that changed, and a file
 that is not this build's is never stored (it is asked for again, past every copy; if that fails the install waits).
 A sound file is stored the same way when it is first used or kept for the level: once, however many ask for it at the
-same moment, and from the browser's own copy when the page fetched it before the worker was in charge.
+same moment, and from the browser's own copy when the page fetched it before the worker was in charge. The level's
+sound is megabytes (seven files, 3.7 MB as they are, for A1 today), so it is not fetched behind the back of a learner
+who pays for data by the megabyte: when the browser says the learner saves data (`navigator.connection.saveData`),
+only the file of the unit that is opened is fetched and stored (the app names the files its screens asked for to the
+worker, and no level, so the one fetched before the worker was in charge is stored too), and Progreso's «Voz
+sintética» says what the sound weighs. A sound file that could not be fetched is asked for again once from the next screen, and at once when the
+browser says the connection is back; none is fetched while the learner has the synthetic voice turned off.
 
 Saved progress is looked after. Once there is a plan the app asks the browser to keep what is saved
 (`navigator.storage.persist`). In Safari on an iPhone the install page, and once a week the week path of a tab kept
 open, say that Safari deletes what a page saved when the page is not opened for a week; the week path's notice has a
 button, «Qué hacer», that opens the install page again (the steps to the Home Screen, and the code that takes the
-progress there). A pasted progress code can be taken back («Deshacer», on the week path, until the app is opened
-again). A save written by a newer build is read as far as this build understands it and never written over (the week
-path asks to open the app again), and fields a newer build added to the save are kept as they are.
+progress there; that page is one step from the week path, and the system's back leads back with nothing chosen). A
+pasted progress code can be taken back («Deshacer», on the week path and the goal screen) until something is studied
+on the pasted progress or the app is opened again: the first thing done withdraws the offer, so taking a paste back
+never throws study away. A save written by a newer build is read as far as this build understands it and never
+written over (the week path asks to open the app again; a progress code pasted then is refused with that reason),
+and fields a newer build added to the save are kept as they are. These notices cover no control: on the week path
+the notice is laid exactly over the week's card (the box the screen marks `data-gn-note`), on the goal screen it
+sits above the bottom buttons, and it is not drawn while a sheet is open.
 
 For a screen reader and a keyboard: the page's title names the screen («Epu'ã · Camino de la semana»), a new screen's
 heading takes the focus (every screen opens on an `<h1>`, and the stage is the page's `<main>`), an open sheet takes
 the focus and puts what is behind it out of reach until it closes, and the focus then returns to the control that
-opened it. (Three states inside a screen still start without an `<h1>`: the questions of the placement check and of
-the level exam, and Hablar's round; `platform-test.js` lists them.) The page can be pinched larger; only the two games played with both thumbs (Escribir, Hablar) keep two fingers
+opened it: the control tapped, also where a tapped button gets no focus of its own, as on an iPhone (played in
+Chromium by a tap that moves no focus; VoiceOver itself is still to be tried on a phone). A tap that takes its own
+control away and leads to another page of the same screen (a lesson's next step) puts the focus on that page's
+heading instead of nowhere, unless the screen says itself what the tap did, in a live region (an answer checked, an
+exam ended). The app's notice comes before the screen in the reading order, and the week test's result names
+itself in its heading («Prueba de la semana: 17 de 20»). (Three states inside a screen still start without an
+`<h1>`: the questions of the placement check and of the level exam, and Hablar's round; `platform-test.js` lists
+them, and there a tap inside the screen leaves the focus where the browser puts it.) The page can be pinched larger; only the two games played with both thumbs (Escribir, Hablar) keep two fingers
 from zooming.
 
 ## How the app works
@@ -152,23 +187,34 @@ from zooming.
   spelling with the Guarani keyboard, then one exam-format question) and a reading or listening item. A word typed once
   is not asked again, except on the review day, which asks for the week's hard words once more. A mistake comes back
   after 1, 3 and 7 days; three right answers in a row clear it. The week path shows one week: the week of the session in
-  use, else of the next one due, and once every written week is whole, the last of them.
+  use, else of the next one due, and once every written week is whole, the last of them. An exam-style run (a day's
+  step, a week test, a mini exam) is saved when it ends, its errors and its result in the same moment: however its
+  result page is left, or the app closed on it, the exam stays taken. Left part way, a week test or a mini exam with
+  something answered asks first («¿Salir de la prueba? Si salís ahora se pierden tus respuestas…»), by its cross and
+  by the system's back alike; a day's three questions are left at once.
 - **The review that waits is put in front of the day.** The Cuaderno tab carries the number due today on the four tab
   bars, and the week path's callout and the day's page a row, «Antes de empezar: 3 para repasar · unos 2 min», that
   opens the review; the review ends with «Seguir con el día 4». A day's review has a size: a third of the minutes a day
   chosen with the goal, at 0.6 minutes a question (8, 16 or 25 questions for 15, 30 or 45 minutes), the oldest first;
   what is left waits for the next days, and the notebook says so («Hay 45 esperando. Hoy van las 16 más viejas…»). In
   the notebook an entry that is due keeps what was answered and holds its right answer back until it is reviewed, and
-  the review shows a choice's options in another order each day.
+  the review shows a choice's options in another order than the lesson's, the right answer where neither the lesson
+  nor the day before had it. The review's cross closes it to the screen it was opened from (the week path's row, the
+  day's row or the notebook).
 - **The plan can be made again.** The date chip on the week path («faltan 40 días», or «a tu ritmo») opens the goal
   screen at its third step, with «Guardar el plan» and «Cancelar»; behind the plan or past its date, Progreso offers
   the same door («Epu'ã ha eñepyrũjey», «Rearmar mi plan»). A plan made again starts today at the session the learner
-  had reached, and lays out only what is left (`plan.from`).
+  had reached, and lays out only what is left (`plan.from`). The door is one step from the screen that opened it: its
+  arrow, «Cancelar» and the system's back lead back there in one press, with nothing saved (the first-run questions
+  are not walked through again).
 - **Days with study, and the return.** The app keeps the days on which something was done (a lesson step, a test, a
   review answer, a practice section opened); opening the app is not study. The week path shows the last seven days,
   Progreso counts them («12 días con estudio · volviste 2 veces»), and after two days or more away the week path
-  greets the learner back: Kaguare up on his hind legs, «Opu'ã · Se levantó», and something short first (the review
-  that waits, or, after a week or more, the last review day sealed) before the next new day.
+  greets the learner back: Kaguare up on his hind legs, «Opu'ã · Se levantó», and where to start (the review that
+  waits, called «algo corto» only while it takes five minutes or less; or, after a week or more, the last review day
+  sealed) before the next new day. A save from before the app kept the days, which already holds things studied, is
+  marked (`seenLate`): its count begins on the day of the update, and Progreso says so («3 días con estudio desde el
+  16/11»); no earlier day is made up from the moments the save does carry.
 - **Six levels:** A1 Acceso 8 units, A2 Plataforma 10, B1 Umbral 10, B2 Avanzado 10, C1 Dominio operativo eficaz 8,
   C2 Maestría 6: 52 units, 260 study days. A1 and A2 hold the core morphology; B1 and B2 clauses, word formation,
   evidentials and Jopara as grammar; C1 register and the State's Guarani (the Constitution, Ley 4251, legal and
@@ -191,6 +237,10 @@ from zooming.
   row ã ẽ ĩ õ ũ ỹ g̃ ' first). Hablar has no speech recognition, because no phone or browser recognises Guarani: the learner
   hears a word and picks it from its minimal pair, or says a phrase aloud, compares it with the model and rates the take
   (recording the learner's voice is still to come: today the app says so, and on the canvas a button stands in for it).
+- **The voice is a program's for now, and the app says so.** Until a person records the course, its audio is a
+  synthetic voice: every control that plays one carries the small tag «voz sintética», Progreso explains what it is,
+  what it does badly and that recordings by native speakers will replace it, and a switch there turns it off. What
+  the voice says badly is not said at all: those words and phrases show written, with «todavía no está grabado».
 - **It rewards accuracy, getting up again and showing up, never speed:** no leaderboards, no lives, no timers in practice.
 
 ## The look
@@ -232,13 +282,20 @@ people speak today, Spanish loans included.
   368 items.
   - Unit 1, "Mba'éichapa · Saludos y sonidos": greetings and farewells; ñande and ore; che réra; questions with -pa;
     Aguyje and courtesy.
-  - Unit 2, "¿Quién sos? Verbos de acción": the person prefixes a-, re-, o-; ja-/ña-, ro- and pe- for the plural;
-    -pe/-me, "en, a"; -gui, "de, desde"; the negation nd-…-i.
-  - Unit 3, "¿Cómo estás? Predicados chendales": che-/nde- for states and qualities, with no "estar"; areal "yo hago"
-    against chendal "a mí me pasa"; the nominal sentence, with no "ser"; yes-or-no questions with -pa and piko, and
-    their answers; stress and the accent mark.
+  - Unit 2, "¿Quién hace qué?": the person prefixes a-, re-, o-; ja-/ña-, ro- and pe- for the plural; -pe/-me, "en, a";
+    -gui, "de, desde"; the negation nd-…-i.
+  - Unit 3, "¿Cómo estás?": che-/nde- for states and qualities, with no "estar"; areal "yo hago" against chendal "a mí
+    me pasa"; the nominal sentence, with no "ser"; yes-or-no questions with -pa and piko, and their answers; stress and
+    the accent mark.
   - Unit 4, "Mi familia": possession with che and nde; the plural -kuéra, -nguéra after a nasal; the demonstratives ko,
     pe, amo; máva, "quién", and mba'e, "qué"; the numbers 1 to 5, and Spanish numbers in speech.
+
+  The titles a learner reads (the week path, the day's heading, Progreso) say what the day lets you do or say, with the
+  form after a colon where it helps to find the day again: "Decir quién hace qué: a-, re-, o-", "Decir que no: nd-…-i",
+  "Mi mamá, tu papá: che sy, nde ru". The grammar's own names for the points (prefijos areales, predicados chendales,
+  oración nominal) stand beside each title in `notes/G7-six-level-syllabus.md`, for editors; a lesson uses one only
+  where it explains it. A day's file carries the title of `content/levels.json` word for word: the build stops when
+  they differ.
 
   Every study day's sound step has a focus of its own, 20 in all and none repeated: unit 1 covers the oral vowels, the
   nasal vowels, the y, the puso and typing the Guarani letters; units 2 to 4 cover j and h, the soft r, ch, ñ, g̃, v, k,
@@ -330,9 +387,20 @@ node check/sound-test.js                           # the whole path in Chromium,
   them: `sw.js` stores each the first time it is fetched and the rest of the level in the background once there is a plan,
   under a hash of its content, so a new build keeps the unchanged ones. The canvas's other boards keep their stand-ins.
 - **The screens** change nothing when a clip exists (`has()` was always the test): they play it and keep time with it,
-  and a key without a clip keeps its stand-in. One honest signal is new: when the clip's kind is `synthetic`
-  (`gnSound.kind(key)`), Words (the pairs of its sound step and the words of its scene) and Hablar say «voz
-  sintética»; Spell, Teach, Listening, Review, Placement and LevelExam do not say it yet.
+  and a key without a clip keeps its stand-in and says that the audio is not recorded yet, which is also true of a
+  clip the voice must not say. **Every screen that offers a synthetic clip says so**, with one small grey tag, «voz
+  sintética», next to the control and there before anything is tapped (`gnCourse.synth(key)`, true when
+  `gnSound.kind(key)` is `synthetic`): in the head of Teach's examples, of each sound pair and of the notebook's play
+  card, beside a scene word's meaning, under «Escuchar» in the spelling pad, at the end of the status line in
+  Listening and the placement check, in the level exam's pause and listening part, and in Hablar's dock and
+  comparison. It is never in a live region: a screen reader hears what it means once a visit, from the shell. The
+  pattern for a new screen is two lines (`brief/BRIEF-core.md` §6). Listening's status line and the notebook's play
+  card name who is speaking by the clip's own cues, since the two voices of a dialogue are one voice a little apart.
+  **Progreso explains the voice** («Voz sintética», in its header): a program's, not a person's, not yet checked by a
+  native speaker; what it does badly (the nasal vowels, whose pairs stay silent; one voice for both speakers of a
+  dialogue; Spanish names and numbers); that some words wait in silence for a person's recording; that recordings
+  will replace it; and a switch, «Usar la voz sintética», saved with the progress (`voice`): off, the player has no
+  synthetic clip (`gnSound.synthetic(false)`) and every screen shows its written stand-in.
 - **The synthetic voice.** `tools/make-tts.py` says every recorded row of the list with Meta's MMS-TTS
   (`facebook/mms-tts-grn` for Guarani, `facebook/mms-tts-spa` for the narrator; a CPU is enough): each line after a
   carrier phrase that is cut off, every take heard back by two speech recognisers, the best of three kept, and what
@@ -357,9 +425,22 @@ node check/sound-test.js                           # the whole path in Chromium,
 
 The typefaces are Nunito (SIL Open Font License 1.1) and Andika (SIL Open Font License 1.1, with the Reserved Font Names
 "Andika" and "SIL": a subset that is not SIL's own file must be renamed). The sound player is Yaoki's. The lessons, the
-reading text and the sample answers were written for the app. The clips of the synthetic voice (`sound/A1/voz`,
-`project/gn-sound-*.js`) were made with Meta AI's MMS-TTS models and are under CC BY-NC 4.0: non-commercial use only,
-with attribution (`sound/VOICE.md`, «The models and the licence»). Notes G4 cover the open data that could feed later work
+reading text and the sample answers were written for the app.
+
+The clips of the synthetic voice (`sound/A1/voz`, `project/gn-sound-*.js`) were made with Meta AI's MMS-TTS models and
+are under **CC BY-NC 4.0**, not CC BY 4.0 like the recordings by a person that are to replace them. The credit the
+licence asks for, which the app build writes into `licenses.txt` (it stops on a voice model it has no credit for) and
+Progreso's «Voz sintética» gives in short:
+
+> Voz sintética: MMS-TTS guaraní y castellano, de Meta AI (https://huggingface.co/facebook/mms-tts-grn y
+> https://huggingface.co/facebook/mms-tts-spa): Pratap et al., «Scaling Speech Technology to 1,000+ Languages», 2023.
+> Licencia CC BY-NC 4.0, solo para uso no comercial: https://creativecommons.org/licenses/by-nc/4.0/. Audio generado
+> con esos modelos y modificado (recortes, tono) por `tools/make-tts.py`. Sin garantías.
+
+What non-commercial means here: in a free app without advertising, as Epu'ã is today, the clips may be used and
+passed on, with that credit and under the same terms; in an app that is sold, sits behind a subscription or carries
+advertising they may not, and a person's recordings must replace them first (`sound/VOICE.md`, «The models and the
+licence»; a reading of the licence, not legal advice). Notes G4 cover the open data that could feed later work
 (Apertium's Guarani–Spanish dictionary under GPL-3.0, Wiktionary, Common Voice Guarani under CC0, Vikipetã under CC BY-SA)
 and the copyright terms that apply to Guarani literature (life plus 70 years in Paraguay; US terms differ for works first
 published from 1931).

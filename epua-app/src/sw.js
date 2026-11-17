@@ -137,10 +137,17 @@ self.addEventListener('fetch', (event) => {
 });
 
 /* the app names the learner's level once there is a plan: store that level's sound for offline use, in the background
-   (its units' files, its exam's, and the placement check's and the speaking game's, which belong to no level) */
+   (its units' files, its exam's, and the placement check's and the speaking game's, which belong to no level).
+   For a learner whose browser says they save data the app names no level: it names the sound files the page has
+   asked for itself (keepFiles), and only those are stored. That is for the file the page fetched before this worker
+   was in charge (the first unit's, on a first visit): it comes from the browser's own copy, and nothing else is
+   fetched behind the learner's back. A file asked for later passes through this worker and is stored then. */
 self.addEventListener('message', (event) => {
-  const lv = event.data && event.data.keepLevel;
-  if (typeof lv !== 'string' || !/^[abc][12]$/.test(lv)) return;
-  const mine = Object.keys(LAZY).filter((f) => f.indexOf('gn-sound-' + lv + '-') >= 0 || /gn-sound-(pl|sp)\.js$/.test(f));
+  const data = event.data || {};
+  const lv = data.keepLevel;
+  let mine = [];
+  if (typeof lv === 'string' && /^[abc][12]$/.test(lv)) mine = Object.keys(LAZY).filter((f) => f.indexOf('gn-sound-' + lv + '-') >= 0 || /gn-sound-(pl|sp)\.js$/.test(f));
+  else if (Array.isArray(data.keepFiles)) mine = Object.keys(LAZY).filter((f) => data.keepFiles.indexOf(f.split('/').pop()) >= 0);
+  if (!mine.length) return;
   event.waitUntil(caches.open(CACHE).then(async (cache) => { for (const f of mine) { try { await keepLazy(cache, f); } catch (e) { /* offline: try again next time */ } } }));
 });

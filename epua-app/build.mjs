@@ -49,11 +49,11 @@ const SCREENS = ['Goal', 'Placement', 'Main', 'Today', 'Levels', 'Progress', 'Te
 const INSIDE = ['Spell'];
 const OWN = ['Shell', 'Install'];
 /* the screens of the first file: the app's own two and the screens a visit starts on (the goal screen, or the week path
-   and the day it opens): about 45 kB as the web server sends it. The others (about 300 kB) are fetched once the page
-   is up, so the first screen does not wait for them */
+   and the day it opens): about 57 kB as a web server sends it, gzipped. The others (about 310 kB) are fetched once the
+   page is up, so the first screen does not wait for them */
 const FIRST = ['Shell', 'Install', 'Goal', 'Main', 'Today'];
-/* the sound player, loaded first (Yaoki's, under new names; no clips exist, so every sound control uses its silent
-   stand-in), then the course: the six levels' data, the engine, the spelling helper and the extras (placement, level
+/* the sound player, loaded first (Yaoki's, under new names; the clips come later, a file per unit: UNIT_SOUND below),
+   then the course: the six levels' data, the engine, the spelling helper and the extras (placement, level
    exam, the reader's text, the typing and speaking lists). The same scripts, in the same order, as App.dc.html */
 const SOUND = 'gn-sound.js';
 const SCRIPTS = ['gn-course-a1.js', 'gn-course-a2.js', 'gn-course-b1.js', 'gn-course-b2.js', 'gn-course-c1.js', 'gn-course-c2.js', 'gn-course.js', 'gn-spell.js', 'gn-extra.js', 'gn-sound-index.js'];
@@ -62,6 +62,9 @@ const SCRIPTS = ['gn-course-a1.js', 'gn-course-a2.js', 'gn-course-b1.js', 'gn-co
    shipped but not installed: the engine fetches a file when its unit or screen is in use, and the offline worker stores it
    then (lazy, as Yaoki's unit sound), so the first download stays small */
 const UNIT_SOUND = fs.readdirSync(PROJECT).filter((f) => /^gn-sound-(?:[abc][12]-(?:u\d\d|x)|pl|sp)\.js$/.test(f)).sort();
+/* what each of them weighs, for the page that explains the voice (Progreso says how much the sound of a level is,
+   through gnApp.sound: gn-app.js carries the mark %SOUND_BYTES%) */
+const SOUND_BYTES = Object.fromEntries(UNIT_SOUND.map((f) => [f, fs.statSync(path.join(PROJECT, f)).size]));
 const isLazy = (f) => /^\.\/assets\/gn-sound-(?:[abc][12]-(?:u\d\d|x)|pl|sp)\.js$/.test(f);
 /* the recording studio (studio/, a page for a native speaker) and the clip lists it reads (../sound/<level>/manifest.json)
    go to estudio/ next to the app: the same site, not part of the install, never stored by the worker */
@@ -85,7 +88,7 @@ const namesAndika = (text) => /(['"])Andika\b|font(-family)?:[^;"'{}]*\bAndika\b
 const tags = (dir, list) => list.map((f) => `\n<script src="${dir}${f}"></script>`).join('');
 let ART = {};
 const fill = (text) => text
-  .replace(/%SCRIPTS%/g, tags('./assets/', SCRIPTS)).replace(/%SCREENS%/g, SCREENS.join(','))
+  .replace(/%SCRIPTS%/g, tags('./assets/', SCRIPTS)).replace(/%SCREENS%/g, SCREENS.join(',')).replace(/%SOUND_BYTES%/g, () => JSON.stringify(SOUND_BYTES))
   .replace(/%KAGUARE%/g, () => ART.kaguare || '').replace(/%ICON%/g, () => ART.icon || '')
   .replace(/%APP_DESCRIPTION%/g, APP.name + ': ' + APP.about.charAt(0).toLowerCase() + APP.about.slice(1))
   .replace(/%APP_ABOUT%/g, APP.about).replace(/%APP_NAME%/g, APP.name);
@@ -274,12 +277,44 @@ const andika = oflOf('andika');
 const oflBodies = nunito.body.replace(/\s+/g, ' ') === andika.body.replace(/\s+/g, ' ') ? [nunito.body] : [nunito.body, andika.body];
 /* the clips' credits, from the index make-sound.mjs writes: each voice's name, what made it and its licence */
 const soundVoices = (() => { try { return JSON.parse((/__gnSoundVoices = (\{[\s\S]*?\});/.exec(read(path.join(PROJECT, 'gn-sound-index.js'))) || [, '{}'])[1]); } catch (e) { return {}; } })();
+/* The synthetic voice's attribution, as its licence asks for it (CC BY-NC 4.0, section 3(a): the creator, a notice of
+   the licence with its address, a link to the material, a note that it was changed). The line is the one
+   sound/VOICE.md gives («The models and the licence»), made from the models the index names: Meta's MMS-TTS, one model
+   a language. A voice model the build does not know stops it: its clips do not ship without their credit. (A voice
+   marked synthetic with no model named at all, as the test fixtures' tones are by `--kind synthetic`, gets no credit
+   line: the licences say that none is named, and so does the build.) */
+const MMS = { 'facebook/mms-tts-grn': 'guaraní', 'facebook/mms-tts-spa': 'castellano' };
+const synthAll = [...new Set(Object.values(soundVoices).filter((v) => v && v.kind === 'synthetic').map((v) => v.model || ''))].sort();
+const synthModels = synthAll.filter(Boolean);
+const unknownModels = synthModels.filter((m) => !MMS[m]);
+if (UNIT_SOUND.length && unknownModels.length) fail(`gn-sound-index.js names a voice model the licences have no credit for (${unknownModels.join(', ')}): add its attribution here, from sound/VOICE.md`);
+if (UNIT_SOUND.length && synthAll.includes('')) console.log('note: a voice of gn-sound-index.js is marked synthetic and names no model: licenses.txt gives it no credit (make-tts.py names the model in voices.json; a real voice must)');
+const synthCredit = UNIT_SOUND.length && synthAll.includes('') && !synthModels.length ? [
+  '',
+  'A voice here is marked synthetic and names no model: no credit can be given for it.',
+] : UNIT_SOUND.length && synthModels.length ? [
+  '',
+  'The synthetic voice, and its licence. Until a person records the course, the clips are said by a voice model and',
+  'are marked «voz sintética» wherever they play. The credit its licence asks for:',
+  '',
+  `  Voz sintética: MMS-TTS ${synthModels.map((m) => MMS[m]).join(' y ')}, de Meta AI (${synthModels.map((m) => 'https://huggingface.co/' + m).join(' y ')}):`,
+  '  Pratap et al., «Scaling Speech Technology to 1,000+ Languages», 2023. Licencia CC BY-NC 4.0, solo para uso no',
+  '  comercial: https://creativecommons.org/licenses/by-nc/4.0/. Audio generado con esos modelos y modificado',
+  '  (recortes, tono) por tools/make-tts.py. Sin garantías.',
+  '',
+  'These clips are under CC BY-NC 4.0 (Creative Commons Attribution-NonCommercial 4.0 International), not CC BY 4.0',
+  'like the recordings by a person that are to replace them. What that means for this app: in a free app without',
+  'advertising, as Epu\'ã is, they may be used and passed on, with this credit and under the same terms; in an app',
+  'that is sold, sits behind a subscription or carries advertising they may not be: a person\'s recordings must',
+  'replace them first. Whoever copies the sound files takes them under those terms.',
+] : [];
 const soundLicence = UNIT_SOUND.length ? [
   '== Sound ==',
   `Spoken clips: ${UNIT_SOUND.join(', ')} (assets/), each fetched when its unit or screen is in use and stored on the`,
   'phone from then on. Voices: ' + (Object.keys(soundVoices).map((v) => `${v}: ${soundVoices[v].name || 'not named'} (${soundVoices[v].kind === 'synthetic' ? 'synthetic, ' + (soundVoices[v].model || 'a voice model') : 'a recording'}; ${soundVoices[v].licence || 'licence not stated'})`).join('; ') || 'not stated') + '.',
   'A clip made by a voice model is marked synthetic in the file, and the screens say so (voz sintética). The sound',
   'player (assets/gn-sound.js) is the player of the Yaoki apps, under new names.',
+  ...synthCredit,
   '',
 ] : [
   '== Sound ==',

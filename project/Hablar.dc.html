@@ -35,7 +35,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <sc-if value="{{ isMenu }}" hint-placeholder-val="{{ false }}">
 <section aria-labelledby="hab-menu-title" style="position: absolute; left: 0; top: 50px; width: 390px; height: 760px; box-sizing: border-box; padding: 0 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 16px; animation: gn-in 220ms ease-out">
 <div style="flex-shrink: 0; min-height: 44px; display: flex; align-items: center; gap: 8px">
-<a href="Progress.dc.html" onClick="{{ toProgress }}" aria-label="Cerrar" style="flex-shrink: 0; width: 44px; height: 44px; margin-left: -10px; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+<a href="Progress.dc.html" onClick="{{ toProgress }}" aria-label="Cerrar" data-gn-back="screen" style="flex-shrink: 0; width: 44px; height: 44px; margin-left: -10px; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
 <div style="font-size: 15px; font-weight: 800"><span lang="gn">Eñe'ẽ</span><span style="margin-left: 6px; font-size: 12px; font-weight: 700; color: #5A6382">Hablar</span></div>
 </div>
 <div style="flex-shrink: 0; display: flex; gap: 14px; align-items: center">
@@ -139,7 +139,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </sc-if>
 
 <div style="position: absolute; left: 12px; right: 12px; top: 50px; height: 44px; display: flex; align-items: center; gap: 6px">
-<button onClick="{{ openPause }}" aria-label="Pausa o salir de la ronda" style="flex-shrink: 0; width: 44px; height: 44px; padding: 0; box-sizing: border-box; border: 2px solid #1B2440; border-radius: 50%; background: #FFFFFF; box-shadow: 0 2px 0 #1B2440; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+<button onClick="{{ openPause }}" aria-label="Pausa o salir de la ronda" data-gn-back="screen" style="flex-shrink: 0; width: 44px; height: 44px; padding: 0; box-sizing: border-box; border: 2px solid #1B2440; border-radius: 50%; background: #FFFFFF; box-shadow: 0 2px 0 #1B2440; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
 <div role="img" aria-label="{{ hud.label }}" style="flex: 1; min-width: 30px; box-sizing: border-box; padding: 9px 10px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; box-shadow: 0 2px 6px rgba(27, 36, 64, 0.12); display: flex; gap: {{ hud.gap }}">
 <sc-for list="{{ hud.segs }}" as="g" hint-placeholder-count="10"><span style="flex: 1; height: 10px; border-radius: 5px; background: {{ g.bg }}"></span></sc-for>
 </div>
@@ -150,7 +150,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <sc-if value="{{ dockOn }}" hint-placeholder-val="{{ true }}">
 <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 220px; box-sizing: border-box; padding: 6px 12px 34px; background: rgba(255, 255, 255, 0.86); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-top: 2px solid #1B2440; border-radius: 24px 24px 0 0; box-shadow: 0 -6px 20px rgba(27, 36, 64, 0.14); display: flex; flex-direction: column">
 <p style="margin: 0; padding: 0 2px; height: 20px; display: flex; align-items: center; gap: 0 8px; overflow: hidden; font-size: 14px; font-weight: 700; line-height: 20px; color: #5A6382"><sc-if value="{{ dock.hasTag }}" hint-placeholder-val="{{ true }}"><span style="flex-shrink: 0; padding: 0 8px; border-radius: 10px; background: #FCE4EE; color: #B02A63; font-size: 11px; font-weight: 800; line-height: 18px; white-space: nowrap">{{ dock.tag }}</span></sc-if><span style="min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{ dock.say }}</span></p>
-<p style="margin: 0; padding: 0 2px; height: 22px; display: flex; align-items: center; gap: 6px; overflow: hidden; font-size: 14px; font-weight: 700; line-height: 22px; white-space: nowrap; color: {{ dock.heardColor }}"><sc-if value="{{ dock.heardOn }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0">{{ dock.heardLabel }}</span><span lang="gn" style="flex-shrink: 0; font-family: 'Andika', 'Nunito', sans-serif; font-size: 17px; font-weight: 700; color: {{ dock.heardGnColor }}">{{ dock.heardGn }}</span><span style="min-width: 0; overflow: hidden; text-overflow: ellipsis">{{ dock.heardEs }}</span></sc-if></p>
+<p style="margin: 0; padding: 0 2px; height: 22px; display: flex; align-items: center; gap: 6px; overflow: hidden; font-size: 14px; font-weight: 700; line-height: 22px; white-space: nowrap; color: {{ dock.heardColor }}"><sc-if value="{{ dock.heardOn }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0">{{ dock.heardLabel }}</span><span lang="gn" style="flex-shrink: 0; font-family: 'Andika', 'Nunito', sans-serif; font-size: 17px; font-weight: 700; color: {{ dock.heardGnColor }}">{{ dock.heardGn }}</span><span style="min-width: 0; overflow: hidden; text-overflow: ellipsis">{{ dock.heardEs }}</span></sc-if><sc-if value="{{ dock.synth }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap; margin-left: auto">voz sintética</span></sc-if></p>
 <p role="status" aria-live="polite" style="margin: 0; padding: 0 2px; min-height: 16px; max-height: 32px; overflow: hidden; font-size: 13px; font-weight: 800; line-height: 16px; color: {{ dock.statusColor }}"><sc-for list="{{ dock.statusSegs }}" as="x" hint-placeholder-count="1"><span lang="{{ x.lang }}">{{ x.t }}</span></sc-for></p>
 <div style="margin-top: 2px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 10px">
 <button onClick="{{ sideL }}" aria-label="{{ dock.leftAria }}" aria-disabled="{{ dock.leftOff }}" style="justify-self: center; min-width: 64px; min-height: 56px; padding: 4px 8px; box-sizing: border-box; border-radius: 16px; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 11px; font-weight: 800; line-height: 1.15; border: {{ dock.leftBorder }}; background: {{ dock.leftBg }}; color: {{ dock.leftColor }}; box-shadow: {{ dock.leftShadow }}">
@@ -179,7 +179,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <sc-for list="{{ cmp.strips }}" as="s" hint-placeholder-count="2">
 <div style="margin-top: 8px; height: 52px; box-sizing: border-box; padding: 0 12px 0 4px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; align-items: center; gap: 10px">
 <button onClick="{{ s.play }}" aria-label="{{ s.aria }}" aria-pressed="{{ s.on }}" style="flex-shrink: 0; width: 44px; height: 44px; padding: 0; box-sizing: border-box; border-radius: 12px; border: 2px solid #1B2440; background: {{ s.btnBg }}; color: {{ s.btnColor }}; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg></button>
-<span style="flex-shrink: 0; width: 52px; font-size: 13px; font-weight: 800">{{ s.label }}</span>
+<span style="flex-shrink: 0; min-width: 52px; display: flex; flex-direction: column; align-items: flex-start; gap: 1px"><span style="font-size: 13px; font-weight: 800; line-height: 1.3">{{ s.label }}</span><sc-if value="{{ s.synth }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap">voz sintética</span></sc-if></span>
 <div aria-hidden="true" style="flex: 1; min-width: 0; height: 32px; display: flex; align-items: center; gap: 2px">
 <sc-for list="{{ s.bars }}" as="b" hint-placeholder-count="28"><span style="flex: 1; min-width: 0; border-radius: 2px; height: {{ b.h }}; background: {{ b.bg }}"></span></sc-for>
 </div>
@@ -260,7 +260,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div role="dialog" aria-modal="true" aria-labelledby="hab-pause-h" style="width: 100%; box-sizing: border-box; border-radius: 26px 26px 0 0; border-top: 2px solid #1B2440; padding: 18px 20px 34px; background: #F4F5F9; display: flex; flex-direction: column; gap: 12px; animation: gn-up 240ms ease-out">
 <h2 id="hab-pause-h" style="margin: 0; font-size: 18px; font-weight: 800">Pausa</h2>
 <p style="margin: 0; font-size: 13px; font-weight: 500; color: #5A6382; line-height: 1.45">{{ mic.pause }}</p>
-<button onClick="{{ resume }}" style="height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-size: 17px; font-weight: 800"><span lang="gn">Eku'ejey</span> · Continuar</button>
+<button onClick="{{ resume }}" data-gn-back="sheet" style="height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-size: 17px; font-weight: 800"><span lang="gn">Eku'ejey</span> · Continuar</button>
 <button onClick="{{ toMenu }}" style="height: 50px; border-radius: 16px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; color: #1B2440; font-size: 16px; font-weight: 800">Cambiar de juego</button>
 <a href="Progress.dc.html" onClick="{{ toProgress }}" style="height: 50px; box-sizing: border-box; border-radius: 16px; background: #FFFFFF; border: 2px solid #C7361E; color: #C7361E; font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center">Salir de la ronda</a>
 </div>
@@ -285,8 +285,11 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
      (Intento), and the pause sheet promises no takes. A model with no clip says so («Este modelo todavía no está
      grabado: mirá cómo se escribe…»), shows the sign written («Se escribe ·») while its stand-in runs, and a play of it
      is not counted as help (the sign can still be clean).
-   The words' sound: no clips exist yet, so every sound button lights up for 600 + 120 ms a letter (Yaoki's stand-in)
-   and shows the word being said. The rewards are Yaoki's: the clean run, Se levantó, the stamp; never speed.
+   The words' sound: a word or a sign without a clip (the canvas alone has none; in the app, the pairs the synthetic
+   voice must not say) lights its button up for 600 + 120 ms a letter (Yaoki's stand-in) and shows the word being
+   said. A clip made by a voice model carries the tag «voz sintética» (gnCourse.synth): at the end of the dock's
+   second line while its card is the one in play, and under «Modelo» in the comparison. The rewards are Yaoki's: the
+   clean run, Se levantó, the stamp; never speed.
    Props: go, app, demo: "pick" (on its own: a pair falling while its word plays) or "compare" (the ¿Sonó igual? panel
    open under Kaguare). Inside the app (no demo) it opens on its menu. A designed moment holds still until the first tap.
    Its way out (the menu's close, the result's Cerrar, the pause sheet's Salir) goes back to Progreso, whose «Más
@@ -368,8 +371,6 @@ const LOOK_TIP = {
 /* a sign's model with no clip (none is recorded yet), inside the prototype and the app: what the dock says instead of
    «escuchá el modelo»; a silent model is shown written while its stand-in runs and never counts as help */
 const SILENT_MODEL = 'Este modelo todavía no está grabado: mirá cómo se escribe y decilo en voz alta.';
-/* a clip made by a voice model, not a speaker (gn-sound.js knows each clip's kind): said once a round */
-const SYNTH_NOTE = 'Voz sintética: este audio lo hizo un programa, no una persona.';
 const WAYS = {
   pick: { title: 'Escuchá y elegí', desc: 'Suena una palabra y caen dos parecidas. Tocá la que oíste antes de que caiga sobre Kaguare.', kicker: 'ESCUCHÁ Y ELEGÍ' },
   compare: { title: 'Repetí y compará', desc: 'Decí el cartel, escuchá tu toma junto al modelo y decidí si sonó igual. Sin apuro.', descApp: 'Decí el cartel en voz alta, escuchá el modelo y decidí si sonó igual. Sin apuro.', descSilent: 'Decí el cartel en voz alta y decidí si te salió como se escribe: los modelos todavía no están grabados. Sin apuro.', kicker: 'REPETÍ Y COMPARÁ' },
@@ -652,7 +653,18 @@ this.status = { es: this.mute(first) ? 'Tocá la palabra que se muestra antes de
 /* no clip registered at all (none is recorded yet), inside the prototype and the app: the menu, the intro and the
    result say so instead of asking the learner to listen */
 noClips() {
-return !!(this.props && this.props.go) && !Object.keys(window.__gnClips || {}).length;
+const Sd = window.gnSound;
+return !!(this.props && this.props.go) && !(Sd && Sd.any ? Sd.any() : Object.keys(window.__gnClips || {}).length);
+}
+/* how many of the pairs and of the signs have no clip, inside the prototype and the app (the synthetic voice does not
+   say every pair: sound/silent.json): the menu's note says so, in numbers */
+quiet() {
+const Sd = window.gnSound;
+const has = (id) => !!(Sd && Sd.has && Sd.has(id));
+const ids = {};
+this.pairs.forEach((it) => { const k = String(it.id).split('.')[0]; ids[k] = (ids[k] || false) || !has(it.id); });
+const pairs = Object.keys(ids);
+return { pairs: pairs.length, pairsOff: pairs.filter((k) => ids[k]).length, signs: this.phrases.length, signsOff: this.phrases.filter((it) => !has(it.id)).length };
 }
 mute(item) {
 const Sd = window.gnSound;
@@ -793,7 +805,6 @@ const Sd = window.gnSound;
 let ms = clipMs(c.item.id, text);
 if (Sd && Sd.has && Sd.has(c.item.id)) {
 try { Sd.unlock(); Sd.play(c.item.id); } catch (e) { ms = clipMs('', text); }
-if (!r.synthNoted && Sd.kind && Sd.kind(c.item.id) === 'synthetic') { r.synthNoted = true; this.status = { es: SYNTH_NOTE, color: '#5A6382' }; }
 }
 else if (kind === 'model' && this.mute(c.item)) this.status = { es: SILENT_MODEL, color: '#B02A63' };
 else if (!r.firstClip) { r.firstClip = true; this.status = { es: 'Este audio todavía no está grabado.', color: '#B02A63' }; }
@@ -1601,6 +1612,7 @@ for (let k = 1; k < 6; k++) ribs += 'M0 0L' + num(-R + k * ((2 * R) / 6)) + ' 11
 return { on: true, left: px(W / 2 + 10.5), top: px(y), d, ribs, stick: 'M0 0V' + num(GROUND_Y - 39.5 - y) };
 }
 renderVals() {
+const C = window.gnCourse;
 const st = this.state;
 /* the canvas grants no microphone, so «Simular toma» stands for the recording; played inside the prototype or the app
    the learner says the phrase aloud and nothing is recorded yet, so the words say that instead */
@@ -1652,7 +1664,11 @@ const skipOpen = !!(t && (halted || (!pick && r && r.time - (t.shownAt || r.time
 const h0 = this.heard;
 /* no clip for the word on screen (inside the prototype and the app): the dock shows the word and keeps it in view until
    it is picked, and its lines say what is shown, not what is heard */
-const mute = this.mute(t ? t.item : voicing ? r.voicing.card.item : null);
+/* between two cards the lines speak of the one that is coming (some pairs have a clip and some have none): the card
+   on its way down, else the next of the deck; the sign on the next ledge */
+const ahead = !r ? null : pick ? (r.cards || []).find((x) => x.state === 'live') || (r.queue && r.queue[0]) || null : r.ledges && r.ledges[r.at + 1] ? r.ledges[r.at + 1].card : null;
+const coming = ahead ? ahead.item : null;
+const mute = this.mute(t ? t.item : voicing ? r.voicing.card.item : coming);
 let heardOn = false;
 let heardLabel = '';
 let heardGn = '';
@@ -1688,7 +1704,10 @@ const stateLine = !r ? '' : pick
 : inApp
 ? (voicing ? (mute ? 'Sin audio todavía: leé el cartel' : 'Escuchá: después te toca a vos') : tk.state === 'listening' ? 'Ahora, en voz alta…' : tk.state === 'speaking' ? 'Decila en voz alta · tocá «Terminar»' : halted ? 'Con calma: este cartel espera' : r.jump ? 'Sube al cartel' : 'Tocá «Decir» y decí la frase en voz alta')
 : (voicing ? 'Escuchá: el micrófono vuelve después del audio' : tk.state === 'listening' ? 'Escuchando…' : tk.state === 'speaking' ? 'Te escucho · tocá para terminar' : halted ? 'Con calma: este cartel espera' : r.jump ? 'Sube al cartel' : 'Tocá «Simular toma»: en el lienzo no hay micrófono');
+/* the clip of the card in play is a voice model's: the dock says so, at the end of its second line */
+const cardNow = t ? t.item : voicing ? r.voicing.card.item : null;
 const dock = {
+synth: !!cardNow && C.synth(cardNow.id),
 hasTag: !!tagC, tag: tagC ? tagC.tag : '', say,
 heardOn, heardLabel, heardGn, heardEs, heardColor, heardGnColor,
 status: s0 ? s0.es : '', statusSegs: pieces(s0 ? s0.es : ''), statusColor: s0 ? s0.color : '#1B2440',
@@ -1722,7 +1741,7 @@ kinds.forEach(([which, label, ms, stretch, seed]) => {
 const playing = !!(this.strip && this.strip.which === which && r);
 const prog = playing ? Math.min(1, (r.time - this.strip.from) / Math.max(0.1, ms / 1000)) : 0;
 const bars = waveOf(t.item.gn, 28, seed, which === 'model' ? 1 : stretch).map((a, i, arr) => ({ h: px(4 + 26 * a), bg: playing && i / arr.length <= prog ? (which === 'model' ? '#2F4FD0' : '#C2336F') : '#C9D0E3' }));
-strips.push({ label, dur: secs(ms), bars, on: playing ? 'true' : 'false', aria: which === 'model' ? 'Escuchar el modelo' : 'Escuchar tu toma', btnBg: playing ? '#2F4FD0' : '#FFFFFF', btnColor: playing ? '#FFFFFF' : '#1B2440', play: () => { this.playStrip(which); this.forceUpdate(); } });
+strips.push({ label, synth: which === 'model' && C.synth(t.item.id), dur: secs(ms), bars, on: playing ? 'true' : 'false', aria: which === 'model' ? 'Escuchar el modelo' : 'Escuchar tu toma', btnBg: playing ? '#2F4FD0' : '#FFFFFF', btnColor: playing ? '#FFFFFF' : '#1B2440', play: () => { this.playStrip(which); this.forceUpdate(); } });
 });
 }
 const cmp = { takeLabel: (inApp ? 'Intento ' : 'Toma ') + (tk.n || 1), strips, unrecorded: panelOn && inApp, noModel: panelOn && inApp && mute };
@@ -1741,9 +1760,21 @@ const res = R ? Object.assign({}, R, { fallsNote: fn.a, fallsName: fn.name, fall
 const empty = inRound && !r;
 /* the pause sheet: on the canvas the takes it keeps; in the prototype and the app nothing is recorded, so no takes */
 const STILL = 'Nada se mueve mientras esto está abierto.';
+/* the menu's note on the audio, inside the prototype and the app: none at all (every sound button lights up in
+   silence), or what there is: a voice model's, and how many pairs or signs have none and show the word instead */
+const q = inApp && st.view === 'menu' ? this.quiet() : { pairs: 0, pairsOff: 0, signs: 0, signsOff: 0 };
+const some = (n, of, one, many) => (n === of && of > 1 ? 'los ' + many : n === 1 ? one : n + ' de los ' + of + ' ' + many);
+const off = [];
+if (q.pairsOff) off.push(some(q.pairsOff, q.pairs, 'un par', 'pares'));
+if (q.signsOff) off.push(some(q.signsOff, q.signs, 'un cartel', 'carteles'));
+const offN = q.pairsOff + q.signsOff;
+const synthAny = inApp && st.view === 'menu' && C.synth(this.pairs.concat(this.phrases).map((it) => it.id));
+const audioNote = !inApp ? '' : this.noClips()
+? ' Los audios todavía no están grabados, así que cada botón de sonido se ilumina sin sonar.'
+: (synthAny ? ' Los audios los dice una voz sintética.' : '') + (offN ? (offN === 1 ? ' Todavía no tiene audio ' : ' Todavía no tienen audio ') + off.join(' ni ') + ': ahí se muestra la palabra.' : '');
 const mic = inApp
 ? { intro: this.noClips() ? 'Los teléfonos todavía no reconocen el guaraní hablado, y los audios todavía no están grabados. Por eso acá no te corrige una máquina: mirás la palabra y elegís, o decís la frase en voz alta y la comparás con el cartel.' : 'Los teléfonos todavía no reconocen el guaraní hablado. Por eso acá no te corrige una máquina: escuchás y elegís, o decís la frase en voz alta y la comparás con el modelo.',
-noteA: 'Tu voz todavía no se graba: en ', noteB: ', tocá «Decir», decí la frase en voz alta y tocá «Terminar» al acabar. Los audios todavía no están grabados, así que cada botón de sonido se ilumina sin sonar.',
+noteA: 'Tu voz todavía no se graba: en ', noteB: ', tocá «Decir», decí la frase en voz alta y tocá «Terminar» al acabar.' + audioNote,
 panel: mute ? 'Ni el modelo ni tu voz están grabados: compará lo que dijiste con el cartel. Decidís vos.' : 'Tu voz todavía no se graba: compará de memoria con el modelo. Decidís vos.',
 pause: pick ? STILL : STILL + ' Tu voz todavía no se graba.' }
 : { intro: 'Los teléfonos todavía no reconocen el guaraní hablado. Por eso acá no te corrige una máquina: escuchás y elegís, o te grabás y comparás tu voz con el modelo.',

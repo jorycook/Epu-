@@ -53,6 +53,8 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <button onClick="{{ hint }}" aria-disabled="{{ noHint }}" aria-label="Mostrar la letra que sigue" style="height: 44px; min-width: 0; padding: 0 6px; border-radius: 12px; font-size: 13px; font-weight: 800; white-space: nowrap; display: flex; align-items: center; justify-content: center; gap: 5px; background: #FFFFFF; border: {{ hintBorder }}; color: {{ hintColor }}; cursor: {{ hintCursor }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.3 1.1 2.2h5c0-.9.4-1.6 1.1-2.2A6 6 0 0 0 12 3z"/></svg><span>Pista</span></button>
 <button onClick="{{ again }}" aria-disabled="{{ noAgain }}" aria-label="Empezar otra vez desde la primera letra" style="height: 44px; min-width: 0; padding: 0 6px; border-radius: 12px; background: #FFFFFF; font-size: 13px; font-weight: 800; white-space: nowrap; display: flex; align-items: center; justify-content: center; gap: 5px; border: {{ againBorder }}; color: {{ againColor }}; cursor: {{ againCursor }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/></svg><span>Otra vez</span></button>
 </div>
+<sc-if value="{{ synth }}" hint-placeholder-val="{{ false }}"><div style="flex-shrink: 0; margin-top: -5px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px"><div style="display: flex; justify-content: center"><span data-gn-voice="tag" style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap">voz sintética</span></div></div></sc-if>
+<sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}"><div style="flex-shrink: 0; margin-top: -5px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px"><div style="display: flex; justify-content: center"><span style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap">cargando el audio…</span></div></div></sc-if>
 
 <sc-if value="{{ showStrip }}" hint-placeholder-val="{{ false }}">
 <div style="flex-shrink: 0; display: flex; flex-direction: column; gap: 4px">
@@ -117,7 +119,7 @@ return t.moment && n > 1 ? Math.max(1, Math.floor(n * 0.6)) : 0;
 }
 fresh(key, moment) {
 const t = this.task();
-return { key, pass: moment ? 1 : 0, at: moment ? this.pre(t) : 0, misses: 0, slips: 0, helped: 0, hinted: false, bad: -1, badKey: '', fadeAt: -1, flash: false, finished: false, playing: false, noteGn: '', note: '', tone: '' };
+return { key, pass: moment ? 1 : 0, at: moment ? this.pre(t) : 0, misses: 0, slips: 0, helped: 0, hinted: false, bad: -1, badKey: '', fadeAt: -1, flash: false, finished: false, playing: false, wait: false, noteGn: '', note: '', tone: '' };
 }
 /* the state for this task: when the task has just changed, a fresh one until componentDidUpdate has caught up */
 st() {
@@ -229,16 +231,24 @@ this.setState({ pass, at: 0, misses: 0, slips: 0, helped: 0, hinted: false, bad:
 if (pass === PASSES.length - 1) this.play();
 });
 }
-/* the word's clip; without one the button lights up for as long as the word would take to say */
-play() {
+/* the word's clip; without one the button lights up for as long as the word would take to say. While the clip's
+   sound file is still on its way (gnCourse.soundState: 'coming') nothing lights up: a tap on «Escuchar» has the line
+   say «Cargando el audio…» (tapped), and the dictation of the third time simply goes without */
+play(tapped) {
 const t = this.task();
 const S = window.gnSpell;
+const C = window.gnCourse;
 const snd = window.gnSound;
 const key = t.clip || '';
 clearTimeout(this.playTimer);
+if (key && C && C.soundState && C.soundState(key) === 'coming') {
+if (snd) snd.stop();
+this.setState({ playing: false, wait: !!tapped });
+return;
+}
 const sound = !!(key && snd && snd.has(key) && snd.unlock() && snd.play(key));
 const len = (S ? S.norm(t.w) : String(t.w || '')).length;
-this.setState({ playing: true });
+this.setState({ playing: true, wait: false });
 this.playTimer = setTimeout(() => this.setState({ playing: false }), sound ? snd.ms(key) + 150 : 600 + len * 120);
 }
 hint() {
@@ -387,7 +397,11 @@ dotColor: now ? '#2F4FD0' : '#5A6382',
 });
 /* the line under the cells: what to do now, or what just happened (the word named without its end marks) */
 const bare = String(t.w || '').replace(/[¿?¡!.,;:«»"]+/g, '').trim();
-const quiet = !(t.clip && window.gnSound && window.gnSound.has && window.gnSound.has(t.clip));
+/* the word's clip now: here ('in'), on its way ('coming'), or why not ('none' not recorded, 'failed', 'off'): the line says which */
+const C = window.gnCourse;
+const clipNow = t.clip && C && C.soundState ? C.soundState(t.clip) : t.clip && window.gnSound && window.gnSound.has && window.gnSound.has(t.clip) ? 'in' : 'none';
+const quiet = clipNow !== 'in';
+const whyQuiet = (then) => (C && C.soundNote ? C.soundNote(clipNow === 'coming' ? 'none' : clipNow, then) : 'Este audio todavía no está grabado' + (then ? ': ' + then : '.'));
 const at1 = Math.min(n, s.at + 1);
 let msgGn = s.noteGn || '';
 let msgEs = s.note || '';
@@ -396,8 +410,10 @@ let msgTail = '';
 if (!msgGn && !msgEs) {
 if (!n) msgEs = 'Esta palabra no tiene letras nuevas para teclear.';
 else if (s.finished) { msgGn = '¡Oĩma!'; msgEs = ' Escribiste '; msgWord = bare; msgTail = ' tres veces.'; }
-/* with no clip (none is recorded yet) the button lights up in silence: the line says so instead of asking to listen */
-else if (s.playing) msgEs = quiet ? (s.pass >= 2 ? 'Este audio todavía no está grabado: escribila de memoria.' : 'Este audio todavía no está grabado.') : s.pass >= 2 ? 'Escuchá y escribí de memoria.' : 'Escuchá la palabra.';
+/* «Escuchar» was tapped while the clip was on its way: the line says so until it is in */
+else if (s.wait && clipNow === 'coming') msgEs = C.SOUND_COMING;
+/* with no clip (none is recorded yet) the button lights up in silence: the line says so, and why, instead of asking to listen */
+else if (s.playing) msgEs = quiet ? whyQuiet(s.pass >= 2 ? 'escribila de memoria.' : '') : s.pass >= 2 ? 'Escuchá y escribí de memoria.' : 'Escuchá la palabra.';
 else if (s.pass === 0) msgEs = 'Copiá la palabra, letra por letra · letra ' + at1 + ' de ' + n;
 else if (s.pass === 1) msgEs = 'Otra vez, con pistas suaves · letra ' + at1 + ' de ' + n;
 else msgEs = quiet ? 'Ahora de memoria: escribí la palabra' : 'Ahora de memoria: escuchá y escribí';
@@ -429,6 +445,10 @@ msgColor: tone,
 keys,
 playing: !!s.playing,
 playBg: s.playing ? '#F2B43A' : '#FFFFFF',
+/* the word's clip is a voice model's: the tag «voz sintética» sits under «Escuchar» (gnCourse.synth) */
+synth: !!(window.gnCourse && window.gnCourse.synth && window.gnCourse.synth(t.clip)),
+/* …and while the clip is on its way, «cargando el audio…» in the same place */
+loading: clipNow === 'coming',
 noHint: !writing,
 hintBorder: writing ? '2px solid #1B2440' : '2px solid #DDE1EC',
 hintColor: writing ? '#1B2440' : '#9AA1B5',
@@ -443,7 +463,7 @@ stripAria: syl ? 'Sílabas: ' + syl.map((y) => y.t).join(', ') + (stressed ? '; 
 /* from memory, the strip would give the word away: it keeps its place, hidden */
 stripVis: hidden ? 'hidden' : 'visible',
 stripNote: hidden ? ' · ocultas por ahora' : '',
-play: () => this.play(),
+play: () => this.play(true),
 hint: () => this.hint(),
 again: () => this.again(),
 };

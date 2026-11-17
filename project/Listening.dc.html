@@ -31,7 +31,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div aria-live="polite" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap">{{ liveMsg }}</div>
 
 <div style="display: flex; align-items: center; gap: 10px; height: 44px; padding: 0 16px; flex-shrink: 0">
-<a href="Today.dc.html" onClick="{{ toBack }}" aria-label="{{ closeLabel }}" style="width: 44px; height: 44px; margin-left: -10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+<a href="Today.dc.html" onClick="{{ toBack }}" aria-label="{{ closeLabel }}" data-gn-back="screen" style="width: 44px; height: 44px; margin-left: -10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
 <div style="flex-grow: 1"></div>
 <div style="font-size: 12px; font-weight: 800; color: #2F4FD0">PRÁCTICA</div>
 </div>
@@ -50,12 +50,12 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <button aria-label="Reproducir el audio" onClick="{{ playNormal }}" style="width: 60px; height: 60px; border-radius: 50%; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 150ms; background: {{ playBg }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="{{ playInk }}" aria-hidden="true"><path d="M8 5l11 7-11 7z"/></svg></button>
 <div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px">
 <div aria-hidden="true" style="height: 40px; display: flex; align-items: center; justify-content: space-between"><sc-for list="{{ bars }}" as="b" hint-placeholder-count="22"><div style="width: 4px; border-radius: 2px; height: {{ b.h }}; background: {{ b.bg }}"></div></sc-for></div>
-<div style="min-height: 15px; font-size: 11px; font-weight: 700; line-height: 1.35; color: #5A6382">{{ status }}</div>
+<div style="display: flex; align-items: center; gap: 8px"><div style="flex: 1 1 auto; min-width: 0; min-height: 15px; font-size: 11px; font-weight: 700; line-height: 1.35; color: #5A6382">{{ status }}</div><sc-if value="{{ synth }}" hint-placeholder-val="{{ false }}"><span data-gn-voice="tag" style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap">voz sintética</span></sc-if></div>
 </div>
 </div>
 <div style="display: flex; align-items: center; gap: 8px">
 <button onClick="{{ playNormal }}" style="height: 44px; padding: 0 14px; border-radius: 12px; border: 2px solid #1B2440; background: #FFFFFF; font-size: 13px; font-weight: 800; white-space: nowrap">Repetir</button>
-<button disabled="{{ noSlow }}" onClick="{{ playSlow }}" style="min-height: 44px; padding: 4px 12px 4px 10px; border-radius: 12px; display: flex; align-items: center; gap: 6px; text-align: left; border: {{ slow.border }}; background: {{ slow.bg }}; color: {{ slow.color }}; cursor: {{ slow.cursor }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M3 15.5C3 10.6 7 7 12 7s9 3.6 9 8.5z"/><path d="M6.5 15.5v3M10 15.5v3M14 15.5v3M17.5 15.5v3"/></svg><span style="display: flex; flex-direction: column"><span style="font-size: 13px; font-weight: 800; white-space: nowrap">Más despacio 0.8×</span><sc-if value="{{ noSlow }}" hint-placeholder-val="{{ true }}"><span style="font-size: 10px; font-weight: 700; white-space: nowrap">Todavía no está grabado</span></sc-if></span></button>
+<button disabled="{{ noSlow }}" onClick="{{ playSlow }}" style="min-height: 44px; padding: 4px 12px 4px 10px; border-radius: 12px; display: flex; align-items: center; gap: 6px; text-align: left; border: {{ slow.border }}; background: {{ slow.bg }}; color: {{ slow.color }}; cursor: {{ slow.cursor }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M3 15.5C3 10.6 7 7 12 7s9 3.6 9 8.5z"/><path d="M6.5 15.5v3M10 15.5v3M14 15.5v3M17.5 15.5v3"/></svg><span style="display: flex; flex-direction: column"><span style="font-size: 13px; font-weight: 800; white-space: nowrap">Más despacio 0.8×</span><sc-if value="{{ noSlow }}" hint-placeholder-val="{{ true }}"><span style="font-size: 10px; font-weight: 700; white-space: nowrap">{{ slowNote }}</span></sc-if></span></button>
 </div>
 </div>
 
@@ -63,7 +63,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div ref="{{ textRef }}" style="margin: 12px 16px 0; padding: 12px 14px; border-radius: 18px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 8px">
 <div style="display: flex; flex-direction: column; gap: 2px">
 <div style="font-size: 12px; font-weight: 800; color: #5A6382">Transcripción</div>
-<div style="font-size: 12px; font-weight: 800; line-height: 1.4; color: #B02A63">Este audio todavía no está grabado: leé lo que se dice.</div>
+<div style="font-size: 12px; font-weight: 800; line-height: 1.4; color: #B02A63">{{ readNote }}</div>
 </div>
 <sc-for list="{{ script }}" as="l" hint-placeholder-count="3"><div style="margin: 0 -6px; padding: 3px 6px; border-radius: 10px; display: flex; align-items: flex-start; gap: 8px; transition: background 200ms; background: {{ l.bg }}"><sc-if value="{{ l.hasWho }}" hint-placeholder-val="{{ true }}"><span style="flex-shrink: 0; box-sizing: border-box; min-width: 72px; margin-top: 3px; padding: 2px 8px; border-radius: 8px; background: #EEF0F6; font-size: 11px; font-weight: 800; line-height: 1.4; text-align: center">{{ l.who }}</span></sc-if><div style="flex: 1 1 auto; min-width: 0; display: flex; align-items: flex-start; gap: 6px"><sc-if value="{{ l.hasNum }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0; width: 20px; height: 20px; margin-top: 3px; border-radius: 10px; background: #E8ECFB; color: #2F4FD0; font-family: 'Nunito', 'Avenir Next', sans-serif; font-size: 11px; font-weight: 800; line-height: 20px; text-align: center">{{ l.num }}</span></sc-if><div lang="{{ l.lang }}" style="flex: 1 1 auto; min-width: 0; line-height: 1.6; overflow-wrap: anywhere; font-family: {{ l.font }}; font-size: {{ l.size }}; font-weight: {{ l.weight }}; color: {{ l.color }}">{{ l.t }}</div></div></div></sc-for>
 </div>
@@ -177,9 +177,12 @@ constructor(props) {
 super(props);
 /* inside the prototype nothing has been played yet; on its own the artboard shows the designed moment: day 1's
    listening played once and answered (the right reply), the transcript open. 'right' stands for the item's answer */
+/* read: why the lesson is read from its transcript, once it is ('none' no clip is recorded, 'failed' it could not be
+   loaded, 'off' the voice is turned off): from then on it stays read, whatever arrives. asked: play was tapped while
+   the clip was still on its way */
 this.state = props && props.go
-? { played: false, playing: false, progress: 0, line: -1, plays: 0, pick: null, es: false }
-: { played: true, playing: false, progress: 1, line: -1, plays: 1, pick: 'right', es: false };
+? { played: false, playing: false, progress: 0, line: -1, plays: 0, pick: null, es: false, read: '', asked: false }
+: { played: true, playing: false, progress: 1, line: -1, plays: 1, pick: 'right', es: false, read: '', asked: false };
 this.boxRef = (el) => { this.boxEl = el; };
 this.textRef = (el) => { this.textEl = el; };
 this.listRef = (el) => { this.listEl = el; };
@@ -285,7 +288,14 @@ const short = Array.isArray(it.short) ? it.short : [];
 options.forEach((o, k) => { SHORT[k + 1] = (short[k] && C.plain(short[k])) || C.plain(o); });
 
 /* sound: the item's clip (its id), and a slower recording of it (id.slow) when one exists. Without a clip the silent
-   stand-in runs: each line "plays" in turn for 600 ms + 120 ms per character, and the waveform fills over the whole */
+   stand-in runs: each line "plays" in turn for 600 ms + 120 ms per character, and the waveform fills over the whole.
+   With a clip, the line that is being said (the status line names its speaker) is told by the clip's own cues, where
+   each of its lines ends (gnSound.cues, gnCourse.cueLine): the lines' lengths in letters ran up to a second early or
+   late against a voice. Where the clip stands is asked of the engine (gnCourse.soundState), because «no clip here» is
+   not one thing: while its sound file is still on its way the player waits («Cargando el audio…»: no stand-in, no
+   transcript, the answers shut); a clip that is not recorded, could not be loaded, or belongs to a voice the learner
+   turned off has the stand-in, and the screen says which. Once the transcript has opened the lesson stays read
+   (s.read), so nothing flips under the learner when the file comes in after all */
 const total = lines.reduce((a, l) => a + l.ms, 0) || 2600;
 const ends = [];
 lines.reduce((a, l) => { const b = a + l.ms; ends.push(b / total); return b; }, 0);
@@ -293,21 +303,33 @@ const lineAt = (f) => { for (let k = 0; k < ends.length; k++) if (f < ends[k]) r
 const snd = window.gnSound;
 const KEY = it.clip || it.id || '';
 const SLOW = it.slowClip || (KEY ? KEY + '.slow' : '');
-const hasClip = !!(snd && KEY && snd.has(KEY));
-const hasSlow = !!(snd && SLOW && snd.has(SLOW));
+const now = KEY ? C.soundState(KEY) : 'none';
+const hasClip = now === 'in' && !s.read;
+const coming = now === 'coming' && !s.read;
+/* why there is nothing to hear, where there is not: the reason the lesson was read for, else the clip's state now */
+const quietWhy = s.read || (now === 'in' || now === 'coming' ? 'failed' : now);
+const WHY = { none: 'Todavía no está grabado', failed: 'No se pudo cargar el audio', off: 'La voz sintética está apagada' };
+const slowNow = SLOW ? C.soundState(SLOW) : 'none';
+const hasSlow = hasClip && slowNow === 'in';
+const slowWhy = s.read || (slowNow === 'in' ? 'failed' : slowNow);
 const play = (rate) => () => {
 const snd = window.gnSound;
 const key = rate === 1 ? KEY : SLOW;
-if (!ready || (rate !== 1 && !(snd && SLOW && snd.has(SLOW)))) return;
+if (!ready || (rate !== 1 && !hasSlow)) return;
+/* the clip is on its way: the player waits, and its status line says so; nothing stands in for the sound */
+if (coming) { if (!this.state.asked) this.setState({ asked: true }); return; }
 clearInterval(this.timer);
-/* the first play with no clip opens the transcript and the answers at once: then the answers come into view */
 const st0 = this.state;
-if (!hasClip && !st0.played && !st0.playing && st0.pick == null) this.reveal = true;
-let sound = !!(snd && key && snd.has(key) && snd.unlock() && snd.play(key));
+let sound = !!(hasClip && snd && key && snd.has(key) && snd.unlock() && snd.play(key));
+/* the first play with no clip opens the transcript and the answers at once: then the answers come into view */
+if (!sound && !st0.played && !st0.playing && st0.pick == null) this.reveal = true;
 let got = false;
 const started = Date.now();
 const standIn = total / rate;
-this.setState({ playing: true, progress: 0, line: lines.length ? 0 : -1 });
+const cues = sound && snd.cues ? snd.cues(key) : null;
+const timed = !!cues && cues.length === lines.length;
+/* played without a clip, the lesson is read from here on, for the reason there was none */
+this.setState({ playing: true, progress: 0, line: lines.length ? 0 : -1, read: st0.read || (sound ? '' : quietWhy) });
 this.timer = setInterval(() => {
 const gone = Date.now() - started;
 let done = gone / standIn;
@@ -328,7 +350,8 @@ if (done >= 1) {
 clearInterval(this.timer);
 this.setState((st) => ({ playing: false, played: true, progress: 1, line: -1, plays: (st.plays || 0) + 1 }));
 } else {
-this.setState({ progress: done, line: lines.length ? lineAt(done) : -1 });
+const said = sound && timed && snd.at ? snd.at() : -1;
+this.setState({ progress: done, line: !lines.length ? -1 : said >= 0 ? C.cueLine(cues, said) : lineAt(done) });
 }
 }, 80);
 };
@@ -364,7 +387,7 @@ off,
 cursor: off ? 'default' : 'pointer',
 right: answered && n === ANSWER,
 bad: answered && on && n !== ANSWER,
-aria: 'Respuesta ' + n + (printed ? ': ' + label : '') + (!open ? (hasClip ? ', escuchá primero' : ', leé primero lo que se dice') : '') + (answered && n === ANSWER ? ', correcta' : '') + (answered && on && n !== ANSWER ? ', tu respuesta, incorrecta' : ''),
+aria: 'Respuesta ' + n + (printed ? ': ' + label : '') + (!open ? (hasClip || coming ? ', escuchá primero' : ', leé primero lo que se dice') : '') + (answered && n === ANSWER ? ', correcta' : '') + (answered && on && n !== ANSWER ? ', tu respuesta, incorrecta' : ''),
 /* one try: the answers open once the clip has played (with no clip, with the transcript), and an answer cannot be changed */
 pick: () => {
 const st = this.state;
@@ -395,8 +418,8 @@ const times = s.plays === 1 ? '1 vez' : s.plays + ' veces';
 const status = s.playing
 ? (!row ? 'Escuchando…' : row.num && +row.num <= options.length ? 'Respuesta ' + row.num + ' de ' + options.length + (row.l.who ? ' · ' + row.l.who : '') : 'Línea ' + (at + 1) + ' de ' + rows.length + (row.l.who ? ' · ' + row.l.who : ''))
 : s.plays
-? (hasClip ? 'Escuchaste ' + times : 'La leíste ' + times + ' · todavía no está grabado')
-: hasClip ? 'Tocá el botón para escuchar.' : 'Todavía no está grabado: se reproduce en silencio.';
+? (hasClip ? 'Escuchaste ' + times : 'La leíste ' + times + ' · ' + (WHY[quietWhy] || WHY.none).replace(/^./, (c) => c.toLowerCase()))
+: hasClip ? 'Tocá el botón para escuchar.' : coming ? C.SOUND_COMING : (WHY[quietWhy] || WHY.none) + ': se reproduce en silencio.';
 const narrEs = lv === 'A1';
 const script = rows.map((r, k) => {
 const l = r.l;
@@ -429,16 +452,18 @@ const askText = ready ? C.plain(sk.ask || q || '') : '';
 return {
 ready,
 missing: !ready,
-liveMsg: answered ? (correct ? '¡Correcto!' : 'Casi. La respuesta correcta es la ' + ANSWER + '.') : readText ? 'Este audio todavía no está grabado: leé lo que se dice y elegí tu respuesta.' : s.played && ready ? 'Ya podés elegir tu respuesta.' : '',
+liveMsg: answered ? (correct ? '¡Correcto!' : 'Casi. La respuesta correcta es la ' + ANSWER + '.') : readText ? C.soundNote(quietWhy, 'leé lo que se dice y elegí tu respuesta.') : coming && s.asked ? C.SOUND_COMING : s.played && ready ? 'Ya podés elegir tu respuesta.' : '',
 closeLabel: L.elsewhere ? 'Cerrar la práctica' : 'Cerrar la lección',
 scrollPad: answered ? '12px' : '46px',
-kicker: 'ESCUCHA' + (ready && (sk.es || it.label) ? ' · ' + String(sk.es || (this.props.go && !hasClip ? saidLabel(it.label) : it.label)).toUpperCase() : ''),
+kicker: 'ESCUCHA' + (ready && (sk.es || it.label) ? ' · ' + String(sk.es || (this.props.go && !hasClip && !coming ? saidLabel(it.label) : it.label)).toUpperCase() : ''),
 ask: askText,
 hasSituation: ready && !!sk.situation,
 situation: ready ? sk.situation || '' : '',
 /* with the transcript standing in for the sound, the screen cannot promise that nothing is written: it says how the exam does it */
 note: printed ? 'Las opciones están escritas, como en el examen.' : hasClip ? 'No hay nada escrito hasta que respondas, como en el examen.' : 'En el examen no hay nada escrito: las respuestas se escuchan.',
 readText,
+/* over the transcript: why it is read (not recorded yet, could not be loaded, the voice is off) */
+readNote: C.soundNote(quietWhy, 'leé lo que se dice.'),
 boxRef: this.boxRef,
 textRef: this.textRef,
 listRef: this.listRef,
@@ -449,7 +474,10 @@ replayBg: s.playing ? '#F2B43A' : '#E8ECFB',
 playNormal: play(1),
 playSlow: play(0.8),
 status,
+/* the clip is a voice model's: the tag «voz sintética» stands at the end of the status line, from the start */
+synth: hasClip && C.synth([KEY, SLOW]),
 noSlow: !hasSlow,
+slowNote: coming || (!s.read && slowNow === 'coming') ? 'Cargando…' : { failed: 'No se pudo cargar', off: 'La voz está apagada' }[slowWhy] || 'Todavía no está grabado',
 slow: hasSlow
 ? { border: '2px solid #1B2440', bg: '#FFFFFF', color: '#1B2440', cursor: 'pointer' }
 : { border: '2px dashed #DDE1EC', bg: '#F4F5F9', color: '#5A6382', cursor: 'default' },
@@ -461,8 +489,8 @@ answers,
 cols: 'repeat(' + (printed ? 1 : Math.max(1, options.length)) + ', minmax(0, 1fr))',
 waiting: ready && !open,
 /* with no clip there is nothing to hear: the transcript is read (Emoñe'ẽ · Leer) */
-waitGn: hasClip ? 'Ehendu' : "Emoñe'ẽ",
-waitNote: (hasClip ? 'Escuchá primero' : 'Leé lo que se dice') + ' y después elegí ' + nums.join(', ').replace(/, (\d+)$/, ' o $1') + '.',
+waitGn: hasClip || coming ? 'Ehendu' : "Emoñe'ẽ",
+waitNote: (hasClip || coming ? 'Escuchá primero' : 'Leé lo que se dice') + ' y después elegí ' + nums.join(', ').replace(/, (\d+)$/, ' o $1') + '.',
 answered,
 correct,
 wrong,

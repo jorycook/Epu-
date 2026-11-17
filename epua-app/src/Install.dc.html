@@ -53,8 +53,8 @@
 </div>
 </sc-if>
 
-<sc-if value="{{ droid.show }}" hint-placeholder-val="{{ false }}">
-<sc-for list="{{ droid.rows }}" as="r" hint-placeholder-count="3">
+<sc-if value="{{ steps.show }}" hint-placeholder-val="{{ false }}">
+<sc-for list="{{ steps.rows }}" as="r" hint-placeholder-count="3">
 <div style="padding: {{ k.row }}; display: flex; align-items: center; gap: 12px; border-top: {{ r.rule }}">
 <sc-if value="{{ r.num }}" hint-placeholder-val="{{ true }}"><div style="width: 30px; height: 30px; border-radius: 50%; background: #1B2440; color: #FFFFFF; font-size: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0">{{ r.n }}</div></sc-if>
 <sc-if value="{{ r.ok }}" hint-placeholder-val="{{ false }}"><div style="width: 30px; height: 30px; border-radius: 50%; background: #E0F3EF; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0B7A6B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div></sc-if>
@@ -65,6 +65,8 @@
 <sc-if value="{{ r.isMenu }}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="#2F4FD0" aria-hidden="true" style="flex-shrink: 0"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg></sc-if>
 <sc-if value="{{ r.isGet }}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M12 4v11M8 11l4 4 4-4"/><path d="M5 20h14"/></svg></sc-if>
 <sc-if value="{{ r.isDown }}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M12 4v15M6 13l6 6 6-6"/></svg></sc-if>
+<sc-if value="{{ r.isMore }}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="#2F4FD0" aria-hidden="true" style="flex-shrink: 0"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></sc-if>
+<sc-if value="{{ r.isShare }}" hint-placeholder-val="{{ false }}"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F4FD0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M12 15V3M8 7l4-4 4 4"/><path d="M7 11H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-1"/></svg></sc-if>
 <sc-if value="{{ r.isIcon }}" hint-placeholder-val="{{ false }}"><div style="width: 30px; height: 30px; border-radius: 7px; overflow: hidden; flex-shrink: 0">%ICON%</div></sc-if>
 </div>
 </sc-for>
@@ -104,15 +106,21 @@
    a row offers to copy it (gnApp.exportProgress) for the app's «Pegá tu progreso».
    Android: when the browser has offered to install the app (gnApp.installState() is 'ready'), one button puts the
    browser's own question (gnApp.askInstall); until then, or when the offer never comes or was turned down, the steps of
-   the browser's menu. There the installed app and the browser share what is saved, and the page says so.
+   the browser's menu. There the installed app and the browser share what is saved, and the page says so. A browser
+   other than Chrome (Samsung Internet, Firefox) is told to try Chrome when its menu has no «Instalar app»; but
+   Chrome keeps its own storage, so the app installed from there starts empty: when this browser holds progress,
+   step 3 says its promise is for an install made from here, and the row with the code says what Chrome needs.
    A page opened inside another app (gnApp.inApp: a link tapped in Instagram, Facebook, TikTok): it cannot be installed
-   from there, and what it saves stays inside that app. On Android the steps start with «Abrí esta página en Chrome»;
-   on both systems the page says where the progress stays, and offers the code when there is progress to take along.
+   from there, and what it saves stays inside that app. The steps then start with the way out of that app («Abrí esta
+   página en Chrome» on Android, «Abrí esta página en Safari» on an iPhone, where such a page has no Share menu of
+   Safari's); on both systems the page says where the progress stays, and offers the code when there is progress to
+   take along.
    On a short screen (an iPhone SE in Safari, with its bars) Kaguare and the gaps shrink so the page fits without
    scrolling: the page's height is the browser's (gn-app.js fits it), and it is measured again when that changes. */
 /* the page's height (in the design's pixels) from which the full layout fits, and the middle one, without and with
    the copy row; below that, the short one (it fits the 575 of an iPhone SE in Safari, copy row and all). Android's
-   page is never taller than the iPhone's without the copy row: three rows, or two and the install button */
+   page is never taller than the iPhone's: three rows, or two and the install button, and the copy row where it has
+   one (a page inside another app, a browser other than Chrome that holds progress) */
 const FITS = { plain: [680, 630], move: [760, 710] };
 const LOOK = {
 full: { pad: '18px 20px 18px', headGap: '4px', art: '96px', artScale: 1, artMargin: '-22px 0 -14px', h1: '24px', about: '15px', gapS: '10px', gapM: '12px', row: '10px 0', lh: 1.45, button: '52px', cta: '54px' },
@@ -161,7 +169,10 @@ const inApp = !!kit.inApp;
 /* Android: 'ready' (the browser's offer is in hand), 'done' (installed) or 'steps' (the browser's menu) */
 const offer = droid && kit.installState ? kit.installState() : 'steps';
 /* progress this browser already holds, to take to the app before it is installed (where the app keeps its own) */
-const has = (!droid || inApp) && !refused && !!(kit.hasProgress && kit.hasProgress());
+/* an Android browser other than Chrome, shown its menu's steps (with the way to Chrome when the menu has no such
+   entry): its own install shares what is saved here, Chrome's does not */
+const other = droid && !inApp && browser !== 'Chrome' && offer === 'steps';
+const has = (!droid || inApp || other) && !refused && !!(kit.hasProgress && kit.hasProgress());
 /* the full layout where it fits; a little tighter below that; on a short screen Kaguare at a little over half, tight
    gaps, the title on one line and a smaller button */
 const need = has ? FITS.move : FITS.plain;
@@ -184,6 +195,7 @@ const small = !!(kit.appScale && kit.appScale() < 0.85);
 const moveText = s.copied === 'yes' ? 'Copiado. En la app, tocá «Pegá tu progreso».'
 : s.copied === 'manual' ? 'No se pudo copiar solo: mantené apretado el código y copialo.'
 : inApp ? '¿Ya avanzaste acá? Llevá tu progreso a la app.'
+: other ? 'Desde Chrome la app empieza vacía: llevá tu progreso con este código.'
 : '¿Ya avanzaste en ' + browser + '? Llevá tu progreso a la app.';
 /* Android's rows: the app opened from its icon holds the same progress as this browser (not so for a page opened
    inside another app, which is told to start in the app) */
@@ -191,8 +203,18 @@ const here = device === 'celular' ? 'en este celular' : 'en este dispositivo';
 const open = { a: 'Abrí ', app: true, b: ' desde su ícono', isIcon: true, text: refused
 ? 'Abrila una vez con internet. Después funciona también sin conexión.'
 : inApp ? 'Empezá ahí: lo que hagas acá no pasa a la app. Abrila una vez con internet; después funciona sin conexión.'
+: other && has ? 'Instalada desde ' + browser + ', tu progreso es el mismo: se guarda ' + here + '. Abrila una vez con internet; después funciona sin conexión.'
 : 'Tu progreso es el mismo de acá: se guarda ' + here + '. Abrila una vez con internet; después funciona sin conexión.' };
-const rows = inApp && offer === 'steps' ? [
+/* an iPhone or an iPad: the app on the Home Screen keeps its own progress */
+const step3 = refused
+? 'Abrilo una vez con internet. Después funciona también sin conexión.'
+: 'Empezá ahí: tu progreso se guarda en la app, en este ' + device + '. Abrila una vez con internet; después funciona sin conexión.';
+/* a page inside another app on an iPhone has no Share menu of Safari's: the first step is the way out to Safari */
+const rows = !droid ? [
+{ a: 'Abrí esta página en Safari', text: 'Ahora estás dentro de otra app. En su menú (•••), tocá «Abrir en Safari» o «Abrir en el navegador».', isMore: true },
+{ a: 'En Safari, tocá Compartir', text: 'Después, «Agregar a pantalla de inicio»: bajá en la lista hasta encontrarlo y tocá Agregar.', isShare: true },
+{ a: 'Abrí ', app: true, b: ' desde su ícono', isIcon: true, text: step3 },
+] : inApp && offer === 'steps' ? [
 { a: 'Abrí esta página en Chrome', text: 'Ahora estás dentro de otra app. En su menú, tocá «Abrir en Chrome» o «Abrir en el navegador».', isMenu: true },
 { a: 'Tocá «Instalar app»', text: 'Está en el menú de Chrome. También puede decir «Agregar a la pantalla principal».', isGet: true },
 open,
@@ -218,16 +240,16 @@ rootRef: this.rootRef,
 k,
 useBrowser: () => kit.useBrowser(),
 device,
-ios: !droid,
+/* Safari's own three steps (fixed in the markup), or a list of steps: Android's, and a page inside another app */
+ios: !droid && !inApp,
+steps: { show: droid || inApp, rows },
 head: droid ? { a: 'Instalá ', b: device === 'celular' ? ' en tu celular' : ' en este dispositivo' } : { a: 'Agregá ', b: ' a tu pantalla de inicio' },
-droid: { show: droid, rows, ask: offer === 'ready', install: () => { kit.askInstall(); } },
+droid: { ask: offer === 'ready', install: () => { kit.askInstall(); } },
 /* what the Home Screen gives; where the progress stays */
 promise: refused
 ? 'Así se abre a pantalla completa, como una app, y funciona sin conexión. Este navegador no deja guardar tu progreso.'
 : small ? 'Así se abre a pantalla completa, más grande, y funciona sin conexión.' : 'Así se abre a pantalla completa, como una app, y funciona sin conexión.',
-step3: refused
-? 'Abrilo una vez con internet. Después funciona también sin conexión.'
-: 'Empezá ahí: tu progreso se guarda en la app, en este ' + device + '. Abrila una vez con internet; después funciona sin conexión.',
+step3,
 stay,
 move: {
 show: has,

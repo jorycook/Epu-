@@ -30,15 +30,16 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 
 <div style="display: flex; align-items: center; gap: 8px; padding: 0 16px; height: 44px; flex-shrink: 0">
 <h1 style="margin: 0; flex-grow: 1; min-width: 0; font-size: 22px; font-weight: 800; white-space: nowrap">¿Cómo voy? <span style="font-size: 14px; font-weight: 700; color: #5A6382">{{ heading }}</span></h1>
+<sc-if value="{{ vz.show }}" hint-placeholder-val="{{ false }}"><button aria-haspopup="dialog" aria-label="{{ vz.aria }}" onClick="{{ vz.open }}" style="flex-shrink: 0; height: 44px; padding: 0 10px; border-radius: 12px; border: 2px solid #DDE1EC; background: #FFFFFF; color: #1B2440; font-size: 12px; font-weight: 800; white-space: nowrap; display: flex; align-items: center; gap: 6px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="{{ vz.mark }}"/></svg>Voz sintética</button></sc-if>
 </div>
 
 <div style="flex-grow: 1; min-height: 0; overflow-y: auto; padding: 6px 16px 8px; display: flex; flex-direction: column; gap: 6px">
 
-<div style="flex-shrink: 0; padding: 10px 14px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; display: flex; flex-direction: column; gap: 8px">
+<div style="flex-shrink: 0; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; display: flex; flex-direction: column; padding: {{ hero.pad }}; gap: {{ hero.gap }}">
 <div style="display: flex; align-items: center; gap: 14px">
-<svg viewBox="-24 -24 48 48" width="96" height="96" role="img" aria-label="{{ ro.label }}" style="flex-shrink: 0"><circle r="19.5" fill="none" stroke="#C9D0E3" stroke-width="1" stroke-dasharray="1.6 2.2" opacity="{{ ro.frameOpacity }}"/><path d="{{ ro.rimD }}" fill="#FCE4EE" stroke="#C2336F" stroke-width="1.4" stroke-linejoin="round" opacity="{{ ro.rimOpacity }}"/><path d="{{ ro.off }}" fill="#FFFFFF" stroke="#DDE1EC" stroke-width="0.9"/><path d="{{ ro.on }}" fill="#F8D3E2" stroke="#C2336F" stroke-width="1.1"/><path d="{{ ro.spokes }}" stroke="#C2336F" stroke-width="0.8" stroke-linecap="round"/><circle r="4" fill="{{ ro.hubFill }}" stroke="#C2336F" stroke-width="1.2"/></svg>
+<svg viewBox="-24 -24 48 48" width="{{ hero.size }}" height="{{ hero.size }}" role="img" aria-label="{{ ro.label }}" style="flex-shrink: 0"><circle r="19.5" fill="none" stroke="#C9D0E3" stroke-width="1" stroke-dasharray="1.6 2.2" opacity="{{ ro.frameOpacity }}"/><path d="{{ ro.rimD }}" fill="#FCE4EE" stroke="#C2336F" stroke-width="1.4" stroke-linejoin="round" opacity="{{ ro.rimOpacity }}"/><path d="{{ ro.off }}" fill="#FFFFFF" stroke="#DDE1EC" stroke-width="0.9"/><path d="{{ ro.on }}" fill="#F8D3E2" stroke="#C2336F" stroke-width="1.1"/><path d="{{ ro.spokes }}" stroke="#C2336F" stroke-width="0.8" stroke-linecap="round"/><circle r="4" fill="{{ ro.hubFill }}" stroke="#C2336F" stroke-width="1.2"/></svg>
 <div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px">
-<div style="font-size: 12px; font-weight: 700; color: #5A6382">{{ kicker }}</div>
+<sc-if value="{{ roomy }}" hint-placeholder-val="{{ true }}"><div style="font-size: 12px; font-weight: 700; color: #5A6382">{{ kicker }}</div></sc-if>
 <div style="font-size: 20px; font-weight: 800; line-height: 1.2">{{ big }}</div>
 <div style="font-size: 13px; font-weight: 700; color: #5A6382">{{ sub }}</div>
 <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; margin-top: 1px">
@@ -49,7 +50,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </div>
 </div>
 <sc-if value="{{ replan.show }}" hint-placeholder-val="{{ false }}">
-<div style="display: flex; align-items: center; gap: 10px; padding: 6px 6px 6px 12px; border-radius: 14px; background: #FCE4EE">
+<div style="display: flex; align-items: center; gap: 10px; padding: 4px 6px 4px 12px; border-radius: 14px; background: #FCE4EE">
 <div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.3"><span lang="gn" style="font-size: 13px; font-weight: 800">Epu'ã ha eñepyrũjey</span><span style="font-size: 11px; font-weight: 700; color: #5A6382">Levantate y empezá de nuevo.</span></div>
 <a href="GoalPlan.dc.html" onClick="{{ toPlan }}" style="flex-shrink: 0; height: 44px; box-sizing: border-box; padding: 0 12px; border-radius: 12px; background: #FFFFFF; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; color: #1B2440; font-size: 13px; font-weight: 800; display: flex; align-items: center; white-space: nowrap">Rearmar mi plan</a>
 </div>
@@ -85,7 +86,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="font-size: 13px; font-weight: 500; color: #5A6382; line-height: 1.45">Después de tu primera prueba de la semana vas a ver acá cómo te va en cada área.</div>
 </div>
 </sc-if>
-<div style="font-size: 11px; font-weight: 500; color: #5A6382; line-height: 1.4">Es una guía, calculada con tus pruebas de la semana.</div>
+<sc-if value="{{ roomy }}" hint-placeholder-val="{{ true }}"><div style="font-size: 11px; font-weight: 500; color: #5A6382; line-height: 1.4">Es una guía, calculada con tus pruebas de la semana.</div></sc-if>
 </div>
 
 <div style="flex-shrink: 0; padding: 10px 14px; border-radius: 18px; background: #FFFFFF; border: 2px solid #1B2440; display: flex; align-items: center; gap: 12px">
@@ -109,7 +110,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="flex-shrink: 0; padding: 10px 14px 12px; border-radius: 18px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 6px">
 <div style="display: flex; flex-direction: column; gap: 1px">
 <h2 id="lo-use" style="margin: 0; font-size: 14px; font-weight: 800">Esta semana usé el guaraní con alguien</h2>
-<div style="font-size: 12px; font-weight: 500; color: #5A6382">Lo marcás vos y nadie lo revisa.</div>
+<sc-if value="{{ roomy }}" hint-placeholder-val="{{ true }}"><div style="font-size: 12px; font-weight: 500; color: #5A6382">Lo marcás vos y nadie lo revisa.</div></sc-if>
 </div>
 <div role="group" aria-labelledby="lo-use" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px">
 <sc-for list="{{ uses }}" as="u" hint-placeholder-count="4">
@@ -157,11 +158,38 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <textarea id="gn-progress-code" rows="3" value="{{ mv.text }}" onInput="{{ mv.type }}" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="EPUA1:…" style="flex-shrink: 0; height: 84px; box-sizing: border-box; padding: 10px 12px; border-radius: 14px; border: 2px solid #1B2440; background: #FFFFFF; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; font-size: 16px; font-weight: 500; line-height: 1.35; resize: none; overflow-wrap: anywhere"></textarea>
 <div style="padding: 10px 12px; border-radius: 14px; background: #FDEBE6; font-size: 13px; font-weight: 700; line-height: 1.45"><span style="font-weight: 800; color: #C7361E">Ojo:</span> reemplaza todo el progreso que hay ahora en este {{ mv.device }}.</div>
 <sc-if value="{{ mv.bad }}" hint-placeholder-val="{{ false }}">
-<div role="alert" style="font-size: 13px; font-weight: 800; color: #C7361E; line-height: 1.45">Ese código no sirve: no cambió nada. Copialo de nuevo, entero, y pegalo acá.</div>
+<div role="alert" style="font-size: 13px; font-weight: 800; color: #C7361E; line-height: 1.45">{{ mv.badText }}</div>
 </sc-if>
 <button disabled="{{ mv.empty }}" onClick="{{ mv.use }}" style="margin-top: 2px; height: 54px; border-radius: 16px; font-weight: 800; font-size: 17px; border: {{ mv.ck.border }}; background: {{ mv.ck.bg }}; color: {{ mv.ck.color }}; box-shadow: {{ mv.ck.shadow }}">Usar este progreso</button>
 <button onClick="{{ mv.close }}" style="height: 44px; border: 0; background: none; color: #2F4FD0; font-size: 15px; font-weight: 800"><span lang="gn">Heja</span> · Cancelar</button>
 </sc-if>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ vz.sheet }}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; left: 0; top: 0; width: 390px; height: 844px; z-index: 5; display: flex; flex-direction: column; background: rgba(27, 36, 64, 0.5); animation: gn-fade 160ms ease-out">
+<button aria-label="Cerrar" onClick="{{ vz.close }}" style="flex-grow: 1; min-height: 60px; border: 0; padding: 0; background: transparent"></button>
+<div role="dialog" aria-modal="true" aria-labelledby="gn-voz" style="min-height: 0; overflow-y: auto; padding: 18px 20px 34px; border-radius: 26px 26px 0 0; border-top: 2px solid #1B2440; background: #F4F5F9; display: flex; flex-direction: column; gap: 10px; animation: gn-up 240ms ease-out">
+<h2 id="gn-voz" style="margin: 0; font-size: 18px; font-weight: 800">Voz sintética</h2>
+<div style="font-size: 13px; font-weight: 500; line-height: 1.5">Los audios de la app los dice un programa (los modelos MMS, de Meta), no una persona. Todavía no los revisó ningún hablante nativo.</div>
+<div style="padding: 10px 14px 12px; border-radius: 16px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 6px">
+<h3 style="margin: 0; font-size: 12px; font-weight: 800; color: #5A6382">Qué hace mal</h3>
+<sc-for list="{{ vz.flaws }}" as="f" hint-placeholder-count="3">
+<div style="display: flex; align-items: flex-start; gap: 8px; font-size: 13px; font-weight: 500; line-height: 1.45"><span aria-hidden="true" style="flex-shrink: 0; width: 6px; height: 6px; margin-top: 7px; border-radius: 50%; background: #5A6382"></span><span style="min-width: 0"><span style="font-weight: 800">{{ f.head }}</span>{{ f.text }}<span lang="gn" style="font-family: 'Andika', 'Nunito', sans-serif">{{ f.gn }}</span>{{ f.end }}</span></div>
+</sc-for>
+</div>
+<div style="font-size: 13px; font-weight: 500; line-height: 1.5">Algunas palabras y frases quedan en silencio a propósito, porque el programa las dice mal: esperan la grabación de una persona, y ahí vas a leer «todavía no está grabado». Las grabaciones de hablantes nativos van a reemplazar esta voz.</div>
+<sc-if value="{{ vz.hasSize }}" hint-placeholder-val="{{ false }}"><div style="font-size: 12px; font-weight: 500; line-height: 1.45; color: #5A6382">{{ vz.size }}</div></sc-if>
+<button type="button" role="switch" aria-checked="{{ vz.on }}" onClick="{{ vz.flip }}" style="flex-shrink: 0; min-height: 64px; padding: 10px 14px; border-radius: 16px; background: #FFFFFF; border: 2px solid #1B2440; display: flex; align-items: center; gap: 12px; text-align: left">
+<span style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 15px; font-weight: 800">Usar la voz sintética</span>
+<span style="font-size: 12px; font-weight: 500; line-height: 1.4">{{ vz.state }}</span>
+</span>
+<span aria-hidden="true" style="flex-shrink: 0; width: 52px; height: 30px; box-sizing: border-box; padding: 0 2px; border-radius: 15px; border: 2px solid #1B2440; display: flex; align-items: center; background: {{ vz.track }}; justify-content: {{ vz.side }}"><span style="width: 20px; height: 20px; box-sizing: border-box; border-radius: 50%; background: #FFFFFF; border: 2px solid #1B2440"></span></span>
+</button>
+<div style="font-size: 11px; font-weight: 500; line-height: 1.4; color: #5A6382">Voz: MMS-TTS, de Meta AI. Licencia CC BY-NC 4.0, solo para uso no comercial.</div>
+<button onClick="{{ vz.close }}" style="flex-shrink: 0; margin-top: 2px; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px"><span lang="gn">Oĩma</span> · Listo</button>
 </div>
 </div>
 </sc-if>
@@ -194,8 +222,9 @@ class Component extends DCLogic {
 constructor(props) {
 super(props);
 /* move: the progress sheet open ('copied', 'manual': the code to copy by hand, 'paste'), code: the code given,
-   paste: what was pasted, bad: the pasted code did not read */
-this.state = { used: null, move: '', code: '', paste: '', bad: false };
+   paste: what was pasted, bad: the pasted code did not read; voz: the sheet that explains the synthetic voice is open;
+   voiceOff: that voice's switch where nothing is saved (the board on its own) */
+this.state = { used: null, move: '', code: '', paste: '', bad: false, voz: false, voiceOff: null };
 }
 renderVals() {
 const C = window.gnCourse;
@@ -321,6 +350,9 @@ device: (kit && kit.device) || 'teléfono',
 code: this.state.code,
 text: pasted,
 bad: !!this.state.bad,
+/* why nothing changed: the code does not read; or this copy holds the save of a newer build of the app, which is
+   never written over (gnApp.later), and the code itself may be good */
+badText: kit && kit.later && kit.later() ? 'Ahora no se puede: hay una versión más nueva de la app. Cerrala, abrila de nuevo y pegá el código otra vez.' : 'Ese código no sirve: no cambió nada. Copialo de nuevo, entero, y pegalo acá.',
 empty: !pasted.trim(),
 ck: pasted.trim()
 ? { border: '2px solid #1B2440', bg: '#2F4FD0', color: '#FFFFFF', shadow: '0 4px 0 #1B2440' }
@@ -344,20 +376,74 @@ type: (e) => this.setState({ paste: e && e.target ? e.target.value : '', bad: fa
 use: () => { if (kit && pasted.trim() && !kit.importProgress(pasted)) this.setState({ bad: true }); },
 close: () => this.setState({ move: '', bad: false }),
 };
+/* Voz sintética: the one place that explains the voice of the clips (sound/VOICE.md, in a learner's words), with the
+   learner's switch. Its button stands in the header while the sound index says a voice of the course is a voice
+   model's (gnCourse.synthVoice): the canvas alone loads no sound, so there it is not drawn. The switch is saved with
+   the progress (save({ voice })); off, the player has no clip of that voice and every screen shows its written
+   stand-in. The app adds what the sound weighs (gnApp.sound: the level's files, and whether the browser says the
+   learner saves data, in which case only the unit that is opened is fetched) */
+const voiceOn = this.state.voiceOff == null ? app.voice !== false : !this.state.voiceOff;
+const snd = kit && typeof kit.sound === 'function' ? kit.sound(lv) : null;
+const mb = (n) => (Math.round(n / 1e5) / 10).toFixed(1).replace('.', ',');
+const vz = {
+show: !!(C.synthVoice && C.synthVoice()),
+sheet: !!this.state.voz && !ms,
+on: voiceOn,
+aria: voiceOn ? 'Voz sintética, activada: qué es y cómo apagarla' : 'Voz sintética, apagada: qué es y cómo activarla',
+/* the speaker's mark: its wave while the voice is on, a cross when it is off */
+mark: voiceOn ? 'M16.5 9a4 4 0 0 1 0 6' : 'M17 9.5l5 5M22 9.5l-5 5',
+flaws: [
+{ head: 'Las vocales nasales', text: ' (', gn: 'ã, ẽ, ĩ, õ, ũ, ỹ', end: '): los pares que cambian solo por eso quedan sin audio.' },
+{ head: 'Los diálogos', text: ': la mujer y el hombre son una sola voz, de hombre; la de él suena un poco más grave.', gn: '', end: '' },
+{ head: 'Los nombres y los números en castellano', text: ': a veces le salen raros.', gn: '', end: '' },
+],
+hasSize: !!(snd && snd.bytes > 0),
+size: !snd || !(snd.bytes > 0) ? ''
+: !voiceOn ? 'Con la voz apagada no se baja ningún sonido.'
+: snd.saving ? 'Tenés activado el ahorro de datos: el sonido se baja de a una unidad, cuando la abrís (cerca de ' + mb(snd.unit) + ' MB cada una).'
+: snd.kept ? 'El sonido de ' + lv + ' pesa unos ' + mb(snd.bytes) + ' MB y queda guardado en este ' + ((kit && kit.device) || 'teléfono') + ', para usarlo sin conexión.'
+: 'El sonido de ' + lv + ' pesa unos ' + mb(snd.bytes) + ' MB: cada unidad se baja cuando la abrís (cerca de ' + mb(snd.unit) + ' MB).',
+state: voiceOn ? 'Si la apagás, cada audio se muestra escrito y no suena.' : 'Apagada: cada audio se muestra escrito y no suena.',
+track: voiceOn ? '#2F4FD0' : '#DDE1EC',
+side: voiceOn ? 'flex-end' : 'flex-start',
+open: () => this.setState({ voz: true }),
+close: () => this.setState({ voz: false }),
+flip: () => {
+if (this.props.save) this.props.save({ voice: !voiceOn });
+else this.setState({ voiceOff: voiceOn });
+},
+};
 /* the days with study (gnCourse.days): how many, and how many times the learner came back after days away */
 const dy = app.days || { count: 0, returns: 0 };
 const rv = app.review || { n: 0 };
-/* behind the plan, or past its date: the goal screen makes the plan again from today (its third step) */
+/* behind the plan, or past its date: the goal screen makes the plan again from today (its third step). The note says
+   which screen opened it: its way back and its «Cancelar» lead here again */
 const toPlan = (e) => {
 const go = this.props.go;
 if (!go) return;
 e.preventDefault();
-try { window.__gnGoalDraft = { step: 'plan', owner: go }; } catch (x) { /* the goal opens where it would */ }
+try { window.__gnGoalDraft = { step: 'plan', owner: go, from: 'Progress' }; } catch (x) { /* the goal opens where it would */ }
 go('Goal');
 };
+/* The offer to make the plan again is one more row in a list that had no room for one: on time, the five cards fill
+   the screen to the pixel. While the row shows, the screen makes room for it, so that nothing is cut at the fold
+   (the «lo usé» chips used to end up under the «Tu progreso» row): the hero card draws in (no kicker above the unit,
+   a smaller ñandutí, tighter padding) and the two lines of small print under «Por área» and «Esta semana usé el
+   guaraní» are left out. Every control and every number stays. */
+const offer = !passed && goalSet && (paceKey === 'late' || (left != null && left < 0));
+/* The days line, on one line of the hero's text column (the card has no room for a second): the count of days with
+   study; since when it runs, for a save from before the app kept the days (gnCourse.daysSince: such a learner's
+   count starts on the day of the update, and says so: «3 días con estudio desde el 16/11»); and the returns, as
+   long as they still fit beside it (the engine knows how wide the interface face sets a text). */
+const dm = (iso) => { const m = /^\d{4}-(\d\d)-(\d\d)$/.exec(iso || ''); return m ? +m[2] + '/' + +m[1] : ''; };
+const counted = (dy.count === 1 ? '1 día con estudio' : dy.count + ' días con estudio') + (dy.since && dm(dy.since) ? ' desde el ' + dm(dy.since) : '');
+const came = dy.returns > 0 ? ' · volviste ' + (dy.returns === 1 ? 'una vez' : dy.returns + ' veces') : '';
+const daysRoom = offer ? 224 : 216;
 return {
-days: { show: dy.count > 0, line: (dy.count === 1 ? '1 día con estudio' : dy.count + ' días con estudio') + (dy.returns > 0 ? ' · volviste ' + (dy.returns === 1 ? 'una vez' : dy.returns + ' veces') : '') },
-replan: { show: !passed && goalSet && (paceKey === 'late' || (left != null && left < 0)) },
+days: { show: dy.count > 0, line: C.ems(counted + came, true) * 12 <= daysRoom ? counted + came : counted },
+replan: { show: offer },
+roomy: !offer,
+hero: { pad: offer ? '8px 14px' : '10px 14px', gap: offer ? '6px' : '8px', size: offer ? 88 : 96 },
 toPlan,
 /* the Cuaderno tab says what today's review asks */
 nb: { has: rv.n > 0, n: rv.n > 9 ? '9+' : String(rv.n), aria: rv.n > 0 ? 'Cuaderno, ' + rv.n + ' para repasar hoy' : 'Cuaderno' },
@@ -369,13 +455,15 @@ big: !unitCount ? 'En preparación' : unitsDone >= unitCount ? 'Las ' + unitCoun
 sub: sessions ? stamps + ' de ' + sessions + (sessions === 1 ? ' sesión' : ' sesiones') : '',
 pace: passed ? { text: 'Examen de nivel: Apto', bg: PACE.good[0], ink: PACE.good[1] } : { text: paceKey === 'wait' ? 'A tu ritmo' : paceKey === 'late' ? (behind === 1 ? '1 día atrás' : behind + ' días atrás') : 'Vas al día', bg: PACE[paceKey][0], ink: PACE[paceKey][1] },
 hasLeft: left != null && !passed,
-left: left == null ? '' : left > 1 ? 'faltan ' + left + ' días' : left === 1 ? 'falta 1 día' : left === 0 ? 'hoy es la fecha meta' : 'la fecha meta ya pasó',
+/* short enough to stay on the pace chip's line («72 días atrás · fecha pasada»): the week path's chip says the same */
+left: left == null ? '' : left > 1 ? 'faltan ' + left + ' días' : left === 1 ? 'falta 1 día' : left === 0 ? 'hoy es la fecha' : 'fecha pasada',
 hasAreas: areas.length > 0,
 noAreas: areas.length === 0,
 areas,
 step,
 uses,
 mv,
+vz,
 toMain: nav('Main'),
 toNotebook: nav('Notebook'),
 toExamTab: nav('ExamTab'),

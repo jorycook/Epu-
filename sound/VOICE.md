@@ -96,9 +96,11 @@ address, a link to the material, and a note that it was changed. The line for th
 
 `make-tts.py` writes the model and the licence into `voices.json`; `make-sound.mjs` copies them into the header of every
 sound file and into `gn-sound-index.js` (`window.__gnSoundVoices`), and the app build writes each voice's name, model
-and licence from that index into the «Sound» part of its `licenses.txt`. The whole line above, with the licence's
-address and the note that the audio was changed, is not there yet: that file is the app build's. The takes themselves
-carry the notice in `sound/A1/voz/README.md`.
+and licence from that index into the «Sound» part of its `licenses.txt`. Since 16 November the build writes the whole
+line above there too, made from the models the index names, with what «non-commercial» means for the app (below); it
+stops on a voice model it has no credit for. In the app, the sheet «Voz sintética» of Progreso gives the credit in
+short (MMS-TTS, Meta AI, CC BY-NC 4.0), and the README has the line under «Licences». The takes themselves carry the
+notice in `sound/A1/voz/README.md`.
 
 **What «non-commercial» means for this app.** The licence allows use that is "not primarily intended for or directed
 towards commercial advantage or monetary compensation". A free app without ads, as Epu'ã is today, fits. The clips may
@@ -999,7 +1001,8 @@ from what the two recognisers wrote of the takes and from what the screens show 
 can be answered only by telling the woman from the man would be unfair. What the learner has while a clip plays: in a
 listening lesson, the situation in a sentence above the player and, under the waveform, a status line that names the
 speaker of the line that is playing («Línea 3 de 5 · Hombre»), and no text until the answer is given; in the notebook,
-the placement check and the level exam, nothing about the speaker and no text. The app plays 17 items as clips (twelve
+since 16 November, the play card names the speaker the same way («Sonando… Línea 2 de 5 · Hombre»); in the placement
+check and the level exam, nothing about the speaker and no text. The app plays 17 items as clips (twelve
 listening lessons, three items of the placement check, two of the level exam; the week tests ask for no clip). In two
 of them a wrong option is true of the other speaker:
 
@@ -1009,13 +1012,14 @@ of them a wrong option is true of the other speaker:
   Ypakaraípe.». «A Ypacaraí» is his.
 
 **Both stay**, for three reasons that agree with one another. The lesson's status line names the right speaker during
-84 % to 100 % of each of their Guarani lines (it keeps time by the lines' lengths in letters, not by the clip's cues,
-and changes 0.2 to 0.8 s early here; measured on 16 November from the cues of the two clips, a line counted from where
-its own sound starts to where it ends). The man's line is the lower one in both clips: 133 Hz against 160 and 150 Hz in
+the whole of each of their Guarani lines: since 16 November it keeps time by the clip's own cues (until then, by the
+lines' lengths in letters, it named the right speaker during 84 % to 100 % of each of these lines and changed 0.2 to
+0.8 s early). The man's line is the lower one in both clips: 133 Hz against 160 and 150 Hz in
 the first (3.2 and 2.1 semitones), 105 Hz against 148 Hz in the second (5.9). And the order of the turns gives the same
 answer as the voices: the narrator says «Rosa habla con un vecino» and she asks first; the sentence above the player
 says «una mujer le cuenta a un hombre de dónde viene y adónde va», and only the first speaker says where she comes
-from. In the notebook, where no status line shows, the learner has seen the item's transcript once already. In the
+from. In the notebook the play card names the speaker while the clip plays, by the same cues, and the learner has
+seen the item's transcript once already. In the
 other fifteen items one speaker alone says anything of the kind that is asked (the woman asks and the man answers:
 `a1u03d1.r1`, `pl.3`, `a1x.4`, `a1x.5`), or the narrator numbers the replies (the three «respuesta rápida» lessons), or
 the answer does not depend on who says it (what the stall has, what Moisés is, the grandfather's name, the animal that
@@ -1103,20 +1107,27 @@ checked every listening item the same way: each stays answerable, the words that
 least one recogniser. To silence a line, name its key in `silent.json`: the item it belongs to then goes silent as a
 whole.
 
-**What the screens say.** `make-sound.mjs` marks every one of these clips `synthetic`, with the model and the licence in
-each file's header and in the index. Of the screens, only Words (the pairs of its sound step and the words of its
-scene) and Hablar ask for a clip's kind and say «Voz sintética: este audio lo hizo un programa, no una persona.»;
-Spell, Teach, Listening, Review, Placement and LevelExam play the same clips without the note (read on 16 November:
-`gnSound.kind` is asked in `Words.dc.html` and `Hablar.dc.html` alone), among
-them the placement's and the exam's listening items that stay (`pl.1`, `pl.5`, `a1x.4`, `a1x.5`). That is for the owner
-of the screens to decide: say it there too, or keep `pl.*` and `a1x.*` silent until recordings exist (two patterns in
-`silent.json`'s "keys" do it). Two more things the run saw in the screens are theirs as well. Listening's status
-line, which names the speaker, keeps time by the lines' lengths in letters although every put-together clip carries
-its `cues`: over the ten lessons that play it shows a Guarani line's own row during 80 % or more of the line for 28
-of the 40 lines and during less than half for 2 (the woman's greeting of unit 1 day 1, 10 %; «Diez mil.» in unit 4
-day 5, 32 %), and comes up to 1.0 s early or 1.1 s late. And where a clip is
-silent the screens say «todavía no está grabado», which is true of a person's recording and reads oddly next to clips
-that play: a clip that is silent by decision could say so.
+**What the screens say** (since 16 November, when the screens were gone through for it). `make-sound.mjs` marks every
+one of these clips `synthetic`, with the model and the licence in each file's header and in the index, and every
+screen that offers such a clip carries the same small tag, «voz sintética», next to the control and before anything is
+tapped (`gnCourse.synth`): Teach, Words (the pairs of its sound step, the words of its scene, the spelling pad),
+Listening, the notebook's review, the placement check, the level exam (in the pause before its listening part and in
+the part itself) and Hablar. So the placement's and the exam's listening items that stay (`pl.1`, `pl.5`, `a1x.4`,
+`a1x.5`) say it too. A screen reader hears what the tag means once a visit. Progreso has the one page that explains the
+voice, in a learner's words: a program's (Meta's MMS), not a person's, not yet checked by a native speaker; what it
+does badly (the nasal vowels, whose pairs stay silent; one man's voice for both speakers of a dialogue; Spanish names
+and numbers); that some words and phrases stay silent on purpose because the program says them badly, wait for a
+person's recording and read «todavía no está grabado» meanwhile; that recordings by native speakers will replace it;
+and a switch, «Usar la voz sintética», saved with the progress: off, the player has no synthetic clip and every
+screen shows its written stand-in. Listening's status line, which names the speaker, keeps time by the clip's `cues`
+now: over the ten lessons that play it shows a Guarani line's own row during the whole of the line for all 40 lines
+(by the lines' lengths in letters: during 80 % or more for 28 of the 40, and during less than half for 2, the woman's
+greeting of unit 1 day 1, 10 %, and «Diez mil.» in unit 4 day 5, 32 %), and each change of row comes 8 to 112 ms
+after the middle of the quarter second of silence between two lines, before the next line's sound begins (measured
+twice on 16 November in Chromium, the audio clock and the status line sampled every 40 ms: 14 to 112 ms in the
+first run, 8 to 109 ms over the 47 changes of row of the second). Where a clip is silent the
+screens still say «todavía no está grabado», which is true of a person's recording; why some stay silent is said
+once, on Progreso's page.
 
 ## What a native speaker should listen to first
 

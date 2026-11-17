@@ -19,16 +19,30 @@
 //      path and on the day, the review's options in another order, its way on to the day); a sitting's size and the
 //      notebook holding a due answer back; the door back to the plan (the date chip, Progreso's «Rearmar mi plan»,
 //      «Guardar el plan» and «Cancelar»); the days with study and the greeting after days away; practice where the
-//      written path ends; the first mini exam, from the tab to its result.
+//      written path ends; the first mini exam, from the tab to its result. Then what a re-test found: an exam closed
+//      on its result page, or left by its cross, is taken all the same (a mini exam, a week test, a day's step); the
+//      door back to the plan closes in one press to the screen that opened it (its arrow, the system's back,
+//      «Cancelar»); the review closes to the screen that opened it, and puts the right answer where neither the
+//      lesson nor the day before had it; a save from before the days were kept says since when they are counted.
+//   V  the voice of the clips: the tag «voz sintética» on every screen that offers a synthetic clip (there before
+//      the tap, outside every live region; what it means said once a visit), a clip really playing and its control
+//      back at rest, Listening's status line and the notebook's play card naming the speaker by the clip's cues, the
+//      clips the voice must not say and their written stand-ins, Progreso's page that explains the voice and its
+//      switch (saved with the progress, off: every screen shows its stand-in). A build without sound files runs the
+//      silent half.
 //   S  the app around the screens: an Android phone's way in (the install page, the browser's own question); the system's
-//      back (it does what the screen's own X or arrow does, and leaves from the week path); the page's title, the focus
-//      on a new screen's heading, a sheet that keeps the focus, zoom; a paste taken back, Safari's week (and its
-//      «Qué hacer», the install page again); the screens that load after the first ones, slow or missing, and the
-//      unit's sound waiting for them.
+//      back (it does what the screen's own X or arrow does, and leaves from the week path; on every routed screen and
+//      in a round or an exam under way it is compared with a tap on that control; pressed three times in a row where
+//      the control asks first, it never leaves the app); the page's title, the focus on a new screen's heading, a
+//      sheet that keeps the focus and gives it back (also where a tapped button gets none, as on an iPhone), zoom; a
+//      paste taken back until something is studied on it, Safari's week (and its «Qué hacer», the install page again,
+//      one step from the week path); the notice that covers no control and gives way to a sheet; the screens that load
+//      after the first ones, slow (with a way back) or missing, the unit's sound waiting for them, and a first paint
+//      that says so when the app cannot load.
 //   E  every one of the 21 screens reached, with no page error, no console error and nothing blank.
 // usage: node check/flows-test.js [site folder]      (default: ../docs, the built site as it is; about 7 minutes)
 //   ONLY=A,B,C,D,F,G,H runs some parts (E reports on what ran); PORT=8795 picks the port (default: any free one).
-//   (ONLY=I runs part I alone, ONLY=S part S; with them the whole suite takes about four minutes more.)
+//   (ONLY=I runs part I alone, ONLY=S part S, ONLY=V part V; with them the whole suite takes about six minutes more.)
 // Screenshots (device scale 1) go to check/out/flows/. Exit code 1 when a check fails.
 // Chromium stands in for Safari (WebKit cannot run here): the user agent, the screen and touch are an iPhone's.
 'use strict';
@@ -44,7 +58,7 @@ const ONLY = (process.env.ONLY || '').split(',').map((x) => x.trim()).filter(Boo
 const want = (part) => !ONLY.length || ONLY.includes(part);
 /* saved progress is kept under the folder the app is served from */
 const KEY = 'epua.v1:/';
-const FIELDS = ['started', 'level', 'plans', 'plan', 'cur', 'done', 'tests', 'exams', 'mistakes', 'tp', 'set', 'placement', 'typed', 'profile', 'exposure', 'seen'];
+const FIELDS = ['started', 'level', 'plans', 'plan', 'cur', 'done', 'tests', 'exams', 'mistakes', 'tp', 'set', 'placement', 'typed', 'profile', 'exposure', 'seen', 'seenLate', 'voice'];
 const SCREENS = ['Goal', 'Placement', 'Main', 'Today', 'Levels', 'Progress', 'Teach', 'Compare', 'Drill', 'Exam', 'Words', 'Reading', 'Listening', 'WeekTest', 'Notebook', 'Review', 'ExamTab', 'LevelExam', 'Leer', 'Escribir', 'Hablar'];
 const IPHONE = 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1';
 const DAY = 864e5;
@@ -328,7 +342,7 @@ async function partA(browser) {
   check(s && s.v === 1 && s.started === true && s.level === 'A1', 'Empezar saves a started learner at A1', s);
   check(s && s.plan && s.plan.start === today && s.plan.target === in3 && s.plan.pace === 'fit' && s.plan.minutes === 45, 'the plan is saved as chosen: from today, a target in 3 months, 45 minutes', s && s.plan);
   check(s && s.profile && s.profile.why.join() === 'familia,trabajo' && s.profile.work === 'salud' && s.profile.where.join() === 'casa,whatsapp' && s.profile.understand === 3 && s.profile.speak === 1, 'the goal screen\'s answers are saved as the profile', s && s.profile);
-  check(s && Object.keys(s).sort().join() === ['v'].concat(FIELDS).sort().join(), 'only the 16 fields (and v) are saved', s && Object.keys(s));
+  check(s && Object.keys(s).sort().join() === ['v'].concat(FIELDS).sort().join(), 'only the 18 fields (and v) are saved', s && Object.keys(s));
   check(await has(page, 'Semana 1 de 8') && await has(page, "Mba'éichapa") && await has(page, 'faltan ' + left + ' días'), 'Main shows week 1 of 8 and the days left to the target', h.head);
 
   part = 'A3 tabs and levels';
@@ -582,8 +596,13 @@ async function partA4(page) {
   await tap(page, 'Empezar con la regla', 700);
   h = await look(page, 'Today → Teach', { expect: 'Teach', shot: 'A11-teach-1' });
   check(await has(page, "Mba'éichapa? · Iporã"), 'the teach page opens on the day\'s first form', h.head);
+  /* with sound in the build the unit's file has come in by now and the example plays its clip; without, the button
+     lights up in silence for as long as the words would take (the stand-in) and the page says so */
+  if (await page.evaluate(() => (window.__gnSoundFiles || []).length > 0)) await page.waitForFunction(() => window.gnSound.has('a1u01d1.p1.x0'), null, { timeout: 15000 }).catch(() => {});
+  const exClip = await page.evaluate(() => window.gnSound.has('a1u01d1.p1.x0'));
   await tap(page, { aria: 'Escuchar el ejemplo 1' }, 300);
-  check(await pressed(page, { aria: 'Escuchar el ejemplo 1' }), 'an example\'s sound button lights up (the silent stand-in) when tapped');
+  check(await pressed(page, { aria: 'Escuchar el ejemplo 1' }), exClip ? 'an example\'s sound button lights up while its clip plays' : 'an example\'s sound button lights up (the silent stand-in) when tapped');
+  check((await has(page, 'Este audio todavía no está grabado.')) === !exClip, exClip ? 'an example with a clip says nothing about a missing recording' : 'the silent stand-in says the audio is not recorded yet');
   await tap(page, 'Siguiente:', 600);
   h = await look(page, 'teach page 2', { expect: 'Teach' });
   check(/Jajotopáta/.test(h.head), 'the second teach page shows the second form', h.head);
@@ -703,10 +722,15 @@ async function partA4(page) {
   h = await look(page, 'Today → Listening', { expect: 'Listening', shot: 'A25-listening' });
   const li = await page.evaluate(() => { const C = window.gnCourse; const it = C.day('a1u01d1').skill.item; return { id: it.id, answer: it.answer, n: it.options.length }; });
   check(await shut(page, { sel: '#gn-stage button[aria-label^="Respuesta 1"]' }), 'listening: the answers are shut until the audio has played');
+  const liClip = await page.evaluate((id) => ({ has: window.gnSound.has(id), ms: window.gnSound.ms(id) }), li.id);
   await tap(page, { aria: 'Reproducir el audio' }, 300);
   const t0 = Date.now();
-  await page.waitForFunction(() => { const b = document.querySelector('#gn-stage button[aria-label^="Respuesta 1"]'); return b && !/escuchá primero/.test(b.getAttribute('aria-label')); }, null, { timeout: 45000 });
-  pass(`listening: the silent stand-in plays through and opens the answers (${Math.round((Date.now() - t0) / 100) / 10} s)`);
+  await page.waitForFunction(() => { const b = document.querySelector('#gn-stage button[aria-label^="Respuesta 1"]'); return b && !/escuchá primero|leé primero/.test(b.getAttribute('aria-label')); }, null, { timeout: 45000 });
+  const took = Date.now() - t0;
+  /* with a clip the answers open when it has played to its end (its own length); without one the transcript stands in
+     and the answers open with it, at the first tap */
+  if (liClip.has) check(took > liClip.ms - 1500 && took < liClip.ms + 6000, `listening: the clip plays through (${Math.round(liClip.ms / 100) / 10} s long) and then the answers open (${Math.round(took / 100) / 10} s)`, { took, ms: liClip.ms });
+  else check(took < 3000 && await has(page, 'Transcripción'), `listening: with no clip the transcript stands in and the answers open with it (${Math.round(took / 100) / 10} s)`, took);
   await tap(page, { sel: `#gn-stage button[aria-label^="Respuesta ${li.answer}"]` }, 600);
   await shot(page, 'A26-listening-answered');
   await tap(page, { sel: '#gn-stage a[href="Today.dc.html"]:has-text("Siguiente")' }, 700);
@@ -1433,14 +1457,45 @@ async function partI(browser) {
     check(await has(page, 'Para repasar hoy') && (await page.locator('#gn-stage svg[aria-label="Respuesta correcta"]').count()) === 0 && (await text(page)).split('la respuesta, al repasar').length - 1 === 3, 'Notebook: an entry due today keeps what was answered and holds its right answer back', (await text(page)).slice(0, 400));
     await toTab(page, 'Camino');
     check(await has(page, 'Antes de empezar · 2 min') && await has(page, '3 para repasar'), 'Main: the callout puts the review in front of the day, with what it takes', (await text(page)).slice(0, 400));
+    /* the review closes to the screen it was opened from. From the week path's row its cross and the system's back
+       lead back to the week path, not to the notebook, and leave nothing in the history */
+    const level = () => page.waitForFunction(() => !((history.state && history.state.gn) || 0), null, { timeout: 3000 }).catch(() => {});
+    const optionsShown = () => page.evaluate(() => [...document.querySelectorAll('#gn-stage button[aria-pressed]')].map((b) => (b.textContent || '').trim().replace(/^\d+\s*/, '')));
+    await tap(page, { sel: '#gn-stage a[href="Review.dc.html"]' }, 700);
+    const inReview = [await screenOf(page), await depthOf(page)];
+    await tap(page, { aria: 'Salir del repaso' }, 600);
+    await level();
+    check(inReview.join() === 'Review,2' && (await screenOf(page)) === 'Main' && (await depthOf(page)) === 0 && await has(page, 'Antes de empezar'), 'Review, opened from the week path\'s row, closes by its cross to the week path (not to the notebook)', { inReview, now: [await screenOf(page), await depthOf(page)] });
+    await tap(page, { sel: '#gn-stage a[href="Review.dc.html"]' }, 700);
+    await sysBack(page);
+    await level();
+    check((await screenOf(page)) === 'Main' && (await depthOf(page)) === 0, 'the system\'s back from that review leads to the week path too', [await screenOf(page), await depthOf(page)]);
     await tap(page, { sel: '#gn-stage a[href="Today.dc.html"]:has-text("Empezar")' }, 600);
     h = await look(page, 'Today with a review due', { expect: 'Today', shot: 'I02-today-due' });
     check(await has(page, 'Antes de empezar') && await has(page, '3 para repasar · unos 2 min'), 'Today: the same row stands above the three lessons', (await text(page)).slice(0, 300));
     await tap(page, { sel: '#gn-stage a[href="Review.dc.html"]' }, 700);
+    await tap(page, { aria: 'Salir del repaso' }, 600);
+    check((await screenOf(page)) === 'Today' && (await depthOf(page)) === 1 && await has(page, 'Semana 1 · Día 4'), 'Review, opened from the day\'s row, closes by its cross to that day', [await screenOf(page), await depthOf(page)]);
+    await tap(page, { sel: '#gn-stage a[href="Review.dc.html"]' }, 700);
     h = await look(page, 'Today → Review', { expect: 'Review', shot: 'I03-review' });
     const list = await itemsOf(page, due);
-    const shown = await page.evaluate(() => [...document.querySelectorAll('#gn-stage button[aria-pressed]')].map((b) => (b.textContent || '').trim().replace(/^\d+\s*/, '')));
+    const shown = await optionsShown();
     check(await has(page, '1 / 3') && shown.slice().sort().join('|') === list[0].options.slice().sort().join('|') && shown.join('|') !== list[0].options.join('|'), 'Review: the question has its options in another order than the lesson had them', { lesson: list[0].options, shown });
+    /* the right answer's place is set by rule: never where the lesson had it, and, with three options or more, not
+       where it stood the day before either (the same question, looked at a day later with nothing answered between) */
+    const rightText = list[0].options[list[0].answer - 1];
+    const placeToday = shown.indexOf(rightText);
+    check(placeToday >= 0 && placeToday !== list[0].answer - 1, 'Review: the right answer is not at the place the lesson gave it', { lesson: list[0].answer, today: placeToday + 1, shown });
+    await setDay(page, 1);
+    await reload(page);
+    await tap(page, { sel: '#gn-stage a[href="Review.dc.html"]' }, 700);
+    const nextDay = await optionsShown();
+    const placeNext = nextDay.indexOf(rightText);
+    check((await screenOf(page)) === 'Review' && nextDay.slice().sort().join('|') === shown.slice().sort().join('|') && placeNext >= 0 && placeNext !== list[0].answer - 1 && (list[0].options.length < 3 || placeNext !== placeToday), 'Review, the same question a day later: the right answer is in another place than the day before, and still not the lesson\'s', { lesson: list[0].answer, today: placeToday + 1, nextDay: placeNext + 1, options: list[0].options.length });
+    await setDay(page, 0);
+    await reload(page);
+    await tap(page, { sel: '#gn-stage a[href="Today.dc.html"]:has-text("Empezar")' }, 600);
+    await tap(page, { sel: '#gn-stage a[href="Review.dc.html"]' }, 700);
     const numbers = await page.evaluate(() => [...document.querySelectorAll('#gn-stage button[aria-pressed]')].map((b) => (b.textContent || '').trim().match(/^\d+/)[0]).join(''));
     check(numbers === list[0].options.map((_, k) => k + 1).join(''), 'Review: the buttons are numbered in the order shown', numbers);
     await reviewAll(page, due);
@@ -1488,6 +1543,19 @@ async function partI(browser) {
     check((await screenOf(page)) === 'Review' && await has(page, '1 / 8'), '«Repasar 8 más» opens one more sitting', (await text(page)).slice(0, 120));
     await ctx.close();
   }
+  {
+    /* one question left of today's sitting (7 of the 8 answered today) and 21 waiting: the line agrees with the one */
+    const waiting = [];
+    for (let d = 1; d <= 5; d++) for (let k = 1; k <= 4; k++) waiting.push('a1u01d' + d + '.d' + k);
+    waiting.push('a1u01d1.e1');
+    const today = [];
+    for (let d = 1; d <= 2; d++) for (let k = 1; k <= 4; k++) today.push('a1u02d' + d + '.d' + k);
+    const mistakes = today.slice(0, 7).map((id) => m(id, { at: Date.now() - 1000, step: 1, last: 'right', due: iso(3) })).concat(waiting.map((id, k) => m(id, { at: Date.now() - (10 + k) * DAY, due: iso(-9) })));
+    const { ctx, page } = await learner('one left today', { plan: { start: iso(-12), target: null, pace: 'fit', minutes: 15 }, done: Object.assign(days(1, 5), days(2, 2)), mistakes, seen: [iso(-1), iso(0)] });
+    await toTab(page, 'Cuaderno');
+    check(await has(page, 'Hay 21 esperando. Hoy va la más vieja; las otras 20 quedan para los próximos días.') && !(await has(page, 'Hoy van la')), 'Notebook, one question left of today\'s sitting: «Hoy va la más vieja» (not «Hoy van la»)', ((await text(page)).match(/Hay \d+ esperando\.[^.]*\./) || [(await text(page)).slice(0, 200)])[0]);
+    await ctx.close();
+  }
 
   part = 'I3 the door back to the plan';
   {
@@ -1502,6 +1570,25 @@ async function partI(browser) {
     await page.waitForTimeout(600);
     h = await look(page, 'chip → Goal', { expect: 'Goal', shot: 'I09-goal-replan' });
     check(await has(page, 'Te quedan 48 de 56 sesiones') && await has(page, 'Guardar el plan') && await has(page, 'Cancelar') && await has(page, 'El plan se arma de nuevo desde hoy') && !(await has(page, 'Tejé el primer hilo')) && !(await has(page, 'Ñepyrũ · Empezar')), 'the goal screen opens at its third step on the plan that exists: what is left, «Guardar el plan», «Cancelar»', (await text(page)).slice(0, 500));
+    /* opened on a plan that exists the screen is a door, not the last of three steps: it is one step from the week
+       path, and its arrow is «Cancelar» (it used to step back through «¿Desde dónde empezás?» and «¿Para qué querés
+       aprender guaraní?»: three presses, and an answer changed on the way was saved) */
+    const level = () => page.waitForFunction(() => !((history.state && history.state.gn) || 0), null, { timeout: 3000 }).catch(() => {});
+    /* what a way out that saves nothing must leave as it was (the first change rewrites the save in the app's own form) */
+    const kept = (x) => JSON.stringify([x.plan, x.profile || null, x.done, x.tests, x.seen]);
+    const arrow = page.locator('#gn-stage a[aria-label="Volver al camino sin cambiar el plan"]');
+    check((await depthOf(page)) === 1 && (await arrow.count()) === 1 && (await page.locator('#gn-stage [aria-label="Volver al paso anterior"]').count()) === 0, 'the door back to the plan is one step from the week path, and its arrow leaves it (no step back into the first-run questions)', { depth: await depthOf(page), arrows: await page.evaluate(() => [...document.querySelectorAll('#gn-stage [aria-label^="Volver"]')].map((e) => e.getAttribute('aria-label'))) });
+    await arrow.tap();
+    await page.waitForTimeout(600);
+    await level();
+    check((await screenOf(page)) === 'Main' && (await depthOf(page)) === 0 && kept(await saved(page)) === kept(before), 'the door\'s arrow goes back to the week path in one press, with nothing asked and nothing saved', [await screenOf(page), await depthOf(page)]);
+    await chip.tap();
+    await page.waitForTimeout(600);
+    await sysBack(page);
+    await level();
+    check((await screenOf(page)) === 'Main' && (await depthOf(page)) === 0 && kept(await saved(page)) === kept(before), 'the system\'s back from the door leaves it in one press too', [await screenOf(page), await depthOf(page), (await text(page)).slice(0, 60)]);
+    await chip.tap();
+    await page.waitForTimeout(600);
     await tap(page, 'Cancelar', 600);
     check((await screenOf(page)) === 'Main' && JSON.stringify((await saved(page)).plan) === JSON.stringify(before.plan), '«Cancelar» goes back to the week path and leaves the plan as it was', (await saved(page)).plan);
     await toTab(page, 'Progreso');
@@ -1509,6 +1596,18 @@ async function partI(browser) {
     check(await has(page, 'días atrás') && await has(page, 'Rearmar mi plan') && await has(page, "Epu'ã ha eñepyrũjey"), 'Progreso: behind the plan, it offers to make the plan again', (await text(page)).slice(0, 300));
     await tap(page, 'Rearmar mi plan', 600);
     check((await screenOf(page)) === 'Goal' && await has(page, 'Guardar el plan'), '«Rearmar mi plan» opens the goal screen at the plan', await screenOf(page));
+    /* opened from Progreso, the door closes to Progreso, one step under it: by «Cancelar», by its arrow and by the
+       system's back, each in one press (they all used to end on the week path) */
+    const deep = await depthOf(page);
+    await tap(page, 'Cancelar', 600);
+    check(deep === 2 && (await screenOf(page)) === 'Progress' && (await depthOf(page)) === 1 && await has(page, 'Rearmar mi plan') && JSON.stringify((await saved(page)).plan) === JSON.stringify(before.plan), '«Cancelar», from Progreso\'s door, goes back to Progreso and leaves the plan as it was', { deep, now: [await screenOf(page), await depthOf(page)] });
+    await tap(page, 'Rearmar mi plan', 600);
+    await tap(page, { aria: 'Volver a Progreso sin cambiar el plan' }, 600);
+    check((await screenOf(page)) === 'Progress' && (await depthOf(page)) === 1, 'so does the door\'s arrow', [await screenOf(page), await depthOf(page)]);
+    await tap(page, 'Rearmar mi plan', 600);
+    await sysBack(page);
+    check((await screenOf(page)) === 'Progress' && (await depthOf(page)) === 1 && JSON.stringify((await saved(page)).plan) === JSON.stringify(before.plan), 'and the system\'s back, in one press', [await screenOf(page), await depthOf(page), (await text(page)).slice(0, 60)]);
+    await tap(page, 'Rearmar mi plan', 600);
     await tap(page, 'Guardar el plan', 700);
     h = await look(page, 'plan made again', { expect: 'Main', shot: 'I11-main-replanned' });
     let s = await saved(page);
@@ -1543,9 +1642,9 @@ async function partI(browser) {
     check((await strip()) === 'Tus últimos 7 días: 2 días con estudio. Hoy todavía no.', 'Main: the last seven days say what they were', await strip());
     const before = await saved(page);
     await toTab(page, 'Progreso');
-    check(await has(page, '4 días con estudio · volviste una vez'), 'Progreso counts the days with study and the returns', (await text(page)).slice(0, 200));
+    check(await has(page, '4 días con estudio · volviste una vez') && !(await has(page, 'desde el')), 'Progreso counts the days with study and the returns (and, for a learner whose days were all kept, says no «desde»)', (await text(page)).slice(0, 200));
     await toTab(page, 'Camino');
-    check(JSON.stringify((await saved(page)).seen) === JSON.stringify(before.seen), 'looking around is not study: no day is added for it', (await saved(page)).seen);
+    check(JSON.stringify((await saved(page)).seen) === JSON.stringify(before.seen) && (await saved(page)).seenLate === false, 'looking around is not study: no day is added for it (and a learner whose days were kept from the start is not marked seenLate)', (await saved(page)).seen);
     await tap(page, { sel: '#gn-stage a[href="Review.dc.html"]:has-text("Repasar")' }, 700);
     h = await look(page, 'the greeting → Review', { expect: 'Review' });
     const one = (await itemsOf(page, ['a1u01d3.d1']))[0];
@@ -1587,6 +1686,38 @@ async function partI(browser) {
     const { ctx, page } = await learner('no days kept', { plan: { start: iso(-30), target: null, pace: 'fit', minutes: 30 }, done: days(1, 3) });
     const strip = await page.locator('#gn-stage [aria-label^="Tus últimos 7 días"]').getAttribute('aria-label');
     check(!(await has(page, '¡Volviste!')) && strip === 'Tus últimos 7 días: 0 días con estudio. Hoy todavía no.' && (await page.locator('#gn-stage svg[aria-label^="Kaguare con el ñandutí"]').count()) === 1, 'a save with no days kept loads as before: the usual callout, Kaguare standing', strip);
+    await ctx.close();
+  }
+  {
+    /* such a save that already holds things studied (two days sealed, a notebook entry made five days ago): the count
+       of days starts with the first thing done now, and Progreso says since when it runs (it used to say «1 día con
+       estudio» of a learner who had studied for days). The save is marked for good (seenLate), so it still says so
+       once that one old entry has been reviewed; and no day is made up for the time before */
+    const { ctx, page } = await learner('days kept from today', { plan: { start: iso(-6), target: null, pace: 'fit', minutes: 30 }, done: days(1, 2), mistakes: [m('a1u01d1.d1', { at: Date.now() - 5 * DAY, due: iso(-4) })] });
+    await toTab(page, 'Progreso');
+    check(await has(page, '2 de 56 sesiones') && !(await has(page, 'con estudio')), 'Progreso, on a save from before the days were kept: no day is claimed before anything is done', (await text(page)).slice(0, 200));
+    await toTab(page, 'Camino');
+    await tap(page, { sel: '#gn-stage a[href="Review.dc.html"]' }, 700);
+    await answerOne(page, (await itemsOf(page, ['a1u01d1.d1']))[0], true, true);
+    await page.waitForTimeout(300);
+    await tap(page, { aria: 'Salir del repaso' }, 600);
+    await toTab(page, 'Progreso');
+    const today = new Date();
+    const since = '1 día con estudio desde el ' + today.getDate() + '/' + (today.getMonth() + 1);
+    const s = await saved(page);
+    check(await has(page, since) && s.seen.join() === iso(0) && s.seenLate === true, 'after the first answer Progreso says since when the days are counted («' + since + '»): the save is marked, and no earlier day is made up', { seen: s.seen, seenLate: s.seenLate, says: ((await text(page)).match(/\d+ días? con estudio[^P]{0,24}/) || [''])[0] });
+    await reload(page);
+    await toTab(page, 'Progreso');
+    check(await has(page, since), 'reopened: it still says so', ((await text(page)).match(/\d+ días? con estudio[^P]{0,24}/) || [''])[0]);
+    await ctx.close();
+  }
+  {
+    /* back after ten days with 45 minutes a day: a sitting of 25 questions is where to start, but it is not «algo corto» */
+    const ids = [];
+    for (let d = 1; d <= 5; d++) for (let k = 1; k <= 4; k++) ids.push('a1u01d' + d + '.d' + k);
+    for (let d = 1; d <= 5; d++) for (let k = 1; k <= 3; k++) ids.push('a1u01d' + d + '.e' + k);
+    const { ctx, page } = await learner('back, a long review', { plan: { start: iso(-20), target: null, pace: 'fit', minutes: 45 }, done: days(1, 5), mistakes: ids.map((id, k) => m(id, { at: Date.now() - (12 + k) * DAY, due: iso(-10) })), seen: [iso(-12), iso(-11), iso(-10)] });
+    check(await has(page, '¡Volviste!') && await has(page, 'Empezá por el repaso: 25 para repasar, 15 minutos.') && !(await has(page, 'algo corto')), 'back with a long sitting (25 questions, 15 minutes): the greeting starts with the review without calling it short', (await text(page)).slice(0, 400));
     await ctx.close();
   }
 
@@ -1664,24 +1795,42 @@ async function partI(browser) {
     }
     h = await look(page, 'mini exam result', { expect: 'Exam', shot: 'I19-mini-result' });
     check(await has(page, 'Mini examen 1 terminado') && (await scoreOf(page)).trim() === '18', 'the mini exam ends 18 of 20', (await text(page)).slice(0, 200));
+    {
+      /* the result is saved the moment the exam ends, with its errors: its page is still up, no button tapped yet */
+      const now = await saved(page);
+      check(now.tests && now.tests[mini.id] && now.tests[mini.id].score === 18 && now.tests[mini.id].of === 20 && now.mistakes.length === 2, 'the mini exam\'s result is saved when it ends, on its result page, before any way out is taken', { r: now.tests && now.tests[mini.id], mistakes: now.mistakes.length });
+    }
     await tap(page, { sel: '#gn-stage a[href="ExamTab.dc.html"]:has-text("Siguiente")' }, 800);
     h = await look(page, 'the mini exam → ExamTab', { expect: 'ExamTab', shot: 'I20-examtab-mini-done' });
     let s = await saved(page);
     const r = s.tests && s.tests[mini.id];
     check(r && r.score === 18 && r.of === 20 && r.areas && r.areas.vocab && r.areas.vocab.of === 6 && s.mistakes.length === 2 && s.mistakes.map((x) => x.src).sort().join() === [mini.items[2], mini.items[9]].sort().join(), 'saved: the result under ' + mini.id + ', by area, and its two errors in the notebook', { r, m: s.mistakes.map((x) => x.src) });
     check(await has(page, 'Último resultado: 18 de 20') && (await page.locator('#gn-stage a[aria-label="Hacer otra vez el mini examen 1"]').count()) === 1, 'the Examen tab shows the last result, and «Otra vez»', (await text(page)).slice(-500));
-    /* taken again and left by the cross on its result page: that result is kept too (17 of 20 this time) */
+    /* taken again (17 of 20 this time) and the app closed on its result page, then opened again: that result is the
+       one kept (the save used to wait for the page's button, and the tab went on showing the result before: 18) */
     await tap(page, { aria: 'Hacer otra vez el mini examen 1' }, 800);
     for (let i = 0; i < items.length; i++) {
       await answerOne(page, items[i], i > 2);
       await tap(page, i < items.length - 1 ? 'Siguiente' : exact('Terminar'), 300);
     }
-    await tap(page, { aria: 'Salir del mini examen 1' }, 800);
-    s = await saved(page);
-    check((await screenOf(page)) === 'ExamTab' && s.tests[mini.id].score === 17 && await has(page, 'Último resultado: 17 de 20'), 'the cross on the result page keeps the result too', s.tests[mini.id]);
+    check(await has(page, 'Mini examen 1 terminado') && (await scoreOf(page)).trim() === '17', 'taken again, the mini exam ends 17 of 20', (await text(page)).slice(0, 120));
     await reload(page);
     s = await saved(page);
-    check(s.tests[mini.id] && s.tests[mini.id].score === 17 && Object.keys(s.tests).length === W.tests.length + 1, 'reopened: the mini exam\'s result is kept with the week tests', Object.keys(s.tests));
+    check((await screenOf(page)) === 'Main' && s.tests[mini.id] && s.tests[mini.id].score === 17, 'closed on its result page and opened again: the mini exam\'s result is kept', s.tests[mini.id]);
+    await toTab(page, 'Examen');
+    check(await has(page, 'Último resultado: 17 de 20') && (await page.locator('#gn-stage a[aria-label="Hacer otra vez el mini examen 1"]').count()) === 1 && (await page.locator('#gn-stage a[aria-label="Empezar el mini examen 1"]').count()) === 0, 'and the Examen tab shows it as the last result', (await text(page)).slice(-400));
+    /* left by the cross of its result page, a third time (all right): kept as well */
+    await tap(page, { aria: 'Hacer otra vez el mini examen 1' }, 800);
+    for (let i = 0; i < items.length; i++) {
+      await answerOne(page, items[i], true);
+      await tap(page, i < items.length - 1 ? 'Siguiente' : exact('Terminar'), 300);
+    }
+    await tap(page, { aria: 'Salir del mini examen 1' }, 800);
+    s = await saved(page);
+    check((await screenOf(page)) === 'ExamTab' && s.tests[mini.id].score === 20 && await has(page, 'Último resultado: 20 de 20'), 'the cross on the result page leads to the tab, the result kept', s.tests[mini.id]);
+    await reload(page);
+    s = await saved(page);
+    check(s.tests[mini.id] && s.tests[mini.id].score === 20 && Object.keys(s.tests).length === W.tests.length + 1, 'reopened: the mini exam\'s result is kept with the week tests', Object.keys(s.tests));
     check((await page.locator('#gn-stage a[aria-label^="Día 7, prueba de la semana, hecha"]').count()) === 1, 'reopened: the week path is as it was', await controls(page));
     check((await page.locator('#gn-stage a[aria-label^="Mini examen"]').count()) === 0 && await has(page, 'MIENTRAS TANTO'), 'Main: once the mini exam is taken its row is gone, and the links stay', await controls(page));
     await toTab(page, 'Progreso');
@@ -1695,6 +1844,69 @@ async function partI(browser) {
     await toTab(page, 'Examen');
     const after = await page.evaluate(() => window.gnCourse.minis('A1')[0].after);
     check(await has(page, 'Después de la semana ' + after) && (await page.locator('#gn-stage a[href="Exam.dc.html"]').count()) === 0, 'the mini exam waits behind the week test of week ' + after + ', and says so', (await text(page)).slice(-400));
+    /* what the tab says of the mini exams is what they are: the week tests' questions again, on a clock (no audio, no
+       mediation, no writing, no oral part: they do not show the level exam's format) */
+    check(await has(page, 'Antes, dos mini exámenes repasan con reloj lo que ya hiciste.') && !(await has(page, 'te muestran el formato')), 'the Examen tab says what the mini exams are: a timed review of what was done, not a show of the exam\'s format', (await text(page)).slice(0, 300));
+    await ctx.close();
+  }
+
+  part = 'I7 an exam closed on its result page';
+  {
+    /* The exam-style runner saves when the exam ends («Terminar», or the clock at 0): the misses and the result in the
+       same moment. It used to save the result only when the result page was left by its button, so a week test closed
+       on that page, or left by its cross, was asked for again the next day, with its errors already in the notebook. */
+    const { ctx, page } = await learner('week test closed on its result', { plan: { start: iso(-6), target: null, pace: 'fit', minutes: 30 }, done: days(1, 6), seen: [iso(-1)] });
+    check(await has(page, 'HOY · PRUEBA'), 'the week\'s six days done: the week path asks for the week test', (await text(page)).slice(0, 300));
+    await tap(page, { sel: '#gn-stage a[href="WeekTest.dc.html"]:has-text("Empezar")' }, 700);
+    await tap(page, 'Empezar la prueba', 800);
+    const items = await itemsOf(page, await page.evaluate(() => window.gnCourse.unit(1).test));
+    for (let i = 0; i < items.length; i++) {
+      await answerOne(page, items[i], i > 1);
+      await tap(page, i < items.length - 1 ? 'Siguiente' : exact('Terminar'), 300);
+    }
+    let h = await look(page, 'the week test\'s result page', { expect: 'Exam', shot: 'I21-weektest-result' });
+    let s = await saved(page);
+    check(await has(page, 'Prueba de la semana terminada') && s.tests.a1u01t && s.tests.a1u01t.score === 18 && s.tests.a1u01t.of === 20 && s.mistakes.length === 2, 'the week test is saved when it ends, on its result page, with its two errors', { r: s.tests.a1u01t, mistakes: s.mistakes.length });
+    /* the page goes on showing the test that was taken (the week is whole now, and the session in use could move on) */
+    check((await scoreOf(page)).trim() === '18' && (await page.locator('#gn-stage svg[aria-label="Correcta"]').count()) === 18 && (await page.locator('#gn-stage svg[aria-label="Incorrecta"]').count()) === 2, 'its result page still shows the 20 answers of the test taken', (await text(page)).slice(0, 120));
+    await setDay(page, 1);
+    await reload(page);
+    h = await look(page, 'the next morning', { expect: 'Main', shot: 'I22-main-after-weektest' });
+    s = await saved(page);
+    check(s.tests.a1u01t && s.tests.a1u01t.score === 18 && !(await has(page, 'HOY · PRUEBA')) && (await page.locator('#gn-stage a[aria-label^="Día 7, prueba de la semana, hecha"]').count()) === 1, 'closed on its result page and opened the next morning: the test is taken, and the week path does not ask for it again', (await text(page)).slice(0, 300));
+    await ctx.close();
+  }
+  {
+    /* left by the cross of the result page (the week path), and by the system's back: saved all the same */
+    const { ctx, page } = await learner('week test left by its cross', { plan: { start: iso(-6), target: null, pace: 'fit', minutes: 30 }, done: days(1, 6), seen: [iso(-1)] });
+    await tap(page, { sel: '#gn-stage a[href="WeekTest.dc.html"]:has-text("Empezar")' }, 700);
+    await tap(page, 'Empezar la prueba', 800);
+    const items = await itemsOf(page, await page.evaluate(() => window.gnCourse.unit(1).test));
+    for (let i = 0; i < items.length; i++) {
+      await answerOne(page, items[i], true);
+      await tap(page, i < items.length - 1 ? 'Siguiente' : exact('Terminar'), 300);
+    }
+    await tap(page, { aria: 'Salir de la prueba de la semana' }, 700);
+    const s = await saved(page);
+    check((await screenOf(page)) === 'Main' && s.tests.a1u01t && s.tests.a1u01t.score === 20 && !(await has(page, 'HOY · PRUEBA')), 'the week test\'s result page left by its cross: the result is saved, and the week path moves on', { on: await screenOf(page), r: s.tests.a1u01t });
+    await ctx.close();
+  }
+  {
+    /* a day's exam-style step: its three answers given, the app closed on the result page */
+    const { ctx, page } = await learner('day step closed on its result', { plan: { start: iso(0), target: null, pace: 'fit', minutes: 30 }, done: { a1u01d1: { g: 2 } }, cur: 'a1u01d1', seen: [iso(0)] });
+    await tap(page, { sel: '#gn-stage a[href="Today.dc.html"]:has-text("Empezar")' }, 700);
+    await tap(page, exact('Al examen'), 800);
+    const exam = await itemsOf(page, await page.evaluate(() => window.gnCourse.day('a1u01d1').grammar.exam));
+    for (let i = 0; i < exam.length; i++) {
+      await answerOne(page, exam[i], i !== 0);
+      await tap(page, i < exam.length - 1 ? 'Siguiente' : exact('Terminar'), 400);
+    }
+    let s = await saved(page);
+    check(await has(page, 'Examen terminado') && s.done.a1u01d1.g === 3 && s.mistakes.length === 1, 'a day\'s exam-style step is saved done (g 3) when it ends, on its result page, with its error', { done: s.done.a1u01d1, mistakes: s.mistakes.length });
+    await reload(page);
+    s = await saved(page);
+    await tap(page, { sel: '#gn-stage a[href="Today.dc.html"]:has-text("Empezar")' }, 700);
+    check(s.done.a1u01d1.g === 3 && (await screenOf(page)) === 'Today' && !(await has(page, 'Al examen')), 'closed on that page and opened again: the grammar lesson is done, and the day does not send the learner to the exam again', { done: s.done.a1u01d1, says: (await text(page)).slice(0, 200) });
     await ctx.close();
   }
 }
@@ -1708,6 +1920,17 @@ const ANDROID = 'Mozilla/5.0 (Linux; Android 14; SM-A155M) AppleWebKit/537.36 (K
 const depthOf = (page) => page.evaluate(() => (history.state && history.state.gn) || 0);
 const focusOf = (page) => page.evaluate(() => { const el = document.activeElement; return !el || el === document.body ? '' : el.tagName.toLowerCase() + ':' + (el.getAttribute('aria-label') || el.innerText || '').replace(/\s+/g, ' ').trim().slice(0, 48); });
 const noticeOf = (page) => page.evaluate(() => [...document.querySelectorAll('#gn-stage > .sc-host > div > [role="status"]')].map((e) => e.innerText.replace(/\s+/g, ' ').trim()).join(' | '));
+/* the controls of the screen that the shell's notice lies over, and the week path's last seven days if it hides them:
+   the notice must cover neither */
+const noticeOver = (page) => page.evaluate(() => {
+  const n = document.querySelector('#gn-stage > .sc-host > div > [role="status"]');
+  if (!n) return ['no notice'];
+  const r = n.getBoundingClientRect();
+  const under = (el) => { const q = el.getBoundingClientRect(); return q.width > 0 && q.height > 0 && Math.min(r.right, q.right) - Math.max(r.left, q.left) > 1 && Math.min(r.bottom, q.bottom) - Math.max(r.top, q.top) > 1; };
+  const hit = [...document.querySelectorAll('#gn-stage .sc-host .sc-host a, #gn-stage .sc-host .sc-host button, #gn-stage .sc-host .sc-host input, #gn-stage .sc-host .sc-host textarea')].filter(under).map((el) => (el.getAttribute('aria-label') || el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 30));
+  [...document.querySelectorAll('#gn-stage .sc-host .sc-host div')].forEach((el) => { if (el.children.length === 0 && /^Últimos 7 días$/.test(el.textContent.trim()) && under(el)) hit.push('Últimos 7 días'); });
+  return hit;
+});
 const sheetOf = (page) => page.evaluate(() => { const d = document.querySelector('#gn-stage [role="dialog"]'); const a = document.activeElement; return { open: !!d, inert: document.querySelectorAll('#gn-stage [inert]').length, focusIn: !!(d && a && d.contains(a)), behind: !!(a && a.closest && a.closest('[inert]')) }; });
 async function sysBack(page) { await page.goBack().catch(() => {}); await page.waitForTimeout(450); }
 async function partS(browser) {
@@ -1834,7 +2057,9 @@ async function partS(browser) {
   await sysBack(page);
   check(await has(page, 'Pausa') && (await sheetOf(page)).open && (await screenOf(page)) === 'Escribir', 'back in the game is its own pause button: the round waits', (await text(page)).slice(-200));
   await sysBack(page);
-  check((await sheetOf(page)).open && (await screenOf(page)) === 'Escribir', 'the pause asks for an answer (Continuar or Salir): back leaves it open', await screenOf(page));
+  check(!(await sheetOf(page)).open && (await screenOf(page)) === 'Escribir', 'back on the pause is its «Continuar»: the round goes on', { sheet: await sheetOf(page), on: await screenOf(page) });
+  await sysBack(page);
+  check((await sheetOf(page)).open && (await screenOf(page)) === 'Escribir' && page.url() === BASE && (await depthOf(page)) === 2, 'a third press pauses again: pressed again and again with no touch in between, back never falls out of the game', { on: await screenOf(page), url: page.url(), depth: await depthOf(page) });
   await tap(page, 'Salir de la ronda', 600);
   check((await screenOf(page)) === 'Progress' && !(await noZoom()).cls && (await depthOf(page)) === 1, 'out of the game, zoom is free again and the history is level', { on: await screenOf(page), depth: await depthOf(page) });
   await ctx.close();
@@ -1872,6 +2097,19 @@ async function partS(browser) {
     s = await saved(page);
     check(Object.keys(s.done).length === 6 && s.typed.join() === 'maitei' && s.exposure && s.exposure.with.join() === 'familia', 'after the way back the app saves on from the old progress', { days: Object.keys(s.done).length, typed: s.typed, exposure: s.exposure });
     await tap(page, { sel: '#gn-stage nav a:has-text("Camino")' }, 400);
+    /* The offer stands while nothing is studied on the pasted progress: a look at a day is no study. The first thing
+       done on it (here the week's «lo usé») withdraws the offer: «Deshacer» stores the old save again as it was, and
+       would throw away what was done since */
+    await paste();
+    check((await noticeOver(page)).join() === '', 'on the week path the notice lies over the week\'s card: it covers no control, and not the last seven days', await noticeOver(page));
+    await tap(page, { sel: '#gn-stage a[href="Today.dc.html"]:has-text("Empezar"), #gn-stage a[href="Today.dc.html"]:has-text("Seguir")' }, 500);
+    await tap(page, { aria: 'Volver al camino de la semana' }, 500);
+    check((await screenOf(page)) === 'Main' && /Deshacer/.test(await noticeOf(page)), 'a day opened and closed is no study: the offer stands', await noticeOf(page));
+    await tap(page, { sel: '#gn-stage nav a:has-text("Progreso")' }, 400);
+    await tap(page, exact('trabajo'), 400);
+    await tap(page, { sel: '#gn-stage nav a:has-text("Camino")' }, 400);
+    s = await saved(page);
+    check(!(await noticeOf(page)) && !(await page.evaluate(() => window.gnApp.pasted())) && Object.keys(s.done).length === 1 && s.exposure && s.exposure.with.join() === 'trabajo', 'the first thing done on the pasted progress withdraws the offer: nothing studied can be thrown away by «Deshacer»', { notice: await noticeOf(page), days: Object.keys(s.done).length, exposure: s.exposure });
     await paste();
     await tap(page, { aria: 'Cerrar el aviso' }, 400);
     check(!(await noticeOf(page)) && !(await page.evaluate(() => window.gnApp.pasted())), 'closing the notice keeps the pasted progress: no way back is offered after that', await noticeOf(page));
@@ -1892,8 +2130,15 @@ async function partS(browser) {
     await page.evaluate(([k, v]) => { localStorage.setItem(k, v); sessionStorage.setItem(k + '.browser', '1'); sessionStorage.setItem(k + '.told', String(Date.now() - 8 * 864e5)); }, [KEY, save]);
     await reload(page);
     check((await screenOf(page)) === 'Main' && /Safari puede borrar tu progreso/.test(await noticeOf(page)) && /una semana sin abrir la página/.test(await noticeOf(page)) && /Qué hacer/.test(await noticeOf(page)), 'in a tab kept for more than a week, the week path says what Safari does and offers what to do about it', await noticeOf(page));
+    check((await noticeOver(page)).join() === '', 'the notice covers no control of the week path, and not the last seven days', await noticeOver(page));
+    check((await page.evaluate((k) => localStorage.getItem(k), KEY)) === save, 'opening the app on the week path, its notice laid over the week\'s card, writes nothing: the save is as it was', (await page.evaluate((k) => localStorage.getItem(k), KEY)).slice(0, 120));
     await shot(page, 'S04-safari-week');
     /* «Qué hacer» is the install page again: the steps to the Home Screen, and the code that takes this progress there */
+    await tap(page, 'Qué hacer', 600);
+    check((await depthOf(page)) === 1, 'that page is one step from the week path', await depthOf(page));
+    /* the system's back leads back to the week path, nothing chosen: the notice is there again, the progress as it was */
+    await sysBack(page);
+    check(page.url() === BASE && (await screenOf(page)) === 'Main' && /Safari puede borrar tu progreso/.test(await noticeOf(page)) && (await depthOf(page)) === 0 && (await saved(page)).done.a1u01d1.g === 3 && (await page.title()) === "Epu'ã · Camino de la semana", 'the system\'s back from that page leads to the week path (it used to leave the app), with nothing chosen', { url: page.url(), on: await screenOf(page), notice: await noticeOf(page), depth: await depthOf(page) });
     await tap(page, 'Qué hacer', 600);
     check((await screenOf(page)) === 'Install' && await has(page, 'Tocá Compartir') && await has(page, 'Copiar mi progreso') && (await page.title()) === "Epu'ã" && /^h1:Agregá/.test(await focusOf(page)), '«Qué hacer» opens the install page: its steps, the code to copy, its heading in focus', { on: await screenOf(page), title: await page.title(), focus: await focusOf(page), text: (await text(page)).slice(-260) });
     await shot(page, 'S04b-safari-week-install');
@@ -1943,7 +2188,15 @@ async function partS(browser) {
     check((await screenOf(page)) === 'Today', 'the day it leads to is in the first file: it opens at once', await screenOf(page));
     await tap(page, { aria: 'Volver al camino de la semana' }, 400);
     await tap(page, { sel: '#gn-stage nav a:has-text("Progreso")' }, 800);
-    check(/Cargando…/.test(await noticeOf(page)), 'a screen asked for before it is in gets a waiting note in its place', await noticeOf(page));
+    check(/Cargando…/.test(await noticeOf(page)) && (await control(page, 'Tapykue · Volver').count()) === 0, 'a screen asked for before it is in gets a waiting note in its place', await noticeOf(page));
+    /* on a connection that stalls the note offers the way back after a few seconds (an app from the Home Screen has no
+       back of its own); the file is not asked for again */
+    await page.waitForTimeout(5000);
+    check(/Cargando…/.test(await noticeOf(page)) && (await control(page, 'Tapykue · Volver').count()) === 1 && (await control(page, 'Intentá de nuevo').count()) === 0, 'still waiting after five seconds, the note offers the way back (and no «Intentá de nuevo»: the file is on its way)', await controls(page));
+    await shot(page, 'S05a-screens-waiting');
+    await tap(page, exact('Tapykue · Volver'), 500);
+    check((await screenOf(page)) === 'Main' && asked === 1, 'Volver leads back to the week path while the file is still coming', { on: await screenOf(page), asked });
+    await tap(page, { sel: '#gn-stage nav a:has-text("Progreso")' }, 800);
     hold = false;
     release();
     await page.waitForFunction(() => { const el = document.querySelector('#gn-stage .sc-host .sc-host'); return !!el && el.getAttribute('data-sc-name') === 'Progress'; }, null, { timeout: 8000 }).catch(() => {});
@@ -1971,6 +2224,508 @@ async function partS(browser) {
     check((await screenOf(page)) === 'Progress', 'Intentá de nuevo fetches it and shows the screen', await screenOf(page));
     await ctx.close();
   }
+
+  part = 'S6b a first paint that never ends';
+  {
+    /* a first visit on which one of the page's own scripts does not arrive: the page's first paint says so, where it
+       used to say «Cargando…» for ever (or, without the first screens, «no screen named Install») */
+    for (const [what, file] of [['the app\'s own script', 'gn-app.js'], ['the first screens', 'screens.js']]) {
+      ctx = await phone(browser);
+      /* this page's failed request is the test's own doing: it is not written down with the others */
+      page = await ctx.newPage();
+      await page.addInitScript(() => { Object.defineProperty(navigator, 'standalone', { get: () => true }); });
+      await page.route('**/assets/' + file, (route) => route.abort());
+      await page.goto(BASE).catch(() => {});
+      await page.waitForTimeout(1200);
+      const seen = await page.evaluate(() => ({ ready: document.documentElement.classList.contains('gn-ready'), splash: document.querySelector('#gn-splash').innerText.replace(/\s+/g, ' ').trim(), all: document.body.innerText.replace(/\s+/g, ' ').trim() }));
+      check(!seen.ready && /No se pudo cargar\. Revisá tu conexión y abrí la página de nuevo\./.test(seen.splash) && !/Cargando|no screen named/.test(seen.all), `without ${what} (${file}) the first paint says the app could not load, and what to do`, seen);
+      if (file === 'gn-app.js') await page.screenshot({ path: path.join(OUT, 'S05b-first-paint-failed.png') });
+      await ctx.close();
+    }
+  }
+
+  part = 'S7 the system\'s back, screen by screen';
+  {
+    /* Every routed screen, and the states inside a screen whose own way back asks first (a round of a game, an exam
+       under way): the system's back must do what a tap on the screen's own X or arrow does. That control is found
+       here the way a learner finds it, by where it is and what it shows (the cross or the arrow at the top left of
+       the screen), not by the mark the app reads; and it must carry that mark (data-gn-back). The screens are opened
+       through the test hooks, on a learner part way through unit 2. */
+    const week1 = {};
+    for (let d = 1; d <= 6; d++) week1['a1u01d' + d] = FULL;
+    const state = { level: 'A1', plan: { start: iso(-8), target: iso(60), pace: 'fit', minutes: 30 }, done: Object.assign({}, week1, { a1u02d1: FULL, a1u02d2: { g: 1 } }), tests: { a1u01t: { id: 'a1u01t', score: 17, of: 20, used: 700, areas: { vocab: { right: 5, of: 6 } }, at: Date.now() - 2 * DAY } }, m: [{ src: 'a1u01d2.d1', wrong: 'ore', at: Date.now() - DAY, step: 0, due: iso(0) }], cur: 'a1u02d2' };
+    const at = (screen, more) => '?gntest&screen=' + screen + Object.entries(Object.assign({}, state, more || {})).map(([k, v]) => '&' + k + '=' + encodeURIComponent(typeof v === 'string' ? v : JSON.stringify(v))).join('');
+    ctx = await phone(browser);
+    page = await newPage(ctx, 'back, screen by screen');
+    await page.goto('about:blank');
+    const inApp = () => page.url().startsWith(BASE);
+    /* what is on the glass: the screen, an open sheet, the goal screen's step, the screen's heading */
+    const sig = async () => (inApp() ? page.evaluate(() => {
+      const host = document.querySelector('#gn-stage .sc-host .sc-host');
+      const d = document.querySelector('#gn-stage [role="dialog"]');
+      const h1 = host ? [...host.querySelectorAll('h1')].filter((e) => e.getClientRects().length)[0] : null;
+      const bar = host ? host.querySelector('[aria-label^="Paso "]') : null;
+      return { screen: host ? host.getAttribute('data-sc-name') : '', sheet: d ? (d.getAttribute('aria-label') || (d.querySelector('h2') || d).textContent || '').replace(/\s+/g, ' ').trim().slice(0, 40) : '', step: bar ? bar.getAttribute('aria-label') : '', h1: h1 ? h1.textContent.replace(/\s+/g, ' ').trim().slice(0, 40) : '' };
+    }) : { screen: 'OUT OF THE APP', sheet: '', step: '', h1: '' });
+    const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+    /* the screen's own way back, as a learner sees it: the control at the top left that shows a cross or an arrow */
+    const ownBack = () => page.evaluate(() => {
+      const stage = document.querySelector('#gn-stage');
+      const host = stage.querySelector('.sc-host .sc-host');
+      if (!host) return null;
+      const sr = stage.getBoundingClientRect();
+      const k = sr.width / 390;
+      const list = [...host.querySelectorAll('a, button')].filter((c) => {
+        if (c.closest('[role="dialog"]')) return false;
+        const r = c.getBoundingClientRect();
+        if (!r.width || !r.height) return false;
+        const cx = (r.left + r.width / 2 - sr.left) / k;
+        const cy = (r.top + r.height / 2 - sr.top) / k;
+        const drawn = [...c.querySelectorAll('path')].map((p) => p.getAttribute('d') || '').join(' ');
+        return cx < 60 && cy > 50 && cy < 100 && (drawn.includes('M6 6l12 12M18 6L6 18') || drawn.includes('M15 5l-7 7 7 7'));
+      });
+      [...stage.querySelectorAll('[data-flows-own]')].forEach((c) => c.removeAttribute('data-flows-own'));
+      if (list[0]) list[0].setAttribute('data-flows-own', '1');
+      return list.length ? { n: list.length, label: list[0].getAttribute('aria-label') || '', marked: list[0].hasAttribute('data-gn-back') } : null;
+    });
+    /* a touch on the empty strip at the top of the design: from then on the history is as deep as the app */
+    const touch = async () => { await page.touchscreen.tap(195, 22); await page.waitForTimeout(150); };
+    const first = async (unit) => (await itemsOf(page, await page.evaluate((u) => window.gnCourse.unit(u).test.slice(0, 1), unit)))[0];
+    const answerFirst = async () => { await answerOne(page, await first(2), true); };
+    const startPart = () => tap(page, 'Empezar la parte 1', 700);
+    const camino = { sel: '#gn-stage nav a:has-text("Camino")' };
+    const goal2 = async () => { await tap(page, exact('hablar con mi familia'), 250); await tap(page, 'Siguiente', 500); };
+    const goal3 = async () => { await goal2(); await tap(page, exact('Empezar en A1'), 500); };
+    const test2 = { set: 'test', cur: 'a1u02t' };
+    const cases = [
+      ['Today', at('Today')], ['Levels', at('Levels')], ['Teach', at('Teach')], ['Compare', at('Compare')], ['Drill', at('Drill')],
+      ['Exam, a day\'s three questions', at('Exam')], ['Words', at('Words')], ['Reading', at('Reading')], ['Listening', at('Listening')],
+      ['WeekTest', at('WeekTest', { cur: 'a1u02t' })],
+      ['Exam, a week test with nothing answered', at('Exam', test2)],
+      ['Exam, a week test under way', at('Exam', test2), answerFirst],
+      ['Review', at('Review')],
+      ['LevelExam, before it starts', at('LevelExam')],
+      ['LevelExam, its first part under way', at('LevelExam'), startPart],
+      ['Leer', at('Leer')],
+      ['Escribir, a round', at('Escribir')],
+      ['Hablar, its menu', at('Hablar')],
+      ['Hablar, a round of «Escuchá y elegí»', at('Hablar'), () => tap(page, 'Empezar', 900)],
+      ['Hablar, a round of «Repetí y compará»', at('Hablar'), async () => { await tap(page, 'Repetí y compará', 300); await tap(page, 'Empezar', 900); }],
+      ['Placement', at('Placement')],
+      ['Goal, its second step', '?gntest&screen=Goal', goal2],
+      ['Goal, its third step', '?gntest&screen=Goal', goal3],
+      ['Goal, opened on a plan that exists', at('Goal')],
+      ['Notebook', at('Notebook'), null, camino], ['ExamTab', at('ExamTab'), null, camino], ['Progress', at('Progress'), null, camino],
+    ];
+    const told = [];
+    let walked = 0;
+    for (const [label, url, into, other] of cases) {
+      const open = async () => { await go(page, url); if (into) await into(); await touch(); };
+      await open();
+      const before = await sig();
+      const mine = await ownBack();
+      await sysBack(page);
+      const byBack = await sig();
+      await open();
+      await ownBack();
+      if (mine) await page.locator('#gn-stage [data-flows-own="1"]').tap({ timeout: 4000 }).catch(() => {});
+      else if (other) await tap(page, other, 0);
+      await page.waitForTimeout(450);
+      const byOwn = await sig();
+      const good = byBack.screen !== 'OUT OF THE APP' && same(byBack, byOwn) && !same(byBack, before) && (mine ? mine.n === 1 && mine.marked : !!other);
+      ok(good, `${label}: the system's back should do what ${mine ? 'the screen\'s own «' + mine.label + '» does' : 'leads to the week path'}, and that control should carry data-gn-back`, { before, byBack, byOwn, mine });
+      if (good) { walked += 1; told.push(label + ' → ' + byBack.screen + (byBack.sheet ? ' «' + byBack.sheet + '»' : '')); }
+    }
+    if (walked === cases.length) pass(`the system's back does what the screen's own X or arrow does on all ${walked} screens and states (${told.join('; ')})`);
+
+    /* three presses in a row, no touch in between, where the screen's own way back asks first: its sheet opens, closes
+       and opens again, and nothing falls out of the app (the second press used to close the sheet with the history
+       already at its end, and the third to leave) */
+    for (const [label, url, into, sheet] of [
+      ['the level exam', at('LevelExam'), startPart, '¿Salir del examen?'],
+      ['a week test under way', at('Exam', test2), answerFirst, '¿Salir de la prueba?'],
+      ['a round of Hablar', at('Hablar'), () => tap(page, 'Empezar', 900), 'Pausa'],
+    ]) {
+      await go(page, url);
+      await into();
+      await touch();
+      const start = await sig();
+      const seen = [];
+      for (let n = 0; n < 3; n++) { await sysBack(page); seen.push(await sig()); }
+      check(seen.every((x) => x.screen === start.screen) && seen[0].sheet === sheet && seen[1].sheet === '' && seen[2].sheet === sheet, `back pressed three times in ${label}: «${sheet}» opens, closes and opens again, and the app is never left`, seen.map((x) => x.screen + (x.sheet ? ' «' + x.sheet + '»' : '')));
+      if (label === 'a week test under way') {
+        await shot(page, 'S06-weektest-leaving');
+        await tap(page, /Seguir con la prueba/, 500);
+        check(same(await sig(), start) && /^a:Salir de la prueba de la semana/.test(await focusOf(page)), '«Seguir con la prueba» closes the sheet on the same question, the focus back on the cross', { now: await sig(), focus: await focusOf(page) });
+        await tap(page, { aria: 'Salir de la prueba de la semana' }, 500);
+        await tap(page, 'Salir sin guardar', 700);
+        check((await screenOf(page)) === 'Main', '«Salir sin guardar» leaves the test for the week path', await screenOf(page));
+      }
+    }
+    /* the placement check, opened from the goal screen's second step: back closes it onto that step, and back again is
+       the step's own arrow (the history used to be at its end there: the second press left the app) */
+    await go(page, '?gntest&screen=Goal');
+    await tap(page, exact('vivo en Paraguay'), 250);
+    await tap(page, 'Siguiente', 500);
+    await tap(page, exact('todo'), 250);
+    await page.locator('#gn-stage button').filter({ hasText: exact('nada') }).nth(1).tap();
+    await page.waitForTimeout(300);
+    await tap(page, 'Hacer la prueba', 800);
+    const placed = [await screenOf(page), await depthOf(page)];
+    await sysBack(page);
+    const closed = await sig();
+    await sysBack(page);
+    const stepped = await sig();
+    check(placed.join() === 'Placement,2' && closed.screen === 'Goal' && /^Paso 2 /.test(closed.step) && stepped.screen === 'Goal' && /^Paso 1 /.test(stepped.step) && inApp(), 'the placement check is one step deeper than the goal step it opened from: back closes it, and back again steps back in the goal', { placed, closed, stepped });
+
+    /* A back that passes over an entry, as Chrome's back button does with one of two entries a single tap added (it
+       cannot be made to skip here, so two steps are taken at once): the app takes one step up, to the day, and steps
+       forward again, so the history is as deep as the app once more and the next back leads to the week path */
+    await go(page, at('Today'));
+    await tap(page, { sel: '#gn-stage a[href^="Teach"], #gn-stage a:has-text("la regla")' }, 600);
+    const deepAt = [await screenOf(page), await depthOf(page)];
+    await page.evaluate(() => { history.go(-2); });
+    await page.waitForTimeout(700);
+    const upAt = [inApp() ? await screenOf(page) : 'OUT OF THE APP', await depthOf(page)];
+    await sysBack(page);
+    check(deepAt.join() === 'Teach,2' && upAt.join() === 'Today,1' && inApp() && (await screenOf(page)) === 'Main' && (await depthOf(page)) === 0, 'a back that passes over an entry takes one step up, and the history is level again for the next', { deepAt, upAt, then: [inApp() ? await screenOf(page) : 'OUT OF THE APP', await depthOf(page)] });
+
+    /* the shell's notice is not drawn over an open sheet (its last choice used to lie under the notice) */
+    await go(page, at('Main'));
+    await page.evaluate((code) => window.gnApp.importProgress(code), 'EPUA1:' + Buffer.from(JSON.stringify({ v: 1, started: true, level: 'A1', plan: { start: iso(0), target: null, pace: 'fit', minutes: 30 }, done: { a1u01d1: FULL } })).toString('base64'));
+    await page.waitForTimeout(600);
+    await tap(page, { sel: '#gn-stage a[href="GoalPlan.dc.html"]' }, 700);
+    const onGoal = await noticeOf(page);
+    await tap(page, { sel: '#gn-stage button[aria-haspopup="dialog"]' }, 600);
+    const overSheet = [(await sheetOf(page)).open, await noticeOf(page)];
+    await sysBack(page);
+    check(/Progreso reemplazado/.test(onGoal) && overSheet[0] === true && overSheet[1] === '' && !(await sheetOf(page)).open && /Progreso reemplazado/.test(await noticeOf(page)), 'the notice gives way to an open sheet, and is back when the sheet closes', { onGoal, overSheet, after: await noticeOf(page) });
+
+    /* A tap that takes its own control away and leads to another page of the same screen leaves the focus on that
+       page's heading, not nowhere: the words lesson, from its sound step to its scene. Where the screen says itself what
+       the tap did, in a live region (an exam that ends), the focus is left alone, so nothing cuts that short */
+    await go(page, at('Words'));
+    const soundStep = await sig();
+    await tap(page, 'Siguiente: las palabras', 600);
+    const scene = await sig();
+    const onHead = await page.evaluate(() => { const host = document.querySelector('#gn-stage .sc-host .sc-host'); const h1 = host ? [...host.querySelectorAll('h1')].filter((e) => e.getClientRects().length)[0] : null; return !!h1 && document.activeElement === h1; });
+    check(scene.screen === 'Words' && scene.h1 !== soundStep.h1 && onHead, 'a step of a lesson that takes its own button away opens with the focus on the new step\'s heading (it used to fall nowhere)', { soundStep, scene, focus: await focusOf(page) });
+    await go(page, at('Exam'));
+    const dayItems = await itemsOf(page, await page.evaluate(() => window.gnCourse.day('a1u02d2').grammar.exam.map((x) => (typeof x === 'string' ? x : x.id))));
+    for (let i = 0; i < dayItems.length; i++) {
+      await answerOne(page, dayItems[i], true);
+      await tap(page, i < dayItems.length - 1 ? 'Siguiente' : exact('Terminar'), 350);
+    }
+    const spoken = await page.evaluate(() => [...document.querySelectorAll('#gn-stage .sc-host .sc-host [aria-live]')].map((e) => e.textContent.trim()).filter(Boolean).join(' | '));
+    check(/Examen terminado: 3 de 3/.test(spoken) && !/^h1:/.test(await focusOf(page)), 'an exam that ends says so itself, in its live region: the focus is not moved over it', { spoken, focus: await focusOf(page) });
+    await ctx.close();
+
+    /* An iPhone gives a tapped button no focus: it stays on the heading the app focused when the screen opened. With
+       that copied here (a press on a button or a link moves no focus), a sheet that closes must still give the focus
+       back to the control that opened it, not to the heading */
+    ctx = await phone(browser);
+    await ctx.addInitScript(() => { document.addEventListener('mousedown', (e) => { if (e.target.closest && e.target.closest('button, a')) e.preventDefault(); }, true); });
+    page = await newPage(ctx, 'focus as an iPhone gives it');
+    await go(page, at('Main'));
+    await tap(page, { sel: '#gn-stage nav a:has-text("Progreso")' }, 600);
+    const onOpen = await focusOf(page);
+    await tap(page, 'Pegar un progreso', 600);
+    const inSheet = await sheetOf(page);
+    await tap(page, 'Cancelar', 600);
+    check(/^h1:/.test(onOpen) && inSheet.open && inSheet.focusIn && /^button:Pegar un progreso/.test(await focusOf(page)), 'where a tapped button gets no focus (an iPhone), a closed sheet still gives the focus back to the control that opened it', { onOpen, inSheet, after: await focusOf(page) });
+    await ctx.close();
+
+    /* a good code pasted where the save is a newer build's: the sheet says why nothing changed (it used to say the
+       code was no good) */
+    ctx = await phone(browser);
+    page = await newPage(ctx, 'paste on a newer save');
+    const newer = JSON.stringify({ v: 2, started: true, level: 'A1', plan: { start: iso(-3), target: null, pace: 'fit', minutes: 30 }, done: week1 });
+    await page.addInitScript(([k, v]) => { Object.defineProperty(navigator, 'standalone', { get: () => true }); localStorage.setItem(k, v); }, [KEY, newer]);
+    await go(page, '');
+    await tap(page, { sel: '#gn-stage nav a:has-text("Progreso")' }, 500);
+    await tap(page, 'Pegar un progreso', 500);
+    await page.locator('#gn-stage textarea').first().fill('EPUA1:' + Buffer.from(JSON.stringify({ v: 1, started: true, level: 'A1', plan: { start: iso(0), target: null, pace: 'fit', minutes: 30 }, done: { a1u01d1: FULL } })).toString('base64'));
+    await tap(page, 'Usar este progreso', 700);
+    const why = await text(page);
+    check((await screenOf(page)) === 'Progress' && /hay una versión más nueva de la app/.test(why) && !/Ese código no sirve/.test(why) && (await page.evaluate((k) => localStorage.getItem(k), KEY)) === newer, 'a good code pasted over a newer build\'s save is refused for what it is: the sheet says a newer version is there, and nothing is written', why.slice(-260));
+    await ctx.close();
+  }
+}
+
+/* ---------- V: the voice of the clips ----------
+   Where the build has sound, the clips are a voice model's, and each screen that offers one says so with the same small
+   tag, «voz sintética», next to its control, before anything is tapped; a screen reader hears what it means once a
+   visit, in the shell's own live region, never in a control's. Progreso has the page that explains the voice, with
+   the learner's switch, saved with the progress: off, every screen shows its written stand-in, as a build without
+   sound does, and as a clip the voice must not say (sound/silent.json) does with the voice on. Listening's status
+   line and the notebook's play card name the speaker by the clip's own cues. A build without sound files runs the
+   silent half of this part alone. */
+async function partV(browser) {
+  const iso = (n) => { const d = new Date(Date.now() + n * DAY); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+  const learner = async (label, state) => {
+    const ctx = await phone(browser);
+    const page = await newPage(ctx, label);
+    await page.addInitScript(([k, v]) => {
+      Object.defineProperty(navigator, 'standalone', { get: () => true });
+      if (!sessionStorage.getItem('seeded')) { localStorage.setItem(k, v); sessionStorage.setItem('seeded', '1'); }
+    }, [KEY, JSON.stringify(Object.assign({ v: 1, started: true, level: 'A1' }, state))]);
+    await go(page, '');
+    return { ctx, page };
+  };
+  /* every tag on show: where it is, and whether a live region holds it (it must not: a tap would say it again) */
+  const tags = (page) => page.evaluate(() => [...document.querySelectorAll('#gn-stage span')].filter((el) => !el.children.length && el.textContent.trim() === 'voz sintética' && el.getBoundingClientRect().width > 0).map((el) => {
+    const r = el.getBoundingClientRect();
+    return { x: Math.round(r.x), y: Math.round(r.y), w: Math.round(r.width), h: Math.round(r.height), live: !!el.closest('[aria-live], [role="status"], [role="alert"]'), px: getComputedStyle(el).fontSize, near: (el.parentElement.parentElement.textContent || '').replace(/\s+/g, ' ').slice(0, 60) };
+  }));
+  /* what the live regions say of the voice (the note, once a visit) */
+  const notes = (page) => page.evaluate(() => [...document.querySelectorAll('#gn-stage [aria-live]')].map((el) => (el.textContent || '').trim()).filter((t) => /Voz sintética:/.test(t)));
+  const clipIn = (page, key) => page.waitForFunction((k) => !!(window.__gnClips && window.__gnClips[k]), key, { timeout: 15000 }).then(() => true, () => false);
+  const player = (page, key) => page.evaluate(async (k) => {
+    const s = window.gnSound;
+    s.on();
+    await new Promise((r) => setTimeout(r, 160));
+    return { has: s.has(k), kind: s.kind(k), ms: s.ms(k), on: s.on(), at: s.at(), over: s.over(), voice: s.synthetic() };
+  }, key);
+  const WHO = { N: 'Narrador', F: 'Mujer', M: 'Hombre' };
+  const plan = { start: iso(0), target: null, pace: 'fit', minutes: 30 };
+  const mistake = (src) => encodeURIComponent(JSON.stringify([{ src, wrong: 'Sin responder', at: 0, step: 0, due: '2020-01-01' }]));
+
+  part = 'V1 the tag «voz sintética»';
+  let ctx = await phone(browser);
+  let page = await newPage(ctx, 'voice: the screens');
+  await go(page, '?gntest&screen=Teach&level=A1&cur=a1u01d1');
+  const sound = await page.evaluate(() => (window.__gnSoundFiles || []).length > 0);
+  if (!sound) pass('this build has no sound files: the silent half of the part runs');
+  if (sound) {
+    /* Teach: one tag for the card of examples, there before the first tap; the clip plays and the button returns to rest */
+    check(await clipIn(page, 'a1u01d1.p1.x0'), 'Teach: the unit\'s sound arrives (the first example has its clip)');
+    let t = await tags(page);
+    check(t.length === 1 && !t[0].live && /Ejemplos/.test(t[0].near) && parseFloat(t[0].px) >= 11, 'Teach: the examples card carries the tag «voz sintética» before anything is tapped, outside any live region', t);
+    check((await notes(page)).length === 1, 'the note that says what the tag means is in one live region, the shell\'s', await notes(page));
+    const noteWas = (await notes(page))[0];
+    await tap(page, { aria: 'Escuchar el ejemplo 1' }, 350);
+    let p = await player(page, 'a1u01d1.p1.x0');
+    check(await pressed(page, { aria: 'Escuchar el ejemplo 1' }), 'Teach: an example\'s sound button lights up while its clip plays');
+    check(p.has && p.kind === 'synthetic' && p.ms > 500 && p.on && p.at > 0, 'Teach: the clip is really playing (the audio clock runs, the player is some way into it)', p);
+    check(!(await has(page, 'no está grabado')), 'Teach: an example with a clip says nothing about a recording that is missing', (await text(page)).slice(0, 200));
+    await page.waitForTimeout(p.ms + 500);
+    p = await player(page, 'a1u01d1.p1.x0');
+    check(!(await pressed(page, { aria: 'Escuchar el ejemplo 1' })) && p.over >= 0, 'Teach: when the clip ends the button is back at rest', p);
+    await tap(page, { aria: 'Escuchar el ejemplo 2' }, 300);
+    await tap(page, { aria: 'Escuchar el ejemplo 2' }, 200);
+    t = await tags(page);
+    const said = await notes(page);
+    check(t.length === 1 && said.length === 1 && said[0] === noteWas, 'more taps add no tag and say nothing new: the note is said once, not at every tap', { t, said });
+    await shot(page, 'V01-teach-tag');
+
+    /* Words: a tag on each pair that plays, on the scene's word, and under «Escuchar» in the spelling pad */
+    await go(page, '?gntest&screen=Words&level=A1&cur=a1u01d1');
+    await clipIn(page, 'a1u01d1.s0b');
+    const pairs = await page.evaluate(() => window.gnCourse.day('a1u01d1').words.sound.pairs.length);
+    t = await tags(page);
+    check(t.length === pairs && t.every((x) => !x.live && /^PAR \d DE \d/.test(x.near)), `Words: each of the ${pairs} pairs that play carries the tag in its head, before its speaker is tapped`, t);
+    await tap(page, { aria: 'Escuchar la palabra del par 1' }, 700);
+    /* the pairs' own live lines (the shell's note, said once, is not one of them) */
+    const lines = await page.evaluate(() => [...document.querySelectorAll('#gn-stage [aria-live]')].map((el) => el.textContent.trim()).filter((t) => t && !/^Voz sintética:/.test(t)));
+    check(lines.some((l) => /¿Cuál escuchaste\?/.test(l)) && !lines.some((l) => /programa|no está grabado/.test(l)) && (await tags(page)).length === pairs, 'Words: after the play the pair asks which word was heard; its live line says nothing of the voice, and no tag is added', lines);
+    await shot(page, 'V02-words-pairs');
+    await tap(page, 'Siguiente: las palabras', 600);
+    t = await tags(page);
+    check(t.length === 1 && !t[0].live, 'Words: the scene\'s word card carries the tag, under its speaker', t);
+    await tap(page, { aria: 'Escuchar la palabra' }, 300);
+    check((await tags(page)).length === 1 && !(await has(page, 'no está grabado')), 'Words: a word with a clip plays without a word about a missing recording');
+    await go(page, '?gntest&screen=Words&level=A1&cur=a1u01d1&done=' + encodeURIComponent(JSON.stringify({ a1u01d1: { g: 3, ks: 1 } })));
+    await clipIn(page, 'a1u01d1.s0b');
+    t = await tags(page);
+    const listen = await control(page, { aria: 'Escuchar la palabra' }).boundingBox();
+    check(t.length === 1 && !t[0].live && listen && t[0].y >= listen.y + listen.height - 2 && t[0].y < listen.y + listen.height + 16 && t[0].x >= listen.x && t[0].x + t[0].w <= listen.x + listen.width + 1, 'Spell: the tag sits right under «Escuchar», within the button\'s width', { t, listen });
+    await shot(page, 'V03-spell-tag');
+
+    /* Listening: the tag at the end of the status line, and the status line keeping time with the clip's own cues */
+    await go(page, '?gntest&screen=Listening&level=A1&cur=a1u01d1');
+    await clipIn(page, 'a1u01d1.r1');
+    /* who the status line names while each line of the clip is said: its speaker, or, for a line of the narrator that
+       only says a reply's number («1»), the speaker of the reply it brings in (the two are one row: «Respuesta 1 de 3 · Hombre») */
+    const lis = await page.evaluate(() => {
+      const C = window.gnCourse;
+      const sk = C.day('a1u01d1').skill;
+      const said = sk.audio.map((l) => [l[0], C.plain(l[1]).trim()]);
+      const who = said.map((l, k) => { let j = k; while (j < said.length - 1 && said[j][0] === 'N' && /^\d{1,2}\.?$/.test(said[j][1])) j += 1; return said[j][0]; });
+      return { cues: window.gnSound.cues(sk.item.id), who, ms: window.gnSound.ms(sk.item.id) };
+    });
+    t = await tags(page);
+    const playBox = await control(page, { aria: 'Reproducir el audio' }).boundingBox();
+    check(t.length === 1 && !t[0].live && /Tocá el botón para escuchar/.test(t[0].near) && playBox && Math.abs(t[0].y - playBox.y) < 80, 'Listening: the tag stands at the end of the status line, beside the play button, before the first play', { t, playBox });
+    check(Array.isArray(lis.cues) && lis.cues.length === lis.who.length, 'Listening: the clip carries a cue for each of its lines', lis);
+    await tap(page, { aria: 'Reproducir el audio' }, 0);
+    const samples = await page.evaluate(async (ms) => {
+      const play = document.querySelector('#gn-stage [aria-label="Reproducir el audio"]');
+      const status = play.nextElementSibling.children[1];
+      const out = [];
+      const t0 = Date.now();
+      while (Date.now() - t0 < ms + 2500) {
+        out.push({ at: window.gnSound.at(), status: status.textContent });
+        if (window.gnSound.over() >= 0) break;
+        await new Promise((r) => setTimeout(r, 90));
+      }
+      return out;
+    }, lis.ms);
+    /* a sample well inside a line (150 ms clear of its start and of its end) must name that line's speaker */
+    const lineOf = (at) => { for (let k = 0; k < lis.cues.length; k++) { const from = k ? lis.cues[k - 1] + 250 : 0; if (at >= from + 150 && at <= lis.cues[k] - 150) return k; } return -1; };
+    const inside = samples.map((s) => ({ k: lineOf(s.at), who: (/· (Narrador|Mujer|Hombre)/.exec(s.status) || [])[1] || '', status: s.status })).filter((s) => s.k >= 0);
+    const off = inside.filter((s) => s.who !== WHO[lis.who[s.k]]);
+    check(inside.length > 40 && off.length === 0, `Listening: while the clip plays, the status line names the speaker of the line being said, by the clip's cues (${inside.length} samples inside the ${lis.cues.length} lines, ${off.length} off)`, off.slice(0, 5));
+    const greeting = inside.filter((s) => s.k === 1);
+    check(greeting.length >= 3 && greeting.every((s) => s.who === 'Mujer'), `Listening: the woman's greeting is hers on the status line all along (${greeting.length} samples; by the lines' lengths in letters it read «Narrador» for most of it)`, greeting.slice(0, 4));
+    /* the sampling stops the moment the player says the clip is over; the screen sees that on its next tick (80 ms) */
+    await page.waitForFunction(() => /Escuchaste 1 vez/.test(document.querySelector('#gn-stage').textContent || ''), null, { timeout: 2000 }).catch(() => {});
+    check(samples.some((s) => s.at > 1000) && /Escuchaste 1 vez/.test(await text(page)) && (await tags(page)).length === 1, 'Listening: the clip plays to its end, the status says it was heard once, and the tag is still the one', (await text(page)).slice(0, 200));
+    await shot(page, 'V04-listening-tag');
+
+    /* Review: the play card carries the tag and, while the clip plays, names who is speaking, outside its live region */
+    await go(page, '?gntest&screen=Review&level=A1&m=' + mistake('a1u02d3.r1'));
+    await clipIn(page, 'a1u02d3.r1');
+    const rev = await page.evaluate(() => { const sk = window.gnCourse.day('a1u02d3').skill; return { cues: window.gnSound.cues(sk.item.id), who: sk.audio.map((l) => l[0]), ms: window.gnSound.ms(sk.item.id) }; });
+    t = await tags(page);
+    check(t.length === 1 && !t[0].live && /Escuchar/.test(t[0].near), 'Review: a listening item\'s play card carries the tag', t);
+    await page.evaluate(() => { window.__card = document.querySelector('#gn-stage [aria-label="Escuchar el audio"]').parentElement; });
+    await tap(page, { aria: 'Escuchar el audio' }, 0);
+    const heard = await page.evaluate(async (ms) => {
+      const out = [];
+      const t0 = Date.now();
+      while (Date.now() - t0 < ms + 1500) {
+        const live = window.__card.querySelector('[aria-live]');
+        out.push({ at: window.gnSound.at(), card: window.__card.textContent.replace(/\s+/g, ' '), live: live ? live.textContent : '' });
+        if (window.gnSound.over() >= 0) break;
+        await new Promise((r) => setTimeout(r, 90));
+      }
+      return out;
+    }, rev.ms);
+    const rowOf = (at) => { for (let k = 0; k < rev.cues.length; k++) { const from = k ? rev.cues[k - 1] + 250 : 0; if (at >= from + 200 && at <= rev.cues[k] - 200) return k; } return -1; };
+    const named = heard.map((s) => ({ k: rowOf(s.at), who: (/· (Narrador|Mujer|Hombre)/.exec(s.card) || [])[1] || '', live: s.live })).filter((s) => s.k >= 0);
+    const wrong = named.filter((s) => s.who !== WHO[rev.who[s.k]]);
+    check(named.length > 20 && wrong.length === 0 && ['Mujer', 'Hombre'].every((w) => named.some((s) => s.who === w)), `Review: while the clip plays, the card names who is speaking, the woman and the man in turn (${named.length} samples, ${wrong.length} off)`, wrong.slice(0, 4));
+    check(heard.every((s) => !/Narrador|Mujer|Hombre|Línea/.test(s.live)), 'Review: the speaker\'s name stands beside the note, not in its live region (a screen reader does not talk over the clip at every line)', heard.map((s) => s.live).filter((l, i, a) => a.indexOf(l) === i));
+    await shot(page, 'V05-review-tag');
+
+    /* the placement check and Hablar */
+    await go(page, '?gntest&screen=Hablar&level=A1');
+    await clipIn(page, 's0');
+    const menu = await text(page);
+    check(/Los audios los dice una voz sintética\./.test(menu) && !/cada botón de sonido se ilumina sin sonar/.test(menu), 'Hablar: the menu says the audios are a synthetic voice\'s, not that every sound button lights up in silence', menu.slice(-320));
+    const quiet = await page.evaluate(() => { const ids = {}; ['p0', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7'].forEach((p) => { ids[p] = !(window.gnSound.has(p + '.0') && window.gnSound.has(p + '.1')); }); return Object.keys(ids).filter((k) => ids[k]).length; });
+    check(quiet === 0 || new RegExp('Todavía no tienen? audio (un par|' + quiet + ' de los 8 pares|los pares)').test(menu), `Hablar: the menu says how many pairs have no audio (${quiet} of 8)`, menu.slice(-320));
+    await tap(page, 'Empezar', 1200);
+    let dock = [];
+    for (let i = 0; i < 40 && !dock.length; i++) { dock = await tags(page); if (!dock.length) await page.waitForTimeout(400); }
+    const round = await text(page);
+    check(dock.length === 1 && !dock[0].live && /Tocá la palabra que escuchaste/.test(round), 'Hablar: while a card with a clip is in play, the dock carries the tag, outside its live lines', { dock, round: round.slice(-260) });
+    await shot(page, 'V06-hablar-tag');
+  }
+  await ctx.close();
+
+  part = 'V2 a clip the voice must not say, and a build without sound';
+  ctx = await phone(browser);
+  page = await newPage(ctx, 'voice: the silent clips');
+  /* unit 1 day 3's listening is silent by rule where the voice exists, and silent like every other in a build without sound */
+  await go(page, '?gntest&screen=Listening&level=A1&cur=a1u01d3');
+  if (sound) await clipIn(page, 'a1u01d3.p1.x0');
+  const mute = await page.evaluate(() => !window.gnSound.has(window.gnCourse.day('a1u01d3').skill.item.id));
+  check(mute, 'the listening lesson of unit 1 day 3 has no clip (the synthetic voice must not say it: sound/silent.json)');
+  let st = await text(page);
+  check(/Todavía no está grabado: se reproduce en silencio\./.test(st) && (await tags(page)).length === 0, 'Listening without a clip says so before the tap, and carries no tag', st.slice(0, 260));
+  await tap(page, { aria: 'Reproducir el audio' }, 900);
+  st = await text(page);
+  check(/Transcripción/.test(st) && /Este audio todavía no está grabado: leé lo que se dice\./.test(st) && !(await shut(page, { sel: '#gn-stage button[aria-label^="Respuesta 1"]' })), 'Listening without a clip: the first tap opens the transcript, to be read, and the answers with it', st.slice(0, 300));
+  await shot(page, 'V07-listening-silent');
+  /* the nasal pairs of unit 1 day 2: no pair plays */
+  await go(page, '?gntest&screen=Words&level=A1&cur=a1u01d2');
+  if (sound) await clipIn(page, 'a1u01d2.p1.x0');
+  st = await text(page);
+  check(/MIRÁ Y ELEGÍ/.test(st) && /estos pares todavía no tienen audio/.test(st) && /Tocá el parlante: te mostramos la palabra\./.test(st) && (await tags(page)).length === 0, 'Words: a sound step whose pairs have no clip is read («Mirá y elegí»), says its pairs have no audio yet, and carries no tag', st.slice(0, 300));
+  await tap(page, { aria: 'Escuchar la palabra del par 1' }, 500);
+  st = await text(page);
+  check(/La palabra: /.test(st) && /Este audio todavía no está grabado\./.test(st), 'Words: a pair without a clip shows the word its speaker stands for, and says the audio is not recorded yet', st.slice(0, 400));
+  await shot(page, 'V08-words-nasal');
+  if (sound) {
+    /* unit 1 day 4: one pair silent by rule, two that play */
+    await go(page, '?gntest&screen=Words&level=A1&cur=a1u01d4');
+    await clipIn(page, 'a1u01d4.s1b');
+    st = await text(page);
+    const mixed = await tags(page);
+    check(/ESCUCHÁ Y ELEGÍ/.test(st) && /Un par todavía no tiene audio: ahí te mostramos la palabra\./.test(st) && mixed.length === 2 && mixed.every((x) => /^PAR [23] DE 3/.test(x.near)), 'Words: with one pair silent and two that play, the step is heard, says one pair has no audio, and tags the two that play', { mixed, st: st.slice(0, 260) });
+    await shot(page, 'V09-words-mixed');
+    /* a Teach card with one example the voice must not say */
+    await go(page, '?gntest&screen=Teach&level=A1&cur=a1u03d5&tp=1');
+    await clipIn(page, 'a1u03d5.p2.x0');
+    const ex = await page.evaluate(() => { const p = window.gnCourse.day('a1u03d5').grammar.points[1]; return p.examples.map((x, n) => window.gnSound.has(p.id + '.x' + n)); });
+    const dumb = ex.indexOf(false);
+    check(dumb >= 0 && ex.some(Boolean), 'a Teach card of unit 3 day 5 has examples with a clip and one without', ex);
+    if (dumb >= 0) {
+      await tap(page, { aria: 'Escuchar el ejemplo ' + (dumb + 1) }, 400);
+      st = await text(page);
+      check(/Este audio todavía no está grabado\./.test(st) && (await tags(page)).length === 1, 'Teach: the example without a clip says its audio is not recorded yet; the card keeps its one tag for those that play', st.slice(-300));
+    }
+  }
+  await ctx.close();
+
+  part = 'V3 the page that explains the voice, and its switch';
+  ({ ctx, page } = await learner('learner V', { plan }));
+  await tap(page, { sel: '#gn-stage nav a:has-text("Progreso")' }, 600);
+  const door = page.locator('#gn-stage button[aria-haspopup="dialog"]:has-text("Voz sintética")');
+  if (!sound) {
+    check((await door.count()) === 0, 'a build without sound: Progreso offers no page about a voice');
+    await tap(page, { sel: '#gn-stage nav a:has-text("Camino")' }, 500);
+    await tap(page, { sel: '#gn-stage a[href="Today.dc.html"]:has-text("Empezar")' }, 700);
+    await tap(page, 'Empezar con la regla', 700);
+    await tap(page, { aria: 'Escuchar el ejemplo 1' }, 300);
+    check(await pressed(page, { aria: 'Escuchar el ejemplo 1' }) && (await has(page, 'Este audio todavía no está grabado.')) && (await tags(page)).length === 0, 'a build without sound: an example\'s button lights up in silence (the stand-in), says the audio is not recorded yet, and no tag shows');
+    await ctx.close();
+    return;
+  }
+  check((await door.count()) === 1 && /activada/.test((await door.getAttribute('aria-label')) || '') && (await page.evaluate(() => window.gnSound.synthetic())), 'Progreso has the door «Voz sintética», and a save from before the switch existed loads with the voice on', await door.getAttribute('aria-label').catch(() => null));
+  await door.tap();
+  await page.waitForTimeout(500);
+  const sheet = (await page.locator('#gn-stage [role="dialog"]').textContent()).replace(/\s+/g, ' ');
+  check(/un programa/.test(sheet) && /MMS, de Meta/.test(sheet) && /no una persona/.test(sheet) && /ningún hablante nativo/.test(sheet), 'the sheet says what the voice is: a program\'s (Meta\'s MMS), not a person\'s, not yet checked by a native speaker', sheet.slice(0, 260));
+  check(/vocales nasales/.test(sheet) && /una sola voz/.test(sheet) && /nombres y los números en castellano/.test(sheet), 'and what it does badly: the nasal vowels (their pairs stay silent), one voice for both speakers of a dialogue, Spanish names and numbers', sheet.slice(200, 560));
+  check(/quedan en silencio a propósito/.test(sheet) && /todavía no está grabado/.test(sheet) && /grabaciones de hablantes nativos van a reemplazar/.test(sheet) && /CC BY-NC 4\.0/.test(sheet), 'and that some words wait in silence for a person\'s recording, that recordings will replace the voice, and its licence', sheet.slice(500));
+  check(/MB/.test(sheet), 'and what the sound weighs', sheet.slice(600));
+  const sw = page.locator('#gn-stage [role="dialog"] [role="switch"]');
+  check((await sw.getAttribute('aria-checked')) === 'true' && /Usar la voz sintética/.test((await sw.textContent()) || ''), 'the switch «Usar la voz sintética» is on');
+  await look(page, 'the voice sheet', { expect: 'Progress', shot: 'V10-voice-sheet' });
+  await sw.tap();
+  await page.waitForTimeout(400);
+  let s = await saved(page);
+  let pl = await page.evaluate(() => ({ voice: window.gnSound.synthetic(), has: window.gnSound.has('a1u01d1.p1.x0'), kind: window.gnSound.kind('a1u01d1.p1.x0'), loaded: !!(window.__gnClips || {})['a1u01d1.p1.x0'] }));
+  check(s && s.voice === false && (await sw.getAttribute('aria-checked')) === 'false' && pl.voice === false && !pl.has && pl.kind === '', 'turned off, the switch is saved with the progress (voice: false) and the player has no synthetic clip any more', { saved: s && s.voice, pl });
+  await tap(page, 'Listo', 500);
+  check(/apagada/.test((await door.getAttribute('aria-label')) || ''), 'the door says the voice is off', await door.getAttribute('aria-label'));
+  await tap(page, { sel: '#gn-stage nav a:has-text("Camino")' }, 500);
+  await tap(page, { sel: '#gn-stage a[href="Today.dc.html"]:has-text("Empezar")' }, 700);
+  await tap(page, 'Empezar con la regla', 700);
+  check((await tags(page)).length === 0, 'with the voice off, the Teach card carries no tag');
+  await tap(page, { aria: 'Escuchar el ejemplo 1' }, 350);
+  check(await pressed(page, { aria: 'Escuchar el ejemplo 1' }) && (await has(page, 'Este audio todavía no está grabado.')), 'with the voice off, an example\'s button lights up in silence (the stand-in) and says the audio is not recorded yet', (await text(page)).slice(-260));
+  await shot(page, 'V11-teach-voice-off');
+  await reload(page);
+  s = await saved(page);
+  check(s && s.voice === false && !(await page.evaluate(() => window.gnSound.synthetic())), 'after a reload the voice is still off', s && s.voice);
+  await tap(page, { sel: '#gn-stage nav a:has-text("Progreso")' }, 600);
+  await door.tap();
+  await page.waitForTimeout(400);
+  await sw.tap();
+  await page.waitForTimeout(400);
+  s = await saved(page);
+  check(s && s.voice === true && (await page.evaluate(() => window.gnSound.synthetic())), 'turned on again, it is saved on', s && s.voice);
+  await tap(page, 'Listo', 500);
+  await tap(page, { sel: '#gn-stage nav a:has-text("Camino")' }, 500);
+  await tap(page, { sel: '#gn-stage a[href="Today.dc.html"]:has-text("Empezar")' }, 700);
+  await tap(page, 'Empezar con la regla', 700);
+  await clipIn(page, 'a1u01d1.p1.x0');
+  await page.waitForTimeout(300);
+  check((await tags(page)).length === 1, 'and the tag is back on the Teach card', await tags(page));
+  await ctx.close();
 }
 
 (async () => {
@@ -1982,6 +2737,7 @@ async function partS(browser) {
   const browser = await chromium.launch();
   const parts = [['A', partA], ['B', partB], ['C', partC], ['D', partD], ['F', partF], ['G', partG], ['H', partH]];
   parts.push(['I', partI]);
+  parts.push(['V', partV]);
   parts.push(['S', partS]);
   for (const [name, fn] of parts) {
     if (!want(name)) continue;

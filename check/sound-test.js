@@ -6,11 +6,14 @@
 // what a real run would make, and a file whose clips did not change must keep every byte, its date too, when the
 // tool runs again), the app is
 // built with them into epua-app/dist-sound (never into docs/), and the built app is checked for: the Words sound step
-// playing a clip (has() true, its wording in the recorded state, and the «voz sintética» note), Hablar's note, a dialogue
-// put together for Listening, the unit file fetched when its unit is in use and not at install, stored by the offline
-// worker after that first use and served from the store with no connection, the whole level stored once there is a
-// plan, the studio page (recording with a fake microphone, the take kept, the zip exported), and the notebook fetching
-// the exam's and the placement's sound for a mistake made there. Screenshots go to check/out/.
+// playing a clip (has() true, its wording in the recorded state, the tag «voz sintética» in the pair's head before the
+// tap and what it means said once in the shell's live region), the player's switch for the synthetic voice (off, its
+// clips count as missing), Hablar's tag, a dialogue put together for Listening, the unit file fetched when its unit is
+// in use and not at install, stored by the offline worker after that first use and served from the store with no
+// connection, the whole level stored once there is a plan (but only the unit that is opened when the browser says the
+// learner saves data), a sound file that could not be fetched asked for again once from the next screen and when the
+// connection comes back, the studio page (recording with a fake microphone, the take kept, the zip exported), and the
+// notebook fetching the exam's and the placement's sound for a mistake made there. Screenshots go to check/out/.
 // usage: node check/sound-test.js      (from the repository root; needs ffmpeg, playwright and the fonts in fonts-src/)
 const fs = require('fs');
 const os = require('os');
@@ -165,9 +168,26 @@ ok(!FILES.includes(UNIT) && FILES.includes('./assets/gn-sound-index.js'), 'sw.js
 ok(Object.keys(LAZY).length === listed.length && /^[0-9a-f]{10}$/.test(LAZY[UNIT] || ''), 'sw.js lists every sound file apart, under a hash of its content', LAZY);
 ok(fs.existsSync(path.join(DIST, 'estudio/index.html')) && fs.existsSync(path.join(DIST, 'estudio/A1/manifest.json')) && JSON.parse(fs.readFileSync(path.join(DIST, 'estudio/lista.json'), 'utf8'))[0].level === 'A1', 'the build puts the studio and the clip lists in estudio/');
 ok(!FILES.some((f) => f.startsWith('./estudio/')), 'the studio is not part of the install');
-ok(!fs.existsSync(path.join(ROOT, 'docs/assets/gn-sound-a1-u01.js')), 'docs/ holds no fixture sound (the test build is dist-sound)');
+/* docs/ is the site as it is published: it may hold the real sound files (the app's build puts them there), never
+   one made from the fixtures. A fixture file is known by its head, which names the fixtures' voices («Fixture F»,
+   check/fixtures/sound/voices.json), and by being, byte for byte, a file this run has just built */
+const DOCS_ASSETS = path.join(ROOT, 'docs/assets');
+const isFixture = (f) => /Voices: [^\n]*Fixture [FMN]\b/.test(fs.readFileSync(f, 'utf8').slice(0, 1200));
+const inDocs = fs.existsSync(DOCS_ASSETS) ? fs.readdirSync(DOCS_ASSETS).filter((f) => /^gn-sound-(?!index)[a-z0-9-]+\.js$/.test(f)) : [];
+const fixtureInDocs = inDocs.filter((f) => isFixture(path.join(DOCS_ASSETS, f)) || (fs.existsSync(path.join(DIST, 'assets', f)) && fs.readFileSync(path.join(DOCS_ASSETS, f)).equals(fs.readFileSync(path.join(DIST, 'assets', f)))));
+ok(isFixture(path.join(DIST, 'assets/gn-sound-a1-u01.js')), 'a sound file made from the fixtures is known by its head (it names the fixtures\' voices)');
+ok(fixtureInDocs.length === 0, `docs/ holds no fixture sound: ${inDocs.length ? 'its ' + inDocs.length + ' sound files are not the fixtures\'' : 'it has no sound file'} (the test build is dist-sound)`, fixtureInDocs);
+if (fs.existsSync(path.join(DOCS_ASSETS, 'gn-sound-index.js'))) ok(!/Fixture [FMN]\b/.test(fs.readFileSync(path.join(DOCS_ASSETS, 'gn-sound-index.js'), 'utf8')), 'docs/ does not hold the fixtures\' sound index either');
 const lic = fs.readFileSync(path.join(DIST, 'licenses.txt'), 'utf8');
 ok(/== Sound ==[\s\S]*gn-sound-a1-u01\.js[\s\S]*synthetic/.test(lic), 'licenses.txt names the sound files and the synthetic voices');
+/* the fixtures' voices are marked synthetic and name no model: the licences say that no credit can be given, and
+   never print the credit of a model that did not make them (the real voice's credit is checked on the real build:
+   check/platform-test.js) */
+ok(/marked synthetic and names no model: no credit can be given/.test(lic) && !/MMS-TTS|huggingface/.test(lic), 'licenses.txt gives the fixtures\' unnamed voice model no credit, and says so');
+/* what each sound file weighs is in the app's own code, for the page that explains the voice (gnApp.sound) */
+const appJs = fs.readFileSync(path.join(DIST, 'assets/gn-app.js'), 'utf8');
+const bytes = JSON.parse((/SOUND_BYTES = JSON\.parse\('([^']*)'\)/.exec(appJs) || [, '{}'])[1]);
+ok(listed.length > 0 && listed.every((f) => bytes[f] === fs.statSync(path.join(DIST, 'assets', f)).size), 'the build tells the app what each sound file weighs', bytes);
 
 /* ---------- the site, served as GitHub Pages serves it; every request is noted ---------- */
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.woff2': 'font/woff2', '.png': 'image/png', '.webmanifest': 'application/manifest+json', '.txt': 'text/plain; charset=utf-8', '.json': 'application/json' };
@@ -217,16 +237,42 @@ const clipsLoaded = (page, key) => page.waitForFunction((k) => !!(window.__gnCli
     ok(snd.kind === 'synthetic' && snd.none === '', 'gnSound.kind() says synthetic for the fixture clip and nothing for a missing key', snd);
     ok(snd.listening && snd.lms > 4000, 'the listening item\'s dialogue is one clip the screens can ask for', snd);
     const t0 = await text(page);
-    ok(/escuchá la diferencia en cada par/.test(t0) && !/todavía no están grabados/.test(t0), 'the sound step\'s intro is the recorded one (not «los audios todavía no están grabados»)', t0.slice(0, 200));
+    ok(/escuchá la diferencia en cada par/.test(t0) && !/todavía no (están grabados|tienen audio)/.test(t0), 'the sound step\'s intro is the recorded one (not «estos pares todavía no tienen audio»)', t0.slice(0, 200));
+    /* the tag «voz sintética»: on each pair, before any tap, in no live region; what it means is said once, by the shell */
+    const tags = () => page.evaluate(() => [...document.querySelectorAll('#gn-stage span')].filter((el) => !el.children.length && el.textContent.trim() === 'voz sintética' && el.getBoundingClientRect().width > 0).map((el) => ({ live: !!el.closest('[aria-live], [role="status"]'), head: (el.parentElement.textContent || '').trim().slice(0, 14) })));
+    const notes = () => page.evaluate(() => [...document.querySelectorAll('#gn-stage [aria-live]')].map((el) => (el.textContent || '').trim()).filter((t) => /Voz sintética:/.test(t)));
+    const pairs = await page.evaluate(() => window.gnCourse.day('a1u01d1').words.sound.pairs.length);
+    const tg0 = await tags();
+    ok(tg0.length === pairs && tg0.every((x) => !x.live && /^PAR \d DE \d/.test(x.head)), `each of the ${pairs} pairs carries the tag «voz sintética» in its head before it is tapped, outside any live region`, tg0);
+    const said0 = await notes();
+    ok(said0.length === 1 && /un programa, no una persona/.test(said0[0]) && /Progreso/.test(said0[0]), 'what the tag means is said once, in the shell\'s live region, and names Progreso', said0);
     ok(/Tocá el parlante: suena una de las dos/.test(t0), 'the first pair asks to listen, not to read the word shown', t0.slice(0, 300));
     const played = await page.evaluate(() => { let r = null; const p = window.gnSound.play; window.gnSound.play = function (k, f) { r = p.call(this, k, f); return r; }; return true; });
     await tap(page, { aria: 'Escuchar la palabra del par 1' }, 700);
     const t1 = await text(page);
     await shot(page, 'sound-words-pair');
     ok(/¿Cuál escuchaste\?/.test(t1) && !/no está grabado/.test(t1), 'after the play the pair asks which word was heard (the clip played, no «no está grabado»)', t1.slice(0, 300));
-    ok(/Voz sintética/.test(t1), 'the sound step says «voz sintética» for a synthetic clip', t1.slice(0, 300));
+    await tap(page, { aria: 'Escuchar la palabra del par 1' }, 500);
+    await tap(page, { aria: 'Escuchar la palabra del par 2' }, 500);
+    const tg1 = await tags();
+    const said1 = await notes();
+    const pairLines = await page.evaluate(() => [...document.querySelectorAll('#gn-stage [aria-live]')].map((el) => (el.textContent || '').trim()).filter((t) => /Cuál|parlante/.test(t)));
+    ok(tg1.length === pairs && said1.length === 1 && said1[0] === said0[0] && pairLines.length >= 2 && !pairLines.some((l) => /sintética|programa/.test(l)), 'three taps later the tags are the same, the note was not said again, and no pair\'s live line speaks of the voice', { tg1: tg1.length, said1, pairLines });
     const state = await page.evaluate(() => ({ at: window.gnSound.at(), over: window.gnSound.over(), ctx: !!(window.AudioContext || window.webkitAudioContext) }));
     ok(played && state.ctx, 'play() went through the player (an AudioContext exists in this browser)', state);
+    /* the player's switch (the learner's, in Progreso): off, a synthetic clip counts as missing; on again, it is back */
+    const sw = await page.evaluate(() => {
+      const s = window.gnSound;
+      const k = 'a1u01d1.s0b';
+      const out = { was: s.synthetic(), cues: (s.cues('a1u01d1.r1') || []).length, none: s.cues(k) };
+      s.synthetic(false);
+      Object.assign(out, { off: s.synthetic(), has: s.has(k), kind: s.kind(k), ms: s.ms(k), play: s.play(k), any: s.any(), offCues: s.cues('a1u01d1.r1'), wanted: window.gnCourse.soundWanted(), synth: window.gnCourse.synth(k) });
+      s.synthetic(true);
+      Object.assign(out, { back: s.synthetic(), hasBack: s.has(k), kindBack: s.kind(k), anyBack: s.any(), wantedBack: window.gnCourse.soundWanted(), synthBack: window.gnCourse.synth(k) });
+      return out;
+    });
+    ok(sw.was === true && sw.off === false && !sw.has && sw.kind === '' && sw.ms === 0 && sw.play === false && sw.any === false && sw.offCues === null && sw.wanted === false && sw.synth === false, 'gnSound.synthetic(false): a synthetic clip counts as missing (has, kind, ms, play, cues), no clip is left, and no sound file is wanted', sw);
+    ok(sw.back === true && sw.hasBack && sw.kindBack === 'synthetic' && sw.anyBack && sw.wantedBack && sw.synthBack && sw.cues === 8 && sw.none === null, 'gnSound.synthetic(true): the clips are back; a dialogue has a cue for each of its lines and a word has none', sw);
     ok(logs.length === 0, 'no page errors on Words', logs);
     await ctx.close();
   }
@@ -239,11 +285,15 @@ const clipsLoaded = (page, key) => page.waitForFunction((k) => !!(window.__gnCli
     await page.goto(BASE + '?gntest&screen=Hablar&level=A1');
     await ready(page);
     ok(await clipsLoaded(page, 'p0.0'), 'the speaking game\'s sound file is fetched when the screen opens');
+    const menu = await text(page);
+    ok(/Los audios los dice una voz sintética\./.test(menu) && !/se ilumina sin sonar/.test(menu), 'the menu says the audios are a synthetic voice\'s (not that every sound button lights up in silence)', menu.slice(-300));
     await tap(page, 'Empezar', 800);
-    let seen = '';
-    for (let i = 0; i < 12 && !/Voz sintética/.test(seen); i++) { seen = await text(page); if (!/Voz sintética/.test(seen)) await page.waitForTimeout(350); }
+    const dockTag = () => page.evaluate(() => [...document.querySelectorAll('#gn-stage span')].filter((el) => !el.children.length && el.textContent.trim() === 'voz sintética' && el.getBoundingClientRect().width > 0).map((el) => ({ live: !!el.closest('[aria-live], [role="status"]') })));
+    let tagSeen = [];
+    for (let i = 0; i < 12 && !tagSeen.length; i++) { tagSeen = await dockTag(); if (!tagSeen.length) await page.waitForTimeout(350); }
+    const seen = await text(page);
     await shot(page, 'sound-hablar');
-    ok(/Voz sintética/.test(seen), 'the round\'s status line says «voz sintética» when the first clip plays', seen.slice(0, 300));
+    ok(tagSeen.length === 1 && !tagSeen[0].live && !/este audio lo hizo un programa/.test(seen), 'while a card with a clip is in play, the dock carries the tag «voz sintética», outside its live lines (no sentence in the status line)', { tagSeen, seen: seen.slice(-300) });
     await ctx.close();
   }
 
@@ -288,6 +338,42 @@ const clipsLoaded = (page, key) => page.waitForFunction((k) => !!(window.__gnCli
     ok(hits.length === 0, 'offline, nothing reached the server', hits);
     await shot(page, 'sound-offline');
     await ctx.setOffline(false);
+    await ctx.close();
+  }
+
+  /* ---------- 4b. a learner who pays for data by the megabyte ---------- */
+  note('4b. when the browser says the learner saves data, only the unit that is opened is stored');
+  {
+    const ctx = await phone();
+    /* Chrome's "Lite mode" / Data Saver, as a page sees it */
+    await ctx.addInitScript(() => { try { Object.defineProperty(Navigator.prototype, 'connection', { get: () => ({ saveData: true, effectiveType: '3g' }), configurable: true }); } catch (e) {} });
+    const page = await ctx.newPage();
+    hits.length = 0;
+    await page.goto(BASE + '?sw&browser');
+    await ready(page);
+    await page.evaluate(() => navigator.serviceWorker.ready);
+    await page.waitForFunction(() => !!navigator.serviceWorker.controller, null, { timeout: 15000 });
+    /* no reload: a first visit, where the page fetched the unit's file before the worker was in charge of it. The app
+       then names that file to the worker (keepFiles), which stores it; it names no level */
+    ok(await page.evaluate(() => navigator.connection && navigator.connection.saveData === true), 'this phone\'s browser says the learner saves data');
+    await tap(page, 'hablar con mi familia');
+    await tap(page, 'casa');
+    await tap(page, 'Siguiente');
+    await tap(page, 'Empezar en A1');
+    await tap(page, 'Tejé el primer hilo', 900);
+    await tap(page, 'Empezar', 700);
+    ok(await clipsLoaded(page, 'a1u01d1.s0b'), 'the unit that is opened still gets its sound');
+    /* long enough for the worker to have fetched the rest of the level, had it been asked to (it takes under 2 s here) */
+    await page.waitForTimeout(5000);
+    const kept = await page.evaluate(async () => { const keys = await caches.keys(); const c = await caches.open(keys[0]); return (await c.keys()).map((r) => r.url).filter((u) => /h=/.test(u)); });
+    ok(kept.length === 1 && /gn-sound-a1-u01\.js\?h=/.test(kept[0]), 'with a plan, on a first visit, only the file of the unit that is opened is stored (the page fetched it before the worker was in charge): the rest of the level is not fetched behind the learner\'s back', kept);
+    const asked = hits.filter((u) => /gn-sound-(?!index)/.test(u));
+    ok(asked.length > 0 && asked.every((u) => /gn-sound-a1-u01\.js/.test(u)), 'no other sound file was asked of the server', asked);
+    await tap(page, 'Progreso', 600);
+    await tap(page, 'Voz sintética', 600);
+    const sheet = ((await page.locator('#gn-stage [role="dialog"]').textContent()) || '').replace(/\s+/g, ' ');
+    ok(/ahorro de datos/.test(sheet) && /de a una unidad/.test(sheet) && /cerca de \d+,\d MB/.test(sheet), 'Progreso\'s page on the voice says so: with data saving on, the sound comes one unit at a time, and what a unit weighs', sheet.slice(-420));
+    await shot(page, 'sound-savedata');
     await ctx.close();
   }
 
@@ -354,6 +440,56 @@ const clipsLoaded = (page, key) => page.waitForFunction((k) => !!(window.__gnCli
     ok(/Escuchá primero/.test(seen) && !/no está grabado/.test(seen), `Review offers the ${src} clip to listen to, not the silent stand-in`, seen.slice(0, 300));
     const has = await page.evaluate((k) => window.gnSound.has(k) && window.gnSound.ms(k) > 300, src);
     ok(has && errors.length === 0, `gnSound.has('${src}') is true, and no page errors`, errors);
+    await ctx.close();
+  }
+
+  /* ---------- 7. a sound file that could not be fetched ---------- */
+  note('7. a sound file that failed to load is asked for again: once from the next screen, and when the connection is back');
+  {
+    const ctx = await phone();
+    const page = await ctx.newPage();
+    let down = true;
+    let asked = 0;
+    await page.route('**/assets/gn-sound-a1-u01.js', (route) => { asked += 1; if (down) route.abort('internetdisconnected'); else route.continue(); });
+    await page.goto(BASE + '?gntest&screen=Main&level=A1');
+    await ready(page);
+    for (let i = 0; i < 40 && asked < 1; i++) await page.waitForTimeout(150);
+    await page.waitForTimeout(500);
+    ok(asked === 1 && !(await page.evaluate(() => window.gnSound.any())), 'with no connection the unit\'s sound file is asked for once and no clip arrives', asked);
+    /* the screen is drawn again and again (as the shell does when a file comes in): nothing is asked again from it */
+    await page.evaluate(() => { for (let i = 0; i < 6; i++) document.dispatchEvent(new Event('gnscreens')); });
+    await page.waitForTimeout(700);
+    ok(asked === 1, 'drawing the same screen again asks for nothing: the file is not fetched in a loop', asked);
+    await tap(page, 'Cuaderno', 700);
+    ok(asked === 2, 'the next screen asks once more (still no connection)', asked);
+    await page.evaluate(() => { for (let i = 0; i < 6; i++) document.dispatchEvent(new Event('gnscreens')); });
+    await page.waitForTimeout(500);
+    ok(asked === 2, 'and only once', asked);
+    down = false;
+    await tap(page, 'Camino', 700);
+    ok(asked === 3 && (await clipsLoaded(page, 'a1u01d1.s0b')), 'with the connection back, the next screen fetches the file and its clips register', asked);
+    await tap(page, 'Cuaderno', 500);
+    await tap(page, 'Camino', 500);
+    ok(asked === 3, 'a file that is in is never asked for again', asked);
+    await ctx.close();
+  }
+  {
+    const ctx = await phone();
+    const page = await ctx.newPage();
+    let down = true;
+    let asked = 0;
+    await page.route('**/assets/gn-sound-a1-u01.js', (route) => { asked += 1; if (down) route.abort('internetdisconnected'); else route.continue(); });
+    await page.goto(BASE + '?gntest&screen=Teach&level=A1&cur=a1u01d1');
+    await ready(page);
+    for (let i = 0; i < 40 && asked < 1; i++) await page.waitForTimeout(150);
+    await page.waitForTimeout(400);
+    const before = ((await page.locator('#gn-stage').textContent()) || '');
+    down = false;
+    await page.evaluate(() => window.dispatchEvent(new Event('online')));
+    const back = await clipsLoaded(page, 'a1u01d1.p1.x0');
+    await page.waitForTimeout(400);
+    const after = ((await page.locator('#gn-stage').textContent()) || '');
+    ok(asked === 2 && back && !/voz sintética/.test(before.replace(/Voz sintética:[^.]*\.[^.]*\./, '')) && /voz sintética/.test(after), 'when the browser says the connection is back, the file is asked for at once and the open screen gets its clips (the tag appears on the examples) without being left', { asked, back });
     await ctx.close();
   }
 

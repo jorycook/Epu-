@@ -393,7 +393,7 @@ class Component extends DCLogic {
       dueNote: (sit.n === 1 ? 'pregunta' : 'preguntas') + ' · ' + (mins === 1 ? 'un minuto' : 'unos ' + mins + ' min'),
       dueAreas: order.map((a) => ({ t: a + ' ' + byArea[a] })),
       hasWait: sit.n > 0 && waiting > 0,
-      waitLine: 'Hay ' + sit.due + ' esperando. Hoy van ' + (sit.n === 1 ? 'la más vieja' : 'las ' + sit.n + ' más viejas') + '; ' + (waiting === 1 ? 'la otra queda' : 'las otras ' + waiting + ' quedan') + ' para los próximos días.',
+      waitLine: 'Hay ' + sit.due + ' esperando. ' + (sit.n === 1 ? 'Hoy va la más vieja' : 'Hoy van las ' + sit.n + ' más viejas') + '; ' + (waiting === 1 ? 'la otra queda' : 'las otras ' + waiting + ' quedan') + ' para los próximos días.',
       caughtNote: sit.due > 0 ? 'preguntas · listo por hoy' : open.length ? 'preguntas · estás al día' : 'preguntas · todavía no hay errores',
       caughtPraise: open.length > 0,
       caughtEmpty: open.length === 0,

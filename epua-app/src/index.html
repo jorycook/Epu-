@@ -28,6 +28,20 @@
 <div id="gn-splash"><div class="gn-tile">%ICON%</div><div class="gn-name" lang="gn">%APP_NAME%</div><div class="gn-wait" role="status">Cargando…</div><noscript><style>#gn-splash .gn-wait{display:none}</style><span lang="gn">%APP_NAME%</span> necesita JavaScript para funcionar.</noscript></div>
 <div id="gn-view"><main id="gn-stage"></main></div>
 <div id="gn-sideways" role="status"><div class="gn-big">Girá el celular</div><div><span lang="gn">%APP_NAME%</span> se usa con el celular derecho.</div></div>
+<script>
+/* A first paint that never ends says so. When one of the page's own scripts cannot be fetched, the word under the name
+   gives way to a sentence at once; when the app is still not up 20 seconds on (a script that stalls), to another.
+   gn-app.js asks for the first when the first screens are missing. */
+(function () {
+  var root = document.documentElement;
+  var failed = false;
+  var say = function (text) { if (root.classList.contains('gn-ready')) return; var w = document.querySelector('#gn-splash .gn-wait'); if (w) w.textContent = text; };
+  var fail = function () { failed = true; say('No se pudo cargar. Revisá tu conexión y abrí la página de nuevo.'); };
+  window.__gnStuck = fail;
+  window.addEventListener('error', function (e) { var t = e && e.target; if (t && t.tagName === 'SCRIPT' && t.parentNode === document.body) fail(); }, true);
+  setTimeout(function () { if (!failed) say('Está tardando. Revisá tu conexión; si no avanza, abrí la página de nuevo.'); }, 20000);
+})();
+</script>
 <script src="./assets/build.js"></script>
 <script src="./assets/preact.min.js"></script>
 <script src="./assets/yk-runtime.js"></script>

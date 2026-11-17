@@ -22,6 +22,8 @@ body{margin:0}
 button{font:inherit;color:inherit;cursor:pointer}
 a{color:#2F4FD0;text-decoration:none}a:hover{color:#1B2440}
 rt{font-size:9px;font-weight:500;color:#5A6382}
+@keyframes gn-up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes gn-fade{from{opacity:0}to{opacity:1}}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 </style>
 </helmet>
@@ -30,7 +32,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div aria-live="polite" style="position: absolute; top: 0; left: 0; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap">{{ live }}</div>
 
 <div style="display: flex; align-items: center; gap: 10px; height: 44px; flex-shrink: 0">
-<a href="{{ leaveHref }}" onClick="{{ toLeave }}" aria-label="{{ leaveLabel }}" style="width: 44px; height: 44px; margin-left: -10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+<a href="{{ leaveHref }}" onClick="{{ toLeave }}" aria-label="{{ leaveLabel }}" data-gn-back="screen" style="width: 44px; height: 44px; margin-left: -10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
 <div role="img" aria-label="{{ dotsLabel }}" style="flex-grow: 1; display: grid; gap: {{ dotGap }}; grid-template-columns: {{ dotCols }}">
 <sc-for list="{{ dots }}" as="d" hint-placeholder-count="3">
 <div style="height: 10px; border-radius: 5px; background: {{ d.bg }}"></div>
@@ -153,6 +155,18 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <a href="{{ doneHref }}" onClick="{{ toDone }}" style="flex-shrink: 0; margin-top: 10px; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px; display: flex; align-items: center; justify-content: center"><span><span lang="gn">Upeigua</span> · Siguiente</span></a>
 </sc-if>
 
+<sc-if value="{{ quit.open }}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; left: 0; top: 0; width: 390px; height: 844px; display: flex; flex-direction: column; background: rgba(27, 36, 64, 0.5); animation: gn-fade 160ms ease-out">
+<button aria-label="{{ quit.stayText }}" onClick="{{ quit.stay }}" style="flex-grow: 1; border: 0; padding: 0; background: transparent"></button>
+<div role="dialog" aria-modal="true" aria-label="{{ quit.title }}" style="padding: 18px 20px 34px; border-radius: 26px 26px 0 0; border-top: 2px solid #1B2440; background: #FFFFFF; display: flex; flex-direction: column; gap: 10px; animation: gn-up 240ms ease-out">
+<h2 style="margin: 0; font-size: 18px; font-weight: 800">{{ quit.title }}</h2>
+<div style="font-size: 13px; font-weight: 500; color: #5A6382; line-height: 1.5">{{ quit.text }}</div>
+<button onClick="{{ quit.stay }}" style="margin-top: 4px; height: 54px; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-weight: 800; font-size: 17px"><span lang="gn">Eku'ejey</span> · {{ quit.stayText }}</button>
+<a href="{{ leaveHref }}" onClick="{{ quit.leave }}" style="height: 48px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800; color: #C7361E">Salir sin guardar</a>
+</div>
+</div>
+</sc-if>
+
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"view":{"editor":"enum","options":["question","result"],"default":"question"},"go":{"editor":null},"app":{"editor":null},"save":{"editor":null},"miss":{"editor":null},"reviewed":{"editor":null},"level":{"editor":null},"$preview":{"width":390,"height":844}}'>
@@ -161,8 +175,10 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
    gnCourse.mini; set 'mini1' or 'mini2', the result kept with the tests at a1m1 or a1m2, and back to the tab):
    one runner, one clock, no hints, no glosses, no highlights, answers only at the end.
    A choice item is picked; a build item is asked as tiles in order (here the whole order counts: Guarani words are
-   short in tiles); a spell item is typed with the phone's keyboard and a small row of Guarani keys. Every wrong or
-   unanswered item goes to the notebook when the clock stops. */
+   short in tiles); a spell item is typed with the phone's keyboard and a small row of Guarani keys. When the exam ends
+   («Terminar», or the clock at 0) every wrong or unanswered item goes to the notebook and the result is saved, in
+   that same moment: the result page only shows it, and whichever way the learner leaves that page (its button, its
+   cross, the system's back, or the app closed on it) the exam stays taken. */
 const SETS = {
 day: { seconds: 150, title: 'EXAMEN · SIN AYUDAS', note: 'Sin pistas ni glosas. Las respuestas, al final.', leave: 'Salir del examen', done: 'Examen terminado', empty: 'El examen de este día todavía no está escrito.' },
 test: { seconds: 1200, title: 'PRUEBA DE LA SEMANA', note: 'Formato de examen, un solo reloj para toda la prueba. Las respuestas, al final.', leave: 'Salir de la prueba de la semana', done: 'Prueba de la semana terminada', empty: 'La prueba de esta semana todavía no está escrita.' },
@@ -243,8 +259,16 @@ if (props && props.app) return props.app;
 if (!this.sampleApp && window.gnCourse) this.sampleApp = window.gnCourse.view(sample());
 return this.sampleApp || {};
 }
+/* which questions the runner asks: a day's ('day'), the week test's ('test') or a mini exam's ('mini1', 'mini2').
+   Once the exam has ended it stays the exam it was (this.kept, set in finish): its result is saved at that moment, so
+   the app's memory may move on under the result page (the day sealed, the week whole: the session in use can then be
+   the next one), and the page must still show the questions that were asked */
+setKey(props) {
+return this.kept ? this.kept.set : this.appOf(props).set;
+}
 /* the mini exam the runner was asked for (the Examen tab saves set 'mini1' or 'mini2'), or null */
 miniOf(props) {
+if (this.kept) return this.kept.mini;
 const C = window.gnCourse;
 const key = this.appOf(props).set;
 return C && C.mini && /^mini[12]$/.test(key || '') ? C.mini(key) : null;
@@ -252,11 +276,12 @@ return C && C.mini && /^mini[12]$/.test(key || '') ? C.mini(key) : null;
 setOf(props) {
 const mini = this.miniOf(props);
 if (mini) return Object.assign({}, SETS.mini, { seconds: mini.seconds || SETS.mini.seconds, title: 'MINI EXAMEN ' + mini.n, leave: 'Salir del mini examen ' + mini.n, done: 'Mini examen ' + mini.n + ' terminado' });
-return SETS[this.appOf(props).set] || SETS.day;
+return SETS[this.setKey(props)] || SETS.day;
 }
 list(props) {
 const C = window.gnCourse;
 if (!C) return [];
+if (this.kept) return this.kept.list;
 const app = this.appOf(props);
 /* the day's exam items are written into the day; the week test lists the ids of its items */
 const mini = this.miniOf(props);
@@ -295,6 +320,7 @@ componentDidUpdate(prev) {
 /* on the canvas, the view tweak switches between the two designed moments (and the question can be finished again) */
 if (!this.props.go && prev && prev.view !== this.props.view) {
 this.finished = false;
+this.kept = null;
 this.setState(this.demo(this.props));
 }
 /* after a Guarani key, the caret goes right after the letter it put in */
@@ -310,15 +336,35 @@ try { el.setSelectionRange(at, at); } catch (x) { /* not a text field any more *
 componentWillUnmount() {
 clearInterval(this.timer);
 }
+/* the exam ends: «Terminar» on the last question, or the clock at 0. Everything it leaves is recorded here and now,
+   the misses in the notebook and the result in the app's memory, so nothing depends on how the result page is left */
 finish(t) {
 if (this.finished) return;
 this.finished = true;
+const C = window.gnCourse;
+const app = this.appOf(this.props);
+const set = this.setOf(this.props);
+const mini = this.miniOf(this.props);
+const test = app.set === 'test';
 const list = this.list(this.props);
 const answers = this.state.answers || [];
+/* from here on the runner shows this exam, whatever the app's memory moves on to (see setKey) */
+this.kept = { set: app.set, mini, list };
 if (this.props.miss) {
 list.forEach((q, k) => {
 if (!this.right(q, answers[k])) this.props.miss({ src: q.id, wrong: this.yours(q, answers[k]) || 'Sin respuesta' });
 });
+}
+if (this.props.save && list.length) {
+/* a week test's result is kept under its session, a mini exam's under its own id; a day's exam moves the day on */
+const score = list.filter((q, k) => this.right(q, answers[k])).length;
+const patch = test || mini
+? { result: { id: mini ? mini.id : app.sid, score, of: list.length, used: Math.max(0, set.seconds - t), areas: this.areas(list, answers), at: C.now() } }
+: { prog: { g: 3 } };
+/* a word spelled right with the Guarani keys is kept with the others the learner has typed */
+const spelled = list.filter((q, k) => q.kind === 'spell' && this.right(q, answers[k])).map((q) => C.norm(q.answer));
+if (spelled.length) patch.typed = spelled;
+this.props.save(patch);
 }
 clearInterval(this.timer);
 this.setState({ done: true, t });
@@ -389,8 +435,7 @@ renderVals() {
 const C = window.gnCourse;
 const s = this.state;
 const set = this.setOf(this.props);
-const app = this.appOf(this.props);
-const test = app.set === 'test';
+const test = this.setKey(this.props) === 'test';
 const mini = this.miniOf(this.props);
 const list = this.list(this.props);
 const n = list.length;
@@ -543,6 +588,10 @@ const done = n > 0 && !!s.done;
 const low = !done && s.t <= 30;
 const many = n > 6;
 const timeUp = done && s.t === 0;
+/* the way out, and whether it asks first: a timed set under way, with something answered */
+const leave = nav(mini ? 'ExamTab' : test ? 'Main' : 'Today');
+const begun = ix > 0 || answers.some((x) => x !== null && x !== undefined && x !== '' && !(Array.isArray(x) && x.every((t) => t === null)));
+const asks = !!this.props.go && (test || !!mini) && n > 0 && !done && begun;
 const doneLabel = timeUp ? 'Se acabó el tiempo' : set.done;
 const out = {
 empty: n === 0,
@@ -591,25 +640,24 @@ savedLine: wrongCount === 1 ? '1 error guardado en tu cuaderno. Vuelve mañana.'
 live: done ? doneLabel + ': ' + (rows.length - wrongCount) + ' de ' + rows.length : '',
 leaveLabel: set.leave,
 leaveHref: mini ? 'ExamTab.dc.html' : test ? 'Main.dc.html' : 'Today.dc.html',
-toLeave: nav(mini ? 'ExamTab' : test ? 'Main' : 'Today'),
-doneHref: mini ? 'ExamTab.dc.html' : test ? 'WeekTest.dc.html' : 'Today.dc.html',
-toDone: (e) => {
-if (this.props.save) {
-/* a week test's result is kept under its session, a mini exam's under its own id; a day's exam moves the day on */
-const patch = test || mini
-? { result: { id: mini ? mini.id : app.sid, score: rows.length - wrongCount, of: rows.length, used: Math.max(0, set.seconds - s.t), areas: this.areas(list, answers), at: C.now() } }
-: { prog: { g: 3 } };
-/* a word spelled right with the Guarani keys is kept with the others the learner has typed */
-const spelled = list.filter((item, k) => item.kind === 'spell' && this.right(item, answers[k])).map((item) => C.norm(item.answer));
-if (spelled.length) patch.typed = spelled;
-this.props.save(patch);
-}
-nav(mini ? 'ExamTab' : test ? 'WeekTest' : 'Today')(e);
+/* The cross leaves. Part way through a timed set (the week test, a mini exam: twenty questions on one clock) that throws
+   the answers away and the set starts again, so there it asks first, as the level exam's does; so does the system's
+   back, which presses it. A day's three questions are left at once, and so are a set with nothing answered yet and a
+   result page (its result is saved). On the canvas alone the cross is a link, as before */
+toLeave: asks ? (e) => { e.preventDefault(); this.setState({ leaving: true }); } : leave,
+quit: {
+open: asks && !!s.leaving,
+title: mini ? '¿Salir del mini examen?' : '¿Salir de la prueba?',
+text: 'Si salís ahora se pierden tus respuestas: ' + (mini ? 'el mini examen' : 'la prueba') + ' empieza de nuevo, desde la primera pregunta. El reloj sigue mientras decidís.',
+stayText: mini ? 'Seguir con el mini examen' : 'Seguir con la prueba',
+stay: () => this.setState({ leaving: false }),
+leave,
 },
+doneHref: mini ? 'ExamTab.dc.html' : test ? 'WeekTest.dc.html' : 'Today.dc.html',
+/* the result page's button only leads on (the week test to its own result page, a mini exam back to the tab, a day's
+   step to the day): the result was saved when the exam ended (finish), and the cross above keeps it just the same */
+toDone: nav(mini ? 'ExamTab' : test ? 'WeekTest' : 'Today'),
 };
-/* a mini exam's result page leads back to the tab by both its ways out (the cross and the button go to the same place):
-   either one keeps the result */
-if (mini && done) out.toLeave = out.toDone;
 return out;
 }
 }

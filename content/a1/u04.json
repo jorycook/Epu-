@@ -4,7 +4,7 @@
  "es": "Mi familia",
  "days": {
   "1": {
-   "title": "Posesión con che/nde + sustantivo",
+   "title": "Mi mamá, tu papá: che sy, nde ru",
    "grammar": {
     "points": [
      {
@@ -718,7 +718,7 @@
    }
   },
   "2": {
-   "title": "Plural -kuéra, -nguéra tras nasal (mitãnguéra)",
+   "title": "Más de uno: ogakuéra, mitãnguéra",
    "grammar": {
     "points": [
      {
@@ -1396,7 +1396,7 @@
    }
   },
   "3": {
-   "title": "Demostrativos ko, pe, amo",
+   "title": "Este, ese, aquel: ko, pe, amo",
    "grammar": {
     "points": [
      {
@@ -2036,7 +2036,7 @@
    }
   },
   "4": {
-   "title": "máva «quién», mba'e «qué»",
+   "title": "Quién y qué: máva, mba'e",
    "grammar": {
     "points": [
      {
@@ -2699,7 +2699,7 @@
    }
   },
   "5": {
-   "title": "Números 1–5 en guaraní y números castellanos en el habla",
+   "title": "Contar hasta cinco: de peteĩ a po",
    "grammar": {
     "points": [
      {

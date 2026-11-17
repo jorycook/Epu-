@@ -10,8 +10,9 @@ board named in your spec and do what it does.
 - Canvas root (the folder holding `project/`): `CANVAS=/tmp/claude-0/-home-user/430b6c9f-00ab-547a-bf2b-cc44a7533d75/scratchpad/canvas`.
   Write your artboards ONLY as `$CANVAS/project/<Name>.dc.html` (ASCII file names: letters, digits, `_`, `.`, `-`).
 - Shared files already there (read them, never change them): `project/gn-course.js` (the engine, `window.gnCourse`),
-  `project/gn-sound.js` (the player, `window.gnSound`; no clips exist yet, so `has()` is always false and every sound
-  control uses its silent stand-in), `project/gn-course-a1.js` … `gn-course-c2.js` (the level data, built from content).
+  `project/gn-sound.js` (the player, `window.gnSound`; a board on its own loads no sound file, so there `has()` is
+  always false and every sound control uses its silent stand-in; in the prototype and the app A1 units 1 to 4 have
+  clips, a synthetic voice's: §6, Sound), `project/gn-course-a1.js` … `gn-course-c2.js` (the level data, built from content).
 - Yaoki's boards to copy from: `/tmp/claude-0/-home-user/430b6c9f-00ab-547a-bf2b-cc44a7533d75/scratchpad/ref/Yaoki/yaoki/project/*.dc.html`
   (main app), `.../ref/Yaoki/yaoki-n1/project/*.dc.html` (N1 app), Reader canvas `.../artifact-files/7ec88b87-7732-468d-876e-3ad7ca541b29/project/`,
   Mascot canvas `.../artifact-files/25ff9d90-eba8-42aa-8494-ff9e80353214/project/`, Yaoki Typing and Speaking `.../ref/Yaoki/docs/typing/`, `.../docs/speaking/`.
@@ -59,10 +60,24 @@ board named in your spec and do what it does.
   Drill's "PRÁCTICA", the Exam band's title) with `margin: 0` and its own size and weight, or, where the screen draws
   no title (Escribir's round), one kept for screen readers with the 1-px clip recipe of the live regions. The app gives
   it the focus when the screen opens, and names the screen in the page's title.
-- Three marks the app relies on for the system's back and for an open sheet (gn-app.js), so keep them: the screen's own
-  way back is the 44×44 control with the negative left margin (§5), and nothing else on a screen has one; a sheet's
-  scrim is a `<button>` placed just before the `role="dialog" aria-modal="true"` element, and closes it (a sheet with
-  no scrim asks for an answer: back leaves it open); the goal screen's step bar is named "Paso N de 3".
+- The marks the app relies on for the system's back, for an open sheet and for its own notice (gn-app.js, the app's
+  Shell), so keep them. They do nothing on the canvas.
+  - `data-gn-back="screen"` on the screen's own way back, in every state that has one: the X or the arrow at the top
+    left (the 44×44 control of §5), and the round's X of a game, however it is drawn. The system's back presses it, so
+    a control that asks first (a pause, «¿Salir del examen?») makes the system's back ask first too. (A screen that
+    marks none is read by the recipe's negative left margin, so nothing else on a screen may have one; a state with no
+    way back of its own, a tab or a result page, leads to the screen above it.)
+  - A sheet is `role="dialog" aria-modal="true"`, and its scrim a `<button>` placed just before that element, which
+    closes it: the system's back presses the scrim. A sheet with no scrim asks for an answer; if one of its buttons is
+    what back should mean (a pause's «Continuar»), that button carries `data-gn-back="sheet"`; if none does, back
+    leaves the sheet open.
+  - `data-gn-note="place"` on a box of the screen that holds no control and may be covered for a while: the app lays
+    its notice (a browser that keeps nothing, a paste that can be taken back) exactly over it. The week path marks its
+    week card. A screen that marks none gets the notice above its bottom buttons.
+  - The goal screen's step bar is named "Paso N de 3", and its way back is a `<button>` while it steps back inside the
+    screen and an `<a href>` that names the screen it leads to when it leaves (its first step; its third when it was
+    opened on a plan that exists, the door back to the plan: the app then counts the screen one step under the screen
+    so named, whatever the step bar says).
 - Never use `{{ … }}` inside `<title>` or `<style>`.
 
 ## 3. Wiring (copy Yaoki exactly)
@@ -123,7 +138,7 @@ white, `2px solid #C7361E`, red text, 50 px). Card CTA 48 px, radius 14, shadow 
 Options `border-radius: 14px; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; background: #FFFFFF`; selected: `2.5px solid #2F4FD0`,
 `background: #E8ECFB`, no shadow, `transform: translateY(3px)`. Chips `padding: 4px 10px; border-radius: 10px; font-size: 12px; font-weight: 800`.
 Selectable chip on: `2px solid #1B2440`, `#2F4FD0`, shadow `0 3px 0 #1B2440`, white; off: `2px solid #DDE1EC`, white, ink; not written:
-`2px dashed #DDE1EC`, `#F4F5F9`, `#9AA1B5`. Progress segments 10 px radius 5; bars 12 px radius 6. Close X: 44×44 with `margin-left: -10px`.
+`2px dashed #DDE1EC`, `#F4F5F9`, `#9AA1B5`. Progress segments 10 px radius 5; bars 12 px radius 6. Close X: 44×44 with `margin-left: -10px` and `data-gn-back="screen"` (§2: the app's back presses it).
 
 Keyframes (prefix gn-):
 `@keyframes gn-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}` (screen change, 220ms ease-out) ·
@@ -178,9 +193,14 @@ Same names and meanings as Yaoki's `ykCourse` unless noted. `const C = window.gn
 - Days with study: `seen` in the state is the list of days ('YYYY-MM-DD', oldest first) on which the learner did something
   the app records, or opened Leer, Escribir or Hablar (`handlers` add today through `C.sawDay(seen, now)`; opening the app
   writes nothing). `C.days(seen, now)` → `{ week: [{ date, kind: 'study'|'back'|'missed'|'today'|'none' } ×7, today last],
-  count, returns, last, gap, away, back, today }`: a day of return (`back`) is a day with study after one or more without;
+  count, returns, first, last, gap, away, back, today }`: a day of return (`back`) is a day with study after one or more without;
   `away` is the days since the last day with study when that is two or more and nothing is done yet today (Main greets the
-  learner back); 'none' is a day before the record began (nothing is claimed about it).
+  learner back); 'none' is a day before the record began (nothing is claimed about it). A state that already holds
+  things studied (`C.studied(state)`: a lesson step, a test, a part of the level exam, a notebook entry, a word typed)
+  and no day in `seen` was saved before the app kept the days: the app marks it `seenLate` when it reads the save, for
+  good, and `C.view` gives `days.since`, the first day on record, so that the count says since when it runs (Progreso:
+  «3 días con estudio desde el 16/11»). No day is made up from the moments such a save carries (a notebook entry's
+  `at`): each proves one day and not the days around it.
 - Mini exams: `C.minis(lv)` → the level's two, `[{ n, id: 'a1m1', units, after, ready, items: [20 item ids], seconds }]`:
   20 of the week-test questions of its half of the level (6 vocab, 8 grammar, 3 reading, 3 listening, as many from each
   unit), ready once those week tests are written. `C.mini('a1m1' | 'mini1')`. Exam runs it with `set: 'mini1'` and saves
@@ -199,27 +219,58 @@ Same names and meanings as Yaoki's `ykCourse` unless noted. `const C = window.gn
   line that quotes Guarani (a day's title, a sound focus), the words that can only be Guarani marked, for `lang="gn"`.
 - Areas: `C.area(key)` → `{ key, es, tagBg, tagColor }` for `vocab` Palabras, `grammar` Gramática, `reading` Lectura, `listening` Escucha,
   `mediation` Mediación, `sound` Sonido y letra. Week test results store `areas: { vocab: { right, of }, … }`.
-- State: `C.fresh()` → `{ screen: 'Goal', started, level, plans, plan, cur, done, tests, exams, mistakes, tp, set, placement, typed, seen }`;
-  `save` keys: plain keys are copied (`cur`, `tp`, `set` ('day', 'test', 'mini1', 'mini2'), `level`, `plan`, `placement`, `screen`); `prog` merges into the current session
+- State: `C.fresh()` → `{ screen: 'Goal', started, level, plans, plan, cur, done, tests, exams, mistakes, tp, set, placement, typed, seen, seenLate, voice }`;
+  `save` keys: plain keys are copied (`cur`, `tp`, `set` ('day', 'test', 'mini1', 'mini2'), `level`, `plan`, `placement`, `screen`, `voice`: the synthetic voice's switch, on unless it is `false`); `prog` merges into the current session
   with Math.max; `result` stores a week test (or a mini exam) at `tests[result.id]`; `exam` stores a level exam result at `exams[level]` (a pass is never replaced
   by a fail); `typed` adds words spelled with the Guarani keyboard. A `prog`, a `result`, `typed`, a part of the level exam handed in,
   `miss` and `reviewed` also put today in `seen`, and so does `go` to Leer, Escribir or Hablar.
   `go` also remembers the screen a practice section (Leer, Escribir, Hablar) was opened from (`opener`, in the host's
   state while the app is open; it is not a saved field): the section's own ways out call `go('Progress')`, and from a
-  practice section that leads to the opener (Main's closed card, a sealed Today, or Progreso itself).
-- `C.view(state)` → `{ status, plan, plans, sid, session, unit, day, prog, done, tests, exams, exam, tp, set, mistakes, review, seen, days, typed, placement, profile, exposure, level, meta, levels, progress }` (`plans`: the other levels' plans; `profile`: the goal's answers; `exposure`: the «lo usé» marks;
-  `review`: `{ n, due, size, done, minutes }` of today's sitting for this level; `days`: `C.days(seen)`).
+  practice section that leads to the opener (Main's closed card, a sealed Today, or Progreso itself). The notebook's
+  review has three doors too (the notebook, Main's row, Today's row) and its door is kept the same way, but its two
+  ways out differ, so the board asks by name: «Volver al cuaderno» calls `go('Notebook')`, and the cross
+  `go(app.opener)`.
+- `C.view(state)` → `{ status, plan, plans, sid, session, unit, day, prog, done, tests, exams, exam, tp, set, opener, mistakes, review, seen, days, typed, voice, placement, profile, exposure, level, meta, levels, progress }` (`plans`: the other levels' plans; `profile`: the goal's answers; `exposure`: the «lo usé» marks; `voice`: the synthetic voice is on;
+  `review`: `{ n, due, size, done, minutes }` of today's sitting for this level; `days`: `C.days(seen)` and `since`;
+  `opener`: the screen that opened the one on show, while that is a practice section or the review, else null).
   `sid` is the session picked on the week path (`cur`), else the next one due; with every written session done it is the last
   day written, so the path stays on the last week done.
-- Sound: `window.gnSound` — `has(key)`, `ms(key)`, `kind(key)` ('human' | 'synthetic' | ''), `unlock()`, `play(key)`, `stop()`, `on()`, `at()`. No clips exist: a sound control
+- Sound: `window.gnSound` — `has(key)`, `ms(key)`, `kind(key)` ('human' | 'synthetic' | ''), `cues(key)` (where each line of a clip put
+  together from lines ends, in ms; null for one recording), `any()`, `unlock()`, `play(key)`, `stop()`, `on()`, `at()`, `over()`,
+  `synthetic(on)` (the learner's switch: off, a voice model's clips count as missing). A sound control
   checks `has()` and otherwise lights up as "playing" for `600 + C.plain(text).length * 120` ms (Yaoki's silent stand-in), showing the
-  words being said. Clip keys: `<item or example id>` (e.g. `a1u01d1.p1.x0` = point 1, example 0; `a1u01d1.r1` = listening item);
+  words being said, and says that the audio is not recorded yet (true of a board on its own, of a day without sound, and of a clip the
+  synthetic voice must not say: `sound/silent.json`). Clip keys: `<item or example id>` (e.g. `a1u01d1.p1.x0` = point 1, example 0; `a1u01d1.r1` = listening item);
   the full list is `sound/A1/manifest.json` (tools/sound-list.mjs). The clips arrive by unit (`gn-sound-a1-u01.js`, made by
   tools/make-sound.mjs; `gn-sound-index.js` names the files that exist): the engine fetches a unit's file when the unit is in use
   (`C.needSound`), and fires `gnsound` on `document` when it has loaded, so the prototype draws the screen again (the
   installed app holds such a request back until its later screens are in, since no screen of its first file plays a
-  clip: gn-app.js wraps `C.needSoundFile`). A screen that
-  plays a synthetic clip says «voz sintética» (Words' sound step, Hablar).
+  clip: gn-app.js wraps `C.needSoundFile`). A file that could not be fetched is asked for again once from the next
+  screen, and at once when the browser says the connection is back; none is fetched while the voice is off and no
+  other exists (`C.soundWanted()`).
+- **The tag «voz sintética»: one signal, every screen that offers a synthetic clip.** Until a person records the course
+  its clips are a voice model's (`sound/VOICE.md`), and a screen says so next to the control, before anything is
+  tapped: small, grey, never an alarm, never in a live region. A new screen that plays a clip adds two lines:
+  ```js
+  synth: C.synth(key),            // in renderVals, per control; C.synth([k1, k2, …]) for a card of several controls (one tag)
+  ```
+  ```html
+  <sc-if value="{{ x.synth }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap">voz sintética</span></sc-if>
+  ```
+  `C.synth` is false for a person's recording, for a key without a clip, on the canvas alone and when the learner has
+  turned the voice off, so the tag never stands beside a silent control and the canvas shows none. Where it goes: at
+  the right end of the line that heads the control's card (Teach's «Ejemplos», a pair's «PAR 1 DE 3», the notebook's
+  «Ehendu · Escuchar», the level exam's «LA PARTE QUE SIGUE») or of the player's own status line (Listening, the
+  placement check; the live text and the tag are siblings in a flex row, the tag outside the `aria-live` element),
+  beside the meaning under a word's speaker (Words), under the button when the control is a labelled button in a row
+  of buttons (the spelling pad's «Escuchar»), and at the end of the dock's second line in Hablar. A screen reader
+  hears what it means once a visit: the first time `C.synth` is true the document hears `gnvoice`, and the board that
+  holds the screens (App here, the app's Shell) puts `C.VOICE_NOTE` in a 1-px live region of its own (at `top: 50px`:
+  the app leaves out the design's empty top zone on a short phone, and `check/platform-test.js` takes text up there
+  for text cut off by the screen's edge). Never put the words in a control's live line (a tap would say them again). The one place that explains the voice is Progreso
+  (BOARDS.md): `C.synthVoice()` says whether the sound index names a voice model, `app.voice` whether it is on.
+  A screen that names who speaks in a dialogue keeps time by the clip, not by the lines' lengths:
+  `C.cueLine(gnSound.cues(key), gnSound.at())` is the line being said.
 
 ## 7. Content: the shape the screens read
 

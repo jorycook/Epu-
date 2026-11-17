@@ -1,10 +1,10 @@
 {
  "n": 2,
  "gn": "",
- "es": "¿Quién sos? Verbos de acción",
+ "es": "¿Quién hace qué?",
  "days": {
   "1": {
-   "title": "Prefijos areales a-/re-/o-: quién hace la acción",
+   "title": "Decir quién hace qué: a-, re-, o-",
    "grammar": {
     "points": [
      {
@@ -716,7 +716,7 @@
    }
   },
   "2": {
-   "title": "ja-/ña-, ro-, pe-: plural de persona",
+   "title": "Nosotros y ustedes: ja-, ro-, pe-",
    "grammar": {
     "points": [
      {
@@ -1394,7 +1394,7 @@
    }
   },
   "3": {
-   "title": "-pe/-me «en, a»",
+   "title": "Dónde y adónde: ógape, tetãme",
    "grammar": {
     "points": [
      {
@@ -2119,7 +2119,7 @@
    }
   },
   "4": {
-   "title": "-gui «de, desde»",
+   "title": "De dónde: -gui",
    "grammar": {
     "points": [
      {
@@ -2814,7 +2814,7 @@
    }
   },
   "5": {
-   "title": "Negación nd-…-i: el «no» rodea al verbo",
+   "title": "Decir que no: nd-…-i",
    "grammar": {
     "points": [
      {

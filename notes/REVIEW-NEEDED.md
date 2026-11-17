@@ -211,7 +211,7 @@ counts are the reviewers' own, in the corpora named at the top of this file, quo
 Four questions were rewritten by the fixer of the sound round after its checker had read the days, so no reviewer and
 no blind solver has seen them: a1u03d1.k1, a1u03d2.k1, a1u04d1.k1 and a1u04d4.k1. They need a first reading.
 
-## A1 unit 2, «¿Quién sos? Verbos de acción»
+## A1 unit 2, «¿Quién hace qué?»
 
 ### Spelling and forms
 
@@ -315,7 +315,7 @@ The others the reviewers named, day by day:
   of u02-d5 that ng and nt go «casi siempre» inside the word (a corpus finding). And two choices in the Spanish:
   «pieza» first for koty and «monte» first for ka'aguy (the scene of u02-d3).
 
-## A1 unit 3, «¿Cómo estás? Predicados chendales»
+## A1 unit 3, «¿Cómo estás?»
 
 ### Spelling and forms
 

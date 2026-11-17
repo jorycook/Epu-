@@ -30,7 +30,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="width: 390px; height: 844px; box-sizing: border-box; padding: 50px 16px 34px; background: #F4F5F9; color: #1B2440; font-family: 'Nunito', 'Avenir Next', sans-serif; display: flex; flex-direction: column; overflow: hidden">
 
 <div style="display: flex; align-items: center; gap: 10px; height: 44px; flex-shrink: 0">
-<a href="Today.dc.html" onClick="{{ toToday }}" aria-label="Cerrar la lección" style="width: 44px; height: 44px; margin-left: -10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+<a href="Today.dc.html" onClick="{{ toToday }}" aria-label="Cerrar la lección" data-gn-back="screen" style="width: 44px; height: 44px; margin-left: -10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
 <div role="group" aria-label="{{ barLabel }}" style="flex-grow: 1; min-width: 0; display: grid; gap: 6px; grid-template-columns: {{ barCols }}">
 <sc-for list="{{ bar }}" as="b" hint-placeholder-count="4"><button onClick="{{ b.go }}" aria-disabled="{{ b.off }}" aria-label="{{ b.aria }}" aria-current="{{ b.cur }}" style="height: 44px; min-width: 0; padding: 0; border: 0; background: transparent; display: flex; align-items: center; cursor: {{ b.cursor }}"><span style="display: block; width: 100%; height: 10px; border-radius: 5px; background: {{ b.bg }}"></span></button></sc-for>
 </div>
@@ -80,7 +80,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="margin-top: 16px; font-size: 11px; font-weight: 800; letter-spacing: 0.04em; color: #5A6382; flex-shrink: 0">{{ sPairHead }} · {{ sPairCount }}</div>
 <sc-for list="{{ sPairs }}" as="p" hint-placeholder-count="2">
 <div style="margin-top: 8px; padding: 10px 12px 12px; border-radius: 18px; background: #FFFFFF; border: 2px solid #DDE1EC; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0">
-<div style="font-size: 11px; font-weight: 800; letter-spacing: 0.04em; color: #5A6382">{{ p.kicker }}</div>
+<div style="display: flex; align-items: center; gap: 8px"><div style="flex-grow: 1; min-width: 0; font-size: 11px; font-weight: 800; letter-spacing: 0.04em; color: #5A6382">{{ p.kicker }}</div><sc-if value="{{ p.synth }}" hint-placeholder-val="{{ false }}"><span data-gn-voice="tag" style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap">voz sintética</span></sc-if><sc-if value="{{ p.loading }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap">cargando el audio…</span></sc-if></div>
 <div style="display: flex; align-items: center; gap: 10px">
 <button onClick="{{ p.play }}" aria-pressed="{{ p.playing }}" aria-label="{{ p.playAria }}" style="width: 56px; height: 56px; border-radius: 50%; border: 2px solid #1B2440; box-shadow: 0 3px 0 #1B2440; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 150ms; background: {{ p.playBg }}"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 9a4 4 0 0 1 0 6"/></svg></button>
 <div style="flex-grow: 1; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
@@ -89,7 +89,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 </sc-for>
 </div>
 </div>
-<div aria-live="polite" style="min-height: 24px; font-size: 13px; font-weight: 700; line-height: 1.4; color: {{ p.vColor }}"><span lang="gn">{{ p.vGn }}</span>{{ p.vEs }}<span lang="gn" style="font-family: {{ p.wFont }}; font-size: {{ p.wSize }}; color: {{ p.wColor }}">{{ p.vWord }}</span>{{ p.vTail }}<sc-if value="{{ p.noted }}" hint-placeholder-val="{{ false }}"><span style="display: block; margin-top: 2px; font-size: 12px; font-weight: 800; color: #B02A63">Este audio todavía no está grabado.</span></sc-if><sc-if value="{{ p.synth }}" hint-placeholder-val="{{ false }}"><span style="display: block; margin-top: 2px; font-size: 12px; font-weight: 800; color: #5A6382">Voz sintética: este audio lo hizo un programa, no una persona.</span></sc-if></div>
+<div aria-live="polite" style="min-height: 24px; font-size: 13px; font-weight: 700; line-height: 1.4; color: {{ p.vColor }}"><span lang="gn">{{ p.vGn }}</span>{{ p.vEs }}<span lang="gn" style="font-family: {{ p.wFont }}; font-size: {{ p.wSize }}; color: {{ p.wColor }}">{{ p.vWord }}</span>{{ p.vTail }}<sc-if value="{{ p.noted }}" hint-placeholder-val="{{ false }}"><span style="display: block; margin-top: 2px; font-size: 12px; font-weight: 800; color: #B02A63">{{ p.note }}</span></sc-if></div>
 </div>
 </sc-for>
 </sc-if>
@@ -117,11 +117,11 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
 <div lang="gn" style="font-family: 'Andika', 'Nunito', sans-serif; font-weight: 700; line-height: 1.15; overflow-wrap: anywhere; font-size: {{ d.size }}">{{ d.word }}</div>
 <sc-if value="{{ d.hasSyll }}" hint-placeholder-val="{{ false }}"><div role="img" aria-label="{{ d.syllAria }}" style="font-size: 16px; font-weight: 800"><sc-for list="{{ d.syll }}" as="y" hint-placeholder-count="2"><span lang="gn" aria-hidden="true" style="color: {{ y.color }}">{{ y.t }}</span><span aria-hidden="true" style="color: #9AA1B5">{{ y.dot }}</span></sc-for></div></sc-if>
-<div style="font-size: 13px; font-weight: 500; color: #5A6382">{{ d.gloss }}</div>
 </div>
 <button aria-label="Escuchar la palabra" aria-pressed="{{ playing }}" onClick="{{ play }}" style="width: 44px; height: 44px; border-radius: 50%; border: 2px solid #1B2440; padding: 0; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 150ms; background: {{ playBg }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B2440" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 9a4 4 0 0 1 0 6"/></svg></button>
 </div>
-<sc-if value="{{ wordNoted }}" hint-placeholder-val="{{ false }}"><div role="status" style="font-size: 12px; font-weight: 800; line-height: 1.4; color: #B02A63">Este audio todavía no está grabado.</div></sc-if><sc-if value="{{ wordSynth }}" hint-placeholder-val="{{ false }}"><div role="status" style="font-size: 12px; font-weight: 800; line-height: 1.4; color: #5A6382">Voz sintética: este audio lo hizo un programa, no una persona.</div></sc-if>
+<div style="margin-top: -6px; display: flex; align-items: flex-start; gap: 8px"><div style="flex: 1 1 auto; min-width: 0; font-size: 13px; font-weight: 500; color: #5A6382">{{ d.gloss }}</div><sc-if value="{{ wordSynth }}" hint-placeholder-val="{{ false }}"><span data-gn-voice="tag" style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap; margin-top: 1px">voz sintética</span></sc-if><sc-if value="{{ wordLoading }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink: 0; padding: 1px 8px; border-radius: 8px; background: #EEF0F6; color: #5A6382; font-size: 11px; font-weight: 800; line-height: 16px; white-space: nowrap; margin-top: 1px">cargando el audio…</span></sc-if></div>
+<sc-if value="{{ wordNoted }}" hint-placeholder-val="{{ false }}"><div role="status" style="font-size: 12px; font-weight: 800; line-height: 1.4; color: {{ wordNoteInk }}">{{ wordNote }}</div></sc-if>
 <sc-if value="{{ d.hasNote }}" hint-placeholder-val="{{ false }}"><div style="font-size: 12px; font-weight: 500; line-height: 1.45; color: #5A6382">{{ d.note }}</div></sc-if>
 <sc-if value="{{ d.hasParts }}" hint-placeholder-val="{{ true }}">
 <div style="font-size: 11px; font-weight: 800; color: #5A6382">Partes</div>
@@ -226,9 +226,16 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <script type="text/x-dc" data-dc-script data-props='{"go":{"editor":null},"app":{"editor":null},"save":{"editor":null},"miss":{"editor":null},"reviewed":{"editor":null},"level":{"editor":null},"view":{"editor":null},"$preview":{"width":390,"height":844}}'>
 /* The words lesson (Yaoki's kanji in a scene), in up to four steps:
      Sonido  (A1-A2 days with words.sound) the day's sound and letter: the letters big, a short note, and the
-             minimal pairs as listen-and-choose cards (no notebook). Until the clips are recorded a speaker lights up in
-             silence: meanwhile its pair's line shows the word it stands for and its Spanish ("Suena · ka'a, «yerba»"), and
-             the lesson's first silent play (a pair, or the scene's word) says «Este audio todavía no está grabado.»;
+             minimal pairs as listen-and-choose cards (no notebook). A pair without a clip (a day not recorded, or a
+             pair the synthetic voice must not say: sound/silent.json) has a speaker that lights up in silence:
+             meanwhile its line shows the word it stands for and its Spanish ("Suena · ka'a, «yerba»"), and says why
+             there is no sound (gnCourse.soundNote: «Este audio todavía no está grabado.», or that the audio could
+             not be loaded, or that the voice is turned off). A pair or a word whose clip is a voice model's carries
+             the tag «voz sintética» (gnCourse.synth) from the start, in the pair's head and on the word's card.
+             While the unit's sound file is still on its way (gnCourse.soundState: 'coming') a pair or a word waits:
+             «cargando el audio…» stands where the tag goes, a tap lights nothing, shows no word and says
+             «Cargando el audio…». The scene's note belongs to the word it was true of: it shows on that word's
+             card alone, for every word without a clip, and goes when another word is picked;
      Aprender the scene: tap each word on the navy sign board to see it, its Spanish, its parts, and hear it;
      Escribir each word of words.spell typed three times with the Guarani keyboard (Spell.dc.html), one word after
              the other; Next stays shut until the word is typed. What was typed is kept (save: typed), so a word
@@ -283,17 +290,15 @@ heard[0] = true;
 picks[0] = this.target(L.pairs[0]);
 if (!this.has(this.pairKey(L, 0))) silentAt = 'p0';
 }
-this.state = { ...base, quiz: null, playing: false, steps, step: steps[at], reached: at, queue, qi: 0, qDone: false, wPass: 0, heard, picks, pairOn: -1, silentAt };
+/* shown: the pairs whose word was shown in place of a clip, and why (they stay read, even if their clip comes in
+   later); waitAt: the pair tapped while its clip was on its way; quietWord: the scene word whose speaker was tapped
+   without a clip to play (its card says why: wordWhy is what the clip's state was then) */
+this.state = { ...base, quiz: null, playing: false, steps, step: steps[at], reached: at, queue, qi: 0, qDone: false, wPass: 0, heard, picks, pairOn: -1, silentAt, shown: {}, waitAt: -1, quietWord: null, wordWhy: '' };
 }
 /* is there a recorded clip under this name? (gn-sound.js tells a missing clip from a real one) */
 has(key) {
 const snd = window.gnSound;
 return !!(key && snd && typeof snd.has === 'function' && snd.has(key));
-}
-/* was the clip made by a voice model, not a speaker? Then the screen says so (gn-sound.js knows each clip's kind) */
-synth(key) {
-const snd = window.gnSound;
-return !!(key && snd && typeof snd.kind === 'function' && snd.kind(key) === 'synthetic');
 }
 /* the clip of a pair: the word of the two that plays */
 pairKey(L, i) {
@@ -406,7 +411,7 @@ const at = Math.max(0, steps.indexOf(s.step));
 const NAMES = { sound: ['SONIDO', 'Sonido y letra'], learn: ['APRENDER', 'Las palabras'], spell: ['ESCRIBIR', 'Escribir las palabras'], check: ['EXAMEN', 'La pregunta de examen'] };
 const goStep = (n) => {
 this.hush();
-this.setState({ step: steps[n], reached: Math.max(this.state.reached, n), playing: false, pairOn: -1 });
+this.setState({ step: steps[n], reached: Math.max(this.state.reached, n), playing: false, pairOn: -1, waitAt: -1, quietWord: null });
 };
 const bar = steps.map((k, n) => ({
 bg: n <= at ? '#B02A63' : '#DDE1EC',
@@ -442,10 +447,25 @@ const letters = snd && Array.isArray(snd.letters) ? snd.letters.filter((x) => ty
    stands for, the line asks which one it was, and the note that the audio is not recorded stays on every pair heard.
    The canvas alone keeps the designed wording (it plays, «Sonó»), with the note after its first silent play */
 const inApp = !!this.props.go;
-const anyMute = inApp && L.pairs.some((pair, i) => !this.has(this.pairKey(L, i)));
+/* a clip now: here ('in'), on its way ('coming'), or why not ('none', 'failed', 'off'): gnCourse.soundState */
+const stateOf = (key) => (C && C.soundState ? C.soundState(key) : 'none');
+const noteOf = (st) => (C && C.soundNote ? C.soundNote(st) : 'Este audio todavía no está grabado.');
+/* a pair waits while its clip is on its way; it is mute when it has none, or once its word has been shown instead */
+const waits = (i) => inApp && !s.shown[i] && stateOf(this.pairKey(L, i)) === 'coming';
+const muted = (i) => inApp && !waits(i) && (!!s.shown[i] || stateOf(this.pairKey(L, i)) !== 'in');
+const mutes = L.pairs.filter((pair, i) => muted(i)).length;
+/* why the step has no sound at all, when it is not that nothing is recorded: the file could not be loaded, or the voice is off */
+const muteWhy = mutes ? L.pairs.map((pair, i) => (muted(i) ? s.shown[i] || stateOf(this.pairKey(L, i)) : '')).filter(Boolean)[0] : '';
+/* every pair without a clip: the step is read. Some of them (the synthetic voice does not say every pair): the step
+   is heard, and its first line says how many pairs show their word instead */
+const allMute = mutes > 0 && mutes === L.pairs.length;
+const someMute = mutes > 0 && !allMute;
 const sPairs = L.pairs.map((pair, i) => {
 const tgt = this.target(pair);
-const mute = inApp && !this.has(this.pairKey(L, i));
+const key = this.pairKey(L, i);
+const st = stateOf(key);
+const wait = waits(i);
+const mute = muted(i);
 const heard = !!s.heard[i];
 const pick = s.picks[i];
 const done = pick === 0 || pick === 1;
@@ -489,11 +509,10 @@ this.setState({ picks: { ...st.picks, [i]: k } });
 };
 });
 /* one line under the pair: what to do, then the verdict */
-const ask = mute ? (!heard ? 'Tocá el parlante: te mostramos la palabra.' : '¿Cuál era?') : !heard ? 'Tocá el parlante: suena una de las dos.' : '¿Cuál escuchaste?';
-const key = this.pairKey(L, i);
+const ask = mute ? (!heard ? 'Tocá el parlante: te mostramos la palabra.' : '¿Cuál era?') : wait && s.waitAt === i ? (C ? C.SOUND_COMING : 'Cargando el audio…') : !heard ? 'Tocá el parlante: suena una de las dos.' : '¿Cuál escuchaste?';
 /* until the clips are recorded the speaker lights up in silence: while it does, the line shows the word it stands
-   for (as Hablar's pairs do), and the first silent play of the lesson says the audio is not recorded yet */
-const voicing = playing && !done && !this.has(key);
+   for (as Hablar's pairs do), and says why there is no sound (on the canvas alone, after the lesson's first silent play) */
+const voicing = playing && !done && (inApp ? mute : !this.has(key));
 return {
 kicker: 'PAR ' + (i + 1) + ' DE ' + L.pairs.length,
 playing,
@@ -502,9 +521,18 @@ playAria: 'Escuchar la palabra del par ' + (i + 1),
 play: () => {
 clearTimeout(this.pairTimer);
 clearTimeout(this.timer);
-const st = this.state;
-this.setState({ pairOn: i, playing: false, heard: { ...st.heard, [i]: true }, silentAt: st.silentAt || (this.has(key) ? null : 'p' + i) });
-this.pairTimer = this.say(key, said, () => this.setState({ pairOn: -1 }));
+const was = this.state;
+/* its clip is on its way: the pair waits, and says so (nothing lights up, no word is shown, nothing counts as heard) */
+if (wait) {
+if (window.gnSound) window.gnSound.stop();
+this.setState({ pairOn: -1, playing: false, waitAt: i, quietWord: null });
+return;
+}
+/* the clip plays unless the pair is mute; a mute pair in the app stays read from here on, for the reason it has now */
+const real = !mute && this.has(key);
+const shown = inApp && !real ? { ...was.shown, [i]: was.shown[i] || (st === 'in' || st === 'coming' ? 'failed' : st) } : was.shown;
+this.setState({ pairOn: i, playing: false, waitAt: -1, quietWord: null, heard: { ...was.heard, [i]: true }, silentAt: was.silentAt || (real ? null : 'p' + i), shown });
+this.pairTimer = this.say(real ? key : '', said, () => this.setState({ pairOn: -1 }));
 },
 opts,
 vGn: done && pick === tgt ? '¡Iporã!' : '',
@@ -520,13 +548,17 @@ wFont: voicing ? "'Andika', 'Nunito', sans-serif" : 'inherit',
 wSize: voicing ? '17px' : 'inherit',
 wColor: voicing ? '#1B2440' : 'inherit',
 noted: mute ? heard : s.silentAt === 'p' + i,
-synth: !mute && heard && this.synth(key),
+note: noteOf(mute ? s.shown[i] || (st === 'in' ? 'failed' : st) : 'none'),
+synth: !mute && !wait && !!C && C.synth(key),
+loading: wait,
 };
 });
 Object.assign(base, {
 sFocus: snd && snd.focus ? plain(snd.focus) : 'Sonido y letra',
-sIntro: anyMute ? 'Mirá cómo se escribe cada par: los audios todavía no están grabados.' : 'Mirá cómo se escribe y escuchá la diferencia en cada par.',
-sPairHead: anyMute ? 'MIRÁ Y ELEGÍ' : 'ESCUCHÁ Y ELEGÍ',
+sIntro: allMute ? 'Mirá cómo se escribe cada par: ' + (muteWhy === 'failed' ? 'no se pudo cargar el audio de estos pares.' : muteWhy === 'off' ? 'la voz sintética está apagada.' : 'estos pares todavía no tienen audio.')
+: someMute ? 'Mirá cómo se escribe y escuchá la diferencia. ' + (mutes === 1 ? 'Un par todavía no tiene audio: ahí' : mutes + ' pares todavía no tienen audio: ahí') + ' te mostramos la palabra.'
+: 'Mirá cómo se escribe y escuchá la diferencia en cada par.',
+sPairHead: allMute ? 'MIRÁ Y ELEGÍ' : 'ESCUCHÁ Y ELEGÍ',
 sNone: !snd,
 sSome: !!snd,
 sLetters: letters.map((c) => ({ c, name: S ? S.name(c) : c })),
@@ -555,11 +587,14 @@ ring: on ? '3px solid #F2B43A' : 'none',
 glow: on ? '0 0 0 5px #1B2440' : 'none',
 tap: () => {
 this.hush();
-this.setState({ sel: w.id, found: found ? this.state.found : this.state.found.concat(w.id), playing: false });
+this.setState({ sel: w.id, found: found ? this.state.found : this.state.found.concat(w.id), playing: false, quietWord: null });
 },
 };
 });
 const cur = L.list.filter((w) => w.id === s.sel)[0] || L.list[0] || { id: '', gn: '', es: '', parts: [] };
+/* the open word's clip, and where it stands now (here, on its way, or why not) */
+const wordKey = L.sid && cur.id ? L.sid + '.w.' + cur.id : '';
+const wordNow = stateOf(wordKey);
 const len = chars(cur.gn).length;
 const syl = this.syllables(cur.gn);
 const stressed = (syl || []).filter((y) => y.stress)[0];
@@ -600,16 +635,27 @@ parts: parts.map((x) => ({ gn: x[0], es: x[1] || '' })),
 playing: !!s.playing,
 playBg: s.playing ? '#F2B43A' : '#E8ECFB',
 /* each word is a short clip: the button stays lit while it is said; without a clip it lights up for as long (the
-   word is on the card), and if no silent play came before in this lesson, the card says the audio is not recorded yet */
+   word is on the card), and the card says why there is no sound: on this word's card, for every word without a clip,
+   until another word is picked. While the clip is on its way nothing lights up: the card says «Cargando el audio…» */
 play: () => {
 clearTimeout(this.timer);
 clearTimeout(this.pairTimer);
-const key = L.sid && cur.id ? L.sid + '.w.' + cur.id : '';
-this.setState({ playing: true, pairOn: -1, silentAt: this.state.silentAt || (this.has(key) ? null : 'word'), synthAt: this.state.synthAt || (this.synth(key) ? 'word' : null) });
-this.timer = this.say(key, cur.gn, () => this.setState({ playing: false }));
+if (wordNow === 'coming') {
+if (window.gnSound) window.gnSound.stop();
+this.setState({ playing: false, pairOn: -1, waitAt: -1, quietWord: cur.id, wordWhy: 'coming' });
+return;
+}
+const real = this.has(wordKey);
+this.setState({ playing: true, pairOn: -1, waitAt: -1, quietWord: real ? null : cur.id, wordWhy: real ? '' : wordNow === 'in' ? 'mute' : wordNow });
+this.timer = this.say(wordKey, cur.gn, () => this.setState({ playing: false }));
 },
-wordNoted: s.silentAt === 'word',
-wordSynth: s.synthAt === 'word',
+/* the note goes when the clip comes in (unless it was there and would not play) */
+wordNoted: !!cur.id && s.quietWord === cur.id && (wordNow !== 'in' || s.wordWhy === 'mute'),
+wordNote: noteOf(wordNow === 'in' ? 'failed' : wordNow),
+wordNoteInk: wordNow === 'coming' ? '#5A6382' : '#B02A63',
+/* the open word's clip is a voice model's: its card says so, beside the meaning and under the speaker */
+wordSynth: !!C && C.synth(wordKey),
+wordLoading: wordNow === 'coming',
 writeLine,
 writeLetters,
 writeEnd,

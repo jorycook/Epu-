@@ -1,10 +1,10 @@
 {
  "n": 3,
  "gn": "",
- "es": "¿Cómo estás? Predicados chendales",
+ "es": "¿Cómo estás?",
  "days": {
   "1": {
-   "title": "che-/nde- para estados y cualidades (sin «estar»)",
+   "title": "Decir cómo estás: che-, nde-, i-",
    "grammar": {
     "points": [
      {
@@ -655,7 +655,7 @@
    }
   },
   "2": {
-   "title": "Areal «yo hago» vs. chendal «a mí me pasa»",
+   "title": "Yo hago o me pasa: a- o che-",
    "grammar": {
     "points": [
      {
@@ -1290,7 +1290,7 @@
    }
   },
   "3": {
-   "title": "Oración nominal sin «ser»",
+   "title": "Decir qué sos, sin «ser»",
    "grammar": {
     "points": [
      {
@@ -1949,7 +1949,7 @@
    }
   },
   "4": {
-   "title": "Sí/no con -pa y piko; respuestas",
+   "title": "Preguntar con piko, decir sí o no",
    "grammar": {
     "points": [
      {
@@ -2633,7 +2633,7 @@
    }
   },
   "5": {
-   "title": "Acento: palabra aguda por defecto y tilde",
+   "title": "Cuándo va la tilde y cuándo no",
    "grammar": {
     "points": [
      {
