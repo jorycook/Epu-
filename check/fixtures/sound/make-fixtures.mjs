@@ -2,11 +2,13 @@
 // tone per clip key, each a different pitch, as 8 kHz mono WAV, named by the keys of sound/A1/manifest.json: the whole
 // of A1 unit 1 day 1 (words, pairs, examples, the listening lines), the first speaking pair and sign, the first
 // placement line and the exam's first item (its own lines and the line a lesson says already, so the item is put
-// together whole). Seven of them are other takes, for what make-sound.mjs must get right (TAKES below): a 1 s mono
+// together whole). Eight of them are other takes, for what make-sound.mjs must get right (TAKES below): a 1 s mono
 // take, the same take in stereo and with the voice on one channel only (the three must come out equally loud), a take
 // that is silence all along (it must make no clip), a fifth of a second of the same note as the 1 s take (a short
-// word must come out as loud as a long one), a take that peaks like a voice (its MP3 peaks higher than its WAV: the
-// clip must hold the peak ceiling all the same) and a take kept as FLAC, as the synthetic voice's are in
+// word must come out as loud as a long one), a take that peaks like a voice all along (its MP3 peaks higher than its
+// WAV: the clip must hold the peak ceiling all the same, and the limiter cannot bring it to the target, so the run
+// must name it), a take with one loud moment (the limiter must turn that moment down and bring the take to the
+// target) and a take kept as FLAC, as the synthetic voice's are in
 // sound/A1/voz. They stand in for a voice and are never shipped: the test builds them into epua-app/dist-sound, never
 // into docs/. Run it again whenever sound/A1/manifest.json is made again (the keys a recording is named by can
 // change). Usage: node check/fixtures/sound/make-fixtures.mjs   (needs ffmpeg)
@@ -31,18 +33,24 @@ const rows = recorded.filter(WANT).concat(recorded.filter((r) => !WANT(r) && exa
 const LONG = ['-f', 'lavfi', '-i', 'sine=frequency=440:duration=1:sample_rate=8000'];
 const SHAPE = 'afade=t=in:d=0.02,afade=t=out:st=0.94:d=0.06,volume=0.5';
 /* a take that peaks like a voice: sixty harmonics of a low note nearly in phase, a train of sharp pulses 18 dB over
-   its own loudness. Brought to the loudness target it would pass the peak ceiling, so the ceiling sets its level; and
-   its MP3 at 32 kb/s peaks higher than the WAV it is made from (the clip came out at -0.8 dBTP for a ceiling of -1.5
-   before make-sound.mjs took the peak from the decoded MP3) */
+   its own loudness. Brought to the loudness target it would pass the peak ceiling, and since every pulse is as high
+   as the next the limiter has no single peak to turn down: the ceiling sets its level, the take stays under the
+   target and the run names it. Its MP3 at 32 kb/s peaks higher than the WAV it is made from (the clip came out at
+   -0.8 dBTP for a ceiling of -1.5 before make-sound.mjs took the peak from the decoded MP3) */
 const PULSES = (() => {
   const terms = [];
   for (let h = 1; h <= 60; h++) terms.push(`cos(2*PI*${h * 97}*t+${(0.2 * Math.PI * Math.sin(h * h * 1.7)).toFixed(4)})`);
   return ['-f', 'lavfi', '-i', `aevalsrc='(${terms.join('+')})/60':s=16000:d=1`, '-af', SHAPE, '-ac', '1'];
 })();
+/* a take with one loud moment: a second of a soft note that swells to five times its height for a fiftieth of a
+   second, like a word with one loud syllable. Its peak stands 16 dB over its loudness: one gain would stop at the
+   ceiling 2 LU under the target; the limiter turns the swell down by some 2 dB and the take reaches the target */
+const SWELL = ['-f', 'lavfi', '-i', "aevalsrc='(0.1+0.4*exp(-((t-0.5)/0.008)*((t-0.5)/0.008)))*sin(2*PI*440*t)':s=16000:d=1", '-af', 'afade=t=in:d=0.02,afade=t=out:st=0.94:d=0.06', '-ac', '1'];
 const TAKES = {
   'a1u01d1.w.maitei': [...LONG, '-af', SHAPE, '-ac', '1'],                                  /* mono, the reference */
   'a1u01d1.w.jaryi': ['-f', 'lavfi', '-i', 'sine=frequency=440:duration=0.22:sample_rate=8000', '-af', 'afade=t=in:d=0.02,afade=t=out:st=0.16:d=0.06,volume=0.5', '-ac', '1'],   /* the same note for a fifth of a second: a short word */
-  'a1u01d1.w.karai': PULSES,                                                                 /* peaks like a voice: the ceiling sets its level */
+  'a1u01d1.w.karai': PULSES,                                                                 /* peaks like a voice all along: the ceiling sets its level */
+  'a1u01d1.p1.x1': SWELL,                                                                    /* one loud moment: the limiter turns it down */
   'a1u01d1.w.pyhareve': [...LONG, '-af', `${SHAPE},pan=stereo|c0=c0|c1=c0`],                /* stereo, the voice on both channels */
   'a1u01d1.w.kaaru': [...LONG, '-af', `${SHAPE},pan=stereo|c0=c0|c1=0*c0`],                 /* stereo, the voice on the left channel only */
   'a1u01d1.w.ipora': ['-f', 'lavfi', '-i', 'sine=frequency=120:duration=1:sample_rate=8000', '-af', 'volume=0.008', '-ac', '1'],   /* silent: a hum at -60 dB, under the trim threshold all along */

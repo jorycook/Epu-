@@ -1,5 +1,5 @@
 {
- "made": "2026-11-16",
+ "made": "2026-11-17",
  "with": {
   "torch": "2.15.0+cu132",
   "transformers": "5.22.2",
@@ -11,19 +11,19 @@
  },
  "totals": {
   "ivan gn words": {
-   "clips": 182,
-   "cer": 0.0592,
-   "heard_exactly": 133
+   "clips": 180,
+   "cer": 0.0595,
+   "heard_exactly": 131
   },
   "ivan gn sentences": {
    "clips": 230,
-   "cer": 0.0936,
+   "cer": 0.0926,
    "heard_exactly": 56
   },
   "mms gn words": {
-   "clips": 182,
-   "cer": 0.0463,
-   "heard_exactly": 140
+   "clips": 180,
+   "cer": 0.0483,
+   "heard_exactly": 136
   },
   "mms es words": {
    "clips": 4,
@@ -32,8 +32,8 @@
   },
   "mms gn sentences": {
    "clips": 230,
-   "cer": 0.0334,
-   "heard_exactly": 134
+   "cer": 0.0353,
+   "heard_exactly": 132
   },
   "mms es sentences": {
    "clips": 24,
@@ -47,7 +47,7 @@
   "a1u01d3.r1.l3.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «cheparaguaiguaa» / «che pára guaiguaa», 1 + 1 letters off, against «cheparaguaivua» / «che paraguaigua», 1 + 0",
   "a1u01d3.r1.l4.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «tembimbo'epyahu hera karína» / «temimbo'e pyahu héra carína», 1 + 0 letters off, against «temi mbo'epyahu hera karína» / «temimbo'e pyahu héra carína», 0 + 0",
   "a1u01d4.r1.l3.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «ndaháguirimĩ kesu ha mandiko» / «nahániri oĩ kesus ha mandi'o», 5 + 1 letters off, against «nahágniriĩkesu a mandi'o» / «nahániri oĩ kesu ha mandi'o», 3 + 0",
-  "a1u01d4.r1.l4.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «yboypa ovaléko kesuu» / «mboýpa ovaleko kesu», 2 + 0 letters off, against «mboypa ovaléko kesuu» / «mboýpa ovale ko kesu», 1 + 0",
+  "a1u01d4.r1.l4.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «mboyypa ova léko kesuu» / «mboýpa ovaléco jesús», 2 + 2 letters off, against «mboypa ova léko kesu» / «mboýpa ovaléko kesús», 0 + 1",
   "a1u02d3.s2a": "left out by --verify: the other word of its pair, «ñúme», was left out",
   "a1u02d3.r1.l2.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «amba'apo ko ukuépea nde» / «amba'apo kokuépe ha nde», 2 + 0 letters off, against «amba'apo kokuépea nde» / «amba'apo kokuépe ha nde», 1 + 0",
   "a1u02d3.r1.l3.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «che ambapo mbo'ehaoópe itauguápe» / «che amba'apo mbo'ehaó pe itaguápe», 3 + 1 letters off, against «che amba'apo mbo'ehaope itauguápe» / «che amba'apo mbo'ehaópe itau guápe», 0 + 0",
@@ -65,15 +65,13 @@
   "a1u04d1.r1.l6.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «mba'éichapa héra ndememby» / «mba'éichapa héra ne memby», 1 + 0 letters off, against «mba'éichapa héra ne memby» / «mba'éichapa héra ne memby», 0 + 0",
   "a1u04d1.r1.l7.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «hherahenáro» / «héra henáro», 1 + 0 letters off, against «herahenaro» / «héra henáro», 0 + 0",
   "a1u04d3.r1.l1.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «pejagua ha iporã hoan» / «pe jagua ha iporã juan», 3 + 3 letters off, against «pejagua iporã huan» / «pe jagua iporã juan», 0 + 1",
-  "a1u04d3.r1.l2.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «he a 'amo kavaju ituicha» / «he ha amo kavaju ituicha», 3 + 1 letters off, against «he a amo kavaju ituicha» / «he ha amo kavaju ituicha», 2 + 1",
   "a1u04d5.r1.l2.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «he'e romi» / «he'e uĩ», 3 + 2 letters off, against «he'eromi» / «hee oi», 3 + 0",
   "a1u04d5.r1.l3.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «mboyy pa ovaye» / «mboýpa ovayẽ», 2 + 1 letters off, against «mboypa ova le» / «mboýpa ovaye», 0 + 1",
   "a1u04d5.r1.l5.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «mokói ke su 'aguje» / «mokõi jesús águy jee», 2 + 3 letters off, against «mokõi kesu aguyje» / «mokõi jesús aguyje», 0 + 2"
  },
  "stays_as_a_line": [
   "a1u02d1.r1.l5 «Remba'apo.» is heard with wrong letters by every recogniser («reimba'apo» / «rembápo») and stays, as a line of a dialogue",
-  "a1u02d1.r1.l7 «Omba'apo.» is heard with wrong letters by every recogniser («ombaapo» / «ombáapo») and stays, as a line of a dialogue",
-  "a1u03d4.p2.x1.l2 «Héẽ, upéicha.» is heard with wrong letters by every recogniser («he upéicha» / «hẽ upéicha») and stays, as a line of a dialogue"
+  "a1u02d1.r1.l7 «Omba'apo.» is heard with wrong letters by every recogniser («ombaapo» / «ombáapo») and stays, as a line of a dialogue"
  ],
  "pair_marks_unheard": [
   "a1u01d4.s1b «kái»: no recogniser writes its acute («kai» / «kai»)",
@@ -2924,59 +2922,6 @@
    "letters_wrong": ""
   },
   {
-   "key": "a1u01d4.p2.x3",
-   "voice": "F",
-   "lang": "gn",
-   "slow": false,
-   "text": "Mboýpa ovale ko kesu?",
-   "said": "mboýpa ovale ko kesu",
-   "sentences": 1,
-   "seconds": 1.89,
-   "peak": 0.933,
-   "seed": 1903170682,
-   "take": 2,
-   "semitones": 0.0,
-   "hz": 152,
-   "cut": "pause",
-   "tried": [
-    {
-     "seed": 1903162763,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 1.57,
-     "heard_ivan": "Mboypa ova léko kechu.",
-     "heard_mms": "mboýpa ovale ko kesú",
-     "cer_ivan": 0.3,
-     "cer_mms": 0.05
-    },
-    {
-     "seed": 1903170682,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 1.89,
-     "heard_ivan": "Mboypa ovaléko kesuu.",
-     "heard_mms": "mboýpa ovale ko kesu",
-     "cer_ivan": 0.2,
-     "cer_mms": 0.0
-    },
-    {
-     "seed": 1903178601,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 1.72,
-     "heard_ivan": "Mboypa ova rekokesuu.",
-     "heard_mms": "mboy pa'óvareko kesú",
-     "cer_ivan": 0.3,
-     "cer_mms": 0.35
-    }
-   ],
-   "heard_ivan": "Mboypa ovaléko kesuu.",
-   "cer_ivan": 0.2,
-   "heard_mms": "mboýpa ovale ko kesu",
-   "cer_mms": 0.0,
-   "letters_wrong": "ivan"
-  },
-  {
    "key": "a1u01d4.w.chipa",
    "voice": "F",
    "lang": "gn",
@@ -4845,59 +4790,6 @@
    "letters_wrong": ""
   },
   {
-   "key": "a1u02d1.w.aju",
-   "voice": "F",
-   "lang": "gn",
-   "slow": false,
-   "text": "aju",
-   "said": "aju",
-   "sentences": 1,
-   "seconds": 0.47,
-   "peak": 0.901,
-   "seed": 783854404,
-   "take": 2,
-   "semitones": 0.0,
-   "hz": 160,
-   "cut": "pause",
-   "tried": [
-    {
-     "seed": 783846485,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 0.43,
-     "heard_ivan": "Adu",
-     "heard_mms": "adu",
-     "cer_ivan": 0.333,
-     "cer_mms": 0.333
-    },
-    {
-     "seed": 783854404,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 0.47,
-     "heard_ivan": "Aju.",
-     "heard_mms": "adu",
-     "cer_ivan": 0.0,
-     "cer_mms": 0.333
-    },
-    {
-     "seed": 783862323,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 0.48,
-     "heard_ivan": "Aetu.",
-     "heard_mms": "adu",
-     "cer_ivan": 0.667,
-     "cer_mms": 0.333
-    }
-   ],
-   "heard_ivan": "Aju.",
-   "cer_ivan": 0.0,
-   "heard_mms": "adu",
-   "cer_mms": 0.333,
-   "letters_wrong": "mms"
-  },
-  {
    "key": "a1u02d1.w.aha",
    "voice": "F",
    "lang": "gn",
@@ -6320,59 +6212,6 @@
    "left_out": "named in silent.json"
   },
   {
-   "key": "a1u02d3.p1.x0",
-   "voice": "F",
-   "lang": "gn",
-   "slow": false,
-   "text": "Che amba'apo mbo'ehaópe.",
-   "said": "che amba'apo mbo'ehaópe",
-   "sentences": 1,
-   "seconds": 1.35,
-   "peak": 0.91,
-   "seed": 116984212,
-   "take": 1,
-   "semitones": 0.0,
-   "hz": 137,
-   "cut": "pause",
-   "tried": [
-    {
-     "seed": 116984212,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 1.35,
-     "heard_ivan": "Che amba'apo mboeha ópe.",
-     "heard_mms": "che amba'apo mbo'ehaúpe",
-     "cer_ivan": 0.087,
-     "cer_mms": 0.043
-    },
-    {
-     "seed": 116992131,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 1.38,
-     "heard_ivan": "Che amba'apo mboeha ope.",
-     "heard_mms": "che amba'apo mbo'eha upe",
-     "cer_ivan": 0.13,
-     "cer_mms": 0.087
-    },
-    {
-     "seed": 117000050,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 1.56,
-     "heard_ivan": "Che amba'apo mboeha ópe.",
-     "heard_mms": "che amba'apo mbo'ehaúpe",
-     "cer_ivan": 0.087,
-     "cer_mms": 0.043
-    }
-   ],
-   "heard_ivan": "Che amba'apo mboeha ópe.",
-   "cer_ivan": 0.087,
-   "heard_mms": "che amba'apo mbo'ehaúpe",
-   "cer_mms": 0.043,
-   "letters_wrong": "ivan, mms"
-  },
-  {
    "key": "a1u02d3.p1.x1",
    "voice": "F",
    "lang": "gn",
@@ -6999,59 +6838,6 @@
    "heard_ivan": "Ysyrýpe.",
    "cer_ivan": 0.0,
    "heard_mms": "ysyrýpe",
-   "cer_mms": 0.0,
-   "letters_wrong": ""
-  },
-  {
-   "key": "a1u02d3.w.tetame",
-   "voice": "F",
-   "lang": "gn",
-   "slow": false,
-   "text": "tetãme",
-   "said": "tetãme",
-   "sentences": 1,
-   "seconds": 0.84,
-   "peak": 0.621,
-   "seed": 237390613,
-   "take": 1,
-   "semitones": 0.0,
-   "hz": 126,
-   "cut": "closure",
-   "tried": [
-    {
-     "seed": 237390613,
-     "cut": "closure",
-     "semitones": 0.0,
-     "seconds": 0.84,
-     "heard_ivan": "Tetame.",
-     "heard_mms": "tetãme",
-     "cer_ivan": 0.167,
-     "cer_mms": 0.0
-    },
-    {
-     "seed": 237390613,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 0.64,
-     "heard_ivan": "Tetame.",
-     "heard_mms": "tetãme",
-     "cer_ivan": 0.167,
-     "cer_mms": 0.0
-    },
-    {
-     "seed": 237398532,
-     "cut": "closure",
-     "semitones": 0.0,
-     "seconds": 0.85,
-     "heard_ivan": "Tetame.",
-     "heard_mms": "tetãme",
-     "cer_ivan": 0.167,
-     "cer_mms": 0.0
-    }
-   ],
-   "heard_ivan": "Tetame.",
-   "cer_ivan": 0.167,
-   "heard_mms": "tetãme",
    "cer_mms": 0.0,
    "letters_wrong": ""
   },
@@ -8495,39 +8281,6 @@
    "letters_wrong": ""
   },
   {
-   "key": "a1u02d5.p1.x3",
-   "voice": "M",
-   "lang": "gn",
-   "slow": false,
-   "text": "oky.",
-   "said": "oky",
-   "sentences": 1,
-   "seconds": 0.49,
-   "peak": 0.691,
-   "seed": 2082499860,
-   "take": 1,
-   "semitones": -2.0,
-   "hz": 120,
-   "cut": "pause",
-   "tried": [
-    {
-     "seed": 2082499860,
-     "cut": "pause",
-     "semitones": -2.0,
-     "seconds": 0.49,
-     "heard_ivan": "Oky.",
-     "heard_mms": "oky",
-     "cer_ivan": 0.0,
-     "cer_mms": 0.0
-    }
-   ],
-   "heard_ivan": "Oky.",
-   "cer_ivan": 0.0,
-   "heard_mms": "oky",
-   "cer_mms": 0.0,
-   "letters_wrong": ""
-  },
-  {
    "key": "a1u02d5.p2.x0",
    "voice": "F",
    "lang": "gn",
@@ -8683,39 +8436,6 @@
    "heard_ivan": "Na mba'apóiko pyhare.",
    "cer_ivan": 0.1,
    "heard_mms": "namba'apói ko pyhare",
-   "cer_mms": 0.0,
-   "letters_wrong": ""
-  },
-  {
-   "key": "a1u02d5.p2.x3",
-   "voice": "F",
-   "lang": "gn",
-   "slow": false,
-   "text": "oky.",
-   "said": "oky",
-   "sentences": 1,
-   "seconds": 0.47,
-   "peak": 0.816,
-   "seed": 1855308538,
-   "take": 1,
-   "semitones": 0.0,
-   "hz": 140,
-   "cut": "pause",
-   "tried": [
-    {
-     "seed": 1855308538,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 0.47,
-     "heard_ivan": "Oky.",
-     "heard_mms": "oky",
-     "cer_ivan": 0.0,
-     "cer_mms": 0.0
-    }
-   ],
-   "heard_ivan": "Oky.",
-   "cer_ivan": 0.0,
-   "heard_mms": "oky",
    "cer_mms": 0.0,
    "letters_wrong": ""
   },
@@ -8989,59 +8709,6 @@
    "heard_mms": "mbarakaja",
    "cer_mms": 0.0,
    "letters_wrong": ""
-  },
-  {
-   "key": "a1u02d5.w.aguyjemante",
-   "voice": "F",
-   "lang": "gn",
-   "slow": false,
-   "text": "Aguyje mante",
-   "said": "aguyje mante",
-   "sentences": 1,
-   "seconds": 1.24,
-   "peak": 0.893,
-   "seed": 1386407277,
-   "take": 3,
-   "semitones": 0.0,
-   "hz": 140,
-   "cut": "pause",
-   "tried": [
-    {
-     "seed": 1386391439,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 1.37,
-     "heard_ivan": "avuje mante.",
-     "heard_mms": "aguuje mante",
-     "cer_ivan": 0.167,
-     "cer_mms": 0.083
-    },
-    {
-     "seed": 1386399358,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 1.25,
-     "heard_ivan": "Aguje mante.",
-     "heard_mms": "aguu ije mánte",
-     "cer_ivan": 0.083,
-     "cer_mms": 0.333
-    },
-    {
-     "seed": 1386407277,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 1.24,
-     "heard_ivan": "agu je mante.",
-     "heard_mms": "aguyje mante",
-     "cer_ivan": 0.083,
-     "cer_mms": 0.0
-    }
-   ],
-   "heard_ivan": "agu je mante.",
-   "cer_ivan": 0.083,
-   "heard_mms": "aguyje mante",
-   "cer_mms": 0.0,
-   "letters_wrong": "ivan"
   },
   {
    "key": "a1u02d5.r1.l3",
@@ -9413,7 +9080,8 @@
    "cer_ivan": 0.208,
    "heard_mms": "he che kane'õ ha che ro'y",
    "cer_mms": 0.167,
-   "letters_wrong": "ivan, mms"
+   "letters_wrong": "ivan, mms",
+   "left_out": "named in silent.json"
   },
   {
    "key": "a1u03d1.p2.x0",
@@ -10672,59 +10340,6 @@
    "letters_wrong": ""
   },
   {
-   "key": "a1u03d2.w.koaga",
-   "voice": "F",
-   "lang": "gn",
-   "slow": false,
-   "text": "ko'ág̃a",
-   "said": "ko'ágã",
-   "sentences": 1,
-   "seconds": 0.6,
-   "peak": 0.787,
-   "seed": 1817245385,
-   "take": 1,
-   "semitones": 0.0,
-   "hz": 99,
-   "cut": "closure",
-   "tried": [
-    {
-     "seed": 1817245385,
-     "cut": "closure",
-     "semitones": 0.0,
-     "seconds": 0.6,
-     "heard_ivan": "Ko'ág̃a.",
-     "heard_mms": "ko'ána",
-     "cer_ivan": 0.0,
-     "cer_mms": 0.333
-    },
-    {
-     "seed": 1817245385,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 0.58,
-     "heard_ivan": "Ko'ág̃a.",
-     "heard_mms": "ko'ána",
-     "cer_ivan": 0.0,
-     "cer_mms": 0.333
-    },
-    {
-     "seed": 1817253304,
-     "cut": "closure",
-     "semitones": 0.0,
-     "seconds": 0.62,
-     "heard_ivan": "Ko'ána.",
-     "heard_mms": "ko'ana",
-     "cer_ivan": 0.333,
-     "cer_mms": 0.5
-    }
-   ],
-   "heard_ivan": "Ko'ág̃a.",
-   "cer_ivan": 0.0,
-   "heard_mms": "ko'ána",
-   "cer_mms": 0.333,
-   "letters_wrong": "mms"
-  },
-  {
    "key": "a1u03d2.w.ake",
    "voice": "F",
    "lang": "gn",
@@ -10967,7 +10582,8 @@
    "cer_ivan": 0.118,
    "heard_mms": "che ru chokokue ha che sy ñemohára",
    "cer_mms": 0.029,
-   "letters_wrong": "ivan, mms"
+   "letters_wrong": "ivan, mms",
+   "left_out": "named in silent.json"
   },
   {
    "key": "a1u03d3.p2.x1.l0",
@@ -11001,59 +10617,6 @@
    "heard_mms": "mávapa ha'e",
    "cer_mms": 0.0,
    "letters_wrong": ""
-  },
-  {
-   "key": "a1u03d3.p2.x1.l1",
-   "voice": "F",
-   "lang": "gn",
-   "slow": false,
-   "text": "Ha'e che angirũ.",
-   "said": "ha'e che angirũ",
-   "sentences": 1,
-   "seconds": 1.25,
-   "peak": 0.648,
-   "seed": 676087333,
-   "take": 1,
-   "semitones": 2.0,
-   "hz": 123,
-   "cut": "pause",
-   "tried": [
-    {
-     "seed": 676087333,
-     "cut": "pause",
-     "semitones": 2.0,
-     "seconds": 1.25,
-     "heard_ivan": "Ha'éche andiro.",
-     "heard_mms": "ha'e che angiro",
-     "cer_ivan": 0.267,
-     "cer_mms": 0.067
-    },
-    {
-     "seed": 676095252,
-     "cut": "pause",
-     "semitones": 2.0,
-     "seconds": 1.24,
-     "heard_ivan": "Ha'eche andiru.",
-     "heard_mms": "ha'e che andiru",
-     "cer_ivan": 0.2,
-     "cer_mms": 0.133
-    },
-    {
-     "seed": 676103171,
-     "cut": "pause",
-     "semitones": 2.0,
-     "seconds": 1.09,
-     "heard_ivan": "Ha'éche andiro.",
-     "heard_mms": "ha'e che angivo",
-     "cer_ivan": 0.267,
-     "cer_mms": 0.133
-    }
-   ],
-   "heard_ivan": "Ha'éche andiro.",
-   "cer_ivan": 0.267,
-   "heard_mms": "ha'e che angiro",
-   "cer_mms": 0.067,
-   "letters_wrong": "ivan, mms"
   },
   {
    "key": "a1u03d3.p2.x2",
@@ -11333,59 +10896,6 @@
    "heard_mms": "mitã rusu",
    "cer_mms": 0.125,
    "letters_wrong": ""
-  },
-  {
-   "key": "a1u03d3.w.mitakuna",
-   "voice": "F",
-   "lang": "gn",
-   "slow": false,
-   "text": "mitãkuña",
-   "said": "mitãkuña",
-   "sentences": 1,
-   "seconds": 0.87,
-   "peak": 0.894,
-   "seed": 1455368348,
-   "take": 1,
-   "semitones": 0.0,
-   "hz": 137,
-   "cut": "pause",
-   "tried": [
-    {
-     "seed": 1455368348,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 0.87,
-     "heard_ivan": "Mitáku ñae.",
-     "heard_mms": "mitãkuña",
-     "cer_ivan": 0.375,
-     "cer_mms": 0.0
-    },
-    {
-     "seed": 1455376267,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 0.77,
-     "heard_ivan": "Mitaku ñaẽ.",
-     "heard_mms": "mitakuña",
-     "cer_ivan": 0.375,
-     "cer_mms": 0.125
-    },
-    {
-     "seed": 1455384186,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 0.9,
-     "heard_ivan": "Mitaku ña.",
-     "heard_mms": "mitakuña",
-     "cer_ivan": 0.25,
-     "cer_mms": 0.125
-    }
-   ],
-   "heard_ivan": "Mitáku ñae.",
-   "cer_ivan": 0.375,
-   "heard_mms": "mitãkuña",
-   "cer_mms": 0.0,
-   "letters_wrong": "ivan"
   },
   {
    "key": "a1u03d3.w.kunakarai",
@@ -11942,59 +11452,6 @@
    "heard_mms": "añetépa",
    "cer_mms": 0.0,
    "letters_wrong": ""
-  },
-  {
-   "key": "a1u03d4.p2.x1.l2",
-   "voice": "F",
-   "lang": "gn",
-   "slow": false,
-   "text": "Héẽ, upéicha.",
-   "said": "héẽ upéicha",
-   "sentences": 1,
-   "seconds": 1.01,
-   "peak": 0.918,
-   "seed": 1402539238,
-   "take": 1,
-   "semitones": 0.0,
-   "hz": 178,
-   "cut": "pause",
-   "tried": [
-    {
-     "seed": 1402539238,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 1.01,
-     "heard_ivan": "He upéicha.",
-     "heard_mms": "hẽ upéicha",
-     "cer_ivan": 0.182,
-     "cer_mms": 0.091
-    },
-    {
-     "seed": 1402547157,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 1.05,
-     "heard_ivan": "He, upéicha.",
-     "heard_mms": "he'ẽ upéicha",
-     "cer_ivan": 0.182,
-     "cer_mms": 0.182
-    },
-    {
-     "seed": 1402555076,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 1.06,
-     "heard_ivan": "He upéicha.",
-     "heard_mms": "he'ẽ upéicha",
-     "cer_ivan": 0.182,
-     "cer_mms": 0.182
-    }
-   ],
-   "heard_ivan": "He upéicha.",
-   "cer_ivan": 0.182,
-   "heard_mms": "hẽ upéicha",
-   "cer_mms": 0.091,
-   "letters_wrong": "ivan, mms"
   },
   {
    "key": "a1u03d4.p2.x2.l0",
@@ -13572,59 +13029,6 @@
    "letters_wrong": ""
   },
   {
-   "key": "a1u04d1.p2.x3",
-   "voice": "F",
-   "lang": "gn",
-   "slow": false,
-   "text": "Mba'éichapa héra ne ramói?",
-   "said": "mba'éichapa héra ne ramói",
-   "sentences": 1,
-   "seconds": 1.54,
-   "peak": 0.934,
-   "seed": 1774231395,
-   "take": 1,
-   "semitones": 0.0,
-   "hz": 118,
-   "cut": "pause",
-   "tried": [
-    {
-     "seed": 1774231395,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 1.54,
-     "heard_ivan": "Mba'eichapa héra nde ramoi.",
-     "heard_mms": "mba'éichapa héra ne ramói",
-     "cer_ivan": 0.12,
-     "cer_mms": 0.0
-    },
-    {
-     "seed": 1774239314,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 1.57,
-     "heard_ivan": "Mba'eichapa héra ne ramoi.",
-     "heard_mms": "mba'eichapa héra ne ramói",
-     "cer_ivan": 0.08,
-     "cer_mms": 0.04
-    },
-    {
-     "seed": 1774247233,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 1.5,
-     "heard_ivan": "Mba'eichapa héra de ramoi.",
-     "heard_mms": "mba'éichapa héra te ramói",
-     "cer_ivan": 0.12,
-     "cer_mms": 0.04
-    }
-   ],
-   "heard_ivan": "Mba'eichapa héra nde ramoi.",
-   "cer_ivan": 0.12,
-   "heard_mms": "mba'éichapa héra ne ramói",
-   "cer_mms": 0.0,
-   "letters_wrong": "ivan"
-  },
-  {
    "key": "a1u04d1.w.memby",
    "voice": "F",
    "lang": "gn",
@@ -14516,59 +13920,6 @@
    "letters_wrong": "ivan"
   },
   {
-   "key": "a1u04d2.w.mitanguera",
-   "voice": "F",
-   "lang": "gn",
-   "slow": false,
-   "text": "mitãnguéra",
-   "said": "mitãnguéra",
-   "sentences": 1,
-   "seconds": 0.82,
-   "peak": 0.875,
-   "seed": 607032548,
-   "take": 3,
-   "semitones": 0.0,
-   "hz": 182,
-   "cut": "pause",
-   "tried": [
-    {
-     "seed": 607016710,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 0.86,
-     "heard_ivan": "Mitãmbuéra.",
-     "heard_mms": "mitã nguéra",
-     "cer_ivan": 0.2,
-     "cer_mms": 0.1
-    },
-    {
-     "seed": 607024629,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 0.9,
-     "heard_ivan": "itamboéra.",
-     "heard_mms": "mitãnguéra",
-     "cer_ivan": 0.5,
-     "cer_mms": 0.0
-    },
-    {
-     "seed": 607032548,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 0.82,
-     "heard_ivan": "itãmbuéra.",
-     "heard_mms": "mitãnguéra",
-     "cer_ivan": 0.3,
-     "cer_mms": 0.0
-    }
-   ],
-   "heard_ivan": "itãmbuéra.",
-   "cer_ivan": 0.3,
-   "heard_mms": "mitãnguéra",
-   "cer_mms": 0.0,
-   "letters_wrong": "ivan"
-  },
-  {
    "key": "a1u04d2.w.mboeharakuera",
    "voice": "F",
    "lang": "gn",
@@ -14673,59 +14024,6 @@
    "heard_mms": "jagua kuéra",
    "cer_mms": 0.1,
    "letters_wrong": ""
-  },
-  {
-   "key": "a1u04d2.w.guyrakuera",
-   "voice": "F",
-   "lang": "gn",
-   "slow": false,
-   "text": "guyrakuéra",
-   "said": "guyrakuéra",
-   "sentences": 1,
-   "seconds": 0.75,
-   "peak": 0.894,
-   "seed": 7199211,
-   "take": 2,
-   "semitones": 0.0,
-   "hz": 144,
-   "cut": "pause",
-   "tried": [
-    {
-     "seed": 7191292,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 0.78,
-     "heard_ivan": "Mbuyrakuéra.",
-     "heard_mms": "mbýra kuéra",
-     "cer_ivan": 0.2,
-     "cer_mms": 0.4
-    },
-    {
-     "seed": 7199211,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 0.75,
-     "heard_ivan": "Muyrakuéra.",
-     "heard_mms": "guyra kuéra",
-     "cer_ivan": 0.1,
-     "cer_mms": 0.1
-    },
-    {
-     "seed": 7207130,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 0.74,
-     "heard_ivan": "Mbuyrakuéra.",
-     "heard_mms": "mbyyra kuéra",
-     "cer_ivan": 0.2,
-     "cer_mms": 0.4
-    }
-   ],
-   "heard_ivan": "Muyrakuéra.",
-   "cer_ivan": 0.1,
-   "heard_mms": "guyra kuéra",
-   "cer_mms": 0.1,
-   "letters_wrong": "ivan"
   },
   {
    "key": "a1u04d2.w.mymbakuera",
@@ -15659,59 +14957,6 @@
    "heard_mms": "pe jagua iporã juan",
    "cer_mms": 0.053,
    "letters_wrong": "mms"
-  },
-  {
-   "key": "a1u04d3.r1.l2",
-   "voice": "M",
-   "lang": "gn",
-   "slow": false,
-   "text": "Héẽ. Ha amo kavaju ituicha.",
-   "said": "héẽ ha amo kavaju ituicha",
-   "sentences": 2,
-   "seconds": 2.54,
-   "peak": 0.808,
-   "seed": 1334031350,
-   "take": 2,
-   "semitones": -2.0,
-   "hz": 119,
-   "cut": "pause",
-   "tried": [
-    {
-     "seed": 1334023431,
-     "cut": "pause",
-     "semitones": -2.0,
-     "seconds": 2.45,
-     "heard_ivan": "He, a amo kavaju ituicha.",
-     "heard_mms": "he ha amo kavaju itúicha",
-     "cer_ivan": 0.12,
-     "cer_mms": 0.12
-    },
-    {
-     "seed": 1334031350,
-     "cut": "pause",
-     "semitones": -2.0,
-     "seconds": 2.54,
-     "heard_ivan": "He, a amo kavaju ituicha.",
-     "heard_mms": "he ha amo kavaju ituicha",
-     "cer_ivan": 0.12,
-     "cer_mms": 0.08
-    },
-    {
-     "seed": 1334039269,
-     "cut": "pause",
-     "semitones": -2.0,
-     "seconds": 2.64,
-     "heard_ivan": "He, a hamokavaju ituicha.",
-     "heard_mms": "he ha hamo kavaju ituicha",
-     "cer_ivan": 0.2,
-     "cer_mms": 0.12
-    }
-   ],
-   "heard_ivan": "He, a amo kavaju ituicha.",
-   "cer_ivan": 0.12,
-   "heard_mms": "he ha amo kavaju ituicha",
-   "cer_mms": 0.08,
-   "letters_wrong": "ivan, mms"
   },
   {
    "key": "a1u04d3.r1.l3",
@@ -19193,62 +18438,6 @@
    "heard_as_partner": ""
   },
   {
-   "key": "a1u03d3.s1a",
-   "voice": "F",
-   "lang": "gn",
-   "slow": false,
-   "text": "ñu",
-   "said": "ñu",
-   "sentences": 1,
-   "seconds": 0.35,
-   "peak": 0.414,
-   "seed": 1234367535,
-   "take": 1,
-   "semitones": 0.0,
-   "hz": 155,
-   "cut": "pause",
-   "tried": [
-    {
-     "seed": 1234367535,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 0.35,
-     "heard_ivan": "Iñu.",
-     "heard_mms": "ñu",
-     "cer_ivan": 0.5,
-     "cer_mms": 0.0
-    },
-    {
-     "seed": 1234375454,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 0.32,
-     "heard_ivan": "u.",
-     "heard_mms": "ñu",
-     "cer_ivan": 0.5,
-     "cer_mms": 0.0
-    },
-    {
-     "seed": 1234383373,
-     "cut": "pause",
-     "semitones": 0.0,
-     "seconds": 0.31,
-     "heard_ivan": "Mu.",
-     "heard_mms": "iñu",
-     "cer_ivan": 0.5,
-     "cer_mms": 0.5
-    }
-   ],
-   "heard_ivan": "Iñu.",
-   "cer_ivan": 0.5,
-   "heard_mms": "ñu",
-   "cer_mms": 0.0,
-   "letters_wrong": "ivan",
-   "partner": "ñúme",
-   "heard_as_partner": "",
-   "recorded_as": "a1u02d3.s2a"
-  },
-  {
    "key": "a1u01d1.p1.x1",
    "voice": "F",
    "lang": "gn",
@@ -19417,7 +18606,8 @@
    "cer_ivan": 0.188,
    "heard_mms": "che réra moisés che ahentinagua",
    "cer_mms": 0.031,
-   "letters_wrong": "ivan, mms"
+   "letters_wrong": "ivan, mms",
+   "left_out": "named in silent.json"
   },
   {
    "key": "a1u01d3.r1.l2",
@@ -21514,43 +20704,6 @@
    "left_out": "left out by --verify: the slow take is heard worse than the normal take of the same line: «ndaháguirimĩ kesu ha mandiko» / «nahániri oĩ kesus ha mandi'o», 5 + 1 letters off, against «nahágniriĩkesu a mandi'o» / «nahániri oĩ kesu ha mandi'o», 3 + 0"
   },
   {
-   "key": "a1u01d4.r1.l4.slow",
-   "voice": "F",
-   "lang": "gn",
-   "slow": true,
-   "text": "Mboýpa ovale ko kesu?",
-   "said": "mboýpa ovale ko kesu",
-   "sentences": 1,
-   "seconds": 2.21,
-   "peak": 0.864,
-   "seed": 1903170682,
-   "take": 1,
-   "semitones": 0.0,
-   "hz": 162,
-   "cut": "pause",
-   "rate": 0.8,
-   "slow_ratio": 1.15,
-   "tried": [
-    {
-     "seed": 1903170682,
-     "cut": "pause",
-     "rate": 0.8,
-     "semitones": 0.0,
-     "seconds": 2.21,
-     "heard_ivan": "Yboypa ovaléko kesuu.",
-     "heard_mms": "mboýpa ovaleko kesu",
-     "cer_ivan": 0.25,
-     "cer_mms": 0.05
-    }
-   ],
-   "heard_ivan": "Yboypa ovaléko kesuu.",
-   "cer_ivan": 0.25,
-   "heard_mms": "mboýpa ovaleko kesu",
-   "cer_mms": 0.05,
-   "letters_wrong": "ivan",
-   "left_out": "left out by --verify: the slow take is heard worse than the normal take of the same line: «yboypa ovaléko kesuu» / «mboýpa ovaleko kesu», 2 + 0 letters off, against «mboypa ovaléko kesuu» / «mboýpa ovale ko kesu», 1 + 0"
-  },
-  {
    "key": "a1u01d4.r1.l5.slow",
    "voice": "M",
    "lang": "es",
@@ -22666,43 +21819,6 @@
    "left_out": "left out by --verify: the slow take is heard worse than the normal take of the same line: «pejagua ha iporã hoan» / «pe jagua ha iporã juan», 3 + 3 letters off, against «pejagua iporã huan» / «pe jagua iporã juan», 0 + 1"
   },
   {
-   "key": "a1u04d3.r1.l2.slow",
-   "voice": "M",
-   "lang": "gn",
-   "slow": true,
-   "text": "Héẽ. Ha amo kavaju ituicha.",
-   "said": "héẽ ha amo kavaju ituicha",
-   "sentences": 2,
-   "seconds": 2.96,
-   "peak": 0.803,
-   "seed": 1334031350,
-   "take": 1,
-   "semitones": -2.0,
-   "hz": 108,
-   "cut": "pause",
-   "rate": 0.8,
-   "slow_ratio": 1.16,
-   "tried": [
-    {
-     "seed": 1334031350,
-     "cut": "pause",
-     "rate": 0.8,
-     "semitones": -2.0,
-     "seconds": 2.96,
-     "heard_ivan": "He a 'amo kavaju ituicha.",
-     "heard_mms": "he ha amo kavaju ituicha",
-     "cer_ivan": 0.16,
-     "cer_mms": 0.08
-    }
-   ],
-   "heard_ivan": "He a 'amo kavaju ituicha.",
-   "cer_ivan": 0.16,
-   "heard_mms": "he ha amo kavaju ituicha",
-   "cer_mms": 0.08,
-   "letters_wrong": "ivan, mms",
-   "left_out": "left out by --verify: the slow take is heard worse than the normal take of the same line: «he a 'amo kavaju ituicha» / «he ha amo kavaju ituicha», 3 + 1 letters off, against «he a amo kavaju ituicha» / «he ha amo kavaju ituicha», 2 + 1"
-  },
-  {
    "key": "a1u04d3.r1.l3.slow",
    "voice": "F",
    "lang": "gn",
@@ -23463,6 +22579,683 @@
    "partner": "porã",
    "heard_as_partner": "",
    "left_out": "a pair of the contrast «nasal»"
+  },
+  {
+   "key": "a1u02d5.p1.x3",
+   "voice": "F",
+   "lang": "gn",
+   "slow": false,
+   "text": "Vicente ndoúi ko ka'aru: oky.",
+   "said": "visénte ndoúi ko ka'aru oky",
+   "sentences": 2,
+   "seconds": 2.57,
+   "peak": 0.901,
+   "seed": 2082515698,
+   "take": 3,
+   "semitones": 0.0,
+   "hz": 140,
+   "cut": "pause",
+   "rate": 1.0,
+   "tried": [
+    {
+     "seed": 2082499860,
+     "cut": "pause",
+     "rate": 1.0,
+     "semitones": 0.0,
+     "seconds": 2.92,
+     "heard_ivan": "Vyisénte ndoikoka'áru oky.",
+     "heard_mms": "grisénte ndoúi ko ka'aru oky",
+     "cer_ivan": 0.185,
+     "cer_mms": 0.074
+    },
+    {
+     "seed": 2082507779,
+     "cut": "pause",
+     "rate": 1.0,
+     "semitones": 0.0,
+     "seconds": 2.88,
+     "heard_ivan": "Pyisénte ndoóikoka'áru oky.",
+     "heard_mms": "ndyisénte ndoúi ko ka'aru oky",
+     "cer_ivan": 0.222,
+     "cer_mms": 0.111
+    },
+    {
+     "seed": 2082515698,
+     "cut": "pause",
+     "rate": 1.0,
+     "semitones": 0.0,
+     "seconds": 2.57,
+     "heard_ivan": "Visénte ndoiko ka'aru oky.",
+     "heard_mms": "myisénte ndoúi ko ka'aru oky",
+     "cer_ivan": 0.074,
+     "cer_mms": 0.074
+    }
+   ],
+   "heard_ivan": "Visénte ndoiko ka'aru oky.",
+   "cer_ivan": 0.074,
+   "heard_mms": "myisénte ndoúi ko ka'aru oky",
+   "cer_mms": 0.074,
+   "letters_wrong": "ivan, mms"
+  },
+  {
+   "key": "a1u02d5.p2.x3",
+   "voice": "F",
+   "lang": "gn",
+   "slow": false,
+   "text": "Che ru nosẽi ógagui: oky.",
+   "said": "che ru nosẽi ógagui oky",
+   "sentences": 2,
+   "seconds": 2.64,
+   "peak": 0.914,
+   "seed": 1855316457,
+   "take": 2,
+   "semitones": 0.0,
+   "hz": 159,
+   "cut": "pause",
+   "rate": 1.0,
+   "tried": [
+    {
+     "seed": 1855308538,
+     "cut": "pause",
+     "rate": 1.0,
+     "semitones": 0.0,
+     "seconds": 2.58,
+     "heard_ivan": "Cheru mosẽi oveguiky.",
+     "heard_mms": "che ru mosẽi óvegui okyy",
+     "cer_ivan": 0.304,
+     "cer_mms": 0.174
+    },
+    {
+     "seed": 1855316457,
+     "cut": "pause",
+     "rate": 1.0,
+     "semitones": 0.0,
+     "seconds": 2.64,
+     "heard_ivan": "Cheru mosẽi ogaguiky.",
+     "heard_mms": "che ru mosẽi ógagui oky",
+     "cer_ivan": 0.217,
+     "cer_mms": 0.043
+    },
+    {
+     "seed": 1855324376,
+     "cut": "pause",
+     "rate": 1.0,
+     "semitones": 0.0,
+     "seconds": 2.37,
+     "heard_ivan": "Cheru mosẽi ovreguiky.",
+     "heard_mms": "che ru mosẽi óvregui oky",
+     "cer_ivan": 0.348,
+     "cer_mms": 0.174
+    }
+   ],
+   "heard_ivan": "Cheru mosẽi ogaguiky.",
+   "cer_ivan": 0.217,
+   "heard_mms": "che ru mosẽi ógagui oky",
+   "cer_mms": 0.043,
+   "letters_wrong": "ivan, mms"
+  },
+  {
+   "key": "a1u02d3.w.tetame",
+   "voice": "F",
+   "lang": "gn",
+   "slow": false,
+   "text": "tetãme",
+   "said": "tetãme",
+   "sentences": 1,
+   "seconds": 0.64,
+   "peak": 0.854,
+   "seed": 237390613,
+   "take": 1,
+   "semitones": 0.0,
+   "hz": 170,
+   "cut": "pause",
+   "rate": 1.0,
+   "tried": [
+    {
+     "seed": 237390613,
+     "cut": "pause",
+     "rate": 1.0,
+     "semitones": 0.0,
+     "seconds": 0.64,
+     "heard_ivan": "Tetame.",
+     "heard_mms": "tetãme",
+     "cer_ivan": 0.167,
+     "cer_mms": 0.0
+    }
+   ],
+   "heard_ivan": "Tetame.",
+   "cer_ivan": 0.167,
+   "heard_mms": "tetãme",
+   "cer_mms": 0.0,
+   "letters_wrong": ""
+  },
+  {
+   "key": "a1u03d2.w.koaga",
+   "voice": "F",
+   "lang": "gn",
+   "slow": false,
+   "text": "ko'ág̃a",
+   "said": "ko'ágã",
+   "sentences": 1,
+   "seconds": 0.58,
+   "peak": 0.825,
+   "seed": 1817245385,
+   "take": 1,
+   "semitones": 0.0,
+   "hz": 174,
+   "cut": "pause",
+   "rate": 1.0,
+   "tried": [
+    {
+     "seed": 1817245385,
+     "cut": "pause",
+     "rate": 1.0,
+     "semitones": 0.0,
+     "seconds": 0.58,
+     "heard_ivan": "Ko'ág̃a.",
+     "heard_mms": "ko'ána",
+     "cer_ivan": 0.0,
+     "cer_mms": 0.333
+    }
+   ],
+   "heard_ivan": "Ko'ág̃a.",
+   "cer_ivan": 0.0,
+   "heard_mms": "ko'ána",
+   "cer_mms": 0.333,
+   "letters_wrong": "mms"
+  },
+  {
+   "key": "a1u01d4.p2.x3",
+   "voice": "F",
+   "lang": "gn",
+   "slow": false,
+   "text": "Mboýpa ovale ko kesu?",
+   "said": "mboýpa ovale ko kesu",
+   "sentences": 1,
+   "seconds": 1.6,
+   "peak": 0.866,
+   "seed": 1903202358,
+   "take": 1,
+   "semitones": 0.0,
+   "hz": 161,
+   "cut": "pause",
+   "rate": 1.0,
+   "tried": [
+    {
+     "seed": 1903202358,
+     "cut": "pause",
+     "rate": 1.0,
+     "semitones": 0.0,
+     "seconds": 1.6,
+     "heard_ivan": "Mboypa ova léko kesu.",
+     "heard_mms": "mboýpa ovaléko kesús",
+     "cer_ivan": 0.2,
+     "cer_mms": 0.2
+    }
+   ],
+   "heard_ivan": "Mboypa ova léko kesu.",
+   "cer_ivan": 0.2,
+   "heard_mms": "mboýpa ovaléko kesús",
+   "cer_mms": 0.2,
+   "letters_wrong": "mms"
+  },
+  {
+   "key": "a1u01d4.r1.l4.slow",
+   "voice": "F",
+   "lang": "gn",
+   "slow": true,
+   "text": "Mboýpa ovale ko kesu?",
+   "said": "mboýpa ovale ko kesu",
+   "sentences": 1,
+   "seconds": 1.96,
+   "peak": 0.884,
+   "seed": 1903202358,
+   "take": 1,
+   "semitones": 0.0,
+   "hz": 160,
+   "cut": "pause",
+   "rate": 0.8,
+   "slow_ratio": 1.23,
+   "tried": [
+    {
+     "seed": 1903202358,
+     "cut": "pause",
+     "rate": 0.8,
+     "semitones": 0.0,
+     "seconds": 1.96,
+     "heard_ivan": "Mboyypa ova léko kesuu.",
+     "heard_mms": "mboýpa ovaléco jesús",
+     "cer_ivan": 0.3,
+     "cer_mms": 0.3
+    }
+   ],
+   "heard_ivan": "Mboyypa ova léko kesuu.",
+   "cer_ivan": 0.3,
+   "heard_mms": "mboýpa ovaléco jesús",
+   "cer_mms": 0.3,
+   "letters_wrong": "ivan, mms",
+   "left_out": "left out by --verify: the slow take is heard worse than the normal take of the same line: «mboyypa ova léko kesuu» / «mboýpa ovaléco jesús», 2 + 2 letters off, against «mboypa ova léko kesu» / «mboýpa ovaléko kesús», 0 + 1"
+  },
+  {
+   "key": "a1u02d1.w.aju",
+   "voice": "F",
+   "lang": "gn",
+   "slow": false,
+   "text": "aju",
+   "said": "aju",
+   "sentences": 1,
+   "seconds": 0.47,
+   "peak": 0.878,
+   "seed": 783901918,
+   "take": 1,
+   "semitones": 0.0,
+   "hz": 163,
+   "cut": "pause",
+   "rate": 1.0,
+   "tried": [
+    {
+     "seed": 783901918,
+     "cut": "pause",
+     "rate": 1.0,
+     "semitones": 0.0,
+     "seconds": 0.47,
+     "heard_ivan": "Aju.",
+     "heard_mms": "adu",
+     "cer_ivan": 0.0,
+     "cer_mms": 0.333
+    }
+   ],
+   "heard_ivan": "Aju.",
+   "cer_ivan": 0.0,
+   "heard_mms": "adu",
+   "cer_mms": 0.333,
+   "letters_wrong": "mms"
+  },
+  {
+   "key": "a1u02d3.p1.x0",
+   "voice": "F",
+   "lang": "gn",
+   "slow": false,
+   "text": "Che amba'apo mbo'ehaópe.",
+   "said": "che amba'apo mbo'ehaópe",
+   "sentences": 1,
+   "seconds": 1.63,
+   "peak": 0.904,
+   "seed": 117023807,
+   "take": 1,
+   "semitones": 0.0,
+   "hz": 144,
+   "cut": "pause",
+   "rate": 1.0,
+   "tried": [
+    {
+     "seed": 117023807,
+     "cut": "pause",
+     "rate": 1.0,
+     "semitones": 0.0,
+     "seconds": 1.63,
+     "heard_ivan": "Che amba'apo mboeha ópe.",
+     "heard_mms": "che amba'apo mbo'ehaópe",
+     "cer_ivan": 0.087,
+     "cer_mms": 0.0
+    }
+   ],
+   "heard_ivan": "Che amba'apo mboeha ópe.",
+   "cer_ivan": 0.087,
+   "heard_mms": "che amba'apo mbo'ehaópe",
+   "cer_mms": 0.0,
+   "letters_wrong": "ivan"
+  },
+  {
+   "key": "a1u02d5.w.aguyjemante",
+   "voice": "F",
+   "lang": "gn",
+   "slow": false,
+   "text": "Aguyje mante",
+   "said": "aguyje mante",
+   "sentences": 1,
+   "seconds": 1.3,
+   "peak": 0.909,
+   "seed": 1386446872,
+   "take": 1,
+   "semitones": 0.0,
+   "hz": 147,
+   "cut": "pause",
+   "rate": 1.0,
+   "tried": [
+    {
+     "seed": 1386446872,
+     "cut": "pause",
+     "rate": 1.0,
+     "semitones": 0.0,
+     "seconds": 1.3,
+     "heard_ivan": "Aguje mante.",
+     "heard_mms": "aguy je mante",
+     "cer_ivan": 0.083,
+     "cer_mms": 0.083
+    }
+   ],
+   "heard_ivan": "Aguje mante.",
+   "cer_ivan": 0.083,
+   "heard_mms": "aguy je mante",
+   "cer_mms": 0.083,
+   "letters_wrong": "ivan"
+  },
+  {
+   "key": "a1u03d3.p2.x1.l1",
+   "voice": "F",
+   "lang": "gn",
+   "slow": false,
+   "text": "Ha'e che angirũ.",
+   "said": "ha'e che angirũ",
+   "sentences": 1,
+   "seconds": 1.24,
+   "peak": 0.502,
+   "seed": 676119009,
+   "take": 1,
+   "semitones": 2.0,
+   "hz": 125,
+   "cut": "pause",
+   "rate": 1.0,
+   "tried": [
+    {
+     "seed": 676119009,
+     "cut": "pause",
+     "rate": 1.0,
+     "semitones": 2.0,
+     "seconds": 1.24,
+     "heard_ivan": "Ha'ẽche angiru.",
+     "heard_mms": "ha'ẽ che angiru",
+     "cer_ivan": 0.2,
+     "cer_mms": 0.133
+    }
+   ],
+   "heard_ivan": "Ha'ẽche angiru.",
+   "cer_ivan": 0.2,
+   "heard_mms": "ha'ẽ che angiru",
+   "cer_mms": 0.133,
+   "letters_wrong": ""
+  },
+  {
+   "key": "a1u03d3.w.mitakuna",
+   "voice": "F",
+   "lang": "gn",
+   "slow": false,
+   "text": "mitãkuña",
+   "said": "mitãkuña",
+   "sentences": 1,
+   "seconds": 0.9,
+   "peak": 0.9,
+   "seed": 1455384186,
+   "take": 1,
+   "semitones": 0.0,
+   "hz": 131,
+   "cut": "pause",
+   "rate": 1.0,
+   "tried": [
+    {
+     "seed": 1455384186,
+     "cut": "pause",
+     "rate": 1.0,
+     "semitones": 0.0,
+     "seconds": 0.9,
+     "heard_ivan": "Mitaku ña.",
+     "heard_mms": "mitakuña",
+     "cer_ivan": 0.25,
+     "cer_mms": 0.125
+    }
+   ],
+   "heard_ivan": "Mitaku ña.",
+   "cer_ivan": 0.25,
+   "heard_mms": "mitakuña",
+   "cer_mms": 0.125,
+   "letters_wrong": ""
+  },
+  {
+   "key": "a1u03d3.s1a",
+   "voice": "F",
+   "lang": "gn",
+   "slow": false,
+   "text": "ñu",
+   "said": "ñu",
+   "sentences": 1,
+   "seconds": 0.33,
+   "peak": 0.459,
+   "seed": 1154002008,
+   "take": 1,
+   "semitones": 0.0,
+   "hz": 161,
+   "cut": "pause",
+   "rate": 1.0,
+   "tried": [
+    {
+     "seed": 1154002008,
+     "cut": "pause",
+     "rate": 1.0,
+     "semitones": 0.0,
+     "seconds": 0.33,
+     "heard_ivan": "Ju.",
+     "heard_mms": "ñu",
+     "cer_ivan": 0.5,
+     "cer_mms": 0.0
+    }
+   ],
+   "heard_ivan": "Ju.",
+   "cer_ivan": 0.5,
+   "heard_mms": "ñu",
+   "cer_mms": 0.0,
+   "letters_wrong": "ivan"
+  },
+  {
+   "key": "a1u03d4.p2.x1.l2",
+   "voice": "F",
+   "lang": "gn",
+   "slow": false,
+   "text": "Héẽ, upéicha.",
+   "said": "héẽ upéicha",
+   "sentences": 1,
+   "seconds": 1.07,
+   "peak": 0.922,
+   "seed": 1402586752,
+   "take": 1,
+   "semitones": 0.0,
+   "hz": 169,
+   "cut": "pause",
+   "rate": 1.0,
+   "tried": [
+    {
+     "seed": 1402586752,
+     "cut": "pause",
+     "rate": 1.0,
+     "semitones": 0.0,
+     "seconds": 1.07,
+     "heard_ivan": "Heẽ upéicha.",
+     "heard_mms": "he'ẽ upéicha",
+     "cer_ivan": 0.091,
+     "cer_mms": 0.182
+    }
+   ],
+   "heard_ivan": "Heẽ upéicha.",
+   "cer_ivan": 0.091,
+   "heard_mms": "he'ẽ upéicha",
+   "cer_mms": 0.182,
+   "letters_wrong": "mms"
+  },
+  {
+   "key": "a1u04d1.p2.x3",
+   "voice": "F",
+   "lang": "gn",
+   "slow": false,
+   "text": "Mba'éichapa héra ne ramói?",
+   "said": "mba'éichapa héra ne ramói",
+   "sentences": 1,
+   "seconds": 1.57,
+   "peak": 0.927,
+   "seed": 1774239314,
+   "take": 1,
+   "semitones": 0.0,
+   "hz": 118,
+   "cut": "pause",
+   "rate": 1.0,
+   "tried": [
+    {
+     "seed": 1774239314,
+     "cut": "pause",
+     "rate": 1.0,
+     "semitones": 0.0,
+     "seconds": 1.57,
+     "heard_ivan": "Mba'eichapa héra ne ramoi.",
+     "heard_mms": "mba'eichapa héra ne ramói",
+     "cer_ivan": 0.08,
+     "cer_mms": 0.04
+    }
+   ],
+   "heard_ivan": "Mba'eichapa héra ne ramoi.",
+   "cer_ivan": 0.08,
+   "heard_mms": "mba'eichapa héra ne ramói",
+   "cer_mms": 0.04,
+   "letters_wrong": ""
+  },
+  {
+   "key": "a1u04d2.w.mitanguera",
+   "voice": "F",
+   "lang": "gn",
+   "slow": false,
+   "text": "mitãnguéra",
+   "said": "mitãnguéra",
+   "sentences": 1,
+   "seconds": 0.96,
+   "peak": 0.897,
+   "seed": 607048386,
+   "take": 1,
+   "semitones": 0.0,
+   "hz": 177,
+   "cut": "pause",
+   "rate": 1.0,
+   "tried": [
+    {
+     "seed": 607048386,
+     "cut": "pause",
+     "rate": 1.0,
+     "semitones": 0.0,
+     "seconds": 0.96,
+     "heard_ivan": "itambuéra.",
+     "heard_mms": "mitã nguéra",
+     "cer_ivan": 0.4,
+     "cer_mms": 0.1
+    }
+   ],
+   "heard_ivan": "itambuéra.",
+   "cer_ivan": 0.4,
+   "heard_mms": "mitã nguéra",
+   "cer_mms": 0.1,
+   "letters_wrong": "ivan"
+  },
+  {
+   "key": "a1u04d2.w.guyrakuera",
+   "voice": "F",
+   "lang": "gn",
+   "slow": false,
+   "text": "guyrakuéra",
+   "said": "guyrakuéra",
+   "sentences": 1,
+   "seconds": 0.74,
+   "peak": 0.919,
+   "seed": 7215049,
+   "take": 1,
+   "semitones": 0.0,
+   "hz": 148,
+   "cut": "pause",
+   "rate": 1.0,
+   "tried": [
+    {
+     "seed": 7215049,
+     "cut": "pause",
+     "rate": 1.0,
+     "semitones": 0.0,
+     "seconds": 0.74,
+     "heard_ivan": "Muyrakuéra.",
+     "heard_mms": "guyra kuéra",
+     "cer_ivan": 0.1,
+     "cer_mms": 0.1
+    }
+   ],
+   "heard_ivan": "Muyrakuéra.",
+   "cer_ivan": 0.1,
+   "heard_mms": "guyra kuéra",
+   "cer_mms": 0.1,
+   "letters_wrong": "ivan"
+  },
+  {
+   "key": "a1u04d3.r1.l2",
+   "voice": "M",
+   "lang": "gn",
+   "slow": false,
+   "text": "Héẽ. Ha amo kavaju ituicha.",
+   "said": "héẽ ha amo kavaju ituicha",
+   "sentences": 2,
+   "seconds": 2.4,
+   "peak": 0.777,
+   "seed": 1334070945,
+   "take": 1,
+   "semitones": -2.0,
+   "hz": 117,
+   "cut": "pause",
+   "rate": 1.0,
+   "tried": [
+    {
+     "seed": 1334070945,
+     "cut": "pause",
+     "rate": 1.0,
+     "semitones": -2.0,
+     "seconds": 2.4,
+     "heard_ivan": "He a amo kavaju ituicha.",
+     "heard_mms": "he'e ha amo kavaju ituicha",
+     "cer_ivan": 0.12,
+     "cer_mms": 0.12
+    }
+   ],
+   "heard_ivan": "He a amo kavaju ituicha.",
+   "cer_ivan": 0.12,
+   "heard_mms": "he'e ha amo kavaju ituicha",
+   "cer_mms": 0.12,
+   "letters_wrong": "ivan, mms"
+  },
+  {
+   "key": "a1u04d3.r1.l2.slow",
+   "voice": "M",
+   "lang": "gn",
+   "slow": true,
+   "text": "Héẽ. Ha amo kavaju ituicha.",
+   "said": "héẽ ha amo kavaju ituicha",
+   "sentences": 2,
+   "seconds": 2.9,
+   "peak": 0.87,
+   "seed": 1334070945,
+   "take": 1,
+   "semitones": -2.0,
+   "hz": 121,
+   "cut": "pause",
+   "rate": 0.8,
+   "slow_ratio": 1.22,
+   "tried": [
+    {
+     "seed": 1334070945,
+     "cut": "pause",
+     "rate": 0.8,
+     "semitones": -2.0,
+     "seconds": 2.9,
+     "heard_ivan": "He a hamokavaju ituicha.",
+     "heard_mms": "hee ha hamo kavaju ituicha",
+     "cer_ivan": 0.2,
+     "cer_mms": 0.12
+    }
+   ],
+   "heard_ivan": "He a hamokavaju ituicha.",
+   "cer_ivan": 0.2,
+   "heard_mms": "hee ha hamo kavaju ituicha",
+   "cer_mms": 0.12,
+   "letters_wrong": "ivan, mms"
   }
  ]
 }

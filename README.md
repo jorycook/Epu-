@@ -333,18 +333,20 @@ reviewers could not settle are listed in `notes/REVIEW-NEEDED.md`, unit by unit.
 
 ## Sound
 
-A1 units 1 to 4 and the extras have sound: 358 clips in seven files (`project/gn-sound-*.js`), 3.7 MB, 10.8 minutes.
+A1 units 1 to 4 and the extras have sound: 355 clips in seven files (`project/gn-sound-*.js`), 3.7 MB, 10.7 minutes.
 **The voice is synthetic**, a stand-in until a person records the course: Meta's MMS-TTS models for Guarani and for
 Spanish, one man's voice for every speaker (the man's lines are the same voice lower), under **CC BY-NC 4.0,
 non-commercial use only**. These clips may not ship in an app that is sold or carries advertising. Nobody has listened
-to them: two speech recognisers heard every take back, and `sound/VOICE.md` is the record of what the voice renders,
-what it does not, and what a native speaker should hear first.
+to them: two speech recognisers heard every take back, and every clip again as the app plays it, decoded from its MP3;
+`sound/VOICE.md` is the record of what the voice renders, what it does not, and what a native speaker should hear
+first.
 
-418 of the 475 keys a screen can ask for have a clip. The other 57 are silent on purpose, because the voice does not
+415 of the 475 keys a screen can ask for have a clip. The other 60 are silent on purpose, because the voice does not
 render what they teach or because a question would be unfair with it: the sound pairs that differ only by a nasal
 vowel, mbo'y / mboy, the pairs of «La r, siempre suave», tetã / tetãme, óga / ogakuéra, twelve words and short clips
-that both recognisers hear wrong, two of the twelve listening lessons (unit 1 day 3, unit 2 day 5), one of the
-placement's three listening items, and the slower version of every listening lesson but one. There, as on the canvas's
+that both recognisers hear wrong, three examples of Teach in which both mishear a word that is silent on its own (one
+of them a dialogue), two of the twelve listening lessons (unit 1 day 3, unit 2 day 5), one of the placement's three
+listening items, and the slower version of every listening lesson but one. There, as on the canvas's
 other boards and in the levels that are not written, a sound control uses Yaoki's silent stand-in (it lights up for as
 long as the text would take to say) and says that the audio is not recorded yet. The path, for this voice and for a
 person's recordings:
@@ -352,8 +354,8 @@ person's recordings:
 ```
 node tools/sound-list.mjs A1                       # every clip A1 needs → sound/A1/manifest.json and lista.csv, with the count
 python3 tools/make-tts.py --dry-run                # the whole list as the synthetic voice would say it; stops on anything it cannot say
-# after any change in content/, sound/respell.json or sound/silent.json: say only the clips whose text, voice or respelling changed, keep every other take, make the files again
-node tools/build-course.mjs && node tools/sound-list.mjs A1 && python3 tools/make-tts.py --out sound/A1/voz --verify --changed && node tools/make-sound.mjs sound/A1/voz --manifest sound/A1/voz/manifest.json --kind synthetic
+# after any change in content/, sound/respell.json or sound/silent.json: say only the clips whose text, voice or respelling changed, keep every other take, make the files again, and hear them as the app plays them
+node tools/build-course.mjs && node tools/sound-list.mjs A1 && python3 tools/make-tts.py --out sound/A1/voz --verify --changed && node tools/make-sound.mjs sound/A1/voz --manifest sound/A1/voz/manifest.json --kind synthetic && python3 tools/hear-sound.py sound/A1/voz
 node tools/make-sound.mjs <folder of recordings>   # a person's recordings → project/gn-sound-a1-u01.js … and gn-sound-index.js; reports what is still missing
 node tools/make-sound.mjs check/fixtures/sound --out /tmp/x --dry-run   # a trial with the test fixtures (short tones)
 node check/sound-test.js                           # the whole path in Chromium, with the fixtures, in epua-app/dist-sound
@@ -365,7 +367,9 @@ node check/sound-test.js                           # the whole path in Chromium,
   `a1x.4` the placement's and the exam's listening items, `p2.1` and `s0` the speaking game's, `c.check` the exam's test
   tone), the text, its Spanish, the voice (F the woman, the main voice; M the man; N the narrator, in Spanish), where it is
   used and the recording order. A text said already by the same voice is listed with `same` and not recorded again; a
-  dialogue is recorded one line at a time (`<key>.l0`, `.l1` …, each line its own voice) and put together by the tool.
+  dialogue is recorded one line at a time (`<key>.l0`, `.l1` …, each line its own voice) and put together by the tool
+  (a line is «Who: text» only when Who is a name or a role of one word, or two with a title: an example that merely
+  has a colon in it, «Vicente ndoúi ko ka'aru: oky.», is one sentence).
   Both words of every «Sonido y letra» pair are listed, though the Words step plays only one of the two (its target, the
   same every time): the other word's row carries `"unused": true`. It stays in the list, and is recorded, because a pair
   needs both voices if its words, and with them the word that plays, ever change; the recordings no screen plays today
@@ -381,11 +385,14 @@ node check/sound-test.js                           # the whole path in Chromium,
   part of the install nor of the offline copy. It loads nothing from another site.
 - **The files.** `tools/make-sound.mjs <folder>` takes the unpacked zip (or any folder of
   `<key>.wav|flac|mp3|m4a|webm|ogg` with an optional `voices.json`), mixes each take down to mono, trims silence and
-  levels it with ffmpeg by one gain, nothing compressed: −16 LUFS by the measure of BS.1770, taken on the mono mix that
-  is encoded as if the take played in a loop, so a word of 300 ms is levelled like a sentence and a stereo take comes
-  out as loud as a mono one; and no clip over −1.5 dBTP, the peak being taken on the clip's MP3 decoded again. A take
-  whose peaks leave no room for both stops at the ceiling and stays quieter, and the run says how many did (279 of the
-  synthetic voice's 440, by 1.1 LU at the median: `sound/VOICE.md`, «The sound files»). It pads 80 ms before and 150 ms
+  levels it: −16 LUFS as the clip ships, by the measure of BS.1770 taken on the sounding part of the mono mix as if it
+  played in a loop, so a word of 300 ms is levelled like a sentence and a stereo take comes out as loud as a mono one;
+  and no clip over −1.5 dBTP, the peak being taken on the clip's MP3 decoded again. One gain does the levelling, with
+  what the MP3 encoder takes off again allowed for (LAME turns everything down by 0.45 dB at this bit rate; the tool
+  measures it). Where that gain would carry a take's highest peaks over the ceiling, those peaks alone are turned
+  down for a moment, by 3 dB at the most; a take that would need more stays quieter, and the run ends with the
+  loudness of every clip as decoded from its MP3 and names what lands more than 2 LU from the target (none of the
+  synthetic voice's clips does: `sound/VOICE.md`, «The sound files»). It pads 80 ms before and 150 ms
   after, encodes mono MP3 at 32 kb/s and 24 kHz (what Safari on iOS decodes for Web Audio; Opus it does not) and writes
   `project/gn-sound-a1-u01.js` (one file per unit), `gn-sound-pl.js`, `gn-sound-a1-x.js` and `gn-sound-sp.js`, each
   registering `window.__gnClips[key] = { ms, kind: 'human' | 'synthetic', voice, b }` (`ms` the length of the decoded
@@ -443,20 +450,35 @@ node check/sound-test.js                           # the whole path in Chromium,
 - **The synthetic voice.** `tools/make-tts.py` says every recorded row of the list with Meta's MMS-TTS
   (`facebook/mms-tts-grn` for Guarani, `facebook/mms-tts-spa` for the narrator; a CPU is enough): each line after a
   carrier phrase that is cut off, every take heard back by two speech recognisers, the best of three kept, and what
-  both hear wrong left out. The takes live in `sound/A1/voz` (440 clips as FLAC, 10.2 MB, with the seed of each and
-  what was heard; 63 more in `left-out/`, every recording that stays silent, kept for a native listener). They cannot
+  both hear wrong left out. The takes live in `sound/A1/voz` (438 clips as FLAC, 10.2 MB, with the seed of each and
+  what was heard; 65 more in `left-out/`, every recording that stays silent, kept for a native listener). They cannot
   be made again sample for sample on another machine, so that folder is kept and added to: `--verify --changed` says
-  only what a change of the content touches. Tried on 16 November, six days after the files were made: with nothing
-  changed the line above said nothing, loaded no model and left every file of `sound/` and `project/` byte for byte as
-  it was (2 minutes 41 seconds, nearly all of it `make-sound.mjs` encoding again); with one text changed, one clip was
-  said in 15 seconds and one of the seven sound files was written anew.
+  only what a change of the content touches.
+  `tools/hear-sound.py` then applies the same ear to what ships: it decodes every clip of the sound files, cuts the
+  dialogues at their cues and has both recognisers hear each line three ways (with silence round it, without its air,
+  and bare, as the phone plays it). A clip of one or two words that both hear with wrong letters in two hearings of
+  three, an example heard as the form its own lesson calls wrong, and a line in which both mishear a word the voice
+  is not allowed to say alone are said again with up to twelve seeds; a take passes when it fails none of this and
+  its line is not heard worse as a whole than before, the take that passes replaces the old one, and a clip that
+  never passes is silenced by key in `sound/silent.json`, with what was heard (a line of a listening item never by
+  the tool: that takes the item's audio, and is a person's decision). What it heard of every line is kept in
+  `sound/A1/voz/mp3-heard.json`, so a run on unchanged files hears nothing again. Its first run, on 17 November, said
+  twelve recordings again and silenced three examples of Teach; none of the 199 clips of one or two words is heard
+  wrong since, and the 21 of the 374 Guarani lines that still are stand in `sound/VOICE.md`, laid out for a native
+  listener to go through with the studio page (`python3 tools/hear-sound.py sound/A1/voz --list` prints them).
+  Run with nothing changed, the whole line says nothing, hears nothing, loads no model and leaves every file of
+  `sound/` and `project/` byte for byte as it was (17 November: 576 files, 6 minutes 10 seconds, all but two seconds
+  of it `make-sound.mjs` encoding every clip again); with one text changed, one clip is said and one of the seven
+  sound files is written anew (16 November).
   `sound/respell.json` is how the voice is given Spanish names and numbers, `sound/silent.json` what it must not say
   and why. A listener's verdict goes into `silent.json`, and the same line applies it: a clip that is freed there comes
   back from `left-out/` as it is, the very file that was heard, without the voice being run.
   The voice has no f, no dependable l and no bare d, which is why the people of the course have the names
   they have. A synthetic voice teaches the very sounds the course corrects, so the app marks it, a native speaker's
   list of what to hear first is in `sound/VOICE.md`, and the studio's recordings replace it. The licence's notice is
-  in `sound/A1/voz/README.md`, in every sound file's header and in the app's `licenses.txt`.
+  in `sound/A1/voz/README.md`, in that folder's own clip list (the list of `sound/A1/` states the licence of the
+  studio's recordings, CC BY 4.0, which is not these clips'), in every sound file's header and in the app's
+  `licenses.txt`.
 - **The plan.** Notes G4 §6 estimate 3,850 to 6,200 clips for the six levels, about 11 hours of finished audio, two main
   voices plus guest voices, contracts that cover performer rights, and release under CC BY 4.0. Record A1 first.
 

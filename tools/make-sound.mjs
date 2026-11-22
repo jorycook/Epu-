@@ -15,13 +15,23 @@
 // it). --kind marks every clip of this run; a voice's own kind in voices.json wins. Needs ffmpeg and ffprobe.
 //
 // Each recording is mixed down to mono, trimmed of its silence (what is quieter than -45 dB at either end, 60 ms of it
-// kept at the start), brought to the same loudness by one gain (nothing is compressed), given 80 ms of air before and
-// 150 ms after, and encoded as mono MP3 at 32 kb/s and 24 kHz, the format of Yaoki's clips (every browser plays MP3;
-// Safari on iOS does not decode Opus for Web Audio). The loudness is -16 LUFS, the usual target on a phone, by the
-// measure of BS.1770 taken on the trimmed mono mix as if it played in a loop (loudnessOf: a word of 300 ms has no
-// loudness by the standard's blocks of 400 ms), unless the peak ceiling comes first: no clip peaks over -1.5 dBTP, and
-// the peak is taken on the clip's MP3 decoded again (mp3). A take whose peaks stand more than 14.5 dB over its
-// loudness cannot have both, so it stops at the ceiling and stays quieter than the target: the run says how many did.
+// kept at the start), brought to the same loudness, given 80 ms of air before and 150 ms after, and encoded as mono MP3
+// at 32 kb/s and 24 kHz, the format of Yaoki's clips (every browser plays MP3; Safari on iOS does not decode Opus for
+// Web Audio). The loudness is -16 LUFS, the usual target on a phone, by the measure of BS.1770 taken on the sounding
+// part of the trimmed mono mix as if it played in a loop (loudnessOf: a word of 300 ms has no loudness by the
+// standard's blocks of 400 ms). One gain brings a take there. Where that gain would carry the take's highest peaks over
+// the ceiling, those peaks, and only they, are turned down for a moment (limit: the gain dips over the 40 ms round a
+// peak and comes back, by 3 dB at the most for the take's own level: enough to trim a peak, too little to weigh the
+// syllables of a word anew), and the gain is raised by the little loudness the peaks took with them. A take that
+// would need more stays under the target by the rest, and the run names every clip that lands more than 2 LU from
+// it. Before, a take whose peaks stood more than 14.5 dB over its loudness stopped at the ceiling: 279 of the
+// synthetic voice's 440 takes stayed quieter than the target, 68 by more than 2 LU. Both the target and the ceiling
+// are those of the clip as it ships: the MP3 encoder turns every clip down by a fixed step (LAME scales by 0.95 at
+// this bit rate, 0.45 dB), which is measured at the start of a run (encoderStep) and allowed for. No clip peaks over
+// -1.5 dBTP, and that is taken on the clip's MP3 decoded again (mp3): where the MP3 peaks higher than its WAV, the
+// recording is limited to a ceiling that much lower (up to a decibel and a half more on a peak), so its loudness
+// stays. The loudness the run reports at its end, for every clip and for every line of a put-together clip, is
+// taken on the decoded MP3 too.
 // A clip's ms is the length of its decoded MP3. A take that is silence all along (under 100 ms left once trimmed)
 // makes no clip: it is reported with the recordings still missing. A clip the manifest puts together from lines (a
 // dialogue) is the lines in order with a quarter second between them; the test tone of the level exam (c.check) is
@@ -63,6 +73,9 @@ const HEAD = 80;        /* ms of air before a clip */
 const TAIL = 150;       /* and after it */
 const GAP = 0.25;       /* s between the lines of a dialogue, besides their own air */
 const LEAST = 100;      /* ms a take must leave once trimmed: one that never rises over the trim's threshold leaves 0 to 60 (what the trim keeps before a last blip), no voice */
+const LOOK = 0.010;     /* s the limiter looks to either side of a peak that would pass the ceiling (limit) */
+const MOST = 3;         /* dB: the most the limiter turns a peak down. It may trim a peak; it may not weigh the syllables of a word anew (3 dB is less than one syllable differs from the next). A take that would need more stays under the target, and the run says so */
+const NEAR = 2;         /* LU: how far from the target a clip, or a line of a put-together clip, may land once decoded from its MP3; the run names what lands further */
 const RATE = 24000;
 
 const manifest = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'));
@@ -152,27 +165,143 @@ function loudnessOf(x) {
 }
 const db = (v) => (v > 0 ? 20 * Math.log10(v) : -Infinity);
 const peakOf = (x) => { let m = 0; for (let n = 0; n < x.length; n++) { const v = Math.abs(x[n]); if (v > m) m = v; } return m; };
+/* the sounding part of a take or of a decoded clip: from its first sample over the trim's threshold (-45 dBFS) to its
+   last, as [from, to). The loudness is measured on that stretch: the quiet the trim keeps at the ends of a recording
+   (up to 60 and 100 ms of the room) and the air put round a clip are no part of how loud the word is, and in a loop
+   they would make a short word look quieter than it is */
+const QUIET = Math.pow(10, -45 / 20);
+function sounding(x) {
+  let a = 0;
+  let b = x.length;
+  while (a < b && Math.abs(x[a]) <= QUIET) a++;
+  while (b > a && Math.abs(x[b - 1]) <= QUIET) b--;
+  return [a, b];
+}
+/* The limiter. One gain brings a take to the loudness target; this turns down, for a moment, the peaks that the gain
+   would carry over the ceiling. Every sample has the gain it needs to stay under the ceiling (1 for nearly all of
+   them); the curve that is applied is the lowest of those within LOOK to either side, smoothed over the same width
+   (two running means, half of LOOK each way), so it is never above what a sample needs, starts down 20 ms before a
+   peak, is at its lowest on the peak and is back 20 ms after: slower than the voice's own pulses (5 to 10 ms apart),
+   which it therefore does not reshape, and without a step anywhere. Nothing else of the take is touched.
+   → { y: the take with the gain and the curve applied, by: the deepest the curve goes, in dB, ms: for how long it
+   is more than a tenth of a decibel down } */
+function slidingMin(a, w) {
+  const n = a.length;
+  const out = new Float64Array(n);
+  const q = new Int32Array(n);   /* the places that can still be the lowest, their values rising */
+  let head = 0;
+  let tail = 0;
+  let next = 0;
+  for (let i = 0; i < n; i++) {
+    const last = Math.min(n - 1, i + w);
+    while (next <= last) { while (tail > head && a[q[tail - 1]] >= a[next]) tail--; q[tail++] = next++; }
+    while (q[head] < i - w) head++;
+    out[i] = a[q[head]];
+  }
+  return out;
+}
+function runningMean(a, w) {
+  const n = a.length;
+  const out = new Float64Array(n);
+  const cum = new Float64Array(n + 1);
+  for (let i = 0; i < n; i++) cum[i + 1] = cum[i] + a[i];
+  for (let i = 0; i < n; i++) { const lo = Math.max(0, i - w); const hi = Math.min(n, i + w + 1); out[i] = (cum[hi] - cum[lo]) / (hi - lo); }
+  return out;
+}
+function limit(x, g, ceiling) {
+  const n = x.length;
+  const y = new Float32Array(n);
+  const need = new Float64Array(n);
+  let any = false;
+  for (let i = 0; i < n; i++) { const v = Math.abs(x[i]) * g; if (v > ceiling) { need[i] = ceiling / v; any = true; } else need[i] = 1; }
+  if (!any) { for (let i = 0; i < n; i++) y[i] = x[i] * g; return { y, by: 0, ms: 0 }; }
+  const w = Math.max(2, Math.round(LOOK * KFS));
+  const half = Math.floor(w / 2);
+  const curve = runningMean(runningMean(slidingMin(need, w), half), half);
+  let least = 1;
+  let down = 0;
+  for (let i = 0; i < n; i++) { y[i] = x[i] * g * curve[i]; if (curve[i] < least) least = curve[i]; if (curve[i] < 0.98855) down++; }
+  return { y, by: -db(least), ms: Math.round((down / KFS) * 1000) };
+}
 /* a clip as it ships, decoded: how long it is, by its samples, and its true peak (the peak of the wave between the
-   samples too: ffmpeg's resampler at four times the rate, the oversampling BS.1770 asks for) */
+   samples too: ffmpeg's resampler at four times the rate, the oversampling BS.1770 asks for); and how loud each of
+   its spans is ([from, to] in ms: a clip without its air, or each line of a put-together clip without its own), by
+   the measure the takes are levelled with */
 function decoded(file) {
   const own = samples(['-i', file, '-ac', '1', '-ar', String(RATE)]);
   const fine = samples(['-i', file, '-ac', '1', '-ar', String(4 * RATE)]);
-  return { ms: Math.round((own.length / RATE) * 1000), tp: db(Math.max(peakOf(own), peakOf(fine))) };
+  let top = 0;
+  for (let n = 1; n < fine.length; n++) if (Math.abs(fine[n]) > Math.abs(fine[top])) top = n;
+  return { ms: Math.round((own.length / RATE) * 1000), tp: db(Math.max(peakOf(own), peakOf(fine))), at: (top / (4 * RATE)) * 1000 };
 }
-/* one recording → a trimmed, levelled, padded mono WAV at 24 kHz. The gain is the one that brings the take's loudness
-   to the target, or less when the take's own peak would pass the ceiling (fit() then sees to the peak of the MP3) */
+function loudnessIn(file, spans) {
+  const x = samples(['-i', file, '-ac', '1', '-ar', String(KFS)]);
+  return (spans || [[0, Infinity]]).map(([from, to]) => {
+    const piece = x.subarray(Math.max(0, Math.round((from / 1000) * KFS)), Math.min(x.length, to === Infinity ? x.length : Math.round((to / 1000) * KFS)));
+    const [a, b] = sounding(piece);
+    return loudnessOf(piece.subarray(a, b));
+  });
+}
+/* What the MP3 encoder does to the level of everything it is given, in dB: a second of a plain note, encoded as the
+   clips are and decoded again, against the note itself. LAME turns its input down by a fixed factor at low bit rates
+   (0.95 at 32 kb/s: -0.45 dB), so a take brought to -16 LUFS shipped at -16.45. The step is measured, not assumed:
+   another encoder, or another bit rate, has another one. The WAV a clip is encoded from is levelled, and limited, that
+   much higher, so that the clip as it ships is at the target and under the ceiling */
+let step = null;
+function encoderStep() {
+  if (step !== null) return step;
+  const wav = path.join(TMP, 'step.wav');
+  const out = path.join(TMP, 'step.mp3');
+  const note = run('ffmpeg', ['-v', 'error', '-y', '-f', 'lavfi', '-i', `sine=frequency=440:duration=1.2:sample_rate=${RATE}`, '-af', 'volume=0.8', '-ac', '1', '-c:a', 'pcm_s16le', wav]);
+  const enc = run('ffmpeg', ['-v', 'error', '-y', '-i', wav, '-map_metadata', '-1', '-codec:a', 'libmp3lame', '-b:a', '32k', '-ar', String(RATE), '-ac', '1', out]);
+  if (note.status !== 0 || enc.status !== 0) throw new Error(`ffmpeg could not encode a test note: ${((enc.stderr || note.stderr) || '').trim().split('\n').pop()}`);
+  const rms = (x) => { let t = 0; const a = Math.round(0.3 * RATE); const b = Math.min(x.length, Math.round(0.9 * RATE)); for (let n = a; n < b; n++) t += x[n] * x[n]; return Math.sqrt(t / Math.max(1, b - a)); };
+  step = db(rms(samples(['-i', out, '-ac', '1', '-ar', String(RATE)])) / rms(samples(['-i', wav, '-ac', '1', '-ar', String(RATE)])));
+  if (!isFinite(step) || Math.abs(step) > 3) throw new Error(`the MP3 encoder changes the level of a plain note by ${step} dB: something is wrong with it`);
+  return step;
+}
+/* one recording → a trimmed, levelled, padded mono WAV at 24 kHz, or { silent, left } for a take that holds no sound.
+   The gain is the one that brings the sounding part of the take to the target; limit() sees to the peaks that gain
+   would carry over the ceiling, and since those peaks take a little loudness with them the gain is then raised by
+   what is missing, the take limited again, until it is at the target (to 0.02 LU) or a peak would have to come down
+   by more than MOST (the take then stays under the target by `short`). Target and ceiling are raised by what the
+   encoder will take off again (encoderStep). → { gain, by, limitedMs, short, lufs, s, lower, again }: again(by)
+   levels the take anew to a ceiling `by` dB further down than before (`lower` in all) and writes the WAV again, for
+   a take whose MP3 peaks higher than its WAV (mp3): what was returned is brought up to date */
 function prepare(src, wav) {
   let x;
   try { x = samples(['-i', src, '-af', TRIM, '-ar', String(KFS), '-ac', '1']); } catch (e) { throw new Error(`ffmpeg could not read ${path.basename(src)}: ${e.message}`); }
-  const i = loudnessOf(x);
-  const tp = db(peakOf(x));
-  let gain = isFinite(i) ? LOUDNESS - i : 0;
-  const wanted = gain;
-  if (isFinite(tp)) gain = Math.min(gain, PEAK - tp);   /* never past the peak ceiling */
-  gain = Math.max(-30, Math.min(30, gain));
-  const r = run('ffmpeg', ['-v', 'error', '-y', '-i', src, '-af', `${TRIM},volume=${gain.toFixed(2)}dB,adelay=delays=${HEAD}:all=1,apad=pad_dur=${TAIL / 1000}`, '-ar', String(RATE), '-ac', '1', '-c:a', 'pcm_s16le', wav]);
-  if (r.status !== 0) throw new Error(`ffmpeg could not read ${path.basename(src)}: ${(r.stderr || '').trim().split('\n').pop()}`);
-  return { gain, short: Math.max(0, wanted - gain), lufs: i, s: seconds(wav) };
+  const left = Math.round((x.length / KFS) * 1000);
+  if (left < LEAST) return { silent: true, left };
+  const [a, b] = sounding(x);
+  const loud = (v) => loudnessOf(v.subarray(a, b));
+  const i = loud(x);
+  const target = LOUDNESS - encoderStep();
+  const lin = (d) => Math.pow(10, d / 20);
+  const level = (lower) => {
+    /* the ceiling the MP3's own peaks ask for is `lower` further down: that much comes on top of what the limiter may do */
+    const ceiling = lin(PEAK - encoderStep() - lower);
+    const most = MOST + lower;
+    let gain = isFinite(i) ? Math.max(-30, Math.min(30, target - i)) : 0;
+    let r = limit(x, lin(gain), ceiling);
+    if (r.by > most) { gain -= r.by - most; r = limit(x, lin(gain), ceiling); }
+    for (let turn = 0; turn < 8 && r.by > 0 && isFinite(i); turn++) {
+      const short = target - loud(r.y);
+      if (!(short > 0.02)) break;
+      const more = limit(x, lin(gain + short), ceiling);
+      if (more.by > most + 0.005) break;
+      gain += short;
+      r = more;
+    }
+    const out = spawnSync('ffmpeg', ['-v', 'error', '-y', '-f', 'f32le', '-ar', String(KFS), '-ac', '1', '-i', 'pipe:0', '-af', `adelay=delays=${HEAD}:all=1,apad=pad_dur=${TAIL / 1000}`, '-ar', String(RATE), '-ac', '1', '-c:a', 'pcm_s16le', wav],
+      { input: Buffer.from(r.y.buffer, r.y.byteOffset, r.y.byteLength), encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+    if (out.error) throw out.error;
+    if (out.status !== 0) throw new Error(`ffmpeg could not write the levelled take of ${path.basename(src)}: ${(out.stderr || '').trim().split('\n').pop()}`);
+    return { gain, by: r.by, limitedMs: r.ms, short: isFinite(i) ? Math.max(0, target - loud(r.y)) : 0 };
+  };
+  const take = Object.assign(level(0), { lufs: i, s: seconds(wav), lower: 0 });
+  take.again = (by) => { take.lower += by; Object.assign(take, level(take.lower)); return true; };
+  return take;
 }
 /* lines → one WAV, with the point where each line ends */
 function join(parts, wav) {
@@ -206,31 +335,36 @@ function tone(wav) {
 }
 /* a prepared WAV → the clip, as MP3. Two things are taken from the MP3 decoded again, not from the WAV: its length (ms:
    the file's own duration counts the encoder's padding and was 61 ms longer than what a player gets), and its true
-   peak. At 32 kb/s the MP3 peaks up to a decibel higher than the WAV it was made from, so a WAV that kept the ceiling
-   gave a clip that passed it: fit() brings the WAV down by what the MP3 is over, and a tenth of a decibel more, and
-   encodes again until the decoded clip holds the ceiling. The WAV itself is changed, so a dialogue put together from
-   it has the line at the level of the line's own clip. One gain, as before: nothing is compressed */
-const fitted = [];      /* what fit() had to lower: { wav, by } */
+   peak. At 32 kb/s the MP3 peaks up to a decibel and a half higher than the WAV it was made from, so a WAV that kept
+   the ceiling gave a clip that passed it. The recording whose peak it is (`refit`: what prepare() returned for it) is
+   then levelled anew to a ceiling lower by what the MP3 is over, and a tenth of a decibel more, and the clip is
+   encoded again until its decoded MP3 holds the ceiling: the peaks come down, the loudness stays where the limiter can
+   keep it. For a clip put together from lines, refit(at) is given the place of the peak, in ms, finds the line it
+   falls in, levels that line anew and joins the lines again: one line is fitted, not the whole dialogue lowered for
+   its sake. Only where no recording stands behind a WAV (the test tone) does the whole WAV come down. `spans` are the
+   stretches whose loudness is taken on the decoded clip ([from, to] in ms; the whole clip when none is given) */
+const fitted = [];      /* what had to be fitted to the ceiling after encoding: { wav, by } */
 let highest = -Infinity;  /* the highest true peak among the clips made, dBTP */
-function mp3(wav, out) {
+function mp3(wav, out, spans, refit) {
   let lowered = 0;
   let d = null;
-  for (let turn = 0; turn < 8; turn++) {
+  for (let turn = 0; turn < 12; turn++) {
     const r = run('ffmpeg', ['-v', 'error', '-y', '-i', wav, '-map_metadata', '-1', '-codec:a', 'libmp3lame', '-b:a', '32k', '-ar', String(RATE), '-ac', '1', out]);
     if (r.status !== 0) throw new Error(`ffmpeg could not encode: ${(r.stderr || '').trim().split('\n').pop()}`);
     d = decoded(out);
     if (!(d.tp > PEAK)) break;
     const by = d.tp - PEAK + 0.1;
+    lowered += by;
+    if (refit && refit(by, d.at)) continue;
     const lower = wav.replace(/\.wav$/, '.fit.wav');
     const f = run('ffmpeg', ['-v', 'error', '-y', '-i', wav, '-af', `volume=${(-by).toFixed(2)}dB`, '-c:a', 'pcm_s16le', lower]);
     if (f.status !== 0) throw new Error(`ffmpeg could not lower the peak: ${(f.stderr || '').trim().split('\n').pop()}`);
     fs.renameSync(lower, wav);
-    lowered += by;
   }
   if (d.tp > PEAK) throw new Error(`the true peak stays at ${d.tp.toFixed(2)} dBTP, over the ceiling of ${PEAK}`);
   if (lowered) fitted.push({ wav, by: lowered });
   if (d.tp > highest) highest = d.tp;
-  return { ms: d.ms, tp: d.tp, lowered, b: fs.readFileSync(out).toString('base64') };
+  return { ms: d.ms, tp: d.tp, lufs: loudnessIn(out, spans), b: fs.readFileSync(out).toString('base64') };
 }
 
 /* ---------- the recordings ---------- */
@@ -256,8 +390,10 @@ const taken = {};      /* key → { kind, voice } of every recording that was re
 const missing = [];
 const silent = [];     /* the recordings that hold nothing but silence: counted with the missing ones, never made into a clip */
 const made = {};       /* key → { ms, kind, voice, b, cues? } */
-const held = [];       /* the recordings the peak ceiling keeps under the loudness target: { key, under: LU } */
+const held = [];       /* the recordings that stay under the loudness target, because a peak would have to come down by more than MOST: { key, under: LU } */
+const limited = [];    /* the recordings whose peaks were turned down: { key, by: dB at the deepest, ms: for how long, of: ms of the take } */
 const wavs = {};       /* key → the prepared WAV (parts of a dialogue are needed again) */
+const takes = {};      /* key → what prepare() returned for the recording: a line can be levelled anew when the dialogue's MP3 peaks too high in it */
 const TMP = fs.mkdtempSync(path.join(os.tmpdir(), 'epua-sound-'));
 process.on('exit', () => fs.rmSync(TMP, { recursive: true, force: true }));
 const tmp = (key, ext) => path.join(TMP, key.replace(/[^\w.-]/g, '_') + '.' + ext);
@@ -268,7 +404,7 @@ for (const r of rows) {
     if (DRY) { console.log(`  tone  ${r.key}`); made[r.key] = { kind: 'human', voice: '-' }; continue; }
     tone(tmp(r.key, 'wav'));
     wavs[r.key] = tmp(r.key, 'wav');
-    made[r.key] = Object.assign({ kind: 'human', voice: '-' }, mp3(wavs[r.key], tmp(r.key, 'mp3')));
+    made[r.key] = Object.assign({ kind: 'human', voice: '-', tone: true }, mp3(wavs[r.key], tmp(r.key, 'mp3')));
     continue;
   }
   if (!have[r.key]) { missing.push(r); continue; }
@@ -282,10 +418,9 @@ for (const r of rows) {
   }
   try {
     const p = prepare(have[r.key], tmp(r.key, 'wav'));
-    const left = Math.max(0, Math.round(p.s * 1000) - HEAD - TAIL);   /* what the trim left of the take, without the air put round it */
-    if (left < LEAST) {
+    if (p.silent) {
       /* nothing but silence (it would be a clip of air alone): not made, and reported with the recordings still missing */
-      console.log(`  x ${r.key}: ${path.basename(have[r.key])} is silent, ${left} ms left after trimming: no clip made`);
+      console.log(`  x ${r.key}: ${path.basename(have[r.key])} is silent, ${p.left} ms left after trimming: no clip made`);
       silent.push(r);
       missing.push(r);
       continue;
@@ -294,11 +429,14 @@ for (const r of rows) {
     wavs[r.key] = tmp(r.key, 'wav');
     taken[r.key] = { kind: kindOf(r.voice), voice: r.voice };
     const own = direct.has(r.key);   /* a clip of its own, or only a line inside the clip that is put together from it */
-    if (own) made[r.key] = Object.assign({ kind: kindOf(r.voice), voice: r.voice }, mp3(wavs[r.key], tmp(r.key, 'mp3')));
-    const lowered = own ? made[r.key].lowered : 0;
-    const under = p.short + lowered;   /* how far the peak ceiling keeps the clip under the loudness target */
-    if (under > 0.05) held.push({ key: r.key, under });
-    process.stdout.write(`  ${String(n).padStart(4)}  ${r.key}  ${own ? made[r.key].ms : Math.round(p.s * 1000)} ms  take ${p.lufs.toFixed(1)} LUFS  gain ${p.gain - lowered >= 0 ? '+' : ''}${(p.gain - lowered).toFixed(1)} dB${under > 0.05 ? `  (the peak ceiling keeps it ${under.toFixed(1)} LU under the target)` : ''}${own ? '' : '  (no clip of its own: no screen asks for this key)'}\n`);
+    /* every recording is encoded, a line too: its MP3 says whether its peaks hold the ceiling, and the line is fitted
+       on its own, not the whole dialogue for one line's sake. Only a key the screens ask for keeps the clip */
+    const m = mp3(wavs[r.key], tmp(r.key, 'mp3'), null, p.again);
+    takes[r.key] = p;
+    if (own) made[r.key] = Object.assign({ kind: kindOf(r.voice), voice: r.voice }, m);
+    if (p.by > 0.05) limited.push({ key: r.key, by: p.by, ms: p.limitedMs, of: Math.round(p.s * 1000) - HEAD - TAIL });
+    if (p.short > 0.05) held.push({ key: r.key, under: p.short });
+    process.stdout.write(`  ${String(n).padStart(4)}  ${r.key}  ${m.ms} ms  take ${p.lufs.toFixed(1)} LUFS  gain ${p.gain >= 0 ? '+' : ''}${p.gain.toFixed(1)} dB${p.by > 0.05 ? `  (its peaks turned down by ${p.by.toFixed(1)} dB at the most, during ${p.limitedMs} ms)` : ''}${p.short > 0.05 ? `  (it stays ${p.short.toFixed(1)} LU under the target: a peak would have to come down by more than ${MOST} dB)` : ''}  ${own ? 'clip' : 'as a line'} ${m.lufs[0].toFixed(1)} LUFS${own ? '' : '  (no clip of its own: no screen asks for this key)'}\n`);
   } catch (e) {
     console.log(`  x ${r.key}: ${e.message}`);
     missing.push(r);
@@ -315,8 +453,19 @@ for (const r of rows) {
   const wav = tmp(r.key, 'wav');
   const cues = join(parts.map((k) => wavs[k]), wav);
   wavs[r.key] = wav;
-  made[r.key] = Object.assign({ kind: parts.some((k) => taken[k] && taken[k].kind === 'synthetic') ? 'synthetic' : 'human', voice: r.voice, cues }, mp3(wav, tmp(r.key, 'mp3')));
-  process.stdout.write(`        ${r.key}  ${made[r.key].ms} ms, ${parts.length} lines\n`);
+  /* each line as it sounds inside the clip: from where it starts (the end of the line before, and the gap) to its cue */
+  const spans = cues.map((c, i) => [i ? cues[i - 1] + GAP * 1000 : 0, c]);
+  /* the clip's MP3 peaks too high at `at`: the line that holds the place is levelled anew, and the lines joined again */
+  const refit = (by, at) => {
+    const i = spans.findIndex(([from, to]) => at >= from && at <= to + GAP * 1000);
+    const take = i >= 0 ? takes[parts[i]] : null;
+    if (!take) return false;
+    take.again(by);
+    join(parts.map((k) => wavs[k]), wav);
+    return true;
+  };
+  made[r.key] = Object.assign({ kind: parts.some((k) => taken[k] && taken[k].kind === 'synthetic') ? 'synthetic' : 'human', voice: r.voice, cues, parts }, mp3(wav, tmp(r.key, 'mp3'), spans, refit));
+  process.stdout.write(`        ${r.key}  ${made[r.key].ms} ms, ${parts.length} lines  (${made[r.key].lufs.map((v) => v.toFixed(1)).join(', ')} LUFS)\n`);
 }
 
 /* ---------- the files ---------- */
@@ -400,18 +549,28 @@ const outName = path.relative(ROOT, OUT).startsWith('..') ? OUT : path.relative(
 console.log(`\n${DRY ? 'would make' : 'made'} ${count} clips from ${DRY ? `the ${n} recordings of ` : ''}${FOLDER}${written.length ? '; written to ' + outName + '/: ' + written.join(', ') : ''}${ONLY ? ' (--only: the files hold these clips alone)' : ''}`);
 if (!DRY && Object.keys(wrote).length) console.log(`${asItWas.length} of the ${Object.keys(wrote).length} sound files are byte for byte what they were, their date too${asItWas.length ? ' (no clip in them changed: a phone that has them keeps them)' : ''}${asItWas.length < Object.keys(wrote).length ? `; written anew: ${Object.keys(wrote).filter((f) => !asItWas.includes(f)).sort().join(', ')}` : ''}`);
 if (!DRY && count) {
-  held.sort((a, b) => b.under - a.under);
-  /* one gain cannot bring a take to the target when its peaks stand more than the target's distance from the ceiling over
-     its loudness (14.5 dB for -16 LUFS and -1.5 dBTP): such a take stops at the ceiling and stays quieter. How many, how
-     far, and the target that nearly all of this folder's takes would reach, for whoever sets LOUDNESS */
   const medianOf = (list) => list.slice().sort((a, b) => a - b)[Math.floor(list.length / 2)];
   const levelled = Object.keys(taken).length;   /* the recordings that were read and levelled */
-  let within = '';
-  for (let lower = 1; lower <= 8 && !within; lower++) { const left = held.filter((h) => h.under > lower + 0.05).length; if (left <= levelled * 0.05) within = `; a target of ${LOUDNESS - lower} LUFS would be out of reach for ${left}`; }
   const inner = Object.keys(taken).filter((k) => !made[k]);
   if (inner.length) console.log(`${inner.length} of the ${levelled} recordings make no clip of their own, because no screen asks for their key: ${inner.filter((k) => LINE.test(k)).length} lines, heard inside the clips put together from them, and ${inner.filter((k) => !LINE.test(k)).length} words of sound pairs that do not play`);
-  console.log(`levels: ${levelled - held.length} of the ${levelled} recordings are at ${LOUDNESS} LUFS (BS.1770, measured on the take in a loop)${held.length ? `; the peak ceiling keeps ${held.length} under it, by ${medianOf(held.map((h) => h.under)).toFixed(1)} LU at the median, ${held.filter((h) => h.under > 2).length} by more than 2 LU (the furthest: ${held.slice(0, 5).map((h) => `${h.key} ${h.under.toFixed(1)}`).join(', ')})${within}` : ''}. `
-    + `The highest true peak of a clip, decoded from its MP3: ${highest.toFixed(2)} dBTP (ceiling ${PEAK})${fitted.length ? `; ${fitted.length} clip${fitted.length === 1 ? ' was' : 's were'} lowered after encoding, by ${Math.max(...fitted.map((f) => f.by)).toFixed(1)} dB at most, because the MP3 peaked higher than its WAV` : ''}. ms is the length of each decoded MP3.`);
+  /* one gain brings a take to the target; where its peaks stand more than the target's distance from the ceiling over its
+     loudness (14.5 dB for -16 LUFS and -1.5 dBFS), the peaks are turned down. How many takes, how far, for how long */
+  held.sort((a, b) => b.under - a.under);
+  limited.sort((a, b) => b.by - a.by);
+  console.log(`levels: ${levelled - held.length} of the ${levelled} recordings are brought to ${LOUDNESS} LUFS as they ship (BS.1770, measured on the sounding part of the take in a loop; the encoder's own step of ${encoderStep().toFixed(2)} dB allowed for)`
+    + (limited.length ? `; ${limited.length} of the ${levelled} had their highest peaks turned down, which would have passed the ceiling: by ${medianOf(limited.map((l) => l.by)).toFixed(1)} dB at the median and ${limited[0].by.toFixed(1)} at the most (never more than ${MOST} for the take's own level; what comes on top is what the MP3's higher peaks asked for), during ${medianOf(limited.map((l) => l.ms))} ms of a take at the median (${(limited.reduce((t, l) => t + l.ms, 0) / 1000).toFixed(1)} s of their ${Math.round(limited.reduce((t, l) => t + l.of, 0) / 1000)} s)` : '')
+    + (held.length ? `; ${held.length} stay under the target, by ${medianOf(held.map((h) => h.under)).toFixed(1)} LU at the median, ${held.filter((h) => h.under > 1).length} by more than 1 LU, because a peak would have to come down by more than ${MOST} dB (the furthest: ${held.slice(0, 5).map((h) => `${h.key} ${h.under.toFixed(1)}`).join(', ')})` : '') + '. '
+    + `The highest true peak of a clip, decoded from its MP3: ${highest.toFixed(2)} dBTP (ceiling ${PEAK})${fitted.length ? `; ${fitted.length} clip${fitted.length === 1 ? ' was' : 's and lines were'} fitted to the ceiling after encoding, by ${Math.max(...fitted.map((f) => f.by)).toFixed(1)} dB at most, because the MP3 peaked higher than its WAV (the recording that holds the peak levelled anew to a lower ceiling)` : ''}. ms is the length of each decoded MP3.`);
+  /* what ships, measured: every clip decoded from its MP3, without its air, and every line of a put-together clip */
+  const single = Object.keys(made).filter((k) => !made[k].tone && !made[k].cues && made[k].lufs);
+  const joined = Object.keys(made).filter((k) => made[k].cues && made[k].lufs);
+  const far = [];
+  single.forEach((k) => { const v = made[k].lufs[0]; if (!(Math.abs(v - LOUDNESS) <= NEAR)) far.push(`${k} ${v.toFixed(1)}`); });
+  joined.forEach((k) => made[k].lufs.forEach((v, i) => { if (!(Math.abs(v - LOUDNESS) <= NEAR)) far.push(`${k} line ${i + 1} (${made[k].parts[i]}) ${v.toFixed(1)}`); }));
+  const span = (list) => { const s = list.slice().sort((a, b) => a - b); return `${s[Math.floor(s.length / 2)].toFixed(1)} LUFS at the median, from ${s[0].toFixed(1)} to ${s[s.length - 1].toFixed(1)}`; };
+  const lines = joined.flatMap((k) => made[k].lufs);
+  if (single.length || lines.length) console.log(`as they ship (each clip decoded from its MP3, the same measure): ${single.length ? `the ${single.length} clips of one recording are at ${span(single.map((k) => made[k].lufs[0]))}` : ''}${single.length && lines.length ? '; ' : ''}${lines.length ? `the ${lines.length} lines of the ${joined.length} clips put together are at ${span(lines)}` : ''}. `
+    + (far.length ? `${far.length} of them ${far.length === 1 ? 'is' : 'are'} more than ${NEAR} LU from the target: ${far.slice(0, 12).join(', ')}${far.length > 12 ? ' …' : ''}` : `None is more than ${NEAR} LU from the target of ${LOUDNESS}.`));
 }
 if (incomplete.length) console.log(`${incomplete.length} clip${incomplete.length === 1 ? '' : 's'} not put together, lines missing: ` + incomplete.map((x) => `${x.row.key} (${x.lacking.join(', ')})`).join('; '));
 if (silent.length) console.log(`${silent.length} recording${silent.length === 1 ? ' is' : 's are'} silent (under ${LEAST} ms left after trimming) and made no clip: ` + silent.map((r) => `${r.key} (${path.basename(have[r.key])})`).join(', '));

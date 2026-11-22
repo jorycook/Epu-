@@ -64,7 +64,6 @@ a1u01d4.p1.x1,F,gn,False,"Ikatúpa aike? Héẽ, ikatu.",ikatúpa aike héẽ ik
 a1u01d4.p2.x0,F,gn,False,Mba'épa reipota?,mba'épa reipota,1.02,0.907,1751557169,1,pause,,0.0,158,,Mba'épa reipota.,0.0,mba'épa reipota,0.0,,,,,
 a1u01d4.p2.x1,F,gn,False,Mávapa ha'e?,mávapa ha'e,0.99,0.896,526488743,1,pause,,0.0,130,,Mávapa ha'e.,0.0,mávapa ha'e,0.0,,,,,
 a1u01d4.p2.x2,F,gn,False,Moõpa reiko?,moõpa reiko,1.06,0.907,107529501,1,pause,,0.0,155,,Moõpa reiko.,0.0,moõpa reiko,0.0,,,,,
-a1u01d4.p2.x3,F,gn,False,Mboýpa ovale ko kesu?,mboýpa ovale ko kesu,1.89,0.933,1903170682,2,pause,,0.0,152,,Mboypa ovaléko kesuu.,0.2,mboýpa ovale ko kesu,0.0,ivan,,,,
 a1u01d4.w.chipa,F,gn,False,chipa,chipa,0.44,0.706,1628541140,1,pause,,0.0,119,,Chipa.,0.0,chipa,0.0,,,,,
 a1u01d4.w.kesu,F,gn,False,kesu,kesu,0.44,0.649,2016330353,1,closure,,0.0,101,,Kesu.,0.0,jesú,0.5,mms,,,,
 a1u01d4.w.soo,F,gn,False,so'o,so'o,0.61,0.712,1522205701,2,pause,,0.0,140,,Su 'o.,0.5,so'o,0.0,ivan,,,,
@@ -105,7 +104,6 @@ a1u02d1.p2.x3.l0,M,gn,False,Mávapa ou?,mávapa ou,0.95,0.866,1779573354,1,pause
 a1u02d1.p2.x3.l1,F,gn,False,Ou che sy.,ou che sy,0.81,0.792,487928299,2,pause,,2.0,133,,Ou chesy.,0.111,ouchesy,0.222,,,,,
 a1u02d1.w.ajapo,F,gn,False,ajapo,ajapo,0.67,0.833,184964302,1,pause,,0.0,142,,Ajapo.,0.0,ajapo,0.0,,,,,
 a1u02d1.w.ajeroky,F,gn,False,ajeroky,ajeroky,0.74,0.892,150987627,1,pause,,0.0,148,,Ajeroky.,0.0,ajeroky,0.0,,,,,
-a1u02d1.w.aju,F,gn,False,aju,aju,0.47,0.901,783854404,2,pause,,0.0,160,,Aju.,0.0,adu,0.333,mms,,,,
 a1u02d1.w.aha,F,gn,False,aha,aha,0.47,0.847,106183338,1,pause,,0.0,127,,Aha.,0.0,aha,0.0,,,,,
 a1u02d1.w.ahendu,F,gn,False,ahendu,ahendu,0.66,0.911,248778843,1,pause,,0.0,170,,Ahendu.,0.0,ahendu,0.0,,,,,
 a1u02d1.w.apurahei,F,gn,False,apurahéi,apurahéi,0.73,0.906,2014454894,1,pause,,0.0,145,,Apurahéi.,0.0,apurahéi,0.0,,,,,
@@ -135,7 +133,6 @@ a1u02d2.w.pekaru,F,gn,False,pekaru,pekaru,0.48,0.673,585259517,3,closure,,0.0,97
 a1u02d2.s0a,F,gn,False,ru,ru,0.24,0.589,1187307020,2,pause,,0.0,150,,Ndu.,1.0,du,0.5,"ivan, mms",vúrro,,,named in silent.json
 a1u02d2.s1b,F,gn,False,karréta,karréta,0.57,0.827,1188487142,1,closure,,0.0,133,,Karréta.,0.0,carreta,0.286,mms,nde réra,,,named in silent.json
 a1u02d2.s2b,F,gn,False,arro,arro,0.45,0.878,1845201957,1,pause,,0.0,167,,Aro.,0.25,aro,0.25,"ivan, mms",roju,,,named in silent.json
-a1u02d3.p1.x0,F,gn,False,Che amba'apo mbo'ehaópe.,che amba'apo mbo'ehaópe,1.35,0.91,116984212,1,pause,,0.0,137,,Che amba'apo mboeha ópe.,0.087,che amba'apo mbo'ehaúpe,0.043,"ivan, mms",,,,
 a1u02d3.p1.x1,F,gn,False,Aha che jarýi rógape.,aha che jarýi rógape,1.41,0.887,1912501984,3,pause,,2.0,145,,Aha che jarei rógape.,0.05,aha che jaréi rógape,0.05,"ivan, mms",,,,
 a1u02d3.p1.x2,F,gn,False,Che ru oĩ kotýpe.,che ru oĩ kotýpe,1.24,0.905,1761060502,3,pause,,0.0,174,,Cheru oĩ kotýpe,0.062,che ru oĩ kotýpe,0.0,,,,,
 a1u02d3.p1.x3.l0,F,gn,False,"Moõpa remba'apo, Juan?",moõpa remba'apo huan,1.41,0.933,1594878154,1,pause,,0.0,168,,Moõpa reimbaʼapo hu ann.,0.15,moõpa remba'apo juan,0.05,"ivan, mms",,,,
@@ -149,7 +146,6 @@ a1u02d3.w.kaaguype,F,gn,False,ka'aguýpe,ka'aguýpe,0.68,0.684,144427660,1,closu
 a1u02d3.w.nume,F,gn,False,ñúme,ñúme,0.61,0.628,2077363346,1,pause,,0.0,137,,Ndume.,0.75,nume,0.5,"ivan, mms",,,,its text is named in silent.json
 a1u02d3.w.kotype,F,gn,False,kotýpe,kotýpe,0.63,0.923,1531936046,2,pause,,0.0,150,,Kotýpe,0.0,kotýpe,0.0,,,,,
 a1u02d3.w.ysyrype,F,gn,False,ysyrýpe,ysyrýpe,0.7,0.616,553118148,1,pause,,0.0,113,,Ysyrýpe.,0.0,ysyrýpe,0.0,,,,,
-a1u02d3.w.tetame,F,gn,False,tetãme,tetãme,0.84,0.621,237390613,1,closure,,0.0,126,,Tetame.,0.167,tetãme,0.0,,,,,
 a1u02d3.w.koape,F,gn,False,ko'ápe,ko'ápe,0.61,0.892,944471493,2,pause,,0.0,131,,Ko'ápe.,0.0,ko'ápe,0.0,,,,,
 a1u02d3.s0b,F,gn,False,ógape,ógape,0.63,0.831,1655555863,1,pause,,0.0,139,,Oygape.,0.4,ógape,0.0,ivan,óga,,,
 a1u02d3.s2a,F,gn,False,ñu,ñu,0.35,0.414,1234367535,1,pause,,0.0,155,,Iñu.,0.5,ñu,0.0,ivan,ñúme,,,"left out by --verify: the other word of its pair, «ñúme», was left out"
@@ -179,11 +175,9 @@ a1u02d4.w.kokuegui,F,gn,False,kokuégui,kokuégui,0.7,0.811,635952721,2,pause,,0
 a1u02d5.p1.x0,F,gn,False,Ko pyhareve ndahái.,ko pyhareve ndahái,1.47,0.883,1697201326,1,pause,,0.0,155,,"Kopyhareve, ndahái",0.056,ko pyhareve ndahái,0.0,,,,,
 a1u02d5.p1.x1,F,gn,False,Che sy ndohói mbo'ehaópe.,che sy ndohói mbo'ehaópe,1.59,0.888,305023510,3,pause,,0.0,119,,Chesy ndohói mboʼehaópe.,0.042,che sy ndohói mbo'ehaópe,0.0,,,,,
 a1u02d5.p1.x2,F,gn,False,Ndajapói mba'eve.,ndajapói mba'eve,1.22,0.889,187137137,2,pause,,0.0,132,,Ndajapói mbaʼeve.,0.0,ndajapói mba'eve,0.0,,,,,
-a1u02d5.p1.x3,M,gn,False,oky.,oky,0.49,0.691,2082499860,1,pause,,-2.0,120,,Oky.,0.0,oky,0.0,,,,,
 a1u02d5.p2.x0,F,gn,False,Che nañe'ẽi guaraníme.,che nañe'ẽi guaraníme,1.41,0.864,2006765854,3,pause,,0.0,163,,Ché nañe'ẽiguaraníme.,0.095,che nañe'ẽi guaraníme,0.0,,,,,
 a1u02d5.p2.x1,F,gn,False,Ha'e nohendúi ha noñe'ẽi.,ha'e nohendúi ha noñe'ẽi,1.99,0.873,10200022,1,pause,,0.0,127,,Haenohendúi ha noñeʼẽi.,0.083,ha'e nohendúi ha noñe'ẽi,0.0,ivan,,,,
 a1u02d5.p2.x2,F,gn,False,Namba'apói ko pyhare.,namba'apói ko pyhare,1.49,0.917,429060716,1,pause,,0.0,145,,Na mba'apóiko pyhare.,0.1,namba'apói ko pyhare,0.0,,,,,
-a1u02d5.p2.x3,F,gn,False,oky.,oky,0.47,0.816,1855308538,1,pause,,0.0,140,,Oky.,0.0,oky,0.0,,,,,
 a1u02d5.w.ama,F,gn,False,ama,ama,0.4,0.851,258812122,3,pause,,0.0,121,,Ama.,0.0,ama,0.0,,,,,
 a1u02d5.w.oky,F,gn,False,oky,oky,0.47,0.724,1086650406,1,pause,,0.0,126,,Oky.,0.0,oky,0.0,,,,,
 a1u02d5.w.ndaikuaai,F,gn,False,ndaikuaái,ndaikuaái,0.75,0.938,1996229934,1,pause,,0.0,150,,Ndaikuaái.,0.0,ndaikuaái,0.0,,,,,
@@ -191,14 +185,13 @@ a1u02d5.w.ndahai,F,gn,False,ndahái,ndahái,0.62,0.909,1358998554,1,pause,,0.0,1
 a1u02d5.w.mbaeve,F,gn,False,mba'eve,mba'eve,0.66,0.854,1547276265,2,pause,,0.0,125,,Mba'eve.,0.0,mba'eve,0.0,,,,,
 a1u02d5.w.ndaipori,F,gn,False,Ndaipóri,ndaipóri,0.68,0.857,1455157655,1,pause,,0.0,136,,Ndaipóri.,0.0,ndaipóri,0.0,,,,,
 a1u02d5.w.mbarakaja,F,gn,False,mbarakaja,mbarakaja,0.76,0.864,2002174639,2,pause,,0.0,172,,"Mbarakaja,",0.0,mbarakaja,0.0,,,,,
-a1u02d5.w.aguyjemante,F,gn,False,Aguyje mante,aguyje mante,1.24,0.893,1386407277,3,pause,,0.0,140,,agu je mante.,0.083,aguyje mante,0.0,ivan,,,,
 a1u02d5.r1.l3,M,gn,False,"Nahániri, ndahái. Oky.",nahániri ndahái oky,2.19,0.841,676275967,3,pause,,-2.0,120,,Nahángi rindahái oky,0.158,nahániri ndahái oky,0.0,ivan,,,,
 a1u02d5.r1.l5,M,gn,False,"Nahániri, aha.",nahániri aha,1.14,0.743,1093495555,2,pause,,-2.0,136,,Nahániri 'aha.,0.083,nahániri'aha,0.083,"ivan, mms",,,,
 a1u02d5.r1.l7,M,gn,False,"Héẽ, ndahái.",héẽ ndahái,0.77,0.86,790850326,3,pause,,-2.0,127,,He ndahái,0.2,héndahái,0.2,"ivan, mms",,,,named in silent.json
 a1u03d1.p1.x0,M,gn,False,Chekane'õ.,chekane'õ,0.78,0.712,102567166,1,pause,,-2.0,118,,Chikane'o.,0.222,che kane'õ,0.111,ivan,,,,
 a1u03d1.p1.x1,F,gn,False,Chevare'a ha chey'uhéi.,chevare'a ha chey'uhéi,1.66,0.833,1897544808,1,pause,,0.0,113,,Che vare'a ha chey uhéi.,0.091,chéva re'a ha che y'uhéi,0.136,ivan,,,,
 a1u03d1.p1.x2,F,gn,False,"Ndepochy, Juan.",ndepochy huan,1.03,0.871,1746111681,2,pause,,0.0,144,,Ndepochy hu an.,0.077,nde pochy juan,0.154,mms,,,,
-a1u03d1.p1.x3.l1,M,gn,False,"Héẽ, chekane'õ ha chero'y.",héẽ chekane'õ ha chero'y,1.79,0.824,928547308,3,pause,,-2.0,105,,Héicheka ne'o ha che ro'y.,0.208,he che kane'õ ha che ro'y,0.167,"ivan, mms",,,,
+a1u03d1.p1.x3.l1,M,gn,False,"Héẽ, chekane'õ ha chero'y.",héẽ chekane'õ ha chero'y,1.79,0.824,928547308,3,pause,,-2.0,105,,Héicheka ne'o ha che ro'y.,0.208,he che kane'õ ha che ro'y,0.167,"ivan, mms",,,,named in silent.json
 a1u03d1.p2.x0,F,gn,False,Che sy ikane'õ.,che sy ikane'õ,1.27,0.892,346596112,1,pause,,0.0,155,,Chesy ikane'õ.,0.071,che sy ikane'õ,0.0,,,,,
 a1u03d1.p2.x2,F,gn,False,Mitã ivare'a.,mitã ivare'a,1.11,0.906,2057756971,2,pause,,0.0,144,,Mitã ivare'a.,0.0,mitã ivare'a,0.0,,,,,
 a1u03d1.p2.x3,F,gn,False,Che ru hasy.,che ru hasy,0.88,0.873,228717226,1,pause,,0.0,155,,Cheru hasy.,0.091,che ru hasy,0.0,,,,,
@@ -225,21 +218,18 @@ a1u03d2.w.avya,F,gn,False,avy'a,avy'a,0.61,0.887,727505521,1,pause,,0.0,133,,avy
 a1u03d2.w.akyhyje,F,gn,False,akyhyje,akyhyje,0.71,0.899,148041982,1,pause,,0.0,105,,Akyhyje.,0.0,akyhyje,0.0,,,,,
 a1u03d2.w.chemandua,F,gn,False,chemandu'a,chemandu'a,0.86,0.869,274469168,1,pause,,0.0,122,,Che manduha.,0.2,che manduha,0.2,"ivan, mms",,,,its text is named in silent.json
 a1u03d2.w.aime,F,gn,False,aime,aime,0.54,0.887,367356750,3,pause,,0.0,129,,Aime.,0.0,aime,0.0,,,,,
-a1u03d2.w.koaga,F,gn,False,ko'ág̃a,ko'ágã,0.6,0.787,1817245385,1,closure,,0.0,99,,Ko'ág̃a.,0.0,ko'ána,0.333,mms,,,,
 a1u03d2.w.ake,F,gn,False,ake,ake,0.42,0.871,210231692,3,pause,,0.0,122,,Ake.,0.0,ake,0.0,,,,,
 a1u03d3.p1.x0,F,gn,False,Che mbo'ehára.,che mbo'ehára,0.97,0.904,293739991,1,pause,,0.0,136,,Che mbo'ehára.,0.0,che mbo'ehára,0.0,,,,,
 a1u03d3.p1.x1,F,gn,False,Nde temimbo'e pyahu.,nde temimbo'e pyahu,1.32,0.869,1720011824,2,pause,,0.0,121,,Ndetemimbo'epyahu.,0.105,nde temimbo'e pyahu,0.0,,,,,
 a1u03d3.p1.x2,F,gn,False,Ha'e pohanohára.,ha'e pohanohára,1.36,0.915,2139929305,3,pause,,0.0,165,,Ha'epohãnohára.,0.133,ha'e pohanohára,0.0,,,,,
-a1u03d3.p1.x3,F,gn,False,Che ru chokokue ha che sy ñemuhára.,che ru chokokue ha che sy ñemuhára,2.87,0.923,143362635,3,pause,,0.0,152,,Cheru chokokue a chesy ñemohára.,0.118,che ru chokokue ha che sy ñemohára,0.029,"ivan, mms",,,,
+a1u03d3.p1.x3,F,gn,False,Che ru chokokue ha che sy ñemuhára.,che ru chokokue ha che sy ñemuhára,2.87,0.923,143362635,3,pause,,0.0,152,,Cheru chokokue a chesy ñemohára.,0.118,che ru chokokue ha che sy ñemohára,0.029,"ivan, mms",,,,named in silent.json
 a1u03d3.p2.x1.l0,M,gn,False,Mávapa ha'e?,mávapa ha'e,0.98,0.848,1598781107,1,pause,,-2.0,111,,Mávapa ha'e.,0.0,mávapa ha'e,0.0,,,,,
-a1u03d3.p2.x1.l1,F,gn,False,Ha'e che angirũ.,ha'e che angirũ,1.25,0.648,676087333,1,pause,,2.0,123,,Ha'éche andiro.,0.267,ha'e che angiro,0.067,"ivan, mms",,,,
 a1u03d3.p2.x2,F,gn,False,"Ndaha'éi che sy, ha'e che jarýi.",ndaha'éi che sy ha'e che jarýi,2.1,0.869,1832514052,2,pause,,0.0,107,,Ndaha'eichesy ha eche jarýi.,0.167,ndaha'éi che sy ha'e che jarýi,0.0,ivan,,,,
 a1u03d3.w.pohanohara,F,gn,False,pohanohára,pohanohára,0.81,0.821,1535931884,1,closure,,0.0,118,,Oohãnohára.,0.2,pohanohára,0.0,ivan,,,,
 a1u03d3.w.mbaapohara,F,gn,False,mba'apohára,mba'apohára,0.96,0.904,1577115683,1,pause,,0.0,157,,Mba'apohára.,0.0,mba'apohára,0.0,,,,,
 a1u03d3.w.chokokue,F,gn,False,chokokue,chokokue,0.72,0.724,1902300493,1,pause,,0.0,148,,Chokokue.,0.0,chokokue,0.0,,,,,
 a1u03d3.w.nemuhara,F,gn,False,ñemuhára,ñemuhára,0.79,0.891,1103428852,2,pause,,0.0,168,,ñemohára.,0.125,ñemohára,0.125,"ivan, mms",,,,its text is named in silent.json
 a1u03d3.w.mitarusu,F,gn,False,mitãrusu,mitãrusu,0.82,0.833,504924392,1,pause,,0.0,157,,Mitãrusu.,0.0,mitã rusu,0.125,,,,,
-a1u03d3.w.mitakuna,F,gn,False,mitãkuña,mitãkuña,0.87,0.894,1455368348,1,pause,,0.0,137,,Mitáku ñae.,0.375,mitãkuña,0.0,ivan,,,,
 a1u03d3.w.kunakarai,F,gn,False,kuñakarai,kuñakarai,0.69,0.761,1315197572,1,closure,,0.0,113,,Kuña karai.,0.111,kuñakarai,0.0,,,,,
 a1u03d3.w.cheiru,F,gn,False,che irũ,che irũ,0.57,0.726,1167830335,2,pause,,0.0,123,,Chairũ.,0.286,chairũ,0.286,"ivan, mms",,,,named in silent.json
 a1u03d3.s2b,F,gn,False,ñe'ẽ,ñe'ẽ,0.57,0.529,1995230480,2,pause,,0.0,158,,ñe'ẽ.,0.0,ñe'ẽ,0.0,,ñande,,,
@@ -251,7 +241,6 @@ a1u03d4.p2.x0.l0,M,gn,False,Nde piko mbo'ehára?,nde piko mbo'ehára,1.05,0.949,
 a1u03d4.p2.x0.l1,F,gn,False,"Héẽ, che mbo'ehára.",héẽ che mbo'ehára,1.15,0.94,1915501113,1,pause,,0.0,152,,He'ẽche mbo'ehára.,0.176,he'ẽ che mbo'ehára,0.118,"ivan, mms",,,,
 a1u03d4.p2.x1.l0,F,gn,False,Og̃uahẽ pohanohára.,oguahẽ pohanohára,1.41,0.888,1033342137,2,pause,,0.0,162,,Oguahẽ pohãnohára.,0.059,oguahẽ pohanohára,0.0,,,,,
 a1u03d4.p2.x1.l1,M,gn,False,Añetépa?,añetépa,0.74,0.859,1250975068,1,pause,,-2.0,137,,Añetépa.,0.0,añetépa,0.0,,,,,
-a1u03d4.p2.x1.l2,F,gn,False,"Héẽ, upéicha.",héẽ upéicha,1.01,0.918,1402539238,1,pause,,0.0,178,,He upéicha.,0.182,hẽ upéicha,0.091,"ivan, mms",,,,
 a1u03d4.p2.x2.l0,F,gn,False,Nekane'õpa?,nekane'õpa,0.91,0.924,790814995,2,pause,,0.0,147,,Noikane'ópa.,0.3,nekane'õpa,0.0,ivan,,,,
 a1u03d4.p2.x2.l1,M,gn,False,"Nahániri, nachekane'õi. Chevare'a.",nahániri nachekane'õi chevare'a,2.96,0.82,1478897808,3,pause,,-2.17,128,,"Nahanirina chykane'õi, hevare'a.",0.161,nahániri nache kane'õi chévare'a,0.065,ivan,,,,
 a1u03d4.p2.x3.l1,F,gn,False,"Héẽ, og̃uahẽ ko'ág̃a.",héẽ oguahẽ ko'ágã,1.35,0.91,1620678103,1,pause,,0.0,155,,He og̃uahéiko ág̃a.,0.353,heẽ oguahẽ ko'ágã,0.059,ivan,,,,
@@ -288,7 +277,6 @@ a1u04d1.p1.x3,F,gn,False,Che sy ha che ru oñe'ẽ guaraníme.,che sy ha che ru 
 a1u04d1.p2.x0,F,gn,False,Mba'éichapa héra nde ru?,mba'éichapa héra nde ru,1.45,0.911,1892273881,1,pause,,0.0,125,,Mba'éichapa héra nde ru.,0.0,mba'éichapa héra nde ru,0.0,,,,,
 a1u04d1.p2.x1,F,gn,False,Moõpa nde róga?,moõpa nde róga,1.06,0.914,131013950,2,pause,,0.0,138,,Moópa nde róga.,0.071,moõpa nde róga,0.0,,,,,
 a1u04d1.p2.x2,F,gn,False,Mba'éichapa héra ne memby?,mba'éichapa héra ne memby,1.75,0.932,516411108,2,pause,,0.0,127,,Mba'éichapa héra nememby.,0.04,mba'éichapa héra ne memby,0.0,,,,,
-a1u04d1.p2.x3,F,gn,False,Mba'éichapa héra ne ramói?,mba'éichapa héra ne ramói,1.54,0.934,1774231395,1,pause,,0.0,118,,Mba'eichapa héra nde ramoi.,0.12,mba'éichapa héra ne ramói,0.0,ivan,,,,
 a1u04d1.w.memby,F,gn,False,che memby,che memby,0.68,0.858,2065325884,1,pause,,0.0,154,,Chememby.,0.111,che memby,0.0,,,,,
 a1u04d1.w.ray,F,gn,False,che ra'y,che ra'y,0.58,0.833,696286486,1,pause,,0.0,144,,Che ra'y.,0.0,che ra'y,0.0,,,,,
 a1u04d1.w.rajy,F,gn,False,che rajy,che rajy,0.54,0.816,1850314889,3,pause,,0.0,157,,Che rajy.,0.0,che raje,0.125,mms,,,,
@@ -308,10 +296,8 @@ a1u04d2.p2.x0,F,gn,False,Mitãnguéra oho mbo'ehaópe.,mitãnguéra oho mbo'eha�
 a1u04d2.p2.x1,F,gn,False,Kuñanguéra opurahéi.,kuñanguéra opurahéi,1.39,0.649,908526529,3,closure,,0.0,112,,Kuñanguéra opurahéi.,0.0,kuña nguéra opurahéi,0.053,,,,,
 a1u04d2.p2.x2,F,gn,False,Che angirũnguéra Paraguaigua.,che angirũnguéra paraguaigua,1.88,0.935,791671622,3,pause,,0.0,159,,Che angi runguera paraguai kova.,0.25,che angirũ nguéra paraguaigua,0.036,ivan,,,,
 a1u04d2.p2.x3,F,gn,False,Mitãnguéra okaru korapýpe.,mitãnguéra okaru korapýpe,1.82,0.923,1479058669,2,pause,,0.0,150,,Mitãnguéra okaro korapýpe.,0.04,mitã nguéra okaru ko rapýpe,0.08,ivan,,,,
-a1u04d2.w.mitanguera,F,gn,False,mitãnguéra,mitãnguéra,0.82,0.875,607032548,3,pause,,0.0,182,,itãmbuéra.,0.3,mitãnguéra,0.0,ivan,,,,
 a1u04d2.w.mboeharakuera,F,gn,False,mbo'eharakuéra,mbo'eharakuéra,1.08,0.91,388406490,3,pause,,0.0,154,,Mbo'eiharakuéra.,0.071,mbo'ehára kuéra,0.143,ivan,,,,
 a1u04d2.w.jaguakuera,F,gn,False,jaguakuéra,jaguakuéra,0.73,0.693,673799829,3,closure,,0.0,108,,Jaguakuéra.,0.0,jagua kuéra,0.1,,,,,
-a1u04d2.w.guyrakuera,F,gn,False,guyrakuéra,guyrakuéra,0.75,0.894,7199211,2,pause,,0.0,144,,Muyrakuéra.,0.1,guyra kuéra,0.1,ivan,,,,
 a1u04d2.w.mymbakuera,F,gn,False,mymbakuéra,mymbakuéra,0.83,0.901,1851030078,1,pause,,0.0,142,,Mymbakuéra.,0.0,mymba kuéra,0.1,,,,,
 a1u04d2.w.korapy,F,gn,False,korapy,korapy,0.49,0.781,2028946091,1,closure,,0.0,111,,Korapy.,0.0,korapy,0.0,,,,,
 a1u04d2.s1a,F,gn,False,túva,túva,0.37,0.717,1007663974,1,closure,,0.0,109,,Túva,0.0,túva,0.0,,tuvakuéra,,,
@@ -333,7 +319,6 @@ a1u04d3.w.apyka,F,gn,False,apyka,apyka,0.61,0.851,777655717,1,pause,,0.0,119,,Ap
 a1u04d3.w.korapype,F,gn,False,korapýpe,korapýpe,0.68,0.734,498765760,1,closure,,0.0,125,,Korapýpe.,0.0,ko rapýpe,0.125,,,,,
 a1u04d3.r1.l0,N,es,False,En el patio de la casa de Juan. Rosa habla de los animales. ¿Qué animal está lejos de los dos?,en el patio de la casa de juan rosa habla de los animales qué animal está lejos de los dos,6.51,0.876,562959130,2,pause,,0.0,133,,,,en el patio de la casa de juan rosa habla de los animales qué animal está lejos de los dos,0.0,,,,,
 a1u04d3.r1.l1,F,gn,False,"Pe jagua iporã, Juan.",pe jagua iporã huan,1.47,0.856,1451942828,3,pause,,0.0,176,,Pejagua iporã huan.,0.053,pe jagua iporã juan,0.053,mms,,,,
-a1u04d3.r1.l2,M,gn,False,Héẽ. Ha amo kavaju ituicha.,héẽ ha amo kavaju ituicha,2.54,0.808,1334031350,2,pause,,-2.0,119,,"He, a amo kavaju ituicha.",0.12,he ha amo kavaju ituicha,0.08,"ivan, mms",,,,
 a1u04d3.r1.l3,F,gn,False,Ha ko mbarakaja?,ha ko mbarakaja,1.06,0.922,948225152,2,pause,,0.0,174,,Hako mbaraka'ja.,0.133,ha ko mbaraka'ia,0.133,"ivan, mms",,,,
 a1u04d3.r1.l4,M,gn,False,Che rajy mbarakaja.,che rajy mbarakaja,1.54,0.859,652226610,1,pause,,-2.33,125,,Cheigrajy mbarakaja.,0.111,che rajy mbarakaja,0.0,ivan,,,,
 a1u04d3.r1.l5,N,es,False,¿Qué animal está lejos de los dos?,qué animal está lejos de los dos,1.84,0.925,1374093476,1,pause,,0.0,127,,,,qué animal está lejos de los dos,0.0,,,,,
@@ -410,10 +395,9 @@ a1u04d1.s1a,F,gn,False,ahai,ahai,0.55,0.897,2075115958,1,pause,,0.0,117,,Ahai.,0
 a1u04d1.s2a,F,gn,False,ramói,ramói,0.48,0.84,1350734453,1,pause,,0.0,136,,Ndamoi.,0.6,ramói,0.0,ivan,jarýi,,,
 a1u04d2.s0b,F,gn,False,ogakuéra,ogakuéra,0.65,0.846,1008589725,1,pause,,0.0,168,,Ogakuéra.,0.0,óra kuéra,0.375,mms,óga,,,named in silent.json
 a1u04d2.s2b,F,gn,False,ha'ekuéra,ha'ekuéra,0.73,0.803,237754382,2,pause,,0.0,113,,Ha'ekuéra.,0.0,ha'e kuéra,0.111,,ha'e,,,
-a1u03d3.s1a,F,gn,False,ñu,ñu,0.35,0.414,1234367535,1,pause,,0.0,155,,Iñu.,0.5,ñu,0.0,ivan,ñúme,,a1u02d3.s2a,
 a1u01d1.p1.x1,F,gn,False,"Mba'éichapa reiko, Ana?",mba'éichapa reiko ãna,1.36,0.939,1609307374,1,pause,1.0,0.0,152,,Mba'éichapa reiko ána.,0.048,mba'éichapa reiko ána,0.048,,,,,
 a1u01d3.p1.x0,F,gn,False,Mba'éichapa? Che réra Ana.,mba'éichapa che réra ãna,2.23,0.922,1064588352,2,pause,1.0,0.0,145,,Cba'éichapaherera ána.,0.25,mba'éichapa che réra ána,0.042,ivan,,,,
-a1u01d3.p2.x1,F,gn,False,Che réra Moisés. Che Argentina-gua.,che réra moisés che arhentinagua,3.1,0.914,1522977048,2,pause,1.0,0.0,145,,Cherra moisẽsche a hentiragua.,0.188,che réra moisés che ahentinagua,0.031,"ivan, mms",,,,
+a1u01d3.p2.x1,F,gn,False,Che réra Moisés. Che Argentina-gua.,che réra moisés che arhentinagua,3.1,0.914,1522977048,2,pause,1.0,0.0,145,,Cherra moisẽsche a hentiragua.,0.188,che réra moisés che ahentinagua,0.031,"ivan, mms",,,,named in silent.json
 a1u01d3.r1.l2,F,gn,False,Mba'éichapa? Che réra Susana.,mba'éichapa che réra susána,2.29,0.942,85250120,1,pause,1.0,0.0,144,,Cba'éichapahererasu sana.,0.296,mba'éichapa che réra susána,0.0,ivan,,,,
 a1u01d3.r1.l4,F,gn,False,Temimbo'e pyahu héra Karina.,temimbo'e pyahu héra karína,1.8,0.73,1819768189,2,closure,1.0,0.0,130,,Temi mbo'epyahu hera karína.,0.111,temimbo'e pyahu héra carína,0.037,,,,,
 a1u01d4.p1.x2,F,gn,False,"Ndépa Juan? Nahániri, che Casimiro.",ndépa huan nahániri che kasimíro,3.22,0.939,350063074,2,pause,1.0,0.0,145,,Ndépa hu agnahánirihekasimíro.,0.188,ndépa juan nahániri che casimíro,0.062,"ivan, mms",,,,
@@ -456,7 +440,6 @@ a1u01d3.r1.l5.slow,F,gn,True,Ha'e Argentina-gua.,ha'e arhentinagua,1.55,0.939,46
 a1u01d4.r1.l1.slow,M,gn,True,Mba'éichapa? Mba'épa reipota?,mba'éichapa mba'épa reipota,2.75,0.954,1505426778,1,pause,0.8,-3.0,130,1.2,Mba'éichapa ba'épa reipota.,0.037,mba'éichapa mba'épa reipota,0.0,ivan,,,,
 a1u01d4.r1.l2.slow,F,gn,True,Iporã. Oĩpa chipa?,iporã oĩpa chipa,2.23,0.912,1085533894,1,pause,0.8,0.0,155,1.21,Iporã ĩpa chipa.,0.062,iporã oĩpa chipa,0.0,ivan,,,,
 a1u01d4.r1.l3.slow,M,gn,True,Nahániri. Oĩ kesu ha mandi'o.,nahániri oĩ kesu ha mandi'o,3.56,0.91,934600272,1,pause,0.8,-3.0,136,1.21,Ndaháguirimĩ kesu ha mandiko.,0.222,nahániri oĩ kesus ha mandi'o,0.037,"ivan, mms",,,,"left out by --verify: the slow take is heard worse than the normal take of the same line: «ndaháguirimĩ kesu ha mandiko» / «nahániri oĩ kesus ha mandi'o», 5 + 1 letters off, against «nahágniriĩkesu a mandi'o» / «nahániri oĩ kesu ha mandi'o», 3 + 0"
-a1u01d4.r1.l4.slow,F,gn,True,Mboýpa ovale ko kesu?,mboýpa ovale ko kesu,2.21,0.864,1903170682,1,pause,0.8,0.0,162,1.15,Yboypa ovaléko kesuu.,0.25,mboýpa ovaleko kesu,0.05,ivan,,,,"left out by --verify: the slow take is heard worse than the normal take of the same line: «yboypa ovaléko kesuu» / «mboýpa ovaleko kesu», 2 + 0 letters off, against «mboypa ovaléko kesuu» / «mboýpa ovale ko kesu», 1 + 0"
 a1u01d4.r1.l5.slow,M,es,True,Diez mil.,diez mil,0.93,0.752,1591180133,2,pause,0.74,0.0,140,1.25,,,diez mil,0.0,,,,,
 a1u02d1.r1.l1.slow,F,gn,True,"Mba'épa rejapo, Vicente?",mba'épa rejapo visénte,1.83,0.871,839887902,1,pause,0.8,0.05,154,1.18,Mba'épa rejapovisénte.,0.045,mba'épa rejapo visénte,0.0,,,,,
 a1u02d1.r1.l3.slow,M,gn,True,Amba'apo.,amba'apo,0.85,0.968,1543629857,1,pause,0.8,-2.0,127,1.23,Amba'apo.,0.0,amba'apo,0.0,,,,,
@@ -485,7 +468,6 @@ a1u04d1.r1.l5.slow,F,gn,True,"Che ramói, héra Casimiro.",che ramói héra kasi
 a1u04d1.r1.l6.slow,M,gn,True,Mba'éichapa héra ne memby?,mba'éichapa héra ne memby,2.07,0.921,1601257527,2,pause,0.74,-2.0,119,1.27,Mba'éichapa héra ndememby.,0.08,mba'éichapa héra ne memby,0.0,ivan,,,,"left out by --verify: the slow take is heard worse than the normal take of the same line: «mba'éichapa héra ndememby» / «mba'éichapa héra ne memby», 1 + 0 letters off, against «mba'éichapa héra ne memby» / «mba'éichapa héra ne memby», 0 + 0"
 a1u04d1.r1.l7.slow,F,gn,True,Héra Genaro.,héra henáro,1.12,0.916,678866559,1,pause,0.8,0.0,168,1.16,Hherahenáro.,0.273,héra henáro,0.0,ivan,,,,"left out by --verify: the slow take is heard worse than the normal take of the same line: «hherahenáro» / «héra henáro», 1 + 0 letters off, against «herahenaro» / «héra henáro», 0 + 0"
 a1u04d3.r1.l1.slow,F,gn,True,"Pe jagua iporã, Juan.",pe jagua iporã huan,1.96,0.799,1451942828,3,pause,0.68,0.0,176,1.34,Pejagua ha iporã hoan.,0.263,pe jagua ha iporã juan,0.211,"ivan, mms",,,,"left out by --verify: the slow take is heard worse than the normal take of the same line: «pejagua ha iporã hoan» / «pe jagua ha iporã juan», 3 + 3 letters off, against «pejagua iporã huan» / «pe jagua iporã juan», 0 + 1"
-a1u04d3.r1.l2.slow,M,gn,True,Héẽ. Ha amo kavaju ituicha.,héẽ ha amo kavaju ituicha,2.96,0.803,1334031350,1,pause,0.8,-2.0,108,1.16,He a 'amo kavaju ituicha.,0.16,he ha amo kavaju ituicha,0.08,"ivan, mms",,,,"left out by --verify: the slow take is heard worse than the normal take of the same line: «he a 'amo kavaju ituicha» / «he ha amo kavaju ituicha», 3 + 1 letters off, against «he a amo kavaju ituicha» / «he ha amo kavaju ituicha», 2 + 1"
 a1u04d3.r1.l3.slow,F,gn,True,Ha ko mbarakaja?,ha ko mbarakaja,1.31,0.939,948225152,2,pause,0.74,0.0,172,1.25,Hako mbarakaha.,0.133,ha ko mbarakaya,0.067,"ivan, mms",,,,
 a1u04d3.r1.l4.slow,M,gn,True,Che rajy mbarakaja.,che rajy mbarakaja,1.81,0.893,652226610,1,pause,0.8,-2.33,128,1.17,Che rajy mbarakata.,0.056,che rajy mbarakata,0.056,"ivan, mms",,,,
 a1u04d5.r1.l1.slow,F,gn,True,Mba'éichapa? Oĩpa kesu?,mba'éichapa oĩpa kesu,2.45,0.929,895160438,1,pause,0.8,0.0,158,1.19,Mba'éichapa ĩpakesu.,0.095,mba'éichapa oĩpa kesu,0.0,ivan,,,,
@@ -502,3 +484,21 @@ a1u01d5.s1a,F,gn,False,porã,porã,0.35,0.597,1545029841,1,closure,1.0,0.0,105,,
 a1u01d5.s2b,F,gn,False,térã,térã,0.41,0.765,1848855208,2,pause,1.0,0.0,168,,Tera.,0.5,térã,0.0,,téra,,,a pair of the contrast «nasal»
 a1u01d2.s2a,F,gn,False,tupa,tupa,0.41,0.767,1159382786,1,closure,1.0,0.0,94,,Kupa.,0.25,tupa,0.0,ivan,Tupã,,,a pair of the contrast «nasal»
 a1u01d5.s1b,F,gn,False,póra,póra,0.36,0.763,1159600491,1,closure,1.0,0.0,119,,Yora.,0.5,póra,0.0,ivan,porã,,,a pair of the contrast «nasal»
+a1u02d5.p1.x3,F,gn,False,Vicente ndoúi ko ka'aru: oky.,visénte ndoúi ko ka'aru oky,2.57,0.901,2082515698,3,pause,1.0,0.0,140,,Visénte ndoiko ka'aru oky.,0.074,myisénte ndoúi ko ka'aru oky,0.074,"ivan, mms",,,,
+a1u02d5.p2.x3,F,gn,False,Che ru nosẽi ógagui: oky.,che ru nosẽi ógagui oky,2.64,0.914,1855316457,2,pause,1.0,0.0,159,,Cheru mosẽi ogaguiky.,0.217,che ru mosẽi ógagui oky,0.043,"ivan, mms",,,,
+a1u02d3.w.tetame,F,gn,False,tetãme,tetãme,0.64,0.854,237390613,1,pause,1.0,0.0,170,,Tetame.,0.167,tetãme,0.0,,,,,
+a1u03d2.w.koaga,F,gn,False,ko'ág̃a,ko'ágã,0.58,0.825,1817245385,1,pause,1.0,0.0,174,,Ko'ág̃a.,0.0,ko'ána,0.333,mms,,,,
+a1u01d4.p2.x3,F,gn,False,Mboýpa ovale ko kesu?,mboýpa ovale ko kesu,1.6,0.866,1903202358,1,pause,1.0,0.0,161,,Mboypa ova léko kesu.,0.2,mboýpa ovaléko kesús,0.2,mms,,,,
+a1u01d4.r1.l4.slow,F,gn,True,Mboýpa ovale ko kesu?,mboýpa ovale ko kesu,1.96,0.884,1903202358,1,pause,0.8,0.0,160,1.23,Mboyypa ova léko kesuu.,0.3,mboýpa ovaléco jesús,0.3,"ivan, mms",,,,"left out by --verify: the slow take is heard worse than the normal take of the same line: «mboyypa ova léko kesuu» / «mboýpa ovaléco jesús», 2 + 2 letters off, against «mboypa ova léko kesu» / «mboýpa ovaléko kesús», 0 + 1"
+a1u02d1.w.aju,F,gn,False,aju,aju,0.47,0.878,783901918,1,pause,1.0,0.0,163,,Aju.,0.0,adu,0.333,mms,,,,
+a1u02d3.p1.x0,F,gn,False,Che amba'apo mbo'ehaópe.,che amba'apo mbo'ehaópe,1.63,0.904,117023807,1,pause,1.0,0.0,144,,Che amba'apo mboeha ópe.,0.087,che amba'apo mbo'ehaópe,0.0,ivan,,,,
+a1u02d5.w.aguyjemante,F,gn,False,Aguyje mante,aguyje mante,1.3,0.909,1386446872,1,pause,1.0,0.0,147,,Aguje mante.,0.083,aguy je mante,0.083,ivan,,,,
+a1u03d3.p2.x1.l1,F,gn,False,Ha'e che angirũ.,ha'e che angirũ,1.24,0.502,676119009,1,pause,1.0,2.0,125,,Ha'ẽche angiru.,0.2,ha'ẽ che angiru,0.133,,,,,
+a1u03d3.w.mitakuna,F,gn,False,mitãkuña,mitãkuña,0.9,0.9,1455384186,1,pause,1.0,0.0,131,,Mitaku ña.,0.25,mitakuña,0.125,,,,,
+a1u03d3.s1a,F,gn,False,ñu,ñu,0.33,0.459,1154002008,1,pause,1.0,0.0,161,,Ju.,0.5,ñu,0.0,ivan,,,,
+a1u03d4.p2.x1.l2,F,gn,False,"Héẽ, upéicha.",héẽ upéicha,1.07,0.922,1402586752,1,pause,1.0,0.0,169,,Heẽ upéicha.,0.091,he'ẽ upéicha,0.182,mms,,,,
+a1u04d1.p2.x3,F,gn,False,Mba'éichapa héra ne ramói?,mba'éichapa héra ne ramói,1.57,0.927,1774239314,1,pause,1.0,0.0,118,,Mba'eichapa héra ne ramoi.,0.08,mba'eichapa héra ne ramói,0.04,,,,,
+a1u04d2.w.mitanguera,F,gn,False,mitãnguéra,mitãnguéra,0.96,0.897,607048386,1,pause,1.0,0.0,177,,itambuéra.,0.4,mitã nguéra,0.1,ivan,,,,
+a1u04d2.w.guyrakuera,F,gn,False,guyrakuéra,guyrakuéra,0.74,0.919,7215049,1,pause,1.0,0.0,148,,Muyrakuéra.,0.1,guyra kuéra,0.1,ivan,,,,
+a1u04d3.r1.l2,M,gn,False,Héẽ. Ha amo kavaju ituicha.,héẽ ha amo kavaju ituicha,2.4,0.777,1334070945,1,pause,1.0,-2.0,117,,He a amo kavaju ituicha.,0.12,he'e ha amo kavaju ituicha,0.12,"ivan, mms",,,,
+a1u04d3.r1.l2.slow,M,gn,True,Héẽ. Ha amo kavaju ituicha.,héẽ ha amo kavaju ituicha,2.9,0.87,1334070945,1,pause,0.8,-2.0,121,1.22,He a hamokavaju ituicha.,0.2,hee ha hamo kavaju ituicha,0.12,"ivan, mms",,,,

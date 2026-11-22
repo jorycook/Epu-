@@ -1,20 +1,44 @@
 {
- "about": "Which clips the synthetic voice must not say (tools/make-tts.py reads this; the measurements are in sound/VOICE.md, «What must stay without audio»). The rows named here are not synthesised and are left out of the manifest the tool writes next to its clips (sound/A1/voz/manifest.json), so tools/make-sound.mjs registers no clip for them and the screens keep their written stand-in there. 'contrasts': the two words of a sound pair (keys …s<n>a and …s<n>b of «Sonido y letra», p<n>.0 and p<n>.1 of Hablar) when the only thing that sets them apart is this: 'nasal' (a tilde on a vowel), 'puso', 'y-i', 'y-u', 'stress'. 'keys': clip keys or patterns (a1u01d2.s*). 'texts': a text that is never said, in any place. 'keep': keys, patterns or texts that --verify must not leave out by itself, once a person has heard the clip and found it right. A line of a dialogue or of a listening item (…l<n>) named here takes its whole clip with it: the clip is put together from its lines, and one that is missing leaves it out, its slow version too. Besides these rules, --verify leaves out by itself every clip of one or two words that a learner hears on its own and that both recognisers hear with wrong letters, and every slow take that is heard worse than the normal take of the same line (the slow version of its listening item is then not put together): the list of a run is in its takes.json and tts-report.json, and the clips are in its folder left-out/. What is named here failed in two runs with different takes, or by a measure no take can pass. A word that is silent as half of a pair is still said where it is a word of a scene, unless its text is named. Every recording that stays silent waits as a clip in the takes folder's left-out/ (sound/A1/voz/left-out), for a listener. Once a native speaker has heard one there and found it right: take its entry out of 'keys', 'texts' or 'contrasts' if one names it, and name it under 'keep' if it is a clip of one or two words that plays on its own (both recognisers heard those wrong, so the tool keeps them out by ear and says so, until 'keep' names them); a slow take or a word that --verify left out needs 'keep' alone. Then run the line of sound/VOICE.md, «How to make the clips again»: the clip comes back from left-out/ as it is, the very file that was heard, without the voice or the recognisers being run. A rule comes before the ear, and 'keep' overrides the ear only: a row that 'keys', 'texts' or 'contrasts' still name stays silent.",
- "contrasts": ["nasal"],
+ "about": "Which clips the synthetic voice must not say (tools/make-tts.py reads this; the measurements are in sound/VOICE.md, «What must stay without audio»). The rows named here are not synthesised and are left out of the manifest the tool writes next to its clips (sound/A1/voz/manifest.json), so tools/make-sound.mjs registers no clip for them and the screens keep their written stand-in there. 'contrasts': the two words of a sound pair (keys …s<n>a and …s<n>b of «Sonido y letra», p<n>.0 and p<n>.1 of Hablar) when the only thing that sets them apart is this: 'nasal' (a tilde on a vowel), 'puso', 'y-i', 'y-u', 'stress'. 'keys': clip keys or patterns (a1u01d2.s*). 'texts': a text that is never said, in any place. 'keep': keys, patterns or texts that --verify must not leave out by itself, once a person has heard the clip and found it right. A line of a dialogue or of a listening item (…l<n>) named here takes its whole clip with it: the clip is put together from its lines, and one that is missing leaves it out, its slow version too. Besides these rules, --verify leaves out by itself every clip of one or two words that a learner hears on its own and that both recognisers hear with wrong letters, and every slow take that is heard worse than the normal take of the same line (the slow version of its listening item is then not put together): the list of a run is in its takes.json and tts-report.json, and the clips are in its folder left-out/. What is named here failed in two runs with different takes, or by a measure no take can pass. A word that is silent as half of a pair is still said where it is a word of a scene, unless its text is named. Every recording that stays silent waits as a clip in the takes folder's left-out/ (sound/A1/voz/left-out), for a listener. Once a native speaker has heard one there and found it right: take its entry out of 'keys', 'texts' or 'contrasts' if one names it, and name it under 'keep' if it is a clip of one or two words that plays on its own (both recognisers heard those wrong, so the tool keeps them out by ear and says so, until 'keep' names them); a slow take or a word that --verify left out needs 'keep' alone. Then run the line of sound/VOICE.md, «How to make the clips again»: the clip comes back from left-out/ as it is, the very file that was heard, without the voice or the recognisers being run. A rule comes before the ear, and 'keep' overrides the ear only: a row that 'keys', 'texts' or 'contrasts' still name stays silent. Since 17 November two more things are read here, by tools/hear-sound.py, which hears every clip as the app plays it (decoded from its MP3, three hearings; sound/VOICE.md, «The ear's test on what ships»). 'words': the flawed word of a clip that 'keys' names (aike of «Ikatúpa aike?», irũ of «che irũ», mbo'ehaópe, Argentina-gua, Héẽ); with 'texts' they are the words the voice must not say alone, and so must not say inside a sentence either: a line that holds one, and in whose MP3 both recognisers write that very word with wrong letters in two hearings of three, is said again with other seeds and, if no take passes, silenced by key (a line of a listening item is not silenced by the tool: a person rules on it, since its whole item goes with it). 'forms': for a Teach example whose point is one letter or one small word (nde / ne, -pe / -me, -kuéra / -nguéra, nd- / n-, ja- / ña-, a prefix of person, ko / pe / amo), 'says' is the example and 'not' the same line as its lesson says it must NOT be said; a clip whose MP3 both recognisers hear nearer to a 'not' line than to the example, in two hearings of three, is said again and, if no take passes, silenced by key. 'acute', in the same entries: the words of the example whose stress its lesson marks with an acute (Jajotopáta, Ikatúpa, mbo'ehaópe, Mávapa, the plurals in -kuéra); a clip in whose MP3 no recogniser writes that acute, in two hearings of three, is treated the same way (a recogniser leaves an acute out of real speech too, so one that writes it is enough). A take that is said again passes when it passes --verify, its MP3 fails none of these rules, and its line is not heard worse as a whole than that of the take it replaces (a take can mend one word and spoil another). A new lesson with such a point gets its examples listed here. The tool itself adds to 'keys' and 'why' when it silences a clip, and writes this file as plain JSON.",
+ "contrasts": [
+  "nasal"
+ ],
  "keys": [
-  "a1u01d4.s0?", "p4.?",
-  "a1u02d2.s*", "a1u02d6.s1?",
+  "a1u01d4.s0?",
+  "p4.?",
+  "a1u02d2.s*",
+  "a1u02d6.s1?",
   "a1u02d3.s3?",
-  "a1u04d2.s0?", "a1u04d6.s1?",
+  "a1u04d2.s0?",
+  "a1u04d6.s1?",
   "a1u01d6.w.hee",
   "a1u01d6.w.ikatupa",
   "a1u03d3.w.cheiru",
   "a1u03d5.p2.x3",
   "a1u01d3.r1.l5*",
   "a1u02d5.r1.l7*",
-  "pl.3.l1"
+  "pl.3.l1",
+  "a1u01d3.p2.x1",
+  "a1u03d1.p1.x3.l1",
+  "a1u03d3.p1.x3"
  ],
- "texts": ["okẽ", "ñúme", "angirũ", "roju", "roho", "chero'y", "chemandu'a", "ñemuhára"],
+ "texts": [
+  "okẽ",
+  "ñúme",
+  "angirũ",
+  "roju",
+  "roho",
+  "chero'y",
+  "chemandu'a",
+  "ñemuhára"
+ ],
+ "words": [
+  "aike",
+  "irũ",
+  "mbo'ehaópe",
+  "argentina-gua",
+  "héẽ"
+ ],
  "keep": [],
  "why": {
   "nasal": "The voice says ã ẽ ĩ õ ũ ỹ differently from a e i o u y, but by pitch: the nasal word's last vowel is 1.4 to 4.4 semitones higher in all nine twins measured, while A1−P0, a standard sign of nasality, falls 0 to 4.5 dB for a written ã, where an a after m or n in the same voice falls 8 to 10 dB. The recognisers hear ĩ (petĩ 17 hearings of 18) and often ũ (pytũ 17 of 22), not ã or õ (pytã 0 of 22, tetã 0 of 18, mokõ 0 of 10). A pair whose point is «el aire sale también por la nariz» would teach the learner to listen for the wrong thing. Today: unit 1 day 2 (four pairs), day 5 (three), day 6 (the first), unit 2 day 4 (the first two), Hablar p0 to p2: 26 rows.",
@@ -30,6 +54,1146 @@
   "a1u02d5.r1.l7*": "«Héẽ, ndahái.», the third reply of the «respuesta rápida» of unit 2 day 5 (¿Qué responde Vicente? Nahániri, ndahái. Oky.): Héẽ comes out as one short vowel in 9 takes of 10 for each recogniser («he ndahái», «héndahái»), and without its «sí» the wrong reply is heard as «ndahái», «no voy», which answers the question as well as the right one. With the line the whole item goes silent (a1u02d5.r1 and its slow version).",
   "pl.3.l1": "«Ag̃uahẽma che rógape. Ka'aru aháta mbo'ehaópe.», the line that carries the answer of the placement check's second listening item (¿Dónde está él ahora? En su casa): both recognisers hear it with wrong letters, and neither hears the ka'aru that puts the school in the afternoon («a aru», «ha aru»; with its k in 1 hearing of 20 over ten takes). The placement measures the learner, so the item goes silent (pl.3) and is read from its transcript, as before. pl.1 and pl.5 stay, and the level exam's a1x.4 and a1x.5: sound/VOICE.md says why.",
   "texts": "Words that are a clip of their own (a scene word, a word written from dictation in Escribir, a word of a pair) and that both recognisers hear with wrong letters in the best of three takes, in two runs with different takes: okẽ («otẽ», «opẽ», «mopẽ»: right in 0 hearings of 22), ñúme («ndume», «nume»: 6 of 6), angirũ («angiro»: 0 of 10 with its ũ), roju («loi'u», «roiu»), roho («joho»: the r that opens it, 0 of 16), chero'y («cherohy»: the puso after o as h), chemandu'a («che manduha»: the puso after u as h), ñemuhára («ñemohára»). kesu, kamby and peju were on this list after the verification; said run in (tools/make-tts.py, «How a clip is said»), they are heard right by the independent recogniser in 5, 4 and 5 takes of 5 and are said again.",
-  "by": "the verification of 2026-11-10 and the fix round that followed it (sound/VOICE.md); the 'nasal' rule is the first round's; the three lines of listening items (a1u01d3.r1.l5, a1u02d5.r1.l7, pl.3.l1) were named when the whole course was said, the same day."
+  "words": "The flawed word of a clip that 'keys' names, wherever it stands: aike («aite» in «Ikatúpa aike?»: the k before e), irũ («chairũ», and «iiru», «iro» alone), mbo'ehaópe («mbo'ehaúpe», «mboeha ope»), Argentina-gua («ahentinagua»: the r before the h is lost, in the kept take and in nine more), Héẽ (one short vowel, «he», «hẽ»: a hearing with two vowels, with or without a break between them, counts as right).",
+  "a1u01d3.p2.x1": "«Che réra Moisés. Che Argentina-gua.»: in the app's MP3, word «argentina-gua» (a1u01d3.p2.x1: ivan: «cherra moisẽche a hentiragua» / «cherra moisẽche a hentiragua» / «cherra moisẽche 'a hentiragua» | mms: «che réra moisés che ahentinagua» / «che réra moisés che ahentinagua» / «che réra moisés che ahentinagua»). Said again with 12 seeds (tools/hear-sound.py, 2026-11-17), and no take passed: 0 to 11: a1u01d3.p2.x1: word «argentina-gua». The take waits in left-out/.",
+  "a1u03d1.p1.x3.l1": "«Héẽ, chekane'õ ha chero'y.»: in the app's MP3, word «héẽ» (a1u03d1.p1.x3#2: ivan: «héicheka ne'o ha che ru'y» / «héicheka nde'o ha che ru'y» / «héicheka nde'o ha che ro'y» | mms: «he che kane'õ ha che ro'y» / «he che kane'õ ha che ro'y» / «he che kane'õ ha che ro'y»). Said again with 12 seeds (tools/hear-sound.py, 2026-11-17), and no take passed: 0: a1u03d1.p1.x3#2: word «héẽ»; 1: a1u03d1.p1.x3#2: word «chero'y», word «héẽ»; 2: a1u03d1.p1.x3#2: word «héẽ»; 3: a1u03d1.p1.x3#2: word «chero'y», word «héẽ»; 4 to 7: a1u03d1.p1.x3#2: word «héẽ»; 8: a1u03d1.p1.x3#2: word «chero'y», word «héẽ»; 9 to 11: a1u03d1.p1.x3#2: word «héẽ». The take waits in left-out/.",
+  "a1u03d3.p1.x3": "«Che ru chokokue ha che sy ñemuhára.»: in the app's MP3, word «ñemuhára» (a1u03d3.p1.x3: ivan: «cheru chokokue a chesy ñemohára» / «cheru chokokue a chesy ñemohára» / «cheru chokokue a chesy ñemohára» | mms: «che ru chokokue ha che sy ñemohára» / «che ru chokokue ha che sy ñemohára» / «che ru chokokue ha che sy ñemohára»). Said again with 12 seeds (tools/hear-sound.py, 2026-11-17), and no take passed: 0 to 10: a1u03d3.p1.x3: word «ñemuhára»; 11: heard worse as a whole than the take it replaces: 14 letters off, against 9. The take waits in left-out/.",
+  "by": "the verification of 2026-11-10 and the fix round that followed it (sound/VOICE.md); the 'nasal' rule is the first round's; the three lines of listening items (a1u01d3.r1.l5, a1u02d5.r1.l7, pl.3.l1) were named when the whole course was said, the same day. 'words', 'forms' and what tools/hear-sound.py adds: the fixes after the review of 16 November (17 November)."
+ },
+ "forms": {
+  "a1u01d1.p1.x0.l0": {
+   "says": "Mba'éichapa, Juan?",
+   "not": [],
+   "point": "the stress its lesson marks with an acute",
+   "acute": [
+    "mba'éichapa"
+   ]
+  },
+  "a1u01d1.p1.x1": {
+   "says": "Mba'éichapa reiko, Ana?",
+   "not": [],
+   "point": "the stress its lesson marks with an acute",
+   "acute": [
+    "mba'éichapa"
+   ]
+  },
+  "a1u01d1.p2.x0": {
+   "says": "Jajotopáta, Rosa.",
+   "not": [],
+   "point": "the stress its lesson marks with an acute",
+   "acute": [
+    "jajotopáta"
+   ]
+  },
+  "a1u01d1.p2.x1": {
+   "says": "Jajotopáta ko ka'aru.",
+   "not": [],
+   "point": "the stress its lesson marks with an acute",
+   "acute": [
+    "jajotopáta"
+   ]
+  },
+  "a1u01d2.p1.x0": {
+   "says": "Che añe'ẽ guaraníme.",
+   "not": [
+    "Che oñe'ẽ guaraníme."
+   ],
+   "point": "a- with che, not o- (the lesson's «Che oñe'ẽ»)"
+  },
+  "a1u01d2.p1.x2": {
+   "says": "Ha'e oñe'ẽ guaraníme.",
+   "not": [
+    "Ha'e añe'ẽ guaraníme."
+   ],
+   "point": "o- with ha'e, not a-"
+  },
+  "a1u01d3.p1.x0": {
+   "says": "Mba'éichapa? Che réra Ana.",
+   "not": [
+    "Mba'éichapa? Che téra Ana.",
+    "Mba'éichapa? Che héra Ana."
+   ],
+   "point": "réra after che, not téra nor héra"
+  },
+  "a1u01d3.p1.x1": {
+   "says": "Mba'éichapa nde réra?",
+   "not": [
+    "Mba'éichapa nde téra?",
+    "Mba'éichapa nde héra?"
+   ],
+   "point": "réra after nde, not téra nor héra"
+  },
+  "a1u01d3.p1.x2": {
+   "says": "Mbo'ehára héra Rosa.",
+   "not": [
+    "Mbo'ehára réra Rosa.",
+    "Mbo'ehára téra Rosa."
+   ],
+   "point": "héra for him or her, not réra nor téra"
+  },
+  "a1u01d4.p1.x0": {
+   "says": "Reñe'ẽpa guaraníme? Héẽ, michĩmi.",
+   "not": [
+    "Reñe'ẽ guaraníme? Héẽ, michĩmi."
+   ],
+   "point": "-pa makes the question"
+  },
+  "a1u01d4.p1.x1": {
+   "says": "Ikatúpa aike? Héẽ, ikatu.",
+   "not": [
+    "Ikatu aike? Héẽ, ikatu."
+   ],
+   "point": "-pa makes the question",
+   "acute": [
+    "ikatúpa"
+   ]
+  },
+  "a1u01d4.p1.x2": {
+   "says": "Ndépa Juan? Nahániri, che Casimiro.",
+   "not": [
+    "Nde Juan? Nahániri, che Casimiro."
+   ],
+   "point": "-pa makes the question",
+   "acute": [
+    "ndépa"
+   ]
+  },
+  "a1u01d4.p2.x0": {
+   "says": "Mba'épa reipota?",
+   "not": [
+    "Mba'e reipota?"
+   ],
+   "point": "mba'e + pa",
+   "acute": [
+    "mba'épa"
+   ]
+  },
+  "a1u01d4.p2.x1": {
+   "says": "Mávapa ha'e?",
+   "not": [
+    "Máva ha'e?"
+   ],
+   "point": "máva + pa",
+   "acute": [
+    "mávapa"
+   ]
+  },
+  "a1u01d4.p2.x2": {
+   "says": "Moõpa reiko?",
+   "not": [
+    "Moõ reiko?"
+   ],
+   "point": "moõ + pa"
+  },
+  "a1u01d4.p2.x3": {
+   "says": "Mboýpa ovale ko kesu?",
+   "not": [
+    "Mboy ovale ko kesu?"
+   ],
+   "point": "mboy + pa",
+   "acute": [
+    "mboýpa"
+   ]
+  },
+  "a1u01d5.p1.x0": {
+   "says": "Aguyje ndéve, Sara.",
+   "not": [
+    "Aguije ndéve, Sara."
+   ],
+   "point": "the y of aguyje is not an i (the lesson's «aguije»)"
+  },
+  "a1u01d5.p1.x1": {
+   "says": "Nahániri, aguyje.",
+   "not": [
+    "Nahániri, aguije."
+   ],
+   "point": "the y of aguyje is not an i"
+  },
+  "a1u01d5.p1.x2": {
+   "says": "Aguyjevete peẽme.",
+   "not": [
+    "Aguijevete peẽme.",
+    "Aguyjevete ndéve."
+   ],
+   "point": "the y of aguyje is not an i; peẽme to several, ndéve to one"
+  },
+  "a1u01d5.p2.x0": {
+   "says": "Ikatúpa aporandumi ndéve peteĩ mba'e?",
+   "not": [],
+   "point": "the stress its lesson marks with an acute",
+   "acute": [
+    "ikatúpa"
+   ]
+  },
+  "a1u01d5.p2.x2": {
+   "says": "Eike, Sara. Tereg̃uahẽ porãite.",
+   "not": [
+    "Eike, Sara. Tapeg̃uahẽ porãite."
+   ],
+   "point": "tere- to one person, tape- to several"
+  },
+  "a1u02d1.p1.x0": {
+   "says": "Che apurahéi.",
+   "not": [
+    "Che opurahéi.",
+    "Che repurahéi.",
+    "Che purahéi."
+   ],
+   "point": "a- for che (the lesson's «Che guata», without a prefix)"
+  },
+  "a1u02d1.p1.x1": {
+   "says": "Nde remba'apo heta.",
+   "not": [
+    "Nde omba'apo heta.",
+    "Nde amba'apo heta.",
+    "Nde mba'apo heta."
+   ],
+   "point": "re- for nde"
+  },
+  "a1u02d1.p1.x2": {
+   "says": "Ha'e ojeroky.",
+   "not": [
+    "Ha'e ajeroky.",
+    "Ha'e rejeroky.",
+    "Ha'e jeroky."
+   ],
+   "point": "o- for ha'e"
+  },
+  "a1u02d1.p1.x3.l0": {
+   "says": "Mávapa okaru?",
+   "not": [
+    "Mávapa akaru?",
+    "Mávapa rekaru?",
+    "Mávapa karu?"
+   ],
+   "point": "o- after Mávapa"
+  },
+  "a1u02d1.p1.x3.l1": {
+   "says": "Che akaru.",
+   "not": [
+    "Che okaru.",
+    "Che rekaru.",
+    "Che karu."
+   ],
+   "point": "a- for che"
+  },
+  "a1u02d1.p2.x0": {
+   "says": "Rosa ou ko pyhareve.",
+   "not": [
+    "Rosa oju ko pyhareve.",
+    "Rosa oho ko pyhareve."
+   ],
+   "point": "ou, not oju (the lesson's «Ha'e oju»)"
+  },
+  "a1u02d1.p2.x1": {
+   "says": "Rejúpa ko pyhare?",
+   "not": [
+    "Reju ko pyhare?",
+    "Rehópa ko pyhare?"
+   ],
+   "point": "reju with -pa"
+  },
+  "a1u02d1.p2.x2": {
+   "says": "Vicente oho ko ka'aru, ha che aha ko pyhare.",
+   "not": [
+    "Vicente aha ko ka'aru, ha che aha ko pyhare.",
+    "Vicente oho ko ka'aru, ha che oho ko pyhare.",
+    "Vicente ou ko ka'aru, ha che aha ko pyhare."
+   ],
+   "point": "oho for him, aha for me"
+  },
+  "a1u02d1.p2.x3.l0": {
+   "says": "Mávapa ou?",
+   "not": [
+    "Mávapa oju?",
+    "Mávapa oho?"
+   ],
+   "point": "ou, not oju"
+  },
+  "a1u02d1.p2.x3.l1": {
+   "says": "Ou che sy.",
+   "not": [
+    "Oju che sy.",
+    "Oho che sy."
+   ],
+   "point": "ou, not oju"
+  },
+  "a1u02d2.p1.x0": {
+   "says": "Ñande jakaru ko ka'aru.",
+   "not": [
+    "Ñande ñakaru ko ka'aru.",
+    "Ñande rokaru ko ka'aru."
+   ],
+   "point": "ja- before an oral root, not ña-"
+  },
+  "a1u02d2.p1.x1": {
+   "says": "Ñañe'ẽ guaraníme.",
+   "not": [
+    "Jañe'ẽ guaraníme.",
+    "Roñe'ẽ guaraníme."
+   ],
+   "point": "ña- before a nasal root (the lesson's «Jañe'ẽ»)"
+  },
+  "a1u02d2.p1.x2": {
+   "says": "Ore romba'apo ko pyhareve.",
+   "not": [
+    "Ore ñamba'apo ko pyhareve.",
+    "Ore jamba'apo ko pyhareve."
+   ],
+   "point": "ro- does not change"
+  },
+  "a1u02d2.p1.x3": {
+   "says": "Ore roju ko ka'aru ha roho ko pyhare.",
+   "not": [
+    "Ore jaju ko ka'aru ha roho ko pyhare.",
+    "Ore roju ko ka'aru ha jaha ko pyhare."
+   ],
+   "point": "ro- for ore"
+  },
+  "a1u02d2.p2.x0": {
+   "says": "Peẽ pepurahéi.",
+   "not": [
+    "Peẽ repurahéi.",
+    "Peẽ opurahéi."
+   ],
+   "point": "pe- for peẽ, not re- (the lesson's «Peẽ rekaru»)"
+  },
+  "a1u02d2.p2.x1": {
+   "says": "Peẽ pejeroky ko pyhare.",
+   "not": [
+    "Peẽ rejeroky ko pyhare.",
+    "Peẽ ojeroky ko pyhare."
+   ],
+   "point": "pe- for peẽ, not re-"
+  },
+  "a1u02d2.p2.x2": {
+   "says": "Ha'ekuéra omba'apo heta.",
+   "not": [
+    "Ha'ekuéra pemba'apo heta.",
+    "Ha'ekuéra romba'apo heta."
+   ],
+   "point": "o- for ha'ekuéra"
+  },
+  "a1u02d2.p2.x3": {
+   "says": "Moõpa peho?",
+   "not": [
+    "Moõpa reho?",
+    "Moõpa oho?"
+   ],
+   "point": "pe- to several"
+  },
+  "a1u02d3.p1.x0": {
+   "says": "Che amba'apo mbo'ehaópe.",
+   "not": [
+    "Che amba'apo mbo'ehaóme."
+   ],
+   "point": "-pe after an oral syllable, not -me",
+   "acute": [
+    "mbo'ehaópe"
+   ]
+  },
+  "a1u02d3.p1.x1": {
+   "says": "Aha che jarýi rógape.",
+   "not": [
+    "Aha che jarýi rógame."
+   ],
+   "point": "-pe after an oral syllable, not -me",
+   "acute": [
+    "rógape"
+   ]
+  },
+  "a1u02d3.p1.x2": {
+   "says": "Che ru oĩ kotýpe.",
+   "not": [
+    "Che ru oĩ kotýme."
+   ],
+   "point": "-pe after an oral syllable, not -me",
+   "acute": [
+    "kotýpe"
+   ]
+  },
+  "a1u02d3.p1.x3.l1": {
+   "says": "Kokuépe.",
+   "not": [
+    "Kokuéme."
+   ],
+   "point": "-pe after an oral syllable, not -me",
+   "acute": [
+    "kokuépe"
+   ]
+  },
+  "a1u02d3.p2.x0": {
+   "says": "Añe'ẽ guaraníme.",
+   "not": [
+    "Añe'ẽ guaranípe."
+   ],
+   "point": "-me after a nasal syllable, not -pe (the lesson's «tetãpe»)",
+   "acute": [
+    "guaraníme"
+   ]
+  },
+  "a1u02d3.p2.x1": {
+   "says": "Ha'ekuéra omba'apo ñúme.",
+   "not": [
+    "Ha'ekuéra omba'apo ñúpe."
+   ],
+   "point": "-me after a nasal syllable, not -pe",
+   "acute": [
+    "ñúme"
+   ]
+  },
+  "a1u02d3.p2.x2": {
+   "says": "Vicente oho Ñembýpe, ha Rosa oho ñúme.",
+   "not": [
+    "Vicente oho Ñembýme, ha Rosa oho ñúme.",
+    "Vicente oho Ñembýpe, ha Rosa oho ñúpe."
+   ],
+   "point": "-pe after Ñemby, -me after ñu",
+   "acute": [
+    "ñembýpe",
+    "ñúme"
+   ]
+  },
+  "a1u02d3.p2.x3": {
+   "says": "Che sy omba'apo ko tetãme, Paraguáipe.",
+   "not": [
+    "Che sy omba'apo ko tetãpe, Paraguáipe.",
+    "Che sy omba'apo ko tetãme, Paraguáime."
+   ],
+   "point": "-me after tetã, -pe after Paraguái",
+   "acute": [
+    "paraguáipe"
+   ]
+  },
+  "a1u02d4.p1.x0": {
+   "says": "Che aju Itakuruvígui.",
+   "not": [
+    "Che aju Itakuruvípe.",
+    "Che aju Itakuruvigua."
+   ],
+   "point": "-gui, not -pe nor -gua",
+   "acute": [
+    "itakuruvígui"
+   ]
+  },
+  "a1u02d4.p1.x1": {
+   "says": "Chipa osẽ tatakuágui.",
+   "not": [
+    "Chipa osẽ tatakuápe.",
+    "Chipa osẽ tatakuagua."
+   ],
+   "point": "-gui, not -pe nor -gua",
+   "acute": [
+    "tatakuágui"
+   ]
+  },
+  "a1u02d4.p1.x2": {
+   "says": "Rosa ou Paraguaýgui.",
+   "not": [
+    "Rosa ou Paraguaýpe.",
+    "Rosa ou Paraguaygua."
+   ],
+   "point": "-gui, not -pe nor -gua",
+   "acute": [
+    "paraguaýgui"
+   ]
+  },
+  "a1u02d4.p1.x3": {
+   "says": "Vicente osẽ mbo'ehaógui ko ka'aru.",
+   "not": [
+    "Vicente osẽ mbo'ehaópe ko ka'aru.",
+    "Vicente osẽ mbo'ehaogua ko ka'aru."
+   ],
+   "point": "-gui, not -pe nor -gua",
+   "acute": [
+    "mbo'ehaógui"
+   ]
+  },
+  "a1u02d4.p2.x0": {
+   "says": "Moõguipa ou?",
+   "not": [
+    "Moõpa ou?",
+    "Moõpagui ou?"
+   ],
+   "point": "moõ + gui + pa (the lesson's «Moõpagui»)"
+  },
+  "a1u02d4.p2.x1.l0": {
+   "says": "Moõguipa reju, Ana?",
+   "not": [
+    "Moõpa reju, Ana?",
+    "Moõpagui reju, Ana?"
+   ],
+   "point": "moõ + gui + pa"
+  },
+  "a1u02d4.p2.x1.l1": {
+   "says": "Aju Itauguágui.",
+   "not": [
+    "Aju Itauguápe.",
+    "Aju Itauguagua."
+   ],
+   "point": "-gui in the answer"
+  },
+  "a1u02d4.p2.x2.l0": {
+   "says": "Moõguipa osẽ ko chipa?",
+   "not": [
+    "Moõpa osẽ ko chipa?",
+    "Moõpagui osẽ ko chipa?"
+   ],
+   "point": "moõ + gui + pa"
+  },
+  "a1u02d4.p2.x2.l1": {
+   "says": "Tatakuágui.",
+   "not": [
+    "Tatakuápe.",
+    "Tatakuagua."
+   ],
+   "point": "-gui in the answer"
+  },
+  "a1u02d4.p2.x3.l0": {
+   "says": "Moõguipa peju?",
+   "not": [
+    "Moõpa peju?",
+    "Moõpagui peju?"
+   ],
+   "point": "moõ + gui + pa"
+  },
+  "a1u02d4.p2.x3.l1": {
+   "says": "Roju mbo'ehaógui.",
+   "not": [
+    "Roju mbo'ehaópe.",
+    "Roju mbo'ehaogua."
+   ],
+   "point": "-gui in the answer"
+  },
+  "a1u02d5.p1.x0": {
+   "says": "Ko pyhareve ndahái.",
+   "not": [
+    "Ko pyhareve ndaha.",
+    "Ko pyhareve nahái.",
+    "Ko pyhareve aha."
+   ],
+   "point": "nd-…-i: both parts (the lesson's «Ndaha»), and nd- before an oral root",
+   "acute": [
+    "ndahái"
+   ]
+  },
+  "a1u02d5.p1.x1": {
+   "says": "Che sy ndohói mbo'ehaópe.",
+   "not": [
+    "Che sy ndoho mbo'ehaópe.",
+    "Che sy nohói mbo'ehaópe.",
+    "Che sy oho mbo'ehaópe."
+   ],
+   "point": "nd-…-i: both parts, nd- before an oral root",
+   "acute": [
+    "ndohói"
+   ]
+  },
+  "a1u02d5.p1.x2": {
+   "says": "Ndajapói mba'eve.",
+   "not": [
+    "Ndajapo mba'eve.",
+    "Najapói mba'eve.",
+    "Ajapo mba'eve."
+   ],
+   "point": "nd-…-i: both parts, nd- before an oral root",
+   "acute": [
+    "ndajapói"
+   ]
+  },
+  "a1u02d5.p1.x3": {
+   "says": "Vicente ndoúi ko ka'aru: oky.",
+   "not": [
+    "Vicente ndou ko ka'aru: oky.",
+    "Vicente noúi ko ka'aru: oky.",
+    "Vicente ou ko ka'aru: oky."
+   ],
+   "point": "nd-…-i: both parts, nd- before an oral root",
+   "acute": [
+    "ndoúi"
+   ]
+  },
+  "a1u02d5.p2.x0": {
+   "says": "Che nañe'ẽi guaraníme.",
+   "not": [
+    "Che ndañe'ẽi guaraníme.",
+    "Che nañe'ẽ guaraníme.",
+    "Che añe'ẽ guaraníme."
+   ],
+   "point": "n-…-i before a nasal root, not nd- (the lesson's «Ndañe'ẽi»)"
+  },
+  "a1u02d5.p2.x1": {
+   "says": "Ha'e nohendúi ha noñe'ẽi.",
+   "not": [
+    "Ha'e ndohendúi ha noñe'ẽi.",
+    "Ha'e nohendúi ha ndoñe'ẽi.",
+    "Ha'e ohendu ha noñe'ẽi.",
+    "Ha'e nohendúi ha oñe'ẽ."
+   ],
+   "point": "n-…-i before a nasal root, not nd-",
+   "acute": [
+    "nohendúi"
+   ]
+  },
+  "a1u02d5.p2.x2": {
+   "says": "Namba'apói ko pyhare.",
+   "not": [
+    "Ndamba'apói ko pyhare.",
+    "Namba'apo ko pyhare.",
+    "Amba'apo ko pyhare."
+   ],
+   "point": "n-…-i before a nasal root, not nd-",
+   "acute": [
+    "namba'apói"
+   ]
+  },
+  "a1u02d5.p2.x3": {
+   "says": "Che ru nosẽi ógagui: oky.",
+   "not": [
+    "Che ru ndosẽi ógagui: oky.",
+    "Che ru nosẽ ógagui: oky.",
+    "Che ru osẽ ógagui: oky."
+   ],
+   "point": "n-…-i before a nasal root, not nd-"
+  },
+  "a1u03d1.p1.x0": {
+   "says": "Chekane'õ.",
+   "not": [
+    "Akane'õ.",
+    "Nekane'õ.",
+    "Ikane'õ."
+   ],
+   "point": "che- with a state, not a- (the lesson's «Akane'õ»)"
+  },
+  "a1u03d1.p1.x1": {
+   "says": "Chevare'a ha chey'uhéi.",
+   "not": [
+    "Avare'a ha chey'uhéi.",
+    "Chevare'a ha ay'uhéi."
+   ],
+   "point": "che- with a state, not a-"
+  },
+  "a1u03d1.p1.x2": {
+   "says": "Ndepochy, Juan.",
+   "not": [
+    "Nepochy, Juan.",
+    "Chepochy, Juan.",
+    "Ipochy, Juan."
+   ],
+   "point": "nde- before an oral word, not ne-"
+  },
+  "a1u03d1.p1.x3.l0": {
+   "says": "Nekane'õ, Vicente.",
+   "not": [
+    "Ndekane'õ, Vicente.",
+    "Chekane'õ, Vicente.",
+    "Ikane'õ, Vicente."
+   ],
+   "point": "ne- before a nasal word, not nde-"
+  },
+  "a1u03d1.p1.x3.l1": {
+   "says": "Héẽ, chekane'õ ha chero'y.",
+   "not": [
+    "Héẽ, nekane'õ ha chero'y.",
+    "Héẽ, akane'õ ha chero'y."
+   ],
+   "point": "che- in the answer"
+  },
+  "a1u03d1.p2.x0": {
+   "says": "Che sy ikane'õ.",
+   "not": [
+    "Che sy kane'õ.",
+    "Che sy chekane'õ."
+   ],
+   "point": "i- says whose state it is (the lesson's «Che sy kane'õ»)"
+  },
+  "a1u03d1.p2.x1": {
+   "says": "Ana ipochy.",
+   "not": [
+    "Ana pochy."
+   ],
+   "point": "i- says whose state it is"
+  },
+  "a1u03d1.p2.x2": {
+   "says": "Mitã ivare'a.",
+   "not": [
+    "Mitã vare'a."
+   ],
+   "point": "i- says whose state it is"
+  },
+  "a1u03d1.p2.x3": {
+   "says": "Che ru hasy.",
+   "not": [
+    "Che ru rasy.",
+    "Che ru tasy."
+   ],
+   "point": "hasy for him or her, not rasy nor tasy"
+  },
+  "a1u03d2.p1.x0": {
+   "says": "Apu'ã ha ajahu.",
+   "not": [
+    "Chepu'ã ha ajahu.",
+    "Apu'ã ha chejahu.",
+    "Opu'ã ha ajahu.",
+    "Apu'ã ha ojahu."
+   ],
+   "point": "a- with an action, not che-"
+  },
+  "a1u03d2.p1.x1": {
+   "says": "Akaru ha ake.",
+   "not": [
+    "Chekaru ha ake.",
+    "Akaru ha cheke.",
+    "Okaru ha ake.",
+    "Akaru ha oke."
+   ],
+   "point": "a- with an action, not che- (the lesson's «Chekaru»)"
+  },
+  "a1u03d2.p1.x2": {
+   "says": "Che sy opurahéi ha che ru ojeroky.",
+   "not": [
+    "Che sy apurahéi ha che ru ojeroky.",
+    "Che sy opurahéi ha che ru ajeroky."
+   ],
+   "point": "o- for her and for him"
+  },
+  "a1u03d2.p1.x3": {
+   "says": "Ko'ág̃a amba'apo.",
+   "not": [
+    "Ko'ág̃a omba'apo.",
+    "Ko'ág̃a chemba'apo."
+   ],
+   "point": "a- with an action"
+  },
+  "a1u03d2.p2.x0": {
+   "says": "Chevare'a. Akaru.",
+   "not": [
+    "Avare'a. Akaru.",
+    "Chevare'a. Chekaru."
+   ],
+   "point": "che- with the state, a- with the action"
+  },
+  "a1u03d2.p2.x1": {
+   "says": "Avy'a, Ana.",
+   "not": [
+    "Chevy'a, Ana."
+   ],
+   "point": "avy'a, not chevy'a (the lesson's «Chevy'a»)"
+  },
+  "a1u03d2.p2.x2": {
+   "says": "Akyhyje.",
+   "not": [
+    "Chekyhyje."
+   ],
+   "point": "akyhyje, with a-"
+  },
+  "a1u03d2.p2.x3": {
+   "says": "Chemandu'a, Vicente.",
+   "not": [
+    "Amandu'a, Vicente."
+   ],
+   "point": "chemandu'a, with che-"
+  },
+  "a1u03d3.p1.x0": {
+   "says": "Che mbo'ehára.",
+   "not": [
+    "Che ha'e mbo'ehára."
+   ],
+   "point": "no ha'e between che and the noun (the lesson's «Che ha'e mbo'ehára»)"
+  },
+  "a1u03d3.p1.x1": {
+   "says": "Nde temimbo'e pyahu.",
+   "not": [
+    "Nde ha'e temimbo'e pyahu."
+   ],
+   "point": "no ha'e between nde and the noun"
+  },
+  "a1u03d3.p2.x2": {
+   "says": "Ndaha'éi che sy, ha'e che jarýi.",
+   "not": [
+    "Ha'e che sy, ha'e che jarýi.",
+    "Naha'éi che sy, ha'e che jarýi.",
+    "Ndaha'e che sy, ha'e che jarýi."
+   ],
+   "point": "ndaha'éi: nda- and -i round ha'e"
+  },
+  "a1u03d3.p2.x3": {
+   "says": "Vicente ndaha'éi mbo'ehára, ha'e pohanohára.",
+   "not": [
+    "Vicente ha'e mbo'ehára, ha'e pohanohára.",
+    "Vicente naha'éi mbo'ehára, ha'e pohanohára.",
+    "Vicente ndaha'e mbo'ehára, ha'e pohanohára."
+   ],
+   "point": "ndaha'éi: nda- and -i round ha'e"
+  },
+  "a1u03d4.p1.x0.l0": {
+   "says": "Ndépa pohanohára?",
+   "not": [
+    "Nde pohanohára?"
+   ],
+   "point": "-pa on the word that is asked",
+   "acute": [
+    "ndépa"
+   ]
+  },
+  "a1u03d4.p1.x1": {
+   "says": "Ikane'õpa nde ru?",
+   "not": [
+    "Ikane'õ nde ru?"
+   ],
+   "point": "-pa on the state"
+  },
+  "a1u03d4.p1.x2": {
+   "says": "Og̃uahẽpa Ana?",
+   "not": [
+    "Og̃uahẽ Ana?"
+   ],
+   "point": "-pa on the verb"
+  },
+  "a1u03d4.p1.x3": {
+   "says": "Rejúpa ko pyhare?",
+   "not": [
+    "Reju ko pyhare?"
+   ],
+   "point": "-pa on the verb",
+   "acute": [
+    "rejúpa"
+   ]
+  },
+  "a1u03d4.p2.x0.l0": {
+   "says": "Nde piko mbo'ehára?",
+   "not": [
+    "Nde mbo'ehára?"
+   ],
+   "point": "piko where -pa would go"
+  },
+  "a1u03d4.p2.x2.l0": {
+   "says": "Nekane'õpa?",
+   "not": [
+    "Ndekane'õpa?",
+    "Nekane'õ?"
+   ],
+   "point": "ne- before a nasal word, not nde-"
+  },
+  "a1u03d4.p2.x2.l1": {
+   "says": "Nahániri, nachekane'õi. Chevare'a.",
+   "not": [
+    "Nahániri, ndachekane'õi. Chevare'a.",
+    "Nahániri, nachekane'õ. Chevare'a.",
+    "Nahániri, chekane'õ. Chevare'a."
+   ],
+   "point": "na-…-i round a nasal state, not nda- (the lesson's «Nachemandu'ái»)"
+  },
+  "a1u03d4.p2.x3.l0": {
+   "says": "Og̃uahẽ piko Ana?",
+   "not": [
+    "Og̃uahẽ Ana?"
+   ],
+   "point": "piko where -pa would go"
+  },
+  "a1u03d5.p1.x2": {
+   "says": "Che róga ituicha.",
+   "not": [],
+   "point": "the stress its lesson marks with an acute",
+   "acute": [
+    "róga"
+   ]
+  },
+  "a1u03d5.p1.x3": {
+   "says": "Purahéi iporã.",
+   "not": [],
+   "point": "the stress its lesson marks with an acute",
+   "acute": [
+    "purahéi"
+   ]
+  },
+  "a1u03d5.p2.x0": {
+   "says": "Aha Itauguápe.",
+   "not": [],
+   "point": "the stress its lesson marks with an acute",
+   "acute": [
+    "itauguápe"
+   ]
+  },
+  "a1u03d5.p2.x1": {
+   "says": "Aju Paraguáigui.",
+   "not": [],
+   "point": "the stress its lesson marks with an acute",
+   "acute": [
+    "paraguáigui"
+   ]
+  },
+  "a1u03d5.p2.x2": {
+   "says": "Reikuaápa Ypakarai?",
+   "not": [],
+   "point": "the stress its lesson marks with an acute",
+   "acute": [
+    "reikuaápa"
+   ]
+  },
+  "a1u04d1.p2.x0": {
+   "says": "Mba'éichapa héra nde ru?",
+   "not": [
+    "Mba'éichapa héra ne ru?"
+   ],
+   "point": "nde before an oral word, not ne"
+  },
+  "a1u04d1.p2.x1": {
+   "says": "Moõpa nde róga?",
+   "not": [
+    "Moõpa ne róga?"
+   ],
+   "point": "nde before an oral word, not ne"
+  },
+  "a1u04d1.p2.x2": {
+   "says": "Mba'éichapa héra ne memby?",
+   "not": [
+    "Mba'éichapa héra nde memby?"
+   ],
+   "point": "ne before a nasal word, not nde (the lesson's «nde memby»)"
+  },
+  "a1u04d1.p2.x3": {
+   "says": "Mba'éichapa héra ne ramói?",
+   "not": [
+    "Mba'éichapa héra nde ramói?"
+   ],
+   "point": "ne before a nasal word, not nde"
+  },
+  "a1u04d2.p1.x0": {
+   "says": "Jaguakuéra oyta.",
+   "not": [
+    "Jaguanguéra oyta."
+   ],
+   "point": "-kuéra after an oral syllable, not -nguéra",
+   "acute": [
+    "jaguakuéra"
+   ]
+  },
+  "a1u04d2.p1.x1": {
+   "says": "Guyrakuéra opurahéi.",
+   "not": [
+    "Guyranguéra opurahéi."
+   ],
+   "point": "-kuéra after an oral syllable, not -nguéra",
+   "acute": [
+    "guyrakuéra"
+   ]
+  },
+  "a1u04d2.p1.x2": {
+   "says": "Ne membykuéra moõpa oĩ?",
+   "not": [
+    "Ne membynguéra moõpa oĩ?",
+    "Nde membykuéra moõpa oĩ?"
+   ],
+   "point": "-kuéra after memby (mby is oral), and ne before it",
+   "acute": [
+    "membykuéra"
+   ]
+  },
+  "a1u04d2.p1.x3": {
+   "says": "Mbo'eharakuéra oñe'ẽ guaraníme.",
+   "not": [
+    "Mbo'eharanguéra oñe'ẽ guaraníme."
+   ],
+   "point": "-kuéra after an oral syllable, not -nguéra",
+   "acute": [
+    "mbo'eharakuéra"
+   ]
+  },
+  "a1u04d2.p2.x0": {
+   "says": "Mitãnguéra oho mbo'ehaópe.",
+   "not": [
+    "Mitãkuéra oho mbo'ehaópe."
+   ],
+   "point": "-nguéra after a nasal syllable, not -kuéra (the lesson's «mitãkuéra»)",
+   "acute": [
+    "mitãnguéra"
+   ]
+  },
+  "a1u04d2.p2.x1": {
+   "says": "Kuñanguéra opurahéi.",
+   "not": [
+    "Kuñakuéra opurahéi."
+   ],
+   "point": "-nguéra after a nasal syllable, not -kuéra",
+   "acute": [
+    "kuñanguéra"
+   ]
+  },
+  "a1u04d2.p2.x2": {
+   "says": "Che angirũnguéra Paraguaigua.",
+   "not": [
+    "Che angirũkuéra Paraguaigua."
+   ],
+   "point": "-nguéra after a nasal syllable, not -kuéra",
+   "acute": [
+    "angirũnguéra"
+   ]
+  },
+  "a1u04d2.p2.x3": {
+   "says": "Mitãnguéra okaru korapýpe.",
+   "not": [
+    "Mitãkuéra okaru korapýpe."
+   ],
+   "point": "-nguéra after a nasal syllable, not -kuéra",
+   "acute": [
+    "mitãnguéra"
+   ]
+  },
+  "a1u04d2.w.mitanguera": {
+   "says": "mitãnguéra",
+   "not": [
+    "mitãkuéra"
+   ],
+   "point": "-nguéra after a nasal syllable, not -kuéra"
+  },
+  "a1u04d2.w.guyrakuera": {
+   "says": "guyrakuéra",
+   "not": [
+    "guyranguéra"
+   ],
+   "point": "-kuéra after an oral syllable, not -nguéra"
+  },
+  "a1u04d3.p1.x0": {
+   "says": "Ko vaka ivare'a.",
+   "not": [
+    "Pe vaka ivare'a.",
+    "Amo vaka ivare'a."
+   ],
+   "point": "ko, not pe nor amo"
+  },
+  "a1u04d3.p1.x1": {
+   "says": "Pe mitã iporã.",
+   "not": [
+    "Ko mitã iporã.",
+    "Amo mitã iporã."
+   ],
+   "point": "pe, not ko nor amo"
+  },
+  "a1u04d3.p1.x2": {
+   "says": "Amo óga ituicha.",
+   "not": [
+    "Ko óga ituicha.",
+    "Pe óga ituicha."
+   ],
+   "point": "amo, not ko nor pe"
+  },
+  "a1u04d3.p1.x3": {
+   "says": "Pe karai ha'e che ru.",
+   "not": [
+    "Ko karai ha'e che ru.",
+    "Amo karai ha'e che ru."
+   ],
+   "point": "pe, not ko nor amo"
+  },
+  "a1u04d3.p2.x0": {
+   "says": "Umi kavaju oĩ korapýpe.",
+   "not": [
+    "Ko'ã kavaju oĩ korapýpe."
+   ],
+   "point": "umi, not ko'ã"
+  },
+  "a1u04d3.p2.x1": {
+   "says": "Umi jagua oyta.",
+   "not": [
+    "Ko'ã jagua oyta."
+   ],
+   "point": "umi, not ko'ã"
+  },
+  "a1u04d3.p2.x2": {
+   "says": "Ko'ã óga ituicha.",
+   "not": [
+    "Ko óga ituicha.",
+    "Umi óga ituicha."
+   ],
+   "point": "ko'ã for several, not ko"
+  },
+  "a1u04d3.p2.x3": {
+   "says": "Umi mitã oho mbo'ehaópe.",
+   "not": [
+    "Ko'ã mitã oho mbo'ehaópe."
+   ],
+   "point": "umi, not ko'ã"
+  },
+  "a1u04d4.p1.x0.l0": {
+   "says": "Mávapa ha'e?",
+   "not": [],
+   "point": "the stress its lesson marks with an acute",
+   "acute": [
+    "mávapa"
+   ]
+  },
+  "a1u04d4.p1.x1": {
+   "says": "Mávapa pe karai?",
+   "not": [
+    "Mávapa ko karai?",
+    "Mávapa amo karai?"
+   ],
+   "point": "pe, not ko nor amo",
+   "acute": [
+    "mávapa"
+   ]
+  },
+  "a1u04d4.p1.x2.l0": {
+   "says": "Mávapa ko mitã?",
+   "not": [
+    "Mávapa pe mitã?",
+    "Mávapa amo mitã?"
+   ],
+   "point": "ko, not pe nor amo",
+   "acute": [
+    "mávapa"
+   ]
+  },
+  "a1u04d4.p1.x3.l0": {
+   "says": "Mávapa amo kuñataĩ?",
+   "not": [
+    "Mávapa ko kuñataĩ?",
+    "Mávapa pe kuñataĩ?"
+   ],
+   "point": "amo, not ko nor pe",
+   "acute": [
+    "mávapa"
+   ]
+  },
+  "a1u04d4.p2.x0": {
+   "says": "Mba'épa he'ise «jarýi»?",
+   "not": [],
+   "point": "the stress its lesson marks with an acute",
+   "acute": [
+    "mba'épa"
+   ]
+  },
+  "a1u04d4.p2.x1": {
+   "says": "Mba'épa jajapo ko ka'aru?",
+   "not": [],
+   "point": "the stress its lesson marks with an acute",
+   "acute": [
+    "mba'épa"
+   ]
+  },
+  "a1u04d4.p2.x2.l0": {
+   "says": "Mba'épa rejapo ko pyhare?",
+   "not": [],
+   "point": "the stress its lesson marks with an acute",
+   "acute": [
+    "mba'épa"
+   ]
+  },
+  "a1u04d4.p2.x3": {
+   "says": "Mba'épa oĩ korapýpe?",
+   "not": [],
+   "point": "the stress its lesson marks with an acute",
+   "acute": [
+    "mba'épa"
+   ]
+  },
+  "a1u04d5.p1.x0": {
+   "says": "Mokõi kuña omba'apo.",
+   "not": [
+    "Mokõi kuñanguéra omba'apo."
+   ],
+   "point": "no plural ending after a number (the lesson's «mokõi mitãnguéra»)"
+  }
  }
 }

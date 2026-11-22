@@ -1,7 +1,7 @@
 {
  "level": "A1",
- "made": "2026-11-10",
- "about": "Every clip the course needs: key (what the screens ask gn-sound.js for), voice (F the woman, the main voice; M the man; N the narrator, in Spanish), text, es, lang, where, file (the unit file make-sound.mjs puts it in), order (the suggested recording order; none for a row with \"same\", said already under that key, for a row with \"parts\", put together from those keys, and for the tone; the slower takes come after the rest, and the recordings no screen plays today last of all), unused (true on a key no screen asks for today: of the two words of a sound pair the Words step plays one, always the same, and the other word is the unused one. It stays in the list, and is recorded, because a pair needs both voices if its words, and with them the word that plays, ever change; its recording comes last in the order unless a key in use shares it through \"same\"). Rights: notes/G4-resources-licensing.md §6, CC BY 4.0.",
+ "made": "2026-11-17",
+ "about": "Every clip the course needs: key (what the screens ask gn-sound.js for), voice (F the woman, the main voice; M the man; N the narrator, in Spanish), text, es, lang, where, file (the unit file make-sound.mjs puts it in), order (the suggested recording order; none for a row with \"same\", said already under that key, for a row with \"parts\", put together from those keys, and for the tone; the slower takes come after the rest, and the recordings no screen plays today last of all), unused (true on a key no screen asks for today: of the two words of a sound pair the Words step plays one, always the same, and the other word is the unused one. It stays in the list, and is recorded, because a pair needs both voices if its words, and with them the word that plays, ever change; its recording comes last in the order unless a key in use shares it through \"same\"). Rights: the clips next to this list are the synthetic voice's, made with Meta AI's MMS-TTS models: CC BY-NC 4.0, non-commercial use only, with attribution (voices.json in this folder has the models and the notice; sound/VOICE.md, «The models and the licence»). They are not under CC BY 4.0, the licence the studio's recordings by a person are to have.",
  "voices": {
   "F": "mujer, voz principal: palabras, ejemplos, pares y carteles",
   "M": "hombre: sus líneas de los diálogos",
@@ -21,8 +21,8 @@
   "toRecord": 502,
   "slow": 47,
   "byVoice": {
-   "F": 410,
-   "M": 67,
+   "F": 411,
+   "M": 66,
    "N": 25
   },
   "composed": 49,
@@ -557,16 +557,6 @@
    "where": "U1 D3 · punto 2, ejemplo 1",
    "file": "gn-sound-a1-u01.js",
    "order": 57
-  },
-  {
-   "key": "a1u01d3.p2.x1",
-   "voice": "F",
-   "text": "Che réra Moisés. Che Argentina-gua.",
-   "es": "Me llamo Moisés. Soy de Argentina.",
-   "lang": "gn",
-   "where": "U1 D3 · punto 2, ejemplo 2",
-   "file": "gn-sound-a1-u01.js",
-   "order": 58
   },
   {
    "key": "a1u01d3.p2.x2",
@@ -2494,8 +2484,8 @@
   },
   {
    "key": "a1u02d5.p1.x3",
-   "voice": "M",
-   "text": "oky.",
+   "voice": "F",
+   "text": "Vicente ndoúi ko ka'aru: oky.",
    "es": "Vicente no viene esta tarde: llueve.",
    "lang": "gn",
    "where": "U2 D5 · punto 1, ejemplo 4",
@@ -2535,7 +2525,7 @@
   {
    "key": "a1u02d5.p2.x3",
    "voice": "F",
-   "text": "oky.",
+   "text": "Che ru nosẽi ógagui: oky.",
    "es": "Mi papá no sale de la casa: llueve.",
    "lang": "gn",
    "where": "U2 D5 · punto 2, ejemplo 4",
@@ -2948,28 +2938,6 @@
    "where": "U3 D1 · punto 1, ejemplo 4 (diálogo) · línea 1 de 2",
    "file": "gn-sound-a1-u03.js",
    "order": 261
-  },
-  {
-   "key": "a1u03d1.p1.x3.l1",
-   "voice": "M",
-   "text": "Héẽ, chekane'õ ha chero'y.",
-   "es": "",
-   "lang": "gn",
-   "where": "U3 D1 · punto 1, ejemplo 4 (diálogo) · línea 2 de 2",
-   "file": "gn-sound-a1-u03.js",
-   "order": 262
-  },
-  {
-   "key": "a1u03d1.p1.x3",
-   "parts": [
-    "a1u03d1.p1.x3.l0",
-    "a1u03d1.p1.x3.l1"
-   ],
-   "voice": "F+M",
-   "text": "Nekane'õ, Vicente. / Héẽ, chekane'õ ha chero'y.",
-   "es": "",
-   "where": "U3 D1 · punto 1, ejemplo 4 (diálogo)",
-   "file": "gn-sound-a1-u03.js"
   },
   {
    "key": "a1u03d1.p2.x0",
@@ -3441,16 +3409,6 @@
    "where": "U3 D3 · punto 1, ejemplo 3",
    "file": "gn-sound-a1-u03.js",
    "order": 304
-  },
-  {
-   "key": "a1u03d3.p1.x3",
-   "voice": "F",
-   "text": "Che ru chokokue ha che sy ñemuhára.",
-   "es": "Mi papá es agricultor y mi mamá, vendedora.",
-   "lang": "gn",
-   "where": "U3 D3 · punto 1, ejemplo 4",
-   "file": "gn-sound-a1-u03.js",
-   "order": 305
   },
   {
    "key": "a1u03d3.p2.x0",
@@ -5355,6 +5313,17 @@
    "file": "gn-sound-a1-u04.js"
   },
   {
+   "key": "a1u04d3.r1.l2.slow",
+   "voice": "M",
+   "text": "Héẽ. Ha amo kavaju ituicha.",
+   "es": "Sí. Y aquel caballo es grande.",
+   "lang": "gn",
+   "slow": true,
+   "where": "U4 D3 · escucha «Comprensión de puntos clave» · línea 3 de 6, versión lenta",
+   "file": "gn-sound-a1-u04.js",
+   "order": 543
+  },
+  {
    "key": "a1u04d3.r1.l3.slow",
    "voice": "F",
    "text": "Ha ko mbarakaja?",
@@ -6538,6 +6507,7 @@
   "a1u01d2.s2b": "a pair of the contrast «nasal»",
   "a1u01d2.s3a": "a pair of the contrast «nasal»",
   "a1u01d2.s3b": "a pair of the contrast «nasal»",
+  "a1u01d3.p2.x1": "named in silent.json",
   "a1u01d3.r1.l5": "named in silent.json",
   "a1u01d3.r1.l2.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «cba'éichapa heverasusana» / «mba'éichapa che réra susána», 3 + 0 letters off, against «cba'éichapahererasu sana» / «mba'éichapa che réra susána», 2 + 0",
   "a1u01d3.r1.l3.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «cheparaguaiguaa» / «che pára guaiguaa», 1 + 1 letters off, against «cheparaguaivua» / «che paraguaigua», 1 + 0",
@@ -6546,7 +6516,7 @@
   "a1u01d4.s0a": "named in silent.json",
   "a1u01d4.s0b": "named in silent.json",
   "a1u01d4.r1.l3.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «ndaháguirimĩ kesu ha mandiko» / «nahániri oĩ kesus ha mandi'o», 5 + 1 letters off, against «nahágniriĩkesu a mandi'o» / «nahániri oĩ kesu ha mandi'o», 3 + 0",
-  "a1u01d4.r1.l4.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «yboypa ovaléko kesuu» / «mboýpa ovaleko kesu», 2 + 0 letters off, against «mboypa ovaléko kesuu» / «mboýpa ovale ko kesu», 1 + 0",
+  "a1u01d4.r1.l4.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «mboyypa ova léko kesuu» / «mboýpa ovaléco jesús», 2 + 2 letters off, against «mboypa ova léko kesu» / «mboýpa ovaléko kesús», 0 + 1",
   "a1u01d5.w.oke": "its text is named in silent.json",
   "a1u01d5.w.angiru": "its text is named in silent.json",
   "a1u01d5.s0a": "its text is named in silent.json",
@@ -6586,11 +6556,13 @@
   "a1u02d5.r1.l7.slow": "named in silent.json",
   "a1u02d6.s1a": "named in silent.json",
   "a1u02d6.s1b": "named in silent.json",
+  "a1u03d1.p1.x3.l1": "named in silent.json",
   "a1u03d1.w.roy": "its text is named in silent.json",
   "a1u03d1.s1a": "left out by --verify: the other word of its pair, «chero'y», was left out",
   "a1u03d1.s1b": "its text is named in silent.json",
   "a1u03d1.r1.l3.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «jaha oi tere'e» / «jaha oĩ tere'e», 1 + 1 letters off, against «jaha oi terere» / «jaha oĩ terere», 0 + 0",
   "a1u03d2.w.chemandua": "its text is named in silent.json",
+  "a1u03d3.p1.x3": "named in silent.json",
   "a1u03d3.w.nemuhara": "its text is named in silent.json",
   "a1u03d3.w.cheiru": "named in silent.json",
   "a1u03d3.s1b": "left out by --verify: heard with wrong letters by every recogniser: «iiru» / «iro»",
@@ -6605,7 +6577,6 @@
   "a1u04d2.s0a": "named in silent.json",
   "a1u04d2.s0b": "named in silent.json",
   "a1u04d3.r1.l1.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «pejagua ha iporã hoan» / «pe jagua ha iporã juan», 3 + 3 letters off, against «pejagua iporã huan» / «pe jagua iporã juan», 0 + 1",
-  "a1u04d3.r1.l2.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «he a 'amo kavaju ituicha» / «he ha amo kavaju ituicha», 3 + 1 letters off, against «he a amo kavaju ituicha» / «he ha amo kavaju ituicha», 2 + 1",
   "a1u04d4.w.angiru": "its text is named in silent.json",
   "a1u04d5.r1.l2.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «he'e romi» / «he'e uĩ», 3 + 2 letters off, against «he'eromi» / «hee oi», 3 + 0",
   "a1u04d5.r1.l3.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «mboyy pa ovaye» / «mboýpa ovayẽ», 2 + 1 letters off, against «mboypa ova le» / «mboýpa ovaye», 0 + 1",
@@ -6628,6 +6599,7 @@
   "a1u02d3.r1.slow": "put together from a line that stays silent",
   "a1u02d5.r1": "put together from a line that stays silent",
   "a1u02d5.r1.slow": "put together from a line that stays silent",
+  "a1u03d1.p1.x3": "put together from a line that stays silent",
   "a1u03d1.r1.slow": "put together from a line that stays silent",
   "a1u03d3.r1.slow": "put together from a line that stays silent",
   "a1u03d5.r1.slow": "put together from a line that stays silent",

@@ -14,7 +14,11 @@ cut off before its end. On 16 November its work was checked and finished («16 N
 every count, size and score of the folder and of the sound files below was measured again that day, from the files as
 they are; the words of the nasal pairs were said once, so that every recording that stays silent waits as a clip for a
 listener; and the tools learnt to bring such a clip back when a person frees it, and to leave a sound file alone when
-none of its clips changed.
+none of its clips changed. On 17 November, after an independent review of the voice in the app, the clips' side was
+mended («17 November», under «What was measured»): the clips are levelled as they ship, a second ear's test hears
+every clip decoded from its MP3, what failed it was said again or silenced, and the lines the recognisers hear wrong
+are laid out for a listener; the counts, sizes and scores of the folder and of the sound files were measured again
+that day and are given where they stand.
 
 **Nobody listened to any of this.** Every judgement below was made by machine: two speech recognisers, distances between
 clips, measures on the model's own alignment, and pictures of the waveform and the spectrogram. A machine can tell that
@@ -26,29 +30,42 @@ the machine could not tell, this file says so.
 ## In one screen
 
 - **Verdict: ship with exclusions**, as a stand-in marked «voz sintética», in a free app without ads.
-- **How well.** Of the 440 clips that stay, single words come back from the independent recogniser at 6.0 % CER and
-  from the large one at 4.6 %, lines of two words or more at 9.4 % and 3.4 %, the slow takes that stay at 8.1 % and
-  3.2 % (the best of up to three takes; the first take alone of the same clips scores 8.8 % and 8.4 % on words, 12.8 %
-  and 5.4 % on lines). Real Guarani speech scores 11.0 % and 6.5 % on the same recognisers.
+- **How well.** Of the 438 clips that stay, single words come back from the independent recogniser at 6.1 % CER and
+  from the large one at 4.8 %, lines of two words or more at 9.2 % and 3.5 %, the slow takes that stay at 8.9 % and
+  3.8 % (the best of up to three takes, or the take the ear's test on the MP3 kept; the first take alone of the same
+  clips scores 8.7 % and 8.3 % on words, 12.6 % and 5.5 % on lines). Real Guarani speech scores 11.0 % and 6.5 % on
+  the same recognisers.
 - **Silent, by rule** (`sound/silent.json`): the pairs that differ only by a nasal vowel (pyta / pytã, pytu / pytũ, oke
   / okẽ, tupa / Tupã, téra / térã, porã / póra); mbo'y / mboy; the pairs of «La r, siempre suave»; tetã / tetãme; óga /
   ogakuéra; the words okẽ, ñúme, angirũ, roju, roho, chero'y, chemandu'a and ñemuhára wherever they are a clip; four
-  short clips (Héẽ, «Ikatúpa aike?», «che irũ», «Aike mbo'ehaópe.»); and three lines that a listening question turns
+  short clips (Héẽ, «Ikatúpa aike?», «che irũ», «Aike mbo'ehaópe.»); three lines that a listening question turns
   on, each with its whole item («Ha'e Argentina-gua.», «Héẽ, ndahái.», «Ag̃uahẽma che rógape. Ka'aru aháta
-  mbo'ehaópe.»): 66 rows.
+  mbo'ehaópe.»); and, named by the ear's test on what ships on 17 November, three examples of Teach in which a word
+  that is silent on its own was heard with the same flaw («Che réra Moisés. Che Argentina-gua.», «Héẽ, chekane'õ ha
+  chero'y.» with its dialogue, «Che ru chokokue ha che sy ñemuhára.»): 69 rows.
 - **Silent, by ear:** `--verify` leaves out by itself every short clip a learner hears on its own that both recognisers
   hear with wrong letters (4 rows today that the rule does not name, none of which a screen plays), and every slow
-  take that is heard worse than the normal take of its line: 23 of the 47.
-- **In all,** 107 of the manifest's 736 rows have no clip for one of these reasons, 14 of them clips that are put
-  together from a line that is silent; 57 of the 107 are keys a screen asks for today. Ten of the twelve listening
+  take that is heard worse than the normal take of its line: 22 of the 47.
+- **The same ear on what ships** (since 17 November, `tools/hear-sound.py`): every clip is decoded from its MP3 and
+  heard three ways by both recognisers; a clip of one or two words that both hear with wrong letters in two hearings
+  of three, an example heard as the form its own lesson calls wrong, and a line in which both mishear a word that is
+  silent on its own are said again with up to twelve seeds, and silenced if no take passes. The first run said twelve
+  recordings again and silenced the three examples named above. None of the 199 clips of one or two words is heard
+  wrong now; 21 of the 374 Guarani lines at the normal rate still are (20 recordings, none of them a rule's case),
+  and they are laid out for a listener, with what each recogniser wrote («What a native speaker should listen to
+  first», 18).
+- **In all,** 110 of the manifest's 736 rows have no clip for one of these reasons, 15 of them clips that are put
+  together from a line that is silent; 60 of the 110 are keys a screen asks for today. Ten of the twelve listening
   lessons play (one of them has its slower version), two of the placement's three listening items, both of the level
-  exam's, and every dialogue of Teach. 440 clips are in the folder and 63 more in its `left-out/`, for a listener:
-  every recording that stays silent waits there as a clip.
+  exam's, 19 of the 20 dialogues of Teach and 146 of its 150 examples in all. 438 clips are in the folder and 65 more
+  in its `left-out/`, for a listener: every recording that stays silent waits there as a clip.
 - **A person's verdict goes into `sound/silent.json`**, and one command applies it: a clip that is freed there comes
   back from `left-out/` as it is, the very file that was heard, without the voice being run («How to make the clips
   again»).
-- **In the app:** seven sound files, 3.71 MB as they are and 2.27 MB as a server sends them gzipped: 358 clips, 10.8
-  minutes. 418 of the 475 keys a screen can ask for have a clip.
+- **In the app:** seven sound files, 3.67 MB as they are and 2.25 MB as a server sends them gzipped: 355 clips, 10.7
+  minutes. 415 of the 475 keys a screen can ask for have a clip. Every clip, and every line of a clip that is put
+  together, ships within 2 LU of −16 LUFS (−17.8 to −15.8 by the review's measure, −16.0 at the median), and none
+  peaks over −1.5 dBTP.
 - **Rendered:** the y; the h; mb, nd, ng, nt as one sound; the ch; the v; the r inside a word; the ñ; the u that always
   sounds; the puso after a, e and i; the j between vowels and, run in, at the start of a word; the k, run in.
 - **Rendered in part, or not shown:** the nasal vowels (the voice makes them different by pitch; ĩ is heard, ã and õ are
@@ -61,16 +78,18 @@ the machine could not tell, this file says so.
 - **The people's names:** thirteen people whose names had one of those sounds (Luis, Lucas, Lucía, Nilda, Carlos, Sofía,
   Pedro, Marta, Mateo and four more) were given names the voice can say, on 10 November, and Ana and Ramona another
   spelling for the voice («The names of the people»). The 45 takes this touched were said again that day: in the
-  Guarani clips that stay a person's name is said 48 times, and both recognisers hear its letters in 45 of them.
+  Guarani clips that stay a person's name is said 48 times, and both recognisers hear its letters in 44 of them.
 - **Cannot tell:** nasal harmony, beyond the spelling; whether the ch is «sh» or the Spanish ch.
 - **The voice is one man.** F is the model as it is; M is the same voice two to three semitones lower. F is not a
   woman's voice. In a dialogue a longer line is moved towards its voice's pitch; even so the man's line is the higher
-  one, or less than a semitone lower, in 7 exchanges of 46 (before the lines were placed: 11 of 44).
+  one, or less than a semitone lower, in 7 to 11 exchanges of 45, depending on which pitch tracker counts («The
+  voices»; before the lines were placed: 11 of 44 by the tool's own).
 - **The licence is non-commercial** (CC BY-NC 4.0). These clips may not ship in an app that is sold or carries ads.
 - **The takes are `sound/A1/voz`** (FLAC, lossless, 11.7 MB with what was left out). A fresh run on another machine
   gives other samples, so that folder is kept and added to: after a change of the content, `--verify --changed` says
-  only the lines that are new or changed («How to make the clips again»). Run with nothing changed, six days after the
-  files were made, the whole line said nothing and left every file as it was, byte for byte.
+  only the lines that are new or changed («How to make the clips again»). Run with nothing changed, on 16 November and
+  again on 17 November with the ear's test at its end, the whole line said nothing, heard nothing and left every file
+  as it was, byte for byte.
 
 ## The models and the licence
 
@@ -278,7 +297,10 @@ letters in 45: Vicente in 12 of 12, Ana in 9 of 9, Rosa in 6 of 6, Juan in 5 of 
 3, Sara in 2 of 2, Santiago in 1 of 2, Genaro, Karina, Ramona and Susana once each. The large recogniser hears all 48;
 the independent one misses Juan in «Ndépa Juan? Nahániri, che Casimiro.» («hu ag»), Moisés in the man's «Maitei,
 Moisés.» («mosés») and Santiago in «Ha'e che ru, héra Santiago.» («santiávo»). In the narrator's Spanish a name is
-said 15 times and heard in 14 («Juan señala a un señor de la foto.» as «cuan señala»).
+said 15 times and heard in 14 («Juan señala a un señor de la foto.» as «cuan señala»). Since 17 November one example
+with Moisés is silent and one with Vicente is said whole («The ear's test on what ships»): a name is said 48 times in
+46 clips and both hear its letters in 44, Vicente in 12 of 13 (the large recogniser writes «myisénte» in «Vicente
+ndoúi ko ka'aru: oky.»), Moisés in 2 of 3, the others as above.
 
 **Two lines that open with Vicente were said with further seeds.** In «Vicente oho Ñembýpe, ha Rosa oho ñúme.»
 (`a1u02d3.p2.x2`) the take the run kept was heard «misénte» by both recognisers, and in «Vicente osẽ mbo'ehaógui ko
@@ -363,12 +385,24 @@ keep the pause, and their flaws (below).
 
 **What the run-in cut costs.** The word comes at the end of the carrier's phrase, not after a fresh start, and that is
 audible: on 16 words, two seeds each, the median pitch of the word is 99 Hz run in against 136 Hz after a pause, and the
-clip is 0.43 s long against 0.52 s. Over the manifest, the single words that stay: 138 Hz (median) and 0.66 s for the
-122 cut after a pause, 105 Hz and 0.49 s for the 50 run in, which are heard no worse (5.0 % and 3.6 % against 6.2 % and
+clip is 0.43 s long against 0.52 s. Over the manifest (the folder of 10 November), the single words that stay: 138 Hz
+(median) and 0.66 s for the 122 cut after a pause, 105 Hz and 0.49 s for the 50 run in, which are heard no worse (5.0 % and 3.6 % against 6.2 % and
 5.0 %). Shorter carriers raise the pitch a little («he'i» alone: 118 Hz) and lose what the cut gains (both recognisers
 hear wrong letters in 4 takes of 29 with «he'i», in 1 of 32 with «ha upéi he'i», in 7 of 32 after a pause), and a shift
 upward costs single words most, so the carrier stays and nothing is shifted. Whether a lower, shorter word sounds right
 as a word said alone is for a native ear (the list below); what the measures say is that its first consonant is there.
+
+**A word run in can trail off.** Run in, a word is the end of the carrier's phrase, and the voice lets a phrase die
+away. In *tetãme* and *ko'ág̃a* the last syllable falls away over 0.4 s, to 30 dB and more under the first: the take
+has one loud syllable, and its highest peak stands 19.6 dB over its loudness, where the 440 takes stand 14.9 dB at the
+median. It is the cut, not the seed: twelve seeds of each word, run in, gave 18.0 to 19.8 dB; six seeds of each, cut
+after a pause, 13.7 to 14.7. Both recognisers write the two cuts alike («tetame» and «tetãme», «ko'ág̃a» and «ko'ána»),
+and `--verify` had kept the run-in takes only because that cut is tried first. Since 17 November the two words have
+the take of their own seed cut after a pause (`--only <key> --redo --cut pause --tries 1 --verify`): that, and no
+levelling, is what brings them to the loudness of the other clips («The sound files»: −16.0 and −15.8 LUFS as they
+ship, where they were at −21.4 and −21.5). The next run-in clips by that measure are «Jajotopáta ko ka'aru.» (17.9
+dB), *Jaha!* (17.2) and *ko'ã* (16.9), which ship at −17.3, −17.7 and −17.8 LUFS, within 2 LU of the target; whether a
+run-in word sounds like a word said alone is on the listener's list.
 
 For sentences the carrier neither helps nor hurts (20 sentences, two seeds: 12.8 % alone and 11.4 % with it on the
 independent recogniser; 4.8 % and 5.8 % on the large one).
@@ -414,7 +448,12 @@ CER the 46 Guarani ones score 14.7 % and 5.9 % against 12.5 % and 4.4 % for the 
 are in `left-out/`. They take 1.15 to 1.34 times as long as their normal takes in what is said (median 1.20): 37 at
 a rate of 0.8, 9 at 0.74, 1 at 0.68. A listening lesson has a slower version only when every one of its slow lines
 stays, which leaves one of the twelve, unit 2 day 1 («Amba'apo.», «Remba'apo.», «Omba'apo.»: the three replies are
-heard better slow). «What must stay without audio» says what the screen does for the other eleven.
+heard better slow). «What must stay without audio» says what the screen does for the other eleven. On 17 November two
+lines of listening lessons were said again with another seed («The ear's test on what ships»), and their slow takes
+with them, as a slow take must be: «Mboýpa ovale ko kesu?», whose slow take is heard worse again and stays out, and
+«Héẽ. Ha amo kavaju ituicha.», whose slow take is now heard as well as the line and is back in the folder. So 22 of
+the 47 are heard worse, 18 as well and 7 better (14.9 % and 6.6 % against 12.5 % and 4.9 % for the normal takes of the
+same 46 Guarani lines); each of the 47 has the seed of its normal take, and no lesson gained or lost a slower version.
 
 **Takes and seeds.** Each clip's first seed is the CRC-32 of its key. With `--verify` a clip that is not heard as
 written is said again, up to three takes in all (for a line that opens with p, t, k or j: the other cut with the same
@@ -465,7 +504,7 @@ The Guarani model is one man: median pitch 143 Hz on single words and 150 Hz on 
 
 | Voice of the manifest | What it is | Median pitch |
 |---|---|---|
-| F, «mujer, voz principal» | the Guarani model as it is; in a dialogue with both voices, moved up by at most 2 semitones | 138 Hz on words cut after a pause, 105 Hz on words run in, 151 Hz on lines |
+| F, «mujer, voz principal» | the Guarani model as it is; in a dialogue with both voices, moved up by at most 2 semitones | 139 Hz on words cut after a pause, 105 Hz on words run in, 151 Hz on lines |
 | M, «hombre» | the same, 2 to 3 semitones lower (ffmpeg's rubberband, formants held) | 128 Hz on lines |
 | N, «narrador» | the Spanish model as it is | 138 Hz |
 
@@ -505,7 +544,8 @@ man's 43 down by more than 2 (8 of them by the full 3). In the dialogues the wom
 line the woman's is 2.7 semitones higher (median): the man's is the higher one in 4 pairs, less than a semitone lower in
 3 more, 2 semitones or more lower in 31. Counted the same way on the clips of the verification's run, with the fixed
 shift (this count finds 44 pairs there, the verification's own found 41): higher in 6, less than a semitone lower in 5,
-2 semitones or more lower in 25. So one exchange in seven still does not sound like two people; it was one in four. The
+2 semitones or more lower in 25. So, by this count, one exchange in seven still does not sound like two people; it was
+one in four (another tracker counts more: the end of this section). The
 seven that remain are lines of two words, which are not placed, a line the Spanish voice says, and lines the model says
 very high: its questions with -pa («Mávapa ko mitã?» at 190 Hz) would need more than 3 semitones. Moving a line up costs
 nothing that shows: the 9 lines moved up that the verification's run also has, unmoved, score 16.7 % and 4.7 % here and
@@ -519,6 +559,31 @@ before «Aha che jarýi rógape.», «Mba'éichapa, Juan?» before «Iporã, ha 
 semitones or more lower in 29. 13 of the woman's lines are moved up (6 by the full 2 semitones) and 14 of the man's 41
 down by more than 2 (8 by the full 3). The woman's lines in those clips have medians from 123 to 198 Hz (median 154),
 the man's from 98 to 160 Hz (median 131).
+
+**The count hangs on the tracker, so it is a range.** Every count above is by the tool's own measure of pitch
+(`median_pitch` in `make-tts.py`: the autocorrelation of 40 ms frames, 65 to 350 Hz, a frame voiced when its
+normalised peak reaches 0.45, the median over the take). The review of 16 November counted with a tracker of its own
+(40 ms frames under a Hann window, 70 to 320 Hz, voiced at 0.5, the peak refined by a parabola) on the lines cut from
+the decoded MP3s, and found the man's line the higher one in 6 pairs and less than a semitone lower in 5, where this
+file said 3 and 4: one exchange in four, not one in seven. Both were run on the files of 17 November: 29 clips are
+put together with both voices (one dialogue of Teach is silent since that day), with 45 neighbouring pairs of a
+woman's and a man's line.
+
+| Tracker | The woman's line higher by (median) | The man's the higher one | Less than a semitone lower | 2 semitones or more lower |
+|---|---|---|---|---|
+| the tool's, on the takes | 2.5 semitones | 3 pairs | 4 | 30 |
+| the review's, on the lines cut from the MP3s | 2.5 semitones | 6 | 5 | 27 |
+
+The two agree on the median, and every one of the tool's 7 pairs is among the review's 11. The 4 the review adds are
+«Ha'e che angirũ.» and «Ha'e che ru, héra Santiago.», each after the man's «Mávapa ha'e?» (the tool has the woman 2.0
+and 2.3 semitones higher there, the review's tracker the man 1.7 and 0.9 higher), «Iporã. Oĩpa chipa?» after
+«Mba'éichapa? Mba'épa reipota?» and «Héẽ, og̃uahẽ ko'ág̃a.» after «Og̃uahẽ piko Ana?». Over the 45 pairs the two
+trackers differ by 0.6 semitone at the median and by up to 4.1: a short or creaky line has few voiced frames, and a
+few frames decide its median. So the man's line is not the lower one, or is so by less than a semitone, in 7 to 11
+exchanges of 45, between one in six and one in four; which tracker is nearer to an ear is for a listener (item 14 of
+the list). In those 29 clips the woman's lines have medians from 125 to 198 Hz (median 154) and the man's from 98 to
+160 Hz (median 132), by the tool's measure; 13 of the woman's lines are moved up and 14 of the man's 39 down by more
+than 2 semitones.
 
 ## What was measured, and with what
 
@@ -654,8 +719,9 @@ ffmpeg decodes each of the 493 to the very samples of the WAV it came from.
 | 212 lines of two words or more | 12.8 %, 105 | 5.4 %, 142 |
 
 Of the 418 clips said at the normal rate, 245 kept their first take, 114 the second and 59 the third (the two lines
-that were given further seeds count among the first takes: each is the first take of the seed it was given); 65 kept
-a run-in take, 54 of them lines of one or two words. Median pitch: F words cut after a pause 138 Hz (122 words), F words run in
+that were given further seeds count among the first takes: each is the first take of the seed it was given); 64 kept
+a run-in take, 54 of them lines of one or two words and 10 longer lines (until 17 November this sentence said 65: it
+counted the one slow take that is run in, and the sentence is about the normal rate). Median pitch: F words cut after a pause 138 Hz (122 words), F words run in
 105 Hz (50), F lines 151 Hz, M lines 128 Hz, the narrator 138 Hz. In the fix round's folder the lines scored 10.2 % and
 3.6 % (215 lines); since then the renamed lines were said again and three lines that both recognisers heard with wrong
 letters went out.
@@ -682,10 +748,196 @@ corrected below. Then three things were done.
   `sound/silent.json` had the line said again, and "keep" did nothing in a run with `--changed`.
 - *A rebuild with no clip changed changes no file* («The sound files», below, and «How to make the clips again»).
 
+**17 November: after a review of the voice in the app.** An independent review (16 November) took every clip back out
+of the sound files, decoded it, cut the dialogues at their cues, had both recognisers hear every line and measured
+loudness, peaks and pitch with code of its own; its scripts and data are in `…/scratchpad/voice-ship/review`. It
+confirmed the counts, sizes and scores above and found six things on the clips' side. Each was mended the next day,
+and each is told in its place:
+
+- the ear's test judged the take, never the clip the app plays, and four short clips whose takes had passed were heard
+  with wrong letters in their MP3s: «The ear's test on what ships», next;
+- a Teach example said, by both recognisers, the form its own lesson calls wrong («nde ramói» for *ne ramói*), and
+  lines held, with the same flaw, a word that is silent when it stands alone: the same section, and «What must stay
+  without audio», 5;
+- two clips were 4.7 LU quieter than the rest and lines of one dialogue up to 4 LU apart: «The sound files», *the
+  levels*, and «How a clip is said», *a word run in can trail off*;
+- the list in the takes' folder stated the licence of the studio's recordings, CC BY 4.0, for clips that are CC BY-NC
+  4.0: `make-tts.py` now writes the clips' own licence into the copy it makes (`sound/A1/voz/manifest.json`), and the
+  list it copies from (`sound/A1/manifest.json`) says that its sentence is about the recordings a person makes in the
+  studio;
+- two figures of this file did not come out of the files as stated (the run-in takes, and how often the man's line is
+  not the lower one): both are corrected where they stand;
+- and, found while the lessons' examples were being read for the second point: two Teach examples of unit 2 day 5
+  had clips of their last word alone. «Vicente ndoúi ko ka'aru: oky.» and «Che ru nosẽi ógagui: oky.» have a colon,
+  and `tools/sound-list.mjs` read everything before it as the name of a speaker, so the clip said «oky» (the first
+  one in the man's voice) under the whole sentence on the screen. A speaker is now a name or a role of one word, or
+  two with a title; the list has the two sentences whole (502 recordings as before: F 411, M 66, N 25), and both were
+  said on 17 November.
+
+The folder as that day left it, measured as the table of 10 November was (`tts-report.json`: what `--verify` heard
+of each take):
+
+| The 438 clips of `sound/A1/voz` | Independent: CER, with the right letters | Large |
+|---|---|---|
+| **The take that was kept** | | |
+| 177 single words | 6.1 %, 148 | 4.8 %, 166 |
+| 211 lines of two words or more | 9.2 %, 140 | 3.5 %, 173 |
+| of them the woman's 178 | 8.9 %, 127 | 3.3 %, 150 |
+| of them the man's 33, pitch 2 to 3 semitones down | 11.2 %, 13 | 4.6 %, 23 |
+| 22 slow takes | 8.9 %, 13 | 3.8 %, 17 |
+| 28 Spanish lines (25 of the narrator; «Diez mil.», its slow take and «Treinta.»), Spanish adapter | | 0.9 %, 23 |
+| **The same clips, the first take alone** | | |
+| 177 single words | 8.7 %, 126 | 8.3 %, 148 |
+| 211 lines of two words or more | 12.6 %, 109 | 5.5 %, 144 |
+
+There are two single words fewer and one line fewer than on 10 November: the two «oky» became sentences, and three
+lines are silent. Of the 415 clips at the normal rate, 249 have their first take, 110 the second and 56 the third (a
+take that the ear's test on the MP3 kept counts as a first take, being the first take of the seed it was given); 62
+are run in, 52 of them lines of one or two words, now that *tetãme* and *ko'ág̃a* are cut after a pause. Median
+pitch: F words cut after a pause 139 Hz (123 words), F words run in 105 Hz (48), F lines 151 Hz, M lines 128 Hz, the
+narrator 138 Hz.
+
+**The ear's test on what ships.** `--verify` hears the take, the FLAC of the folder. The learner hears the take
+trimmed, levelled, given its air and encoded as MP3 at 32 kb/s, and at the edge the two are not heard alike: over the
+whole set the review found ten recordings that both recognisers heard right as takes and wrong as MP3s, and three the
+other way. So since 17 November a second tool, `tools/hear-sound.py`, runs after `make-sound.mjs`. It reads the sound
+files themselves, decodes every clip, cuts a clip that is put together from lines at its cues, and has both
+recognisers hear every line three ways, as the review did:
+
+- *padded*: the clip as it ships, with the 150 ms of silence the recogniser is given round a take (the hearing of
+  `--verify`);
+- *trimmed*: the clip without its air (cut where it rises over −45 dBFS, 10 ms kept), with the same 150 ms;
+- *bare*: the clip as it ships and nothing round it, which is what the phone plays.
+
+*The rule: two hearings of three.* A line is **heard wrong** when, in two of the three hearings or in all three, both
+recognisers write letters that are not the line's (the letters as everywhere in this file: acutes, tildes and spaces
+aside; the line as the voice is given it or as the course writes it, so «juan» for *huan* is the name heard right).
+Why three hearings, and why two: what a recogniser writes of a short clip moves with the silence round it, and that
+says nothing about the clip. In the first hearing of everything, on 17 November (the takes of 16 November through the
+new levelling: 415 lines in 358 clips, 43 minutes on four shared CPUs), the independent recogniser changed its verdict
+on a clip of one or two words from one hearing to another in 23 of the 201 such clips, the large one in 32. Both were
+wrong together in 4 clips in the padded hearing, in 13 in the trimmed one and in 8 in the bare one, and those are not
+the same clips: 184 clips are never wrong for both, 11 in one hearing only, 4 in two and 2 in all three. One hearing
+alone would make the rule a rule about padding (the padded hearing passes *mitãnguéra*, which both hear as
+«mitãmbuéra» without the padding; the trimmed one fails eight clips that the two do not both hear wrong as the phone
+plays them); a verdict in any one hearing would stop 17 clips, on top of the one real clip in ten that the take's rule
+already costs; and asking for all three would pass a clip that both hear wrong as it is played (*aju*, «Aguyje mante»
+and *mitãnguéra* are right for one recogniser with the padding and wrong for both without it). Two of three follows
+the clip, not the padding: it stops 6.
+
+*What is done with it.* The rule is applied in three places, each with its reason in «What must stay without audio»,
+5:
+
+- **a short clip**: a Guarani clip of one or two words that a learner hears on its own and that is heard wrong: the
+  rule `--verify` applies to the take, applied to what plays;
+- **a word**: a line that holds a word the voice must not say alone (`sound/silent.json`: "texts", and "words", the
+  flawed word of each clip that is silent by key), when in two hearings of three both recognisers write that very
+  word with wrong letters. What they wrote in the word's place is found by lining their letters up with the line's;
+  a letter put in right before or after the word may be its neighbour's and is left aside, and a puso written
+  between the two vowels of *Héẽ* is the break they are said with, not a letter too many;
+- **a form**: a Teach example whose point is one letter or one small word. `sound/silent.json` lists these examples
+  ("forms"): for each, the line as its lesson says it must *not* be said (*nde ramói* for *ne ramói*, *tetãpe* for
+  *tetãme*, *ndañe'ẽi* for *nañe'ẽi*) and the words whose stress the lesson marks with an acute. The example fails
+  when, in two hearings of three, both recognisers' writing is nearer to a wrong line than to the example itself, or
+  when no recogniser writes the acute.
+
+A clip that fails is said again, by `make-tts.py`'s own code and in a copy of the folder: up to twelve seeds, the
+key's own first, each take made into its MP3 by `make-sound.mjs` with every clip it is heard in, and heard the same
+three ways. A take passes on three conditions. It passes `--verify`. Its MP3 fails none of the rules. And its lines are
+not heard worse as a whole than those of the take it replaces, by the letters each recogniser writes in each hearing,
+added up: a take can mend the word a rule looks at and spoil another, and that is no gain (the case that showed it is
+told below). The search ends at the first passing take that every recogniser hears right in every place the rules
+look at; otherwise the passing take with the fewest wrong hearings there is kept and, among equals, the one whose
+lines are written with the fewest letters off. It replaces the old one as `--only <key> --redo --seed <n> --tries 1
+--verify` writes it, with two things carried over from the take it replaces: its cut (so that *tetãme* and *ko'ág̃a*
+do not come back run in) and the slow take of its line, which is said again with the new seed and judged afresh
+whether it was in the folder or in `left-out/`, so that it stays the slow version of the take a listener will compare
+it with; a take with which a slow take that the folder holds would be left out does not pass. If no take passes, the
+clip is silenced: the tool names its key in `sound/silent.json` with what was heard and what each seed gave, the other
+word of its pair with it, and the take goes to `left-out/`. One kind of line it never silences: a line of a listening
+item, a lesson's, the placement's or the exam's. Silencing it takes the whole item's audio, and that is a person's
+decision; until then the item plays and the line is on the listener's list. What the tool heard of every line is
+kept in `sound/A1/voz/mp3-heard.json`, under the checksum of the MP3 it was heard in, so a run on files whose clips
+did not change hears nothing, loads no model and writes nothing.
+
+*What the first run found and did (17 November).* The tool first heard the takes of 16 November as the new levelling
+ships them (the 415 lines above). Then the documented line was run on the folder with what had to change: the two
+examples of unit 2 day 5 were said whole, *tetãme* and *ko'ág̃a* were said again cut after a pause, the sound files
+were made, and the four clips whose MP3 was new were heard. That left 415 lines, 199 of them clips of one or two words
+(the two «oky» are sentences now): 6 short clips heard wrong, 33 of the 382 Guarani lines in all, and 15 recordings
+that failed a rule:
+
+- six short clips: *aju*, «Aguyje mante», *mitãkuña*, *ñu*, *mitãnguéra* and *guyrakuéra* (the last four are the
+  review's four);
+- one form: «Mba'éichapa héra ne ramói?», heard «nde ramói» by both (the review's);
+- one stress: «Mboýpa ovale ko kesu?», whose acute neither recogniser wrote in two hearings of three (the recording
+  plays in a Teach example, in a dialogue of unit 4 day 5 and in the listening lesson of unit 1 day 4);
+- seven lines with a word that is silent when it stands alone: «Che réra Moisés. Che Argentina-gua.», «Che amba'apo
+  mbo'ehaópe.» (its acute unwritten as well), «Héẽ, chekane'õ ha chero'y.», «Che ru chokokue ha che sy ñemuhára.»,
+  «Ha'e che angirũ.», «Héẽ, upéicha.» and, in the listening lesson of unit 4 day 3, «Héẽ. Ha amo kavaju ituicha.».
+
+Each was said again with up to twelve seeds: 142 takes over the fifteen recordings. 26 of them did not pass
+`--verify`; the other 116 were made into their MP3s and heard three ways, and of those 35 passed, 73 failed a rule
+again and 8 were heard worse as a whole than the take they would have replaced. Twelve recordings have a new take
+since:
+
+| Key | Text | The rule it failed | Seed kept (0 is the key's own), of those tried | The independent recogniser, in its MP3 now | The large recogniser | Letters off over the six hearings, before → now |
+|---|---|---|---|---|---|---|
+| `a1u01d4.p2.x3` | Mboýpa ovale ko kesu? | stress | 5, of 12 | «mboypa ova léko kesu» / «mboypa ovaléko kesu» | «mboýpa ovaleko jesús» / «mboýpa ovaleko kesu» / «mboýpa ovaléko kesú» | 11 → 6, over its three clips |
+| `a1u02d1.w.aju` | aju | short clip | 7, of 12 | «aju» | «adu» | 5 → 3 |
+| `a1u02d3.p1.x0` | Che amba'apo mbo'ehaópe. | word, stress | 5, of 12 | «che amba'apo mboeha ópe» / «che amba'apo mbo'eha ópe» | «che amba'apo mbo'ehaópe» | 8 → 1 |
+| `a1u02d5.w.aguyjemante` | Aguyje mante | short clip | 7, of 12 | «aguje mante» | «aguyje mante» / «aguy je mante» | 5 → 3 |
+| `a1u03d3.p2.x1.l1` | Ha'e che angirũ. | word | 4, of 5 | «ha'éche angiru» | «ha'ẽ che angiru» | 11 → 0 |
+| `a1u03d3.w.mitakuna` | mitãkuña | short clip | 2, of 3 | «mitakuña» / «mitaku ña» | «mitakuña» | 5 → 0 |
+| `a1u03d3.s1a` | ñu | short clip | 0, of 12 | «ju» / «u» | «ñu» | 6 → 3 |
+| `a1u03d4.p2.x1.l2` | Héẽ, upéicha. | word | 6, of 7 | «he'ẽ upéicha» / «heẽ upéicha» | «he'ẽ upéicha» | 6 → 5 |
+| `a1u04d1.p2.x3` | Mba'éichapa héra ne ramói? | form | 1, of 2 | «mba'eichapa héra ne ramoi» | «mba'eichapa héra ne ramói» | 7 → 0 |
+| `a1u04d2.w.mitanguera` | mitãnguéra | short clip | 4, of 5 | «mitanguéra» | «mitã nguéra» | 14 → 0 |
+| `a1u04d2.w.guyrakuera` | guyrakuéra | short clip | 3, of 12 | «muyrakuéra» | «guyra kuéra» | 9 → 3 |
+| `a1u04d3.r1.l2` | Héẽ. Ha amo kavaju ituicha. | word | 6, of 12 | «he a amokavaju ituicha» / «he a amo kavaju ituicha» | «he'e ha amo kavaju ituicha» / «he ha amo kavaju ituicha» | 10 → 9 |
+
+Each of the twelve passes, which is not the same as being heard right by both. In *aju* the large recogniser still
+writes «adu» in every hearing, in «Aguyje mante» the independent one «aguje», in *ñu* «ju», in *guyrakuéra*
+«muyrakuéra»: one recogniser hears the clip right in every hearing, the other in none, and the rule asks for no more
+than the take's rule does. The puso both write in «he'ẽ upéicha» counts as a letter for the line and as the break
+between the two vowels for the word, so that line passes the rule about *Héẽ* and still stands in the listener's
+table; and in «Héẽ. Ha amo kavaju ituicha.» the large recogniser writes two vowels in two hearings of three while the
+independent one writes «he a» in all. The twelve are on the listener's list for that (item 19).
+
+Three recordings had no take that passed, and are silent since: «Che réra Moisés. Che Argentina-gua.»
+(`a1u01d3.p2.x1`: «a hentiragua», «ahentinagua», the r of *Argentina* in none of twelve seeds), «Héẽ, chekane'õ ha chero'y.»
+(`a1u03d1.p1.x3.l1`, and with it its dialogue, `a1u03d1.p1.x3`: one short vowel for both in twelve of twelve, and
+«rohy» for *ro'y* in three of them) and «Che ru chokokue ha che sy ñemuhára.» (`a1u03d3.p1.x3`). The last is the case
+behind the third condition. Eleven of its twelve seeds had «ñemohára» from both recognisers. The twelfth was the
+first with *ñemuhára*, and both then wrote «chukokue» for *chokokue* in every hearing (as in eight of the twelve
+seeds): 14 letters off over the six hearings, where the take it would have replaced has 9. The tool as it was first
+written kept that take; a take that mends one word and spoils another is no longer kept, and the example is silent.
+«What must stay without audio», 5, has what each of the three costs.
+
+The sound files were then made again (four of the seven changed), the 29 lines whose MP3 was new were heard, and
+nothing failed: 411 lines in 355 clips, none of the 199 clips of one or two words heard wrong, 21 of the 374 Guarani
+lines at the normal rate heard wrong (8 examples of Teach, 6 lines of its dialogues and 7 lines of listening items;
+20 recordings), none of the 4 slow lines, and 4 of the 33 Spanish lines by the one recogniser that judges them. The
+whole run took 40 minutes on four shared CPUs (2,426 s: 100 s for the four clips that were said, 308 s for the sound
+files, and 34 minutes for the ear's test with its 142 takes, the files made a second time and the 29 lines heard).
+Run again at once with nothing changed, the whole line said nothing, heard nothing, loaded no model and left each of
+the 576 files of `sound/` and `project/` as it was, by checksum and by `git status`: 6 minutes 10 seconds, all but
+two seconds of it `make-sound.mjs` encoding every clip to find that nothing had changed (the ear's test took 1.4 s).
+
+*What the MP3 does to a take, over the whole set.* For the 378 Guarani lines that play (4 of them slow), what
+`--verify` heard of the take against the padded hearing of its MP3, which is the same hearing of the clip that ships:
+the independent recogniser 8.2 % CER on the takes and 8.7 % on the MP3s, with the right letters in 285 and in 276;
+the large one 3.9 % and 4.2 %, 332 and 328. 19 lines are wrong for both as takes and 25 as MP3s in that one hearing
+(8 only as MP3s, 2 only as takes); by the rule of two hearings in three, 21. The MP3 costs half a point of CER, and
+it moves single clips across the line in both directions, which is why the clip is heard and not only the take.
+
+
 **The sound files.** `node tools/make-sound.mjs sound/A1/voz --manifest sound/A1/voz/manifest.json --kind synthetic`
 wrote the app's files into `project/`. Three flaws the verification had measured in that tool were mended first, with
-one waste the run of 10 November found and one that showed six days later. The figures are of 16 November: the files
-as they are, and the same 440 takes put through the tool as it was before (commit 206ec5f), both decoded with ffmpeg.
+one waste the run of 10 November found and one that showed six days later; the figures in these five points are of 16
+November (the files as they were that day, and the same 440 takes put through the tool as it was before, commit
+206ec5f, both decoded with ffmpeg). A sixth point, the levels, was mended on 17 November, after the review: it is the
+last of the list, and the table of the files and every figure after it are of the files as that change left them.
 
 - *The loudness of a short word.* The tool measured with ffmpeg's `loudnorm`, which gives no loudness for a clip under
   about half a second; the mean level stood in, and those clips came out 4.7 LU under the rest (−22.3 LUFS at the
@@ -698,11 +950,10 @@ as they are, and the same 440 takes put through the tool as it was before (commi
   decoded from the files); the others moved by 0.01 LU at the median, 1.3 at most.
 - *The peak ceiling.* The ceiling was kept on the take; the MP3, at 32 kb/s, peaks up to a decibel higher. The true
   peak is now taken on each clip's MP3 decoded again (four times oversampled), and a clip that passes −1.5 dBTP is
-  lowered and encoded again until it holds. Decoded from the files, the highest of the 358 clips is at −1.51 dBTP;
-  made from the same takes with the tool as it was, 9 clips passed the ceiling, the highest at −0.74. Nine clips were
-  lowered, by 0.4 dB at most.
+  encoded again until it holds. On 16 November the highest of the 358 clips decoded from the files was at −1.51 dBTP;
+  made from the same takes with the tool as it was, 9 clips passed the ceiling, the highest at −0.74.
 - *The length.* `ms` was the MP3 file's own duration, which counts the encoder's padding: 61 ms too long at the median
-  (48 to 70). It is the length of the decoded clip now: the same in 357 clips, 1 ms more in one.
+  (48 to 70). It is the length of the decoded clip now.
 - *What no screen asks for.* The tool gave a clip to every recording: 543 clips in files of 5.49 MB, a third of it
   (1.32 of 4.08 MB of MP3) under keys no screen can ask for: the lines of dialogues and listening items, which are
   heard inside the clip put together from them, and the word of each sound pair that does not play. A recording now
@@ -714,6 +965,43 @@ as they are, and the same 440 takes put through the tool as it was before (commi
   again. A file whose clips are what they were is now left as it is, its date too. The same run now leaves all seven
   alone; with one take replaced, the file of that take's unit is written anew and the others are not (`check/sound-test.js`
   has both cases). The clip list keeps its date the same way while nothing in it changes (`tools/sound-list.mjs`).
+- *The levels (17 November).* The review measured the clips as they ship, with code of its own: the measure of
+  BS.1770 with its gates on each decoded MP3 without its air, in a loop. It found the 322 clips of one recording at
+  −16.7 LUFS at the median, 272 of them within 2 LU of −16, *ko'ág̃a* and *tetãme* at −21.5 and −21.4, and lines of one
+  dialogue up to 4 LU apart. Three causes, each measured.
+  *The voice's peaks.* A take's highest peak stands 14.9 dB over its loudness at the median (12.9 to 17.2 between the
+  5th and the 95th percentile of the 440 takes, 19.6 for the two words). One gain brings a take to −16 LUFS under a
+  ceiling of −1.5 dBFS only if that distance is 14.5 dB or less, so 279 takes stopped at the ceiling, 68 of them more
+  than 2 LU under the target, and the man's clips and lines, whose shifted pitch leaves them peakier, sat 1.1 LU
+  under the woman's (−17.7 against −16.7 LUFS at the median, by the review's measure).
+  *The encoder.* LAME turns everything it is given down by a fixed factor at this bit rate, 0.95: a second of a plain
+  note, encoded as the clips are and decoded again, comes back 0.45 dB lower in level and in peak. A take brought to
+  −16.0 LUFS shipped at −16.45, which is why the loudest clip of all was at −15.9 and the median clip at −16.7.
+  *The run-in cut.* The two quietest words are the end of the carrier's phrase and trail off («How a clip is said»).
+  What was changed in `tools/make-sound.mjs`. (a) The encoder's step is measured at the start of every run, and the
+  gain and the ceiling allow for it: the target is the level of the clip as it ships. (b) Where the gain would carry a
+  take's highest peaks over the ceiling, those peaks are turned down for a moment by a limiter that is slower than the
+  voice's own pulses: its curve is the lowest gain any sample needs within 10 ms to either side, smoothed over the same
+  width, so it starts down 20 ms before a peak, is at its lowest on the peak and is back 20 ms after; the gain is
+  then raised by the little loudness the peaks took with them, and the two steps repeat until the take is at the
+  target or the curve would go deeper than 3 dB. Three decibels trim a peak; they do not weigh the syllables of a word
+  anew. A take that would need more stays under the target by the rest. (c) The peak of a clip is still taken on its
+  MP3 decoded again, where it stands up to 1.6 dB over the WAV's; a recording that passes the ceiling there is no
+  longer lowered as a whole but limited to a ceiling that much lower, which comes on top of the 3 dB, and in a clip
+  put together from lines the line that holds the peak is fitted, not the whole dialogue lowered for its sake. (d) The
+  loudness is measured on the sounding part of a take, without the quiet a trim keeps at its ends. (e) The run ends
+  with the loudness of every clip, and of every line of a put-together clip, as decoded from its MP3, and names
+  whatever lands more than 2 LU from the target; `check/sound-test.js` has a take with one loud moment that must
+  reach the target and a take that peaks all along that must be named.
+  Two things were tried and dropped. A phase rotator, which lowers peaks without touching any level, gives this
+  voice too little: the best of 45 settings (four all-pass stages at 500 Hz) lowered the peaks by 1.0 dB at the mean,
+  left 140 takes over the 14.5 dB and raised single takes by up to 1.7 dB. And a limiter left free to go to 8 dB
+  brought every take within 2 LU of the target, but turned the first syllable of *tetãme* and the stressed one of
+  *ko'ág̃a* down by 7.8 and 7.5 dB, 9 takes by more than 7 dB and 51 by more than 3: that is no longer trimming a peak. So the
+  limiter stops at 3 dB, and *tetãme* and *ko'ág̃a*, which no levelling brings in cleanly, have the take of their own
+  seed cut after a pause, whose peaks stand 14.7 and 13.9 dB over its loudness.
+  What it gave is under *the levels as they ship*, below: by the review's own measure every clip and every line is
+  within 2 LU of the target now.
 
 `check/sound-test.js` holds a check for each of these, on fixture takes made for them (a fifth of a second of the note
 that another take holds for a second; a take that peaks like a voice; a dialogue). Put to the tool as it was, the
@@ -721,48 +1009,78 @@ first part of that test fails thirteen checks, among them each of the three flaw
 one point at a time (the file's own duration for `ms`; no second encoding for the peak; no loudness for a short take;
 every file written whatever it holds), the check of that point fails each time. One of the thirteen is the tool's dry
 run, which reported every dialogue as lacking all its lines and named no file: `--dry-run` now reads no recording,
-writes nothing and names what a real run would make (329 clips in seven files for `sound/A1/voz`, as the run made).
+writes nothing and names what a real run would make (326 clips in seven files for `sound/A1/voz` as it is since 17
+November, which is what the run makes).
 
 | File | Size | Clips | Keys that point at a clip of the file | Audio |
 |---|---|---|---|---|
-| `gn-sound-a1-u01.js` | 750,549 bytes | 79 | 7 | 130.0 s |
-| `gn-sound-a1-u02.js` | 871,994 | 82 | 19 | 152.1 s |
-| `gn-sound-a1-u03.js` | 864,556 | 84 | 20 | 150.4 s |
-| `gn-sound-a1-u04.js` | 1,002,378 | 94 | 14 | 175.1 s |
-| `gn-sound-a1-x.js`, the level exam | 93,912 | 3 (two items and the test tone) | 0 | 17.0 s |
-| `gn-sound-pl.js`, the placement check | 46,137 | 2 | 0 | 8.3 s |
-| `gn-sound-sp.js`, Hablar | 80,647 | 14 | 0 | 13.1 s |
-| all seven | 3,710,173 bytes | 358 | 60 | 646.1 s, 10.8 minutes |
+| `gn-sound-a1-u01.js` | 729,040 bytes (440,742 gzipped) | 78 | 7 | 126.1 s |
+| `gn-sound-a1-u02.js` | 895,548 (551,040) | 82 | 19 | 156.6 s |
+| `gn-sound-a1-u03.js` | 826,380 (505,948) | 82 | 20 | 143.6 s |
+| `gn-sound-a1-u04.js` | 1,001,354 (617,162) | 94 | 14 | 174.8 s |
+| `gn-sound-a1-x.js`, the level exam | 93,912 (57,465) | 3 (two items and the test tone) | 0 | 17.0 s |
+| `gn-sound-pl.js`, the placement check | 46,137 (29,835) | 2 | 0 | 8.3 s |
+| `gn-sound-sp.js`, Hablar | 80,647 (47,458) | 14 | 0 | 13.1 s |
+| all seven | 3,673,018 bytes (2,249,650) | 355 | 60 | 639.5 s, 10.7 minutes |
 
-329 clips were made (293 recordings, 35 put together from lines, the tone); 29 of them are in a second file as well,
-because that file may be the only one loaded. A phone that has a plan stores all seven files: 3.71 MB as they are,
-2.27 MB as a server sends them gzipped. Every voice clip is marked `synthetic`, with the model and CC BY-NC 4.0 in each
-file's header and in the index.
+The files of 17 November, after the run of that day (on 16 November: 358 clips, 3,710,173 bytes, 10.8 minutes). 326
+clips were made (291 recordings, 34 put together from lines, the tone); 29 of them are in a second file as well,
+because that file may be the only one loaded. All seven are 3.67 MB as they are and 2.25 MB as a server sends them
+gzipped; which of them a phone stores, and when, is under «What the screens say». Every voice clip is marked
+`synthetic`, with the model and CC BY-NC 4.0 in each file's header and in the index. Unit 2's file grew (two examples
+that were one word are sentences) and unit 1's and unit 3's shrank (three examples are silent); the other files hold
+the clips they held, levelled anew, and a clip's size goes by its length alone.
 
-*Which keys have no clip, and why.* The list has 736 keys. 475 are keys a screen can ask for, and 418 of them have a
-clip. The other 57 are silent: 43 by the rule (15 words of nasal pairs, 14 words whose text is named, 14 named by
-key) and 14 clips that cannot be put together because a line of theirs is out: the slower versions of eleven
-listening lessons (nine by the slow takes alone), two listening lessons and one placement item (the three lines named
-in the rule). The remaining 261 keys are ones no screen asks for: 179 lines, and the 82 words of sound pairs that do
-not play.
+*Which keys have no clip, and why.* The list has 736 keys. 475 are keys a screen can ask for, and 415 of them have a
+clip. The other 60 are silent: 45 by the rule (15 words of nasal pairs, 14 words whose text is named, 16 named by
+key, two of them the examples the ear's test on what ships named) and 15 clips that cannot be put together because a
+line of theirs is out: the slower versions of eleven listening lessons (nine by the slow takes alone), two listening
+lessons and one placement item (the three lines named in the rule), and one dialogue of Teach (its second line named
+by the ear's test on what ships). The remaining 261 keys are ones no screen asks for: 179 lines, and the 82 words of
+sound pairs that do not play.
 
-*The levels as they ship.* Decoded from the files and measured without their air, the 322 clips of one recording are
-at −17.3 LUFS (median), −19.6 to −16.6 between the 5th and the 95th percentile, the quietest at −22.2 (*ko'ág̃a*); 71 %
-are within 2 LU of the target of −16. By length: −18.5 under 0.4 s (2 clips), −18.2 from 0.4 to 0.7 s (81), −17.2 from
-0.7 to 1.5 s (175), −16.7 above (64). The 35 clips put together are at −17.6 (−19.2 to −16.7). What keeps a clip under
-−16 now is the ceiling, not the measure: one gain can bring a take to −16 LUFS under −1.5 dBTP only if its peaks stand
-no more than 14.5 dB over its loudness, and this voice's stand 15.0 dB over at the median (13.1 to 17.5 between the
-5th and the 95th percentile). 279 of the 440 takes stop at the ceiling, 1.1 LU under the target at the median, 68 by
-more than 2 LU, *ko'ág̃a* by 5.4. Nothing is compressed, as the tool was designed. A target of −19 LUFS would be out of
-reach for 17 takes only, and a limiter would bring every clip to −16: either is a change for the owner of the app's
-sound to make, with a listener.
+*The levels as they ship.* The measure is the review's own, not the tool's: its code (`…/voice-ship/review/scripts`,
+`extract.js` and `measure.py`, unchanged) takes every clip back out of the sound files, decodes it, cuts a clip that
+is put together at its cues, and measures each clip and each line without its air, in a loop, by BS.1770 with its
+gates; the peak is the true peak of the decoded MP3. On the files as the review found them and on the files of 17
+November:
 
-*The MP3 against the take.* A dozen clips of each file (both voice clips of the exam's and of the placement's) were
-taken back out, two put together from lines among them where the file has such, cut at their cues, decoded with ffmpeg
-and heard by the independent recogniser: 64 clips, 81 Guarani lines. They score 8.2 % CER; the takes they were made
-from, 7.9 %. 68 lines are written exactly as the take was, and 61 have the right letters where 62 of the takes have.
-By file, MP3 and take: unit 1, 9.6 % and 7.7 %; unit 2, 6.7 % and 6.2 %; unit 3, 7.9 % and 8.4 %; unit 4, 10.8 % and
-10.2 %; the exam, 7.4 % and 7.4 %; the placement, 5.4 % and 6.5 %; Hablar, 8.4 % and 8.4 %.
+| | The files of 16 November | The files of 17 November |
+|---|---|---|
+| Clips of one recording | 322 | 320 |
+| their loudness: median; 5th to 95th percentile; quietest to loudest | −16.7 LUFS; −18.8 to −16.1; −21.5 to −15.9 | −16.0 LUFS; −16.9 to −15.9; −17.8 to −15.8 |
+| within 2 LU of −16; within 1 LU | 272; 196 | 320, every one; 308 |
+| *ko'ág̃a*, *tetãme*, «Jajotopáta ko ka'aru.» | −21.5, −21.4, −19.8 | −15.8, −16.0, −17.3 |
+| Lines of the clips put together | 122 lines in 35 clips | 120 lines in 34 clips |
+| their loudness: median; quietest to loudest | −17.0; −20.8 to −16.0 | −16.0; −17.7 to −15.9 |
+| within 2 LU of −16 | 94 | 120, every one |
+| the widest gap between two lines of one clip; clips with more than 2 LU between two lines | 4.0 LU (`a1u03d1.p1.x3`); 11 | 1.7 LU (`a1u03d5.r1`); none |
+| The woman's clips and lines; the man's; the narrator's (median) | −16.7; −17.7; −17.0 | −16.0; −16.0; −16.0 |
+| Highest true peak; samples clipped | −1.50 dBTP; none | −1.50 dBTP; none |
+
+By length of the sound in a clip, the median was −17.0 LUFS under 0.4 s (24 clips), −16.9 from 0.4 to 0.7 s (120),
+−16.5 from 0.7 to 1.5 s (128) and −16.5 above (50); it is −16.2 (22 clips), −16.0 (122), −16.0 (124) and −16.0 (52).
+The placement's `pl.5`, whose first line was at −20.1 and its last at −16.9, has its three lines at −17.3, −16.9
+and −16.0; of the eight lines of unit 1 day 1's lesson, which fell from −16.1 to −19.9, none is quieter than −17.5.
+The quietest clips now are *ko'ã* (−17.8), *Jaha!* (−17.7), *apyka* (−17.6) and the sign «Jajotopáta.» (−17.5): takes
+whose peaks stand so far over their loudness that 3 dB of limiting does not bring them to the target.
+
+The tool's own account of the same run agrees with it: 373 of the 438 recordings are at −16 LUFS as they ship; 271
+had their highest peaks turned down, by 1.8 dB at the median and 4.4 at the most (3 for the take's own level, the
+rest for what its MP3 peaked over its WAV), during 121 ms of a take at the median, 43.5 s of those takes' 353 s; 65
+stay under the target, by 0.7 LU at the median and 22 of them by more than 1 LU, the furthest by 1.8 (the slow take
+of «Jajotopáta ko ka'aru.», which plays nowhere today); 247 clips and lines were fitted to the ceiling after
+encoding, by 1.6 dB at most; the highest true peak of a clip is −1.50 dBTP. What a limiter does to the sound of a
+peak is not something these measures show: whether the 271 takes still sound like themselves at their loudest
+moment is for a listener (item 16 of the list). The measure this file gave until 17 November (−17.3 LUFS at the
+median, 71 % within 2 LU) took each clip with the quiet a trim keeps at its ends, which makes a short word look
+quieter than it is; by that older measure the files of 17 November are at −16.7 at the median and 96 % within 2 LU.
+
+*The MP3 against the take.* On 16 November a dozen clips of each file were taken back out, cut at their cues and
+heard by the independent recogniser: 64 clips, 81 Guarani lines, 8.2 % CER where the takes they were made from score
+7.9 %, the right letters in 61 lines where 62 of the takes have them. Since 17 November every line of every clip is
+heard as it ships, by both recognisers and three ways: the figures for the whole set are under «The ear's test on
+what ships».
 
 ## Each sound the course teaches
 
@@ -914,15 +1232,19 @@ in the Spanish numbers («How the text is prepared»); the l figures are of the 
 ## What must stay without audio
 
 A voice that says a taught sound wrong is worse than silence, and a question that the voice makes unfair is worse than
-a question that is read. So four things keep a clip out: a rule, the recognisers' ear, a person's decision on what the
-tool flags, and what was settled when the whole course was said. The rows that stay silent are not in the manifest the
+a question that is read. So five things keep a clip out: a rule, the recognisers' ear on the take, a person's decision
+on what the tool flags, what was settled when the whole course was said, and, since 17 November, the same ear on the
+clip as it ships. The rows that stay silent are not in the manifest the
 tool writes next to its clips (`sound/A1/voz/manifest.json`), `make-sound.mjs` registers no clip for them, and the
 screens keep their written stand-in there and say that the audio is not recorded yet.
 
 **1. By rule: `sound/silent.json`.** These rows never play, whatever a recogniser hears, because the measures above
 say the voice does not render what they teach. Each has been said once all the same, and its clip waits in
 `left-out/`, for a listener. The file is read by `make-tts.py`; it holds contrasts, keys and texts, and the reason for
-each.
+each. Since 17 November it is plain JSON that `tools/hear-sound.py` reads and adds to as well: that tool names keys
+in it by itself, with what it heard (5, below), and reads from it two lists of its own, "words" (the flawed word of
+each clip that is silent by key: *aike*, *irũ*, *mbo'ehaópe*, *Argentina-gua*, *Héẽ*) and "forms" (the examples of
+Teach whose point is one letter or one small word: 5).
 
 - **The two words of a sound pair that differ only by a nasal vowel** (`"contrasts": ["nasal"]`; decided from the two
   texts, so it holds when the manifest is made again). Today 26 rows: «Las vocales nasales», unit 1 day 2, all four
@@ -952,6 +1274,9 @@ each.
   ndahái.» (`a1u02d5.r1.l7`, the lesson of unit 2 day 5) and «Ag̃uahẽma che rógape. Ka'aru aháta mbo'ehaópe.»
   (`pl.3.l1`, the placement's second listening item). A clip that is put together from lines cannot be made without
   one of them, so naming a line silences its item, the slower version too.
+- **Three examples of Teach, named by the ear's test on what ships** (17 November; the reasons are under 5, below):
+  «Che réra Moisés. Che Argentina-gua.» (`a1u01d3.p2.x1`), «Héẽ, chekane'õ ha chero'y.» (`a1u03d1.p1.x3.l1`, with it
+  the dialogue it closes, `a1u03d1.p1.x3`) and «Che ru chokokue ha che sy ñemuhára.» (`a1u03d3.p1.x3`).
 
 *kesu*, *kamby* and *peju* were on the verification's list. Run in, they are heard right (above) and are said again.
 
@@ -977,11 +1302,12 @@ The clips are in the folder's `left-out/` for a listener; `"keep"` in `silent.js
 has heard it and found it right, and the clip then comes back from `left-out/` as it is («How a clip is said», «How to
 make the clips again»). A line of a dialogue is never left out this way: the dialogue needs it. The tool lists
 the short lines that both recognisers hear with wrong letters and that stay. The fix round's run listed ten; what
-became of each is under 4(c) and 4(d), and three are left: «Remba'apo.» and «Omba'apo.» (`a1u02d1.r1.l5`,
-`a1u02d1.r1.l7`) and «Héẽ, upéicha.» (`a1u03d4.p2.x1.l2`).
+became of each is under 4(c) and 4(d), and three were left: «Remba'apo.» and «Omba'apo.» (`a1u02d1.r1.l5`,
+`a1u02d1.r1.l7`) and «Héẽ, upéicha.» (`a1u03d4.p2.x1.l2`), which was said again on 17 November (5), so two are left.
 
 **A slow take that is heard worse than the normal take of its line is left out too**, since 10 November («How a clip is
-said»): 23 of the 47, with the slower version of every listening lesson that has one of them among its lines.
+said»): 22 of the 47 (23 until 17 November), with the slower version of every listening lesson that has one of them
+among its lines.
 
 **3. Flagged, for a person to decide.** `--verify` lists the words of a sound pair with a mark (the puso, a nasal tilde,
 an acute) that no recogniser writes at all. The recognisers leave marks out of real speech too, so these are not left
@@ -1070,23 +1396,113 @@ the flawed word is one a question turns on.
   five of them, one of the two in two, neither in two («Héẽ, upéicha.» and «Héẽ. Ha amo kavaju ituicha.»). No question
   turns on the word: the answer of unit 4 day 3 is «amo kavaju» in that same line, which both write, and in unit 4
   day 5 («Héẽ, oĩ.») whether there is cheese is not what is asked.
+- **Since 17 November** a line that holds *Héẽ* is put to the ear's test as it ships (5), because the word is silent
+  when it stands alone. The two lines that neither recogniser heard with two vowels were said again, and each has a
+  take in which one or both do; a third, «Héẽ, chekane'õ ha chero'y.», had none in twelve seeds and is silent with
+  its dialogue. Eight lines that play have the word now: both recognisers write it with two vowels in five («Héẽ,
+  upéicha.» among them), one of the two in three («Héẽ, che pohanohára.», «Héẽ, og̃uahẽ ko'ág̃a.» and «Héẽ. Ha amo
+  kavaju ituicha.»: the large one each time), neither in none.
 
 *(d) The slow takes.* A slow take stays only where it is heard at least as well as the normal take of its line («How
-a clip is said»): 24 do (two of them belong to the items that are silent as a whole, so 22 are in the folder), 23 do
-not, and all but one of the listening lessons have one of the 23 among their lines.
-Without its slower version a lesson's screen draws the button «Más despacio 0.8×» as off, with «Todavía no está
-grabado» under it; the clip plays and repeats at its own speed, and nothing else changes. So the 23 are left out, and
+a clip is said»): 25 do (two of them belong to the items that are silent as a whole, so 23 are in the folder), 22 do
+not, and all but one of the listening lessons have one of the 22 among their lines (until 17 November: 24 and 23).
+Without its slower version a lesson's screen draws the button «Más despacio 0.8×» as off, with «Todavía no hay
+versión lenta» under it (until 17 November: «Todavía no está grabado», which read as if the lesson's audio were
+missing); the clip plays and repeats at its own speed, and nothing else changes. So the 22 are left out, and
 of the ten lessons that play one has a slower version (unit 2 day 1). Putting a slower version together with normal
 takes in the place of the slow ones would have the button promise a speed that the clip does not keep.
 
-**In all:** 107 of the manifest's 736 rows have no clip: 66 by the rule (24 as the words of a nasal pair, 15 by their
-text, among them *okẽ* in two nasal pairs, and 27 by key), 27 left out by `--verify` (4 short clips by ear, 23 slow
-takes) and 14 clips that cannot be put together because a line of theirs is out (eleven slower versions, two listening
-lessons, one placement item). 57 of the 107 are keys a screen asks for today; the other 50 are lines (28) and the
-words of sound pairs that do not play (22). 440 clips are in `sound/A1/voz` and 63 in its `left-out/`: of the 63
-recordings of the list that stay silent, 62 wait there under their own key (23 slow takes, 18 named by key, 10 words
-of nasal pairs, 7 named by their text, 4 left out by ear) and one, *okẽ* as a pair word, under the key of the scene
-word (`a1u01d5.w.oke`), which is the 63rd file.
+*The nine lessons that play and have no slower version.* Listening draws «Más despacio 0.8×» on every lesson; on these
+nine it is off, with «Todavía no hay versión lenta» under it, and the clip plays at its own speed. Each lacks its slower
+version for the same reason: one slow line or more was heard worse than the normal take of that line, and a slower
+version is put together only when all of its slow lines stay. The lines that are out, with the letters off for the
+independent and for the large recogniser, slow take against normal take:
+
+| Lesson | Slow lines that were left out |
+|---|---|
+| Unit 1 day 1, `a1u01d1.r1` | «Iporã, ha nde?» (3 + 0 against 1 + 0: «iporãva a ndae») |
+| Unit 1 day 4, `a1u01d4.r1` | «Nahániri. Oĩ kesu ha mandi'o.» (5 + 1 against 3 + 0); «Mboýpa ovale ko kesu?» (2 + 2 against 0 + 1: the line and its slow take were both said again on 17 November, and the slow one is heard worse again) |
+| Unit 2 day 3, `a1u02d3.r1` | «Amba'apo kokuépe. Ha nde?» (2 + 0 against 1 + 0); «Che amba'apo mbo'ehaópe, Itauguápe.» (3 + 1 against 0 + 0) |
+| Unit 3 day 1, `a1u03d1.r1` | «Jaha, oĩ terere.» (1 + 1 against 0 + 0: «tere'e» from both) |
+| Unit 3 day 3, `a1u03d3.r1` | «Ha'e che sy, Vicente. Ha'e mbo'ehára.» (4 + 0 against 2 + 0); «Ha Moisés ha'e che irũ. Ha'e pohanohára.» (2 + 1 against 2 + 0) |
+| Unit 3 day 5, `a1u03d5.r1` | «Aju Itauguágui. Ko'ág̃a aha Ka'akupépe.» (2 + 2 against 1 + 2) |
+| Unit 4 day 1, `a1u04d1.r1` | «Ha'e che sy.», «Mávapa ha'e?», «Mba'éichapa héra ne memby?» (the independent recogniser hears «ndememby» in the slow take) and «Héra Genaro.» (1 + 0 against 0 + 0 each) |
+| Unit 4 day 3, `a1u04d3.r1` | «Pe jagua iporã, Juan.» (3 + 3 against 0 + 1). Until 17 November also «Héẽ. Ha amo kavaju ituicha.» (3 + 1 against 2 + 1): said again that day with its line, its slow take is heard as well as the line and is in the folder |
+| Unit 4 day 5, `a1u04d5.r1` | «Héẽ, oĩ.» (3 + 2 against 3 + 0); «Mboýpa ovale?» (2 + 1 against 0 + 1); «Mokõi kesu, aguyje.» (2 + 3 against 0 + 2) |
+
+That is 17 of the 22 slow takes that are left out; the other 5 are lines of the two lessons that are silent as a
+whole (unit 1 day 3 and unit 2 day 5). Each of the 22 waits in `left-out/`, and the normal take of its line is in the
+folder, made with the same seed: a listener who finds a slow take no harder to follow than its line names it under
+"keep" (item 12 of the list below), and a lesson gets its slower version back once every slow line of it is in the
+folder. Unit 3 day 1, unit 3 day 5, unit 1 day 1 and now unit 4 day 3 each lack one slow line only.
+
+**5. By the same ear on the clip as it ships (17 November).** `tools/hear-sound.py` hears every clip decoded from its
+MP3 («The ear's test on what ships», under «What was measured», has the three hearings, the rule of two in three,
+what a take must do to pass and the figures of its first run). It keeps a clip out in three cases, and each answers
+something the review of 16 November found.
+
+- *A clip of one or two words that both recognisers hear wrong as it plays.* This is the rule of 2, put to the MP3:
+  a take can pass and its MP3 not, as four did. A clip that fails is said again, and if none of twelve seeds passes
+  its key is named, with the other word of its pair. Six failed on 17 November (*aju*, «Aguyje mante», *mitãkuña*,
+  *ñu*, *mitãnguéra*, *guyrakuéra*); each has a take that passes, and none is silent for it.
+- *An example of Teach that says the form its own lesson calls wrong.* «Mba'éichapa héra ne ramói?» was heard «nde
+  ramói» by both, in the lesson that teaches that *nde* loses its d before a nasal word. To find every such trap the
+  lessons were read, each grammar point with its form, its rule rows, its warning and the day's compare rows. In 122
+  of the 150 examples the point is one letter or one small word: a prefix (a-, re-, o-, ja- and ña-, pe-; che- with a
+  state and a- with an action; i-), *nde* and *ne*, *réra* and *héra*, -pe and -me, -gui, -pa and *piko*, -kuéra and
+  -nguéra, nd-…-i and n-…-i, *ko*, *pe* and *amo*, a stress the lesson writes. `sound/silent.json` lists them under
+  "forms": for 116 keys the example as its lesson says it must *not* be said (209 wrong lines: *nde ramói* for *ne
+  ramói*, *tetãpe* for *tetãme*, *ndosẽi* for *nosẽi*, *mitãkuéra* for *mitãnguéra*), and for 51 keys the word whose
+  stress the lesson marks with an acute. An example fails when, in two hearings of three, the writing of both
+  recognisers is nearer in letters to a wrong line than to the example, or neither writes the acute. Of the examples
+  with a wrong line that play, one was nearer to it, the one the review found; it has a take that both write «ne
+  ramói» in every hearing. The acute went unwritten in two, «Mboýpa ovale ko kesu?» and «Che amba'apo mbo'ehaópe.»;
+  each has a take in which the large recogniser writes it in every hearing (the independent one writes the ý of
+  *mboýpa* in none of twelve seeds; it leaves more than half the ó of real speech unwritten too). As the files are, 120 lines that play have a
+  wrong line to be held against and 57 a marked stress: none is nearer to a wrong line, and none has its acute
+  unwritten by both. The other 28 examples turn on a whole word, on the order of words or on a stress that is not
+  written (a pronoun, a trade, a number, a set phrase, the owner before the thing, *jagua*), which the voice cannot
+  turn into the lesson's wrong form by a letter.
+  What this rule does not ask is that the word an example is about be heard right. A line in which both recognisers
+  write any wrong letter is on the listener's list, not out, and two of those are examples whose point is a letter
+  that both miss, though neither writes the lesson's wrong form: «Aguyje ndéve, Sara.» (the lesson: the y of *aguyje*
+  is not an i; both write «aguje») and «Che ru nosẽi ógagui: oky.» (the n- of the negation; both write «mosẽi»).
+  They head item 18 of the list. A rule that stopped every example whose own word is misheard was weighed and not
+  made: it cannot tell the letter that is the point from a letter beside it («chey'uhéi» heard «che'uhéi» in an
+  example about *che-*), and these two are for an ear.
+- *A line that holds, with the same flaw, a word that is silent when it stands alone.* The app does not say inside a
+  sentence a word it will not say alone. The words are the eight of "texts" and the five of "words"; a line fails
+  when, in two hearings of three, both recognisers write that very word with wrong letters. Before the run 23 lines
+  that play held one of the thirteen, and both miswrote it in seven. Four have a take that passes: «Che amba'apo
+  mbo'ehaópe.», «Ha'e che angirũ.», «Héẽ, upéicha.» and «Héẽ. Ha amo kavaju ituicha.». Three had none in twelve seeds,
+  and the tool named them:
+  - «Che réra Moisés. Che Argentina-gua.» (`a1u01d3.p2.x1`), an example of -gua in unit 1 day 3. The other two
+    examples of that point play («Che Paraguaigua.», «Mbo'ehára héra Rosa. Ha'e Paraguaigua.»).
+  - «Héẽ, chekane'õ ha chero'y.» (`a1u03d1.p1.x3.l1`), the second line of a dialogue of Teach in unit 3 day 1
+    («Nekane'õ, Vicente.» / «Héẽ, chekane'õ ha chero'y.», `a1u03d1.p1.x3`). A dialogue is one clip, so the first
+    line goes with it. The point's other three examples play («Chekane'õ.», «Chevare'a ha chey'uhéi.», «Ndepochy,
+    Juan.»), and *ne-* before a nasal word is still heard in unit 3 day 4 («Nekane'õpa?»).
+  - «Che ru chokokue ha che sy ñemuhára.» (`a1u03d3.p1.x3`), in unit 3 day 3. The point's other three examples play.
+
+  No listening item lost its audio. The one line of a listening item that failed, «Héẽ. Ha amo kavaju ituicha.» in
+  unit 4 day 3, has a take that passes (its seventh seed). Had it had none, the tool would have left it playing and
+  listed it for a person: naming a line of a listening item silences the whole item, here for a word that no answer
+  turns on (the answer, «amo kavaju», is in the same line and both write it), and that is not the tool's to decide.
+  After the run 20 lines that play hold one of the thirteen words, and in none do both miswrite it.
+
+Where an example is silent the screen keeps its written stand-in: the example's control lights up for as long as the
+line would take, says «Este audio todavía no está grabado.» when it is tapped, and the card keeps its tag «voz
+sintética» for the examples that play, as it has done for «Aike mbo'ehaópe.» since 10 November. Each of the three
+takes waits in `left-out/` under its key, and taking the key out of "keys" (or naming it under "keep") brings it back.
+
+**In all:** 110 of the manifest's 736 rows have no clip: 69 by the rule (24 as the words of a nasal pair, 15 by their
+text, among them *okẽ* in two nasal pairs, and 30 by key, three of them named by the ear's test on what ships), 26
+left out by `--verify` (4 short clips by ear, 22 slow takes) and 15 clips that cannot be put together because a line
+of theirs is out (eleven slower versions, two listening lessons, one placement item, one dialogue of Teach). 60 of the
+110 are keys a screen asks for today; the other 50 are lines (28) and the words of sound pairs that do not play (22).
+438 clips are in `sound/A1/voz` and 65 in its `left-out/`: of the 65 recordings of the list that stay silent, 64 wait
+there under their own key (22 slow takes, 21 named by key, 10 words of nasal pairs, 7 named by their text, 4 left out
+by ear) and one, *okẽ* as a pair word, under the key of the scene word (`a1u01d5.w.oke`), which is the 65th file.
 
 A word that is silent as half of a pair is still said where it is a word of a scene (*mitã*, *téra*, *óga*), unless its
 text is named: there it is a word said imperfectly and marked «voz sintética», not a lesson in telling two sounds apart.
@@ -1095,8 +1511,16 @@ text is named: there it is a word said imperfectly and marked «voz sintética»
 lines with a short *Héẽ* (4(c)); and the names the independent recogniser misses once each (Juan, Moisés in the man's
 voice, Santiago: «The names of the people»). Until 10 November the lines with a name the voice cannot say were here
 (Luis, Lucas, Lucía: the l; Nilda, Carlos: ld, rl; Sofía: the f): those people have other names now and their lines
-were said again. Of the 391 Guarani clips that stay at the normal rate, both recognisers hear wrong letters in 26: the
-two replies named above and 24 of the 212 longer lines, 15 of them lines of dialogues and listening items. Three of
+were said again. Of the 391 Guarani clips that stayed at the normal rate on 10 November, both recognisers heard wrong
+letters in 26 as takes: the two replies named above and 24 of the 212 longer lines, 15 of them lines of dialogues and
+listening items. Since 17 November the count is of what plays, each line decoded from its MP3 and heard three ways:
+21 of the 374 Guarani lines at the normal rate are heard wrong (8 examples of Teach, 6 lines of its dialogues, 7 lines
+of listening lessons), none of them a clip of one or two words, and each is in the table of item 18 with what was
+written. The seven lines of listening lessons are the two replies, «Chekane'õ ha chey'uhéi.», «Aju Itauguágui.
+Ko'ág̃a aha Ka'akupépe.», «Héẽ. Ha amo kavaju ituicha.», «Ha ko mbarakaja?» (unit 4 day 3: «mbaraka'ja»,
+«mbaraka'ia»; the answer is the horse, in the line before) and «Mba'éichapa? Oĩpa kesu?» (unit 4 day 5: «jesu» from
+the large recogniser, the *oĩ* run into the word before it for the other; what is asked is how many cheeses and at
+what price, which other lines say). Three of
 those carry the answer of a listening lesson that plays, and each keeps the word that decides it: «Héẽ. Ha amo kavaju
 ituicha.» in unit 4 day 3 (4(c)); in unit 3 day 1 the man's «Chekane'õ ha chey'uhéi.», which comes back «chikane'o ha
 seyuhéi» and «che kane'õ ha che uhéi» (*y'uhéi* is damaged for both, *kane'õ* is there for both, and it alone picks
@@ -1181,22 +1605,121 @@ back as you heard it.
 11. **The three lines that keep a listening item silent** (`left-out/`): «Ha'e Argentina-gua.» (`a1u01d3.r1.l5`: is it
     Argentina to your ear?), «Héẽ, ndahái.», and the placement's «Ag̃uahẽma che rógape. Ka'aru aháta mbo'ehaópe.»
     (`pl.3.l1`: is *ka'aru* there?). A line that is right comes out of `silent.json`'s "keys", and its item plays.
+    And the three examples of Teach that the ear's test on what ships named on 17 November (`left-out/` too): «Che
+    réra Moisés. Che Argentina-gua.» (`a1u01d3.p2.x1`), «Héẽ, chekane'õ ha chero'y.» (`a1u03d1.p1.x3.l1`; its dialogue
+    plays again once the line is out of "keys") and «Che ru chokokue ha che sy ñemuhára.» (`a1u03d3.p1.x3`: is it
+    *ñemuhára*, or «ñemohára»?).
 12. **Everything in `left-out/` that was left out by ear:** four short clips (the recognisers are wrong about one short
-    clip in ten of real speech) and 23 slow takes, each with its normal take in the folder under the same key without
-    `.slow`: is the slow one harder to follow? What sounds right to you goes into `silent.json`'s "keep". A listening
-    lesson gets its slower version back once every slow line of it is in the folder.
+    clip in ten of real speech) and 22 slow takes, each with the normal take of its line in the folder, made with the
+    same seed: is the slow one harder to follow? What sounds right to you goes into `silent.json`'s "keep". A
+    listening lesson gets its slower version back once every slow line of it is in the folder.
 13. **The names and the Spanish:** Ana and Ramona, which the voice is given as ãna and ramõna (a nasal vowel where the
     stress is: does it sound like the name, or like a nasal a and o?); Juan in «Ndépa Juan? Nahániri, che Casimiro.»;
     the new names, Vicente, Moisés, Santiago, Casimiro, Genaro, Sara, Susana and Karina, in their lines, and the two
     lines that open with Vicente (`a1u02d3.p2.x2`, `a1u02d4.p1.x3`); «Maitei, Moisés.» in the man's voice; «Diez mil.»
     and «Treinta.» in the seller's lines; «ochenta».
 14. **The two voices of a dialogue:** is M different enough from F? In «¿Dónde trabaja el vecino?» (`a1u02d3.r1`) and
-    «¿Adónde va la mujer?» (`a1u03d5.r1`) the answer depends on who says which line.
+    «¿Adónde va la mujer?» (`a1u03d5.r1`) the answer depends on who says which line. And in the exchanges on which
+    two pitch trackers disagree («The voices»), which line sounds lower to you: the man's «Mávapa ha'e?» or the
+    woman's «Ha'e che angirũ.» after it (`a1u03d3.p2.x1`), and the same question before «Ha'e che ru, héra Santiago.»
+    (`a1u04d1.r1`); «Mávapa ou?» before «Ou che sy.» (`a1u02d1.p2.x3`), where both trackers have the man higher?
 15. **The answers that rest on a damaged word:** «Chekane'õ ha chey'uhéi.» (`a1u03d1.r1.l2`: is *y'uhéi* there?) and
     «Aju Itauguágui. Ko'ág̃a aha Ka'akupépe.» (`a1u03d5.r1.l1`).
-16. **The levels:** are the short words (*po*, *pira*, *Jaha!*) as loud as the sentences, and is *ko'ág̃a*
-    (`a1u03d2.w.koaga`), the quietest clip of all, too quiet?
+16. **The levels** (as the app plays them; since 17 November every clip measures within 2 LU of the others): are the
+    short words (*po*, *pira*, *Jaha!*) as loud as the sentences? Do *tetãme* (`a1u02d3.w.tetame`) and *ko'ág̃a*
+    (`a1u03d2.w.koaga`), until then the quietest clips of all and since then cut after a pause, sound like the other
+    words, at their start too? And the loudest moments of 271 takes are turned down for an instant, by 1.8 dB at the
+    median and 3 at the most for the take's own level: do the clips where that goes the whole 3 dB still sound like
+    themselves («Jajotopáta ko ka'aru.», *Jaha!*, «Ha che aha Ypakaraípe.» in `a1u03d5.r1`, the sign «Jajotopáta.»)?
 17. **ch:** «sh», or the Spanish ch?
+18. **The lines the recognisers hear wrong as the app plays them.** The table below has every line of which, in one
+    hearing of the three or more, both recognisers wrote wrong letters in the clip decoded from its MP3 (for a
+    Spanish line: the one recogniser that judges it): 45 recordings, of which 24 are heard wrong by the tool's rule,
+    two hearings of three (14 of the woman's and 6 of the man's Guarani lines, «Treinta.», and 3 of the narrator's).
+    `python3 tools/hear-sound.py sound/A1/voz --list` prints it from `sound/A1/voz/mp3-heard.json`. It is laid out
+    for the studio page (`docs/estudio`, «El estudio»): choose the voice under «Qué voz grabás», open «Lista», and
+    the first column is the line's number there; the key is the one the studio shows under the line, and the take is
+    `sound/A1/voz/<key>.flac`. For each line: what each recogniser wrote in the three hearings (once where they agree)
+    and in how many of the three both were wrong. Start with two examples whose point is a letter that neither
+    recogniser writes: line 82, «Aguyje ndéve, Sara.» (the lesson is that *aguyje* has a y: is it there?), and line
+    183, «Che ru nosẽi ógagui: oky.» (the n- of the negation: is it *nosẽi*, or «mosẽi»?); line 179, «Vicente ndoúi
+    ko ka'aru: oky.», is new that day as well. A puso inside *Héẽ* («he'ẽ») counts as a wrong letter in this table,
+    as it does for a take, though it is the break the two vowels are said with: «Héẽ, upéicha.» and «Héẽ, che
+    mbo'ehára.» stand here for nothing else. A line you find wrong: if it is an example or a clip of its own, name
+    its key under "keys" in `sound/silent.json`; if it is a line of a listening lesson, naming it silences the lesson,
+    so say which word is wrong and whether the question can still be answered. A line you find right needs nothing.
+
+*La voz de mujer* (in the studio: «Qué voz grabás» → F; 411 lines; 14 of these 30 are heard wrong):
+
+| Line in the studio | Key | Text | Independent recogniser | Large recogniser | Wrong for both in |
+|---|---|---|---|---|---|
+| 2 | `a1u01d1.p1.x1` | Mba'éichapa reiko, Ana? | «mba'éichapa reiko ágã» | «mba'éichapa reiko ána» / «mba'éichapa reiko'ána» | 1 of 3 |
+| 27 | `a1u01d2.w.cheru` | che ru | «che rou» | «ceru» / «cheru» | 1 of 3 |
+| 47 | `a1u01d3.w.mboehara` | mbo'ehára | «mboehára» | «mbo'ehára» / «mboehára» | 1 of 3 |
+| 50 | `a1u01d3.w.mboehao` | mbo'ehao | «mboéi havo» / «mboei havo» | «mbo'ehao» / «bo'ehao» | 1 of 3 |
+| 64 | `a1u01d4.p1.x1` | Ikatúpa aike? Héẽ, ikatu. | «ikatúpa aikeeẽ ikatu» / «ikatúpa aikeheẽ ikatu» | «ikatúpa aike he'ẽ ikatu» | 1 of 3 |
+| 72 | `a1u01d4.w.soo` | so'o | «su'o» / «ssu'o» | «so'o» / «soo» | 1 of 3 |
+| 76 | `a1u01d4.w.mboypa` (heard in `a1u04d5.r1`) | Mboýpa ovale? | «mboy pa ovale» / «mboy pa ovae» / «mboypa ovale» | «mboýpa ovaye» / «mboýpa ovae» / «mboýpa ovage» | 1 of 3 |
+| 82 | `a1u01d5.p1.x0` | Aguyje ndéve, Sara. | «aguje ndevesara» | «aguje ndéve sára» / «aguuje ndéve sára» | 3 of 3 |
+| 86 | `a1u01d5.p2.x1` | Cheñyrõmi, ña Ramona. | «cheñirũmi ñaramona» / «cheñirũumi ñaramona» | «che ñerõ umi ñaramóna» | 3 of 3 |
+| 139 | `a1u02d3.p1.x1` (heard in `a1u04d4.p2.x2`) | Aha che jarýi rógape. | «aha che jarei rógape» | «aha che jaréi rógape» / «aha che jarei rógape» | 3 of 3 |
+| 162 | `a1u02d4.p1.x3` | Vicente osẽ mbo'ehaógui ko ka'aru. | «visénte osẽ mbo'eha ogui kokaaru» / «visénte osẽ mbo'eha ogui oka'aru» | «misénte osẽ mbo'ehaógui ko ka'aru» / «vĩsénte osẽ mbo'ehaógui ko ka'aru» | 2 of 3 |
+| 168 | `a1u02d4.w.mooguipa` | Moõguipa reju? | «mooguipa reju» / «movoguipa reju» / «moõguipa reju» | «moõguipa reju» / «moõuipareju» | 1 of 3 |
+| 179 | `a1u02d5.p1.x3` | Vicente ndoúi ko ka'aru: oky. | «visénte ndoikoka'aru oky» | «misénte ndoúi ko ka'aru oky» / «misénte ndoúi koka'aru oky» | 3 of 3 |
+| 183 | `a1u02d5.p2.x3` | Che ru nosẽi ógagui: oky. | «cheru mosẽi ogaguiky» / «cheru mosẽi ogaguioky» | «che ru mosẽi ógagui oky» | 3 of 3 |
+| 193 | `a1u03d1.p1.x1` | Chevare'a ha chey'uhéi. | «che vare'a ha chey uhéi» / «che vare'a ha che uhéi» | «chévare'a ha che 'uhéi» / «chevare'a ha che y'uhéi» / «chevare'a ha che 'uhéi» | 2 of 3 |
+| 202 | `a1u03d1.w.yuhei` | chey'uhéi | «chey'uhái» / «che y'uhái» | «che y'uhéi» / «chey uhéi» / «chey'uhéi» | 1 of 3 |
+| 242 | `a1u03d3.s2b` | ñe'ẽ | «je'ẽ» / «ñe'ẽ» | «ñe'ẽ» / «ñie'ẽ» | 1 of 3 |
+| 248 | `a1u03d4.p2.x0.l1` (heard in `a1u03d4.p2.x0`) | Héẽ, che mbo'ehára. | «he'ẽche mbo'ehára» / «heẽche mbo'ehára» | «hẽ'ẽ che mbo'ehára» / «hẽ che mbo'ehára» / «hẽẽ che mbo'ehára» | 1 of 3 |
+| 250 | `a1u03d4.p2.x1.l2` (heard in `a1u03d4.p2.x1`) | Héẽ, upéicha. | «he'ẽ upéicha» / «heẽ upéicha» | «he'ẽ upéicha» | 2 of 3 |
+| 252 | `a1u03d4.p2.x3.l1` (heard in `a1u03d4.p2.x3`) | Héẽ, og̃uahẽ ko'ág̃a. | «he ogmuahéiko ágã» / «he oguãhéeiko ágã» / «he oguãhéiko ágã» | «hẽ'ẽ oguahẽ ko'ágã» / «he'ẽ oguahe ko'ágã» / «he'ẽ oguahẽ ko'ágã» | 3 of 3 |
+| 254 | `a1u03d4.w.agaite` | ag̃aite | «agaite» / «anaite» | «agaite» / «anaite» | 1 of 3 |
+| 276 | `a1u03d5.r1.l1` (heard in `a1u03d5.r1`) | Aju Itauguágui. Ko'ág̃a aha Ka'akupépe. | «aju itauguáguio'ágã aha ka'akupépe» | «aju itaguágui ko'ágã ahaka akupépe» / «aju itaguágui ko'ágã aha ka akupépe» | 3 of 3 |
+| 286 | `a1u04d1.w.rajy` | che rajy | «che rajy» / «che raje» | «cheraje» / «chéraje» | 1 of 3 |
+| 313 | `a1u04d3.p1.x2` | Amo óga ituicha. | «amo oga ituicha» / «amo ogaituicha» / «amo 'óga ituicha» | «amo'õra ituicha» / «amo'õga ituicha» | 1 of 3 |
+| 319 | `a1u04d3.w.ryguasu` | ryguasu | «ndyguasu» / «ndayguasu» / «ndeyguasu» | «ry guasu» / «ly guasu» | 1 of 3 |
+| 326 | `a1u04d3.r1.l3` (heard in `a1u04d3.r1`) | Ha ko mbarakaja? | «hako mbaraka'ja» | «ha ko mbaraka'ia» | 3 of 3 |
+| 329 | `a1u04d4.p1.x3.l0` (heard in `a1u04d4.p1.x3`) | Mávapa amo kuñataĩ? | «mavapa amo okuñataẽ» / «mávapa amo okuñataẽ» / «máva pa amo okuñataẽ» | «mávapa amokuñataẽ» / «mávapa amokuñataẽi» | 3 of 3 |
+| 341 | `a1u04d5.p1.x1` | Ha'e oguereko mokõi ary. | «ha'e oguereko mokõi ary» / «hae oguereko mokõi ary» | «ha'e oguereko mokõi ary» / «ha'e oguereko mokõi aly» | 1 of 3 |
+| 345 | `a1u04d5.p2.x2` | Che ramói oguereko ochenta ary. | «che ramoi oguereko chénta ary» | «che ramói oguereko chénta ary» | 3 of 3 |
+| 352 | `a1u04d5.r1.l1` (heard in `a1u04d5.r1`) | Mba'éichapa? Oĩpa kesu? | «mba'éichapaĩpa kesu» | «mba'éichapa oĩpa jesu» / «mba'éichapa oĩpa kesu» | 2 of 3 |
+
+*La voz de hombre* (in the studio: «Qué voz grabás» → M; 66 lines; 7 of these 9 are heard wrong):
+
+| Line in the studio | Key | Text | Independent recogniser | Large recogniser | Wrong for both in |
+|---|---|---|---|---|---|
+| 9 | `a1u02d1.r1.l5` (heard in `a1u02d1.r1`) | Remba'apo. | «reimba'apo» / «reimbaapo» | «rembápo» | 3 of 3 |
+| 10 | `a1u02d1.r1.l7` (heard in `a1u02d1.r1`) | Omba'apo. | «ombaapo» | «ombaapo» / «ombáapo» | 3 of 3 |
+| 13 | `a1u02d4.p2.x1.l0` (heard in `a1u02d4.p2.x1`) | Moõguipa reju, Ana? | «moõguipa reju ána» / «moõguipa reju na» | «moou ipareju ana» / «moouripareju ana» / «moouipareju ana» | 1 of 3 |
+| 20 | `a1u03d1.r1.l2` (heard in `a1u03d1.r1`) | Chekane'õ ha chey'uhéi. | «chikane'o ha cheyuhéi» / «chikane'o ha csey uhéi» / «chikane'o ha cse yuhéi» | «che kane'õ ha che uhéi» | 3 of 3 |
+| 24 | `a1u03d4.p1.x0.l1` (heard in `a1u03d4.p1.x0`) | Héẽ, che pohanohára. | «heiche pohãnohára» | «he'ẽ che pohanohára» | 3 of 3 |
+| 31 | `a1u04d3.r1.l2` (heard in `a1u04d3.r1`) | Héẽ. Ha amo kavaju ituicha. | «he a amokavaju ituicha» / «he a amo kavaju ituicha» | «he'e ha amo kavaju ituicha» / «he ha amo kavaju ituicha» | 3 of 3 |
+| 35 | `a1u04d4.p1.x3.l1` (heard in `a1u04d4.p1.x3`) | Ha'e che rajy. | «ha'eiche rajy» / «haeiche rajy» | «ha'eche raje» / «ha'e che raje» / «ha'e cheeraje» | 3 of 3 |
+| 37 | `a1u04d5.p2.x1.l1` (heard in `a1u04d5.p2.x1`) | Treinta. | — | «trenta» / «treinta» | 2 of 3 |
+| 38 | `a1u04d5.r1.l2` (heard in `a1u04d5.r1`) | Héẽ, oĩ. | «he'e romi» / «he'e rogmi» | «he'e oĩ» / «héeoi» / «heeoi» | 1 of 3 |
+
+*El narrador* (in the studio: «Qué voz grabás» → N; 25 lines; 3 of these 6 are heard wrong):
+
+| Line in the studio | Key | Text | Independent recogniser | Large recogniser | Wrong for it in |
+|---|---|---|---|---|---|
+| 8 | `a1u01d4.r1.l6` (heard in `a1u01d4.r1`) | ¿Qué hay en el puesto? | — | «qué hay en el puesto» / «que erahay en el puesto» | 1 of 3 |
+| 10 | `a1u02d3.r1.l0` (heard in `a1u02d3.r1`) | En la ronda de tereré, Rosa habla con un vecino. ¿Dónde trabaja el vecino? | — | «es la ronda de terere rosa habla con un vecino dónde trabaja el vecino» / «e la ronda de terere rosa habla con un vecino dónde trabaja el vecino» | 3 of 3 |
+| 14 | `a1u03d3.r1.l0` (heard in `a1u03d3.r1`) | En la fiesta de San Juan. Ana presenta a dos personas. ¿Qué es Moisés? | — | «en la fiesta de san juan ana presenta dos personas qué es moisés» | 3 of 3 |
+| 18 | `a1u04d1.r1.l3` (heard in `a1u04d1.r1`) | Juan señala a un señor de la foto. | — | «cuan señala un señor de la foto» | 3 of 3 |
+| 19 | `a1u04d1.r1.l8` (heard in `a1u04d1.r1`) | ¿Cómo se llama el abuelo de Ana? | — | «cómo se llama el abuelo de ana» / «cómo se llama el abuelo de ala» | 1 of 3 |
+| 24 | `a1x.4.l0` (heard in `a1x.4`) | En la feria. ¿Qué pide el hombre? | — | «en la feria qué pide el hombre» / «en la feria qué pide el hombe» | 1 of 3 |
+
+Of the 31 recordings the review of 16 November listed, 3 are silent since (item 11), 9 were said again (item 19; two
+of them, «Héẽ, upéicha.» and «Héẽ. Ha amo kavaju ituicha.», are still in the table), 18 are in the table as they
+were, and one is not there because one recogniser now writes its letters in every hearing: the man's «Jajotopáta ko
+ka'aru.» (`a1u01d1.r1.l5`, line 2 of the man's voice in the studio: the independent recogniser writes «jajotopátako
+ka'ãrũ», the large one «jajotopáta koka'ãvõ» and «…koka'árõ», where the review had «…koka'ãrõ» and «…koka'ãvõ»).
+
+19. **The twelve recordings that were said again on 17 November** («The ear's test on what ships» has the table: the
+    key, the seed and what each recogniser writes now). Each passes the rule; in five one recogniser still writes a
+    wrong letter in every hearing: *aju* («adu»: the j before u, item 6), «Aguyje mante» («aguje»), *ñu* («ju»),
+    *guyrakuéra* («muyrakuéra») and «Héẽ. Ha amo kavaju ituicha.» («he a amo»). And *mitãnguéra*, *mitãkuña* and «ne
+    ramói», which both write right now: do they sound right?
 
 ## How to make the clips again
 
@@ -1206,11 +1729,14 @@ export HF_HUB_DISABLE_XET=1        # hosts: huggingface.co and us.aws.cdn.hf.co
 
 # after any change in content/, in sound/respell.json or in sound/silent.json, one line: it says only the clips whose
 # text, voice or respelling changed, keeps the take of every other clip, moves what is silent now to left-out/ and
-# what a person freed back from it, and makes the app's sound files again (a file with no changed clip stays as it is)
-node tools/build-course.mjs && node tools/sound-list.mjs A1 && python3 tools/make-tts.py --out sound/A1/voz --verify --changed && node tools/make-sound.mjs sound/A1/voz --manifest sound/A1/voz/manifest.json --kind synthetic
+# what a person freed back from it, makes the app's sound files again (a file with no changed clip stays as it is),
+# and hears every clip whose MP3 is new as the app plays it (a clip that fails there is said again or silenced)
+node tools/build-course.mjs && node tools/sound-list.mjs A1 && python3 tools/make-tts.py --out sound/A1/voz --verify --changed && node tools/make-sound.mjs sound/A1/voz --manifest sound/A1/voz/manifest.json --kind synthetic && python3 tools/hear-sound.py sound/A1/voz
 
 python3 tools/make-tts.py --dry-run                                # the whole list as it would be said; stops on anything it cannot say
 python3 tools/make-tts.py --dry-run --out sound/A1/voz --changed   # what the line above would say, move or bring back, without doing it
+python3 tools/hear-sound.py sound/A1/voz --check                   # the ear's test on the sound files as they are: judges, changes nothing
+python3 tools/hear-sound.py sound/A1/voz --list                    # the lines both recognisers hear wrong in one hearing or more: the table of «What a native speaker should listen to first», 18
 ```
 
 - **The takes are `sound/A1/voz`, and that folder is added to, never made again from nothing.** The samples depend on
@@ -1218,7 +1744,10 @@ python3 tools/make-tts.py --dry-run --out sound/A1/voz --changed   # what the li
   F and N clips by one or two units of 32,768, and rubberband turns that into another waveform for M (the
   verification: 4 of 6 M clips differed, 3 of them transcribed differently). `takes.json` records the library versions
   and the thread count. On the machine of 10 November the same seed gave the same file every time it was tried, and
-  again on 16 November, after a restart («How a clip is said», «Takes and seeds»).
+  again on 16 November, after a restart («How a clip is said», «Takes and seeds»), and on 17 November after another:
+  29 takes said again from `takes.json` (the takes of that day's run, a listening lesson's lines, slow takes, the
+  man's lines) were the same FLAC files, byte for byte, and the sound files made three times from the folder were
+  the same eight files each time.
 - **`--changed`** compares the list with the folder. A row keeps its clip when the clip was made from the text the
   voice is given for that row today (the respelled text) and for its voice; a clip whose row moved passes to the row
   that says its text now («How a clip is said»); the rows that then lack a take are said, each heard back, and the
@@ -1234,6 +1763,23 @@ python3 tools/make-tts.py --dry-run --out sound/A1/voz --changed   # what the li
   files only `gn-sound-a1-u01.js` was written anew, the other six left byte for byte as they were. That line took 2
   minutes 58 seconds. (With the recognisers not yet in the machine's memory, the first such run of the day took 3
   minutes 39 seconds for its one clip.)
+- **Tried on 17 November, with the ear's test at the end of the line.** *Nothing changed*, the line as it stands
+  above, in the repository, right after the run of that day: no clip said, no line heard, no model loaded, all seven
+  sound files «as they were» and `mp3-heard.json` «as it was»; of the 576 files of `sound/` and `project/` not one
+  differs afterwards, by checksum, and `git status` is as clean as before. The whole line took 6 minutes 10 seconds:
+  6 minutes 8 for `make-sound.mjs`, which now levels every take in its own code, limits it and fits it to its MP3's
+  peaks (more than twice what it took on 16 November), and 1.4 s for `hear-sound.py`, which finds every MP3 under
+  the checksum it heard it by. *The run that made that day's changes* (two examples said whole, two words said with
+  the other cut, then the line's last two tools) took 40 minutes; what each part took is under «The ear's test on
+  what ships».
+- **`tools/hear-sound.py`** needs the folder's list, its `takes.json` and the sound files that were made from it (it
+  stops, naming `make-sound.mjs`, when the files lack a clip the list has), and both recognisers whenever a clip's MP3
+  is new to its record; with one recogniser it judges nothing. `--check` judges and changes nothing (exit 1 when a
+  clip fails), `--check --save` also keeps what it heard, `--tries N` changes the twelve seeds. It names keys in
+  `sound/silent.json` and rewrites that file as plain JSON, so the file is not laid out by hand any more. What it
+  does to a clip that fails can be undone like any other silence: take the key out of "keys", or name it under
+  "keep", and the take comes back from `left-out/` as it is; "keep" also stops the tool from saying a clip again
+  that a person has heard and found right.
 - **After a change of `sound/silent.json`** the same line does what is needed, and so does the voice tool alone, with
   or without `--verify`: a clip that is silent now goes to `left-out/` (a recording that a dialogue still needs passes
   to the dialogue's own key), and a clip that a person freed comes back from `left-out/` as it is («How a clip is
@@ -1249,12 +1795,17 @@ python3 tools/make-tts.py --dry-run --out sound/A1/voz --changed   # what the li
   at most a clip); the 492 clips of the fix round, 46 minutes; the ten words of 16 November, one minute. Without the
   recognisers, 13 clips said again from `takes.json` took 1 minute 52 seconds on 16 November, most of it loading the
   two voices. `make-sound.mjs` took 2 minutes 19 seconds for the 440 clips on 10 November and 2 minutes 40 on 16
-  November, with other work on the machine.
+  November, with other work on the machine; since the levelling of 17 November, 5 to 6 minutes for the 438 (308 to
+  368 s over five runs that day). The ear's test: 43 minutes to hear the 415 lines of the first files three ways
+  with both recognisers; about twelve seconds for each take that is said again, made into its MP3 and heard (142
+  takes in 28 minutes), so a little over two minutes for the twelve seeds of a clip that has no better take, and
+  seven for a recording that plays in three clips.
 - The folder holds one FLAC per key (16 kHz, mono, 16 bit; lossless, 58 % of the WAV), `voices.json`, `manifest.json`
   (the list without the silent rows: the one to give `make-sound.mjs`, not `sound/A1/manifest.json`), `takes.json`
   (the seed, the cut, the rate and the pitch of every clip, and what was left out), `tts-report.csv` and
-  `tts-report.json` (what each recogniser heard, of every take), and `left-out/`, the clips that stay silent, kept for
-  a listener. A new folder is FLAC too (`--format wav` for WAV); `--format flac` or `--format wav` on a folder that
+  `tts-report.json` (what each recogniser heard, of every take), `mp3-heard.json` (what each heard of every line as
+  the app plays it, three ways, under the checksum of its MP3: `hear-sound.py` writes it) and `left-out/`, the clips
+  that stay silent, kept for a listener. A new folder is FLAC too (`--format wav` for WAV); `--format flac` or `--format wav` on a folder that
   holds the other format converts its clips, each read back and compared, and does nothing else. `make-sound.mjs`
   reads either.
 - `--verify` without `--changed` hears every clip of the folder again and judges all of it afresh: what was left out
@@ -1264,8 +1815,11 @@ python3 tools/make-tts.py --dry-run --out sound/A1/voz --changed   # what the li
   same rows out. It stops, before the first clip, if a clip of the manifest has no take in the file.
 - `--only 'a1u01d1.*' p3.0` for a part; `--redo` to say again what is there; `--seed N --tries 1` with `--only` and
   `--redo` to keep one particular take of a line (the seeds a clip tries are its key's CRC-32 plus 7919 for each
-  further take); `--silent none` with a new folder to say everything as if no rule kept a row out (the clips of the
-  silent rows are in `left-out/` already); `--prune` to delete the clips whose key the list no longer has.
+  further take; name the line's slow take with it, `<key>.slow`, so that it is said again with the same seed: a slow
+  take is its line's take said more slowly, and `tools/hear-sound.py` does this by itself); `--cut pause` or `--cut
+  closure` with them to keep one of the two cuts of a line that opens with p, t, k or j; `--silent none` with a new
+  folder to say everything as if no rule kept a row out (the clips of the silent rows are in `left-out/` already);
+  `--prune` to delete the clips whose key the list no longer has.
 - A new name, a Spanish word or a new character in the content stops the run until `sound/respell.json` has it, and a
   new name goes through the trial of «The names of the people» first.
 - Another level: `node tools/sound-list.mjs A2`, then `--manifest sound/A2/manifest.json --out sound/A2/voz --verify`.
@@ -1277,4 +1831,8 @@ repository: `…/scratchpad/voice` (`SETUP.md`, `scripts/`, `work/`, `probe/`, `
 trial), `…/scratchpad/voice-ship/say` (the run of 10 November: its logs, the folder before it, the scripts that
 measured the sound files and the numbers above) and `…/scratchpad/voice-ship/finish` (16 November: `PROGRESS.md`,
 `scripts/` with what measured the figures of that day, the logs of every trial named above under `sc/`, the tool as
-it was under `old-tool/` and the four changed-back copies under `mut/`).
+it was under `old-tool/` and the four changed-back copies under `mut/`), `…/scratchpad/voice-ship/review` (the review
+of 16 November: its scripts, the clips it took out of the files and what it measured) and
+`…/scratchpad/voice-ship/fix-clips` (17 November: `PROGRESS.md`, `scripts/` with what measured the figures of that
+day, `run2.log`, the log of the run, `second-rebuild.log`, the review's measure on the files before and after under
+`measure-before/` and `measure-final/`, and the trials of the levelling).

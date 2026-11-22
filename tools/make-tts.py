@@ -12,12 +12,16 @@ sound/A1/voz: they cannot be made again sample for sample on another machine, so
 
 usage:  python3 tools/make-tts.py --out <folder> --verify --changed       after a change of the content: only what is new or changed
         python3 tools/make-tts.py --out <folder> --verify [both|ivan|mms] [--manifest sound/A1/manifest.json]
-                                  [--only <key or pattern> ...] [--voices F,M,N] [--tries N] [--redo] [--seed N] [--pitch F=0,M=-2]
+                                  [--only <key or pattern> ...] [--voices F,M,N] [--tries N] [--redo] [--seed N] [--cut pause|closure]
+                                  [--pitch F=0,M=-2]
         python3 tools/make-tts.py --out <folder> --takes <takes.json>     the same clips again, without the recognisers
         python3 tools/make-tts.py --out <folder> --format flac|wav        the folder's clips in the other format, sample for sample
         python3 tools/make-tts.py --dry-run [--only ...] [--out <folder> --changed]   what would be said, and every check: no model
         then:   node tools/make-sound.mjs <folder> --manifest <folder>/manifest.json --kind synthetic
+                python3 tools/hear-sound.py <folder>      the same ear on the clips as the app plays them, decoded from their MP3s
 Ship only a folder made with --verify, or with --takes from one: without the recognisers nothing is left out by ear.
+--verify judges the take. What the learner hears is its MP3, which tools/hear-sound.py judges after make-sound.mjs: a
+short clip that both recognisers hear wrong there, though its take passed, is said again or silenced by that tool.
 
 A take belongs to a text, not to a key. A clip of the folder whose row has moved (a line more in a dialogue, an example
 renumbered: the same text and voice under another key) passes to the key that says its text now and is not said again;
@@ -84,6 +88,9 @@ cut off. Two cuts (Voice.say):
     at the end of the carrier's phrase and is lower and shorter (median pitch 99 Hz against 136 Hz, 0.43 s against
     0.52 s on 16 words); shorter carriers and a shift upward both cost more than they give. A longer line that opens
     with one of these letters keeps the cut after a pause for its first take and has the run-in cut for its second.
+    A word run in is the end of the carrier's phrase and can trail off: in tetãme and ko'ág̃a the last syllable dies
+    away over 400 ms, whatever the seed, and the one loud syllable left the clip 5 LU under the others. --cut pause
+    (with --only) keeps the other cut for such a word; both recognisers heard those two the same either way.
 A line of two words or fewer is said with the model's noise scale at 0.33 instead of 0.667 (measured: 145 single words
 go from 19.7 % to 17.8 % CER on the independent recogniser); the duration noise stays at 0.8. A slow take (a row with
 "slow", a key ending in .slow) is the normal take of the same line said again, with its seed, its cut and its pitch, at
@@ -450,8 +457,8 @@ def apply_silence(manifest, rules, more=None):
     contrast is listed (the voice does not render it), the keys and the texts named, and the keys of `more` ({key: why}:
     what --verify left out). A rule comes before the ear: a row that a rule keeps out is silent for that reason, whatever
     --verify once made of it. A recording a silent row held for other rows (the same word in a scene) passes to the first
-    of them; a clip put together from a silent line is left out as a whole. The screens then keep their written stand-in
-    for exactly those keys."""
+    of them; a clip put together from a silent line is left out as a whole, also when the line's recording is another
+    row's and stays in use there. The screens then keep their written stand-in for exactly those keys."""
     rows = [dict(r) for r in manifest.get('clips', [])]
     by_key = {r['key']: r for r in rows}
     why = {}
@@ -481,13 +488,33 @@ def apply_silence(manifest, rules, more=None):
                     q['same'] = heirs[0]['key']
     for r in rows:
         if r.get('parts'):
+            # its own line rows, <clip>.l<n> (<clip>.l<n>.slow in a slower version): a line that is named takes the clip
+            # with it also when the recording it says is another row's and lives on there
+            base = r['key'][:-len('.slow')] if r['key'].endswith('.slow') else r['key']
+            own = [next((k for k in ([f'{base}.l{n}.slow'] if base != r['key'] else []) + [f'{base}.l{n}'] if k in by_key), None) for n in range(len(r['parts']))]
             r['parts'] = [moved.get(k, k) for k in r['parts']]
-            if any(k in why for k in r['parts']):
+            if any(k in why for k in r['parts']) or any(k in why for k in own if k):
                 why[r['key']] = 'put together from a line that stays silent'
     out = dict(manifest)
     out['clips'] = [r for r in rows if r['key'] not in why]
     out['silent'] = why
     return out, why
+
+
+RIGHTS = re.compile(r'\s*Rights:.*$', re.S)          # the list's last sentence: whose the recordings are, and under which licence
+RIGHTS_HERE = (' Rights: the clips next to this list are the synthetic voice\'s, made with Meta AI\'s MMS-TTS models: CC BY-NC 4.0, '
+               'non-commercial use only, with attribution (voices.json in this folder has the models and the notice; sound/VOICE.md, '
+               '«The models and the licence»). They are not under CC BY 4.0, the licence the studio\'s recordings by a person are to have.')
+
+
+def with_rights(manifest):
+    """The folder's own copy of the list says whose clips lie next to it. The list it is copied from (sound/<level>/
+    manifest.json, tools/sound-list.mjs) ends with the rights of the recordings a person makes in the studio, CC BY 4.0,
+    which is not the licence of these clips: that sentence is replaced, and a list that has none gets this one."""
+    out = dict(manifest)
+    about = str(out.get('about') or '')
+    out['about'] = RIGHTS.sub('', about) + RIGHTS_HERE if RIGHTS.search(about) else (about + RIGHTS_HERE).strip()
+    return out
 
 
 LINE = re.compile(r'\.l\d+(?:\.slow)?$')          # a line of a dialogue or of a listening item (tools/sound-list.mjs): never played on its own
@@ -517,7 +544,7 @@ def left_out_by_ear(manifest, report, names, rules):
             continue
         heard = ' / '.join(f'«{normal(row[f"heard_{n}"])}»' for n in judged)
         users = [key] + sharers.get(key, [])
-        if row.get('sentences', 1) == 1 and len(row['said'].split()) <= 2 and all(letters(row[f'heard_{n}']) != letters(row['said']) for n in judged):
+        if row.get('sentences', 1) == 1 and len(row['said'].split()) <= 2 and all(not right_letters(row[f'heard_{n}'], row['said'], row.get('text', '')) for n in judged):
             for k in users:
                 if kept_by_hand(by_key[k], rules):
                     continue
@@ -889,6 +916,15 @@ def letters(s):
     return re.sub(r'c(?!h)', 'k', normal(s).translate(ORAL).replace(' ', ''))
 
 
+def right_letters(heard, said, text=''):
+    """True when what a recogniser wrote has the line's letters: those of the line as the voice is given it (`said`:
+    «ndepochy huan») or those of the line as the course writes it (`text`: «Ndepochy, Juan.»). A recogniser that
+    writes a name the Spanish way, «juan», has heard it right; held against the respelling alone, its j was a wrong
+    letter, and a short clip that held a name could fail on the name's spelling."""
+    h = letters(heard)
+    return h == letters(said) or (bool(text) and h == letters(text))
+
+
 MARKS = {'puso': "'", 'tilde': 'ãẽĩõũỹ', 'acute': 'áéíóúý'}
 
 
@@ -935,7 +971,9 @@ class Recogniser:
     def can(self, lang):
         return self.which == 'mms' or lang == 'gn'
 
-    def hear(self, x, lang='gn'):
+    def hear(self, x, lang='gn', pad=0.15):
+        """what the recogniser writes of a clip, with `pad` seconds of silence put round it (a clip cut at the first
+        sound is heard worse; tools/hear-sound.py also hears a clip of the app as it is, pad=0)"""
         np, torch = np_(), self.torch
         if self.which == 'mms':
             want = 'spa' if lang == 'es' else 'grn'
@@ -943,23 +981,36 @@ class Recogniser:
                 self.proc.tokenizer.set_target_lang(want)
                 self.model.load_adapter(want)
                 self.lang = want
-        pad = np.zeros(int(0.15 * RATE), dtype='float32')        # a clip cut at the first sound is heard worse
+        pad = np.zeros(int(pad * RATE), dtype='float32')
         inputs = self.proc(np.concatenate([pad, x, pad]), sampling_rate=RATE, return_tensors='pt')
         with torch.no_grad():
             logits = self.model(**inputs).logits
         return self.proc.batch_decode(torch.argmax(logits, dim=-1))[0]
 
 
+LOADED = {}          # the recognisers and the voices this process has loaded: tools/hear-sound.py runs main() more than once
+
+
 def load_recognisers(which):
-    """the recognisers asked for that are there: {name: Recogniser}; a missing one is said, not fetched"""
+    """the recognisers asked for that are there: {name: Recogniser}; a missing one is said, not fetched. Each is loaded
+    once a process (the large one takes 5 GB and most of a minute)"""
     want = ['ivan', 'mms'] if which in ('both', 'auto') else [which]
     out = {}
     for w in want:
         try:
-            out[w] = Recogniser(w)
+            if ('recogniser', w) not in LOADED:
+                LOADED[('recogniser', w)] = Recogniser(w)
+            out[w] = LOADED[('recogniser', w)]
         except Exception as e:  # noqa: BLE001 — not in the cache, or no memory for it: the report says which judged
             print(f'  (recogniser {w}, {RECOGNISERS[w]}, is not available: {str(e).splitlines()[0][:120]})')
     return out
+
+
+def load_voice(lang):
+    """the voice of a language, loaded once a process"""
+    if ('voice', lang) not in LOADED:
+        LOADED[('voice', lang)] = Voice(lang)
+    return LOADED[('voice', lang)]
 
 
 # ---------- the run ----------
@@ -986,6 +1037,9 @@ def parse_args(argv=None):
     p.add_argument('--takes', default='', help='the takes.json (or tts-report.json) of an earlier run: its seeds are used again and what it left out stays out, '
                                                'so the same clips come out without the recognisers')
     p.add_argument('--seed', type=int, default=0, help='added to every clip\'s own seed: another number, another take of everything')
+    p.add_argument('--cut', default='', choices=['pause', 'closure'], help='with --only: the one cut to try for a line that opens with p, t, k or j (pause: after the '
+                                                                          'carrier\'s pause; closure: run in). A word run in is the end of the carrier\'s phrase and '
+                                                                          'can trail off: tetãme and ko\'ág̃a were kept with --cut pause for that (sound/VOICE.md)')
     p.add_argument('--pitch', default='', help='semitones per voice, e.g. "F=0,M=-3" (the default is in VOICES)')
     a = p.parse_args(argv)
     if not a.dry_run and not a.out:
@@ -994,6 +1048,8 @@ def parse_args(argv=None):
         p.error('--changed needs --out: the folder whose takes are compared with the list')
     if a.changed and (a.redo or a.takes):
         p.error('--changed says only what lacks a take: it goes with neither --redo nor --takes')
+    if a.cut and a.only is None:
+        p.error('--cut names the cut of particular clips: it goes with --only')
     return a
 
 
@@ -1258,7 +1314,7 @@ def main(argv=None):
     in_two_voices = two_voice_lines(manifest)
     done = {}          # key → this run's row of the report: its seed and its length are what a slow take is made from
 
-    def judge(x, lang, said, key, short):
+    def judge(x, lang, said, key, short, text=''):
         """what each recogniser hears, its CER, and a score: the CERs added up, plus one for each recogniser that
         hears the other word of the clip's pair instead, plus one when the clip is short and every recogniser hears
         wrong letters (such a take is left out in the end: another one may do better)"""
@@ -1272,7 +1328,7 @@ def main(argv=None):
                 rates[name] = e / n
                 if target and normal(target) != normal(said) and normal(heard[name]) == normal(target):
                     wrong.append(name)
-                if letters(heard[name]) != letters(said):
+                if not right_letters(heard[name], said, text):
                     off.append(name)
         all_off = short and len(heard) >= 2 and len(off) == len(heard)
         return {'heard': heard, 'cer': rates, 'as_partner': wrong, 'letters_wrong': off, 'score': sum(rates.values()) + len(wrong) + (1 if all_off else 0),
@@ -1310,11 +1366,11 @@ def main(argv=None):
         if key not in to_say:
             skipped += 1
             x, sr = sf.read(path, dtype='float32')           # a clip that is there is judged as it is
-            best = dict(judge(x, lang, said, key, short) if recognisers else {'heard': {}, 'cer': {}, 'as_partner': [], 'letters_wrong': [], 'partner': ''},
+            best = dict(judge(x, lang, said, key, short, r['text']) if recognisers else {'heard': {}, 'cer': {}, 'as_partner': [], 'letters_wrong': [], 'partner': ''},
                         seed=old.get('seed'), attempt=(old.get('take') or 1) - 1 if old.get('seed') is not None else None, x=x)
         else:
             if lang not in engines:
-                engines[lang] = Voice(lang)
+                engines[lang] = load_voice(lang)
             base_body = None
             if given:
                 takes_to_try = [(given['clips'][key]['seed'], given['clips'][key].get('cut') == 'closure', given['clips'][key].get('rate') or (SLOW[0] if slow else 1.0))]
@@ -1335,6 +1391,8 @@ def main(argv=None):
                 own = [seed_of(base_key or key, a.seed, n) for n in range(tries + 2)]
                 opens = [' '.join(sn)[0] for sn in sentences] if lang == 'gn' else []
                 ways = [False] if not any(c in RUN_IN for c in opens) else ([True, False] if short and opens[0] in RUN_IN else [False, True])
+                if a.cut:
+                    ways = [way for way in ways if way == (a.cut == 'closure')] or ways          # the one cut asked for, where the line has it
                 takes_to_try = [(sd, way, SLOW[0] if slow else 1.0) for sd in own for way in ways]
             tried = set()
             n = -1
@@ -1363,7 +1421,7 @@ def main(argv=None):
                     aim, least, most = TOWARDS[r['voice']]
                     semitones = round(max(least, min(most, 12 * math.log2(aim / hz))), 2)
                 x = finish(raw, semitones)
-                take = dict(judge(x, lang, said, key, short) if recognisers else {'heard': {}, 'cer': {}, 'as_partner': [], 'letters_wrong': [], 'partner': '', 'score': 0},
+                take = dict(judge(x, lang, said, key, short, r['text']) if recognisers else {'heard': {}, 'cer': {}, 'as_partner': [], 'letters_wrong': [], 'partner': '', 'score': 0},
                             seed=seed, attempt=n, x=x, semitones=semitones, cut=cut, rate=rate)
                 if base_body:
                     take['ratio'] = body(marks) / base_body
@@ -1487,7 +1545,7 @@ def main(argv=None):
     with open(os.path.join(a.out, 'voices.json'), 'w', encoding='utf-8') as f:
         json.dump(credits, f, ensure_ascii=False, indent=1)
     with open(os.path.join(a.out, 'manifest.json'), 'w', encoding='utf-8') as f:
-        json.dump(manifest, f, ensure_ascii=False, indent=1)
+        json.dump(with_rights(manifest), f, ensure_ascii=False, indent=1)
     # takes.json: what every clip of the folder was made with (this run's, and the earlier ones' that are still there)
     takes = {k: c for k, c in before['clips'].items() if has(k)}
     takes.update({row['key']: {f: row[f] for f in TAKE_FIELDS if row.get(f) is not None} for row in report if 'left_out' not in row})
@@ -1560,7 +1618,7 @@ def main(argv=None):
                      [line for line in dict.fromkeys(earlier_report.get('pair_marks_unheard', []) + flags_back) if line.split(' ')[0] in live], earlier_report)
     elif not given and (made or not before['verified']):
         print('Not verified: no recogniser heard ' + ('the clips made now' if before['verified'] else 'these clips') + ', so nothing was left out by ear. Ship a folder made with --verify, or with --takes from one.')
-    print(f'Next: node tools/make-sound.mjs {a.out} --manifest {os.path.join(a.out, "manifest.json")} --kind synthetic')
+    print(f'Next: node tools/make-sound.mjs {a.out} --manifest {os.path.join(a.out, "manifest.json")} --kind synthetic && python3 tools/hear-sound.py {a.out}')
     return 1 if failed else 0
 
 

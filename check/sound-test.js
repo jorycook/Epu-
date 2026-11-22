@@ -2,9 +2,11 @@
 // key) are turned into sound files by tools/make-sound.mjs, marked synthetic (a stereo take must come out as loud as a
 // mono one, a silent take must make no clip, the exam's test tone must be at about the level of the voices, a take of a
 // fifth of a second must come out as loud as a second of the same note, a take kept as FLAC must be read, the stated
-// length must be the decoded clip's, no clip may pass the peak ceiling once its MP3 is decoded, a dry run must name
-// what a real run would make, and a file whose clips did not change must keep every byte, its date too, when the
-// tool runs again), the app is
+// length must be the decoded clip's, no clip may pass the peak ceiling once its MP3 is decoded, a take with one loud
+// moment must reach the loudness target with that moment turned down, a take that peaks all along must stay under the
+// target and be named, the clips as they ship must be at the target the tool states (the encoder's own step allowed
+// for), a dry run must name what a real run would make, and a file whose clips did not change must keep every byte,
+// its date too, when the tool runs again), the app is
 // built with them into epua-app/dist-sound (never into docs/), and the built app is checked for: the Words sound step
 // playing a clip (has() true, its wording in the recorded state, the tag «voz sintética» in the pair's head before the
 // tap and what it means said once in the shell's live region), the player's switch for the synthetic voice (off, its
@@ -72,7 +74,7 @@ const lufs = (js, key) => {
 /* three takes of the same second of tone (check/fixtures/sound/make-fixtures.mjs): mono, stereo, and stereo with the
    voice on the left channel only. Measured on its own two channels, a stereo take came out 3 dB (one side: 6 dB) under */
 const level = { mono: lufs(unitJs, 'a1u01d1.w.maitei'), stereo: lufs(unitJs, 'a1u01d1.w.pyhareve'), oneSide: lufs(unitJs, 'a1u01d1.w.kaaru') };
-ok(level.mono > -18 && level.mono < -15, 'a mono take of a second comes out at about −16 LUFS (measured with its air)', level);
+ok(level.mono > -17.5 && level.mono < -15, 'a mono take of a second comes out at about −16 LUFS (measured with its air, which a gate of the standard does not take out of so short a clip)', level);
 ok(Math.abs(level.stereo - level.mono) <= 0.5 && Math.abs(level.oneSide - level.mono) <= 0.5, 'a stereo take, and one with the voice on one channel only, come out as loud as the mono one', level);
 /* a take that is silence all along (a hum under the trim threshold) */
 ok(/\n1 recording is silent[^\n]*a1u01d1\.w\.ipora \(a1u01d1\.w\.ipora\.wav\)/.test(made) && /still missing \([^)\n]*; 1 of them recorded but silent\)/.test(made), 'a silent take is named in the summary and counted with the recordings still missing', made.split('\n').filter((l) => /silent/.test(l)).join(' | '));
@@ -126,9 +128,26 @@ const peaks = [];
 allJs.forEach((js) => keysOf(js).forEach((key) => peaks.push({ key, tp: +truePeak(clipOf(key).b).toFixed(2) })));
 const over = peaks.filter((p) => !(p.tp <= -1.5));
 ok(peaks.length >= 40 && over.length === 0, `no clip passes the ceiling of −1.5 dBTP once decoded (${peaks.length} clips, the highest at ${Math.max(...peaks.map((p) => p.tp))} dBTP)`, over);
+/* the limiter. A take that peaks all along like a voice's pulses (make-fixtures.mjs: every pulse as high as the next)
+   has no single peak to turn down: it stops at the ceiling, stays under the loudness target, and the tool says so on
+   its line and names it among the clips that land more than 2 LU from the target */
 const pulses = peaks.find((p) => p.key === 'a1u01d1.w.karai');
-ok(!!pulses && pulses.tp <= -1.5 && pulses.tp > -4 && /a1u01d1\.w\.karai[^\n]*the peak ceiling keeps it/.test(made), 'the take that peaks like a voice stops at the ceiling, and the tool says the ceiling keeps it under the loudness target', pulses);
-ok(/\nlevels: \d+ of the \d+ recordings are at -16 LUFS[^\n]*the peak ceiling keeps 1 under it[^\n]*ms is the length of each decoded MP3/.test(made), 'make-sound.mjs sums up the levels: how many recordings reach the target, how many the ceiling keeps under it', made.split('\n').find((l) => /^levels/.test(l)));
+const lineOf = (key) => made.split('\n').find((l) => new RegExp('^\\s+\\d+\\s+' + key.replace(/\./g, '\\.') + '\\s').test(l)) || '';
+ok(!!pulses && pulses.tp <= -1.5 && pulses.tp > -4 && /it stays \d+\.\d LU under the target/.test(lineOf('a1u01d1.w.karai')), 'the take that peaks like a voice all along stops at the ceiling, and the tool says it stays under the loudness target', { pulses, line: lineOf('a1u01d1.w.karai').trim().slice(0, 260) });
+ok(/\nas they ship[^\n]*1 of them is more than 2 LU from the target: a1u01d1\.w\.karai -\d+\.\d\n/.test(made), 'and the tool names it, alone, as a clip that lands more than 2 LU from the target once decoded from its MP3', made.split('\n').find((l) => /^as they ship/.test(l)));
+/* a take with one loud moment (a soft note that swells for a fiftieth of a second, 16 dB over its loudness): one gain
+   would stop it at the ceiling 2 LU under the target. Its swell is turned down, by 3 dB at the most, and the take
+   comes out as loud as the plain note of a second (before the limiter it came out 2.2 LU under it) */
+const swell = { line: lineOf('a1u01d1.p1.x1'), lufs: lufs(unitJs, 'a1u01d1.p1.x1'), tp: (peaks.find((p) => p.key === 'a1u01d1.p1.x1') || {}).tp };
+const turned = parseFloat((/its peaks turned down by (\d+\.\d) dB at the most, during (\d+) ms/.exec(swell.line) || [])[1]);
+const during = parseFloat((/its peaks turned down by (\d+\.\d) dB at the most, during (\d+) ms/.exec(swell.line) || [])[2]);
+ok(turned >= 1 && turned <= 3.05 && during > 10 && during < 120 && !/it stays/.test(swell.line), 'the take with one loud moment has that moment turned down, by 3 dB at the most and for a few hundredths of a second, and does not stay under the target', { turned, during, line: swell.line.trim().slice(0, 220) });
+ok(Math.abs(swell.lufs - level.mono) <= 1 && swell.tp <= -1.5, 'it comes out as loud as the plain note (within 1 LU, measured with ffmpeg\'s ebur128), under the peak ceiling', { swell: swell.lufs, mono: level.mono, tp: swell.tp });
+/* the clips as they ship are at the target the tool states: the encoder's own step (LAME scales by 0.95 at 32 kb/s,
+   0.45 dB; the clips shipped that much under the target before) is measured and allowed for */
+const shipped = /\nas they ship[^\n]*the (\d+) clips of one recording are at (-\d+\.\d) LUFS at the median, from (-\d+\.\d) to (-\d+\.\d); the (\d+) lines of the (\d+) clips put together are at (-\d+\.\d) LUFS at the median, from (-\d+\.\d) to (-\d+\.\d)\./.exec(made) || [];
+ok(+shipped[2] >= -16.2 && +shipped[2] <= -15.8 && +shipped[4] <= -15.8 && +shipped[7] >= -16.3 && +shipped[8] >= -17 && +shipped[9] <= -15.8, 'decoded from their MP3s, the clips of one recording and the lines of the dialogues are at −16 LUFS at the median (the tool measures them, and says so)', shipped.slice(1));
+ok(/\nlevels: \d+ of the \d+ recordings are brought to -16 LUFS as they ship[^\n]*the encoder's own step of -0\.\d\d dB allowed for[^\n]*2 of the \d+ had their highest peaks turned down[^\n]*1 stay under the target[^\n]*ms is the length of each decoded MP3/.test(made), 'make-sound.mjs sums up the levels: how many recordings reach the target, how many had peaks turned down, how many stay under it, and the encoder\'s step', made.split('\n').find((l) => /^levels/.test(l)));
 /* the level exam's file: its test tone, and its first listening item, put together from two lines of its own and one a lesson says */
 const examJs = fs.readFileSync(path.join(PROJECT, 'gn-sound-a1-x.js'), 'utf8');
 const tone = lufs(examJs, 'c.check');

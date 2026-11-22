@@ -47,6 +47,18 @@ const MEN = /^(juan|vicente|moisés|moises|santiago|casimiro|tito|jacinto|genaro
 const WOMEN = /^(rosa|ana|maría|maria|sara|teresa|karina|susana|tania|samanta|ramona|mujer|ña\b|profesora|señora|tía|abuela|mamá|hermana|hija|vecina)/i;
 const voiceOfName = (name) => (/^narrador|^narradora/i.test(name) ? 'N' : MEN.test(name) ? 'M' : WOMEN.test(name) ? 'F' : 'F');
 const CODE = { N: 'N', F: 'F', M: 'M', NARRADOR: 'N', MUJER: 'F', HOMBRE: 'M' };
+/* "Who: text" → [who, text], or null for a line that names no speaker. Who is a name or a role: one word, or two when
+   the first is a title (ña Ramona, don Tito). A sentence that merely has a colon in it is not a speaker and a line:
+   «Vicente ndoúi ko ka'aru: oky.» is one sentence, and read as «Vicente ndoúi ko ka'aru» saying «oky» it gave a clip
+   of the last word alone, in the man's voice (two Teach examples of unit 2 day 5 played so until 17 November) */
+const TITLE = /^(?:ña|don|doña|karai|kuñakarai|señor|señora|tío|tía|profesor|profesora)$/i;
+function spokenBy(t) {
+  const m = /^([^:]{1,24}):\s+([\s\S]*)$/.exec(t);
+  if (!m) return null;
+  const who = m[1].trim().split(/\s+/);
+  if (who.length > 2 || (who.length === 2 && !TITLE.test(who[0])) || !who.every((w) => /^[^\W\d_]+$/u.test(w))) return null;
+  return [who.join(' '), m[2].trim()];
+}
 /* a script line as the content writes it: [code, text, es] or "Who: text" */
 function lineOf(l) {
   if (Array.isArray(l)) {
@@ -54,8 +66,8 @@ function lineOf(l) {
     return { voice: CODE[code.toUpperCase()] || voiceOfName(code), text: plain(l[1]), es: plain(l[2] == null ? '' : l[2]) };
   }
   const t = plain(l);
-  const m = /^([^:]{1,24}):\s+([\s\S]*)$/.exec(t);
-  return m ? { voice: voiceOfName(m[1].trim()), text: m[2].trim(), es: '' } : { voice: 'F', text: t, es: '' };
+  const m = spokenBy(t);
+  return m ? { voice: voiceOfName(m[0]), text: m[1], es: '' } : { voice: 'F', text: t, es: '' };
 }
 const looksSpanish = (t) => /[ñ]|¿|\b(el|la|los|las|de|del|que|qué|un|una|en|es|y|con|por|para|cómo|dónde)\b/i.test(t) && !/[ãẽĩõũỹ'g̃]/.test(t);
 
@@ -99,11 +111,11 @@ for (const u of course.units) {
         const key = x.clip || `${p.id}.x${n}`;
         const gn = norm(x.gn);
         const lines = gn.split('\n').map((s) => s.trim()).filter(Boolean);
-        const spoken = lines.length > 1 && lines.every((s) => /^[^:]{1,24}:\s+/.test(s));
+        const spoken = lines.length > 1 && lines.every((s) => !!spokenBy(plain(s)));
         if (spoken) script(key, lines, `${at} · punto ${pi + 1}, ejemplo ${n + 1} (diálogo)`, file);
         else {
-          const m = /^([^:]{1,24}):\s+([\s\S]*)$/.exec(plain(gn));
-          add({ key, voice: m ? voiceOfName(m[1]) : 'F', text: m ? m[2].trim() : plain(gn), es: plain(x.es), lang: 'gn', where: `${at} · punto ${pi + 1}, ejemplo ${n + 1}`, file });
+          const m = spokenBy(plain(gn));
+          add({ key, voice: m ? voiceOfName(m[0]) : 'F', text: m ? m[1] : plain(gn), es: plain(x.es), lang: 'gn', where: `${at} · punto ${pi + 1}, ejemplo ${n + 1}`, file });
         }
       });
     });
@@ -180,14 +192,15 @@ const files = [...new Set(rows.map((r) => r.file))];
 const manifest = {
   level: LEVEL,
   made: new Date().toISOString().slice(0, 10),
-  about: 'Every clip the course needs: key (what the screens ask gn-sound.js for), voice (F the woman, the main voice; M the man; N the narrator, in Spanish), text, es, lang, where, file (the unit file make-sound.mjs puts it in), order (the suggested recording order; none for a row with "same", said already under that key, for a row with "parts", put together from those keys, and for the tone; the slower takes come after the rest, and the recordings no screen plays today last of all), unused (true on a key no screen asks for today: of the two words of a sound pair the Words step plays one, always the same, and the other word is the unused one. It stays in the list, and is recorded, because a pair needs both voices if its words, and with them the word that plays, ever change; its recording comes last in the order unless a key in use shares it through "same"). Rights: notes/G4-resources-licensing.md §6, CC BY 4.0.',
+  about: 'Every clip the course needs: key (what the screens ask gn-sound.js for), voice (F the woman, the main voice; M the man; N the narrator, in Spanish), text, es, lang, where, file (the unit file make-sound.mjs puts it in), order (the suggested recording order; none for a row with "same", said already under that key, for a row with "parts", put together from those keys, and for the tone; the slower takes come after the rest, and the recordings no screen plays today last of all), unused (true on a key no screen asks for today: of the two words of a sound pair the Words step plays one, always the same, and the other word is the unused one. It stays in the list, and is recorded, because a pair needs both voices if its words, and with them the word that plays, ever change; its recording comes last in the order unless a key in use shares it through "same"). Rights: the recordings a person makes of this list in the studio (docs/estudio) are released under CC BY 4.0, with the speaker credited (notes/G4-resources-licensing.md §6). The synthetic voice\'s clips are not: the list in their folder (sound/' + LEVEL + '/voz/manifest.json) says under what they are.',
   voices: { F: 'mujer, voz principal: palabras, ejemplos, pares y carteles', M: 'hombre: sus líneas de los diálogos', N: 'narrador en castellano: consignas y números de las opciones' },
   files,
   count: { rows: rows.length, toRecord: recorded.length, slow: slowN, byVoice, composed: rows.filter((r) => r.parts).length, same: rows.filter((r) => r.same).length, unused: rows.filter((r) => r.unused).length, toRecordUnused: idle.length },
   clips: rows,
 };
 /* the list keeps its date while nothing else in it changes: made again from the same course it is the same file, byte for
-   byte, and so are the files made from it (sound/A1/voz/manifest.json, which tools/make-tts.py copies it into) */
+   byte, and so are the files made from it (sound/A1/voz/manifest.json, which tools/make-tts.py copies it into, with
+   the last sentence of `about`, the rights, replaced by the synthetic clips' own) */
 const listFile = path.join(OUT, 'manifest.json');
 let unchanged = false;
 if (fs.existsSync(listFile)) {

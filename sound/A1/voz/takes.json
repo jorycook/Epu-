@@ -1,5 +1,5 @@
 {
- "made": "2026-11-16",
+ "made": "2026-11-17",
  "with": {
   "torch": "2.15.0+cu132",
   "transformers": "5.22.2",
@@ -13,7 +13,7 @@
   "a1u01d3.r1.l3.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «cheparaguaiguaa» / «che pára guaiguaa», 1 + 1 letters off, against «cheparaguaivua» / «che paraguaigua», 1 + 0",
   "a1u01d3.r1.l4.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «tembimbo'epyahu hera karína» / «temimbo'e pyahu héra carína», 1 + 0 letters off, against «temi mbo'epyahu hera karína» / «temimbo'e pyahu héra carína», 0 + 0",
   "a1u01d4.r1.l3.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «ndaháguirimĩ kesu ha mandiko» / «nahániri oĩ kesus ha mandi'o», 5 + 1 letters off, against «nahágniriĩkesu a mandi'o» / «nahániri oĩ kesu ha mandi'o», 3 + 0",
-  "a1u01d4.r1.l4.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «yboypa ovaléko kesuu» / «mboýpa ovaleko kesu», 2 + 0 letters off, against «mboypa ovaléko kesuu» / «mboýpa ovale ko kesu», 1 + 0",
+  "a1u01d4.r1.l4.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «mboyypa ova léko kesuu» / «mboýpa ovaléco jesús», 2 + 2 letters off, against «mboypa ova léko kesu» / «mboýpa ovaléko kesús», 0 + 1",
   "a1u02d3.s2a": "left out by --verify: the other word of its pair, «ñúme», was left out",
   "a1u02d3.r1.l2.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «amba'apo ko ukuépea nde» / «amba'apo kokuépe ha nde», 2 + 0 letters off, against «amba'apo kokuépea nde» / «amba'apo kokuépe ha nde», 1 + 0",
   "a1u02d3.r1.l3.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «che ambapo mbo'ehaoópe itauguápe» / «che amba'apo mbo'ehaó pe itaguápe», 3 + 1 letters off, against «che amba'apo mbo'ehaope itauguápe» / «che amba'apo mbo'ehaópe itau guápe», 0 + 0",
@@ -31,7 +31,6 @@
   "a1u04d1.r1.l6.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «mba'éichapa héra ndememby» / «mba'éichapa héra ne memby», 1 + 0 letters off, against «mba'éichapa héra ne memby» / «mba'éichapa héra ne memby», 0 + 0",
   "a1u04d1.r1.l7.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «hherahenáro» / «héra henáro», 1 + 0 letters off, against «herahenaro» / «héra henáro», 0 + 0",
   "a1u04d3.r1.l1.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «pejagua ha iporã hoan» / «pe jagua ha iporã juan», 3 + 3 letters off, against «pejagua iporã huan» / «pe jagua iporã juan», 0 + 1",
-  "a1u04d3.r1.l2.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «he a 'amo kavaju ituicha» / «he ha amo kavaju ituicha», 3 + 1 letters off, against «he a amo kavaju ituicha» / «he ha amo kavaju ituicha», 2 + 1",
   "a1u04d5.r1.l2.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «he'e romi» / «he'e uĩ», 3 + 2 letters off, against «he'eromi» / «hee oi», 3 + 0",
   "a1u04d5.r1.l3.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «mboyy pa ovaye» / «mboýpa ovayẽ», 2 + 1 letters off, against «mboypa ova le» / «mboýpa ovaye», 0 + 1",
   "a1u04d5.r1.l5.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «mokói ke su 'aguje» / «mokõi jesús águy jee», 2 + 3 letters off, against «mokõi kesu aguyje» / «mokõi jesús aguyje», 0 + 2"
@@ -721,21 +720,6 @@
    "hz": 134
   },
   {
-   "key": "a1u01d3.p2.x1",
-   "voice": "F",
-   "lang": "gn",
-   "slow": false,
-   "text": "Che réra Moisés. Che Argentina-gua.",
-   "said": "che réra moisés che arhentinagua",
-   "seconds": 3.1,
-   "seed": 1522977048,
-   "take": 2,
-   "cut": "pause",
-   "rate": 1.0,
-   "semitones": 0.0,
-   "hz": 145
-  },
-  {
    "key": "a1u01d3.p2.x2",
    "voice": "F",
    "lang": "gn",
@@ -1126,12 +1110,13 @@
    "slow": false,
    "text": "Mboýpa ovale ko kesu?",
    "said": "mboýpa ovale ko kesu",
-   "seconds": 1.89,
-   "seed": 1903170682,
-   "take": 2,
+   "seconds": 1.6,
+   "seed": 1903202358,
+   "take": 1,
    "cut": "pause",
+   "rate": 1.0,
    "semitones": 0.0,
-   "hz": 152
+   "hz": 161
   },
   {
    "key": "a1u01d4.r1.l0",
@@ -1965,11 +1950,12 @@
    "text": "aju",
    "said": "aju",
    "seconds": 0.47,
-   "seed": 783854404,
-   "take": 2,
+   "seed": 783901918,
+   "take": 1,
    "cut": "pause",
+   "rate": 1.0,
    "semitones": 0.0,
-   "hz": 160
+   "hz": 163
   },
   {
    "key": "a1u02d1.w.akaru",
@@ -2222,12 +2208,13 @@
    "slow": false,
    "text": "Che amba'apo mbo'ehaópe.",
    "said": "che amba'apo mbo'ehaópe",
-   "seconds": 1.35,
-   "seed": 116984212,
+   "seconds": 1.63,
+   "seed": 117023807,
    "take": 1,
    "cut": "pause",
+   "rate": 1.0,
    "semitones": 0.0,
-   "hz": 137
+   "hz": 144
   },
   {
    "key": "a1u02d3.p1.x1",
@@ -2539,13 +2526,13 @@
    "slow": false,
    "text": "tetãme",
    "said": "tetãme",
-   "seconds": 0.84,
+   "seconds": 0.64,
    "seed": 237390613,
    "take": 1,
-   "cut": "closure",
+   "cut": "pause",
    "rate": 1.0,
    "semitones": 0.0,
-   "hz": 126
+   "hz": 170
   },
   {
    "key": "a1u02d3.w.ysyrype",
@@ -2873,17 +2860,18 @@
   },
   {
    "key": "a1u02d5.p1.x3",
-   "voice": "M",
+   "voice": "F",
    "lang": "gn",
    "slow": false,
-   "text": "oky.",
-   "said": "oky",
-   "seconds": 0.49,
-   "seed": 2082499860,
-   "take": 1,
+   "text": "Vicente ndoúi ko ka'aru: oky.",
+   "said": "visénte ndoúi ko ka'aru oky",
+   "seconds": 2.57,
+   "seed": 2082515698,
+   "take": 3,
    "cut": "pause",
-   "semitones": -2.0,
-   "hz": 120
+   "rate": 1.0,
+   "semitones": 0.0,
+   "hz": 140
   },
   {
    "key": "a1u02d5.p2.x0",
@@ -2932,14 +2920,15 @@
    "voice": "F",
    "lang": "gn",
    "slow": false,
-   "text": "oky.",
-   "said": "oky",
-   "seconds": 0.47,
-   "seed": 1855308538,
-   "take": 1,
+   "text": "Che ru nosẽi ógagui: oky.",
+   "said": "che ru nosẽi ógagui oky",
+   "seconds": 2.64,
+   "seed": 1855316457,
+   "take": 2,
    "cut": "pause",
+   "rate": 1.0,
    "semitones": 0.0,
-   "hz": 140
+   "hz": 159
   },
   {
    "key": "a1u02d5.r1.l0",
@@ -3036,12 +3025,13 @@
    "slow": false,
    "text": "Aguyje mante",
    "said": "aguyje mante",
-   "seconds": 1.24,
-   "seed": 1386407277,
-   "take": 3,
+   "seconds": 1.3,
+   "seed": 1386446872,
+   "take": 1,
    "cut": "pause",
+   "rate": 1.0,
    "semitones": 0.0,
-   "hz": 140
+   "hz": 147
   },
   {
    "key": "a1u02d5.w.ama",
@@ -3197,20 +3187,6 @@
    "rate": 1.0,
    "semitones": 0.0,
    "hz": 167
-  },
-  {
-   "key": "a1u03d1.p1.x3.l1",
-   "voice": "M",
-   "lang": "gn",
-   "slow": false,
-   "text": "Héẽ, chekane'õ ha chero'y.",
-   "said": "héẽ chekane'õ ha chero'y",
-   "seconds": 1.79,
-   "seed": 928547308,
-   "take": 3,
-   "cut": "pause",
-   "semitones": -2.0,
-   "hz": 105
   },
   {
    "key": "a1u03d1.p2.x0",
@@ -3703,12 +3679,13 @@
    "slow": false,
    "text": "ko'ág̃a",
    "said": "ko'ágã",
-   "seconds": 0.6,
+   "seconds": 0.58,
    "seed": 1817245385,
    "take": 1,
-   "cut": "closure",
+   "cut": "pause",
+   "rate": 1.0,
    "semitones": 0.0,
-   "hz": 99
+   "hz": 174
   },
   {
    "key": "a1u03d3.p1.x0",
@@ -3753,20 +3730,6 @@
    "hz": 165
   },
   {
-   "key": "a1u03d3.p1.x3",
-   "voice": "F",
-   "lang": "gn",
-   "slow": false,
-   "text": "Che ru chokokue ha che sy ñemuhára.",
-   "said": "che ru chokokue ha che sy ñemuhára",
-   "seconds": 2.87,
-   "seed": 143362635,
-   "take": 3,
-   "cut": "pause",
-   "semitones": 0.0,
-   "hz": 152
-  },
-  {
    "key": "a1u03d3.p2.x0",
    "voice": "F",
    "lang": "gn",
@@ -3802,12 +3765,13 @@
    "slow": false,
    "text": "Ha'e che angirũ.",
    "said": "ha'e che angirũ",
-   "seconds": 1.25,
-   "seed": 676087333,
+   "seconds": 1.24,
+   "seed": 676119009,
    "take": 1,
    "cut": "pause",
+   "rate": 1.0,
    "semitones": 2.0,
-   "hz": 123
+   "hz": 125
   },
   {
    "key": "a1u03d3.p2.x2",
@@ -3951,13 +3915,13 @@
    "slow": false,
    "text": "ñu",
    "said": "ñu",
-   "seconds": 0.35,
-   "seed": 1234367535,
+   "seconds": 0.33,
+   "seed": 1154002008,
    "take": 1,
    "cut": "pause",
+   "rate": 1.0,
    "semitones": 0.0,
-   "hz": 155,
-   "recorded_as": "a1u02d3.s2a"
+   "hz": 161
   },
   {
    "key": "a1u03d3.s2a",
@@ -4036,12 +4000,13 @@
    "slow": false,
    "text": "mitãkuña",
    "said": "mitãkuña",
-   "seconds": 0.87,
-   "seed": 1455368348,
+   "seconds": 0.9,
+   "seed": 1455384186,
    "take": 1,
    "cut": "pause",
+   "rate": 1.0,
    "semitones": 0.0,
-   "hz": 137
+   "hz": 131
   },
   {
    "key": "a1u03d3.w.mitarusu",
@@ -4191,12 +4156,13 @@
    "slow": false,
    "text": "Héẽ, upéicha.",
    "said": "héẽ upéicha",
-   "seconds": 1.01,
-   "seed": 1402539238,
+   "seconds": 1.07,
+   "seed": 1402586752,
    "take": 1,
    "cut": "pause",
+   "rate": 1.0,
    "semitones": 0.0,
-   "hz": 178
+   "hz": 169
   },
   {
    "key": "a1u03d4.p2.x2.l0",
@@ -4768,10 +4734,11 @@
    "slow": false,
    "text": "Mba'éichapa héra ne ramói?",
    "said": "mba'éichapa héra ne ramói",
-   "seconds": 1.54,
-   "seed": 1774231395,
+   "seconds": 1.57,
+   "seed": 1774239314,
    "take": 1,
    "cut": "pause",
+   "rate": 1.0,
    "semitones": 0.0,
    "hz": 118
   },
@@ -5209,12 +5176,13 @@
    "slow": false,
    "text": "guyrakuéra",
    "said": "guyrakuéra",
-   "seconds": 0.75,
-   "seed": 7199211,
-   "take": 2,
+   "seconds": 0.74,
+   "seed": 7215049,
+   "take": 1,
    "cut": "pause",
+   "rate": 1.0,
    "semitones": 0.0,
-   "hz": 144
+   "hz": 148
   },
   {
    "key": "a1u04d2.w.jaguakuera",
@@ -5265,12 +5233,13 @@
    "slow": false,
    "text": "mitãnguéra",
    "said": "mitãnguéra",
-   "seconds": 0.82,
-   "seed": 607032548,
-   "take": 3,
+   "seconds": 0.96,
+   "seed": 607048386,
+   "take": 1,
    "cut": "pause",
+   "rate": 1.0,
    "semitones": 0.0,
-   "hz": 182
+   "hz": 177
   },
   {
    "key": "a1u04d2.w.mymbakuera",
@@ -5433,12 +5402,29 @@
    "slow": false,
    "text": "Héẽ. Ha amo kavaju ituicha.",
    "said": "héẽ ha amo kavaju ituicha",
-   "seconds": 2.54,
-   "seed": 1334031350,
-   "take": 2,
+   "seconds": 2.4,
+   "seed": 1334070945,
+   "take": 1,
    "cut": "pause",
+   "rate": 1.0,
    "semitones": -2.0,
-   "hz": 119
+   "hz": 117
+  },
+  {
+   "key": "a1u04d3.r1.l2.slow",
+   "voice": "M",
+   "lang": "gn",
+   "slow": true,
+   "text": "Héẽ. Ha amo kavaju ituicha.",
+   "said": "héẽ ha amo kavaju ituicha",
+   "seconds": 2.9,
+   "seed": 1334070945,
+   "take": 1,
+   "cut": "pause",
+   "rate": 0.8,
+   "semitones": -2.0,
+   "hz": 121,
+   "slow_ratio": 1.22
   },
   {
    "key": "a1u04d3.r1.l3",
