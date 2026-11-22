@@ -11,7 +11,7 @@
 //   D  saved data that does not fit: garbage, wrong types, odd values, storage that throws, another copy's save.
 //   F  a lesson left part way (two of four words written) and reopened after a reload.
 //   G  two tabs of the app open at once.
-//   H  the last written week (whichever it is: A1 unit 4 today): the week before it leads on to it; its review day by
+//   H  the last written week (whichever it is: A1 unit 5 today): the week before it leads on to it; its review day by
 //      taps, every lesson (the drill's answer sheet with its button in view, the week's words written again, the
 //      reading); its week test; then the learner stays on that week, on the path, on Progreso and on Niveles, across
 //      a reload, and no week that is written is said to be waiting to be written.

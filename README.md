@@ -19,9 +19,9 @@ native speaker's check.
 | Folder | What it holds |
 |---|---|
 | `project/` | The canvas's files: 42 boards (`*.dc.html`), the index (`canvas.json`) and the shared scripts. `gn-course.js` is the course engine (the counterpart of Yaoki's `course.js`, as `window.gnCourse`); `gn-course-a1.js` … `gn-course-c2.js` are the six levels' data, made from `content/`; `gn-extra.js` holds the placement check, the A1 level exam, the reader's text and the typing and speaking lists; `gn-spell.js` is the spelling helper (the letters of the alphabet, the keys a word needs, why a typed letter is off); `gn-sound.js` is Yaoki's sound player under new names. |
-| `content/` | The course as data. `levels.json` is the syllabus of all six levels (52 units, the title of every study day and, for the units written, each day's sound focus). `a1/parts/` holds A1 units 1 to 4 day by day, each with its week test (`u01-d1.json` … `u04-test.json`); `a1/u01.json` … `a1/u04.json` are the units assembled from them; `extra/` holds the extras. |
+| `content/` | The course as data. `levels.json` is the syllabus of all six levels (52 units, the title of every study day and, for the units written, each day's sound focus). `a1/parts/` holds A1 units 1 to 5 day by day, each with its week test (`u01-d1.json` … `u05-test.json`); `a1/u01.json` … `a1/u05.json` are the units assembled from them; `extra/` holds the extras. |
 | `tools/` | `build-course.mjs` checks the content and writes the level files; `assemble-unit.mjs` merges a unit's day files; `lint-board.mjs` checks a board for the format rules that fail silently; `smoke-boards.mjs` runs each board's logic against the engine and the data, the way the canvas and the prototype call it, without rendering, and once more on a day that is not written yet (a state no flow of the app reaches), where a line that names the day must not print its Guarani as plain text; `blind-export.mjs` exports every question without its answer for a blind solver; `sound-list.mjs`, `make-sound.mjs` and `make-tts.py` are the sound path (see Sound). |
-| `sound/` | The clip lists: `A1/manifest.json` (every clip the course needs, by key, with its text, voice, place and recording order; read by the tools and the studio) and `A1/lista.csv` (the same, for a spreadsheet). `A1/voz/` holds the synthetic voice's takes for A1 units 1 to 4: 440 clips as FLAC, the seed of each and what two speech recognisers heard of it, and in `left-out/` the 63 clips that stay silent, kept for a native listener (CC BY-NC 4.0, non-commercial; see Sound). `VOICE.md` is the record of that voice, `respell.json` how it is given Spanish names and numbers, `silent.json` what it must not say. A person's recordings will not live in the repository: `make-sound.mjs` turns either kind into `project/gn-sound-*.js`. |
+| `sound/` | The clip lists: `A1/manifest.json` (every clip the course needs, by key, with its text, voice, place and recording order; read by the tools and the studio) and `A1/lista.csv` (the same, for a spreadsheet). `A1/voz/` holds the synthetic voice's takes for A1 units 1 to 5: 568 clips as FLAC, the seed of each and what two speech recognisers heard of it, and in `left-out/` the 71 clips that stay silent, kept for a native listener (CC BY-NC 4.0, non-commercial; see Sound). `VOICE.md` is the record of that voice, `respell.json` how it is given Spanish names and numbers, `silent.json` what it must not say. A person's recordings will not live in the repository: `make-sound.mjs` turns either kind into `project/gn-sound-*.js`. |
 | `brief/` | The design brief the boards were built from: `BRIEF-core.md` (format, wiring, typefaces, tokens, engine, content shape), `BRIEF-design.md` (language, look, mascot, the verified Guarani glossary), `BOARDS.md` (every board's spec), `CONTENT-BRIEF.md` (how the lessons are written), the font link, and `mascot/` (Kaguare's final art: `SPEC.md`, `spec.json` with every SVG, and `sheet.png`). |
 | `notes/` | The research the design rests on. Y1 to Y5 map the Yaoki suite (plan and engine, the lesson loop, skills and tests, the satellites, platform and brand). G1 to G8 are the Guarani research, with a source and a confidence mark on every claim: sounds, spelling, fonts and keyboards; a verified grammar reference; learners and prior art; data, audio and licences; culture, naming and UI words; the CEFR and the level exam; the six-level syllabus; and G8, the second mascot (Kaguare: which anteater, its names, three slang screens). |
 | `epua-app/` | The installable app around the screens: `src/` (Yaoki's runtime, the shell, the first-visit page, the offline worker, the page and the manifest), `studio/` (the recording studio page), `build.mjs`, `fonts.py`, `fetch-fonts.sh` and `check/app-check.js`. |
@@ -67,7 +67,13 @@ node check/app-check.js    # the app in Chromium: the first-visit page, every sc
 cd ..
 node check/flows-test.js   # a learner's flows, by taps, against docs/ (about 16 minutes; ONLY=I, or any of its part letters, runs some parts)
 node check/platform-test.js   # phones, offline, updates, fonts, frames, tap targets and languages, against docs/ (about 10 minutes)
+for d in 1 3 4 5 6; do ONLY=screens FAR_DAY=$d node check/platform-test.js; done   # after a new unit: its screens with each of its days open (the line above looks at day 2)
 ```
+
+`platform-test.js` looks at every screen three ways: fresh, with a learner in unit 1, and with a second learner in the
+last written week, so that a new unit's longer words, titles and passages are in front of the same inspection (nothing
+out of the frame or cut, no line broken at a puso, no stop or comma starting a line without its word, taps of 44 px).
+`FAR_DAY` says which day of that week the second learner has open: unit 5 was landed with all six.
 
 The build makes Nunito's 500, 700 and 800 from its variable font, cuts both typefaces down to the characters the app
 shows, and stops if either lacks a Guarani letter. Andika's Reserved Font Names may not be used for a modified copy, so
@@ -148,7 +154,7 @@ downloaded for the page instead of downloading it again, a new build downloads o
 that is not this build's is never stored (it is asked for again, past every copy; if that fails the install waits).
 A sound file is stored the same way, the first time it is used or when the app names it to the worker: once, however
 many ask for it at the same moment, and from the browser's own copy when the page fetched it before the worker was in
-charge. The level's sound is megabytes (seven files, 3.7 MB as they are and 2.3 MB as a host sends them, for A1 today),
+charge. The level's sound is megabytes (eight files, 4.8 MB as they are and 3.0 MB as a host sends them, for A1 today),
 so the whole of it is never fetched behind the learner's back. Once there is a plan the app names three files to have
 ahead of time, for use without a connection (`gnCourse.soundAhead`): the unit in use, the unit after it, and the
 speaking game's (47 kB as sent), the practice that should work anywhere; when the learner moves on to a unit, the one
@@ -300,10 +306,10 @@ people speak today, Spanish loans included.
 ## What is written
 
 - **The syllabus of all six levels:** every unit and the title of every study day, so each level's week path exists;
-  days not written (A1 units 5 to 8 and the five other levels) show "En preparación", as Yaoki's 準備中.
-- **A1 units 1 to 4, in full:** half of the level. Each unit is five study days, the review day and a 20-question week
-  test, 92 items; `node tools/build-course.mjs --check` counts 24 days written (the four review days among them) and
-  368 items.
+  days not written (A1 units 6 to 8 and the five other levels) show "En preparación", as Yaoki's 準備中.
+- **A1 units 1 to 5, in full:** five of the level's eight units. Each unit is five study days, the review day and a
+  20-question week test, 92 items; `node tools/build-course.mjs --check` counts 30 days written (the five review days
+  among them) and 460 items.
   - Unit 1, "Mba'éichapa · Saludos y sonidos": greetings and farewells; saying who (che, nde, and the two "nosotros",
     ñande and ore); che réra; questions with -pa; Aguyje and courtesy.
   - Unit 2, "¿Quién hace qué?": the person prefixes a-, re-, o-; ja-/ña-, ro- and pe- for the plural; -pe/-me, "en, a";
@@ -313,6 +319,10 @@ people speak today, Spanish loans included.
     the accent mark.
   - Unit 4, "Mi familia": possession with che and nde; the plural -kuéra, -nguéra after a nasal; the demonstratives ko,
     pe, amo; máva, "quién", and mba'e, "qué"; the numbers 1 to 5, and Spanish numbers in speech.
+  - Unit 5, "Mi día": the verbs in ai-, rei-, oi- (to know, to want, to live); the day's routine and the parts of the
+    day; the hour and the days of the week, which talk says in Spanish; Moõpa and Araka'épa, "dónde" and "cuándo";
+    -pe and -me on a person, with chéve, ndéve and ichupe. Written on 22 November from the shared plan of units 5 to
+    8, after the four before it.
 
   The titles a learner reads (the week path, the day's heading, Progreso) say what the day lets you do or say, with the
   form after a colon where it helps to find the day again: "Decir quién hace qué: a-, re-, o-", "Decir que no: nd-…-i",
@@ -321,10 +331,13 @@ people speak today, Spanish loans included.
   where it explains it. A day's file carries the title of `content/levels.json` word for word: the build stops when
   they differ.
 
-  Every study day's sound step has a focus of its own, 20 in all and none repeated: unit 1 covers the oral vowels, the
-  nasal vowels, the y, the puso and typing the Guarani letters; units 2 to 4 cover j and h, the soft r, ch, ñ, g̃, v, k,
-  the letters mb, nd, ng, nt, the u that always sounds, nasal harmony, the nasal tilde, and stress and the accent mark
-  (where stress falls without a mark, with a suffix, on two vowels together, and when -kuéra takes it).
+  Every study day's sound step has a focus of its own, 25 in all: unit 1 covers the oral vowels, the nasal vowels, the
+  y, the puso and typing the Guarani letters; units 2 to 4 cover j and h, the soft r, ch, ñ, g̃, v, k, the letters mb,
+  nd, ng, nt, the u that always sounds, nasal harmony, the nasal tilde, and stress and the accent mark (where stress
+  falls without a mark, with a suffix, on two vowels together, and when -kuéra takes it); unit 5 covers two vowels in
+  one syllable (aiko) and in two (moõ, oĩ), syllables that end in a vowel, the stress of aravo and arete, which no
+  mark shows, and goes back to nasal harmony under its own name, «Repaso», the one focus that returns to an earlier
+  one.
 - **The extras:** a placement check (8 can-do statements and 6 questions), a reduced A1 level exam (all five parts, with
   sample answers and the rubric), an original reading text for the reader, 8 minimal pairs for the speaking game and a
   word list for the typing game.
@@ -336,12 +349,16 @@ had the two reviewers and then a fixer, and once the unit was whole a blind solv
 the three units all 92 answers matched the keys. After that the sound steps of units 2 to 4 were reworked so that no
 focus repeats, in a round with one checker and a fixer. The fixer also rewrote four questions (`a1u03d1.k1`,
 `a1u03d2.k1`, `a1u04d1.k1`, `a1u04d4.k1`): they were written after the checker's reading and have not been put to a
-blind solver. The lessons are original. They still need a native teacher's review before they ship: the doubts the
+blind solver. Unit 5 was written another way, from one plan for units 5 to 8 that had the first four units and their
+inventory in front of it and was read twice by an independent checker: a planner laid out the unit, and its days
+went in three groups and then the review day with the week test, each from a writer to one checker who read for
+form and for meaning and on to a fixer; a blind solver then answered its 92 questions, and all 92 answers matched the
+keys. No second reviewer and no cross-unit audit has read unit 5 yet. The lessons are original. They still need a native teacher's review before they ship: the doubts the
 reviewers could not settle are listed in `notes/REVIEW-NEEDED.md`, unit by unit.
 
 ## Sound
 
-A1 units 1 to 4 and the extras have sound: 355 clips in seven files (`project/gn-sound-*.js`), 3.7 MB, 10.7 minutes.
+A1 units 1 to 5 and the extras have sound: 462 clips in eight files (`project/gn-sound-*.js`), 4.8 MB, 14.0 minutes.
 **The voice is synthetic**, a stand-in until a person records the course: Meta's MMS-TTS models for Guarani and for
 Spanish, one man's voice for every speaker (the man's lines are the same voice lower), under **CC BY-NC 4.0,
 non-commercial use only**. These clips may not ship in an app that is sold or carries advertising. Nobody has listened
@@ -349,11 +366,11 @@ to them: two speech recognisers heard every take back, and every clip again as t
 `sound/VOICE.md` is the record of what the voice renders, what it does not, and what a native speaker should hear
 first.
 
-415 of the 475 keys a screen can ask for have a clip. The other 60 are silent on purpose, because the voice does not
+540 of the 605 keys a screen can ask for have a clip. The other 65 are silent on purpose, because the voice does not
 render what they teach or because a question would be unfair with it: the sound pairs that differ only by a nasal
-vowel, mbo'y / mboy, the pairs of «La r, siempre suave», tetã / tetãme, óga / ogakuéra, twelve words and short clips
+vowel, mbo'y / mboy, the pairs of «La r, siempre suave», tetã / tetãme, óga / ogakuéra, fourteen words and short clips
 that both recognisers hear wrong, three examples of Teach in which both mishear a word that is silent on its own (one
-of them a dialogue), two of the twelve listening lessons (unit 1 day 3, unit 2 day 5), one of the placement's three
+of them a dialogue), two of the fourteen listening lessons (unit 1 day 3, unit 2 day 5), one of the placement's three
 listening items, and the slower version of every listening lesson but one. There, as on the canvas's
 other boards and in the levels that are not written, a sound control uses Yaoki's silent stand-in (it lights up for as
 long as the text would take to say) and says that the audio is not recorded yet. The path, for this voice and for a
@@ -376,13 +393,14 @@ node check/sound-test.js                           # the whole path in Chromium,
   tone), the text, its Spanish, the voice (F the woman, the main voice; M the man; N the narrator, in Spanish), where it is
   used and the recording order. A text said already by the same voice is listed with `same` and not recorded again; a
   dialogue is recorded one line at a time (`<key>.l0`, `.l1` …, each line its own voice) and put together by the tool
-  (a line is «Who: text» only when Who is a name or a role of one word, or two with a title: an example that merely
-  has a colon in it, «Vicente ndoúi ko ka'aru: oky.», is one sentence).
+  (a line is «Who: text» only when Who is a name or a role of one word, or two with a title, in letters of any
+  alphabet, so «Moisés:» is a speaker too: an example that merely has a colon in it, «Vicente ndoúi ko ka'aru: oky.»,
+  is one sentence).
   Both words of every «Sonido y letra» pair are listed, though the Words step plays only one of the two (its target, the
   same every time): the other word's row carries `"unused": true`. It stays in the list, and is recorded, because a pair
   needs both voices if its words, and with them the word that plays, ever change; the recordings no screen plays today
   come last in the recording order, after the slower takes, and say so in their place of use («hoy no suena»).
-  A1 units 1 to 4 and the extras come to 502 recordings for 736 keys; 82 of the keys are unused, and 25 of the
+  A1 units 1 to 5 and the extras come to 637 recordings for 931 keys; 105 of the keys are unused, and 29 of the
   recordings serve only those. The list keeps the day it was made while nothing in it changes, so making it again
   from the same course gives the same file.
 - **The studio.** `docs/estudio/` (source `epua-app/studio/index.html`) is a page in Spanish for a native speaker: it loads
@@ -431,8 +449,8 @@ node check/sound-test.js                           # the whole path in Chromium,
   does after loading, and a second tap or anything else calls that off; where plays are counted or the audio sets the
   pace (the placement check, the level exam, the model in Hablar, which counts as help) the learner starts it.
   *failed* (the file could not be fetched, or is not in 20 s after a control began to wait: the largest unit's file,
-  0.6 MB as sent, takes 12 s at 400 kbit/s, the slowest line measured, where unit 1's took 9.5 s; 20 s covers down to
-  250 kbit/s): the stand-in, with «No se pudo cargar el audio». A stand-in that has shown something (a transcript, a
+  unit 5's, 0.72 MB as sent, takes 14.4 s at 400 kbit/s, the slowest line measured, where unit 1's took 9.5 s; 20 s
+  covers down to about 290 kbit/s): the stand-in, with «No se pudo cargar el audio». A stand-in that has shown something (a transcript, a
   pair's word, a card of Hablar) stays for that item while the screen is open: nothing flips back under the learner
   when the file arrives late. *off* (the learner turned the voice off): the stand-in, with «Apagaste la voz sintética:
   … La activás de nuevo en Progreso.», in Hablar's menu too. The words are the engine's (`gnCourse.soundNote`,
@@ -458,8 +476,8 @@ node check/sound-test.js                           # the whole path in Chromium,
 - **The synthetic voice.** `tools/make-tts.py` says every recorded row of the list with Meta's MMS-TTS
   (`facebook/mms-tts-grn` for Guarani, `facebook/mms-tts-spa` for the narrator; a CPU is enough): each line after a
   carrier phrase that is cut off, every take heard back by two speech recognisers, the best of three kept, and what
-  both hear wrong left out. The takes live in `sound/A1/voz` (438 clips as FLAC, 10.2 MB, with the seed of each and
-  what was heard; 65 more in `left-out/`, every recording that stays silent, kept for a native listener). They cannot
+  both hear wrong left out. The takes live in `sound/A1/voz` (568 clips as FLAC, 13.4 MB, with the seed of each and
+  what was heard; 71 more in `left-out/`, every recording that stays silent, kept for a native listener). They cannot
   be made again sample for sample on another machine, so that folder is kept and added to: `--verify --changed` says
   only what a change of the content touches.
   `tools/hear-sound.py` then applies the same ear to what ships: it decodes every clip of the sound files, cuts the
@@ -471,12 +489,12 @@ node check/sound-test.js                           # the whole path in Chromium,
   never passes is silenced by key in `sound/silent.json`, with what was heard (a line of a listening item never by
   the tool: that takes the item's audio, and is a person's decision). What it heard of every line is kept in
   `sound/A1/voz/mp3-heard.json`, so a run on unchanged files hears nothing again. Its first run, on 17 November, said
-  twelve recordings again and silenced three examples of Teach; none of the 199 clips of one or two words is heard
-  wrong since, and the 21 of the 374 Guarani lines that still are stand in `sound/VOICE.md`, laid out for a native
-  listener to go through with the studio page (`python3 tools/hear-sound.py sound/A1/voz --list` prints them).
+  twelve recordings again and silenced three examples of Teach, and unit 5's clips passed it as they were made (22
+  November); none of the 251 clips of one or two words is heard wrong, and the 29 of the 496 Guarani lines that
+  still are stand in `sound/VOICE.md`, laid out for a native listener to go through with the studio page (`python3 tools/hear-sound.py sound/A1/voz --list` prints them).
   Run with nothing changed, the whole line says nothing, hears nothing, loads no model and leaves every file of
   `sound/` and `project/` byte for byte as it was (17 November: 576 files, 6 minutes 10 seconds, all but two seconds
-  of it `make-sound.mjs` encoding every clip again); with one text changed, one clip is said and one of the seven
+  of it `make-sound.mjs` encoding every clip again; 22 November, with unit 5: 713 files, 5 minutes 54 seconds); with one text changed, one clip is said and one of the seven
   sound files is written anew (16 November).
   `sound/respell.json` is how the voice is given Spanish names and numbers, `sound/silent.json` what it must not say
   and why. A listener's verdict goes into `silent.json`, and the same line applies it: a clip that is freed there comes

@@ -1,5 +1,5 @@
 {
- "made": "2026-11-17",
+ "made": "2026-11-22",
  "about": "What each recogniser hears in the app's MP3 of every line (tools/hear-sound.py): a clip of one recording whole, a clip put together from lines cut at its cues. heard: for each recogniser what it wrote in three hearings: padded, trimmed, bare (the clip as it ships with 150 ms of silence round it; without its air; as it ships and nothing round it). wrong: for each hearing, the recognisers whose letters are not the line's. heard_wrong: every recogniser wrong in two hearings of the three or more. fails: why the clip may not ship as it is (short, a word silent.json names, a form its lesson calls wrong); a row with fails is a line of a listening item that a person has not ruled on, or is named under \"keep\". tried: the seeds it was said again with, none of which passed (it is not said again while its MP3 is this one). sha: the SHA-1 of the MP3 that was heard; a line whose MP3 is the same is not heard again.",
  "recognisers": {
   "ivan": "ivangtorre/wav2vec2-xlsr-300m-guarani",
@@ -3989,7 +3989,8 @@
    "keys": [
     "a1u02d1.w.ahendu",
     "a1u02d1.s1b",
-    "a1u02d6.w.ahendu"
+    "a1u02d6.w.ahendu",
+    "a1u05d2.s1b"
    ],
    "voice": "F",
    "lang": "gn",
@@ -8346,7 +8347,8 @@
    "row": "a1u03d2.w.apua",
    "recording": "a1u03d2.w.apua",
    "keys": [
-    "a1u03d2.w.apua"
+    "a1u03d2.w.apua",
+    "a1u05d2.s3a"
    ],
    "voice": "F",
    "lang": "gn",
@@ -14127,7 +14129,8 @@
    "row": "a1u04d5.w.petei",
    "recording": "a1u04d5.w.petei",
    "keys": [
-    "a1u04d5.w.petei"
+    "a1u04d5.w.petei",
+    "a1u05d4.s2a"
    ],
    "voice": "F",
    "lang": "gn",
@@ -14163,7 +14166,8 @@
    "recording": "a1u04d5.w.mokoi",
    "keys": [
     "a1u04d5.w.mokoi",
-    "a1u04d5.s1a"
+    "a1u04d5.s1a",
+    "a1u05d4.s1a"
    ],
    "voice": "F",
    "lang": "gn",
@@ -14657,6 +14661,4656 @@
      "umi",
      "umi",
      "umi"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d1.p1.x0#1",
+   "key": "a1u05d1.p1.x0",
+   "line": 1,
+   "row": "a1u05d1.p1.x0.l0",
+   "recording": "a1u05d1.p1.x0.l0",
+   "keys": [
+    "a1u05d1.p1.x0"
+   ],
+   "voice": "M",
+   "lang": "gn",
+   "kind": "dialogue",
+   "text": "Mba'éichapa reiko, Ana?",
+   "said": "mba'éichapa reiko ãna",
+   "sha": "2a8e3e869ee5ea86a8c19d72e959724c30508f5e",
+   "from": 0,
+   "to": 1710,
+   "heard": {
+    "ivan": [
+     "Mba'éichapa reiko 'ána.",
+     "Mba'éichapa reiko 'ána.",
+     "Mba'éichapa reiko 'ána."
+    ],
+    "mms": [
+     "mba'éichapa reiko ána",
+     "mba'éichapa reiko ána",
+     "mba'éichapa reiko ána"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d1.p1.x0#2",
+   "key": "a1u05d1.p1.x0",
+   "line": 2,
+   "row": "a1u05d1.p1.x0.l1",
+   "recording": "a1u05d1.p1.x0.l1",
+   "keys": [
+    "a1u05d1.p1.x0"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "dialogue",
+   "text": "Aiko porã.",
+   "said": "aiko porã",
+   "sha": "2a8e3e869ee5ea86a8c19d72e959724c30508f5e",
+   "from": 1960,
+   "to": 2920,
+   "heard": {
+    "ivan": [
+     "Aiko porã.",
+     "Aiko porã.",
+     "Aiko porã."
+    ],
+    "mms": [
+     "aiko porã",
+     "aiko porã",
+     "aiko porã"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d1.p1.x1",
+   "key": "a1u05d1.p1.x1",
+   "line": null,
+   "row": "a1u05d1.p1.x1",
+   "recording": "a1u05d1.p1.x1",
+   "keys": [
+    "a1u05d1.p1.x1"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Aiko Itauguápe.",
+   "said": "aiko itauguápe",
+   "sha": "ca79b27768a7e4cbce0b104318921a3b4aed9626",
+   "from": 0,
+   "to": 1466,
+   "heard": {
+    "ivan": [
+     "Aiko itauguápe.",
+     "Aiko itauguápe",
+     "Aiko itauguápe"
+    ],
+    "mms": [
+     "aiko itauguápe",
+     "aiko itauguápe",
+     "aiko itauguápe"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d1.p1.x2#1",
+   "key": "a1u05d1.p1.x2",
+   "line": 1,
+   "row": "a1u05d1.p1.x2.l0",
+   "recording": "a1u05d1.p1.x2.l0",
+   "keys": [
+    "a1u05d1.p1.x2"
+   ],
+   "voice": "M",
+   "lang": "gn",
+   "kind": "dialogue",
+   "text": "Reikuaápa Ka'akupe?",
+   "said": "reikuaápa ka'akupe",
+   "sha": "becbb9123d6007b63c22b61cb63cea801ef015cd",
+   "from": 0,
+   "to": 1585,
+   "heard": {
+    "ivan": [
+     "Eikuaapa ka'akupe.",
+     "Eikuaapa ka'akupe.",
+     "Eeikuaa pa ka'akupe."
+    ],
+    "mms": [
+     "reikuaápa ka'akupe",
+     "reikuaápa ka'akupe",
+     "reikuaápa ka'akupe"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d1.p1.x2#2",
+   "key": "a1u05d1.p1.x2",
+   "line": 2,
+   "row": "a1u05d1.p1.x2.l1",
+   "recording": "a1u05d1.p1.x2.l1",
+   "keys": [
+    "a1u05d1.p1.x2"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "dialogue",
+   "text": "Héẽ, aikuaa.",
+   "said": "héẽ aikuaa",
+   "sha": "becbb9123d6007b63c22b61cb63cea801ef015cd",
+   "from": 1835,
+   "to": 3040,
+   "heard": {
+    "ivan": [
+     "He aikuaa.",
+     "He aikuaa.",
+     "He, aikuaa."
+    ],
+    "mms": [
+     "heẽ aikuaa",
+     "hẽẽ aikuaa",
+     "hẽ'ẽ aikuaa"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan",
+     "mms"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d1.p1.x3",
+   "key": "a1u05d1.p1.x3",
+   "line": null,
+   "row": "a1u05d1.p1.x3",
+   "recording": "a1u05d1.p1.x3",
+   "keys": [
+    "a1u05d1.p1.x3"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Aipota ka'ay.",
+   "said": "aipota ka'ay",
+   "sha": "e8ec3a0d67627d354f2a088abdda95719a6e903b",
+   "from": 0,
+   "to": 1340,
+   "heard": {
+    "ivan": [
+     "Aipotaka'ay",
+     "Aipotaka'ay",
+     "Aipotka'ay"
+    ],
+    "mms": [
+     "aipota ka'áy",
+     "aipota ka'áy",
+     "aipota ka'áy"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d1.p1.x4",
+   "key": "a1u05d1.p1.x4",
+   "line": null,
+   "row": "a1u05d1.p1.x4",
+   "recording": "a1u05d1.p1.x4",
+   "keys": [
+    "a1u05d1.p1.x4"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Che ru oiko Itauguápe ha omba'apo Paraguaýpe.",
+   "said": "che ru oiko itauguápe ha omba'apo paraguaýpe",
+   "sha": "c574a2ba3553d819392b33329ad0f610a9cbda6e",
+   "from": 0,
+   "to": 3430,
+   "heard": {
+    "ivan": [
+     "Cheru oiko itaguápe ha omba'apo paraguaýpe.",
+     "Cheru oiko itaguápe a omba'apo paraguaýpe.",
+     "Cheru oiko itaguápe a omba'apo paraguaýpe."
+    ],
+    "mms": [
+     "che ru oiko ita guápe ha omba'apoparaguaýpe",
+     "che ru oiko ita guápe ha omba'apopára guaýpe",
+     "che ru oiko ita guápe ha omba'apopára guaýpe"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan",
+     "mms"
+    ],
+    [
+     "ivan",
+     "mms"
+    ],
+    [
+     "ivan",
+     "mms"
+    ]
+   ],
+   "heard_wrong": true
+  },
+  {
+   "id": "a1u05d1.p1.x5",
+   "key": "a1u05d1.p1.x5",
+   "line": null,
+   "row": "a1u05d1.p1.x5",
+   "recording": "a1u05d1.p1.x5",
+   "keys": [
+    "a1u05d1.p1.x5"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Ndaipotái kamby.",
+   "said": "ndaipotái kamby",
+   "sha": "17c8cb9b95e42597356d0210ecf9729603f927b2",
+   "from": 0,
+   "to": 1280,
+   "heard": {
+    "ivan": [
+     "Ndaipotái kamby.",
+     "Ndaipotái kamby.",
+     "Ndaipotái kamby."
+    ],
+    "mms": [
+     "ndaipotái kamby",
+     "ndaipotái kamby",
+     "ndaipotái kamby"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d1.p2.x0",
+   "key": "a1u05d1.p2.x0",
+   "line": null,
+   "row": "a1u05d1.p2.x0",
+   "recording": "a1u05d1.p2.x0",
+   "keys": [
+    "a1u05d1.p2.x0"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Ore roiko Itauguápe.",
+   "said": "ore roiko itauguápe",
+   "sha": "aabdd585365249dae5edae1c08f83a514d29e9d2",
+   "from": 0,
+   "to": 1615,
+   "heard": {
+    "ivan": [
+     "Oréro iko ita uguápe.",
+     "Oréro oiko ita uguápe.",
+     "Oréro oiko ita uguápe."
+    ],
+    "mms": [
+     "ore roiko itauguápe",
+     "ore roiko itaguápe",
+     "ore roiko itaguápe"
+    ]
+   },
+   "wrong": [
+    [],
+    [
+     "ivan",
+     "mms"
+    ],
+    [
+     "ivan",
+     "mms"
+    ]
+   ],
+   "heard_wrong": true
+  },
+  {
+   "id": "a1u05d1.p2.x1",
+   "key": "a1u05d1.p2.x1",
+   "line": null,
+   "row": "a1u05d1.p2.x1",
+   "recording": "a1u05d1.p2.x1",
+   "keys": [
+    "a1u05d1.p2.x1"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Ñande jaikuaa Ka'akupe.",
+   "said": "ñande jaikuaa ka'akupe",
+   "sha": "a2645353abecea9f586053715e00090dd25fbf13",
+   "from": 0,
+   "to": 1807,
+   "heard": {
+    "ivan": [
+     "Ñande jaikuaa ka'akupe.",
+     "ñande jaikuaa ka'akupe.",
+     "ñande jaikuaa ka'akupe."
+    ],
+    "mms": [
+     "ñande jaikuaa ka'akupe",
+     "ñande jaikuaa ka'akupe",
+     "ñande jaikuaa ka'akupe"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d1.p2.x2",
+   "key": "a1u05d1.p2.x2",
+   "line": null,
+   "row": "a1u05d1.p2.x2",
+   "recording": "a1u05d1.p2.x2",
+   "keys": [
+    "a1u05d1.p2.x2"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Peikuaápa Itaugua?",
+   "said": "peikuaápa itaugua",
+   "sha": "a74aa20d105b395da6672e231937ad9ad49f221e",
+   "from": 0,
+   "to": 1445,
+   "heard": {
+    "ivan": [
+     "peikuaápa Itaugua.",
+     "peikuaápa Itaugua.",
+     "peikuaápa Itaugua."
+    ],
+    "mms": [
+     "peikuaápa itaugua",
+     "peikuaápa itaugua",
+     "peikuaápa itaugua"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d1.p2.x3",
+   "key": "a1u05d1.p2.x3",
+   "line": null,
+   "row": "a1u05d1.p2.x3",
+   "recording": "a1u05d1.p2.x3",
+   "keys": [
+    "a1u05d1.p2.x3"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Ñaikotevẽ kamby.",
+   "said": "ñaikotevẽ kamby",
+   "sha": "2533014c2552bfa8ca1c43898d17b70f8b07d308",
+   "from": 0,
+   "to": 1370,
+   "heard": {
+    "ivan": [
+     "ñaikotevekamby.",
+     "ñaikotevekamby.",
+     "ñaikoteve kamby."
+    ],
+    "mms": [
+     "ñaikoteve kamby",
+     "ñaikoteve kamby",
+     "ñaikoteve kamby"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d1.p2.x4",
+   "key": "a1u05d1.p2.x4",
+   "line": null,
+   "row": "a1u05d1.p2.x4",
+   "recording": "a1u05d1.p2.x4",
+   "keys": [
+    "a1u05d1.p2.x4"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Che membykuéra oiporu ko aranduka.",
+   "said": "che membykuéra oiporu ko aranduka",
+   "sha": "5c222fc71eeb6c83bf3a85f9f1a94f822006d935",
+   "from": 0,
+   "to": 2546,
+   "heard": {
+    "ivan": [
+     "Chemembykuéra oipurúko aranduka.",
+     "Chemembykuera oipuruko aranduka.",
+     "Chemembykuero oipuruko aranduka."
+    ],
+    "mms": [
+     "che membykuéra oiporu ko aranduka",
+     "che membykuéra oiporu ko aranduka",
+     "che membykuéra oiporu ko aranduka"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d1.p2.x5",
+   "key": "a1u05d1.p2.x5",
+   "line": null,
+   "row": "a1u05d1.p2.x5",
+   "recording": "a1u05d1.p2.x5",
+   "keys": [
+    "a1u05d1.p2.x5"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Naikotevẽi mba'eve.",
+   "said": "naikotevẽi mba'eve",
+   "sha": "57f90200d87493a3f7deeda2e72a794a7c69cc9f",
+   "from": 0,
+   "to": 1475,
+   "heard": {
+    "ivan": [
+     "Naiko tevéi mba'eve.",
+     "Naiko tevéi mba'eve.",
+     "Naiko tevéi mba'eve."
+    ],
+    "mms": [
+     "naikotevẽi mba'eve",
+     "naikotevẽi mba'eve",
+     "naikotevẽi mba'eve"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d1.w.aiko",
+   "key": "a1u05d1.w.aiko",
+   "line": null,
+   "row": "a1u05d1.w.aiko",
+   "recording": "a1u05d1.w.aiko",
+   "keys": [
+    "a1u05d1.w.aiko",
+    "a1u05d1.s2a",
+    "a1u05d1.s3b",
+    "a1u05d6.s0a"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "aiko",
+   "said": "aiko",
+   "sha": "8118988a21c16f6d55ca7f4811ad2186347fe758",
+   "from": 0,
+   "to": 790,
+   "heard": {
+    "ivan": [
+     "Aiko.",
+     "Aiko.",
+     "Aiko."
+    ],
+    "mms": [
+     "aiko",
+     "aico",
+     "aico"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d1.w.aikopora",
+   "key": "a1u05d1.w.aikopora",
+   "line": null,
+   "row": "a1u05d1.w.aikopora",
+   "recording": "a1u05d1.w.aikopora",
+   "keys": [
+    "a1u05d1.w.aikopora",
+    "a1u05d6.w.aikopora"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "Aiko porã",
+   "said": "aiko porã",
+   "sha": "17aa54410d1f59ab82415b70df8a872b505ec364",
+   "from": 0,
+   "to": 945,
+   "heard": {
+    "ivan": [
+     "Aiko porã.",
+     "Aiko porã.",
+     "Aiko porã."
+    ],
+    "mms": [
+     "aiko porã",
+     "aiko porã",
+     "aiko porã"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d1.w.aikuaa",
+   "key": "a1u05d1.w.aikuaa",
+   "line": null,
+   "row": "a1u05d1.w.aikuaa",
+   "recording": "a1u05d1.w.aikuaa",
+   "keys": [
+    "a1u05d1.w.aikuaa"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "aikuaa",
+   "said": "aikuaa",
+   "sha": "ea288a152f07453f3d22cf58da63108538846fd5",
+   "from": 0,
+   "to": 875,
+   "heard": {
+    "ivan": [
+     "Aikuaa.",
+     "Aikuaa.",
+     "Aikuaa."
+    ],
+    "mms": [
+     "aikuaa",
+     "aikua",
+     "aikuaa"
+    ]
+   },
+   "wrong": [
+    [],
+    [
+     "mms"
+    ],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d1.w.aipota",
+   "key": "a1u05d1.w.aipota",
+   "line": null,
+   "row": "a1u05d1.w.aipota",
+   "recording": "a1u05d1.w.aipota",
+   "keys": [
+    "a1u05d1.w.aipota"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "aipota",
+   "said": "aipota",
+   "sha": "ae03278093e4c5defed8290b8ff87dfe0271b8e4",
+   "from": 0,
+   "to": 940,
+   "heard": {
+    "ivan": [
+     "Aipota.",
+     "Aipota",
+     "Aipota"
+    ],
+    "mms": [
+     "aipota",
+     "aipota",
+     "aipota"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d1.w.aiporu",
+   "key": "a1u05d1.w.aiporu",
+   "line": null,
+   "row": "a1u05d1.w.aiporu",
+   "recording": "a1u05d1.w.aiporu",
+   "keys": [
+    "a1u05d1.w.aiporu"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "aiporu",
+   "said": "aiporu",
+   "sha": "d98a9ab55ad9394c4b481cfefe10003d3debb73e",
+   "from": 0,
+   "to": 925,
+   "heard": {
+    "ivan": [
+     "Aipuru.",
+     "Aipuru.",
+     "Aipuru."
+    ],
+    "mms": [
+     "aiporu",
+     "aiporuc",
+     "aiporu"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan",
+     "mms"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d1.w.aipytyvo",
+   "key": "a1u05d1.w.aipytyvo",
+   "line": null,
+   "row": "a1u05d1.w.aipytyvo",
+   "recording": "a1u05d1.w.aipytyvo",
+   "keys": [
+    "a1u05d1.w.aipytyvo"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "aipytyvõ",
+   "said": "aipytyvõ",
+   "sha": "728a458561e5778c438b65a8631ed951623a2f84",
+   "from": 0,
+   "to": 968,
+   "heard": {
+    "ivan": [
+     "Aipytyvõ.",
+     "Aipytyvõ.",
+     "Aipytyvõ."
+    ],
+    "mms": [
+     "aipytyvõ",
+     "aipytyvõ",
+     "aipytyvõ"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d1.w.aikoteve",
+   "key": "a1u05d1.w.aikoteve",
+   "line": null,
+   "row": "a1u05d1.w.aikoteve",
+   "recording": "a1u05d1.w.aikoteve",
+   "keys": [
+    "a1u05d1.w.aikoteve",
+    "a1u05d6.w.aikoteve"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "aikotevẽ",
+   "said": "aikotevẽ",
+   "sha": "8ba64c19af86b10cd0e2ce02f6ffd84a782cb2c7",
+   "from": 0,
+   "to": 1050,
+   "heard": {
+    "ivan": [
+     "Aikotevé.",
+     "Aikoteve.",
+     "Aikoteve."
+    ],
+    "mms": [
+     "aikotevẽ",
+     "aikotevẽ",
+     "aikotevẽ"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d1.s0b",
+   "key": "a1u05d1.s0b",
+   "line": null,
+   "row": "a1u05d1.s0b",
+   "recording": "a1u05d1.s0b",
+   "keys": [
+    "a1u05d1.s0b"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "aike",
+   "said": "aike",
+   "sha": "76cabc897cd1a45d7f950a792852592232bc479f",
+   "from": 0,
+   "to": 705,
+   "heard": {
+    "ivan": [
+     "Aike.",
+     "Aike.",
+     "Aike."
+    ],
+    "mms": [
+     "aike",
+     "aike",
+     "aike"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d1.s1b",
+   "key": "a1u05d1.s1b",
+   "line": null,
+   "row": "a1u05d1.s1b",
+   "recording": "a1u05d1.s1b",
+   "keys": [
+    "a1u05d1.s1b"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "oike",
+   "said": "oike",
+   "sha": "5d7ac9cb683c3e3fc43e72568eb37daaee6aa281",
+   "from": 0,
+   "to": 760,
+   "heard": {
+    "ivan": [
+     "Oike.",
+     "Oike.",
+     "Oike."
+    ],
+    "mms": [
+     "oike",
+     "oiqe",
+     "oike"
+    ]
+   },
+   "wrong": [
+    [],
+    [
+     "mms"
+    ],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d2.p1.x0",
+   "key": "a1u05d2.p1.x0",
+   "line": null,
+   "row": "a1u05d2.p1.x0",
+   "recording": "a1u05d2.p1.x0",
+   "keys": [
+    "a1u05d2.p1.x0"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Ára ha ára apu'ã ha akay'u.",
+   "said": "ára ha ára apu'ã ha akay'u",
+   "sha": "e4938a841c14fe6af7098f68d7d491f78cb7347e",
+   "from": 0,
+   "to": 2490,
+   "heard": {
+    "ivan": [
+     "Ára ha ára apo'ã ha akay'u.",
+     "Ára ha ára apo'ã ha akay'u.",
+     "Ára ha ára apu'ã ha akay'u."
+    ],
+    "mms": [
+     "ára ha ára apu'ã ha akay'u",
+     "ára ha ára apu'ã ha akay'u",
+     "ára ha ára apu'ã ha akay'u"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d2.p1.x1",
+   "key": "a1u05d2.p1.x1",
+   "line": null,
+   "row": "a1u05d2.p1.x1",
+   "recording": "a1u05d2.p1.x1",
+   "keys": [
+    "a1u05d2.p1.x1"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Che membykuéra opu'ã ha orambosa.",
+   "said": "che membykuéra opu'ã ha orambosa",
+   "sha": "4d2e577ee0c457a79839e7b6d1de6a0203dd148f",
+   "from": 0,
+   "to": 2445,
+   "heard": {
+    "ivan": [
+     "Chemembykuera opu'ã ha orambocsa.",
+     "Chemembykuera opu'ã ha orambosa.",
+     "Chemembykuera opu'ã ha orambosa."
+    ],
+    "mms": [
+     "che memby kuéra opu'ã ha orambosa",
+     "che memby kuéra opu'ã ha orambosa",
+     "che memby kuéra opu'ã ha orambosa"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d2.p1.x2",
+   "key": "a1u05d2.p1.x2",
+   "line": null,
+   "row": "a1u05d2.p1.x2",
+   "recording": "a1u05d2.p1.x2",
+   "keys": [
+    "a1u05d2.p1.x2"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Ñapu'ã ha jakay'u.",
+   "said": "ñapu'ã ha jakay'u",
+   "sha": "1c1f31a6e9264436c31653478bc7fc617dd4e613",
+   "from": 0,
+   "to": 1640,
+   "heard": {
+    "ivan": [
+     "Ñapu'ã ha jakay'u.",
+     "Ñapu'ã ha jakay'u.",
+     "ñapu'ã ha jakay'u."
+    ],
+    "mms": [
+     "ñapu'ã ha jakay'u",
+     "ñapu'ã ha jakay'u",
+     "ñapu'ã ha jakay'u"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d2.p1.x3",
+   "key": "a1u05d2.p1.x3",
+   "line": null,
+   "row": "a1u05d2.p1.x3",
+   "recording": "a1u05d2.p1.x3",
+   "keys": [
+    "a1u05d2.p1.x3"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Ore rorambosa ha roho mbo'ehaópe.",
+   "said": "ore rorambosa ha roho mbo'ehaópe",
+   "sha": "4bb3ad93bc3c6846b6bd0657ff2377f4eb433660",
+   "from": 0,
+   "to": 2635,
+   "heard": {
+    "ivan": [
+     "Orero rambosa a roho mboehaópe.",
+     "Orero rambosa a roho mboʼehaópe.",
+     "Orero rambosa a roho mboehaópe."
+    ],
+    "mms": [
+     "ore rorambosa ha roho mbo'ehaópe",
+     "ore rorambosa ha roho mbo'ehaópe",
+     "ore rorambosa ha roho mbo'ehaópe"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d2.p1.x4",
+   "key": "a1u05d2.p1.x4",
+   "line": null,
+   "row": "a1u05d2.p1.x4",
+   "recording": "a1u05d2.p1.x4",
+   "keys": [
+    "a1u05d2.p1.x4"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Che ru ojevy pyhare.",
+   "said": "che ru ojevy pyhare",
+   "sha": "367abc36abceb7bbc87d576d2305c3562c39576f",
+   "from": 0,
+   "to": 1700,
+   "heard": {
+    "ivan": [
+     "Icheru ojevy pyhare.",
+     "Iheru ojevy pyhare.",
+     "Iheru ojevy pyhare."
+    ],
+    "mms": [
+     "che ru ojevy pyhare",
+     "che ru ojevy pyhare",
+     "che ru ojevy pyhare"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d2.p1.x5",
+   "key": "a1u05d2.p1.x5",
+   "line": null,
+   "row": "a1u05d2.p1.x5",
+   "recording": "a1u05d2.p1.x5",
+   "keys": [
+    "a1u05d2.p1.x5"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Che sy okay'u ha che arambosa.",
+   "said": "che sy okay'u ha che arambosa",
+   "sha": "8e7fb0ab2c910ee75b1a2f458331b3831d9cdb71",
+   "from": 0,
+   "to": 2700,
+   "heard": {
+    "ivan": [
+     "Chesy okai'u ha che arambosa.",
+     "Chesy okai'u ha che arambosa.",
+     "Chesy okai'u ha che arambosa."
+    ],
+    "mms": [
+     "che sy okay'u ha che arambosa",
+     "che sy okay'u ha che arambosa",
+     "che sy okay'u ha che arambosa"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d2.p2.x0",
+   "key": "a1u05d2.p2.x0",
+   "line": null,
+   "row": "a1u05d2.p2.x0",
+   "recording": "a1u05d2.p2.x0",
+   "keys": [
+    "a1u05d2.p2.x0"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Pyhareve amba'apo mbo'ehaópe.",
+   "said": "pyhareve amba'apo mbo'ehaópe",
+   "sha": "8d861b3b03f7894fb74179ed6c7b447c458314e2",
+   "from": 0,
+   "to": 2595,
+   "heard": {
+    "ivan": [
+     "Pyhareve amba'apo mbo'ehaópe.",
+     "Pyhareve amba'apo mbo'ehaópe.",
+     "Pyhareve mba'apo mbo'ehaópe."
+    ],
+    "mms": [
+     "pyhareve amba'apo mbo'ehaópe",
+     "pyhareve amba'apo mbo'ehaópe",
+     "pyhareve amba'apo mbo'ehaópe"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d2.p2.x1",
+   "key": "a1u05d2.p2.x1",
+   "line": null,
+   "row": "a1u05d2.p2.x1",
+   "recording": "a1u05d2.p2.x1",
+   "keys": [
+    "a1u05d2.p2.x1"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Asaje ajevy ógape ha apytu'u.",
+   "said": "asaje ajevy ógape ha apytu'u",
+   "sha": "0332ca44644dd1015f4174eadbc7969ade81af21",
+   "from": 0,
+   "to": 2800,
+   "heard": {
+    "ivan": [
+     "Ha saje ajevy ogape ha apytu'u.",
+     "Hasaje ajevy ogape ha apytu'u.",
+     "Asaje ajevy ogape ha apytu'u."
+    ],
+    "mms": [
+     "ha saje ajevy ógape ha apytu'u",
+     "hasaje ajevy ógape ha apytu'u",
+     "hasaje ajevy ógape ha apytu'u"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan",
+     "mms"
+    ],
+    [
+     "ivan",
+     "mms"
+    ],
+    [
+     "mms"
+    ]
+   ],
+   "heard_wrong": true
+  },
+  {
+   "id": "a1u05d2.p2.x2",
+   "key": "a1u05d2.p2.x2",
+   "line": null,
+   "row": "a1u05d2.p2.x2",
+   "recording": "a1u05d2.p2.x2",
+   "keys": [
+    "a1u05d2.p2.x2"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Apu'ã, upéi akay'u.",
+   "said": "apu'ã upéi akay'u",
+   "sha": "123b77f0fc039cb10f3c56cb61b1ec7dca1dcc9e",
+   "from": 0,
+   "to": 1785,
+   "heard": {
+    "ivan": [
+     "Apu'ã, upéi akay'u.",
+     "Apu'ã, upéi akay'u.",
+     "Apu'ã upéi akay'u."
+    ],
+    "mms": [
+     "apu'ã upéi akay'u",
+     "apu'ã upéi akay'u",
+     "apu'ã upéi akay'u"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d2.p2.x3",
+   "key": "a1u05d2.p2.x3",
+   "line": null,
+   "row": "a1u05d2.p2.x3",
+   "recording": "a1u05d2.p2.x3",
+   "keys": [
+    "a1u05d2.p2.x3"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Akaru ha upéi ake.",
+   "said": "akaru ha upéi ake",
+   "sha": "ea682e87145d36f4139975b430469c24829e377a",
+   "from": 0,
+   "to": 2069,
+   "heard": {
+    "ivan": [
+     "Akaru a upéi ake.",
+     "Akaru a upéi ake.",
+     "Akaru a upéi ake."
+    ],
+    "mms": [
+     "akaru ha upéi ake",
+     "akaru ha upéi ake",
+     "akaru ha upéi ake"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d2.p2.x4",
+   "key": "a1u05d2.p2.x4",
+   "line": null,
+   "row": "a1u05d2.p2.x4",
+   "recording": "a1u05d2.p2.x4",
+   "keys": [
+    "a1u05d2.p2.x4"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Ka'aru aha távape.",
+   "said": "ka'aru aha távape",
+   "sha": "2bceb9fa970b55b4b3bde7e42196e4c6e629ac36",
+   "from": 0,
+   "to": 1485,
+   "heard": {
+    "ivan": [
+     "Ka'aru aha távape.",
+     "Ka'aru aha távape.",
+     "Ka'aru aha távape."
+    ],
+    "mms": [
+     "ka'aru'aha távape",
+     "ka'aru aha távape",
+     "ka'aru aha távape"
+    ]
+   },
+   "wrong": [
+    [
+     "mms"
+    ],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d2.p2.x5",
+   "key": "a1u05d2.p2.x5",
+   "line": null,
+   "row": "a1u05d2.p2.x5",
+   "recording": "a1u05d2.p2.x5",
+   "keys": [
+    "a1u05d2.p2.x5"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Pyhare añeno ha ake.",
+   "said": "pyhare añeno ha ake",
+   "sha": "62a8b26cb859bf69ef08a99e62559400272553f1",
+   "from": 0,
+   "to": 1950,
+   "heard": {
+    "ivan": [
+     "Pyhare añeno ha ake.",
+     "Pyhare, añeno ha ake.",
+     "Pyhare, añeno ha ake."
+    ],
+    "mms": [
+     "pyhare añeno ha ake",
+     "pyhare añeno ha ake",
+     "pyhare añeno ha ake"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d2.w.arahaara",
+   "key": "a1u05d2.w.arahaara",
+   "line": null,
+   "row": "a1u05d2.w.arahaara",
+   "recording": "a1u05d2.w.arahaara",
+   "keys": [
+    "a1u05d2.w.arahaara"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "ára ha ára",
+   "said": "ára ha ára",
+   "sha": "5f6fce513aec7aff46ba5befdc2e98840f3afda6",
+   "from": 0,
+   "to": 1075,
+   "heard": {
+    "ivan": [
+     "Ára ha ára.",
+     "Ára ha ára.",
+     "Ára ha ára."
+    ],
+    "mms": [
+     "ára ha ára",
+     "ára ha ára",
+     "ára ha ára"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d2.w.upei",
+   "key": "a1u05d2.w.upei",
+   "line": null,
+   "row": "a1u05d2.w.upei",
+   "recording": "a1u05d2.w.upei",
+   "keys": [
+    "a1u05d2.w.upei",
+    "a1u05d6.w.upei"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "upéi",
+   "said": "upéi",
+   "sha": "586650034eae8ad089230b5a53ae360bf25e5d21",
+   "from": 0,
+   "to": 795,
+   "heard": {
+    "ivan": [
+     "Upéi.",
+     "Upéi.",
+     "Upéi."
+    ],
+    "mms": [
+     "upéi",
+     "upéi",
+     "upéi"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d2.w.asaje",
+   "key": "a1u05d2.w.asaje",
+   "line": null,
+   "row": "a1u05d2.w.asaje",
+   "recording": "a1u05d2.w.asaje",
+   "keys": [
+    "a1u05d2.w.asaje"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "asaje",
+   "said": "asaje",
+   "sha": "7d3ad2183dd80c35607283511f485633a2b1b34f",
+   "from": 0,
+   "to": 795,
+   "heard": {
+    "ivan": [
+     "Asaje.",
+     "Asaje.",
+     "Asaje."
+    ],
+    "mms": [
+     "asale",
+     "asale",
+     "asale"
+    ]
+   },
+   "wrong": [
+    [
+     "mms"
+    ],
+    [
+     "mms"
+    ],
+    [
+     "mms"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d2.w.arambosa",
+   "key": "a1u05d2.w.arambosa",
+   "line": null,
+   "row": "a1u05d2.w.arambosa",
+   "recording": "a1u05d2.w.arambosa",
+   "keys": [
+    "a1u05d2.w.arambosa",
+    "a1u05d2.s0b",
+    "a1u05d6.w.arambosa",
+    "a1u05d6.s1b"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "arambosa",
+   "said": "arambosa",
+   "sha": "304b070925119c667bb7bc0427c8f23c4b7fe1c1",
+   "from": 0,
+   "to": 962,
+   "heard": {
+    "ivan": [
+     "Arambosa.",
+     "Arambosa.",
+     "Arambosa."
+    ],
+    "mms": [
+     "arambosa",
+     "arambosa",
+     "arambosa"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d2.w.akayu",
+   "key": "a1u05d2.w.akayu",
+   "line": null,
+   "row": "a1u05d2.w.akayu",
+   "recording": "a1u05d2.w.akayu",
+   "keys": [
+    "a1u05d2.w.akayu"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "akay'u",
+   "said": "akay'u",
+   "sha": "1f4081a1c2ac188e729fc9f232bd440a3d54367c",
+   "from": 0,
+   "to": 830,
+   "heard": {
+    "ivan": [
+     "Akay'u.",
+     "Akay'u.",
+     "Akay'u."
+    ],
+    "mms": [
+     "akay'u",
+     "akay'u",
+     "akay'u"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d2.w.ajevy",
+   "key": "a1u05d2.w.ajevy",
+   "line": null,
+   "row": "a1u05d2.w.ajevy",
+   "recording": "a1u05d2.w.ajevy",
+   "keys": [
+    "a1u05d2.w.ajevy"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "ajevy",
+   "said": "ajevy",
+   "sha": "70ea0b84b1ad3c616a3ce1a4802e41f94d532f98",
+   "from": 0,
+   "to": 842,
+   "heard": {
+    "ivan": [
+     "Ajevy.",
+     "Ajevy.",
+     "Ajevy."
+    ],
+    "mms": [
+     "ajevy",
+     "ajevy",
+     "ajevy"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d2.w.apytuu",
+   "key": "a1u05d2.w.apytuu",
+   "line": null,
+   "row": "a1u05d2.w.apytuu",
+   "recording": "a1u05d2.w.apytuu",
+   "keys": [
+    "a1u05d2.w.apytuu"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "apytu'u",
+   "said": "apytu'u",
+   "sha": "be902a41a6c2706d66a4aa3f054c9bbffeb19716",
+   "from": 0,
+   "to": 940,
+   "heard": {
+    "ivan": [
+     "Apytu'u.",
+     "Apytu'u.",
+     "Apy tu'u."
+    ],
+    "mms": [
+     "apytu'u",
+     "apytu'u",
+     "apytu'u"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d2.w.aneno",
+   "key": "a1u05d2.w.aneno",
+   "line": null,
+   "row": "a1u05d2.w.aneno",
+   "recording": "a1u05d2.w.aneno",
+   "keys": [
+    "a1u05d2.w.aneno",
+    "a1u05d2.s2b"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "añeno",
+   "said": "añeno",
+   "sha": "091a96027e3098e924960c5ffc8c9d0941b53aa6",
+   "from": 0,
+   "to": 885,
+   "heard": {
+    "ivan": [
+     "Añeno.",
+     "Añeno.",
+     "Añeno."
+    ],
+    "mms": [
+     "añeno",
+     "añeno",
+     "añeno"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d2.r1#1",
+   "key": "a1u05d2.r1",
+   "line": 1,
+   "row": "a1u05d2.r1.l0",
+   "recording": "a1u05d2.r1.l0",
+   "keys": [
+    "a1u05d2.r1"
+   ],
+   "voice": "N",
+   "lang": "es",
+   "kind": "item",
+   "text": "Ana cuenta su día. ¿Qué hace a la siesta?",
+   "said": "ana cuenta su día qué hace a la siesta",
+   "sha": "ca0038dc46015a6af82b1f87995141ae33b593f2",
+   "from": 0,
+   "to": 2990,
+   "heard": {
+    "mms": [
+     "ana cuenta su día qué hace la siesta",
+     "ana cuenta su día qué hace a la siesta",
+     "ana cuenta su día qué hace la siesta"
+    ]
+   },
+   "wrong": [
+    [
+     "mms"
+    ],
+    [],
+    [
+     "mms"
+    ]
+   ],
+   "heard_wrong": true
+  },
+  {
+   "id": "a1u05d2.r1#2",
+   "key": "a1u05d2.r1",
+   "line": 2,
+   "row": "a1u05d2.r1.l1",
+   "recording": "a1u05d2.r1.l1",
+   "keys": [
+    "a1u05d2.r1"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "item",
+   "text": "Pyhareve apu'ã ha arambosa.",
+   "said": "pyhareve apu'ã ha arambosa",
+   "sha": "ca0038dc46015a6af82b1f87995141ae33b593f2",
+   "from": 3240,
+   "to": 5380,
+   "heard": {
+    "ivan": [
+     "Pyhareve apu'ã, ha arambosa.",
+     "Pyhareve apu'ã, ha arambosa.",
+     "Pyhareve apu'ã ha arambosa."
+    ],
+    "mms": [
+     "pyhareve apu'ã ha arambosa",
+     "pyhareve apu'ã ha arambosa",
+     "pyhareve apu'ã ha arambosa"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d2.r1#3",
+   "key": "a1u05d2.r1",
+   "line": 3,
+   "row": "a1u05d2.r1.l2",
+   "recording": "a1u05d2.r1.l2",
+   "keys": [
+    "a1u05d2.r1"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "item",
+   "text": "Upéi aha mbo'ehaópe.",
+   "said": "upéi aha mbo'ehaópe",
+   "sha": "ca0038dc46015a6af82b1f87995141ae33b593f2",
+   "from": 5630,
+   "to": 7375,
+   "heard": {
+    "ivan": [
+     "Upéi aha mbo'ehaópe.",
+     "Upéi aha mbo'ehaópe.",
+     "Upéi aha mbo'ehaópe."
+    ],
+    "mms": [
+     "upéi aha mbo'ehaópe",
+     "upéi ahambo'ehaópe",
+     "upéi ahambo'ehaópe"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d2.r1#4",
+   "key": "a1u05d2.r1",
+   "line": 4,
+   "row": "a1u05d2.r1.l3",
+   "recording": "a1u05d2.r1.l3",
+   "keys": [
+    "a1u05d2.r1"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "item",
+   "text": "Asaje ajevy ógape.",
+   "said": "asaje ajevy ógape",
+   "sha": "ca0038dc46015a6af82b1f87995141ae33b593f2",
+   "from": 7625,
+   "to": 9481,
+   "heard": {
+    "ivan": [
+     "Asaje ajevy ógape.",
+     "Asaje ajevy ógape.",
+     "Asaje ajevy ogape."
+    ],
+    "mms": [
+     "asaje ajevy ógape",
+     "asaje ajevy ógape",
+     "asaje ajevy ógape"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d2.r1#5",
+   "key": "a1u05d2.r1",
+   "line": 5,
+   "row": "a1u05d2.r1.l4",
+   "recording": "a1u05d2.r1.l4",
+   "keys": [
+    "a1u05d2.r1"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "item",
+   "text": "Pyhare chekane'õ ha añeno.",
+   "said": "pyhare chekane'õ ha añeno",
+   "sha": "ca0038dc46015a6af82b1f87995141ae33b593f2",
+   "from": 9731,
+   "to": 11936,
+   "heard": {
+    "ivan": [
+     "Pyharéichekane'o ha añeno.",
+     "Pyharéiche kane'oha añeno.",
+     "Pyhareiche kane'oha añeno."
+    ],
+    "mms": [
+     "pyhare che kane'õ ha añeno",
+     "pyhare che kane'õ ha añeno",
+     "pyhare che kane'õ ha añeno"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d2.r1#6",
+   "key": "a1u05d2.r1",
+   "line": 6,
+   "row": "a1u05d2.r1.l5",
+   "recording": "a1u05d2.r1.l5",
+   "keys": [
+    "a1u05d2.r1"
+   ],
+   "voice": "N",
+   "lang": "es",
+   "kind": "item",
+   "text": "¿Qué hace Ana a la siesta?",
+   "said": "qué hace ana a la siesta",
+   "sha": "ca0038dc46015a6af82b1f87995141ae33b593f2",
+   "from": 12186,
+   "to": 13591,
+   "heard": {
+    "mms": [
+     "qué hacean a la siestra",
+     "qué hacean a la siestra",
+     "qué hacean a la siestra"
+    ]
+   },
+   "wrong": [
+    [
+     "mms"
+    ],
+    [
+     "mms"
+    ],
+    [
+     "mms"
+    ]
+   ],
+   "heard_wrong": true
+  },
+  {
+   "id": "a1u05d3.p1.x0#1",
+   "key": "a1u05d3.p1.x0",
+   "line": 1,
+   "row": "a1u05d3.p1.x0.l0",
+   "recording": "a1u05d3.p1.x0.l0",
+   "keys": [
+    "a1u05d3.p1.x0"
+   ],
+   "voice": "M",
+   "lang": "gn",
+   "kind": "dialogue",
+   "text": "Mba'e aravópa reho mbo'ehaópe?",
+   "said": "mba'e aravópa reho mbo'ehaópe",
+   "sha": "1604106aa60013521408b710ad5804baeb29b25a",
+   "from": 0,
+   "to": 2270,
+   "heard": {
+    "ivan": [
+     "Mba'e aravópa reho mboeha upe.",
+     "Mba'e aravópa reho mboeha upe.",
+     "Mba'e aravópa reho mboeha upe."
+    ],
+    "mms": [
+     "mba'e ára avópa reho mbo'ehaópe",
+     "mba'e ára vópa reho mbo'ehaópe",
+     "mba'e ára vópa reho mbo'ehaópe"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan",
+     "mms"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d3.p1.x0#2",
+   "key": "a1u05d3.p1.x0",
+   "line": 2,
+   "row": "a1u05d3.p1.x0.l1",
+   "recording": "a1u05d3.p1.x0.l1",
+   "keys": [
+    "a1u05d3.p1.x0"
+   ],
+   "voice": "F",
+   "lang": "es",
+   "kind": "dialogue",
+   "text": "Siete.",
+   "said": "siete",
+   "sha": "1604106aa60013521408b710ad5804baeb29b25a",
+   "from": 2520,
+   "to": 3310,
+   "heard": {
+    "mms": [
+     "siete",
+     "siete",
+     "siete"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d3.p1.x1#1",
+   "key": "a1u05d3.p1.x1",
+   "line": 1,
+   "row": "a1u05d3.p1.x1.l0",
+   "recording": "a1u05d3.p1.x1.l0",
+   "keys": [
+    "a1u05d3.p1.x1"
+   ],
+   "voice": "M",
+   "lang": "gn",
+   "kind": "dialogue",
+   "text": "Mba'e aravópa rekaru?",
+   "said": "mba'e aravópa rekaru",
+   "sha": "d1700a2460cdb43d531b47bb47e7c36ffbe3c974",
+   "from": 0,
+   "to": 1720,
+   "heard": {
+    "ivan": [
+     "Mba'e aravópa rekaru.",
+     "Mba'e aravópa rekaru.",
+     "Mba'e aravoópa rekaru."
+    ],
+    "mms": [
+     "mba'e ára vópa rekaru",
+     "mba'e ára vópa rekaru",
+     "mba'e ára vópa rekaru"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d3.p1.x1#2",
+   "key": "a1u05d3.p1.x1",
+   "line": 2,
+   "row": "a1u05d3.p1.x1.l1",
+   "recording": "a1u05d3.p1.x1.l1",
+   "keys": [
+    "a1u05d3.p1.x1"
+   ],
+   "voice": "F",
+   "lang": "es",
+   "kind": "dialogue",
+   "text": "Doce.",
+   "said": "doce",
+   "sha": "d1700a2460cdb43d531b47bb47e7c36ffbe3c974",
+   "from": 1970,
+   "to": 2775,
+   "heard": {
+    "mms": [
+     "doce",
+     "doce",
+     "doce"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d3.p1.x2",
+   "key": "a1u05d3.p1.x2",
+   "line": null,
+   "row": "a1u05d3.p1.x2",
+   "recording": "a1u05d3.p1.x2",
+   "keys": [
+    "a1u05d3.p1.x2"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Asaje apytu'u peteĩ aravo.",
+   "said": "asaje apytu'u peteĩ aravo",
+   "sha": "a8552047486e0f856a431e80282ca9ceabf8aae5",
+   "from": 0,
+   "to": 2235,
+   "heard": {
+    "ivan": [
+     "Asaje apytu'u peteĩ aravo.",
+     "Asa je apytu'u peteĩ aravo.",
+     "Asaje apytu'u peteĩ aravo."
+    ],
+    "mms": [
+     "asaje apytu'u peteĩ aravo",
+     "asaje apytu'u peteĩ aravo",
+     "asaje apytu'u peteĩ aravo"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d3.p1.x3",
+   "key": "a1u05d3.p1.x3",
+   "line": null,
+   "row": "a1u05d3.p1.x3",
+   "recording": "a1u05d3.p1.x3",
+   "keys": [
+    "a1u05d3.p1.x3"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Aguata mokõi aravo.",
+   "said": "aguata mokõi aravo",
+   "sha": "4d00ecb4a7d0dec7796a208e243289008b74fe2f",
+   "from": 0,
+   "to": 1649,
+   "heard": {
+    "ivan": [
+     "Aguata mokõi, aravo",
+     "Aguata mokõi, aravo",
+     "Aguata mokõi aravo"
+    ],
+    "mms": [
+     "aguata mokõi aravo",
+     "aguata mokõi aravo",
+     "aguata mokõi aravo"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d3.p1.x4",
+   "key": "a1u05d3.p1.x4",
+   "line": null,
+   "row": "a1u05d3.p1.x4",
+   "recording": "a1u05d3.p1.x4",
+   "keys": [
+    "a1u05d3.p1.x4"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Ajahu po aravo'i.",
+   "said": "ajahu po aravo'i",
+   "sha": "1e15521619a28801da3a53fbb42697e61e4e9a1f",
+   "from": 0,
+   "to": 1590,
+   "heard": {
+    "ivan": [
+     "Ajahú po aravo'i.",
+     "Ajahú po aravo'i.",
+     "Ajahú po aravo'i."
+    ],
+    "mms": [
+     "ajahu po'ára vo'i",
+     "ajahu po'ára vo'i",
+     "ajahu po'ára vo'i"
+    ]
+   },
+   "wrong": [
+    [
+     "mms"
+    ],
+    [
+     "mms"
+    ],
+    [
+     "mms"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d3.p2.x0",
+   "key": "a1u05d3.p2.x0",
+   "line": null,
+   "row": "a1u05d3.p2.x0",
+   "recording": "a1u05d3.p2.x0",
+   "keys": [
+    "a1u05d3.p2.x0"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Ko jueves aha távape.",
+   "said": "ko huéves aha távape",
+   "sha": "2639a9fa80d5063e8651de73d53a0c821a83e9bb",
+   "from": 0,
+   "to": 1850,
+   "heard": {
+    "ivan": [
+     "Kohu evesa aha távape.",
+     "Kohu evesaaha távape.",
+     "Kohu evesaaha távape."
+    ],
+    "mms": [
+     "ko huéves aha távape",
+     "ko huéves aha távape",
+     "ko huéves aha távape"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d3.p2.x1",
+   "key": "a1u05d3.p2.x1",
+   "line": null,
+   "row": "a1u05d3.p2.x1",
+   "recording": "a1u05d3.p2.x1",
+   "keys": [
+    "a1u05d3.p2.x1"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Ko jueves ka'aru aguata távape.",
+   "said": "ko huéves ka'aru aguata távape",
+   "sha": "2f400ed774e619d1624c64a2b4c8a38aad61b936",
+   "from": 0,
+   "to": 2186,
+   "heard": {
+    "ivan": [
+     "Kohueve kaʼaru agua ta távape.",
+     "Kohueve Kaʼaru vagua ta távape.",
+     "Kohueve Ka'aru vagua ta távape."
+    ],
+    "mms": [
+     "ko huéve ka'aru aguata távape",
+     "kohuéve ka'aru aguata távape",
+     "ko huéve ka'aru aguata távape"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan",
+     "mms"
+    ],
+    [
+     "ivan",
+     "mms"
+    ],
+    [
+     "ivan",
+     "mms"
+    ]
+   ],
+   "heard_wrong": true
+  },
+  {
+   "id": "a1u05d3.p2.x2",
+   "key": "a1u05d3.p2.x2",
+   "line": null,
+   "row": "a1u05d3.p2.x2",
+   "recording": "a1u05d3.p2.x2",
+   "keys": [
+    "a1u05d3.p2.x2"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Jueves pyhareve amba'apo mbo'ehaópe.",
+   "said": "huéves pyhareve amba'apo mbo'ehaópe",
+   "sha": "7d3361c7d024db4c94ea95068a8e14678b1b9144",
+   "from": 0,
+   "to": 2882,
+   "heard": {
+    "ivan": [
+     "Kuelvespyhareve amba'apo mboehaópe.",
+     "Kuevespyhareve, amba'apo mboehaópe.",
+     "Kuevespyhareve, amba'apo mboehaópe."
+    ],
+    "mms": [
+     "juéves pyhareve amba'apo mbo'ehaópe",
+     "juéves pyhareve amba'apo mbo'ehaópe",
+     "juéves pyhareve amba'apo mbo'ehaópe"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d3.p2.x3",
+   "key": "a1u05d3.p2.x3",
+   "line": null,
+   "row": "a1u05d3.p2.x3",
+   "recording": "a1u05d3.p2.x3",
+   "keys": [
+    "a1u05d3.p2.x3"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Ko arapokõindy amba'apo heta.",
+   "said": "ko arapokõindy amba'apo heta",
+   "sha": "c6f6b74a687dda85d3174ef8b49747948ce94441",
+   "from": 0,
+   "to": 2290,
+   "heard": {
+    "ivan": [
+     "Ko'ára pokoi ndy amba'apo heta.",
+     "Ko ára pokoi ndy amba'apo heta",
+     "Ko ára pokoi ndy amba'apo heta"
+    ],
+    "mms": [
+     "ko ára pokõindy amba'apo heta",
+     "ko ára pokõindy amba'apo heta",
+     "ko ára pokõindy amba'apo heta"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d3.p2.x4",
+   "key": "a1u05d3.p2.x4",
+   "line": null,
+   "row": "a1u05d3.p2.x4",
+   "recording": "a1u05d3.p2.x4",
+   "keys": [
+    "a1u05d3.p2.x4"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Arete jave ndahái mbo'ehaópe.",
+   "said": "arete jave ndahái mbo'ehaópe",
+   "sha": "6bf696acfa040203e9321f68276123f7d007789d",
+   "from": 0,
+   "to": 2252,
+   "heard": {
+    "ivan": [
+     "Arete jave ndahai mboʼehaópe.",
+     "Arete jave, ndahai mboʼehaópe.",
+     "Arete jave, ndahai mboʼeha ópe."
+    ],
+    "mms": [
+     "arete jave ndahái mbo'ehaópe",
+     "arete jave ndahái mbo'ehaópe",
+     "arete jave ndahái mbo'ehaópe"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d3.w.aravo",
+   "key": "a1u05d3.w.aravo",
+   "line": null,
+   "row": "a1u05d3.w.aravo",
+   "recording": "a1u05d3.w.aravo",
+   "keys": [
+    "a1u05d3.w.aravo",
+    "a1u05d6.w.aravo"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "aravo",
+   "said": "aravo",
+   "sha": "beef10d5791ef4f30e4bb568c64fe6eee23ab3f3",
+   "from": 0,
+   "to": 735,
+   "heard": {
+    "ivan": [
+     "Aravo.",
+     "Aravo.",
+     "Aravo."
+    ],
+    "mms": [
+     "arao",
+     "arao",
+     "árao"
+    ]
+   },
+   "wrong": [
+    [
+     "mms"
+    ],
+    [
+     "mms"
+    ],
+    [
+     "mms"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d3.w.aravoi",
+   "key": "a1u05d3.w.aravoi",
+   "line": null,
+   "row": "a1u05d3.w.aravoi",
+   "recording": "a1u05d3.w.aravoi",
+   "keys": [
+    "a1u05d3.w.aravoi"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "aravo'i",
+   "said": "aravo'i",
+   "sha": "6222377753d42e67e6c70d4a6d8e1d4b0274c32c",
+   "from": 0,
+   "to": 885,
+   "heard": {
+    "ivan": [
+     "Aravo'i.",
+     "Aravo 'i.",
+     "Aravo 'i"
+    ],
+    "mms": [
+     "ára vo'i",
+     "arabo'i",
+     "aravo'i"
+    ]
+   },
+   "wrong": [
+    [],
+    [
+     "mms"
+    ],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d3.w.arapokoindy",
+   "key": "a1u05d3.w.arapokoindy",
+   "line": null,
+   "row": "a1u05d3.w.arapokoindy",
+   "recording": "a1u05d3.w.arapokoindy",
+   "keys": [
+    "a1u05d3.w.arapokoindy"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "arapokõindy",
+   "said": "arapokõindy",
+   "sha": "d245400976b4f70a495d604ba4523b890032fa0e",
+   "from": 0,
+   "to": 1170,
+   "heard": {
+    "ivan": [
+     "Arapokõi ndy.",
+     "Arapokõi ndy",
+     "Arapokóõi ndy"
+    ],
+    "mms": [
+     "ára pokõindy",
+     "ára pokõindy",
+     "ára pokõi ndy"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d3.w.mbaearavopa",
+   "key": "a1u05d3.w.mbaearavopa",
+   "line": null,
+   "row": "a1u05d3.w.mbaearavopa",
+   "recording": "a1u05d3.w.mbaearavopa",
+   "keys": [
+    "a1u05d3.w.mbaearavopa"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "Mba'e aravópa?",
+   "said": "mba'e aravópa",
+   "sha": "909468f8d37479bcac49c47c256a40e237f88d9d",
+   "from": 0,
+   "to": 1322,
+   "heard": {
+    "ivan": [
+     "Mba'e aravópa.",
+     "Mba'e aravópa.",
+     "Mba'e aravópa."
+    ],
+    "mms": [
+     "mba'e áravópa",
+     "mba'e áravópa",
+     "mba'e áravópa"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d3.w.kojueves",
+   "key": "a1u05d3.w.kojueves",
+   "line": null,
+   "row": "a1u05d3.w.kojueves",
+   "recording": "a1u05d3.w.kojueves",
+   "keys": [
+    "a1u05d3.w.kojueves"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "ko jueves",
+   "said": "ko huéves",
+   "sha": "7f5c604e608c25823693fcf48133eb004d1cfd88",
+   "from": 0,
+   "to": 965,
+   "heard": {
+    "ivan": [
+     "Mohu eve.",
+     "Mohueve.",
+     "Kohu eve."
+    ],
+    "mms": [
+     "ko juéves",
+     "ko juéves",
+     "ko juéves"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d3.w.asajepyte",
+   "key": "a1u05d3.w.asajepyte",
+   "line": null,
+   "row": "a1u05d3.w.asajepyte",
+   "recording": "a1u05d3.w.asajepyte",
+   "keys": [
+    "a1u05d3.w.asajepyte",
+    "a1u05d3.s2b"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "asajepyte",
+   "said": "asajepyte",
+   "sha": "19aae76826f7184271dbbaea7c711899e9efd411",
+   "from": 0,
+   "to": 1055,
+   "heard": {
+    "ivan": [
+     "Asa jepyte.",
+     "Asajepyte.",
+     "Asa jepyte."
+    ],
+    "mms": [
+     "asajepyte",
+     "asajepyte",
+     "asajepyte"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d3.w.pyharepyte",
+   "key": "a1u05d3.w.pyharepyte",
+   "line": null,
+   "row": "a1u05d3.w.pyharepyte",
+   "recording": "a1u05d3.w.pyharepyte",
+   "keys": [
+    "a1u05d3.w.pyharepyte"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "pyharepyte",
+   "said": "pyharepyte",
+   "sha": "f8843bbdb2c325115a9fa824370a9deafc55471d",
+   "from": 0,
+   "to": 1035,
+   "heard": {
+    "ivan": [
+     "Pyharepyte.",
+     "Pyharepyte.",
+     "Pyharepyte."
+    ],
+    "mms": [
+     "pyharepyte",
+     "pyharepyte",
+     "pyharepyte"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d3.w.arete",
+   "key": "a1u05d3.w.arete",
+   "line": null,
+   "row": "a1u05d3.w.arete",
+   "recording": "a1u05d3.w.arete",
+   "keys": [
+    "a1u05d3.w.arete",
+    "a1u05d3.s1b"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "arete",
+   "said": "arete",
+   "sha": "3aad38c8deb24b9b46d270e2acc2e5296cb85da8",
+   "from": 0,
+   "to": 800,
+   "heard": {
+    "ivan": [
+     "Arete.",
+     "Arete.",
+     "Arete."
+    ],
+    "mms": [
+     "arete",
+     "arete",
+     "arete"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d3.s0a",
+   "key": "a1u05d3.s0a",
+   "line": null,
+   "row": "a1u05d3.s0a",
+   "recording": "a1u05d3.s0a",
+   "keys": [
+    "a1u05d3.s0a",
+    "a1u05d6.s2a"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "ára",
+   "said": "ára",
+   "sha": "b0eaac6a002f8e70c113ae40fcbd5d960193d97b",
+   "from": 0,
+   "to": 590,
+   "heard": {
+    "ivan": [
+     "Ara.",
+     "Ára",
+     "Ára."
+    ],
+    "mms": [
+     "ára",
+     "ára",
+     "ára"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d3.s3a",
+   "key": "a1u05d3.s3a",
+   "line": null,
+   "row": "a1u05d3.s3a",
+   "recording": "a1u05d3.s3a",
+   "keys": [
+    "a1u05d3.s3a"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "pyhare",
+   "said": "pyhare",
+   "sha": "3803e51939255a8a9ef858d50b328fbf10e492ce",
+   "from": 0,
+   "to": 722,
+   "heard": {
+    "ivan": [
+     "Pyhare.",
+     "Pyhare.",
+     "Pyhare."
+    ],
+    "mms": [
+     "pyhare",
+     "pyhare",
+     "pyhare"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d4.p1.x0#1",
+   "key": "a1u05d4.p1.x0",
+   "line": 1,
+   "row": "a1u05d4.p1.x0.l0",
+   "recording": "a1u05d4.p1.x0.l0",
+   "keys": [
+    "a1u05d4.p1.x0"
+   ],
+   "voice": "M",
+   "lang": "gn",
+   "kind": "dialogue",
+   "text": "Moõpa opyta ñemuha?",
+   "said": "moõpa opyta ñemuha",
+   "sha": "b2d3f867f8b8b8b08b2a34103c34a6d3c2dbe3a6",
+   "from": 0,
+   "to": 1799,
+   "heard": {
+    "ivan": [
+     "Movopa opyta jemuhã.",
+     "Movopa opyta jemuhã.",
+     "Movópa opyta jemuhã."
+    ],
+    "mms": [
+     "moõpa opyta ñemuha",
+     "moõpa opyta ñemuha",
+     "moõpa opyta ñemuha"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d4.p1.x0#2",
+   "key": "a1u05d4.p1.x0",
+   "line": 2,
+   "row": "a1u05d4.p1.x0.l1",
+   "recording": "a1u05d4.p1.x0.l1",
+   "keys": [
+    "a1u05d4.p1.x0"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "dialogue",
+   "text": "Upépe. Hi'ag̃ui.",
+   "said": "upépe hi'aguĩ",
+   "sha": "b2d3f867f8b8b8b08b2a34103c34a6d3c2dbe3a6",
+   "from": 2049,
+   "to": 4102,
+   "heard": {
+    "ivan": [
+     "Upépehe 'amũi.",
+     "Upépe he 'ami.",
+     "Upépe he 'amũi."
+    ],
+    "mms": [
+     "upépe he'aguĩ",
+     "upépe he'aguĩ",
+     "upépe he'aguĩ"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan",
+     "mms"
+    ],
+    [
+     "ivan",
+     "mms"
+    ],
+    [
+     "ivan",
+     "mms"
+    ]
+   ],
+   "heard_wrong": true
+  },
+  {
+   "id": "a1u05d4.p1.x1",
+   "key": "a1u05d4.p1.x1",
+   "line": null,
+   "row": "a1u05d4.p1.x1",
+   "recording": "a1u05d4.p1.x1",
+   "keys": [
+    "a1u05d4.p1.x1"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Moõpa opyta tupão? Hi'ag̃ui ko'águi.",
+   "said": "moõpa opyta tupão hi'aguĩ ko'águi",
+   "sha": "e74c42a65bcfd0795298522055c0f3d0b526bc3e",
+   "from": 0,
+   "to": 3320,
+   "heard": {
+    "ivan": [
+     "Moõpa opyta tupã oi'ag̃ui koágui",
+     "Moõpa opyta tupã ohi 'ag̃ui koágui",
+     "Moõpa opyta tupã ohi'agui ko águi"
+    ],
+    "mms": [
+     "moõpa opyta tupaõ hi'aguĩ ko'águi",
+     "moõpa opyta tupaõ hi'aguĩ ko'águi",
+     "moõpa opyta tupaõ hi'aguĩ ko'águi"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d4.p1.x2#1",
+   "key": "a1u05d4.p1.x2",
+   "line": 1,
+   "row": "a1u05d4.p1.x2.l0",
+   "recording": "a1u05d4.p1.x2.l0",
+   "keys": [
+    "a1u05d4.p1.x2"
+   ],
+   "voice": "M",
+   "lang": "gn",
+   "kind": "dialogue",
+   "text": "Moõpa oĩ ne membykuéra?",
+   "said": "moõpa oĩ ne membykuéra",
+   "sha": "07beb76b17de2f1691ccf37bd3d341a165ffdac2",
+   "from": 0,
+   "to": 1893,
+   "heard": {
+    "ivan": [
+     "Moõpavomi nemembykuéra.",
+     "Moõpavomi nemembykuéra.",
+     "Moõpavomi, nemembykuéra."
+    ],
+    "mms": [
+     "moõpa oĩ ne memby kuéra",
+     "moõpa oĩ ne memby kuéra",
+     "moõpa oĩ ne memby kuéra"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d4.p1.x2#2",
+   "key": "a1u05d4.p1.x2",
+   "line": 2,
+   "row": "a1u05d4.p1.x2.l1",
+   "recording": "a1u05d4.p1.x2.l1",
+   "keys": [
+    "a1u05d4.p1.x2"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "dialogue",
+   "text": "Oĩ ógape.",
+   "said": "oĩ ógape",
+   "sha": "07beb76b17de2f1691ccf37bd3d341a165ffdac2",
+   "from": 2143,
+   "to": 3238,
+   "heard": {
+    "ivan": [
+     "Oĩ ogape.",
+     "Oĩ, ogape.",
+     "Oĩ ogape."
+    ],
+    "mms": [
+     "oĩ ógape",
+     "oĩ ógape",
+     "oĩ ógape"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d4.p1.x3",
+   "key": "a1u05d4.p1.x3",
+   "line": null,
+   "row": "a1u05d4.p1.x3",
+   "recording": "a1u05d4.p1.x3",
+   "keys": [
+    "a1u05d4.p1.x3"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Moõpa oĩ che aranduka? Upépe.",
+   "said": "moõpa oĩ che aranduka upépe",
+   "sha": "97dd45c823e66c7d8a4b3c41d5f8631ed9c8a86c",
+   "from": 0,
+   "to": 2984,
+   "heard": {
+    "ivan": [
+     "Moõpa oĩ che aranduka upépe.",
+     "Moõpa oĩ che aranduka upépe.",
+     "Moõpa oĩ che aranduka upépe."
+    ],
+    "mms": [
+     "moõpa oĩ che aranduka upépe",
+     "moõpa oĩ che aranduka upépe",
+     "moõpa oĩ che aranduka upépe"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d4.p1.x4",
+   "key": "a1u05d4.p1.x4",
+   "line": null,
+   "row": "a1u05d4.p1.x4",
+   "recording": "a1u05d4.p1.x4",
+   "keys": [
+    "a1u05d4.p1.x4"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Che róga opyta Itauguápe.",
+   "said": "che róga opyta itauguápe",
+   "sha": "f604ac617e9e0efe60002f9a6b00406c076fbf58",
+   "from": 0,
+   "to": 2135,
+   "heard": {
+    "ivan": [
+     "Cheróga opyta itauguápe.",
+     "Cheróga opyta itauguápe.",
+     "Cheróga opyta itauguápe."
+    ],
+    "mms": [
+     "che róga opyta itauguápe",
+     "che róga opyta itauguápe",
+     "che róga opyta itauguápe"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d4.p2.x0#1",
+   "key": "a1u05d4.p2.x0",
+   "line": 1,
+   "row": "a1u05d4.p2.x0.l0",
+   "recording": "a1u05d4.p2.x0.l0",
+   "keys": [
+    "a1u05d4.p2.x0"
+   ],
+   "voice": "M",
+   "lang": "gn",
+   "kind": "dialogue",
+   "text": "Araka'épa reho mbo'ehaópe?",
+   "said": "araka'épa reho mbo'ehaópe",
+   "sha": "2c36d4f6e4914ec18c983dcc5c27039c87e794fb",
+   "from": 0,
+   "to": 1964,
+   "heard": {
+    "ivan": [
+     "Araka'épare ho mboeha upe.",
+     "Araka'épa reiho mboeha upe.",
+     "Áraka'epa reho mboeha upe."
+    ],
+    "mms": [
+     "araka'épa reho mbo'ehaópe",
+     "araka'épa reho mbo'ehaúpe",
+     "araka'épa reho mbo'ehaópe"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan",
+     "mms"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d4.p2.x0#2",
+   "key": "a1u05d4.p2.x0",
+   "line": 2,
+   "row": "a1u05d4.p2.x0.l1",
+   "recording": "a1u05d4.p2.x0.l1",
+   "keys": [
+    "a1u05d4.p2.x0"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "dialogue",
+   "text": "Pyhareve, ára ha ára.",
+   "said": "pyhareve ára ha ára",
+   "sha": "2c36d4f6e4914ec18c983dcc5c27039c87e794fb",
+   "from": 2214,
+   "to": 4029,
+   "heard": {
+    "ivan": [
+     "Pyhareve ára ha ára.",
+     "Pyhareve ára ha ára.",
+     "Pyhareve ára ha ára."
+    ],
+    "mms": [
+     "pyhareve ára ha ára",
+     "pyhareve ára ha ára",
+     "pyhareve ára ha ára"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d4.p2.x1#1",
+   "key": "a1u05d4.p2.x1",
+   "line": 1,
+   "row": "a1u05d4.p2.x1.l0",
+   "recording": "a1u05d4.p2.x1.l0",
+   "keys": [
+    "a1u05d4.p2.x1"
+   ],
+   "voice": "M",
+   "lang": "gn",
+   "kind": "dialogue",
+   "text": "Araka'épa og̃uahẽ nde ru?",
+   "said": "araka'épa oguahẽ nde ru",
+   "sha": "3856de5e6de10f990f893a639e9d5a00174d3e48",
+   "from": 0,
+   "to": 1780,
+   "heard": {
+    "ivan": [
+     "Araka'épa og̃uahẽ nderu.",
+     "Araka'épa og̃uahe nderu.",
+     "Ára ka'épa og̃uahe nderu."
+    ],
+    "mms": [
+     "araka'épa oguahẽ nde ru",
+     "araka'épa oguahẽ nde ru",
+     "araka'épa oguahẽ nde ru"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d4.p2.x1#2",
+   "key": "a1u05d4.p2.x1",
+   "line": 2,
+   "row": "a1u05d4.p2.x1.l1",
+   "recording": "a1u05d4.p2.x1.l1",
+   "keys": [
+    "a1u05d4.p2.x1"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "dialogue",
+   "text": "Pyhare.",
+   "said": "pyhare",
+   "sha": "3856de5e6de10f990f893a639e9d5a00174d3e48",
+   "from": 2030,
+   "to": 2795,
+   "heard": {
+    "ivan": [
+     "Pyhare.",
+     "Pyhare.",
+     "Pyhare."
+    ],
+    "mms": [
+     "pyhare",
+     "pyhare",
+     "pyhare"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d4.p2.x2#1",
+   "key": "a1u05d4.p2.x2",
+   "line": 1,
+   "row": "a1u05d4.p2.x2.l0",
+   "recording": "a1u05d4.p2.x2.l0",
+   "keys": [
+    "a1u05d4.p2.x2"
+   ],
+   "voice": "M",
+   "lang": "gn",
+   "kind": "dialogue",
+   "text": "Araka'épa rekaru?",
+   "said": "araka'épa rekaru",
+   "sha": "6d61824f1e7193f425ccfeb9afa8dfe864b003e7",
+   "from": 0,
+   "to": 1525,
+   "heard": {
+    "ivan": [
+     "Araka'épa reikaru.",
+     "Araka'épa reikaru.",
+     "Araka'épa reikaru."
+    ],
+    "mms": [
+     "araka'épa rekaru",
+     "araka'épa rekaru",
+     "araka'épa rekaru"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d4.p2.x2#2",
+   "key": "a1u05d4.p2.x2",
+   "line": 2,
+   "row": "a1u05d4.p2.x2.l1",
+   "recording": "a1u05d4.p2.x2.l1",
+   "keys": [
+    "a1u05d4.p2.x2"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "dialogue",
+   "text": "Asajepyte.",
+   "said": "asajepyte",
+   "sha": "6d61824f1e7193f425ccfeb9afa8dfe864b003e7",
+   "from": 1775,
+   "to": 2975,
+   "heard": {
+    "ivan": [
+     "Asa jepyte.",
+     "Asa rjepyte.",
+     "Asa jepyte."
+    ],
+    "mms": [
+     "asajepyte",
+     "asajepyte",
+     "asajepyte"
+    ]
+   },
+   "wrong": [
+    [],
+    [
+     "ivan"
+    ],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d4.p2.x3#1",
+   "key": "a1u05d4.p2.x3",
+   "line": 1,
+   "row": "a1u05d4.p2.x3.l0",
+   "recording": "a1u05d4.p2.x3.l0",
+   "keys": [
+    "a1u05d4.p2.x3"
+   ],
+   "voice": "M",
+   "lang": "gn",
+   "kind": "dialogue",
+   "text": "Araka'épa repytu'u?",
+   "said": "araka'épa repytu'u",
+   "sha": "6613209d006dd3bde50ab49d186a8eb3cdc4833e",
+   "from": 0,
+   "to": 1640,
+   "heard": {
+    "ivan": [
+     "Araka'épa reipytu'u.",
+     "Araka'épa reipytu'u.",
+     "Araka'épa reipytu'u."
+    ],
+    "mms": [
+     "araka'épa repytu'u",
+     "araka'épa repytu'u",
+     "araka'épa repytu'u"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d4.p2.x3#2",
+   "key": "a1u05d4.p2.x3",
+   "line": 2,
+   "row": "a1u05d4.p2.x3.l1",
+   "recording": "a1u05d4.p2.x3.l1",
+   "keys": [
+    "a1u05d4.p2.x3"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "dialogue",
+   "text": "Asaje.",
+   "said": "asaje",
+   "sha": "6613209d006dd3bde50ab49d186a8eb3cdc4833e",
+   "from": 1890,
+   "to": 2780,
+   "heard": {
+    "ivan": [
+     "Asare.",
+     "Asaje.",
+     "Asaje."
+    ],
+    "mms": [
+     "asale",
+     "asale",
+     "asale"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan",
+     "mms"
+    ],
+    [
+     "mms"
+    ],
+    [
+     "mms"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d4.w.arakaepa",
+   "key": "a1u05d4.w.arakaepa",
+   "line": null,
+   "row": "a1u05d4.w.arakaepa",
+   "recording": "a1u05d4.w.arakaepa",
+   "keys": [
+    "a1u05d4.w.arakaepa",
+    "a1u05d6.w.arakaepa"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "Araka'épa?",
+   "said": "araka'épa",
+   "sha": "0c011343026bdc21eb7f1582e5fa018a8b4d751a",
+   "from": 0,
+   "to": 1075,
+   "heard": {
+    "ivan": [
+     "Araka'épa.",
+     "Araka'épa.",
+     "Araka'épa."
+    ],
+    "mms": [
+     "araka'épa",
+     "araka'épa",
+     "araka'épa"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d4.w.upepe",
+   "key": "a1u05d4.w.upepe",
+   "line": null,
+   "row": "a1u05d4.w.upepe",
+   "recording": "a1u05d4.w.upepe",
+   "keys": [
+    "a1u05d4.w.upepe"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "upépe",
+   "said": "upépe",
+   "sha": "6bef8b53dae012d4d28784a71eb28e525a4d90b9",
+   "from": 0,
+   "to": 875,
+   "heard": {
+    "ivan": [
+     "Upépe.",
+     "Upépe.",
+     "Upépe."
+    ],
+    "mms": [
+     "upépe",
+     "upépe",
+     "upépe"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d4.w.mombyry",
+   "key": "a1u05d4.w.mombyry",
+   "line": null,
+   "row": "a1u05d4.w.mombyry",
+   "recording": "a1u05d4.w.mombyry",
+   "keys": [
+    "a1u05d4.w.mombyry"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "mombyry",
+   "said": "mombyry",
+   "sha": "f31990a0c7ca6b3484eedbdb6c18222759998396",
+   "from": 0,
+   "to": 805,
+   "heard": {
+    "ivan": [
+     "Mombyry.",
+     "Mombyry.",
+     "Mombyry."
+    ],
+    "mms": [
+     "mombyry",
+     "mombyry",
+     "mombyry"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d4.w.tupao",
+   "key": "a1u05d4.w.tupao",
+   "line": null,
+   "row": "a1u05d4.w.tupao",
+   "recording": "a1u05d4.w.tupao",
+   "keys": [
+    "a1u05d4.w.tupao"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "tupão",
+   "said": "tupão",
+   "sha": "4d42536369d4f0ad6a2fa95282130b75ace0e90b",
+   "from": 0,
+   "to": 795,
+   "heard": {
+    "ivan": [
+     "Tupao.",
+     "Tupao.",
+     "Tupao."
+    ],
+    "mms": [
+     "tupao",
+     "tupao",
+     "tu pao"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d4.w.tape",
+   "key": "a1u05d4.w.tape",
+   "line": null,
+   "row": "a1u05d4.w.tape",
+   "recording": "a1u05d4.w.tape",
+   "keys": [
+    "a1u05d4.w.tape"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "tape",
+   "said": "tape",
+   "sha": "d7d351be6fbaf268aa4a4629268dd281586f9174",
+   "from": 0,
+   "to": 595,
+   "heard": {
+    "ivan": [
+     "Sape.",
+     "Iape.",
+     "Iape."
+    ],
+    "mms": [
+     "tape",
+     "tape",
+     "tape"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d4.w.nemuha",
+   "key": "a1u05d4.w.nemuha",
+   "line": null,
+   "row": "a1u05d4.w.nemuha",
+   "recording": "a1u05d4.w.nemuha",
+   "keys": [
+    "a1u05d4.w.nemuha"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "ñemuha",
+   "said": "ñemuha",
+   "sha": "23b4a3b3757fa1d0a1d4216c921367c6a21c5577",
+   "from": 0,
+   "to": 878,
+   "heard": {
+    "ivan": [
+     "ñemuha.",
+     "ññemoha.",
+     "ññemoha."
+    ],
+    "mms": [
+     "ñemuha",
+     "ñemuha",
+     "ñemuha"
+    ]
+   },
+   "wrong": [
+    [],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d4.w.opyta",
+   "key": "a1u05d4.w.opyta",
+   "line": null,
+   "row": "a1u05d4.w.opyta",
+   "recording": "a1u05d4.w.opyta",
+   "keys": [
+    "a1u05d4.w.opyta"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "opyta",
+   "said": "opyta",
+   "sha": "9452ee35025a0422db6762e6d72b543ded19724e",
+   "from": 0,
+   "to": 905,
+   "heard": {
+    "ivan": [
+     "Opyta.",
+     "Opyta.",
+     "Opyta."
+    ],
+    "mms": [
+     "opyta",
+     "opyta",
+     "opyta"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d4.s0a",
+   "key": "a1u05d4.s0a",
+   "line": null,
+   "row": "a1u05d4.s0a",
+   "recording": "a1u05d1.s2b",
+   "keys": [
+    "a1u05d4.s0a",
+    "a1u05d6.s3a"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "oiko",
+   "said": "oiko",
+   "sha": "89b0caf216073eeb595b85b1faf438ab3b4ac997",
+   "from": 0,
+   "to": 775,
+   "heard": {
+    "ivan": [
+     "Oiko.",
+     "Oiko.",
+     "Oiko."
+    ],
+    "mms": [
+     "oiko",
+     "oiko",
+     "oiko"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d4.r1#1",
+   "key": "a1u05d4.r1",
+   "line": 1,
+   "row": "a1u05d4.r1.l0",
+   "recording": "a1u05d4.r1.l0",
+   "keys": [
+    "a1u05d4.r1"
+   ],
+   "voice": "N",
+   "lang": "es",
+   "kind": "item",
+   "text": "En la plaza de Itauguá, frente a la iglesia. Moisés le pregunta a Ana. ¿Dónde queda el negocio?",
+   "said": "en la plaza de itauguá frente a la iglesia moisés le pregunta a ana dónde queda el negocio",
+   "sha": "3a27946121002b4a6017800e1ff2fab6936ca114",
+   "from": 0,
+   "to": 6465,
+   "heard": {
+    "mms": [
+     "e la plaza de itaguá frente a la iglesia moisés le pregunta ana dónde quela el negocio",
+     "e la plaza de itaguá frente a la iglesia moisés le pregunta ana dónde quela el negocio",
+     "ela plaza de itaguá frente a la iglesia moisés le pregunta ana dónde queda el negocio"
+    ]
+   },
+   "wrong": [
+    [
+     "mms"
+    ],
+    [
+     "mms"
+    ],
+    [
+     "mms"
+    ]
+   ],
+   "heard_wrong": true
+  },
+  {
+   "id": "a1u05d4.r1#2",
+   "key": "a1u05d4.r1",
+   "line": 2,
+   "row": "a1u05d4.r1.l1",
+   "recording": "a1u05d4.p1.x0.l0",
+   "keys": [
+    "a1u05d4.r1"
+   ],
+   "voice": "M",
+   "lang": "gn",
+   "kind": "item",
+   "text": "Moõpa opyta ñemuha?",
+   "said": "moõpa opyta ñemuha",
+   "sha": "3a27946121002b4a6017800e1ff2fab6936ca114",
+   "from": 6715,
+   "to": 8514,
+   "heard": {
+    "ivan": [
+     "Movopa opyta jemuhã.",
+     "Movópa opyta jemuhã.",
+     "Movopa opyta jemuhã."
+    ],
+    "mms": [
+     "moõpa opyta ñemuha",
+     "moõpa opyta ñemuha",
+     "moõpa opyta ñemuha"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d4.r1#3",
+   "key": "a1u05d4.r1",
+   "line": 3,
+   "row": "a1u05d4.r1.l2",
+   "recording": "a1u05d4.p1.x0.l1",
+   "keys": [
+    "a1u05d4.r1"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "item",
+   "text": "Upépe. Hi'ag̃ui.",
+   "said": "upépe hi'aguĩ",
+   "sha": "3a27946121002b4a6017800e1ff2fab6936ca114",
+   "from": 8764,
+   "to": 10817,
+   "heard": {
+    "ivan": [
+     "Upépehe 'amũi.",
+     "Upépe he 'ami.",
+     "Upépe he 'ami."
+    ],
+    "mms": [
+     "upépe he'aguĩ",
+     "upépe he'aguĩ",
+     "upépe he'aguĩ"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan",
+     "mms"
+    ],
+    [
+     "ivan",
+     "mms"
+    ],
+    [
+     "ivan",
+     "mms"
+    ]
+   ],
+   "heard_wrong": true
+  },
+  {
+   "id": "a1u05d4.r1#4",
+   "key": "a1u05d4.r1",
+   "line": 4,
+   "row": "a1u05d4.r1.l3",
+   "recording": "a1u05d4.r1.l3",
+   "keys": [
+    "a1u05d4.r1"
+   ],
+   "voice": "M",
+   "lang": "gn",
+   "kind": "item",
+   "text": "Aguyje. Ha nde, araka'épa reho mbo'ehaópe?",
+   "said": "aguyje ha nde araka'épa reho mbo'ehaópe",
+   "sha": "3a27946121002b4a6017800e1ff2fab6936ca114",
+   "from": 11067,
+   "to": 14568,
+   "heard": {
+    "ivan": [
+     "Avuje a nde araka'épa reho mbo'ehaúpe.",
+     "Avuje a nde araka'épa reho mbo'ehaúpe.",
+     "Avuje a nde araka'épa reho mboehaúpe."
+    ],
+    "mms": [
+     "aguje ha nde araka'épa reho mbo'ehaópe",
+     "aguje ha nde araka'épa reho mbo'ehaúpe",
+     "aguje ha nde araka'épa reho mbo'ehaópe"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan",
+     "mms"
+    ],
+    [
+     "ivan",
+     "mms"
+    ],
+    [
+     "ivan",
+     "mms"
+    ]
+   ],
+   "heard_wrong": true
+  },
+  {
+   "id": "a1u05d4.r1#5",
+   "key": "a1u05d4.r1",
+   "line": 5,
+   "row": "a1u05d4.r1.l4",
+   "recording": "a1u05d4.p2.x0.l1",
+   "keys": [
+    "a1u05d4.r1"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "item",
+   "text": "Pyhareve, ára ha ára.",
+   "said": "pyhareve ára ha ára",
+   "sha": "3a27946121002b4a6017800e1ff2fab6936ca114",
+   "from": 14818,
+   "to": 16633,
+   "heard": {
+    "ivan": [
+     "Pyhareve ára ha ára.",
+     "Pyhareve ára ha ára.",
+     "Pyhareve ára ha ára."
+    ],
+    "mms": [
+     "pyhareve ára ha ára",
+     "pyhareve ára ha ára",
+     "pyhareve ára ha ára"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d4.r1#6",
+   "key": "a1u05d4.r1",
+   "line": 6,
+   "row": "a1u05d4.r1.l5",
+   "recording": "a1u05d4.r1.l5",
+   "keys": [
+    "a1u05d4.r1"
+   ],
+   "voice": "N",
+   "lang": "es",
+   "kind": "item",
+   "text": "¿Dónde queda el negocio?",
+   "said": "dónde queda el negocio",
+   "sha": "3a27946121002b4a6017800e1ff2fab6936ca114",
+   "from": 16883,
+   "to": 18568,
+   "heard": {
+    "mms": [
+     "dónde queda el negocio",
+     "dónde queda el negocio",
+     "dónde queda el negocio"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d5.p1.x0",
+   "key": "a1u05d5.p1.x0",
+   "line": null,
+   "row": "a1u05d5.p1.x0",
+   "recording": "a1u05d5.p1.x0",
+   "keys": [
+    "a1u05d5.p1.x0"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Aipytyvõ che sýpe.",
+   "said": "aipytyvõ che sýpe",
+   "sha": "b45f5b7ab5ee0a5c0a5bb92860709f693d547ab9",
+   "from": 0,
+   "to": 1562,
+   "heard": {
+    "ivan": [
+     "Aipytyva ochesýpe",
+     "Aipytyva ochesýpe",
+     "Aipytyva ochesýpe"
+    ],
+    "mms": [
+     "aipytyvõ che sýpe",
+     "aipytyvõ che sýpe",
+     "aipytyvõ che sýpe"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d5.p1.x1",
+   "key": "a1u05d5.p1.x1",
+   "line": null,
+   "row": "a1u05d5.p1.x1",
+   "recording": "a1u05d5.p1.x1",
+   "keys": [
+    "a1u05d5.p1.x1"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Ahenói che jarýipe.",
+   "said": "ahenói che jarýipe",
+   "sha": "2891ebe1cd8bb5f2e35745d3aa03c48de1475f2d",
+   "from": 0,
+   "to": 1570,
+   "heard": {
+    "ivan": [
+     "Ahenoiche jarýipe.",
+     "Ahenoiche jarýipe.",
+     "Ahenoiche jarýipe."
+    ],
+    "mms": [
+     "ahenói che jarýipe",
+     "ahenói che jarýipe",
+     "ahenói che jarýipe"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d5.p1.x2",
+   "key": "a1u05d5.p1.x2",
+   "line": null,
+   "row": "a1u05d5.p1.x2",
+   "recording": "a1u05d5.p1.x2",
+   "keys": [
+    "a1u05d5.p1.x2"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Ame'ẽ chipa mitãme.",
+   "said": "ame'ẽ chipa mitãme",
+   "sha": "22c01dbd5a5bc5e071eb78305011298252e15497",
+   "from": 0,
+   "to": 1590,
+   "heard": {
+    "ivan": [
+     "Ame'ẽichipa mitáme.",
+     "Ame'ẽichipa mitáme.",
+     "Ame'ẽichipa mitáme."
+    ],
+    "mms": [
+     "ame'ẽ chepa mitãme",
+     "ame'ẽ chepa mitãme",
+     "ame'ẽ chepa mitãme"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan",
+     "mms"
+    ],
+    [
+     "ivan",
+     "mms"
+    ],
+    [
+     "ivan",
+     "mms"
+    ]
+   ],
+   "heard_wrong": true
+  },
+  {
+   "id": "a1u05d5.p1.x3",
+   "key": "a1u05d5.p1.x3",
+   "line": null,
+   "row": "a1u05d5.p1.x3",
+   "recording": "a1u05d5.p1.x3",
+   "keys": [
+    "a1u05d5.p1.x3"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Aporandu che angirũme.",
+   "said": "aporandu che angirũme",
+   "sha": "d035099f1ccf1ab96c58084c3069a855c800e2f0",
+   "from": 0,
+   "to": 1605,
+   "heard": {
+    "ivan": [
+     "Aporanduche angirũme.",
+     "Aporanduche angirũme",
+     "Aporanduche a ngiróme."
+    ],
+    "mms": [
+     "aporandu che angirũme",
+     "aporandu che angirũme",
+     "aporandu che angirũme"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d5.p1.x4",
+   "key": "a1u05d5.p1.x4",
+   "line": null,
+   "row": "a1u05d5.p1.x4",
+   "recording": "a1u05d5.p1.x4",
+   "keys": [
+    "a1u05d5.p1.x4"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Amomaitei che sy ha che rúpe.",
+   "said": "amomaitei che sy ha che rúpe",
+   "sha": "b58809fe23bb35dc9ff369dd41f9e647e0feadb5",
+   "from": 0,
+   "to": 2435,
+   "heard": {
+    "ivan": [
+     "Amomaitei chesy ha cherúpe.",
+     "Amomaitei chesy ha cherúpe.",
+     "Amomaitei chesy ha cherúpe."
+    ],
+    "mms": [
+     "amomaitei che sy ha che rúpe",
+     "amomaitei che sy ha che rúpe",
+     "amomaitei che sy ha che rúpe"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d5.p1.x5",
+   "key": "a1u05d5.p1.x5",
+   "line": null,
+   "row": "a1u05d5.p1.x5",
+   "recording": "a1u05d5.p1.x5",
+   "keys": [
+    "a1u05d5.p1.x5"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Ahecha mitãnguérape korapýpe.",
+   "said": "ahecha mitãnguérape korapýpe",
+   "sha": "a412fb2bd25878366127d351fd5493961cd61ba8",
+   "from": 0,
+   "to": 2140,
+   "heard": {
+    "ivan": [
+     "Ahecha mitãnguerape korapýpe.",
+     "Ahecha mitãnguerape korapýpe.",
+     "Ahecha mitãnguerape korapýpe."
+    ],
+    "mms": [
+     "ahecha mitã nguéra pe korapýpe",
+     "ahecha mitã nguéra pe korapýpe",
+     "ahecha mitã nguéra pe korapýpe"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d5.p2.x0",
+   "key": "a1u05d5.p2.x0",
+   "line": null,
+   "row": "a1u05d5.p2.x0",
+   "recording": "a1u05d5.p2.x0",
+   "keys": [
+    "a1u05d5.p2.x0"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Che sy ome'ẽ chéve ka'ay.",
+   "said": "che sy ome'ẽ chéve ka'ay",
+   "sha": "d5f185670d1963ba2e6cf6c5602610d73d441b4c",
+   "from": 0,
+   "to": 2170,
+   "heard": {
+    "ivan": [
+     "Chesy ome'ẽ chéve ka'ay.",
+     "Chesy ome'ẽichéve ka'ay.",
+     "Chesy ome'ẽ chéve ka'ay."
+    ],
+    "mms": [
+     "che sy ome'ẽ chéve ka'áy",
+     "che sy ome'ẽ chéve ka'áy",
+     "che sy ome'ẽ chéve ka'áy"
+    ]
+   },
+   "wrong": [
+    [],
+    [
+     "ivan"
+    ],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d5.p2.x1",
+   "key": "a1u05d5.p2.x1",
+   "line": null,
+   "row": "a1u05d5.p2.x1",
+   "recording": "a1u05d5.p2.x1",
+   "keys": [
+    "a1u05d5.p2.x1"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Ame'ẽ ndéve ko aranduka.",
+   "said": "ame'ẽ ndéve ko aranduka",
+   "sha": "2a8f78dd718c20237fdd21498d56efcac35dc3a6",
+   "from": 0,
+   "to": 2005,
+   "heard": {
+    "ivan": [
+     "Ame'ẽndereko aranduka.",
+     "Ame'ẽndere ko aranduka.",
+     "Ame'ẽndereko aranduka."
+    ],
+    "mms": [
+     "ame'ẽ ndéve ko aranduka",
+     "ame'ẽ ndéve ko aranduka",
+     "ame'ẽ ndéve ko aranduka"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d5.p2.x2",
+   "key": "a1u05d5.p2.x2",
+   "line": null,
+   "row": "a1u05d5.p2.x2",
+   "recording": "a1u05d5.p2.x2",
+   "keys": [
+    "a1u05d5.p2.x2"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Aipytyvõ ichupe.",
+   "said": "aipytyvõ ichupe",
+   "sha": "437f617f951b04064b8bedc190b92607d44d3e4c",
+   "from": 0,
+   "to": 1425,
+   "heard": {
+    "ivan": [
+     "Aipytyvo ichupe.",
+     "Aipytyvo ichupe.",
+     "Aipytyvo ichupe"
+    ],
+    "mms": [
+     "aipytyvõ ichupe",
+     "aipytyvo ichupe",
+     "aipytyvõ ichupe"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d5.p2.x3",
+   "key": "a1u05d5.p2.x3",
+   "line": null,
+   "row": "a1u05d5.p2.x3",
+   "recording": "a1u05d5.p2.x3",
+   "keys": [
+    "a1u05d5.p2.x3"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Ame'ẽ ichupe chipa.",
+   "said": "ame'ẽ ichupe chipa",
+   "sha": "c59af58ce864b05286e8d7c1604046ba7b04f173",
+   "from": 0,
+   "to": 1490,
+   "heard": {
+    "ivan": [
+     "Ame'e ichupe chipa.",
+     "Ame'e hichupe chipa.",
+     "Ame'eichupe chipa."
+    ],
+    "mms": [
+     "ame'ẽ'ichupe chipa",
+     "ame'ẽ ichupe chipa",
+     "ame'ẽ ichupe chipa"
+    ]
+   },
+   "wrong": [
+    [
+     "mms"
+    ],
+    [
+     "ivan"
+    ],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d5.p2.x4",
+   "key": "a1u05d5.p2.x4",
+   "line": null,
+   "row": "a1u05d5.p2.x4",
+   "recording": "a1u05d5.p2.x4",
+   "keys": [
+    "a1u05d5.p2.x4"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "example",
+   "text": "Moisés oporandu chéve.",
+   "said": "moisés oporandu chéve",
+   "sha": "7bfad2574b3154dd8f90fa6e22d44bb8bab4436b",
+   "from": 0,
+   "to": 1795,
+   "heard": {
+    "ivan": [
+     "Moisesoporandu chéve.",
+     "Moisesoporandu chéve.",
+     "Moisesoporandu chéve."
+    ],
+    "mms": [
+     "moisés oporandu chéve",
+     "moisés oporandu chéve",
+     "moisés oporandu chéve"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d5.p2.x5#1",
+   "key": "a1u05d5.p2.x5",
+   "line": 1,
+   "row": "a1u05d5.p2.x5.l0",
+   "recording": "a1u05d5.p2.x5.l0",
+   "keys": [
+    "a1u05d5.p2.x5"
+   ],
+   "voice": "M",
+   "lang": "gn",
+   "kind": "dialogue",
+   "text": "Mávapepa rehenói?",
+   "said": "mávapepa rehenói",
+   "sha": "aa1cbbe24a694ae7f96931d6d694b8f2ff75eeb3",
+   "from": 0,
+   "to": 1475,
+   "heard": {
+    "ivan": [
+     "Mávape pa rehenoi.",
+     "Mávape pa rehenoi.",
+     "Mavape pa rehenoi."
+    ],
+    "mms": [
+     "mávapepa rehenói",
+     "mávapepa rehenói",
+     "mávapepa rehenói"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d5.p2.x5#2",
+   "key": "a1u05d5.p2.x5",
+   "line": 2,
+   "row": "a1u05d5.p2.x5.l1",
+   "recording": "a1u05d5.p2.x5.l1",
+   "keys": [
+    "a1u05d5.p2.x5"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "dialogue",
+   "text": "Che jarýipe.",
+   "said": "che jarýipe",
+   "sha": "aa1cbbe24a694ae7f96931d6d694b8f2ff75eeb3",
+   "from": 1725,
+   "to": 2768,
+   "heard": {
+    "ivan": [
+     "Chejarýipe.",
+     "Chejaripe.",
+     "Chejaripe."
+    ],
+    "mms": [
+     "che jarýipe",
+     "che jarýipe",
+     "che jarýipe"
+    ]
+   },
+   "wrong": [
+    [],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d5.w.ahecha",
+   "key": "a1u05d5.w.ahecha",
+   "line": null,
+   "row": "a1u05d5.w.ahecha",
+   "recording": "a1u05d5.w.ahecha",
+   "keys": [
+    "a1u05d5.w.ahecha"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "ahecha",
+   "said": "ahecha",
+   "sha": "987541227a484ae1b71911900d06b9d97d06c31d",
+   "from": 0,
+   "to": 890,
+   "heard": {
+    "ivan": [
+     "Aheicha.",
+     "Aheicha.",
+     "Aheicha."
+    ],
+    "mms": [
+     "ahecha",
+     "ahécha",
+     "ahecha"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d5.w.ahenoi",
+   "key": "a1u05d5.w.ahenoi",
+   "line": null,
+   "row": "a1u05d5.w.ahenoi",
+   "recording": "a1u05d5.w.ahenoi",
+   "keys": [
+    "a1u05d5.w.ahenoi",
+    "a1u05d6.w.ahenoi"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "ahenói",
+   "said": "ahenói",
+   "sha": "63e4fe4411665220f9a0afe753dd0536aadb9ac4",
+   "from": 0,
+   "to": 875,
+   "heard": {
+    "ivan": [
+     "Ahenói.",
+     "Ahenói.",
+     "Ahenói."
+    ],
+    "mms": [
+     "ahenói",
+     "ahenói",
+     "ahenói"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d5.w.amee",
+   "key": "a1u05d5.w.amee",
+   "line": null,
+   "row": "a1u05d5.w.amee",
+   "recording": "a1u05d5.w.amee",
+   "keys": [
+    "a1u05d5.w.amee"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "ame'ẽ",
+   "said": "ame'ẽ",
+   "sha": "5f3047c53acba1981ffa728b373917bd971475df",
+   "from": 0,
+   "to": 795,
+   "heard": {
+    "ivan": [
+     "Ame'ẽ.",
+     "Ame'ẽ.",
+     "Ame'ẽ."
+    ],
+    "mms": [
+     "ame'ẽ",
+     "ame'ẽ",
+     "ame'ẽ"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d5.w.amomaitei",
+   "key": "a1u05d5.w.amomaitei",
+   "line": null,
+   "row": "a1u05d5.w.amomaitei",
+   "recording": "a1u05d5.w.amomaitei",
+   "keys": [
+    "a1u05d5.w.amomaitei"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "amomaitei",
+   "said": "amomaitei",
+   "sha": "2d75d06e175836faa1f1d612592ba12b043fbc97",
+   "from": 0,
+   "to": 1090,
+   "heard": {
+    "ivan": [
+     "Amomaitei.",
+     "Amomaitei.",
+     "Amomaitei."
+    ],
+    "mms": [
+     "amomaitei",
+     "amomaitei",
+     "amomaitei"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d5.w.aporandu",
+   "key": "a1u05d5.w.aporandu",
+   "line": null,
+   "row": "a1u05d5.w.aporandu",
+   "recording": "a1u05d5.w.aporandu",
+   "keys": [
+    "a1u05d5.w.aporandu"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "aporandu",
+   "said": "aporandu",
+   "sha": "6c6e0f2661d5a7873010c18661515a8632b2cfd1",
+   "from": 0,
+   "to": 1114,
+   "heard": {
+    "ivan": [
+     "Aporandu.",
+     "Aporandu.",
+     "Aporandu."
+    ],
+    "mms": [
+     "aporandu",
+     "aporandu",
+     "aporandu"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d5.w.cheve",
+   "key": "a1u05d5.w.cheve",
+   "line": null,
+   "row": "a1u05d5.w.cheve",
+   "recording": "a1u05d5.w.cheve",
+   "keys": [
+    "a1u05d5.w.cheve"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "chéve",
+   "said": "chéve",
+   "sha": "4f4eb4168f558153dda12c16fe1c7112b71309b4",
+   "from": 0,
+   "to": 730,
+   "heard": {
+    "ivan": [
+     "Chéve.",
+     "Chéve.",
+     "Chéve."
+    ],
+    "mms": [
+     "chéve",
+     "chéve",
+     "chéve"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d5.w.ichupe",
+   "key": "a1u05d5.w.ichupe",
+   "line": null,
+   "row": "a1u05d5.w.ichupe",
+   "recording": "a1u05d5.w.ichupe",
+   "keys": [
+    "a1u05d5.w.ichupe"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "ichupe",
+   "said": "ichupe",
+   "sha": "5d6c89cb14d4d3fc8637f57e3c40ee2056fd0d68",
+   "from": 0,
+   "to": 724,
+   "heard": {
+    "ivan": [
+     "Ichupe.",
+     "Ichupe.",
+     "Ichupe."
+    ],
+    "mms": [
+     "ichupe",
+     "ichupe",
+     "ichupe"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d5.w.mavapepa",
+   "key": "a1u05d5.w.mavapepa",
+   "line": null,
+   "row": "a1u05d5.w.mavapepa",
+   "recording": "a1u05d5.w.mavapepa",
+   "keys": [
+    "a1u05d5.w.mavapepa"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "Mávapepa?",
+   "said": "mávapepa",
+   "sha": "4a8017f99e8b75e9fcfe995cd886d5a331c4802b",
+   "from": 0,
+   "to": 1075,
+   "heard": {
+    "ivan": [
+     "Mavapepa?",
+     "Mavapepa?",
+     "Mavapepa?"
+    ],
+    "mms": [
+     "máva pepa",
+     "máva pepa",
+     "máva pepa"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d5.s0b",
+   "key": "a1u05d5.s0b",
+   "line": null,
+   "row": "a1u05d5.s0b",
+   "recording": "a1u05d5.s0b",
+   "keys": [
+    "a1u05d5.s0b",
+    "a1u05d6.s4b"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "mitãme",
+   "said": "mitãme",
+   "sha": "03fbec4e8b67d104d1f287bf222a63d2bff4e12e",
+   "from": 0,
+   "to": 870,
+   "heard": {
+    "ivan": [
+     "Mitáme.",
+     "Mitáme.",
+     "Mitáme."
+    ],
+    "mms": [
+     "mitãme",
+     "mitáme",
+     "mitãme"
+    ]
+   },
+   "wrong": [
+    [],
+    [],
+    []
+   ]
+  },
+  {
+   "id": "a1u05d5.s1b",
+   "key": "a1u05d5.s1b",
+   "line": null,
+   "row": "a1u05d5.s1b",
+   "recording": "a1u05d5.s1b",
+   "keys": [
+    "a1u05d5.s1b"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "che angirũme",
+   "said": "che angirũme",
+   "sha": "a54d18ca2e0f3056156713b2a3c830c9839e0786",
+   "from": 0,
+   "to": 1106,
+   "heard": {
+    "ivan": [
+     "Che angiróme.",
+     "Che angirome.",
+     "Che angirome."
+    ],
+    "mms": [
+     "che angirúme",
+     "che angirúme",
+     "che angirúme"
+    ]
+   },
+   "wrong": [
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ],
+    [
+     "ivan"
+    ]
+   ]
+  },
+  {
+   "id": "a1u05d5.s2b",
+   "key": "a1u05d5.s2b",
+   "line": null,
+   "row": "a1u05d5.s2b",
+   "recording": "a1u05d5.s2b",
+   "keys": [
+    "a1u05d5.s2b"
+   ],
+   "voice": "F",
+   "lang": "gn",
+   "kind": "word",
+   "text": "kuñáme",
+   "said": "kuñáme",
+   "sha": "26c7311c46e32b18baabf8b613550962c11e3758",
+   "from": 0,
+   "to": 842,
+   "heard": {
+    "ivan": [
+     "Kuñame.",
+     "Kuñame.",
+     "Kuñame."
+    ],
+    "mms": [
+     "kuñáme",
+     "kuñáme",
+     "kuñáme"
     ]
    },
    "wrong": [

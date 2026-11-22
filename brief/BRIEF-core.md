@@ -11,7 +11,7 @@ board named in your spec and do what it does.
   Write your artboards ONLY as `$CANVAS/project/<Name>.dc.html` (ASCII file names: letters, digits, `_`, `.`, `-`).
 - Shared files already there (read them, never change them): `project/gn-course.js` (the engine, `window.gnCourse`),
   `project/gn-sound.js` (the player, `window.gnSound`; a board on its own loads no sound file, so there `has()` is
-  always false and every sound control uses its silent stand-in; in the prototype and the app A1 units 1 to 4 have
+  always false and every sound control uses its silent stand-in; in the prototype and the app A1 units 1 to 5 have
   clips, a synthetic voice's: §6, Sound), `project/gn-course-a1.js` … `gn-course-c2.js` (the level data, built from content).
 - Yaoki's boards to copy from: `/tmp/claude-0/-home-user/430b6c9f-00ab-547a-bf2b-cc44a7533d75/scratchpad/ref/Yaoki/yaoki/project/*.dc.html`
   (main app), `.../ref/Yaoki/yaoki-n1/project/*.dc.html` (N1 app), Reader canvas `.../artifact-files/7ec88b87-7732-468d-876e-3ad7ca541b29/project/`,

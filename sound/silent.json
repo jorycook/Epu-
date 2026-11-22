@@ -1194,6 +1194,418 @@
     "Mokõi kuñanguéra omba'apo."
    ],
    "point": "no plural ending after a number (the lesson's «mokõi mitãnguéra»)"
+  },
+  "a1u05d1.p1.x0.l0": {
+   "says": "Mba'éichapa reiko, Ana?",
+   "not": [
+    "Mba'éichapa reko, Ana?",
+    "Mba'éichapa oiko, Ana?"
+   ],
+   "point": "rei- for nde, with its i, not re-"
+  },
+  "a1u05d1.p1.x0.l1": {
+   "says": "Aiko porã.",
+   "not": [
+    "Ako porã.",
+    "Oiko porã."
+   ],
+   "point": "ai- for che, with its i (the lesson's «Akuaa» for «Aikuaa»)"
+  },
+  "a1u05d1.p1.x1": {
+   "says": "Aiko Itauguápe.",
+   "not": [
+    "Ako Itauguápe.",
+    "Oiko Itauguápe."
+   ],
+   "point": "ai- for che, with its i, not a- nor oi-"
+  },
+  "a1u05d1.p1.x2.l0": {
+   "says": "Reikuaápa Ka'akupe?",
+   "not": [
+    "Rekuaápa Ka'akupe?",
+    "Oikuaápa Ka'akupe?"
+   ],
+   "point": "rei- for nde, with its i, not re-"
+  },
+  "a1u05d1.p1.x2.l1": {
+   "says": "Héẽ, aikuaa.",
+   "not": [
+    "Héẽ, akuaa.",
+    "Héẽ, oikuaa."
+   ],
+   "point": "ai- for che, with its i (the lesson's «Akuaa» for «Aikuaa»)"
+  },
+  "a1u05d1.p1.x3": {
+   "says": "Aipota ka'ay.",
+   "not": [
+    "Apota ka'ay.",
+    "Oipota ka'ay."
+   ],
+   "point": "ai- for che, with its i, not a- nor oi-"
+  },
+  "a1u05d1.p1.x4": {
+   "says": "Che ru oiko Itauguápe ha omba'apo Paraguaýpe.",
+   "not": [
+    "Che ru oko Itauguápe ha omba'apo Paraguaýpe.",
+    "Che ru aiko Itauguápe ha omba'apo Paraguaýpe."
+   ],
+   "point": "oi- for ha'e, with its i, not o- nor ai-"
+  },
+  "a1u05d1.p1.x5": {
+   "says": "Ndaipotái kamby.",
+   "not": [
+    "Ndapotái kamby.",
+    "Naipotái kamby.",
+    "Aipota kamby."
+   ],
+   "point": "nd-…-i round ai-: the i of ai- stays, and nd- before an oral root",
+   "acute": [
+    "ndaipotái"
+   ]
+  },
+  "a1u05d1.p2.x0": {
+   "says": "Ore roiko Itauguápe.",
+   "not": [
+    "Ore roko Itauguápe.",
+    "Ore oiko Itauguápe."
+   ],
+   "point": "roi- for ore, with its i"
+  },
+  "a1u05d1.p2.x1": {
+   "says": "Ñande jaikuaa Ka'akupe.",
+   "not": [
+    "Ñande jakuaa Ka'akupe.",
+    "Ñande ñaikuaa Ka'akupe."
+   ],
+   "point": "jai- before an oral root, with its i, not ñai-"
+  },
+  "a1u05d1.p2.x2": {
+   "says": "Peikuaápa Itaugua?",
+   "not": [
+    "Pekuaápa Itaugua?",
+    "Reikuaápa Itaugua?"
+   ],
+   "point": "pei- for peẽ, with its i, not rei-"
+  },
+  "a1u05d1.p2.x3": {
+   "says": "Ñaikotevẽ kamby.",
+   "not": [
+    "Jaikotevẽ kamby.",
+    "Ñakotevẽ kamby."
+   ],
+   "point": "ñai- before a nasal root, not jai- (the lesson's «Jaikotevẽ»)"
+  },
+  "a1u05d1.p2.x4": {
+   "says": "Che membykuéra oiporu ko aranduka.",
+   "not": [
+    "Che membykuéra oporu ko aranduka.",
+    "Che membykuéra aiporu ko aranduka."
+   ],
+   "point": "oi- for them, with its i"
+  },
+  "a1u05d1.p2.x5": {
+   "says": "Naikotevẽi mba'eve.",
+   "not": [
+    "Ndaikotevẽi mba'eve.",
+    "Aikotevẽ mba'eve.",
+    "Nakotevẽi mba'eve."
+   ],
+   "point": "n-…-i before a nasal root, not nd-, and the i of ai- stays"
+  },
+  "a1u05d2.p1.x0": {
+   "says": "Ára ha ára apu'ã ha akay'u.",
+   "not": [
+    "Ára ha ára opu'ã ha akay'u.",
+    "Ára ha ára apu'ã ha okay'u."
+   ],
+   "point": "a- for che"
+  },
+  "a1u05d2.p1.x1": {
+   "says": "Che membykuéra opu'ã ha orambosa.",
+   "not": [
+    "Che membykuéra apu'ã ha orambosa.",
+    "Che membykuéra opu'ã ha arambosa."
+   ],
+   "point": "o- for them"
+  },
+  "a1u05d2.p1.x2": {
+   "says": "Ñapu'ã ha jakay'u.",
+   "not": [
+    "Japu'ã ha jakay'u.",
+    "Ñapu'ã ha ñakay'u."
+   ],
+   "point": "ña- before a nasal root, ja- before an oral one (the lesson's «Japu'ã»)"
+  },
+  "a1u05d2.p1.x3": {
+   "says": "Ore rorambosa ha roho mbo'ehaópe.",
+   "not": [
+    "Ore orambosa ha roho mbo'ehaópe.",
+    "Ore rorambosa ha oho mbo'ehaópe."
+   ],
+   "point": "ro- for ore"
+  },
+  "a1u05d2.p1.x4": {
+   "says": "Che ru ojevy pyhare.",
+   "not": [
+    "Che ru ajevy pyhare."
+   ],
+   "point": "o- for ha'e"
+  },
+  "a1u05d2.p1.x5": {
+   "says": "Che sy okay'u ha che arambosa.",
+   "not": [
+    "Che sy akay'u ha che arambosa.",
+    "Che sy okay'u ha che orambosa."
+   ],
+   "point": "o- for her, a- for che"
+  },
+  "a1u05d2.p2.x0": {
+   "says": "Pyhareve amba'apo mbo'ehaópe.",
+   "not": [
+    "Pyhare amba'apo mbo'ehaópe."
+   ],
+   "point": "pyhareve, the morning, not pyhare, the night"
+  },
+  "a1u05d2.p2.x2": {
+   "says": "Apu'ã, upéi akay'u.",
+   "not": [],
+   "point": "the stress its lesson marks with an acute",
+   "acute": [
+    "upéi"
+   ]
+  },
+  "a1u05d2.p2.x3": {
+   "says": "Akaru ha upéi ake.",
+   "not": [],
+   "point": "the stress its lesson marks with an acute",
+   "acute": [
+    "upéi"
+   ]
+  },
+  "a1u05d2.p2.x5": {
+   "says": "Pyhare añeno ha ake.",
+   "not": [
+    "Pyhareve añeno ha ake."
+   ],
+   "point": "pyhare, the night, not pyhareve, the morning"
+  },
+  "a1u05d3.p1.x0.l0": {
+   "says": "Mba'e aravópa reho mbo'ehaópe?",
+   "not": [],
+   "point": "the stress its lesson marks with an acute",
+   "acute": [
+    "aravópa"
+   ]
+  },
+  "a1u05d3.p1.x1.l0": {
+   "says": "Mba'e aravópa rekaru?",
+   "not": [],
+   "point": "the stress its lesson marks with an acute",
+   "acute": [
+    "aravópa"
+   ]
+  },
+  "a1u05d3.p1.x2": {
+   "says": "Asaje apytu'u peteĩ aravo.",
+   "not": [
+    "Asaje apytu'u peteĩ aravokuéra."
+   ],
+   "point": "no plural ending after a number (the lesson's «mokõi aravokuéra»)"
+  },
+  "a1u05d3.p1.x3": {
+   "says": "Aguata mokõi aravo.",
+   "not": [
+    "Aguata mokõi aravokuéra."
+   ],
+   "point": "no plural ending after a number (the lesson's «mokõi aravokuéra»)"
+  },
+  "a1u05d3.p1.x4": {
+   "says": "Ajahu po aravo'i.",
+   "not": [
+    "Ajahu po aravo.",
+    "Ajahu po aravo'ikuéra."
+   ],
+   "point": "aravo'i, the minute, not aravo, the hour, and no plural ending after a number"
+  },
+  "a1u05d3.p2.x0": {
+   "says": "Ko jueves aha távape.",
+   "not": [
+    "Jueves ko aha távape."
+   ],
+   "point": "ko before the day (the lesson's «Jueves ko»)"
+  },
+  "a1u05d3.p2.x1": {
+   "says": "Ko jueves ka'aru aguata távape.",
+   "not": [
+    "Jueves ko ka'aru aguata távape."
+   ],
+   "point": "ko before the day"
+  },
+  "a1u05d4.p1.x0.l0": {
+   "says": "Moõpa opyta ñemuha?",
+   "not": [
+    "Moõpa ha'e ñemuha?"
+   ],
+   "point": "opyta for where a place is, not ha'e"
+  },
+  "a1u05d4.p1.x1": {
+   "says": "Moõpa opyta tupão? Hi'ag̃ui ko'águi.",
+   "not": [
+    "Moõpa ha'e tupão? Hi'ag̃ui ko'águi."
+   ],
+   "point": "opyta for where a place is, not ha'e (the lesson's «Moõpa ha'e tupão?»)"
+  },
+  "a1u05d4.p1.x2.l0": {
+   "says": "Moõpa oĩ ne membykuéra?",
+   "not": [
+    "Moõpa ha'e ne membykuéra?"
+   ],
+   "point": "oĩ for where somebody is, not ha'e"
+  },
+  "a1u05d4.p1.x3": {
+   "says": "Moõpa oĩ che aranduka? Upépe.",
+   "not": [
+    "Moõpa ha'e che aranduka? Upépe."
+   ],
+   "point": "oĩ for where a thing is, not ha'e"
+  },
+  "a1u05d4.p1.x4": {
+   "says": "Che róga opyta Itauguápe.",
+   "not": [
+    "Che róga ha'e Itauguápe."
+   ],
+   "point": "opyta for where a place is, not ha'e"
+  },
+  "a1u05d4.p2.x0.l0": {
+   "says": "Araka'épa reho mbo'ehaópe?",
+   "not": [],
+   "point": "the stress its lesson marks with an acute (the lesson's «Araka'epa»)",
+   "acute": [
+    "araka'épa"
+   ]
+  },
+  "a1u05d4.p2.x1.l0": {
+   "says": "Araka'épa og̃uahẽ nde ru?",
+   "not": [],
+   "point": "the stress its lesson marks with an acute (the lesson's «Araka'epa»)",
+   "acute": [
+    "araka'épa"
+   ]
+  },
+  "a1u05d4.p2.x2.l0": {
+   "says": "Araka'épa rekaru?",
+   "not": [],
+   "point": "the stress its lesson marks with an acute (the lesson's «Araka'epa»)",
+   "acute": [
+    "araka'épa"
+   ]
+  },
+  "a1u05d4.p2.x3.l0": {
+   "says": "Araka'épa repytu'u?",
+   "not": [],
+   "point": "the stress its lesson marks with an acute (the lesson's «Araka'epa»)",
+   "acute": [
+    "araka'épa"
+   ]
+  },
+  "a1u05d5.p1.x0": {
+   "says": "Aipytyvõ che sýpe.",
+   "not": [
+    "Aipytyvõ che sýme."
+   ],
+   "point": "-pe after an oral syllable, not -me",
+   "acute": [
+    "sýpe"
+   ]
+  },
+  "a1u05d5.p1.x1": {
+   "says": "Ahenói che jarýipe.",
+   "not": [
+    "Ahenói che jarýime."
+   ],
+   "point": "-pe after an oral syllable, not -me"
+  },
+  "a1u05d5.p1.x2": {
+   "says": "Ame'ẽ chipa mitãme.",
+   "not": [
+    "Ame'ẽ chipa mitãpe."
+   ],
+   "point": "-me after a nasal syllable, not -pe (the lesson's «mitãpe»)"
+  },
+  "a1u05d5.p1.x3": {
+   "says": "Aporandu che angirũme.",
+   "not": [
+    "Aporandu che angirũpe."
+   ],
+   "point": "-me after a nasal syllable, not -pe"
+  },
+  "a1u05d5.p1.x4": {
+   "says": "Amomaitei che sy ha che rúpe.",
+   "not": [
+    "Amomaitei che sy ha che rúme."
+   ],
+   "point": "-pe after an oral syllable, not -me",
+   "acute": [
+    "rúpe"
+   ]
+  },
+  "a1u05d5.p1.x5": {
+   "says": "Ahecha mitãnguérape korapýpe.",
+   "not": [
+    "Ahecha mitãnguérame korapýpe."
+   ],
+   "point": "-pe after -nguéra, whose last syllable is oral, not -me"
+  },
+  "a1u05d5.p2.x0": {
+   "says": "Che sy ome'ẽ chéve ka'ay.",
+   "not": [
+    "Che sy ome'ẽ chépe ka'ay.",
+    "Che sy ome'ẽ ndéve ka'ay."
+   ],
+   "point": "chéve, with -ve, not -pe (the lesson's «chépe»), and not ndéve",
+   "acute": [
+    "chéve"
+   ]
+  },
+  "a1u05d5.p2.x1": {
+   "says": "Ame'ẽ ndéve ko aranduka.",
+   "not": [
+    "Ame'ẽ ndépe ko aranduka.",
+    "Ame'ẽ chéve ko aranduka."
+   ],
+   "point": "ndéve, with -ve, not -pe, and not chéve",
+   "acute": [
+    "ndéve"
+   ]
+  },
+  "a1u05d5.p2.x4": {
+   "says": "Moisés oporandu chéve.",
+   "not": [
+    "Moisés oporandu chépe.",
+    "Moisés oporandu ndéve."
+   ],
+   "point": "chéve, with -ve, not -pe, and not ndéve",
+   "acute": [
+    "chéve"
+   ]
+  },
+  "a1u05d5.p2.x5.l0": {
+   "says": "Mávapepa rehenói?",
+   "not": [
+    "Mávapape rehenói?",
+    "Mávapa rehenói?"
+   ],
+   "point": "máva + pe + pa, in that order",
+   "acute": [
+    "mávapepa"
+   ]
+  },
+  "a1u05d5.p2.x5.l1": {
+   "says": "Che jarýipe.",
+   "not": [
+    "Che jarýime."
+   ],
+   "point": "-pe in the answer, after an oral syllable"
   }
  }
 }

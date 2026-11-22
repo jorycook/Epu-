@@ -29,6 +29,8 @@
 //      ONLY          a comma list of sections: static,fit,install,standalone,offline,update,manifest,fonts,screens
 //      CRAWL         controls tapped per screen for the deeper screen inspection (default 8, 0 for none)
 //      WALK          taps of a random walk (fixed seed) into each screen, inspecting each state (default 10, 0 for none)
+//      FAR_DAY       which day of the last written week the second learner has open, 1 to 6 (default 2). A new unit is
+//                    looked at with each of its days open in turn: for d in 1 2 3 4 5 6; do ONLY=screens FAR_DAY=$d … ; done
 // Exit code 1 when a check fails; WARN lines do not fail the run.
 'use strict';
 const fs = require('fs');
@@ -46,6 +48,7 @@ const OUT = path.resolve(process.env.PLATFORM_OUT || path.join(__dirname, 'out',
 const ONLY = (process.env.ONLY || '').split(',').map((s) => s.trim()).filter(Boolean);
 const CRAWL = process.env.CRAWL === undefined ? 8 : +process.env.CRAWL;
 const WALK = process.env.WALK === undefined ? 10 : +process.env.WALK;
+const FAR_DAY = Math.min(6, Math.max(1, Math.round(+process.env.FAR_DAY) || 2));
 const PREFIX = '/epu-/';
 /* saved progress is kept per folder the app is served from */
 const KEY = 'epua.v1:' + PREFIX;
@@ -274,7 +277,7 @@ const CUT = ([vw, vh]) => {
 /* one screen at 390x844: its root, what leaves the frame outside a scrolling box, text a box cuts off, text cut short,
    and every tap target under 44x44 */
 const INSPECT = (name) => {
-  const res = { errors: [], root: null, shell: null, out: [], deco: [], clip: [], hidden: [], trunc: [], small: [], breaks: [], targets: 0 };
+  const res = { errors: [], root: null, shell: null, out: [], deco: [], clip: [], hidden: [], trunc: [], small: [], breaks: [], orphans: [], targets: 0 };
   res.errors = [...document.querySelectorAll('#gn-stage .sc-logic-error, #gn-stage .sc-placeholder-error')].map((e) => e.textContent.trim().slice(0, 200));
   const shellRoot = document.querySelector('#gn-stage > .sc-host > div');
   if (shellRoot) res.shell = { w: shellRoot.offsetWidth, h: shellRoot.offsetHeight, sw: shellRoot.scrollWidth, sh: shellRoot.scrollHeight };
@@ -390,6 +393,35 @@ const INSPECT = (name) => {
         }
         prev = q;
       }
+    }
+  }
+  /* a closing sign that starts a line by itself: the stop, the comma, the colon or the closing quote that belongs to
+     the word before it and went down to the next line without it. Text does not break there by itself; it happens
+     when the word before is a box of its own in the line (a word of a reading passage that can be tapped), since a
+     line may break at a box's edge: the timetable of unit 5 day 3 showed «mbo'ehao» and then a line with only its
+     stop. Looked for where a piece of text opens with such a sign right after another piece of the same block */
+  {
+    const CLOSE = /^[.,;:!?»)…]/;
+    const blockOf = (e) => { for (let p = e; p && p !== rootEl.parentElement; p = p.parentElement) { const d = getComputedStyle(p).display; if (!/^inline/.test(d) && d !== 'contents') return p; } return null; };
+    const w3 = document.createTreeWalker(rootEl, NodeFilter.SHOW_TEXT);
+    let prev = null;
+    for (let n = w3.nextNode(); n; n = w3.nextNode()) {
+      const s = n.nodeValue;
+      const el = n.parentElement;
+      if (!s || !shown(el) || srOnly(el)) continue;
+      if (CLOSE.test(s) && prev && !/\s$/.test(prev.nodeValue) && blockOf(prev.parentElement) === blockOf(el)) {
+        const a = document.createRange();
+        const t = prev.nodeValue;
+        a.setStart(prev, t.length - 1);
+        a.setEnd(prev, t.length);
+        const b = document.createRange();
+        b.setStart(n, 0);
+        b.setEnd(n, 1);
+        const qa = a.getBoundingClientRect();
+        const qb = b.getBoundingClientRect();
+        if (qa.height && qb.height && qb.top > qa.top + qa.height * 0.5) res.orphans.push('«' + t.trim().split(/\s/).pop() + '» and, a line below, «' + s.trim().slice(0, 12) + '»');
+      }
+      if (s.trim()) prev = n;
     }
   }
   /* text that a box with overflow hidden cuts off (a scrolling box does not count: what is beyond it can be scrolled
@@ -1868,27 +1900,31 @@ async function fontsUsed(page, cdp, facts) {
       return [...host.querySelectorAll('h1,h2,h3,h4,h5,h6')].filter(shown).map((h) => h.tagName.toLowerCase());
     };
     const stateKey = async (scr) => scr + '|' + crypto.createHash('sha1').update((await stageText(page)) + (await page.evaluate(() => document.querySelectorAll('#gn-stage *').length))).digest('hex').slice(0, 12);
-    /* a second learner, further on: in the last written week (A1 unit 4 today), its first day done and its second open,
-       with a mistake of that week in the notebook. The first sample stands in unit 1, and unit 1 alone hid what the later
+    /* a second learner, further on: in the last written week (found from the course), the days before FAR_DAY done and
+       that day open (its first day done and its second open, unless FAR_DAY says otherwise), with a mistake of a day
+       that is done in the notebook. The first sample stands in unit 1, and unit 1 alone hid what the later
        weeks' longer words, titles and explanations do to the screens */
-    const far = await page.evaluate(() => {
+    const far = await page.evaluate((open) => {
       const C = window.gnCourse;
       C.setLevel('A1');
       const ready = C.sessions().filter((s) => s.ready);
       const n = ready.reduce((m, s) => Math.max(m, s.unit), 0);
-      const it = n > 1 ? C.day(C.sid(n, 1)).grammar.drill.map((x) => (typeof x === 'string' ? C.item(x) : x)).filter((x) => x && x.kind === 'choice')[0] : null;
-      return { n, days: ready.filter((s) => s.kind !== 'test' && s.unit < n).map((s) => s.id), tests: ready.filter((s) => s.kind === 'test' && s.unit < n).map((s) => s.id), d1: C.sid(n, 1), d2: C.sid(n, 2), src: it ? it.id : '', wrong: it ? C.plain(it.options[it.answer % it.options.length]) : '' };
-    });
+      /* the mistake is of a day that is done: the week's first day, or the first day of the week before when the first is the one open */
+      const it = n > 1 ? C.day(open > 1 ? C.sid(n, 1) : C.sid(n - 1, 1)).grammar.drill.map((x) => (typeof x === 'string' ? C.item(x) : x)).filter((x) => x && x.kind === 'choice')[0] : null;
+      const before = [];
+      for (let k = 1; k < open; k++) before.push(C.sid(n, k));
+      return { n, days: ready.filter((s) => s.kind !== 'test' && s.unit < n).map((s) => s.id), tests: ready.filter((s) => s.kind === 'test' && s.unit < n).map((s) => s.id), before, open: C.sid(n, open), src: it ? it.id : '', wrong: it ? C.plain(it.options[it.answer % it.options.length]) : '' };
+    }, FAR_DAY);
     let SAMPLE2 = null;
     if (far.n > 1 && far.src) {
       const done = {};
       far.days.forEach((id) => { done[id] = FULL; });
-      done[far.d1] = FULL;
-      done[far.d2] = { g: 1 };
+      far.before.forEach((id) => { done[id] = FULL; });
+      done[far.open] = { g: 1 };
       const tests = {};
       far.tests.forEach((id) => { tests[id] = { id, score: 18, of: 20, used: 700, areas: { vocab: { right: 5, of: 5 }, grammar: { right: 8, of: 10 }, reading: { right: 3, of: 3 }, listening: { right: 2, of: 2 } }, at: Date.now() - 864e5 }; });
-      SAMPLE2 = { level: 'A1', plan: { start: day(-7 * (far.n - 1) - 1), target: day(60), pace: 'fit', minutes: 30 }, done, tests, m: [{ src: far.src, wrong: far.wrong, at: Date.now() - 864e5, step: 0, due: day(0) }], cur: far.d2, placement: SAMPLE.placement };
-      note(`a second learner for the screens: in week ${far.n} (${far.d2} open, a mistake at ${far.src})`);
+      SAMPLE2 = { level: 'A1', plan: { start: day(-7 * (far.n - 1) - 1), target: day(60), pace: 'fit', minutes: 30 }, done, tests, m: [{ src: far.src, wrong: far.wrong, at: Date.now() - 864e5, step: 0, due: day(0) }], cur: far.open, placement: SAMPLE.placement };
+      note(`a second learner for the screens: in week ${far.n} (${far.open} open, a mistake at ${far.src})`);
     }
     const FAR = SAMPLE2 ? 'in week ' + far.n : '';
     const look = async (scr, label) => {
@@ -1913,6 +1949,7 @@ async function fontsUsed(page, cdp, facts) {
       ok(pusoBreaks.length === 0, `${where}: a line should never break at the puso`, pusoBreaks.map((b) => `"${b.word}" in a ${b.box} px box`).join(' ; '));
       for (const b of res.breaks.filter((x) => !x.puso)) { const k = `${scr} | "${b.word}" (box ${b.box} px)`; if (!wordBreaks.has(k)) wordBreaks.set(k, where); }
       ok(res.trunc.length === 0, `${where}: no text may be cut short`, res.trunc.slice(0, 6).join(' ; '));
+      ok(res.orphans.length === 0, `${where}: no stop, comma or closing sign may start a line without its word`, res.orphans.slice(0, 6).join(' ; '));
       for (const s of res.small) { const k = `${scr} | ${s.tag} "${s.label}" ${s.w}x${s.h}${s.disabled ? ' (disabled)' : ''}`; if (!small.has(k)) { small.set(k, where); smallKind.set(k, s.kind); } }
       const f = await fontsUsed(page, cdp, facts);
       for (const [k, v] of Object.entries(f.used)) usedAll[k] = (usedAll[k] || 0) + v;
@@ -1922,7 +1959,7 @@ async function fontsUsed(page, cdp, facts) {
       for (const u of lg.labels) { const k = `${scr} | aria-label "${u}"`; if (!labels.has(k)) labels.set(k, where); }
       const heads = await page.evaluate(HEADS, scr);
       if (heads && heads[0] !== 'h1') { const k = `${scr} | ${heads.length ? 'its first heading is an ' + heads[0] : 'no heading'}`; if (!noH1.has(k)) noH1.set(k, where); }
-      if (res.out.length || res.clip.length || res.trunc.length) await shot(page, 'issue-' + label.replace(/[^\w]+/g, '_').slice(0, 60));
+      if (res.out.length || res.clip.length || res.trunc.length || res.orphans.length) await shot(page, 'issue-' + label.replace(/[^\w]+/g, '_').slice(0, 60));
       return true;
     };
     /* the install page too (?install shows it on a developer's machine), as Safari on an iPhone 14 shows it */

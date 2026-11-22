@@ -1,6 +1,6 @@
 # The synthetic voice of A1, take by take
 
-These are the clips `tools/make-tts.py` said for A1 units 1 to 4 and the extras, each heard back by two speech
+These are the clips `tools/make-tts.py` said for A1 units 1 to 5 and the extras, each heard back by two speech
 recognisers. They are a stand-in until a person records the course, and **nobody has listened to them**:
 `sound/VOICE.md` says what the voice renders, what it does not, and what a native speaker should hear first.
 
@@ -12,8 +12,8 @@ repository is not under this licence.
 
 | | |
 |---|---|
-| `<key>.flac` | 438 clips, one per recorded row of `manifest.json`: 16 kHz, mono, 16 bit, FLAC (lossless), 10.2 MB. The key is the clip's key in the course (`sound/A1/manifest.json`). |
-| `left-out/` | 65 clips that stay silent in the app, kept for a listener: every recording that `sound/silent.json` names (the words of the nasal pairs among them, said on 16 November for this purpose) or that the recognisers left out, of the take or of its MP3. `sound/VOICE.md`, «What must stay without audio», has the reason for each. 1.5 MB. |
+| `<key>.flac` | 568 clips, one per recorded row of `manifest.json`: 16 kHz, mono, 16 bit, FLAC (lossless), 13.4 MB. The key is the clip's key in the course (`sound/A1/manifest.json`). |
+| `left-out/` | 71 clips that stay silent in the app, kept for a listener: every recording that `sound/silent.json` names (the words of the nasal pairs among them, said on 16 November for this purpose) or that the recognisers left out, of the take or of its MP3. `sound/VOICE.md`, «What must stay without audio», has the reason for each. 1.5 MB. |
 | `manifest.json` | The clip list without the rows that stay silent: the list to give `tools/make-sound.mjs`, not `sound/A1/manifest.json`. Its last sentence states the licence of these clips (CC BY-NC 4.0), not that of the studio's recordings. |
 | `takes.json` | The seed, the cut, the rate and the pitch of every clip, the libraries and the thread count they were made with, and what `--verify` left out. |
 | `tts-report.json`, `tts-report.csv` | What each recogniser heard of every clip, and of every take that was tried. The CSV has one row a clip, with its key, its text and, in the last column, why a clip is in `left-out/`. |

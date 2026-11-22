@@ -46,7 +46,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="flex: 1 1 auto; min-height: 120px; overflow-y: auto; margin: 0 -16px; padding: 0 16px 14px; display: flex; flex-direction: column">
 
 <sc-if value="{{ ready }}" hint-placeholder-val="{{ true }}">
-<div lang="gn" onClick="{{ passTap }}" style="margin-top: 10px; padding: 5px 16px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; font-family: 'Andika', 'Nunito', sans-serif; font-size: 16px; font-weight: 400; line-height: 44px; white-space: pre-line; overflow-wrap: anywhere; flex-shrink: 0"><sc-for list="{{ tokens }}" as="w" hint-placeholder-count="24"><sc-if value="{{ w.tap }}" hint-placeholder-val="{{ false }}"><button data-w="{{ w.i }}" onClick="{{ w.pick }}" aria-pressed="{{ w.on }}" style="display: inline-block; margin: 0; padding: 0; border: none; border-radius: 0; text-align: inherit; line-height: 44px; background: transparent"><sc-for list="{{ w.pieces }}" as="p" hint-placeholder-count="1"><span style="transition: background 300ms; border-radius: {{ p.radius }}; background: {{ p.bg }}; padding: {{ p.pad }}; border-bottom: {{ p.line }}">{{ p.t }}</span></sc-for></button></sc-if><sc-if value="{{ w.still }}" hint-placeholder-val="{{ true }}"><sc-for list="{{ w.pieces }}" as="p" hint-placeholder-count="1"><span style="transition: background 300ms; border-radius: {{ p.radius }}; background: {{ p.bg }}; padding: {{ p.pad }}; border-bottom: {{ p.line }}">{{ p.t }}</span></sc-for></sc-if></sc-for></div>
+<div lang="gn" onClick="{{ passTap }}" style="margin-top: 10px; padding: 5px 16px; border-radius: 20px; background: #FFFFFF; border: 2px solid #1B2440; font-family: 'Andika', 'Nunito', sans-serif; font-size: 16px; font-weight: 400; line-height: 44px; white-space: pre-line; overflow-wrap: anywhere; flex-shrink: 0"><sc-for list="{{ tokens }}" as="w" hint-placeholder-count="24"><sc-if value="{{ w.tap }}" hint-placeholder-val="{{ false }}"><span style="white-space: nowrap"><sc-for list="{{ w.head }}" as="p" hint-placeholder-count="0"><span style="transition: background 300ms; border-radius: {{ p.radius }}; background: {{ p.bg }}; padding: {{ p.pad }}; border-bottom: {{ p.line }}">{{ p.t }}</span></sc-for><button data-w="{{ w.i }}" onClick="{{ w.pick }}" aria-pressed="{{ w.on }}" style="display: inline-block; margin: 0; padding: 0; border: none; border-radius: 0; text-align: inherit; line-height: 44px; background: transparent"><sc-for list="{{ w.pieces }}" as="p" hint-placeholder-count="1"><span style="transition: background 300ms; border-radius: {{ p.radius }}; background: {{ p.bg }}; padding: {{ p.pad }}; border-bottom: {{ p.line }}">{{ p.t }}</span></sc-for></button><sc-for list="{{ w.tail }}" as="p" hint-placeholder-count="0"><span style="transition: background 300ms; border-radius: {{ p.radius }}; background: {{ p.bg }}; padding: {{ p.pad }}; border-bottom: {{ p.line }}">{{ p.t }}</span></sc-for></span></sc-if><sc-if value="{{ w.still }}" hint-placeholder-val="{{ true }}"><sc-for list="{{ w.pieces }}" as="p" hint-placeholder-count="1"><span style="transition: background 300ms; border-radius: {{ p.radius }}; background: {{ p.bg }}; padding: {{ p.pad }}; border-bottom: {{ p.line }}">{{ p.t }}</span></sc-for></sc-if></sc-for></div>
 
 <sc-if value="{{ tapHint }}" hint-placeholder-val="{{ true }}">
 <div style="margin-top: 6px; font-size: 12px; font-weight: 700; color: #5A6382">Tocá una palabra subrayada para ver qué significa.</div>
@@ -275,10 +275,52 @@ else cur.pieces.push({ t: ch, bg: g.bg, pad: g.pad, line: g.line });
 if (w && g.r && !cur.gloss) cur.gloss = C.plain(g.r);
 });
 });
+/* what each word opens when tapped: its entry in the day's glossary, or the gloss the passage itself gives it */
+raw.forEach((w) => {
+w.text = w.pieces.map((x) => x.t).join('');
+w.entry = w.word ? dict[keyOf(w.text)] || (w.gloss ? { es: w.gloss, parts: [] } : null) : null;
+w.head = [];
+w.tail = [];
+});
+/* a word to tap is a box of its own in its line, and a line may break at the edge of a box: the stop or the comma
+   after the word would go down to the next line alone (unit 5's timetable did it: «mbo'ehao» and then a line with
+   only its stop), and an opening ¿ or « could stay behind at the end of the line above. So the signs that touch such
+   a word are taken out of the run between the words and kept with the word, in a group that does not break. Only
+   signs with a space or the passage's end on their other side: a hyphen or a colon between two words stays where
+   it is */
+const cut = (pieces, n, fromEnd) => {
+const out = [];
+while (n > 0 && pieces.length) {
+const x = fromEnd ? pieces[pieces.length - 1] : pieces[0];
+const take = Math.min(n, Array.from(x.t).length);
+const chars = Array.from(x.t);
+const part = Object.assign({}, x, { t: (fromEnd ? chars.slice(chars.length - take) : chars.slice(0, take)).join('') });
+x.t = (fromEnd ? chars.slice(0, chars.length - take) : chars.slice(take)).join('');
+if (!x.t) { if (fromEnd) pieces.pop(); else pieces.shift(); }
+if (fromEnd) out.unshift(part); else out.push(part);
+n -= take;
+}
+return out;
+};
+raw.forEach((w, i) => {
+if (!w.entry) return;
+const after = raw[i + 1];
+if (after && !after.word && after.pieces.length && after.pieces[0].t !== '(   )') {
+const run = after.pieces.map((x) => x.t).join('');
+const m = /^[^\s]+/.exec(run);
+if (m && (m[0].length < run.length || i + 2 >= raw.length)) w.tail = cut(after.pieces, Array.from(m[0]).length, false);
+}
+const before = raw[i - 1];
+if (before && !before.word && before.pieces.length && before.pieces[0].t !== '(   )') {
+const run = before.pieces.map((x) => x.t).join('');
+const m = /[^\s]+$/.exec(run);
+if (m && (m[0].length < run.length || i === 1)) w.head = cut(before.pieces, Array.from(m[0]).length, true);
+}
+});
 /* a marked clue runs over several words and spaces: only its two ends get the padding and the round corners, so it
    reads as one mark (as Yaoki's single span) and the line does not reflow when the answer comes up */
 const flat = [];
-raw.forEach((w) => w.pieces.forEach((x) => flat.push(x)));
+raw.forEach((w) => w.head.concat(w.pieces, w.tail).forEach((x) => flat.push(x)));
 flat.forEach((x, k) => {
 const on = x.bg !== 'transparent';
 const l = on && !(flat[k - 1] && flat[k - 1].bg !== 'transparent');
@@ -288,8 +330,8 @@ x.radius = on ? [l, r, r, l].map((e) => (e ? '4px' : '0')).join(' ') : '0';
 });
 let open = null;
 const tokens = raw.map((w, i) => {
-const text = w.pieces.map((x) => x.t).join('');
-const entry = w.word ? dict[keyOf(text)] || (w.gloss ? { es: w.gloss, parts: [] } : null) : null;
+const text = w.text;
+const entry = w.entry;
 const on = !!entry && s.word === i;
 if (on) open = { gn: text, es: entry.es, parts: entry.parts, hasParts: entry.parts.length > 1 };
 /* a word to tap is underlined with dots (solid once open, on a tint); the line sits on the letters, and the button
@@ -300,6 +342,8 @@ i,
 tap: !!entry,
 still: !entry,
 pieces: entry ? w.pieces.map((x) => Object.assign({}, x, { line: x.line && x.line !== 'none' ? x.line : under, bg: on && x.bg === 'transparent' ? '#E8ECFB' : x.bg })) : w.pieces,
+head: w.head,
+tail: w.tail,
 on,
 pick: () => this.setState({ word: this.state.word === i ? -1 : i }),
 };

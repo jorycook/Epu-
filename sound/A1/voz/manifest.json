@@ -1,6 +1,6 @@
 {
  "level": "A1",
- "made": "2026-11-17",
+ "made": "2026-11-22",
  "about": "Every clip the course needs: key (what the screens ask gn-sound.js for), voice (F the woman, the main voice; M the man; N the narrator, in Spanish), text, es, lang, where, file (the unit file make-sound.mjs puts it in), order (the suggested recording order; none for a row with \"same\", said already under that key, for a row with \"parts\", put together from those keys, and for the tone; the slower takes come after the rest, and the recordings no screen plays today last of all), unused (true on a key no screen asks for today: of the two words of a sound pair the Words step plays one, always the same, and the other word is the unused one. It stays in the list, and is recorded, because a pair needs both voices if its words, and with them the word that plays, ever change; its recording comes last in the order unless a key in use shares it through \"same\"). Rights: the clips next to this list are the synthetic voice's, made with Meta AI's MMS-TTS models: CC BY-NC 4.0, non-commercial use only, with attribution (voices.json in this folder has the models and the notice; sound/VOICE.md, «The models and the licence»). They are not under CC BY 4.0, the licence the studio's recordings by a person are to have.",
  "voices": {
   "F": "mujer, voz principal: palabras, ejemplos, pares y carteles",
@@ -12,23 +12,24 @@
   "gn-sound-a1-u02.js",
   "gn-sound-a1-u03.js",
   "gn-sound-a1-u04.js",
+  "gn-sound-a1-u05.js",
   "gn-sound-pl.js",
   "gn-sound-a1-x.js",
   "gn-sound-sp.js"
  ],
  "count": {
-  "rows": 736,
-  "toRecord": 502,
-  "slow": 47,
+  "rows": 931,
+  "toRecord": 637,
+  "slow": 55,
   "byVoice": {
-   "F": 411,
-   "M": 66,
-   "N": 25
+   "F": 528,
+   "M": 80,
+   "N": 29
   },
-  "composed": 49,
-  "same": 184,
-  "unused": 82,
-  "toRecordUnused": 25
+  "composed": 64,
+  "same": 229,
+  "unused": 105,
+  "toRecordUnused": 29
  },
  "clips": [
   {
@@ -213,7 +214,7 @@
    "where": "U1 D1 · par 2, palabra b (Las vocales orales) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u01.js",
    "unused": true,
-   "order": 550
+   "order": 693
   },
   {
    "key": "a1u01d1.s2a",
@@ -255,7 +256,7 @@
    "where": "U1 D1 · par 4, palabra b (Las vocales orales) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u01.js",
    "unused": true,
-   "order": 551
+   "order": 694
   },
   {
    "key": "a1u01d1.r1.l0",
@@ -364,7 +365,7 @@
    "slow": true,
    "where": "U1 D1 · escucha «Respuesta rápida» · línea 2 de 8, versión lenta",
    "file": "gn-sound-a1-u01.js",
-   "order": 503
+   "order": 638
   },
   {
    "key": "a1u01d1.r1.l5.slow",
@@ -375,7 +376,7 @@
    "slow": true,
    "where": "U1 D1 · escucha «Respuesta rápida» · línea 6 de 8, versión lenta",
    "file": "gn-sound-a1-u01.js",
-   "order": 505
+   "order": 640
   },
   {
    "key": "a1u01d1.r1.l7.slow",
@@ -386,7 +387,7 @@
    "slow": true,
    "where": "U1 D1 · escucha «Respuesta rápida» · línea 8 de 8, versión lenta",
    "file": "gn-sound-a1-u01.js",
-   "order": 506
+   "order": 641
   },
   {
    "key": "a1u01d2.p1.x0",
@@ -678,7 +679,7 @@
    "where": "U1 D3 · par 2, palabra a (La y, sexta vocal) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u01.js",
    "unused": true,
-   "order": 553
+   "order": 696
   },
   {
    "key": "a1u01d3.s1b",
@@ -730,7 +731,7 @@
    "where": "U1 D3 · par 4, palabra b (La y, sexta vocal) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u01.js",
    "unused": true,
-   "order": 554
+   "order": 697
   },
   {
    "key": "a1u01d3.r1.l0",
@@ -982,7 +983,7 @@
    "where": "U1 D4 · par 3, palabra b (El puso (')) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u01.js",
    "unused": true,
-   "order": 555
+   "order": 698
   },
   {
    "key": "a1u01d4.r1.l0",
@@ -1080,7 +1081,7 @@
    "slow": true,
    "where": "U1 D4 · escucha «Comprensión de puntos clave» · línea 2 de 7, versión lenta",
    "file": "gn-sound-a1-u01.js",
-   "order": 511
+   "order": 646
   },
   {
    "key": "a1u01d4.r1.l2.slow",
@@ -1091,7 +1092,7 @@
    "slow": true,
    "where": "U1 D4 · escucha «Comprensión de puntos clave» · línea 3 de 7, versión lenta",
    "file": "gn-sound-a1-u01.js",
-   "order": 512
+   "order": 647
   },
   {
    "key": "a1u01d4.r1.l5.slow",
@@ -1102,7 +1103,7 @@
    "slow": true,
    "where": "U1 D4 · escucha «Comprensión de puntos clave» · línea 6 de 7, versión lenta",
    "file": "gn-sound-a1-u01.js",
-   "order": 515
+   "order": 650
   },
   {
    "key": "a1u01d5.p1.x0",
@@ -1700,7 +1701,7 @@
    "slow": true,
    "where": "U2 D1 · escucha «Respuesta rápida» · línea 2 de 8, versión lenta",
    "file": "gn-sound-a1-u02.js",
-   "order": 516
+   "order": 651
   },
   {
    "key": "a1u02d1.r1.l3.slow",
@@ -1711,7 +1712,7 @@
    "slow": true,
    "where": "U2 D1 · escucha «Respuesta rápida» · línea 4 de 8, versión lenta",
    "file": "gn-sound-a1-u02.js",
-   "order": 517
+   "order": 652
   },
   {
    "key": "a1u02d1.r1.l5.slow",
@@ -1722,7 +1723,7 @@
    "slow": true,
    "where": "U2 D1 · escucha «Respuesta rápida» · línea 6 de 8, versión lenta",
    "file": "gn-sound-a1-u02.js",
-   "order": 518
+   "order": 653
   },
   {
    "key": "a1u02d1.r1.l7.slow",
@@ -1733,7 +1734,7 @@
    "slow": true,
    "where": "U2 D1 · escucha «Respuesta rápida» · línea 8 de 8, versión lenta",
    "file": "gn-sound-a1-u02.js",
-   "order": 519
+   "order": 654
   },
   {
    "key": "a1u02d1.r1.slow",
@@ -2096,7 +2097,7 @@
    "where": "U2 D3 · par 2, palabra a (La tilde con sufijo: ógape, kotýpe) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u02.js",
    "unused": true,
-   "order": 559
+   "order": 702
   },
   {
    "key": "a1u02d3.s1b",
@@ -2182,7 +2183,7 @@
    "slow": true,
    "where": "U2 D3 · escucha «Comprensión de puntos clave» · línea 2 de 5, versión lenta",
    "file": "gn-sound-a1-u02.js",
-   "order": 520
+   "order": 655
   },
   {
    "key": "a1u02d4.p1.x0",
@@ -2642,7 +2643,7 @@
    "where": "U2 D5 · par 3, palabra a (Las letras mb, nd, ng, nt) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u02.js",
    "unused": true,
-   "order": 561
+   "order": 704
   },
   {
    "key": "a1u02d5.s2b",
@@ -2733,7 +2734,7 @@
    "slow": true,
    "where": "U2 D5 · escucha «Respuesta rápida» · línea 6 de 8, versión lenta",
    "file": "gn-sound-a1-u02.js",
-   "order": 525
+   "order": 660
   },
   {
    "key": "a1u02d6.w.jaha",
@@ -3058,7 +3059,7 @@
    "where": "U3 D1 · par 1, palabra a (La ch: che, chepochy) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u03.js",
    "unused": true,
-   "order": 562
+   "order": 705
   },
   {
    "key": "a1u03d1.s0b",
@@ -3079,7 +3080,7 @@
    "where": "U3 D1 · par 3, palabra a (La ch: che, chepochy) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u03.js",
    "unused": true,
-   "order": 564
+   "order": 707
   },
   {
    "key": "a1u03d1.s2b",
@@ -3154,7 +3155,7 @@
    "slow": true,
    "where": "U3 D1 · escucha «Comprensión de puntos clave» · línea 2 de 4, versión lenta",
    "file": "gn-sound-a1-u03.js",
-   "order": 527
+   "order": 662
   },
   {
    "key": "a1u03d1.r1.l2.slow",
@@ -3165,7 +3166,7 @@
    "slow": true,
    "where": "U3 D1 · escucha «Comprensión de puntos clave» · línea 3 de 4, versión lenta",
    "file": "gn-sound-a1-u03.js",
-   "order": 528
+   "order": 663
   },
   {
    "key": "a1u03d2.p1.x0",
@@ -3378,7 +3379,7 @@
    "where": "U3 D2 · par 3, palabra b (Sin marca, el acento va al final: ajahu, akyhyje) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u03.js",
    "unused": true,
-   "order": 565
+   "order": 708
   },
   {
    "key": "a1u03d3.p1.x0",
@@ -3572,7 +3573,7 @@
    "where": "U3 D3 · par 3, palabra a (La ñ, sin ~ al lado: kuña, ñemuhára) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u03.js",
    "unused": true,
-   "order": 567
+   "order": 710
   },
   {
    "key": "a1u03d3.s2b",
@@ -3658,7 +3659,7 @@
    "slow": true,
    "where": "U3 D3 · escucha «Comprensión de puntos clave» · línea 3 de 5, versión lenta",
    "file": "gn-sound-a1-u03.js",
-   "order": 531
+   "order": 666
   },
   {
    "key": "a1u03d3.r1.l4.slow",
@@ -3669,7 +3670,7 @@
    "slow": true,
    "where": "U3 D3 · escucha «Comprensión de puntos clave» · línea 5 de 5, versión lenta",
    "file": "gn-sound-a1-u03.js",
-   "order": 533
+   "order": 668
   },
   {
    "key": "a1u03d4.p1.x0.l0",
@@ -4174,7 +4175,7 @@
    "where": "U3 D5 · par 1, palabra a (La tilde nasal (~) también es tilde) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u03.js",
    "unused": true,
-   "order": 568
+   "order": 711
   },
   {
    "key": "a1u03d5.s0b",
@@ -4195,7 +4196,7 @@
    "where": "U3 D5 · par 2, palabra a (La tilde nasal (~) también es tilde) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u03.js",
    "unused": true,
-   "order": 569
+   "order": 712
   },
   {
    "key": "a1u03d5.s1b",
@@ -4226,7 +4227,7 @@
    "where": "U3 D5 · par 3, palabra b (La tilde nasal (~) también es tilde) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u03.js",
    "unused": true,
-   "order": 570
+   "order": 713
   },
   {
    "key": "a1u03d5.r1.l0",
@@ -4291,7 +4292,7 @@
    "slow": true,
    "where": "U3 D5 · escucha «Buscar el dato» · línea 3 de 4, versión lenta",
    "file": "gn-sound-a1-u03.js",
-   "order": 535
+   "order": 670
   },
   {
    "key": "a1u03d6.w.kaneo",
@@ -4647,7 +4648,7 @@
    "where": "U4 D1 · par 2, palabra a (La tilde en dos vocales juntas: jarýi, ramói) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u04.js",
    "unused": true,
-   "order": 571
+   "order": 714
   },
   {
    "key": "a1u04d1.s1b",
@@ -4668,7 +4669,7 @@
    "where": "U4 D1 · par 3, palabra a (La tilde en dos vocales juntas: jarýi, ramói) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u04.js",
    "unused": true,
-   "order": 572
+   "order": 715
   },
   {
    "key": "a1u04d1.s2b",
@@ -4798,7 +4799,7 @@
    "slow": true,
    "where": "U4 D1 · escucha «Comprensión de puntos clave» · línea 3 de 9, versión lenta",
    "file": "gn-sound-a1-u04.js",
-   "order": 537
+   "order": 672
   },
   {
    "key": "a1u04d1.r1.l5.slow",
@@ -4809,7 +4810,7 @@
    "slow": true,
    "where": "U4 D1 · escucha «Comprensión de puntos clave» · línea 6 de 9, versión lenta",
    "file": "gn-sound-a1-u04.js",
-   "order": 539
+   "order": 674
   },
   {
    "key": "a1u04d2.p1.x0",
@@ -5011,7 +5012,7 @@
    "where": "U4 D2 · par 3, palabra b (El acento se mueve: ogakuéra) · hoy no suena: la lección reproduce la otra palabra del par",
    "file": "gn-sound-a1-u04.js",
    "unused": true,
-   "order": 574
+   "order": 717
   },
   {
    "key": "a1u04d2.s3a",
@@ -5321,7 +5322,7 @@
    "slow": true,
    "where": "U4 D3 · escucha «Comprensión de puntos clave» · línea 3 de 6, versión lenta",
    "file": "gn-sound-a1-u04.js",
-   "order": 543
+   "order": 678
   },
   {
    "key": "a1u04d3.r1.l3.slow",
@@ -5332,7 +5333,7 @@
    "slow": true,
    "where": "U4 D3 · escucha «Comprensión de puntos clave» · línea 4 de 6, versión lenta",
    "file": "gn-sound-a1-u04.js",
-   "order": 544
+   "order": 679
   },
   {
    "key": "a1u04d3.r1.l4.slow",
@@ -5343,7 +5344,7 @@
    "slow": true,
    "where": "U4 D3 · escucha «Comprensión de puntos clave» · línea 5 de 6, versión lenta",
    "file": "gn-sound-a1-u04.js",
-   "order": 545
+   "order": 680
   },
   {
    "key": "a1u04d4.p1.x0.l0",
@@ -6030,7 +6031,7 @@
    "slow": true,
    "where": "U4 D5 · escucha «Comprensión de puntos clave» · línea 2 de 7, versión lenta",
    "file": "gn-sound-a1-u04.js",
-   "order": 546
+   "order": 681
   },
   {
    "key": "a1u04d5.r1.l4.slow",
@@ -6187,6 +6188,1927 @@
    "same": "a1u01d4.w.kesu"
   },
   {
+   "key": "a1u05d1.p1.x0.l0",
+   "voice": "M",
+   "text": "Mba'éichapa reiko, Ana?",
+   "es": "",
+   "lang": "gn",
+   "where": "U5 D1 · punto 1, ejemplo 1 (diálogo) · línea 1 de 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 489
+  },
+  {
+   "key": "a1u05d1.p1.x0.l1",
+   "voice": "F",
+   "text": "Aiko porã.",
+   "es": "",
+   "lang": "gn",
+   "where": "U5 D1 · punto 1, ejemplo 1 (diálogo) · línea 2 de 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 490
+  },
+  {
+   "key": "a1u05d1.p1.x0",
+   "parts": [
+    "a1u05d1.p1.x0.l0",
+    "a1u05d1.p1.x0.l1"
+   ],
+   "voice": "M+F",
+   "text": "Mba'éichapa reiko, Ana? / Aiko porã.",
+   "es": "",
+   "where": "U5 D1 · punto 1, ejemplo 1 (diálogo)",
+   "file": "gn-sound-a1-u05.js"
+  },
+  {
+   "key": "a1u05d1.p1.x1",
+   "voice": "F",
+   "text": "Aiko Itauguápe.",
+   "es": "Vivo en Itauguá.",
+   "lang": "gn",
+   "where": "U5 D1 · punto 1, ejemplo 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 491
+  },
+  {
+   "key": "a1u05d1.p1.x2.l0",
+   "voice": "M",
+   "text": "Reikuaápa Ka'akupe?",
+   "es": "",
+   "lang": "gn",
+   "where": "U5 D1 · punto 1, ejemplo 3 (diálogo) · línea 1 de 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 492
+  },
+  {
+   "key": "a1u05d1.p1.x2.l1",
+   "voice": "F",
+   "text": "Héẽ, aikuaa.",
+   "es": "",
+   "lang": "gn",
+   "where": "U5 D1 · punto 1, ejemplo 3 (diálogo) · línea 2 de 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 493
+  },
+  {
+   "key": "a1u05d1.p1.x2",
+   "parts": [
+    "a1u05d1.p1.x2.l0",
+    "a1u05d1.p1.x2.l1"
+   ],
+   "voice": "M+F",
+   "text": "Reikuaápa Ka'akupe? / Héẽ, aikuaa.",
+   "es": "",
+   "where": "U5 D1 · punto 1, ejemplo 3 (diálogo)",
+   "file": "gn-sound-a1-u05.js"
+  },
+  {
+   "key": "a1u05d1.p1.x3",
+   "voice": "F",
+   "text": "Aipota ka'ay.",
+   "es": "Quiero mate.",
+   "lang": "gn",
+   "where": "U5 D1 · punto 1, ejemplo 4",
+   "file": "gn-sound-a1-u05.js",
+   "order": 494
+  },
+  {
+   "key": "a1u05d1.p1.x4",
+   "voice": "F",
+   "text": "Che ru oiko Itauguápe ha omba'apo Paraguaýpe.",
+   "es": "Mi papá vive en Itauguá y trabaja en Asunción.",
+   "lang": "gn",
+   "where": "U5 D1 · punto 1, ejemplo 5",
+   "file": "gn-sound-a1-u05.js",
+   "order": 495
+  },
+  {
+   "key": "a1u05d1.p1.x5",
+   "voice": "F",
+   "text": "Ndaipotái kamby.",
+   "es": "No quiero leche.",
+   "lang": "gn",
+   "where": "U5 D1 · punto 1, ejemplo 6",
+   "file": "gn-sound-a1-u05.js",
+   "order": 496
+  },
+  {
+   "key": "a1u05d1.p2.x0",
+   "voice": "F",
+   "text": "Ore roiko Itauguápe.",
+   "es": "Nosotros vivimos en Itauguá.",
+   "lang": "gn",
+   "where": "U5 D1 · punto 2, ejemplo 1",
+   "file": "gn-sound-a1-u05.js",
+   "order": 497
+  },
+  {
+   "key": "a1u05d1.p2.x1",
+   "voice": "F",
+   "text": "Ñande jaikuaa Ka'akupe.",
+   "es": "Vos y yo conocemos Caacupé.",
+   "lang": "gn",
+   "where": "U5 D1 · punto 2, ejemplo 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 498
+  },
+  {
+   "key": "a1u05d1.p2.x2",
+   "voice": "F",
+   "text": "Peikuaápa Itaugua?",
+   "es": "¿Ustedes conocen Itauguá?",
+   "lang": "gn",
+   "where": "U5 D1 · punto 2, ejemplo 3",
+   "file": "gn-sound-a1-u05.js",
+   "order": 499
+  },
+  {
+   "key": "a1u05d1.p2.x3",
+   "voice": "F",
+   "text": "Ñaikotevẽ kamby.",
+   "es": "Necesitamos leche.",
+   "lang": "gn",
+   "where": "U5 D1 · punto 2, ejemplo 4",
+   "file": "gn-sound-a1-u05.js",
+   "order": 500
+  },
+  {
+   "key": "a1u05d1.p2.x4",
+   "voice": "F",
+   "text": "Che membykuéra oiporu ko aranduka.",
+   "es": "Mis hijos usan este libro.",
+   "lang": "gn",
+   "where": "U5 D1 · punto 2, ejemplo 5",
+   "file": "gn-sound-a1-u05.js",
+   "order": 501
+  },
+  {
+   "key": "a1u05d1.p2.x5",
+   "voice": "F",
+   "text": "Naikotevẽi mba'eve.",
+   "es": "No necesito nada.",
+   "lang": "gn",
+   "where": "U5 D1 · punto 2, ejemplo 6",
+   "file": "gn-sound-a1-u05.js",
+   "order": 502
+  },
+  {
+   "key": "a1u05d1.w.aiko",
+   "voice": "F",
+   "text": "aiko",
+   "es": "vivo",
+   "lang": "gn",
+   "where": "U5 D1 · palabra 1 de la escena «Mate al amanecer, en la cocina de Ana»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 503
+  },
+  {
+   "key": "a1u05d1.w.aikopora",
+   "voice": "F",
+   "text": "Aiko porã",
+   "es": "Ando bien, estoy bien",
+   "lang": "gn",
+   "where": "U5 D1 · palabra 2 de la escena «Mate al amanecer, en la cocina de Ana»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 504
+  },
+  {
+   "key": "a1u05d1.w.aikuaa",
+   "voice": "F",
+   "text": "aikuaa",
+   "es": "sé, conozco",
+   "lang": "gn",
+   "where": "U5 D1 · palabra 3 de la escena «Mate al amanecer, en la cocina de Ana»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 505
+  },
+  {
+   "key": "a1u05d1.w.aipota",
+   "voice": "F",
+   "text": "aipota",
+   "es": "quiero (algo)",
+   "lang": "gn",
+   "where": "U5 D1 · palabra 4 de la escena «Mate al amanecer, en la cocina de Ana»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 506
+  },
+  {
+   "key": "a1u05d1.w.aiporu",
+   "voice": "F",
+   "text": "aiporu",
+   "es": "uso",
+   "lang": "gn",
+   "where": "U5 D1 · palabra 6 de la escena «Mate al amanecer, en la cocina de Ana»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 508
+  },
+  {
+   "key": "a1u05d1.w.aipytyvo",
+   "voice": "F",
+   "text": "aipytyvõ",
+   "es": "ayudo",
+   "lang": "gn",
+   "where": "U5 D1 · palabra 7 de la escena «Mate al amanecer, en la cocina de Ana»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 509
+  },
+  {
+   "key": "a1u05d1.w.aikoteve",
+   "voice": "F",
+   "text": "aikotevẽ",
+   "es": "necesito",
+   "lang": "gn",
+   "where": "U5 D1 · palabra 8 de la escena «Mate al amanecer, en la cocina de Ana»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 510
+  },
+  {
+   "key": "a1u05d1.s0a",
+   "voice": "F",
+   "text": "ake",
+   "es": "duermo",
+   "lang": "gn",
+   "where": "U5 D1 · par 1, palabra a (Dos vocales, una sílaba: aiko, reiko, oiko)",
+   "file": "gn-sound-a1-u05.js",
+   "unused": true,
+   "same": "a1u03d2.w.ake"
+  },
+  {
+   "key": "a1u05d1.s0b",
+   "voice": "F",
+   "text": "aike",
+   "es": "entro",
+   "lang": "gn",
+   "where": "U5 D1 · par 1, palabra b (Dos vocales, una sílaba: aiko, reiko, oiko)",
+   "file": "gn-sound-a1-u05.js",
+   "order": 511
+  },
+  {
+   "key": "a1u05d1.s1a",
+   "voice": "F",
+   "text": "oke",
+   "es": "duerme",
+   "lang": "gn",
+   "where": "U5 D1 · par 2, palabra a (Dos vocales, una sílaba: aiko, reiko, oiko)",
+   "file": "gn-sound-a1-u05.js",
+   "unused": true,
+   "order": 48
+  },
+  {
+   "key": "a1u05d1.s1b",
+   "voice": "F",
+   "text": "oike",
+   "es": "entra",
+   "lang": "gn",
+   "where": "U5 D1 · par 2, palabra b (Dos vocales, una sílaba: aiko, reiko, oiko)",
+   "file": "gn-sound-a1-u05.js",
+   "order": 512
+  },
+  {
+   "key": "a1u05d1.s2a",
+   "voice": "F",
+   "text": "aiko",
+   "es": "vivo",
+   "lang": "gn",
+   "where": "U5 D1 · par 3, palabra a (Dos vocales, una sílaba: aiko, reiko, oiko)",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u05d1.w.aiko"
+  },
+  {
+   "key": "a1u05d1.s2b",
+   "voice": "F",
+   "text": "oiko",
+   "es": "vive",
+   "lang": "gn",
+   "where": "U5 D1 · par 3, palabra b (Dos vocales, una sílaba: aiko, reiko, oiko)",
+   "file": "gn-sound-a1-u05.js",
+   "unused": true,
+   "order": 513
+  },
+  {
+   "key": "a1u05d1.s3a",
+   "voice": "F",
+   "text": "karai",
+   "es": "señor",
+   "lang": "gn",
+   "where": "U5 D1 · par 4, palabra a (Dos vocales, una sílaba: aiko, reiko, oiko)",
+   "file": "gn-sound-a1-u05.js",
+   "unused": true,
+   "same": "a1u01d1.w.karai"
+  },
+  {
+   "key": "a1u05d1.s3b",
+   "voice": "F",
+   "text": "aiko",
+   "es": "vivo",
+   "lang": "gn",
+   "where": "U5 D1 · par 4, palabra b (Dos vocales, una sílaba: aiko, reiko, oiko)",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u05d1.w.aiko"
+  },
+  {
+   "key": "a1u05d2.p1.x0",
+   "voice": "F",
+   "text": "Ára ha ára apu'ã ha akay'u.",
+   "es": "Todos los días me levanto y tomo mate.",
+   "lang": "gn",
+   "where": "U5 D2 · punto 1, ejemplo 1",
+   "file": "gn-sound-a1-u05.js",
+   "order": 514
+  },
+  {
+   "key": "a1u05d2.p1.x1",
+   "voice": "F",
+   "text": "Che membykuéra opu'ã ha orambosa.",
+   "es": "Mis hijos se levantan y desayunan.",
+   "lang": "gn",
+   "where": "U5 D2 · punto 1, ejemplo 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 515
+  },
+  {
+   "key": "a1u05d2.p1.x2",
+   "voice": "F",
+   "text": "Ñapu'ã ha jakay'u.",
+   "es": "Nos levantamos y tomamos mate.",
+   "lang": "gn",
+   "where": "U5 D2 · punto 1, ejemplo 3",
+   "file": "gn-sound-a1-u05.js",
+   "order": 516
+  },
+  {
+   "key": "a1u05d2.p1.x3",
+   "voice": "F",
+   "text": "Ore rorambosa ha roho mbo'ehaópe.",
+   "es": "Desayunamos y vamos a la escuela.",
+   "lang": "gn",
+   "where": "U5 D2 · punto 1, ejemplo 4",
+   "file": "gn-sound-a1-u05.js",
+   "order": 517
+  },
+  {
+   "key": "a1u05d2.p1.x4",
+   "voice": "F",
+   "text": "Che ru ojevy pyhare.",
+   "es": "Mi papá vuelve a la noche.",
+   "lang": "gn",
+   "where": "U5 D2 · punto 1, ejemplo 5",
+   "file": "gn-sound-a1-u05.js",
+   "order": 518
+  },
+  {
+   "key": "a1u05d2.p1.x5",
+   "voice": "F",
+   "text": "Che sy okay'u ha che arambosa.",
+   "es": "Mi mamá toma mate y yo desayuno.",
+   "lang": "gn",
+   "where": "U5 D2 · punto 1, ejemplo 6",
+   "file": "gn-sound-a1-u05.js",
+   "order": 519
+  },
+  {
+   "key": "a1u05d2.p2.x0",
+   "voice": "F",
+   "text": "Pyhareve amba'apo mbo'ehaópe.",
+   "es": "A la mañana trabajo en la escuela.",
+   "lang": "gn",
+   "where": "U5 D2 · punto 2, ejemplo 1",
+   "file": "gn-sound-a1-u05.js",
+   "order": 520
+  },
+  {
+   "key": "a1u05d2.p2.x1",
+   "voice": "F",
+   "text": "Asaje ajevy ógape ha apytu'u.",
+   "es": "A la siesta vuelvo a casa y descanso.",
+   "lang": "gn",
+   "where": "U5 D2 · punto 2, ejemplo 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 521
+  },
+  {
+   "key": "a1u05d2.p2.x2",
+   "voice": "F",
+   "text": "Apu'ã, upéi akay'u.",
+   "es": "Me levanto, después tomo mate.",
+   "lang": "gn",
+   "where": "U5 D2 · punto 2, ejemplo 3",
+   "file": "gn-sound-a1-u05.js",
+   "order": 522
+  },
+  {
+   "key": "a1u05d2.p2.x3",
+   "voice": "F",
+   "text": "Akaru ha upéi ake.",
+   "es": "Como y después duermo.",
+   "lang": "gn",
+   "where": "U5 D2 · punto 2, ejemplo 4",
+   "file": "gn-sound-a1-u05.js",
+   "order": 523
+  },
+  {
+   "key": "a1u05d2.p2.x4",
+   "voice": "F",
+   "text": "Ka'aru aha távape.",
+   "es": "A la tarde voy al centro.",
+   "lang": "gn",
+   "where": "U5 D2 · punto 2, ejemplo 5",
+   "file": "gn-sound-a1-u05.js",
+   "order": 524
+  },
+  {
+   "key": "a1u05d2.p2.x5",
+   "voice": "F",
+   "text": "Pyhare añeno ha ake.",
+   "es": "A la noche me acuesto y duermo.",
+   "lang": "gn",
+   "where": "U5 D2 · punto 2, ejemplo 6",
+   "file": "gn-sound-a1-u05.js",
+   "order": 525
+  },
+  {
+   "key": "a1u05d2.w.arahaara",
+   "voice": "F",
+   "text": "ára ha ára",
+   "es": "todos los días",
+   "lang": "gn",
+   "where": "U5 D2 · palabra 1 de la escena «La mañana de Ana, de la cama a la escuela»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 526
+  },
+  {
+   "key": "a1u05d2.w.upei",
+   "voice": "F",
+   "text": "upéi",
+   "es": "después",
+   "lang": "gn",
+   "where": "U5 D2 · palabra 2 de la escena «La mañana de Ana, de la cama a la escuela»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 527
+  },
+  {
+   "key": "a1u05d2.w.asaje",
+   "voice": "F",
+   "text": "asaje",
+   "es": "la siesta, el mediodía",
+   "lang": "gn",
+   "where": "U5 D2 · palabra 3 de la escena «La mañana de Ana, de la cama a la escuela»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 528
+  },
+  {
+   "key": "a1u05d2.w.arambosa",
+   "voice": "F",
+   "text": "arambosa",
+   "es": "desayuno (yo)",
+   "lang": "gn",
+   "where": "U5 D2 · palabra 4 de la escena «La mañana de Ana, de la cama a la escuela»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 529
+  },
+  {
+   "key": "a1u05d2.w.akayu",
+   "voice": "F",
+   "text": "akay'u",
+   "es": "tomo mate",
+   "lang": "gn",
+   "where": "U5 D2 · palabra 5 de la escena «La mañana de Ana, de la cama a la escuela»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 530
+  },
+  {
+   "key": "a1u05d2.w.ajevy",
+   "voice": "F",
+   "text": "ajevy",
+   "es": "vuelvo",
+   "lang": "gn",
+   "where": "U5 D2 · palabra 6 de la escena «La mañana de Ana, de la cama a la escuela»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 531
+  },
+  {
+   "key": "a1u05d2.w.apytuu",
+   "voice": "F",
+   "text": "apytu'u",
+   "es": "descanso",
+   "lang": "gn",
+   "where": "U5 D2 · palabra 7 de la escena «La mañana de Ana, de la cama a la escuela»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 532
+  },
+  {
+   "key": "a1u05d2.w.aneno",
+   "voice": "F",
+   "text": "añeno",
+   "es": "me acuesto",
+   "lang": "gn",
+   "where": "U5 D2 · palabra 8 de la escena «La mañana de Ana, de la cama a la escuela»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 533
+  },
+  {
+   "key": "a1u05d2.s0a",
+   "voice": "F",
+   "text": "akaru",
+   "es": "como (de comer)",
+   "lang": "gn",
+   "where": "U5 D2 · par 1, palabra a (Cada sílaba termina en vocal: arambosa, añeno)",
+   "file": "gn-sound-a1-u05.js",
+   "unused": true,
+   "same": "a1u02d1.w.akaru"
+  },
+  {
+   "key": "a1u05d2.s0b",
+   "voice": "F",
+   "text": "arambosa",
+   "es": "desayuno",
+   "lang": "gn",
+   "where": "U5 D2 · par 1, palabra b (Cada sílaba termina en vocal: arambosa, añeno)",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u05d2.w.arambosa"
+  },
+  {
+   "key": "a1u05d2.s1a",
+   "voice": "F",
+   "text": "ajevy",
+   "es": "vuelvo",
+   "lang": "gn",
+   "where": "U5 D2 · par 2, palabra a (Cada sílaba termina en vocal: arambosa, añeno)",
+   "file": "gn-sound-a1-u05.js",
+   "unused": true,
+   "same": "a1u05d2.w.ajevy"
+  },
+  {
+   "key": "a1u05d2.s1b",
+   "voice": "F",
+   "text": "ahendu",
+   "es": "escucho, oigo",
+   "lang": "gn",
+   "where": "U5 D2 · par 2, palabra b (Cada sílaba termina en vocal: arambosa, añeno)",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u02d1.w.ahendu"
+  },
+  {
+   "key": "a1u05d2.s2a",
+   "voice": "F",
+   "text": "ake",
+   "es": "duermo",
+   "lang": "gn",
+   "where": "U5 D2 · par 3, palabra a (Cada sílaba termina en vocal: arambosa, añeno)",
+   "file": "gn-sound-a1-u05.js",
+   "unused": true,
+   "same": "a1u03d2.w.ake"
+  },
+  {
+   "key": "a1u05d2.s2b",
+   "voice": "F",
+   "text": "añeno",
+   "es": "me acuesto",
+   "lang": "gn",
+   "where": "U5 D2 · par 3, palabra b (Cada sílaba termina en vocal: arambosa, añeno)",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u05d2.w.aneno"
+  },
+  {
+   "key": "a1u05d2.s3a",
+   "voice": "F",
+   "text": "apu'ã",
+   "es": "me levanto",
+   "lang": "gn",
+   "where": "U5 D2 · par 4, palabra a (Cada sílaba termina en vocal: arambosa, añeno)",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u03d2.w.apua"
+  },
+  {
+   "key": "a1u05d2.s3b",
+   "voice": "F",
+   "text": "apytu'u",
+   "es": "descanso",
+   "lang": "gn",
+   "where": "U5 D2 · par 4, palabra b (Cada sílaba termina en vocal: arambosa, añeno)",
+   "file": "gn-sound-a1-u05.js",
+   "unused": true,
+   "same": "a1u05d2.w.apytuu"
+  },
+  {
+   "key": "a1u05d2.r1.l0",
+   "voice": "N",
+   "text": "Ana cuenta su día. ¿Qué hace a la siesta?",
+   "es": "Ana cuenta su día. ¿Qué hace a la siesta?",
+   "lang": "es",
+   "where": "U5 D2 · escucha «Comprensión de puntos clave» · línea 1 de 6",
+   "file": "gn-sound-a1-u05.js",
+   "order": 534
+  },
+  {
+   "key": "a1u05d2.r1.l1",
+   "voice": "F",
+   "text": "Pyhareve apu'ã ha arambosa.",
+   "es": "A la mañana me levanto y desayuno.",
+   "lang": "gn",
+   "where": "U5 D2 · escucha «Comprensión de puntos clave» · línea 2 de 6",
+   "file": "gn-sound-a1-u05.js",
+   "order": 535
+  },
+  {
+   "key": "a1u05d2.r1.l2",
+   "voice": "F",
+   "text": "Upéi aha mbo'ehaópe.",
+   "es": "Después voy a la escuela.",
+   "lang": "gn",
+   "where": "U5 D2 · escucha «Comprensión de puntos clave» · línea 3 de 6",
+   "file": "gn-sound-a1-u05.js",
+   "order": 536
+  },
+  {
+   "key": "a1u05d2.r1.l3",
+   "voice": "F",
+   "text": "Asaje ajevy ógape.",
+   "es": "A la siesta vuelvo a casa.",
+   "lang": "gn",
+   "where": "U5 D2 · escucha «Comprensión de puntos clave» · línea 4 de 6",
+   "file": "gn-sound-a1-u05.js",
+   "order": 537
+  },
+  {
+   "key": "a1u05d2.r1.l4",
+   "voice": "F",
+   "text": "Pyhare chekane'õ ha añeno.",
+   "es": "A la noche estoy cansada y me acuesto.",
+   "lang": "gn",
+   "where": "U5 D2 · escucha «Comprensión de puntos clave» · línea 5 de 6",
+   "file": "gn-sound-a1-u05.js",
+   "order": 538
+  },
+  {
+   "key": "a1u05d2.r1.l5",
+   "voice": "N",
+   "text": "¿Qué hace Ana a la siesta?",
+   "es": "¿Qué hace Ana a la siesta?",
+   "lang": "es",
+   "where": "U5 D2 · escucha «Comprensión de puntos clave» · línea 6 de 6",
+   "file": "gn-sound-a1-u05.js",
+   "order": 539
+  },
+  {
+   "key": "a1u05d2.r1",
+   "parts": [
+    "a1u05d2.r1.l0",
+    "a1u05d2.r1.l1",
+    "a1u05d2.r1.l2",
+    "a1u05d2.r1.l3",
+    "a1u05d2.r1.l4",
+    "a1u05d2.r1.l5"
+   ],
+   "voice": "N+F",
+   "text": "Ana cuenta su día. ¿Qué hace a la siesta? / Pyhareve apu'ã ha arambosa. / Upéi aha mbo'ehaópe. / Asaje ajevy ógape. / Pyhare chekane'õ ha añeno. / ¿Qué hace Ana a la siesta?",
+   "es": "Ana cuenta su día. ¿Qué hace a la siesta? / A la mañana me levanto y desayuno. / Después voy a la escuela. / A la siesta vuelvo a casa. / A la noche estoy cansada y me acuesto. / ¿Qué hace Ana a la siesta?",
+   "where": "U5 D2 · escucha «Comprensión de puntos clave»",
+   "file": "gn-sound-a1-u05.js"
+  },
+  {
+   "key": "a1u05d2.r1.l2.slow",
+   "voice": "F",
+   "text": "Upéi aha mbo'ehaópe.",
+   "es": "Después voy a la escuela.",
+   "lang": "gn",
+   "slow": true,
+   "where": "U5 D2 · escucha «Comprensión de puntos clave» · línea 3 de 6, versión lenta",
+   "file": "gn-sound-a1-u05.js",
+   "order": 686
+  },
+  {
+   "key": "a1u05d2.r1.l3.slow",
+   "voice": "F",
+   "text": "Asaje ajevy ógape.",
+   "es": "A la siesta vuelvo a casa.",
+   "lang": "gn",
+   "slow": true,
+   "where": "U5 D2 · escucha «Comprensión de puntos clave» · línea 4 de 6, versión lenta",
+   "file": "gn-sound-a1-u05.js",
+   "order": 687
+  },
+  {
+   "key": "a1u05d3.p1.x0.l0",
+   "voice": "M",
+   "text": "Mba'e aravópa reho mbo'ehaópe?",
+   "es": "",
+   "lang": "gn",
+   "where": "U5 D3 · punto 1, ejemplo 1 (diálogo) · línea 1 de 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 544
+  },
+  {
+   "key": "a1u05d3.p1.x0.l1",
+   "voice": "F",
+   "text": "Siete.",
+   "es": "",
+   "lang": "gn",
+   "where": "U5 D3 · punto 1, ejemplo 1 (diálogo) · línea 2 de 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 545
+  },
+  {
+   "key": "a1u05d3.p1.x0",
+   "parts": [
+    "a1u05d3.p1.x0.l0",
+    "a1u05d3.p1.x0.l1"
+   ],
+   "voice": "M+F",
+   "text": "Mba'e aravópa reho mbo'ehaópe? / Siete.",
+   "es": "",
+   "where": "U5 D3 · punto 1, ejemplo 1 (diálogo)",
+   "file": "gn-sound-a1-u05.js"
+  },
+  {
+   "key": "a1u05d3.p1.x1.l0",
+   "voice": "M",
+   "text": "Mba'e aravópa rekaru?",
+   "es": "",
+   "lang": "gn",
+   "where": "U5 D3 · punto 1, ejemplo 2 (diálogo) · línea 1 de 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 546
+  },
+  {
+   "key": "a1u05d3.p1.x1.l1",
+   "voice": "F",
+   "text": "Doce.",
+   "es": "",
+   "lang": "gn",
+   "where": "U5 D3 · punto 1, ejemplo 2 (diálogo) · línea 2 de 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 547
+  },
+  {
+   "key": "a1u05d3.p1.x1",
+   "parts": [
+    "a1u05d3.p1.x1.l0",
+    "a1u05d3.p1.x1.l1"
+   ],
+   "voice": "M+F",
+   "text": "Mba'e aravópa rekaru? / Doce.",
+   "es": "",
+   "where": "U5 D3 · punto 1, ejemplo 2 (diálogo)",
+   "file": "gn-sound-a1-u05.js"
+  },
+  {
+   "key": "a1u05d3.p1.x2",
+   "voice": "F",
+   "text": "Asaje apytu'u peteĩ aravo.",
+   "es": "A la siesta descanso una hora.",
+   "lang": "gn",
+   "where": "U5 D3 · punto 1, ejemplo 3",
+   "file": "gn-sound-a1-u05.js",
+   "order": 548
+  },
+  {
+   "key": "a1u05d3.p1.x3",
+   "voice": "F",
+   "text": "Aguata mokõi aravo.",
+   "es": "Camino dos horas.",
+   "lang": "gn",
+   "where": "U5 D3 · punto 1, ejemplo 4",
+   "file": "gn-sound-a1-u05.js",
+   "order": 549
+  },
+  {
+   "key": "a1u05d3.p1.x4",
+   "voice": "F",
+   "text": "Ajahu po aravo'i.",
+   "es": "Me baño cinco minutos.",
+   "lang": "gn",
+   "where": "U5 D3 · punto 1, ejemplo 5",
+   "file": "gn-sound-a1-u05.js",
+   "order": 550
+  },
+  {
+   "key": "a1u05d3.p2.x0",
+   "voice": "F",
+   "text": "Ko jueves aha távape.",
+   "es": "Este jueves voy al centro.",
+   "lang": "gn",
+   "where": "U5 D3 · punto 2, ejemplo 1",
+   "file": "gn-sound-a1-u05.js",
+   "order": 551
+  },
+  {
+   "key": "a1u05d3.p2.x1",
+   "voice": "F",
+   "text": "Ko jueves ka'aru aguata távape.",
+   "es": "Este jueves a la tarde camino por el centro.",
+   "lang": "gn",
+   "where": "U5 D3 · punto 2, ejemplo 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 552
+  },
+  {
+   "key": "a1u05d3.p2.x2",
+   "voice": "F",
+   "text": "Jueves pyhareve amba'apo mbo'ehaópe.",
+   "es": "El jueves a la mañana trabajo en la escuela.",
+   "lang": "gn",
+   "where": "U5 D3 · punto 2, ejemplo 3",
+   "file": "gn-sound-a1-u05.js",
+   "order": 553
+  },
+  {
+   "key": "a1u05d3.p2.x3",
+   "voice": "F",
+   "text": "Ko arapokõindy amba'apo heta.",
+   "es": "Esta semana trabajo mucho.",
+   "lang": "gn",
+   "where": "U5 D3 · punto 2, ejemplo 4",
+   "file": "gn-sound-a1-u05.js",
+   "order": 554
+  },
+  {
+   "key": "a1u05d3.p2.x4",
+   "voice": "F",
+   "text": "Arete jave ndahái mbo'ehaópe.",
+   "es": "En feriado no voy a la escuela.",
+   "lang": "gn",
+   "where": "U5 D3 · punto 2, ejemplo 5",
+   "file": "gn-sound-a1-u05.js",
+   "order": 555
+  },
+  {
+   "key": "a1u05d3.w.aravo",
+   "voice": "F",
+   "text": "aravo",
+   "es": "hora",
+   "lang": "gn",
+   "where": "U5 D3 · palabra 1 de la escena «El horario en la heladera»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 556
+  },
+  {
+   "key": "a1u05d3.w.aravoi",
+   "voice": "F",
+   "text": "aravo'i",
+   "es": "minuto",
+   "lang": "gn",
+   "where": "U5 D3 · palabra 2 de la escena «El horario en la heladera»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 557
+  },
+  {
+   "key": "a1u05d3.w.arapokoindy",
+   "voice": "F",
+   "text": "arapokõindy",
+   "es": "semana",
+   "lang": "gn",
+   "where": "U5 D3 · palabra 3 de la escena «El horario en la heladera»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 558
+  },
+  {
+   "key": "a1u05d3.w.mbaearavopa",
+   "voice": "F",
+   "text": "Mba'e aravópa?",
+   "es": "¿A qué hora?",
+   "lang": "gn",
+   "where": "U5 D3 · palabra 4 de la escena «El horario en la heladera»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 559
+  },
+  {
+   "key": "a1u05d3.w.kojueves",
+   "voice": "F",
+   "text": "ko jueves",
+   "es": "este jueves",
+   "lang": "gn",
+   "where": "U5 D3 · palabra 5 de la escena «El horario en la heladera»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 560
+  },
+  {
+   "key": "a1u05d3.w.asajepyte",
+   "voice": "F",
+   "text": "asajepyte",
+   "es": "mediodía",
+   "lang": "gn",
+   "where": "U5 D3 · palabra 6 de la escena «El horario en la heladera»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 561
+  },
+  {
+   "key": "a1u05d3.w.pyharepyte",
+   "voice": "F",
+   "text": "pyharepyte",
+   "es": "medianoche",
+   "lang": "gn",
+   "where": "U5 D3 · palabra 7 de la escena «El horario en la heladera»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 562
+  },
+  {
+   "key": "a1u05d3.w.arete",
+   "voice": "F",
+   "text": "arete",
+   "es": "feriado, día de fiesta",
+   "lang": "gn",
+   "where": "U5 D3 · palabra 8 de la escena «El horario en la heladera»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 563
+  },
+  {
+   "key": "a1u05d3.s0a",
+   "voice": "F",
+   "text": "ára",
+   "es": "día",
+   "lang": "gn",
+   "where": "U5 D3 · par 1, palabra a (Como ára, pero sin tilde: aravo, arete)",
+   "file": "gn-sound-a1-u05.js",
+   "order": 564
+  },
+  {
+   "key": "a1u05d3.s0b",
+   "voice": "F",
+   "text": "aravo",
+   "es": "hora",
+   "lang": "gn",
+   "where": "U5 D3 · par 1, palabra b (Como ára, pero sin tilde: aravo, arete)",
+   "file": "gn-sound-a1-u05.js",
+   "unused": true,
+   "same": "a1u05d3.w.aravo"
+  },
+  {
+   "key": "a1u05d3.s1a",
+   "voice": "F",
+   "text": "ára",
+   "es": "día",
+   "lang": "gn",
+   "where": "U5 D3 · par 2, palabra a (Como ára, pero sin tilde: aravo, arete)",
+   "file": "gn-sound-a1-u05.js",
+   "unused": true,
+   "same": "a1u05d3.s0a"
+  },
+  {
+   "key": "a1u05d3.s1b",
+   "voice": "F",
+   "text": "arete",
+   "es": "feriado",
+   "lang": "gn",
+   "where": "U5 D3 · par 2, palabra b (Como ára, pero sin tilde: aravo, arete)",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u05d3.w.arete"
+  },
+  {
+   "key": "a1u05d3.s2a",
+   "voice": "F",
+   "text": "asaje",
+   "es": "la siesta",
+   "lang": "gn",
+   "where": "U5 D3 · par 3, palabra a (Como ára, pero sin tilde: aravo, arete)",
+   "file": "gn-sound-a1-u05.js",
+   "unused": true,
+   "same": "a1u05d2.w.asaje"
+  },
+  {
+   "key": "a1u05d3.s2b",
+   "voice": "F",
+   "text": "asajepyte",
+   "es": "mediodía",
+   "lang": "gn",
+   "where": "U5 D3 · par 3, palabra b (Como ára, pero sin tilde: aravo, arete)",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u05d3.w.asajepyte"
+  },
+  {
+   "key": "a1u05d3.s3a",
+   "voice": "F",
+   "text": "pyhare",
+   "es": "noche",
+   "lang": "gn",
+   "where": "U5 D3 · par 4, palabra a (Como ára, pero sin tilde: aravo, arete)",
+   "file": "gn-sound-a1-u05.js",
+   "order": 565
+  },
+  {
+   "key": "a1u05d3.s3b",
+   "voice": "F",
+   "text": "pyharepyte",
+   "es": "medianoche",
+   "lang": "gn",
+   "where": "U5 D3 · par 4, palabra b (Como ára, pero sin tilde: aravo, arete)",
+   "file": "gn-sound-a1-u05.js",
+   "unused": true,
+   "same": "a1u05d3.w.pyharepyte"
+  },
+  {
+   "key": "a1u05d4.p1.x0.l0",
+   "voice": "M",
+   "text": "Moõpa opyta ñemuha?",
+   "es": "",
+   "lang": "gn",
+   "where": "U5 D4 · punto 1, ejemplo 1 (diálogo) · línea 1 de 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 566
+  },
+  {
+   "key": "a1u05d4.p1.x0.l1",
+   "voice": "F",
+   "text": "Upépe. Hi'ag̃ui.",
+   "es": "",
+   "lang": "gn",
+   "where": "U5 D4 · punto 1, ejemplo 1 (diálogo) · línea 2 de 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 567
+  },
+  {
+   "key": "a1u05d4.p1.x0",
+   "parts": [
+    "a1u05d4.p1.x0.l0",
+    "a1u05d4.p1.x0.l1"
+   ],
+   "voice": "M+F",
+   "text": "Moõpa opyta ñemuha? / Upépe. Hi'ag̃ui.",
+   "es": "",
+   "where": "U5 D4 · punto 1, ejemplo 1 (diálogo)",
+   "file": "gn-sound-a1-u05.js"
+  },
+  {
+   "key": "a1u05d4.p1.x1",
+   "voice": "F",
+   "text": "Moõpa opyta tupão? Hi'ag̃ui ko'águi.",
+   "es": "¿Dónde queda la iglesia? Está cerca de acá.",
+   "lang": "gn",
+   "where": "U5 D4 · punto 1, ejemplo 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 568
+  },
+  {
+   "key": "a1u05d4.p1.x2.l0",
+   "voice": "M",
+   "text": "Moõpa oĩ ne membykuéra?",
+   "es": "",
+   "lang": "gn",
+   "where": "U5 D4 · punto 1, ejemplo 3 (diálogo) · línea 1 de 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 569
+  },
+  {
+   "key": "a1u05d4.p1.x2.l1",
+   "voice": "F",
+   "text": "Oĩ ógape.",
+   "es": "",
+   "lang": "gn",
+   "where": "U5 D4 · punto 1, ejemplo 3 (diálogo) · línea 2 de 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 570
+  },
+  {
+   "key": "a1u05d4.p1.x2",
+   "parts": [
+    "a1u05d4.p1.x2.l0",
+    "a1u05d4.p1.x2.l1"
+   ],
+   "voice": "M+F",
+   "text": "Moõpa oĩ ne membykuéra? / Oĩ ógape.",
+   "es": "",
+   "where": "U5 D4 · punto 1, ejemplo 3 (diálogo)",
+   "file": "gn-sound-a1-u05.js"
+  },
+  {
+   "key": "a1u05d4.p1.x3",
+   "voice": "F",
+   "text": "Moõpa oĩ che aranduka? Upépe.",
+   "es": "¿Dónde está mi libro? Ahí.",
+   "lang": "gn",
+   "where": "U5 D4 · punto 1, ejemplo 4",
+   "file": "gn-sound-a1-u05.js",
+   "order": 571
+  },
+  {
+   "key": "a1u05d4.p1.x4",
+   "voice": "F",
+   "text": "Che róga opyta Itauguápe.",
+   "es": "Mi casa queda en Itauguá.",
+   "lang": "gn",
+   "where": "U5 D4 · punto 1, ejemplo 5",
+   "file": "gn-sound-a1-u05.js",
+   "order": 572
+  },
+  {
+   "key": "a1u05d4.p2.x0.l0",
+   "voice": "M",
+   "text": "Araka'épa reho mbo'ehaópe?",
+   "es": "",
+   "lang": "gn",
+   "where": "U5 D4 · punto 2, ejemplo 1 (diálogo) · línea 1 de 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 573
+  },
+  {
+   "key": "a1u05d4.p2.x0.l1",
+   "voice": "F",
+   "text": "Pyhareve, ára ha ára.",
+   "es": "",
+   "lang": "gn",
+   "where": "U5 D4 · punto 2, ejemplo 1 (diálogo) · línea 2 de 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 574
+  },
+  {
+   "key": "a1u05d4.p2.x0",
+   "parts": [
+    "a1u05d4.p2.x0.l0",
+    "a1u05d4.p2.x0.l1"
+   ],
+   "voice": "M+F",
+   "text": "Araka'épa reho mbo'ehaópe? / Pyhareve, ára ha ára.",
+   "es": "",
+   "where": "U5 D4 · punto 2, ejemplo 1 (diálogo)",
+   "file": "gn-sound-a1-u05.js"
+  },
+  {
+   "key": "a1u05d4.p2.x1.l0",
+   "voice": "M",
+   "text": "Araka'épa og̃uahẽ nde ru?",
+   "es": "",
+   "lang": "gn",
+   "where": "U5 D4 · punto 2, ejemplo 2 (diálogo) · línea 1 de 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 575
+  },
+  {
+   "key": "a1u05d4.p2.x1.l1",
+   "voice": "F",
+   "text": "Pyhare.",
+   "es": "",
+   "lang": "gn",
+   "where": "U5 D4 · punto 2, ejemplo 2 (diálogo) · línea 2 de 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 576
+  },
+  {
+   "key": "a1u05d4.p2.x1",
+   "parts": [
+    "a1u05d4.p2.x1.l0",
+    "a1u05d4.p2.x1.l1"
+   ],
+   "voice": "M+F",
+   "text": "Araka'épa og̃uahẽ nde ru? / Pyhare.",
+   "es": "",
+   "where": "U5 D4 · punto 2, ejemplo 2 (diálogo)",
+   "file": "gn-sound-a1-u05.js"
+  },
+  {
+   "key": "a1u05d4.p2.x2.l0",
+   "voice": "M",
+   "text": "Araka'épa rekaru?",
+   "es": "",
+   "lang": "gn",
+   "where": "U5 D4 · punto 2, ejemplo 3 (diálogo) · línea 1 de 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 577
+  },
+  {
+   "key": "a1u05d4.p2.x2.l1",
+   "voice": "F",
+   "text": "Asajepyte.",
+   "es": "",
+   "lang": "gn",
+   "where": "U5 D4 · punto 2, ejemplo 3 (diálogo) · línea 2 de 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 578
+  },
+  {
+   "key": "a1u05d4.p2.x2",
+   "parts": [
+    "a1u05d4.p2.x2.l0",
+    "a1u05d4.p2.x2.l1"
+   ],
+   "voice": "M+F",
+   "text": "Araka'épa rekaru? / Asajepyte.",
+   "es": "",
+   "where": "U5 D4 · punto 2, ejemplo 3 (diálogo)",
+   "file": "gn-sound-a1-u05.js"
+  },
+  {
+   "key": "a1u05d4.p2.x3.l0",
+   "voice": "M",
+   "text": "Araka'épa repytu'u?",
+   "es": "",
+   "lang": "gn",
+   "where": "U5 D4 · punto 2, ejemplo 4 (diálogo) · línea 1 de 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 579
+  },
+  {
+   "key": "a1u05d4.p2.x3.l1",
+   "voice": "F",
+   "text": "Asaje.",
+   "es": "",
+   "lang": "gn",
+   "where": "U5 D4 · punto 2, ejemplo 4 (diálogo) · línea 2 de 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 580
+  },
+  {
+   "key": "a1u05d4.p2.x3",
+   "parts": [
+    "a1u05d4.p2.x3.l0",
+    "a1u05d4.p2.x3.l1"
+   ],
+   "voice": "M+F",
+   "text": "Araka'épa repytu'u? / Asaje.",
+   "es": "",
+   "where": "U5 D4 · punto 2, ejemplo 4 (diálogo)",
+   "file": "gn-sound-a1-u05.js"
+  },
+  {
+   "key": "a1u05d4.w.arakaepa",
+   "voice": "F",
+   "text": "Araka'épa?",
+   "es": "¿Cuándo?",
+   "lang": "gn",
+   "where": "U5 D4 · palabra 1 de la escena «En el centro de Itauguá, frente a la iglesia»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 581
+  },
+  {
+   "key": "a1u05d4.w.upepe",
+   "voice": "F",
+   "text": "upépe",
+   "es": "ahí, allá",
+   "lang": "gn",
+   "where": "U5 D4 · palabra 2 de la escena «En el centro de Itauguá, frente a la iglesia»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 582
+  },
+  {
+   "key": "a1u05d4.w.mombyry",
+   "voice": "F",
+   "text": "mombyry",
+   "es": "lejos",
+   "lang": "gn",
+   "where": "U5 D4 · palabra 3 de la escena «En el centro de Itauguá, frente a la iglesia»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 583
+  },
+  {
+   "key": "a1u05d4.w.tupao",
+   "voice": "F",
+   "text": "tupão",
+   "es": "iglesia",
+   "lang": "gn",
+   "where": "U5 D4 · palabra 5 de la escena «En el centro de Itauguá, frente a la iglesia»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 585
+  },
+  {
+   "key": "a1u05d4.w.tape",
+   "voice": "F",
+   "text": "tape",
+   "es": "camino, calle",
+   "lang": "gn",
+   "where": "U5 D4 · palabra 6 de la escena «En el centro de Itauguá, frente a la iglesia»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 586
+  },
+  {
+   "key": "a1u05d4.w.nemuha",
+   "voice": "F",
+   "text": "ñemuha",
+   "es": "negocio, tienda",
+   "lang": "gn",
+   "where": "U5 D4 · palabra 7 de la escena «En el centro de Itauguá, frente a la iglesia»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 587
+  },
+  {
+   "key": "a1u05d4.w.opyta",
+   "voice": "F",
+   "text": "opyta",
+   "es": "queda (está en un lugar); se queda",
+   "lang": "gn",
+   "where": "U5 D4 · palabra 8 de la escena «En el centro de Itauguá, frente a la iglesia»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 588
+  },
+  {
+   "key": "a1u05d4.s0a",
+   "voice": "F",
+   "text": "oiko",
+   "es": "vive",
+   "lang": "gn",
+   "where": "U5 D4 · par 1, palabra a (Dos vocales, dos sílabas: moõ, oĩ)",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u05d1.s2b"
+  },
+  {
+   "key": "a1u05d4.s0b",
+   "voice": "F",
+   "text": "oĩ",
+   "es": "hay, está",
+   "lang": "gn",
+   "where": "U5 D4 · par 1, palabra b (Dos vocales, dos sílabas: moõ, oĩ)",
+   "file": "gn-sound-a1-u05.js",
+   "unused": true,
+   "same": "a1u03d5.s1a"
+  },
+  {
+   "key": "a1u05d4.s1a",
+   "voice": "F",
+   "text": "mokõi",
+   "es": "dos",
+   "lang": "gn",
+   "where": "U5 D4 · par 2, palabra a (Dos vocales, dos sílabas: moõ, oĩ)",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u04d5.w.mokoi"
+  },
+  {
+   "key": "a1u05d4.s1b",
+   "voice": "F",
+   "text": "moõ",
+   "es": "dónde",
+   "lang": "gn",
+   "where": "U5 D4 · par 2, palabra b (Dos vocales, dos sílabas: moõ, oĩ) · hoy no suena: la lección reproduce la otra palabra del par",
+   "file": "gn-sound-a1-u05.js",
+   "unused": true,
+   "order": 718
+  },
+  {
+   "key": "a1u05d4.s2a",
+   "voice": "F",
+   "text": "peteĩ",
+   "es": "uno",
+   "lang": "gn",
+   "where": "U5 D4 · par 3, palabra a (Dos vocales, dos sílabas: moõ, oĩ)",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u04d5.w.petei"
+  },
+  {
+   "key": "a1u05d4.s2b",
+   "voice": "F",
+   "text": "kuñataĩ",
+   "es": "chica, muchacha",
+   "lang": "gn",
+   "where": "U5 D4 · par 3, palabra b (Dos vocales, dos sílabas: moõ, oĩ)",
+   "file": "gn-sound-a1-u05.js",
+   "unused": true,
+   "same": "a1u01d2.w.kunatai"
+  },
+  {
+   "key": "a1u05d4.r1.l0",
+   "voice": "N",
+   "text": "En la plaza de Itauguá, frente a la iglesia. Moisés le pregunta a Ana. ¿Dónde queda el negocio?",
+   "es": "En la plaza de Itauguá, frente a la iglesia. Moisés le pregunta a Ana. ¿Dónde queda el negocio?",
+   "lang": "es",
+   "where": "U5 D4 · escucha «Comprensión de puntos clave» · línea 1 de 6",
+   "file": "gn-sound-a1-u05.js",
+   "order": 590
+  },
+  {
+   "key": "a1u05d4.r1.l1",
+   "voice": "M",
+   "text": "Moõpa opyta ñemuha?",
+   "es": "¿Dónde queda el negocio?",
+   "lang": "gn",
+   "where": "U5 D4 · escucha «Comprensión de puntos clave» · línea 2 de 6",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u05d4.p1.x0.l0"
+  },
+  {
+   "key": "a1u05d4.r1.l2",
+   "voice": "F",
+   "text": "Upépe. Hi'ag̃ui.",
+   "es": "Ahí. Está cerca.",
+   "lang": "gn",
+   "where": "U5 D4 · escucha «Comprensión de puntos clave» · línea 3 de 6",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u05d4.p1.x0.l1"
+  },
+  {
+   "key": "a1u05d4.r1.l3",
+   "voice": "M",
+   "text": "Aguyje. Ha nde, araka'épa reho mbo'ehaópe?",
+   "es": "Gracias. Y vos, ¿cuándo vas a la escuela?",
+   "lang": "gn",
+   "where": "U5 D4 · escucha «Comprensión de puntos clave» · línea 4 de 6",
+   "file": "gn-sound-a1-u05.js",
+   "order": 591
+  },
+  {
+   "key": "a1u05d4.r1.l4",
+   "voice": "F",
+   "text": "Pyhareve, ára ha ára.",
+   "es": "A la mañana, todos los días.",
+   "lang": "gn",
+   "where": "U5 D4 · escucha «Comprensión de puntos clave» · línea 5 de 6",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u05d4.p2.x0.l1"
+  },
+  {
+   "key": "a1u05d4.r1.l5",
+   "voice": "N",
+   "text": "¿Dónde queda el negocio?",
+   "es": "¿Dónde queda el negocio?",
+   "lang": "es",
+   "where": "U5 D4 · escucha «Comprensión de puntos clave» · línea 6 de 6",
+   "file": "gn-sound-a1-u05.js",
+   "order": 592
+  },
+  {
+   "key": "a1u05d4.r1",
+   "parts": [
+    "a1u05d4.r1.l0",
+    "a1u05d4.p1.x0.l0",
+    "a1u05d4.p1.x0.l1",
+    "a1u05d4.r1.l3",
+    "a1u05d4.p2.x0.l1",
+    "a1u05d4.r1.l5"
+   ],
+   "voice": "N+M+F",
+   "text": "En la plaza de Itauguá, frente a la iglesia. Moisés le pregunta a Ana. ¿Dónde queda el negocio? / Moõpa opyta ñemuha? / Upépe. Hi'ag̃ui. / Aguyje. Ha nde, araka'épa reho mbo'ehaópe? / Pyhareve, ára ha ára. / ¿Dónde queda el negocio?",
+   "es": "En la plaza de Itauguá, frente a la iglesia. Moisés le pregunta a Ana. ¿Dónde queda el negocio? / ¿Dónde queda el negocio? / Ahí. Está cerca. / Gracias. Y vos, ¿cuándo vas a la escuela? / A la mañana, todos los días. / ¿Dónde queda el negocio?",
+   "where": "U5 D4 · escucha «Comprensión de puntos clave»",
+   "file": "gn-sound-a1-u05.js"
+  },
+  {
+   "key": "a1u05d4.r1.l2.slow",
+   "voice": "F",
+   "text": "Upépe. Hi'ag̃ui.",
+   "es": "Ahí. Está cerca.",
+   "lang": "gn",
+   "slow": true,
+   "where": "U5 D4 · escucha «Comprensión de puntos clave» · línea 3 de 6, versión lenta",
+   "file": "gn-sound-a1-u05.js",
+   "order": 690
+  },
+  {
+   "key": "a1u05d4.r1.l4.slow",
+   "voice": "F",
+   "text": "Pyhareve, ára ha ára.",
+   "es": "A la mañana, todos los días.",
+   "lang": "gn",
+   "slow": true,
+   "where": "U5 D4 · escucha «Comprensión de puntos clave» · línea 5 de 6, versión lenta",
+   "file": "gn-sound-a1-u05.js",
+   "order": 692
+  },
+  {
+   "key": "a1u05d5.p1.x0",
+   "voice": "F",
+   "text": "Aipytyvõ che sýpe.",
+   "es": "Ayudo a mi mamá.",
+   "lang": "gn",
+   "where": "U5 D5 · punto 1, ejemplo 1",
+   "file": "gn-sound-a1-u05.js",
+   "order": 597
+  },
+  {
+   "key": "a1u05d5.p1.x1",
+   "voice": "F",
+   "text": "Ahenói che jarýipe.",
+   "es": "Llamo a mi abuela.",
+   "lang": "gn",
+   "where": "U5 D5 · punto 1, ejemplo 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 598
+  },
+  {
+   "key": "a1u05d5.p1.x2",
+   "voice": "F",
+   "text": "Ame'ẽ chipa mitãme.",
+   "es": "Le doy chipá al niño.",
+   "lang": "gn",
+   "where": "U5 D5 · punto 1, ejemplo 3",
+   "file": "gn-sound-a1-u05.js",
+   "order": 599
+  },
+  {
+   "key": "a1u05d5.p1.x3",
+   "voice": "F",
+   "text": "Aporandu che angirũme.",
+   "es": "Le pregunto a mi amiga.",
+   "lang": "gn",
+   "where": "U5 D5 · punto 1, ejemplo 4",
+   "file": "gn-sound-a1-u05.js",
+   "order": 600
+  },
+  {
+   "key": "a1u05d5.p1.x4",
+   "voice": "F",
+   "text": "Amomaitei che sy ha che rúpe.",
+   "es": "Saludo a mi mamá y a mi papá.",
+   "lang": "gn",
+   "where": "U5 D5 · punto 1, ejemplo 5",
+   "file": "gn-sound-a1-u05.js",
+   "order": 601
+  },
+  {
+   "key": "a1u05d5.p1.x5",
+   "voice": "F",
+   "text": "Ahecha mitãnguérape korapýpe.",
+   "es": "Veo a los chicos en el patio.",
+   "lang": "gn",
+   "where": "U5 D5 · punto 1, ejemplo 6",
+   "file": "gn-sound-a1-u05.js",
+   "order": 602
+  },
+  {
+   "key": "a1u05d5.p2.x0",
+   "voice": "F",
+   "text": "Che sy ome'ẽ chéve ka'ay.",
+   "es": "Mi mamá me da mate.",
+   "lang": "gn",
+   "where": "U5 D5 · punto 2, ejemplo 1",
+   "file": "gn-sound-a1-u05.js",
+   "order": 603
+  },
+  {
+   "key": "a1u05d5.p2.x1",
+   "voice": "F",
+   "text": "Ame'ẽ ndéve ko aranduka.",
+   "es": "Te doy este libro.",
+   "lang": "gn",
+   "where": "U5 D5 · punto 2, ejemplo 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 604
+  },
+  {
+   "key": "a1u05d5.p2.x2",
+   "voice": "F",
+   "text": "Aipytyvõ ichupe.",
+   "es": "Lo ayudo. La ayudo.",
+   "lang": "gn",
+   "where": "U5 D5 · punto 2, ejemplo 3",
+   "file": "gn-sound-a1-u05.js",
+   "order": 605
+  },
+  {
+   "key": "a1u05d5.p2.x3",
+   "voice": "F",
+   "text": "Ame'ẽ ichupe chipa.",
+   "es": "Le doy chipá.",
+   "lang": "gn",
+   "where": "U5 D5 · punto 2, ejemplo 4",
+   "file": "gn-sound-a1-u05.js",
+   "order": 606
+  },
+  {
+   "key": "a1u05d5.p2.x4",
+   "voice": "F",
+   "text": "Moisés oporandu chéve.",
+   "es": "Moisés me pregunta.",
+   "lang": "gn",
+   "where": "U5 D5 · punto 2, ejemplo 5",
+   "file": "gn-sound-a1-u05.js",
+   "order": 607
+  },
+  {
+   "key": "a1u05d5.p2.x5.l0",
+   "voice": "M",
+   "text": "Mávapepa rehenói?",
+   "es": "",
+   "lang": "gn",
+   "where": "U5 D5 · punto 2, ejemplo 6 (diálogo) · línea 1 de 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 608
+  },
+  {
+   "key": "a1u05d5.p2.x5.l1",
+   "voice": "F",
+   "text": "Che jarýipe.",
+   "es": "",
+   "lang": "gn",
+   "where": "U5 D5 · punto 2, ejemplo 6 (diálogo) · línea 2 de 2",
+   "file": "gn-sound-a1-u05.js",
+   "order": 609
+  },
+  {
+   "key": "a1u05d5.p2.x5",
+   "parts": [
+    "a1u05d5.p2.x5.l0",
+    "a1u05d5.p2.x5.l1"
+   ],
+   "voice": "M+F",
+   "text": "Mávapepa rehenói? / Che jarýipe.",
+   "es": "",
+   "where": "U5 D5 · punto 2, ejemplo 6 (diálogo)",
+   "file": "gn-sound-a1-u05.js"
+  },
+  {
+   "key": "a1u05d5.w.ahecha",
+   "voice": "F",
+   "text": "ahecha",
+   "es": "veo",
+   "lang": "gn",
+   "where": "U5 D5 · palabra 1 de la escena «La tarde de Ana: a quién ve, a quién llama, a quién ayuda»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 610
+  },
+  {
+   "key": "a1u05d5.w.ahenoi",
+   "voice": "F",
+   "text": "ahenói",
+   "es": "llamo",
+   "lang": "gn",
+   "where": "U5 D5 · palabra 2 de la escena «La tarde de Ana: a quién ve, a quién llama, a quién ayuda»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 611
+  },
+  {
+   "key": "a1u05d5.w.amee",
+   "voice": "F",
+   "text": "ame'ẽ",
+   "es": "doy",
+   "lang": "gn",
+   "where": "U5 D5 · palabra 3 de la escena «La tarde de Ana: a quién ve, a quién llama, a quién ayuda»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 612
+  },
+  {
+   "key": "a1u05d5.w.amomaitei",
+   "voice": "F",
+   "text": "amomaitei",
+   "es": "saludo",
+   "lang": "gn",
+   "where": "U5 D5 · palabra 4 de la escena «La tarde de Ana: a quién ve, a quién llama, a quién ayuda»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 613
+  },
+  {
+   "key": "a1u05d5.w.aporandu",
+   "voice": "F",
+   "text": "aporandu",
+   "es": "pregunto",
+   "lang": "gn",
+   "where": "U5 D5 · palabra 5 de la escena «La tarde de Ana: a quién ve, a quién llama, a quién ayuda»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 614
+  },
+  {
+   "key": "a1u05d5.w.cheve",
+   "voice": "F",
+   "text": "chéve",
+   "es": "a mí, me",
+   "lang": "gn",
+   "where": "U5 D5 · palabra 6 de la escena «La tarde de Ana: a quién ve, a quién llama, a quién ayuda»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 615
+  },
+  {
+   "key": "a1u05d5.w.ichupe",
+   "voice": "F",
+   "text": "ichupe",
+   "es": "a él, a ella; le",
+   "lang": "gn",
+   "where": "U5 D5 · palabra 7 de la escena «La tarde de Ana: a quién ve, a quién llama, a quién ayuda»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 616
+  },
+  {
+   "key": "a1u05d5.w.mavapepa",
+   "voice": "F",
+   "text": "Mávapepa?",
+   "es": "¿A quién?",
+   "lang": "gn",
+   "where": "U5 D5 · palabra 8 de la escena «La tarde de Ana: a quién ve, a quién llama, a quién ayuda»",
+   "file": "gn-sound-a1-u05.js",
+   "order": 617
+  },
+  {
+   "key": "a1u05d5.s0a",
+   "voice": "F",
+   "text": "che sýpe",
+   "es": "a mi mamá",
+   "lang": "gn",
+   "where": "U5 D5 · par 1, palabra a (Repaso: la armonía nasal: che sýpe, mitãme) · hoy no suena: la lección reproduce la otra palabra del par",
+   "file": "gn-sound-a1-u05.js",
+   "unused": true,
+   "order": 719
+  },
+  {
+   "key": "a1u05d5.s0b",
+   "voice": "F",
+   "text": "mitãme",
+   "es": "al niño, a la niña",
+   "lang": "gn",
+   "where": "U5 D5 · par 1, palabra b (Repaso: la armonía nasal: che sýpe, mitãme)",
+   "file": "gn-sound-a1-u05.js",
+   "order": 619
+  },
+  {
+   "key": "a1u05d5.s1a",
+   "voice": "F",
+   "text": "che rúpe",
+   "es": "a mi papá",
+   "lang": "gn",
+   "where": "U5 D5 · par 2, palabra a (Repaso: la armonía nasal: che sýpe, mitãme) · hoy no suena: la lección reproduce la otra palabra del par",
+   "file": "gn-sound-a1-u05.js",
+   "unused": true,
+   "order": 720
+  },
+  {
+   "key": "a1u05d5.s1b",
+   "voice": "F",
+   "text": "che angirũme",
+   "es": "a mi amigo, a mi amiga",
+   "lang": "gn",
+   "where": "U5 D5 · par 2, palabra b (Repaso: la armonía nasal: che sýpe, mitãme)",
+   "file": "gn-sound-a1-u05.js",
+   "order": 621
+  },
+  {
+   "key": "a1u05d5.s2a",
+   "voice": "F",
+   "text": "che jarýipe",
+   "es": "a mi abuela",
+   "lang": "gn",
+   "where": "U5 D5 · par 3, palabra a (Repaso: la armonía nasal: che sýpe, mitãme) · hoy no suena: la lección reproduce la otra palabra del par",
+   "file": "gn-sound-a1-u05.js",
+   "unused": true,
+   "order": 721
+  },
+  {
+   "key": "a1u05d5.s2b",
+   "voice": "F",
+   "text": "kuñáme",
+   "es": "a la mujer",
+   "lang": "gn",
+   "where": "U5 D5 · par 3, palabra b (Repaso: la armonía nasal: che sýpe, mitãme)",
+   "file": "gn-sound-a1-u05.js",
+   "order": 623
+  },
+  {
+   "key": "a1u05d6.w.aikopora",
+   "voice": "F",
+   "text": "Aiko porã",
+   "es": "Ando bien, estoy bien",
+   "lang": "gn",
+   "where": "U5 D6 · palabra 1 de la escena «El jueves de Ana, de la mañana a la noche»",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u05d1.w.aikopora"
+  },
+  {
+   "key": "a1u05d6.w.aikoteve",
+   "voice": "F",
+   "text": "aikotevẽ",
+   "es": "necesito",
+   "lang": "gn",
+   "where": "U5 D6 · palabra 2 de la escena «El jueves de Ana, de la mañana a la noche»",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u05d1.w.aikoteve"
+  },
+  {
+   "key": "a1u05d6.w.arambosa",
+   "voice": "F",
+   "text": "arambosa",
+   "es": "desayuno (yo)",
+   "lang": "gn",
+   "where": "U5 D6 · palabra 3 de la escena «El jueves de Ana, de la mañana a la noche»",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u05d2.w.arambosa"
+  },
+  {
+   "key": "a1u05d6.w.upei",
+   "voice": "F",
+   "text": "upéi",
+   "es": "después",
+   "lang": "gn",
+   "where": "U5 D6 · palabra 4 de la escena «El jueves de Ana, de la mañana a la noche»",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u05d2.w.upei"
+  },
+  {
+   "key": "a1u05d6.w.aravo",
+   "voice": "F",
+   "text": "aravo",
+   "es": "hora",
+   "lang": "gn",
+   "where": "U5 D6 · palabra 5 de la escena «El jueves de Ana, de la mañana a la noche»",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u05d3.w.aravo"
+  },
+  {
+   "key": "a1u05d6.w.arakaepa",
+   "voice": "F",
+   "text": "Araka'épa?",
+   "es": "¿Cuándo?",
+   "lang": "gn",
+   "where": "U5 D6 · palabra 6 de la escena «El jueves de Ana, de la mañana a la noche»",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u05d4.w.arakaepa"
+  },
+  {
+   "key": "a1u05d6.w.ahenoi",
+   "voice": "F",
+   "text": "ahenói",
+   "es": "llamo",
+   "lang": "gn",
+   "where": "U5 D6 · palabra 8 de la escena «El jueves de Ana, de la mañana a la noche»",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u05d5.w.ahenoi"
+  },
+  {
+   "key": "a1u05d6.s0a",
+   "voice": "F",
+   "text": "aiko",
+   "es": "vivo",
+   "lang": "gn",
+   "where": "U5 D6 · par 1, palabra a (Repaso: aiko, las sílabas, aravo, oĩ y pe o me)",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u05d1.w.aiko"
+  },
+  {
+   "key": "a1u05d6.s0b",
+   "voice": "F",
+   "text": "oiko",
+   "es": "vive",
+   "lang": "gn",
+   "where": "U5 D6 · par 1, palabra b (Repaso: aiko, las sílabas, aravo, oĩ y pe o me)",
+   "file": "gn-sound-a1-u05.js",
+   "unused": true,
+   "same": "a1u05d1.s2b"
+  },
+  {
+   "key": "a1u05d6.s1a",
+   "voice": "F",
+   "text": "akaru",
+   "es": "como (de comer)",
+   "lang": "gn",
+   "where": "U5 D6 · par 2, palabra a (Repaso: aiko, las sílabas, aravo, oĩ y pe o me)",
+   "file": "gn-sound-a1-u05.js",
+   "unused": true,
+   "same": "a1u02d1.w.akaru"
+  },
+  {
+   "key": "a1u05d6.s1b",
+   "voice": "F",
+   "text": "arambosa",
+   "es": "desayuno",
+   "lang": "gn",
+   "where": "U5 D6 · par 2, palabra b (Repaso: aiko, las sílabas, aravo, oĩ y pe o me)",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u05d2.w.arambosa"
+  },
+  {
+   "key": "a1u05d6.s2a",
+   "voice": "F",
+   "text": "ára",
+   "es": "día",
+   "lang": "gn",
+   "where": "U5 D6 · par 3, palabra a (Repaso: aiko, las sílabas, aravo, oĩ y pe o me)",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u05d3.s0a"
+  },
+  {
+   "key": "a1u05d6.s2b",
+   "voice": "F",
+   "text": "aravo",
+   "es": "hora",
+   "lang": "gn",
+   "where": "U5 D6 · par 3, palabra b (Repaso: aiko, las sílabas, aravo, oĩ y pe o me)",
+   "file": "gn-sound-a1-u05.js",
+   "unused": true,
+   "same": "a1u05d3.w.aravo"
+  },
+  {
+   "key": "a1u05d6.s3a",
+   "voice": "F",
+   "text": "oiko",
+   "es": "vive",
+   "lang": "gn",
+   "where": "U5 D6 · par 4, palabra a (Repaso: aiko, las sílabas, aravo, oĩ y pe o me)",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u05d1.s2b"
+  },
+  {
+   "key": "a1u05d6.s3b",
+   "voice": "F",
+   "text": "oĩ",
+   "es": "hay, está",
+   "lang": "gn",
+   "where": "U5 D6 · par 4, palabra b (Repaso: aiko, las sílabas, aravo, oĩ y pe o me)",
+   "file": "gn-sound-a1-u05.js",
+   "unused": true,
+   "same": "a1u03d5.s1a"
+  },
+  {
+   "key": "a1u05d6.s4a",
+   "voice": "F",
+   "text": "che sýpe",
+   "es": "a mi mamá",
+   "lang": "gn",
+   "where": "U5 D6 · par 5, palabra a (Repaso: aiko, las sílabas, aravo, oĩ y pe o me)",
+   "file": "gn-sound-a1-u05.js",
+   "unused": true,
+   "same": "a1u05d5.s0a"
+  },
+  {
+   "key": "a1u05d6.s4b",
+   "voice": "F",
+   "text": "mitãme",
+   "es": "al niño, a la niña",
+   "lang": "gn",
+   "where": "U5 D6 · par 5, palabra b (Repaso: aiko, las sílabas, aravo, oĩ y pe o me)",
+   "file": "gn-sound-a1-u05.js",
+   "same": "a1u05d5.s0b"
+  },
+  {
    "key": "pl.1.l0",
    "voice": "F",
    "text": "Mba'éichapa reiko?",
@@ -6215,7 +8137,7 @@
    "lang": "gn",
    "where": "Ubicación · pregunta 3 · línea 1 de 2",
    "file": "gn-sound-pl.js",
-   "order": 489
+   "order": 624
   },
   {
    "key": "pl.5.l0",
@@ -6225,7 +8147,7 @@
    "lang": "gn",
    "where": "Ubicación · pregunta 5 · línea 1 de 3",
    "file": "gn-sound-pl.js",
-   "order": 491
+   "order": 626
   },
   {
    "key": "pl.5.l1",
@@ -6235,7 +8157,7 @@
    "lang": "gn",
    "where": "Ubicación · pregunta 5 · línea 2 de 3",
    "file": "gn-sound-pl.js",
-   "order": 492
+   "order": 627
   },
   {
    "key": "pl.5.l2",
@@ -6245,7 +8167,7 @@
    "lang": "gn",
    "where": "Ubicación · pregunta 5 · línea 3 de 3",
    "file": "gn-sound-pl.js",
-   "order": 493
+   "order": 628
   },
   {
    "key": "pl.5",
@@ -6268,7 +8190,7 @@
    "lang": "es",
    "where": "Examen A1 · escucha 1 · línea 1 de 3",
    "file": "gn-sound-a1-x.js",
-   "order": 494
+   "order": 629
   },
   {
    "key": "a1x.4.l1",
@@ -6288,7 +8210,7 @@
    "lang": "gn",
    "where": "Examen A1 · escucha 1 · línea 3 de 3",
    "file": "gn-sound-a1-x.js",
-   "order": 495
+   "order": 630
   },
   {
    "key": "a1x.4",
@@ -6311,7 +8233,7 @@
    "lang": "es",
    "where": "Examen A1 · escucha 2 · línea 1 de 3",
    "file": "gn-sound-a1-x.js",
-   "order": 496
+   "order": 631
   },
   {
    "key": "a1x.5.l1",
@@ -6331,7 +8253,7 @@
    "lang": "gn",
    "where": "Examen A1 · escucha 2 · línea 3 de 3",
    "file": "gn-sound-a1-x.js",
-   "order": 497
+   "order": 632
   },
   {
    "key": "a1x.5",
@@ -6363,7 +8285,7 @@
    "lang": "gn",
    "where": "Hablá · par 4, palabra a (puso)",
    "file": "gn-sound-sp.js",
-   "order": 498
+   "order": 633
   },
   {
    "key": "p3.1",
@@ -6373,7 +8295,7 @@
    "lang": "gn",
    "where": "Hablá · par 4, palabra b (puso)",
    "file": "gn-sound-sp.js",
-   "order": 499
+   "order": 634
   },
   {
    "key": "p5.0",
@@ -6463,7 +8385,7 @@
    "lang": "gn",
    "where": "Hablá · cartel 3",
    "file": "gn-sound-sp.js",
-   "order": 500
+   "order": 635
   },
   {
    "key": "s3",
@@ -6483,7 +8405,7 @@
    "lang": "gn",
    "where": "Hablá · cartel 5",
    "file": "gn-sound-sp.js",
-   "order": 501
+   "order": 636
   },
   {
    "key": "s5",
@@ -6493,7 +8415,7 @@
    "lang": "gn",
    "where": "Hablá · cartel 6",
    "file": "gn-sound-sp.js",
-   "order": 502
+   "order": 637
   }
  ],
  "silent": {
@@ -6583,6 +8505,13 @@
   "a1u04d5.r1.l5.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «mokói ke su 'aguje» / «mokõi jesús águy jee», 2 + 3 letters off, against «mokõi kesu aguyje» / «mokõi jesús aguyje», 0 + 2",
   "a1u04d6.s1a": "named in silent.json",
   "a1u04d6.s1b": "named in silent.json",
+  "a1u05d1.w.ndaipotai": "left out by --verify: heard with wrong letters by every recogniser: «ndaipotáe» / «ndaipotáe»",
+  "a1u05d2.r1.l1.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «pyhareve apu'ã ha a ambosa» / «pyhareve apu'ã ha aambosa», 1 + 1 letters off, against «pyhareve apu'ã ha arambosa» / «pyhareve apu'ã ha arambosa», 0 + 0",
+  "a1u05d2.r1.l4.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «pyharéiche kaneoha añeno» / «pyhare che kane'õ ha añeno», 2 + 0 letters off, against «pyharéiche kane'oha añeno» / «pyhare che kane'õ ha añeno», 1 + 0",
+  "a1u05d4.w.hiagui": "left out by --verify: heard with wrong letters by every recogniser: «hi 'angui» / «hi'angui»",
+  "a1u05d4.r1.l1.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «moóvo pa'ópuipa jemuháa» / «moõpa opyta ñemoha», 8 + 1 letters off, against «movopa opyta jemuhã» / «moõpa opyta ñemuha», 2 + 0",
+  "a1u05d4.r1.l3.slow": "left out by --verify: the slow take is heard worse than the normal take of the same line: «aguje a nde áraka'épa reho mboeha uupe» / «aguuje ha nde ara ka'épa reho mbo'ehaúpe», 5 + 2 letters off, against «avuje a nde araka'épa reho mbo'ehaúpe» / «aguje ha nde araka'épa reho mbo'ehaópe», 4 + 1",
+  "a1u05d6.w.hiagui": "left out by --verify: heard with wrong letters by every recogniser: «he 'angui» / «he'angui»",
   "pl.3.l1": "named in silent.json",
   "p0.0": "a pair of the contrast «nasal»",
   "p0.1": "a pair of the contrast «nasal»",
@@ -6606,6 +8535,8 @@
   "a1u04d1.r1.slow": "put together from a line that stays silent",
   "a1u04d3.r1.slow": "put together from a line that stays silent",
   "a1u04d5.r1.slow": "put together from a line that stays silent",
+  "a1u05d2.r1.slow": "put together from a line that stays silent",
+  "a1u05d4.r1.slow": "put together from a line that stays silent",
   "pl.3": "put together from a line that stays silent"
  }
 }

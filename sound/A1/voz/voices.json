@@ -2,7 +2,7 @@
  "kind": "synthetic",
  "model": "facebook/mms-tts-grn + facebook/mms-tts-spa",
  "licence": "CC BY-NC 4.0 (Meta MMS-TTS: non-commercial use only; Pratap et al. 2023)",
- "made": "2026-11-17",
+ "made": "2026-11-22",
  "note": "synthetic stand-ins made by tools/make-tts.py (see sound/VOICE.md): the screens say «voz sintética»; the studio's recordings (CC BY 4.0) replace them",
  "voices": {
   "F": {

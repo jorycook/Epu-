@@ -14,7 +14,7 @@ const SAMPLE = { level: 'A1', started: true, plan: { start: C.addDays(T, -3), ta
 // grammar teach page read, and one mistake of day 3 is due for review: the Cuaderno tab says 1 on the four tab bars.
 ```
 
-**The voice's tag, on every board that plays a clip.** The clips of A1 units 1 to 4 are a synthetic voice's
+**The voice's tag, on every board that plays a clip.** The clips of A1 units 1 to 5 are a synthetic voice's
 (`sound/VOICE.md`). A board on its own loads no sound file and shows its silent stand-ins; in the prototype and the app,
 wherever a control's clip is a voice model's, the tag «voz sintética» stands next to it from the start: a grey chip
 (`#5A6382` on `#EEF0F6`, 11 px/800, radius 8), never in a live region, hidden by its `sc-if` on the canvas. The
@@ -361,7 +361,12 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
 
 - Reading: passage Andika 16, lh 1.7, `lang="gn"`; tap a word for its Spanish (practice only); advisory stopwatch; strategy
   box "Pista · solo en la práctica"; clue marked after answering; verdict sheet with reasons. Designed moment: a1u01d6's
-  reading (the review day), unanswered, clock running.
+  reading (the review day), unanswered, clock running. A word that can be tapped is a box of its own in its line, and
+  a line may break at a box's edge, so the signs that touch it go with it in a group that does not break: the stop,
+  comma or colon after it and an opening ¿ or « before it (only where a space or the passage's end is on their other
+  side; a hyphen or a colon between two words stays put). Without that the timetable of unit 5 day 3 showed
+  «mbo'ehao» and, a line below, its stop alone; `check/platform-test.js` now fails on a closing sign that starts a
+  line without its word, on any screen.
 - Listening: play → answers unlock; "Repetir"; "Más despacio" (a recorded slow take; disabled when missing, with what
   is true under it: "Todavía no hay versión lenta" where the lesson's clip plays and has no slower take, "Todavía no
   está grabado" where the lesson has no clip, "Cargando…", "No se pudo cargar", "La voz está apagada"). The player
