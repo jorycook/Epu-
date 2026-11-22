@@ -5,7 +5,7 @@
  * which replaces the stored copy. Each file is stored under a hash of its own content: the first install takes what
  * the browser has just downloaded for the page instead of downloading it again, and a new build downloads only the
  * files that changed (see fresh below). The sound files are stored when first used (see LAZY below). */
-const VERSION = 'ea0870718c';
+const VERSION = '3e3497c5b5';
 /* the store is named after the folder this copy of the app lives in: a second copy under the same web
    address (a trial version, say) keeps its own store and never touches this one */
 const HOME = new URL('./', self.location.href).pathname;
@@ -52,29 +52,29 @@ const FILES = [
 const HASH = {
  "./": "7675dc12cf",
  "./assets/app.css": "7c9a25ed0e",
- "./assets/build.js": "c5894eab4f",
+ "./assets/build.js": "33eb780d11",
  "./assets/fonts.css": "44dc9ffc0f",
  "./assets/fonts/epuatext-400.woff2": "3926394b28",
  "./assets/fonts/epuatext-700.woff2": "14eec5dfbf",
  "./assets/fonts/nunito-500.woff2": "90e2d48816",
  "./assets/fonts/nunito-700.woff2": "622a9100d8",
  "./assets/fonts/nunito-800.woff2": "06145bc4f1",
- "./assets/gn-app.js": "baaec7d850",
- "./assets/gn-course-a1.js": "7a6dd4e25e",
+ "./assets/gn-app.js": "a7fa45bfb7",
+ "./assets/gn-course-a1.js": "d79e2d55f0",
  "./assets/gn-course-a2.js": "7f2fb81af8",
  "./assets/gn-course-b1.js": "a17ba303f3",
  "./assets/gn-course-b2.js": "b4a16c82b8",
  "./assets/gn-course-c1.js": "83d989ed0a",
  "./assets/gn-course-c2.js": "89e7ec56cd",
- "./assets/gn-course.js": "4701b67911",
- "./assets/gn-extra.js": "d835c95ddb",
- "./assets/gn-sound-index.js": "3a12244961",
+ "./assets/gn-course.js": "1a6c5b6db5",
+ "./assets/gn-extra.js": "ee0880d89e",
+ "./assets/gn-sound-index.js": "8e74fa0559",
  "./assets/gn-sound.js": "09f739bf8c",
  "./assets/gn-spell.js": "522c73fe5a",
  "./assets/preact.min.js": "25aa00978f",
- "./assets/screens-more.js": "4b1af8fda7",
+ "./assets/screens-more.js": "72d208fd2f",
  "./assets/screens.css": "4f3dd4e360",
- "./assets/screens.js": "da76c0c398",
+ "./assets/screens.js": "690c263b81",
  "./assets/yk-runtime.js": "af6c627d76",
  "./icons/apple-touch-icon.png": "94b30db31a",
  "./icons/favicon-32.png": "bba21c3c2d",
@@ -83,7 +83,7 @@ const HASH = {
  "./icons/icon-512-maskable.png": "194a19732e",
  "./icons/icon-512.png": "f2438193ee",
  "./index.html": "7675dc12cf",
- "./licenses.txt": "5f47d0ba9e",
+ "./licenses.txt": "a65831a945",
  "./manifest.webmanifest": "5848ca0211"
 };
 const keyOf = (f) => f + '?v=' + HASH[f];
@@ -119,6 +119,7 @@ const LAZY = {
  "./assets/gn-sound-a1-u02.js": "1d04bb14e9",
  "./assets/gn-sound-a1-u03.js": "da5c086ef4",
  "./assets/gn-sound-a1-u04.js": "056ab59bfc",
+ "./assets/gn-sound-a1-u05.js": "10bb2dfbf3",
  "./assets/gn-sound-a1-x.js": "9f1593717a",
  "./assets/gn-sound-pl.js": "ac1c4c140e",
  "./assets/gn-sound-sp.js": "6b43833bda"

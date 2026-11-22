@@ -857,7 +857,8 @@ hasTile: written && !!tile,
 /* the padlock is for a lesson not written yet; a written one whose forms are missing keeps an empty tile */
 noTile: !written,
 tile,
-tileSize: (firstN <= 3 ? 18 : firstN <= 5 ? 15 : 12) + 'px',
+/* five letters fill the tile at 15 px only when none of them is wide: «Moõpa», with its M, ran 1.4 px past each edge and was cut (unit 5 day 4) */
+tileSize: (firstN <= 3 ? 18 : firstN <= 4 ? 15 : firstN === 5 ? (/[MmWw]/.test(short) ? 13 : 15) : 12) + 'px',
 line: !written ? 'Gramática' : points.length ? 'Gramática · ' + points.length + (points.length === 1 ? ' forma' : ' formas') : forms.length ? 'Gramática · ' + (forms.length > 2 ? forms.length + ' formas, ' : 'la semana ') + 'lado a lado' : 'Gramática',
 gnTitle: written && gForms.length > 0,
 esTitle: !(written && gForms.length > 0),

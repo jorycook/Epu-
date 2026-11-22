@@ -133,7 +133,7 @@ native teacher's review. The level exam's result is the app's own constancia: no
 for Guarani, and the app issues no official certificate.
 
 == Sound ==
-Spoken clips: gn-sound-a1-u01.js, gn-sound-a1-u02.js, gn-sound-a1-u03.js, gn-sound-a1-u04.js, gn-sound-a1-x.js, gn-sound-pl.js, gn-sound-sp.js (assets/). None is part of the install. A file is
+Spoken clips: gn-sound-a1-u01.js, gn-sound-a1-u02.js, gn-sound-a1-u03.js, gn-sound-a1-u04.js, gn-sound-a1-u05.js, gn-sound-a1-x.js, gn-sound-pl.js, gn-sound-sp.js (assets/). None is part of the install. A file is
 fetched the first time a screen plays from it (a unit's when the unit is opened, the placement check's and the
 level exam's when their screen opens) and is stored on the phone from then on. Once the learner has a plan, three
 are stored ahead of time, for use without a connection: the file of the unit in use, of the unit after it (the next

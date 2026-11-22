@@ -626,8 +626,9 @@
   var soundAsked = {};    /* file → 'coming', 'in', or the number of the screen it failed on */
   var soundSince = {};    /* file → when a control first waited for it, in ms (C.soundState) */
   /* how long a control waits for a file that is on its way before it falls back to its stand-in. The largest unit's
-     file is 0.6 MB as a host sends it: 12 s on a line of 400 kbit/s, the slowest one measured (README, «Sound»). 20 s
-     covers a line down to 250 kbit/s; past that the written stand-in serves the learner better than a longer wait
+     file (unit 5's) is 0.72 MB as a host sends it: 14.4 s on a line of 400 kbit/s, the slowest one measured (README,
+     «Sound»). 20 s covers a line down to about 290 kbit/s; past that the written stand-in serves the learner better
+     than a longer wait
      (a file that cannot be fetched at all says so at once, without this wait) */
   var SOUND_LATE = 20000;
   var soundTurn = 0;      /* the screens the learner has moved through so far */
