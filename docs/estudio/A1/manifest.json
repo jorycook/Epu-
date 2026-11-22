@@ -1,7 +1,7 @@
 {
  "level": "A1",
- "made": "2026-11-10",
- "about": "Every clip the course needs: key (what the screens ask gn-sound.js for), voice (F the woman, the main voice; M the man; N the narrator, in Spanish), text, es, lang, where, file (the unit file make-sound.mjs puts it in), order (the suggested recording order; none for a row with \"same\", said already under that key, for a row with \"parts\", put together from those keys, and for the tone; the slower takes come after the rest, and the recordings no screen plays today last of all), unused (true on a key no screen asks for today: of the two words of a sound pair the Words step plays one, always the same, and the other word is the unused one. It stays in the list, and is recorded, because a pair needs both voices if its words, and with them the word that plays, ever change; its recording comes last in the order unless a key in use shares it through \"same\"). Rights: notes/G4-resources-licensing.md §6, CC BY 4.0.",
+ "made": "2026-11-17",
+ "about": "Every clip the course needs: key (what the screens ask gn-sound.js for), voice (F the woman, the main voice; M the man; N the narrator, in Spanish), text, es, lang, where, file (the unit file make-sound.mjs puts it in), order (the suggested recording order; none for a row with \"same\", said already under that key, for a row with \"parts\", put together from those keys, and for the tone; the slower takes come after the rest, and the recordings no screen plays today last of all), unused (true on a key no screen asks for today: of the two words of a sound pair the Words step plays one, always the same, and the other word is the unused one. It stays in the list, and is recorded, because a pair needs both voices if its words, and with them the word that plays, ever change; its recording comes last in the order unless a key in use shares it through \"same\"). Rights: the recordings a person makes of this list in the studio (docs/estudio) are released under CC BY 4.0, with the speaker credited (notes/G4-resources-licensing.md §6). The synthetic voice's clips are not: the list in their folder (sound/A1/voz/manifest.json) says under what they are.",
  "voices": {
   "F": "mujer, voz principal: palabras, ejemplos, pares y carteles",
   "M": "hombre: sus líneas de los diálogos",
@@ -21,8 +21,8 @@
   "toRecord": 502,
   "slow": 47,
   "byVoice": {
-   "F": 410,
-   "M": 67,
+   "F": 411,
+   "M": 66,
    "N": 25
   },
   "composed": 49,
@@ -3107,8 +3107,8 @@
   },
   {
    "key": "a1u02d5.p1.x3",
-   "voice": "M",
-   "text": "oky.",
+   "voice": "F",
+   "text": "Vicente ndoúi ko ka'aru: oky.",
    "es": "Vicente no viene esta tarde: llueve.",
    "lang": "gn",
    "where": "U2 D5 · punto 1, ejemplo 4",
@@ -3148,7 +3148,7 @@
   {
    "key": "a1u02d5.p2.x3",
    "voice": "F",
-   "text": "oky.",
+   "text": "Che ru nosẽi ógagui: oky.",
    "es": "Mi papá no sale de la casa: llueve.",
    "lang": "gn",
    "where": "U2 D5 · punto 2, ejemplo 4",

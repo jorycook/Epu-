@@ -485,7 +485,7 @@
   }
   /* the bytes of each sound file, as the build found them (build.mjs fills this in) */
   var SOUND_BYTES = {};
-  try { SOUND_BYTES = JSON.parse('{"gn-sound-a1-u01.js":750549,"gn-sound-a1-u02.js":871994,"gn-sound-a1-u03.js":864556,"gn-sound-a1-u04.js":1002378,"gn-sound-a1-x.js":93912,"gn-sound-pl.js":46137,"gn-sound-sp.js":80647}') || {}; } catch (e) { SOUND_BYTES = {}; }
+  try { SOUND_BYTES = JSON.parse('{"gn-sound-a1-u01.js":729040,"gn-sound-a1-u02.js":895548,"gn-sound-a1-u03.js":826380,"gn-sound-a1-u04.js":1001354,"gn-sound-a1-x.js":93912,"gn-sound-pl.js":46137,"gn-sound-sp.js":80647}') || {}; } catch (e) { SOUND_BYTES = {}; }
   function keepSound(s) {
     if (!(s && s.plan && /^[abc][12]$/i.test(String(s.level || '')))) return;
     if (C.soundWanted && !C.soundWanted()) return;

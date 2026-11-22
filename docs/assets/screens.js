@@ -483,6 +483,13 @@ const LIFT = [0, 0, 0, 0, 18, 0, 0];
 const CARD_FLOOR = 404;
 /* rough text widths (Nunito 800): enough to size the callout and the labels it would cover */
 const fits = (text, px, width, max) => Math.max(1, Math.min(max, Math.ceil((String(text || '').length * px) / width)));
+/* A line of the callout's small print as it is drawn: 12 px at a line height of 1.45, which is 17.4 px and not the
+   17 the callout's height was reckoned with. A card with two such lines came out 0.8 px taller than its reckoning,
+   and where the floor sets its place («SEMANA 4 · COMPLETA», the week test's «HOY · PRUEBA») it ended at 404.8,
+   drawn one pixel past the floor. The reckoned height is rounded up to a whole pixel (tall), so the card's top
+   stays on one and its end is never past the floor. */
+const SMALL = 12 * 1.45;
+const tall = (px) => Math.ceil(px - 1e-6);
 class Component extends DCLogic {
 renderVals() {
 const C = window.gnCourse;
@@ -587,13 +594,13 @@ if (cur) {
 const isTest = cur.kind === 'test';
 const title = isTest ? 'Prueba de la semana' : C.plain(cur.title || '');
 const sub = isTest ? (testCount ? testCount + ' preguntas · 20 minutos' : 'formato de examen') : st.perDay > 1 ? 'Tu plan pide ' + st.perDay + ' sesiones por día.' : '';
-const h = 103 + 20 * fits(title, 9, 192, 3) + (sub ? 4 + 17 * fits(sub, 6.4, 192, 2) : 0);
+const h = tall(103 + 20 * fits(title, 9, 192, 3) + (sub ? 4 + SMALL * fits(sub, 6.4, 192, 2) : 0));
 card = { hasFirst: false, firstLabel: '', toFirst: later, open: true, shut: false, h, title, lang: 'es', sub, hasSub: !!sub, kicker: (cur.date && cur.date <= today ? 'HOY' : 'SIGUIENTE') + (isTest ? ' · PRUEBA' : ' · 3 LECCIONES'), href: isTest ? 'WeekTest.dc.html' : 'Today.dc.html', go: open(cur), kickerInk: '#2F4FD0', note: '' };
 } else if (away) {
 const there = C.unit(away.unit) || { gn: '', es: '' };
 const title = away.kind === 'test' ? 'Prueba de la semana' : 'Día ' + away.day + ' · ' + C.plain(away.title || '');
 const sub = C.plain(there.es || '');
-const h = 103 + 20 * fits(title, 9, 192, 3) + (sub ? 4 + 17 * fits(sub, 6.4, 192, 2) : 0);
+const h = tall(103 + 20 * fits(title, 9, 192, 3) + (sub ? 4 + SMALL * fits(sub, 6.4, 192, 2) : 0));
 card = { hasFirst: false, firstLabel: '', toFirst: later, open: true, shut: false, h, title, lang: 'es', sub, hasSub: !!sub, kicker: (away.date && away.date <= today ? 'HOY' : 'SIGUIENTE') + ' · SEMANA ' + away.unit, href: away.kind === 'test' ? 'WeekTest.dc.html' : 'Today.dc.html', go: open(away), kickerInk: '#2F4FD0', note: '' };
 } else if (cardAt >= 0) {
 const s = sessions[cardAt];
@@ -603,7 +610,7 @@ const title = allDone ? C.plain(unit.gn || unit.es || '') : s.kind === 'test' ? 
 const note = allDone
 ? (unitCount && unit.n >= unitCount ? (unitCount === 1 ? 'Terminaste la semana.' : 'Terminaste las ' + unitCount + ' semanas.') + ' Sigue el examen de nivel, en la pestaña Examen.' : 'La semana ' + (unit.n + 1) + ' se abre cuando esté escrita.')
 : after && after.kind === 'test' ? 'La prueba de la semana se abre cuando esté escrita.' : 'El próximo día se abre cuando esté escrito.';
-card = { hasFirst: false, firstLabel: '', toFirst: later, open: false, shut: true, h: 53 + 20 * fits(title, 9, 192, 3) + 17 * fits(note, 6.4, 192, 3), title, lang: allDone && unit.gn ? 'gn' : 'es', note, kicker: allDone ? 'SEMANA ' + unit.n + ' · COMPLETA' : s.kind === 'test' ? 'PRUEBA · HECHA' : 'DÍA ' + s.day + ' · LISTO', kickerInk: '#B02A63', href: 'Today.dc.html', go: later, sub: '', hasSub: false };
+card = { hasFirst: false, firstLabel: '', toFirst: later, open: false, shut: true, h: tall(53 + 20 * fits(title, 9, 192, 3) + SMALL * fits(note, 6.4, 192, 3)), title, lang: allDone && unit.gn ? 'gn' : 'es', note, kicker: allDone ? 'SEMANA ' + unit.n + ' · COMPLETA' : s.kind === 'test' ? 'PRUEBA · HECHA' : 'DÍA ' + s.day + ' · LISTO', kickerInk: '#B02A63', href: 'Today.dc.html', go: later, sub: '', hasSub: false };
 } else {
 /* a level with no lesson written at all (a new learner has no notebook to go over): the first level that has lessons
    is offered, as the goal screen does; in the app the level changes (its plan, or the goal at step 3) */
@@ -621,7 +628,7 @@ try { window.__gnGoalDraft = { step: 'plan', owner: go }; } catch (x) { /* the g
 if (this.props.level) this.props.level(first);
 else go('Levels');
 };
-card = { open: false, shut: true, h: 53 + 20 * fits(title, 9, 192, 3) + 17 * fits(note, 6.4, 192, 3) + (elsewhere ? 50 : 0), title, lang: 'es', note, kicker: 'EN PREPARACIÓN', kickerInk: '#5A6382', href: 'Today.dc.html', go: later, sub: '', hasSub: false, hasFirst: elsewhere, firstLabel: 'Empezar en ' + (first || 'A1'), toFirst };
+card = { open: false, shut: true, h: tall(53 + 20 * fits(title, 9, 192, 3) + SMALL * fits(note, 6.4, 192, 3)) + (elsewhere ? 50 : 0), title, lang: 'es', note, kicker: 'EN PREPARACIÓN', kickerInk: '#5A6382', href: 'Today.dc.html', go: later, sub: '', hasSub: false, hasFirst: elsewhere, firstLabel: 'Empezar en ' + (first || 'A1'), toFirst };
 }
 /* a mini exam that is open (the week test it waits for is done) and not taken yet: the Examen tab has it, and where
    the written path ends it is the thing to do next */
@@ -650,8 +657,9 @@ if (card.hasDue) card.h += 54;
 if (card.hasMeanwhile) card.h += 129;
 if (card.hasMini) card.h += 57;
 /* a day of return: two days or more without study, and nothing done yet today. The callout greets the learner back
-   (Opu'ã, se levantó) and offers something short first: the review that waits, or, after a week or more away, the
-   last review day sealed; the next new day comes after */
+   (Opu'ã, se levantó) and says where to start: the review that waits, or, after a week or more away, the last
+   review day sealed; the next new day comes after. Only what is short is called short: a sitting of five minutes
+   or less. A review day is a whole day of three lessons, and its line names it and no more */
 const target = cur || away;
 const returned = (dy.away || 0) >= 2;
 if (card.open && returned && target) {
@@ -669,16 +677,16 @@ Object.assign(card, { href: 'Review.dc.html', go: toReview, ctaGn: 'Jehechajey',
 if (weekGo) more.push(weekGo);
 more.push(dayGo);
 } else if (weekGo) {
-sub = 'Empezá con algo corto: el repaso de la semana ' + lastReview.unit + ', que ya sellaste.';
+sub = 'Empezá por el repaso de la semana ' + lastReview.unit + ', que ya sellaste.';
 Object.assign(card, { href: weekGo.href, go: weekGo.go, hasCtaGn: false, ctaGn: '', cta: weekGo.label });
 more.push(dayGo);
 } else {
 sub = 'Lo que hiciste sigue acá. ' + (target.kind === 'test' ? 'Sigue la prueba de la semana.' : 'Sigue el día ' + target.day + (away ? ' de la semana ' + away.unit : '') + '.');
 }
-Object.assign(card, { back: true, plain: false, hasDue: false, title: '¡Volviste!', sub, hasSub: true, more, h: 110 + 20 + 4 + 17 * fits(sub, 6.4, 192, 4) + 52 * more.length });
+Object.assign(card, { back: true, plain: false, hasDue: false, title: '¡Volviste!', sub, hasSub: true, more, h: tall(110 + 20 + 4 + SMALL * fits(sub, 6.4, 192, 4)) + 52 * more.length });
 }
 /* where the written path has ended, the same greeting stands over what there is to do meanwhile */
-if (card.hasMeanwhile && returned) Object.assign(card, { back: true, plain: false, title: '¡Volviste!', lang: 'es', h: 60 + 20 + 17 * fits(card.note, 6.4, 192, 3) + 129 + (card.hasMini ? 57 : 0) });
+if (card.hasMeanwhile && returned) Object.assign(card, { back: true, plain: false, title: '¡Volviste!', lang: 'es', h: tall(60 + 20 + SMALL * fits(card.note, 6.4, 192, 3)) + 129 + (card.hasMini ? 57 : 0) });
 /* the callout's title, in pieces like a label's (a day's title may quote Guarani); a unit's Guarani name is one piece,
    and the box that holds it is lang="gn" already */
 card.titleSegs = card.lang === 'gn' ? [{ t: card.title, gn: true, es: false }] : C.mixed(card.title);
@@ -727,10 +735,18 @@ none: { border: '2px solid transparent', bg: 'transparent' },
 };
 const wk = Array.isArray(dy.week) ? dy.week : [];
 const studied = wk.filter((d) => d.kind === 'study' || d.kind === 'back').length;
+/* What the strip says to a screen reader is what it draws. A day before the record began is a faint dot, not a day
+   without study: the name counts only the days the record covers, says since when that is, and says that nothing is
+   known of the days before («1 día con estudio desde el 16 de noviembre; de antes no hay registro»: a save from
+   before the app kept the days used to hear «0 días con estudio» of a week that had been studied). With no day on
+   record at all it says that, and counts nothing */
+const unknown = wk.filter((d) => d.kind === 'none').length;
+const counted = studied === 1 ? '1 día con estudio' : studied + ' días con estudio';
+const known = !unknown ? counted : dy.first ? counted + (C.dayEs ? ' desde el ' + C.dayEs(dy.first) : '') + '; de antes no hay registro' : 'todavía no hay ningún día registrado';
 const week = {
 show: wk.length === 7,
 days: wk.map((d) => Object.assign({ up: d.kind === 'back', dot: d.kind === 'none' }, DAY_LOOK[d.kind] || DAY_LOOK.none)),
-aria: 'Tus últimos 7 días: ' + (studied === 1 ? '1 día con estudio' : studied + ' días con estudio') + '. ' + (dy.today ? (dy.back ? 'Hoy volviste.' : 'Hoy ya estudiaste.') : 'Hoy todavía no.'),
+aria: 'Tus últimos 7 días: ' + known + '. ' + (dy.today ? (dy.back ? 'Hoy volviste.' : 'Hoy ya estudiaste.') : 'Hoy todavía no.'),
 };
 const gn = C.plain(unit.gn || '');
 const es = C.plain(unit.es || '') || (gn ? '' : 'En preparación');

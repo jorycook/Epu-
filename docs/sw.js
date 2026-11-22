@@ -5,7 +5,7 @@
  * which replaces the stored copy. Each file is stored under a hash of its own content: the first install takes what
  * the browser has just downloaded for the page instead of downloading it again, and a new build downloads only the
  * files that changed (see fresh below). The sound files are stored when first used (see LAZY below). */
-const VERSION = '4825426a30';
+const VERSION = 'ea0870718c';
 /* the store is named after the folder this copy of the app lives in: a second copy under the same web
    address (a trial version, say) keeps its own store and never touches this one */
 const HOME = new URL('./', self.location.href).pathname;
@@ -52,29 +52,29 @@ const FILES = [
 const HASH = {
  "./": "7675dc12cf",
  "./assets/app.css": "7c9a25ed0e",
- "./assets/build.js": "8b7b54c447",
+ "./assets/build.js": "c5894eab4f",
  "./assets/fonts.css": "44dc9ffc0f",
  "./assets/fonts/epuatext-400.woff2": "3926394b28",
  "./assets/fonts/epuatext-700.woff2": "14eec5dfbf",
  "./assets/fonts/nunito-500.woff2": "90e2d48816",
  "./assets/fonts/nunito-700.woff2": "622a9100d8",
  "./assets/fonts/nunito-800.woff2": "06145bc4f1",
- "./assets/gn-app.js": "1131cf5cc1",
- "./assets/gn-course-a1.js": "5b7f0ac414",
+ "./assets/gn-app.js": "baaec7d850",
+ "./assets/gn-course-a1.js": "7a6dd4e25e",
  "./assets/gn-course-a2.js": "7f2fb81af8",
  "./assets/gn-course-b1.js": "a17ba303f3",
  "./assets/gn-course-b2.js": "b4a16c82b8",
  "./assets/gn-course-c1.js": "83d989ed0a",
  "./assets/gn-course-c2.js": "89e7ec56cd",
- "./assets/gn-course.js": "68a4dcb9a6",
+ "./assets/gn-course.js": "4701b67911",
  "./assets/gn-extra.js": "d835c95ddb",
  "./assets/gn-sound-index.js": "3a12244961",
  "./assets/gn-sound.js": "09f739bf8c",
  "./assets/gn-spell.js": "522c73fe5a",
  "./assets/preact.min.js": "25aa00978f",
- "./assets/screens-more.js": "b52f1a63a1",
+ "./assets/screens-more.js": "4b1af8fda7",
  "./assets/screens.css": "4f3dd4e360",
- "./assets/screens.js": "b86ce8e066",
+ "./assets/screens.js": "da76c0c398",
  "./assets/yk-runtime.js": "af6c627d76",
  "./icons/apple-touch-icon.png": "94b30db31a",
  "./icons/favicon-32.png": "bba21c3c2d",
@@ -115,13 +115,13 @@ async function fresh(olds, f) {
    engine fetches it, and once there is a plan the app names the few files to have ahead (keepFiles, below): never a
    whole level. Each file carries a hash of its content, so a new build keeps the ones that did not change. */
 const LAZY = {
- "./assets/gn-sound-a1-u01.js": "8f44da4b58",
- "./assets/gn-sound-a1-u02.js": "7a0b7c599c",
- "./assets/gn-sound-a1-u03.js": "8bf9537585",
- "./assets/gn-sound-a1-u04.js": "81cb034a4a",
- "./assets/gn-sound-a1-x.js": "bf49999593",
- "./assets/gn-sound-pl.js": "fc59c0ca2e",
- "./assets/gn-sound-sp.js": "3fd5871671"
+ "./assets/gn-sound-a1-u01.js": "8a6b7556a6",
+ "./assets/gn-sound-a1-u02.js": "1d04bb14e9",
+ "./assets/gn-sound-a1-u03.js": "da5c086ef4",
+ "./assets/gn-sound-a1-u04.js": "056ab59bfc",
+ "./assets/gn-sound-a1-x.js": "9f1593717a",
+ "./assets/gn-sound-pl.js": "ac1c4c140e",
+ "./assets/gn-sound-sp.js": "6b43833bda"
 };
 const lazyKey = (f) => f + '?h=' + LAZY[f];
 const lazyOf = (url) => { const p = './' + new URL(url).pathname.slice(HOME.length); return LAZY[p] ? p : null; };
