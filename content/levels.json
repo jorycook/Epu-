@@ -87,7 +87,14 @@
      "Decir qué hacés cada día",
      "La hora y los días van en castellano",
      "Preguntar dónde está y cuándo",
-     "Por qué -pe pasa a -me"
+     "Decir a quién: che sýpe, mitãme"
+    ],
+    "sound": [
+     "Dos vocales, una sílaba: aiko, reiko, oiko",
+     "Cada sílaba termina en vocal: arambosa, añeno",
+     "Como ára, pero sin tilde: aravo, arete",
+     "Dos vocales, dos sílabas: moõ, oĩ",
+     "Repaso: la armonía nasal: che sýpe, mitãme"
     ]
    },
    {
@@ -96,10 +103,17 @@
     "es": "Ayer y mañana",
     "days": [
      "Decir qué vas a hacer: akarúta",
-     "Decir qué hiciste: kuri",
+     "Decir qué hiciste: ahákuri",
      "Decir cuándo: ayer, hoy, mañana",
      "Decir que no lo vas a hacer",
      "Mensaje: planes del fin de semana"
+    ],
+    "sound": [
+     "Repaso: la tilde con sufijo: akarúta, aháta",
+     "El final dice cuándo: oúta, oúkuri",
+     "Dos ~ en una palabra: ko'ẽrõ",
+     "El puso y la vocal nasal: ndahamo'ãi, ko'ẽ",
+     "La g, suave también al empezar: guasu, guata"
     ]
    },
    {
@@ -110,8 +124,15 @@
      "Hay, está y no hay: oĩ, ndaipóri",
      "Preguntar y entender los precios",
      "Decir qué querés hacer: ahase",
-     "Pedir algo por favor: -na",
+     "Decir con quién: ndive",
      "Tereré y comida paraguaya"
+    ],
+    "sound": [
+     "La s escribe la z y la c: asuka, sevói",
+     "La l: kílo, ovale",
+     "La sílaba fuerte es se: ahase, ndahaséi",
+     "ndive, suelto o pegado: che sy ndive, chendive",
+     "Repaso: la y sola es una palabra: y, ka'ay"
     ]
    },
    {
@@ -122,8 +143,15 @@
      "Decirle a alguien qué hacer: e-",
      "Mandar con -ke, apurar con -py",
      "Prohibir: ani",
-     "Decir con quién: ndive",
+     "Pedir algo por favor: eguerúna",
      "Escribir una nota con las 33 letras"
+    ],
+    "sound": [
+     "Repaso: la r suave separa reju de eju",
+     "El final sin acento cambia la orden: ejúke, ejúpy",
+     "Las mayúsculas: Ani, Che, Mba'e",
+     "La sílaba mi se lleva el acento: ejapomína",
+     "El achegety: las 33 letras en su orden"
     ]
    }
   ]

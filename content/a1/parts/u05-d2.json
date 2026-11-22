@@ -1,0 +1,328 @@
+{
+  "title": "Decir qué hacés cada día",
+  "grammar": {
+    "points": [
+      {
+        "id": "a1u05d2.p1",
+        "form": "apu'ã · opu'ã · ñapu'ã",
+        "gloss": "la rutina: yo · él, ella · vos y yo",
+        "connect": [
+          { "pos": "Cuatro verbos de la rutina ya los conocés de la unidad 3: son acciones y van con a-", "rule": "{a}pu'ã · {a}jahu · {a}karu · {a}ke" },
+          { "pos": "Hoy sumás cinco, también con a-. En orden: desayuno, tomo mate, vuelvo, descanso y me acuesto", "rule": "{a}rambosa · {a}kay'u · {a}jevy · {a}pytu'u · {a}ñeno" },
+          { "pos": "Lo de todos los días se dice con el verbo como está, sin ninguna marca. Ára ha ára es «todos los días», y va al principio o al final", "rule": "{Ára ha ára} apu'ã. · Arambosa {ára ha ára}." },
+          { "pos": "Para contar la rutina de otros, los prefijos de la unidad 2", "rule": "Che membykuéra {o}pu'ã ha {o}rambosa. · Ore {ro}rambosa." },
+          { "pos": "Con ñande, ja- pasa a ña- si la raíz es nasal: pu'ã lleva ã y rambosa lleva mb", "rule": "{ja}karu · {ja}kay'u / {ña}pu'ã · {ña}rambosa" }
+        ],
+        "examples": [
+          {
+            "gn": "{Ára ha ára} apu'ã ha akay'u.",
+            "es": "Todos los días me levanto y tomo mate.",
+            "parts": [["ára ha ára", "todos los días"], ["a-", "yo"], ["pu'ã", "levantarse"], ["ha", "y"], ["kay'u", "tomar mate"]]
+          },
+          {
+            "gn": "Che membykuéra {o}pu'ã ha {o}rambosa.",
+            "es": "Mis hijos se levantan y desayunan.",
+            "parts": [["che membykuéra", "mis hijos"], ["o-", "ellos, ellas"], ["pu'ã", "levantarse"], ["ha", "y"], ["rambosa", "desayunar"]]
+          },
+          {
+            "gn": "{Ña}pu'ã ha {ja}kay'u.",
+            "es": "Nos levantamos y tomamos mate.",
+            "parts": [["ña-", "nosotros (con vos), con raíz nasal"], ["pu'ã", "levantarse"], ["ha", "y"], ["ja-", "nosotros (con vos)"], ["kay'u", "tomar mate"]]
+          },
+          {
+            "gn": "Ore {ro}rambosa ha roho mbo'ehaópe.",
+            "es": "Desayunamos y vamos a la escuela.",
+            "parts": [["ore", "nosotros, sin vos"], ["ro-", "nosotros (sin vos)"], ["rambosa", "desayunar"], ["ha", "y"], ["roho", "vamos (sin vos)"], ["mbo'ehaópe", "a la escuela, en la escuela"]]
+          },
+          {
+            "gn": "Che ru {o}jevy pyhare.",
+            "es": "Mi papá vuelve a la noche.",
+            "parts": [["che ru", "mi papá"], ["o-", "él, ella"], ["jevy", "volver"], ["pyhare", "a la noche"]]
+          },
+          {
+            "gn": "Che sy {o}kay'u ha che {a}rambosa.",
+            "es": "Mi mamá toma mate y yo desayuno.",
+            "parts": [["che sy", "mi mamá"], ["o-", "él, ella"], ["kay'u", "tomar mate"], ["ha", "y"], ["che", "yo; con sy, ru o róga, «mi»"], ["a-", "yo"], ["rambosa", "desayunar"]]
+          }
+        ],
+        "watch": {
+          "note": "Pu'ã termina en ã: es una raíz nasal, y con ñande va ña-, no ja-. Lo mismo rambosa, por la mb.",
+          "bad": "Japu'ã ha jakay'u.",
+          "good": "Ñapu'ã ha jakay'u."
+        }
+      },
+      {
+        "id": "a1u05d2.p2",
+        "form": "pyhareve · asaje · ka'aru · pyhare · upéi",
+        "gloss": "a la mañana · a la siesta · a la tarde · a la noche · después",
+        "connect": [
+          { "pos": "La parte del día, sola, dice cuándo: no hace falta «a la» ni ningún sufijo. La nueva es asaje, la siesta", "rule": "{Pyhareve} amba'apo. · {Asaje} apytu'u. · {Pyhare} añeno." },
+          { "pos": "Va al principio o al final de la frase", "rule": "{Ka'aru} aha távape. · Aha távape {ka'aru}." },
+          { "pos": "Upéi, «después», pone los pasos en orden. También ha upéi, «y después»", "rule": "Apu'ã, {upéi} akay'u. · Akaru {ha upéi} ake." },
+          { "pos": "Con ko señalás la de hoy, como en la unidad 1", "rule": "{ko} pyhareve · {ko} ka'aru · {ko} pyhare" }
+        ],
+        "examples": [
+          {
+            "gn": "{Pyhareve} amba'apo mbo'ehaópe.",
+            "es": "A la mañana trabajo en la escuela.",
+            "parts": [["pyhareve", "a la mañana"], ["amba'apo", "trabajo"], ["mbo'ehaópe", "en la escuela"]]
+          },
+          {
+            "gn": "{Asaje} ajevy ógape ha apytu'u.",
+            "es": "A la siesta vuelvo a casa y descanso.",
+            "parts": [["asaje", "a la siesta"], ["a-", "yo"], ["jevy", "volver"], ["ógape", "a casa, en casa"], ["ha", "y"], ["pytu'u", "descansar"]]
+          },
+          {
+            "gn": "Apu'ã, {upéi} akay'u.",
+            "es": "Me levanto, después tomo mate.",
+            "parts": [["apu'ã", "me levanto"], ["upéi", "después"], ["akay'u", "tomo mate"]]
+          },
+          {
+            "gn": "Akaru {ha upéi} ake.",
+            "es": "Como y después duermo.",
+            "parts": [["akaru", "como"], ["ha upéi", "y después"], ["ake", "duermo"]]
+          },
+          {
+            "gn": "{Ka'aru} aha távape.",
+            "es": "A la tarde voy al centro.",
+            "parts": [["ka'aru", "a la tarde"], ["aha", "voy"], ["táva", "pueblo, ciudad, centro"], ["-pe", "a"]]
+          },
+          {
+            "gn": "{Pyhare} añeno ha ake.",
+            "es": "A la noche me acuesto y duermo.",
+            "parts": [["pyhare", "a la noche"], ["a-", "yo"], ["ñeno", "acostarse"], ["ha", "y"], ["ake", "duermo"]]
+          }
+        ],
+        "watch": {
+          "note": "Upéi lleva tilde en la e: el acento va ahí y no en la i del final, como en purahéi (unidad 4).",
+          "bad": "Apu'ã, upei akay'u.",
+          "good": "Apu'ã, upéi akay'u."
+        }
+      }
+    ],
+    "compare": {
+      "intro": "Quién lo hace, cuándo y en qué orden: tres cosas para contar el día.",
+      "forms": [
+        { "form": "ñapu'ã · jakay'u", "tag": "vos y yo: ña- si la raíz es nasal", "mark": "dot", "gn": "{Ña}pu'ã ha {ja}kay'u.", "es": "Nos levantamos y tomamos mate." },
+        { "form": "pyhareve · upéi", "tag": "a la mañana · después", "mark": "dot", "gn": "{Pyhareve} arambosa, {upéi} aha mbo'ehaópe.", "es": "A la mañana desayuno, después voy a la escuela." },
+        { "form": "ko pyhareve", "tag": "esta mañana: la de hoy (unidad 1)", "mark": "dot", "gn": "{Ko pyhareve} arambosa ógape.", "es": "Esta mañana desayuné en casa." }
+      ],
+      "check": {
+        "id": "a1u05d2.c1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Ana le habla ^a su mamá^ de las dos, de todos los días.)\nAna: Ñande (   ) ha jakay'u.",
+        "options": ["ropu'ã", "japu'ã", "ñapu'ã"],
+        "answer": 3,
+        "why": [
+          "Ro- es el prefijo de ore, «nosotros sin vos». Ana incluye a su mamá, que la escucha: ñande.",
+          "Pu'ã termina en ã: es una raíz nasal, y con ella ja- pasa a ña-.",
+          "Ana le habla a su mamá y la incluye: ñande. Como pu'ã es una raíz nasal, ja- pasa a ña-: ñapu'ã, «nos levantamos». Kay'u es oral y queda con ja-: jakay'u."
+        ]
+      }
+    },
+    "drill": [
+      {
+        "id": "a1u05d2.d1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Es mediodía. Ana sale de la escuela y ^vuelve^ a su casa.)\nAna: (   ) ógape ha akaru.",
+        "options": ["Apu'ã", "Ajevy", "Añeno", "Apytu'u"],
+        "answer": 2,
+        "why": [
+          "Apu'ã es «me levanto»: eso fue a la mañana. Ana vuelve de la escuela.",
+          "Ana vuelve a su casa: jevy es «volver», y con a-, «yo», ajevy. Ajevy ógape ha akaru: vuelvo a casa y como.",
+          "Añeno es «me acuesto». La escena dice que Ana vuelve a su casa.",
+          "Apytu'u es «descanso»: eso viene después de comer. La escena dice que Ana vuelve."
+        ]
+      },
+      {
+        "id": "a1u05d2.d2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Ana habla de ^sus hijos^: «Che membykuéra (   ) asaje.»",
+        "options": ["apytu'u", "repytu'u", "opytu'u", "ropytu'u"],
+        "answer": 3,
+        "why": [
+          "A- es «yo». Ana habla de sus hijos, no de ella.",
+          "Re- es «vos», el que escucha. Ana habla de otras personas.",
+          "Che membykuéra, «mis hijos», son ellos: o-, igual que con él o ella. Che membykuéra opytu'u asaje: mis hijos descansan a la siesta.",
+          "Ro- es «nosotros sin vos» y sumaría a Ana. Ella habla solo de sus hijos."
+        ]
+      },
+      {
+        "id": "a1u05d2.d3",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la palabra",
+        "q": "(Ana cuenta su mañana ^en orden^: primero se levanta.)\nAna: Apu'ã, (   ) ajahu.",
+        "options": ["upéi", "asaje", "pyhare", "ára ha ára"],
+        "answer": 1,
+        "why": [
+          "Upéi, «después», pone los pasos en orden: Apu'ã, upéi ajahu, «me levanto, después me baño».",
+          "Asaje es «a la siesta»: dice un momento del día, y Ana cuenta su mañana.",
+          "Pyhare es «a la noche»: dice otro momento del día, y Ana cuenta su mañana.",
+          "Ára ha ára es «todos los días»: dice cada cuánto, no qué viene después."
+        ]
+      },
+      {
+        "id": "a1u05d2.d4",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la palabra",
+        "q": "(Ana habla de ^la noche^: ella y sus hijos comen en casa.)\nAna: (   ) rokaru ógape.",
+        "options": ["Pyhareve", "Asaje", "Ka'aru", "Pyhare"],
+        "answer": 4,
+        "why": [
+          "Pyhareve es «a la mañana». Ojo, que se parecen: «a la noche» es pyhare.",
+          "Asaje es «a la siesta», después del almuerzo. Ana habla de la noche.",
+          "Ka'aru es «a la tarde». Ana habla de la noche.",
+          "Pyhare, sola, es «a la noche»: Pyhare rokaru ógape, «a la noche comemos en casa». Rokaru lleva ro-: Ana y sus hijos, sin el que escucha."
+        ]
+      },
+      {
+        "id": "a1u05d2.d5",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Ana le habla a su mamá de las dos.)\nAna: Ára ha ára ",
+        "after": " ha ñamba'apo.",
+        "tiles": ["ña", "pu'ã"],
+        "bank": [1, 0],
+        "hint": "Pu'ã termina en ã: es una raíz nasal. ¿Qué prefijo lleva el «nosotros con vos»? Va primero, pegado a la raíz.",
+        "full": "(Ana le habla a su mamá de las dos.)\nAna: Ára ha ára {ña}pu'ã ha ñamba'apo.",
+        "es": "Ana: Todos los días nos levantamos y trabajamos.",
+        "explain": "ña- («nosotros, con vos») + pu'ã («levantarse») = ñapu'ã, «nos levantamos». Pu'ã termina en ã, una vocal nasal, y por eso ja- pasa a ña-, igual que en ñamba'apo (unidad 2). Ára ha ára, «todos los días», acá va al principio."
+      },
+      {
+        "id": "a1u05d2.d6",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Ana le habla a Moisés de ella y de sus hijos.)\nAna: Ore ",
+        "after": " ógape.",
+        "tiles": ["ro", "rambosa"],
+        "bank": [1, 0],
+        "hint": "Ro- es el prefijo de ore, «nosotros sin vos»: va primero, pegado a la raíz.",
+        "full": "(Ana le habla a Moisés de ella y de sus hijos.)\nAna: Ore {ro}rambosa ógape.",
+        "es": "Ana: Nosotros (sin vos) desayunamos en casa.",
+        "explain": "ro- («nosotros, sin vos») + rambosa («desayunar») = rorambosa, «desayunamos». Rambosa es una raíz nasal, por la mb, pero ro- no cambia: de los prefijos de las acciones (a-, re-, o-, ja-, ro-, pe-), solo ja- pasa a ña-. Ore rorambosa ógape: desayunamos en casa."
+      }
+    ],
+    "exam": [
+      {
+        "id": "a1u05d2.e1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Ana le habla a su mamá de las dos.)\nAna: Ñande (   ) ha jaha mbo'ehaópe.",
+        "options": ["rorambosa", "jarambosa", "orambosa", "ñarambosa"],
+        "answer": 4,
+        "explain": "Ñande, «nosotros con vos», lleva ja-, y como rambosa es una raíz nasal, por la mb, ja- pasa a ña-: ñarambosa, «desayunamos». En jaha queda ja-, porque ha, la raíz de «ir», es oral. Rorambosa es de ore, «nosotros sin vos»; orambosa, de otras personas; y a jarambosa le falta el cambio a ña-."
+      },
+      {
+        "id": "a1u05d2.e2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Qué significa",
+        "q": "Ana: _Asaje_ che sy opytu'u.",
+        "options": ["A la mañana", "A la siesta", "A la tarde", "A la noche"],
+        "answer": 2,
+        "explain": "Asaje es la siesta, las horas después del almuerzo: sola, sin «a la» ni sufijo, dice cuándo. Asaje che sy opytu'u: a la siesta mi mamá descansa. «A la mañana» es pyhareve; «a la tarde», ka'aru; y «a la noche», pyhare."
+      },
+      {
+        "id": "a1u05d2.e3",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(El papá de Ana trabaja en Asunción.)\nAna: Che ru ",
+        "after": " pyhare.",
+        "tiles": ["o", "jevy"],
+        "bank": [1, 0],
+        "full": "(El papá de Ana trabaja en Asunción.)\nAna: Che ru ojevy pyhare.",
+        "es": "Ana: Mi papá vuelve a la noche.",
+        "explain": "O- va primero: che ru, «mi papá», es otra persona. Después va la raíz jevy, «volver»: ojevy, «vuelve». Pyhare, sola y al final, dice cuándo: a la noche."
+      }
+    ]
+  },
+  "words": {
+    "es": "La mañana de Ana, de la cama a la escuela",
+    "intro": "La casa de Ana y el camino a la escuela, un jueves de cinco a siete de la mañana. Y después el día entero en una línea: mate, desayuno, escuela, vuelta a casa, siesta y cama. Tocá cada palabra.",
+    "sound": {
+      "focus": "Cada sílaba termina en vocal: arambosa, añeno",
+      "letters": ["mb", "nd", "ñ", "'"],
+      "note": "En guaraní ninguna sílaba termina en consonante: mb, nd, ñ y el puso abren la sílaba, nunca la cierran. Por eso se corta a-ra-mbo-sa, no «a-ram-bo-sa», y también a-he-ndu, a-ñe-no, a-py-tu-'u. Los pares de hoy son palabras para contrastar: decilas despacio, sílaba por sílaba.",
+      "pairs": [
+        ["akaru", "como (de comer)", "arambosa", "desayuno"],
+        ["ajevy", "vuelvo", "ahendu", "escucho, oigo"],
+        ["ake", "duermo", "añeno", "me acuesto"],
+        ["apu'ã", "me levanto", "apytu'u", "descanso"]
+      ]
+    },
+    "words": [
+      { "id": "arahaara", "gn": "ára ha ára", "es": "todos los días", "parts": [["ára", "día"], ["ha", "y"], ["ára", "día"]], "note": "«Día y día»: así se dice «todos los días». Va al principio o al final de la frase." },
+      { "id": "upei", "gn": "upéi", "es": "después", "note": "Pone los pasos en orden: Apu'ã, upéi akay'u. Lleva tilde en la é, y tiene dos sílabas, u-PÉI: la é y la i van juntas, como las vocales del día 1." },
+      { "id": "asaje", "gn": "asaje", "es": "la siesta, el mediodía", "note": "Las horas después del almuerzo, cuando el Paraguay descansa. Sola dice «a la siesta»: Asaje apytu'u. Las partes del día también se leen con -pe: pyharépe, ka'arúpe." },
+      { "id": "arambosa", "gn": "arambosa", "es": "desayuno (yo)", "parts": [["a-", "yo"], ["rambosa", "desayunar"]], "note": "Se corta a-ra-mbo-sa: la mb abre su sílaba. Rambosa es también «el desayuno», la cosa. Es una raíz nasal, por la mb: con ñande, ñarambosa." },
+      { "id": "akayu", "gn": "akay'u", "es": "tomo mate", "parts": [["a-", "yo"], ["kay'u", "tomar mate"]], "note": "De la familia de ka'ay, «mate» (unidad 1): lleva la misma y, «agua». Ojo con el puso: en ka'ay va entre las dos a; acá, entre la y y la u: akay'u." },
+      { "id": "ajevy", "gn": "ajevy", "es": "vuelvo", "parts": [["a-", "yo"], ["jevy", "volver"]], "note": "Ajevy ógape, «vuelvo a casa». Termina en y, la sexta vocal, y va sin tilde: a-je-VY." },
+      { "id": "apytuu", "gn": "apytu'u", "es": "descanso", "parts": [["a-", "yo"], ["pytu'u", "descansar"]], "note": "El puso corta entre las dos u: a-py-tu-'u. La primera vocal de la raíz es la y, la sexta." },
+      { "id": "aneno", "gn": "añeno", "es": "me acuesto", "parts": [["a-", "yo"], ["ñeno", "acostarse"]], "note": "Se corta a-ñe-no: la ñ abre su sílaba. Acostarse no es dormir: Añeno ha ake, «me acuesto y duermo»." }
+    ],
+    "spell": ["upei", "akayu", "apytuu", "aneno"],
+    "check": {
+      "id": "a1u05d2.k1",
+      "kind": "choice",
+      "area": "vocab",
+      "label": "Cuál está bien escrita",
+      "q": "Ana anota cuatro palabras de su día. Solo una está _bien escrita_. ¿Cuál?",
+      "options": ["upei", "akayu", "apytu'u", "añenó"],
+      "answer": 3,
+      "explain": "Apytu'u está bien: lleva el puso entre las dos u, y ninguna tilde, porque el acento cae en la última vocal. A upei le falta la tilde: el acento va en la e y no en la i del final, y por eso se escribe upéi. A akayu le falta el puso: es akay'u. Y a añenó le sobra la tilde, que es la costumbre del castellano: se escribe añeno."
+    }
+  },
+  "skill": {
+    "kind": "listening",
+    "es": "Comprensión de puntos clave",
+    "situation": "Ana cuenta su jueves, de la cama a la noche.",
+    "ask": "¿Qué hace Ana a la siesta?",
+    "item": {
+      "id": "a1u05d2.r1",
+      "kind": "choice",
+      "area": "listening",
+      "label": "Qué escuchaste",
+      "q": "¿Qué hace Ana a la siesta?",
+      "options": ["Vuelve a casa.", "Va a la escuela.", "Se acuesta."],
+      "short": ["Vuelve a casa", "Va a la escuela", "Se acuesta"],
+      "printed": true,
+      "answer": 1,
+      "why": [
+        "Ana dice Asaje ajevy ógape: «a la siesta vuelvo a casa». Asaje es la siesta, y ajevy, «vuelvo».",
+        "A la escuela va a la mañana, después de desayunar: Upéi aha mbo'ehaópe, «después voy a la escuela».",
+        "Ana se acuesta a la noche: Pyhare chekane'õ ha añeno, «a la noche estoy cansada y me acuesto». Pyhare no es la siesta."
+      ],
+      "script": [
+        "Narrador: Ana cuenta su día. ¿Qué hace a la siesta?",
+        "Mujer: Pyhareve apu'ã ha arambosa.",
+        "Mujer: Upéi aha mbo'ehaópe.",
+        "Mujer: Asaje ajevy ógape.",
+        "Mujer: Pyhare chekane'õ ha añeno.",
+        "Narrador: ¿Qué hace Ana a la siesta?"
+      ]
+    },
+    "audio": [
+      ["N", "Ana cuenta su día. ¿Qué hace a la siesta?", "Ana cuenta su día. ¿Qué hace a la siesta?"],
+      ["F", "Pyhareve apu'ã ha arambosa.", "A la mañana me levanto y desayuno."],
+      ["F", "Upéi aha mbo'ehaópe.", "Después voy a la escuela."],
+      ["F", "Asaje ajevy ógape.", "A la siesta vuelvo a casa."],
+      ["F", "Pyhare chekane'õ ha añeno.", "A la noche estoy cansada y me acuesto."],
+      ["N", "¿Qué hace Ana a la siesta?", "¿Qué hace Ana a la siesta?"]
+    ]
+  }
+}

@@ -1,0 +1,243 @@
+{
+  "title": "Repaso de la semana",
+  "grammar": {
+    "points": [],
+    "compare": {
+      "intro": "Cuatro pares de la semana que se parecen: mirá qué cambia en cada uno.",
+      "forms": [
+        {
+          "form": "ake · aike",
+          "tag": "a- + ke, «duermo» · ai- + ke, «entro»",
+          "mark": "dot",
+          "gn": "{A}ke kotýpe.\n{Ai}ke kotýpe.",
+          "es": "Duermo en la pieza.\nEntro en la pieza."
+        },
+        {
+          "form": "mokõi aravo · 7:00 aravo jave",
+          "tag": "cuánto dura · la hora, en cifras",
+          "mark": "dot",
+          "gn": "Aguata {mokõi aravo}.\nAha {7:00 aravo jave}.",
+          "es": "Camino dos horas.\nVoy a las 7:00."
+        },
+        {
+          "form": "Moõpa · Araka'épa",
+          "tag": "¿dónde? · ¿cuándo?",
+          "mark": "dot",
+          "gn": "{Moõpa} remba'apo?\n{Araka'épa} remba'apo?",
+          "es": "¿Dónde trabajás?\n¿Cuándo trabajás?"
+        },
+        {
+          "form": "ógape · che sýpe",
+          "tag": "-pe: en un lugar · a una persona",
+          "mark": "dot",
+          "gn": "Che sy oĩ óga{pe}.\nAhecha che sý{pe}.",
+          "es": "Mi mamá está en casa.\nVeo a mi mamá."
+        }
+      ],
+      "check": {
+        "id": "a1u05d6.c1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la pregunta",
+        "q": "(Es de noche. Vicente le escribe a Ana.)\nVicente: (   ) rehenói nde jarýipe?\nAna: ^Ko ka'aru.^",
+        "options": ["Moõpa", "Araka'épa", "Mávapepa"],
+        "answer": 2,
+        "why": [
+          "Moõpa pregunta dónde, y se responde con un lugar. Ana responde Ko ka'aru, «esta tarde».",
+          "Ana responde con una palabra de tiempo, Ko ka'aru, «esta tarde»: la pregunta es Araka'épa…?, «¿cuándo…?». Ya es de noche, y el verbo, así como está, sirve también para lo que ya pasó (unidad 3): «¿Cuándo llamaste a tu abuela?».",
+          "Mávapepa pregunta a quién (día 5), y la persona ya está en la pregunta: nde jarýipe, «a tu abuela». Ana dice cuándo."
+        ]
+      }
+    },
+    "drill": [
+      {
+        "id": "a1u05d6.d1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(En la clase de Ana, los alumnos ^usan^ el diccionario.)\nAna: Temimbo'ekuéra (   ) ñe'ẽryru.",
+        "options": ["aiporu", "oporu", "oiporu", "oipota"],
+        "answer": 3,
+        "why": [
+          "Aiporu es «uso», con ai-, «yo». Ana habla de los alumnos: son ellos.",
+          "A oporu le falta la i: con poru, «usar», ellos llevan oi-, no o-.",
+          "Temimbo'ekuéra, «los alumnos», son ellos: oi-, igual que con él o ella. Oi- más poru, «usar»: oiporu, «usan».",
+          "Oipota es «quieren»: lleva oi-, pero la raíz es pota, «querer». La escena dice que usan el diccionario."
+        ]
+      },
+      {
+        "id": "a1u05d6.d2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Es de noche. Ana come, ^se acuesta^ y duerme.)\nAna: Akaru, upéi (   ) ha ake.",
+        "options": ["apytu'u", "añeno", "apu'ã", "ajevy"],
+        "answer": 2,
+        "why": [
+          "Apytu'u es «descanso». La escena dice que Ana se acuesta: es otro verbo.",
+          "«Me acuesto» es añeno: a-, «yo», más ñeno, «acostarse». Akaru, upéi añeno ha ake: como, después me acuesto y duermo.",
+          "Apu'ã es «me levanto»: es lo contrario, y es lo de la mañana.",
+          "Ajevy es «vuelvo». La escena no habla de volver: Ana come, se acuesta y duerme."
+        ]
+      },
+      {
+        "id": "a1u05d6.d3",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la palabra",
+        "q": "(Genaro se baña rápido: ^cinco minutos^.)\nAna: Genaro ojahu po (   ).",
+        "options": ["aravo", "arete", "arapokõindy", "aravo'i"],
+        "answer": 4,
+        "why": [
+          "Aravo es «hora»: po aravo son cinco horas. Genaro se baña cinco minutos.",
+          "Arete es «feriado». Empieza parecido, pero no mide lo que dura un baño.",
+          "Arapokõindy es «semana»: po arapokõindy son cinco semanas.",
+          "«Minuto» es aravo'i: empieza como aravo y termina en 'i, con puso. Después del número queda como está, sin plural: po aravo'i, «cinco minutos»."
+        ]
+      },
+      {
+        "id": "a1u05d6.d4",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(En la escuela, Tania tiene una duda y ^le pregunta a la profesora^. Ana lo cuenta.)\nAna: Tania oporandu (   ).",
+        "options": ["mbo'ehárape", "mbo'ehárame", "mbo'eháragui", "mbo'eharakuérape"],
+        "answer": 1,
+        "why": [
+          "La persona a quien le preguntás lleva -pe o -me. La última sílaba de mbo'ehára es ra, que es oral: va -pe. Tania oporandu mbo'ehárape: Tania le pregunta a la profesora.",
+          "-me va solo después de una sílaba nasal, y la última de mbo'ehára es ra, oral. La mb del principio no importa: se mira la última sílaba.",
+          "-gui es «de»: mbo'eháragui sería «de la profesora». Tania le pregunta a ella.",
+          "Mbo'eharakuérape es «a los profesores», varios. Tania le pregunta a una sola: a la profesora."
+        ]
+      },
+      {
+        "id": "a1u05d6.d5",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Moisés le quiere prestar un libro a Ana. Ella ya tiene el suyo.)\nAna: Aguyje, Moisés. Che ",
+        "after": " pe aranduka.",
+        "tiles": ["n", "ai", "kotevẽ", "i"],
+        "bank": [2, 0, 3, 1],
+        "hint": "El «no» rodea al verbo, y kotevẽ es una raíz nasal: fijate cuál de las dos partes va primero. En el medio, ai- («yo») y la raíz.",
+        "full": "(Moisés le quiere prestar un libro a Ana. Ella ya tiene el suyo.)\nAna: Aguyje, Moisés. Che {n}aikotevẽ{i} pe aranduka.",
+        "es": "Ana: Gracias, Moisés. Yo no necesito ese libro.",
+        "explain": "n- + ai- («yo») + kotevẽ («necesitar») + -i = naikotevẽi, «no necesito». Kotevẽ es una raíz nasal, por la ẽ: por eso el «no» empieza con n-, y no con nd-. Sobre la ẽ no se agrega tilde: la ~ ya marca el acento. Pe aranduka es «ese libro», el que tiene Moisés."
+      },
+      {
+        "id": "a1u05d6.d6",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Ana vuelve del centro con chipá y le convida a una amiga.)\nAna: Ame'ẽ chipa che ",
+        "after": ".",
+        "tiles": ["angirũ", "me"],
+        "bank": [1, 0],
+        "hint": "Primero la persona, angirũ, y después el sufijo, pegado. La última sílaba, rũ, es nasal: por eso acá es -me.",
+        "full": "(Ana vuelve del centro con chipá y le convida a una amiga.)\nAna: Ame'ẽ chipa che angirũ{me}.",
+        "es": "Ana: Le doy chipá a mi amiga.",
+        "explain": "angirũ («amigo, amiga») + -me («a») = angirũme. La persona que recibe lleva -pe o -me, y acá va -me porque la última sílaba, rũ, es nasal. Sobre la ũ no se agrega tilde: la ~ ya marca el acento. Che angirũme es «a mi amiga»."
+      }
+    ],
+    "exam": [
+      {
+        "id": "a1u05d6.e1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la respuesta",
+        "q": "(Ana vuelve del centro y busca a su hija.)\nAna: Moõpa oĩ Tania?\nMamá: (   )",
+        "options": ["Ko jueves.", "Che rúpe.", "Mokõi aravo.", "Upépe, kotýpe."],
+        "answer": 4,
+        "explain": "Moõpa oĩ…? pregunta dónde está alguien, y se responde con un lugar: Upépe, kotýpe, «ahí, en la pieza». Ko jueves, «este jueves», dice cuándo: respondería a Araka'épa…? Che rúpe es «a mi papá»: una persona, no un lugar. Y Mokõi aravo, «dos horas», dice cuánto dura algo."
+      },
+      {
+        "id": "a1u05d6.e2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la palabra",
+        "q": "(Tania le trae un libro a Ana. Ana lo cuenta.)\nAna: Tania ome'ẽ (   ) peteĩ aranduka.",
+        "options": ["chéve", "ndéve", "ichupe", "chépe"],
+        "answer": 1,
+        "explain": "El libro es para Ana, que es quien habla: «a mí» es chéve. Tania ome'ẽ chéve peteĩ aranduka: Tania me da un libro. Ndéve sería «a vos», el que escucha, e ichupe, «a él o a ella», otra persona. Chépe no se dice: che no lleva -pe, sino -ve."
+      },
+      {
+        "id": "a1u05d6.e3",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Ana le habla a su mamá de las dos.)\nAna: Ñande ",
+        "after": " ha upéi ñamba'apo.",
+        "tiles": ["ña", "rambosa"],
+        "bank": [1, 0],
+        "full": "(Ana le habla a su mamá de las dos.)\nAna: Ñande ñarambosa ha upéi ñamba'apo.",
+        "es": "Ana: Vos y yo desayunamos y después trabajamos.",
+        "explain": "Ña- va primero: es el prefijo de ñande, «nosotros con vos», delante de una raíz nasal. Rambosa, «desayunar», es nasal por la mb, y por eso ja- pasa a ña-: ñarambosa, «desayunamos». Lo mismo pasa en ñamba'apo. Upéi, «después», pone los dos pasos en orden."
+      }
+    ]
+  },
+  "words": {
+    "es": "El jueves de Ana, de la mañana a la noche",
+    "intro": "El jueves de Ana, entero, de la mañana a la noche. Tocá cada palabra: son ocho de toda la semana, y cada una te dice de qué día viene.",
+    "sound": {
+      "focus": "Repaso: aiko, las sílabas, aravo, oĩ y pe o me",
+      "letters": ["ai", "mb", "á", "ĩ", "me"],
+      "note": "Lo de la semana, en cinco pares de palabras para contrastar. En aiko y en oiko la i se apoya en la vocal de antes, y en oĩ las dos vocales son dos sílabas; ninguna sílaba termina en consonante: a-ra-mbo-sa. Aravo va sin tilde y es fuerte al final, y con una persona va -me si la última sílaba es nasal: mitãme, pero che sýpe.",
+      "pairs": [
+        ["aiko", "vivo", "oiko", "vive"],
+        ["akaru", "como (de comer)", "arambosa", "desayuno"],
+        ["ára", "día", "aravo", "hora"],
+        ["oiko", "vive", "oĩ", "hay, está"],
+        ["che sýpe", "a mi mamá", "mitãme", "al niño, a la niña"]
+      ]
+    },
+    "words": [
+      { "id": "aikopora", "gn": "Aiko porã", "es": "Ando bien, estoy bien", "parts": [["aiko", "ando"], ["porã", "bien"]], "note": "Del día 1. Una respuesta a Mba'éichapa reiko?, al lado de Iporã. Aiko es también «vivo»: Aiko Itauguápe." },
+      { "id": "aikoteve", "gn": "aikotevẽ", "es": "necesito", "parts": [["ai-", "yo"], ["kotevẽ", "necesitar"]], "note": "Del día 1. Kotevẽ es una raíz nasal, por la ẽ: con ñande se dice ñaikotevẽ, y el «no» empieza con n-: naikotevẽi." },
+      { "id": "arambosa", "gn": "arambosa", "es": "desayuno (yo)", "parts": [["a-", "yo"], ["rambosa", "desayunar"]], "note": "Del día 2. Se corta a-ra-mbo-sa: la mb abre su sílaba. Con ñande, ñarambosa." },
+      { "id": "upei", "gn": "upéi", "es": "después", "note": "Del día 2. Pone los pasos en orden: Arambosa, upéi aha mbo'ehaópe. Con tilde en la é: u-PÉI." },
+      { "id": "aravo", "gn": "aravo", "es": "hora", "note": "Del día 3. Mokõi aravo, «dos horas»; 7:00 aravo jave, «a las 7:00». Sin tilde, fuerte al final: a-ra-VO." },
+      { "id": "arakaepa", "gn": "Araka'épa?", "es": "¿Cuándo?", "parts": [["araka'e", "cuándo"], ["-pa", "pregunta"]], "note": "Del día 4. Va al principio de la pregunta. Con -pa aparece la tilde en la é: a-ra-ka-'É-pa." },
+      { "id": "hiagui", "gn": "hi'ag̃ui", "es": "está cerca", "note": "Del día 4. Con puso y con g̃. Lo contrario es mombyry, «lejos»: Mombyry ko'águi, «lejos de acá»." },
+      { "id": "ahenoi", "gn": "ahenói", "es": "llamo", "parts": [["a-", "yo"], ["henói", "llamar"]], "note": "Del día 5. Con tilde en la o: a-he-NÓI. La persona a quien llamás lleva -pe: Ahenói che jarýipe." }
+    ],
+    "spell": ["aikoteve", "upei", "arakaepa", "ahenoi"],
+    "check": {
+      "id": "a1u05d6.k1",
+      "kind": "choice",
+      "area": "vocab",
+      "label": "Cómo se escribe",
+      "q": "Ana reparte el chipá entre sus hijos: _Doy_ chipa che membykuérape. ¿Cómo se escribe «doy» en guaraní?",
+      "options": ["amee", "ame'e", "ame'ẽ", "amẽ'e"],
+      "answer": 3,
+      "explain": "Se escribe ame'ẽ: con el puso entre las dos e y con la ~ en la última, que es la vocal del acento. Amee pierde el puso y la ~; ame'e pierde la ~; y amẽ'e la pone en la otra e."
+    }
+  },
+  "skill": {
+    "kind": "reading",
+    "es": "Un chat de la noche",
+    "ask": "¿Qué hace Ana ahora?",
+    "seconds": 75,
+    "passage": "Vicente: Mba'éichapa reiko, Ana?\nAna: Aiko porã. Chekane'õ: ko ka'aru aguata távape mokõi aravo ha upéi ahenói che jarýipe.\nVicente: ^Ha ko'ág̃a?^ Mba'épa rejapo?\nAna: ^Añeno.^ Oky ko'ápe.\nVicente: Jajotopáta.",
+    "strategy": "Ana cuenta dos momentos: lo de esta tarde, ko ka'aru, y lo de ahora. Buscá ko'ág̃a, «ahora», en la pregunta de Vicente, y leé lo que Ana responde.",
+    "item": {
+      "id": "a1u05d6.r1",
+      "kind": "choice",
+      "area": "reading",
+      "label": "Texto corto",
+      "q": "¿Qué hace Ana ahora?",
+      "options": ["Camina por el centro.", "Se acuesta.", "Llama a su abuela.", "Va a la escuela."],
+      "short": ["Camina", "Se acuesta", "Llama a su abuela", "Va a la escuela"],
+      "answer": 2,
+      "why": [
+        "Eso fue esta tarde: ko ka'aru aguata távape mokõi aravo, «esta tarde caminé por el centro dos horas». Por eso está cansada.",
+        "Vicente pregunta Ha ko'ág̃a? Mba'épa rejapo?, «¿y ahora? ¿qué hacés?», y Ana responde Añeno: «me acuesto».",
+        "A su abuela la llamó esta tarde, después de caminar: ha upéi ahenói che jarýipe, «y después llamé a mi abuela».",
+        "Mbo'ehaópe, «a la escuela», no aparece en el chat. Es de noche: Ana se acuesta."
+      ],
+      "explain": "Ana cuenta primero su tarde: ko ka'aru aguata távape mokõi aravo ha upéi ahenói che jarýipe, «esta tarde caminé por el centro dos horas y después llamé a mi abuela». Después Vicente pregunta por ahora, Ha ko'ág̃a?, y Ana responde Añeno, «me acuesto». Y agrega Oky ko'ápe: «acá llueve»."
+    }
+  }
+}

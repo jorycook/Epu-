@@ -1,0 +1,314 @@
+{
+  "title": "Decir a quién: che sýpe, mitãme",
+  "grammar": {
+    "points": [
+      {
+        "id": "a1u05d5.p1",
+        "form": "che sýpe · mitãme",
+        "gloss": "a mi mamá · al niño: -pe o -me con una persona",
+        "connect": [
+          { "pos": "El -pe de ógape (unidad 2) sirve también para una persona: la que ves, llamás, ayudás o saludás", "rule": "Ahecha che sý{pe}. · Ahenói che jarýi{pe}." },
+          { "pos": "También lo lleva la persona que recibe algo o a quien le preguntás. En estos dos ejemplos es -me", "rule": "Ame'ẽ chipa mitã{me}. · Aporandu che angirũ{me}." },
+          { "pos": "Como con los lugares, va -me si la última sílaba es nasal (~, m, n, ñ); si no, -pe. La mb no cuenta: memby lleva -pe", "rule": "mitã → mitã{me} · kuña → kuñá{me} / sy → sý{pe} · memby → membý{pe}" },
+          { "pos": "Va en la última palabra del grupo, y después de -kuéra o -nguéra, como en mitãnguérape (unidad 4)", "rule": "che sy ha che rú{pe} · mitãnguéra{pe} · che membykuéra{pe}" },
+          { "pos": "Con un nombre en castellano se escribe un guion y -pe, también si termina en na o nia: «a Ramona», «a Tania»", "rule": "Ramona{-pe} · Tania{-pe}" }
+        ],
+        "examples": [
+          {
+            "gn": "Aipytyvõ che sý{pe}.",
+            "es": "Ayudo a mi mamá.",
+            "parts": [["ai-", "yo"], ["pytyvõ", "ayudar"], ["che sy", "mi mamá"], ["-pe", "a"]]
+          },
+          {
+            "gn": "Ahenói che jarýi{pe}.",
+            "es": "Llamo a mi abuela.",
+            "parts": [["a-", "yo"], ["henói", "llamar"], ["che jarýi", "mi abuela"], ["-pe", "a"]]
+          },
+          {
+            "gn": "Ame'ẽ chipa mitã{me}.",
+            "es": "Le doy chipá al niño.",
+            "parts": [["a-", "yo"], ["me'ẽ", "dar"], ["chipa", "chipá"], ["mitã", "niño, niña"], ["-me", "a (tras sílaba nasal)"]]
+          },
+          {
+            "gn": "Aporandu che angirũ{me}.",
+            "es": "Le pregunto a mi amiga.",
+            "parts": [["a-", "yo"], ["porandu", "preguntar"], ["che angirũ", "mi amigo, mi amiga"], ["-me", "a (tras sílaba nasal)"]]
+          },
+          {
+            "gn": "Amomaitei che sy ha che rú{pe}.",
+            "es": "Saludo a mi mamá y a mi papá.",
+            "parts": [["a-", "yo"], ["momaitei", "saludar"], ["che sy", "mi mamá"], ["ha", "y"], ["che ru", "mi papá"], ["-pe", "a: al final del grupo"]]
+          },
+          {
+            "gn": "Ahecha mitãnguéra{pe} korapýpe.",
+            "es": "Veo a los chicos en el patio.",
+            "parts": [["a-", "yo"], ["hecha", "ver"], ["mitãnguéra", "los niños, los chicos"], ["-pe", "a"], ["korapýpe", "en el patio"]]
+          }
+        ],
+        "watch": {
+          "note": "Mitã termina en ã, una sílaba nasal: lleva -me, igual que tetãme (unidad 2).",
+          "bad": "Ame'ẽ chipa mitãpe.",
+          "good": "Ame'ẽ chipa mitãme."
+        }
+      },
+      {
+        "id": "a1u05d5.p2",
+        "form": "chéve · ndéve · ichupe",
+        "gloss": "a mí · a vos · a él, a ella",
+        "connect": [
+          { "pos": "Che y nde llevan -ve en lugar de -pe, y peẽ lleva -me: ya los conocés de Aguyje ndéve y Aguyjevete peẽme (unidad 1). Ha'e tiene su propia forma: ichupe", "rule": "che → {chéve} · nde → {ndéve} · ha'e → {ichupe} · peẽ → {peẽme}" },
+          { "pos": "Chéve y ndéve son para quien recibe: con dar, preguntar o agradecer. Con ver, llamar, ayudar o saludar, «me» y «te» se dicen de otra manera: eso queda para más adelante", "rule": "Che sy ome'ẽ {chéve} ka'ay. · Aporandu {ndéve}. · Aguyje {ndéve}." },
+          { "pos": "Ichupe sirve con todos los verbos de hoy: es «le» y también «lo» o «la»", "rule": "Ame'ẽ {ichupe} chipa. · Ahenói {ichupe}. · Aipytyvõ {ichupe}." },
+          { "pos": "Para preguntar a quién: máva, «quién», con -pe y la -pa al final, como en Moõguipa (unidad 2)", "rule": "máva + pe + pa → {Mávapepa}? · {Mávapepa} rehenói? Che jarýipe." }
+        ],
+        "examples": [
+          {
+            "gn": "Che sy ome'ẽ {chéve} ka'ay.",
+            "es": "Mi mamá me da mate.",
+            "parts": [["che sy", "mi mamá"], ["o-", "él, ella"], ["me'ẽ", "dar"], ["chéve", "a mí"], ["ka'ay", "mate"]]
+          },
+          {
+            "gn": "Ame'ẽ {ndéve} ko aranduka.",
+            "es": "Te doy este libro.",
+            "parts": [["a-", "yo"], ["me'ẽ", "dar"], ["ndéve", "a vos"], ["ko", "este"], ["aranduka", "libro"]]
+          },
+          {
+            "gn": "Aipytyvõ {ichupe}.",
+            "es": "Lo ayudo. La ayudo.",
+            "parts": [["ai-", "yo"], ["pytyvõ", "ayudar"], ["ichupe", "a él, a ella"]]
+          },
+          {
+            "gn": "Ame'ẽ {ichupe} chipa.",
+            "es": "Le doy chipá.",
+            "parts": [["a-", "yo"], ["me'ẽ", "dar"], ["ichupe", "a él, a ella"], ["chipa", "chipá"]]
+          },
+          {
+            "gn": "Moisés oporandu {chéve}.",
+            "es": "Moisés me pregunta.",
+            "parts": [["o-", "él, ella"], ["porandu", "preguntar"], ["chéve", "a mí"]]
+          },
+          {
+            "gn": "Moisés: {Mávapepa} rehenói?\nAna: Che jarýipe.",
+            "es": "Moisés: ¿A quién llamás?\nAna: A mi abuela.",
+            "parts": [["máva", "quién"], ["-pe", "a"], ["-pa", "pregunta"], ["re-", "vos"], ["henói", "llamar"], ["che jarýipe", "a mi abuela"]]
+          }
+        ],
+        "watch": {
+          "note": "Che y nde no llevan -pe, sino -ve: «a mí» es chéve y «a vos», ndéve.",
+          "bad": "Che sy ome'ẽ chépe ka'ay.",
+          "good": "Che sy ome'ẽ chéve ka'ay."
+        }
+      }
+    ],
+    "compare": {
+      "intro": "El mismo -pe para un lugar y para una persona; che y nde llevan -ve, y ha'e tiene su propia forma.",
+      "forms": [
+        { "form": "che sýpe · mitãme", "tag": "a mi mamá · al niño: a quién", "mark": "dot", "gn": "Aipytyvõ che sý{pe}.", "es": "Ayudo a mi mamá." },
+        { "form": "chéve · ndéve · ichupe", "tag": "a mí · a vos · a él, a ella", "mark": "dot", "gn": "Che sy ome'ẽ {chéve} ka'ay.", "es": "Mi mamá me da mate." },
+        { "form": "ógape", "tag": "en casa, a casa: el -pe de lugar (unidad 2)", "mark": "dot", "gn": "Ajevy óga{pe}.", "es": "Vuelvo a casa." }
+      ],
+      "check": {
+        "id": "a1u05d5.c1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Ana llama por teléfono ^a su abuela^.)\nAna: Ahenói (   ).",
+        "options": ["che jarýipe", "che jarýime", "che jarýigui"],
+        "answer": 1,
+        "why": [
+          "Ana llama a su abuela, y la persona a quien llamás lleva -pe. Jarýi no tiene ninguna letra nasal: che jarýipe, «a mi abuela».",
+          "-me va solo después de una sílaba nasal, como en mitãme. Jarýi no tiene ninguna letra nasal: va -pe.",
+          "-gui es «de»: che jarýigui sería «de mi abuela». Ana la llama a ella."
+        ]
+      }
+    },
+    "drill": [
+      {
+        "id": "a1u05d5.d1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Ana va al centro y ^ve a Moisés, su compañero^.)\nAna: Ahecha (   ) távape.",
+        "options": ["che irũpe", "che irũme", "che irũgui", "che irume"],
+        "answer": 2,
+        "why": [
+          "Irũ termina en ũ, una sílaba nasal: ahí no va -pe, va -me.",
+          "Ana ve a su compañero, y la persona que ves lleva -pe o -me. Irũ termina en ũ, una sílaba nasal: che irũme. Távape es el lugar: «en el centro».",
+          "-gui es «de»: che irũgui sería «de mi compañero». Ana lo ve a él.",
+          "Falta la ~ de irũ. Por esa ũ va -me, y no se pierde cuando llega el sufijo."
+        ]
+      },
+      {
+        "id": "a1u05d5.d2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Ana ^ayuda a Tania, su hija^.)\nAna: Aipytyvõ che (   ).",
+        "options": ["membýme", "membykuérape", "membýpe", "membýgui"],
+        "answer": 3,
+        "why": [
+          "La mb es una letra aparte, no una m: no cuenta. La última sílaba de memby es oral, y va -pe.",
+          "Che membykuérape es «a mis hijos», varios. Ana ayuda a una sola: a Tania.",
+          "Ana ayuda a su hija, y la persona a quien ayudás lleva -pe. La última sílaba de memby es oral, porque la mb no cuenta: che membýpe, con tilde en la ý.",
+          "-gui es «de»: che membýgui sería «de mi hija». Ana la ayuda a ella."
+        ]
+      },
+      {
+        "id": "a1u05d5.d3",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la palabra",
+        "q": "(Ana le da un libro a Moisés y ^se lo dice a él^.)\nAna: Ame'ẽ (   ) ko aranduka.",
+        "options": ["chéve", "ichupe", "ndépe", "ndéve"],
+        "answer": 4,
+        "why": [
+          "Chéve es «a mí». Ana no se da el libro a ella misma: se lo da a Moisés.",
+          "Ichupe es «a él»: serviría si Ana hablara de Moisés con otra persona. Acá le habla a él.",
+          "Nde no lleva -pe, sino -ve: «a vos» es ndéve, como en Aguyje ndéve.",
+          "Ana le habla a Moisés y el libro es para él: «a vos» es ndéve. Ame'ẽ ndéve ko aranduka, «te doy este libro»."
+        ]
+      },
+      {
+        "id": "a1u05d5.d4",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la respuesta",
+        "q": "Moisés: ^Mávapepa^ [reme'ẽ|das] chipa?\nAna: (   )",
+        "options": ["Che membykuérape.", "Che membykuéragui.", "Korapýpe.", "Ko ka'aru."],
+        "answer": 1,
+        "why": [
+          "Mávapepa…? pregunta a quién: la respuesta es una persona con -pe o -me. Che membykuérape, «a mis hijos»: -pe va después del plural.",
+          "-gui es «de»: che membykuéragui sería «de mis hijos». Moisés pregunta a quién le da el chipá.",
+          "Korapýpe es «en el patio», un lugar: respondería a Moõpa…?, «¿dónde…?».",
+          "Ko ka'aru es «esta tarde»: respondería a Araka'épa…?, «¿cuándo…?» (día 4)."
+        ]
+      },
+      {
+        "id": "a1u05d5.d5",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Ana pasa por la calle y ve a una vecina.)\nAna: Amomaitei peteĩ ",
+        "after": ".",
+        "tiles": ["kuña", "me"],
+        "bank": [1, 0],
+        "hint": "Primero la persona, kuña, y después -me, «a»: ña es una sílaba nasal. -me no se lleva el acento: fijate dónde aparece la tilde.",
+        "full": "(Ana pasa por la calle y ve a una vecina.)\nAna: Amomaitei peteĩ kuñá{me}.",
+        "es": "Ana: Saludo a una mujer.",
+        "explain": "kuña («mujer») + -me («a») = kuñáme. Va -me, y no -pe, porque ña es una sílaba nasal, por la ñ. -me no se lleva el acento: queda en la a de kuña y, como esa a ya no es la última vocal, se escribe la tilde. Peteĩ kuñáme es «a una mujer»."
+      },
+      {
+        "id": "a1u05d5.d6",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(En la clase, Ana reparte libros.)\nAna: Ame'ẽ aranduka ",
+        "after": ".",
+        "tiles": ["temimbo'e", "kuéra", "pe"],
+        "bank": [1, 2, 0],
+        "hint": "Primero temimbo'e, después el plural y al final -pe, «a»: es el orden de mitãnguérape (unidad 4).",
+        "full": "(En la clase, Ana reparte libros.)\nAna: Ame'ẽ aranduka temimbo'ekuéra{pe}.",
+        "es": "Ana: Les doy libros a los alumnos.",
+        "explain": "temimbo'e («alumno») + -kuéra (el plural tras una sílaba oral) + -pe («a») = temimbo'ekuérape, «a los alumnos». -pe va al final, después del plural. Y es -pe, no -me, porque la última sílaba es ra, que es oral."
+      }
+    ],
+    "exam": [
+      {
+        "id": "a1u05d5.e1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la palabra",
+        "q": "(Ana le habla a su mamá de Tania.)\nAna: Tania ivare'a. Ame'ẽ (   ) chipa.",
+        "options": ["ndéve", "chéve", "ichupe", "peẽme"],
+        "answer": 3,
+        "explain": "Ana habla de Tania con su mamá: Tania ivare'a, «Tania tiene hambre». El chipá es para Tania, «a ella»: ichupe. Ndéve sería «a vos», para la mamá, que es quien escucha; chéve, «a mí»; y peẽme, «a ustedes»."
+      },
+      {
+        "id": "a1u05d5.e2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(En la escuela, Ana saluda a los profesores.)\nAna: Amomaitei (   ).",
+        "options": ["mbo'eharakuérame", "mbo'eharapekuéra", "mbo'eharakuéragui", "mbo'eharakuérape"],
+        "answer": 4,
+        "explain": "Son varios profesores: primero el plural, mbo'eharakuéra, y al final -pe, «a»: mbo'eharakuérape. Es -pe porque la última sílaba, ra, es oral: por eso mbo'eharakuérame está mal. En mbo'eharapekuéra el -pe quedó antes del plural. Y -gui es «de»: «de los profesores»."
+      },
+      {
+        "id": "a1u05d5.e3",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Ana agarra el teléfono.)\nAna: Ahenói che ",
+        "after": ".",
+        "tiles": ["jarýi", "pe"],
+        "bank": [1, 0],
+        "full": "(Ana agarra el teléfono.)\nAna: Ahenói che jarýipe.",
+        "es": "Ana: Llamo a mi abuela.",
+        "explain": "Jarýi («abuela») va primero y -pe («a»), después, pegado: che jarýipe, «a mi abuela». Es -pe, y no -me, porque jarýi no tiene ninguna letra nasal. La tilde de jarýi queda donde estaba: -pe no se lleva el acento."
+      }
+    ]
+  },
+  "words": {
+    "es": "La tarde de Ana: a quién ve, a quién llama, a quién ayuda",
+    "intro": "La casa y la calle de Ana, en Itauguá, un jueves de la siesta a la noche. Ayuda a sus hijos, llama a su abuela, que está en Caacupé, y saluda a los vecinos. Tocá cada palabra.",
+    "sound": {
+      "focus": "Repaso: la armonía nasal: che sýpe, mitãme",
+      "letters": ["pe", "me"],
+      "note": "Lo de la unidad 2, ahora con personas: mirá la última sílaba. Si es nasal (una vocal con ~, o junto a m, n o ñ), va -me: mitãme, che angirũme, kuñáme; si es oral, va -pe: che sýpe, che rúpe, che jarýipe. Los pares de hoy son palabras para contrastar; ni -pe ni -me se llevan el acento.",
+      "pairs": [
+        ["che sýpe", "a mi mamá", "mitãme", "al niño, a la niña"],
+        ["che rúpe", "a mi papá", "che angirũme", "a mi amigo, a mi amiga"],
+        ["che jarýipe", "a mi abuela", "kuñáme", "a la mujer"]
+      ]
+    },
+    "words": [
+      { "id": "ahecha", "gn": "ahecha", "es": "veo", "parts": [["a-", "yo"], ["hecha", "ver"]], "note": "La ch suena como en che, más bien «sh». La persona que ves lleva -pe: Ahecha che sýpe. En la charla vas a oír también Ahecha che sy, sin -pe." },
+      { "id": "ahenoi", "gn": "ahenói", "es": "llamo", "parts": [["a-", "yo"], ["henói", "llamar"]], "note": "Lleva tilde en la o: el acento va ahí y no en la i del final, como en upéi (día 2). Es llamar a alguien, también por teléfono." },
+      { "id": "amee", "gn": "ame'ẽ", "es": "doy", "parts": [["a-", "yo"], ["me'ẽ", "dar"]], "note": "Con puso y con ẽ: a-me-'Ẽ. La persona que recibe lleva -pe o -me: Ame'ẽ chipa mitãme. «Da» es ome'ẽ." },
+      { "id": "amomaitei", "gn": "amomaitei", "es": "saludo", "parts": [["a-", "yo"], ["momaitei", "saludar"]], "note": "Adentro está maitei, «saludos» (unidad 1): es decirle maitei a alguien. Sin tilde, el acento va en la i del final; en ahenói, con tilde, va en la o." },
+      { "id": "aporandu", "gn": "aporandu", "es": "pregunto", "parts": [["a-", "yo"], ["porandu", "preguntar"]], "note": "En la unidad 1 lo viste con -mi, que lo hace más suave: Ikatúpa aporandumi ndéve peteĩ mba'e? La nd es una sola letra: a-po-ra-NDU." },
+      { "id": "cheve", "gn": "chéve", "es": "a mí, me", "note": "La forma de che para quien recibe: Che sy ome'ẽ chéve ka'ay. Es che con -ve, que no se lleva el acento: por eso la tilde en la primera e, CHÉ-ve. En la unidad 1 apareció entre las opciones, al lado de ndéve, «a vos», y de peẽme, «a ustedes»." },
+      { "id": "ichupe", "gn": "ichupe", "es": "a él, a ella; le", "note": "Sirve para él y para ella: Ame'ẽ ichupe chipa, «le doy chipá»; Ahenói ichupe, «lo llamo, la llamo». También vas a leer chupe: es la misma palabra." },
+      { "id": "mavapepa", "gn": "Mávapepa?", "es": "¿A quién?", "parts": [["máva", "quién"], ["-pe", "a"], ["-pa", "pregunta"]], "note": "Mávapa? es «¿quién?» (unidad 4). Con -pe en el medio pregunta a quién, y la -pa va al final, como en Moõguipa (unidad 2)." }
+    ],
+    "spell": ["ahenoi", "amee", "cheve", "amomaitei"],
+    "check": {
+      "id": "a1u05d5.k1",
+      "kind": "choice",
+      "area": "vocab",
+      "label": "Cómo se escribe",
+      "q": "Ana cuenta que Moisés le hizo una pregunta: Moisés oporandu _a mí_. ¿Cómo se escribe «a mí» en guaraní?",
+      "options": ["chépe", "chéve", "chébe", "chéme"],
+      "answer": 2,
+      "explain": "Se escribe chéve: con v y con tilde en la primera e. Chépe usa el -pe de che sýpe, pero che no lleva -pe, sino -ve. Chébe escribe b, que sola no es una letra del guaraní: acá va v. Y chéme le pone -me, que va solo después de una sílaba nasal."
+    }
+  },
+  "skill": {
+    "kind": "reading",
+    "es": "Un mensaje para papá",
+    "ask": "¿A quién llama Ana?",
+    "seconds": 60,
+    "passage": "Mba'éichapa, che ru?\nKo ka'aru aipytyvõ che membykuérape.\nUpéi ^ahenói che jarýipe^, Ka'akupépe.\nChe sy ome'ẽ chéve ka'ay.\nJajotopáta ko pyhare.\nAna",
+    "strategy": "Es un mensaje de Ana para su papá: saluda, cuenta su tarde y se despide. Buscá ahenói, «llamo», y mirá qué persona viene después, con -pe.",
+    "item": {
+      "id": "a1u05d5.r1",
+      "kind": "choice",
+      "area": "reading",
+      "label": "Buscar el dato",
+      "q": "¿A quién llama Ana?",
+      "options": ["A su abuela.", "A sus hijos.", "A su papá.", "A su mamá."],
+      "short": ["Su abuela", "Sus hijos", "Su papá", "Su mamá"],
+      "answer": 1,
+      "why": [
+        "Ana escribe Upéi ahenói che jarýipe, Ka'akupépe: después llama a su abuela, que está en Caacupé. Ahenói es «llamo», y che jarýipe, «a mi abuela».",
+        "A sus hijos, che membykuérape, Ana los ayuda: el verbo de esa línea es aipytyvõ, «ayudo», no ahenói.",
+        "A su papá, che ru, le escribe el mensaje: lo saluda al principio con Mba'éichapa, che ru? No dice que lo llame.",
+        "De su mamá, che sy, Ana cuenta otra cosa: Che sy ome'ẽ chéve ka'ay, «mi mamá me da mate»."
+      ],
+      "explain": "El mensaje es para el papá de Ana: Mba'éichapa, che ru? Ana le cuenta su tarde: ayuda a sus hijos (aipytyvõ che membykuérape) y después llama a su abuela, que está en Caacupé (ahenói che jarýipe, Ka'akupépe). En esa línea hay dos -pe: el de la persona y el del lugar."
+    }
+  }
+}

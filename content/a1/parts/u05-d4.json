@@ -1,0 +1,311 @@
+{
+  "title": "Preguntar dónde está y cuándo",
+  "grammar": {
+    "points": [
+      {
+        "id": "a1u05d4.p1",
+        "form": "Moõpa oĩ…? · Moõpa opyta…?",
+        "gloss": "¿dónde está…? · ¿dónde queda…?",
+        "connect": [
+          { "pos": "Moõpa oĩ…? ya lo usás con personas: Moõpa oĩ nde sy? (unidad 2). Sirve igual para una cosa", "rule": "{Moõpa oĩ} nde sy? · {Moõpa oĩ} che aranduka?" },
+          { "pos": "Para un lugar, que no se mueve: Moõpa opyta…?, «¿dónde queda…?»", "rule": "{Moõpa opyta} [tupão|iglesia]? · {Moõpa opyta} nde róga?" },
+          { "pos": "Se responde con el lugar: upépe, «ahí»; ko'ápe, «acá»; o un lugar con -pe", "rule": "{Upépe}. · Oĩ {ógape}. · Opyta {távape}." },
+          { "pos": "O con la distancia: hi'ag̃ui, «está cerca»; mombyry, «lejos». Ko'águi es «de acá»", "rule": "{Hi'ag̃ui}. · {Mombyry} ko'águi." }
+        ],
+        "examples": [
+          {
+            "gn": "Moisés: {Moõpa opyta} ñemuha?\nAna: Upépe. Hi'ag̃ui.",
+            "es": "Moisés: ¿Dónde queda el negocio?\nAna: Ahí. Está cerca.",
+            "parts": [["moõpa", "¿dónde?"], ["opyta", "queda"], ["ñemuha", "negocio, tienda"], ["upépe", "ahí"], ["hi'ag̃ui", "está cerca"]]
+          },
+          {
+            "gn": "{Moõpa opyta} tupão? Hi'ag̃ui ko'águi.",
+            "es": "¿Dónde queda la iglesia? Está cerca de acá.",
+            "parts": [["moõpa", "¿dónde?"], ["opyta", "queda"], ["tupão", "iglesia"], ["hi'ag̃ui", "está cerca"], ["ko'águi", "de acá"]]
+          },
+          {
+            "gn": "Moisés: {Moõpa oĩ} ne membykuéra?\nAna: Oĩ ógape.",
+            "es": "Moisés: ¿Dónde están tus hijos?\nAna: Están en casa.",
+            "parts": [["moõpa", "¿dónde?"], ["oĩ", "está, están"], ["ne membykuéra", "tus hijos"], ["ógape", "en casa"]]
+          },
+          {
+            "gn": "{Moõpa oĩ} che aranduka? Upépe.",
+            "es": "¿Dónde está mi libro? Ahí.",
+            "parts": [["moõpa", "¿dónde?"], ["oĩ", "está"], ["che aranduka", "mi libro"], ["upépe", "ahí"]]
+          },
+          {
+            "gn": "Che róga {opyta} Itauguápe.",
+            "es": "Mi casa queda en Itauguá.",
+            "parts": [["che róga", "mi casa"], ["o-", "él, ella"], ["pyta", "quedar"], ["Itauguápe", "en Itauguá"]]
+          }
+        ],
+        "watch": {
+          "note": "Para decir dónde está algo no se usa ha'e: ha'e une dos nombres (unidad 3). El lugar va con oĩ o con opyta.",
+          "bad": "Moõpa ha'e tupão?",
+          "good": "Moõpa opyta tupão?"
+        }
+      },
+      {
+        "id": "a1u05d4.p2",
+        "form": "Araka'épa…?",
+        "gloss": "¿cuándo…?",
+        "connect": [
+          { "pos": "Araka'e, «cuándo», con la -pa de pregunta: la tilde aparece, como en mba'épa (unidad 1)", "rule": "araka'e + pa → {Araka'épa}?" },
+          { "pos": "Va al principio, y después el verbo", "rule": "{Araka'épa} reho mbo'ehaópe? · {Araka'épa} og̃uahẽ nde ru?" },
+          { "pos": "Se responde con una palabra de tiempo: una parte del día, ko con el día, ko'ág̃a, ára ha ára", "rule": "{Pyhareve}. · {Ko jueves}. · {Ko'ág̃a}. · {Ára ha ára}." },
+          { "pos": "En un aviso o un horario, la respuesta puede ser la hora en cifras (día 3)", "rule": "Araka'épa? {7:00 aravo jave}." }
+        ],
+        "examples": [
+          {
+            "gn": "Moisés: {Araka'épa} reho mbo'ehaópe?\nAna: Pyhareve, ára ha ára.",
+            "es": "Moisés: ¿Cuándo vas a la escuela?\nAna: A la mañana, todos los días.",
+            "parts": [["araka'e", "cuándo"], ["-pa", "pregunta"], ["reho", "vas"], ["mbo'ehaópe", "a la escuela"], ["pyhareve", "a la mañana"], ["ára ha ára", "todos los días"]]
+          },
+          {
+            "gn": "Moisés: {Araka'épa} og̃uahẽ nde ru?\nAna: Pyhare.",
+            "es": "Moisés: ¿Cuándo llega tu papá?\nAna: A la noche.",
+            "parts": [["araka'épa", "¿cuándo?"], ["og̃uahẽ", "llega"], ["nde ru", "tu papá"], ["pyhare", "a la noche"]]
+          },
+          {
+            "gn": "Moisés: {Araka'épa} rekaru?\nAna: Asajepyte.",
+            "es": "Moisés: ¿Cuándo comés?\nAna: Al mediodía.",
+            "parts": [["araka'épa", "¿cuándo?"], ["rekaru", "comés"], ["asajepyte", "al mediodía"]]
+          },
+          {
+            "gn": "Moisés: {Araka'épa} repytu'u?\nAna: Asaje.",
+            "es": "Moisés: ¿Cuándo descansás?\nAna: A la siesta.",
+            "parts": [["araka'épa", "¿cuándo?"], ["repytu'u", "descansás"], ["asaje", "a la siesta"]]
+          }
+        ],
+        "watch": {
+          "note": "Con -pa, el acento se queda en la e de araka'e y hay que escribirlo: Araka'épa. Igual que mba'e, mba'épa (unidad 1).",
+          "bad": "Araka'epa reho?",
+          "good": "Araka'épa reho?"
+        }
+      }
+    ],
+    "compare": {
+      "intro": "Dos preguntas para ubicarse: dónde y cuándo.",
+      "forms": [
+        { "form": "Moõpa oĩ…? · Moõpa opyta…?", "tag": "¿dónde está? · ¿dónde queda?", "mark": "dot", "gn": "{Moõpa opyta} ñemuha?", "es": "¿Dónde queda el negocio?" },
+        { "form": "Araka'épa…?", "tag": "¿cuándo?", "mark": "dot", "gn": "{Araka'épa} reho mbo'ehaópe?", "es": "¿Cuándo vas a la escuela?" },
+        { "form": "Moõguipa…?", "tag": "¿de dónde? (unidad 2)", "mark": "dot", "gn": "{Moõguipa} reju?", "es": "¿De dónde venís?" }
+      ],
+      "check": {
+        "id": "a1u05d4.c1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la pregunta",
+        "q": "Moisés: (   ) reho mbo'ehaópe?\nAna: ^Pyhareve^.",
+        "options": ["Moõpa", "Araka'épa", "Moõguipa"],
+        "answer": 2,
+        "why": [
+          "Moõpa pregunta dónde, y se responde con un lugar. Ana responde Pyhareve, «a la mañana».",
+          "Ana responde con una palabra de tiempo, Pyhareve, «a la mañana»: la pregunta es Araka'épa…?, «¿cuándo…?».",
+          "Moõguipa pregunta de dónde (unidad 2), y se responde con -gui: Itauguágui. Ana dice cuándo."
+        ]
+      }
+    },
+    "drill": [
+      {
+        "id": "a1u05d4.d1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Moisés no conoce Itauguá y busca ^la iglesia^.)\nMoisés: Moõpa (   ) tupão?",
+        "options": ["ha'e", "oho", "opyta", "ou"],
+        "answer": 3,
+        "why": [
+          "Ha'e une dos nombres: Ana ha'e che sy (unidad 3). Para decir dónde queda un lugar no se usa.",
+          "Oho es «va»: con oho se pregunta adónde va alguien. La iglesia no va a ningún lado.",
+          "La iglesia es un lugar, y no se mueve: Moõpa opyta tupão?, «¿dónde queda la iglesia?».",
+          "Ou es «viene» (unidad 2). Una iglesia no viene: queda en un lugar."
+        ]
+      },
+      {
+        "id": "a1u05d4.d2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la respuesta",
+        "q": "(El negocio está ^a media cuadra^.)\nMoisés: Moõpa opyta ñemuha?\nAna: (   )",
+        "options": ["Mombyry.", "Hi'ag̃ui.", "Ára ha ára.", "Ko jueves."],
+        "answer": 2,
+        "why": [
+          "Mombyry es «lejos». El negocio está a media cuadra: eso es cerca.",
+          "A media cuadra es cerca: Hi'ag̃ui, «está cerca». A Moõpa opyta…? se responde con el lugar o con la distancia.",
+          "Ára ha ára es «todos los días»: dice cuándo, y Moisés pregunta dónde.",
+          "Ko jueves es «este jueves»: dice cuándo, y Moisés pregunta dónde."
+        ]
+      },
+      {
+        "id": "a1u05d4.d3",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la pregunta",
+        "q": "Moisés: (   ) ojevy nde ru?\nAna: ^Pyhare^.",
+        "options": ["Moõpa", "Mávapa", "Moõguipa", "Araka'épa"],
+        "answer": 4,
+        "why": [
+          "Moõpa pregunta dónde, y se responde con un lugar. Ana responde Pyhare, «a la noche».",
+          "Mávapa pregunta quién. Moisés ya nombra al papá de Ana, y ella responde con una palabra de tiempo.",
+          "Moõguipa pregunta de dónde (unidad 2): la respuesta sería Paraguaýgui, «de Asunción». Ana dice cuándo.",
+          "Ana responde con una palabra de tiempo, Pyhare, «a la noche»: la pregunta es Araka'épa…?, «¿cuándo…?»."
+        ]
+      },
+      {
+        "id": "a1u05d4.d4",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la respuesta",
+        "q": "(Ana vuelve a casa ^al mediodía^.)\nMoisés: Araka'épa [rejevy|volvés] ógape?\nAna: (   )",
+        "options": ["Asajepyte.", "Pyharepyte.", "Upépe.", "Mombyry."],
+        "answer": 1,
+        "why": [
+          "Araka'épa pregunta cuándo, y Ana vuelve al mediodía: Asajepyte.",
+          "Pyharepyte es «medianoche». Ana vuelve al mediodía, asajepyte.",
+          "Upépe es «ahí»: un lugar. Moisés pregunta cuándo, no dónde.",
+          "Mombyry es «lejos»: responde a Moõpa, no a Araka'épa."
+        ]
+      },
+      {
+        "id": "a1u05d4.d5",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "Mitãnguéra oĩ ",
+        "after": ".",
+        "tiles": ["tape", "pe"],
+        "bank": [1, 0],
+        "hint": "Primero el lugar, tape, «camino, calle», y después -pe, «en». -pe no se lleva el acento: fijate dónde aparece la tilde.",
+        "full": "Mitãnguéra oĩ tapé{pe}.",
+        "es": "Los chicos están en la calle.",
+        "explain": "tape («camino, calle») + -pe («en») = tapépe, «en la calle». -pe no se lleva el acento: queda en la e de tape, y como esa e ya no es la última vocal, se escribe la tilde: tapépe. Con un lugar y -pe se dice dónde está alguien: Mitãnguéra oĩ tapépe."
+      },
+      {
+        "id": "a1u05d4.d6",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "Moisés: Ha nde, ",
+        "after": " repytu'u?",
+        "tiles": ["araka'e", "pa"],
+        "bank": [1, 0],
+        "hint": "Primero araka'e, «cuándo», y después la -pa de pregunta. -pa no se lleva el acento: fijate dónde aparece la tilde.",
+        "full": "Moisés: Ha nde, {araka'épa} repytu'u?",
+        "es": "Moisés: Y vos, ¿cuándo descansás?",
+        "explain": "araka'e («cuándo») + -pa (pregunta) = araka'épa. -pa no se lleva el acento: queda en la e de araka'e, y como esa e ya no es la última vocal, se escribe la tilde: araka'épa. Igual que mba'e, mba'épa (unidad 1)."
+      }
+    ],
+    "exam": [
+      {
+        "id": "a1u05d4.e1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la pregunta",
+        "q": "Moisés: (   ) opyta tupão?\nAna: Upépe. Hi'ag̃ui ko'águi.",
+        "options": ["Moõpa", "Araka'épa", "Mba'épa", "Mávapa"],
+        "answer": 1,
+        "explain": "Ana responde con un lugar y con la distancia: Upépe, «ahí», y Hi'ag̃ui ko'águi, «está cerca de acá». La pregunta es dónde: Moõpa opyta tupão?, «¿dónde queda la iglesia?». Araka'épa pregunta cuándo y se responde con una palabra de tiempo; Mba'épa pregunta qué, y Mávapa, quién."
+      },
+      {
+        "id": "a1u05d4.e2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la respuesta",
+        "q": "Moisés: Araka'épa og̃uahẽ nde ru?\nAna: (   )",
+        "options": ["Upépe.", "Paraguaýpe.", "Mombyry.", "Pyhare."],
+        "answer": 4,
+        "explain": "Araka'épa pregunta cuándo, y se responde con una palabra de tiempo: Pyhare, «a la noche». Upépe, «ahí», Paraguaýpe, «en Asunción», y Mombyry, «lejos», dicen dónde: responden a Moõpa."
+      },
+      {
+        "id": "a1u05d4.e3",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "Tupão opyta ",
+        "after": ".",
+        "tiles": ["táva", "pe"],
+        "bank": [1, 0],
+        "full": "Tupão opyta távape.",
+        "es": "La iglesia queda en el centro.",
+        "explain": "táva («pueblo, ciudad») + -pe («en») = távape, «en el pueblo, en el centro». -pe no se lleva el acento, y la tilde de táva queda donde estaba. Opyta dice dónde queda un lugar: Tupão opyta távape."
+      }
+    ]
+  },
+  "words": {
+    "es": "En el centro de Itauguá, frente a la iglesia",
+    "intro": "La plaza de Itauguá, frente a la iglesia Virgen del Rosario. Es jueves a la tarde. Moisés no conoce el pueblo y le pregunta a Ana dónde queda cada cosa, y cuándo. Tocá cada palabra.",
+    "sound": {
+      "focus": "Dos vocales, dos sílabas: moõ, oĩ",
+      "letters": ["õ", "ĩ"],
+      "note": "En moõ, oĩ, peteĩ y kuñataĩ, las dos vocales del final son dos sílabas, y la última, la que lleva la ~, es la fuerte: mo-Õ, o-Ĩ, pe-te-Ĩ, ku-ña-ta-Ĩ. Compará con el día 1: en oiko la i va sin marca y se apoya en la o, oi-KO; y en mokõi la ~ está en la primera de las dos, mo-KÕI. Los pares de hoy son palabras para contrastar.",
+      "pairs": [
+        ["oiko", "vive", "oĩ", "hay, está"],
+        ["mokõi", "dos", "moõ", "dónde"],
+        ["peteĩ", "uno", "kuñataĩ", "chica, muchacha"]
+      ]
+    },
+    "words": [
+      { "id": "arakaepa", "gn": "Araka'épa?", "es": "¿Cuándo?", "parts": [["araka'e", "cuándo"], ["-pa", "pregunta"]], "note": "Araka'e, «cuándo», con la -pa de pregunta. -pa no se lleva el acento, y aparece la tilde en la é: a-ra-ka-'É-pa. Va al principio de la pregunta." },
+      { "id": "upepe", "gn": "upépe", "es": "ahí, allá", "note": "Un lugar que no está al lado tuyo. Lleva tilde en la primera e: u-PÉ-pe. «Acá» es ko'ápe (unidad 2)." },
+      { "id": "mombyry", "gn": "mombyry", "es": "lejos", "note": "Mb es una sola letra, y las dos y son la sexta vocal: mo-mby-RY. Mombyry ko'águi, «lejos de acá»." },
+      { "id": "hiagui", "gn": "hi'ag̃ui", "es": "está cerca", "note": "Con puso, y con la g̃ de og̃uahẽ y ko'ág̃a (unidad 3). Hi'ag̃ui ko'águi, «está cerca de acá». En los diarios vas a ver también hi'aguĩ, con la ~ en la i." },
+      { "id": "tupao", "gn": "tupão", "es": "iglesia", "note": "La iglesia del pueblo. Con -pe es tupãópe, «en la iglesia», con la ~ y con una tilde." },
+      { "id": "tape", "gn": "tape", "es": "camino, calle", "note": "Sin tilde, fuerte al final: ta-PE. Con -pe, tapépe, «en la calle»." },
+      { "id": "nemuha", "gn": "ñemuha", "es": "negocio, tienda", "note": "El lugar donde se vende. Ñemuhára, «vendedor» (unidad 3), es la persona." },
+      { "id": "opyta", "gn": "opyta", "es": "queda (está en un lugar); se queda", "parts": [["o-", "él, ella"], ["pyta", "quedar, quedarse"]], "note": "Dice dónde queda un lugar: Moõpa opyta tupão? Pyta ya salió en un par de sonidos de la unidad 1. Para un lugar también vas a oír oĩ." }
+    ],
+    "spell": ["arakaepa", "mombyry", "tupao", "upepe"],
+    "check": {
+      "id": "a1u05d4.k1",
+      "kind": "choice",
+      "area": "vocab",
+      "label": "Cómo se escribe",
+      "q": "Moisés quiere saber _cuándo_ vuelve Ana a su casa. ¿Cómo se escribe «¿Cuándo?» en guaraní?",
+      "options": ["Arakaépa", "Araca'épa", "Araka'épa", "Araka'épã"],
+      "answer": 3,
+      "explain": "Se escribe Araka'épa: con k, con el puso entre la a y la e, y con tilde en la é, porque -pa no se lleva el acento. Arakaépa pierde el puso; Araca'épa escribe c, que sola no es una letra del guaraní; y Araka'épã pone una ~ que no va."
+    }
+  },
+  "skill": {
+    "kind": "listening",
+    "es": "Comprensión de puntos clave",
+    "situation": "En la plaza de Itauguá, frente a la iglesia. Moisés no conoce el pueblo y le pregunta a Ana.",
+    "ask": "¿Dónde queda el negocio?",
+    "item": {
+      "id": "a1u05d4.r1",
+      "kind": "choice",
+      "area": "listening",
+      "label": "Qué escuchaste",
+      "q": "¿Dónde queda el negocio?",
+      "options": ["Lejos de la plaza.", "Ahí, cerca.", "En la escuela."],
+      "short": ["Lejos", "Ahí, cerca", "En la escuela"],
+      "printed": true,
+      "answer": 2,
+      "why": [
+        "«Lejos» es mombyry, y Ana no lo dice. Dice Hi'ag̃ui, «está cerca».",
+        "Moisés pregunta Moõpa opyta ñemuha?, «¿dónde queda el negocio?», y Ana responde Upépe. Hi'ag̃ui: «Ahí. Está cerca».",
+        "Mbo'ehaópe, «a la escuela», viene después, en otra pregunta: Moisés quiere saber cuándo va Ana a la escuela."
+      ],
+      "script": [
+        "Narrador: En la plaza de Itauguá, frente a la iglesia. Moisés le pregunta a Ana. ¿Dónde queda el negocio?",
+        "Hombre: Moõpa opyta ñemuha?",
+        "Mujer: Upépe. Hi'ag̃ui.",
+        "Hombre: Aguyje. Ha nde, araka'épa reho mbo'ehaópe?",
+        "Mujer: Pyhareve, ára ha ára.",
+        "Narrador: ¿Dónde queda el negocio?"
+      ]
+    },
+    "audio": [
+      ["N", "En la plaza de Itauguá, frente a la iglesia. Moisés le pregunta a Ana. ¿Dónde queda el negocio?", "En la plaza de Itauguá, frente a la iglesia. Moisés le pregunta a Ana. ¿Dónde queda el negocio?"],
+      ["M", "Moõpa opyta ñemuha?", "¿Dónde queda el negocio?"],
+      ["F", "Upépe. Hi'ag̃ui.", "Ahí. Está cerca."],
+      ["M", "Aguyje. Ha nde, araka'épa reho mbo'ehaópe?", "Gracias. Y vos, ¿cuándo vas a la escuela?"],
+      ["F", "Pyhareve, ára ha ára.", "A la mañana, todos los días."],
+      ["N", "¿Dónde queda el negocio?", "¿Dónde queda el negocio?"]
+    ]
+  }
+}

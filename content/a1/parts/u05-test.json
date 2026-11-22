@@ -1,0 +1,149 @@
+[
+ {
+  "id": "a1u05t.1", "kind": "choice", "area": "vocab", "label": "Qué significa",
+  "q": "Ana: _Aikotevẽ_ peteĩ apyka.",
+  "options": ["quiero", "necesito", "uso", "conozco"],
+  "answer": 2,
+  "explain": "Aikotevẽ es «necesito»: ai-, «yo», más kotevẽ, «necesitar». Aikotevẽ peteĩ apyka: necesito una silla. «Quiero» es aipota; «uso», aiporu; y «conozco», aikuaa. Las cuatro llevan ai-."
+ },
+ {
+  "id": "a1u05t.2", "kind": "choice", "area": "vocab", "label": "Cómo se escribe",
+  "q": "Ana habla de su mamá: Ára ha ára che sy _toma mate_. ¿Cómo se escribe «toma mate» en guaraní?",
+  "options": ["okai'u", "okayu", "okay'u", "oka'yu"],
+  "answer": 3,
+  "explain": "Se escribe okay'u: o-, «ella», más kay'u, «tomar mate». Lleva la y de ka'ay, «mate», y el puso entre la y y la u. Okai'u cambia la y por una i; okayu pierde el puso; y oka'yu lo pone antes de la y."
+ },
+ {
+  "id": "a1u05t.3", "kind": "choice", "area": "vocab", "label": "Qué significa",
+  "q": "Ana: Che _arambosa_ ógape.",
+  "options": ["desayuno", "descanso", "me levanto", "vuelvo"],
+  "answer": 1,
+  "explain": "Arambosa es «desayuno»: a-, «yo», más rambosa, «desayunar». Che arambosa ógape: yo desayuno en casa. «Descanso» es apytu'u; «me levanto», apu'ã; y «vuelvo», ajevy."
+ },
+ {
+  "id": "a1u05t.4", "kind": "choice", "area": "vocab", "label": "Qué significa",
+  "q": "Ana: Ko _arapokõindy_ aguata heta.",
+  "options": ["hora", "día", "feriado", "semana"],
+  "answer": 4,
+  "explain": "Arapokõindy es «semana»: Ko arapokõindy aguata heta, «esta semana camino mucho». «Hora» es aravo; «día», ára; y «feriado», arete."
+ },
+ {
+  "id": "a1u05t.5", "kind": "choice", "area": "vocab", "label": "Elegí la palabra",
+  "q": "(Moisés quiere ir caminando a Caacupé. Para ir a pie, queda lejos.)\nAna: Ka'akupe? (   ) ko'águi, Moisés.",
+  "options": ["Hi'ag̃ui", "Mombyry", "Upépe", "Asaje"],
+  "answer": 2,
+  "explain": "«Lejos» es mombyry: Mombyry ko'águi, «lejos de acá». Hi'ag̃ui es lo contrario: «está cerca». Upépe, «ahí», señala un lugar, pero no dice a qué distancia queda. Y asaje, «a la siesta», dice cuándo."
+ },
+ {
+  "id": "a1u05t.6", "kind": "choice", "area": "vocab", "label": "Cuál está bien escrita",
+  "q": "Ana anota cuatro palabras de su tarde. Solo una está _bien escrita_. ¿Cuál?",
+  "options": ["ahenoi", "ame'e", "amomaitei", "aporandú"],
+  "answer": 3,
+  "explain": "Amomaitei, «saludo», está bien: va sin ninguna marca, porque el acento cae en la última vocal. A ahenoi le falta la tilde: el acento va en la o y no en la i del final, y se escribe ahenói, «llamo». A ame'e le falta la ~ de la última e: es ame'ẽ, «doy». Y a aporandú le sobra la tilde, que es la costumbre del castellano: se escribe aporandu, «pregunto»."
+ },
+ {
+  "id": "a1u05t.7", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
+  "q": "(Moisés les pregunta a Ana y a su mamá.)\nMoisés: Peikuaápa Ypakarai?\nAna: Héẽ, ore (   ).",
+  "options": ["roikuaa", "jaikuaa", "peikuaa", "rokuaa"],
+  "answer": 1,
+  "explain": "Ana responde por ella y por su mamá, sin Moisés: ore, «nosotros sin vos», lleva roi- con estos verbos. Roikuaa, «conocemos». Jaikuaa es de ñande, que incluiría a Moisés; peikuaa es «ustedes conocen», la forma de la pregunta; y a rokuaa le falta la i."
+ },
+ {
+  "id": "a1u05t.8", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
+  "q": "Mamá: Reipotápa chipa?\nAna: Nahániri, (   ).",
+  "options": ["naipotái", "ndaipota", "aipotái", "ndaipotái"],
+  "answer": 4,
+  "explain": "El «no» rodea al verbo, con nd- delante y -i detrás: nd- + aipota + -i = ndaipotái, «no quiero». La -i no se lleva el acento, y por eso aparece la tilde en la a. Naipotái empieza con n-, que va solo con una raíz nasal, y pota es oral. A ndaipota le falta la -i, y a aipotái, el nd-."
+ },
+ {
+  "id": "a1u05t.9", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
+  "q": "(Ana le habla a su mamá de las dos, de todos los días.)\nAna: Ñande (   ), jakaru ha ñamba'apo.",
+  "options": ["japu'ã", "ñapu'ã", "ropu'ã", "apu'ã"],
+  "answer": 2,
+  "explain": "Ñande, «nosotros con vos», lleva ja-, y ja- pasa a ña- si la raíz es nasal. Pu'ã termina en ã: ñapu'ã, «nos levantamos», igual que ñamba'apo. Karu es oral, y por eso jakaru queda con ja-. Ropu'ã es de ore, «nosotros sin vos», y apu'ã es «me levanto», de una sola persona."
+ },
+ {
+  "id": "a1u05t.10", "kind": "choice", "area": "grammar", "label": "Elegí la palabra",
+  "q": "(Ana cuenta su mediodía, paso por paso.)\nAna: Ajevy ógape, akaru ha (   ) apytu'u.",
+  "options": ["ára", "arete", "upéi", "aravo"],
+  "answer": 3,
+  "explain": "Upéi, «después», pone los pasos en orden: Ajevy ógape, akaru ha upéi apytu'u, «vuelvo a casa, como y después descanso». Ára es «día»; arete, «feriado»; y aravo, «hora»: ninguna dice qué viene después."
+ },
+ {
+  "id": "a1u05t.11", "kind": "choice", "area": "grammar", "label": "Elegí la palabra",
+  "q": "(A la siesta, los hijos de Ana descansan una hora.)\nAna: Asaje che membykuéra opytu'u peteĩ (   ).",
+  "options": ["aravo", "aravo'i", "ára", "arete"],
+  "answer": 1,
+  "explain": "«Hora» es aravo: con un número delante dice cuánto dura algo. Peteĩ aravo, «una hora». Aravo'i es «minuto»; ára, «día»; y arete, «feriado»."
+ },
+ {
+  "id": "a1u05t.12", "kind": "choice", "area": "grammar", "label": "Elegí la pregunta",
+  "q": "Moisés: (   ) opyta nde róga, Ana?\nAna: Itauguápe.",
+  "options": ["Araka'épa", "Mávapepa", "Moõpa", "Mba'e aravópa"],
+  "answer": 3,
+  "explain": "Ana responde con un lugar, Itauguápe, «en Itauguá»: la pregunta es dónde. Moõpa opyta nde róga?, «¿dónde queda tu casa?». Araka'épa pregunta cuándo; Mávapepa, a quién; y Mba'e aravópa, a qué hora."
+ },
+ {
+  "id": "a1u05t.13", "kind": "build", "area": "grammar", "label": "Armá la palabra", "join": "word",
+  "before": "(Ana ceba un mate.)\nAna: Ame'ẽ ka'ay che ", "after": ".",
+  "tiles": ["sy", "pe"], "bank": [1, 0],
+  "full": "(Ana ceba un mate.)\nAna: Ame'ẽ ka'ay che sýpe.",
+  "es": "Ana: Le doy mate a mi mamá.",
+  "explain": "sy, pe. Sy («mamá») + -pe («a») = sýpe: che sýpe, «a mi mamá». La persona que recibe lleva -pe, el mismo de ógape. Es -pe y no -me porque se mira la última sílaba, y sy, que acá es la única, es oral. Y -pe no se lleva el acento: queda en la y, que ya no es la última vocal, y por eso se escribe la tilde, ý."
+ },
+ {
+  "id": "a1u05t.14", "kind": "choice", "area": "grammar", "label": "Elegí la forma",
+  "q": "(Tania y Genaro le hacen una pregunta a Ana. Ana lo cuenta.)\nAna: Che membykuéra oporandu (   ).",
+  "options": ["chépe", "ichupe", "ndéve", "chéve"],
+  "answer": 4,
+  "explain": "Le preguntan a Ana, que es quien habla: «a mí» es chéve. Che membykuéra oporandu chéve: mis hijos me preguntan. Chépe no se dice: che no lleva -pe, sino -ve. Ichupe es «a él, a ella», otra persona, y ndéve, «a vos», el que escucha."
+ },
+ {
+  "id": "a1u05t.15", "kind": "choice", "area": "reading", "label": "Buscar el dato",
+  "q": "¿Dónde están los hijos de Ana?",
+  "passage": "Ana: Mba'éichapa nde ka'aru, che jarýi?\nRamona: Iporã. Ha ne membykuéra, moõpa oĩ?\nAna: Oĩ korapýpe. Ko pyhareve oho mbo'ehaópe 7:00 aravo jave.\nRamona: Ha nde? Araka'épa rejevy mbo'ehaógui?\nAna: Asajepyte. Ko'ág̃a aipytyvõ che sýpe.",
+  "options": ["En la escuela.", "En el patio.", "En Caacupé.", "En el centro."],
+  "short": ["En la escuela", "En el patio", "En Caacupé", "En el centro"],
+  "answer": 2,
+  "explain": "Ramona pregunta Ha ne membykuéra, moõpa oĩ?, «¿y tus hijos, dónde están?», y Ana responde Oĩ korapýpe: «están en el patio». A la escuela, mbo'ehaópe, fueron esta mañana: ko pyhareve. De Caacupé y del centro, el chat no habla."
+ },
+ {
+  "id": "a1u05t.16", "kind": "choice", "area": "reading", "label": "Buscar el dato",
+  "q": "¿A qué hora fueron los chicos a la escuela?",
+  "passage": "Ana: Mba'éichapa nde ka'aru, che jarýi?\nRamona: Iporã. Ha ne membykuéra, moõpa oĩ?\nAna: Oĩ korapýpe. Ko pyhareve oho mbo'ehaópe 7:00 aravo jave.\nRamona: Ha nde? Araka'épa rejevy mbo'ehaógui?\nAna: Asajepyte. Ko'ág̃a aipytyvõ che sýpe.",
+  "options": ["A las 6:00.", "Al mediodía.", "A la siesta.", "A las 7:00."],
+  "short": ["6:00", "Mediodía", "Siesta", "7:00"],
+  "answer": 4,
+  "explain": "Ana escribe Ko pyhareve oho mbo'ehaópe 7:00 aravo jave: «esta mañana fueron a la escuela a las 7:00». Una hora en cifras, con aravo jave, es la hora del reloj. Asajepyte, «al mediodía», es cuando Ana vuelve de la escuela. De las 6:00 y de la siesta, el chat no dice nada."
+ },
+ {
+  "id": "a1u05t.17", "kind": "choice", "area": "reading", "label": "Texto corto",
+  "q": "¿A quién ayuda Ana ahora?",
+  "passage": "Ana: Mba'éichapa nde ka'aru, che jarýi?\nRamona: Iporã. Ha ne membykuéra, moõpa oĩ?\nAna: Oĩ korapýpe. Ko pyhareve oho mbo'ehaópe 7:00 aravo jave.\nRamona: Ha nde? Araka'épa rejevy mbo'ehaógui?\nAna: Asajepyte. Ko'ág̃a aipytyvõ che sýpe.",
+  "options": ["A su mamá.", "A su abuela.", "A sus hijos.", "A Moisés."],
+  "short": ["Su mamá", "Su abuela", "Sus hijos", "Moisés"],
+  "answer": 1,
+  "explain": "Ana escribe Ko'ág̃a aipytyvõ che sýpe: «ahora ayudo a mi mamá». Che sýpe es «a mi mamá»: la persona a quien ayudás lleva -pe. Su abuela, che jarýi, es con quien habla en el chat; sus hijos están en el patio; y a Moisés no lo nombra nadie."
+ },
+ {
+  "id": "a1u05t.18", "kind": "choice", "area": "listening", "label": "Respuesta rápida",
+  "q": "(El papá de Ana llega a la noche.)\nPapá: Mba'éichapa reiko, che rajy?\n¿Qué le responde Ana?",
+  "options": ["Aiko Itauguápe.", "Aiko porã.", "Aikuaa."],
+  "answer": 2,
+  "explain": "Mba'éichapa reiko? pregunta cómo andás, y se responde Aiko porã, «ando bien». Aiko Itauguápe, «vivo en Itauguá», responde a Moõpa reiko?, «¿dónde vivís?»: reiko es «andás» y también «vivís». Y Aikuaa es «sé» o «conozco»."
+ },
+ {
+  "id": "a1u05t.19", "kind": "choice", "area": "listening", "label": "Respuesta rápida",
+  "q": "Moisés: Mba'e aravópa oho mbo'ehaópe ne membykuéra?\n¿Qué le responde Ana?",
+  "options": ["Siete.", "Ógape.", "Che sýpe."],
+  "answer": 1,
+  "explain": "Mba'e aravópa…? pregunta a qué hora, y la hora, dicha, va en castellano: Siete, «a las siete». Por escrito es 7:00 aravo jave. Ógape, «en casa», dice dónde, y Che sýpe, «a mi mamá», a quién."
+ },
+ {
+  "id": "a1u05t.20", "kind": "choice", "area": "listening", "label": "Respuesta rápida",
+  "q": "(Ana mira por la ventana.)\nMamá: Mávapepa rehecha?\n¿Qué le responde Ana?",
+  "options": ["Pyhare.", "Korapýpe.", "Mitãnguérape."],
+  "answer": 3,
+  "explain": "Mávapepa…? pregunta a quién, y se responde con una persona, que lleva -pe o -me: Mitãnguérape, «a los chicos». Korapýpe también termina en -pe, pero es un lugar, «en el patio»: respondería a Moõpa…? Y Pyhare, «a la noche», dice cuándo."
+ }
+]

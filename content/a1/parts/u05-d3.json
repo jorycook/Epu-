@@ -1,0 +1,304 @@
+{
+  "title": "La hora y los días van en castellano",
+  "grammar": {
+    "points": [
+      {
+        "id": "a1u05d3.p1",
+        "form": "mokõi aravo · 7:00 aravo jave · Mba'e aravópa?",
+        "gloss": "dos horas · a las 7:00 · ¿a qué hora?",
+        "connect": [
+          { "pos": "Con un número delante, aravo dice cuánto dura algo. Del uno al cinco, el número va en guaraní (unidad 4); de seis en adelante, en castellano", "rule": "{peteĩ} aravo · {mokõi} aravo · {seis} aravo" },
+          { "pos": "Por escrito, la hora del reloj va en cifras, con aravo y jave, «a la hora de»", "rule": "7:00 {aravo jave} · 12:00 {aravo jave}" },
+          { "pos": "En avisos y diarios vas a leer también guive, «desde»", "rule": "7:00 aravo {guive}" },
+          { "pos": "Se pregunta con Mba'e aravópa…?, «¿a qué hora…?». Dicha, la hora va en castellano, como los precios (unidad 4): «Siete.» o «A las siete.»", "rule": "{Mba'e aravópa} reho mbo'ehaópe? {Siete}." }
+        ],
+        "examples": [
+          {
+            "gn": "Moisés: {Mba'e aravópa} reho mbo'ehaópe?\nAna: {Siete}.",
+            "es": "Moisés: ¿A qué hora vas a la escuela?\nAna: A las siete.",
+            "parts": [["mba'e", "qué"], ["aravo", "hora"], ["-pa", "pregunta"], ["reho", "vas"], ["mbo'ehaópe", "a la escuela"], ["siete", "la hora, en castellano"]]
+          },
+          {
+            "gn": "Moisés: {Mba'e aravópa} rekaru?\nAna: {Doce}.",
+            "es": "Moisés: ¿A qué hora comés?\nAna: A las doce.",
+            "parts": [["mba'e aravópa", "¿a qué hora?"], ["rekaru", "comés"], ["doce", "la hora, en castellano"]]
+          },
+          {
+            "gn": "Asaje apytu'u {peteĩ aravo}.",
+            "es": "A la siesta descanso una hora.",
+            "parts": [["asaje", "a la siesta"], ["apytu'u", "descanso"], ["peteĩ", "uno, una"], ["aravo", "hora"]]
+          },
+          {
+            "gn": "Aguata {mokõi aravo}.",
+            "es": "Camino dos horas.",
+            "parts": [["aguata", "camino"], ["mokõi", "dos"], ["aravo", "hora, horas"]]
+          },
+          {
+            "gn": "Ajahu {po aravo'i}.",
+            "es": "Me baño cinco minutos.",
+            "parts": [["ajahu", "me baño"], ["po", "cinco"], ["aravo'i", "minuto, minutos"]]
+          }
+        ],
+        "watch": {
+          "note": "Después de un número no va -kuéra (unidad 4): aravo queda como está.",
+          "bad": "mokõi aravokuéra",
+          "good": "mokõi aravo"
+        }
+      },
+      {
+        "id": "a1u05d3.p2",
+        "form": "ko jueves",
+        "gloss": "este jueves: los días, en castellano",
+        "connect": [
+          { "pos": "Los días de la semana se dicen en castellano, tal cual, dentro de la frase en guaraní", "rule": "{lunes} · {martes} · {miércoles} · {jueves} · {viernes} · {sábado} · {domingo}" },
+          { "pos": "Con ko delante es «este», como ko ka'aru (unidad 1)", "rule": "{ko} jueves · {ko} sábado" },
+          { "pos": "Después del día puede ir la parte del día", "rule": "ko jueves {ka'aru} · jueves {pyhareve}" },
+          { "pos": "El día solo, sin ko, es «el jueves». Y arete es el feriado", "rule": "{Jueves} aha távape. · {Arete} jave ndahái mbo'ehaópe." }
+        ],
+        "examples": [
+          {
+            "gn": "{Ko jueves} aha távape.",
+            "es": "Este jueves voy al centro.",
+            "parts": [["ko", "este, esta"], ["jueves", "jueves, en castellano"], ["aha", "voy"], ["távape", "al pueblo, al centro"]]
+          },
+          {
+            "gn": "{Ko jueves ka'aru} aguata távape.",
+            "es": "Este jueves a la tarde camino por el centro.",
+            "parts": [["ko jueves", "este jueves"], ["ka'aru", "a la tarde"], ["aguata", "camino"], ["távape", "en el pueblo, por el centro"]]
+          },
+          {
+            "gn": "{Jueves pyhareve} amba'apo mbo'ehaópe.",
+            "es": "El jueves a la mañana trabajo en la escuela.",
+            "parts": [["jueves", "el jueves"], ["pyhareve", "a la mañana"], ["amba'apo", "trabajo"], ["mbo'ehaópe", "en la escuela"]]
+          },
+          {
+            "gn": "{Ko arapokõindy} amba'apo heta.",
+            "es": "Esta semana trabajo mucho.",
+            "parts": [["ko", "este, esta"], ["arapokõindy", "semana"], ["amba'apo", "trabajo"], ["heta", "mucho"]]
+          },
+          {
+            "gn": "{Arete} jave ndahái mbo'ehaópe.",
+            "es": "En feriado no voy a la escuela.",
+            "parts": [["arete", "feriado"], ["jave", "durante, a la hora de"], ["ndahái", "no voy"], ["mbo'ehaópe", "a la escuela"]]
+          }
+        ],
+        "watch": {
+          "note": "Ko va siempre delante, como en ko ka'aru. Y el día queda en castellano, sin traducir.",
+          "bad": "Jueves ko aha távape.",
+          "good": "Ko jueves aha távape."
+        }
+      }
+    ],
+    "compare": {
+      "intro": "Aravo cuenta horas o dice la hora del reloj: fijate qué lleva delante.",
+      "forms": [
+        { "form": "mokõi aravo", "tag": "dos horas: cuánto dura", "mark": "dot", "gn": "Aguata {mokõi aravo}.", "es": "Camino dos horas." },
+        { "form": "7:00 aravo jave", "tag": "a las 7:00: la hora, en cifras", "mark": "dot", "gn": "Aha mbo'ehaópe {7:00 aravo jave}.", "es": "Voy a la escuela a las 7:00." },
+        { "form": "ko jueves", "tag": "este jueves, como ko ka'aru (unidad 1)", "mark": "dot", "gn": "{Ko jueves} aha távape.", "es": "Este jueves voy al centro." }
+      ],
+      "check": {
+        "id": "a1u05d3.c1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Qué significa",
+        "q": "En el horario de la heladera dice: «Ára ha ára, _6:00 aravo jave_: mitãnguéra opu'ã.» ¿Qué quiere decir?",
+        "options": ["Los chicos duermen seis horas.", "Los chicos se levantan a las 6:00.", "Los chicos se levantan solo los jueves."],
+        "answer": 2,
+        "why": [
+          "Para decir cuánto dura algo, aravo lleva un número delante y nada más: mokõi aravo, «dos horas». Acá hay una hora en cifras, 6:00, y jave, «a la hora de». Y opu'ã es «se levantan» (día 2), no «duermen».",
+          "Una hora en cifras, con aravo y jave, es la hora del reloj: 6:00 aravo jave, «a las 6:00». Ára ha ára, «todos los días», los chicos se levantan a esa hora.",
+          "El jueves se dice jueves, en castellano, y acá no está. Dice ára ha ára, «todos los días» (día 2), y una hora."
+        ]
+      }
+    },
+    "drill": [
+      {
+        "id": "a1u05d3.d1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Ana camina ^dos horas^ por el centro.)\nAna: Aguata (   ).",
+        "options": ["mokõi aravo'i", "mokõi aravokuéra", "mokõi aravo", "mokõi arapokõindy"],
+        "answer": 3,
+        "why": [
+          "Aravo'i es «minuto»: mokõi aravo'i son dos minutos. Ana camina dos horas.",
+          "Después de un número no va el plural (unidad 4): aravo queda como está, mokõi aravo.",
+          "El número va delante y aravo queda como está: mokõi aravo, «dos horas». Dice cuánto dura la caminata.",
+          "Arapokõindy es «semana»: mokõi arapokõindy son dos semanas. Ana camina dos horas."
+        ]
+      },
+      {
+        "id": "a1u05d3.d2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la pregunta",
+        "q": "Moisés: (   ) [rejevy|volvés] ógape?\nAna: ^Doce^.",
+        "options": ["Moõpa", "Mba'e aravópa", "Mávapa", "Mba'éichapa"],
+        "answer": 2,
+        "why": [
+          "Moõpa pregunta dónde, y se responde con un lugar. Ana responde con una hora: Doce.",
+          "Ana responde con una hora, dicha en castellano: Doce, «a las doce». La pregunta es Mba'e aravópa…?, «¿a qué hora…?».",
+          "Mávapa pregunta quién (unidad 1). Ana no nombra a nadie: dice una hora.",
+          "Mba'éichapa pregunta cómo. La respuesta de Ana es una hora, no una manera de volver."
+        ]
+      },
+      {
+        "id": "a1u05d3.d3",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Ana habla de ^este jueves^.)\nAna: (   ) aha távape.",
+        "options": ["Jueves ko", "Ko arete", "Ára ha ára", "Ko jueves"],
+        "answer": 4,
+        "why": [
+          "Ko va siempre delante, como en ko ka'aru: ko jueves, no «jueves ko».",
+          "Arete es «feriado»: ko arete es «este feriado». Ana habla de este jueves.",
+          "Ára ha ára es «todos los días» (día 2). Ana habla de un día solo: este jueves.",
+          "El día va en castellano, tal cual, con ko delante: ko jueves, «este jueves»."
+        ]
+      },
+      {
+        "id": "a1u05d3.d4",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Ana habla de ^toda esta semana^.)\nAna: (   ) che sy omba'apo heta.",
+        "options": ["Ko arapokõindy", "Ko jueves", "Ko ka'aru", "Ko pyhare"],
+        "answer": 1,
+        "why": [
+          "Arapokõindy es «semana», y con ko delante es «esta semana»: ko arapokõindy.",
+          "Ko jueves es «este jueves»: un día solo, no toda la semana.",
+          "Ko ka'aru es «esta tarde» (unidad 1): una parte de un día, no la semana.",
+          "Ko pyhare es «esta noche» (unidad 1): una parte de un día, no la semana."
+        ]
+      },
+      {
+        "id": "a1u05d3.d5",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la oración",
+        "join": "sentence",
+        "before": "Aha mbo'ehaópe 7:00",
+        "after": ".",
+        "tiles": ["aravo", "jave"],
+        "bank": [1, 0],
+        "hint": "La hora ya está, en cifras. Después va aravo, «hora», y al final jave, «a la hora de».",
+        "full": "Aha mbo'ehaópe 7:00 {aravo jave}.",
+        "es": "Voy a la escuela a las 7:00.",
+        "explain": "La hora ya está, en cifras: 7:00. Después va aravo, «hora», y al final jave, «a la hora de»: 7:00 aravo jave, «a las 7:00». Así se escribe en un horario o en un aviso. Dicha, la hora va en castellano."
+      },
+      {
+        "id": "a1u05d3.d6",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "Moisés: Mba'e ",
+        "after": " reñeno?",
+        "tiles": ["aravo", "pa"],
+        "bank": [1, 0],
+        "hint": "Primero aravo, «hora», y después la -pa de pregunta. -pa no se lleva el acento: fijate dónde aparece la tilde.",
+        "full": "Moisés: Mba'e {aravópa} reñeno?",
+        "es": "Moisés: ¿A qué hora te acostás?",
+        "explain": "aravo («hora») + -pa (pregunta) = aravópa. -pa no se lleva el acento: queda en la o de aravo, y como esa o ya no es la última vocal, se escribe la tilde: aravópa. Igual que mba'e, mba'épa (unidad 1). Mba'e aravópa reñeno? es «¿a qué hora te acostás?»."
+      }
+    ],
+    "exam": [
+      {
+        "id": "a1u05d3.e1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Qué significa",
+        "q": "Ana: Asaje apytu'u _peteĩ aravo_.",
+        "options": ["Un minuto", "Una semana", "Un día", "Una hora"],
+        "answer": 4,
+        "explain": "Peteĩ es «uno, una» y aravo es «hora»: con un número delante, aravo dice cuánto dura algo. Asaje apytu'u peteĩ aravo: a la siesta descanso una hora. «Un minuto» sería peteĩ aravo'i; «una semana», peteĩ arapokõindy; y «un día», peteĩ ára."
+      },
+      {
+        "id": "a1u05d3.e2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la palabra",
+        "q": "(Ana habla de los feriados: esos días no hay clases.)\nAna: (   ) jave ndahái mbo'ehaópe.",
+        "options": ["Aravo", "Arapokõindy", "Arete", "Aravo'i"],
+        "answer": 3,
+        "explain": "Arete es «feriado, día de fiesta»: Arete jave ndahái mbo'ehaópe, «en feriado no voy a la escuela». Las otras tres empiezan parecido, pero dicen otra cosa: aravo es «hora», aravo'i es «minuto» y arapokõindy es «semana». Arapokõindy jave sería «durante la semana», y en la semana Ana sí va a la escuela."
+      },
+      {
+        "id": "a1u05d3.e3",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la oración",
+        "join": "sentence",
+        "before": "Aha távape ko",
+        "after": ".",
+        "tiles": ["jueves", "ka'aru"],
+        "bank": [1, 0],
+        "full": "Aha távape ko jueves ka'aru.",
+        "es": "Voy al centro este jueves a la tarde.",
+        "explain": "Ko va justo delante del día: ko jueves, «este jueves». La parte del día va después del día: ko jueves ka'aru, «este jueves a la tarde». Y el día queda en castellano, tal cual."
+      }
+    ]
+  },
+  "words": {
+    "es": "El horario en la heladera",
+    "intro": "El horario de la semana, en la heladera de la cocina de Ana. Es jueves, a la siesta. Las horas van en cifras, con aravo, y los días, en castellano. Tocá cada palabra.",
+    "sound": {
+      "focus": "Como ára, pero sin tilde: aravo, arete",
+      "letters": ["á"],
+      "note": "Ára, «día», lleva tilde. Aravo y arete empiezan igual, pero no llevan ninguna: sin marca, el acento va al final, a-ra-VO, a-re-TE. Lo mismo pasa con asajepyte y pyharepyte: sin tilde, fuertes al final. Los pares de hoy son palabras para contrastar: no pongas una tilde por costumbre.",
+      "pairs": [
+        ["ára", "día", "aravo", "hora"],
+        ["ára", "día", "arete", "feriado"],
+        ["asaje", "la siesta", "asajepyte", "mediodía"],
+        ["pyhare", "noche", "pyharepyte", "medianoche"]
+      ]
+    },
+    "words": [
+      { "id": "aravo", "gn": "aravo", "es": "hora", "note": "Sin tilde, fuerte al final: a-ra-VO. En un horario va después de la hora en cifras: 7:00 aravo jave, «a las 7:00». También vas a leer 7:00 aravópe." },
+      { "id": "aravoi", "gn": "aravo'i", "es": "minuto", "note": "Empieza como aravo y termina en 'i, con puso: a-ra-vo-'I. Po aravo'i, «cinco minutos»." },
+      { "id": "arapokoindy", "gn": "arapokõindy", "es": "semana", "note": "En textos de la escuela y del Estado vas a leer los días en guaraní: arateĩ, domingo; arakõi, lunes; araapy, martes; ararundy, miércoles; arapo, jueves; arapoteĩ, viernes; arapokõi, sábado. En la charla van en castellano." },
+      { "id": "mbaearavopa", "gn": "Mba'e aravópa?", "es": "¿A qué hora?", "parts": [["mba'e", "qué"], ["aravo", "hora"], ["-pa", "pregunta"]], "note": "Con -pa aparece la tilde: aravópa, como en mba'épa (unidad 1). La respuesta, dicha, va en castellano: «Siete.»" },
+      { "id": "kojueves", "gn": "ko jueves", "es": "este jueves", "parts": [["ko", "este, esta"], ["jueves", "jueves, en castellano"]], "note": "Los días van en castellano y en minúscula: lunes, martes, jueves. Ko va delante, como en ko ka'aru (unidad 1)." },
+      { "id": "asajepyte", "gn": "asajepyte", "es": "mediodía", "note": "Empieza como asaje, «la siesta» (día 2). Sin tilde, fuerte al final: a-sa-je-py-TE." },
+      { "id": "pyharepyte", "gn": "pyharepyte", "es": "medianoche", "note": "Empieza como pyhare, «noche» (unidad 1). Sin tilde, fuerte al final: py-ha-re-py-TE." },
+      { "id": "arete", "gn": "arete", "es": "feriado, día de fiesta", "note": "Sin tilde, fuerte al final: a-re-TE. Arete jave, «en feriado»." }
+    ],
+    "spell": ["aravoi", "arapokoindy", "asajepyte", "pyharepyte"],
+    "check": {
+      "id": "a1u05d3.k1",
+      "kind": "choice",
+      "area": "vocab",
+      "label": "Cómo se escribe",
+      "q": "Ana se baña rápido: Ajahu po _minuto_. ¿Cómo se escribe «minuto» en guaraní?",
+      "options": ["aravoi", "aravo'ĩ", "arabo'i", "aravo'i"],
+      "answer": 4,
+      "explain": "Se escribe aravo'i: empieza como aravo, «hora», y termina en 'i, con el puso antes de la i y sin ninguna ~. Aravoi pierde el puso; aravo'ĩ pone una ~ que no va; y arabo'i escribe b, que sola no es una letra del guaraní: acá va v."
+    }
+  },
+  "skill": {
+    "kind": "reading",
+    "es": "El horario de la semana",
+    "ask": "¿A qué hora es la escuela?",
+    "seconds": 75,
+    "passage": "Ore arapokõindy\nÁra ha ára, 6:00 aravo jave: mitãnguéra opu'ã.\nLunes a viernes, ^7:00 aravo jave^: mbo'ehao.\nAsajepyte: rokaru ógape.\nJueves ka'aru: távape.\nSábado ha domingo: ndaipóri mbo'epy.",
+    "strategy": "Es un horario: cada línea empieza con el día o con la hora, y después de los dos puntos dice qué pasa. Buscá mbo'ehao, «escuela», y leé la hora que tiene delante.",
+    "item": {
+      "id": "a1u05d3.r1",
+      "kind": "choice",
+      "area": "reading",
+      "label": "Buscar el dato",
+      "q": "¿A qué hora es la escuela?",
+      "options": ["A las 6:00.", "A las 7:00.", "Al mediodía.", "A la tarde."],
+      "short": ["6:00", "7:00", "Mediodía", "Tarde"],
+      "answer": 2,
+      "why": [
+        "6:00 aravo jave es la hora en que se levantan los chicos: mitãnguéra opu'ã. La escuela viene después.",
+        "Lunes a viernes, 7:00 aravo jave: mbo'ehao. De lunes a viernes, la escuela es a las 7:00.",
+        "Asajepyte es «mediodía»: a esa hora la familia come en casa. Rokaru ógape, «comemos en casa».",
+        "Ka'aru, «a la tarde», está en otra línea: Jueves ka'aru: távape. El jueves a la tarde toca ir al centro, no a la escuela."
+      ],
+      "explain": "El horario dice Lunes a viernes, 7:00 aravo jave: mbo'ehao, «de lunes a viernes, a las 7:00, la escuela». A las 6:00 se levantan los chicos (mitãnguéra opu'ã), y al mediodía (asajepyte) la familia come en casa (rokaru ógape)."
+    }
+  }
+}

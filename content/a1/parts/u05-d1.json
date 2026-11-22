@@ -1,0 +1,315 @@
+{
+  "title": "Saber, querer, vivir: ai-, rei-, oi-",
+  "grammar": {
+    "points": [
+      {
+        "id": "a1u05d1.p1",
+        "form": "ai- · rei- · oi-",
+        "gloss": "yo · vos · él, ella (con kuaa, pota, ko)",
+        "connect": [
+          { "pos": "Ya los conocés de la unidad 1. Y con ndaikuaái, «no sé» (unidad 2), te prometimos este día", "rule": "Mba'éichapa {rei}ko? · {Rei}kuaápa? · Mba'épa {rei}pota?" },
+          { "pos": "Unos pocos verbos muy usados llevan una i después del prefijo de la unidad 2: a- pasa a ai-, re- a rei- y o- a oi-. La raíz queda igual", "rule": "{ai}ko · {rei}ko · {oi}ko" },
+          { "pos": "Las raíces: ko es «vivir» y «andar»; kuaa, «saber» y «conocer»; pota, «querer» algo. Aipota va con una cosa: aipota ka'ay", "rule": "{ai}kuaa · {rei}kuaa · {oi}kuaa / {ai}pota · {rei}pota · {oi}pota" },
+          { "pos": "Un verbo, dos castellanos: reiko es «andás» y «vivís»; reikuaa es «sabés» y «conocés». A Mba'éichapa reiko? se responde también Aiko porã", "rule": "Mba'éichapa {rei}ko? {Ai}ko porã. · Moõpa {rei}ko? {Ai}ko Itauguápe." },
+          { "pos": "El «no» es el de la unidad 2, con nd- delante y -i detrás. La i de ai- se queda", "rule": "nd + aipota + i → {nd}aipotá{i} · {nd}aikuaá{i} · {nd}aikó{i}" }
+        ],
+        "examples": [
+          {
+            "gn": "Moisés: Mba'éichapa {rei}ko, Ana?\nAna: {Ai}ko porã.",
+            "es": "Moisés: ¿Cómo andás, Ana?\nAna: Ando bien.",
+            "parts": [["mba'éichapa", "¿cómo?"], ["rei-", "vos"], ["reiko", "andás, vivís"], ["ai-", "yo"], ["aiko", "ando, vivo"], ["porã", "bien"]]
+          },
+          {
+            "gn": "{Ai}ko Itauguápe.",
+            "es": "Vivo en Itauguá.",
+            "parts": [["ai-", "yo"], ["aiko", "vivo, ando"], ["Itaugua", "Itauguá"], ["-pe", "en"]]
+          },
+          {
+            "gn": "Moisés: {Rei}kuaápa Ka'akupe?\nAna: Héẽ, {ai}kuaa.",
+            "es": "Moisés: ¿Conocés Caacupé?\nAna: Sí, conozco.",
+            "parts": [["rei-", "vos"], ["kuaa", "saber, conocer"], ["-pa", "pregunta"], ["Ka'akupe", "Caacupé"], ["héẽ", "sí"], ["ai-", "yo"]]
+          },
+          {
+            "gn": "{Ai}pota ka'ay.",
+            "es": "Quiero mate.",
+            "parts": [["ai-", "yo"], ["pota", "querer"], ["ka'ay", "mate"]]
+          },
+          {
+            "gn": "Che ru {oi}ko Itauguápe ha omba'apo Paraguaýpe.",
+            "es": "Mi papá vive en Itauguá y trabaja en Asunción.",
+            "parts": [["che ru", "mi papá"], ["oi-", "él, ella"], ["oiko", "vive"], ["Itauguápe", "en Itauguá"], ["ha", "y"], ["omba'apo", "trabaja"], ["Paraguaýpe", "en Asunción"]]
+          },
+          {
+            "gn": "{Nd}aipotá{i} kamby.",
+            "es": "No quiero leche.",
+            "parts": [["nd-", "no"], ["ai-", "yo"], ["pota", "querer"], ["-i", "no"], ["kamby", "leche"]]
+          }
+        ],
+        "watch": {
+          "note": "No pierdas la i: con estos verbos el «yo» es ai-, no a-. Decí aikuaa, aipota, aiko.",
+          "bad": "Akuaa nde réra.",
+          "good": "Aikuaa nde réra."
+        }
+      },
+      {
+        "id": "a1u05d1.p2",
+        "form": "jai- / ñai- · roi- · pei-",
+        "gloss": "nosotros con vos · nosotros sin vos · ustedes",
+        "connect": [
+          { "pos": "Para varios, los prefijos de la unidad 2 con la misma i: ja- pasa a jai-, ro- a roi- y pe- a pei-", "rule": "{jai}ko · {roi}ko · {pei}ko" },
+          { "pos": "Si la raíz es nasal, jai- pasa a ñai-, como ja- pasa a ña-. Dos raíces nasales: kotevẽ, «necesitar», y pytyvõ, «ayudar»", "rule": "{jai}kuaa · {jai}pota / {ñai}kotevẽ · {ñai}pytyvõ" },
+          { "pos": "Ellos y ellas van con oi-, igual que él y ella", "rule": "Ha'ekuéra {oi}ko Ka'akupépe." },
+          { "pos": "Más verbos de esta familia: poru, «usar», y ke, «entrar», el de Ikatúpa aike? Con una raíz nasal, el «no» empieza con n-", "rule": "{ai}poru · {ai}pytyvõ · {ai}kotevẽ · {ai}ke / n + aikotevẽ + i → {n}aikotevẽ{i}" }
+        ],
+        "examples": [
+          {
+            "gn": "Ore {roi}ko Itauguápe.",
+            "es": "Nosotros vivimos en Itauguá.",
+            "parts": [["ore", "nosotros, sin vos"], ["roi-", "nosotros (sin vos)"], ["roiko", "vivimos (sin vos)"], ["Itauguápe", "en Itauguá"]]
+          },
+          {
+            "gn": "Ñande {jai}kuaa Ka'akupe.",
+            "es": "Vos y yo conocemos Caacupé.",
+            "parts": [["ñande", "nosotros, con vos"], ["jai-", "nosotros (con vos)"], ["kuaa", "saber, conocer"], ["Ka'akupe", "Caacupé"]]
+          },
+          {
+            "gn": "{Pei}kuaápa Itaugua?",
+            "es": "¿Ustedes conocen Itauguá?",
+            "parts": [["pei-", "ustedes"], ["kuaa", "saber, conocer"], ["-pa", "pregunta"], ["Itaugua", "Itauguá"]]
+          },
+          {
+            "gn": "{Ñai}kotevẽ kamby.",
+            "es": "Necesitamos leche.",
+            "parts": [["ñai-", "nosotros (con vos), con raíz nasal"], ["kotevẽ", "necesitar"], ["kamby", "leche"]]
+          },
+          {
+            "gn": "Che membykuéra {oi}poru ko aranduka.",
+            "es": "Mis hijos usan este libro.",
+            "parts": [["che membykuéra", "mis hijos"], ["oi-", "ellos, ellas"], ["poru", "usar"], ["ko", "este"], ["aranduka", "libro"]]
+          },
+          {
+            "gn": "{N}aikotevẽ{i} mba'eve.",
+            "es": "No necesito nada.",
+            "parts": [["n-", "no (raíz nasal)"], ["ai-", "yo"], ["kotevẽ", "necesitar"], ["-i", "no"], ["mba'eve", "nada"]]
+          }
+        ],
+        "watch": {
+          "note": "Kotevẽ y pytyvõ son raíces nasales: con ñande va ñai-, no jai-. Es la armonía nasal de la unidad 2.",
+          "bad": "Jaikotevẽ kamby.",
+          "good": "Ñaikotevẽ kamby."
+        }
+      }
+    ],
+    "compare": {
+      "intro": "Tres prefijos que se parecen: fijate si llevan la i y para quién son.",
+      "forms": [
+        { "form": "aiko", "tag": "con i: vivo, ando", "mark": "dot", "gn": "{Ai}ko Itauguápe.", "es": "Vivo en Itauguá." },
+        { "form": "roiko", "tag": "para varios, con la misma i", "mark": "dot", "gn": "Ore {roi}ko Itauguápe.", "es": "Nosotros vivimos en Itauguá." },
+        { "form": "ake · aike", "tag": "a- + ke, «duermo» · ai- + ke, «entro» (unidades 3 y 1)", "mark": "dot", "gn": "{A}ke kotýpe. · {Ai}ke kotýpe.", "es": "Duermo en la pieza. · Entro en la pieza." }
+      ],
+      "check": {
+        "id": "a1u05d1.c1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Ana llega a la pieza de su mamá y ^quiere pasar^.)\nAna: Ikatúpa (   )?",
+        "options": ["ake", "aike", "aiko"],
+        "answer": 2,
+        "why": [
+          "Ake es a- + ke, «duermo» (unidad 3): sin la i es otro verbo. Ana quiere pasar, no dormir.",
+          "Ana quiere pasar: Ikatúpa aike?, «¿puedo pasar?» (unidad 1). Aike es ai- + ke, «entro».",
+          "Aiko es «vivo» o «ando». Para pedir permiso y entrar se dice aike."
+        ]
+      }
+    },
+    "drill": [
+      {
+        "id": "a1u05d1.d1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Moisés: ^Reikuaápa^ Ypakarai, Ana?\nAna: Héẽ, (   ).",
+        "options": ["akuaa", "aikuaa", "reikuaa", "oikuaa"],
+        "answer": 2,
+        "why": [
+          "A akuaa le falta la i: con kuaa el «yo» es ai-, no a-.",
+          "Moisés pregunta con rei-, «vos», y Ana responde por ella misma, con ai-: aikuaa, «conozco».",
+          "Reikuaa es «conocés», con rei-: es la forma de la pregunta de Moisés. Ana habla de ella misma, con ai-.",
+          "Oikuaa es «conoce», con oi-: sería otra persona. Ana habla de ella misma, con ai-."
+        ]
+      },
+      {
+        "id": "a1u05d1.d2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Ana habla de ^su mamá^: «Che sy (   ) ka'ay.»",
+        "options": ["oipota", "aipota", "opota", "reipota"],
+        "answer": 1,
+        "why": [
+          "Che sy, «mi mamá», es otra persona: oi- + pota, oipota, «quiere». Che sy oipota ka'ay: mi mamá quiere mate.",
+          "Aipota es «quiero», con ai-, «yo». Ana habla de su mamá, no de ella.",
+          "A opota le falta la i: con pota, «él o ella» es oi-, no o-.",
+          "Reipota es «querés», con rei-, «vos»: la de Mba'épa reipota? Ana habla de su mamá."
+        ]
+      },
+      {
+        "id": "a1u05d1.d3",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "Ana conoce Caacupé. Les pregunta a ^sus alumnos^ si ellos también: «(   ) Ka'akupe?»",
+        "options": ["Reikuaápa", "Oikuaápa", "Jaikuaápa", "Peikuaápa"],
+        "answer": 4,
+        "why": [
+          "Reikuaápa es «¿conocés?», con rei-, para una sola persona. Ana les habla a varios.",
+          "Oikuaápa lleva oi-, de él, ella o ellos: así Ana hablaría de otras personas, no de los alumnos que la escuchan.",
+          "Jaikuaápa lleva jai-, de ñande, que incluye a Ana. Ella ya conoce Caacupé: pregunta por sus alumnos.",
+          "Ana les habla a sus alumnos, los que la escuchan: «ustedes» lleva pei-. Peikuaápa Ka'akupe?: ¿conocen Caacupé?"
+        ]
+      },
+      {
+        "id": "a1u05d1.d4",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(La mamá va a la despensa y le pregunta a Ana si necesita algo. Ana ^no necesita nada^.)\nAna: Aguyje, (   ) mba'eve.",
+        "options": ["ndaikotevẽi", "naikotevẽ", "naikotevẽi", "aikotevẽi"],
+        "answer": 3,
+        "why": [
+          "Kotevẽ es una raíz nasal, por la ẽ: delante no va nd-, sino n-.",
+          "A naikotevẽ le falta la -i del final: el «no» tiene dos partes, y con una sola la palabra queda a medias.",
+          "Kotevẽ es una raíz nasal: n- + aikotevẽ + -i = naikotevẽi, «no necesito». Con mba'eve, «nada»: no necesito nada. Sobre la ẽ no se agrega tilde: la ~ ya marca el acento.",
+          "A aikotevẽi le falta la n- del principio: la -i sola no niega nada."
+        ]
+      },
+      {
+        "id": "a1u05d1.d5",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Es temprano y hace frío.)\nAna: Che ",
+        "after": " terere.",
+        "tiles": ["nd", "ai", "pota", "i"],
+        "bank": [2, 0, 3, 1],
+        "hint": "El «no» rodea al verbo: nd- va primero y -i al final. En el medio, ai- («yo») y la raíz pota, «querer».",
+        "full": "(Es temprano y hace frío.)\nAna: Che {nd}aipotá{i} terere.",
+        "es": "Ana: Yo no quiero tereré.",
+        "explain": "nd- + ai- («yo») + pota («querer») + -i = ndaipotái, «no quiero». Las dos partes del «no» rodean al verbo, y la i de ai- se queda. La -i del final no se lleva el acento: queda en la a de pota, que ya no es la última vocal, y se escribe á."
+      },
+      {
+        "id": "a1u05d1.d6",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Ana y su mamá toman mate, y se termina la yerba.)\nAna: Ñande ",
+        "after": " ka'a.",
+        "tiles": ["ñai", "kotevẽ"],
+        "bank": [1, 0],
+        "hint": "Kotevẽ es una raíz nasal: ¿qué prefijo lleva el «nosotros con vos»? Va primero, pegado a la raíz.",
+        "full": "(Ana y su mamá toman mate, y se termina la yerba.)\nAna: Ñande {ñai}kotevẽ ka'a.",
+        "es": "Ana: Vos y yo necesitamos yerba.",
+        "explain": "ñai- («nosotros, con vos») + kotevẽ («necesitar») = ñaikotevẽ, «necesitamos». Como kotevẽ es una raíz nasal, por la ẽ, jai- pasa a ñai-: es la armonía nasal de la unidad 2. Ñande ñaikotevẽ ka'a: vos y yo necesitamos yerba."
+      }
+    ],
+    "exam": [
+      {
+        "id": "a1u05d1.e1",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Moisés pregunta dónde vive la abuela de Ana.)\nAna: Che jarýi (   ) Ka'akupépe.",
+        "options": ["oiko", "oikuaa", "oike", "oipota"],
+        "answer": 1,
+        "explain": "Moisés pregunta dónde vive, y «vivir» es ko. Che jarýi, «mi abuela», es otra persona: oi- + ko, oiko. Che jarýi oiko Ka'akupépe: mi abuela vive en Caacupé. Oikuaa es «sabe, conoce»; oike, «entra»; y oipota, «quiere»: ninguna dice dónde vive."
+      },
+      {
+        "id": "a1u05d1.e2",
+        "kind": "choice",
+        "area": "grammar",
+        "label": "Elegí la forma",
+        "q": "(Ana le habla a su mamá de las dos.)\nAna: Ñande (   ) ka'ay.",
+        "options": ["ñaipota", "roipota", "oipota", "jaipota"],
+        "answer": 4,
+        "explain": "Ñande, «nosotros con vos», lleva jai- con estos verbos: jaipota, «queremos». Pota no tiene ninguna letra nasal, así que jai- no cambia: ñai- va solo con raíces nasales, como kotevẽ. Roipota es de ore, «nosotros sin vos», y oipota es de otras personas: «quiere» o «quieren»."
+      },
+      {
+        "id": "a1u05d1.e3",
+        "kind": "build",
+        "area": "grammar",
+        "label": "Armá la palabra",
+        "join": "word",
+        "before": "(Ana le habla a Moisés de ella y de su familia.)\nAna: Ore ",
+        "after": " Itauguápe.",
+        "tiles": ["roi", "ko"],
+        "bank": [1, 0],
+        "full": "(Ana le habla a Moisés de ella y de su familia.)\nAna: Ore roiko Itauguápe.",
+        "es": "Ana: Nosotros (sin vos) vivimos en Itauguá.",
+        "explain": "Roi- va primero: es el prefijo de ore, «nosotros sin vos», con la i de estos verbos. Después va la raíz ko, «vivir»: roiko, «vivimos». Moisés, que escucha, no vive con ellos: por eso Ana dice ore y no ñande."
+      }
+    ]
+  },
+  "words": {
+    "es": "Mate al amanecer, en la cocina de Ana",
+    "intro": "La cocina de Ana, en Itauguá, un jueves antes de las seis. Toma mate con su mamá y dice dónde vive, qué sabe, qué quiere y qué necesita. Tocá cada palabra.",
+    "sound": {
+      "focus": "Dos vocales, una sílaba: aiko, reiko, oiko",
+      "letters": ["ai", "ei", "oi"],
+      "note": "En ai-, rei- y oi- la i no lleva acento ni marca: se dice de un tirón con la vocal de antes, y el acento sigue al final: ai-KO, rei-KO, oi-KO. Esa i es lo único que cambia entre ake, «duermo», y aike, «entro», y entre oke y oike. En karai es al revés: la i es la última vocal y la fuerte, ka-ra-I. Ese par y aiko con oiko son palabras para contrastar.",
+      "pairs": [
+        ["ake", "duermo", "aike", "entro"],
+        ["oke", "duerme", "oike", "entra"],
+        ["aiko", "vivo", "oiko", "vive"],
+        ["karai", "señor", "aiko", "vivo"]
+      ]
+    },
+    "words": [
+      { "id": "aiko", "gn": "aiko", "es": "vivo", "parts": [["ai-", "yo"], ["ko", "vivir, andar"]], "note": "La viste una vez, en la unidad 1: Aiko távape, «vivo en la ciudad». También es «ando»." },
+      { "id": "aikopora", "gn": "Aiko porã", "es": "Ando bien, estoy bien", "parts": [["aiko", "ando"], ["porã", "bien"]], "note": "Otra respuesta a Mba'éichapa reiko?, al lado de Iporã." },
+      { "id": "aikuaa", "gn": "aikuaa", "es": "sé, conozco", "parts": [["ai-", "yo"], ["kuaa", "saber, conocer"]], "note": "Un solo verbo para «saber» y «conocer». Su «no» ya lo tenés: ndaikuaái (unidad 2). En algunos diccionarios lo vas a encontrar con su i: ikuaa." },
+      { "id": "aipota", "gn": "aipota", "es": "quiero (algo)", "parts": [["ai-", "yo"], ["pota", "querer"]], "note": "Va con una cosa: Aipota ka'ay, «quiero mate». Para «quiero ir» hay otra forma: la vemos más adelante." },
+      { "id": "ndaipotai", "gn": "ndaipotái", "es": "no quiero", "parts": [["nd-", "no"], ["ai-", "yo"], ["pota", "querer"], ["-i", "no"]], "note": "El «no» de la unidad 2 alrededor de aipota. La -i no se lleva el acento: queda en la a, que se escribe á." },
+      { "id": "aiporu", "gn": "aiporu", "es": "uso", "parts": [["ai-", "yo"], ["poru", "usar"]], "note": "Aiporu ko aranduka, «uso este libro». Sin tilde, el acento va al final: ai-po-RU." },
+      { "id": "aipytyvo", "gn": "aipytyvõ", "es": "ayudo", "parts": [["ai-", "yo"], ["pytyvõ", "ayudar"]], "note": "Pytyvõ es una raíz nasal, por la õ: con ñande se dice ñaipytyvõ. Lleva dos y, la sexta vocal. A quién ayudás, lo vemos el día 5." },
+      { "id": "aikoteve", "gn": "aikotevẽ", "es": "necesito", "parts": [["ai-", "yo"], ["kotevẽ", "necesitar"]], "note": "Kotevẽ es una raíz nasal, por la ẽ: con ñande se dice ñaikotevẽ, y el «no» empieza con n-: naikotevẽi. Aikotevẽ kamby, «necesito leche»." }
+    ],
+    "spell": ["aikuaa", "ndaipotai", "aipytyvo", "aikoteve"],
+    "check": {
+      "id": "a1u05d1.k1",
+      "kind": "choice",
+      "area": "vocab",
+      "label": "Cómo se escribe",
+      "q": "Ana abre la heladera: _Necesito_ kamby. ¿Cómo se escribe «necesito» en guaraní?",
+      "options": ["akotevẽ", "aikotevẽ", "aikoteve", "aikotẽve"],
+      "answer": 2,
+      "explain": "Se escribe aikotevẽ: con la i de ai-, «yo», y con la ~ en la última e, que es la vocal del acento. Akotevẽ pierde la i; aikoteve pierde la ~; y aikotẽve la pone en otra e."
+    }
+  },
+  "skill": {
+    "kind": "reading",
+    "es": "Un chat al amanecer",
+    "ask": "¿Por qué Ana conoce bien Itauguá?",
+    "seconds": 60,
+    "passage": "Moisés: Mba'éichapa reiko, Ana?\nAna: Aiko porã. Ha nde?\nMoisés: Iporã. Reikuaápa Itaugua?\nAna: Héẽ, ^aikuaa porã^: ^aiko ko'ápe^.\nMoisés: Che ndaikuaái pe táva.",
+    "strategy": "Moisés pregunta si Ana conoce Itauguá. Leé la respuesta de Ana hasta el final: después de los dos puntos dice por qué.",
+    "item": {
+      "id": "a1u05d1.r1",
+      "kind": "choice",
+      "area": "reading",
+      "label": "Texto corto",
+      "q": "¿Por qué Ana conoce bien Itauguá?",
+      "options": ["Porque quiere vivir ahí.", "Porque Moisés vive ahí.", "Porque vive ahí.", "Porque su abuela vive ahí."],
+      "short": ["Quiere vivir ahí", "Moisés vive ahí", "Vive ahí", "Su abuela vive ahí"],
+      "answer": 3,
+      "why": [
+        "Ana no habla de querer: escribe aiko, «vivo». Ya vive ahí.",
+        "Moisés escribe Che ndaikuaái pe táva, «yo no conozco esa ciudad»: no vive ahí.",
+        "Ana responde Héẽ, aikuaa porã: aiko ko'ápe, «sí, la conozco bien: vivo acá». Aiko es «vivo», y ko'ápe, «acá», es Itauguá.",
+        "«Mi abuela» es che jarýi, y esa palabra no aparece en el chat."
+      ],
+      "explain": "Moisés pregunta Reikuaápa Itaugua?, «¿conocés Itauguá?», y Ana contesta Héẽ, aikuaa porã: aiko ko'ápe, «sí, la conozco bien: vivo acá». Aikuaa es «conozco» y aiko, «vivo»: los dos llevan ai-, «yo»."
+    }
+  }
+}
