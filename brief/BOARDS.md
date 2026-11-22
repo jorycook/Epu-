@@ -171,7 +171,8 @@ and with no day on record yet it counts none ("…: todavía no hay ningún día
 **Today**: Yaoki's layout. Header "Semana 1 · Día 4" (derive from `app.session`, not the id). Kicker "HOY · TRES LECCIONES",
 h1 the day title (in the pieces of `C.mixed`, its Guarani words in `<span lang="gn">`, as on the week path), sub "Aprendé la regla, practicala con ayuda y después respondé como en el examen." Cards:
 1 Gramática (tile 46×46 indigo tint with "-pa" in Andika 700? no: a short glyph-free icon is clearer: the grammar tile shows
-the day's first form, e.g. "-pa", in Andika 700 18px), "Gramática · 2 formas", the points' forms as title; pills Aprender ·
+the day's first form, e.g. "-pa", in Andika 700 18px; 15 px for four or five letters, 13 px when five letters hold a
+wide one, an M or a w, so that «Moõpa» is not cut by the tile's edges, 12 px beyond), "Gramática · 2 formas", the points' forms as title; pills Aprender ·
 Practicar · Examen (done ✓ teal / now indigo / todo); CTAs "Empezar con la regla" / "Seguir con la práctica" / "Al examen".
 2 Palabras (accent tint tile showing the day's hard letter, e.g. "'" or "ẽ"): "Palabras · 7 · Sonido y letra: el puso";
 title the scene; pills Sonido · Aprender · Escribir · Examen at A1-A2 (Sonido only when `words.sound`).
