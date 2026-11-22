@@ -23,7 +23,13 @@
 //      on its result page, or left by its cross, is taken all the same (a mini exam, a week test, a day's step); the
 //      door back to the plan closes in one press to the screen that opened it (its arrow, the system's back,
 //      «Cancelar»); the review closes to the screen that opened it, and puts the right answer where neither the
-//      lesson nor the day before had it; a save from before the days were kept says since when they are counted.
+//      lesson had it nor the question's last turn on the track (looked at one, three and seven days later, and
+//      walked by answers: three days on, then a week); a save from before the days were kept says since when they
+//      are counted. Then what a second check found: the greeting names a whole review day instead of calling it
+//      short; Progreso's days line keeps «desde el D/M» while the record is young and the returns after, and its
+//      accessible name spells the day out and leaves nothing out; the week path's seven days count only what is on
+//      record; the week path's callout ends on its floor; and a week test's result page shows the test taken when
+//      the session in use moves under it (the test hook with no session picked).
 //   V  the voice of the clips: the tag «voz sintética» on every screen that offers a synthetic clip (there before
 //      the tap, outside every live region; what it means said once a visit), a clip really playing and its control
 //      back at rest, Listening's status line and the notebook's play card naming the speaker by the clip's cues, the
@@ -34,7 +40,11 @@
 //      screens that play clips (while it is on its way the control waits, gives nothing away and no clock runs; when
 //      it arrives; when it could not be fetched, or was too long in coming); what the offline worker has stored once
 //      there is a plan and once the learner moves on to the next unit (never the whole level); what every screen says
-//      when the learner has turned the voice off. A build without sound files runs the silent half.
+//      when the learner has turned the voice off. Last, two behaviours nothing else covered: the «Modelo» strip of
+//      Hablar's comparison plays the model's clip (every play asked of the player is written down), and the
+//      placement check says «No se pudo reproducir el audio: así se dice.» when a clip that is there will not start
+//      (an audio output that decodes and never runs stands for a phone whose audio is held elsewhere). A build
+//      without sound files runs the silent half.
 //   S  the app around the screens: an Android phone's way in (the install page, the browser's own question); the system's
 //      back (it does what the screen's own X or arrow does, and leaves from the week path; on every routed screen and
 //      in a round or an exam under way it is compared with a tap on that control; pressed three times in a row where
@@ -45,9 +55,9 @@
 //      after the first ones, slow (with a way back) or missing, the unit's sound waiting for them, and a first paint
 //      that says so when the app cannot load.
 //   E  every one of the 21 screens reached, with no page error, no console error and nothing blank.
-// usage: node check/flows-test.js [site folder]      (default: ../docs, the built site as it is; about 7 minutes)
+// usage: node check/flows-test.js [site folder]      (default: ../docs, the built site as it is; about 16 minutes)
 //   ONLY=A,B,C,D,F,G,H runs some parts (E reports on what ran); PORT=8795 picks the port (default: any free one).
-//   (ONLY=I runs part I alone, ONLY=S part S, ONLY=V part V; with them the whole suite takes about six minutes more.)
+//   (ONLY=I runs part I alone, ONLY=S part S, ONLY=V part V; I and V take about three minutes each.)
 // Screenshots (device scale 1) go to check/out/flows/. Exit code 1 when a check fails.
 // Chromium stands in for Safari (WebKit cannot run here): the user agent, the screen and touch are an iPhone's.
 'use strict';
@@ -1453,6 +1463,23 @@ async function partI(browser) {
     await go(page, '');
     return { ctx, page };
   };
+  /* a day as Progreso's line prints it («16/11») and as an accessible name says it («16 de noviembre», with the year
+     once it is not this year's) */
+  const MES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+  const figures = (n) => { const d = new Date(Date.now() + n * DAY); return d.getDate() + '/' + (d.getMonth() + 1); };
+  const spoken = (n) => { const d = new Date(Date.now() + n * DAY); return d.getDate() + ' de ' + MES[d.getMonth()] + (d.getFullYear() !== new Date().getFullYear() ? ' de ' + d.getFullYear() : ''); };
+  /* how far above the week-test node the week path's callout ends, in the design's pixels: the path keeps 4 (the
+     callout's floor is y 404, the node starts at 408) */
+  const calloutGap = (page) => page.evaluate(() => {
+    const node = document.querySelector('#gn-stage a[href="WeekTest.dc.html"][aria-label^="Día 7"]');
+    const path = node && node.parentElement;
+    const card = path && [...path.children].find((el) => el.tagName === 'DIV' && el.style.left === '150px' && el.style.width === '224px');
+    if (!node || !card) return null;
+    const k = path.getBoundingClientRect().height / path.offsetHeight;
+    return +((node.getBoundingClientRect().top - card.getBoundingClientRect().bottom) / k).toFixed(2);
+  });
+  /* the accessible name of Progreso's days line */
+  const daysName = (page) => page.locator('#gn-stage [role="img"][aria-label*="con estudio"]').first().getAttribute('aria-label', { timeout: 1500 }).catch(() => null);
   const tabLabel = (page) => page.locator('#gn-stage nav a[href="Notebook.dc.html"]').getAttribute('aria-label');
   const toTab = (page, name) => tap(page, { sel: `#gn-stage nav a:has-text("${name}")` }, 500);
   /* every item of a review sitting answered right, to its summary */
@@ -1502,16 +1529,28 @@ async function partI(browser) {
     const shown = await optionsShown();
     check(await has(page, '1 / 3') && shown.slice().sort().join('|') === list[0].options.slice().sort().join('|') && shown.join('|') !== list[0].options.join('|'), 'Review: the question has its options in another order than the lesson had them', { lesson: list[0].options, shown });
     /* the right answer's place is set by rule: never where the lesson had it, and, with three options or more, not
-       where it stood the day before either (the same question, looked at a day later with nothing answered between) */
+       where it stood at the question's last turn on the track either. The track's steps are 1, 3 and 7 days: the same
+       question, looked at one, three and seven days later with nothing answered between, has its right answer in
+       another place than today each time. (A rule that only looked at the day before brought a question of four
+       options back to the same button every third day: answered right, it was asked again «en 3 días» with its
+       answer where it had been.) */
     const rightText = list[0].options[list[0].answer - 1];
     const placeToday = shown.indexOf(rightText);
     check(placeToday >= 0 && placeToday !== list[0].answer - 1, 'Review: the right answer is not at the place the lesson gave it', { lesson: list[0].answer, today: placeToday + 1, shown });
-    await setDay(page, 1);
-    await reload(page);
-    await tap(page, { sel: '#gn-stage a[href="Review.dc.html"]' }, 700);
-    const nextDay = await optionsShown();
-    const placeNext = nextDay.indexOf(rightText);
-    check((await screenOf(page)) === 'Review' && nextDay.slice().sort().join('|') === shown.slice().sort().join('|') && placeNext >= 0 && placeNext !== list[0].answer - 1 && (list[0].options.length < 3 || placeNext !== placeToday), 'Review, the same question a day later: the right answer is in another place than the day before, and still not the lesson\'s', { lesson: list[0].answer, today: placeToday + 1, nextDay: placeNext + 1, options: list[0].options.length });
+    /* the question that opens the review on a later day of this tab, as it is shown: where its right answer stands */
+    const lookOn = async (offset) => {
+      await setDay(page, offset);
+      await reload(page);
+      await tap(page, { sel: '#gn-stage a[href="Review.dc.html"]' }, 700);
+      const opts = await optionsShown();
+      return { on: await screenOf(page), same: opts.slice().sort().join('|') === shown.slice().sort().join('|'), place: opts.indexOf(rightText) };
+    };
+    const later = {};
+    for (const gap of [1, 3, 7]) later[gap] = await lookOn(gap);
+    const elsewhere = (x, than) => x.on === 'Review' && x.same && x.place >= 0 && x.place !== list[0].answer - 1 && (list[0].options.length < 3 || x.place !== than);
+    const places = { lesson: list[0].answer, today: placeToday + 1, in1day: later[1].place + 1, in3days: later[3].place + 1, in7days: later[7].place + 1, options: list[0].options.length };
+    check(elsewhere(later[1], placeToday), 'Review, the same question a day later: the right answer is in another place than the day before, and still not the lesson\'s', places);
+    check(elsewhere(later[3], placeToday) && elsewhere(later[7], placeToday), 'Review, the same question three and seven days later (the track\'s other two steps): the right answer is in another place than today both times', places);
     await setDay(page, 0);
     await reload(page);
     await tap(page, { sel: '#gn-stage a[href="Today.dc.html"]:has-text("Empezar")' }, 600);
@@ -1528,6 +1567,18 @@ async function partI(browser) {
     check(s.mistakes.every((x) => x.step === 1 && x.due === iso(3)) && s.cur === 'a1u01d4' && s.seen.join() === [iso(-3), iso(-2), iso(-1), iso(0)].join(), 'saved: the three answers moved on, day 4 is the day in use, and today is a day with study', { m: s.mistakes.map((x) => [x.step, x.due]), cur: s.cur, seen: s.seen });
     await tap(page, { aria: 'Volver al camino de la semana' }, 600);
     check((await tabLabel(page)) === 'Cuaderno' && !(await has(page, 'Antes de empezar')), 'Main after the review: no count on the tab, no row on the callout', (await text(page)).slice(0, 300));
+    /* and by the track itself, as a learner meets it: the three answered right today come back «en 3 días», and that
+       day the first of them has its right answer elsewhere than today; answered right again it comes back a week
+       after that, elsewhere again */
+    const back3 = await lookOn(3);
+    const due3 = await has(page, 'Ahora en 3 días');
+    await answerOne(page, list[0], true, true);
+    await page.waitForTimeout(300);
+    const next7 = await has(page, 'Próxima vez: en 1 semana');
+    const back10 = await lookOn(10);
+    const track = { lesson: list[0].answer, answeredToday: placeToday + 1, backIn3days: back3.place + 1, backAWeekLater: back10.place + 1, due3, next7, due7: await has(page, 'Ahora en 1 semana') };
+    check(due3 && elsewhere(back3, placeToday), 'Review, by the track: a question answered right comes back three days later with its right answer in another place', track);
+    check(next7 && track.due7 && elsewhere(back10, back3.place), 'and, answered right again, a week after that, in another place again', track);
     await ctx.close();
   }
 
@@ -1683,10 +1734,13 @@ async function partI(browser) {
     await ctx.close();
   }
   {
-    /* more than a week away, with a week sealed: its review day is the short thing on offer */
+    /* more than a week away, with a week sealed and nothing due: its review day is where to start. It is a whole day
+       of three lessons, so the greeting names it and does not call it short (it said «Empezá con algo corto: el
+       repaso de la semana 1…» in front of a drill, an exam step, eight words and a reading) */
     const { ctx, page } = await learner('back after a week', { plan: { start: iso(-20), target: null, pace: 'fit', minutes: 30 }, done: Object.assign(days(1, 6), { a1u02d1: full }), tests: { a1u01t: result('a1u01t') }, seen: [iso(-12), iso(-11), iso(-10)] });
     let h = await look(page, 'Main after ten days away', { expect: 'Main', shot: 'I14-main-back-week' });
     check(await has(page, '¡Volviste!') && await has(page, 'Repasar la semana 1') && await has(page, 'Seguir con el día 2'), 'after a week or more away, the last review day sealed is offered before the next new day', (await text(page)).slice(0, 400));
+    check(await has(page, 'Empezá por el repaso de la semana 1, que ya sellaste.') && !(await has(page, 'algo corto')), 'and the greeting says what it is, a week\'s review, without calling a whole review day «algo corto»', ((await text(page)).match(/¡Volviste!.{0,90}/) || [''])[0]);
     await tap(page, 'Repasar la semana 1', 700);
     h = await look(page, 'the greeting → week 1\'s review day', { expect: 'Today' });
     check(await has(page, 'Semana 1 · Día 6') && await has(page, 'DÍA SELLADO'), '«Repasar la semana 1» opens that week\'s review day, sealed as it was', h.head);
@@ -1702,10 +1756,13 @@ async function partI(browser) {
     await ctx.close();
   }
   {
-    /* a save from before the app kept the days: nothing is claimed, nobody is greeted back, and the record starts */
+    /* a save from before the app kept the days: nothing is claimed, nobody is greeted back, and the record starts.
+       The strip draws six faint dots for the days it knows nothing of, and its name says the same (it said «0 días
+       con estudio» of a week the learner may well have studied) */
     const { ctx, page } = await learner('no days kept', { plan: { start: iso(-30), target: null, pace: 'fit', minutes: 30 }, done: days(1, 3) });
     const strip = await page.locator('#gn-stage [aria-label^="Tus últimos 7 días"]').getAttribute('aria-label');
-    check(!(await has(page, '¡Volviste!')) && strip === 'Tus últimos 7 días: 0 días con estudio. Hoy todavía no.' && (await page.locator('#gn-stage svg[aria-label^="Kaguare con el ñandutí"]').count()) === 1, 'a save with no days kept loads as before: the usual callout, Kaguare standing', strip);
+    check(!(await has(page, '¡Volviste!')) && (await page.locator('#gn-stage svg[aria-label^="Kaguare con el ñandutí"]').count()) === 1, 'a save with no days kept loads as before: the usual callout, Kaguare standing', (await text(page)).slice(0, 200));
+    check(strip === 'Tus últimos 7 días: todavía no hay ningún día registrado. Hoy todavía no.', 'Main, with no day on record: the last seven days claim nothing (no «0 días con estudio»)', strip);
     await ctx.close();
   }
   {
@@ -1726,9 +1783,34 @@ async function partI(browser) {
     const since = '1 día con estudio desde el ' + today.getDate() + '/' + (today.getMonth() + 1);
     const s = await saved(page);
     check(await has(page, since) && s.seen.join() === iso(0) && s.seenLate === true, 'after the first answer Progreso says since when the days are counted («' + since + '»): the save is marked, and no earlier day is made up', { seen: s.seen, seenLate: s.seenLate, says: ((await text(page)).match(/\d+ días? con estudio[^P]{0,24}/) || [''])[0] });
+    /* the line's accessible name spells the day out, the month as a word («16/11» may be read as a fraction) */
+    check((await daysName(page)) === '1 día con estudio desde el ' + spoken(0) + '.', 'Progreso: the days line is named for a screen reader with the month as a word («desde el ' + spoken(0) + '»)', await daysName(page));
     await reload(page);
     await toTab(page, 'Progreso');
     check(await has(page, since), 'reopened: it still says so', ((await text(page)).match(/\d+ días? con estudio[^P]{0,24}/) || [''])[0]);
+    /* and the week path's strip counts only the days on record, and says since when: of the six days before, drawn
+       as faint dots, nothing is known (its name said «0 días con estudio» of them) */
+    await toTab(page, 'Camino');
+    const strip = await page.locator('#gn-stage [aria-label^="Tus últimos 7 días"]').getAttribute('aria-label');
+    check(strip === 'Tus últimos 7 días: 1 día con estudio desde el ' + spoken(0) + '; de antes no hay registro. Hoy ya estudiaste.', 'Main, on such a save: the last seven days count what is on record and say since when («de antes no hay registro»)', strip);
+    await ctx.close();
+  }
+  {
+    /* The note «desde el D/M» and the returns never fit the line together, so a save marked seenLate used to lose
+       «volviste N veces» for good. While its record is young (under 30 days) the line keeps the note, and the
+       accessible name carries both; once the record is 30 days old the line reads as everyone's, returns and all,
+       and the name still says since when */
+    const state = (seen) => ({ plan: { start: iso(-60), target: null, pace: 'fit', minutes: 30 }, done: days(1, 3), seenLate: true, seen });
+    let { ctx, page } = await learner('record began late, young', state([iso(-5), iso(-4), iso(-1)]));
+    await toTab(page, 'Progreso');
+    const line = async () => ((await text(page)).match(/\d+ días? con estudio.{0,34}?(?= Epu'ã| Por área)/) || [(await text(page)).slice(0, 200)])[0];
+    check(await has(page, '3 días con estudio desde el ' + figures(-5)) && !(await has(page, 'volviste')), 'Progreso, a record that began late and is 5 days old: the line says since when («desde el ' + figures(-5) + '»)', await line());
+    check((await daysName(page)) === '3 días con estudio desde el ' + spoken(-5) + '. Volviste una vez.', 'and its accessible name carries the return the line has no room for', await daysName(page));
+    await ctx.close();
+    ({ ctx, page } = await learner('record began late, 40 days ago', state([iso(-40), iso(-39), iso(-20), iso(-1)])));
+    await toTab(page, 'Progreso');
+    check(await has(page, '4 días con estudio · volviste 2 veces') && !(await has(page, 'desde el')), 'Progreso, the same record 40 days old: the line reads as everyone\'s, with the returns («4 días con estudio · volviste 2 veces»)', await line());
+    check((await daysName(page)) === '4 días con estudio desde el ' + spoken(-40) + '. Volviste 2 veces.', 'and its accessible name still says since when the count runs', await daysName(page));
     await ctx.close();
   }
   {
@@ -1764,6 +1846,10 @@ async function partI(browser) {
     let h = await look(page, 'Main at the end of the written path', { expect: 'Main', shot: 'I15-main-end' });
     const links = await page.evaluate(() => [...document.querySelectorAll('#gn-stage [aria-labelledby="mientras-tanto"] a')].map((a) => a.getAttribute('href')));
     check(await has(page, 'MIENTRAS TANTO') && links.join() === 'Notebook.dc.html,Leer.dc.html,Escribir.dc.html,Hablar.dc.html', 'Main, with every written session done: the card leads to the notebook and to Leer, Escribir and Hablar', links);
+    /* the card is as tall as its lines make it and stands on the floor the path keeps above the week-test node. Its
+       small print is drawn 17.4 px a line and was reckoned at 17: with two such lines the card ended 0.8 px low,
+       drawn one pixel past its floor */
+    check((await calloutGap(page)) >= 3.95, 'Main, the last written week whole: the callout ends on its floor, 4 px above the week-test node (it ended a pixel past it)', await calloutGap(page));
     check(await has(page, '¡Volviste!') && await has(page, "Opu'ã · Se levantó") && (await page.locator('#gn-stage svg[aria-label^="Kaguare se levantó"]').count()) === 1, 'back after six days with no day left to do: the same greeting stands over those links', (await text(page)).slice(0, 400));
     /* the mini exam of the weeks done is open and not taken: the card names it, above what there is to do meanwhile */
     const miniRow = page.locator('#gn-stage a[href="ExamTab.dc.html"][aria-label^="Mini examen"]');
@@ -1877,6 +1963,7 @@ async function partI(browser) {
        on that page, or left by its cross, was asked for again the next day, with its errors already in the notebook. */
     const { ctx, page } = await learner('week test closed on its result', { plan: { start: iso(-6), target: null, pace: 'fit', minutes: 30 }, done: days(1, 6), seen: [iso(-1)] });
     check(await has(page, 'HOY · PRUEBA'), 'the week\'s six days done: the week path asks for the week test', (await text(page)).slice(0, 300));
+    check((await calloutGap(page)) >= 3.95, 'Main, the week test next: its callout, with a line of small print, ends on its floor too, 4 px above the node', await calloutGap(page));
     await tap(page, { sel: '#gn-stage a[href="WeekTest.dc.html"]:has-text("Empezar")' }, 700);
     await tap(page, 'Empezar la prueba', 800);
     const items = await itemsOf(page, await page.evaluate(() => window.gnCourse.unit(1).test));
@@ -1894,6 +1981,31 @@ async function partI(browser) {
     h = await look(page, 'the next morning', { expect: 'Main', shot: 'I22-main-after-weektest' });
     s = await saved(page);
     check(s.tests.a1u01t && s.tests.a1u01t.score === 18 && !(await has(page, 'HOY · PRUEBA')) && (await page.locator('#gn-stage a[aria-label^="Día 7, prueba de la semana, hecha"]').count()) === 1, 'closed on its result page and opened the next morning: the test is taken, and the week path does not ask for it again', (await text(page)).slice(0, 300));
+    await ctx.close();
+  }
+  {
+    /* …and the page goes on showing the test that was taken when the session in use does move under it. Opened from
+       the week path the test is the session picked (cur), which stays put, so the check above cannot fail for this.
+       Through the app's test hook no session is picked: the session in use is the next one due, which is the week
+       test until its result is saved and the next week's first day from that moment on. The result page must still
+       show the 20 answers that were given (a runner that read its questions from the app's memory showed «4 de 20»
+       there, over the next week's test) */
+    const ctx = await phone(browser);
+    const page = await newPage(ctx, 'week test with no session picked');
+    await go(page, '?gntest&screen=Exam&level=A1&set=test&done=' + encodeURIComponent(JSON.stringify(days(1, 6))));
+    const ids = await page.evaluate(() => window.gnCourse.unit(1).test);
+    const items = await itemsOf(page, ids);
+    /* the first two answered wrong; what the first row of the result page must say the learner answered */
+    const firstWrong = await page.evaluate((id) => { const C = window.gnCourse; const it = C.item(id); const k = (it.answer % it.options.length) + 1; return C.plain((Array.isArray(it.short) && it.short[k - 1]) || it.options[k - 1] || ''); }, ids[0]);
+    for (let i = 0; i < items.length; i++) {
+      await answerOne(page, items[i], i > 1);
+      await tap(page, i < items.length - 1 ? 'Siguiente' : exact('Terminar'), 300);
+    }
+    await look(page, 'the result page of a week test with no session picked', { expect: 'Exam', how: 'hook' });
+    const firstRow = await page.evaluate(() => { const mark = document.querySelector('#gn-stage svg[aria-label="Correcta"], #gn-stage svg[aria-label="Incorrecta"]'); return mark ? mark.parentElement.parentElement.innerText.replace(/\s+/g, ' ').trim() : ''; });
+    const marks = [await page.locator('#gn-stage svg[aria-label="Correcta"]').count(), await page.locator('#gn-stage svg[aria-label="Incorrecta"]').count()];
+    check(items.length === 20 && await has(page, 'Prueba de la semana terminada') && (await scoreOf(page)).trim() === '18' && marks.join() === '18,2', 'a week test taken with no session picked (the session in use moves on when it is saved): its result page still says 18 of 20', { score: (await scoreOf(page)).trim(), marks });
+    check(/^1 · /.test(firstRow) && firstRow.includes('Tu respuesta: ' + firstWrong), 'and its first row is the first question of the test that was taken, with the answer given to it', { firstRow: firstRow.slice(0, 160), firstWrong });
     await ctx.close();
   }
   {
@@ -2664,7 +2776,18 @@ async function partV(browser) {
     check(quiet === 0 || new RegExp('Todavía no tienen? audio (un par|' + quiet + ' de los 8 pares|los pares)').test(menu), `Hablar: the menu says how many pairs have no audio (${quiet} of 8)`, menu.slice(-320));
     await tap(page, 'Empezar', 1200);
     let dock = [];
-    for (let i = 0; i < 40 && !dock.length; i++) { dock = await tags(page); if (!dock.length) await page.waitForTimeout(400); }
+    /* The round deals its pairs in an order of its own, and half of them have no clip. A silent card left to fall
+       comes back two cards later, so when three silent pairs are dealt first they turn among themselves for good
+       and no card with a clip ever comes into play: one round in fourteen, in which this check found no tag
+       however long it waited. A silent card shows its word («La palabra · …»): the card that carries it is tapped,
+       as a learner does, and the round goes on to the next pair */
+    for (let i = 0; i < 40 && !dock.length; i++) {
+      dock = await tags(page);
+      if (dock.length) break;
+      const shown = ((await text(page)).match(/La palabra · (\S+)/) || [])[1];
+      if (shown) await page.locator(`xpath=//*[@id="gn-stage"]//button[span[@lang="gn" and normalize-space(.)="${shown}"]]`).first().tap({ timeout: 600 }).catch(() => {});
+      await page.waitForTimeout(400);
+    }
     const round = await text(page);
     check(dock.length === 1 && !dock[0].live && /Tocá la palabra que escuchaste/.test(round), 'Hablar: while a card with a clip is in play, the dock carries the tag, outside its live lines', { dock, round: round.slice(-260) });
     await shot(page, 'V06-hablar-tag');
@@ -3047,7 +3170,7 @@ async function partVmore(browser, h) {
     const C = window.gnCourse;
     const shown = [...document.querySelectorAll('#gn-stage button[aria-pressed]')].map((b) => b.textContent.replace(/^\s*\d+\s*/, '').replace(/\s+/g, ' ').trim());
     const it = window.__gnExtra.placement.items.find((x) => x.options.map((o) => C.plain(o).replace(/\s+/g, ' ').trim()).join('|') === shown.join('|'));
-    return it ? { id: it.clip || it.id, has: window.gnSound.has(it.clip || it.id) } : null;
+    return it ? { id: it.clip || it.id, has: window.gnSound.has(it.clip || it.id), lines: (it.audio || []).filter((l) => Array.isArray(l) && l[1]).map((l) => C.plain(l[1]).replace(/\s+/g, ' ').trim()) } : null;
   });
   const plOpts = (page) => page.evaluate(() => [...document.querySelectorAll('#gn-stage button[aria-pressed]')].map((b) => b.disabled));
   ({ ctx, page } = await open('?gntest&screen=Placement&level=A1', PL, 'hold', 'the placement check'));
@@ -3251,6 +3374,100 @@ async function partVmore(browser, h) {
   const said1 = await notes(page);
   const xClips = await page.evaluate(() => window.gnSound.kind('a1x.4') === 'synthetic');
   check(!xClips || ((await tags(page)).length === 1 && said1.length === 1 && /un programa, no una persona/.test(said1[0])), 'at the pause, where the tag stands in the head of the part that follows, the note is said, once', { tags: (await tags(page)).length, said1 });
+  await ctx.close();
+
+  part = 'V9 the model\'s strip in Hablar, and a clip that will not start';
+  /* Hablar, «Repetí y compará»: in the comparison the «Modelo» strip plays the model's clip (it once only moved its
+     bars). The signs come in an order of the round's own and the voice need not say every one, so the check takes
+     the first sign whose model has a strip to play; a sign without a clip has a row that says why, and is passed
+     with «Igual». Every play asked of the player is written down from the start of the round */
+  ({ ctx, page } = await open('?gntest&screen=Hablar&level=A1', null, '', 'Hablar, the comparison'));
+  await page.waitForFunction(() => window.gnCourse.soundState('s0') !== 'coming', null, { timeout: 15000 }).catch(() => {});
+  await tap(page, 'Repetí y compará', 300);
+  await tap(page, 'Empezar', 1500);
+  await page.evaluate(() => { const s = window.gnSound; const play = s.play; window.__plays = []; s.play = function (key, from) { window.__plays.push(key); return play.call(this, key, from); }; });
+  const sayIt = page.locator('#gn-stage button[aria-label="Decir la frase en voz alta: tu voz todavía no se graba"]');
+  const endIt = page.locator('#gn-stage button[aria-label="Terminar"]');
+  const panel = page.locator('#gn-stage [role="region"][aria-labelledby="hab-cmp-h"]');
+  const strip = panel.locator('button[aria-label="Escuchar el modelo"]');
+  const rows = [];
+  let model = null;
+  for (let n = 0; n < 6 && !model; n++) {
+    /* the sign said aloud (in the app nothing is recorded) and the try ended: the comparison opens */
+    let saying = false;
+    for (let k = 0; k < 12 && !saying; k++) { await sayIt.tap({ timeout: 1500 }).catch(() => {}); saying = await endIt.waitFor({ timeout: 700 }).then(() => true, () => false); }
+    if (!saying) break;
+    await page.waitForTimeout(400);
+    await endIt.tap();
+    await panel.waitFor({ timeout: 3000 }).catch(() => {});
+    await page.waitForTimeout(300);
+    rows.push(((await panel.innerText().catch(() => '')) || '').replace(/\s+/g, ' ').slice(0, 160));
+    if (!(await strip.count())) { await tap(page, exact('Igual'), 1700); continue; }
+    const before = await page.evaluate(() => ({ plays: window.__plays.slice(), at: window.gnSound.at() }));
+    await strip.tap();
+    await page.waitForTimeout(450);
+    const after = await page.evaluate(async () => {
+      const s = window.gnSound;
+      s.on();
+      await new Promise((r) => setTimeout(r, 220));
+      const key = window.__plays[window.__plays.length - 1] || '';
+      const sign = key ? (window.__gnExtra.speaking.phrases || [])[+key.slice(1)] : null;
+      return { plays: window.__plays.slice(), key, has: s.has(key), ms: s.ms(key), at: s.at(), on: s.on(), sign: sign ? window.gnCourse.norm(sign.gn) : '' };
+    });
+    model = { before, after, lit: await strip.getAttribute('aria-pressed'), signOnShow: !!after.sign && (await text(page)).includes(after.sign) };
+    await shot(page, 'V25-hablar-model-strip');
+  }
+  if (!model) pass('Hablar: no sign of this build has a clip of its model (' + rows.length + ' looked at): there is no strip to play');
+  else {
+    check(model.lit === 'true' && model.after.plays.length === model.before.plays.length + 1 && /^s\d+$/.test(model.after.key) && model.signOnShow, 'Hablar, «Repetí y compará»: a tap on the comparison\'s «Modelo» strip asks the player for the clip of the sign on show', model);
+    check(model.after.has && model.after.on && model.after.at > 0 && model.after.at <= model.after.ms + 400, 'and the clip is really playing: the audio clock runs and the player is some way into it (the strip used to move its bars in silence)', model.after);
+  }
+  await ctx.close();
+
+  /* The placement check: a clip that is there and will not start is not a clip that is not recorded. On a phone the
+     audio can be held elsewhere (a call: an iPhone reports its output «interrupted»); here an audio output that
+     decodes every clip and never runs stands for it. The player waits 1.2 s for sound, then shows what is said,
+     line by line, and its line says that the audio could not be played */
+  ctx = await phone(browser);
+  await ctx.addInitScript(VOZ);
+  await ctx.addInitScript(() => {
+    class Stuck {
+      constructor() { this.state = 'suspended'; this.currentTime = 0; this.destination = {}; }
+      resume() { return Promise.resolve(); }
+      close() { return Promise.resolve(); }
+      addEventListener() {}
+      removeEventListener() {}
+      decodeAudioData(data, ok) { const buffer = { duration: 2 }; if (ok) ok(buffer); return Promise.resolve(buffer); }
+      createBufferSource() { return { buffer: null, onended: null, connect() {}, start() {}, stop() {} }; }
+    }
+    window.AudioContext = Stuck;
+    window.webkitAudioContext = Stuck;
+  });
+  page = await newPage(ctx, 'voice: the placement check, an audio output that never runs');
+  await go(page, '?gntest&screen=Placement&level=A1');
+  await page.waitForFunction(() => window.gnCourse.soundState('pl.1') !== 'coming', null, { timeout: 15000 }).catch(() => {});
+  /* the first listening question that has a clip (the voice does not say every one: such a question is read,
+     answered and passed) */
+  let q = (await toListening(page)) ? await itemNow(page) : null;
+  for (let i = 0; i < 8 && q && !q.has; i++) {
+    await tap(page, HEARP, 400);
+    q = null;
+    for (let k = 0; k < 12 && !q; k++) {
+      await page.locator('#gn-stage button[aria-pressed]:not([disabled])').first().tap({ timeout: 3000 }).catch(() => {});
+      await page.waitForTimeout(150);
+      if (!(await page.locator('#gn-stage').locator('button, a').filter({ hasText: 'Siguiente' }).count())) break;
+      await tap(page, 'Siguiente', 350);
+      if (await page.locator('#gn-stage [aria-label="Escuchar el audio"]').count()) q = await itemNow(page);
+    }
+  }
+  if (!q || !q.has) pass('the placement check: no listening question of this build has a clip: there is none to start');
+  else {
+    await tap(page, HEARP, 0);
+    const told = await page.waitForFunction(() => [...document.querySelectorAll('#gn-stage [aria-live]')].some((el) => /No se pudo reproducir el audio: así se dice\./.test(el.textContent || '')), null, { timeout: 6000 }).then(() => true, () => false);
+    t = await text(page);
+    check(told && q.lines.some((l) => t.includes(l)) && !NOT.test(t) && !/No se pudo cargar el audio|Transcripción|sin grabación/.test(t), 'the placement check, a clip that is there and will not start: after a moment the player shows what is said and its live line says «No se pudo reproducir el audio: así se dice.» (not that the audio is not recorded, nor that it could not be loaded)', { q: q.id, lives: await lives(page), t: t.slice(0, 320) });
+    await shot(page, 'V26-placement-will-not-start');
+  }
   await ctx.close();
 }
 

@@ -249,7 +249,7 @@
       { "id": "itaugua", "gn": "Itaugua", "es": "Itauguá", "note": "La capital del ñandutí. I-tau-GUA, sin tilde. En castellano es Itauguá, y así aparece también en muchos textos en guaraní. Con -pe: Itauguápe." },
       { "id": "tovati", "gn": "Tovatĩ", "es": "Tobatí", "note": "To-va-TĨ: aguda, con la última vocal nasal. Lleva la ~ y ninguna tilde; el castellano escribe Tobatí, con b y con tilde. Es un pueblo de oleros y ceramistas, cerca de Caacupé. Con -me: Tovatĩme." },
       { "id": "terere", "gn": "terere", "es": "tereré", "note": "Sin tilde en guaraní (unidad 1): te-re-RE. El castellano la necesita: tereré." },
-      { "id": "nanduti", "gn": "ñanduti", "es": "ñandutí (el encaje)", "note": "De la unidad 2: el encaje de Itauguá, redondo como un sol. Quiere decir «telaraña». Ñan-du-TI, sin tilde en guaraní; también se ve ñandutí, a la castellana." },
+      { "id": "nanduti", "gn": "ñanduti", "es": "ñandutí (el encaje)", "note": "De la unidad 2: el encaje de Itauguá, redondo como un sol. Quiere decir «telaraña». Ña-ndu-TI, sin tilde en guaraní; también se ve ñandutí, a la castellana." },
       { "id": "jaguarete", "gn": "jaguarete", "es": "yaguareté (el jaguar)", "note": "Ja-gua-re-TE, sin tilde. El castellano lo escribe con y y con tilde: yaguareté. La j suena como la y de «yo»." }
     ],
     "spell": ["paraguai", "kaakupe", "ypakarai", "tovati"],

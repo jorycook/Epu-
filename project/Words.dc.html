@@ -43,7 +43,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="margin-top: 16px; padding: 18px 16px; border-radius: 18px; background: #F4F5F9; border: 2px dashed #C9D0E3; display: flex; flex-direction: column; gap: 6px; flex-shrink: 0">
 <div style="font-size: 11px; font-weight: 800; letter-spacing: 0.04em; color: #5A6382">{{ emptyKicker }}</div>
 <div style="font-size: 18px; font-weight: 800">En preparación</div>
-<div style="font-size: 13px; font-weight: 500; line-height: 1.45; color: #5A6382">{{ emptyLine }}</div>
+<div style="font-size: 13px; font-weight: 500; line-height: 1.45; color: #5A6382"><sc-for list="{{ emptySegs }}" as="tx" hint-placeholder-count="1"><sc-if value="{{ tx.gn }}" hint-placeholder-val="{{ false }}"><span lang="gn">{{ tx.t }}</span></sc-if><sc-if value="{{ tx.es }}" hint-placeholder-val="{{ true }}">{{ tx.t }}</sc-if></sc-for></div>
 </div>
 </div>
 <a href="Today.dc.html" onClick="{{ toToday }}" style="flex-shrink: 0; margin-top: 10px; height: 54px; box-sizing: border-box; border-radius: 16px; background: #2F4FD0; border: 2px solid #1B2440; box-shadow: 0 4px 0 #1B2440; color: #FFFFFF; font-size: 17px; font-weight: 800; display: flex; align-items: center; justify-content: center"><span><span lang="gn">Tapykue</span> · Volver</span></a>
@@ -462,7 +462,9 @@ atSpell: ready && s.step === 'spell',
 atCheck: ready && s.step === 'check',
 toToday: nav('Today'),
 emptyKicker: where && where.day !== 't' ? 'SEMANA ' + where.unit + ' · DÍA ' + where.day : 'PALABRAS',
-emptyLine: 'Las palabras ' + (L.day && L.day.title ? 'de «' + L.day.title + '»' : 'de este día') + ' todavía se están escribiendo. Volvé pronto.',
+/* the line names the day by its title, which is Spanish that may quote Guarani («Hay, está y no hay: oĩ, ndaipóri»):
+   drawn in the pieces of C.mixed, as on the week path, so the words that can only be Guarani carry lang="gn" */
+emptySegs: C.mixed('Las palabras ' + (L.day && L.day.title ? 'de «' + L.day.title + '»' : 'de este día') + ' todavía se están escribiendo. Volvé pronto.'),
 };
 
 /* ---------- the sound and its letters ---------- */

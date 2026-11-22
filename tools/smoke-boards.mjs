@@ -2,6 +2,11 @@
 // its Component the way the canvas does (no props, or its moment props) and the way the prototype does (App's props from
 // a fresh state and from the SAMPLE state), and calls renderVals(). It never renders markup. It reports exceptions and,
 // for each hole name used in the markup, whether renderVals returned it (a missing top-level name renders blank).
+// One more run stands on a day that is not written yet, of a title that quotes Guarani («Hay, está y no hay: oĩ,
+// ndaipóri»). The engine never hands a screen such a day (the session in use is always a written one), so no flow of
+// the app reaches the «En preparación» state the lesson boards draw for it: here the session is put into the
+// prototype's props by hand. In that run no text hole may print the day's Guarani inside a plain string: a line that
+// names the day is drawn in the pieces of gnCourse.mixed, the Guarani in lang="gn", as on the week path.
 // Usage: node tools/smoke-boards.mjs [Board.dc.html …]   (default: every board in canvas/project)
 import fs from 'node:fs';
 import path from 'node:path';
@@ -40,6 +45,19 @@ const SAMPLE_JS = `(function () { const C = window.gnCourse; const T = C.today(C
     mistakes: [{ src: 'a1u01d2.d1', wrong: 'ore', at: 0, step: 0, due: T }], cur: 'a1u01d4', tp: 0, set: 'day',
     placement: { comp: 'A2', prod: 'A1', start: 'A1' }, typed: [] }; })()`;
 
+/* the prototype's props on a day that is not written and whose title quotes Guarani: the first such day of the syllabus,
+   at its own level, put in as the session in use (app.sid, app.session, app.day, app.unit); null when every such day
+   is written. gn: the words of its title that can only be Guarani */
+const UNWRITTEN_JS = `(function () { const C = window.gnCourse; let pick = null;
+  C.ORDER.forEach((lv) => { if (pick) return; C.withLevel(lv, () => { C.sessions().forEach((x) => { if (!pick && !x.ready && x.kind === 'study' && C.mixed(x.title || '').some((p) => p.gn)) pick = { lv, id: x.id }; }); }); });
+  if (!pick) return null;
+  __st = Object.assign({}, __st, { level: pick.lv, cur: null });
+  const app = C.view(__st);
+  const s = (app.status.plan || []).filter((p) => p.id === pick.id)[0] || C.session(pick.id);
+  return { id: s.id, title: C.plain(s.title), gn: C.mixed(s.title).filter((p) => p.gn).map((p) => p.t),
+    props: { app: Object.assign({}, app, { sid: s.id, session: s, day: C.day(s.id), unit: C.unit(s.unit), prog: {} }), go: __h.go, save: __h.save, miss: __h.miss, reviewed: __h.reviewed, level: __h.level } }; })()`;
+const get = (o, segs) => { let v = o; for (const k of segs) { if (v == null) return undefined; v = v[k]; } return v; };
+
 let bad = 0;
 for (const f of files.sort()) {
   const src = fs.readFileSync(path.join(P, f), 'utf8');
@@ -58,6 +76,9 @@ for (const f of files.sort()) {
   const view = (s) => vm.runInContext(`window.gnCourse.view(${s})`, ctx0);
   runs.push({ label: 'app:fresh', state: 'window.gnCourse.fresh()' });
   runs.push({ label: 'app:sample', state: SAMPLE_JS });
+  runs.push({ label: 'app:unwritten day', state: SAMPLE_JS, unwritten: true });
+  // the holes that print text (not an attribute's value), by their dotted path; a loop's own items are left out
+  const textHoles = [...new Set([...markup.replace(/<[^>]*>/g, '\n').matchAll(/\{\{\s*([A-Za-z_$][\w$]*(?:\.[\w$]+)*)\s*\}\}/g)].map((x) => x[1]))].filter((h) => !loopVars.has(h.split('.')[0]) && !['true', 'false', 'null', '$index'].includes(h));
   // moment props: every other board that imports this one with literal attributes (view="result", demo="6", …)
   const stem = f.replace(/\.dc\.html$/, '');
   for (const g of fs.readdirSync(P).filter((x) => x.endsWith('.dc.html') && x !== f)) {
@@ -79,10 +100,19 @@ for (const f of files.sort()) {
         vm.runInContext(`var __st = ${run.state}; var __h = window.gnCourse.handlers(() => __st, (fn) => { __st = Object.assign({}, __st, fn(__st)); });`, ctx);
         props = vm.runInContext(`({ app: window.gnCourse.view(__st), go: __h.go, save: __h.save, miss: __h.miss, reviewed: __h.reviewed, level: __h.level })`, ctx);
       }
+      let day = null;
+      if (run.unwritten) {
+        day = vm.runInContext(UNWRITTEN_JS, ctx);
+        if (!day) { console.log(`${f} [${run.label}]: skipped (every day whose title quotes Guarani is written)`); continue; }
+        props = day.props;
+      }
       ctx.__props = props;
       const out = vm.runInContext(`${m[2]}\n;(function(){ const c = new Component(__props); if (c.componentDidMount) { try { c.componentDidMount(); } catch (e) { throw new Error('componentDidMount: ' + e.message); } } const v = c.renderVals(); return { keys: Object.keys(v || {}), v }; })()`, ctx, { filename: f, timeout: 3000 });
       const missing = [...holes].filter((h) => !out.keys.includes(h));
+      /* on the unwritten day: a text hole whose string holds a word of the title that can only be Guarani */
+      const plain = day ? textHoles.filter((h) => { const v = get(out.v, h.split('.')); return typeof v === 'string' && day.gn.some((w) => v.includes(w)); }) : [];
       if (missing.length) { console.log(`${f} [${run.label}]: holes not returned by renderVals: ${missing.join(', ')}`); bad++; }
+      else if (plain.length) { console.log(`${f} [${run.label}]: Guarani printed as plain text, with no lang="gn" (${day.id}, «${day.title}»): ${plain.map((h) => '{{ ' + h + ' }} = ' + JSON.stringify(get(out.v, h.split('.')))).join('; ')}`); bad++; }
       else console.log(`${f} [${run.label}]: ok (${out.keys.length} values)`);
     } catch (e) {
       bad++;

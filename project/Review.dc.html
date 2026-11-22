@@ -203,8 +203,8 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
    asked (a choice is one tap, a build is its tiles put in order and then checked, a spell is typed with the phone's
    keyboard and the Guarani keys), then where it moves on the track of C.STEPS (1, 3, 7 days; three right in a row
    clears it), and a summary that leads on to the day. A choice's options come in another order than the lesson's, the
-   right answer never where the lesson had it nor where it stood the day before (orderOf), so what is remembered is
-   the answer and not its place. The session is the sitting as it stood when it opened; each answer is recorded at
+   right answer never where the lesson had it nor where it stood at its last turn on that track (orderOf), so what is
+   remembered is the answer and not its place. The session is the sitting as it stood when it opened; each answer is recorded at
    once with reviewed(src, right). Its cross leaves for the screen it was opened from (app.opener). */
 const TRACK = ['mañana', 'en 3 días', 'en 1 semana', '¡aprendido!'];
 const SPAN = ['1 día', '3 días', '1 semana'];
@@ -422,11 +422,16 @@ function bring(box, el) {
 }
 /* A choice's options in the order the review shows them today, so that what is remembered is the answer and not its
    place. The right answer's place is set by rule: never the place the lesson gave it, and, with three options or
-   more, never the place it had the day before either (it takes the places that are not the lesson's in turn, a day
-   each, starting from one that depends on the item). The other options are dealt into the places left by a shuffle
-   seeded with the item and the day (gnSpell.shuffle). With two options there is one other place, and the answer
-   keeps it. The numbers on the buttons follow the order shown. Kept as written (fixed): an item whose audio numbers
-   its replies, and the designed moment on the canvas. → the options' own indexes, in shown order */
+   more, never the place it had at the question's last turn on the track either. The track's gaps are 1, 3 and 7 days
+   (C.STEPS), all odd, so the answer takes two of the places that are not the lesson's in turn, one on even days and
+   the other on odd days (which two, and which first, depends on the item): whatever step brings the question back,
+   the day's parity has changed and the place with it. (Taking all the other places in turn, a day each, brought a
+   question of four options back to the same button every third day: at the track's own second step.) A review made
+   late by an odd number of days falls on a day of the same parity, and there the place repeats: the notebook keeps
+   no record of where an answer stood. The other options are dealt into the places left by a shuffle seeded with the
+   item and the day (gnSpell.shuffle). With two options there is one other place, and the answer keeps it. The
+   numbers on the buttons follow the order shown. Kept as written (fixed): an item whose audio numbers its replies,
+   and the designed moment on the canvas. → the options' own indexes, in shown order */
 function orderOf(q, src, day, fixed) {
   const C = window.gnCourse;
   const n = Array.isArray(q.options) ? q.options.length : 0;
@@ -436,8 +441,10 @@ function orderOf(q, src, day, fixed) {
   const own = Number.isInteger(q.answer) && q.answer >= 1 && q.answer <= n ? q.answer - 1 : 0;
   let h = 0;
   for (const ch of String(src || '')) h = (h * 31 + ch.codePointAt(0)) % 9973;
-  const turn = (((C.daysBetween('2000-01-01', day) + h) % (n - 1)) + (n - 1)) % (n - 1);
-  const place = (own + 1 + turn) % n;
+  /* which of the n − 1 other places comes first, by the item; and the one after it on the days of the other parity */
+  const first = h % (n - 1);
+  const odd = (((C.daysBetween('2000-01-01', day) + h) % 2) + 2) % 2;
+  const place = (own + 1 + ((first + odd) % (n - 1))) % n;
   const order = S.shuffle(same.filter((k) => k !== own), src + '|' + day);
   order.splice(place, 0, own);
   return order;

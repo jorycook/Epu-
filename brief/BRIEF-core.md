@@ -184,7 +184,8 @@ Same names and meanings as Yaoki's `ykCourse` unless noted. `const C = window.gn
   a review sitting is a third of it (below).
   With a target, the last 7 days are kept for review and the level exam. `C.plan(settings)`, `C.status(state, now)` →
   `{ plan, next, dueToday, perDay, daysLeft (null without target), stamps, today, behind, target }`, `C.fits(settings)`, `C.today(now)`,
-  `C.now()`, `C.addDays(iso, n)`, `C.daysBetween(a, b)`, `C.dateEs(iso, withYear)` ("domingo, 6 de diciembre de 2026"), `C.dateGn(iso)` (Guarani, or '' until verified).
+  `C.now()`, `C.addDays(iso, n)`, `C.daysBetween(a, b)`, `C.dateEs(iso, withYear)` ("domingo, 6 de diciembre de 2026"), `C.dayEs(iso, withYear)`
+  ("16 de noviembre", "16 de noviembre de 2026": a day as it is said, for the accessible name of a line that prints it in figures), `C.dateGn(iso)` (Guarani, or '' until verified).
 - Notebook: `C.miss(list, m, now)`, `C.due(list, now)`, `C.reviewed(list, src, right, now)`; spacing `C.STEPS` = [1, 3, 7]; three rights clear an entry.
   A day's review has a size: `C.sittingSize(plan)` = a third of `plan.minutes` at 0.6 min a question (8, 16 or 25; 16 with
   no plan). `C.sitting(list, plan, now)` → `{ due, size, done, n, items, more, minutes }`: `due` all that are due, `done`
@@ -200,8 +201,11 @@ Same names and meanings as Yaoki's `ykCourse` unless noted. `const C = window.gn
   things studied (`C.studied(state)`: a lesson step, a test, a part of the level exam, a notebook entry, a word typed)
   and no day in `seen` was saved before the app kept the days: the app marks it `seenLate` when it reads the save, for
   good, and `C.view` gives `days.since`, the first day on record, so that the count says since when it runs (Progreso:
-  «3 días con estudio desde el 16/11»). No day is made up from the moments such a save carries (a notebook entry's
-  `at`): each proves one day and not the days around it.
+  «3 días con estudio desde el 16/11» for the record's first 30 days, and always in the line's accessible name, the
+  month as a word). No day is made up from the moments such a save carries (a notebook entry's `at`): each proves
+  one day and not the days around it. A screen that counts days over a stretch that reaches back before `first`
+  (the week path's last seven days) counts only the days on record and says since when («… desde el 16 de
+  noviembre; de antes no hay registro»): a day of kind 'none' is not a day without study.
 - Mini exams: `C.minis(lv)` → the level's two, `[{ n, id: 'a1m1', units, after, ready, items: [20 item ids], seconds }]`:
   20 of the week-test questions of its half of the level (6 vocab, 8 grammar, 3 reading, 3 listening, as many from each
   unit), ready once those week tests are written. `C.mini('a1m1' | 'mini1')`. Exam runs it with `set: 'mini1'` and saves

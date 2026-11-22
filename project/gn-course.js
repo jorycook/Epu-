@@ -1168,6 +1168,16 @@
       return isoDate;
     }
   };
+  /* A day as it is said, for a line's accessible name: "16 de noviembre" ("16 de noviembre de 2026" with the year).
+     A date in figures («16/11») fits a line that has no room, but it carries no year and a screen reader may say it
+     as a fraction; the name of a line that prints one spells it out with this. '' for anything that is not a date. */
+  var MONTHS_ES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+  C.dayEs = function (isoDate, withYear) {
+    var n = dayNo(isoDate);
+    if (n == null) return '';
+    var d = new Date(n * DAY);
+    return d.getUTCDate() + ' de ' + MONTHS_ES[d.getUTCMonth()] + (withYear ? ' de ' + d.getUTCFullYear() : '');
+  };
   C.dateGn = function (isoDate) {
     var t = window.__gnCalendar;
     var n = dayNo(isoDate);

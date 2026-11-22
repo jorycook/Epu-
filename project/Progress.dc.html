@@ -46,7 +46,7 @@ rt{font-size:9px;font-weight:500;color:#5A6382}
 <div style="padding: 3px 10px; border-radius: 10px; font-size: 12px; font-weight: 800; white-space: nowrap; background: {{ pace.bg }}; color: {{ pace.ink }}">{{ pace.text }}</div>
 <sc-if value="{{ hasLeft }}" hint-placeholder-val="{{ true }}"><div style="font-size: 12px; font-weight: 700; color: #5A6382; white-space: nowrap">{{ left }}</div></sc-if>
 </div>
-<sc-if value="{{ days.show }}" hint-placeholder-val="{{ true }}"><div style="margin-top: 1px; font-size: 12px; font-weight: 700; color: #5A6382; line-height: 1.35">{{ days.line }}</div></sc-if>
+<sc-if value="{{ days.show }}" hint-placeholder-val="{{ true }}"><div role="img" aria-label="{{ days.aria }}" style="margin-top: 1px; font-size: 12px; font-weight: 700; color: #5A6382; line-height: 1.35">{{ days.line }}</div></sc-if>
 </div>
 </div>
 <sc-if value="{{ replan.show }}" hint-placeholder-val="{{ false }}">
@@ -458,15 +458,27 @@ go('Goal');
    guaraní» are left out. Every control and every number stays. */
 const offer = !passed && goalSet && (paceKey === 'late' || (left != null && left < 0));
 /* The days line, on one line of the hero's text column (the card has no room for a second): the count of days with
-   study; since when it runs, for a save from before the app kept the days (gnCourse.daysSince: such a learner's
-   count starts on the day of the update, and says so: «3 días con estudio desde el 16/11»); and the returns, as
-   long as they still fit beside it (the engine knows how wide the interface face sets a text). */
+   study, and the returns as long as they fit beside it (the engine knows how wide the interface face sets a text).
+   A save from before the app kept the days (app.days.since: such a learner's count starts on the day of the update)
+   says since when the count runs, «3 días con estudio desde el 16/11», while that matters most: for the record's
+   first SINCE_DAYS days, when the count is far under what the learner did. The note and the returns never fit the
+   line together («2 días con estudio desde el 1/1 · volviste 2 veces» is 274 px in a room of 216), so after those
+   days the line reads as everyone's and such a learner sees the returns too. What the line leaves out for want of
+   room its accessible name keeps: there the count always says since when, with the month as a word (a screen reader
+   may say «16/11» as a fraction, and it carries no year: the name adds it once the year has turned), and the
+   returns stand whenever there are any. */
+const SINCE_DAYS = 30;
 const dm = (iso) => { const m = /^\d{4}-(\d\d)-(\d\d)$/.exec(iso || ''); return m ? +m[2] + '/' + +m[1] : ''; };
-const counted = (dy.count === 1 ? '1 día con estudio' : dy.count + ' días con estudio') + (dy.since && dm(dy.since) ? ' desde el ' + dm(dy.since) : '');
+const since = dy.since && dm(dy.since) ? dy.since : null;
+const young = !!since && C.daysBetween(since, T) < SINCE_DAYS;
+const counted = (dy.count === 1 ? '1 día con estudio' : dy.count + ' días con estudio') + (young ? ' desde el ' + dm(since) : '');
 const came = dy.returns > 0 ? ' · volviste ' + (dy.returns === 1 ? 'una vez' : dy.returns + ' veces') : '';
 const daysRoom = offer ? 224 : 216;
+const daysAria = (dy.count === 1 ? '1 día con estudio' : dy.count + ' días con estudio')
++ (since && C.dayEs ? ' desde el ' + C.dayEs(since, since.slice(0, 4) !== T.slice(0, 4)) : '')
++ (dy.returns > 0 ? '. Volviste ' + (dy.returns === 1 ? 'una vez' : dy.returns + ' veces') : '') + '.';
 return {
-days: { show: dy.count > 0, line: C.ems(counted + came, true) * 12 <= daysRoom ? counted + came : counted },
+days: { show: dy.count > 0, line: C.ems(counted + came, true) * 12 <= daysRoom ? counted + came : counted, aria: daysAria },
 replan: { show: offer },
 roomy: !offer,
 hero: { pad: offer ? '8px 14px' : '10px 14px', gap: offer ? '6px' : '8px', size: offer ? 88 : 96 },

@@ -20,13 +20,13 @@ native speaker's check.
 |---|---|
 | `project/` | The canvas's files: 42 boards (`*.dc.html`), the index (`canvas.json`) and the shared scripts. `gn-course.js` is the course engine (the counterpart of Yaoki's `course.js`, as `window.gnCourse`); `gn-course-a1.js` … `gn-course-c2.js` are the six levels' data, made from `content/`; `gn-extra.js` holds the placement check, the A1 level exam, the reader's text and the typing and speaking lists; `gn-spell.js` is the spelling helper (the letters of the alphabet, the keys a word needs, why a typed letter is off); `gn-sound.js` is Yaoki's sound player under new names. |
 | `content/` | The course as data. `levels.json` is the syllabus of all six levels (52 units, the title of every study day and, for the units written, each day's sound focus). `a1/parts/` holds A1 units 1 to 4 day by day, each with its week test (`u01-d1.json` … `u04-test.json`); `a1/u01.json` … `a1/u04.json` are the units assembled from them; `extra/` holds the extras. |
-| `tools/` | `build-course.mjs` checks the content and writes the level files; `assemble-unit.mjs` merges a unit's day files; `lint-board.mjs` checks a board for the format rules that fail silently; `smoke-boards.mjs` runs each board's logic against the engine and the data, the way the canvas and the prototype call it, without rendering; `blind-export.mjs` exports every question without its answer for a blind solver; `sound-list.mjs`, `make-sound.mjs` and `make-tts.py` are the sound path (see Sound). |
+| `tools/` | `build-course.mjs` checks the content and writes the level files; `assemble-unit.mjs` merges a unit's day files; `lint-board.mjs` checks a board for the format rules that fail silently; `smoke-boards.mjs` runs each board's logic against the engine and the data, the way the canvas and the prototype call it, without rendering, and once more on a day that is not written yet (a state no flow of the app reaches), where a line that names the day must not print its Guarani as plain text; `blind-export.mjs` exports every question without its answer for a blind solver; `sound-list.mjs`, `make-sound.mjs` and `make-tts.py` are the sound path (see Sound). |
 | `sound/` | The clip lists: `A1/manifest.json` (every clip the course needs, by key, with its text, voice, place and recording order; read by the tools and the studio) and `A1/lista.csv` (the same, for a spreadsheet). `A1/voz/` holds the synthetic voice's takes for A1 units 1 to 4: 440 clips as FLAC, the seed of each and what two speech recognisers heard of it, and in `left-out/` the 63 clips that stay silent, kept for a native listener (CC BY-NC 4.0, non-commercial; see Sound). `VOICE.md` is the record of that voice, `respell.json` how it is given Spanish names and numbers, `silent.json` what it must not say. A person's recordings will not live in the repository: `make-sound.mjs` turns either kind into `project/gn-sound-*.js`. |
 | `brief/` | The design brief the boards were built from: `BRIEF-core.md` (format, wiring, typefaces, tokens, engine, content shape), `BRIEF-design.md` (language, look, mascot, the verified Guarani glossary), `BOARDS.md` (every board's spec), `CONTENT-BRIEF.md` (how the lessons are written), the font link, and `mascot/` (Kaguare's final art: `SPEC.md`, `spec.json` with every SVG, and `sheet.png`). |
 | `notes/` | The research the design rests on. Y1 to Y5 map the Yaoki suite (plan and engine, the lesson loop, skills and tests, the satellites, platform and brand). G1 to G8 are the Guarani research, with a source and a confidence mark on every claim: sounds, spelling, fonts and keyboards; a verified grammar reference; learners and prior art; data, audio and licences; culture, naming and UI words; the CEFR and the level exam; the six-level syllabus; and G8, the second mascot (Kaguare: which anteater, its names, three slang screens). |
 | `epua-app/` | The installable app around the screens: `src/` (Yaoki's runtime, the shell, the first-visit page, the offline worker, the page and the manifest), `studio/` (the recording studio page), `build.mjs`, `fonts.py`, `fetch-fonts.sh` and `check/app-check.js`. |
 | `docs/` | The built app, for GitHub Pages. This is all a phone needs. `docs/estudio/` is the recording studio, next to the app and not part of it. |
-| `check/` | Two checks of the built app in Chromium, as GitHub Pages serves it: `flows-test.js` (a learner's flows by taps, saved progress, two tabs, saved data that does not fit, the last written week to its end, the review put in front of the day and its size, the plan made again, the days with study and the return after days away, the end of the written path with the first mini exam, an exam closed on its result page, the voice of the clips (the tag «voz sintética» wherever a synthetic clip is offered, a clip really playing, the speaker named by the clip's cues, the clips the voice must not say and a build without sound, Progreso's page on the voice and its switch; the words lesson's note per word; a sound file held back or refused by the test's own server on each of the eight screens that play clips: waiting, arrived, failed, too long in coming; what the worker has stored once there is a plan and when the learner moves on to the next unit; what each screen says with the voice off), and the app around the screens: an Android phone's way in, the system's back, focus and zoom, a paste taken back, the screens that load later) and `platform-test.js` (phone sizes, iPhone and Android, the install page in each browser, the Home Screen, the page's first paint, offline (with the sound that is stored ahead: the unit in use, the next one and the speaking game's, each downloaded once and no other file of the level; the two screens whose sound comes only when they open going without it), updates, the manifest and icons, the typefaces, every screen's frame, tap targets, headings, languages; the screens with a learner in unit 1, with one in the last written week, with one back after days and behind the plan (Progreso's list measured against its fold) and with one at the end of the written path, and the shell's own notices). Their screenshots go to `check/out/`, which is not kept. |
+| `check/` | Two checks of the built app in Chromium, as GitHub Pages serves it: `flows-test.js` (a learner's flows by taps, saved progress, two tabs, saved data that does not fit, the last written week to its end, the review put in front of the day and its size, the plan made again, the days with study and the return after days away, the end of the written path with the first mini exam, an exam closed on its result page, the voice of the clips (the tag «voz sintética» wherever a synthetic clip is offered, a clip really playing, the speaker named by the clip's cues, the clips the voice must not say and a build without sound, Progreso's page on the voice and its switch; the words lesson's note per word; a sound file held back or refused by the test's own server on each of the eight screens that play clips: waiting, arrived, failed, too long in coming; what the worker has stored once there is a plan and when the learner moves on to the next unit; what each screen says with the voice off; the model's strip of the speaking game's comparison really playing its clip; the placement check's line when a clip that is there will not start, played with an audio output that never runs), and the app around the screens: an Android phone's way in, the system's back, focus and zoom, a paste taken back, the screens that load later) and `platform-test.js` (phone sizes, iPhone and Android, the install page in each browser, the Home Screen, the page's first paint, offline (with the sound that is stored ahead: the unit in use, the next one and the speaking game's, each downloaded once and no other file of the level; the two screens whose sound comes only when they open going without it), updates, the manifest and icons, the typefaces, every screen's frame, tap targets, headings, languages; the screens with a learner in unit 1, with one in the last written week, with one back after days and behind the plan (Progreso's list measured against its fold) and with one at the end of the written path, and the shell's own notices). Their screenshots go to `check/out/`, which is not kept. |
 
 ## Build and check
 
@@ -37,7 +37,7 @@ node tools/assemble-unit.mjs a1 2      # merge one unit's day files into its uni
 node tools/build-course.mjs            # check every content file and write project/gn-course-*.js and gn-extra.js
 node tools/build-course.mjs --check    # check only
 node tools/lint-board.mjs project/*.dc.html
-node tools/smoke-boards.mjs            # every board, alone, inside the prototype with a fresh state, with the sample state, and in each moment another board imports it with
+node tools/smoke-boards.mjs            # every board, alone, inside the prototype with a fresh state, with the sample state, on a day that is not written yet, and in each moment another board imports it with
 ```
 
 The build stops a file that is not in Unicode NFC, writes the puso as anything but the apostrophe U+0027, carries a
@@ -65,8 +65,8 @@ bash fetch-fonts.sh        # Nunito and Andika, into ../fonts-src (once)
 node build.mjs             # checks the content, writes dist/ and replaces ../docs with it
 node check/app-check.js    # the app in Chromium: the first-visit page, every screen, a first day, saved progress, phone sizes, offline, updates
 cd ..
-node check/flows-test.js   # a learner's flows, by taps, against docs/ (about 7 minutes)
-node check/platform-test.js   # phones, offline, updates, fonts, frames, tap targets and languages, against docs/ (about 8 minutes)
+node check/flows-test.js   # a learner's flows, by taps, against docs/ (about 16 minutes; ONLY=I, or any of its part letters, runs some parts)
+node check/platform-test.js   # phones, offline, updates, fonts, frames, tap targets and languages, against docs/ (about 10 minutes)
 ```
 
 The build makes Nunito's 500, 700 and 800 from its variable font, cuts both typefaces down to the characters the app
@@ -213,8 +213,9 @@ from zooming.
   what is left waits for the next days, and the notebook says so («Hay 45 esperando. Hoy van las 16 más viejas…»). In
   the notebook an entry that is due keeps what was answered and holds its right answer back until it is reviewed, and
   the review shows a choice's options in another order than the lesson's, the right answer where neither the lesson
-  nor the day before had it. The review's cross closes it to the screen it was opened from (the week path's row, the
-  day's row or the notebook).
+  had it nor the question's last review on time, one, three or seven days before (it takes two of the other places
+  in turn, by the day's parity; a review made a day late finds it where it was). The review's cross closes it to the
+  screen it was opened from (the week path's row, the day's row or the notebook).
 - **The plan can be made again.** The date chip on the week path («faltan 40 días», or «a tu ritmo») opens the goal
   screen at its third step, with «Guardar el plan» and «Cancelar»; behind the plan or past its date, Progreso offers
   the same door («Epu'ã ha eñepyrũjey», «Rearmar mi plan»). A plan made again starts today at the session the learner
@@ -226,9 +227,16 @@ from zooming.
   Progreso counts them («12 días con estudio · volviste 2 veces»), and after two days or more away the week path
   greets the learner back: Kaguare up on his hind legs, «Opu'ã · Se levantó», and where to start (the review that
   waits, called «algo corto» only while it takes five minutes or less; or, after a week or more, the last review day
-  sealed) before the next new day. A save from before the app kept the days, which already holds things studied, is
-  marked (`seenLate`): its count begins on the day of the update, and Progreso says so («3 días con estudio desde el
-  16/11»); no earlier day is made up from the moments the save does carry.
+  sealed, named as what it is: «Empezá por el repaso de la semana 2, que ya sellaste.») before the next new day. A
+  save from before the app kept the days, which already holds things studied, is marked (`seenLate`): its count
+  begins on the day of the update, and Progreso says so («3 días con estudio desde el 16/11») for the record's first
+  30 days, while the count is far under what the learner did. The note and the returns do not fit the line together,
+  so after those days the line reads as everyone's, with the returns («34 días con estudio · volviste 2 veces»). No
+  earlier day is made up from the moments the save does carry. For a screen reader nothing is left out for want of
+  room and no date is said in figures: the line is named «3 días con estudio desde el 16 de noviembre. Volviste una
+  vez.», and the week path's seven days count only the days on record («Tus últimos 7 días: 1 día con estudio desde
+  el 16 de noviembre; de antes no hay registro. Hoy ya estudiaste.»), since a day before the record began is drawn
+  as a faint dot, not as a day without study.
 - **Six levels:** A1 Acceso 8 units, A2 Plataforma 10, B1 Umbral 10, B2 Avanzado 10, C1 Dominio operativo eficaz 8,
   C2 Maestría 6: 52 units, 260 study days. A1 and A2 hold the core morphology; B1 and B2 clauses, word formation,
   evidentials and Jopara as grammar; C1 register and the State's Guarani (the Constitution, Ley 4251, legal and

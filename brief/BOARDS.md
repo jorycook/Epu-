@@ -121,12 +121,13 @@ dos veces.»), outside that line's live region.
 **Main**: Yaoki's layout and SPOTS exactly. The unit's title on the card is the screen's `<h1>`. Level chip "A1" (→ `go('Levels')`); stamps chip with the mini ✓ stamp; the
 date chip, an ink-bordered link like the level chip, is the door back to the plan ("faltan 60 días", or "a tu ritmo"
 with no date; on the canvas it shows GoalPlan, in the app the goal screen at step 3). Unit card: kicker "Semana 1 de 8", the unit's Guarani title big (`unit.gn`,
-Andika 700 26px, `lang="gn"`) when it has one, else the Spanish; the Spanish under it 13/500 muted; Kaguare 60 px with the
-level rosette (rings = units done). Stamp card of 7 slots (✓ stamps; test slot with the stopwatch). The card carries
+Andika 700 26px, `lang="gn"`; 22 px from 14 letters on and 18 px from 18, two lines at most) when it has one, else the
+Spanish; the Spanish under it 13/500 muted; Kaguare 60 px with the level rosette (rings = units done). Stamp card of 7 slots (✓ stamps; test slot with the stopwatch). The card carries
 `data-gn-note="place"`: it holds no control, so the app lays its notice exactly over it (BRIEF-core §2; the path below
 is full to its last node). Path nodes: done ✓
-stamp (accent ring), today (indigo 68 px, day number), locked (padlock), test (stopwatch, gold when ready). Labels:
-"Día 4" + the day title (14px; allow 2 lines, `overflow-wrap: anywhere`); test "Prueba de la semana" + "formato de examen".
+stamp (accent ring, 52 px), today (indigo 68 px, day number), locked (padlock, 52 px), test (stopwatch, 60 px, gold
+when ready). Labels: "Día 4" + the day title (14px; two lines at most, one for day 6, which has the test node right
+below; `overflow-wrap: anywhere`); test "Prueba de la semana" + "formato de examen".
 Callout kicker "HOY · 3 LECCIONES" (or "SIGUIENTE"), title, "Empezar". A day's title is Spanish that may quote Guarani
 ("Más de uno: ogakuéra, mitãnguéra"): in the labels and in the callout it is drawn in the pieces of `C.mixed(title)`, the
 words that can only be Guarani in `<span lang="gn">`, and all the pieces inside one `<span>`, so the clamped box
@@ -134,7 +135,9 @@ words that can only be Guarani in `<span lang="gn">`, and all the pieces inside 
 whole title (`C.ems`), which the pieces spell letter for letter. Tabs: Camino (Main) · Cuaderno (Notebook) · Examen
 (ExamTab) · Progreso (Progress). Designed moment: SAMPLE.
 What the callout adds (it grows upward, over the days done, so the labels of the days to come stay in view; the nodes
-sit on top of it where they meet):
+sit on top of it where they meet). Its height is reckoned from its lines before it is drawn (20 px a line of title,
+17.4 px a line of small print: 12 px at 1.45; the sum rounded up to a whole pixel), and it never ends below y 404 of
+the path, 4 px above the week-test node:
 - The review that waits (`app.review.n` > 0): a row above the button, accent tint, 44 px, "Antes de empezar · 2 min" over
   "3 para repasar", → Review.
 - A day of return (`app.days.away` ≥ 2: two days or more without study and nothing done yet today): the kicker gives way
@@ -143,7 +146,9 @@ sit on top of it where they meet):
   not called short: "Empezá por el repaso: 25 para repasar, 15 minutos."), the button is "Jehechajey · Repasar",
   and quiet buttons follow: "Repasar la semana 1" (after seven days or more: the last review day sealed) and "Seguir
   con el día 5" ("Seguir: semana 2, día 1" when the week on show is whole and the day is in the next one). With nothing
-  due the button is the review day, or the day itself ("Lo que hiciste sigue acá."). In the
+  due the button is the review day ("Repasar la semana 1", under the line "Empezá por el repaso de la semana 1, que
+  ya sellaste.": a review day is three lessons, so it is named and not called short), or the day itself ("Lo que
+  hiciste sigue acá. Sigue el día 5."). In the
   unit card Kaguare takes the rising pose that day, before and after the first thing done (`app.days.back`).
 - Where the written path ends (the card with no button: the week whole, the next day or week not written): a kicker
   "MIENTRAS TANTO" and four tiles, Cuaderno (with "3 para hoy"; "16 hoy" from ten on, so the tile's second line
@@ -156,7 +161,12 @@ sit on top of it where they meet):
   still ask for Progreso, which is where the canvas alone takes them).
 "Últimos 7 días", bottom left of the path beside the test node: seven 14-px marks, today last (`app.days.week`): a day
 with study (accent disc), a day of return (teal ring, up arrow), a day missed (grey ring), today still to come (dashed
-indigo), a day before the app kept days (a faint dot: nothing is claimed).
+indigo), a day before the record began (a faint dot: nothing is claimed). Its accessible name says what is drawn
+("Tus últimos 7 días: 2 días con estudio. Hoy todavía no."; "Hoy ya estudiaste.", "Hoy volviste."). A faint dot is
+not a day without study: when any of the seven days is before the record began (a new learner's first week, a save
+from before the app kept the days) the name counts only the days on record and says since when, the month as a word
+("…: 1 día con estudio desde el 16 de noviembre; de antes no hay registro. Hoy ya estudiaste.", `gnCourse.dayEs`),
+and with no day on record yet it counts none ("…: todavía no hay ningún día registrado. Hoy todavía no.").
 
 **Today**: Yaoki's layout. Header "Semana 1 · Día 4" (derive from `app.session`, not the id). Kicker "HOY · TRES LECCIONES",
 h1 the day title (in the pieces of `C.mixed`, its Guarani words in `<span lang="gn">`, as on the week path), sub "Aprendé la regla, practicala con ayuda y después respondé como en el examen." Cards:
@@ -180,17 +190,24 @@ hero look. Tapping a level → `this.props.level(lv)` (keeps each level's plan; 
 termina con un examen de cinco partes. El resultado es una constancia de la app, no un certificado oficial." Designed moment:
 A1 current (3 days stamped), A2 to C2 en preparación except the syllabus counts.
 
-**Progress** ("¿Cómo voy?", replaces Readiness, computed, never hard-coded): header "Progreso · A1"; hero card: the level's
-rosette 104 px with its rings, "Unidad 1 de 8 · 3 de 56 sesiones", a pace line (with a target: "Vas al día" / "2 días atrás";
-without: "A tu ritmo"; beside it "faltan 40 días", "hoy es la fecha" or "fecha pasada", as the week path's chip says
-it), the days with study on one line ("12 días con estudio · volviste 2 veces", from `app.days`; the returns only
-while they fit beside the count; for a save from before the app kept the days, since when the count runs: "3 días
-con estudio desde el 16/11", `app.days.since`) and, behind the plan or past its date, an accent-tint row: "Epu'ã ha
+**Progress** ("¿Cómo voy?", replaces Readiness, computed, never hard-coded): header "¿Cómo voy?" with "Progreso · A1"
+beside it; hero card: the level's rosette 96 px with its rings (88 px while the row "Rearmar mi plan" shows, below),
+the kicker "Ñandutí del nivel A1", "Unidad 1 de 8" over "3 de 56 sesiones", a pace line (with a target: "Vas al día" /
+"2 días atrás"; without: "A tu ritmo"; beside it "faltan 40 días", "falta 1 día", "hoy es la fecha" or "fecha
+pasada", as the week path's chip says it), the days with study on one line ("12 días con estudio · volviste 2
+veces", from `app.days`; the returns only while they fit beside the count: the line has 216 px, 224 with the row)
+and, behind the plan or past its date, an accent-tint row: "Epu'ã ha
 eñepyrũjey" over "Levantate y empezá de nuevo." with the button "Rearmar mi plan" (→ the goal screen at step 3, which
 closes back to Progreso; GoalPlan on the canvas). On time the five cards fill the screen to the pixel, so while that
 row shows the screen makes room for it and nothing is cut at the fold: the hero card draws in (no kicker, the
 rosette 88 px, padding 8 px) and the two lines of small print ("Es una guía…" under the bars, "Lo marcás vos…" over
-the chips) are left out; every control and number stays. "Por área" card: bars for Palabras, Gramática, Lectura, Escucha (right/of summed from
+the chips) are left out; every control and number stays. A save from before the app kept the days (`app.days.since`,
+the first day on record of a learner the app marked `seenLate`) says since when its count runs, "3 días con estudio
+desde el 16/11", while the record is young: for its first 30 days, when the count is far under what the learner did.
+That note and the returns never fit the line together, so after those days the line reads as everyone's, returns
+and all. The line's accessible name (`role="img"`, as the area rows) leaves nothing out for want of room: it always
+says since when such a count runs, the month as a word and the year once it has turned ("3 días con estudio desde el
+16 de noviembre. Volviste una vez.", `gnCourse.dayEs`), and carries the returns whenever there are any. "Por área" card: bars for Palabras, Gramática, Lectura, Escucha (right/of summed from
 the week tests' `tests[*].areas`; a mini exam asks their questions again and is left out), a 60 % target tick on each, an area under the line in red with a chip; empty state
 before the first week test ("Después de tu primera prueba de la semana vas a ver acá cómo te va en cada área."); "Próximo
 paso" card linking to the weakest area (red CTA "Practicar"), else to the next session, else, with no day left to do,
@@ -235,6 +252,12 @@ back a page before it closes the sheet).
 | 2350 | `ExamResult.dc.html` | 15 · Exam-style result | moment board: Exam `view="result"` |
 
 Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, §9.3 (all of it, incl. the fix list l).
+- A day that is not written: Teach, Compare, Build and Words (its scene) draw "En preparación" and a line that names
+  the day by its title ("«Hay, está y no hay: oĩ, ndaipóri»: todavía estamos escribiendo esta lección.", "Las palabras
+  de «…» todavía se están escribiendo. Volvé pronto."). The title is Spanish that may quote Guarani, so the line is
+  drawn in the pieces of `C.mixed`, its Guarani in `<span lang="gn">`, as on the week path. No flow of the prototype
+  or the app leads to that state (the engine hands a screen written days only: `C.current`), so
+  `tools/smoke-boards.mjs` stands each board once on such a day and stops a line that prints its Guarani as plain text.
 - Teach: form h1 in Andika 700 34px with `lang="gn"`; "Cómo se forma" rows (pos stacked above the rule when longer than ~12
   characters); "Ejemplos" with play buttons (the stand-in, or the clip: the card's head then carries the tag «voz sintética»
   at its right end, one tag for the card, while any of its examples has a synthetic clip; an example without one says
@@ -373,9 +396,12 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
   ("Ahora en 3 días. Si acertás: en 1 semana."), summary. Designed moment: item 1 of 2 answered right. It asks today's
   sitting (or one more, when today's is done). Inside the prototype and the app a choice's options come in another
   order than the lesson's, and the right answer's place is set by rule: never the place the lesson gave it and, with
-  three options or more, never the place it had the day before (it takes the other places in turn, a day each; the
-  rest are dealt by `gnSpell.shuffle`, seeded by the item and the day; the buttons are numbered as shown), except an
-  item whose audio numbers its replies; the canvas board keeps the lesson's order. The header's cross leaves for the
+  three options or more, never the place it had at the question's last turn on the track. The track's steps (1, 3
+  and 7 days) are all odd, so the answer takes two of the other places in turn, one on even days and one on odd days
+  (which two, by the item): one, three or seven days later it stands elsewhere. A review made late by an odd number
+  of days finds it where it was (nothing is kept of where an answer stood). The rest are dealt by `gnSpell.shuffle`,
+  seeded by the item and the day, and the buttons are numbered as shown. An item whose audio numbers its replies
+  keeps its order, and so does the canvas board. The header's cross leaves for the
   screen the review was opened from (`app.opener`: the notebook, the week path's row or the day's row; the notebook
   on the canvas). The
   summary's button is "Eku'ejey · Seguir con el día 4" (the next session of the plan; "Seguir con la prueba" for a week
