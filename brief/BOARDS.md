@@ -259,7 +259,9 @@ Loop rules: $N/Y2 §1.2 transition table, §2 shared look, §3 item mechanics, �
   drawn in the pieces of `C.mixed`, its Guarani in `<span lang="gn">`, as on the week path. No flow of the prototype
   or the app leads to that state (the engine hands a screen written days only: `C.current`), so
   `tools/smoke-boards.mjs` stands each board once on such a day and stops a line that prints its Guarani as plain text.
-- Teach: form h1 in Andika 700 34px with `lang="gn"`; "Cómo se forma" rows (pos stacked above the rule when longer than ~12
+- Teach: opened for a review day, which has no points (the day page leads to Compare there, so only a kept link gets
+  here): a card with the day's kicker, «Hoy no hay reglas nuevas» as the screen's `<h1>`, a line and "Comparar".
+  Otherwise: form h1 in Andika 700 34px with `lang="gn"`; "Cómo se forma" rows (pos stacked above the rule when longer than ~12
   characters); "Ejemplos" with play buttons (the stand-in, or the clip: the card's head then carries the tag «voz sintética»
   at its right end, one tag for the card, while any of its examples has a synthetic clip; an example without one says
   why under itself once tapped: «Este audio todavía no está grabado.», «No se pudo cargar el audio.» or «Apagaste la
