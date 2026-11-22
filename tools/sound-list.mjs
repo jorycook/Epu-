@@ -50,13 +50,16 @@ const CODE = { N: 'N', F: 'F', M: 'M', NARRADOR: 'N', MUJER: 'F', HOMBRE: 'M' };
 /* "Who: text" → [who, text], or null for a line that names no speaker. Who is a name or a role: one word, or two when
    the first is a title (ña Ramona, don Tito). A sentence that merely has a colon in it is not a speaker and a line:
    «Vicente ndoúi ko ka'aru: oky.» is one sentence, and read as «Vicente ndoúi ko ka'aru» saying «oky» it gave a clip
-   of the last word alone, in the man's voice (two Teach examples of unit 2 day 5 played so until 17 November) */
+   of the last word alone, in the man's voice (two Teach examples of unit 2 day 5 played so until 17 November).
+   A name is letters of any alphabet: \w knows only a to z, and with it «Moisés: …» named no speaker, so the dialogue
+   examples of unit 5 were one line in the woman's voice with both names read aloud (found on 22 November, before
+   any such clip was made) */
 const TITLE = /^(?:ña|don|doña|karai|kuñakarai|señor|señora|tío|tía|profesor|profesora)$/i;
 function spokenBy(t) {
   const m = /^([^:]{1,24}):\s+([\s\S]*)$/.exec(t);
   if (!m) return null;
   const who = m[1].trim().split(/\s+/);
-  if (who.length > 2 || (who.length === 2 && !TITLE.test(who[0])) || !who.every((w) => /^[^\W\d_]+$/u.test(w))) return null;
+  if (who.length > 2 || (who.length === 2 && !TITLE.test(who[0])) || !who.every((w) => /^\p{L}+$/u.test(w))) return null;
   return [who.join(' '), m[2].trim()];
 }
 /* a script line as the content writes it: [code, text, es] or "Who: text" */
@@ -69,7 +72,12 @@ function lineOf(l) {
   const m = spokenBy(t);
   return m ? { voice: voiceOfName(m[0]), text: m[1], es: '' } : { voice: 'F', text: t, es: '' };
 }
-const looksSpanish = (t) => /[ñ]|¿|\b(el|la|los|las|de|del|que|qué|un|una|en|es|y|con|por|para|cómo|dónde)\b/i.test(t) && !/[ãẽĩõũỹ'g̃]/.test(t);
+/* a speaker's line of a listening script that is Spanish (a price, a greeting in Spanish): an opening ¿ or ¡, or one of
+   Spanish's small words, and none of Guarani's marks. An ñ is no sign of Spanish here: until 22 November it was read
+   as one, and «Pyhare añeno.» would have gone to the Spanish voice without a word (unit 5's writer saw it and wrote
+   the line another way). A Spanish line this misses is not lost: tools/make-tts.py stops on a word that is not
+   Guarani spelling and names it */
+const looksSpanish = (t) => /[¿¡]|\b(el|la|los|las|de|del|que|qué|un|una|en|es|y|con|por|para|cómo|dónde)\b/i.test(t) && !/[ãẽĩõũỹ'g̃]/.test(t);
 
 /* ---------- the list ---------- */
 const rows = [];

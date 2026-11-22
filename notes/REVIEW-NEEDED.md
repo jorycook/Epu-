@@ -5,13 +5,14 @@ and answer keys), against the research notes and real Guarani text (Common Voice
 corpora, Firefox, MediaWiki and LibreOffice localisations, Apertium's dictionary), and a blind solver answered every
 question without the keys: for unit 1 and the extras 101 of 103 agreed (the two others had no passage in the export and
 were confirmed right); for units 2, 3 and 4 all 92 of each unit agreed, and four questions were rewritten after that
-(they are named below). What follows could not be settled that way. A native teacher, ideally with the Academia de la
+(they are named below); for unit 5 all 92 agreed. What follows could not be settled that way. A native teacher, ideally with the Academia de la
 Lengua Guaraní's 2016 spelling rules and its dictionary at hand, should rule on it before the lessons ship.
 
 The sections from «Settle first» to «Everything the reviewers listed» are about A1 unit 1 and the extras. Units 2, 3 and
 4 come after them: first what touches more than one of the three, then a section for each unit. The last section,
 «Entre unidades (1 a 4)», is what the cross-unit reading of the four units left open; where it says that a line above
-is out of date, it is the one to follow.
+is out of date, it is the one to follow. Unit 5, written later from a plan that had the four units in front of it, has
+the last section.
 
 ## The mascot's name (before anything ships)
 
@@ -30,12 +31,17 @@ and nicknames; *oso melero*; the spelling and stress ka-gua-RE; and a control qu
 2. **-gua is tonic** (Paraguaigua, as SPL and Apertium write it; ABC Color writes Paraguáigua). The unit follows SPL.
 3. **Argentina-gua** with a hyphen after an unadapted Spanish name is usage, not a confirmed Academy rule.
 4. **Aireal verbs**: day 4 splits reikuaápa as rei- + kuaa + -pa (the school analysis); day 1 leaves reiko unsplit.
-   Choose one analysis before A1 unit 5 teaches ai-/rei-/oi-.
+   Choose one analysis before A1 unit 5 teaches ai-/rei-/oi-. *Since 22 November unit 5 teaches them, with the school
+   analysis (rei- + kuaa; aike as ai- + ke): see «A1 unit 5», «Settle first», item 1. Unit 1 day 1 still shows reiko
+   whole. A ruling for re- + ikuaa would change the rule rows and the parts of unit 5 day 1 together.*
 5. **g̃ and spacing in Tereg̃uahẽ porãite** (newspapers write Tereguahẽ; Common Voice joins the two words).
 6. **The puso pairs** for listening: confirm and record ka'i/kái (also a stress difference), po'i/poi, mbo'y/mboy,
    sevo'i/sevói; and pyta 'talón' (only Apertium gives the noun sense).
 7. **Weekday names**: sources disagree on Sunday-first and Monday-first; the app shows Spanish day names until the
-   Academia's list is confirmed.
+   Academia's list is confirmed. *Unit 5 day 3 teaches the days in Spanish inside the Guarani sentence (ko jueves) and
+   shows the Guarani names once, to read, Sunday first, in the note of arapokõindy: the dictionary's order and that of
+   most of the texts (in Jojajovai arateĩ stands for «domingo» in 37 to 39 of 45 rows; six rows of the press and the
+   SPL have it for «lunes»). A ruling changes that one note.*
 
 ## Composed lines to confirm
 
@@ -692,3 +698,119 @@ a1u02d5.d3, a1u02d6.e3, a1u03d1.d2, .d3, a1u03d3.d3, .d4, .d5, .e1, .e3, .r1, a1
 a1u04d6.d5, .e2, .r1, a1u04t.11, t.15, t.16, t.17. Only the highlight taken out of the solution shown after the
 answer (13): a1u01d2.e3, a1u01d4.e3, a1u01d5.e3, a1u01d6.e3, a1u01t.13, t.14, a1u02d3.e3, a1u02d5.e3, a1u02t.14,
 a1u03d2.e3, a1u03d5.e3, a1u03d6.e3, a1u04d2.e3.
+
+## A1 unit 5, «Mi día»
+
+Written on 22 November 2026 from the shared plan of units 5 to 8: five days, a review day and a week test (92 items).
+Each group of days went from a writer to a checker (form and meaning) to a fixer, and a solver who never saw the
+answers then agreed with the key on all 92 items. That checks the items against the lessons, not the lessons against
+speech. Every form was looked up in the texts at hand (the press, Common Voice, Jojajovai, the SPL corpus and
+Apertium's dictionary); what follows was built by rule or composed, and waits for a native teacher. Unit 5 has not
+been read against units 1 to 4 by an auditor, the way those four were read against one another.
+
+### Settle first
+
+1. **ai-, rei-, oi-** («Settle first», item 4). Day 1 teaches these verbs as the prefixes of unit 2 with an i after
+   them (a- to ai-, re- to rei-, o- to oi-; jai- or ñai-, roi-, pei-) on the roots ko, kuaa, pota, poru, pytyvõ,
+   kotevẽ and ke. So reikuaa is rei- + kuaa, and aike is ai- + ke, «entro», beside ake, «duermo» (the dictionary has
+   both roots ke). Is that how you would teach it, or re- + ikuaa?
+2. **The hour.** No spoken Guarani form is taught. What is read has figures, «7:00 aravo jave» (the press also has
+   «aravo 06:15 jave»; no item marks that order wrong). What is said is the Spanish number alone: «Mba'e aravópa reho
+   mbo'ehaópe?» «Siete.» The direct question with -pa and a verb is by rule: the texts have it with piko, without -pa,
+   and with -pa only inside an indirect question. A number before aravo is a length of time (mokõi aravo, «dos
+   horas»); no option, right or wrong, reads it as «a las dos», though three corpus lines use a Guarani number and
+   aravo for the clock.
+3. **The days** («Settle first», item 7). Said in Spanish inside the Guarani sentence, bare and in lower case, with ko
+   before them («ko jueves», «ko jueves ka'aru»). The bare day is «el jueves» («Jueves pyhareve amba'apo
+   mbo'ehaópe.»), which rests on two press lines. The Guarani names stand once, to read, in the note of arapokõindy.
+4. **oĩ or opyta for where a place is** («Entre unidades», ruling 6). The lessons use opyta for a place («Moõpa opyta
+   tupão?», «Che róga opyta Itauguápe.», the build «Tupão opyta távape.», whose «opyta távape» has no line in the
+   texts) and oĩ for a person or a thing. The note of opyta says oĩ is also heard, and no item sets one against the
+   other. The gloss «¿dónde queda…?» is the plan's.
+5. **Araka'épa with the bare verb.** Day 4 asks about the routine («Araka'épa reho mbo'ehaópe?» «Pyhareve, ára ha
+   ára.») and day 6 about what already happened («Araka'épa rehenói nde jarýipe?» «Ko ka'aru.», read at night as
+   past), never about a plan: the unit has no -ta, and in the texts a question about the future always has it.
+6. **-pe and -me on a person; chéve, ndéve, ichupe.** Day 5 says that the person seen, called, helped, greeted, asked
+   or given to takes the -pe of ógape (-me after a nasal last syllable; mb does not count: membýpe), and that che and
+   nde take -ve in its place (chéve, ndéve) while ha'e has a form of its own, ichupe, with peẽme of unit 1 beside
+   them. Is it right to teach it so? chupe is treated as a second spelling of ichupe and is never a wrong option. A
+   Spanish name takes a hyphen and -pe «también si termina en na o nia» (Ramona-pe, Tania-pe: in the texts -pe after a
+   hyphenated name in -na has 118 lines against 1 with -me); that stands in one rule row, which is read.
+7. **Mávapepa…?** («¿a quién?»: a listed word, the example «Mávapepa rehenói?», a1u05d5.d4 and a1u05t.20). By rule,
+   máva + -pe + -pa: mávape and Mávapepiko are attested, Mávapepa itself is not. Or is it Mávapepiko, Mávape piko?
+8. **naikotevẽi, and ndaikotevẽi as a wrong answer** (a1u05d1.d4). By the rule of unit 2, n- before a nasal root. In
+   the texts n- before kotevẽ has 62 lines and nd- has 3, all three from one set of translated dialogues. Is «Aguyje,
+   ndaikotevẽi mba'eve.» wrong to the ear?
+9. **hi'ag̃ui or hi'aguĩ** for «está cerca». Both are written in the texts (13 distinct lines against 26, with their
+   suffixed forms). The course writes hi'ag̃ui and names the other in the word's note; the word is in no spelling
+   step.
+
+### Forms made by rule
+
+- **arambosa and akay'u** (listed words of day 2; in examples, rule rows, one listening line and the pairs of the
+  sound steps; a1u05t.3 asks what arambosa means). orambosa, ñarambosa, rorambosa and okay'u, jakay'u, rokay'u are in
+  the texts; the «yo» form of neither was found. The dictionary also gives rambosa as «almorzar»: is «Che arambosa»
+  ever said for lunch? And is «Ára ha ára che sy okay'u.» natural (a1u05t.2), or would oka'ay'u be as good?
+- Persons not found, kept out of keys and builds: peipota, ndereipotái, ndereikói, reipytyvõ (alone), naipytyvõi,
+  repu'ã, ropu'ã, rerambosa, rekay'u, jajevy, japytu'u, ñañeno; peiko has one line. rejevy and reñeno have one line
+  each and stand in items («Mba'e aravópa rejevy ógape?», «Araka'épa rejevy ógape?», «Mba'e aravópa reñeno?»), never
+  as a key. «Saber guaraní» with kuaa was not found and is avoided.
+- che membýpe (a rule row of day 5 and the key of a1u05d5.d2): the phrase has no line; membýpe has 17 with other
+  owners, membýme none.
+- Wrong options that are forms by rule or made up, and must be wrong to the ear: akuaa, opota (the i lost); ñaipota
+  (ñai- before an oral root); jarambosa, japu'ã (ja- before a nasal root); Jaikuaápa, Oikuaápa, ropu'ã (the wrong
+  person for the scene); che irume; mbo'eharapekuéra; chépe, chébe, chéme; okai'u, okayu, oka'yu. And «Tania oporandu
+  mbo'eháragui» for «le pregunta a la profesora» (a1u05d6.d4): does anybody say porandu with -gui for the person
+  asked? In day 5 -gui is never a wrong option with aporandu, because speech may say «aporandu ichugui».
+- Words nobody could split with a source, so never split in parts or builds: aravo, arete, aravo'i, asajepyte,
+  pyharepyte, hi'ag̃ui, upépe. tupãópe stays in the note of tupão; ñemuhápe or ñemuháme is unsettled and not used.
+
+### Composed sentences
+
+Made from attested pieces and not found whole. Do they sound right?
+
+- Day 1: «Che sy oipota ka'ay.», «Aguyje, naikotevẽi mba'eve.», «Che ndaipotái terere.», «Ñande ñaikotevẽ ka'a.»,
+  «Ñande jaipota ka'ay.», «Che jarýi oiko Ka'akupépe.», «Che membykuéra oiporu ko aranduka.» And kuaa as «conocer»
+  with a place, the frame of unit 3's «Reikuaápa Ypakarai?»: «Reikuaápa Ka'akupe?» «Héẽ, aikuaa.», «Peikuaápa
+  Itaugua?», «Ñande jaikuaa Ka'akupe.», and in the reading «Reikuaápa Itaugua?» «Héẽ, aikuaa porã: aiko ko'ápe.»
+- Day 2: «Ajevy ógape ha akaru.», «Che membykuéra opytu'u asaje.», «Apu'ã, upéi ajahu.», «Pyhare rokaru ógape.»,
+  «Ára ha ára ñapu'ã ha ñamba'apo.», «Ore rorambosa ógape.», «Ñande ñarambosa ha jaha mbo'ehaópe.», «Asaje che sy
+  opytu'u.», and the listening line «Pyhare chekane'õ ha añeno.»
+- Day 3: a length of time straight after the verb, with nothing added: «Aguata mokõi aravo.», «Asaje apytu'u peteĩ
+  aravo.», «Ajahu po aravo'i.», and in day 6 and the test «ko ka'aru aguata távape mokõi aravo», «Genaro ojahu po
+  aravo'i», «opytu'u peteĩ aravo» (most corpus lines add aja or rupi). The timetable of the reading: the heading «Ore
+  arapokõindy», «Asajepyte: rokaru ógape», «Sábado ha domingo: ndaipóri mbo'epy» for «no hay clases» (the frame is
+  «ndaipóri clase»), «Lunes a viernes» as Spanish inside the Guarani, «mitãnguéra opu'ã». And «Arete jave ndahái
+  mbo'ehaópe.» as the general «en feriado no voy a la escuela».
+- Day 4: «Araka'épa reho mbo'ehaópe? Pyhareve, ára ha ára.», «Araka'épa ojevy nde ru? Pyhare.»; in day 6 and the test
+  «Araka'épa remba'apo?» and «Araka'épa rejevy mbo'ehaógui?» «Asajepyte.»; and «Mombyry ko'águi» for Caacupé seen from
+  Itauguá by someone who wants to go on foot (a1u05t.5).
+- Day 5: «Ame'ẽ aranduka temimbo'ekuérape.» («Les doy libros a los alumnos.»: temimbo'ekuérape has 23 lines, «ame'ẽ
+  aranduka» none), «Ahecha che irũme távape.», «Amomaitei peteĩ kuñáme.», «Amomaitei mbo'eharakuérape.», «Tania
+  ivare'a. Ame'ẽ ichupe chipa.»; and in the test «Mba'e aravópa oho mbo'ehaópe ne membykuéra?» «Siete.» and
+  «Mávapepa rehecha?» «Mitãnguérape.»
+
+### Notes that rest on inference
+
+- The note of akay'u: «De la familia de ka'ay, «mate» (unidad 1): lleva la misma y, «agua».» No source gives the
+  parts of kay'u (the dictionary lists it whole). If they are wrong, that sentence must go.
+- Syllables written by the course's rules, not from a source: u-PÉI (two syllables, the é and the i said together),
+  a-ra-mbo-sa, a-he-ndu, a-ñe-no, a-py-tu-'u, mo-Õ, o-Ĩ, pe-te-Ĩ, ku-ña-ta-Ĩ, mo-KÕI, oi-KO, a-ra-vo-'I, mo-mby-RY,
+  u-PÉ-pe, a-ra-ka-'É-pa, a-sa-je-py-TE, py-ha-re-py-TE. None is printed for akay'u.
+- The note of amomaitei puts the stress on the last i (from spellings like omomaiteívo, 46 lines against 1). The note
+  of ahecha describes ch as «más bien sh» and says that speech has «Ahecha che sy» without -pe (no item tests it).
+
+### Pedagogy and keys
+
+- The bare verb read as past. The compare of day 2 glosses «Ko pyhareve arambosa ógape.» as «Esta mañana desayuné en
+  casa.», and the reading of day 5 («Ko ka'aru aipytyvõ che membykuérape. Upéi ahenói che jarýipe, Ka'akupépe.») could
+  be read as a plan; its reasons retell it in the present. Is that natural without kuri?
+- The part of the day with -pe (pyharevépe, pyharépe, ka'arúpe: well attested) is never a wrong option; the lessons
+  teach the bare word.
+- Day 5's second point promises, with no unit named, that «me» and «te» with ver, llamar, ayudar and saludar «se
+  dicen de otra manera: eso queda para más adelante» (rohecha and chepytyvõ are not shown).
+- The reading of day 3 («¿A qué hora es la escuela?») can be answered from memory: an example, a compare row and a
+  build of the same day say that Ana goes to school at 7:00.
+- a1u05d6.e2 and a1u05t.14 offer the same four options (chéve, ndéve, ichupe, chépe).
+- In day 6's sound step the pair oiko · oĩ stands where the plan had mokõi · moõ, so oiko is in two pairs of that
+  step.
